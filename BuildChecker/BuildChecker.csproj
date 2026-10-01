@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+  This is a dummy .csproj file to check things like submodules.
+  Better this than other errors.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RestorePackages>false</RestorePackages>
+  </PropertyGroup>
+  <Target Name="Build">
+    <Exec Command="git submodule update --init --recursive"/>
+  </Target>
+  <Target Name="Rebuild" DependsOnTargets="Build" />
+  <Target Name="Clean">
+    <Message Importance="low" Text="Ignoring 'Clean' target." />
+  </Target>
+  <Target Name="Compile" />
+  <Target Name="CoreCompile" />
+</Project>

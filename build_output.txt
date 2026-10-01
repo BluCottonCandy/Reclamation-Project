@@ -1,0 +1,110 @@
+  Determining projects to restore...
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Server\Robust.Server.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference Microsoft.Win32.Registry will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Graphics 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Client\Robust.Client.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Benchmarks\Robust.Benchmarks.csproj : warning NU1510: PackageReference System.Formats.Asn1 will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference System.Reflection.Metadata will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Common 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Desktop 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.GraphicsLibraryFramework 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.OpenAL 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-7mfr-774f-w5r9 [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-8884-xcr4-r68p [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.Jit' 1.0.7 has a known high severity vulnerability, https://github.com/advisories/GHSA-xcvr-qv8h-m7xw [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+  All projects are up-to-date for restore.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Graphics 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Common 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Desktop 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.GraphicsLibraryFramework 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.OpenAL 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-7mfr-774f-w5r9
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-8884-xcr4-r68p
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.Jit' 1.0.7 has a known high severity vulnerability, https://github.com/advisories/GHSA-xcvr-qv8h-m7xw
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Client\Robust.Client.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Server\Robust.Server.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Benchmarks\Robust.Benchmarks.csproj : warning NU1510: PackageReference System.Formats.Asn1 will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference Microsoft.Win32.Registry will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference System.Reflection.Metadata will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+  Content.PatreonParser -> H:\nuclear-14-PR\nuclear-14\Content.PatreonParser\bin\Debug\net10.0\Content.PatreonParser.dll
+  Lidgren.Network -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Lidgren.Network\bin\Debug\net10.0\SpaceWizards.Lidgren.Network.dll
+  XamlX.Runtime -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\XamlX\src\XamlX.Runtime\bin\Debug\netstandard2.0\XamlX.Runtime.dll
+  BuildChecker -> H:\nuclear-14-PR\nuclear-14\BuildChecker\bin\Debug\net10.0\BuildChecker.dll
+  Robust.Shared.CompNetworkGenerator -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared.CompNetworkGenerator\bin\Debug\netstandard2.0\Robust.Shared.CompNetworkGenerator.dll
+  Avalonia.Base -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Avalonia.Base\bin\Debug\net10.0\Avalonia.Base.dll
+  Robust.Client.NameGenerator -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Client.NameGenerator\bin\Debug\netstandard2.0\Robust.Client.NameGenerator.dll
+  Robust.Analyzers -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Analyzers\bin\Debug\netstandard2.0\Robust.Analyzers.dll
+  Robust.SolutionGen -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Tools\Robust.SolutionGen\bin\Debug\net10.0\Robust.SolutionGen.dll
+  XamlX -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\XamlX\src\XamlX\bin\Debug\netstandard2.0\XamlX.dll
+  Robust.LoaderApi -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.LoaderApi\Robust.LoaderApi\bin\Debug\net10.0\Robust.LoaderApi.dll
+  NetSerializer -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\NetSerializer\NetSerializer\bin\Debug\net10.0\Robust.NetSerializer.dll
+  Robust.Serialization.Generator -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Serialization.Generator\bin\Debug\netstandard2.0\Robust.Serialization.Generator.dll
+  XamlX.IL.Cecil -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\XamlX\src\XamlX.IL.Cecil\bin\Debug\netstandard2.0\XamlX.IL.Cecil.dll
+  Content.Shared.Database -> H:\nuclear-14-PR\nuclear-14\Content.Shared.Database\bin\Debug\net10.0\Content.Shared.Database.dll
+  Robust.Shared.Maths -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared.Maths\bin\Debug\Robust.Shared.Maths.dll
+  Robust.Analyzers.Tests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Analyzers.Tests\bin\Debug\net10.0\Robust.Analyzers.Tests.dll
+  Robust.Xaml -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Xaml\bin\Debug\netstandard2.0\Robust.Xaml.dll
+  Robust.Shared -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\bin\Debug\Robust.Shared.dll
+  Robust.Shared.Maths.Testing -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared.Maths.Testing\bin\Debug\net10.0\Robust.Shared.Maths.Testing.dll
+  Robust.Client.Injectors -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Client.Injectors\bin\Debug\netstandard2.0\Robust.Client.Injectors.dll
+  Content.Tools -> H:\nuclear-14-PR\nuclear-14\Content.Tools\bin\Debug\net10.0\Content.Tools.dll
+  Robust.Packaging -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Packaging\bin\Debug\net10.0\Robust.Packaging.dll
+  Robust.Shared.Scripting -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared.Scripting\bin\Debug\Robust.Shared.Scripting.dll
+  Robust.Shared.Maths.Tests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared.Maths.Tests\bin\Debug\net10.0\Robust.Shared.Maths.Tests.dll
+  Content.Shared -> H:\nuclear-14-PR\nuclear-14\Content.Shared\bin\Debug\Content.Shared.dll
+  Robust.Shared.Testing -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared.Testing\bin\Debug\net10.0\Robust.Shared.Testing.dll
+  Content.Packaging -> H:\nuclear-14-PR\nuclear-14\Content.Packaging\bin\Debug\net10.0\Content.Packaging.dll
+  Robust.Server -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\bin\Server\Robust.Server.dll
+  Robust.Packaging.Tests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Packaging.Tests\bin\Debug\net10.0\Robust.Packaging.Tests.dll
+  Robust.Client -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\bin\Client\Robust.Client.dll
+  Content.Server.Database -> H:\nuclear-14-PR\nuclear-14\bin\Content.Server.Database\Content.Server.Database.dll
+  Robust.Shared.Tests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared.Tests\bin\Debug\net10.0\Robust.Shared.Tests.dll
+  Robust.Server.Testing -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Server.Testing\bin\Debug\net10.0\Robust.Server.Testing.dll
+  Robust.UnitTesting -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.UnitTesting\bin\Debug\net10.0\Robust.UnitTesting.dll
+  Content.Server -> H:\nuclear-14-PR\nuclear-14\bin\Content.Server\Content.Server.dll
+  Robust.Client.Tests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Client.Tests\bin\Debug\net10.0\Robust.Client.Tests.dll
+  Content.Client -> H:\nuclear-14-PR\nuclear-14\bin\Content.Client\Content.Client.dll
+  Robust.Benchmarks -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\bin\Benchmarks\Robust.Benchmarks.dll
+  Robust.Shared.IntegrationTests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\bin\Shared.IntegrationTests\Robust.Shared.IntegrationTests.dll
+  Robust.Client.IntegrationTests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\bin\Client.IntegrationTests\Robust.Client.IntegrationTests.dll
+  Robust.Server.IntegrationTests -> H:\nuclear-14-PR\nuclear-14\RobustToolbox\bin\Server.IntegrationTests\Robust.Server.IntegrationTests.dll
+  Content.Replay -> H:\nuclear-14-PR\nuclear-14\bin\Content.Replay\Content.Replay.dll
+  Pow3r -> H:\nuclear-14-PR\nuclear-14\Pow3r\bin\Debug\net10.0\Pow3r.dll
+  Content.Tests -> H:\nuclear-14-PR\nuclear-14\bin\Content.Tests\Content.Tests.dll
+  Content.IntegrationTests -> H:\nuclear-14-PR\nuclear-14\bin\Content.IntegrationTests\Content.IntegrationTests.dll
+  Content.MapRenderer -> H:\nuclear-14-PR\nuclear-14\bin\Content.MapRenderer\Content.MapRenderer.dll
+  Content.YAMLLinter -> H:\nuclear-14-PR\nuclear-14\bin\Content.YAMLLinter\Content.YAMLLinter.dll
+  Content.Benchmarks -> H:\nuclear-14-PR\nuclear-14\bin\Content.Benchmarks\Content.Benchmarks.dll
+
+Build succeeded.
+
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Server\Robust.Server.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference Microsoft.Win32.Registry will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Graphics 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Client\Robust.Client.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Benchmarks\Robust.Benchmarks.csproj : warning NU1510: PackageReference System.Formats.Asn1 will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference System.Reflection.Metadata will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Common 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Desktop 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.GraphicsLibraryFramework 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.OpenAL 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved. [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-7mfr-774f-w5r9 [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-8884-xcr4-r68p [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.Jit' 1.0.7 has a known high severity vulnerability, https://github.com/advisories/GHSA-xcvr-qv8h-m7xw [H:\nuclear-14-PR\nuclear-14\SpaceStation14.slnx]
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Graphics 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Common 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.Desktop 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.Windowing.GraphicsLibraryFramework 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1608: Detected package version outside of dependency constraint: OpenTK.OpenAL 4.7.2 requires OpenTK.Core (>= 4.7.2 && < 4.8.0) but version OpenTK.Core 4.9.4 was resolved.
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-7mfr-774f-w5r9
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.App' 1.0.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-8884-xcr4-r68p
+H:\nuclear-14-PR\nuclear-14\Pow3r\Pow3r.csproj : warning NU1903: Package 'Microsoft.NETCore.Jit' 1.0.7 has a known high severity vulnerability, https://github.com/advisories/GHSA-xcvr-qv8h-m7xw
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Client\Robust.Client.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Server\Robust.Server.csproj : warning NU1510: PackageReference System.Text.Json will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Benchmarks\Robust.Benchmarks.csproj : warning NU1510: PackageReference System.Formats.Asn1 will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference Microsoft.Win32.Registry will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+H:\nuclear-14-PR\nuclear-14\RobustToolbox\Robust.Shared\Robust.Shared.csproj : warning NU1510: PackageReference System.Reflection.Metadata will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+    26 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.00

@@ -1,0 +1,9 @@
+<!-- #Misfits Change - Mentor Help window XAML -->
+<DefaultWindow xmlns="https://spacestation14.io"
+            xmlns:cc="clr-namespace:Content.Client._Misfits.Administration.UI.MentorHelp"
+            SetSize="900 500"
+            HeaderClass="windowHeaderMentor"
+            TitleClass="windowTitleAlert"
+            Title="Mentor Message" >
+    <cc:MentorHelpControl Name="MentorHelp" Access="Public"/>
+</DefaultWindow>

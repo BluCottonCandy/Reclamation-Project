@@ -1,0 +1,40 @@
+<!-- #Misfits Change - Staff Panel tab: quick action buttons + Audit Log + Activity Log + Banlist (Round Ticket Stats removed — redundant with Audit Log) -->
+<Control
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Margin="4"
+    MinSize="50 50">
+    <BoxContainer Orientation="Vertical" SeparationOverride="10">
+
+        <!-- Quick action buttons -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <cc:CommandButton Command="permissions" Text="{Loc misfits-staff-tab-permissions-btn}" MinWidth="180" />
+            <Label Text="{Loc misfits-staff-tab-permissions-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+        </BoxContainer>
+
+        <!-- Audit Log: persistent DB-backed ticket history -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <Button Name="OpenAuditLog" Text="{Loc misfits-staff-tab-audit-log-btn}" MinWidth="180" />
+            <Label Text="{Loc misfits-staff-tab-audit-log-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+        </BoxContainer>
+
+        <!-- #Misfits Add - Activity Log: opens AdminLogsEui pre-filtered to High/Extreme admin-action types -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <Button Name="OpenActivityLog" Text="{Loc misfits-staff-tab-activity-log-btn}" MinWidth="180" />
+            <Label Text="{Loc misfits-staff-tab-activity-log-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+        </BoxContainer>
+
+        <!-- #Misfits Add - Banlist: opens the server-wide active ban list (banlistall command) -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <cc:CommandButton Command="banlistall" Text="{Loc misfits-staff-tab-banlist-btn}" MinWidth="180" />
+            <Label Text="{Loc misfits-staff-tab-banlist-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+        </BoxContainer>
+
+        <!-- #Nuclear14 - Supporter Manager: set custom chat color and title for supporters -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <cc:CommandButton Command="opensupportermanager" Text="Manage Supporters" MinWidth="180" />
+            <Label Text="Set custom chat color &amp; title for supporters (no admin perms)" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+        </BoxContainer>
+
+    </BoxContainer>
+</Control>

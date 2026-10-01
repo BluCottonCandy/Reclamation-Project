@@ -1,0 +1,32 @@
+<wastelandMap:WastelandMapProgramUiFragment xmlns:wastelandMap="clr-namespace:Content.Client._Misfits.WastelandMap"
+                                            xmlns="https://spacestation14.io"
+                                            Margin="1 0 2 0">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <PanelContainer StyleClasses="BackgroundDark">
+            <Label Name="MapTitle" Text="Map" StyleClasses="LabelBig" Align="Center" Margin="6"/>
+        </PanelContainer>
+        <PanelContainer Name="MapContainer" HorizontalExpand="True" VerticalExpand="True"
+                        MinHeight="300"
+                        StyleClasses="AngleRect" Margin="0 4 0 0"/>
+        <BoxContainer Orientation="Vertical" Margin="0 4 0 0">
+            <PanelContainer StyleClasses="LowDivider"/>
+            <BoxContainer Orientation="Vertical" Margin="4 4 4 0" VerticalAlignment="Bottom">
+                <BoxContainer Orientation="Horizontal" Margin="0 0 0 2">
+                    <Button Name="PanModeButton" Text="Pan"/>
+                    <Button Name="MarkerModeButton" Text="Marker" Margin="4 0 0 0"/>
+                    <Button Name="BoxModeButton" Text="Box" Margin="4 0 0 0"/>
+                    <Button Name="DrawModeButton" Text="Draw" Margin="4 0 0 0"/>
+                    <Button Name="EraseButton" Text="Erase" Margin="4 0 0 0"/>
+                    <Button Name="ClearMapButton" Text="Clear Map" Margin="4 0 0 0"/>
+                    <LineEdit Name="AnnotationText" HorizontalExpand="True" Margin="6 0 0 0"
+                              PlaceHolder="Annotation text"/>
+                </BoxContainer>
+                <!-- Color swatches: populated in code-behind -->
+                <BoxContainer Name="ColorRow" Orientation="Horizontal" Margin="0 0 0 2" VerticalAlignment="Center"/>
+            </BoxContainer>
+            <Label Name="FooterText" Text="Scroll to zoom | Click and drag to pan | Right click an annotation to delete it"
+                   StyleClasses="WindowFooterText"
+                   Margin="4 2 4 0"/>
+        </BoxContainer>
+    </BoxContainer>
+</wastelandMap:WastelandMapProgramUiFragment>

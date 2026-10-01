@@ -1,0 +1,50 @@
+<windows:CharacterWindow
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:windows="clr-namespace:Content.Client.UserInterface.Systems.Character.Windows"
+    Title="{Loc 'character-info-title'}"
+    MinWidth="420"
+    MinHeight="545">
+    <ScrollContainer>
+        <BoxContainer Orientation="Vertical" Margin="4">
+            <!-- Header: bigger rotatable sprite + name/job -->
+            <BoxContainer Orientation="Horizontal" Margin="0 0 0 4">
+                <BoxContainer Orientation="Vertical">
+                    <SpriteView OverrideDirection="South" Scale="3 3" Name="SpriteView" Access="Public" SetSize="96 96"/>
+                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 2 0 0">
+                        <Button Name="SpriteRotateLeft" Access="Public" Text="◀" StyleClasses="OpenRight" MinWidth="36"/>
+                        <Button Name="SpriteRotateRight" Access="Public" Text="▶" StyleClasses="OpenLeft" MinWidth="36"/>
+                    </BoxContainer>
+                </BoxContainer>
+                <BoxContainer Orientation="Vertical" VerticalAlignment="Top" Margin="8 4 0 0">
+                    <Label Name="NameLabel" Access="Public"/>
+                    <Label Name="SubText" VerticalAlignment="Top" StyleClasses="LabelSubText" Access="Public"/>
+                </BoxContainer>
+            </BoxContainer>
+            <Label Name="ObjectivesLabel" Access="Public" Text="{Loc 'character-info-objectives-label'}" HorizontalAlignment="Center"/>
+            <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public"/>
+            <!-- Nuclear14 Special -->
+            <Label Name="SpecialsLabel" Access="Public" Text="{Loc 'character-info-special-label'}" HorizontalAlignment="Center"/>
+            <BoxContainer Orientation="Vertical" Name="Specials" Access="Public"/>
+            <cc:Placeholder Name="SpecialsPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-special-placeholder-text'}"/>
+            <!-- Nuclear14 Special END -->
+            <!-- #Misfits Add - Two buttons: open dedicated SPECIAL window and Wallet window -->
+            <!-- History button and panel disabled/commented out for now -->
+            <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">
+                <!-- #Misfits Tweak - SPECIAL button temporarily hidden; set Visible="True" to re-enable -->
+                <Button Name="OpenSpecialButton" Access="Public" HorizontalExpand="True" Margin="0 0 2 0" Text="{Loc 'character-info-special-window-button'}" Visible="False"/>
+                <Button Name="OpenWalletButton" Access="Public" HorizontalExpand="True" Margin="2 0 0 0" Text="{Loc 'character-info-wallet-window-button'}"/>
+            </BoxContainer>
+            <!-- History panel kept in tree but permanently hidden -->
+            <BoxContainer Name="HistoryToggleButton" Access="Public" Visible="False"/>
+            <BoxContainer Name="HistoryPanel" Access="Public" Orientation="Vertical" Visible="False">
+                <BoxContainer Orientation="Vertical" Name="History" Access="Public"/>
+                <cc:Placeholder Name="HistoryPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-history-placeholder'}"/>
+            </BoxContainer>
+            <!-- #Misfits Add - Lifetime statistics at bottom, centered -->
+            <Label Name="StatsLabel" Access="Public" Text="{Loc 'character-info-stats-label'}" HorizontalAlignment="Center" Margin="0 6 0 0"/>
+            <BoxContainer Orientation="Vertical" Name="Stats" Access="Public" HorizontalAlignment="Center"/>
+            <cc:Placeholder Name="StatsPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-stats-placeholder'}" HorizontalAlignment="Center"/>
+        </BoxContainer>
+    </ScrollContainer>
+</windows:CharacterWindow>

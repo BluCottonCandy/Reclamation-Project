@@ -1,0 +1,13 @@
+<!-- #Misfits Add — Toast notification for ticket events (new/claimed/resolved) -->
+<!-- Note: PanelOverride/StyleBoxFlat is set in code (not supported in SS14 XAML) -->
+<PanelContainer
+    xmlns="https://spacestation14.io"
+    Name="ToastPanel"
+    MinWidth="300"
+    MaxWidth="350"
+    MouseFilter="Pass">
+    <BoxContainer Orientation="Vertical" SeparationOverride="4">
+        <RichTextLabel Name="ToastTitle" />
+        <RichTextLabel Name="ToastMessage" />
+    </BoxContainer>
+</PanelContainer>

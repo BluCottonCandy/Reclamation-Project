@@ -1,0 +1,12 @@
+<!-- #Misfits Add - Dedicated Currency Wallet window, opened from Character Menu -->
+<windows:WalletWindow
+    xmlns="https://spacestation14.io"
+    xmlns:windows="clr-namespace:Content.Client.UserInterface.Systems.Character.Windows"
+    Title="{Loc 'character-info-wallet-label'}"
+    MinWidth="360"
+    MinHeight="100">
+    <BoxContainer Orientation="Vertical" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!-- Currency entries are added dynamically in CharacterUIController -->
+        <BoxContainer Name="WalletRow" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+    </BoxContainer>
+</windows:WalletWindow>

@@ -1,0 +1,122 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc group-window-title}"
+                      Resizable="False"
+                      SetSize="420 560"
+                      MinSize="360 480">
+
+    <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="0">
+
+        <!-- ── Header ──────────────────────────────────────────────── -->
+        <controls:StripeBack>
+            <PanelContainer>
+                <Label Text="{Loc group-window-title}" StyleClasses="LabelBig" Align="Center" Margin="0 4"/>
+            </PanelContainer>
+        </controls:StripeBack>
+
+        <Label Name="GroupNameLabel" Text="" Margin="10 4 10 2" Align="Center" Modulate="#D9C15C"/>
+
+        <!-- ── Pending Invite Banner (hidden when no invite) ─────────── -->
+        <PanelContainer Name="InvitePanel" HorizontalExpand="True" Margin="10 6 10 2">
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="4">
+                <Label Name="InviteLabel" HorizontalExpand="True" Align="Center" Modulate="#FFDD55"/>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" SeparationOverride="8" Margin="4 0">
+                    <Button Name="AcceptInviteButton" Text="{Loc group-accept-button}"
+                            HorizontalExpand="True" StyleClasses="Caution"/>
+                    <Button Name="DeclineInviteButton" Text="{Loc group-decline-button}"
+                            HorizontalExpand="True"/>
+                </BoxContainer>
+            </BoxContainer>
+        </PanelContainer>
+
+        <PanelContainer Name="InviteDivider" MinHeight="1" Modulate="#404040" Margin="10 0"/>
+
+        <!-- ── Member List ────────────────────────────────────────────── -->
+        <Label Text="{Loc group-members-header}" Margin="10 6 10 2" Modulate="#55DDDD"
+               StyleClasses="LabelBig"/>
+
+        <ScrollContainer MaxHeight="160" Margin="10 0 10 4" HorizontalExpand="True">
+            <BoxContainer Name="MembersContainer" Orientation="Vertical" SeparationOverride="4"
+                          HorizontalExpand="True"/>
+        </ScrollContainer>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 4"/>
+
+        <!-- ── Create Group (visible when not in a group) ─────────────── -->
+        <Button Name="CreateGroupButton" Text="{Loc group-create-button}"
+                Margin="10 4 10 4" HorizontalExpand="True"/>
+
+        <!-- ── Group Controls (visibility depends on role) ───────────── -->
+        <BoxContainer Name="LeaderControls" Orientation="Vertical"
+                      HorizontalExpand="True" SeparationOverride="4">
+
+            <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 0"/>
+
+            <Label Text="{Loc group-name-header}" Margin="10 4 10 2" Modulate="#D9C15C"/>
+            <BoxContainer Name="RenameSection" Orientation="Horizontal" Margin="10 0 10 4" SeparationOverride="6">
+                <LineEdit Name="GroupNameEdit" PlaceHolder="{Loc group-rename-placeholder}" HorizontalExpand="True"/>
+                <Button Name="RenameButton" Text="{Loc group-rename-button}"/>
+            </BoxContainer>
+
+            <Label Text="{Loc group-invite-header}" Margin="10 4 10 2" Modulate="#88CC88"/>
+            <BoxContainer Name="InviteSection" Orientation="Vertical" Margin="10 0 10 4" SeparationOverride="6">
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <LineEdit Name="InviteNameEdit" PlaceHolder="{Loc group-invite-placeholder}"
+                              HorizontalExpand="True"/>
+                    <Button Name="InviteButton" Text="{Loc group-invite-button}"/>
+                    <Button Name="InviteNearbyButton" Text="{Loc group-invite-nearby-button}"/>
+                </BoxContainer>
+                <Label Name="InviteHintLabel" Modulate="#7FAE7F"/>
+            </BoxContainer>
+
+            <Label Text="{Loc group-rally-header}" Margin="10 4 10 2" Modulate="#D9C15C"/>
+            <BoxContainer Name="RallySection" Orientation="Vertical" Margin="10 0 10 4" SeparationOverride="6">
+                <Label Name="RallyPointLabel" Modulate="#D9C15C"/>
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <Button Name="SetRallyButton" Text="{Loc group-rally-set-button}" HorizontalExpand="True"/>
+                    <Button Name="ClearRallyButton" Text="{Loc group-rally-clear-button}" HorizontalExpand="True"/>
+                </BoxContainer>
+            </BoxContainer>
+
+            <Label Text="{Loc group-role-header}" Margin="10 4 10 2" Modulate="#D9A85C"/>
+            <BoxContainer Name="RoleSection" Orientation="Vertical" Margin="10 0 10 4" SeparationOverride="6">
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <LineEdit Name="RoleNameEdit" PlaceHolder="{Loc group-role-placeholder}"
+                              HorizontalExpand="True"/>
+                    <Button Name="RoleToggleButton" Text="{Loc group-role-toggle-button}"/>
+                </BoxContainer>
+            </BoxContainer>
+
+            <Label Text="{Loc group-kick-header}" Margin="10 4 10 2" Modulate="#CC8888"/>
+            <BoxContainer Name="KickSection" Orientation="Vertical" Margin="10 0 10 4" SeparationOverride="6">
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <LineEdit Name="KickNameEdit" PlaceHolder="{Loc group-kick-placeholder}"
+                              HorizontalExpand="True"/>
+                    <Button Name="KickButton" Text="{Loc group-kick-button}"/>
+                </BoxContainer>
+            </BoxContainer>
+
+        </BoxContainer>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 4"/>
+
+        <!-- ── Overlay Toggle ─────────────────────────────────────────── -->
+        <BoxContainer Orientation="Horizontal" Margin="10 4 10 4" SeparationOverride="8">
+            <CheckBox Name="OverlayToggle" Pressed="True"/>
+            <Label Text="{Loc group-overlay-toggle-label}" VerticalAlignment="Center"/>
+        </BoxContainer>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 4"/>
+
+        <!-- ── Leave / Disband ────────────────────────────────────────── -->
+        <Button Name="LeaveButton" Text="{Loc group-leave-button}"
+                Margin="10 4 10 4" HorizontalExpand="True"/>
+
+        <!-- ── Status feedback ────────────────────────────────────────── -->
+        <RichTextLabel Name="StatusLabel" HorizontalExpand="True" Margin="10 4"/>
+
+    </BoxContainer>
+    </ScrollContainer>
+
+</controls:FancyWindow>

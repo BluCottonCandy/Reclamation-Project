@@ -1,0 +1,56 @@
+﻿<!-- #Misfits Change — vertical list layout with inline descriptions -->
+<Control
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Margin="4"
+    MinSize="50 50">
+    <ScrollContainer VerticalExpand="True">
+        <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <!-- #Misfits Add - Persistent Entity Spawn button -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <Button Name="PersistentSpawnButton" Text="{Loc misfits-persistent-spawn-button}" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-persistent-spawn-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <!-- #Misfits Add - Persistent Tile Spawn button -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <Button Name="PersistentTileSpawnButton" Text="{Loc misfits-persistent-tile-spawn-button}" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-persistent-tile-spawn-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <!-- #Misfits Add - Persistent Decal Spawn button -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <Button Name="PersistentDecalSpawnButton" Text="{Loc misfits-persistent-decal-spawn-button}" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-persistent-decal-spawn-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <!-- #Misfits Change - Shutdown button hidden; use Restart Server instead (announces to players before shutdown) -->
+            <!--
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="shutdown" Text="{Loc server-shutdown}" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-shutdown-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            -->
+            <!-- #Misfits Add - Full server restart button (announces to players, then clean shutdown; process manager/watchdog relaunches) -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="misfitsrestart" Text="{Loc misfits-server-restart}" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-restart-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="misfitsdeploy" Text="{Loc misfits-server-deploy}" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-deploy-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Name="SetOocButton" Command="setooc" Text="{Loc server-ooc-toggle}" ToggleMode="True" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-ooc-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Name="SetLoocButton" Command="setlooc" Text="{Loc server-looc-toggle}" ToggleMode="True" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-looc-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <!-- #Misfits Add - Population Adjust: live-raise the engine connection cap without restart -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <Button Name="PopulationAdjustButton" Text="{Loc misfits-population-adjust-button}" MinWidth="180" />
+                <LineEdit Name="PopulationAdjustValue" PlaceHolder="{Loc misfits-population-adjust-placeholder}" MinWidth="80" />
+                <Label Text="{Loc misfits-server-tab-population-adjust-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+        </BoxContainer>
+    </ScrollContainer>
+</Control>

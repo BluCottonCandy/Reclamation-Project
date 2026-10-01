@@ -1,0 +1,37 @@
+<Popup xmlns="https://spacestation14.io"
+       xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+    <PanelContainer StyleClasses="BackgroundDark">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderThickness="1" BorderColor="#18181B"/>
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="6">
+            <Label Name="PlayerNameLabel"/>
+            <Label Name="IdLabel"/>
+            <Label Name="TypeLabel"/>
+            <Label Name="SeverityLabel"/>
+            <Label Name="RoundIdLabel"/>
+            <Label Name="CreatedByLabel"/>
+            <Label Name="CreatedAtLabel"/>
+            <Label Name="EditedByLabel"/>
+            <Label Name="EditedAtLabel"/>
+            <Label Name="ExpiryTimeLabel"/>
+            <PanelContainer HorizontalExpand="True" MinWidth="320" MinHeight="96">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#202023"
+                                      BorderThickness="1"
+                                      BorderColor="#3B3E56"
+                                      ContentMarginLeftOverride="6"
+                                      ContentMarginTopOverride="5"
+                                      ContentMarginRightOverride="6"
+                                      ContentMarginBottomOverride="5" />
+                </PanelContainer.PanelOverride>
+                <TextEdit Name="NoteTextEdit" Editable="False" HorizontalExpand="True" VerticalExpand="True" />
+            </PanelContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                <Button Name="EditButton" Text="{Loc admin-notes-edit}"/>
+                <Control HorizontalExpand="True"/>
+                <Button Name="DeleteButton" Text="{Loc admin-notes-delete}" HorizontalAlignment="Right"/>
+            </BoxContainer>
+        </BoxContainer>
+    </PanelContainer>
+</Popup>

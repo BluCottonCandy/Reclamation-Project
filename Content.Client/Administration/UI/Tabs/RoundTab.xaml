@@ -1,0 +1,31 @@
+﻿<!-- #Misfits Change — vertical list layout with inline descriptions -->
+<Control
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Margin="4"
+    MinSize="50 50">
+    <ScrollContainer VerticalExpand="True">
+        <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="startround" Text="{Loc misfits-round-tab-start-round}" MinWidth="180" />
+                <Label Text="{Loc misfits-round-tab-start-round-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="endround" Text="{Loc misfits-round-tab-end-round}" MinWidth="180" />
+                <Label Text="{Loc misfits-round-tab-end-round-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="restartround" Text="{Loc misfits-round-tab-restart-round}" MinWidth="180" />
+                <Label Text="{Loc misfits-round-tab-restart-round-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="restartroundnow" Text="{Loc misfits-round-tab-restart-now}" MinWidth="180" />
+                <Label Text="{Loc misfits-round-tab-restart-now-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="recallshuttle" Text="{Loc misfits-round-tab-extend-round}" MinWidth="180" />
+                <Label Text="{Loc misfits-round-tab-extend-round-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+        </BoxContainer>
+    </ScrollContainer>
+</Control>

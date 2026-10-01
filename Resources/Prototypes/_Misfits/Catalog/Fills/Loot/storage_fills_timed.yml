@@ -1,0 +1,43 @@
+# #Misfits Change
+# Filing cabinet timed storage fill - designed for grid-based storage (4x9 = 36 cells).
+# Uses Small/Tiny items only to avoid grid overflow that occurs with N14BaseSmallLockerTimedStorageFill.
+
+- type: entity
+  abstract: true
+  id: MisfitsFilingCabinetTimedStorageFill
+  components:
+    - type: TimedStorageFill
+      contents:
+        - id: Pen
+          prob: 0.6
+          amount: 1
+          maxAmount: 3
+        - id: PaperOffice
+          prob: 0.7
+          amount: 1
+          maxAmount: 5
+        - id: N14DirtyGauze10
+          prob: 0.15
+        - id: N14SmellingSalts
+          prob: 0.1
+        - id: N14Stimpak
+          prob: 0.03
+        - id: N14RadAwayBloodbag
+          prob: 0.15
+        - id: N14Ethanol
+          prob: 0.05
+        - id: N14CurrencyCap
+          prob: 0.6
+          orGroup: Currency
+          amount: 1
+          maxAmount: 10
+        - id: N14CurrencyPrewar
+          prob: 0.6
+          orGroup: Currency
+          amount: 1
+          maxAmount: 10
+        - id: N14CurrencyNCRDollar
+          prob: 0.6
+          orGroup: Currency
+          amount: 1
+          maxAmount: 10

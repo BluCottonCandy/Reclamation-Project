@@ -1,0 +1,111 @@
+- type: entity
+  parent: BaseItem
+  id: N14AccessConfigurator
+  name: locksmith's guide
+  description: A book on how one can install locks, classic or digital. There are also a few useful tools beside it to make it possible.
+  components:
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/multitool_drop.ogg
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Tools/access_book.rsi
+    state: icon
+    scale: 0.75, 0.75
+  - type: Item
+    size: Small
+  - type: AccessOverrider
+    accessLevels:
+    - TownieMechanic # All N14 change for the access terminals.
+    - TownieShopkeeper
+    - TownieDoctor
+    - TownieLaw
+    - TownieMayor
+    - TownsPerson
+    - WastelandReporter
+    - WastelandBartender
+    - InnRoomOne
+    - InnRoomTwo
+    - InnRoomThree
+    - FotA # Misfit: FotA Start
+    - FotADoctor
+    - FotAHead
+    - VaultDweller # Misfit: Vault Start
+    - VaultEngineer
+    - VaultMedical
+    - VaultSecurity
+    - VaultOverseer
+    - VaultCargo
+    - VaultCourier
+    - VaultSalvage
+    - TribeMember # Misfit: Tribe Start
+    - TribeChief
+    - WastelandChaplain # Misfit: Wastelander
+    - WastelandFarmer
+    - NCR # Misfit: NCR Start
+    - NCRSGT
+    - NCRMedic
+    - NCRLT
+    - NCRRanger
+    - NCRProvost
+    - CaesarLegion # Misfit: Legion Start
+    - CaesarLegionRecruit #Misfits Add - Cell door gate access for Legion IDs
+    - CaesarLegionSlave
+    - CaesarLegionFrumentarii
+    - CaesarLegionVexillarius
+    - CaesarLegionLegionnaireRecruit
+    - CaesarLegionLegionnaireWarrior
+    - CaesarLegionLegionnaireVeteran
+    - CaesarLegionTempleGuard
+    - CaesarLegionAcolyteOfMars
+    - CaesarLegionPriestessOfMars
+    - CaesarLegionDean
+    - CaesarLegionVeteranDecanus
+    - CaesarLegionOptio
+    - CaesarLegionCenturion
+    - BOS # Misfit: BOS Start
+    - BOSInitiate
+    - BOSKnight
+    - BOSScribe
+    - BOSPaladin
+    - BOSHeadPaladin
+    - 80s # Misfit: 80s Start
+    - 80sHead
+    - 80sSlave
+    - Enclave # Misfit: Enclave Start
+    - EnclaveNCO
+    - EnclaveOfficer
+    - EnclaveCommand
+    - EnclaveScience
+    - EnclaveRoleAll
+    - EnclaveRoleScientist
+    - EnclaveRoleHeadScientist
+    - EnclaveRoleNCO
+    - EnclaveRoleJuniorOfficer
+    - EnclaveRoleSeniorOfficer
+    - EnclaveRoleCommander
+
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    denialSound:
+      path: /Audio/Machines/custom_deny.ogg
+    doAfter: 0.5
+  - type: UserInterface
+    interfaces:
+      enum.AccessOverriderUiKey.Key:
+        type: AccessOverriderBoundUserInterface
+  - type: ActivatableUI
+    key: enum.AccessOverriderUiKey.Key
+    requiresComplex: true
+    requireActiveHand: false
+    singleUser: true
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      AccessOverrider-privilegedId: !type:ContainerSlot

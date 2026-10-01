@@ -1,0 +1,46 @@
+# #Misfits Add - NCR salvaged T-45 PA variant for Heavy Trooper.
+# Stripped of full servo linkage; no PA training required, no servo-lock on break.
+# Provides 50% passive mitigation (via armor coefficients alone) once integrity is depleted. # #Misfits Tweak - raised from 35% to match nerf request
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45NCR
+  id: N14ClothingOuterPowerArmorT45NCRSalvaged
+  name: t-45 salvaged NCR trooper armor
+  description: >-
+    A heavily-worn T-45 suit stripped of its full servo-motor assembly and
+    jury-rigged for standard infantry use. It lacks the precision training a
+    complete suit demands, but provides formidable protection and an integrated
+    minigun hard-mount while the plates hold. Once the integrity goes, expect
+    no more babysitting from the exo-frame.
+  components:
+  # No PA training required — servos stripped to basics.
+  - type: N14PowerArmor
+    requiresProficiency: false # #Misfits Add - waive training gate for this salvaged variant
+  # 385 HP integrity pool (lower than standard T-45 at 500).
+  - type: PowerArmorIntegrity
+    maxIntegrity: 385          # #Misfits Add - lighter salvaged plating
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply (30% mitigation from plates alone)
+    disableServosLock: true       # #Misfits Add - no servo-lock speed debuff when armor breaks
+  - type: Armor # #Misfits Add - matches regular T-45 resistances. Has worse integrity and movespeed.
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.70
+        Heat: 0.70
+        Caustic: 0.70
+        Radiation: 0.60
+  # 35% speed penalty while wearing — no fusion core needed for this salvaged variant.
+  # Standalone modifier (does NOT rely on fusion core 4.5x compensation).
+  - type: ClothingSpeedModifier # #Misfits Tweak - standalone 35% slowdown, no fusion core required
+    walkModifier: 0.65
+    sprintModifier: 0.65
+  # #Misfits Tweak - Spawns helmet, gauntlets, and boots; NO fusion core (not needed for salvaged variant).
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT45NCR
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+  # #Misfits Tweak - Disable brace stance (servos stripped); slot mismatch prevents action from being granted.
+  - type: PowerArmorBrace
+    requiredSlot: BELT

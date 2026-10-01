@@ -1,0 +1,49 @@
+- type: entity
+  name: Radtoad
+  parent: SimpleMobBase
+  id: MisfitsMobRadtoad
+  description: Mutated offspring of the Boreal Toad, they are bred and domesticated by the Willowers Tribe. Nearly extinct when discovered, their spawning pool is fiecely protected within the village.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: radtoad
+      sprite: _Misfits/Mobs/NPCs/radtoad.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: true
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.75
+        density: 50
+        mask:
+        - MobMask
+#        layer:
+#        - MobLayer
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: radtoad
+      Dead:
+        Base: deadtoad
+  - type: Stamina
+    critThreshold: 200
+  - type: Strap
+    # #Misfits Change - radtoads keep the shared mount setup but restrict riders to tribal hunt participants.
+    whitelist:
+      requireAll: true
+      components:
+      - HumanoidAppearance
+      - TribalHuntParticipant
+    # #Misfits Fix - Super Mutants and Power Armor wearers are too heavy to ride
+    blacklist:
+      tags:
+      - CannotRide
+      components:
+      - PowerArmorWorn
+  - type: Mountable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5

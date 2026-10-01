@@ -1,0 +1,65 @@
+# Mirelurks
+
+- type: entity
+  name: Mirelurk Spawner
+  id: N14SpawnMobMirelurk
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Corvax/Mobs/Animals/mirelurk.rsi
+        state: mirelurk
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobMirelurk
+
+- type: entity
+  name: Radioactive Mirelurk Spawner
+  id: N14SpawnMobRadMirelurk
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Corvax/Mobs/Animals/radmirelurk.rsi
+        state: radmirelurk
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRadMirelurk
+
+# Jackal
+
+- type: entity
+  name: Jackal Spawner
+  id: N14SpawnMobJackal
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Corvax/Mobs/Animals/jackal.rsi
+        state: jackal
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobJackal
+
+# Ice
+
+- type: entity
+  name: Deathclaw Ice Spawner
+  id: N14SpawnDeathclawicy
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Corvax/Mobs/Animals/icynail.rsi
+        state: deathclaw
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobDeathclawicy

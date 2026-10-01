@@ -1,0 +1,9 @@
+- type: messagePack
+  id: N14BrahminSays
+  messages:
+  - advertisement-brahmin-1
+  - advertisement-brahmin-2
+  - advertisement-brahmin-3
+  - advertisement-brahmin-4
+  - advertisement-brahmin-5
+  - advertisement-brahmin-6

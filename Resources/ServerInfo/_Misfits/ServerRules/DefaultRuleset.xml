@@ -1,0 +1,15 @@
+<Document>
+  <ColorBox Color="#010801" OutlineColor="#39ff14" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical" Margin="10">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        [bold][color=#39ff14]SERVER RULES[/color][/bold]
+      </Box>
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        [color=#1a8a00]The live rules are maintained on the Misfits wiki.[/color]
+      </Box>
+      <Box Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+        [textlink="VIEW LIVE SERVER RULES" link="https://wiki.misfitsystems.net/index.php/Rules"]
+      </Box>
+    </Box>
+  </ColorBox>
+</Document>

@@ -1,0 +1,210 @@
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleAll ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunkerGlass
+  id: MisfitsDoorBunkerGlassLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleAll ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker3X
+  id: MisfitsDoorBunker3XLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleAll ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunkerGlass3X
+  id: MisfitsDoorBunkerGlass3XLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleAll ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: MisfitsDoorMetalSecureLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleAll ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorCellMetal
+  id: MisfitsDoorCellMetalLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleSeniorOfficer ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveSecurity
+  suffix: Enclave, Locked, Security
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleSeniorOfficer ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveScience
+  suffix: Enclave, Locked, Science
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleScientist ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveCommand
+  suffix: Enclave, Locked, Command
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleCommander ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: MisfitsDoorMetalSecureLockedEnclaveSecurity
+  suffix: Enclave, Locked, Security
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleSeniorOfficer ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: MisfitsDoorMetalSecureLockedEnclaveScience
+  suffix: Enclave, Locked, Science
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleScientist ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: MisfitsDoorMetalSecureLockedEnclaveCommand
+  suffix: Enclave, Locked, Command
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleCommander ]
+  - type: Wires
+    layoutId: HighSec
+
+# Role-specific access doors for the expanded Enclave hierarchy.
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveRoleScientist
+  suffix: Enclave, Locked, Role Scientist
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleScientist ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveRoleHeadScientist
+  suffix: Enclave, Locked, Role Head Scientist
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleHeadScientist ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveRoleAll
+  suffix: Enclave, Locked, Role All
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleAll ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveRoleNCO
+  suffix: Enclave, Locked, Role NCO
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleNCO ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveRoleJuniorOfficer
+  suffix: Enclave, Locked, Role Junior Officer
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleJuniorOfficer ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveRoleSeniorOfficer
+  suffix: Enclave, Locked, Role Senior Officer
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleSeniorOfficer ]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: MisfitsDoorBunkerLockedEnclaveRoleCommander
+  suffix: Enclave, Locked, Role Commander
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEnclaveRoleCommander ]
+  - type: Wires
+    layoutId: HighSec

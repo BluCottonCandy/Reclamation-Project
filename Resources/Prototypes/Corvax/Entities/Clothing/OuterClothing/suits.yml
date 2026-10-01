@@ -1,0 +1,35 @@
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: N14ClothingOuterSuitChinaStealth
+  name: Chinese stealth armor
+  description: This pre-war light armor makes the wearer hard to see and was used by the elite Chinese Crimson Dragoon forces.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/Suits/chinastealth.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/Suits/chinastealth.rsi
+#  - type: StealthClothing
+#    visibility: 1.1
+#    toggleAction: ActionTogglePhaseCloak
+  - type: TemperatureProtection
+    coefficient: 0.01
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.8
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+    fitsInCharger: false
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+  - type: ToggleableClothing
+    clothingPrototype: N14ClothingHeadHelmetChinaStealth

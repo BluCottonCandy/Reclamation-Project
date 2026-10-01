@@ -1,0 +1,80 @@
+# Priestess of Mars clothing prototypes.
+# These inherit directly from the base items so sprites/stats are identical,
+# but carry the lore-accurate Priestess of Mars display names and descriptions.
+
+# Robes — worn in the uniform/jumpsuit slot
+# #Misfits Change — override sprites to use the new bespoke Priestess of Mars uniform RSI
+- type: entity
+  parent: N14ClothingUniformJumpsuitBOSRed
+  id: N14PriestessOfMarsRobes
+  name: Priestess of Mars Robes
+  description: A deep crimson undersuit adorned with sacred iconography of the god of war. Worn by the holy women who bless Caesar's warriors before battle.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/CaesarLegion/priestessrobes.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Misfits/Clothing/CaesarLegion/priestessrobes.rsi
+
+# Cloak — worn in the neck slot; the toggleable hood state is inherited
+- type: entity
+  parent: ClothingNeckCloakGoliathCloak
+  id: N14PriestessOfMarsCloak
+  name: Priestess of Mars Cloak
+  description: A worn cloak of goliath hide draped across the shoulders of Mars's chosen. Its age only adds to its reverence.
+
+# Veil — worn in the mask slot; inherits the pullable toggle
+- type: entity
+  parent: N14ClothingMaskRedMask
+  id: N14PriestessOfMarsVeil
+  name: Priestess of Mars Veil
+  description: A crimson veil that partially obscures the face of the priestess, marking her as set apart from the common women of the Legion.
+
+# #Misfits Change - Replaced plain gloves with bespoke gauntlets sporting slashing melee damage.
+# Sprites: icon by Сорока/Nequizia; equipped-HAND by Pinky109.
+# Gauntlets — worn in the hands slot; deal slashing damage when equipped and used in melee
+- type: entity
+  parent: ClothingHandsBase
+  id: N14PriestessOfMarsGloves
+  name: Priestess of Mars Gauntlets
+  description: Ornate gauntlets worn by the Priestess of Mars during Holy War rites. The blessed blades lining their knuckles are not merely ceremonial.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/CaesarLegion/legion_gauntlets.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _Misfits/Clothing/CaesarLegion/legion_gauntlets.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/CaesarLegion/legion_gauntlets.rsi
+    slots: [gloves]
+  - type: MeleeWeapon
+    # Slashing damage applied when wearing and attacking — mirrors the Goliath Powerfist pattern
+    soundHit:
+      collection: MetalThud
+    range: 1.2
+    attackRate: 1.5
+    damage:
+      types:
+        Slash: 20
+    animation: WeaponArcFist
+    wideAnimation: WeaponArcFist
+    mustBeEquippedToUse: true
+
+# Boots — worn in the shoes slot
+- type: entity
+  parent: N14ClothingBootsBlack
+  id: N14PriestessOfMarsBoots
+  name: Priestess of Mars Boots
+  description: Simple black boots suited for the dusty ground of the Legion's encampments.
+
+# Satchel — worn in the belt slot; bigger storage space than a regular fanny pack
+- type: entity
+  parent: ClothingBeltStorageWaistbag
+  id: N14PriestessOfMarsSatchel
+  name: Priestess of Mars Satchel
+  description: A worn leather satchel used to carry sacred texts, medicinal supplies, and whatever else the priestess might need during her duties.
+  components:
+  - type: Storage
+    grid:
+      - 0,0,5,1

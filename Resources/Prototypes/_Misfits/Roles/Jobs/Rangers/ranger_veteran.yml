@@ -1,0 +1,69 @@
+- type: job
+  id: NCRVeteranRanger
+  setPreference: true
+  alwaysUseSpawner: true
+  jobWhitelistBypassesRoleTimers: true
+  name: job-name-ranger-veteran-n14
+  overwatchCategory: OverwatchNcrRangers
+  description: job-description-ranger-veteran-n14
+  playTimeTracker: NCRVeteranRanger
+  weight: 10
+  showBorder: true
+  startingGear: NCRVeteranRangerGear
+  icon: "JobIconHeadOfSecurity"
+  supervisors: job-supervisors-ranger-veteran
+  requireAdminNotify: true
+  canBeAntag: false
+  accessGroups:
+  - NCRRanger #Misfits Fix - was NCR; Elite Rangers must open NCRRanger-tagged doors
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Rangers
+  # #Misfits Removed - Disabled auto-grant pending testing; use training manuals instead
+  #- !type:AddComponentSpecial
+  #  components:
+  #    - type: GrantRangerCombat
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h Rangers)
+      department: Rangers
+      min: 144000 # 40 hours
+    - !type:CharacterSpeciesRequirement # #Misfits Change - robots, super mutants, and glowing ghouls cannot be Rangers
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterAgeRequirement
+      min: 36
+      max: 350
+
+- type: startingGear
+  id: NCRVeteranRangerGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatRangerHelmetDesert
+    back: N14ClothingBackpackMilitary # Corvax-Change
+    jumpsuit: N14ClothingUniformRangerVeteran
+    ears: MisfitsClothingHeadsetNCRRanger
+    shoes: N14ClothingBootsCombatFilled
+    gloves: N14ClothingHandsGlovesCombat
+    belt: ClothingBeltRevolvervetfilled
+    mask: ClothingMaskGasRiot
+    pocket1: MagazineBox45-70
+    pocket2: NCRveteranrangerloadoutkits
+    eyes: ClothingEyesGlassesSunglasses
+    outerClothing: N14ClothingOuterVetRangerRiotArmor
+    id: N14NCRVeteranRangerPipboy
+    neck: N14ClothingNeckRangerDuster
+  innerClothingSkirt: N14ClothingUniformRangerV3 #placeholder
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledMilitary
+    - FlashlightSeclite
+    - N14Binoculars # #Misfits Add - Veteran Rangers spawn with binoculars for scouting
+
+- type: playTimeTracker
+  id: NCRVeteranRanger

@@ -1,0 +1,76 @@
+- type: loadout
+  id: ClothingHeadHatFlatBlack
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
+    - !type:CharacterJobRequirement
+      jobs:
+      - VaultDweller
+      - Overseer
+  items:
+    - ClothingHeadHatFlatBlack
+
+- type: loadout
+  id: ClothingHeadHatFlatBrown
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
+    - !type:CharacterJobRequirement
+      jobs:
+      - VaultDweller
+      - Overseer
+  items:
+    - ClothingHeadHatFlatBrown
+
+- type: loadout
+  id: ClothingHeadHatFedoraBlack
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
+    - !type:CharacterJobRequirement
+      jobs:
+      - VaultDweller
+      - Overseer
+  items:
+    - ClothingHeadHatFedoraBlack
+
+- type: loadout
+  id: ClothingHeadHatFedoraChoc
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
+    - !type:CharacterJobRequirement
+      jobs:
+      - VaultDweller
+      - Overseer
+  items:
+    - ClothingHeadHatFedoraChoc
+
+- type: loadout
+  id: M14ClothingHeadHatVaultCap
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
+    - !type:CharacterJobRequirement
+      jobs:
+      - VaultDweller
+      - Overseer
+      - VaultSecurity
+      - VaultEngineer
+  items:
+    - M14ClothingHeadHatVaultCap

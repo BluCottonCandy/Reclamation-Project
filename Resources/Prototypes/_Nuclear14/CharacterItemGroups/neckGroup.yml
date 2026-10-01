@@ -1,0 +1,77 @@
+- type: characterItemGroup
+  id: N14LoadoutNeck
+  items:
+    - type: loadout
+      id: N14LoadoutNeckCloakLeather
+    - type: loadout
+      id: N14LoadoutNeckMantleLeather
+    - type: loadout
+      id: N14LoadoutNeckCloakDarkCloak
+    - type: loadout
+      id: ClothingNeckScarfStripedBlack
+    - type: loadout
+      id: ClothingNeckTribalCloak
+    - type: loadout
+      id: ClothingNeckTribalCloakBr
+    - type: loadout
+      id: MisfitsLoadoutNeckDesertScarf # #Misfits Add - cosmetic desert scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckRedScarf # #Misfits Add - cosmetic red scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckBlueScarf # #Misfits Add - cosmetic blue scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckGreenScarf # #Misfits Add - cosmetic green scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckOrangeScarf # #Misfits Add - cosmetic orange scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckBrownScarf # #Misfits Add - cosmetic brown scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckPatriotScarf # #Misfits Add - cosmetic patriot scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckTownGuardMantle # #Misfits Add - cosmetic army rain mantle
+    - type: loadout
+      id: MisfitsLoadoutNeckNCRmantleQM # #Misfits Add - cosmetic NCR Requisitons Officer's mantle
+    - type: loadout
+      id: ClothingNeckShawl
+    - type: loadout # #Misfits Add - NCR faction cloaks and mantles
+      id: MisfitsLoadoutNeckCloakNCR
+    - type: loadout
+      id: MisfitsLoadoutNeckCloakNCRSnow
+    - type: loadout
+      id: MisfitsLoadoutNeckMantleNCR
+    - type: loadout # #Misfits Add - NCR Rangers woods cloak
+      id: MisfitsLoadoutNeckCloakNCRWoods
+    - type: loadout # #Misfits Add - Tribal cloak
+      id: MisfitsLoadoutNeckCloakTribal
+    - type: loadout
+      id: ClothingNeckScarfStripedLightBlue
+    - type: loadout
+      id: ClothingNeckScarfStripedRed
+    - type: loadout
+      id: ClothingNeckScarfStripedGreen
+    - type: loadout
+      id: ClothingNeckScarfStripedBrown
+    - type: loadout
+      id: ClothingNeckScarfStripedBlue
+    - type: loadout
+      id: N14LoadoutUniversalNeckCloakBrotherhoodWashington
+    - type: loadout
+      id: N14LoadoutUniversalNeckCloakDarkCloak
+    - type: loadout
+      id: N14LoadoutUniversalNeckCloakLeather
+    - type: loadout
+      id: N14LoadoutUniversalNeckCloakYaoguai
+    - type: loadout
+      id: N14LoadoutUniversalNeckMantleBrotherhoodWashington
+    - type: loadout
+      id: N14LoadoutUniversalNeckMantleLeather
+    - type: loadout
+      id: N14LoadoutUniversalNeckShawl
+    - type: loadout
+      id: N14LoadoutUniversalNeckTownGuardCloak
+    - type: loadout
+      id: N14LoadoutUniversalNeckTribalCloak
+    - type: loadout
+      id: N14LoadoutUniversalNeckTribalCloakBr
+    - type: loadout
+      id: MisfitsLoadoutOuterCloakWesternPoncho

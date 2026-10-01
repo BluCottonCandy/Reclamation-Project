@@ -1,0 +1,163 @@
+- type: entity
+  parent: ClothingMaskPullableBase
+  id: N14ClothingMaskHockey
+  name: hockey mask
+  description: A light white mask with red lines and holes to breath through.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/hockeymask.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/hockeymask.rsi
+  - type: Mask
+  - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+    priceMultiplier: 0.5
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingMaskPullableBase
+  id: N14ClothingMaskPlate
+  name: plate mask
+  description: A steel plate with 2 eyeholes, shaped to cover the face.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/platemask.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/platemask.rsi
+  - type: Mask
+  - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+    priceMultiplier: 0.5
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingMaskPullableBase
+  id: N14ClothingMaskGrill
+  name: steel grill mask
+  description: A steel mask with a grill-shaped visor.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/grillmask.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/grillmask.rsi
+  - type: Mask
+  - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+    priceMultiplier: 0.5
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingMaskBase
+  id: N14ClothingMaskBrownBalaclava
+  name: brown balaclava
+  description: A piece of cloth with a hole in it to see, not really a big invention from the pre-war but it can be warm enough to protect from the cold. This one is brown.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/brownbalaclava.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/brownbalaclava.rsi
+    slots:
+    - mask
+    - neck
+  - type: IngestionBlocker
+  - type: BreathMask
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  # #Misfits Fix - Brown balaclava should hide identity like other balaclavas.
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingMaskBase
+  id: N14ClothingMaskBlackBalaclava
+  name: black balaclava
+  description: A piece of cloth with a hole in it to see, not really a big invention from the pre-war but it can be warm enough to protect from the cold. This one is black.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/blackbalaclava.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/blackbalaclava.rsi
+    slots:
+    - mask
+    - neck
+  - type: IngestionBlocker
+  - type: BreathMask
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingMaskBase
+  id: N14ClothingMaskWhiteBalaclava
+  name: white balaclava
+  description: A piece of cloth with a 2 holes in it to see, not really a big invention from the pre-war but it can be warm enough to protect from the cold. This one is white.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/whitebalaclava.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/whitebalaclava.rsi
+    slots:
+    - mask
+    - neck
+  - type: IngestionBlocker
+  - type: BreathMask
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingMaskPullableBase
+  id: N14ClothingMaskSkirmisher
+  name: skirmisher mask
+  description: A leather mask with hanging chain mail to protect the mouth area, not the best but it can stop sharpnel pretty well.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/mountiemask.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/mountiemask.rsi
+  - type: Mask
+  - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+    priceMultiplier: 0.5
+  - type: Tag
+    tags:
+    - WhitelistChameleon

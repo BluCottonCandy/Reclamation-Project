@@ -1,0 +1,18 @@
+- type: entity
+  id: N14Bullet762
+  name: bullet (7.62mm)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 24
+  # Misfits Add - 7.62mm full-power military rifle; excellent range retention
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 10.0
+    maxFalloffTiles: 20.0
+    minDamageMultiplier: 0.62
+  # #Misfits Add: 7.62mm is a medium-caliber rifle round; power armor has a low chance to glance it.
+  - type: Reflective
+    reflective: MediumCaliber

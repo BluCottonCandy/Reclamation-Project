@@ -1,0 +1,469 @@
+# N14-specific borg modules for playable synthetic robots. #Misfits Change
+
+# Integrated plasma caster weapon for Mr. Gutsy borg module - uses internal battery + self-recharge so it never needs reloading. #Misfits Change
+- type: entity
+  id: N14BorgWeaponPlasmaRifle
+  parent: BaseWeaponBattery
+  name: integrated plasma caster
+  description: An onboard plasma projector integrated into the chassis. Draws from the robot's internal power reserves and recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -24
+    maxAngle: -58
+  - type: Sprite
+    scale: 0.8, 0.8
+    sprite: _Nuclear14/Objects/Weapons/Guns/Battery/plasma_rifle_icon.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-2
+      map: ["enum.GunVisualLayers.Mag"]
+      shader: unshaded
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Battery/plasma_rifle.rsi
+    size: Huge
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Battery/plasma_rifle.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Battery
+    maxCharge: 99999
+    startingCharge: 99999
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 1000
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletBigPlasma
+    fireCost: 100
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: false
+  - type: Gun
+    fireRate: 3
+    soundGunshot:
+      collection: N14PlasmaAutoRifleGunshot
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: FollowDistance
+    backStrength: 5
+
+# Integrated flamer weapon for borg modules. #Misfits Change
+- type: entity
+  id: N14BorgWeaponFlamer
+  parent: BaseItem
+  name: integrated flamer
+  description: A built-in incendiary projector integrated into the chassis. Draws power from the robot's internal reserves and recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Battery
+    maxCharge: 99999
+    startingCharge: 99999
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 1000
+  - type: SolutionContainerManager
+    solutions:
+      chamber:
+        maxVol: 500
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 500
+  - type: FlamerAmmoProvider
+    solutionId: chamber
+    fireCost: 5
+    fireTilePrototype: MisfitsTileFire
+    range: 6
+  - type: SolutionRegeneration
+    solution: chamber
+    generated:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 10
+    duration: 0.2
+    nextChargeTime: 10
+  - type: Gun
+    cameraRecoilScalar: 0
+    fireRate: 10
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Pistols/soaker.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Normal
+  - type: FollowDistance
+    backStrength: 6
+
+# Plasma caster module - provides the integrated borg plasma rifle. #Misfits Change
+- type: entity
+  id: N14BorgModulePlasma
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: plasma caster cyborg module
+  description: A plasma projector module. Provides an integrated plasma caster for ranged combat. The weapon draws from internal power reserves and recharges automatically.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-radiation
+  - type: ItemBorgModule
+    items:
+    - N14BorgWeaponPlasmaRifle
+
+# Flamer module — provides the integrated borg flamer. #Misfits Change
+- type: entity
+  id: N14BorgModuleFlamer
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: flamer cyborg module
+  description: An incendiary projector module. Provides an integrated flamer for close-range combat. The weapon draws from internal power reserves and recharges automatically.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-fire-extinguisher
+  - type: ItemBorgModule
+    items:
+    - N14BorgWeaponFlamer
+
+# Integrated stun baton for Police Protectron — self-recharging internal cell. # #Misfits Fix
+# The base Stunbaton's internal battery can only be recharged by docking the baton in a recharger,
+# which is impossible while the baton is welded into a borg module's hands (UnremoveableComponent).
+- type: entity
+  id: N14BorgWeaponStunbaton
+  parent: Stunbaton
+  name: integrated stun baton
+  description: A stun baton integrated into a Protectron chassis. Its internal cell draws from the robot's power reserves and recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 20 # ~50s to refill from empty (1000 charge = 20 stuns)
+
+# Self-recharging high-capacity cell used by borg-integrated lights. # #Misfits Fix
+- type: entity
+  id: N14BorgPowerCellHigh
+  parent: PowerCellHigh
+  name: borg microreactor power cell
+  description: A high-capacity power cell with an integrated microreactor. Recharges itself slowly over time.
+  suffix: Full, borg
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 18 # ~1 minute to refill from empty
+
+# Integrated security flashlight for Police Protectron — self-recharging cell. # #Misfits Fix
+- type: entity
+  id: N14BorgWeaponSeclite
+  parent: FlashlightSeclite
+  name: integrated security flashlight
+  description: A robust security flashlight integrated into a Protectron chassis. Its microreactor cell recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: N14BorgPowerCellHigh
+
+# Security module — provides stun baton, handcuffs, and a flashlight for Police Protectrons.
+- type: entity
+  id: N14BorgModuleSecurity
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: security cyborg module
+  description: A law-enforcement module. Provides a stun baton, handcuffs, and a security flashlight for patrol and detainment duties.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: security
+  - type: ItemBorgModule
+    items:
+    - N14BorgWeaponStunbaton # #Misfits Fix: self-recharging integrated baton
+    - Handcuffs
+    - N14BorgWeaponSeclite # #Misfits Fix: self-recharging integrated flashlight
+
+# Integrated laser weapon for Robobrain laser variant — eyebot-class laser.
+- type: entity
+  id: N14BorgWeaponLaser
+  parent: BaseWeaponBattery
+  name: integrated laser
+  description: An onboard laser emitter integrated into the chassis. Draws from the robot's internal power reserves and recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Battery/recharger_rifle.rsi
+    layers:
+    - state: icon
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Battery/recharger_rifle.rsi
+    size: Normal
+  - type: Battery
+    maxCharge: 99999
+    startingCharge: 99999
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 1000
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 100
+  - type: Gun
+    fireRate: 2
+    soundGunshot:
+      collection: N14RechargerRifleGunshot
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto #Misfits Change — added full-auto mode for borg laser
+  - type: FollowDistance
+    backStrength: 5
+
+# Laser module — provides the integrated borg laser.
+- type: entity
+  id: N14BorgModuleLaser
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: laser cyborg module
+  description: A laser emitter module. Provides an integrated laser for ranged combat. The weapon draws from internal power reserves and recharges automatically.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-radiation
+  - type: ItemBorgModule
+    items:
+    - N14BorgWeaponLaser
+
+# Integrated cryo emitter weapon for Firefighter Protectron — battery-based to match other borg weapons. #Misfits Add
+- type: entity
+  id: N14BorgWeaponCryo
+  parent: BaseItem
+  name: integrated cryo emitter
+  description: A built-in cryogenic projector integrated into the chassis. Fires bursts of liquid nitrogen that deal Cold damage and slow targets. Draws power from the robot's internal reserves and recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Battery
+    maxCharge: 99999
+    startingCharge: 99999
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 1000
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletCryo
+    fireCost: 100
+  - type: Gun
+    cameraRecoilScalar: 0
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Effects/extinguish.ogg
+  - type: Sprite
+    sprite: Objects/Misc/fire_extinguisher.rsi # placeholder — no cryo weapon sprite yet
+    layers:
+    - state: fire_extinguisher_closed
+  - type: Item
+    size: Normal
+  - type: FollowDistance
+    backStrength: 6
+
+# Cryo module — provides the integrated borg cryo emitter. #Misfits Add
+- type: entity
+  id: N14BorgModuleCryo
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: cryo emitter cyborg module
+  description: A cryogenic suppression module. Provides an integrated cryo emitter for slowing and suppressing targets and extinguishing fires. The weapon draws from internal power reserves and recharges automatically.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-fire-extinguisher # closest available icon for cryo/suppression function
+  - type: ItemBorgModule
+    items:
+    - N14BorgWeaponCryo
+
+# Tribal Spirit-Tender modules
+- type: entity
+  id: MisfitsTribalRCD
+  parent: RCDRecharging
+  name: tribal construction RCD
+  description: A battered construction device programmed with plans for tribal settlements.
+  components:
+  - type: RCDIgnoreCableCollision
+  - type: RCD
+    availablePrototypes:
+    - MisfitsRCDTribalLogWall
+    - MisfitsRCDTribalWoodWall
+    - MisfitsRCDTribalTallWoodWall
+    - MisfitsRCDTribalHalfWoodWall
+    - MisfitsRCDTribalAdobeWall
+    - MisfitsRCDTribalMakeshiftDoor
+    - MisfitsRCDTribalWoodDoor
+    - MisfitsRCDTribalLeatherTentWall
+    - MisfitsRCDTribalLeatherTentCorner
+    - MisfitsRCDTribalClothTentWall
+    - MisfitsRCDTribalClothTentCorner
+    - MisfitsRCDTribalLeatherTentFlap
+    - MisfitsRCDTribalClothTentFlap
+    - MisfitsRCDTribalWoodWindow
+    - MisfitsRCDTribalBedroll
+    - MisfitsRCDTribalSettlerChair
+    - MisfitsRCDTribalSettlerTable
+    - MisfitsRCDTribalBanner
+    - MisfitsRCDTribalSoil
+    - MisfitsRCDTribalPlanter
+    - MisfitsRCDTribalFloorTorch
+    - MisfitsRCDTribalWallTorch
+    - MisfitsRCDBunkerDoor
+    - MisfitsRCDBunkerGlassDoor
+    - MisfitsRCDBunkerDoor3X
+    - MisfitsRCDBunkerGlassDoor3X
+    - MisfitsRCDAirlockSlanted
+    - MisfitsRCDAirlockTall
+    - MisfitsRCDMetalDoorReinforced
+    - MisfitsRCDMetalDoorCell
+    - MisfitsRCDMetalDoorBar
+    - MisfitsRCDMetalDoorIron
+    - MisfitsRCDMetalDoorSecure
+    - MisfitsRCDMetalDoorBlueSlanted
+    - MisfitsRCDMetalDoorRedSlanted
+    - MisfitsRCDMetalDoorBlueAltSlanted
+    - MisfitsRCDMetalDoorBlueWindowSlanted
+    - MisfitsRCDMetalDoorGrateSlanted
+    - MisfitsRCDMetalDoorBarSlanted
+    - MisfitsRCDMetalDoorFenceSlanted
+    - MisfitsRCDMetalDoorFenceBarbedSlanted
+    - MisfitsRCDMetalDoorBlueTall
+    - MisfitsRCDMetalDoorRedTall
+    - MisfitsRCDMetalDoorBlueAltTall
+    - MisfitsRCDMetalDoorBlueWindowTall
+    - MisfitsRCDMetalDoorGrateTall
+    - MisfitsRCDMetalDoorBarTall
+    - MisfitsRCDMetalDoorFenceTall
+    - MisfitsRCDMetalDoorFenceBarbedTall
+    - MisfitsRCDMetalDoorCellTall
+    - MisfitsRCDMetalDoorCellRustTall
+    - MisfitsRCDWallMetalSlanted
+    - MisfitsRCDWallReinfMetalSlanted
+    - MisfitsRCDWallMetalRustSlanted
+    - MisfitsRCDWallReinfMetalRustSlanted
+    - MisfitsRCDWallMetalTall
+    - MisfitsRCDWallReinfMetalTall
+    - MisfitsRCDWallMetalRustTall
+    - MisfitsRCDWallReinfMetalRustTall
+    - MisfitsRCDWallMetalHalf
+    - MisfitsRCDWallMetalReinforcedHalf
+    - MisfitsRCDWallMetalRustHalf
+    - MisfitsRCDWallMetalReinforcedRustHalf
+    - MisfitsRCDWallScrapSlanted
+    - MisfitsRCDWallScrapTall
+    - MisfitsRCDWallScrapHalf
+    - MisfitsRCDWallScrapWhiteSlanted
+    - MisfitsRCDWallScrapWhiteTall
+    - MisfitsRCDWallScrapBlueSlanted
+    - MisfitsRCDWallScrapBlueTall
+    - MisfitsRCDWallScrapRedSlanted
+    - MisfitsRCDWallScrapRedTall
+    - MisfitsRCDWallRoughScrapSlanted
+    - MisfitsRCDWallRoughScrapTall
+    - MisfitsRCDFloorMetalBlue
+    - MisfitsRCDFloorMetalBlueSolid
+    - MisfitsRCDFloorMetalGreen
+    - MisfitsRCDFloorMetalGreenSolid
+    - MisfitsRCDFloorMetalGrey
+    - MisfitsRCDFloorMetalGreySolid
+    - MisfitsRCDFloorMetalGreyDark
+    - MisfitsRCDFloorMetalGreyDarkSolid
+    - MisfitsRCDFloorMetalPurple
+    - MisfitsRCDFloorMetalPurpleSolid
+    - MisfitsRCDFloorMetalRed
+    - MisfitsRCDFloorMetalRedSolid
+    - MisfitsRCDFloorMetalTeal
+    - MisfitsRCDFloorMetalTealSolid
+    - MisfitsRCDFloorMetalWhite
+    - MisfitsRCDFloorMetalWhiteSolid
+    - MisfitsRCDFloorMetalYellow
+    - MisfitsRCDFloorMetalYellowSolid
+    - MisfitsRCDFloorMetalFreezer
+    - MisfitsRCDFloorMetalTunnel
+    - MisfitsRCDFloorMetalTunnelRusty
+    - MisfitsRCDFloorMetalTunnelWasteland
+    - MisfitsRCDFloorMS13MetalIndustrial
+    - MisfitsRCDFloorMS13MetalTile
+    - MisfitsRCDFloorMS13MetalGrate
+    - MisfitsRCDFloorMS13MetalSolid
+    - MisfitsRCDFloorConcrete
+    - MisfitsRCDFloorConcreteTileGoon
+    - MisfitsRCDFloorConcreteGreyBay
+    - MisfitsRCDFloorConcreteHexacrete
+    - MisfitsRCDFloorConcreteHexacreteDark
+    - MisfitsRCDFloorConcreteDark
+    - MisfitsRCDFloorConcreteRoad
+    - MisfitsRCDFloorMS13BrickConcrete
+    - MisfitsRCDFloorMS13Concrete
+    - MisfitsRCDFloorMS13ConcreteIndustrial
+    - MisfitsRCDFloorMS13ConcreteIndustrialAlt
+    - MisfitsRCDFloorMS13ConcreteIndustrialSplit
+    - MisfitsRCDFloorMS13TileConcreteSmall
+    - Deconstruct
+
+- type: entity
+  id: MisfitsBorgModuleTribalConstruction
+  parent: BorgModuleConstruction
+  name: tribal construction module
+  description: A settlement-building module assembled from a damaged Protectron construction system.
+  components:
+  - type: ItemBorgModule
+    items:
+    - MisfitsTribalRCD
+
+- type: entity
+  id: MisfitsBorgModuleTribalSpirit
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: spirit-tender module
+  description: A borg "module" that has been haphazardly jammed together over decades or centuries.
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-gardening
+  - type: ItemBorgModule
+    items:
+    - N14HydroponicsToolHoe
+    - N14HydroponicsToolClippers   # Hemostat + Retractor
+    - WelderMini                   # Cautery
+    - N14Screwdriver               # Tender + Tweezer
+
+- type: entity
+  id: MisfitsBorgModuleTribalHarvest
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: harvest module
+  description: The half-broken remains of an agricultural protectron module
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-harvesting
+  - type: ItemBorgModule
+    items:
+    - N14ripper                    # Scalpel + BoneSaw
+    - N14HydroponicsToolShovel     # BoneSetter
+    - Bucket
+    - Syringe
+

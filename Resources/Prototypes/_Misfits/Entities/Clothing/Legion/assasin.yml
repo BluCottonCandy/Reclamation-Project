@@ -1,0 +1,48 @@
+- type: entity
+  parent: N14FalloutArmorBase
+  id: MisfitsExplorerAssasin
+  name: veteran legion explorer armor
+  description: "A set of hardened and decorated armor. Issued by Legion Forgemasters to Explorers that have spent years as Caesar's eyes and ears."
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/CaesarLegion/assasin.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/CaesarLegion/assasin.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.15
+    sprintModifier: 1.15
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.70
+        Heat: 0.65
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+
+- type: entity
+  parent: ClothingHeadBase
+  id: MisfitsExplorerAssasinHelmet
+  name: veteran legion explorer helmet
+  description: "A fire helmet modified by a Veteran Explorer with a fitted gas mask and added plating."
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/CaesarLegion/assasinhelmet.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/CaesarLegion/assasinhelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+        Radiation: 0.85
+  - type: ExplosionResistance
+    damageCoefficient: 0.90
+  - type: HideLayerClothing
+    force: true
+    slots:
+    - Hair
+    - FacialHair

@@ -1,0 +1,14 @@
+- type: loadout
+  id: LoadoutLegionPrincipes
+  category: Roles
+  cost: 16
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+     jobs:
+        - CaesarLegionVeteranDecanus
+    - !type:CharacterPlaytimeRequirement
+      tracker: CaesarLegionVeteranDecanus
+      min: 90000 # 25 hours
+  items:
+    - N14ClothingOuterPowerArmorLegionPrinceps

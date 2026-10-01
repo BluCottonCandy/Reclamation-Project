@@ -1,0 +1,642 @@
+# #Misfits Add - Eighties role-specific undecided loadout kits.
+
+- type: entity
+  id: EightiesTheBlockloadoutkits
+  name: Undecided Eighties The Block Loadout Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - Eighties_BlockRoadCaptainSet
+    - Eighties_BlockBossBrawlerSet
+#    - Eighties_BlockLeadFootSet
+
+- type: entity
+  id: EightiesCylindersloadoutkits
+  name: Undecided Eighties Cylinders Loadout Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: gunner
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - Eighties_CylindersTommySet
+    - Eighties_CylindersShotcallerSet
+#    - Eighties_CylindersRoadMarshalSet
+
+- type: entity
+  id: EightiesPistonsloadoutkits
+  name: Undecided Eighties Pistons Loadout Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - Eighties_PistonsSkirmisherSet
+    - Eighties_PistonsScattergunSet
+#    - Eighties_PistonsBladeSet
+
+- type: entity
+  id: EightiesOilersloadoutkits
+  name: Undecided Eighties Oilers Loadout Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - Eighties_OilersMechanicSet
+    - Eighties_OilersFirebugSet
+    - Eighties_OilersPatchSet
+
+- type: entity
+  id: EightiesRoadRashloadoutkits
+  name: Undecided Eighties Road Rash Loadout Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+#    - Eighties_RoadRashRunnerSet
+    - Eighties_RoadRashScrapperSet
+    - Eighties_RoadRashLookoutSet
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_BlockRoadCaptainSet
+  name: undecided-loadout-category-misfits-eighties-block-road-captain-name
+  description: undecided-loadout-category-misfits-eighties-block-road-captain-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - KitEighties_BlockRoadCaptain
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_BlockBossBrawlerSet
+  name: undecided-loadout-category-misfits-eighties-block-boss-brawler-name
+  description: undecided-loadout-category-misfits-eighties-block-boss-brawler-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: gunner
+  content:
+  - KitEighties_BlockBossBrawler
+
+#- type: UndecidedLoadoutBackpackSet
+#  id: Eighties_BlockLeadFootSet
+#  name: undecided-loadout-category-misfits-eighties-block-lead-foot-name
+#  description: undecided-loadout-category-misfits-eighties-block-lead-foot-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  content:
+#  - KitEighties_BlockLeadFoot
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_CylindersTommySet
+  name: undecided-loadout-category-misfits-eighties-cylinders-tommy-name
+  description: undecided-loadout-category-misfits-eighties-cylinders-tommy-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitEighties_CylindersTommy
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_CylindersShotcallerSet
+  name: undecided-loadout-category-misfits-eighties-cylinders-shotcaller-name
+  description: undecided-loadout-category-misfits-eighties-cylinders-shotcaller-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - KitEighties_CylindersShotcaller
+
+#- type: UndecidedLoadoutBackpackSet
+#  id: Eighties_CylindersRoadMarshalSet
+#  name: undecided-loadout-category-misfits-eighties-cylinders-road-marshal-name
+#  description: undecided-loadout-category-misfits-eighties-cylinders-road-marshal-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  content:
+#  - KitEighties_CylindersRoadMarshal
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_PistonsSkirmisherSet
+  name: undecided-loadout-category-misfits-eighties-pistons-skirmisher-name
+  description: undecided-loadout-category-misfits-eighties-pistons-skirmisher-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitEighties_PistonsSkirmisher
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_PistonsScattergunSet
+  name: undecided-loadout-category-misfits-eighties-pistons-scattergun-name
+  description: undecided-loadout-category-misfits-eighties-pistons-scattergun-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: gunner
+  content:
+  - KitEighties_PistonsScattergun
+
+#- type: UndecidedLoadoutBackpackSet
+#  id: Eighties_PistonsBladeSet
+#  name: undecided-loadout-category-misfits-eighties-pistons-blade-name
+#  description: undecided-loadout-category-misfits-eighties-pistons-blade-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  content:
+#  - KitEighties_PistonsBlade
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_OilersMechanicSet
+  name: undecided-loadout-category-misfits-eighties-oilers-mechanic-name
+  description: undecided-loadout-category-misfits-eighties-oilers-mechanic-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - KitEighties_OilersMechanic
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_OilersFirebugSet
+  name: undecided-loadout-category-misfits-eighties-oilers-firebug-name
+  description: undecided-loadout-category-misfits-eighties-oilers-firebug-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: gunner
+  content:
+  - KitEighties_OilersFirebug
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_OilersPatchSet
+  name: undecided-loadout-category-misfits-eighties-oilers-patch-name
+  description: undecided-loadout-category-misfits-eighties-oilers-patch-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content:
+  - KitEighties_OilersPatch
+
+#- type: UndecidedLoadoutBackpackSet
+#  id: Eighties_RoadRashRunnerSet
+#  name: undecided-loadout-category-misfits-eighties-road-rash-runner-name
+#  description: undecided-loadout-category-misfits-eighties-road-rash-runner-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  content:
+#  - KitEighties_RoadRashRunner
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_RoadRashScrapperSet
+  name: undecided-loadout-category-misfits-eighties-road-rash-scrapper-name
+  description: undecided-loadout-category-misfits-eighties-road-rash-scrapper-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitEighties_RoadRashScrapper
+
+- type: UndecidedLoadoutBackpackSet
+  id: Eighties_RoadRashLookoutSet
+  name: undecided-loadout-category-misfits-eighties-road-rash-lookout-name
+  description: undecided-loadout-category-misfits-eighties-road-rash-lookout-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - KitEighties_RoadRashLookout
+
+- type: entity
+  id: KitEighties_BlockRoadCaptain
+  name: road captain kit
+  parent: KitBase
+  description: A command kit for keeping the road gang moving.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14rippersword
+    - id: N14WeaponSMG12mm
+    - id: N14MagazineSMG12mm
+      amount: 2
+    - id: N14WeaponRevolver45-70Hunter
+    - id: SpeedLoader45-70
+      amount: 4
+    - id: BoxHandcuff
+    - id: N14HealingPoultice 
+    - id: N14SuperStimpak
+      amount: 2
+    - id: N14CleanGauze10
+    - id: N14FoodTinK
+      amount: 2
+    - id: N14JunkCeramicFlask
+    - id: SmokeGrenade
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_BlockBossBrawler
+  name: boss brawler kit
+  parent: KitBase
+  description: Heavy-handed tools for a boss who leads from the front.
+  components:
+  - type: Sprite
+    state: gunner
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSniper50Pipe
+    - id: MagazineBox50
+      amount: 2
+    - id: N14TribalBigClubDecorated
+    - id: N14WeaponRevolver45-70Hunter
+    - id: SpeedLoader45-70
+      amount: 4
+    - id: BoxHandcuff
+    - id: N14HealingPoultice 
+    - id: N14SuperStimpak
+      amount: 2
+    - id: N14CleanGauze10
+    - id: N14FoodTinK
+      amount: 2
+    - id: N14JunkCeramicFlask
+    - id: SmokeGrenade
+    - id: GrenadeFrag
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# Commented out since it would require a balance pass that I don't have the time for rn. If someone else is willing to do so feel free.
+#- type: entity
+#  id: KitEighties_BlockLeadFoot
+#  name: lead foot kit
+#  parent: KitBase
+#  description: A fast-response kit for running down trouble.
+#  components:
+#  - type: Sprite
+#    state: marksman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#    - id: N14WeaponSMG10mm
+#    - id: N14MagazineSMG10mm
+#      amount: 4
+#    - id: N14CombatKnife
+#    - id: RadioHandheld
+#    - id: SmokeGrenade
+#    - id: N14Psycho
+#    - id: N14Stimpak
+#    - id: N14CleanGauze10
+#    - id: N14Flare
+#    sound:
+#      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_CylindersTommy
+  name: cylinders tommy kit
+  parent: KitBase
+  description: A loud cylinder kit built around an american 180.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMGAmerican180
+    - id: N14MagazineAmerican180Drum
+      amount: 2
+    - id: N14WeaponRevolver44TribalUpgraded
+    - id: SpeedLoader44
+      amount: 4
+    - id: N14Turbo
+      amount: 2
+    - id: N14HealingPoultice 
+    - id: N14Stimpak
+      amount: 2
+    - id: N14CleanGauze10
+    - id: N14FoodTinK
+      amount: 2
+    - id: SmokeGrenade
+      amount: 2
+    - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_CylindersShotcaller
+  name: cylinders shotcaller kit
+  parent: KitBase
+  description: A looted stash with extra meds, fit for a cylinder.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: N14MagazineSMG10mm
+      amount: 4
+    - id: N14TribalClub
+    - id: N14WeaponRevolver44TribalUpgraded
+    - id: SpeedLoader44
+      amount: 2
+    - id: N14Stimpak
+      amount: 2
+    - id: N14HealingPoultice 
+    - id: N14SuperStimpak
+    - id: N14CleanGauze10
+    - id: N14FoodTinK
+      amount: 2
+    - id: SmokeGrenade
+      amount: 2
+    - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# Commented out since it would require a balance pass that I don't have the time for rn. If someone else is willing to do so feel free.
+#- type: entity
+#  id: KitEighties_CylindersRoadMarshal
+#  name: cylinders road marshal kit
+#  parent: KitBase
+#  description: A mobile patrol kit for keeping the road locked down.
+#  components:
+#  - type: Sprite
+#    state: marksman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#    - id: N14WeaponSMG10mm
+#    - id: N14MagazineSMG10mm
+#      amount: 3
+#    - id: N14Hatchet
+#    - id: SmokeGrenade
+#    - id: N14Stimpak
+#    - id: N14CleanGauze10
+#    - id: N14Flare
+#    sound:
+#      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_PistonsSkirmisher
+  name: pistons skirmisher kit
+  parent: KitBase
+  description: A piston's road pounder kit with a 10mm SMG.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: N14MagazineSMG10mm
+      amount: 4
+    - id: N14WeaponRevolver44TribalUpgraded
+    - id: SpeedLoader44
+      amount: 2
+    - id: N14Stimpak
+      amount: 2
+    - id: N14HealingPoultice
+    - id: N14CleanGauze10 
+    - id: N14TribalClub
+    - id: N14ShieldMetalLight
+    - id: Bola
+      amount: 2
+    - id: N14FoodTinK
+      amount: 2
+    - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_PistonsScattergun
+  name: pistons scattergun kit
+  parent: KitBase
+  description: A kit made for spraying down the enemy from afar.
+  components:
+  - type: Sprite
+    state: gunner
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponRifle556CarbineOld
+    - id: Magazine556Rifle
+      amount: 5
+    - id: N14WeaponRevolver44TribalUpgraded
+    - id: SpeedLoader44
+      amount: 3
+    - id: N14Stimpak
+      amount: 2
+    - id: N14HealingPoultice 
+    - id: N14CleanGauze10 
+    - id: SmokeGrenade
+      amount: 2
+    - id: N14FoodTinK
+      amount: 2
+    - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# Commented out since it would require a balance pass that I don't have the time for rn. If someone else is willing to do so feel free.
+#- type: entity
+#  id: KitEighties_PistonsBlade
+#  name: pistons blade kit
+#  parent: KitBase
+#  description: A melee-forward kit with a pistol backup.
+#  components:
+#  - type: Sprite
+#    state: marksman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#    - id: N14Machete
+#    - id: N14WeaponPistol9mm
+#    - id: N14MagazinePistol9mm
+#      amount: 3
+#    - id: N14Psycho
+#    - id: N14Stimpak
+#    - id: N14CleanGauze10
+#    - id: N14Flare
+#    sound:
+#      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_OilersMechanic
+  name: oilers mechanic kit
+  parent: KitBase
+  description: A pitiful supply of equipment, looted from the wastes.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: ToolboxMechanicalFilled
+    - id: N14WeaponShotgunLever
+    - id: MagazineBox20gauge
+      amount: 2
+    - id: N14WeaponRevolver44TribalUpgraded
+    - id: SpeedLoader44
+      amount: 2
+    - id: N14Stimpak
+      amount: 2 
+    - id: N14ShieldMetalLight
+    - id: N14FoodTinK
+      amount: 1
+    - id: N14JunkCeramicFlask
+    - id: N14CleanGauze10
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_OilersFirebug
+  name: oilers firebug kit
+  parent: KitBase
+  description: A dirty close-range kit for flushing enemies out and caving skulls.
+  components:
+  - type: Sprite
+    state: gunner
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: Bola
+    - id: N14TribalBigClub
+    - id: N14WeaponPistol10mmPipe
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: N14Stimpak
+      amount: 2 
+    - id: N14Psycho
+    - id: N14Jet
+      amount: 2
+    - id: N14FoodTinK
+      amount: 1
+    - id: N14JunkCeramicFlask
+    - id: N14CleanGauze10
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_OilersPatch
+  name: oilers patch kit
+  parent: KitBase
+  description: A patchwork of scrapguns and basic equipment. Pitiful.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mmPipe
+    - id: N14MagazineSMG10mm
+      amount: 3
+    - id: N14TribalClub
+    - id: N14WeaponPistol10mmPipe
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: N14Stimpak
+      amount: 2 
+    - id: N14ShieldMetalLight
+    - id: N14FoodTinK
+      amount: 1
+    - id: N14JunkCeramicFlask
+    - id: N14CleanGauze10
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+#- type: entity
+#  id: KitEighties_RoadRashRunner
+#  name: road rash runner kit
+#  parent: KitBase
+#  description: A light kit for fresh Eighties runners.
+#  components:
+#  - type: Sprite
+#    state: marksman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#    - id: N14WeaponPistol9mm
+#    - id: N14MagazinePistol9mm
+#      amount: 2
+#    - id: N14CombatKnife
+#    - id: N14Stimpak
+#    - id: N14CleanGauze10
+#    - id: N14Flare
+#    sound:
+#      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_RoadRashScrapper
+  name: road rash scrapper kit
+  parent: KitBase
+  description: Scrap weapons for someone who isn't expected to survive.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14ScrapMachete
+    - id: N14WeaponPistol10mmPipe
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: N14Stimpak
+    - id: N14Jet
+      amount: 2
+    - id: N14FoodTinK
+      amount: 1
+    - id: N14JunkCeramicFlask
+    - id: N14CleanGauze10
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitEighties_RoadRashLookout
+  name: road rash lookout kit
+  parent: KitBase
+  description: Smoke, flares, and a sidearm for keeping watch.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponPistol9mm
+    - id: MagazineBox9mm
+    - id: N14TribalKnife
+    - id: SmokeGrenade
+    - id: N14Flare
+      amount: 2
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    sound:
+      path: /Audio/Effects/unwrap.ogg

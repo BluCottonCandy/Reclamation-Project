@@ -1,0 +1,87 @@
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMetal
+  id: N14ClothingHeadHatNCRCombatHelmetBrodie
+  name: NCR brodie helmet
+  description: A broad-brimmed steel helmet in NCR service colors.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrcombathelmet.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrcombathelmet.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMetal
+  id: N14ClothingHeadHatNCRHelmetNoCover
+  name: NCR uncovered brodie helmet
+  description: A brodie-style NCR helmet without the wrapped desert cloth.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrhelmetnocover.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrhelmetnocover.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMetal
+  id: N14ClothingHeadHatNCRM1Helmet
+  name: NCR M1 helmet
+  description: An older U.S.-pattern NCR helmet kept around for preferred field kit aesthetics.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrm1helmet.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrm1helmet.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMetal
+  id: N14ClothingHeadHatNCRM1HelmetMedic
+  name: NCR medic M1 helmet
+  description: An older U.S.-pattern NCR helmet marked out for field medics.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrm1helmetmedic.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrm1helmetmedic.rsi
+
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMetal
+  id: N14ClothingHeadHatNCRM1HelmetNoCover
+  name: NCR uncovered M1 helmet
+  description: An older NCR M1 helmet without the cloth cover.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrm1helmetnocover.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrm1helmetnocover.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatNCRStetson
+  name: NCR cavalry stetson
+  description: A sun-worn NCR field stetson favored by brahdo mounted cavalry troopers.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrstetson.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrstetson.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatNCRPatrolRangerCampaign
+  name: NCR patrol ranger campaign hat
+  description: A campaign hat worn by NCR patrol rangers out in the field.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrpatrolrangercampaignhat.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrpatrolrangercampaignhat.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatNCRCommissarHat
+  name: NCR commissar hat
+  description: A standard-issue hat for NCR Commissars, with a wide brim and a tall crown.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Head/ncrcommissarhat.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Head/ncrcommissarhat.rsi

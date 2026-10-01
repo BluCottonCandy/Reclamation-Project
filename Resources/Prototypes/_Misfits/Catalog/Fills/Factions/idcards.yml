@@ -1,0 +1,152 @@
+﻿- type: entity
+  name: ID card box
+  parent: BoxCardboard
+  id: BoxIDVault
+  description: A box of spare ID cards.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IDCardVault
+      amount: 2
+    - id: N14IDCardVaultDoctor
+      amount: 2
+    - id: N14IDCardVaultEngineer
+      amount: 2
+    - id: N14IDCardVaultSecurity
+      amount: 2
+  - type: Sprite
+    layers:
+    - state: box
+    - state: pda
+
+- type: entity
+  name: medallion box
+  parent: BoxCardboard
+  id: BoxIDLegion
+  description: A box of spare medallions.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IDLegionaryMedalRecruit
+      amount: 2
+    - id: N14IDLegionaryMedalLegionnaireRecruit
+      amount: 2
+    - id: N14IDLegionaryMedalSilver
+      amount: 2
+    - id: N14IDLegionaryBadgeAuxilia
+      amount: 2
+  - type: Sprite
+    layers:
+    - state: box
+    - state: pda
+
+- type: entity
+  name: dog tag box
+  parent: BoxCardboard
+  id: BoxIDNCR
+  description: A box of spare ID cards.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IDNCRDogtag
+      amount: 2
+    - id: N14IDNCRDogtagSoldier
+      amount: 2
+    - id: N14IDNCRDogtagWS
+      amount: 2
+    - id: N14IDNCRDogtagDoctor
+      amount: 2
+  - type: Sprite
+    layers:
+    - state: box
+    - state: pda
+
+- type: entity
+  name: followers ID card box
+  parent: BoxCardboard
+  id: BoxIDFollowers
+  description: A box of spare ID cards.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IDFollowerVolunteer
+      amount: 4
+    - id: N14IDFollowerGuard
+      amount: 2
+    - id: N14IDFollowerDoctor
+      amount: 2
+  - type: Sprite
+    layers:
+    - state: box
+    - state: pda
+
+- type: entity
+  name: holotags box
+  parent: BoxCardboard
+  id: BoxIDBrotherhoodOfSteel
+  description: A box of spare holotags.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IDBrotherhoodOfSteelHolotagInitiate
+      amount: 3
+    - id: N14IDBrotherhoodOfSteelHolotagSquire
+      amount: 2
+    - id: N14IDBrotherhoodOfSteelHolotagScribe
+      amount: 1
+    - id: N14IDBrotherhoodOfSteelHolotagKnight
+      amount: 1
+    - id: N14IDBrotherhoodOfSteelHolotagPaladin
+      amount: 1
+  - type: Sprite
+    layers:
+    - state: box
+    - state: pda
+
+- type: entity
+  name: passport box
+  parent: BoxCardboard
+  id: BoxIDTown
+  description: A box of spare passports.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IDShopkeeperTown
+      amount: 1
+    - id: N14IDShopkeeperHelperTown
+      amount: 1
+    - id: N14IDPassportWasteFarmer
+      amount: 1
+    - id: N14IDBartenderTown
+      amount: 1
+    - id: N14IDPassportWasteChaplain
+      amount: 1
+    - id: N14IDPassportTownMechanic
+      amount: 1
+    - id: N14IDReporterTown
+      amount: 1
+    - id: N14IDBadgeTownDeputy
+      amount: 1
+  - type: Sprite
+    layers:
+    - state: box
+    - state: pda
+
+- type: entity
+  name: pendant box
+  parent: BoxCardboard
+  id: BoxIDTribe
+  description: A box of spare pendants.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IDTribeBulletsPendant
+      amount: 4
+    - id: N14IDTribeSawbonePendant
+      amount: 2
+    - id: N14IDTribeEnforcerPendant
+      amount: 2
+  - type: Sprite
+    layers:
+    - state: box
+    - state: pda

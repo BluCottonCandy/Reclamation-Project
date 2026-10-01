@@ -1,0 +1,29 @@
+﻿- type: accessLevel
+  id: 80s
+  name: id-card-access-level-80s
+
+- type: accessLevel
+  id: 80sHead
+  name: id-card-access-level-80s-head
+
+- type: accessLevel
+  id: 80sSlave
+  name: id-card-access-level-80s-slave
+
+- type: accessGroup
+  id: 80s
+  tags:
+  - 80s
+  - 80sSlave
+
+- type: accessGroup
+  id: 80sSlave
+  tags:
+  - 80sSlave
+
+- type: accessGroup
+  id: 80sHead
+  tags:
+  - 80s
+  - 80sHead
+  - 80sSlave

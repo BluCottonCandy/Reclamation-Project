@@ -1,0 +1,51 @@
+- type: entity
+  parent: BaseStructure
+  id: N14WreckTractor
+  name: wrecked tractor
+  description: The corporations made it illegal to repair them yourself before the world ended. And now with how bad its damaged, you couldn't do it even if you had the tools.
+  suffix: Mapping
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.2,-0.3,1.1,0.4"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 5
+            max: 15
+          N14ScrapSteel1:
+            min: 4
+            max: 16
+          N14ScrapLead1:
+            min: 4
+            max: 8
+      - !type:EmptyAllContainersBehaviour
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/tractors.rsi
+    layers:
+    - state: redtractor
+
+

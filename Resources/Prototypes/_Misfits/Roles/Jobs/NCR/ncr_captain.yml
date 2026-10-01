@@ -1,0 +1,66 @@
+- type: job
+  id: NCRCommander
+  setPreference: true
+  hideWithoutJobWhitelist: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  overrideConsoleVisibility: false
+  canBeAntag: true
+  name: job-name-ncr-commander
+  overwatchCategory: OverwatchNcrOfficers
+  description: job-description-ncr-commander
+  playTimeTracker: NCRCommander
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # T7 faction timelock (40h NCR)
+      department: NCR
+      min: 144000 # 40 hours
+    - !type:CharacterLogicOrRequirement
+      requirements:
+        - !type:CharacterPlaytimeRequirement
+          tracker: NCRExecutiveOfficer
+          min: 28800 # 8 hours as Executive Officer
+        - !type:CharacterPlaytimeRequirement
+          tracker: NCRPlatoonLeader
+          min: 28800 # 8 hours as Platoon Leader
+        - !type:CharacterPlaytimeRequirement
+          tracker: NCRRO
+          min: 28800 # 8 hours as Requisition Officer
+  weight: 120
+  startingGear: NCRCommanderGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-commander
+  requireAdminNotify: true
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  - NCRCaptain
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRCommanderGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretOfficer
+    ears: MisfitsClothingHeadsetNCRMaster
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingOfficerUniformNCRDesert
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    id: N14NCRCommanderPipboy
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+
+- type: playTimeTracker
+  id: NCRCommander

@@ -1,0 +1,208 @@
+﻿- type: entity
+  name: legion encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyLegion
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyLegion
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: brotherhood encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyBrotherhoodOfSteel
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyBrotherhoodOfSteel
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: ncr encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyNCR
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyNCR
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: ncr encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyNCRRangers
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyNCRRangers
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: ncr encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyOSI
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyOSI
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: vault encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyVault
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyVault
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: eighties encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyEighties
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyEighties
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: wasteland encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyWasteland
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyWastelandGlobal
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: followers encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyFollowers
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyFollowers
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: U.S. Army encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyEnclave
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyEnclave
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: town encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyTown
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyTown
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey

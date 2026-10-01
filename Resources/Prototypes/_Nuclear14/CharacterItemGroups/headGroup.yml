@@ -1,0 +1,167 @@
+- type: characterItemGroup
+  id: N14LoadoutHead
+  items:
+    - type: loadout
+      id: N14LoadoutHeadHatBaseball
+    - type: loadout
+      id: N14LoadoutHeadHatTrucker
+    - type: loadout
+      id: N14LoadoutHeadHatBeanie
+    - type: loadout
+      id: N14LoadoutHeadHatHeadscarf
+    - type: loadout
+      id: N14LoadoutHeadHatBandit
+    - type: loadout
+      id: N14LoadoutHeadHatTribalOutcastHood
+    - type: loadout
+      id: N14LoadoutHeadHatArmyCap
+    - type: loadout
+      id: N14ClothingHeadHatCowboyGrey
+    - type: loadout
+      id: N14ClothingHeadHatCowboyGreyBanded
+    - type: loadout
+      id: N14ClothingHeadHatCowboyBrown
+    - type: loadout
+      id: N14ClothingDrylanderGoggles
+    - type: loadout
+      id: N14ClothingHeadTakerwraps
+    - type: loadout
+      id: N14ClothingTribalHeadWraps
+    - type: loadout
+      id: N14ClothingTribalHood
+    - type: loadout
+      id: N14ClothingTribalShamanHat
+    - type: loadout
+      id: N14ClothingTribalShemagh
+    - type: loadout
+      id: N14ClothingTribalHunterHood
+    - type: loadout
+      id: N14ClothingTribalMuffaloskull
+    - type: loadout
+      id: N14ClothingTribalRadstagSkull
+    - type: loadout
+      id: N14ClothingHeadHatEdlerSkullhelm
+    - type: loadout
+      id: N14ClothingHeadHatEldersDamagedSkullHelm
+    - type: loadout
+      id: N14ClothingHeadHatTribalPowerhelm
+    - type: loadout
+      id: N14ClothingTribalShamanHeadband
+    - type: loadout # Forge-Add
+      id: LoadoutClothingHeadHatBoSInquisitorBattleHelmet
+    - type: loadout # Forge-Add
+      id: LoadoutClothingHeadHatBoSInquisitorBattleHelmetHood
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFlatBlack
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFlatBrown
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFedoraBlack
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFedoraChoc
+    - type: loadout # #Misfits Add - cosmetic boonies and general berets
+      id: MisfitsLoadoutHeadWoodBoonie
+    - type: loadout
+      id: MisfitsLoadoutHeadWinterBoonie
+    - type: loadout
+      id: MisfitsLoadoutHeadDesertBoonie
+    - type: loadout
+      id: MisfitsLoadoutHeadArmyBeret
+    - type: loadout
+      id: MisfitsLoadoutHeadArmyBeretAirborne
+    - type: loadout
+      id: MisfitsLoadoutHeadArmyBeretSpecial
+    - type: loadout # #Misfits Add - NCR soldier headwear
+      id: MisfitsLoadoutHeadNCRSidecap
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretOfficer
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretMedic
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretQM
+    - type: loadout # #Misfits Add - NCR Ranger headwear
+      id: MisfitsLoadoutHeadArmyBeretRanger
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretRecon
+    - type: loadout
+      id: MisfitsLoadoutHeadRanger
+    - type: loadout
+      id: MisfitsLoadoutHeadRangerB
+    - type: loadout # #Misfits Add - Brotherhood of Steel headwear
+      id: MisfitsLoadoutHeadBrotherhoodCap
+    - type: loadout
+      id: MisfitsLoadoutHeadBrotherhoodBeret
+    - type: loadout
+      id: MisfitsLoadoutHeadBrotherhoodFieldCap
+    - type: loadout # #Misfits Add - Eighties bike helmet color variants
+      id: MisfitsLoadoutHeadEightiesHelmetBlue
+    - type: loadout
+      id: MisfitsLoadoutHeadEightiesHelmetWhite
+    - type: loadout
+      id: MisfitsLoadoutHeadEightiesHelmetRed
+    - type: loadout
+      id: MisfitsLoadoutHeadEightiesHelmetBlack
+    - type: loadout
+      id: MisfitsLoadoutHeadEightiesHelmetYellow
+    - type: loadout
+      id: MisfitsLoadoutHeadEightiesHelmetOlive
+    - type: loadout
+      id: MisfitsLoadoutHeadEightiesHelmetBeige
+    - type: loadout # #Misfits Add - Enclave headwear
+      id: MisfitsLoadoutHeadEnclaveIntel
+    - type: loadout
+      id: MisfitsLoadoutHeadEnclavePeacekeeperCap
+    - type: loadout
+      id: MisfitsLoadoutHeadEnclaveOfficer
+    - type: loadout
+      id: MisfitsLoadoutHeadEnclaveScientist
+    - type: loadout # #Misfits Add - Townsfolk headwear
+      id: MisfitsLoadoutHeadDeputy
+    - type: loadout
+      id: MisfitsLoadoutHeadSheriff
+    - type: loadout
+      id: MisfitsClothingHeadAntlerSkull
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatCaravan
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatCaravanSuit
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatCaravanUniform
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatChinese
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatHoodBlackRobe
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatHoodGhillieCloak
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatHoodLeatherCloak
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatHoodLeatherRobe
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatHoodScribeTabard
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatMountie
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatTownGuard
+    - type: loadout
+      id: N14LoadoutUniversalHeadHatVancouver
+    - type: loadout
+      id: N14LoadoutUniversalHeadTribalCloakHood
+    - type: loadout
+      id: N14LoadoutUniversalHeadTribalCloakHoodBr
+    - type: loadout
+      id: N14ClothingHeadHatNCRSlouch
+    - type: loadout
+      id: MisfitsClothingHeadRedBandana
+    - type: loadout
+      id: MisfitsLoadoutHeadHeadMarlowHat
+    - type: loadout
+      id: MisfitsLoadoutHeadHeadSchlimmHat
+    - type: loadout
+      id: MisfitsLoadoutHeadHeadAHPhelmet
+    - type: loadout
+      id: MisfitsLoadoutHeadKhanHelmet
+    - type: loadout
+      id: MisfitsLoadoutHeadKhanFurHelmet
+    - type: loadout
+      id: MisfitsLoadoutHeadKhanFullHelmet

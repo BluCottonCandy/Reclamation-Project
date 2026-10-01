@@ -1,0 +1,127 @@
+- type: accessLevel
+  id: NCRCaptain
+  name: id-card-access-level-ncr-captain
+
+- type: accessLevel
+  id: NCRTrader
+  name: id-card-access-level-ncr-trader
+  #Misfits add, trader has own access to use caravan wagon
+
+- type: accessLevel
+  id: NCRLT
+  name: id-card-access-level-ncr-lt
+
+- type: accessLevel
+  id: NCRRanger
+  name: id-card-access-level-ncr-ranger
+
+- type: accessLevel
+  id: NCRSGT
+  name: id-card-access-level-ncr-sgt
+
+- type: accessLevel
+  id: NCRMedic
+  name: id-card-access-level-ncr-medic
+
+- type: accessLevel
+  id: NCR
+  name: id-card-access-level-ncr
+
+# #Misfits Add - Office of Science and Industry records and laboratory access.
+- type: accessLevel
+  id: OSI
+  name: id-card-access-level-osi
+
+- type: accessLevel
+  id: NCRProvost
+  name: id-card-access-level-ncrprovost
+
+- type: accessGroup
+  id: NCR
+  #Misfits Change /Fix/: Base NCR access should only open base NCR doors.
+  tags:
+  - NCR
+
+- type: accessGroup
+  id: NCRTrader
+  #Misfits add, trader has own access to use caravan wagon
+  tags:
+  - NCRTrader
+
+
+- type: accessGroup
+  id: NCRMedic
+  #Misfits Change /Fix/: NCR medics inherit base NCR access plus medic spaces.
+  tags:
+  - NCR
+  - NCRMedic
+
+- type: accessGroup
+  id: OSI
+  # OSI personnel retain ordinary NCR access, plus their own archive/laboratory tag.
+  tags:
+  - NCR
+  - NCRMedic
+  - OSI
+
+- type: accessGroup
+  id: NCRSGT
+  #Misfits Change /Fix/: NCR NCOs inherit base NCR access plus NCO spaces.
+  tags:
+  - NCR
+  - NCRSGT
+
+- type: accessGroup
+  id: NCRLT
+  #Misfits Change /Fix/: NCR officers inherit base, NCO, medical, and officer spaces.
+  tags:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+
+- type: accessGroup
+  id: NCRRanger
+  #Misfits Change /Fix/: NCR Rangers inherit their specialist access alongside shared NCR base access.
+  tags:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRRanger
+
+- type: accessGroup
+  id: NCRCaptain
+  # #Misfits Add: NCR Captain inherits all officer access plus Captain-level spaces.
+  tags:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  - NCRCaptain
+
+# #Misfits Add: NCR Major — top whitelist-only command billet above Captain.
+- type: accessLevel
+  id: NCRMajor
+  name: id-card-access-level-ncr-major
+
+- type: accessGroup
+  id: NCRMajor
+  # #Misfits Add: NCR Major inherits all Captain access plus Major-level command spaces.
+  tags:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  - NCRCaptain
+  - NCRMajor
+
+- type: accessGroup
+  id: NCRProvost
+  tags:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  - NCRCaptain
+  - NCRMajor
+  - NCRProvost

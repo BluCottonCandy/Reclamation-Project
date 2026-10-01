@@ -1,0 +1,43 @@
+- type: antag
+  id: Nukeops
+  name: roles-antag-nuclear-operative-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-nuclear-operative-objective
+
+- type: antag
+  id: NukeopsMedic
+  name: roles-antag-nuclear-operative-agent-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-nuclear-operative-agent-objective
+
+- type: antag
+  id: NukeopsCommander
+  name: roles-antag-nuclear-operative-commander-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-nuclear-operative-commander-objective
+
+#Lone Operative Gear
+- type: startingGear
+  id: SyndicateLoneOperativeGearFull
+  subGear:
+  - SyndicatePlasmamanGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: ClothingBackpackDuffelSyndicateOperative
+    mask: ClothingMaskGasSyndicate
+    eyes: ClothingEyesHudSyndicate
+    ears: ClothingHeadsetAltSyndicate
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitSyndie
+    shoes: ClothingShoesBootsCombatFilled
+    id: SyndiPDA
+    pocket1: DoubleEmergencyOxygenTankFilled
+    pocket2: BaseUplinkRadio40TC
+    belt: ClothingBeltMilitaryWebbing
+  innerClothingSkirt: ClothingUniformJumpskirtOperative
+  satchel: ClothingBackpackDuffelSyndicateOperative
+  duffelbag: ClothingBackpackDuffelSyndicateOperative

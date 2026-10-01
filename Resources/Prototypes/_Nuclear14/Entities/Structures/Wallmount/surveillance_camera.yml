@@ -1,0 +1,91 @@
+- type: entity
+  parent: SurveillanceCameraBase
+  id: N14SurveillanceCameraBrotherhoodWashington
+  name: camera
+  suffix: BrotherhoodWashington
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCameraBrotherhoodWashington
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: Sprite
+    drawdepth: Overdoors
+
+- type: entity
+  parent: SurveillanceCameraBase
+  id: N14SurveillanceCameraBrotherhoodMidwest
+  name: camera
+  suffix: BrotherhoodMidwest
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCameraBrotherhoodMidwest
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: Sprite
+    drawdepth: Overdoors
+
+- type: entity
+  parent: SurveillanceCameraBase
+  id: N14SurveillanceCameraNCR
+  name: camera
+  suffix: NCR
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCameraNCR
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: Sprite
+    drawdepth: Overdoors
+
+- type: entity
+  parent: SurveillanceCameraBase
+  id: N14SurveillanceCameraTown
+  name: camera
+  suffix: Town
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCameraTown
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: Sprite
+    drawdepth: Overdoors
+
+- type: entity
+  parent: SurveillanceCameraBase
+  id: N14SurveillanceCameraVault
+  name: camera
+  suffix: Vault
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCameraVault
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: Sprite
+    drawdepth: Overdoors
+
+- type: entity
+  parent: SurveillanceCameraBase
+  id: N14SurveillanceCameraZAX
+  name: camera
+  suffix: ZAX
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCameraZAX
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: StationAiVision
+  - type: StationAiWhitelist
+  - type: Sprite
+    drawdepth: Overdoors

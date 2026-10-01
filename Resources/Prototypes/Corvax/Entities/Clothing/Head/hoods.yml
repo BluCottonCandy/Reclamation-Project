@@ -1,0 +1,60 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatLegionHood
+  name: vexillarius helmet #Misfits Change /Rename/: Repurposed as the Vexillarius standard-bearer helmet
+  description: The distinctive crested hood-helm of the Legion's Vexillarius standard bearer.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Head/Hoods/vexillariushood.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Head/Hoods/vexillariushood.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: HideLayerClothing
+    slots:
+    - Hair
+
+#Misfits Change /Uncomment/: Re-enabled BoS recon hood — required by NCClothingOuterBosReconArmor toggleable clothing.
+- type: entity
+  parent: ClothingHeadBase
+  id: NCClothingHeadHatBoSReaconHood
+  name: Brotherhood of Steel Hood
+  description: The hood of the Brotherhood Scout
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Head/Hoods/bosReaconHood.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Head/Hoods/bosReaconHood.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+
+- type: entity
+  parent: N14ClothingHeadSuitbase
+  id: N14ClothingHeadHatHelmetRadHelmetEnclave
+  name: radiation suit helmet U.S. Army
+  description: A advance helmet used pre war to handle radioactive material.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Head/Hoods/enclavehelmetrad.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Head/Hoods/enclavehelmetrad.rsi
+  - type: IdentityBlocker
+  - type: BreathMask
+  - type: GasFilterMask
+  - type: IngestionBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.75
+  - type: Tag
+    tags:
+    - HidesHair
+    - HidesBeard

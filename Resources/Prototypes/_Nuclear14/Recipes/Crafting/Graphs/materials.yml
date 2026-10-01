@@ -1,0 +1,145 @@
+- type: constructionGraph
+  id: N14Cardboard
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: cardboard
+          steps:
+            - material: N14Paper
+              amount: 2
+    - node: cardboard
+      entity: MaterialCardboard1
+
+- type: constructionGraph
+  id: N14Paper
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: paper
+          steps:
+            - material: WoodPlank
+    - node: paper
+      entity: N14Paper
+
+# Produces 1 gunpowder unit from 1 sulfur powder + 1 coal + 1 fertilizer ore
+- type: constructionGraph
+  id: N14GunpowderCraft
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: gunpowder
+          steps:
+            - material: Sulfur
+              amount: 1
+            - material: Coal
+              amount: 1
+            - material: FertilizerOre
+              amount: 1
+    - node: gunpowder
+      entity: N14Gunpowder1
+
+# #Misfits Add: Floor tile construction graphs
+
+# Wood Floor Tiles
+- type: constructionGraph
+  id: N14FloorTileWoodOak
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: woodtileoak
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1
+    - node: woodtileoak
+      entity: FloorTileItemWoodOak
+
+- type: constructionGraph
+  id: N14FloorTileWoodHouse
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: woodtilehouse
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1
+    - node: woodtilehouse
+      entity: FloorTileItemWoodHouse
+
+- type: constructionGraph
+  id: N14FloorTileWoodMaple
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: woodtilemaple
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1
+    - node: woodtilemaple
+      entity: FloorTileItemWoodMaple
+
+# Metal Floor Tiles
+- type: constructionGraph
+  id: N14FloorTileMetalBlue
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: metaltileblue
+          steps:
+            - material: N14Iron
+              amount: 1
+              doAfter: 1
+    - node: metaltileblue
+      entity: FloorTileItemMetalBlue
+
+- type: constructionGraph
+  id: N14FloorTileMetalRed
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: metaltilered
+          steps:
+            - material: N14Iron
+              amount: 1
+              doAfter: 1
+    - node: metaltilered
+      entity: FloorTileItemMetalRed
+
+- type: constructionGraph
+  id: N14FloorTileMetalGreen
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: metaltilegreen
+          steps:
+            - material: N14Iron
+              amount: 1
+              doAfter: 1
+    - node: metaltilegreen
+      entity: FloorTileItemMetalGreen
+
+# Concrete Floor Tiles
+- type: constructionGraph
+  id: N14FloorTileConcreteOak
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: concretetileoak
+          steps:
+            - material: N14Concrete
+              amount: 1
+              doAfter: 2
+    - node: concretetileoak
+      entity: FloorTileItemWoodOak

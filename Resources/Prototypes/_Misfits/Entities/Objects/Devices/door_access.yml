@@ -1,0 +1,108 @@
+# FOTA
+- type: entity
+  parent: DoorElectronicsFotA
+  id: DoorElectronicsFotAHead
+  suffix: FotA Head, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["FotAHead"]]
+
+- type: entity
+  parent: DoorElectronicsFotA
+  id: DoorElectronicsFotADoctor
+  suffix: FotA Doctor, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["FotADoctor"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsFotA
+  suffix: FotA, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["FotA"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEnclaveRoleAll
+  suffix: Vault Doctor Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["EnclaveRoleAll"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEnclaveRoleScientist
+  suffix: Vault Engineer Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["EnclaveRoleScientist"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEnclaveRoleHeadScientist
+  suffix: Enclave Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["EnclaveRoleHeadScientist"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEnclaveRoleNCO
+  suffix: Vault Doctor Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["EnclaveRoleNCO"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEnclaveRoleJuniorOfficer
+  suffix: Vault Engineer Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["EnclaveRoleJuniorOfficer"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEnclaveRoleSeniorOfficer
+  suffix: Enclave Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["EnclaveRoleSeniorOfficer"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEnclaveRoleCommander
+  suffix: Enclave Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["EnclaveRoleCommander"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsNCRRanger
+  suffix: NCR Ranger Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["NCRRanger"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsNCRProvost
+  suffix: NCR Provost Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["NCRProvost"]]

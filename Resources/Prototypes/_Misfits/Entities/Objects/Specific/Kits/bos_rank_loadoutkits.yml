@@ -1,0 +1,367 @@
+#Misfits Change /Comment-out/: Washington BoS kit entities removed — will create new prototypes.
+#- type: entity
+#  id: BoSBrotherhoodElderKits
+#  name: Undecided Brotherhood Elder Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    #Misfits Change /Tweak/: Replaced removed Western BoS kit sets with Washington BoS sets.
+#    - CommandGatlingWashingtonBoSSet
+#    - CommandBaseWashingtonBoSSet
+#    - CommandWattzWashingtonBoSSet
+
+#- type: entity
+#  id: BoSBrotherhoodHeadPaladinKits
+#  name: Undecided Brotherhood Head Paladin Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - MBoS_PalSlay_Set
+#    - MBoS_PalBal_Set
+#    - MBoS_PalSni_Set
+
+#- type: entity
+#  id: BoSBrotherhoodHeadKnightKits
+#  name: Undecided Brotherhood Head Knight Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - CommandBaseWashingtonBoSSet
+#    - CommandCasterWashingtonBoSSet
+#    - CommandWattzWashingtonBoSSet
+
+#- type: entity
+#  id: BoSBrotherhoodHeadScribeKits
+#  name: Undecided Brotherhood Head Scribe Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    #Misfits Change /Tweak/: Replaced removed Western BoS scribe kit sets with Washington scribe sets.
+#    - ScribeEngineerWashingtonBoSSet
+#    - ScribeMedicWashingtonBoSSet
+
+- type: entity
+  id: BoSBrotherhoodSeniorPaladinKits
+  name: Undecided Brotherhood Senior Paladin Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    #- MBoS_KniLas_Set  #Misfits Tweak by bill: knight kits run crude lasers. palsni and palpla are the two choices for more elite brotherhood
+    - MBoS_PalLas_Set
+    - MBoS_PalBal_Set
+    - MBoS_PalSni_Set  #Misfits Remove: Bozar removed from all Paladin ranks
+    #- MBoS_PalPla_Set  #Misfits readd by bill: full auto AER-9 for paladins
+    #Misfits Tweak: Paladin-tier ranks use Bozar again instead of the Wattz 2000 option.
+    #- Misfits_PalWattz_Set
+
+- type: entity
+  id: BoSBrotherhoodSeniorKnightKits
+  name: Undecided Brotherhood Senior Knight Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MBoS_SKniLas_Set
+    - MBoS_SKniBal_Set
+    - MBoS_Recon_Set
+
+- type: entity
+  id: BoSBrotherhoodSeniorScribeKits
+  name: Undecided Brotherhood Senior Scribe Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MBoS_ScrMed_Set
+    - MBoS_ScrFld_Set
+    - MBoS_ScrEng_Set
+
+#Misfits Change /Comment-out/: Washington BoS Paladin kits removed — will create new prototypes.
+#- type: entity
+#  id: BoSBrotherhoodPaladinKits
+#  name: Undecided Brotherhood Paladin Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - WBoS_PalPla_Set
+#    - WBoS_PalBal_Set
+#    - WBoS_PalSni_Set
+#    - WBoS_PalLas_Set
+
+#Misfits Change /Comment-out/: Washington BoS Knight kits removed — will create new prototypes.
+#- type: entity
+#  id: BoSBrotherhoodKnightKits
+#  name: Undecided Brotherhood Knight Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - WBoS_KniPla_Set
+#    - WBoS_KniBal_Set
+
+#Misfits Change /Comment-out/: Washington BoS Scribe kits removed — will create new prototypes.
+#- type: entity
+#  id: BoSBrotherhoodScribeKits
+#  name: Undecided Brotherhood Scribe Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - WBoS_ScrMed_Set
+#    - WBoS_ScrFld_Set
+#    - WBoS_ScrEng_Set
+
+- type: entity
+  id: BoSBrotherhoodSquireKits
+  name: Undecided Brotherhood Squire Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    #Misfits Change /Tweak/: Squire gets wattz pistol + combat knife kit instead of initiate rifle kits.
+    - Misfits_SqrBasic_Set
+
+#Misfits Change /Comment-out/: Washington BoS Initiate kits removed — will create new prototypes.
+#- type: entity
+#  id: BoSBrotherhoodInitiateKits
+#  name: Undecided Brotherhood Initiate Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - WBoS_IniPla_Set
+#    - WBoS_IniBal_Set
+
+#Misfits Change /Add/: New consolidated Brotherhood loadout kit entities using MBoS weapon sets.
+- type: entity
+  id: BoSBrotherhoodElderKits
+  name: Undecided Brotherhood Elder Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MBoS_PalPla_Set
+    - MBoS_PalSni_Set
+    - MBoS_PalLas_Set
+    - MBoS_PalBal_Set
+    #Misfits Tweak: Paladin-tier ranks use Bozar again instead of the Wattz 2000 option.
+    - Misfits_PalWattz_Set
+
+- type: entity
+  id: BoSBrotherhoodHeadPaladinKits
+  name: Undecided Brotherhood Head Paladin Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    #- MBoS_KniLas_Set  #Misfits Tweak: AER-9 (was AER-14 PalPla)
+    - MBoS_PalSlay_Set
+    #- MBoS_PalPla_Set
+    - MBoS_PalBal_Set
+    - MBoS_PalSni_Set  #Misfits readd by Bill: AER-9 for elites.
+    #Misfits Tweak: Paladin-tier ranks use Bozar again instead of the Wattz 2000 option.
+    #- Misfits_PalWattz_Set
+
+- type: entity
+  id: BoSBrotherhoodHeadKnightKits
+  name: Undecided Brotherhood Head Knight Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - Head_KniBun_Set
+    - Head_KniSup_Set
+
+- type: entity
+  id: BoSBrotherhoodHeadScribeKits
+  name: Undecided Brotherhood Head Scribe Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - Head_ScrMed_Set
+    - Head_ScrFld_Set
+    - Head_ScrEng_Set
+
+- type: entity
+  id: BoSBrotherhoodPaladinKits
+  name: Undecided Brotherhood Paladin Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    #- MBoS_KniLas_Set  #Misfits Tweak: AER-14 replaced with AER-9 (KniLas)
+    - MBoS_PalLas_Set
+    - MBoS_PalBal_Set
+    - MBoS_PalSni_Set  #Misfits Remove: Bozar removed from all Paladin ranks
+    #- MBoS_PalPla_Set  #Misfits Remove: AER-14 replaced by KniLas (AER-9) above
+    #Misfits Tweak: Paladin-tier ranks use Bozar again instead of the Wattz 2000 option.
+    #- Misfits_PalWattz_Set
+
+- type: entity
+  id: BoSBrotherhoodKnightKits
+  name: Undecided Brotherhood Knight Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MBoS_KniLas_Set
+    - MBoS_KniBal_Set
+    #- MBoS_PalSni_Set  # #Misfits Removed - Bozar moved to T4 craftable blueprint
+
+- type: entity
+  id: BoSBrotherhoodScribeKits
+  name: Undecided Brotherhood Scribe Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MBoS_ScrMed_Set
+    - MBoS_ScrFld_Set
+    - MBoS_ScrEng_Set
+
+#Misfits Change /Tweak/: Initiate only gets one option (wattz pistol kit).
+- type: entity
+  id: BoSBrotherhoodInitiateKits
+  name: Undecided Brotherhood Initiate Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MBoS_IniLas_Set
+
+#Misfits Change /Add/: New Squire kit — wattz pistol + combat knife. Separate from initiate.
+- type: entity
+  name: BoS Squire Basic Kit
+  parent: KitBase
+  id: KitMisfits_SqrBasic
+  description: A crate containing a sidearm and blade for Brotherhood Squires.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponSMG10mm
+      - id: N14MagazineSMG10mm
+        amount: 2
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall # #Misfits Fix - was N14MicrofusionCellRed (wrong ammo type for AEP-7)
+        amount: 2
+      - id: N14CombatKnife
+      - id: N14ClothingEyesGlassesWelding
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+- type: UndecidedLoadoutBackpackSet
+  id: Misfits_SqrBasic_Set
+  name: undecided-loadout-category-misfits-sqr-basic-name
+  description: undecided-loadout-category-misfits-sqr-basic-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitMisfits_SqrBasic
+
+#Misfits Tweak: Restored the Bozar to the shared paladin kit because the Wattz 2000 was overtuned.
+- type: entity
+  name: BoS Paladin Bozar Kit
+  parent: KitBase
+  id: KitMisfits_PalWattz
+  description: A crate containing a Bozar and sidearm for Brotherhood Paladins.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRifleBozarGRA
+      - id: LMGMagazine556Rifle
+        amount: 1
+      - id: N14WeaponPistol12mm
+      - id: N14MagazinePistol12mm
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+- type: UndecidedLoadoutBackpackSet
+  id: Misfits_PalWattz_Set
+  name: undecided-loadout-category-misfits-pal-wattz-name
+  description: undecided-loadout-category-misfits-pal-wattz-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - KitMisfits_PalWattz

@@ -1,0 +1,19 @@
+- type: entity
+  id: N14Bullet10mm
+  name: bullet (10mm)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective # #Misfits Change Add: 10mm pistol round is sub-5.56mm class; ricochets off power armor.
+    reflective:
+      - SmallCaliber
+      - NonEnergy
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 15
+  # Misfits Add - 10mm hot pistol round; slightly better range retention than 9mm
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 7.0
+    maxFalloffTiles: 14.0
+    minDamageMultiplier: 0.50

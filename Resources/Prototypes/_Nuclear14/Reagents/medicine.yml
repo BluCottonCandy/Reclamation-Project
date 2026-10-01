@@ -1,0 +1,656 @@
+#MARK: Healing
+- type: reagent
+  id: HealingMixture #used in regular stimpacks
+  #Misfits Change /Fix:/ aligned metabolism effects list items under the same sequence.
+  name: reagent-name-healing-mixture
+  group: Chems
+  desc: reagent-desc-healing-mixture
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#934435"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1.0
+      effects:
+        - !type:AmbientDrugFlavorText
+          cooldownId: HealingMixtureAmbient
+          cooldown: 45
+          messageKeys:
+          - drug-ambience-healing-mixture-1
+          - drug-ambience-healing-mixture-2
+        - !type:HealthChange
+          damage:
+            groups:
+              Burn: -9 # 9/3 = 3 | 3*25 = 75 of every type in 25 seconds.
+              Brute: -9 # 9/3 = 3 | 3*25 = 75 of every type in 25 seconds.
+              Airloss: -3
+        - !type:ModifyBleedAmount
+          amount: -2
+        - !type:ChemVomit
+          conditions:
+          - !type:ReagentThreshold
+            min: 30
+
+- type: reagent
+  id: DirtyStimpak
+  name: reagent-name-dirty-stimpak
+  group: Chems
+  desc: reagent-desc-dirty-stimpak
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#934435"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: DirtyStimpakAmbient
+        cooldown: 45
+        messageKeys:
+        - drug-ambience-dirty-stimpak-1
+        - drug-ambience-dirty-stimpak-2
+      - !type:GenericStatusEffect # Misfits Add: mark entity as having an active recovery drug — enables 2s crit stand-up
+        key: RecoveryDrugActive
+        component: RecoveryDrugActiveComponent
+        type: Add
+        time: 3
+        refresh: true
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -2.0
+            Brute: -2.0
+            Airloss: -2.0
+          types:
+            Radiation: 0.25
+            Poison: 0.25
+      - !type:ModifyBleedAmount
+        amount: -1
+      - !type:HealthChange # to prevent doping
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        damage:
+          groups:
+            Burn: -1.0
+            Brute: -1.0
+            Airloss: -1.0
+          types:
+            Poison: 0.75
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 50
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        damage:
+          types:
+            Poison: 1
+
+- type: reagent
+  id: HealingPowder
+  name: reagent-name-healing-powder
+  group: Chems
+  desc: reagent-desc-healing-powder
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#00e5ff"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1 # Slow
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: HealingPowderAmbient
+        cooldown: 150 # Misfits Tweak: raised from 55 — was flooding chat when multiple doses stacked
+        messageKeys:
+        - drug-ambience-healing-powder-1
+        - drug-ambience-healing-powder-2
+        - drug-ambience-healing-powder-3
+      - !type:GenericStatusEffect
+        key: HealingPowderHaze
+        component: HealingPowderHaze
+        type: Add
+        time: 14
+        refresh: true # Misfits Fix: was false — caused 14s effect to expire then re-add on every metabolism tick, looping the blur forever
+      - !type:GenericStatusEffect # Misfits Add: mark entity as having an active recovery drug — enables 2s crit stand-up
+        key: RecoveryDrugActive
+        component: RecoveryDrugActiveComponent
+        type: Add
+        time: 3
+        refresh: true
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -1.5
+            Brute: -2.5
+      - !type:ModifyBleedAmount
+        amount: -0.5
+      - !type:ChemVomit
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+      - !type:SuppressChronicPainReagent
+        SuppressionTime: 300
+
+# Strong overtime healing
+- type: reagent
+  id: TraumaPowder
+  name: reagent-name-healing-powder
+  group: Medicine
+  desc: reagent-desc-healing-powder
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#00e5ff"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1 # Slow
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: TraumaPowderAmbient
+        cooldown: 55
+        messageKeys:
+        - drug-ambience-trauma-powder-1
+        - drug-ambience-trauma-powder-2
+      - !type:GenericStatusEffect # Misfits Add: mark entity as having an active recovery drug — enables 2s crit stand-up
+        key: RecoveryDrugActive
+        component: RecoveryDrugActiveComponent
+        type: Add
+        time: 3
+        refresh: true
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -1.5
+            Brute: -2.5
+            Airloss: -2
+          types:
+            Poison: -1
+      - !type:ModifyBleedAmount
+        amount: -0.5
+
+# Poison
+- type: reagent
+  id: AntidoteWeak
+  name: reagent-name-antidote-mixture
+  group: Chems
+  desc: reagent-desc-antidote-mixture
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#982d1e"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Slow
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: AntidoteWeakAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-antidote-mixture-1
+        - drug-ambience-antidote-mixture-2
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: -1 # Misfits Change - the basic Antidote Mix heals poison only now.
+      - !type:ChemVomit
+        probability: 0.01 # TODO: rework antidotes to heal rad/poison by vomitting
+
+- type: reagent
+  id: Antidote
+  name: reagent-name-antidote
+  group: Chems
+  desc: reagent-desc-antidote
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#D41244"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Slow
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: AntidoteAmbient
+        cooldown: 40
+        messageKeys:
+        - drug-ambience-antidote-1
+        - drug-ambience-antidote-2
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: -2 # Misfits Change - refined Antidote now heals poison more efficiently while also healing some rads.
+            Radiation: -0.5
+
+
+- type: reagent
+  id: RobustHealingMixture #used in super stimpacks
+  name: reagent-name-robust-healing-mixture
+  group: Chems
+  desc: reagent-desc-robust-healing-mixture
+  physicalDesc: reagent-physical-desc-gleaming
+  color: "#ff113a"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: RobustHealingMixtureAmbient
+        cooldown: 40
+        messageKeys:
+        - drug-ambience-robust-healing-mixture-1
+        - drug-ambience-robust-healing-mixture-2
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -9 # 150 healing of every type over 50 seconds
+            Brute: -9 # 150 healing of every type over 50 seconds
+            Airloss: -4.5
+      - !type:ModifyBleedAmount
+        amount: -3
+      - !type:HealthChange # Taking 2 is more or less a guaranteed death
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        damage:
+          groups:
+            Burn: -1.5
+            Brute: -1.5
+            Airloss: -1.5
+          types:
+            Poison: 5
+            Cellular: 0.75 # permanent damage, be glad you aint dead
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.50
+        sprintSpeedModifier: 0.50
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+      # !type:Drunk — #Misfits Tweak: Removed. TryAddTime stacks per tick → multi-minute overlay on OD.
+      # MovespeedModifier above already communicates the OD state visually.
+      # conditions:
+      # - !type:ReagentThreshold
+      #   min: 30
+
+# Radiation
+- type: reagent
+  id: RadAway
+  name: reagent-name-radaway
+  group: Chems
+  desc: reagent-desc-radaway
+  physicalDesc: reagent-physical-desc-oily
+  color: "#ff9000"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: RadAwayAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-radaway-1
+        - drug-ambience-radaway-2
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -2
+      - !type:ModifyFeralization    # Misfits Add
+        delta: -1
+
+- type: reagent
+  id: RadAwayDiluted
+  name: reagent-name-diluted-radaway
+  group: Chems
+  desc: reagent-desc-diluted-radaway
+  physicalDesc: reagent-physical-desc-oily
+  color: "#ffbb60"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: RadAwayDilutedAmbient
+        cooldown: 55
+        messageKeys:
+        - drug-ambience-radaway-diluted-1
+        - drug-ambience-radaway-diluted-2
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -1
+      - !type:ModifyFeralization    # Misfits Add
+        delta: -0.5
+
+- type: reagent
+  id: CleansingPowder
+  name: reagent-name-cleansing-powder
+  group: Chems
+  desc: reagent-desc-cleansing-powder
+  physicalDesc: reagent-physical-desc-scouring
+  color: "#163018"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1 # Effectively once every 10 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: CleansingPowderAmbient
+        cooldown: 25
+        messageKeys:
+        - drug-ambience-cleansing-powder-1
+        - drug-ambience-cleansing-powder-2
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -0.5
+      - !type:ModifyFeralization  # Misfits Add - Cleansing powder is bargain bin anti-rad, it can only buy you time
+        delta: -0.3
+        minimumThreshold: 80
+      - !type:GenericStatusEffect
+        key: Drowsiness
+        component: Drowsiness
+        time: 2
+        type: Add
+        refresh: false
+
+- type: reagent
+  id: RadX
+  name: reagent-name-rad-x # Should provide a radiation resistance instead of healing it
+  group: Chems
+  desc: reagent-desc-rad-x
+  physicalDesc: reagent-physical-desc-soapy
+  color: "#ba4900"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1 # Effectively once every 10 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: RadXAmbient
+        cooldown: 55
+        messageKeys:
+        - drug-ambience-radx-1
+        - drug-ambience-radx-2
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -1
+      - !type:ModifyFeralization    # Misfits Add
+        delta: -0.2
+        minimumThreshold: 50
+
+# Other
+- type: reagent
+  id: Fixer
+  name: reagent-name-fixer
+  group: Chems
+  desc: reagent-desc-fixer
+  physicalDesc: reagent-physical-desc-volatile
+  color: "#612f9e"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1 # Effectively once every 10 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: FixerAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-fixer-1
+        - drug-ambience-fixer-2
+      - !type:GenericStatusEffect # Remove this block when !type:CureAddiction is functional
+        key: Drunk
+        time: 6.0
+        type: Remove
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: -0.5
+      - !type:SuppressAddiction #Misfits Change
+        time: 30
+     # - !type:Drunk
+     # - !type:CureAddiction
+
+# - type: reagent
+#   id: Addictol
+#   name: TBD
+#   group: Medicine
+#   desc: TBD
+#   physicalDesc: reagent-physical-desc-soothing
+#   color: "#e8fffe"
+#   metabolisms:
+#     Medicine:
+#       effects:
+#       - !type:CureAddiction
+
+- type: reagent
+  id: SmellingSalts
+  name: reagent-name-smelling-salts
+  group: Chems
+  desc: reagent-desc-smelling-salts
+  physicalDesc: reagent-physical-desc-strong-smelling
+  color: "#e1f5f4"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Slow Acting
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: SmellingSaltsAmbient
+        cooldown: 25
+        messageKeys:
+        - drug-ambience-smelling-salts-1
+        - drug-ambience-smelling-salts-2
+      - !type:HealthChange # Base Airloss fixing
+        damage:
+          types:
+            Asphyxiation: -5
+            Cold: -2
+      - !type:HealthChange # Conditional Epinephrine-like bonus on unconscious
+        conditions:
+        - !type:MobStateCondition
+          mobstate: Critical
+        - !type:ReagentThreshold
+          min: 0
+          max: 20
+        damage:
+          types:
+            Asphyxiation: -3
+            Poison: -0.5
+          groups:
+            Brute: -0.5
+            Burn: -0.5
+      - !type:HealthChange # 20u threshold
+        conditions:
+        - !type:ReagentThreshold
+          min: 20
+        damage:
+          types:
+            Asphyxiation: 3
+            Poison: 1
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 0.75
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 0.75
+        type: Remove
+      - !type:Jitter
+      - !type:ChemVomit
+        probability: 0.05
+
+- type: reagent
+  id: HealingPoultice
+  name: reagent-name-healing-poultice
+  group: Chems
+  desc: reagent-desc-healing-poultice
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#24b530"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: HealingPoulticeAmbient
+        cooldown: 150 # Misfits Tweak: raised from 50 — was flooding chat when multiple doses stacked
+        messageKeys:
+        - drug-ambience-healing-poultice-1
+        - drug-ambience-healing-poultice-2
+      - !type:GenericStatusEffect # Misfits Add: mark entity as having an active recovery drug — enables 2s crit stand-up
+        key: RecoveryDrugActive
+        component: RecoveryDrugActiveComponent
+        type: Add
+        time: 3
+        refresh: true
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -4.5
+            Brute: -4.5
+            Airloss: -1
+      - !type:ModifyBleedAmount
+        amount: -2
+      # !type:Drunk — #Misfits Tweak: Removed. TryAddTime accumulates per metabolism tick, causing ~10 min overlay.
+      # HealingPoultice is a medicine not a drink; Jitter below already signals discomfort without screen distortion.
+      - !type:Jitter
+      - !type:ChemVomit
+        conditions:
+        - !type:ReagentThreshold
+          min: 26
+      # #Misfits Add - OD threshold: drinking poultice in bulk causes poison damage
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        - !type:MobStateCondition
+        damage:
+          types:
+            Poison: 1.5
+
+- type: reagent
+  id: Bitterdrink
+  name: reagent-name-bitterdrink
+  group: Chems
+  desc: reagent-desc-bitterdrink
+  physicalDesc: reagent-physical-desc-sticky
+  color: "#ba67f5"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: BitterdrinkAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-bitterdrink-1
+        - drug-ambience-bitterdrink-2
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -0.5
+            Poison: -1
+      - !type:Emote
+        emote: Cough
+        showInChat: true
+        probability: 0.05
+      - !type:ChemVomit
+        probability: 0.05
+        conditions:
+        - !type:ReagentThreshold
+          min: 25
+      - !type:ModifyFeralization
+        delta: -0.5
+        minimumThreshold: 80
+
+- type: reagent
+  id: UltraRobustHealingMixture
+  name: reagent-name-ultra-robust-healing-mixture
+  group: Chems
+  desc: reagent-desc-ultra-robust-healing-mixture
+  physicalDesc: reagent-physical-desc-overpowering
+  color: "#934435"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: UltraRobustHealingMixtureAmbient
+        cooldown: 35
+        messageKeys:
+        - drug-ambience-ultra-robust-healing-mixture-1
+        - drug-ambience-ultra-robust-healing-mixture-2
+      - !type:GenericStatusEffect # Misfits Add: mark entity as having an active recovery drug — enables 2s crit stand-up
+        key: RecoveryDrugActive
+        component: RecoveryDrugActiveComponent
+        type: Add
+        time: 3
+        refresh: true
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -12.5
+            Brute: -12.5
+            Airloss: -12.5
+            Toxin: 0.75
+      - !type:ModifyBleedAmount
+        amount: -4
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        damage:
+          groups:
+            Burn: -15 # Temporary invincibility more or less
+            Brute: -15
+            Airloss: -15
+          types:
+            Poison: 4.5
+            Cellular: 3 # Congratulations. Still revivable, but permanently fucked
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.40
+        sprintSpeedModifier: 0.40
+        conditions:
+        - !type:ReagentThreshold
+          min: 25
+      # !type:Drunk — #Misfits Tweak: Removed. Same TryAddTime stacking issue as HealingPoultice — OD duration causes indefinite overlay.
+      # MovespeedModifier above already signals the OD state.
+      # conditions:
+      # - !type:ReagentThreshold
+      #   min: 25
+
+- type: reagent
+  id: Epoetine
+  name: reagent-name-epoetine
+  desc: reagent-desc-epoetine
+  physicalDesc: reagent-physical-desc-refreshing
+  color: "#0041a8"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Asphyxiation: -1
+            Bloodloss: -0.5
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 20
+        damage:
+          types:
+            Asphyxiation: 3
+            Cold: 1
+
+- type: reagent
+  id: BetaEpoetine
+  name: reagent-name-beta-epoetine
+  desc: reagent-desc-beta-epoetine
+  physicalDesc: reagent-physical-desc-tangy
+  color: "#4da0bd"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Asphyxiation: -3.5
+            Bloodloss: -3
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentThreshold
+          reagent: HeartbreakerToxin
+          min: 1
+        reagent: HeartbreakerToxin
+        amount: -3
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 25
+        damage:
+          types:
+            Asphyxiation: 5
+            Cold: 3

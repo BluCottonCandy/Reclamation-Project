@@ -1,0 +1,69 @@
+- type: job
+  id: BoSMidPaladinCommander
+  setPreference: true
+  hideWithoutJobWhitelist: false # #Misfits Tweak - BoS Heads not whitelisted
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 110
+  showBorder: true
+  overrideConsoleVisibility: false
+  canBeAntag: true
+  name: job-name-bos-mid-paladin-comm
+  overwatchCategory: OverwatchBosPaladin
+  description: job-description-bos-mid-paladin-comm
+  playTimeTracker: BoSMidPaladinCommander
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h BoS)
+      department: BrotherhoodOfSteel
+      min: 144000 # 40 hours
+    - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Senior Paladin before Head Paladin
+      tracker: BoSMidPaladin
+      min: 28800 # 8 hours as Senior Paladin
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSMidSquire
+      min: 36000 # 10 hours
+  startingGear: BoSMidPaladinCommanderGear
+  alwaysUseSpawner: true
+  icon: "JobIconBosMCommander" # Corvax-Change
+  supervisors: job-supervisors-bos-mid-commander
+  accessGroups:
+  - BOSHeadPaladin
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - BrotherhoodOfSteel
+      - type: PowerArmorProficiency
+      - type: LanguageKnowledge # #Misfits Add: Heads understand Brotherhood binary code by default.
+        speaks:
+        - English
+        understands:
+        - English
+        - N14BrotherBeep
+
+- type: startingGear
+  id: BoSMidPaladinCommanderGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformBosRecon  #Misfits Change /Tweak/: New consolidated BoS gear
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    head: N14ClothingPaladinBeret
+    outerClothing: N14ClothingOuterPowerArmorWashT51Elite #Misfits Tweak: Head Paladin wears T-51b (was T-51BC commander)
+    hands: N14ClothingHandsGlovesCombat
+    pocket1: BoSBrotherhoodHeadPaladinKits
+    id: N14HeadPaladin_PipBoy
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
+    belt: MisfitsClothingBeltPaladinWebbing
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+    - MisfitsGrenadePlasma # #Misfits Add - faction council Head Paladin ordnance
+    - GrenadeIncendiary
+
+- type: playTimeTracker
+  id: BoSMidPaladinCommander

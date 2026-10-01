@@ -1,0 +1,329 @@
+- type: entity
+  name: "vinyl disk: Louis Armstrong - A Kiss to Build A Dream On"
+  id: VinylDiskAKissToBuildADreamOn
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/a_kiss_to_build_a_dream_on.ogg
+
+- type: entity
+  name: "vinyl disk: Tex Beneke - A Wonderful Guy"
+  id: VinylDiskTexBenekeGuy
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_texbeneke_guy_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Dean Martin - Ain't That A Kick In The Head"
+  id: VinylDiskAintThatAKickInTheHead
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/MUS_Aint_That_A_Kick_In_the_Head.ogg
+
+- type: entity
+  name: "vinyl disk: America the Beautiful"
+  id: VinylDiskPatrioticAmerica
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_America.ogg 
+
+- type: entity
+  name: "vinyl disk: Gerhard Trede - American Swing"
+  id: VinylDiskAmericanSwing
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/MUS_American_Swing.ogg
+
+- type: entity
+  name: "vinyl disk: Cole Porter - Anything Goes"
+  id: VinylDiskColePorterAnything
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_coleporter_anything_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Marty Robins - Big Iron"
+  id: VinylDiskBigIron
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/MUS_Big_Iron.ogg
+
+- type: entity
+  name: "vinyl disk: Roy Brown - Butcher Pete (Pt. 1)"
+  id: VinylDiskRoyBrownButcher
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_roybrown_butcher_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Danny Kaye - Civilization"
+  id: VinylDiskDannyKayeCivilization
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_dannykaye_civilization_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Billie Holiday - Crazy He Calls Me"
+  id: VinylDiskBillieHolidayCrazy
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_billieholiday_crazy_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Dixie"
+  id: VinylDiskPatrioticDixie
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_Dixie.ogg
+
+- type: entity
+  name: "vinyl disk: Billie Holiday - Easy Living"
+  id: VinylDiskBillieHolidayEasy
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_billieholiday_easy_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Gerhard Trede - Fox Boggie"
+  id: VinylDiskGenericFox
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_fox_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Hail Columbia"
+  id: VinylDiskPatrioticPresidential
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_Presidential.ogg
+
+- type: entity
+  name: "vinyl disk: Halls of Montezuma"
+  id: VinylDiskPatrioticMontezuma
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_Montezuma.ogg
+
+- type: entity
+  name: "vinyl disk: Bob Crosby - Happy Times"
+  id: VinylDiskBobCrosbyHappy
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_bobcrosby_happy_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Inkspots - I Don't Want to Set the World on Fire"
+  id: VinylDiskInkspotsIDont
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_inkspots_idont_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Billy Munn - Jazzy Interlude"
+  id: VinylDiskGenericJazzy
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_jazzy_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Kay Kyser - Jingle Jangle Jingle"
+  id: VinylDiskJingleJangleJingle
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/MUS_Jingle_Jangle_Jingle.ogg
+
+- type: entity
+  name: "vinyl disk: Georges Tesperin - Joe Cool"
+  id: VinylDiskJoeCool
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/MUS_Joe_Cool_CAS.ogg
+
+- type: entity
+  name: "vinyl disk: Peggy Lee - Johnny Guitar"
+  id: VinylDiskJohnnyGuitar
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/MUS_Johnny_Guitar.ogg
+
+- type: entity
+  name: "vinyl disk: Jack Shaindlin - Let's Go Sunning"
+  id: VinylDiskGenericSunning
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_sunning_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Roy Brown - Mighty Mighty Man"
+  id: VinylDiskRoyBrownMighty
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_roybrown_mighty_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Bing Crosby - Something's Gotta Give"
+  id: VinylDiskSomethingsGottaGive
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Lobby/MUS_Somethings_Gotta_Give.ogg
+
+- type: entity
+  name: "vinyl disk: Allan Gray - Swing Dooors"
+  id: VinylDiskGenericSwing
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_boogie_mono.ogg
+
+- type: entity
+  name: "vinyl disk: The Battle Hymn of the Republic"
+  id: VinylDiskBattleHymn
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_BattleHymn_mono.ogg
+
+- type: entity
+  name: "vinyl disk: The Stars and Stripes Forever"
+  id: VinylDiskPatrioticStars
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_Stars.ogg
+
+- type: entity
+  name: "vinyl disk: The Washington Post"
+  id: VinylDiskPatrioticWashington
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_Washington.ogg
+
+- type: entity
+  name: "vinyl disk: Bob Crosby - Way Back Home"
+  id: VinylDiskBobCrosbyWay
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/Fallout3/mus_bobcrosby_way_mono.ogg
+
+- type: entity
+  name: "vinyl disk: Yankee Doodle"
+  id: VinylDiskPatrioticYankee
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: cyan-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_Nuclear14/Music/MUS_Patriotic_Yankee.ogg

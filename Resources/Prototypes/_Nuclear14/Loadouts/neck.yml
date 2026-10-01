@@ -1,0 +1,248 @@
+ - type: loadout
+   id: N14LoadoutNeckCloakLeather
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterDepartmentRequirement
+       inverted: true
+       departments:
+       - Vault
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - N14ClothingNeckCloakLeather
+
+ - type: loadout
+   id: N14LoadoutNeckMantleLeather
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - N14ClothingNeckMantleLeather
+
+ - type: loadout
+   id: N14LoadoutNeckCloakDarkCloak
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - N14ClothingNeckCloakDarkCloak
+
+ - type: loadout
+   id: ClothingNeckScarfStripedBlack
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - ClothingNeckScarfStripedBlack
+
+ - type: loadout
+   id: ClothingNeckTribalCloak
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - N14ClothingNeckTribalCloak
+
+ - type: loadout
+   id: ClothingNeckTribalCloakBr
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - N14ClothingNeckTribalCloakBr
+
+ - type: loadout
+   id: ClothingNeckShawl
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - N14ClothingNeckShawl
+
+ - type: loadout
+   id: ClothingNeckScarfStripedRed
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - ClothingNeckScarfStripedRed
+
+ - type: loadout
+   id: ClothingNeckScarfStripedBlue
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - ClothingNeckScarfStripedBlue
+
+ - type: loadout
+   id: ClothingNeckScarfStripedGreen
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - ClothingNeckScarfStripedGreen
+
+ - type: loadout
+   id: ClothingNeckScarfStripedBrown
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - ClothingNeckScarfStripedBrown
+
+ - type: loadout
+   id: ClothingNeckScarfStripedLightBlue
+   category: Accessories
+   cost: 0
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+     - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+   items:
+     - ClothingNeckScarfStripedLightBlue
+
+ - type: loadout
+   id: ClothingNeckBellCollar
+   category: Accessories
+   cost: 25 # It's annoying but funny
+   exclusive: true
+   customColorTint: true
+   requirements:
+     - !type:CharacterItemGroupRequirement
+       group: N14LoadoutNeck
+   items:
+     - ClothingNeckBellCollar
+

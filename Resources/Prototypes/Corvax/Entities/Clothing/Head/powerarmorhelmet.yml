@@ -1,0 +1,105 @@
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT51
+  id: N14ClothingHeadHelmetPowerArmorT51China
+  name: Chinese power armor helmet
+  description: A T-51 model power armor helmet, painted in the colors of the Communist Party.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Corvax/Clothing/Head/PowerArmorHelmets/t51сhina.rsi
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT51
+  id: N14ClothingHeadHelmetPowerArmorT51NCR
+  name: t-51 NCR power armor helmet
+  description: A rugged helmet used by the NCR with their modified T-51 power armor. Designed for durability and reliability in the field.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Corvax/Clothing/Head/PowerArmorHelmets/t51NCR.rsi
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT60
+  id: N14ClothingHeadHelmetPowerArmorT60NCR
+  name: t-60 NCR power armor helmet
+  description: A standard-issue helmet used by the NCR with their T-60 power armor. Provides solid protection and comfort for long deployments.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Corvax/Clothing/Head/PowerArmorHelmets/t60NCR.rsi
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorX01
+  id: N14ClothingHeadHelmetPowerArmorX01NCR
+  name: x-01 NCR power armor helmet
+  description: A high-tech helmet used by the NCR with their advanced X-01 power armor. Offers superior protection and advanced features for elite troops.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Corvax/Clothing/Head/PowerArmorHelmets/x01NCR.rsi
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorX02
+  id: N14ClothingHeadHelmetPowerArmorX02Tesla
+  # #Misfits Change - Renamed X-02 -> APA MK II
+  name: APA MK II tesla power armor helmet
+  description: The U.S. Army Mark II Powered Combat Armor helmet.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Corvax/Clothing/Head/PowerArmorHelmets/x02Tesla.rsi
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: N14ClothingHeadHelmetPowerArmorT45Sierra
+  name: T45 Sierra power armor helmet
+  description: The legendary T-45 Sierra power armor helmet. A symbol of the pre-war era, this rare piece combines classic protection with upgraded electronics for frontline combat superiority.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Corvax/Clothing/Head/PowerArmorHelmets/T45Siera.rsi
+
+#Misfits Change /Comment-out/: Western BoS PA helmets removed — no Western BoS chapter in Misfits.
+#- type: entity
+#  parent: N14ClothingHeadHelmetPowerArmorT45
+#  id: N14ClothingHeadHelmetPowerArmorT45WestBOS
+#  name: T-45 Western BoS Power Armor Helmet
+#  description: The legendary T-45 Sierra power armor helmet. A symbol of the pre-war era, this rare piece combines classic protection with upgraded electronics for frontline combat superiority.
+#  components:
+#  - type: Sprite
+#    netsync: false
+#    sprite: Corvax/Clothing/Head/PowerArmorHelmets/t45westbos.rsi
+#  - type: WastelandMap
+#    mapTexturePath: _Misfits/Maps/wendover_map.png
+#    mapTitle: Brotherhood Tactical HUD
+#    worldBounds: "-517,-308,484,311"
+#    tacticalFeed: Brotherhood
+#    compactHud: true
+#  - type: WastelandMapAction
+#    requiredSlot: HEAD
+#  - type: UserInterface
+#    interfaces:
+#      enum.WastelandMapUiKey.Key:
+#        type: WastelandMapBoundUserInterface
+#
+#- type: entity
+#  parent: N14ClothingHeadHelmetPowerArmorT51
+#  id: N14ClothingHeadHelmetPowerArmorT51WestBOSElder
+#  name: T51 Elder power armor helmet
+#  description: The legendary T-45 Sierra power armor helmet. A symbol of the pre-war era, this rare piece combines classic protection with upgraded electronics for frontline combat superiority.
+#  components:
+#  - type: Sprite
+#    netsync: false
+#    sprite: Corvax/Clothing/Head/PowerArmorHelmets/t51westboselder.rsi
+#  - type: WastelandMap
+#    mapTexturePath: _Misfits/Maps/wendover_map.png
+#    mapTitle: Brotherhood Tactical HUD
+#    worldBounds: "-517,-308,484,311"
+#    tacticalFeed: Brotherhood
+#    compactHud: true
+#  - type: WastelandMapAction
+#    requiredSlot: HEAD
+#  - type: UserInterface
+#    interfaces:
+#      enum.WastelandMapUiKey.Key:
+#        type: WastelandMapBoundUserInterface

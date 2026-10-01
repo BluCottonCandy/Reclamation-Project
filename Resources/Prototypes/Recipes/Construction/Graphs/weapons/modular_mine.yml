@@ -1,0 +1,71 @@
+- type: constructionGraph
+  id: ModularMineGraph
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: emptyCase
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 1
+
+  - node: emptyCase
+    entity: LandMineModular
+    edges:
+    - to: wiredCase
+      steps:
+      - material: Cable
+        doAfter: 1
+      - tag: SensorModule #Misfits Change: Use the SensorModules
+        icon:
+          sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi #Misfits Change: Use the SensorModules
+          state: sensor_module #Misfits Change: Use the SensorModules
+        name: sensormodule #Misfits Change: Use the SensorModules
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      - !type:DeleteEntity
+      steps:
+      - tool: Welding
+        doAfter: 2
+
+  - node: wiredCase
+    entity: LandMineModular
+    actions:
+    - !type:PlaySound
+      sound: /Audio/Machines/button.ogg
+    edges:
+    - to: emptyCase
+      steps:
+      - tool: Cutting
+        doAfter: 1
+        completed:
+        - !type:SpawnPrototype
+          prototype: CableApcStack1
+        - !type:SpawnPrototype
+          prototype: N14JunkComponentSensorModule #Misfits Change: Use the SensorModules
+    - to: mine
+      steps:
+      - tag: Payload
+        store: payload
+        name: Payload
+        doAfter: 1
+
+  - node: mine
+    actions:
+    - !type:PlaySound
+      sound: /Audio/Machines/button.ogg
+    - !type:AdminLog
+      message: "A mine was crafted"
+    edges:
+    - to: wiredCase
+      steps:
+      - tool: Prying
+        doAfter: 1
+        completed:
+        - !type:EmptyContainer
+          container: payload

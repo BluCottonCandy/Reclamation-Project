@@ -1,0 +1,82 @@
+- type: entity
+  parent: N14ClothingHeadHatCombatHelmet
+  id: MisfitsClothingHeadBikeHelmet
+  name: spiked motorcycle helmet
+  description: A spiked bike helmet that makes you look like a psychopath, painted in blue just like the 80s sign.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Head/bikehelmet.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Head/bikehelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.90
+        Piercing: 0.90
+
+- type: entity
+  parent: MisfitsClothingHeadBikeHelmet
+  id: MisfitsClothingHeadBikeHelmetWhite
+  name: spiked motorcycle helmet
+  description: A spiked bike helmet that makes you look like a psychopath, painted in white just like smoke.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetwhite.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetwhite.rsi
+
+- type: entity
+  parent: MisfitsClothingHeadBikeHelmet
+  id: MisfitsClothingHeadBikeHelmetRed
+  name: spiked motorcycle helmet
+  description: A spiked bike helmet that makes you look like a psychopath, painted in red just like blood.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetred.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetred.rsi
+
+- type: entity
+  parent: MisfitsClothingHeadBikeHelmet
+  id: MisfitsClothingHeadBikeHelmetBlack
+  name: spiked motorcycle helmet
+  description: A spiked bike helmet that makes you look like a psychopath, painted in black just like tires.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetblack.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetblack.rsi
+
+- type: entity
+  parent: MisfitsClothingHeadBikeHelmet
+  id: MisfitsClothingHeadBikeHelmetYellow
+  name: spiked motorcycle helmet
+  description: A spiked bike helmet that makes you look like a psychopath, painted in yellow just like oil.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetyellow.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetyellow.rsi
+
+- type: entity
+  parent: MisfitsClothingHeadBikeHelmet
+  id: MisfitsClothingHeadBikeHelmetOlive
+  name: spiked motorcycle helmet
+  description: A spiked bike helmet that makes you look like a psychopath, painted in olive just like green light.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetolive.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetolive.rsi
+
+- type: entity
+  parent: MisfitsClothingHeadBikeHelmet
+  id: MisfitsClothingHeadBikeHelmetBeige
+  name: spiked motorcycle helmet
+  description: A spiked bike helmet that makes you look like a psychopath, painted in beige just like the thing.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetbeige.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Head/bikehelmetbeige.rsi

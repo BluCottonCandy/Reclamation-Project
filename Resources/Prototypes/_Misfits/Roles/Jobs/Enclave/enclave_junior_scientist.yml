@@ -1,0 +1,61 @@
+# #Misfits Add - Enclave Junior Scientist role (entry-level science).
+
+- type: job
+  id: EnclaveJuniorScientist
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 98
+  displayWeight: 124
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-enclave-junior-scientist
+  description: job-description-enclave-junior-scientist
+  playTimeTracker: EnclaveJuniorScientist
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T2 faction timelock (4h Enclave)
+      department: Enclave
+      min: 14400 # 4 hours
+  startingGear: EnclaveJuniorScientistGear
+  icon: "JobIconEnclaveJuniorScientist"
+  supervisors: job-supervisors-enclave-junior-scientist
+  alwaysUseSpawner: true
+  accessGroups:
+  - EnclaveJuniorScientist
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Enclave
+          - Wastelander
+      - type: ReplacementAccent
+        accent: n14Enclave
+      - type: CPRTraining
+  - !type:AddTraitSpecial # #Misfits Add - Enclave scientists are issued an Enclave Eyebot companion
+    traits: [ MisfitsPetEyebotEnclave ]
+
+- type: startingGear
+  id: EnclaveJuniorScientistGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatEnclaveScientist
+    back: N14ClothingBackpackSatchelMilitary
+    jumpsuit: N14ClothingUniformJumpsuitEnclave
+    outerClothing: N14ClothingOuterRadSuitEnclave
+    shoes: N14ClothingBootsLeatherFilled
+    neck: ClothingNeckPinEnclaveJuniorScientist
+    belt: ClothingBeltMilitary
+    ears: N14ClothingHeadsetEnclave
+    pocket2: EnclaveScientistloadoutkits
+    id: N14EnclaveNoncombatPipboy
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+
+- type: playTimeTracker
+  id: EnclaveJuniorScientist

@@ -1,0 +1,30 @@
+# #Misfits Change /Tweak/: Reclassified as a hand-held weapon — moved to _Misfits/Entities/Objects/Weapons/Melee/legion_powerfist.yml.
+# SS13 Big-Iron reference (modular_BD2/legio_invicta f13powerfist.dm) confirms the Goliath as a BaseItem weapon, not clothing.
+# Commented out below to preserve history; active definition lives in the Weapons/Melee folder.
+#- type: entity
+#  parent: ClothingHandsBase
+#  id: N14ClothingHandsPowerFistGoliath
+#  name: goliath power fist
+#  description: A captured Legion shock gauntlet built around a piston-assisted ram that hurls targets backward.
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Clothing/Hands/PowerGauntlets/basic.rsi
+#    scale: 0.75, 0.75
+#  - type: Clothing
+#    sprite: _Nuclear14/Clothing/Hands/PowerGauntlets/basic.rsi
+#    slots: gloves
+#  - type: MeleeWeapon
+#    soundHit:
+#      collection: MetalThud
+#    range: 1.3
+#    attackRate: 1.0
+#    damage:
+#      types:
+#        Blunt: 20
+#        Structural: 10
+#    animation: WeaponArcFist
+#    wideAnimation: WeaponArcFist
+#    mustBeEquippedToUse: true
+#  - type: MeleeThrowOnHit
+#    speed: 10
+#    lifetime: 0.025

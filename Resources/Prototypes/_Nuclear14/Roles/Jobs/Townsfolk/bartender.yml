@@ -1,0 +1,58 @@
+- type: job
+  id: WastelandBartender
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 25
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-townbartender
+  description: job-description-townbartender
+  playTimeTracker: WastelandBartender
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+    #- !type:CharacterDepartmentTimeRequirement # TEMP REMOVED
+    #  department: Townsfolk
+    #  min: 18000 # 5 hours
+  startingGear: WastelandBartenderGear
+  icon: "JobIconBartender"
+  supervisors: job-supervisors-townsfolk
+  access:
+  - WastelandBartender
+  - TownsPerson # Corvax-Change
+  - InnRoomOne
+  - InnRoomTwo
+  - InnRoomThree
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+      - type: ProfessionalChef
+
+- type: startingGear
+  id: WastelandBartenderGear
+  equipment:
+    wallet: N14Wallet
+    head: ClothingHeadHatTophat
+    jumpsuit: N14ClothingUniformJumpsuitBartenderAlt
+    ears: MisfitsClothingHeadsetTown
+    outerClothing: N14ClothingOuterLeatherArmor
+    back: N14ClothingBackpackExplorer # Corvax-Change
+    shoes: N14ClothingBootsLeather
+    id: N14IDBartenderTown
+    pocket1: DrinkShaker
+  innerClothingSkirt: N14ClothingUniformJumpsuitBartenderAlt #placeholder
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: WastelandBartender

@@ -1,0 +1,351 @@
+- type: entity
+  parent: SpawnPointJobBase
+  id: N14SpawnPointLegate
+  name: legion legate
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegate
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: centurion
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: N14SpawnPointCenturion
+  name: legion centurion
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionCenturion
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: centurion
+
+- type: entity
+  id: N14SpawnPointVeteranDecanus
+  parent: N14SpawnPointCenturion
+  name: legion veteran decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVeteranDecanus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  id: N14SpawnPointVenator
+  parent: N14SpawnPointCenturion
+  name: legion frumentarii
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionFrumentarii
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  id: N14SpawnPointExplorer
+  parent: N14SpawnPointCenturion
+  name: legion explorer
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionExplorer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  id: N14SpawnPointVexillarius
+  parent: N14SpawnPointCenturion
+  name: legion vexillarius
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVexillarius
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  id: N14SpawnPointDean
+  parent: N14SpawnPointCenturion
+  name: legion decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionDean
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  id: N14SpawnPointForgemaster
+  parent: N14SpawnPointCenturion
+  name: legion forgemaster
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionForgemaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  id: N14SpawnPointLegionnaireVeteran
+  parent: N14SpawnPointCenturion
+  name: legion veteran legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireVeteran
+  - type: Sprite
+    layers:
+      - state: green
+      - state: veteran
+
+- type: entity
+  id: N14SpawnPointLegionnaireWarrior
+  parent: N14SpawnPointCenturion
+  name: legion prime legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireWarrior
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+- type: entity
+  id: N14SpawnPointHoundmaster
+  parent: N14SpawnPointCenturion
+  name: legion houndmaster
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionHoundmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+#Misfits Change /Add/: Legion Auxilia spawn point.
+- type: entity
+  id: N14SpawnPointAuxilia
+  parent: N14SpawnPointCenturion
+  name: legion auxilia
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionAuxilia
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  id: N14SpawnPointLegionnaireRecruit
+  parent: N14SpawnPointCenturion
+  name: legion recruit legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireRecruit
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  id: N14SpawnPointLegionRecruit
+  parent: N14SpawnPointCenturion
+  name: legion legionnaire
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireRecruit # #Misfits Change: Redirected from defunct CaesarLegionRecruit
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+# #Misfits Removed - Raider job prototype removed; spawn point has no valid job_id target
+# - type: entity
+#   parent: SpawnPointJobBase
+#   id: N14SpawnPointRaider
+#   name: raider
+#   components:
+#   - type: SpawnPoint
+#     job_id: Raider
+#   - type: Sprite
+#     sprite: Corvax/Markers/jobs.rsi
+#     layers:
+#       - state: green
+#       - state: raider
+
+#Misfits Change /Comment-out/: Western BoS spawn points removed — no Western BoS chapter in Misfits.
+#- type: entity
+#  parent: SpawnPointJobBase
+#  id: N14SpawnPointElderCommander
+#  name: Brotherhood Elder
+#  components:
+#  - type: SpawnPoint
+#    job_id: BoSWestElderCommander
+#  - type: Sprite
+#    sprite: Corvax/Markers/boswest.rsi
+#    layers:
+#    - state: green
+#    - state: elder
+#
+#- type: entity
+#  id: N14SpawnPointWestPaladin
+#  parent: N14SpawnPointElderCommander
+#  name: Brotherhood Senior Paladin
+#  components:
+#  - type: SpawnPoint
+#    job_id: BoSMidPaladin
+#  - type: Sprite
+#    layers:
+#    - state: green
+#    - state: paladin
+#
+#- type: entity
+#  id: N14SpawnPointWestKnight
+#  parent: N14SpawnPointElderCommander
+#  name: Brotherhood Senior Knight
+#  components:
+#  - type: SpawnPoint
+#    job_id: BoSMidKnight
+#  - type: Sprite
+#    layers:
+#    - state: green
+#    - state: knight
+#
+#- type: entity
+#  id: N14SpawnPointWestScribe
+#  parent: N14SpawnPointElderCommander
+#  name: Brotherhood Head Scribe
+#  components:
+#  - type: SpawnPoint
+#    job_id: BoSWestScribe
+#  - type: Sprite
+#    layers:
+#    - state: green
+#    - state: scribe
+#
+#- type: entity
+#  id: N14SpawnPointWestGunsmith
+#  parent: N14SpawnPointElderCommander
+#  name: Brotherhood Squire
+#  components:
+#  - type: SpawnPoint
+#    job_id: BoSMidSquire
+#  - type: Sprite
+#    layers:
+#    - state: green
+#    - state: gunsmith
+
+- type: entity
+  id: N14SpawnPointTownsfolkTownShopkeeperHelper
+  parent: N14SpawnPointTownsfolkTownsperson
+  name: town shopkeeper helper
+  components:
+  - type: SpawnPoint
+    job_id: TownShopkeeperHelper
+  - type: Sprite
+    layers:
+      - state: green
+      - state: shopkeeper
+
+#Misfits Change /Comment-out/: Inquisitor spawn point removed — no Inquisitor role in Misfits.
+#- type: entity
+#  id: N14SpawnPointBoSMidInquisitor
+#  parent: N14SpawnPointBoSMidPaladin
+#  name: Brotherhood Senior Paladin
+#  components:
+#  - type: SpawnPoint
+#    job_id: BoSMidPaladin
+#  - type: Sprite
+#    sprite: Corvax/Markers/jobs.rsi
+#    layers:
+#      - state: green
+#      - state: inquisitor
+
+- type: entity
+  id: SpawnPointNCRPrisoner
+  parent: SpawnPointJobBase
+  name: NCR Prisoner spawner
+  components:
+  - type: SpawnPoint
+    job_id: NCRPrisoner
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: prisoner         # Misfits Change: Stopping this chud error
+
+- type: entity
+  id: SpawnPointCaesarLegionSlave
+  parent: SpawnPointJobBase
+  name: legion slave
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionSlave
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: slave
+
+- type: entity
+  id: SpawnPointCaesarLegionCitizen
+  parent: SpawnPointJobBase
+  name: Legion civilian
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionCitizen
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: slave
+
+- type: entity
+  id: SpawnPointCaesarLegionTrader
+  parent: SpawnPointJobBase
+  name: Legion trader
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionTrader
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: slave
+
+#Misfits Change /Comment-out/: Washington BoS Corvax spawner removed — job no longer exists.
+#- type: entity
+#  id: SpawnPointBoSMidSerf
+#  parent: SpawnPointJobBase
+#  name: Brotherhood Initiate
+#  components:
+#  - type: SpawnPoint
+#    job_id: BoSWashingtonInitiate
+#  - type: Sprite
+#    sprite: Corvax/Markers/jobs.rsi
+#    layers:
+#      - state: green
+#      - state: serf
+
+- type: entity
+  id: N14SpawnPointNCRMPinvestigator
+  parent: SpawnPointJobBase
+  name: NRCMP investigator spawner
+  components:
+  - type: SpawnPoint
+    job_id: NCRMPinvestigator
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: investigator

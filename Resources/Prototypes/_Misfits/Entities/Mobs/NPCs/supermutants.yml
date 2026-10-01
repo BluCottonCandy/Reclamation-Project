@@ -1,0 +1,510 @@
+# Misfits Change - Super Mutant NPC mob variants
+# Ported and adapted from DesertRose2/desertrose supermutant.dm
+# Original BYOND mobs: hulk_113_s (base), hulk_melee_s (brute), hulk_ranged_s (hunter),
+# night_s (nightkin), night_ranged_s (nightkin vet), night_boss_s (nightkin elite),
+# hulk_suicider_s (suicider), hulk_s (armored)
+# Sprites: DesertRose2/desertrose supermutant.dmi / supermutant_dead.dmi (CC-BY-NC-SA-3.0)
+
+#MARK: Base Super Mutant
+- type: entity
+  name: Super Mutant
+  id: N14MobSuperMutantNPC
+  parent: N14MobBaseHostileSuperMutant
+  description: A massive green creature of bone and muscle, created by the FEV virus. Surprisingly articulate and infuriatingly durable.
+  # DesertRose source: hulk_113_s - mob_size=LARGE, maxHealth=300, melee 45-55, calls summon_backup
+  components:
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 35
+    range: 1.8
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+
+#MARK: Melee Super Mutant (Brute)
+- type: entity
+  name: Super Mutant Brute
+  id: N14MobSuperMutantMelee
+  parent: N14MobBaseHostileSuperMutant
+  description: A super mutant armed with a makeshift sledgehammer, hunting anything it can crush.
+  # DesertRose source: hulk_melee_s - maxHealth=350, melee 45-65 (sledgehammer attack)
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  - type: HTN
+    rootTask:
+      task: N14HostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.8
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 50
+    range: 1.8
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: melee
+      Dead:
+        Base: melee_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: melee
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+
+#MARK: Ranged Super Mutant (Hunter)
+- type: entity
+  name: Super Mutant Hunter
+  id: N14MobSuperMutantRanged
+  parent: N14MobBaseHostileSuperMutant
+  description: A super mutant armed with a scavenged hunting rifle. More dangerous from a distance.
+  # DesertRose source: hulk_ranged_s - maxHealth=400, 7.62 hunting rifle, retreat_distance=4, minimum_distance=6
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      220: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 30
+    range: 1.8
+  - type: Gun
+    minAngle: 5
+    maxAngle: 20
+    angleIncrease: 3
+    angleDecay: 14
+    fireRate: 1
+    soundGunshot:
+      collection: N14BattleRifleGunshot
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+  - type: BasicEntityAmmoProvider
+    proto: N14Cartridge762Rifle
+    capacity: 20
+    count: 20
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 3
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: ranged
+      Dead:
+        Base: ranged_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: ranged
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+
+#MARK: Nightkin (Melee)
+- type: entity
+  name: Nightkin
+  id: N14MobNightkin
+  parent: N14MobBaseHostileSuperMutant
+  description: A stealth-enhanced super mutant warrior, cloaked by a malfunctioning Stealth Boy device. Don't let it close the distance.
+  # DesertRose source: night_s - maxHealth=350, alpha=80 (semi-transparent), melee 45-70 Slash
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: HTN
+    rootTask:
+      task: N14HostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.8
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcSlash
+    damage:
+      types:
+        Slash: 50
+    range: 1.8
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: nightkin
+      Dead:
+        Base: nightkin_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nightkin
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+      color: "#FFFFFF50" # Semi-transparent - DesertRose: alpha=80 Stealth Boy cloaking
+
+#MARK: Nightkin Veteran (Ranged)
+- type: entity
+  name: Nightkin Veteran
+  id: N14MobNightkinVeteran
+  parent: N14MobBaseHostileSuperMutant
+  description: A battle-hardened Nightkin trained in ranged combat. Combines stealth with assault rifle suppression fire.
+  # DesertRose source: night_ranged_s - maxHealth=400, alpha=80, 5.56 assault rifle
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 50
+    range: 1.8
+  - type: Gun
+    minAngle: 4
+    maxAngle: 15
+    angleIncrease: 3
+    angleDecay: 16
+    fireRate: 2
+    soundGunshot:
+      collection: N14CarbineGunshot
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+  - type: BasicEntityAmmoProvider
+    proto: N14Cartridge556Rifle
+    capacity: 20
+    count: 20
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: nightkin_ranged
+      Dead:
+        Base: nightkin_ranged_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nightkin_ranged
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+      color: "#FFFFFF50" # Semi-transparent - DesertRose: alpha=80 Stealth Boy cloaking
+
+#MARK: Nightkin Elite (Boss)
+- type: entity
+  name: Nightkin Elite
+  id: N14MobNightkinElite
+  parent: N14MobBaseHostileSuperMutant
+  description: An elite Nightkin commander carrying a plasma rifle. An existential threat to anyone not in power armor.
+  # DesertRose source: night_boss_s - maxHealth=500, alpha=80, plasma rifle (high damage)
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      350: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 50
+    range: 1.8
+  - type: Gun
+    minAngle: 3
+    maxAngle: 9
+    angleIncrease: 2
+    angleDecay: 20
+    fireRate: 1.5
+    soundGunshot:
+      collection: N14PlasmaAutoRifleGunshot
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+  - type: BasicEntityAmmoProvider
+    proto: BulletPlasma
+    capacity: 12
+    count: 12
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 3
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: nightkin_boss
+      Dead:
+        Base: nightkin_boss_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nightkin_boss
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+      color: "#FFFFFF50" # Semi-transparent - DesertRose: alpha=80 Stealth Boy cloaking
+
+#MARK: Super Mutant Suicider
+- type: entity
+  name: Super Mutant Suicider
+  id: N14MobSuperMutantSuicider
+  parent: N14MobBaseHostileSuperMutant
+  description: A crazed super mutant strapped with improvised explosives, charging headlong at anyone it can find. Run.
+  # DesertRose source: hulk_suicider_s - maxHealth=500, del_on_death=1, spawns explosion at aggro after 6s timer
+  # SS14 port: explosion triggers at death threshold (simplified from timed trigger)
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      180: Dead
+  - type: HTN
+    rootTask:
+      task: N14HostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 50
+    range: 1.5
+  - type: Explosive
+    # Misfits Change - Suicider explosion. DesertRose: suicide grenade, approx radius 4 tiles.
+    explosionType: N14DefaultStructural
+    maxIntensity: 10
+    intensitySlope: 3
+    totalIntensity: 100
+    canCreateVacuum: false
+    maxTileBreak: 1
+    tileBreakScale: 0.5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 180
+      behaviors:
+      - !type:ExplodeBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: suicider
+      Dead:
+        Base: base_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: suicider
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+
+#MARK: Armored Super Mutant
+- type: entity
+  name: Super Mutant Armored
+  id: N14MobSuperMutantArmored
+  parent: N14MobBaseHostileSuperMutant
+  description: A super mutant wearing scavenged metal plating over its thick hide. Extremely resistant to conventional weapons.
+  # DesertRose source: hulk_s / hulk_armored - heavily armored variant with high health
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack #Misfits Change
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 50
+    range: 1.8
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: armored
+      Dead:
+        Base: base_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: armored
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+
+#MARK: NCR Super Mutant
+# Misfits Add - super mutant allied with or encountered near NCR territory.
+# Sprites: Cythisiax/desertrose-1 supermutant.dmi state hulk_special_ncr (CC-BY-NC-SA-3.0)
+- type: entity
+  name: NCR Super Mutant
+  id: N14MobSuperMutantNCR
+  parent: N14MobBaseHostileSuperMutant
+  description: A super mutant wearing NCR military surplus. Whether conscript, prisoner, or mercenary is anyone's guess.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 25
+    range: 1.8
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: ncr_mutant
+      Dead:
+        Base: ncr_mutant_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: ncr_mutant
+      sprite: _Misfits/Mobs/NPCs/supermutant_ncr.rsi
+
+#MARK: NCO Super Mutant (Legion variant)
+# Misfits Add - super mutant found in Legion-adjacent territory or as a captured warrior.
+# Sprites: Cythisiax/desertrose-1 supermutant.dmi state hulk_special_legion (CC-BY-NC-SA-3.0)
+- type: entity
+  name: Super Mutant NCO
+  id: N14MobSuperMutantNCO
+  parent: N14MobBaseHostileSuperMutant
+  description: A battle-scarred super mutant bearing the markings of a wasteland warlord. Commands lesser mutants in the field.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack
+    angle: 60
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 30
+    range: 1.8
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: nco_mutant
+      Dead:
+        Base: nco_mutant_dead
+  - type: Sprite
+    scale: 1.5, 1.5 # Misfits Tweak: Super Mutants are 1.5x bigger than humans.
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nco_mutant
+      sprite: _Misfits/Mobs/NPCs/supermutant_ncr.rsi
+
+#MARK: Behemoth
+# Misfits Add - the largest and most fearsome super mutant variant.
+# Sprites: Foundation-19/Big-Iron behemoth.dmi (upstream DesertRose2/desertrose, CC-BY-NC-SA-3.0)
+- type: entity
+  name: Super Mutant Behemoth
+  id: N14MobBehemoth
+  parent: N14MobBaseHostileSuperMutant
+  description: A towering ancient super mutant, its body warped beyond recognition by decades of FEV exposure. A walking natural disaster.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      800: Dead
+  - type: HTN
+    rootTask:
+      task: N14HostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        2.2
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14SuperMutantAttack
+    angle: 75
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 75
+        Structural: 100
+    range: 2.2
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: behemoth
+      Dead:
+        Base: behemoth_dead
+  - type: Sprite
+    scale: 1.0, 1.0 # Misfits Add: 62x88 art renders at ~2x1.94 wide × 2.75 tiles tall
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: behemoth
+      sprite: _Misfits/Mobs/NPCs/behemoth.rsi

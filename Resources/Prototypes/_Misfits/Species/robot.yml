@@ -1,0 +1,742 @@
+# Robot species definitions for player-controlled synthetic robots. #Misfits Change
+# Four variants: Mr. Handy, Protectron, Mr. Gutsy, Assaultron.
+# roundStart: true so whitelisted players see them in the character editor species dropdown
+# and via the Robot Type variant picker panel.
+# Access is gated per-job (e.g. jobwhitelistadd <player> SyntheticMrHandy).
+
+- type: species
+  id: RobotMrHandy
+  name: species-name-robot-mr-handy
+  roundStart: true
+  order: 10 # #Misfits Change: robots last
+  whitelistRequired: true # #Misfits Change
+  restrictedCustomization: true # #Misfits Change
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so Mister Handy Etiquette is visible/selectable
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticMrHandy # #Misfits Change
+  restrictedJobs: # #Misfits Change
+  - SyntheticMrHandy
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticMrHandy
+  dollPrototype: N14PlayerSyntheticMrHandy
+  skinColoration: Hues
+  maleFirstNames: RobotMrHandyFirst # #Misfits Change
+  femaleFirstNames: RobotMrHandyFirst # #Misfits Change
+  naming: First # #Misfits Change
+
+- type: species
+  id: RobotMrHandyZAX
+  name: species-name-robot-mr-handy-zax
+  roundStart: true
+  order: 10
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticMrHandy
+  restrictedJobs:
+  - SyntheticMrHandy
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerMrHandy
+  dollPrototype: N14MobZaxPlayerMrHandy
+  skinColoration: Hues
+  maleFirstNames: RobotMrHandyFirst
+  femaleFirstNames: RobotMrHandyFirst
+  naming: First
+
+- type: species
+  id: RobotProtectron
+  name: species-name-robot-protectron
+  roundStart: true
+  order: 11 # #Misfits Change: robots last
+  whitelistRequired: true # #Misfits Change
+  restrictedCustomization: true # #Misfits Change
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Change
+  restrictedJobs: # #Misfits Change
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectron
+  dollPrototype: N14PlayerSyntheticProtectron
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst # #Misfits Change
+  femaleFirstNames: RobotProtectronFirst # #Misfits Change
+  naming: First # #Misfits Change
+
+- type: species
+  id: RobotProtectronPolice
+  name: species-name-robot-protectron-police
+  roundStart: true
+  order: 14 # #Misfits Add: hidden from main selector, used by Robot Model picker
+  whitelistRequired: true # #Misfits Add
+  restrictedCustomization: true # #Misfits Add
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
+  restrictedJobs: # #Misfits Add
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronPolice
+  dollPrototype: N14PlayerSyntheticProtectronPolice
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst # #Misfits Add
+  femaleFirstNames: RobotProtectronFirst # #Misfits Add
+  naming: First # #Misfits Add
+
+- type: species
+  id: RobotProtectronBuilder
+  name: species-name-robot-protectron-builder
+  roundStart: true
+  order: 15 # #Misfits Add: hidden from main selector, used by Robot Model picker
+  whitelistRequired: true # #Misfits Add
+  restrictedCustomization: true # #Misfits Add
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
+  restrictedJobs: # #Misfits Add
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronBuilder
+  dollPrototype: N14PlayerSyntheticProtectronBuilder
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst # #Misfits Add
+  femaleFirstNames: RobotProtectronFirst # #Misfits Add
+  naming: First # #Misfits Add
+
+- type: species
+  id: RobotProtectronFire
+  name: species-name-robot-protectron-fire
+  roundStart: true
+  order: 16 # #Misfits Add: hidden from main selector, used by Robot Model picker
+  whitelistRequired: true # #Misfits Add
+  restrictedCustomization: true # #Misfits Add
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
+  restrictedJobs: # #Misfits Add
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronFire
+  dollPrototype: N14PlayerSyntheticProtectronFire
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst # #Misfits Add
+  femaleFirstNames: RobotProtectronFirst # #Misfits Add
+  naming: First # #Misfits Add
+
+- type: species
+  id: RobotProtectronBuilderZAX
+  name: species-name-robot-protectron-builder-zax
+  roundStart: true
+  order: 15
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerProtectronBuilder
+  dollPrototype: N14MobZaxPlayerProtectronBuilder
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotProtectronFireZAX
+  name: species-name-robot-protectron-fire-zax
+  roundStart: true
+  order: 16
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerProtectronFire
+  dollPrototype: N14MobZaxPlayerProtectronFire
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotProtectronPoliceZAX
+  name: species-name-robot-protectron-police-zax
+  roundStart: true
+  order: 14
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerProtectronPolice
+  dollPrototype: N14MobZaxPlayerProtectronPolice
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotProtectronTribal
+  name: species-name-robot-protectron-tribal
+  roundStart: true
+  order: 21 # hidden from main selector, used by Robot Model picker
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectronTribal
+  restrictedJobs:
+  - SyntheticProtectronTribal
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronTribal
+  dollPrototype: N14PlayerSyntheticProtectronTribal
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst  # TODO tribal robot names?
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotSecuritron
+  name: species-name-robot-securitron-gray
+  roundStart: true
+  order: 22
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSecuritronGray
+  dollPrototype: N14PlayerSyntheticSecuritronGray
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotSecuritronBlue
+  name: species-name-robot-securitron-blue
+  roundStart: true
+  order: 23
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSecuritronBlue
+  dollPrototype: N14PlayerSyntheticSecuritronBlue
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotSecuritronBrown
+  name: species-name-robot-securitron-brown
+  roundStart: true
+  order: 24
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSecuritronBrown
+  dollPrototype: N14PlayerSyntheticSecuritronBrown
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotSecuritronRed
+  name: species-name-robot-securitron-red
+  roundStart: true
+  order: 25
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSecuritronRed
+  dollPrototype: N14PlayerSyntheticSecuritronRed
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotSecuritronYellow
+  name: species-name-robot-securitron-yellow
+  roundStart: true
+  order: 26
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSecuritronYellow
+  dollPrototype: N14PlayerSyntheticSecuritronYellow
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
+  id: RobotMrGutsy
+  name: species-name-robot-mr-gutsy
+  roundStart: true
+  order: 12 # #Misfits Change: robots last
+  whitelistRequired: true # #Misfits Change
+  restrictedCustomization: true # #Misfits Change
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticMrGutsy # #Misfits Change
+  restrictedJobs: # #Misfits Change
+  - SyntheticMrGutsy
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticMrGutsy
+  dollPrototype: N14PlayerSyntheticMrGutsy
+  skinColoration: Hues
+  maleFirstNames: RobotMrGutsyFirst # #Misfits Change
+  femaleFirstNames: RobotMrGutsyFirst # #Misfits Change
+  naming: First # #Misfits Change
+
+- type: species
+  id: RobotMrGutsyZAX
+  name: species-name-robot-mr-gutsy-zax
+  roundStart: true
+  order: 12
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticMrGutsy
+  restrictedJobs:
+  - SyntheticMrGutsy
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerMrGutsy
+  dollPrototype: N14MobZaxPlayerMrGutsy
+  skinColoration: Hues
+  maleFirstNames: RobotMrGutsyFirst
+  femaleFirstNames: RobotMrGutsyFirst
+  naming: First
+
+- type: species
+  id: RobotAssaultron
+  name: species-name-robot-assaultron
+  roundStart: true
+  order: 13 # #Misfits Change: robots last
+  whitelistRequired: true # #Misfits Change
+  restrictedCustomization: true # #Misfits Change
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticAssaultron # #Misfits Change
+  restrictedJobs: # #Misfits Change
+  - SyntheticAssaultron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticAssaultron
+  dollPrototype: N14PlayerSyntheticAssaultron
+  skinColoration: Hues
+  maleFirstNames: RobotAssaultronFirst # #Misfits Change
+  femaleFirstNames: RobotAssaultronFirst # #Misfits Change
+  naming: First # #Misfits Change
+
+- type: species
+  id: RobotAssaultronTesla
+  name: species-name-robot-assaultron-tesla
+  roundStart: true
+  order: 14 # #Misfits Add: hidden variant, used by Robot Model picker
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticAssaultron # shares the same job as base Assaultron
+  restrictedJobs:
+  - SyntheticAssaultron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticAssaultronTesla
+  dollPrototype: N14PlayerSyntheticAssaultronTesla
+  skinColoration: Hues
+  maleFirstNames: RobotAssaultronFirst
+  femaleFirstNames: RobotAssaultronFirst
+  naming: First
+
+- type: species
+  id: RobotAssaultronZAX
+  name: species-name-robot-assaultron-zax
+  roundStart: true
+  order: 13
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticAssaultron
+  restrictedJobs:
+  - SyntheticAssaultron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerAssaultron
+  dollPrototype: N14MobZaxPlayerAssaultron
+  skinColoration: Hues
+  maleFirstNames: RobotAssaultronFirst
+  femaleFirstNames: RobotAssaultronFirst
+  naming: First
+
+- type: species
+  id: RobotAssaultronTeslaZAX
+  name: species-name-robot-assaultron-tesla-zax
+  roundStart: true
+  order: 14
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticAssaultron
+  restrictedJobs:
+  - SyntheticAssaultron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerAssaultronTesla
+  dollPrototype: N14MobZaxPlayerAssaultronTesla
+  skinColoration: Hues
+  maleFirstNames: RobotAssaultronFirst
+  femaleFirstNames: RobotAssaultronFirst
+  naming: First
+
+- type: species
+  id: RobotSentryBot
+  name: species-name-robot-sentrybot
+  roundStart: true
+  order: 17 # #Misfits Add: sentry bot species
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticSentryBot
+  restrictedJobs:
+  - SyntheticSentryBot
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSentryBotMinigun
+  dollPrototype: N14PlayerSyntheticSentryBotMinigun
+  skinColoration: Hues
+  maleFirstNames: RobotSentryBotFirst
+  femaleFirstNames: RobotSentryBotFirst
+  naming: First
+  # Sentry bots are 2× scale — must match the Sprite component's scale so
+  # HumanoidAppearanceSystem doesn't reset it to 1.0 on spawn.
+  minHeight: 2.0
+  defaultHeight: 2.0
+  maxHeight: 2.0
+  minWidth: 2.0
+  defaultWidth: 2.0
+  maxWidth: 2.0
+
+- type: species
+  id: RobotSentryBotLaser
+  name: species-name-robot-sentrybot-laser
+  roundStart: true
+  order: 18 # #Misfits Add: hidden variant, used by model picker
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticSentryBot
+  restrictedJobs:
+  - SyntheticSentryBot
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSentryBotLaser
+  dollPrototype: N14PlayerSyntheticSentryBotLaser
+  skinColoration: Hues
+  maleFirstNames: RobotSentryBotFirst
+  femaleFirstNames: RobotSentryBotFirst
+  naming: First
+  minHeight: 2.0
+  defaultHeight: 2.0
+  maxHeight: 2.0
+  minWidth: 2.0
+  defaultWidth: 2.0
+  maxWidth: 2.0
+
+- type: species
+  id: RobotSentryBotZAX
+  name: species-name-robot-sentrybot-zax
+  roundStart: true
+  order: 17
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticSentryBot
+  restrictedJobs:
+  - SyntheticSentryBot
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerSentryBotMinigun
+  dollPrototype: N14MobZaxPlayerSentryBotMinigun
+  skinColoration: Hues
+  maleFirstNames: RobotSentryBotFirst
+  femaleFirstNames: RobotSentryBotFirst
+  naming: First
+  minHeight: 2.0
+  defaultHeight: 2.0
+  maxHeight: 2.0
+  minWidth: 2.0
+  defaultWidth: 2.0
+  maxWidth: 2.0
+
+- type: species
+  id: RobotSentryBotLaserZAX
+  name: species-name-robot-sentrybot-laser-zax
+  roundStart: true
+  order: 18
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticSentryBot
+  restrictedJobs:
+  - SyntheticSentryBot
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerSentryBotLaser
+  dollPrototype: N14MobZaxPlayerSentryBotLaser
+  skinColoration: Hues
+  maleFirstNames: RobotSentryBotFirst
+  femaleFirstNames: RobotSentryBotFirst
+  naming: First
+  minHeight: 2.0
+  defaultHeight: 2.0
+  maxHeight: 2.0
+  minWidth: 2.0
+  defaultWidth: 2.0
+  maxWidth: 2.0
+
+- type: species
+  id: RobotRobobrain
+  name: species-name-robot-robobrain
+  roundStart: true
+  order: 19 # #Misfits Add: robobrain species
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticRobobrain
+  restrictedJobs:
+  - SyntheticRobobrain
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticRobobrain
+  dollPrototype: N14PlayerSyntheticRobobrain
+  skinColoration: Hues
+  maleFirstNames: RobotRobobrainFirst
+  femaleFirstNames: RobotRobobrainFirst
+  naming: First
+
+- type: species
+  id: RobotRobobrainLaser
+  name: species-name-robot-robobrain-laser
+  roundStart: true
+  order: 20 # #Misfits Add: hidden variant, used by model picker
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticRobobrain
+  restrictedJobs:
+  - SyntheticRobobrain
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticRobobrainLaser
+  dollPrototype: N14PlayerSyntheticRobobrainLaser
+  skinColoration: Hues
+  maleFirstNames: RobotRobobrainFirst
+  femaleFirstNames: RobotRobobrainFirst
+  naming: First
+
+- type: species
+  id: RobotRobobrainZAX
+  name: species-name-robot-robobrain-zax
+  roundStart: true
+  order: 19
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticRobobrain
+  restrictedJobs:
+  - SyntheticRobobrain
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerRobobrain
+  dollPrototype: N14MobZaxPlayerRobobrain
+  skinColoration: Hues
+  maleFirstNames: RobotRobobrainFirst
+  femaleFirstNames: RobotRobobrainFirst
+  naming: First
+
+- type: species
+  id: RobotRobobrainLaserZAX
+  name: species-name-robot-robobrain-laser-zax
+  roundStart: true
+  order: 20
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  jobWhitelistUnlock: SyntheticRobobrain
+  restrictedJobs:
+  - SyntheticRobobrain
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14MobZaxPlayerRobobrainLaser
+  dollPrototype: N14MobZaxPlayerRobobrainLaser
+  skinColoration: Hues
+  maleFirstNames: RobotRobobrainFirst
+  femaleFirstNames: RobotRobobrainFirst
+  naming: First
+
+# Shared marking limits — robots have no body markings but need a valid points block.
+- type: markingPoints
+  id: RobotMarkingLimits
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 0
+      required: false
+
+# Shared sprite set — robot entities use their own Sprite component, so no humanoid layers needed.
+# Empty sprites dict prevents any humanoid-layer overlays on the robot preview.
+- type: speciesBaseSprites
+  id: RobotSprites
+  sprites: {}

@@ -1,0 +1,65 @@
+# Misfits Add - Procedural ore cluster spawner marker entities.
+# Place one (or more) of these on Wendover wherever a mining zone should appear.
+# On MapInit they generate a random-shaped rock blob on unoccupied tiles,
+# then delete themselves — no persistent entity, fresh layout every round.
+
+# Base abstract (override wallEntity / radii / fillChance in children as needed)
+- type: entity
+  id: MisfitsOreClusterSpawnerBase
+  abstract: true
+  name: ore cluster spawner
+  description: Invisible procedural rock cluster marker. Places mineable rock entities on round start.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Marker  # Misfits Add — required for Show Spawns (showmarkers command) visibility
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    # Misfits Change: Two-layer composite — basalt floor base + ore-vein overlay — so the
+    # spawner is visually recognisable as an ore mining zone to mappers and in-game players.
+    snapCardinals: true
+    drawdepth: Overdoors
+    sprite: Tiles/Planet/basalt.rsi
+    layers:
+      - state: basalt1                        # basalt floor base texture
+      - sprite: Structures/Walls/rock.rsi
+        state: rock_asteroid_ore              # generic ore-vein indicator overlay
+
+# Default: drought rock walls matching Wendover's aesthetic, ~4–9 tile radius
+- type: entity
+  id: MisfitsOreClusterSpawner
+  parent: MisfitsOreClusterSpawnerBase
+  suffix: Mammoth Rock
+  components:
+  - type: MisfitsOreClusterSpawner
+    wallEntity: N14WallRockMammothSlanted # Misfits Tweak - switched from DroughtSlanted
+    minRadius: 4
+    maxRadius: 9
+    fillChance: 0.65
+
+# Smaller variant (~2–5 tile radius) for tight mining pockets
+- type: entity
+  id: MisfitsOreClusterSpawnerSmall
+  parent: MisfitsOreClusterSpawnerBase
+  suffix: Mammoth Rock Small
+  components:
+  - type: MisfitsOreClusterSpawner
+    wallEntity: N14WallRockMammothSlanted # Misfits Tweak - switched from DroughtSlanted
+    minRadius: 2
+    maxRadius: 5
+    fillChance: 0.70
+
+# Dense variant — higher fill for solid-looking cave walls
+- type: entity
+  id: MisfitsOreClusterSpawnerDense
+  parent: MisfitsOreClusterSpawnerBase
+  suffix: Mammoth Rock Dense
+  components:
+  - type: MisfitsOreClusterSpawner
+    wallEntity: N14WallRockMammothSlanted # Misfits Tweak - switched from DroughtSlanted
+    minRadius: 5
+    maxRadius: 9
+    fillChance: 0.85

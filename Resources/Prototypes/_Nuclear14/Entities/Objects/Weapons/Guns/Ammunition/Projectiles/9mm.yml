@@ -1,0 +1,19 @@
+- type: entity
+  id: N14Bullet9mm
+  name: bullet (9mm)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective # #Misfits Change Add: 9mm pistol round is sub-5.56mm class; ricochets off power armor.
+    reflective:
+      - SmallCaliber
+      - NonEnergy
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 13
+  # Misfits Add - 9mm standard pistol; moderate damage dropoff at range
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 6.0
+    maxFalloffTiles: 12.0
+    minDamageMultiplier: 0.45

@@ -1,0 +1,9 @@
+# Misfits Change - Combat/aggro indicator icon shown above mobs when they first attack
+- type: factionIcon
+  id: N14AggroIcon
+  priority: 15
+  isShaded: true
+  icon:
+    sprite: /Textures/_Misfits/Interface/mob_aggro.rsi
+    state: combat
+  visibleToGhosts: true

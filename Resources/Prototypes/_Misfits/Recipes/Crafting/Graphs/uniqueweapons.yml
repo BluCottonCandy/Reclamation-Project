@@ -1,0 +1,86 @@
+# Unique Weapons
+
+- type: constructionGraph
+  id: UniqueWeapons
+  start: start
+  graph:
+    - node: start
+      edges:      
+       - to: IncompleteRatslayer
+         completed:
+           - !type:SnapToGrid
+         steps:
+            - tag: VarmintRifle
+              icon:
+                sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/varmint.rsi
+                state: bolt-open
+              name: varmint rifle
+              doAfter: 2
+
+    - node: IncompleteRatslayer
+      actions:
+      - !type:AppearanceChange
+      entity: N14WeaponSniper556VarmintRifle
+      edges:
+       - to: RatslayerScrewing
+         steps:
+            - tag: Trigger
+              icon:
+                sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+                state: trigger
+              name: trigger
+              doAfter: 2
+            - tag: Bolt
+              icon:
+                sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+                state: bolt
+              name: gun bolt
+              doAfter: 2
+            - tag: Action
+              icon:
+                sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+                state: action
+              name: gun action
+              doAfter: 2
+            - tag: RifleScope
+              icon:
+                sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+                state: scope
+              name: scope
+              doAfter: 2
+            - tag: Screw
+              icon:
+                sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+                state: screw
+              name: screw
+              doAfter: 2
+            - tag: Barrel
+              icon:
+                sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+                state: barrel
+              name: gun barrel
+              doAfter: 2
+            - tag: CrayonWhite
+              icon:
+                sprite: Objects/Fun/crayons.rsi
+                state: white
+              name: white crayon
+              doAfter: 2
+            - tag: SprayPainter
+              icon:
+                sprite: Objects/Tools/spray_painter.rsi
+                state: spray_painter
+              name: Spray Painter
+              doAfter: 2
+
+    - node: RatslayerScrewing
+      actions:
+      - !type:AppearanceChange
+      edges:
+        - to: Ratslayer
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+    - node: Ratslayer
+      entity: N14WeaponSniperRatslayer

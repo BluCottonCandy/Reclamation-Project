@@ -1,0 +1,129 @@
+- type: loadout
+  id: N14LoadoutHandsGlovesCloth
+  category: Hands
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+       inverted: true
+       departments:
+       - Vault
+  items:
+    - N14ClothingHandsGlovesCloth
+
+- type: loadout
+  id: N14LoadoutHandsGlovesLeather
+  category: Hands
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingHandsGlovesLeather
+
+- type: loadout
+  id: N14LoadoutHandsGlovesFur
+  category: Hands
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+       inverted: true
+       departments:
+       - Vault
+  items:
+    - N14ClothingHandsGlovesFur
+
+- type: loadout
+  id: N14LoadoutHandsGlovesBlackLeather
+  category: Hands
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingHandsGlovesBlackLeather
+
+- type: loadout
+  id: N14LoadoutHandsGlovesNitrile
+  category: Hands
+  cost: 2
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+      - VaultDweller
+      - VaultSecurity
+      - VaultEngineer
+      - Overseer
+  items:
+    - N14ClothingHandsGlovesNitrile
+
+- type: loadout
+  id: N14LoadoutHandsGlovesNitrilePurple
+  category: Hands
+  cost: 2
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+      - VaultDweller
+      - VaultSecurity
+      - VaultEngineer
+      - Overseer
+  items:
+    - N14ClothingHandsGlovesNitrilePurple
+
+
+
+- type: loadout
+  id: N14GoliathFistLeader
+  category: Hands
+  cost: 4
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      jobs:
+        - CaesarLegionCenturion
+        - TribalElder
+  items:
+    - N14ClothingHandsPowerFistGoliath
+
+

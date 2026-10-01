@@ -1,0 +1,12 @@
+# Misfits - Invisible spacetime-distortion field parented to a player during a
+# Paracusia + Stealth Boy breakdown. Reuses the SingularityToy shader at a much
+# higher intensity for an "amplified, nauseating" warp on their viewport. The
+# entity carries no physics, audio, or gravity - only the distortion overlay.
+- type: entity
+  id: MisfitsBreakdownDistortion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+  - type: SingularityDistortion
+    intensity: 90        # SingularityToy default ~31; this is roughly 3x for a heavy warp.
+    falloffPower: 1.6    # Wider falloff so the warp covers most of the screen.

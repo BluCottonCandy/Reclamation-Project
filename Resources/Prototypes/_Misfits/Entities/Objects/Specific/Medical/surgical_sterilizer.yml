@@ -1,0 +1,52 @@
+# #Misfits Change - Surgical sterilization items for the contamination/sepsis system.
+# These items implement SurgeryCleansDirt and can be used to sanitize instruments
+# between patients to prevent cross-contamination and sepsis.
+
+# ------------------------------------------------------------------
+# Sterile spray — a small isopropyl alcohol spray, standard medbay
+# ------------------------------------------------------------------
+- type: entity
+  id: SurgicalSterilanSpray
+  name: sterile spray
+  parent: BaseItem
+  description: A sealed isopropyl alcohol spray used to sterilize surgical instruments between patients. Essential for maintaining sanitary conditions. Reusable while the canister holds pressure.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Janitorial/janitorial.rsi
+    state: cleaner
+  - type: Item
+    sprite: Objects/Specific/Janitorial/janitorial.rsi
+    storedRotation: -90
+  - type: StaticPrice
+    price: 30
+  - type: SurgeryCleansDirt # Primary function: sterilize contaminated surgical instruments
+    dirtAmount: 30
+    dnaAmount: 3
+    cleanDelay: 2.0
+  - type: Tag
+    tags:
+    - Spray # #Cythisiax Added - lets the medical belt store the sterile spray
+
+# ------------------------------------------------------------------
+# Sterile wipe — single-use antiseptic pad; ghetto / field medicine
+# ------------------------------------------------------------------
+- type: entity
+  id: SurgicalSterileWipe
+  name: sterile wipe
+  parent: BaseItem
+  description: A pre-moistened antiseptic wipe. Works in a pinch to sanitize a tool before surgery. Less thorough than a dedicated spray, but better than nothing.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/medical.rsi
+    state: gauze
+  - type: Item
+    sprite: Objects/Specific/Medical/medical.rsi
+  - type: StaticPrice
+    price: 5
+  - type: SurgeryCleansDirt # Partial clean — removes one DNA strand and mild dirtiness; field-medicine grade
+    dirtAmount: 8
+    dnaAmount: 1
+    cleanDelay: 2.5
+  - type: Tag
+    tags:
+    - Gauze # #Cythisiax Added - lets the medical belt store the sterile wipe

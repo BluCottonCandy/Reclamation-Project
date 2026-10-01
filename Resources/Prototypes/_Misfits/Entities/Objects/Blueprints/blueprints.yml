@@ -1,0 +1,1324 @@
+# Blueprint item entities for the tiered faction crafting system.
+# Players find these in the world and place them in workbenches to unlock
+# faction-specific recipes. Each blueprint is tied to a faction, tier, and
+# workbench type (Weapons/Armor/Ammo).
+
+# Abstract parent for all blueprint items
+- type: entity
+  parent: BaseItem
+  id: N14BlueprintBase
+  abstract: true
+  name: blueprint
+  description: A technical blueprint containing manufacturing schematics.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    state: paper_words
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,1,0
+  - type: Tag
+    tags:
+    - Document
+  - type: Blueprint
+    recipes: []
+
+# =====================================================================
+# NCR BLUEPRINTS
+# =====================================================================
+
+# --- NCR Weapons ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRWeaponsT1
+  name: NCR Basic Arms Schematic
+  description: Standard NCR quartermaster requisition form for basic sidearms and hunting rifles. Tier 1 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRWeaponPistol9mm
+    - N14BPNCRWeaponPistol10mm
+    - N14BPNCRWeaponPistol22lr
+    - N14BPNCRWeaponRevolver9mm
+    - N14BPNCRWeaponRevolver10mm
+    - N14BPNCRWeaponSniperHunting
+    - N14BPNCRWeaponSniperEnfield
+    - N14BPNCRWeaponShotgun
+    - N14BPNCRWeaponShotgunLever
+    - N14BPNCRWeaponSniper556Varmint
+    # #Misfits Add - mediocre surplus kinetic guns (T1)
+    - N14BPNCRWeaponPistol9mmChinese
+    - N14BPNCRWeaponShotgunSawedOff
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRWeaponsT2
+  name: NCR Military Arms Schematic
+  description: NCR military-issue weapon schematics for standard infantry equipment. Tier 2 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRWeaponPistol45Colt
+    - N14BPNCRWeaponRifle556Service
+    - N14BPNCRWeaponRifle556ServiceScoped
+    - N14BPNCRWeaponRifle556R91
+    - N14BPNCRWeaponSMG9mm
+    - N14BPNCRWeaponSMG45
+    - N14BPNCRWeaponShotgunAuto
+    - N14BPNCRWeaponShotgunRiot
+    - N14BPNCRWeaponSMG10mm
+    - N14BPNCRWeaponSMG12mm
+    - N14BPNCRWeaponRevolver44Magnun
+    # #Misfits Add - mediocre surplus kinetic guns (T2)
+    - N14BPNCRWeaponPistolM1911
+    - N14BPNCRWeaponRifle10mmM1Carbine
+    - N14BPNCRWeaponRifle762M14
+    - N14BPNCRWeaponRifle762Rangemaster
+    - N14BPNCRWeaponShotgunTrench
+    - N14BPNCRWeaponSMG10mmChinese
+    - N14BPNCRWeaponSMGPPSh41
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRWeaponsT3
+  name: NCR Ranger Arms Schematic
+  description: Restricted NCR Ranger equipment schematics. Contains veteran-grade weapon designs. Tier 3 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRWeaponRifle556Scout
+    - N14BPNCRWeaponRifle556Carbine
+    - N14BPNCRWeaponRifle762Fal
+    - N14BPNCRWeaponRifle308Battle
+    - N14BPNCRWeaponDesertEagle44
+    - N14BPNCRWeaponRevolver45-70RangerSequoia
+    - N14BPNCRWeaponShotgunChinese
+    - N14BPNCRWeaponSniper45-70BrushGun
+    - N14BPNCRWeaponRifle762Marksman
+    - N14BPNCRWeaponRevolver45-70Hunter
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRWeaponsT4
+  name: NCR Elite Ordnance Schematic
+  description: Top-secret NCR heavy weapons designs. Restricted to elite units only. Tier 4 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRWeaponSniper50NCR
+    - N14BPNCRWeaponLMGAutoRifle
+    - N14BPNCRWeaponLMG
+    - N14BPNCRWeaponSMG12mmAdvanced
+    - N14BPNCRWeaponMinigun
+
+# #Misfits Add - T5 anti-materiel rifle; costs so much scrap it earns its own tier
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRWeaponsT5
+  name: NCR Anti-Materiel Ordnance Schema
+  description: '"Costs so much scrap metal to make these dang things." Classified anti-materiel rifle schematics, cleared only at the highest NCR command level. Tier 5 weapons.'
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRWeaponAntiMateriel
+
+# --- NCR Armor ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRArmorT1
+  name: NCR Basic Armor Pattern
+  description: NCR standard-issue vest patterns for new recruits. Tier 1 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - MisfitsShackledBoots
+    - N14BPNCRArmorVestSnow
+    - N14BPNCRArmorVestWoods
+    - N14BPNCRArmorVestDesert
+    # #Misfits Add - paired helmets so vest sets have matching head protection
+    - N14BPNCRArmorHelmetMetalSnow
+    - N14BPNCRArmorHelmetMetalWoods
+    - N14BPNCRArmorHelmetMetalDesert
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRArmorT2
+  name: NCR Infantry Armor Pattern
+  description: NCR reinforced armor patterns for frontline troops. Tier 2 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRArmorPlateWoods
+    - N14BPNCRArmorPlateDesert
+    - N14BPNCRArmorPouchedVestWoods
+    - N14BPNCRArmorPouchedVestDesert
+    - N14BPNCRArmorPouchedVestSnow
+    - N14BPNCRArmorCFvest
+    # #Misfits Add - paired specialist helmets (radio, MP, medic, ghillie)
+    - N14BPNCRArmorHelmetMetalRadioWood
+    - N14BPNCRArmorHelmetMetalRadioSnow
+    - N14BPNCRArmorHelmetMetalMilitaryPolice
+    - N14BPNCRArmorHelmetMetalMedic
+    - N14BPNCRArmorHelmetMetalGhillie
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRArmorT3
+  name: NCR Combat Armor Schematic
+  description: NCR combat armor manufacturing plans. Ranger-grade protection. Tier 3 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRArmorCombatArmor
+    - N14BPNCRArmorRangerVest
+    - N14BPNCRArmorRangerCoat
+    - N14BPNCRArmorRangerDuster
+    # #Misfits Add - paired combat and ranger helmets
+    - N14BPNCRArmorCombatHelmet
+    - N14BPNCRArmorRangerHelmet
+    - N14BPNCRArmorRangerHelmetDesert
+    - N14BPNCRArmorRangerHelmetOld
+    # #Misfits Add - Added Field Ranger sidegrade recipe
+    - N14BPNCRArmorRangerFieldArmor
+    # #Misfits Add - Added Recruit Ranger sidegrade recipe
+    - N14BPNCRArmorRangerFlakVest
+    # #Misfits Add - Added Medic Combat Armor
+    - MisfitsBPNCRArmorMedicCombatArmor
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRArmorT4
+  name: NCR Elite Armor Blueprint
+  description: Classified NCR power armor and elite ranger armor designs. Tier 4 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRArmorCombatArmorMK2
+    # #Misfits Add - paired elite combat and ranger helmets
+    - N14BPNCRArmorCombatHelmetMK2
+    - N14BPNCRArmorRangerHelmetElite
+    # #Misfits Removed - user requested no power armor helmet recipes
+    # - N14BPNCRArmorPowerHelmetT45NCR
+
+# --- NCR Ammo ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRAmmoT1
+  name: NCR Basic Ammunition Manual
+  description: NCR ammunition loading manual for common calibers. Tier 1 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRAmmoBox9mm
+    - N14BPNCRAmmoBox10mm
+    - N14BPNCRAmmoBox22lr
+    - N14BPNCRAmmoMag9mmPistol
+    - N14BPNCRAmmoMag10mmPistol
+    # #Misfits Add - .45 pistol mag for M1911
+    - N14BPNCRAmmoMag45Pistol
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRAmmoT2
+  name: NCR Military Ammunition Manual
+  description: NCR military-grade ammunition reloading schematics. Tier 2 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRAmmoBox556
+    - N14BPNCRAmmoBox45
+    - N14BPNCRAmmoBox12gauge
+    - N14BPNCRAmmoMag556Rifle
+    - N14BPNCRAmmoMag45SMG
+    - N14BPNCRAmmoMag9mmSMG
+    # #Misfits Add - mags for M14 / PPSh-41
+    - N14BPNCRAmmoMag762Short
+    - N14BPNCRAmmoMag9mmSMGDrum
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRAmmoT3
+  name: NCR Advanced Ammunition Specs
+  description: NCR specifications for high-caliber and specialized ammunition. Tier 3 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRAmmoBox762
+    - N14BPNCRAmmoBox308
+    - N14BPNCRAmmoBox127
+    - N14BPNCRAmmoBox44Magnum
+    - N14BPNCRAmmoMag762Rifle
+    - N14BPNCRAmmoMag10mmSMG
+    - N14BPNCRAmmoMag12mmSMG
+    - N14BPNCRAmmo40mmGrenade
+    - MisfitsBPNCRGrenadeShrapnel # #Misfits Add - Issue #968 NCR fragmentation ordnance
+    - MisfitsBPNCRGrenadeFragDefensive # #Misfits Add - faction council defensive fragmentation ordnance
+    - MisfitsBPNCRGrenadeImpact # #Misfits Add - reduced-cost impact ordnance
+    - MisfitsBPNCRHawkinsDevice # #Misfits Add - reduced-cost anti-materiel charge
+    # #Misfits Add - complete NCR 40mm family; utility and buckshot rounds use reduced production costs.
+    - MisfitsBPNCR40mmBuckshot
+    - MisfitsBPNCR40mmSmoke
+    - MisfitsBPNCR40mmWhitePhosphorus
+    - MisfitsBPNCR40mmFlashbang
+    - MisfitsBPNCR40mmTearGas
+    - MisfitsBPNCR40mmHEDP
+    - MisfitsBPNCR40mmIncendiary
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintNCRAmmoT4
+  name: NCR Heavy Ordnance Manual
+  description: NCR classified heavy ammunition manufacturing procedures. Tier 4 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPNCRAmmoBox50
+    - N14BPNCRAmmoBox5mm
+    - N14BPNCRAmmoBox45-70
+    - N14BPNCRAmmoMag556Long
+    - N14BPNCRAmmoMag308LMG
+    - N14BPNCRAmmoOverMag308
+    - N14BPNCRAmmoBoxOver308
+    - N14BPNCRAmmoMagTopSMG12mm
+    - N14BPNCRAmmoVertibirdGunBelt # #Misfits Add - vertibird turret belt
+
+# =====================================================================
+# CAESAR'S LEGION BLUEPRINTS
+# =====================================================================
+
+# --- Legion Weapons ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionWeaponsT1
+  name: Legion Slave Armaments
+  description: Crude weapon schematics scratched onto vellum. Basic tribal arms for recruits and slaves. Tier 1 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionWeaponTribalKnife
+    - N14BPLegionWeaponTribalClub
+    - N14BPLegionWeaponWastelandSpear
+    # #Misfits Add - mediocre scavenged kinetic guns (T1)
+    - N14BPLegionWeaponPistol9mmChinese
+    - N14BPLegionWeaponShotgunSawedOff
+    - N14BPLegionWeaponRevolver357Detective
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionWeaponsT2
+  name: Legion Legionnaire Arsenal
+  description: War plans for standard legionnaire equipment. Forged weapons for the glory of Caesar. Tier 2 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionWeaponRifle556EM2
+    - N14BPLegionWeaponTribalMachete
+    - N14BPLegionWeaponMachete
+    - N14BPLegionWeaponGladius
+    - N14BPLegionWeaponRevolver44TribalUpgraded
+    - N14BPLegionWeaponShotgunPipe
+    - N14BPLegionWeaponTrenchClub
+    - N14BPLegionWeaponLongSword
+    - N14BPLegionWeaponSledgeHammer
+    - N14BPLegionWeaponTribalBigClub
+    - N14BPLegionWeaponSMGGreaseGun #Misfits Add - .45 ACP SMG
+    - N14BPLegionnaireShield
+    # #Misfits Add - mediocre scavenged kinetic guns (T2)
+    - N14BPLegionWeaponPistolM1911
+    - N14BPLegionWeaponSMGPPSh41
+    - N14BPLegionWeaponRifle10mmM1Carbine
+    - N14BPLegionWeaponSMG10mmChinese
+    - N14BPLegionWeaponSniper44LeverShortCarbine
+    - N14BPLegionWeaponSniper308Ross
+    - N14BPLegionWeaponSniperPaciencia
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionWeaponsT3
+  name: Legion Veteran's War Schematics
+  description: Battle-tested weapon designs passed down through Legion veterans. Tier 3 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionWeaponCeremonialSword
+    - N14BPLegionWeaponRevolver44TribalExtra
+    - N14BPLegionWeaponRifle762SKS     # #Misfits Add - 7.62mm semi-auto rifle
+    - N14BPLegionWeaponHandcannonUpgraded
+    - N14BPLegionWeaponRipper
+    - N14BPLegionWeaponShotgunAuto    # #Misfits Add - Auto Shotgun
+    - N14BPLegionWeaponRifle762Chinese
+    - N14BPLegionWeaponSMG10mmSuppressed
+    - N14BPLegionWeaponRifleSKS
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionWeaponsT4
+  name: Legion Legate's War Plans
+  description: The personal weapon designs of a Legion Legate. Only the mightiest warriors may wield these. Tier 4 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionWeaponSuperSledgeHammer
+    - N14BPLegionWeaponTribalBigClubDecorated
+    - N14BPLegionWeaponLauncherGrenade
+    - N14BPLegionWeaponPolearm
+    - N14BPLegionWeaponLauncherMissile
+    - N14BPLegionWeaponBren           # #Misfits Add - Bren LMG (.308 FullAuto)
+    - N14BPLegionWeaponShotgunNeostead  # #Misfits Add - Semi-auto shotgun
+
+# #Misfits Add - T5 Legion Weapons: Scorcher flamethrower (single apex incendiary)
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionWeaponsT5
+  name: Legion Scorcher Schematics
+  description: Technical diagrams torn from a pre-war military depot. The Legion's most feared weapon — a military flamethrower reverse-engineered by Legion armorsmiths at great cost. Tier 5 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionWeaponScorcher
+
+# --- Legion Armor ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionArmorT1
+  name: Legion Recruit Wrappings
+  description: Instructions for binding Legion recruit armor from scavenged materials. Tier 1 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionArmorRecruitArmor
+    # #Misfits Add - paired tribal head wraps for recruits
+    - N14BPLegionArmorHelmetTribalShemagh
+    - N14BPLegionArmorHelmetTribalHeadWraps
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionArmorT2
+  name: Legion Legionnaire Armor Pattern
+  description: Armor patterns for standard legionnaires approved by the Centurion. Tier 2 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionArmorBaseArmor
+    - N14BPLegionArmorReconArmor
+    # #Misfits Add - paired legionnaire hoods
+    - N14BPLegionArmorHelmetTribalHood
+    - N14BPLegionArmorHelmetTribalOutcastHood
+    - N14BPLegionArmorLightBaseballHelmet
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionArmorT3
+  name: Legion Veteran Armor Blueprint
+  description: Veteran legionnaire armor designs incorporating salvaged military equipment. Tier 3 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionArmorVeteranArmor
+    - N14BPLegionArmorExplorerArmor
+    - N14BPLegionArmorVexillariusArmor
+    - N14BPLegionArmorReconnaissanceArmor
+    # #Misfits Add - paired veteran headgear (hunter hoods and trophy skulls)
+    - N14BPLegionArmorHelmetTribalHunterHood
+    - N14BPLegionArmorHelmetHeadtakerwraps
+    - N14BPLegionArmorHelmetMuffaloskull
+    - N14BPLegionArmorDeanRecruitHelmet
+    - N14BPLegionArmorBaseballHelmet
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionArmorT4
+  name: Legion Centurion Armor Masterwork
+  description: The prized armor designs of Legion Centurions, forged from conquered power armor pieces. Tier 4 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    # #Misfits Add - paired looted pre-war helmets for Centurion-grade kits
+    - N14BPLegionArmorDeanRecruitArmor
+    - N14BPLegionArmorHelmetPrewarMilitaryHelmet
+    - N14BPLegionArmorHelmetMetalHelmet
+
+# --- Legion Ammo ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionAmmoT1
+  name: Legion Powder Measures
+  description: Simple ammunition loading instructions for tribal weapons. Tier 1 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionAmmoBox44Magnum
+    - N14BPLegionAmmoBox10mm
+    - N14BPLegionAmmoSpeedLoader44
+    # #Misfits Add - ammo for T1 mediocre guns (.45 mag / .357)
+    - N14BPLegionAmmoMag45Pistol
+    - N14BPLegionAmmoBox357
+    - N14BPLegionAmmoSpeedLoader357
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionAmmoT2
+  name: Legion Munitions Guide
+  description: Legion combat ammunition specifications for frontline troops. Tier 2 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionAmmoBox12gauge
+    - N14BPLegionAmmoMag44Pistol
+    - N14BPLegionAmmoBox9mm
+    # #Misfits Add - ammo for T2 mediocre guns (9mm drum / 10mm SMG mag / .308)
+    - N14BPLegionAmmoMag9mmSMGDrum
+    - N14BPLegionAmmoMag10mmSMG
+    - N14BPLegionAmmoBox308
+    - MisfitsBPLegionSuicideVest
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionAmmoT3
+  name: Legion War Munitions
+  description: Heavy ammunition manufacturing for veteran legionnaires. Tier 3 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionAmmoBox45-70
+    - N14BPLegionAmmoSpeedLoader45-70
+    - N14BPLegionAmmo40mmGrenade
+    - N14BPLegionAmmoBox762       # #Misfits Add - 7.62mm box (for SKS)
+    - N14BPLegionWeaponDynamite   # #Misfits Add - craftable dynamite
+    - N14BPLegionAmmoSKSEnbloc308
+    - MisfitsBPLegionGrenadeTin # #Misfits Add - Issue #968 Legion improvised ordnance
+    - MisfitsBPLegionGrenadeFragOffensive # #Misfits Add - faction council fragmentation ordnance
+    # #Misfits Add - HE already uses N14BPLegionAmmo40mmGrenade; add remaining variants.
+    - MisfitsBPLegion40mmBuckshot
+    - MisfitsBPLegion40mmSmoke
+    - MisfitsBPLegion40mmWhitePhosphorus
+    - MisfitsBPLegion40mmFlashbang
+    - MisfitsBPLegion40mmTearGas
+    - MisfitsBPLegion40mmHEDP
+    - MisfitsBPLegion40mmIncendiary
+    - MisfitsBPLegionGrenadeFragDefensive
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionAmmoT4
+  name: Legion Siege Munitions
+  description: Explosive ordnance schematics captured from NCR supply lines. Tier 4 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionAmmoMissile
+    - N14BPLegionAmmoBox50
+    - N14BPLegionAmmo40mmGrenadeIncendiary
+    - N14BPLegionAmmoMagazine308RifleLong  # #Misfits Add - .308 Long mag for Bren LMG
+    - N14BPLegionAmmoMagazine308M60Box     # #Misfits Add - .308 50-round box mag for M60 LMG
+    - N14BPLegionAmmoOverMag308
+    - N14BPLegionAmmoBoxOver308
+
+# =====================================================================
+# BROTHERHOOD OF STEEL BLUEPRINTS
+# =====================================================================
+
+# --- BoS Weapons ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSWeaponsT1
+  name: BoS Initiate Energy Manual
+  description: Brotherhood training manual for basic energy weapon assembly. Tier 1 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSWeaponLaserPistol
+    - N14BPBoSWeaponLaserRevolver
+    - N14BPBoSWeaponPistol10mm
+    # #Misfits Add - mediocre kinetic guns (T1)
+    - N14BPBoSWeaponPistol9mmChinese
+    - N14BPBoSWeaponPistolM1911
+    - N14BPBoSWeaponShotgunSawedOff
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSWeaponsT2
+  name: BoS Knight Energy Schematics
+  description: Brotherhood Knight-level energy weapon manufacturing specifications. Tier 2 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSWeaponLaserRifleCrude
+    - N14BPBoSWeaponLaserRifleMakeshift
+    - N14BPBoSWeaponLaserRifle
+    - N14BPBoSWeaponPlasmaPistol
+#   - N14BPBoSWeaponPlasmaDefender
+    # #Misfits Add - mediocre kinetic surplus rifles (T2)
+    - N14BPBoSWeaponRifle762M14
+    - N14BPBoSWeaponShotgunTrench
+    - N14BPBoSWeaponRifle10mmM1Carbine
+    - N14BPBoSWeaponRifleAk112
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSWeaponsT3
+  name: BoS Paladin Arsenal Plans
+  description: Advanced Brotherhood weapons schematics from the Paladin armory. Tier 3 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSWeaponLaserRifleAuto
+    - N14BPBoSWeaponPlasmaRifle
+    - N14BPBoSWeaponPlasmaRifleAuto
+    - N14BPBoSWeaponPlasmaRifleUrban
+    - N14BPBoSWeaponPlasmaMultiplas
+    - N14BPBoSWeaponLaserRCW # #Misfits Change - moved from T5 to T3; RCW is now red-beam mid-tier
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSWeaponsT4
+  name: BoS Elder's Vault Blueprints
+  description: Pre-war military prototypes recovered from bunker archives. The Brotherhood's most guarded secrets. Tier 4 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSWeaponLaserRiflePrototypeAER14
+    - N14BPBoSWeaponLaserRifleWattz2000 # #Misfits Change - moved from T3 to T4
+    - N14BPBoSWeaponLaserRifleWattz3000
+    - N14BPBoSWeaponLaserRifleAER12 # #Misfits Add - AER-12 amber beam at T4
+    - N14BPBoSWeaponBozarGRA
+
+# #Misfits Change - RCW moved to T3; AER-15 added to T5
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSWeaponsT5
+  name: BoS Sentinel Heavy Ordnance Plans
+  description: Classified heavy weapons schematics held only by Brotherhood Sentinels. Contains designs for the deadliest energy weapons in the arsenal. Tier 5 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSWeaponPlasmaCaster
+    - N14BPBoSWeaponLaserGatling
+    - N14BPBoSWeaponLaserRifleWattz3000 # #Misfits Change - moved from T4 to T5
+    - N14BPBoSWeaponLaserRifleAER15 # #Misfits Add - AER-15 blue beam at T5; highest damage laser rifle
+
+# --- BoS Armor ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSArmorT1
+  name: BoS Initiate Armor Pattern
+  description: Brotherhood standard armor assembly instructions for new initiates. Tier 1 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSArmorWBoSInitiateArmor
+    # #Misfits Add - paired initiate helmet
+    - N14BPBoSArmorHelmetBrotherhood
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSArmorT2
+  name: BoS Squire Armor Blueprint
+  description: Brotherhood armorer's manual for Squire-grade equipment. Tier 2 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSArmorWBoSSquireArmor
+    - N14BPBoSArmorMBoSSquireArmor
+    - N14BPBoSArmorMidwestArmor
+    # #Misfits Add - paired knight and midwest helmets
+    - N14BPBoSArmorHelmetBrotherhoodKnight
+    - N14BPBoSArmorHelmetBrotherhoodMidwest
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSArmorT3
+  name: BoS Knight Armor Schematic
+  description: Full combat armor assembly plans from the Brotherhood Knight ranks. Tier 3 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSArmorWBoSKnightArmor
+    - N14BPBoSArmorMBoSKnightArmor
+    - N14BPBoSArmorWBoSSeniorKArmor
+    - N14BPBoSArmorMBoSSeniorKArmor
+    - N14BPBoSArmorMidwestArmorMK2
+    # #Misfits Add - paired captain / paladin / MK2 / midwest veteran helmets
+    - N14BPBoSArmorHelmetBrotherhoodCaptain
+    - N14BPBoSArmorHelmetBrotherhoodPaladin
+    - N14BPBoSArmorHelmetBrotherhoodMK2
+    - N14BPBoSArmorHelmetBrotherhoodMidwestVeteran
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSArmorT4
+  name: BoS Paladin Power Armor Plans
+  description: Brotherhood of Steel power armor assembly plans. The pinnacle of pre-war military technology. Tier 4 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSArmorPowerArmorT45
+    # #Misfits Removed - user requested no power armor helmet recipes
+    # - N14BPBoSArmorPowerHelmetT45
+
+# --- BoS Ammo ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSAmmoT1
+  name: BoS Energy Cell Manual
+  description: Brotherhood guide to assembling basic energy weapon cells — microfusion and electron charge packs. Tier 1 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSAmmoElectronChargePackRed
+    - N14BPBoSAmmoBox10mm
+    # #Misfits Add - kinetic ammo for T1 mediocre guns (9mm / .45 / 12ga)
+    - N14BPBoSAmmoBox9mm
+    - N14BPBoSAmmoMag9mmPistol
+    - N14BPBoSAmmoBox45
+    - N14BPBoSAmmoMag45Pistol
+    - N14BPBoSAmmoBox12gauge
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSAmmoT2
+  name: BoS Plasma Cell Specs
+  description: Brotherhood specifications for plasma weapon ammunition. Tier 2 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSAmmoPowerCellHigh
+    - N14BPBoSAmmoPlasmaCartridge
+    # #Misfits Add - kinetic ammo for T2 mediocre guns (7.62 M14 / 5.45 AK-112)
+    - N14BPBoSAmmoBox762
+    - N14BPBoSAmmoMag762Short
+    - N14BPBoSAmmoBox545
+    - N14BPBoSAmmoMag545Rifle
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSAmmoT3
+  name: BoS Plasma Cartridge Blueprint
+  description: Advanced plasma ammunition manufacturing plans from the Scribe archives. Tier 3 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSAmmoPlasmaShell
+    - N14BPBoSAmmoPlasmaCartridgeMultiplas
+    - MisfitsBPBoSGrenadeFragOffensive # #Misfits Add - efficient conventional ordnance
+    - MisfitsBPBoSGrenadeFragDefensive
+    # #Misfits Add - complete 40mm family.
+    - MisfitsBPBoS40mmHE
+    - MisfitsBPBoS40mmBuckshot
+    - MisfitsBPBoS40mmSmoke
+    - MisfitsBPBoS40mmWhitePhosphorus
+    - MisfitsBPBoS40mmFlashbang
+    - MisfitsBPBoS40mmTearGas
+    - MisfitsBPBoS40mmHEDP
+    - MisfitsBPBoS40mmIncendiary
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSAmmoT4
+  name: BoS Fusion Core Schematic
+  description: Pre-war fusion core assembly plans. Brotherhood's most advanced ammunition technology. Tier 4 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSAmmoFusionCoreRed
+    # #Misfits Change - duplicate FC recipe removed; consolidated to single generic fusion core
+    - N14BPBoSAmmoVertibirdGunBelt # #Misfits Add - vertibird turret belt
+
+#- type: entity
+#  parent: N14BlueprintBase
+#  id: N14BlueprintBoSAmmoT5
+#  name: BoS Experimental Violet-Spectrum Cell Plans
+#  description: Highly classified experimental schematics for violet-spectrum energy cells. Tier 5 ammo.
+#  components:
+#  - type: Blueprint
+#    recipes:
+#    - N14BPBoSAmmoMicrofusionViolet
+
+# =====================================================================
+# TOWNSFOLK BLUEPRINTS
+# =====================================================================
+
+# --- Town Weapons ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownWeaponsT1
+  name: Wasteland Trader's Catalog
+  description: A worn catalog from a caravan trader listing common wasteland weapons. Tier 1 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownWeaponPistol9mm
+    - N14BPTownWeaponPistol10mm
+    - N14BPTownWeaponPistol22lr
+    - N14BPTownWeaponRevolver9mm
+    - N14BPTownWeaponCombatKnife
+    - N14BPTownWeaponShotgunDoubleBarrel
+    - N14BPTownWeaponShotgun
+    - N14BPTownWeaponSniperHunting
+    # #Misfits Add - mediocre civilian-market kinetic guns (T1)
+    - N14BPTownWeaponPistol9mmChinese
+    - N14BPTownWeaponPistolM1911
+    - N14BPTownWeaponPistol12mm
+    - N14BPTownWeaponShotgunSawedOff
+    - N14BPTownWeaponRevolver357Detective
+    - N14BPTownWeaponSniperCowboyRepeater
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownWeaponsT2
+  name: Militia Arms Manual
+  description: A town militia equipment manual with common military-surplus weapon designs. Tier 2 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownWeaponPistol45Colt
+    - N14BPTownWeaponPistolWebley
+    - N14BPTownWeaponRifle556Service
+    - N14BPTownWeaponRifle556R91
+    - N14BPTownWeaponMachete
+    - N14BPTownWeaponHatchet
+    - N14BPTownWeaponShotgunCaravan
+    - N14BPTownWeaponSMG9mm
+    - N14BPTownWeaponSniper44LeverCarbine
+    # #Misfits Add - mediocre civilian-market kinetic guns (T2)
+    - N14BPTownWeaponRifle10mmM1Carbine
+    - N14BPTownWeaponRifle762M14
+    - N14BPTownWeaponRifle762Rangemaster
+    - N14BPTownWeaponShotgunTrench
+    - N14BPTownWeaponSMG10mmChinese
+    - N14BPTownWeaponSMGPPSh41
+    - N14BPTownWeaponRifleAk112
+    - N14BPTownWeaponSniper308Ross
+    - N14BPTownWeaponSniperPaciencia
+    - N14BPTownWeaponSniper44LeverShortCarbine
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownWeaponsT3
+  name: Gun Runner's Prospectus
+  description: A Gun Runner weapons catalog with advanced civilian-market armaments. Tier 3 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownWeaponRevolver44Magnun
+    - N14BPTownWeaponDesertEagle44
+    - N14BPTownWeaponRifle308Battle
+    - N14BPTownWeaponSMG10mm
+    - N14BPTownWeaponSMG45
+    - N14BPTownWeaponShotgunAuto
+    - N14BPTownWeaponSledgeHammer
+    - N14BPTownWeaponRifle556Carbine
+    - N14BPTownWeaponSMG12mm
+    - N14BPTownWeaponSniper45-70BrushGun
+    - N14BPTownWeaponRevolver45-70Hunter
+    - N14BPTownWeaponSniper308LeverRifle
+    - N14BPTownWeaponWeaponSMG9mmCanadian
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownWeaponsT4
+  name: RCMP Catalog of Arms
+  description: A rare pre-war RCMP catalog of firearm blueprints. Tier 4 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownWeaponRifle762Canadian
+    - N14BPTownWeaponSMG12mmAdvancedCanadian
+    - N14BPTownWeaponShotgunCanadian
+
+
+# --- Town Armor ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownArmorT1
+  name: Wasteland Tailoring Guide
+  description: A simple guide to crafting basic protective wear from wasteland materials. Tier 1 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownArmorVestLeather
+    - N14BPTownArmorChitinArmor
+    - N14BPTownArmorLightLeatherArmor
+    # #Misfits Add - paired basic town guard hat
+    - N14BPTownArmorHelmetTownGuard
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownArmorT2
+  name: Town Guard Armor Pattern
+  description: Armor patterns used by town guard and sheriff's deputies. Tier 2 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownArmorPoliceVest
+    - N14BPTownArmorTownGuardLight
+    - N14BPTownArmorReinforcedLeatherArmor
+    - N14BPTownArmorLeatherArmor
+    # #Misfits Add - paired Brodie and basic metal helmets
+    - N14BPTownArmorHelmetBrodie
+    - N14BPTownArmorHelmetMetal
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownArmorT3
+  name: Pre-War Security Manual
+  description: Pre-war security company armor specifications found in a ruined office. Tier 3 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownArmorTownGuardRiot
+    - N14BPTownArmorPoliceCombat
+    - N14BPTownArmorSheriffVest
+    - N14BPTownArmorVestRCMP
+    # #Misfits Add - paired riot Brodie variants and RCMP helmet
+    - N14BPTownArmorHelmetBrodieCover
+    - N14BPTownArmorHelmetBrodieVisor
+    - N14BPTownArmorHelmetRCMP
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownArmorT4
+  name: Military Surplus Armor Plans
+  description: Salvaged pre-war military armor blueprints. The best a town can get. Tier 4 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownArmorCombatArmorRCMP
+    # #Misfits Add - paired RCMP helmets/armors
+    - N14BPTownArmorHelmetSpecRCMP
+
+# --- Town Ammo ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownAmmoT1
+  name: Reloader's Handbook Vol. 1
+  description: A basic ammunition reloading handbook for common pistol calibers. Tier 1 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownAmmoBox9mm
+    - N14BPTownAmmoBox10mm
+    - N14BPTownAmmoBox22lr
+    - N14BPTownAmmoMag9mmPistol
+    - N14BPTownAmmoMag10mmPistol
+    # #Misfits Add - ammo for T1 mediocre guns (.45 / 12mm / .22 drum / .357)
+    - N14BPTownAmmoMag45Pistol
+    - N14BPTownAmmoMagPistol12mm
+    - N14BPTownAmmoBox357
+    - N14BPTownAmmoSpeedLoader357
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownAmmoT2
+  name: Reloader's Handbook Vol. 2
+  description: Intermediate ammunition loading specs for rifle and shotgun calibers. Tier 2 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownAmmoBox556
+    - N14BPTownAmmoBox45
+    - N14BPTownAmmoBox12gauge
+    - N14BPTownAmmoMag556Rifle
+    - N14BPTownAmmoMag9mmSMG
+    # #Misfits Add - ammo for T2 mediocre guns (7.62 short / 9mm drum / 5.45)
+    - N14BPTownAmmoMag762Short
+    - N14BPTownAmmoMag9mmSMGDrum
+    - N14BPTownAmmoBox545
+    - N14BPTownAmmoMag545Rifle
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownAmmoT3
+  name: Reloader's Handbook Vol. 3
+  description: Advanced ammunition loading specs for high-caliber rounds. Tier 3 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownAmmoBox762
+    - N14BPTownAmmoBox308
+    - N14BPTownAmmoBox44Magnum
+    - N14BPTownAmmoMag762Rifle
+    - N14BPTownAmmoMag10mmSMG
+    - MisfitsBPTownGrenadeImpact # #Misfits Add - reduced-cost impact ordnance
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTownAmmoT4
+  name: Gunsmith's Master Reference
+  description: A rare gunsmith's reference containing specs for the heaviest ammunition. Tier 4 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTownAmmoBox127
+    - N14BPTownAmmoBox45-70
+    - N14BPTownAmmoMag12mmSMG
+    - N14BPTownAmmoMag556Long
+
+# =====================================================================
+# VAULT BLUEPRINTS
+# =====================================================================
+
+# --- Vault Weapons ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultWeaponsT1
+  name: Vault-Tec Security Manual
+  description: Standard Vault-Tec security equipment handbook. Tier 1 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultWeaponPistol10mm
+    - N14BPVaultWeaponPoliceBaton
+    - N14BPVaultWeaponLaserPistol
+    # #Misfits Add - mediocre kinetic security guns (T1)
+    - N14BPVaultWeaponPistol9mmChinese
+    - N14BPVaultWeaponPistolM1911
+    - N14BPVaultWeaponShotgunSawedOff
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultWeaponsT2
+  name: Vault-Tec Advanced Security Protocols
+  description: Vault-Tec classified security protocols with advanced weapon specifications. Tier 2 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultWeaponSMG10mm
+    - N14BPVaultWeaponCombatKnife
+    # #Misfits Add - mediocre kinetic security guns (T2)
+    - N14BPVaultWeaponRifle10mmM1Carbine
+    - N14BPVaultWeaponShotgunTrench
+    - N14BPVaultWeaponSMG10mmChinese
+    - N14BPVaultWeaponAmerican180
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultWeaponsT3
+  name: Vault-Tec R&D Energy Weapons File
+  description: Vault-Tec Research & Development energy weapon prototypes. Tier 3 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultWeaponPlasmaPistol
+    - N14BPVaultWeaponLaserRifle
+    - N14BPVaultWeaponPlasmaDefender
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultWeaponsT4
+  name: Vault-Tec Experimental Weapons Archive
+  description: Top-secret Vault-Tec experimental weapons research. Never meant to leave the vault. Tier 4 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultWeaponPlasmaRifle
+    - N14BPVaultWeaponLaserRifleWattz2000
+    - N14BPVaultWeaponLaserRifleAuto
+    - N14BPVaultWeaponLaserRCW
+    - N14BPVaultWeaponPlasmaCaster
+
+# --- Vault Armor ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultArmorT1
+  name: Vault-Tec Utility Suit Manual
+  description: Standard Vault-Tec jumpsuit reinforcement guide. Tier 1 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultArmorVaultSecVest
+    # #Misfits Add - paired vault security riot helmet
+    - N14BPVaultArmorHelmetVaultRiot
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultArmorT2
+  name: Vault-Tec Security Armor Specs
+  description: Vault-Tec security department armor specifications. Tier 2 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - M14BPVaultAdvancedVestArmor
+    - M14BPVaultArmorHelmetAdvancedRiot
+    # #Misfits Add - paired basic metal helmet
+    - N14BPVaultArmorHelmetMetal
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultArmorT3
+  name: Vault-Tec Combat Armor Blueprint
+  description: Pre-war combat armor assembly stored in the Vault's armory database. Tier 3 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultArmorCombatArmor
+    - N14BPVaultArmorPoliceCombat
+    # #Misfits Add - paired combat helmet
+    - N14BPVaultArmorHelmetCombat
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultArmorT4
+  name: Vault-Tec Experimental Armor Project
+  description: Vault-Tec experimental armor prototypes from the science division. Tier 4 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultArmorCombatArmorMK2
+    - N14BPVaultArmorMarineArmor
+    # #Misfits Add - Vault-Tec combat armor
+    - M14BPVaultPaintCombatArmor
+    # #Misfits Add - paired combat MK2 and marine helmets, also vault helmet
+    - N14BPVaultArmorHelmetCombatMK2
+    - N14BPVaultArmorHelmetMarine
+    - M14BPVaultPaintCombatHelmet
+    - N14BPVaultArmorScoutSuit
+
+# --- Vault Ammo ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultAmmoT1
+  name: Vault-Tec Ammunition Guide
+  description: Standard Vault-Tec ammunition manufacturing procedures. Tier 1 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultAmmoBox10mm
+    - N14BPVaultAmmoMag10mmPistol
+    # #Misfits Add - ammo for T1 mediocre security guns (9mm / .45 / 12ga / .22)
+    - N14BPVaultAmmoBox9mm
+    - N14BPVaultAmmoMag9mmPistol
+    - N14BPVaultAmmoBox45
+    - N14BPVaultAmmoMag45Pistol
+    - N14BPVaultAmmoBox12gauge
+    - N14BPVaultAmmoBox22lr
+    - N14BPVaultAmmoMagAmerican180Drum
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultAmmoT2
+  name: Vault-Tec Energy Cell Manual
+  description: Vault-Tec guide to assembling energy weapon power cells. Tier 2 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultAmmoPowerCellSmall
+    - N14BPVaultAmmoMag10mmSMG
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultAmmoT3
+  name: Vault-Tec Plasma Cell Specs
+  description: Vault-Tec specifications for plasma weapon ammunition. Tier 3 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    # #Misfits Change - MFC recipe removed; consolidated to single generic cell at T2
+    - N14BPVaultAmmoPlasmaCell
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintVaultAmmoT4
+  name: Vault-Tec Plasma Cartridge Archive
+  description: Experimental plasma ammunition designs from the Vault-Tec science archives. Tier 4 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPVaultAmmoPlasmaCartridge
+    - N14BPVaultAmmoElectronChargePack
+    # #Misfits Change - MFC recipe removed; consolidated to single generic cell at T2
+
+# =====================================================================
+# TRIBE BLUEPRINTS
+# =====================================================================
+
+# --- Tribe Weapons ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeWeaponsT1
+  name: Tribal Hunting Teachings
+  description: Knowledge passed down from tribal elders on crafting basic hunting tools. Tier 1 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeWeaponTribalKnife
+    - N14BPTribeWeaponTribalClub
+    - N14BPTribeWeaponWastelandSpear
+    - N14BPTribeWeaponRevolver44Tribal
+    - N14BPTribeWeaponBrokenPipe
+    - N14BPTribeWeaponLoveandHate
+    # #Misfits Add - mediocre scavenged kinetic guns (T1)
+    - N14BPTribeWeaponPistol9mmChinese
+    - N14BPTribeWeaponPistol12mm
+    - N14BPTribeWeaponShotgunSawedOff
+    - N14BPTribeWeaponSniperCowboyRepeater
+    - N14BPTribeWeaponRevolver357Detective
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeWeaponsT2
+  name: Tribal Warrior's Craft
+  description: Warrior traditions for forging tribal combat weapons from natural materials. Tier 2 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeWeaponTribalMachete
+    - N14BPTribeWeaponTribalHatchet
+    - N14BPTribeWeaponTribalSword
+    - N14BPTribeWeaponRevolver44TribalUpgraded
+    - N14BPTribeWeaponPistol10mmPipe
+    - N14BPTribeWeaponShotgunPipe
+    # #Misfits Add - mediocre scavenged kinetic guns (T2)
+    - N14BPTribeWeaponSMGPPSh41
+    - N14BPTribeWeaponRifle10mmM1Carbine
+    - N14BPTribeWeaponSniper308Ross
+    - N14BPTribeWeaponSniper44LeverShortCarbine
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeWeaponsT3
+  name: Tribal Elder's War Knowledge
+  description: Ancient tribal war knowledge for crafting the mightiest weapons. Tier 3 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeWeaponRevolver44TribalExtra
+    - N14BPTribeWeaponHandcannon
+    - N14BPTribeWeaponTribalBigClub
+    - N14BPTribeWeaponTribalSpear
+    - N14BPTribeWeaponSMG12mmPipe
+    - N14BPTribeWeaponRifle556Pipe
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeWeaponsT4
+  name: Tribal Shaman's Sacred Texts
+  description: The most sacred weapon-crafting knowledge of the tribe, guarded by shamans. Tier 4 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeWeaponHandcannonUpgraded
+    - N14BPTribeWeaponTribalBigClubDecorated
+    - N14BPTribeWeaponPolearm
+    - N14BPTribeWeaponSniper50Pipe
+    - N14BPTribeWeaponSuperSledgeHammer
+
+# --- Tribe Armor ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeArmorT1
+  name: Tribal Hide Tanning Guide
+  description: Tribal knowledge of hide tanning and basic armor construction. Tier 1 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeArmorHelmetRadstagSkull
+    - N14BPTribeArmorHelmetTribalShamanHat
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeArmorT2
+  name: Tribal Warrior's Armor Craft
+  description: Warrior traditions for crafting battle-ready tribal armor. Tier 2 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeArmorTribalArmor
+    - N14BPTribeArmorDrylanderSimple
+    - N14BPTribeArmorBandito
+    - N14BPTribeArmorForager
+    - N14BPTribeArmorHunter
+    - N14BPTribeArmorPoncho
+    - N14BPTribeArmorHeadtaker
+    - N14BPTribeArmorShaman
+    - N14BPTribeArmorHelmetTribalShemagh
+    - N14BPTribeArmorHelmetTribalHunterHood
+    - N14BPTribeArmorHelmetTribalHeadWraps
+    - N14BPTribeArmorHelmetDrylanderGoggles
+    - N14BPTribeArmorHelmetTribalShamanHeadband
+    - N14BPTribeArmorHelmetHeadtakerwraps
+    - MisfitsBPTribeArmorHelmetHelmetOfPeace
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeArmorT3
+  name: Tribal Champion's Armor
+  description: The armor of tribal champions, reinforced with salvaged pre-war materials. Tier 3 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeArmorTribalArmorHeavy
+    - N14BPTribeArmorCombatTribal
+    - MisfitsBPTribeArmorHelmetRadstagSkull
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeArmorT4
+  name: Tribal Elder's Sacred Armor
+  description: The most revered armor designs of the tribal elders, combining ancient wisdom with scavenged technology. Tier 4 armor.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeArmorRadArmor
+    - N14BPTribeArmorInsectArmor
+    - N14BPTribeArmorHelmetEdlerSkullhelm
+
+# --- Tribe Ammo ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeAmmoT1
+  name: Tribal Bullet Making
+  description: Simple instructions for casting bullets from scavenged lead. Tier 1 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeAmmoBox44Magnum
+    - N14BPTribeAmmoBox10mm
+    - N14BPTribeAmmoSpeedLoader44
+    # #Misfits Add - ammo for T1 mediocre guns (9mm / 12mm / .357)
+    - N14BPTribeAmmoBox9mm
+    - N14BPTribeAmmoMag9mmPistol
+    - N14BPTribeAmmoMagPistol12mm
+    - N14BPTribeAmmoBox357
+    - N14BPTribeAmmoSpeedLoader357
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeAmmoT2
+  name: Tribal Shot Making
+  description: Knowledge of making shotgun shells and larger caliber ammunition. Tier 2 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeAmmoBox12gauge
+    - N14BPTribeAmmoBox556
+    - N14BPTribeAmmoMag10mmPipe
+    # #Misfits Add - ammo for T2 mediocre guns (9mm drum; .308 box already at T3)
+    - N14BPTribeAmmoMag9mmSMGDrum
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeAmmoT3
+  name: Tribal Heavy Rounds
+  description: Tribal knowledge of crafting heavy ammunition for their biggest weapons. Tier 3 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeAmmoBox127
+    - N14BPTribeAmmoBox308
+    - N14BPTribeAmmoSpeedLoader45-70
+    - MisfitsBPTribeGrenadeTin # #Misfits Add - Willower faction-council improvised explosives
+    - MisfitsBPTribeDynamite
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintTribeAmmoT4
+  name: Tribal Master Munitions
+  description: The most advanced ammunition crafting known to the tribe. Tier 4 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPTribeAmmoBox50
+    - N14BPTribeAmmoBox45-70
+    - N14BPTribeAmmoMag556Pipe

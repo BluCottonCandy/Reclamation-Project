@@ -1,0 +1,84 @@
+﻿# blueprints
+
+- type: entity
+  id: MisfitsCrateAluminiumBlueprintsNCR
+  suffix: Filled, Blueprints, NCR
+  parent: N14CrateAluminium
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14BlueprintNCRAmmoT4
+    - id: N14BlueprintNCRAmmoT3
+    - id: N14BlueprintNCRAmmoT2
+    - id: N14BlueprintNCRAmmoT1
+    - id: N14BlueprintNCRWeaponsT4
+    - id: N14BlueprintNCRWeaponsT3
+    - id: N14BlueprintNCRWeaponsT2
+    - id: N14BlueprintNCRWeaponsT1
+    - id: N14BlueprintNCRArmorT4
+    - id: N14BlueprintNCRArmorT3
+    - id: N14BlueprintNCRArmorT2
+    - id: N14BlueprintNCRArmorT1
+    - id: N14BlueprintC27ArmorNCR
+
+- type: entity
+  id: MisfitsCrateAluminiumBlueprintsLegion
+  suffix: Filled, Blueprints, Legion
+  parent: N14CrateAluminium
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14BlueprintLegionAmmoT4
+    - id: N14BlueprintLegionAmmoT3
+    - id: N14BlueprintLegionAmmoT2
+    - id: N14BlueprintLegionAmmoT1
+    - id: N14BlueprintLegionWeaponsT4
+    - id: N14BlueprintLegionWeaponsT3
+    - id: N14BlueprintLegionWeaponsT2
+    - id: N14BlueprintLegionWeaponsT1
+    - id: N14BlueprintLegionArmorT4
+    - id: N14BlueprintLegionArmorT3
+    - id: N14BlueprintLegionArmorT2
+    - id: N14BlueprintLegionArmorT1
+
+- type: entity
+  id: MisfitsCrateAluminiumBlueprintsBoS
+  suffix: Filled, Blueprints, BoS
+  parent: N14CrateAluminium
+  components:
+  - type: StorageFill
+    contents:
+      - id: N14BlueprintBoSAmmoT4
+      - id: N14BlueprintBoSAmmoT3
+      - id: N14BlueprintBoSAmmoT2
+      - id: N14BlueprintBoSAmmoT1
+      - id: N14BlueprintBoSWeaponsT4
+      - id: N14BlueprintBoSWeaponsT3
+      - id: N14BlueprintBoSWeaponsT2
+      - id: N14BlueprintBoSWeaponsT1
+      - id: N14BlueprintBoSArmorT4
+      - id: N14BlueprintBoSArmorT3
+      - id: N14BlueprintBoSArmorT2
+      - id: N14BlueprintBoSArmorT1
+      - id: N14BlueprintC27ArmorBoS
+      - id: N14BlueprintBoSWeaponsT60
+
+- type: entity
+  id: MisfitsCrateAluminiumBlueprintsVault
+  suffix: Filled, Blueprints, Vault
+  parent: N14CrateAluminium
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14BlueprintVaultAmmoT4
+    - id: N14BlueprintVaultAmmoT3
+    - id: N14BlueprintVaultAmmoT2
+    - id: N14BlueprintVaultAmmoT1
+    - id: N14BlueprintVaultWeaponsT4
+    - id: N14BlueprintVaultWeaponsT3
+    - id: N14BlueprintVaultWeaponsT2
+    - id: N14BlueprintVaultWeaponsT1
+    - id: N14BlueprintVaultArmorT4
+    - id: N14BlueprintVaultArmorT3
+    - id: N14BlueprintVaultArmorT2
+    - id: N14BlueprintVaultArmorT1

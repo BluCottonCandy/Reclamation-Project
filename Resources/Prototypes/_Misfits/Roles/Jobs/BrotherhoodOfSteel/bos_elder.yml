@@ -1,0 +1,86 @@
+- type: job
+  id: BoSWestElderCommander
+  setPreference: true # #Misfits Tweak - visible in job selection
+  hideWithoutJobWhitelist: true # #Misfits Change - Elder is whitelist-only; hidden from job picker without it
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 120
+  name: job-name-bos-west-elder-comm
+  overwatchCategory: OverwatchBosElder
+  description: job-description-bos-west-elder-comm
+  playTimeTracker: BoSWestElderCommander
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterDepartmentTimeRequirement
+      department: BrotherhoodOfSteel
+      min: 252000 # 70 hours
+  startingGear: BoSWestElderCommanderGear
+  alwaysUseSpawner: true
+  icon: "JobIconBosMCommander"
+  supervisors: job-supervisors-bos-west-elder
+  canBeAntag: false
+  requireAdminNotify: true
+  accessGroups:
+  - BOSElder
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - BrotherhoodOfSteel
+      - type: PowerArmorProficiency # #Misfits Add: Elder can equip power armor.
+      - type: LanguageKnowledge # #Misfits Add / #Cythisiax Kept - Elders speak and understand Brotherhood Code; only Elders and Scribes may speak it.
+        speaks:
+        - English
+        - N14BrotherBeep
+        understands:
+        - English
+        - N14BrotherBeep
+      - type: Warcry
+        action: ActionBrotherhoodWarcry
+        targetDepartment: BrotherhoodOfSteel
+        range: 8
+        speedBonus: 0.30
+        duration: 15 # Elders are pretty insparational
+        overlayColor: "#3B72BF"
+        speechVerb: MisfitsBrotherhoodWarcry
+        warcryMessage: warcry-message-brotherhood
+        warcryMessageCount: 6
+        buffPopup: warcry-popup-buffed-brotherhood
+        cautionPopup: true
+        activatorJobs:
+        - BoSWestElderCommander
+        - BoSHeadKnight
+        - BoSMidPaladinCommander
+        - BoSHonorGuard # #Cythisiax Added - personal-whitelist HONOR GUARD warcry
+        - BoSWestScribe
+        - BoSInitiate
+        - BoSKnight
+        - BoSPaladin
+        - BoSScribe
+        - BoSMidKnight
+        - BoSMidPaladin
+        - BoSMidScribe
+        - BoSMidSquire
+
+- type: startingGear
+  id: BoSWestElderCommanderGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpskirtBOSBlack  #Misfits Change /Tweak/: New consolidated BoS gear
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    outerClothing: N14ClothingOuterBrotherhoodElderCoat
+    hands: N14ClothingHandsGlovesCombat
+    pocket1: BoSBrotherhoodElderKits
+    id: N14IDBrotherhoodOfSteelHolotagElder
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
+    belt: N14ClothingBeltBoSWebbing
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+
+- type: playTimeTracker
+  id: BoSWestElderCommander

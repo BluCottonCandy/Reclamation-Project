@@ -1,0 +1,82 @@
+# Aliases for blueprint recipe compatibility.
+# Keeps legacy N14 result IDs valid while reusing existing ammo prototypes.
+
+- type: entity
+  parent: MagazineBox10mm
+  id: N14AmmoBox10mm
+
+- type: entity
+  parent: MagazineBox44
+  id: N14AmmoBox44Magnum
+
+- type: entity
+  parent: SpeedLoader44
+  id: N14SpeedLoader44Magnum
+
+- type: entity
+  parent: MagazineBox12gauge
+  id: N14AmmoBox12gauge
+
+- type: entity
+  parent: MagazineBox556
+  id: N14AmmoBox556
+
+- type: entity
+  parent: MagazineBox12
+  id: N14AmmoBox127
+
+- type: entity
+  parent: MagazineBox308
+  id: N14AmmoBox308
+
+- type: entity
+  parent: MagazineBoxOver308
+  id: N14AmmoBoxOver308
+
+- type: entity
+  parent: SpeedLoader45-70
+  id: N14SpeedLoader45-70
+
+- type: entity
+  parent: MagazineBox50
+  id: N14AmmoBox50
+
+- type: entity
+  parent: MagazineBox45-70
+  id: N14AmmoBox45-70
+
+- type: entity
+  parent: MagazineBox9mm
+  id: N14AmmoBox9mm
+
+- type: entity
+  parent: MagazineBox22
+  id: N14AmmoBox22lr
+
+- type: entity
+  parent: MagazineBox45
+  id: N14AmmoBox45
+
+- type: entity
+  parent: MagazineBox762
+  id: N14AmmoBox762
+
+- type: entity
+  parent: N14MagazineMinigun5mm
+  id: N14AmmoBox5mm
+
+- type: entity
+  parent: LMGMagazine556Rifle
+  id: N14MagazineLMG308
+
+- type: entity
+  parent: 40mmGrenadeFrag
+  id: N14CartridgeGrenade40mm
+
+- type: entity
+  parent: CartridgeMissile
+  id: N14CartridgeMissile
+
+- type: entity
+  parent: 40mmGrenadeFire
+  id: N14CartridgeGrenadeIncendiary40mm

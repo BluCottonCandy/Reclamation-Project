@@ -1,0 +1,48 @@
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: M14VaultSecuritySatchel
+  name: vault security satchel
+  description: A robust satchel used by vault security, comes in vault-tec colors.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Back/vaultsecuritysatchel.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: M14OldSatchel
+  name: old satchel
+  description: The leather is stiff and cracking, but the satchel still works
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Back/oldsatchel.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: M14MarchingSatchel
+  name: marching satchel
+  description: A sturdy leather bag attacked to the belt, for carrying necessary supplies.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Back/marchingsatchel.rsi
+
+# #Misfits Add - BoS Squire heavy supply bag.
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: MisfitsClothingBackpackSquire
+  name: squire bag
+  description: A heavy Brotherhood supply bag built for hauling field equipment.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Back/squirebag.rsi
+  - type: Storage # #Misfits Add - two-duffel storage capacity.
+    maxItemSize: Huge
+    grid:
+    - 0,0,7,9
+  - type: ClothingSpeedModifier # #Misfits Add - 25% slowdown for heavy carrying.
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: StrengthIgnoreClothingSlowdown # #Misfits Add - 7 Strength reduces the bag slowdown to 10%.
+    minimumStrength: 7
+    strengthWalkModifier: 0.9
+    strengthSprintModifier: 0.9
+  - type: HandOrGroundStorage # #Misfits Add - only opens while held or on the ground.

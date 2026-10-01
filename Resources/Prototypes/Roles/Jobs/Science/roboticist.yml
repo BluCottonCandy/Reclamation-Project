@@ -1,0 +1,41 @@
+- type: job
+  id: Roboticist
+  name: job-name-roboticist
+  description: job-description-roboticist
+  playTimeTracker: JobRoboticist
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Epistemics
+    min: 14400 # 4 hours - same as scientist
+  startingGear: RoboticistGear
+  icon: "JobIconRoboticist"
+  supervisors: job-supervisors-rd
+  access:
+  - Research
+  - Maintenance
+  setPreference: false
+
+- type: startingGear
+  id: RoboticistGear
+  subGear:
+  - RoboticistPlasmamanGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    back: ClothingBackpackRoboticsFilled
+    shoes: ClothingShoesColorBlack
+    outerClothing: ClothingOuterCoatRobo
+    id: RoboticsPDA
+    ears: ClothingHeadsetRobotics
+  innerClothingSkirt: ClothingUniformJumpskirtRoboticist
+  satchel: ClothingBackpackSatchelRoboticsFilled
+  duffelbag: ClothingBackpackDuffelRoboticsFilled
+
+- type: startingGear
+  id: RoboticistPlasmamanGear
+  parent: BasePlasmamanGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingUniformEnvirosuitRoboticist
+    head: ClothingHeadEnvirohelmRoboticist
+    gloves: ClothingHandsGlovesEnviroglovesRoboticist

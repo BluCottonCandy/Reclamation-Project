@@ -1,0 +1,141 @@
+- type: characterItemGroup
+  id: N14LoadoutOuter
+  items:
+    - type: loadout
+      id: N14LoadoutOuterGhostSheet
+    - type: loadout
+      id: N14LoadoutOuterJacketLettermanRed
+    - type: loadout
+      id: N14LoadoutOuterJacketLettermanBrown
+    - type: loadout
+      id: N14LoadoutOuterRobeHubologist
+    - type: loadout
+      id: N14ClothingOuterFlannelRed
+    - type: loadout
+      id: N14ClothingOuterFlannelAqua
+    - type: loadout
+      id: N14ClothingOuterFlannelBrown
+    - type: loadout
+      id: N14LoadoutOuterCoatWinterArmored
+    - type: loadout
+      id: N14LoadoutOuterCoatBattlecoat
+    - type: loadout
+      id: N14LoadoutOuterCoatBattlecoatTan
+    - type: loadout
+      id: N14LoadoutOuterCoatDuster
+    - type: loadout
+      id: N14LoadoutOuterCoatLeatherDuster
+    - type: loadout
+      id: N14ClothingOuterCoatLeatherJacket
+    - type: loadout
+      id: N14ClothingOuterCoatLeatherCoat
+    - type: loadout
+      id: N14ClothingOuterTownCoat
+    - type: loadout
+      id: N14ClothingOuterTownMediumCoat
+    - type: loadout
+      id: N14LoadoutOuterLeatherArmor
+    - type: loadout
+      id: N14LoadoutOuterMetalArmor
+    - type: loadout
+      id: N14LoadoutOuterTribalArmor
+    - type: loadout
+      id: N14LoadoutOuterTribalArmorHeavy
+    - type: loadout
+      id: N14LoadoutOuterRaiderBadlands
+    - type: loadout
+      id: N14LoadoutOuterRaiderBlastmaster
+    - type: loadout
+      id: N14LoadoutOuterHarperCoat
+    - type: loadout
+      id: N14LoadoutOuterScavengerHeavyArmor
+    - type: loadout
+      id: N14ClothingOuterElderwintercoat
+    - type: loadout
+      id: N14ClothingOuterdrylandelder
+    - type: loadout
+      id: N14ClothingOuterBandito
+    - type: loadout
+      id: N14ClothingOuterforager
+    - type: loadout
+      id: N14ClothingOuterheadtaker
+    - type: loadout
+      id: N14ClothingOuterhunter
+    - type: loadout
+      id: N14ClothingOuterponcho
+    - type: loadout
+      id: N14ClothingOutershaman
+    - type: loadout
+      id: N14ClothingOuterdrylandersimple
+    - type: loadout
+      id: N14LoadoutOuterCoatLeatherJacketVault
+    - type: loadout # #Misfits Add - Head Paladin veteran power armor choice
+      id: MisfitsLoadoutBoSMidwestCommanderPowerArmor
+    - type: loadout
+      id: ClothingOuterCoatInspector
+    - type: loadout
+      id: ClothingOuterCoatGentleVault
+    - type: loadout
+      id: N14ClothingOuterJacketBomberVault
+    - type: loadout
+      id: N14LoadoutOuterCoatLeatherJacket
+    - type: loadout
+      id: ClothingOuterDenimJacketVault
+    - type: loadout
+      id: ClothingOuterCoatTrenchVault
+    - type: loadout
+      id: ClothingOuterCoatJensenVault
+    - type: loadout
+      id: N14ClothingOuterBosScribeVault
+    - type: loadout
+      id: N14ClothingOuterPoliceVestVault
+    - type: loadout #Misfits 80s
+      id: MisfitsLoadoutOuterCoatJacketBiker
+    - type: loadout
+      id: N14LoadoutUniversalOuterBlackRobes
+    - type: loadout
+      id: N14LoadoutUniversalOuterGhostEchoes
+    - type: loadout
+      id: N14LoadoutUniversalOuterLeatherRobes
+    - type: loadout
+      id: N14LoadoutUniversalOuterNCRCorrectional
+    - type: loadout
+      id: N14LoadoutUniversalOuterNCRDressJacket
+    - type: loadout
+      id: N14LoadoutUniversalOuterNCRDressJacketCO
+    - type: loadout
+      id: N14LoadoutUniversalOuterNCRQuartermaster
+    - type: loadout
+      id: N14LoadoutUniversalOuterRobeHubologist
+    - type: loadout
+      id: MisfitsLoadoutOuterHighwayPatrolJacket
+    - type: loadout
+      id: MisfitsLoadoutOuterMarlowGangOvercoat
+    - type: loadout
+      id: MisfitsLoadoutOuterGunfightersOvercoat
+    - type: loadout
+      id: MisfitsLoadoutOuterVegabondsVest
+    - type: loadout
+      id: MisfitsLoadoutOuterArmorKit
+    - type: loadout
+      id: MisfitsLoadoutOuterArmorKitPunk
+    - type: loadout
+      id: MisfitsLoadoutOuterArmorKitShoulder
+    - type: loadout
+      id: MisfitsClothingOuterKhansVest
+    - type: loadout
+      id: MisfitsLoadoutOuterKhansBattlecoatBlack
+    - type: loadout
+      id: MisfitsLoadoutOuterCombatTalon
+    - type: loadout
+      id: MisfitsLoadoutOuterCombatTalonDuster
+    - type: loadout
+      id: MisfitsLoadoutOuterDeadHorsesArmor
+    - type: loadout
+      id: MisfitsLoadoutOuterSorrowsArmor
+    - type: loadout
+      id: MisfitsLoadoutOuterRustwalkersArmor
+    - type: loadout
+      id: MisfitsLoadoutOuterRustwalkersLightArmor
+    - type: loadout
+      id: MisfitsLoadoutOuterWhiteLegsArmor

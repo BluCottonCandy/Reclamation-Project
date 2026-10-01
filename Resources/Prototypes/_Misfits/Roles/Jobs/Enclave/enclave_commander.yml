@@ -1,0 +1,63 @@
+# #Misfits Add - Enclave Commander role (highest military rank).
+
+- type: job
+  id: EnclaveCommander
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 120
+  displayWeight: 129
+  showBorder: true
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-enclave-commander
+  description: job-description-enclave-commander
+  playTimeTracker: EnclaveCommander
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h Enclave)
+      department: Enclave
+      min: 432000 # 40 hours
+  startingGear: EnclaveCommanderGear
+  icon: "JobIconEnclaveCommander"
+  supervisors: job-supervisors-enclave-commander
+  requireAdminNotify: true
+  alwaysUseSpawner: true
+  accessGroups:
+  - EnclaveCommand
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Enclave
+      - type: ReplacementAccent
+        accent: n14Enclave
+      - type: PowerArmorProficiency
+
+- type: startingGear
+  id: EnclaveCommanderGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatEnclaveOfficer
+    back: N14ClothingBackpackMilitary
+    jumpsuit: N14ClothingUniformJumpsuitEnclave
+    # #Misfits Change - The Commander wears the officer coat; Hellfire remains Reformer-only.
+    outerClothing: N14ClothingOuterEnclaverOfficerCoat
+    shoes: N14ClothingBootsCombatFilled
+    gloves: N14ClothingHandsGlovesCombat
+    belt: ClothingBeltMilitary
+    ears: N14ClothingHeadsetEnclave
+    pocket1: EnclaveOfficerloadoutkits
+    pocket2: RadioHandheld
+    id: N14EnclaveOfficerPipboy
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+
+- type: playTimeTracker
+  id: EnclaveCommander

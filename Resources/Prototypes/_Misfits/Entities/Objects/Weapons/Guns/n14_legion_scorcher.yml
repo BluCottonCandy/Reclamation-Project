@@ -1,0 +1,41 @@
+# #Misfits Add - Legion Scorcher flamethrower: Caesar's Legion T5 incendiary weapon.
+# A military-grade flamethrower seized from a Mojave military depot and repurposed by the Legion.
+# Uses the RMC-14 M34 incinerator sprite (CC-BY-SA-3.0, cmss13 lineage).
+# Extends WeaponFireGunBase - refuelled with welding fuel canisters in-game.
+
+- type: entity
+  parent: WeaponFireGunBase
+  id: N14WeaponLegionScorcher
+  name: Scorcher
+  description: A military-grade incendiary weapon seized from pre-war stockpiles and repurposed by Caesar's Legion. Centurions reserve these for breaking fortified positions and clearing out entrenched enemies. Handle with extreme care.
+  components:
+  - type: Gun
+    cameraRecoilScalar: 0    # no recoil — too heavy to bounce
+    fireRate: 15             # slightly slower than the stock flamer; deliberate and punishing
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_RMC/Weapons/Guns/Flamer/gun_flamethrower2.ogg
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Guns/Flamethrower/m34.rsi
+    state: base
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Misfits/Objects/Weapons/Guns/Flamethrower/m34.rsi
+    heldPrefix: inhand-right
+    size: Large
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Guns/Flamethrower/m34.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: FollowDistance
+    backStrength: 6
+  - type: StaticPrice
+    price: 500

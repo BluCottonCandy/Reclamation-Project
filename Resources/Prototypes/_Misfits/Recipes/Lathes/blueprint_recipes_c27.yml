@@ -1,0 +1,252 @@
+# #Misfits Add - C-27 chassis armor blueprint recipes.
+#
+# These recipes are gated by `requiresBlueprint: true` and only appear in the
+# armor workbench's lathe UI when the matching C-27 Armor Blueprint item is
+# placed inside the workbench's storage container (see
+# Content.Server/_Misfits/Crafting/BlueprintSystem.cs -> LatheSystem.AddBlueprintRecipesFromStorage).
+#
+# Three factions × two weight classes × (armor + helmet) = 12 recipes.
+# - Generic recipes: availableFaction omitted so any crafter with the
+#   Generic blueprint can produce them.
+# - NCR recipes:     availableFaction: NCR  (only NCR-faction crafters).
+# - BoS recipes:     availableFaction: BrotherhoodOfSteel.
+#
+# Material budget mirrors tier-3-ish T-series armor in the upstream set
+# (steel-plated robotic chassis, so Steel-heavy). Tune later if balance
+# feedback requires.
+
+# =====================================================================
+# C-27 GENERIC
+# =====================================================================
+
+- type: latheRecipe
+  id: N14BPC27ArmorMediumGeneric
+  result: ClothingC27ArmorMediumGeneric
+  category: N14BlueprintC27ArmorGeneric
+  completetime: 10
+  requiresBlueprint: true
+  materials:
+    Steel: 1500
+    Cloth: 200
+    Thread: 150
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPC27HelmetMediumGeneric
+  result: ClothingC27HelmetMediumGeneric
+  category: N14BlueprintC27ArmorGeneric
+  completetime: 6
+  requiresBlueprint: true
+  materials:
+    Steel: 150
+    Cloth: 75
+    Thread: 50
+    Plastic: 40
+
+- type: latheRecipe
+  id: N14BPC27ArmorMediumZAX
+  result: ClothingC27ArmorMediumZAX
+  category: N14BlueprintZAXEquipment
+  completetime: 10
+  requiresBlueprint: true
+  materials:
+    Steel: 1500
+    Cloth: 200
+    Thread: 150
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPC27HelmetMediumZAX
+  result: ClothingC27HelmetMediumZAX
+  category: N14BlueprintZAXEquipment
+  completetime: 6
+  requiresBlueprint: true
+  materials:
+    Steel: 150
+    Cloth: 75
+    Thread: 50
+    Plastic: 40
+
+- type: latheRecipe
+  id: N14BPWeaponZAXPulseRifle
+  result: N14WeaponZAXPulseRifle
+  category: N14BlueprintZAXEquipment
+  completetime: 14
+  requiresBlueprint: true
+  materials:
+    Steel: 5000
+    Glass: 575
+    Circuitry: 400
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPC27ArmorHeavyGeneric
+  result: ClothingC27ArmorHeavyGeneric
+  category: N14BlueprintC27ArmorGeneric
+  completetime: 14
+  requiresBlueprint: true
+  materials:
+    Steel: 22000
+    Cloth: 250
+    Thread: 175
+    Plastic: 1000
+
+- type: latheRecipe
+  id: N14BPC27HelmetHeavyGeneric
+  result: ClothingC27HelmetHeavyGeneric
+  category: N14BlueprintC27ArmorGeneric
+  completetime: 8
+  requiresBlueprint: true
+  materials:
+    Steel: 275
+    Cloth: 100
+    Thread: 65
+    Plastic: 60
+
+# =====================================================================
+# C-27 NCR
+# =====================================================================
+
+- type: latheRecipe
+  id: N14BPC27ArmorMediumNCR
+  result: ClothingC27ArmorMediumNCR
+  category: N14BlueprintC27ArmorNCR
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - NCR
+  materials:
+    Steel: 1500
+    Cloth: 200
+    Thread: 150
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPC27HelmetMediumNCR
+  result: ClothingC27HelmetMediumNCR
+  category: N14BlueprintC27ArmorNCR
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - NCR
+  materials:
+    Steel: 150
+    Cloth: 75
+    Thread: 50
+    Plastic: 40
+
+- type: latheRecipe
+  id: N14BPC27ArmorHeavyNCR
+  result: ClothingC27ArmorHeavyNCR
+  category: N14BlueprintC27ArmorNCR
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - NCR
+  materials:
+    Steel: 22000
+    Cloth: 250
+    Thread: 175
+    Plastic: 1000
+
+- type: latheRecipe
+  id: N14BPC27HelmetHeavyNCR
+  result: ClothingC27HelmetHeavyNCR
+  category: N14BlueprintC27ArmorNCR
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - NCR
+  materials:
+    Steel: 275
+    Cloth: 100
+    Thread: 65
+    Plastic: 60
+
+# =====================================================================
+# C-27 Brotherhood of Steel
+# =====================================================================
+
+- type: latheRecipe
+  id: N14BPC27ArmorMediumBoS
+  result: ClothingC27ArmorMediumBoS
+  category: N14BlueprintC27ArmorBoS
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1500
+    Cloth: 200
+    Thread: 150
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPC27HelmetMediumBoS
+  result: ClothingC27HelmetMediumBoS
+  category: N14BlueprintC27ArmorBoS
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 150
+    Cloth: 75
+    Thread: 50
+    Plastic: 40
+
+- type: latheRecipe
+  id: N14BPC27ArmorHeavyBoS
+  result: ClothingC27ArmorHeavyBoS
+  category: N14BlueprintC27ArmorBoS
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 22000
+    Cloth: 250
+    Thread: 175
+    Plastic: 1000
+
+- type: latheRecipe
+  id: N14BPC27HelmetHeavyBoS
+  result: ClothingC27HelmetHeavyBoS
+  category: N14BlueprintC27ArmorBoS
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 275
+    Cloth: 100
+    Thread: 65
+    Plastic: 60
+
+# =====================================================================
+# C-27 Combat armor set
+# =====================================================================
+
+- type: latheRecipe
+  id: N14BPC27ArmorCombatGeneric
+  result: ClothingC27ArmorCombatGeneric
+  category: N14BlueprintC27CombatGeneric
+  completetime: 10
+  requiresBlueprint: true
+  materials:
+    Steel: 15000
+    Cloth: 200
+    Thread: 150
+    Plastic: 1050
+
+- type: latheRecipe
+  id: N14BPC27HelmetCombatGeneric
+  result: ClothingC27HelmetCombatGeneric
+  category: N14BlueprintC27CombatGeneric
+  completetime: 6
+  requiresBlueprint: true
+  materials:
+    Steel: 2000
+    Cloth: 500
+    Thread: 45
+    Plastic: 30

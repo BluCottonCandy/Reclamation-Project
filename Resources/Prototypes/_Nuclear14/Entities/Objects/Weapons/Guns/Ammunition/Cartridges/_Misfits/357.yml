@@ -1,0 +1,27 @@
+# .357 Magnum cartridge — added for Cowboy Repeater, Detective Special, Lucky 37 port.
+# #Misfits Change - now uses its own N14Bullet357 (22 Piercing) instead of reusing
+# the .44 Magnum bullet (30 Piercing) so .357 weapons do not overshadow faction sidearms.
+
+- type: entity
+  id: N14CartridgePistol357
+  name: cartridge (.357 magnum)
+  parent: BaseCartridgePistol
+  components:
+  - type: CartridgeAmmo
+    proto: N14Bullet357
+    soundEject:
+      collection: N14PistolCasingEject
+  - type: Tag
+    tags:
+      - Cartridge
+      - N14CartridgePistol357
+  - type: EmitSoundOnLand
+    sound:
+      collection: N14PistolCasingEject
+      params:
+        volume: -1
+  - type: EmitSoundOnCollide
+    sound:
+      collection: N14PistolCasingEject
+      params:
+        volume: -1

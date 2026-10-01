@@ -1,0 +1,9 @@
+pirates-title = Private Privateers
+pirates-description = A group of private privateers has approached your humble station. Whether hostile or not, their only goal is to end the round with as many valuables as possible on their ship.
+pirates-no-ship = For unknown reasons, the private privateers' ship was completely and utterly destroyed. No points.
+pirates-final-score = Private privateers successfully obtained valuables worth { $score } credits
+pirates-final-score-2 = with a total value of { $finalPrice } credits.
+pirates-list-start = The private privateers consisted of:
+pirates-most-valuable = The most valuable stolen items were:
+pirates-stolen-item-entry = { $entity } ({ $credits } credits)
+pirates-stole-nothing = - The pirates stole absolutely nothing. Point and laugh.

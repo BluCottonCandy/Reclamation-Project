@@ -1,0 +1,201 @@
+# Mortar and pestle
+- type: construction
+  name: mortar & pestle
+  id: N14MortarpestleGrinder # Forge-Change
+  graph: N14MortarPestle
+  startNode: start
+  targetNode: mortarpestle
+  category: construction-category-medical
+  description: A mortar and pestle for grinding reagents.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/ss13_chemical.rsi
+    state: mortar
+  objectType: Item
+
+# Healing Powder
+- type: construction
+  name: healing powder
+  id: N14HealingPowder
+  graph: N14HealingPowder
+  startNode: start
+  targetNode: healingpowder
+  category: construction-category-medical
+  description: A pouch of healing powder.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpowder
+  objectType: Item
+
+# Cleansing Powder
+- type: construction
+  name: cleansing powder
+  id: N14CleansingPowder
+  graph: N14CleansingPowder
+  startNode: start
+  targetNode: cleansingpowder
+  category: construction-category-medical
+  description: A pouch of anti-rad powder.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpowder
+  objectType: Item
+
+# Berserker Powder
+- type: construction
+  name: berserker powder
+  id: N14BerserkerPowder
+  graph: N14BerserkerPowder
+  startNode: start
+  targetNode: berserkerpowder
+  category: construction-category-medical
+  description: A pouch of berserker powder.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: berserkerpowder
+  objectType: Item
+
+# Stimpaks
+- type: construction
+  name: stimpak
+  id: N14Stimpak
+  graph: N14Stimpak
+  startNode: start
+  targetNode: stimpak
+  category: construction-category-medical
+  description: A stimpak for healing wounds.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/ms13_stimpak.rsi # Forge-Change
+    state: stimpak-empty
+  objectType: Item
+
+#Misfits Change : Bitterdrink removed from being a cheaply made super-effective anti-poison/rad med, now requires basic chemistry mixing to produce.
+#- type: construction
+#  name: bitterdrink
+#  id: N14Bitterdrink
+#  graph: N14Bitterdrink
+#  startNode: start
+#  targetNode: bitterdrink
+#  category: construction-category-medical
+#  description: A bottled herbal remedy brewed from broc flower and xander root.
+#  hide: false
+#  icon:
+#    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+#    state: bitterdrink
+#  objectType: Item
+
+# RadAway Inhaler
+- type: construction
+  name: RadAway inhaler
+  id: N14RadAwayInhaler
+  graph: N14RadAwayInhaler
+  startNode: start
+  targetNode: refill
+  category: construction-category-medical
+  objectType: Item
+  description: A jet inhaler with a RadAway phial screwed on top of it. Two puffs away from being rad free.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/radinhaler.rsi
+    state: radawayinhaler
+
+# RadAway Phial
+
+- type: construction
+  name: RadAway Phial
+  id: N14RadAwayPhial
+  graph: N14RadAwayPhial
+  startNode: start
+  targetNode: fill
+  category: construction-category-medical
+  description: A coloured phial containing RadAway.
+  hide: true
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/radinhaler.rsi
+    state: radawayphial_icon
+  objectType: Item
+
+#TODO: Crashes game, needs a C# script to support it
+# RadAway phial simple refill
+# - type: construction
+#   name: RadAway Phial Refill
+#   id: N14RadAwayPhialRefill
+#   graph: N14RadAwayPhialRefill
+#   startNode: start
+#   targetNode: fill
+#   category: construction-category-medical
+#   description: A coloured phial containing RadAway.
+#   hide: true
+#   icon:
+#     sprite: _Nuclear14/Objects/Specific/Medical/radinhaler.rsi
+#     state: radawayphial_icon
+#   objectType: Item
+
+# Jet
+- type: construction
+  name: jet inhaler
+  id: N14JetInhaler
+  graph: N14JetInhaler
+  startNode: start
+  targetNode: jet
+  category: construction-category-medical
+  description: A jet inhaler. Smells like farts, speeds things up.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: jet
+  objectType: Item
+
+# Hydra
+# #Misfits Fix: Hidden from G-menu. Hydra requires in-world workflow: fill the empty
+# HydraInhaler entity with 15u Hydra reagent (chemistry: ScorpionTail + ExtractFungus +
+# NightstalkerBlood), then use a screwdriver on it. The G-menu entry had no displayable
+# material steps (MinSolution conditions and tool steps are not rendered by the recipe
+# step list), leaving an empty ingredient panel and confusing players.
+- type: construction
+  name: hydra inhaler
+  id: N14Hydra
+  graph: N14Hydra
+  startNode: start
+  targetNode: hydra
+  category: construction-category-medical
+  description: Fill an empty hydra inhaler with 15u of Hydra after mixing the chem from radscorpion tail, cave fungus, and nightstalker blood.
+  hide: true
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/ms13_drugs.rsi
+    state: hydra-empty
+  objectType: Item
+
+# Healing Poultice
+- type: construction
+  name: healing poultice
+  id: N14HealingPoultice
+  graph: N14HealingPoultice
+  startNode: start
+  targetNode: healing poultice
+  category: construction-category-medical
+  description: A bag of poultice to help with all common ailments
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpoultice
+  objectType: Item
+
+# Dirty Gauze
+- type: construction
+  name: dirty gauze
+  id: N14DirtyGauze1
+  graph: N14DirtyGauze1
+  startNode: start
+  targetNode: n14dgauze
+  category: construction-category-medical
+  description: When you've really got nothing left.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/ms13_medical.rsi
+    state: gauze_diy1
+  objectType: Item

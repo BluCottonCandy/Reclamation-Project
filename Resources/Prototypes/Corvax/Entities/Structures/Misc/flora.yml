@@ -1,0 +1,28 @@
+- type: entity
+  parent: BaseTree
+  id: ForgeDeadTree1
+  name: Dead Tree
+  description: An old, dead tree scorched by the sun and radioactive wasteland.
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Misc/deadtree.rsi
+    state: dead-tree
+    offset: 0,0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.7,-1.2,-0.4,-0.3"
+        density: 1000
+        layer:
+        - WallLayer
+
+- type: entity
+  parent: ForgeDeadTree1
+  id: ForgeDeadTree2
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Misc/deadtree.rsi
+    state: dead-tree2
+    offset: 0,0

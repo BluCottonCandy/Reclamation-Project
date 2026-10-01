@@ -1,0 +1,58 @@
+- type: job
+  id: NCRPatrolRanger
+  setPreference: true
+  alwaysUseSpawner: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 6 # #Misfits Add - position below Field Ranger, above Recruit
+  name: job-name-ranger-patrol
+  overwatchCategory: OverwatchNcrRangers
+  description: job-description-ranger-patrol
+  playTimeTracker: NCRPatrolRanger
+  startingGear: NCRPatrolRangerGear
+  icon: "JobIconSecurityOfficer"
+  supervisors: job-supervisors-ranger-field
+  canBeAntag: false
+  access:
+  - NCR
+  - NCRRanger
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Rangers
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement
+      department: Rangers
+      min: 28800 # Misfits Change - Patrol Ranger only needs 8 hours
+    - !type:CharacterSpeciesRequirement # #Misfits Change - robots, super mutants, and glowing ghouls cannot be Rangers
+      species:
+      - Human
+      - Ghoul
+
+- type: startingGear
+  id: NCRPatrolRangerGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRPatrolRangerCampaign # Misfits Tweak - patrol rangers are given a campaign hat.
+    back: N14ClothingBackpackMilitary # Corvax-Change
+    jumpsuit: N14ClothingUniformNCRPatrolRanger
+    ears: MisfitsClothingHeadsetNCRRanger
+    shoes: N14ClothingBootsLeather
+    belt: ClothingBeltRevolverdesertfilled
+    gloves: N14ClothingHandsGlovesBlackLeather
+    pocket1: MagazineBox45-70
+    pocket2: NCRpatrolrangerloadoutkits
+    eyes: ClothingEyesGlassesSunglasses
+    outerClothing: N14ClothingOuterNCRPatrolRangerArmorVariant # Misfits Change - patrol rangers will start with a unique sidegrade.
+    id: N14IDBadgeNCRDesertRangerRecruit
+  innerClothingSkirt: N14ClothingUniformNCRPatrolRanger #placeholder
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledMilitary
+    - FlashlightSeclite
+
+- type: playTimeTracker
+  id: NCRPatrolRanger

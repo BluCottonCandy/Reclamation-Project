@@ -1,0 +1,55 @@
+- type: job
+  id: VaultEngineer
+  weight: 60
+  hideWithoutJobWhitelist: false # #Misfits Tweak - no whitelist gate
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - always visible
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change - open to all
+  name: job-name-vault-engineer
+  description: job-description-vault-engineer
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+  #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+  #  tracker: VaultDweller
+  #  min: 18000 # 5 hours
+  setPreference: true
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  overwatchCategory: OverwatchEngineering
+  playTimeTracker: VaultEngineer
+  startingGear: VaultEngineerGear
+  alwaysUseSpawner: true
+  icon: "JobIconVaultEngineer" # Forge-Change
+  supervisors: job-supervisors-vault
+  access:
+  - VaultDweller
+  - VaultEngineer
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Vault
+
+- type: startingGear
+  id: VaultEngineerGear
+  equipment:
+    wallet: N14Wallet
+    head: ClothingHeadHatHardhatYellow
+    jumpsuit: N14ClothingUniformJumpsuitVault14
+    back: N14ClothingBackpackVaultBlue # Forge-Change
+    shoes: N14ClothingBootsBlack
+    outerClothing: ClothingOuterVestHazard
+    id: N14VaultEngineerPDA
+    belt: N14ClothingBeltUtilityFilled
+    ears: N14ClothingHeadsetVaultDweller
+    gloves: ClothingHandsGlovesColorYellow # Forge-Change
+  storage: # Forge-Change
+    back:
+    - N14Bandage
+    - N14CurrencyPrewarMoney100
+    - VaultGuidePaper
+- type: playTimeTracker
+  id: VaultEngineer

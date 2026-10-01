@@ -1,0 +1,105 @@
+# See Structures/Decoration and wallmounts for non wield flags.
+- type: entity
+  parent: BaseItem
+  id: N14DecorationFlagpoleNCR
+  name: New California Republic Flagpole
+  description: The banner of the New California Republic, a nation that despite enemies within and without, has done its best to provide comfort and equality to its citizens. The flag stands proud and tall, a challenge to those around it.
+  suffix: Mapping
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Decoration/Flags/ncr_flagpole.rsi
+    state: icon
+    noRot: true
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      collection: MetalThud
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 5
+  - type: Item
+    size: Huge
+  - type: UseDelay
+    delay: 1
+  - type: Damageable
+    damageModifierSet: Wood
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+        # N14TODO: Needs inhands sprites
+
+  #MBoS Flagpole
+- type: entity
+  parent: N14DecorationFlagpoleNCR
+  id: N14DecorationFlagpoleMBOS
+  name: Brotherhood of Steel Flagpole
+  description: The banner of the Brotherhood of Steel, descendents of the United States military who now attempt to confiscate and safeguard dangerous technology to prevent another apocalypse. The flag stands proud and tall, a challenge to those around it.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Decoration/Flags/mbos_flagpole.rsi
+    state: icon
+    noRot: true
+
+  #WBoS Flagpole
+- type: entity
+  parent: N14DecorationFlagpoleNCR
+  id: N14DecorationFlagpoleWBOS
+  name: Washington Brotherhood of Steel Flagpole
+  description: The banner of the Washington Brotherhood of Steel, a chapter that split off from the Midwest Brotherhood and settled into Seattle, turning to conscription, slavery, and violent oppression of the locals under the rule of the Elder Immortal. The flag stands proud and tall, a challenge to those around it.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Decoration/Flags/wbos_flagpole.rsi
+    state: icon
+    noRot: true
+
+- type: entity
+  parent: N14DecorationFlagLegion
+  id: N14DecorationLegionCross
+  name: Crucifix
+  description: Profligats turned facing west, so that they may watch their world die.
+  suffix: Mapping
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Decoration/Flags/legioncross.rsi
+    state: icon
+    noRot: true
+    drawdepth: Items # Below Mobs so a buckled mob renders in front instead of behind the cross
+  - type: Damageable
+    damageModifierSet: Wood
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Clickable
+  - type: SpriteFade
+  - type: NoSelfUnbuckle
+  - type: Strap
+  - type: Construction
+    graph: DecorationLegionCross
+    node: LegionCross

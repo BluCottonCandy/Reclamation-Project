@@ -1,0 +1,59 @@
+# #Misfits Add - NCR Ranger Recruit: brand-new entry-level Rangers role at the Bonneville station.
+# No faction timelock — this is the starter rung of the NCR Rangers ladder.
+
+- type: job
+  id: NCRRangerRecruit
+  setPreference: true
+  alwaysUseSpawner: true
+  jobWhitelistBypassesRoleTimers: true
+  name: job-name-ncr-ranger-recruit
+  overwatchCategory: OverwatchNcrRangers
+  description: job-description-ncr-ranger-recruit
+  playTimeTracker: NCRRangerRecruit
+  weight: 4 # #Misfits Tweak - bottom of Rangers ladder
+  startingGear: NCRRangerRecruitGear
+  icon: "JobIconSecurityCadet"
+  supervisors: job-supervisors-ncr-ranger-recruit
+  canBeAntag: false
+  access:
+  - NCR
+  - NCRRanger # #Misfits Add - recruit needs NCRRanger access to open Ranger-locked doors
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Rangers
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement # Misfit Change - 12 hours of total NCR playtime is required to know the basics of the faction.
+      department: NCR
+      min: 43200 # 12 hours
+    - !type:CharacterSpeciesRequirement # #Misfits Change - robots, super mutants, and glowing ghouls cannot be Rangers
+      species:
+      - Human
+      - Ghoul
+
+- type: startingGear
+  id: NCRRangerRecruitGear
+  # Entry-level gear: standard ranger hat, NCR uniform, basic boots, revolver belt, recruit badge
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatRanger
+    back: N14ClothingBackpackMilitary
+    jumpsuit: N14ClothingUniformRangerV1
+    ears: MisfitsClothingHeadsetNCRRanger
+    shoes: N14ClothingBootsLeather
+    belt: ClothingBeltRevolverdesertfilled
+    pocket1: MagazineBox45-70
+    outerClothing: N14ClothingOuterNCRFlakVestOpen # Misfits Change - recruit starts with a combat armor side grade flak vest.
+    id: N14IDBadgeNCRDesertRangerRecruit
+  innerClothingSkirt: N14ClothingUniformRangerV1
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+    - FlashlightSeclite
+
+- type: playTimeTracker
+  id: NCRRangerRecruit

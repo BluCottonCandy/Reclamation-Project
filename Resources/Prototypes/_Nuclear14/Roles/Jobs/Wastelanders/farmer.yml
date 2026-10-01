@@ -1,0 +1,42 @@
+- type: job
+  id: WastelandFarmer
+  setPreference: true
+  weight: 30
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-farmer
+  description: job-description-farmer
+  playTimeTracker: Farmer
+  startingGear: FarmerGear
+  icon: "JobIconWastelandFarmer" # Corvax-Change
+  supervisors: job-supervisors-wastelander
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+  access:
+  - WastelandFarmer
+  - TownsPerson # Corvax-Change
+
+- type: startingGear
+  id: FarmerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
+    ears: MisfitsClothingHeadsetTown #Misfits-Change
+    back: N14ClothingBackpackExplorer # Corvax-Change
+    shoes: N14ClothingBootsLeather
+    outerClothing: ClothingOuterApronBotanist
+    belt: ClothingBeltFarmerFilled
+    id: N14IDPassportWasteFarmer
+  innerClothingSkirt: N14ClothingUniformJumpsuitBrahminFarmer #placeholder
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: Farmer

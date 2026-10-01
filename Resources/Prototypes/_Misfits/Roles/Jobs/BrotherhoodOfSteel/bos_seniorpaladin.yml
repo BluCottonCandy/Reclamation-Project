@@ -1,0 +1,62 @@
+- type: job
+  id: BoSMidPaladin
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 80
+  showBorder: true
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  name: job-name-bos-mid-paladin
+  overwatchCategory: OverwatchBosPaladin
+  description: job-description-bos-mid-paladin
+  playTimeTracker: BoSMidPaladin
+  requirements:
+    - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
+      species:
+      - Human
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T6 faction timelock (20h BoS)
+      department: BrotherhoodOfSteel
+      min: 72000 # 20 hours
+    - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Paladin before Senior Paladin (matches Knight/Scribe pattern)
+      tracker: BoSPaladin
+      min: 28800 # 8 hours as Paladin
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSMidSquire
+      min: 36000 # 10 hours
+  startingGear: BoSMidPaladinGear
+  alwaysUseSpawner: true
+  icon: "JobIconBosMPaladin" # Corvax-Change
+  supervisors: job-supervisors-bos-mid
+  accessGroups:
+  - BOSSeniorPaladin
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - BrotherhoodOfSteel
+      - type: PowerArmorProficiency # #Misfits Add: Senior Paladins can equip power armor.
+
+- type: startingGear
+  id: BoSMidPaladinGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformBosRecon  #Misfits Change /Tweak/: New consolidated BoS gear
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    head: N14ClothingHeadHatCapkhighBoS
+    outerClothing: N14ClothingOuterPowerArmorT60BOS # #Misfits Change - Senior Paladin now wears BOS T60 with Brotherhood tactical HUD helmet
+    pocket1: BoSBrotherhoodSeniorPaladinKits
+    hands: N14ClothingHandsGlovesCombat
+    id: N14IDBrotherhoodOfSteelHolotagSeniorPaladin
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
+    belt: MisfitsClothingBeltPaladinWebbing
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+    - GrenadeIncendiary # #Misfits Add - faction council Senior Paladin ordnance
+    - GrenadeShrapnel
+
+- type: playTimeTracker
+  id: BoSMidPaladin

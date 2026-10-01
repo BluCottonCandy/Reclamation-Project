@@ -1,0 +1,386 @@
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconLegioner
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Legioner
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconRaider
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Raider
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconKhan
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Khan
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconJackal
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Jackal
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconViper
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Viper
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconGunner
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Gunner
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconFiend
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Fiend
+
+# #Misfits Change - Eighties icon now uses its own RSI state (I-80 highway shield design).
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconEighties
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: eighties
+
+# #Misfits Add - White Legs job icon for Outlaws faction overhaul (placeholder: reuses Raider state until custom icon is made)
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWhiteLegs
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Raider
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBosMCommander
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: bosMCommander
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBosMKnight
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: bosMKnight
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBosMPaladin
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: bosMPaladin
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBosMScriptor
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: bosMScriptor
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBosMSquire
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: bosMSquire
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCaravanGuard
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: caravanGuard
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCaravanLeader
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: caravanLeader
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCaravanTrader
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: caravanTrader
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrCadet
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrCadet
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrLeader
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrLeader
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrMedic
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrMedic
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrSerg
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrSerg
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrSoldier
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrSoldier
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrSpec
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrSpec
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrRanger
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrRanger
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNcrVeteranRanger
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: ncrVeteranRanger
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownDeputy
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townDeputy
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownMayor
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townMayor
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownMechanic
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townMechanic
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownMedic
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townMedic
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownPerson
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townPerson
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownReporter
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townReporter
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownSheriff
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townSheriff
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTownShopKeeper
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: townShopKeeper
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTribal
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: tribal
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTribalFarmer
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: tribalFarmer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTribalLeader
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: tribalLeader
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTribalMedic
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: tribalMedic
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconVaulDweller
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: vaulDweller
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconVaultEngineer
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: vaultEngineer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconVaultMedic
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: vaultMedic
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconVaultOverseer
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: vaultOverseer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconVaultSecurity
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: vaultSecurity
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWastelandChaplain
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: wastelandChaplain
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWastelander
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: wastelander
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWastelandFarmer
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: wastelandFarmer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconlegionerRecruit
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: legionerRecruit
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconlegionerWarrior
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: legionerWarrior
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconlegionerVeteran
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: legionerVeteran
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconlegionerDean
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: dean
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconlegionerVenator
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: venator
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconlegionerCenturion
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: centurion
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNCRPrisoner
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Prisoner
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconRabMBos
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Serf
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconLegionSlave
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: Slave
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNCRMPInvestegator
+  icon:
+    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+    state: investigator

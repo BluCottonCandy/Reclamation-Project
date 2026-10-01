@@ -1,0 +1,199 @@
+# Super Mutant species definition.
+# Large FEV-mutated humanoids with hands and full clothing support.
+# Uses displacement maps to warp 32x32 clothing onto 32x48 body. # Misfits Change
+
+- type: species
+  id: SuperMutant
+  name: species-name-supermutant
+  roundStart: true
+  order: 3 # #Misfits Change: sort after Glowing Ghoul
+  whitelistRequired: true # #Misfits Change
+  restrictedCustomization: true # #Misfits Change
+  allowedLoadoutCategories: # #Misfits Change
+  - Weapons
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
+  - Items
+  - Uniform
+  - Outer
+  - Hands
+  - Shoes
+  - Head
+  - Mask
+  - Accessories
+  allowedTraitCategories: # #Misfits Change: allow traits via same mechanism as loadouts
+  - Uncategorized
+  - Auditory
+  - Mental
+  - Physical
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  - Visual
+  - Language
+  - Pets
+  jobWhitelistUnlock: SuperMutant # #Misfits Change: job whitelist for SuperMutant unlocks this species
+  restrictedJobs: # #Misfits Change
+  - SuperMutant
+  - SuperMutantGladiator
+  - SuperMutantRanger
+  - SuperMutantTrooper
+  - SuperMutantNCRRanger
+  - SuperMutantNCRTrooper
+  - SuperMutantTribal
+  - SuperMutantFollowerDoctor
+  - SuperMutantEnclave
+  prototype: N14MobSuperMutant
+  sprites: MobSuperMutantSprites
+  markingLimits: MobSuperMutantMarkingLimits
+  dollPrototype: N14MobSuperMutantDummy
+  skinColoration: Hues
+  defaultSkinTone: "#6b8e23"
+  minHeight: 1.35
+  defaultHeight: 1.5
+  maxHeight: 1.65
+  minWidth: 1.35
+  defaultWidth: 1.5
+  maxWidth: 1.65
+  averageHeight: 220
+  averageWidth: 70
+  maxAge: 280 # did the math, possible but they would have been quite old when dipped assuming they were put in a vault
+  sexes:
+  - Male
+  - Female
+
+# Body sprite layers for the super mutant species.
+- type: speciesBaseSprites
+  id: MobSuperMutantSprites
+  sprites:
+    Head: MobSuperMutantHead
+    Chest: MobSuperMutantTorso
+    LArm: MobSuperMutantLArm
+    RArm: MobSuperMutantRArm
+    LHand: MobSuperMutantLHand
+    RHand: MobSuperMutantRHand
+    LLeg: MobSuperMutantLLeg
+    RLeg: MobSuperMutantRLeg
+    LFoot: MobSuperMutantLFoot
+    RFoot: MobSuperMutantRFoot
+
+- type: markingPoints
+  id: MobSuperMutantMarkingLimits
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 1
+      required: false
+    RightLeg:
+      points: 2
+      required: false
+    RightFoot:
+      points: 2
+      required: false
+    LeftLeg:
+      points: 2
+      required: false
+    LeftFoot:
+      points: 2
+      required: false
+    RightArm:
+      points: 2
+      required: false
+    RightHand:
+      points: 2
+      required: false
+    LeftArm:
+      points: 2
+      required: false
+    LeftHand:
+      points: 2
+      required: false
+
+# Base sprite definitions for each body part.
+# Update sprite paths once .dmi sprites are converted to .rsi.
+- type: humanoidBaseSprite
+  id: MobSuperMutantHead
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantHeadMale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantHeadFemale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantTorso
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantTorsoMale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantTorsoFemale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantLLeg
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantLArm
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantLHand
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantLFoot
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantRLeg
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantRArm
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantRHand
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobSuperMutantRFoot
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: r_foot

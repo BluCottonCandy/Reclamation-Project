@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Created by INFRARED_BARON for MS13. Fill sprites/edits by RedBookcase.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "addictol"
+    },
+    {
+      "name": "addictol_used"
+    },
+    {
+      "name": "medx"
+    },
+    {
+      "name": "medx-empty"
+    },
+    {
+      "name": "medxfill1"
+    },
+    {
+      "name": "calmex"
+    },
+    {
+      "name": "calmex_used"
+    },
+    {
+      "name": "psycho-empty"
+    },
+    {
+      "name": "psychofill1"
+    },
+    {
+      "name": "overdrive"
+    },
+    {
+      "name": "overdrive_used"
+    },
+    {
+      "name": "jet-empty"
+    },
+	{
+	  "name": "jetfill1"
+    },
+    {
+      "name": "rocket"
+    },
+    {
+      "name": "rocket_used"
+    },
+    {
+      "name": "turbo-empty"
+    },
+	{
+      "name": "turbofill1"
+    },
+    {
+      "name": "hydra-empty"
+    },
+    {
+      "name": "hydrafill1"
+    },
+    {
+      "name": "steady"
+    },
+    {
+      "name": "mentants"
+    },
+    {
+      "name": "buffout"
+    },
+    {
+      "name": "cateyes"
+    },
+    {
+      "name": "radx"
+    },
+    {
+      "name": "daytripper"
+    },
+    {
+      "name": "generic1"
+    },
+    {
+      "name": "generic2"
+    },
+    {
+      "name": "generic3"
+    },
+    {
+      "name": "generic4"
+    }
+  ]
+}

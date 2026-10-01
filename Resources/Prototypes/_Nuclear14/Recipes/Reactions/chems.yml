@@ -1,0 +1,179 @@
+- type: reaction
+  id: Jet
+  minTemp: 374 # 100 degrees Celcius.
+  reactants:
+    Ammonia:
+      amount: 1
+    Abraxocleaner:
+      amount: 1
+  products:
+    MovespeedMixture: 1
+
+- type: reaction
+  id: Mentats
+  reactants:
+    Abraxocleaner:
+      amount: 1
+    Lead:
+      amount: 1
+    # BrainFungus: N14:TODO: Add brain fungus plant
+      # amount: 1
+  products:
+    Mentats: 2
+
+- type: reaction
+  id: MentatsBerry
+  reactants:
+    Mentats:
+      amount: 1
+    ExtractTarberries:
+      amount: 1
+  products:
+    MentatsBerry: 1
+
+- type: reaction
+  id: MentatsGrape
+  reactants:
+    Mentats:
+      amount: 1
+    Whiskey:
+      amount: 1
+    # BrainFungus: N14:TODO: Add hubflower
+      # amount: 1
+  products:
+    MentatsGrape: 1
+
+- type: reaction
+  id: MentatsOrange
+  reactants:
+    Mentats:
+      amount: 1
+    JuiceCarrot:
+      amount: 1
+  products:
+    MentatsOrange: 1
+
+- type: reaction
+  id: Hydra
+#Misfits Change /Tweak/: Hydra is now mixed from wasteland creature parts and cave fungus.
+  reactants:
+    ScorpionTail:
+      amount: 1
+    ExtractFungus:
+      amount: 1
+    NightstalkerBlood:
+      amount: 1
+  products:
+    Hydra: 2
+
+#Misfits Change /Tweak/: Hydra inhalers are now filled through the construction menu from an empty rig.
+# - type: reaction
+#   id: HydraConversion
+#   reactants:
+#     Hydra:
+#       amount: 15
+#     Oil:
+#       amount: 5
+#     Phosphorus:
+#       amount: 5
+#   effects:
+#     - !type:CreateEntityReactionEffect
+#       entity: N14Hydra
+
+- type: reaction
+  id: Psycho
+  reactants:
+    N14BloatflyAcid:
+      amount: 1
+    ExtractBroc: #N14:TODO: Add hubflower
+      amount: 2
+    Blood:
+      amount : 1
+    Antiseptic:
+      amount: 2
+  products:
+    DamageModifyingMixture: 3
+
+- type: reaction
+  id: Turbo
+  reactants:
+    N14CazadorAcid:
+      amount: 1
+    ExtractBroc:
+      amount: 1
+    MovespeedMixture:
+      amount : 1
+    Turpentine:
+      amount: 1
+  products:
+    RobustMovespeedMixture: 3
+
+- type: reaction
+  id: Buffout
+  minTemp: 374 # 100 degrees Celcius.
+  reactants:
+    N14UncookedAnimalProteinsRad:
+      amount: 1
+    N14FireAntNectar:
+      amount: 1
+    Antiseptic:
+      amount: 1
+  products:
+    Buffout: 1
+
+- type: reaction
+  id: Buffjet
+  reactants:
+    MovespeedMixture:
+      amount: 1
+    Buffout:
+      amount: 1
+  products:
+    Buffjet: 1
+
+- type: reaction
+  id: Bufftats
+  reactants:
+    Mentats:
+      amount: 1
+    Buffout:
+      amount: 1
+  products:
+    Bufftats: 1
+
+- type: reaction
+  id: Med-x
+  minTemp: 374 # 100 degrees Celcius.
+  reactants:
+    Wonderglue:
+      amount: 1
+    ExtractWhiteHorsenettle:
+      amount: 2
+    Ethanol:
+      amount: 1
+  products:
+    DamageResistMixture: 2 #This is Med-X
+
+- type: reaction
+  id: Fixer
+  reactants:
+    ExtractBuffaloGourd:
+      amount: 1
+    ExtractFungusRad:
+      amount: 1
+    Saline:
+      amount: 1
+  products:
+    Fixer: 3
+
+- type: reaction
+  id: Cateye
+  reactants:
+    JuiceCarrot:
+      amount: 1
+    WeldingFuel:
+      amount: 2
+    Silver:
+      amount: 1
+  products:
+    Cateye: 3

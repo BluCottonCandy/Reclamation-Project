@@ -1,0 +1,174 @@
+#MARK: NCR
+- type: entity
+  parent: Clothing
+  id: NCClothingBandageNCRBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Bandage/bandageNCR.rsi
+    state: icon
+  - type: Clothing
+    sprite: Corvax/Clothing/Bandage/bandageNCR.rsi
+    slots: [ bandage ]
+
+- type: entity
+  parent: NCClothingBandageNCRBase
+  id: NCClothingBandageNCRRecruit
+  name: recruit bandage NCR
+  description: A bandage used by the NCR recruits.
+  components:
+  - type: ClothingFactionAndRoleAdd
+    faction: NCR
+    role: NCRCadet
+
+- type: entity
+  parent: Clothing
+  id: NCClothingBraceletNCRBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Bandage/bandageNCRPrisonner.rsi
+    state: icon
+  - type: Clothing
+    sprite: Corvax/Clothing/Bandage/bandageNCRPrisonner.rsi
+    slots: [ bandage ]
+  - type: AccessReader # #Misfits Change: NCR officers can unlock prisoner bracelets via ID card.
+    access:
+    - [ "NCRLT" ] # Lieutenants can always remove prisoner bracelets.
+    - [ "NCRRanger" ] # Rangers can also remove prisoner bracelets.
+  - type: Lock # #Misfits Change: Replaces Unremoveable — bracelet is locked on, not truly irremovable.
+    locked: true
+    unlockTime: 2
+  - type: NCRPrisonerBracelet # #Misfits Add: Enables rescue cutting and crafted-key unlock logic.
+
+- type: entity
+  parent: NCClothingBraceletNCRBase
+  id: NCClothingBraceletNCRPrisoner
+  name: NCR Prisoner Bracelet
+  description: A bracelet use to track prisoners
+  components:
+  - type: Construction # #Misfits Fix: Required for item-construction targets; without this the recipe refunds materials and spawns nothing.
+    graph: NCRPrisonerBracelet
+    node: bracelet
+  - type: ClothingFactionAndRoleAdd
+    faction: NCR
+    role: NCRPrisoner
+
+#Misfits Change /Comment-out/: BoS bandages removed — consolidated into _Misfits BoS structure.
+#MARK: BoS
+#- type: entity
+#  parent: Clothing
+#  id: NCClothingBandageBoSBase
+#  abstract: true
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Bandage/bandageBOS.rsi
+#    state: icon
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Bandage/bandageBOS.rsi
+#    slots: [ bandage ]
+#
+#- type: entity
+#  parent: NCClothingBandageBoSBase
+#  id: NCClothingBandageBoSRecruit
+#  name: BoS Recruit Bandage
+#  description: A bandage used by the Brotherhood of Steel recruits.
+#  components:
+#  - type: ClothingFactionAndRoleAdd
+#    faction: BrotherhoodOfSteel
+#    role: BoSMidSquire
+
+#Misfits Change /Tweak/: Un-commented Serf collar — still used by active Midwest BoS Serf job.
+- type: entity
+  parent: Clothing
+  id: NCClothingCollarBoSBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Bandage/bandageSerfMBOS.rsi
+    state: icon
+  - type: Clothing
+    sprite: Corvax/Clothing/Bandage/bandageSerfMBOS.rsi
+    slots: [ bandage ]
+  - type: Unremoveable
+
+- type: entity
+  parent: NCClothingCollarBoSBase
+  id: NCClothingCollarBoSSerf
+  name: BoS Serf Collar
+  description: A collar used by the Brotherhood of Steel serfs.
+  components:
+  - type: ClothingFactionAndRoleAdd
+    faction: BrotherhoodOfSteel
+    role: BoSMidSerf
+
+#MARK: Legion
+- type: entity
+  parent: Clothing
+  id: NCClothingBandageLegionBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Bandage/bandageLegion.rsi
+    state: icon
+  - type: Clothing
+    sprite: Corvax/Clothing/Bandage/bandageLegion.rsi
+    slots: [ bandage ]
+
+- type: entity
+  parent: NCClothingBandageLegionBase
+  id: NCClothingBandageLegionRecruit
+  name: recruit bandage Legion
+  description: A bandage used by the Legion recruits.
+  components:
+  - type: ClothingFactionAndRoleAdd
+    faction: CaesarLegion
+    role: CaesarLegionLegionnaireRecruit # #Misfits Change: Redirected from defunct CaesarLegionRecruit
+
+- type: entity
+  parent: Clothing
+  id: NCClothingCollarLegionBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Bandage/bandageSerfMBOS.rsi
+    state: icon
+  - type: Clothing
+    sprite: Corvax/Clothing/Bandage/bandageSerfMBOS.rsi
+    slots: [ neck ]
+  - type: AccessReader
+    access:
+    - [ "CaesarLegionCenturion" ] # Centurions can always unlock/remove latejoin collars.
+    - [ "LegionBrassKey" ] # Existing Legion brass keys also unlock collars.
+  - type: Lock
+    locked: true
+    unlockTime: 2
+  - type: LegionSlaveCollar
+
+- type: entity
+  parent: NCClothingCollarLegionBase
+  id: NCClothingCollarLegionSlave
+  name: legion slave collar
+  description: A collar used by the Legion slave.
+  components:
+  - type: Construction # #Misfits Fix: Required for item-construction targets; without this the recipe refunds materials and spawns nothing.
+    graph: LegionSlaveCollar
+    node: collar
+  - type: ClothingFactionAndRoleAdd
+    faction: CaesarLegion
+    role: CaesarLegionSlave
+
+#MARK: Raiders
+- type: entity
+  parent: Clothing
+  id: NCClothingBandageRaiders
+  name: bandage Raiders
+  description: A bandage used by the Raiders.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Bandage/bandageRaiders.rsi
+    state: icon
+  - type: Clothing
+    sprite: Corvax/Clothing/Bandage/bandageRaiders.rsi
+    slots: [ bandage ]
+  - type: Unremoveable

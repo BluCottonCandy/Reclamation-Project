@@ -1,0 +1,48 @@
+- type: job
+  id: Townsperson
+  setPreference: true
+  weight: 0 # #Misfits Change - default starter role (was 10)
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-townsperson
+  description: job-description-townsperson
+  playTimeTracker: Townsperson
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+    #- !type:CharacterOverallTimeRequirement # TEMP REMOVED
+    #  min: 0 # 1 hour
+  startingGear: TownspersonGear
+  icon: "JobIconTownPerson" # Corvax-Change
+  supervisors: job-supervisors-townsfolk
+  access:
+  - TownsPerson # Corvax-Change
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: startingGear
+  id: TownspersonGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitSettlerRags
+    ears: MisfitsClothingHeadsetTown
+    back: N14ClothingBackpackExplorer # Corvax-Change
+    shoes: N14ClothingShoesBlack
+    id: N14IDPassportTownsfolk
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: Townsperson

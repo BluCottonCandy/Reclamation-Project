@@ -1,0 +1,59 @@
+- type: job
+  id: CaesarLegionLegionnaireRecruit
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 40
+  name: job-name-caesar-legion-legionnaire-recruit
+  description: job-description-caesar-legionnaire-recruit
+  playTimeTracker: CaesarLegionLegionnaireRecruit
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
+  startingGear: CaesarLegionLegionnaireRecruitGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerRecruit"
+  supervisors: job-name-caesar-legion-other
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionLegionnaireRecruit
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionLegionnaireRecruitGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    mask: N14ClothingMaskBrownMask
+    eyes: N14ClothingEyesGlassesWelding
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingShoesKaligi
+    head: N14ClothingHeadHatTribalOutcastHood
+    outerClothing: N14ClothingOuterLegionnaireRecruitArmor
+    gloves: N14ClothingHandsGlovesTribal
+    pocket1: LegionLegionnaireRecruitloadoutkits
+    id: N14IDLegionaryMedalLegionnaireRecruit
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+    - BookLegionLaw #new players get the guidebook
+
+- type: playTimeTracker
+  id: CaesarLegionLegionnaireRecruit

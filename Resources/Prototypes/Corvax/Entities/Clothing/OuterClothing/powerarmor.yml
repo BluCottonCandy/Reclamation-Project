@@ -1,0 +1,197 @@
+- type: entity
+  parent: N14ClothingOuterPowerArmorT51
+  id: N14ClothingOuterPowerArmorT51China
+  name: Chinese power armor
+  description: A T-51 model with a worn inscription on the back that reads "Made in China".
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51china.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51china.rsi
+    equipDelay: 3
+    unequipDelay: 6
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT51China
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45NCRSalvaged
+  id: N14ClothingOuterPowerArmorT51NCR
+  name: t-51 NCR salvaged power armor
+  description: A modified T-51 power armor suit used by the NCR. The servo drives have been removed to simplify maintenance, making it slower but more reliable in the field.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51NCR.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51NCR.rsi
+    equipDelay: 3
+    unequipDelay: 6
+  - type: N14PowerArmor
+    requiresProficiency: false
+  - type: PowerArmorIntegrity
+    maxIntegrity: 450          
+    brokenBleedthroughRatio: 1.0  
+    disableServosLock: true      
+  - type: Armor 
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
+        Heat: 0.60
+        Radiation: 0.60
+  - type: Reflect # #Misfits Add - explicit NCR T-51 ricochet: small-caliber rounds bounce at 20% (overrides inherited 0.4 from the T-45NCR line)
+    reflects:
+      - SmallCaliber
+    reflectProb: 0.2
+    innate: true
+    spread: 90
+  - type: ClothingSpeedModifier # #Misfits Tweak - standalone 35% slowdown, no fusion core required
+    walkModifier: 0.70
+    sprintModifier: 0.70
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT51NCR
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT60
+  id: N14ClothingOuterPowerArmorT60NCR
+  name: t-60 NCR power armor
+  description: A simplified version of the T-60 power armor, adapted for the needs of the NCR. The removal of servo drives has reduced its mobility but increased its reliability and ease of repair.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t60NCR.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t60NCR.rsi
+    equipDelay: 3
+    unequipDelay: 6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.15
+    sprintModifier: 0.15
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT60NCR
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorAdvanced1
+  id: N14ClothingOuterPowerArmorAdvanced1NCR
+  name: x-01 NCR power armor
+  description: A heavy X-01 power armor suit, modified for the needs of the NCR. The removal of servo drives has made it less mobile but retains a high level of protection and partial hermetic sealing.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/advanced1NCR.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/advanced1NCR.rsi
+    equipDelay: 3
+    unequipDelay: 6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.17
+    sprintModifier: 0.17
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorX01NCR
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorAdvanced2
+  id: N14ClothingOuterPowerArmorAdvanced2Tesla
+  # #Misfits Change - Renamed X-02 -> APA MK II
+  name: APA MK II tesla power armor
+  description: A lightweight version of the APA with fewer protective coatings to facilitate repairs. The Tesla system provides electrical resistance.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/advanced2Tesla.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/advanced2Tesla.rsi
+  - type: Reflect
+    reflectProb: 0.325
+    spread: 300
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorX02Tesla
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: N14ClothingOuterPowerArmorT45Sierra
+  name: T-45 Sierra Power Armor
+  description: A fully functional suit of power armor with servos. Rare and issued exclusively to veterans of the Republic Armed Forces. The left shoulder pad features a stuffed bear head. You may see it for the first and last time in your life.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/T45Siera.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/PowerArmor/T45Siera.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT45Sierra
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+#Misfits Change /Comment-out/: Western BoS power armor removed — no Western BoS chapter in Misfits.
+#- type: entity
+#  parent: N14ClothingOuterPowerArmorT45
+#  id: N14ClothingOuterPowerArmorT45West
+#  name: T-45 Western BoS Power Armor
+#  description: A fully functional suit of power armor with servos. Rare and issued exclusively to veterans of the Republic Armed Forces. The left shoulder pad features a stuffed bear head. You may see it for the first and last time in your life.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t45westbos.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t45westbos.rsi
+#  - type: UserInterface
+#    interfaces:
+#      enum.ToggleClothingUiKey.Key:
+#        type: ToggleableClothingBoundUserInterface
+#      enum.WastelandMapUiKey.Key:
+#        type: WastelandMapBoundUserInterface
+#  - type: WastelandMap
+#    mapTexturePath: _Misfits/Maps/wendover_map.png
+#    mapTitle: Brotherhood Tactical HUD
+#    worldBounds: "-517,-308,484,311"
+#    tacticalFeed: Brotherhood
+#    compactHud: true
+#  - type: WastelandMapAction
+#    requiredSlot: HEAD
+#  - type: N14BosBackpackSlot
+#  - type: ToggleableClothing
+#    clothingPrototypes:
+#      head: N14ClothingHeadHelmetPowerArmorT45WestBOS
+#      gloves: N14ClothingPAGauntlets
+#      shoes: N14ClothingPABoots
+#      back: N14ClothingPowerSystemsBack
+#
+#- type: entity
+#  parent: N14ClothingOuterPowerArmorT51BC
+#  id: N14ClothingOuterPowerArmorT51Elder
+#  name: T-51 Elder Power Armor
+#  description: A fully functional suit of power armor with servos. Rare and issued exclusively to veterans of the Republic Armed Forces. The left shoulder pad features a stuffed bear head. You may see it for the first and last time in your life.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51westboselder.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51westboselder.rsi
+#  - type: WastelandMapAction
+#    requiredSlot: HEAD
+#  - type: ToggleableClothing
+#    clothingPrototypes:
+#      head: N14ClothingHeadHelmetPowerArmorT51WestBOSElder
+#      gloves: N14ClothingPAGauntlets
+#      shoes: N14ClothingPABoots
+#      back: N14ClothingPowerSystemsBack

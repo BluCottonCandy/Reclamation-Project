@@ -1,0 +1,30 @@
+- type: trait
+  id: LanguageLatin
+  category: Speech
+  points: -6
+  requirements:
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+        - CaesarLegion
+  functions:
+    - !type:TraitModifyLanguages
+      languagesSpoken:
+        - Latin
+      languagesUnderstood:
+        - Latin
+
+- type: trait
+  id: LanguageNerd # NerdCat
+  category: Speech
+  points: -9
+  functions:
+    - !type:TraitModifyLanguages
+      languagesSpoken:
+        - Spanish # #Misfits Fix - was Chinese, should be Spanish per trait description
+        - Latin
+        - Chinese # Bill Change: Now includes chinese again.
+      languagesUnderstood:
+        - Spanish # #Misfits Fix - was Chinese, should be Spanish per trait description
+        - Latin
+        - Chinese # Bill Change: now includes chinese again.

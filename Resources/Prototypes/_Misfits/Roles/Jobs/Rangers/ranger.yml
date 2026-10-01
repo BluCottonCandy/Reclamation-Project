@@ -1,0 +1,60 @@
+- type: job
+  id: NCRFieldRanger
+  setPreference: true
+  alwaysUseSpawner: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 8 # #Misfits Add - position below Veteran Ranger, above Patrol
+  name: job-name-ranger-field
+  overwatchCategory: OverwatchNcrRangers
+  description: job-description-ranger-field
+  playTimeTracker: NCRFieldRanger
+  startingGear: NCRFieldRangerGear
+  icon: "JobIconSecurityOfficer"
+  supervisors: job-supervisors-ranger-veteran
+  canBeAntag: false
+  access:
+  - NCR
+  - NCRSGT
+  - NCRRanger
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Rangers
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T6 faction timelock (20h Rangers)
+      department: Rangers
+      min: 72000 # 20 hours
+    - !type:CharacterSpeciesRequirement # #Misfits Change - robots, super mutants, and glowing ghouls cannot be Rangers
+      species:
+      - Human
+      - Ghoul
+
+- type: startingGear
+  id: NCRFieldRangerGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatRangerB # Misfits Tweak - field rangers use the lighter ranger hat variant
+    back: N14ClothingBackpackMilitary # Corvax-Chande
+    jumpsuit: N14ClothingUniformRangerV2
+    ears: MisfitsClothingHeadsetNCRRanger
+    shoes: N14ClothingBootsCombatFilled
+    gloves: N14ClothingHandsGlovesBlackLeather
+    belt: ClothingBeltRevolverdesertfilled
+    mask: ClothingMaskGasRangerDesert
+    pocket1: MagazineBox45-70
+    pocket2: NCRfieldrangerloadoutkits
+    eyes: ClothingEyesGlassesSunglasses
+    outerClothing: N14ClothingOuterRangerFieldArmor # Misfits Tweak - reserve desert combat armor for veteran-tier rangers
+    id: N14IDBadgeNCRDesertRanger
+  innerClothingSkirt: N14ClothingUniformRangerV1 #placeholder
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledMilitary
+    - FlashlightSeclite
+
+- type: playTimeTracker
+  id: NCRFieldRanger

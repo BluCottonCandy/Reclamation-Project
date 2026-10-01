@@ -1,0 +1,104 @@
+- type: entity
+  parent: BaseFlatpack
+  id: MisfitsEightiesGreenMotorbikeFlatpack
+  name: harley motorbike flatpack
+  description: This flatpack has a Harley Motorbike inside, ready to be unpacked.
+  components:
+  - type: Flatpack
+    entity: N14VehicleBikeGreen
+    extraEntities:
+    - TrainingManualEightiesRider
+    - VehicleKeyMotorbike
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#8a5a2b"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseFlatpack
+  id: MisfitsEightiesFlameyMotorbikeFlatpack
+  name: chopper motorbike flatpack
+  description: This flatpack has a Chopper Motorbike inside, ready to be unpacked.
+  components:
+  - type: Flatpack
+    entity: N14VehicleBikeFlamey
+    extraEntities:
+    - TrainingManualEightiesRider
+    - VehicleKeyMotorbike
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#8a5a2b"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseFlatpack
+  id: MisfitsEightiesRustyMotorbikeFlatpack
+  name: rustbird motorbike flatpack
+  description: This flatpack has a Rustbird Motorbike inside, ready to be unpacked.
+  components:
+  - type: Flatpack
+    entity: N14VehicleBikeRustLight
+    extraEntities:
+    - TrainingManualEightiesRider
+    - VehicleKeyMotorbike
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#8a5a2b"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseFlatpack
+  id: MisfitsEightiesScramblerMotorbikeFlatpack
+  name: scrambler dirt bike flatpack
+  description: This flatpack has a Scrambler Dirt Bike inside, ready to be unpacked.
+  components:
+  - type: Flatpack
+    entity: N14VehicleBikeScrambler
+    extraEntities:
+    - TrainingManualEightiesRider
+    - VehicleKeyMotorbike
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#8a5a2b"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseFlatpack
+  id: MisfitsEightiesClassicMotorbikeFlatpack
+  name: thunderbird motorbike flatpack
+  description: This flatpack has a Thunderbird Motorbike inside, ready to be unpacked.
+  components:
+  - type: Flatpack
+    entity: N14VehicleBikeClassic
+    extraEntities:
+    - TrainingManualEightiesRider
+    - VehicleKeyMotorbike
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#8a5a2b"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+  - type: StaticPrice
+    price: 1500

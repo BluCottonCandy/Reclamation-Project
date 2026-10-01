@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAULT-TEC NETWORK TERMINAL</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #39ff14;
+    --green-dim: #1a8a00;
+    --green-dark: #0d4d00;
+    --green-glow: #39ff1480;
+    --bg: #010801;
+    --amber: #ffb000;
+    --red-alert: #ff2200;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* CRT scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* CRT vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.75) 100%);
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* Screen flicker */
+  @keyframes flicker {
+    0%   { opacity: 1; }
+    92%  { opacity: 1; }
+    93%  { opacity: 0.85; }
+    94%  { opacity: 1; }
+    96%  { opacity: 0.9; }
+    97%  { opacity: 1; }
+  }
+
+  @keyframes scanroll {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  .crt-screen {
+    animation: flicker 8s infinite;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+  }
+
+  /* Rolling scan line */
+  .scan-line {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: rgba(57, 255, 20, 0.08);
+    animation: scanroll 6s linear infinite;
+    pointer-events: none;
+    z-index: 9997;
+  }
+
+  /* ─── PANEL / CARD ─── */
+  .panel {
+    border: 1px solid var(--green-dim);
+    background: rgba(0, 20, 0, 0.6);
+    margin-bottom: 24px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(57,255,20,0.08), inset 0 0 20px rgba(0,0,0,0.5);
+  }
+
+  .panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--green-dim), transparent);
+  }
+
+  /* ─── PANEL HEADER ─── */
+  .panel-header {
+    text-align: center;
+    padding: 14px 20px 10px;
+    border-bottom: 1px solid var(--green-dark);
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 8px var(--green-glow);
+  }
+
+  .panel-header .title-bar {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--green-dim);
+    margin-bottom: 6px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .panel-header .main-title {
+    font-size: 28px;
+    color: var(--green);
+    text-shadow: 0 0 16px var(--green), 0 0 30px rgba(57,255,20,0.4);
+  }
+
+  .panel-header .sub-title {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--green-dim);
+    margin-top: 4px;
+  }
+
+  .divider {
+    color: var(--green-dim);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 6px 0;
+    text-shadow: none;
+  }
+
+  /* ─── PANEL BODY ─── */
+  .panel-body {
+    padding: 16px 24px 20px;
+  }
+
+  /* ─── BOOT LOG ─── */
+  .boot-log {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--green-dark);
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 12px;
+    color: var(--green-dim);
+  }
+
+  .boot-log .log-line {
+    display: block;
+    padding: 1px 0;
+  }
+
+  .boot-log .log-line::before {
+    content: '> ';
+    color: var(--green);
+  }
+
+  .boot-log .status {
+    color: var(--green);
+    font-weight: bold;
+    margin-top: 8px;
+    display: block;
+    font-size: 13px;
+    text-shadow: 0 0 6px var(--green-glow);
+  }
+
+  /* ─── DIRECTIVE SECTION ─── */
+  .directive {
+    margin-bottom: 28px;
+  }
+
+  .directive-header {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: var(--amber);
+    text-shadow: 0 0 10px rgba(255,176,0,0.5);
+    border-bottom: 1px solid var(--green-dark);
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .directive-header::before {
+    content: '■';
+    color: var(--green);
+    font-size: 10px;
+    text-shadow: 0 0 6px var(--green-glow);
+  }
+
+  .directive-sub {
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--green);
+    text-shadow: 0 0 6px var(--green-glow);
+    margin: 14px 0 6px;
+    text-transform: uppercase;
+  }
+
+  .directive-body {
+    color: #c8f0c8;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  /* ─── BULLET LIST ("> " items) ─── */
+  .term-list {
+    list-style: none;
+    margin: 10px 0 10px 0;
+    padding: 0;
+    border-left: 2px solid var(--green-dark);
+    padding-left: 14px;
+  }
+
+  .term-list li {
+    padding: 3px 0;
+    color: #b0e8b0;
+    font-size: 12.5px;
+    position: relative;
+  }
+
+  .term-list li::before {
+    content: '> ';
+    color: var(--green);
+    text-shadow: 0 0 4px var(--green-glow);
+    font-weight: bold;
+  }
+
+  /* sub-categories: ALLOWED / PROHIBITED */
+  .term-category {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--green-dim);
+    margin: 10px 0 4px;
+    text-transform: uppercase;
+  }
+
+  .term-category.allowed { color: var(--green); }
+  .term-category.prohibited { color: var(--red-alert); text-shadow: 0 0 6px rgba(255,34,0,0.4); }
+
+  /* ─── NOTICE BLOCK ─── */
+  .vt-notice {
+    text-align: center;
+    border-top: 1px solid var(--green-dark);
+    padding: 12px 20px 14px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: var(--green-dim);
+  }
+
+  .vt-notice .notice-label {
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: var(--green-dim);
+    margin-bottom: 3px;
+  }
+
+  .vt-notice .notice-text {
+    color: var(--amber);
+    font-size: 18px;
+    text-shadow: 0 0 8px rgba(255,176,0,0.4);
+  }
+
+  /* ─── QUICK DIRECTIVES GRID ─── */
+  .quick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .quick-item {
+    border: 1px solid var(--green-dark);
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .quick-item .q-num {
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    color: var(--amber);
+    text-shadow: 0 0 6px rgba(255,176,0,0.4);
+  }
+
+  .quick-item .q-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--green);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .quick-item .q-desc {
+    color: #8fc88f;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* ─── BLINKING CURSOR ─── */
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  .cursor::after {
+    content: '█';
+    animation: blink 1s step-start infinite;
+    color: var(--green);
+    text-shadow: 0 0 6px var(--green-glow);
+  }
+
+  /* ─── SCROLL PROMPT ─── */
+  .scroll-prompt {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--green-dim);
+    padding: 8px 0;
+    animation: blink 2s step-start infinite;
+  }
+
+  /* ─── FILE HEADER (continuation panels) ─── */
+  .file-header {
+    text-align: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--green-dark);
+    background: rgba(0,0,0,0.3);
+  }
+
+  .file-header .file-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--green-dim);
+    margin-bottom: 4px;
+  }
+
+  .file-header .file-name {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: var(--green);
+    text-shadow: 0 0 8px var(--green-glow);
+  }
+
+  .continuation-tag {
+    font-size: 12px;
+    color: var(--green-dim);
+    padding: 8px 24px;
+    border-bottom: 1px solid var(--green-dark);
+  }
+
+  .continuation-tag::before { content: '> '; color: var(--green); }
+
+  /* ─── WARNING BAND ─── */
+  .warn-band {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255,176,0,0.05),
+      rgba(255,176,0,0.05) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    border: 1px solid rgba(255,176,0,0.3);
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--amber);
+    margin: 8px 0;
+    letter-spacing: 1px;
+  }
+
+  /* ─── INTRO WELCOME TEXT ─── */
+  .intro-text {
+    font-size: 13px;
+    color: #c8f0c8;
+    line-height: 1.8;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  .intro-text .highlight {
+    color: var(--amber);
+    text-shadow: 0 0 6px rgba(255,176,0,0.3);
+  }
+
+  .intro-survival {
+    border: 1px solid var(--green-dark);
+    padding: 10px 16px;
+    margin: 12px 0;
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+  }
+
+  .intro-survival .surv-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--green-dim);
+    margin-bottom: 6px;
+  }
+
+  /* ─── ADMIN AUTHORITY ─── */
+  .authority-block {
+    border: 1px solid rgba(255,176,0,0.4);
+    background: rgba(20,10,0,0.5);
+    padding: 14px 20px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .authority-block .auth-title {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: var(--amber);
+    text-shadow: 0 0 10px rgba(255,176,0,0.5);
+    margin-bottom: 8px;
+  }
+
+  .authority-block p {
+    font-size: 12.5px;
+    color: #c8f0c8;
+    line-height: 1.7;
+  }
+
+  .age-badge {
+    display: inline-block;
+    border: 1px solid var(--amber);
+    padding: 4px 16px;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    color: var(--amber);
+    letter-spacing: 3px;
+    margin-top: 10px;
+    text-shadow: 0 0 8px rgba(255,176,0,0.4);
+  }
+
+  @media (max-width: 640px) {
+    .quick-grid { grid-template-columns: 1fr; }
+    .crt-screen { padding: 12px; }
+    .panel-header .main-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scan-line"></div>
+
+<div class="crt-screen">
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 1 — BOOT SEQUENCE                     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="title-bar">+======================================+</div>
+      <div class="main-title">VAULT-TEC NETWORK TERMINAL</div>
+      <div class="sub-title">ACCESS LEVEL: PUBLIC</div>
+      <div class="title-bar">+======================================+</div>
+    </div>
+    <div class="panel-body">
+      <div class="boot-log">
+        <span class="log-line">SYSTEM BOOT SEQUENCE INITIATED...</span>
+        <span class="log-line">Establishing network uplink...</span>
+        <span class="log-line">Synchronizing wasteland registry...</span>
+        <span class="log-line">Loading operational directives...</span>
+        <span class="log-line">Authenticating resident access...</span>
+        <span class="status">STATUS: CONNECTION ESTABLISHED <span class="cursor"></span></span>
+      </div>
+    </div>
+    <div class="vt-notice">
+      <div class="notice-label">VAULT-TEC NOTICE</div>
+      <div class="notice-text">A BETTER COMMUNITY THROUGH ORDER.</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 2 — WELCOME                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="title-bar">■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■</div>
+      <div class="main-title">MISFITS: NUCLEAR WASTELAND</div>
+      <div class="sub-title">MEDIUM ROLEPLAY ENVIRONMENT</div>
+      <div class="title-bar">■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■</div>
+    </div>
+    <div class="panel-body">
+      <div class="intro-text">
+        A Fallout-themed medium roleplay environment<br>
+        where every action has <span class="highlight">consequences.</span>
+      </div>
+
+      <div class="intro-survival">
+        <div class="surv-label">SURVIVAL DEPENDS ON</div>
+        <ul class="term-list">
+          <li>YOUR ALLIANCES</li>
+          <li>YOUR DECISIONS</li>
+          <li>YOUR ABILITY TO ADAPT</li>
+        </ul>
+      </div>
+
+      <div class="directive-body" style="text-align:center; margin-top:10px;">
+        Administrative oversight is minimal.<br>
+        <span style="color:var(--amber)">The story belongs to the players.</span>
+      </div>
+
+      <div class="divider">======================================</div>
+      <div style="text-align:center; font-size:12px; color:var(--green-dim); letter-spacing:2px; padding:6px 0;">
+        NEXT STEP REQUIRED — Review the operational directives below<br>before entering the wasteland network.
+      </div>
+      <div class="divider">======================================</div>
+    </div>
+    <div class="vt-notice">
+      <div class="notice-label">VAULT-TEC NOTICE</div>
+      <div class="notice-text">A BETTER COMMUNITY THROUGH ORDER.</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 3 — QUICK DIRECTIVES                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="title-bar">+======================================+</div>
+      <div class="main-title">QUICK DIRECTIVES</div>
+      <div class="sub-title">VAULT-TEC OPERATING SYSTEM v3.11 — NODE: MISFITS_NETWORK</div>
+      <div class="title-bar">+======================================+</div>
+    </div>
+    <div class="panel-body">
+      <div class="boot-log" style="margin-bottom:14px;">
+        <span class="log-line">LOADING COMMUNITY DIRECTIVES...</span>
+        <span class="log-line">VERIFYING RESIDENT ACCESS...</span>
+        <span class="status">STATUS: TERMINAL ACTIVE — ACCESS LEVEL: PUBLIC</span>
+      </div>
+
+      <div class="quick-grid">
+        <div class="quick-item">
+          <span class="q-num">01</span>
+          <span class="q-label">RESPECT THE COMMUNITY</span>
+          <span class="q-desc">Toxic behavior, harassment, or actions meant to ruin the experience of others are not tolerated.</span>
+        </div>
+        <div class="quick-item">
+          <span class="q-num">02</span>
+          <span class="q-label">PLAY FOR STORY</span>
+          <span class="q-desc">Medium Roleplay environment. Create story and interaction — not victory at any cost.</span>
+        </div>
+        <div class="quick-item">
+          <span class="q-num">03</span>
+          <span class="q-label">NO METAGAMING</span>
+          <span class="q-desc">OOC information from Discord, streams, or ghosting may not influence IC actions.</span>
+        </div>
+        <div class="quick-item">
+          <span class="q-num">04</span>
+          <span class="q-label">NO GRIEFING</span>
+          <span class="q-desc">Actions intended only to disrupt gameplay without roleplay reasoning are prohibited.</span>
+        </div>
+        <div class="quick-item">
+          <span class="q-num">05</span>
+          <span class="q-label">STAY IN CHARACTER</span>
+          <span class="q-desc">Characters must fit the Fallout setting and maintain immersion within the wasteland.</span>
+        </div>
+        <div class="quick-item">
+          <span class="q-num">06</span>
+          <span class="q-label">FOLLOW ESCALATION</span>
+          <span class="q-desc">Dialogue should precede lethal force unless an immediate threat exists.</span>
+        </div>
+        <div class="quick-item">
+          <span class="q-num">07</span>
+          <span class="q-label">NO CHEATS OR EXPLOITS</span>
+          <span class="q-desc">Do not abuse bugs, tools, or mechanics. Report issues through official channels.</span>
+        </div>
+        <div class="quick-item">
+          <span class="q-num">08</span>
+          <span class="q-label">VALUE YOUR LIFE</span>
+          <span class="q-desc">FearRP applies when revived in captivity. Escape attempts require admin approval via Ahelp.</span>
+        </div>
+      </div>
+
+      <div class="divider" style="margin-top:10px;">======================================</div>
+      <div class="scroll-prompt">▼ FULL DIRECTIVES AVAILABLE BELOW — SCROLL TO CONTINUE ▼</div>
+      <div class="divider">======================================</div>
+    </div>
+    <div class="vt-notice">
+      <div class="notice-label">VAULT-TEC NOTICE</div>
+      <div class="notice-text">A BETTER COMMUNITY THROUGH ORDER.</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 4 — FILE: DIRECTIVES_A HEADER         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="file-header">
+      <div class="file-label">+======================================+</div>
+      <div class="file-name">VAULT-TEC NETWORK TERMINAL</div>
+      <div class="file-label">ACCESS LEVEL: PUBLIC</div>
+      <div class="file-name" style="font-size:16px; letter-spacing:3px; color:var(--amber);">FILE: COMMUNITY_DIRECTIVES_A</div>
+      <div class="file-label">+======================================+</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive-body" style="text-align:center; font-size:13px; letter-spacing:1px; line-height:1.9;">
+        <span style="color:var(--green); font-family:'VT323',monospace; font-size:18px; letter-spacing:3px;">WELCOME, RESIDENT.</span><br><br>
+        MISFITS: NUCLEAR WASTELAND OPERATES AS A MEDIUM ROLEPLAY FALLOUT ENVIRONMENT.<br>
+        THE GOAL IS NOT ONLY ENGAGING GAMEPLAY, BUT THE CREATION OF<br>
+        <span style="color:var(--amber)">MEMORABLE STORIES SHAPED BY PLAYER CHOICE.</span><br><br>
+        THE WASTELAND IS HARSH AND CONSEQUENCES MATTER.<br>
+        YOUR SURVIVAL DEPENDS ON YOUR ACTIONS, YOUR ALLIANCES, AND YOUR JUDGMENT.<br><br>
+        <span style="color:var(--green-dim); font-size:12px;">ADMINISTRATIVE INTERVENTION IS RARE AND RESERVED<br>FOR RULE ENFORCEMENT, NOT STORY RESCUE.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 5 — DIRECTIVE 0: CONDUCT              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 0 — CONDUCT</div>
+        <div class="directive-body">
+          THIS IS A COLLABORATIVE ENVIRONMENT.<br><br>
+          TOXICITY, EGO PLAY, AND BEHAVIOR DESIGNED TO RUIN OTHERS' ENJOYMENT ARE NOT TOLERATED.
+        </div>
+
+        <ul class="term-list">
+          <li>PLAY TO CREATE STORY, NOT TO "WIN"</li>
+          <li>RESPECT ADMINISTRATORS AND DEVELOPERS</li>
+          <li>COOPERATE DURING ADMIN INTERACTIONS</li>
+          <li>DO NOT DISCONNECT DURING ACTIVE TICKETS</li>
+          <li>REPORT TECHNICAL ISSUES PROMPTLY</li>
+        </ul>
+
+        <div class="warn-band">
+          ⚠ ADMINISTRATION MAY INTERVENE IN SITUATIONS NOT EXPLICITLY COVERED IF BEHAVIOR DAMAGES THE COMMUNITY OR THE ROUND.
+        </div>
+
+        <div class="directive-body">
+          PUNISHMENTS ARE ISSUED AT STAFF DISCRETION BASED ON SEVERITY, CONTEXT, AND HISTORY.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 6 — DIRECTIVE 1: GRIEFING             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 1 — GRIEFING</div>
+        <div class="directive-body">
+          GRIEFING IS ANY ACTION TAKEN PRIMARILY TO DISRUPT GAMEPLAY OR DEGRADE THE EXPERIENCE OF OTHERS WITHOUT MEANINGFUL IN-CHARACTER REASONING.
+        </div>
+
+        <div class="directive-sub">Examples Include</div>
+        <ul class="term-list">
+          <li>DELIBERATE DESTRUCTION WITH NO RP JUSTIFICATION</li>
+          <li>TRAP PLACEMENT INTENDED ONLY TO FRUSTRATE</li>
+          <li>LARGE-SCALE DISRUPTION WITHOUT NARRATIVE BASIS</li>
+        </ul>
+
+        <div class="warn-band">
+          ⚠ LACK OF INTENT DOES NOT ALWAYS EXCUSE LARGE-SCALE DAMAGE.<br>
+          IF YOUR ACTIONS SEVERELY IMPACT THE ROUND WITHOUT REASONABLE RP LOGIC, THEY MAY BE TREATED AS GRIEFING.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 7 — DIRECTIVE 2: FAIR PLAY            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 2 — FAIR PLAY</div>
+
+        <div class="directive-sub">2.1 — Metagaming</div>
+        <div class="directive-body">
+          USING OUT-OF-CHARACTER KNOWLEDGE TO INFLUENCE IN-CHARACTER ACTIONS IS PROHIBITED.
+        </div>
+        <div class="directive-sub" style="font-size:13px; color:var(--green-dim); margin-top:4px;">PROHIBITED INFORMATION SOURCES</div>
+        <ul class="term-list">
+          <li>DISCORD</li>
+          <li>STREAMS OR GHOSTING</li>
+          <li>OOC CHAT</li>
+          <li>EXTERNAL COMMUNICATION</li>
+        </ul>
+        <div class="directive-body">
+          MAY NOT BE USED IN CHARACTER.<br>
+          Streaming is allowed, but <span style="color:var(--amber)">responsibility for information leaks lies with the streamer.</span>
+        </div>
+
+        <div class="directive-sub">2.2 — Multiaccounting</div>
+        <ul class="term-list">
+          <li>MULTIPLE ACCOUNTS IN THE SAME ROUND ARE FORBIDDEN</li>
+          <li>BAN EVASION IS STRICTLY PROHIBITED</li>
+          <li>ALTERNATE ACCOUNTS TO AVOID PUNISHMENT HISTORY ARE NOT ALLOWED</li>
+        </ul>
+        <div class="warn-band" style="border-color:rgba(255,34,0,0.4); color:var(--red-alert);">
+          ⚠ VIOLATIONS MAY RESULT IN PERMANENT BANS.
+        </div>
+
+        <div class="directive-sub">2.3 — Exploits</div>
+        <ul class="term-list">
+          <li>NO CHEATS, MACROS, OR THIRD-PARTY TOOLS</li>
+          <li>NO INTENTIONAL BUG ABUSE</li>
+          <li>NO DELIBERATE SERVER STRAIN</li>
+        </ul>
+        <div class="directive-body">
+          REPORT DISCOVERED BUGS THROUGH OFFICIAL CHANNELS.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FILE: DIRECTIVES_B HEADER                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="file-header">
+      <div class="file-label">+======================================+</div>
+      <div class="file-name">VAULT-TEC NETWORK TERMINAL</div>
+      <div class="file-label">ACCESS LEVEL: PUBLIC</div>
+      <div class="file-name" style="font-size:16px; letter-spacing:3px; color:var(--amber);">FILE: COMMUNITY_DIRECTIVES_B</div>
+      <div class="file-label">+======================================+</div>
+    </div>
+    <div class="continuation-tag">CONTINUATION FILE LOADED</div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 8 — DIRECTIVE 3: ROLEPLAY STANDARDS   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 3 — ROLEPLAY STANDARDS</div>
+        <div class="directive-body">
+          CHARACTERS MUST FIT THE FALLOUT SETTING IN TONE, BEHAVIOR, AND NAMING.
+        </div>
+
+        <div class="directive-sub">3.1 — Character Identity</div>
+        <ul class="term-list">
+          <li>NO MEME NAMES OR REAL-WORLD REFERENCES</li>
+          <li>NO REUSE OF DEAD OR PERMANENTLY IMPRISONED CHARACTERS WITHOUT APPROVAL</li>
+          <li>ADMINISTRATION MAY REQUIRE NAME CHANGES</li>
+        </ul>
+
+        <div class="directive-sub">3.2 — Communication</div>
+        <ul class="term-list">
+          <li>DO NOT BREAK IMMERSION WITH MECHANICAL TERMS</li>
+          <li>KEEP OOC TOPICS OUT OF IC CHANNELS</li>
+          <li>OOC CHANNELS MUST REMAIN RESPECTFUL</li>
+        </ul>
+
+        <div class="directive-sub">3.3 — Atmosphere</div>
+        <ul class="term-list">
+          <li>DO NOT REFERENCE ADMINS OR GAME SYSTEMS IN CHARACTER</li>
+          <li>PROVIDE IC REASONS FOR ABSENCE WHEN POSSIBLE</li>
+        </ul>
+
+        <div class="directive-sub">3.4 — Knowledge Limits</div>
+        <div class="warn-band">
+          YOUR CHARACTER IS NOT ALL-KNOWING.<br>
+          DO NOT REFERENCE TECHNOLOGY OR KNOWLEDGE YOUR CHARACTER WOULD NOT REALISTICALLY POSSESS.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 9 — DIRECTIVE 4: EROTIC ROLEPLAY      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 4 — EROTIC ROLEPLAY</div>
+        <div class="warn-band" style="border-color:rgba(255,34,0,0.4); color:var(--red-alert);">
+          ⚠ EXPLICIT ERP IS PROHIBITED IN ALL FORMS.
+        </div>
+
+        <div class="directive-body" style="margin-top:10px;">
+          Light romantic interaction such as flirting, hugging, or kissing is permitted if:
+        </div>
+
+        <ul class="term-list">
+          <li>NON-EXPLICIT</li>
+          <li>CONSENSUAL</li>
+        </ul>
+
+        <div class="directive-body">
+          IF STAFF INSTRUCT YOU TO STOP BEHAVIOR NEAR THE BOUNDARY, YOU MUST COMPLY IMMEDIATELY.<br><br>
+          <span style="color:var(--red-alert);">VIOLATIONS MAY RESULT IN REMOVAL.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 10 — DIRECTIVE 5: SSD PROTECTION      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 5 — SSD PROTECTION</div>
+        <div class="directive-body">
+          CHARACTERS WHO DISCONNECT MAY NOT BE DIRECTLY HARMED.
+        </div>
+
+        <div class="term-category allowed">▶ ALLOWED</div>
+        <ul class="term-list">
+          <li>LOOTING SSD CHARACTERS</li>
+        </ul>
+
+        <div class="term-category prohibited">▶ PROHIBITED</div>
+        <ul class="term-list">
+          <li>KILLING SSD CHARACTERS</li>
+          <li>KIDNAPPING SSD CHARACTERS</li>
+        </ul>
+
+        <div class="warn-band">
+          DISCONNECTING DURING ACTIVE COMBAT REMOVES THIS PROTECTION.<br>
+          SSD PLAYERS INSIDE FACTION BASES DURING RAIDS ARE NOT PROTECTED.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FILE: DIRECTIVES_C HEADER                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="file-header">
+      <div class="file-label">+======================================+</div>
+      <div class="file-name">VAULT-TEC NETWORK TERMINAL</div>
+      <div class="file-label">ACCESS LEVEL: PUBLIC</div>
+      <div class="file-name" style="font-size:16px; letter-spacing:3px; color:var(--amber);">FILE: COMMUNITY_DIRECTIVES_C</div>
+      <div class="file-label">+======================================+</div>
+    </div>
+    <div class="continuation-tag">CONTINUATION FILE LOADED</div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 11 — DIRECTIVE 6: ARMED CONFLICT      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 6 — ARMED CONFLICT</div>
+
+        <div class="directive-sub">6.1 — Escalation</div>
+        <div class="directive-body">DIALOGUE MUST PRECEDE LETHAL FORCE.</div>
+        <div class="term-category">REQUIREMENTS</div>
+        <ul class="term-list">
+          <li>FACE-TO-FACE ESCALATION</li>
+          <li>CLEAR DEMAND GIVEN</li>
+          <li>TIME TO RESPOND</li>
+        </ul>
+        <div class="term-category">EXCEPTIONS</div>
+        <ul class="term-list">
+          <li>ACTIVE FIREFIGHTS</li>
+          <li>IMMEDIATE THREATS</li>
+          <li>WILDLIFE</li>
+          <li>FACTION WARFARE</li>
+        </ul>
+
+        <div class="directive-sub">6.2 — Robbery</div>
+        <ul class="term-list">
+          <li>DO NOT REMOVE ALL SURVIVAL ITEMS</li>
+          <li>NON-RESISTING VICTIMS MUST LIVE</li>
+          <li>RESISTANCE SHIFTS RESPONSIBILITY</li>
+        </ul>
+
+        <div class="directive-sub">6.3 — Faction Warfare</div>
+        <ul class="term-list">
+          <li>FACTIONS BEGIN NEUTRAL</li>
+          <li>ONLY LEADERS MAY DECLARE WAR</li>
+          <li>WAR BEGINS FIVE MINUTES AFTER FACE-TO-FACE DECLARATION</li>
+        </ul>
+        <div class="warn-band" style="border-color:rgba(255,34,0,0.4); color:var(--red-alert);">
+          ⚠ KILLING DIPLOMATS OR SURRENDERED INDIVIDUALS IS FORBIDDEN.
+        </div>
+
+        <div class="directive-sub">6.4 — Early Raids</div>
+        <div class="directive-body">
+          FACTION BASES MAY NOT BE RAIDED WITHIN THE FIRST <span style="color:var(--amber)">30 MINUTES.</span>
+        </div>
+
+        <div class="directive-sub">6.5 — Faction Equipment &amp; Impersonation</div>
+        <div class="directive-body">
+          ALL FACTIONS MAY BE LOOTED OF ARMOR, UNIFORMS, WEAPONS, AND ITEMS.
+        </div>
+        <ul class="term-list">
+          <li>ANY PERSON IMPERSONATING A FACTION MAY BE ESCALATED UPON</li>
+          <li>WEARING A FACTION'S ARMOR GIVES THAT FACTION PERMISSION TO ESCALATE</li>
+        </ul>
+
+        <div class="directive-sub">6.6 — Faction Raids</div>
+        <div class="warn-band">
+          ALL FACTION RAIDS MUST BE AHELPED FOR APPROVAL BEFORE COMMENCING.<br>
+          IF DENIED OR NO RESPONSE IS GIVEN — THE ATTACKING PARTY MUST LEAVE.
+        </div>
+
+        <div class="directive-sub">6.7 — Conflict Intervention</div>
+        <div class="directive-body">
+          PLAYERS WHO CLEARLY SURRENDER MAY NOT BE EXECUTED IF NO CROSSFIRE EXISTS.<br><br>
+          FACTION OR GANG MEMBERS WITH IDENTICAL UNIFORMS MAY ASSIST ALLIES IN ACTIVE CONFLICT.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 12 — DIRECTIVE 7: NEW LIFE RULE       -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 7 — NEW LIFE RULE</div>
+        <ul class="term-list">
+          <li>PLAYERS MAY NOT REJOIN ON THE SAME CHARACTER TO BYPASS DEATH</li>
+          <li>REVIVED CHARACTERS FORGET THE CIRCUMSTANCES OF THEIR DEATH</li>
+          <li>KNOWLEDGE FROM PREVIOUS ROUNDS MAY NOT BE USED FOR ADVANTAGE</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 13 — DIRECTIVE 8: FEAR ROLEPLAY       -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="directive">
+        <div class="directive-header">DIRECTIVE 8 — FEAR ROLEPLAY</div>
+        <div class="directive-body">
+          FEARRP APPLIES WHEN A PLAYER IS REVIVED IN A SECURE LOCATION.
+        </div>
+
+        <div class="directive-sub">Example Scenario</div>
+        <div class="warn-band" style="font-style:italic; color:#c8f0c8;">
+          LEGION KILLS A BOS PALADIN AND REVIVES THEM AT THEIR CAMP.<br>
+          THE PALADIN MUST NOW VALUE THEIR LIFE AND FOLLOW FEARRP.
+        </div>
+
+        <ul class="term-list" style="margin-top:12px;">
+          <li>ESCAPE ATTEMPTS REQUIRE ADMIN APPROVAL VIA AHELP</li>
+          <li>FAILED ATTEMPTS REQUIRE NEW APPROVAL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PANEL 14 — ADMINISTRATIVE AUTHORITY / END   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header" style="padding-bottom:8px;">
+      <div class="title-bar">======================================</div>
+    </div>
+    <div class="panel-body">
+      <div class="authority-block">
+        <div class="auth-title">VAULT-TEC ADMINISTRATIVE AUTHORITY</div>
+        <p>PROJECT LEADERSHIP RETAINS FINAL AUTHORITY IN RULE INTERPRETATION.</p>
+        <div class="age-badge">SERVER EXPECTATION: 17+</div>
+      </div>
+
+      <div class="boot-log" style="margin-top:14px;">
+        <span class="log-line" style="color:var(--green);">ALL DIRECTIVES LOADED SUCCESSFULLY</span>
+        <span class="log-line">END OF FILE: COMMUNITY_DIRECTIVES</span>
+        <span class="status">TERMINAL STANDING BY <span class="cursor"></span></span>
+      </div>
+    </div>
+    <div class="vt-notice">
+      <div class="notice-label">VAULT-TEC NOTICE</div>
+      <div class="notice-text">A BETTER COMMUNITY THROUGH ORDER.</div>
+    </div>
+  </div>
+
+</div><!-- /crt-screen -->
+</body>
+</html>

@@ -1,0 +1,683 @@
+- type: entity
+  parent: N14DecorFloorBase
+  id: NCDecorFloorPole
+  name: metal pole
+  description: Upon seeing this pole, you feel a strange urge to undress...
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Decoration/metal_pole.rsi
+    state: metal_pole
+    drawdepth: Mobs
+
+- type: entity
+  parent: N14DecorFloorBase
+  id: NCDecorFloorVaultSkeleton
+  name: skeleton in a vault suit
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Decoration/vault_bones.rsi
+    state: bones
+
+# graves
+
+- type: entity
+  parent: N14DecorFloorBase
+  id: NCDecorFloorGrave1
+  name: gravestone
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Decoration/graves.rsi
+    state: grob1
+
+- type: entity
+  parent: NCDecorFloorGrave1
+  id: NCDecorFloorGrave2
+  name: gravestone
+  components:
+  - type: Sprite
+    state: grob2
+
+- type: entity
+  parent: NCDecorFloorGrave1
+  id: NCDecorFloorGrave3
+  name: gravestone
+  components:
+  - type: Sprite
+    state: grob3
+
+# Misfits Change /Add/: Shared base for floor decor barrels - own name/description
+# instead of inheriting the concrete barrier's "stopping traffic" text.
+- type: entity
+  parent: N14DecorConcreteBarrier
+  id: NCDecorFloorBarrelBase
+  abstract: true
+  name: Barrel
+  description: A rusted metal barrel. It's hard to tell what it once held.
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsDuo
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_grey_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsDuo
+  id: NCDecorFloorBarrelsDuo1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_grey_2
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsRedDuo
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_red_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsRedDuo
+  id: NCDecorFloorBarrelsRedDuo1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_red_2
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsToxicDuo
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_toxic_1
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelsToxicDuo
+  id: NCDecorFloorBarrelsToxicDuo1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_waste_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsToxicDuo
+  id: NCDecorFloorBarrelsToxicDuo2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_waste_2
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsYellowDuo
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_yellow_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsYellowDuo
+  id: NCDecorFloorBarrelsYellowDuo1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: double_yellow_2
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsFlam
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: flammable_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsFlam
+  id: NCDecorFloorBarrelsFlam1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: flammable_2
+
+- type: entity
+  parent: NCDecorFloorBarrelsFlam
+  id: NCDecorFloorBarrelsFlam2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: flammable_3
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsGrey
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: grey_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsGrey
+  id: NCDecorFloorBarrelsGrey1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: grey_2
+
+- type: entity
+  parent: NCDecorFloorBarrelsGrey
+  id: NCDecorFloorBarrelsGrey2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: grey_3
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsHazard
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: hazard_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsHazard
+  id: NCDecorFloorBarrelsHazard1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: hazard_2
+
+- type: entity
+  parent: NCDecorFloorBarrelsHazard
+  id: NCDecorFloorBarrelsHazard2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: hazard_3
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelsLabel
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: label_1
+
+- type: entity
+  parent: NCDecorFloorBarrelsLabel
+  id: NCDecorFloorBarrelsLabel1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: label_2
+
+- type: entity
+  parent: NCDecorFloorBarrelsLabel
+  id: NCDecorFloorBarrelsLabel2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: label_3
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelSquad
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: quad_grey_1
+
+- type: entity
+  parent: NCDecorFloorBarrelSquad
+  id: NCDecorFloorBarrelSquad1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: quad_red_1
+
+- type: entity
+  parent: NCDecorFloorBarrelSquad
+  id: NCDecorFloorBarrelSquad2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: quad_red_2
+
+- type: entity
+  parent: NCDecorFloorBarrelSquad
+  id: NCDecorFloorBarrelSquad3
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: quad_toxic_1
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelSquad
+  id: NCDecorFloorBarrelSquad4
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: quad_waste_1
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelSquad
+  id: NCDecorFloorBarrelSquad5
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: quad_yellow_1
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrel
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: red_1
+
+- type: entity
+  parent: NCDecorFloorBarrel
+  id: NCDecorFloorBarre1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: red_2
+
+- type: entity
+  parent: NCDecorFloorBarrel
+  id: NCDecorFloorBarre2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: red_3
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelAlt
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: red_alt_1
+
+- type: entity
+  parent: NCDecorFloorBarrelAlt
+  id: NCDecorFloorBarrelAlt1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: red_alt_2
+
+- type: entity
+  parent: NCDecorFloorBarrelAlt
+  id: NCDecorFloorBarrelAlt2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: red_alt_3
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelToxic
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: toxic_1
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelToxic
+  id: NCDecorFloorBarrelToxic1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: toxic_2
+
+- type: entity
+  parent: NCDecorFloorBarrelToxic
+  id: NCDecorFloorBarrelToxic2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: toxic_3
+
+- type: entity
+  parent: NCDecorFloorBarrelToxic
+  id: NCDecorFloorBarrelToxic3
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: toxic_4
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelTriple
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_grey_1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_grey_2
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_grey_3
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple3
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_red_1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple4
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_red_2
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple5
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_toxic_1
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple6
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_toxic_2
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple7
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_waste_1
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple8
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_waste_2
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple9
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_waste_3
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple10
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_yellow_1
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple11
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_yellow_2
+
+- type: entity
+  parent: NCDecorFloorBarrelTriple
+  id: NCDecorFloorBarrelTriple12
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: triple_yellow_3
+
+- type: entity
+  parent: NCDecorFloorBarrelBase
+  id: NCDecorFloorBarrelWarning
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: warning_1
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelWarning1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: warning_2
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelWarning2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: warning_3
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelWaste
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: waste_1
+  - type: RadiationSource #Misfits Change /Add/: toxic/green sludge barrels emit radiation
+    intensity: 2
+    slope: 1
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelWaste1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: waste_2
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelWaste2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: waste_3
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelYellow
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: yellow_1
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelYellow1
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: yellow_2
+
+- type: entity
+  parent: NCDecorFloorBarrelWarning
+  id: NCDecorFloorBarrelYellow2
+  name: Barrel
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    state: yellow_3
+
+# Flag
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagWesterBoS
+  name: Flag of the Brotherhood of Steel
+  description: The banner of the Brotherhood of Steel, descendents of the United States military who now attempt to confiscate and safeguard dangerous technology to prevent another apocalypse.
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Decoration/flag1.rsi
+    state: zbos
+
+- type: entity
+  parent: N14DecorationFlagpoleNCR
+  id: N14DecorationFlagpoleWesternBOS
+  name: Brotherhood of Steel Flagpole
+  description: The banner of the Brotherhood of Steel, descendents of the United States military who now attempt to confiscate and safeguard dangerous technology to prevent another apocalypse. The flag stands proud and tall, a challenge to those around it.
+  components:
+  - type: Sprite
+    sprite: Corvax/Structures/Decoration/flag2.rsi
+    state: zbosflagshtock
+    noRot: true
+
+- type: entity
+  parent: N14DecorationFlagpoleNCR
+  id: N14DecorationFlagpoleUSA
+  name: Small 'U.S. Army' Flag
+  description: The banner of a group calling themselves the 'U.S. Army', descendents of America's elite who claim to be the true inheritors of the United States federal government. This one is a flag meant to be used as a desk paperweight.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    state: flagpole_usa
+    noRot: true
+
+- type: entity
+  parent: N14DecorationFlagpoleNCR
+  id: N14DecorationFlagpoleNCR2
+  name: Small New California Republic Flag
+  description: The banner of the New California Republic, a nation that despite enemies within and without, has done its best to provide comfort and equality to its citizens. This one is a flag meant to be used as a desk paperweight.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    state: flagpole_ncr
+    noRot: true
+
+- type: entity
+  parent: N14DecorationFlagpoleNCR
+  id: N14DecorationFlagpoleLegion
+  name: Small Caesar's Legion Flag
+  description: The banner of Caesar's Legion, a slave army under the mighty warlord Caesar, whose monumental ego and sharp wit have seen the lawless east fall in line under his iron boot. This one is a flag meant to be used as a desk paperweight.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    state: flagpole_legion
+    noRot: true
+
+# Decormini
+
+- type: entity
+  parent: N14DecorFloorBase
+  id: NCDecorFloorFlagUSAFolded
+  name: Folded US flag, Patriotic
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    state: trifold

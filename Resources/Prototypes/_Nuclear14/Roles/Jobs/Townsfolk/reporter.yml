@@ -1,0 +1,47 @@
+- type: job
+  id: WastelandReporter
+  setPreference: true
+  weight: 35
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-townreporter
+  description: job-description-townreporter
+  playTimeTracker: WastelandReporter
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+  startingGear: WastelandReporterGear
+  icon: "JobIconTownReporter" # Corvax-Change
+  supervisors: job-supervisors-townsfolk
+  access:
+  - WastelandReporter
+  - TownsPerson # Corvax-Change
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: startingGear
+  id: WastelandReporterGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitDetectiveAlt
+    ears: MisfitsClothingHeadsetTown
+    back: N14ClothingBackpackExplorer # Corvax-Change
+    shoes: N14ClothingShoesBlack
+    id: N14IDReporterTown
+  innerClothingSkirt: N14ClothingUniformJumpsuitDetectiveAlt
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: WastelandReporter

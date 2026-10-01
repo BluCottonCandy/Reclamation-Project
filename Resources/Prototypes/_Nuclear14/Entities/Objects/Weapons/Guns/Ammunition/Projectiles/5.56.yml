@@ -1,0 +1,18 @@
+- type: entity
+  id: N14Bullet556
+  name: bullet (5.56mm)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 20
+  # Misfits Add - 5.56mm intermediate rifle round; good range retention
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 9.0
+    maxFalloffTiles: 18.0
+    minDamageMultiplier: 0.57
+  # #Misfits Add: 5.56mm is a medium-caliber rifle round; power armor has a low chance to glance it.
+  - type: Reflective
+    reflective: MediumCaliber

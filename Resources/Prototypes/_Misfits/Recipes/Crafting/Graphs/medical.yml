@@ -1,0 +1,28 @@
+#Misfits Add: Construction graph for body bag hand crafting via G menu.
+
+# Body Bag
+# Craftable using cloth — represents stitching together a durable canvas/tarp storage bag for cadavers.
+- type: constructionGraph
+  id: MisfitsBodyBagGraph
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: bodybag
+          steps:
+            - material: Cloth
+              amount: 5
+              doAfter: 10
+
+    - node: bodybag
+      entity: BodyBagFolded
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 5
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:DeleteEntity

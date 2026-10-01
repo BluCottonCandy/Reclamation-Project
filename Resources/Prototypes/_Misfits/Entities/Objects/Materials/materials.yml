@@ -1,0 +1,350 @@
+﻿# ingots, 10 and 5
+
+- type: entity
+  parent: N14IngotBrass
+  id: N14IngotBrass10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14IngotBrass
+  id: N14IngotBrass5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14IngotAluminum
+  id: N14IngotAluminum10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14IngotAluminum
+  id: N14IngotAluminum5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14IngotGold
+  id: N14IngotGold10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14IngotGold
+  id: N14IngotGold5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14IngotCopper
+  id: N14IngotCopper10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14IngotCopper
+  id: N14IngotCopper5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14IngotIron
+  id: N14IngotIron10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14IngotIron
+  id: N14IngotIron5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14IngotSilver
+  id: N14IngotSilver10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14IngotSilver
+  id: N14IngotSilver5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14IngotLead
+  id: N14IngotLead10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14IngotLead
+  id: N14IngotLead5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+# scrap and other misc materials
+
+- type: entity
+  parent: N14MaterialThread1
+  id: N14MaterialThread10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14MaterialThread1
+  id: N14MaterialThread5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14ScrapElectronic1
+  id: N14ScrapElectronic10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14ScrapElectronic1
+  id: N14ScrapElectronic5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14MaterialCircuitry1
+  id: N14MaterialCircuitry5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14Scrap1
+  id: N14Scrap10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14Scrap1
+  id: N14Scrap5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14ScrapSteel1
+  id: N14ScrapSteel10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14ScrapSteel1
+  id: N14ScrapSteel5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14MaterialLeather1
+  id: N14MaterialLeather10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14MaterialLeather1
+  id: N14MaterialLeather5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14MaterialRawLeather1
+  id: N14MaterialRawLeather10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14MaterialRawLeather1
+  id: N14MaterialRawLeather5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14ScrapGold1
+  id: N14ScrapGold10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14ScrapGold1
+  id: N14ScrapGold5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14ScrapLead1
+  id: N14ScrapLead10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14ScrapLead1
+  id: N14ScrapLead5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14Paper1
+  id: N14Paper5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: Charcoal1
+  id: Charcoal5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14ScrapBrass1
+  id: N14ScrapBrass10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14ScrapBrass1
+  id: N14ScrapBrass5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: N14ScrapCopper1
+  id: N14ScrapCopper10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14ScrapCopper1
+  id: N14ScrapCopper5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+
+# half stacks of basic mats
+
+- type: entity
+  parent: SheetPlastic
+  id: SheetPlastic15
+  suffix: 15
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: SheetGlass
+  id: SheetGlass15
+  suffix: 15
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: SheetSteel
+  id: SheetSteel15
+  suffix: 15
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: MaterialCloth
+  id: MaterialCloth15
+  suffix: 15
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: MaterialWoodPlank
+  id: MaterialWoodPlank15
+  suffix: 15
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: MaterialWoodPlank
+  id: MaterialWoodPlank2
+  suffix: 2
+  components:
+  - type: Stack
+    count: 2

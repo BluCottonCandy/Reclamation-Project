@@ -1,0 +1,279 @@
+﻿# surgery real
+
+- type: entity
+  id: MisfitsCrateMedicalSurgery
+  suffix: Filled, Medical, Surgery
+  parent: N14CrateMedical
+  components:
+  - type: StorageFill
+    contents:
+    - id: NitrousOxideTankFilled
+    - id: ClothingMaskBreathMedicalSecurity
+    - id: BoxNitrileGloves
+    - id: BoxSterileMask
+    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: PowerCellHigh
+    - id: N14JunkAbraxoCleaner
+    - id: SurgicalSterileWipe
+    - id: SurgicalSterilanSpray
+    - id: BoxBodyBag
+
+- type: entity
+  id: MisfitsShelfWoodClothesRackMedicalSurgery
+  suffix: Filled, Medical, Surgery
+  parent: N14ClosetCabinetWood
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxNitrileGloves
+    - id: BoxSterileMask
+    - id: UniformScrubsColorBlue
+    - id: ClothingHeadHatSurgcapBlue
+    - id: UniformScrubsColorGreen
+    - id: ClothingHeadHatSurgcapGreen
+    - id: UniformScrubsColorCyan
+    - id: ClothingHeadHatSurgcapCyan
+    - id: UniformScrubsColorPurple
+    - id: ClothingHeadHatSurgcapPurple
+    - id: ClothingOuterHospitalGown
+      amount: 3
+
+# topicals
+
+- type: entity
+  id: MisfitsShelfMetalMedsMedicalTopical
+  suffix: Filled, Medical, Topical, Random
+  parent: N14ShelfMetalMeds
+  components:
+  - type: StorageFill # i love randomness, give me loot
+    contents:
+    - id: N14Ointment10
+      prob: 0.5
+    - id: N14Ointment10
+      prob: 0.5
+    - id: N14Ointment10
+      prob: 0.5
+    - id: N14Ointment10
+      prob: 0.5
+    - id: N14CleanGauze10
+      prob: 0.5
+    - id: N14CleanGauze10
+      prob: 0.5
+    - id: N14CleanGauze10
+      prob: 0.5
+    - id: N14CleanGauze10
+      prob: 0.5
+    - id: N14CleanGauze10
+      prob: 0.5
+    - id: Bloodpack
+      prob: 0.5
+    - id: Bloodpack
+      prob: 0.5
+    - id: Bloodpack
+      prob: 0.5
+    - id: Bloodpack
+      prob: 0.5
+    - id: Brutepack
+      prob: 0.5
+    - id: Brutepack
+      prob: 0.5
+    - id: N14AloeSalve
+      prob: 0.5
+    - id: N14AloeSalve
+      prob: 0.5
+    - id: N14AloeSalve
+      prob: 0.5
+    - id: N14AloeSalve
+      prob: 0.5
+
+# chemicals
+
+- type: entity
+  id: MisfitsClosetWallMedicabinetMedicalChemicals
+  suffix: Filled, Medical, Chemicals, Random
+  parent: N14ClosetWallMedicabinet
+  components:
+  - type: StorageFill # i love randomness, give me loot
+    contents:
+    - id: N14RadXCanisterFilled
+      prob: 0.5
+    - id: N14FixerCanisterFilled
+      prob: 0.5
+    - id: N14ChemicalSyringeAntidote
+      prob: 0.5
+    - id: N14ChemicalSyringeAntidote
+      prob: 0.5
+    - id: N14DirtyGauze10
+      prob: 0.5
+    - id: N14SmellingSalts
+      prob: 0.5
+    - id: N14SmellingSalts
+      prob: 0.5
+    - id: N14HealingPoultice
+      prob: 0.5
+    - id: N14HealingPoultice
+      prob: 0.5
+    - id: N14HealingPowder
+      prob: 0.5
+    - id: N14HealingPowder
+      prob: 0.5
+    - id: N14Bitterdrink
+      prob: 0.5
+    - id: N14Antidote
+      prob: 0.5
+    - id: N14RadAwayBloodbag
+      prob: 0.5
+    - id: N14JunkAbraxoCleaner
+      prob: 0.5
+
+# chemistry fills
+
+- type: entity
+  id: MisfitsCrateMedicalChemistry
+  suffix: Filled, Medical, Chemistry
+  parent: N14CrateMedical
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxBeaker
+      amount: 2
+    - id: BoxVial
+    - id: BoxBottle
+    - id: N14DoctorSyringe
+    - id: N14ChemicalSyringe
+    - id: HandLabeler
+    - id: N14MortarpestleGrinder
+    - id: Dropper
+    - id: Jug
+      amount: 4
+    - id: N14Ethanol
+    - id: ClothingHandsGlovesChemist
+    - id: ClothingEyesGlassesChemist
+
+- type: entity
+  id: MisfitsClosetCabinetWoodChemistry
+  suffix: Filled, Medical, Chemistry
+  parent: N14ClosetCabinetWood
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterApronChemist
+      amount: 2
+    - id: ClothingNeckTieChem
+      amount: 2
+    - id: ClothingHandsGlovesChemist
+      amount: 2
+    - id: ClothingEyesGlassesChemist
+      amount: 2
+
+# ---------------------------------------------------------------------------
+# MEDICAL SHELVES - MAPPING / GUARANTEED
+# ---------------------------------------------------------------------------
+
+- type: entity
+  id: MisfitsShelfMedicalBasicMapping
+  name: stocked first aid shelf
+  description: A stocked shelf of common first aid supplies.
+  suffix: Filled, Medical, Basic, Mapping
+  parent: N14ShelfMetalMeds
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14CleanGauze10
+      amount: 4
+    - id: N14Ointment10
+      amount: 3
+    - id: Brutepack
+      amount: 2
+    - id: Bloodpack
+      amount: 2
+    - id: N14Stimpak
+      amount: 2
+    - id: N14Antidote
+    - id: N14SmellingSalts
+
+- type: entity
+  id: MisfitsShelfMedicalTraumaMapping
+  name: stocked trauma shelf
+  description: A stocked shelf for treating serious injuries.
+  suffix: Filled, Medical, Trauma, Mapping
+  parent: N14ShelfMetalMeds
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14CleanGauze10
+      amount: 4
+    - id: Brutepack
+      amount: 4
+    - id: Bloodpack
+      amount: 4
+    - id: N14Stimpak
+      amount: 3
+    - id: N14SuperStimpak
+    - id: N14HandheldHealthAnalyzer
+    - id: Portafib
+
+- type: entity
+  id: MisfitsShelfMedicalRadiationMapping
+  name: stocked radiation shelf
+  description: A stocked shelf for radiation exposure and wasteland medicine.
+  suffix: Filled, Medical, Radiation, Mapping
+  parent: N14ShelfMetalMeds
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14RadXCanisterFilled
+      amount: 2
+    - id: N14RadAwayBloodbag
+      amount: 3
+    - id: N14FixerCanisterFilled
+    - id: N14Antidote
+      amount: 2
+    - id: N14Stimpak
+      amount: 2
+    - id: N14CleanGauze10
+      amount: 2
+
+- type: entity
+  id: MisfitsShelfMedicalChemicalsMapping
+  name: stocked medical chemical shelf
+  description: A stocked shelf of common wasteland medical chemicals.
+  suffix: Filled, Medical, Chemicals, Mapping
+  parent: N14ShelfMetalMeds
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ChemicalSyringeAntidote
+      amount: 2
+    - id: N14Antidote
+      amount: 2
+    - id: N14SmellingSalts
+      amount: 2
+    - id: N14HealingPoultice
+      amount: 2
+    - id: N14HealingPowder
+      amount: 2
+    - id: N14Bitterdrink
+    - id: N14FixerCanisterFilled
+    - id: N14RadXCanisterFilled
+
+- type: entity
+  id: MisfitsShelfMedicalSurgeryMapping
+  name: stocked surgery shelf
+  description: A stocked shelf of surgery and sterile treatment supplies.
+  suffix: Filled, Medical, Surgery, Mapping
+  parent: N14ShelfMetalMeds
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxNitrileGloves
+    - id: BoxSterileMask
+    - id: SurgicalSterileWipe
+      amount: 3
+    - id: SurgicalSterilanSpray
+      amount: 2
+    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: Bloodpack
+      amount: 3
+    - id: Portafib
+    - id: N14HandheldHealthAnalyzer

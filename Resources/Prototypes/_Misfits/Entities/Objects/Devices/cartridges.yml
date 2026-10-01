@@ -1,0 +1,32 @@
+# #Misfits Change - Single shared-map cartridge pre-installed in all N14BasePipboy Pip-Boys.
+# The cartridge has NO hardcoded tacticalFeed - instead WastelandMapCartridgeSystem.GetLoaderFeed()
+# inspects the ID inserted in the Pip-Boy at runtime and selects the feed:
+#   IdCardBrotherhood -> Brotherhood feed  (same annotations/blips as N14BrotherhoodTacticalmap table)
+#   IdCardVault       -> Vault feed
+#   IdCardNCR         -> NCR feed
+#   (no ID / unrecognised) -> personal map, no shared feed
+# To add a faction: see the checklist comment at the top of _Misfits/tags.yml.
+- type: entity
+  parent: BaseItem
+  id: MisfitsWastelandMapCartridge
+  name: tactical map cartridge
+  description: A tactical mapping program for Pip-Boys and field terminals.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Objects/Devices/cartridge.rsi
+    state: cart-chat
+  - type: Icon
+    sprite: DeltaV/Objects/Devices/cartridge.rsi
+    state: cart-chat
+  - type: UIFragment
+    ui: !type:WastelandMapProgramUi
+  - type: Cartridge
+    programName: wasteland-map-program-name
+    icon:
+      sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+      state: pda
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Tactical Map - Wendover
+    # #Misfits Fix - Match the corrected Wendover AABB so Pip-Boy map markers stay aligned with the shared image.
+    worldBounds: "-517,-308,484,311"

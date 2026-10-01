@@ -1,0 +1,48 @@
+- type: entity
+  parent: BaseHeaterMachine
+  id: KitchenElectricGrill
+  name: electric grill
+  description: A microwave? No, a real man cooks steaks on a grill!
+  components:
+  - type: Sprite
+    # TODO: draw a sprite
+    sprite: Structures/Machines/electric_grill.rsi
+    drawdepth: SmallObjects
+    snapCardinals: true
+    layers:
+    - state: icon
+    - map: ["enum.EntityHeaterVisuals.Setting"]
+      shader: unshaded
+      visible: false
+  - type: ApcPowerReceiver
+    powerLoad: 0 # off by default
+  - type: EntityHeater
+  # #Misfits Change /Add/ - Match other cooking heaters with ignition and active grill audio.
+  - type: SpamEmitSound
+    enabled: false
+    minInterval: 20
+    maxInterval: 45
+    sound:
+      path: /Audio/_Misfits/Machines/steam_long.ogg
+      params:
+        volume: -8
+        maxDistance: 5
+  - type: GrillHeaterSound
+    startSound:
+      path: /Audio/_Misfits/Machines/grill.ogg
+  - type: ItemPlacer
+    maxEntities: 4 # big grill, many steaks
+    whitelist:
+      components:
+      - Temperature
+  - type: PlaceableSurface
+  - type: Machine
+    board: ElectricGrillMachineCircuitboard
+  - type: GenericVisualizer
+    visuals:
+      enum.EntityHeaterVisuals.Setting:
+        enum.EntityHeaterVisuals.Setting:
+          Off: { visible: false }
+          Low: { visible: true, state: low }
+          Medium: { visible: true, state: medium }
+          High: { visible: true, state: high }

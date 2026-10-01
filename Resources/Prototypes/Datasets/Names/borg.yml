@@ -1,0 +1,41 @@
+# only used roundstart, names can be changed after
+- type: dataset
+  id: names_borg
+  values:
+  - Bob
+  - Joe
+  - Beep
+  - Beep II
+  - Boombox
+  - Tour Guide-Tron
+  - Taffy
+  - Boop
+  - Boop II
+  - Buzz
+  - Buzz II
+  - Toaster
+  - Robot Chief
+  - EVE 1
+  - Mister Robist
+  - Tinman
+  - R2-PO
+  - C-3-D2
+  - Robby
+  - Robobot
+  - Chinila
+  - Sonny
+  - Autobot
+  - Wheatley
+  - Keller
+  - Xenos
+  - Echo
+  - Vector
+  - B-0-RG
+  - Megabyte
+  - Rear-Bot
+  - Deceptiborg
+  - Le Borg
+  - Bippers
+  - Milaha-Bot
+  - Selfmadekin
+  - Twinnybean

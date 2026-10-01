@@ -1,0 +1,135 @@
+# #Misfits Add — construction graph for aluminium crate so it gives aluminum ingots on deconstruct
+- type: constructionGraph
+  id: N14CrateAluminium
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: n14cratealuminium
+          steps:
+            - material: Aluminum
+              amount: 5
+              doAfter: 5
+
+    - node: n14cratealuminium
+      entity: N14CrateAluminium
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 5
+          conditions:
+            - !type:StorageWelded
+              welded: false
+          completed:
+            - !type:SpawnPrototype
+              prototype: N14IngotAluminum1
+              amount: 5
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity
+
+# Sacks
+- type: constructionGraph
+  id: N14Sack
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: sack
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 3
+           
+    - node: sack
+      entity: N14Sack
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity
+ 
+- type: constructionGraph
+  id: N14SackCompost
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: sack
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 3
+           
+    - node: sack
+      entity: N14SackCompost
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity
+             
+- type: constructionGraph
+  id: N14SackFertilizer
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: sack
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 3
+
+    - node: sack
+      entity: N14SackFertilizer
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity
+
+# Wallet
+- type: constructionGraph
+  id: N14Wallet
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: wallet
+          steps:
+            - material: Cloth 
+              amount: 3
+              doAfter: 3
+           
+    - node: wallet
+      entity: N14Wallet
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity

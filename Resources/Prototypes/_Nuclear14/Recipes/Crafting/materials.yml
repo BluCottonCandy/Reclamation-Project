@@ -1,0 +1,115 @@
+# Paper
+- type: construction
+  name: paper
+  id: N14Paper
+  graph: N14Paper
+  startNode: start
+  targetNode: paper
+  category: construction-category-materials
+  description: "A stack of 10 paper"
+  icon: { sprite: _Nuclear14/Objects/Misc/clutter.rsi, state: paper }
+  objectType: Item
+  hide: false
+
+# Cardboard
+- type: construction
+  name: cardboard
+  id: MaterialCardboard # Forge-Change
+  graph: N14Cardboard
+  startNode: start
+  targetNode: cardboard
+  category: construction-category-materials
+  description: "A sheet of cardboard."
+  icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: cardboard }
+  objectType: Item
+  hide: false
+
+# Gunpowder — mix 1 sulfur, 1 coal, and 1 fertilizer by hand to produce 1 gunpowder unit
+- type: construction
+  name: gunpowder
+  id: N14GunpowderCraft
+  graph: N14GunpowderCraft
+  startNode: start
+  targetNode: gunpowder
+  category: construction-category-materials
+  description: "Grind sulfur, coal, and fertilizer together into crude gunpowder."
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: powder_lead }
+  objectType: Item
+  hide: false
+
+# #Misfits Add: Floor tile crafting recipes
+# #Misfits Tweak: Icons changed from _Nuclear14/Objects/Misc/tiles.rsi (missing) to upstream /Objects/Tiles/tile.rsi
+
+# Wood Floor Tiles
+- type: construction
+  name: oak wood floor tiles
+  id: FloorTileItemWoodOak
+  graph: N14FloorTileWoodOak
+  startNode: start
+  targetNode: woodtileoak
+  category: construction-category-materials
+  description: "Craft oak wood floor tiles from wood planks."
+  icon: { sprite: /Textures/Objects/Tiles/tile.rsi, state: wood }
+  objectType: Item
+  hide: false
+
+- type: construction
+  name: house wood floor tiles
+  id: FloorTileItemWoodHouse
+  graph: N14FloorTileWoodHouse
+  startNode: start
+  targetNode: woodtilehouse
+  category: construction-category-materials
+  description: "Craft house wood floor tiles from wood planks."
+  icon: { sprite: /Textures/Objects/Tiles/tile.rsi, state: wood }
+  objectType: Item
+  hide: false
+
+- type: construction
+  name: maple wood floor tiles
+  id: FloorTileItemWoodMaple
+  graph: N14FloorTileWoodMaple
+  startNode: start
+  targetNode: woodtilemaple
+  category: construction-category-materials
+  description: "Craft maple wood floor tiles from wood planks."
+  icon: { sprite: /Textures/Objects/Tiles/tile.rsi, state: wood }
+  objectType: Item
+  hide: false
+
+# Metal Floor Tiles
+- type: construction
+  name: blue metal floor tiles
+  id: FloorTileItemMetalBlue
+  graph: N14FloorTileMetalBlue
+  startNode: start
+  targetNode: metaltileblue
+  category: construction-category-materials
+  description: "Craft blue metal floor tiles from iron."
+  icon: { sprite: /Textures/Objects/Tiles/tile.rsi, state: steel }
+  objectType: Item
+  hide: false
+
+- type: construction
+  name: red metal floor tiles
+  id: FloorTileItemMetalRed
+  graph: N14FloorTileMetalRed
+  startNode: start
+  targetNode: metaltilered
+  category: construction-category-materials
+  description: "Craft red metal floor tiles from iron."
+  icon: { sprite: /Textures/Objects/Tiles/tile.rsi, state: steel }
+  objectType: Item
+  hide: false
+
+- type: construction
+  name: green metal floor tiles
+  id: FloorTileItemMetalGreen
+  graph: N14FloorTileMetalGreen
+  startNode: start
+  targetNode: metaltilegreen
+  category: construction-category-materials
+  description: "Craft green metal floor tiles from iron."
+  icon: { sprite: /Textures/Objects/Tiles/tile.rsi, state: steel }
+  objectType: Item
+  hide: false

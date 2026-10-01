@@ -1,0 +1,58 @@
+# #Misfits Change /Hide/: NCRFirstSergeant replaced by NCRNCO role system.
+# Job kept defined for compatibility; prototype references remain valid.
+- type: job
+  id: NCRFirstSergeant
+  setPreference: false # Hidden — role superseded by NCRNCO system with SFC pin progression
+  hideWithoutJobWhitelist: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  weight: 70
+  showBorder: true
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-first-sergeant
+  overwatchCategory: OverwatchNcrNcos
+  description: job-description-ncr-first-sergeant
+  playTimeTracker: NCRFirstSergeant
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T6 faction timelock (20h NCR)
+      department: NCR
+      min: 72000 # 20 hours
+    # TEMP REMOVED - !type:CharacterDepartmentTimeRequirement
+    #   department: NCR
+    #   min: 126000 # 35 hours
+  startingGear: NCRFirstSergeantGear
+  icon: "JobIconNcrSerg"
+  supervisors: job-supervisors-ncr-lt
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRFirstSergeantGear
+  equipment:
+    wallet: N14Wallet
+    neck: ClothingNeckPinNCRSergeant1st # #Misfits Change - sergeant first class pin for SFC rank
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
+    hands: N14ClothingHandsGlovesCombat
+    jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagFirstSergeant
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert # Corvax-Change
+
+- type: playTimeTracker
+  id: NCRFirstSergeant

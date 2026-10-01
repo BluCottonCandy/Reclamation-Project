@@ -1,0 +1,55 @@
+- type: job
+  id: TownDoctor
+  setPreference: false # #Misfits Tweak - Town Doctor is disabled; FoTA now covers civilian medical play.
+  jobWhitelistBypassesRoleTimers: true
+  weight: 60
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-towndoctor
+  description: job-description-towndoctor
+  playTimeTracker: TownDoctor
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+    #- !type:CharacterDepartmentTimeRequirement # TEMP REMOVED
+    #  department: Townsfolk
+    #  min: 18000 # 5 hours
+  startingGear: TownDoctorGear
+  icon: "JobIconTownMedic" # Corvax-Change
+  supervisors: job-supervisors-townsfolk
+  access:
+  - TownieDoctor
+  - TownsPerson # Corvax-Change
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+      - type: CPRTraining
+
+- type: startingGear
+  id: TownDoctorGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitWastelandDoc
+    ears: MisfitsClothingHeadsetTown
+    back: N14ClothingBackpackExplorer # Corvax-Change
+    shoes: N14ClothingShoesBlack
+    gloves: N14ClothingHandsGlovesNitrile
+    id: N14IDDoctorTown
+    outerClothing: N14ClothingOuterCoatLab
+    pocket2: N14HandheldHealthAnalyzer # #Misfits Add - town doctors should spawn with health analyzer
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled  # N14TODO: Doctors Bag
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: TownDoctor

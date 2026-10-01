@@ -1,0 +1,52 @@
+# #Misfits Change - Ported from Delta-V: chronic pain trait
+
+- type: trait
+  id: FiremanCarry
+  category: Physical
+  points: -2 # Misfits Change: Added Fireman Carry as a 2 point trait option
+  requirements:
+  - !type:CharacterJobRequirement
+    inverted: true
+    jobs:
+    - FollowerHead    # Followers get access to Fireman Carry by default as the "Paramedics" of the wasteland. Shouldn't be added to other medical roles as a default - they already get free CPR.
+    - FollowerDoctor
+    - FollowerGuard
+    - FollowerVolunteer
+    - SuperMutantFollowerDoctor
+  - !type:CharacterSpeciesRequirement # #Misfits Add - these get it innately, don't sell it to them
+    inverted: true
+    species:
+    - SuperMutant
+    - Nightkin
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: CanFiremanCarry
+
+- type: trait
+  id: ChronicPain
+  category: Physical
+  points: 2
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - IPC
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: ChronicPain
+
+- type: trait
+  id: MisfitsFeralRage
+  category: Physical
+  points: 4
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Ghoul
+        - GhoulGlowing
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: FeralGhoulifyOverTime

@@ -1,0 +1,270 @@
+# steak
+- type: constructionGraph
+  id: MeatSteakBrahmin
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatBrahminCooked
+
+- type: constructionGraph
+  id: MeatSteakBighorner
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatBighornerCooked
+
+- type: constructionGraph
+  id: MeatSteakGecko
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatGeckoCooked
+
+- type: constructionGraph
+  id: MeatSteakGeckoFire
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatGeckoFireCooked
+
+- type: constructionGraph
+  id: MeatSteakGeckoGolden
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatGeckoGoldenCooked
+
+- type: constructionGraph
+  id: MeatSteakRadstag
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatRadstagCooked
+
+- type: constructionGraph
+  id: MeatSteakRadhog
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatRadhogCooked
+
+- type: constructionGraph
+  id: MeatSteakPigrat
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatPigratCooked
+
+- type: constructionGraph
+  id: MeatSteakRadchicken
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatRadchickenCooked
+
+- type: constructionGraph
+  id: MeatSteakRadscorpion
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatRadscorpionCooked
+
+- type: constructionGraph
+  id: MeatSteakYaoguai
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: SteakCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: SteakCooked
+    entity: N14FoodMeatYaoguaiCooked
+
+- type: constructionGraph
+  id: MeatMorsels
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: MeatCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: MeatCooked
+    entity: N14FoodMeatSquirrelCooked # Corvax-Change
+
+- type: constructionGraph # Corvax-Change
+  id: FoodMeatRad
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: MeatCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: MeatCooked
+    entity: N14FoodMeatCooked
+
+- type: constructionGraph
+  id: MeatMirelurkClaw
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: MeatCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: MeatCooked
+    entity: N14FoodMeatMirelurkClawCooked
+
+- type: constructionGraph
+  id: MeatRadlurkClaw
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: MeatCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: MeatCooked
+    entity: N14FoodMeatRadlurkClawCooked
+
+- type: constructionGraph
+  id: MeatIguana
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: MeatCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: MeatCooked
+    entity: N14FoodMeatIguanaCooked
+
+- type: constructionGraph
+  id: MeatRadroach
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: MeatCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: MeatCooked
+    entity: N14FoodMeatRadroachFilletCooked
+
+- type: constructionGraph
+  id: MeatRadscorpionLeg
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: MeatCooked
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 305
+  - node: MeatCooked
+    entity: N14FoodMeatRadscorpionLegBoiled

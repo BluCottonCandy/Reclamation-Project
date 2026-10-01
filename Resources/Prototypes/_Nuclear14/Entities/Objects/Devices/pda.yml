@@ -1,0 +1,247 @@
+- type: entity
+  abstract: true
+  parent: BasePDA
+  id: N14BasePipboy
+  name: Pip-Boy 3000 MKIV
+  description: A RobCo Industries Pip-Boy 3000 Mark IV Personal Information Processor.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    scale: 0.75, 0.75
+  - type: Icon
+    sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+    state: pda
+  - type: PdaBorderColor
+    borderColor: "#3a5a40"
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - idcard
+  - type: Pda
+    state: pda
+    paiSlot:
+      priority: -2
+      whitelist:
+        components:
+        - PAI
+    penSlot:
+      startingItem: Pen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    idSlot:
+      name: access-id-card-component-default
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        # #Misfits Change - Faction ID tags: inserting one of these into the Pip-Boy
+        # activates the corresponding shared tactical feed in the Pipboy Map cartridge.
+        # IdCardVault     -> Vault shared map (VaultMap feed)
+        # IdCardBrotherhood -> BOS shared map (Brotherhood feed) - same feed as N14BrotherhoodTacticalmap table and BOS helmets
+        # IdCardNCR       -> NCR shared map (NCR feed)
+        # IdCardLegion    -> Legion shared map (Legion feed)
+        # When adding a new faction map, add its tag here AND define it in _Misfits/tags.yml.
+        components:
+        - IdCard # #Misfits Add - accept any entity with IdCard component (belt-and-suspenders with tag list)
+        tags:
+        - IdCardVault # Misfits Change
+        - IdCardBrotherhood #Misfits Change
+        - IdCardNCR #Misfits Change
+        - IdCardLegion # #Misfits Change
+        - IdCardEnclave # #Misfits Change
+        - IdCardWastelander # #Misfits Add - allows wastelander dogtags to be inserted
+  # #Misfits Add - Pip-Boy can read holotapes when they are used on it.
+  # Opens the holotape's own UI (not the Pip-Boy's) since the PDA already has its own UserInterface.
+  - type: HolotapeReader
+  - type: Geiger
+    isEnabled: true
+    showControl: true
+    showExamine: true
+    localSoundOnly: false
+    audioParameters:
+      volume: -4
+      maxDistance: 10
+      rolloffFactor: 4
+  - type: RadiationReceiver
+  - type: Tag
+    tags:
+    - MisfitsPipBoy
+  - type: CartridgeLoader
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NewsReaderCartridge
+      - NanoChatCartridge
+      - PipBoyContactsCartridge   # #Misfits Add - PipBoy Contacts: contact management, SOS beacon
+      - PipBoyGroupsCartridge     # #Misfits Add - PipBoy Groups: group chat, waypoints, map tracking
+      - PipBoyDirectoryCartridge  # #Misfits Add - PipBoy Directory: network listing, dead drops
+      - PipBoySettingsCartridge   # #Misfits Add - PipBoy Settings: visibility, status, password lock
+      - MisfitsWastelandMapCartridge  # #Misfits Change - Pip-Boy shared faction map program
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14Pipboy
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14NCRVeteranRangerPipboy
+  suffix: NCR Veteran Ranger
+  components:
+  - type: Pda
+    id: N14IDBadgeNCRDesertRangerElite
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14NCRProvostPipboy
+  suffix: NCR Provost
+  components:
+  - type: Pda
+    id: N14IDNCRDogtagProvost
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14NCRCommanderPipboy
+  suffix: NCR Captain
+  components:
+  - type: Pda
+    id: N14IDNCRDogtagCaptain
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14NCRLieutenantColonelPipboy
+  suffix: NCR Lt. Col.
+  components:
+  - type: Pda
+    id: N14IDNCRDogtagltcol
+
+# #Misfits Add - Wastelander Pip-Boy with pre-inserted dogtags for PipBoy Hub networking.
+- type: entity
+  parent: N14BasePipboy
+  id: N14WastelanderPipboy
+  suffix: Wastelander
+  components:
+  - type: Pda
+    id: N14ClothingNeckDogtags
+
+#MARK: Vault
+- type: entity
+  parent: N14BasePipboy
+  id: N14VaultPDA
+  suffix: Vault
+  components:
+  - type: Pda
+    id: N14IDCardVault
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14VaultEngineerPDA
+  suffix: Vault, Engineer
+  components:
+  - type: Pda
+    id: N14IDCardVaultEngineer
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14VaultDoctorPDA
+  suffix: Vault, Doctor
+  components:
+  - type: Pda
+    id: N14IDCardVaultDoctor
+  - type: HealthAnalyzer
+    scanDelay: 1.4
+    scanningEndSound:
+      path: "/Audio/Items/Medical/healthscanner.ogg"
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14VaultSecurityPDA
+  suffix: Vault, Security
+  components:
+  - type: Pda
+    id: N14IDCardVaultSecurity
+
+- type: entity
+  parent: N14BasePipboy
+  id: MisfitsVaultCargoPDA
+  suffix: Vault, Cargo Specialist
+  components:
+  - type: Pda
+    id: MisfitsIDCardVaultCargo
+
+- type: entity
+  parent: N14BasePipboy
+  id: MisfitsVaultCourierPDA
+  suffix: Vault, Courier
+  components:
+  - type: Pda
+    id: MisfitsIDCardVaultCourier
+
+- type: entity
+  parent: N14BasePipboy
+  id: MisfitsVaultSalvagePDA
+  suffix: Vault, Salvage Specialist
+  components:
+  - type: Pda
+    id: MisfitsIDCardVaultSalvage
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14VaultChefPDA
+  description: Covered in grease and flour.
+  suffix: Vault, Chef
+  components:
+  - type: Pda
+    id: ChefIDCard
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14VaultBotanistPDA
+  name: botanist PDA
+  description: Has an earthy scent.
+  suffix: Vault, Botanist
+  components:
+  - type: Pda
+    id: BotanistIDCard
+  - type: PdaBorderColor
+    borderColor: "#44843c"
+    accentVColor: "#00cc35"
+
+- type: entity
+  parent: N14BasePipboy
+  id: N14VaultOverseerPDA
+  suffix: Vault, Overseer
+  components:
+  - type: Pda
+    id: N14IDCardVaultOverseer
+    penSlot:
+      startingItem: PenCap
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: CartridgeLoader
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NewsReaderCartridge
+      - NanoChatCartridge
+      - PipBoyContactsCartridge
+      - PipBoyGroupsCartridge
+      - PipBoyDirectoryCartridge
+      - PipBoySettingsCartridge
+      - MisfitsWastelandMapCartridge
+  - type: PdaBorderColor
+    borderColor: "#7C5D00"

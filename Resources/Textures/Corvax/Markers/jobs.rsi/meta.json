@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Creared by zekins3366, sprites taked https://github.com/Foundation-19/Big-Iron, raider by Mr_Lop_Lop, inquisitor by Patrioy, serf,slave, prisoner and investigator by Corvoin",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "green"
+    },
+    {
+      "name": "centurion"
+    },
+    {
+      "name": "investigator"
+    },
+    {
+      "name": "venator"
+    },
+    {
+      "name": "dean"
+    },
+    {
+      "name": "veteran"
+    },
+    {
+      "name": "warrior"
+    },
+    {
+      "name": "recruit"
+    },
+    {
+      "name": "raider"
+    },
+    {
+      "name": "inquisitor"
+    },
+    {
+      "name": "serf"
+    },
+    {
+      "name": "slave"
+    },
+    {
+      "name": "prisoner"
+    }
+
+  ]
+}

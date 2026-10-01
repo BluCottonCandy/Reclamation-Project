@@ -1,0 +1,92 @@
+- type: job
+  id: CaesarLegionLegate
+  setPreference: true # #Misfits Tweak - visible in job selection
+  hideWithoutJobWhitelist: true # #Misfits Change - Legate is whitelist-only; hidden from job picker without it
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 200
+  name: job-name-caesar-legion-legate
+  description: job-description-caesar-legion-legate
+  playTimeTracker: CaesarLegionLegate
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+      department: CaesarLegion
+      min: 252000 # 70 hours
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+  - !type:CharacterSexRequirement
+    sex: Male
+  - !type:CharacterGenderRequirement
+    gender: Male
+  startingGear: CaesarLegionLegateGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerCenturion"
+  supervisors: job-name-caesar-legion
+  canBeAntag: false
+  requireAdminNotify: true
+  accessGroups:
+  - CaesarLegionLegate
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+      - type: Warcry
+        action: ActionLegionWarcry
+        targetDepartment: CaesarLegion
+        range: 6
+        speedBonus: 0.30 # #Misfits Tweak - reduced from 0.50, was too strong
+        duration: 10
+        overlayColor: "#D64545"
+        speechVerb: MisfitsLegionWarcry
+        warcryMessage: warcry-message-legion
+        warcryMessageCount: 6
+        buffPopup: warcry-popup-buffed-legion
+        excludedJobs:
+        - SuperMutantGladiator
+        cautionPopup: true
+        activatorJobs:
+        - CaesarLegionVexillarius
+        - CaesarLegionDean
+        - CaesarLegionPrimeDecanus
+        - CaesarLegionVeteranDecanus
+        - CaesarLegionCenturion
+        - CaesarLegionLegate
+        - CaesarLegionOptio
+        - CaesarLegionPriestessOfMars
+        - CaesarLegionAcolyteOfMars
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+  # #Misfits Removed - Disabled auto-grant pending testing; use training manuals instead
+  #- !type:AddComponentSpecial
+  #  components:
+  #    - type: GrantLegionGladiatorial
+
+- type: startingGear
+  id: CaesarLegionLegateGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: ClothingNeckRedScarf
+    eyes: N14ClothingEyesGlassesWelding
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsLegate
+    head: N14ClothingHeadHatLegateHelmet
+    gloves: N14ClothingHandsGlovesLegate
+    outerClothing: N14ClothingOuterLegateArmor
+    belt: N14Gladius
+    pocket1: LegionLegateloadoutkits
+    id: N14IDLegionaryMedalLegate
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+
+- type: playTimeTracker
+  id: CaesarLegionLegate

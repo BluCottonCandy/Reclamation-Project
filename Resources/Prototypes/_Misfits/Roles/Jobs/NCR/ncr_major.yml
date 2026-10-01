@@ -1,0 +1,66 @@
+# ncr_major.yml
+# NCR Major — the senior command billet above Captain.
+# Whitelist-only: hidden from the job picker without an admin-granted whitelist.
+# Requires meaningful time as Captain before promotion is possible.
+
+- type: job
+  id: NCRMajor
+  setPreference: false # RETIRED — Major is now a rank pin earned via NCRCommander/NCRDoctor progression
+  hideWithoutJobWhitelist: true   # Whitelist-only; only visible to whitelisted players
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  # #Misfits Tweak - Weight 130: above Captain (120) so Major is top-ranking for war system purposes
+  weight: 130
+  name: job-name-ncr-major
+  overwatchCategory: OverwatchNcrOfficers
+  description: job-description-ncr-major
+  playTimeTracker: NCRMajor
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+        - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: NCR
+      min: 252000 # 70 hours
+  startingGear: NCRMajorGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-major
+  requireAdminNotify: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  access:
+    - NCR
+    - NCRSGT
+    - NCRMedic
+    - NCRLT
+    - NCRCaptain
+    - NCRMajor
+    - NCRRanger
+  special:
+    - !type:AddComponentSpecial
+      components:
+        - type: NpcFactionMember
+          factions:
+            - Wastelander
+            - NCR
+
+# Major shares the Captain's visual loadout — distinct rank is represented via
+# the access level. Use the Major collar pin directly so the rank is shown
+# without relying on character setup loadout selection.
+- type: startingGear
+  id: NCRMajorGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretOfficer
+    neck: ClothingNeckPinNCRMajor
+    ears: N14ClothingHeadsetNCR
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingOfficerUniformNCRDesert
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagMajor
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+
+- type: playTimeTracker
+  id: NCRMajor

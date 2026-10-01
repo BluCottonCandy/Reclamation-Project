@@ -1,0 +1,39 @@
+- type: job
+  id: MailCarrier
+  name: job-name-mail-carrier
+  description: job-description-mail-carrier
+  startingGear: CourierGear
+  playTimeTracker: JobMailCarrier
+  icon: "JobIconMailCarrier"
+  supervisors: job-supervisors-qm
+  access:
+  - Cargo
+  - Maintenance
+  - Mail
+  setPreference: false
+
+- type: startingGear
+  id: MailCarrierGear
+  subGear:
+  - MailCarrierPlasmamanGear
+  equipment:
+    wallet: N14Wallet
+    head: ClothingHeadMailCarrier
+    jumpsuit: ClothingUniformMailCarrier
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesColorBlack
+    id: MailCarrierPDA
+    ears: ClothingHeadsetCargo
+    belt: MailBag
+  innerClothingSkirt: ClothingUniformSkirtMailCarrier
+  satchel: ClothingBackpackSatchelFilled
+  duffelbag: ClothingBackpackDuffelFilled
+
+- type: startingGear
+  id: MailCarrierPlasmamanGear
+  parent: BasePlasmamanGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingUniformEnvirosuitMailCarrier
+    head: ClothingHeadEnvirohelmMailCarrier
+    gloves: ClothingHandsGlovesEnviroglovesWhite

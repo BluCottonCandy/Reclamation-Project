@@ -1,0 +1,860 @@
+# #Misfits Add - Player-controlled pet perk variants for Brahmin, Rad Chicken, and Cat traits.
+# These extend the NPC bases (which already have the vanilla Animal body with OrganAnimalHeart)
+# and add healing, natural regen, and dragging hands for ghost-role players.
+# NOTE: Brahmin/Chicken/Cat use the vanilla SimpleMobBase chain which includes
+# Body: Animal (with OrganAnimalHeart), so stimpaks and healing powder already work.
+# What's added here: PassiveDamage (natural regen), Hands + MisfitsPetNoPickup (drag not pickup),
+# Puller (drag mechanic), and allowRevives so players can be revived by medics.
+
+# Pet Brahmin — two-headed pack animal ghost role for the N14PetBrahmin trait
+- type: entity
+  name: brahmin
+  id: N14MobPetBrahmin
+  parent: N14MobBrahmin
+  categories: [ HideSpawnMenu ]
+  description: A two-headed mutant cow, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-brahmin-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostTakeoverAvailable
+  - type: MobThresholds # #Misfits Add - allow revival by medics
+    allowRevives: true
+  - type: Puller # #Misfits Add - explicit puller for drag mechanic (SimpleMobBase doesn't define one)
+    needsHands: false
+  - type: Hands # #Misfits Add - allows dragging; no hand slots so no actual item holding
+  - type: MisfitsPetNoPickup # #Misfits Add - cancels PickupAttemptEvent; drag only, no item pickup
+  - type: PassiveDamage # #Misfits Add - slow natural regeneration for player-controlled pet brahmins
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+
+# Pet Rad Chicken — irradiated chicken ghost role for the N14PetRadChicken trait
+- type: entity
+  name: rad chicken
+  id: N14MobPetRadChicken
+  parent: N14MobChicken
+  categories: [ HideSpawnMenu ]
+  description: A glowing wasteland chicken, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-radchicken-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostTakeoverAvailable
+  - type: MobThresholds # #Misfits Add - allow revival by medics
+    allowRevives: true
+  - type: Puller # #Misfits Add - explicit puller for drag mechanic
+    needsHands: false
+  - type: Hands # #Misfits Add - allows dragging; no hand slots so no actual item holding
+  - type: MisfitsPetNoPickup # #Misfits Add - cancels PickupAttemptEvent; drag only, no item pickup
+  - type: PassiveDamage # #Misfits Add - slow natural regeneration for player-controlled pet chickens
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+
+# Pet Cat — feline companion ghost role for the N14PetCat trait
+- type: entity
+  name: cat
+  id: N14MobPetCat
+  parent: MobCat
+  description: A basic wasteland cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostTakeoverAvailable
+  - type: Emoting
+  - type: MobThresholds # #Misfits Add - allow revival by medics
+    allowRevives: true
+  - type: Inventory
+    speciesId: cat
+    templateId: cat_pet
+  - type: Puller # #Misfits Add - explicit puller for drag mechanic
+    needsHands: false
+  - type: Hands # #Misfits Add - allows dragging and item handling
+  - type: BorgHands # #Misfits Add - gives cats actual holdable hand slots
+    handCount: 1
+  - type: ComplexInteraction # #Misfits Add - allows click-opening doors and other complex hand interactions
+  - type: RobotWeaponPickupBlacklist # #Misfits Add - cats should not be able to pick up guns/melee weapons
+    blacklist:
+      components:
+      - Gun
+      - MeleeWeapon
+  - type: MisfitsPetNoPickup # So they cant pick up items but can drag
+  - type: InventorySlots
+  - type: PetCollarHolder
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - FelinidEmotes
+  - type: PassiveDamage # #Misfits Add - slow natural regeneration for player-controlled pet cats
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+
+- type: entity
+  name: black cat
+  id: N14MobPetCatBlack
+  parent: N14MobPetCat
+  description: A black cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-black-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: black
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: black
+      Critical:
+        Base: black_dead
+      Dead:
+        Base: black_dead
+
+- type: entity
+  name: brown tabby cat
+  id: N14MobPetCatBrownTabby
+  parent: N14MobPetCat
+  description: A brown tabby cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-browntabby-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: browntabby
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: browntabby
+      Critical:
+        Base: browntabby_dead
+      Dead:
+        Base: browntabby_dead
+
+- type: entity
+  name: calico cat
+  id: N14MobPetCatCalico
+  parent: N14MobPetCat
+  description: A calico cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-calico-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: calico
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: calico
+      Critical:
+        Base: calico_dead
+      Dead:
+        Base: calico_dead
+
+- type: entity
+  name: ginger tabby cat
+  id: N14MobPetCatGingerTabby
+  parent: N14MobPetCat
+  description: A ginger tabby cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-gingertabby-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: gingertabby
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gingertabby
+      Critical:
+        Base: gingertabby_dead
+      Dead:
+        Base: gingertabby_dead
+
+- type: entity
+  name: gray tabby cat
+  id: N14MobPetCatGrayTabby
+  parent: N14MobPetCat
+  description: A gray tabby cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-graytabby-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: graytabby
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: graytabby
+      Critical:
+        Base: graytabby_dead
+      Dead:
+        Base: graytabby_dead
+
+- type: entity
+  name: mela cat
+  id: N14MobPetCatMela
+  parent: N14MobPetCat
+  description: A melanistic cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-mela-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: mela
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mela
+      Critical:
+        Base: mela_dead
+      Dead:
+        Base: mela_dead
+
+- type: entity
+  name: ocicat
+  id: N14MobPetCatOcicat
+  parent: N14MobPetCat
+  description: An ocicat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-ocicat-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: ocicat
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: ocicat
+      Critical:
+        Base: ocicat_dead
+      Dead:
+        Base: ocicat_dead
+
+- type: entity
+  name: siamese cat
+  id: N14MobPetCatSiamese
+  parent: N14MobPetCat
+  description: A siamese cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-siamese-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: siamese
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: siamese
+      Critical:
+        Base: siamese_dead
+      Dead:
+        Base: siamese_dead
+
+- type: entity
+  name: sphinx cat
+  id: N14MobPetCatSphinx
+  parent: N14MobPetCat
+  description: A sphinx cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-sphinx-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: sphinx
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: sphinx
+      Critical:
+        Base: sphinx_dead
+      Dead:
+        Base: sphinx_dead
+
+- type: entity
+  name: spoon cat
+  id: N14MobPetCatSpoon
+  parent: N14MobPetCat
+  description: A spoon cat, somehow your companion.
+  components:
+  - type: SpoonCatTranslator
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-spoon-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: spoon_ncr
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: spoon_ncr
+      Critical:
+        Base: spoon_dead
+      Dead:
+        Base: spoon_dead
+
+- type: entity
+  name: tortoiseshell cat
+  id: N14MobPetCatTortoiseshell
+  parent: N14MobPetCat
+  description: A tortoiseshell cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-tortie-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: tortie
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: tortie
+      Critical:
+        Base: tortie_dead
+      Dead:
+        Base: tortie_dead
+
+- type: entity
+  name: white cat
+  id: N14MobPetCatWhite
+  parent: N14MobPetCat
+  description: A white cat, somehow your companion.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-white-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/cat.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: white
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: white
+      Critical:
+        Base: white_dead
+      Dead:
+        Base: white_dead
+
+- type: entity
+  name: mirelurk
+  id: N14MobPetMirelurk
+  parent: N14MobMirelurk
+  categories: [ HideSpawnMenu ]
+  description: A massive irradiated crab, somehow your companion.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: GhostRole
+    name: ghost-role-information-n14pet-mirelurk-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostTakeoverAvailable
+  - type: MobThresholds
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+
+- type: entity
+  name: centaur
+  id: N14MobPetCentaur
+  parent: N14MobCentaur
+  categories: [ HideSpawnMenu ]
+  description: A horrific FEV abomination, somehow your companion.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: GhostRole
+    name: ghost-role-information-n14pet-centaur-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostTakeoverAvailable
+  - type: MobThresholds
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+
+- type: entity
+  name: treyebot
+  id: MisfitsMobPetEyebotTribe
+  parent: N14MobFriendlyRobot    # can't be N14MobPetEyebot--we don't want the gun stuff
+#  categories: [ HideSpawnMenu ]
+  description: A military Eyebot that has been adopted and decorated by the local tribe. Its laser burned out, but someone has strapped a knife to it.
+  components:
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
+  - type: NPCRetaliation # Aggro on the attacker when damaged from any range
+    attackMemoryLength: 30
+  - type: InputMover
+  - type: MobMover
+  - type: GhostRole
+    name: ghost-role-information-n14pet-eyebot-tribe-name
+    description: ghost-role-information-n14pet-eyebot-tribe-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostTakeoverAvailable
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/eyebot-tribal.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: icon
+    - state: shadow_eyebot
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+    - Tribal
+  - type: Appearance
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Critical
+      150: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: icon
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.4
+        density: 150
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 6
+  - type: MovementAlwaysTouching
+  - type: MeleeWeapon
+    altDisarm: false
+    canWideSwing: true
+    hidden: true
+    damage:
+      types:
+        Piercing: 15
+        Slash: 5
+    angle: 0
+    animation: WeaponArcSlash
+    wideAnimation: WeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        maxVol: 10
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: RefillableSolution
+    solution: melee
+  - type: InjectableSolution
+    solution: melee
+  - type: RadioSpeaker
+    channels:
+    - PBS
+    enabled: true
+    toggleOnInteract: true
+    IsSpeaker: true
+  - type: IntrinsicRadioReceiver # Eyebot speaks binary on the Binary radio channel
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+  - type: LanguageKnowledge
+    speaks:
+    - N14Robot
+    - English
+    - Tribal
+    understands:
+    - N14Robot
+    - English
+    - Tribal
+  - type: HandheldLight
+    toggleOnInteract: false
+    addPrefix: true
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: ToggleableLightVisuals
+  - type: PointLight
+    enabled: false
+    radius: 4.5
+    energy: 1
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    netsync: false
+  - type: LightBehaviour
+    behaviours:
+    - !type:FadeBehaviour
+      id: radiating
+      interpolate: Linear
+      maxDuration: 2.0
+      startValue: 3.0
+      endValue: 2.0
+      isLooped: true
+      reverseWhenFinished: true
+    - !type:PulseBehaviour
+      id: blinking
+      interpolate: Nearest
+      maxDuration: 1.0
+      minValue: 0.1
+      maxValue: 2.0
+      isLooped: true
+  - type: Battery
+    maxCharge: 600 # lights drain 3/s but recharge of 2 makes this 1/s. Therefore 600 is 10 minutes of light.
+    startingCharge: 600
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 2
+  - type: NoSlip
+  - type: StepTriggerImmune
+    whitelist:
+      types:
+      - Shard
+      - Landmine
+      - Mousetrap
+      - SlipTile
+      - SlipEntity
+      - Chasm
+  - type: Damageable
+    damageContainer: Silicon
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 75
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+  - type: Speech
+    speechSounds: Borg
+  - type: TypingIndicator
+    proto: robot
+  - type: IdleSound
+  - type: SpamEmitSound
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14EyebotIdle
+      params:
+        volume: -5
+        maxDistance: 5
+
+# Wim - unique Legion dog companion.
+- type: entity
+  name: Wim
+  id: MisfitsMobPetWim
+  parent: N14MobPetDogLegion
+  description: A husky-wolf mix reaching most people to their hips. Wears a torn NCR tarp as a collar, with some etching inside.
+  components:
+  - type: RandomMetadataExcluded # Keep Wim's name instead of a random Legion dog name.
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: wolf
+      sprite: _Misfits/Mobs/Pets/wim.rsi
+  - type: WimDogTranslator
+  - type: Emoting
+  - type: MobThresholds # #Misfits Add - allow revival by medics
+    allowRevives: true
+  - type: Inventory
+    speciesId: cat
+    templateId: cat_pet
+  - type: Puller # #Misfits Add - explicit puller for drag mechanic
+    needsHands: false
+  - type: Hands # #Misfits Add - allows dragging and item handling
+  - type: BorgHands # #Misfits Add - gives cats actual holdable hand slots
+    handCount: 2
+  - type: ComplexInteraction # #Misfits Add - allows click-opening doors and other complex hand interactions
+  - type: RobotWeaponPickupBlacklist # #Misfits Add - cats should not be able to pick up guns/melee weapons
+    blacklist:
+      components:
+      - Gun
+      - MeleeWeapon
+  - type: InventorySlots
+  - type: Strippable
+  - type: PetCollarHolder
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - VulpEmotes
+  - type: NpcFactionMember
+    factions:
+      - Wastelander
+
+# Bibbles - unique cat companion.
+- type: entity
+  name: Bibbles
+  id: MisfitsMobPetBibbles
+  parent: N14MobPetCat
+  description: A scrappy calico cat with alot of attitude, he's always ready to defend his turf.
+  components:
+  - type: RandomMetadataExcluded
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: cat
+      sprite: _Misfits/Mobs/Pets/bibbles.rsi
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: cat
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: Emoting
+  - type: MobThresholds # #Misfits Add - allow revival by medics
+    allowRevives: true
+  - type: Inventory
+    speciesId: cat
+    templateId: cat_pet
+  - type: Puller # #Misfits Add - explicit puller for drag mechanic
+    needsHands: false
+  - type: Hands # #Misfits Add - allows dragging and item handling
+  - type: BorgHands # #Misfits Add - gives cats actual holdable hand slots
+    handCount: 2
+  - type: ComplexInteraction # #Misfits Add - allows click-opening doors and other complex hand interactions
+  - type: RobotWeaponPickupBlacklist # #Misfits Add - cats should not be able to pick up guns/melee weapons
+    blacklist:
+      components:
+      - Gun
+      - MeleeWeapon
+  - type: InventorySlots
+  - type: Strippable
+  - type: PetCollarHolder
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - VulpEmotes
+  - type: NpcFactionMember
+    factions:
+      - Wastelander
+
+# #Misfits Add - Enclave Eyebot companion, issued to Enclave scientist roles.
+# Inherits the full pet eyebot package (rechargeable laser, radio, languages, robot body)
+# from N14MobPetEyebot and only overrides the sprite/faction/ghost-role identity.
+- type: entity
+  name: Enclave Eyebot
+  id: MisfitsMobPetEyebotEnclave
+  parent: N14MobPetEyebot
+  description: A standard pre-war military Eyebot re-chassied in Enclave black, its optical sensor glowing green. A small piece of the old world reclaimed in service to the Enclave.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Enclave
+  - type: GhostRole
+    name: ghost-role-information-misfits-pet-eyebot-enclave-name
+    description: ghost-role-information-misfits-pet-eyebot-enclave-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostRoleJob
+    job: EnclaveEyebot
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/eyebot_enclave.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: icon
+    - state: shadow_eyebot
+
+# #Misfits Add - Enclave Cyberdog companion, purchasable by Enclave scientist roles.
+# Cybernetic mutt (no RadiationReceiver, like the Washington BoS cyberdog) with an Enclave
+# olive chassis and green optics. Inherits the organic dog package from N14MobPetDog.
+- type: entity
+  name: Enclave Cyberdog
+  id: MisfitsMobPetDogEnclave
+  parent: N14MobPetDog
+  description: A butchered but overall not-too-rusted cybernetic dog, its chassis re-finished in Enclave olive. A loyal killing machine, and at least it's immune to radiation.
+  components:
+  - type: RandomMetadata
+    nameSegments: [names_N14pet_dog]
+  - type: NpcFactionMember
+    factions:
+    - Enclave
+  - type: GhostRole
+    name: ghost-role-information-misfits-pet-dog-enclave-name
+    description: ghost-role-information-misfits-pet-dog-enclave-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: dog
+      sprite: _Misfits/Mobs/Pets/dog_enclave.rsi
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: dog
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      80: Critical
+      160: Dead
+  - type: LanguageKnowledge
+    speaks:
+    - N14Dog
+    - N14Robot
+    understands:
+    - N14Dog
+    - N14Insect
+    - English
+    - Chinese
+    - Latin
+    - Tribal
+    - N14Robot
+    - N14BrotherBeep
+    - Sign

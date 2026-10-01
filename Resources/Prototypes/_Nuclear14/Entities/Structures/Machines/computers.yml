@@ -1,0 +1,124 @@
+- type: entity
+  id: N14BaseComputer
+  parent: BaseComputer
+  name: computer
+  description: An old heavy computer.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/computer.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: keyboard
+    - map: ["computerLayerScreen"]
+      state: screens
+    - map: ["computerLayerKeys"]
+      state: keys
+  # #Misfits Change - Legion tactical map access was moved to N14ChalkboardFloor11
+  # to better match Legion theming and avoid console-based access inheritance.
+
+- type: entity
+  id: N14ComputerCargoOrders
+  parent: N14BaseComputer
+  name: cargo request computer
+  description: Used to order supplies.
+  components:
+  - type: CargoOrderConsole
+  - type: ActivatableUI
+    key: enum.CargoConsoleUiKey.Orders
+  - type: UserInterface
+    interfaces:
+      enum.CargoConsoleUiKey.Orders:
+        type: CargoOrderConsoleBoundUserInterface
+  - type: Computer
+    board: CargoRequestComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSource
+    range: 200
+    ports:
+      - OrderSender
+
+- type: entity
+  id: N14ComputerOverwatchBase
+  parent: N14ComputerTerminalNew
+  name: overwatch terminal
+  description: A secured terminal for monitoring linked personnel feeds.
+  abstract: true
+  components:
+  - type: HolotapeData
+    title: overwatch-terminal-title
+    content: overwatch-terminal-content
+  - type: TerminalRandomContent
+    contentPool: []
+  - type: ActivatableUIRequiresAccess
+  - type: ActivatableUI
+  - type: OverwatchConsole
+    monitorTitle: overwatch-monitor-title
+
+- type: entity
+  id: N14ComputerVaultOverwatch
+  parent: N14ComputerOverwatchBase
+  name: overseer overwatch terminal
+  description: A secured terminal for monitoring active vault personnel feeds.
+  suffix: Vault, Overseer
+  components:
+  - type: TerminalNotebook
+    terminalId: vault-overseer-overwatch
+  - type: AccessReader
+    access: [["VaultOverseer"]]
+  - type: OverwatchConsole
+    monitorTitle: overwatch-monitor-title-vault
+    trackedTags:
+    - IdCardVault
+
+# Camera Monitors
+## Base
+- type: entity
+  parent: N14ComputerTerminalWallDisplays
+  id: N14ComputerCameraDisplay
+  name: camera display unit
+  description: A surveillance camera monitor. You're watching them. Maybe.
+  abstract: true
+  components:
+  # - type: Computer
+    # board: SurveillanceCameraMonitorCircuitboard
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCamera
+  - type: WiredNetworkConnection
+  - type: DeviceNetworkRequiresPower
+  - type: Speech
+  - type: SurveillanceCameraSpeaker
+  - type: SurveillanceCameraMonitor
+  - type: ActivatableUI
+    key: enum.SurveillanceCameraMonitorUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.SurveillanceCameraMonitorUiKey.Key:
+        type: SurveillanceCameraMonitorBoundUserInterface
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+
+# In Use
+- type: entity
+  parent: N14ComputerCameraDisplay
+  id: N14ComputerCameraDisplayBrotherhoodWashington
+  suffix: BOS Washington
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCameraBrotherhoodWashington

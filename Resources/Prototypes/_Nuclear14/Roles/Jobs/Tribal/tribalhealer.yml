@@ -1,0 +1,82 @@
+- type: job
+  id: TribalShaman # #Misfits Change - renamed from TribalHealer for thematic accuracy
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 40
+  showBorder: true
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-tribal-shaman
+  description: job-description-tribal-shaman
+  playTimeTracker: TribalShaman # #Misfits Change - renamed from TribalHealer
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+    #  tracker: Wastelander
+    #  min: 18000 # 5 hours
+  startingGear: TribalShamanGear # #Misfits Change - renamed from TribalHealerGear
+  alwaysUseSpawner: true
+  icon: "JobIconTribalMedic" # Corvax-Change
+  supervisors: job-supervisors-tribal
+  access:
+  - TribeMember
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Tribal
+      - type: CPRTraining
+      - type: Warcry
+        action: ActionTribalWarcry
+        targetDepartment: Tribe
+        range: 6
+        speedBonus: 0.30
+        duration: 10
+        overlayColor: "#3FAF63"
+        speechVerb: MisfitsTribalWarcry
+        warcryMessage: warcry-message-tribal
+        warcryMessageCount: 6
+        buffPopup: warcry-popup-buffed-tribal
+        excludedJobs:
+        - SuperMutantTribal
+        - SyntheticProtectronTribal
+      - type: TribalHuntParticipant
+        targetDepartment: Tribe
+  - !type:AddTraitSpecial
+    traits: [ LanguageTribal ]
+
+- type: startingGear
+  id: TribalShamanGear # #Misfits Change - renamed from TribalHealerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitTribal
+    outerClothing: N14ClothingOuterTribalArmor
+    shoes: N14ClothingShoesTribal
+    gloves: N14ClothingHandsGlovesTribal
+    back: N14ClothingBackpackTrekker # Corvax-Change
+    pocket1: N14TribalKnife
+    pocket2: N14WeaponRevolver44Tribal
+    id: N14IDTribeSawbonePendant
+  innerClothingSkirt: N14ClothingUniformJumpskirtTribal
+  satchel: N14ClothingBackpackSatchelTribalHealerFilled
+  storage: # Corvax-Change
+    back:
+    - Torch
+    - Torch
+    - Torch
+    - N14Bandage
+    - N14Bandage
+    - Ointment
+    - N14HealingPowder
+    - N14HealingPowder
+    - N14HealingPoultice
+    - N14HealingPoultice
+    - MisfitsTribalSpiritBoard # #Misfits Add - Shaman starts with spirit board in backpack
+
+- type: playTimeTracker
+  id: TribalShaman # #Misfits Change - renamed from TribalHealer

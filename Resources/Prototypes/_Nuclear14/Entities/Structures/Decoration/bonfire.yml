@@ -1,0 +1,117 @@
+- type: entity
+  parent: BaseStructure
+  id: N14Bonfire
+  suffix: Mapping
+  name: bonfire
+  description: A wooden bonfire for heating and cooking.
+  components:
+  # Misfits Change /Fix/ Make the constructible bonfire behave as a real player-managed fire source.
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: Structures/Decoration/bonfire.rsi
+    layers:
+      - state: bonfire_extinguished
+        map: [ "base" ]
+        color: "#666666" # Misfits Change /Add/ Start dark/unlit; brightened by GenericVisualizer when on fire.
+  - type: GenericVisualizer
+    visuals:
+      enum.FireVisuals.OnFire:
+        base:
+          True: { color: "#FFFFFF" }
+          False: { color: "#666666" }
+  - type: Appearance
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+  - type: ExtinguishOnInteract
+    extinguishAttemptSound:
+      path: /Audio/Items/candle_blowing.ogg
+      params:
+        variation: 0.05
+        volume: 10
+  - type: UseDelay
+  - type: Flammable
+    fireSpread: false
+    canResistFire: false
+    alwaysCombustible: true
+    canExtinguish: true
+    firestacksOnIgnite: 3.0
+    firestackFade: 0 # #Misfits Tweak - No passive decay; bonfire stays lit until manually extinguished
+    damage:
+      types:
+        Heat: 0 # #Misfits Fix - was 0.1; escalating firestacks (3→10+) destroyed the 50 HP bonfire in ~1 min
+  - type: FireVisuals
+    sprite: Structures/Decoration/bonfire.rsi
+    normalState: burning
+    lightColor: "#FFC90C"
+  - type: AmbientSound
+    enabled: false
+    volume: -5
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/fireplace.ogg
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+  - type: Construction
+    graph: N14Bonfire
+    node: bonfire
+  - type: BonfireHeater
+  - type: SolutionHeater
+    heatPerSecond: 160
+    requireHot: true
+  - type: ItemPlacer
+    maxEntities: 8 # big grill, many steaks
+    whitelist:
+      components:
+      - FitsInDispenser
+      - Temperature
+  - type: PlaceableSurface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.08,-0.35,0.15,0.25"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  # Misfits Change /Fix/ StepTrigger + TileEntityEffect restored. Unconditional ignition is
+  # prevented by BonfireHeaterSystem.OnStepTriggerAttempt, which cancels the attempt when the
+  # bonfire is unlit or the tripper is not a mob (so placed food items are not set on fire).
+  - type: StepTrigger
+    requiredTriggeredSpeed: 0
+    intersectRatio: 0.2
+  - type: TileEntityEffect
+    effects:
+    - !type:FlammableReaction
+      multiplier: 1.5
+      multiplierOnExisting: 0.5
+    - !type:Ignite
+  # #Misfits Add - All bonfires (placed and crafted) double as tribal signal fires
+  - type: SmokeSignal
+    cooldown: 600 # #Misfits Change - campfire signals have a 10-minute cooldown.
+    maxMessageLength: 128
+    targetDepartment: Tribe
+  # #Misfits Fix - No ActivatableUI: left-click must stay as ExtinguishOnInteract.
+  # The "Send Smoke Signal" verb opens the BUI via _ui.OpenUi directly, so ActivatableUI
+  # would collide with ExtinguishOnInteract on ActivateInWorldEvent (UseDelay fires, popup
+  # shows "you start patting the flames", and the BUI closes the same frame it opens).
+  - type: UserInterface
+    interfaces:
+      enum.SmokeSignalUiKey.Key:
+        type: SmokeSignalBoundUserInterface

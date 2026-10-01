@@ -1,0 +1,602 @@
+#MARK: Chems
+- type: reagent
+  id: MovespeedMixture #used in jet
+  name: reagent-name-movespeedmod-mixture
+  group: Chems
+  desc: reagent-desc-healing-mixture
+  physicalDesc: reagent-physical-desc-refreshing
+  color: "#9e1d1d"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: MovespeedMixtureAmbient
+        cooldown: 40
+        messageKeys:
+        - drug-ambience-movespeed-mixture-1
+        - drug-ambience-movespeed-mixture-2
+      # - !type:StrengthModifierReagent # Nuclear 14 Example of adding modifier to Chemicals
+      #   strengthModifier: 1
+      #   # statusLifetime: 5 # may be useful if we want to make it last longer after reagent is gone from blood?
+      # - !type:PerceptionModifierReagent # Nuclear 14 Example of adding modifier to Chemicals
+      #   perceptionModifier: 1
+      # - !type:EnduranceModifierReagent # Nuclear 14 Example of adding modifier to Chemicals
+      #   enduranceModifier: 1
+      # - !type:CharismaModifierReagent # Nuclear 14 Example of adding modifier to Chemicals
+      #   charismaModifier: 1
+      # - !type:IntelligenceModifierReagent # Nuclear 14 Example of adding modifier to Chemicals
+      #   intelligenceModifier: 1
+      # - !type:AgilityModifierReagent # Nuclear 14 Example of adding modifier to Chemicals
+      #   agilityModifier: 1
+      # - !type:LuckModifierReagent # Nuclear 14 Example of adding modifier to Chemicals
+      #   luckModifier: 1
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.1
+        sprintSpeedModifier: 1.1
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 5
+        refresh: false
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.2
+          groups:
+      - !type:Jitter
+      - !type:Addicting #Misfits Change
+        time: 8
+        # Jet withdrawal: lethargy and exhaustion without the speed rush.
+        # Mood handled separately via JetBenefit moodletOnEnd → JetWithdrawal.
+        withdrawalSpeedPenalty: 0.80
+        withdrawalStaminaDrain: 5.0
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 3
+        type: Remove
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+    Narcotic:
+      effects:
+      - !type:ChemAddMoodlet
+        moodPrototype: JetBenefit
+
+- type: reagent
+  id: RobustMovespeedMixture #This is Turbo
+  name: reagent-name-robust-movespeedmod-mixture
+  group: Chems
+  desc: reagent-name-robust-movespeedmod-mixture
+  physicalDesc: reagent-physical-desc-roaring
+  color: "#ffc8ff"
+  boilingPoint: 255.0
+  meltingPoint: 36.0
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: RobustMovespeedMixtureAmbient
+        cooldown: 35
+        messageKeys:
+        - drug-ambience-robust-movespeed-mixture-1
+        - drug-ambience-robust-movespeed-mixture-2
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.20
+        sprintSpeedModifier: 1.20
+      - !type:Drunk
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.5
+          groups:
+      - !type:Jitter
+      - !type:Addicting #Misfits Change
+        time: 10
+        # RobustMovespeedMixture (Turbo) withdrawal: harder crash than regular Jet — severe fatigue and lethargy.
+        withdrawalSpeedPenalty: 0.70
+        withdrawalStaminaDrain: 7.0
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 5
+        type: Remove
+        conditions:
+        - !type:ReagentThreshold
+          min: 12
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 5
+        type: Remove
+        conditions:
+        - !type:ReagentThreshold
+          min: 12
+      - !type:HealthChange #Misfits Change /Add:/ Overdose — suffocates the player when stacking too much Turbo
+        conditions:
+        - !type:ReagentThreshold
+          min: 15
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        damage:
+          types:
+            Asphyxiation: 6
+      - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Turbo in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        threshold: 15
+        damagePerUnit: 0.05
+
+
+- type: reagent
+  id: DamageModifyingMixture #used in psycho. TODO: figure out how to make a reagent give you a dmg buff
+  name: reagent-name-damage-mod-mixture
+  group: Chems
+  desc: reagent-desc-damage-mod-mixture
+  physicalDesc: reagent-physical-desc-enraging
+  color: "#c6ba10"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: DamageModifyingMixtureAmbient
+        cooldown: 45
+        messageKeys:
+        - drug-ambience-damage-modifying-mixture-1
+        - drug-ambience-damage-modifying-mixture-2
+      - !type:Drunk
+      - !type:Emote
+        emote: Scream
+        showInChat: true
+        probability: 0.1
+      - !type:Addicting #Misfits Change
+        time: 8
+        # DamageModifyingMixture (Psycho) withdrawal: aggression crash, body aching from the comedown.
+        # Mood handled separately via PsychoBenefit moodletOnEnd → PsychoWithdrawal.
+        withdrawalDamage:
+          groups:
+            Brute: 0.2
+        withdrawalStaminaDrain: 6.0
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.30
+        sprintSpeedModifier: 1.30
+      - !type:HealthChange #Misfits Change /Add:/ Overdose — suffocates the player when stacking too much Psycho
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        damage:
+          types:
+            Asphyxiation: 20
+      - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Psycho in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        threshold: 30
+        damagePerUnit: 0.05
+    Narcotic:
+      effects:
+      - !type:ChemAddMoodlet
+        moodPrototype: PsychoBenefit
+
+- type: reagent
+  id: Daytripper
+  name: reagent-name-daytripper
+  group: Medicine
+  desc: reagent-desc-daytripper
+  physicalDesc: reagent-physical-desc-sticky
+  color: "#00e5ff"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: DaytripperAmbient
+        cooldown: 45
+        messageKeys:
+        - drug-ambience-daytripper-1
+        - drug-ambience-daytripper-2
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 10
+        refresh: false
+      - !type:Addicting #Misfits Change
+        time: 6
+        # Daytripper withdrawal: the colours drain away; the world feels flat and exhausting.
+        withdrawalMoodEffect: DaytripperWithdrawal
+        withdrawalSpeedPenalty: 0.90
+        withdrawalStaminaDrain: 4.0
+    Food:
+      effects:
+      - !type:SatiateThirst
+        factor: -0.2
+
+- type: reagent
+  id: Cateye
+  name: reagent-name-cateye
+  group: Chems
+  desc: reagent-desc-cateye
+  physicalDesc: reagent-physical-desc-glittery
+  color: "#924d17"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.067 # Forge-Change
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: CateyeAmbient
+        cooldown: 55
+        messageKeys:
+        - drug-ambience-cateye-1
+        - drug-ambience-cateye-2
+      - !type:NocturineNightVision # Forge-Change
+        durationSeconds: 5.0
+        color: "#F0FFFF" # Forge-Change
+      - !type:Addicting #Misfits Change
+        time: 4
+        # Cateye withdrawal: mild, but losing sharp night vision leaves the world dim and tiresome.
+        withdrawalMoodEffect: CateyeWithdrawal
+        withdrawalStaminaDrain: 2.0
+
+- type: reagent
+  id: Buffout
+  name: reagent-name-buffout
+  group: Chems
+  desc: reagent-desc-buffout
+  physicalDesc: reagent-physical-desc-fortifying
+  color: "#8b4513"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: BuffoutAmbient
+        cooldown: 45
+        messageKeys:
+        - drug-ambience-buffout-1
+        - drug-ambience-buffout-2
+      - !type:Emote #Misfits Change - something to add a visible sign of drug use
+        emote: Laugh
+        showInChat: true
+        probability: 0.05
+      - !type:Addicting #Misfits Change
+        time: 6
+        # Buffout withdrawal: muscles ache from sudden loss of chemical strength augmentation.
+        withdrawalMoodEffect: BuffoutWithdrawal
+        withdrawalDamage:
+          groups:
+            Brute: 0.2
+        withdrawalStaminaDrain: 8.0
+      - !type:HealthChange #Misfits Change /Add:/ Minor wound healing — Buffout's physical enhancement knits minor cuts.
+        conditions:
+        - !type:ReagentThreshold # Only heals when not at overdose threshold.
+          max: 30
+        damage:
+          groups:
+            Brute: -0.3
+            Burn: -0.3
+      - !type:HealthChange #Misfits Change /Add:/ Overdose — suffocates the player when stacking too much Buffout
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        damage:
+          types:
+            Asphyxiation: 15
+      - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Buffout in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        threshold: 30
+        damagePerUnit: 0.05
+      - !type:SpecialStatBoostEffect #Misfits Change /Add:/ Temporary Strength boost — scales melee damage while drug is active.
+        strengthBoost: 2
+      # TODO: Implement HealthIncreaseReagent effect type to temporarily boost max HP
+      # - !type:HealthIncreaseReagent
+      #   increaseAmount: 50
+
+- type: reagent
+  id: Buffjet
+  name: reagent-name-buffjet
+  group: Chems
+  desc: reagent-desc-buffjet
+  physicalDesc: reagent-physical-desc-swirling
+  color: "#800000"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1 # Misfits Change - Temporary change to give Buffjet a reason to exist. It lasts longer than regular Jet. Should be changed/removed when SPECIAL chems are fixed.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: BuffjetAmbient
+        cooldown: 40
+        messageKeys:
+        - drug-ambience-buffjet-1
+        - drug-ambience-buffjet-2
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.2
+          groups:
+      - !type:Jitter
+      - !type:Emote
+        emote: Laugh
+        showInChat: true
+        probability: 0.05
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.1
+        sprintSpeedModifier: 1.1
+      - !type:Addicting #Misfits Change
+        time: 10
+        # Buffjet withdrawal: worst of both Jet and Buffout — speed crash, muscle pain, nausea.
+        withdrawalMoodEffect: BuffjetWithdrawal
+        withdrawalDamage:
+          types:
+            Poison: 0.2
+          groups:
+            Brute: 0.10
+        withdrawalSpeedPenalty: 0.75
+        withdrawalStaminaDrain: 7.0
+      - !type:SpecialStatBoostEffect #Misfits Change /Add:/ Strength (melee dmg) + Agility (extra speed) boosts from Buffout+Jet combination.
+        strengthBoost: 2
+        agilityBoost: 2
+      # - !type:HealthIncreaseReagent
+        # increaseAmount: 50
+
+- type: reagent
+  id: Bufftats
+  name: reagent-name-bufftats
+  group: Chems
+  desc: reagent-desc-bufftats
+  physicalDesc: reagent-physical-desc-bubbling
+  color: "#15162a"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: BufftatsAmbient
+        cooldown: 45
+        messageKeys:
+        - drug-ambience-bufftats-1
+        - drug-ambience-bufftats-2
+      # - !type:Jitter was placeholder for SPECIAL — replaced by SpecialStatBoostEffect below.
+      - !type:Addicting #Misfits Change
+        time: 8
+        # Bufftats withdrawal: agility gone, body slow and sore.
+        withdrawalMoodEffect: BufftatsWithdrawal
+        withdrawalDamage:
+          groups:
+            Brute: 0.15
+        withdrawalSpeedPenalty: 0.90
+        withdrawalStaminaDrain: 5.0
+      - !type:SpecialStatBoostEffect #Misfits Change /Add:/ Strength (melee dmg) + Perception (gun spread) boosts from Buffout+Mentats combination.
+        strengthBoost: 2
+        perceptionBoost: 2
+      # - !type:HealthIncreaseReagent
+        # increaseAmount: 50
+
+- type: reagent
+  id: Mentats
+  name: reagent-name-mentats
+  group: Chems
+  desc: reagent-desc-mentats
+  physicalDesc: reagent-physical-desc-tangy
+  color: "#9f321f"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: MentatsAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-mentats-1
+        - drug-ambience-mentats-2
+      # - !type:Jitter was placeholder for SPECIAL — replaced by SpecialStatBoostEffect below.
+      - !type:SpecialStatBoostEffect #Misfits Change /Add:/ Perception boost → tighter gun spread/recoil. Intelligence stored for future systems.
+        perceptionBoost: 2
+        intelligenceBoost: 2
+      - !type:Addicting #Misfits Change
+        time: 5
+        # Mentats withdrawal: mental clarity evaporates, leaving fatigue and brain fog.
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
+
+- type: reagent
+  id: MentatsBerry
+  name: reagent-name-mentats-berry
+  group: Chems
+  desc: reagent-desc-mentats-berry
+  physicalDesc: reagent-physical-desc-tangy
+  color: "#2E0071"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: MentatsBerryAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-mentats-berry-1
+        - drug-ambience-mentats-berry-2
+      - !type:Jitter #Placeholder for when we get Special working again.
+      - !type:Addicting #Misfits Change
+        time: 5
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
+
+- type: reagent
+  id: MentatsGrape
+  name: reagent-name-mentats-grape
+  group: Chems
+  desc: reagent-desc-mentats-grape
+  physicalDesc: reagent-physical-desc-tangy
+  color: "#9932a4"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: MentatsGrapeAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-mentats-grape-1
+        - drug-ambience-mentats-grape-2
+      - !type:Jitter #Placeholder for when we get Special working again.
+      - !type:Addicting #Misfits Change
+        time: 5
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
+
+- type: reagent
+  id: MentatsOrange
+  name: reagent-name-mentats-orange
+  group: Chems
+  desc: reagent-desc-mentats-orange
+  physicalDesc: reagent-physical-desc-tangy
+  color: "#ffb82e"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: MentatsOrangeAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-mentats-orange-1
+        - drug-ambience-mentats-orange-2
+      - !type:Jitter #Placeholder for when we get Special working again.
+      - !type:Addicting #Misfits Change
+        time: 5
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
+
+- type: reagent
+  id: DamageResistMixture #This is Med-X
+  name: reagent-name-damage-resist-mixture
+  group: Medicine
+  desc: reagent-desc-damage-resist-mixture
+  physicalDesc: reagent-physical-desc-cloudy
+  color: "#581572"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: DamageResistMixtureAmbient
+        cooldown: 45
+        messageKeys:
+        - drug-ambience-damage-resist-mixture-1
+        - drug-ambience-damage-resist-mixture-2
+      - !type:GenericStatusEffect
+        key: MedXProtection
+        component: MedXProtection
+        type: Add
+        time: 7
+        refresh: true
+      - !type:Jitter #Placeholder for when we get Special working again.
+      - !type:HealthChange #Misfits Change /Add:/ Overdose — suffocates the player when stacking too much Med-X
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        damage:
+          types:
+            Asphyxiation: 20
+      - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Med-X in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        threshold: 30
+        damagePerUnit: 0.05
+      - !type:SuppressChronicPainReagent
+        SuppressionTime: 1200
+
+- type: reagent
+  id: Hydra
+  name : reagent-name-hydra
+  group: Chems
+  desc: reagent-desc-hydra
+  physicalDesc: reagent-physical-desc-volatile
+  color: "#990099"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: HydraAmbient
+        cooldown: 40
+        messageKeys:
+        - drug-ambience-hydra-1
+        - drug-ambience-hydra-2
+        - drug-ambience-hydra-3
+      - !type:GenericStatusEffect
+        key: MedXProtection
+        component: MedXProtection
+        type: Add
+        time: 7
+        refresh: true
+      - !type:Addicting #Misfits Change
+        time: 6
+        # Hydra withdrawal: the painkilling protection fades hard and leaves the body craving more.
+        withdrawalMoodEffect: HydraWithdrawal
+        withdrawalDamage:
+          types:
+            Poison: 0.3
+        withdrawalStaminaDrain: 3.0
+      - !type:Jitter
+      - !type:HealthChange #Misfits Change /Add:/ Overdose — suffocates the player when stacking too much Hydra
+        conditions:
+        - !type:ReagentThreshold
+          min: 22
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        damage:
+          types:
+            Asphyxiation: 15
+      - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Hydra in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
+        threshold: 22
+        damagePerUnit: 0.05
+
+#MARK: Tribal Chems
+- type: reagent
+  id: MourningPoultice
+  name: reagent-name-mourning-poultice
+  group: Medicine
+  desc: reagent-desc-mourning-poultice
+  physicalDesc: reagent-physical-desc-murky
+  color: "#1d3d22"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2 # Effectively once every 5 seconds.
+      effects:
+      - !type:AmbientDrugFlavorText
+        cooldownId: MourningPoulticeAmbient
+        cooldown: 50
+        messageKeys:
+        - drug-ambience-mourning-poultice-1
+        - drug-ambience-mourning-poultice-2
+      - !type:HealthChange
+        damage:
+          groups:
+            Toxin: 0.5
+          types:
+            Radiation: 0.5
+      - !type:ModifyBleedAmount
+        amount: 0.1
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 5
+        refresh: false
+      - !type:GenericStatusEffect
+        key: Stutter
+        component: ScrambledAccent
+      - !type:GenericStatusEffect
+        key: SlurredSpeech
+        component: TelepathicRepeater

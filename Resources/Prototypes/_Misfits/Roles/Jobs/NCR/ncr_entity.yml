@@ -1,0 +1,258 @@
+- type: entity
+  parent: MobHuman
+  id: N14MobHumanNCRCadet
+  name: NCRCadet
+  components:
+    - type: Icon
+      sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+      state: cadet
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRCadetGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRMedic
+  name: NCRMedic
+  components:
+    - type: Icon
+      state: medic
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRMedicGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRDoctor
+  name: NCRDoctor
+  components:
+    - type: Icon
+      state: medic
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRMedicGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRSGT
+  name: NCRSGT
+  components:
+    - type: Icon
+      state: sgt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRNCOGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRFirstSergeant
+  name: NCRFirstSergeant
+  components:
+    - type: Icon
+      state: sgt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRNCOGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRStaffSergeant
+  name: NCRStaffSergeant
+  components:
+    - type: Icon
+      state: sgt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRNCOGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRLT
+  name: NCRLT
+  components:
+    - type: Icon
+      state: lt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRExecutiveOfficerGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRCaptain
+  name: NCRCaptain
+  components:
+    - type: Icon
+      state: lt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRCommanderGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCREngineer
+  name: NCREngineer
+  components:
+    - type: Icon
+      state: engineer
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCREngineerGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRWS
+  name: NCRWS
+  components:
+    - type: Icon
+      state: ws
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRWSGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRSoldier
+  name: NCRSoldier
+  components:
+    - type: Icon
+      state: soldier
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRSoldierGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRPrivateFirstClass
+  name: NCRPrivateFirstClass
+  components:
+    - type: Icon
+      state: soldier
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRSoldierGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+#Misfits Change /Comment-out/: NCRRangerVeteran mob consolidated into RangerVeteran. Use N14MobHumanRangerVeteran instead.
+#- type: entity
+#  parent: N14MobHumanNCRCadet
+#  id: N14MobHumanNCRRangerVeteran
+#  name: NCRRangerVeteran
+#  components:
+#    - type: Icon
+#      state: rangerveteran
+#    - type: RandomHumanoidAppearance
+#      randomizeName: true
+#    - type: Loadout
+#      prototypes: [NCRRangerVeteranGear]
+#    - type: NpcFactionMember
+#      factions:
+#      - Wastelander
+#      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRRanger
+  name: NCRRanger
+  components:
+    - type: Icon
+      state: ranger
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRRangerGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRPrisoner
+  name: NCRPrisoner
+  components:
+    - type: Icon
+      state: soldier
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRPrisonerGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNRCMP
+  name: NRCMP
+  components:
+    - type: Icon
+      state: lt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRMPinvestigatorGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+#TODO add pictures for the entitylist

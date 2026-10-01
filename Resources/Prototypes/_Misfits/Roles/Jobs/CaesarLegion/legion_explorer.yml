@@ -1,0 +1,62 @@
+- type: job
+  id: CaesarLegionExplorer
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 40
+  name: job-name-caesar-legion-explorer
+  description: job-description-caesar-legion-explorer
+  playTimeTracker: CaesarLegionExplorer
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement
+      department: CaesarLegion
+      min: 14400 # 4 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    # #Misfits Change: Explorer is now open to Female characters.
+  startingGear: CaesarLegionExplorerGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerVenator"
+  supervisors: job-name-caesar-legion-supervisors
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionExplorer
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionExplorerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: N14ClothingNeckCloakLegionBlack
+    eyes: ClothingEyesNightVisionGoggles
+    mask: N14ClothingMaskBrownMask
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingShoesKaligi
+    head: N14ClothingHeadHatTribalOutcastHood #Misfits Change /Tweak/: Explorer wears a tribal outcast hood for scouting
+    outerClothing: N14ClothingOuterLegionnaireExplorerArmor
+    gloves: N14ClothingHandsGlovesTribal
+    belt: N14Gladius
+    suitstorage: N14PilumSpear
+    pocket1: LegionExplorerloadoutkits
+    id: N14IDLegionaryMedalExplorer
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+    - N14Binoculars # #Misfits Add - Explorers spawn with binoculars for scouting
+
+- type: playTimeTracker
+  id: CaesarLegionExplorer

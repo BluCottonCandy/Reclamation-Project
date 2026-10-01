@@ -1,0 +1,56 @@
+- type: job
+  id: TownDeputy # Renamed to "Guard", don't touch the prototype ID
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 70
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  name: job-name-towndeputy
+  description: job-description-towndeputy
+  playTimeTracker: TownDeputy
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - re-enable timelock, 5h Townsfolk requirement
+      department: Townsfolk
+      min: 18000 # 5 hours
+  startingGear: TownDeputyGear
+  icon: "JobIconTownDeputy" # Forge-Change
+  supervisors: job-supervisors-townsfolk
+  access:
+  - TownieLaw
+  - TownieMechanic
+  - TownsPerson # Forge-Change
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: startingGear
+  id: TownDeputyGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitTownGuard
+    ears: MisfitsClothingHeadsetTown
+    back: N14ClothingBackpackSatchelMilitary # Forge-Change
+    shoes: N14ClothingBootsLeatherFilled
+    id: N14IDBadgeTownDeputy
+    belt: ClothingBeltRevolverfilled # Forge-Change
+    pocket1: TownGuardKits
+    pocket2: Handcuffs
+  storage: # Forge-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14CombatKnife
+    - MagazineBox10mm
+    - MagazineBox44
+    - N14Binoculars # #Misfits Add - Town Guards spawn with binoculars for patrol duty
+
+- type: playTimeTracker
+  id: TownDeputy

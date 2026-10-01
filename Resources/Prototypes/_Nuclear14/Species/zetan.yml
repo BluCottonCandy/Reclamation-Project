@@ -1,0 +1,28 @@
+- type: species
+  id: Zetan
+  name: species-name-zetan
+  roundStart: false
+  prototype: N14BaseMobZetan
+  sprites: N14MobZetanSprites
+  dollPrototype: N14MobZetanDummy
+  skinColoration: HumanToned
+
+- type: speciesBaseSprites
+  id: N14MobZetanSprites
+  sprites:
+    Head: N14MobZetanBlank
+    Chest: N14MobZetanBlank
+    LArm: N14MobZetanBlank
+    RArm: N14MobZetanBlank
+    LHand: N14MobZetanBlank
+    RHand: N14MobZetanBlank
+    LLeg: N14MobZetanBlank
+    RLeg: N14MobZetanBlank
+    LFoot: N14MobZetanBlank
+    RFoot: N14MobZetanBlank
+
+- type: humanoidBaseSprite
+  id: N14MobZetanBlank
+  baseSprite:
+    sprite: _Nuclear14/Mobs/Species/Zetan/parts.rsi
+    state: blank

@@ -1,0 +1,197 @@
+#MARK: Townies
+
+- type: accessLevel
+  id: TownieLaw
+  name: id-card-access-level-townie-sheriff
+
+- type: accessLevel
+  id: TownieMayor
+  name: id-card-access-level-townie-mayor
+
+- type: accessLevel
+  id: TownieShopkeeper
+  name: id-card-access-level-townie-shopkeeper
+
+- type: accessLevel
+  id: TownieDoctor
+  name: id-card-access-level-townie-doctor
+
+- type: accessLevel
+  id: TownieMechanic
+  name: id-card-access-level-townie-mechanic
+
+- type: accessLevel
+  id: WastelandBartender
+  name: id-card-access-level-townie-bartender
+
+- type: accessLevel
+  id: WastelandReporter
+  name: id-card-access-level-townie-reporter
+
+- type: accessLevel # Corvax-Change begin
+  id: TownsPerson
+  name: id-card-access-level-townie-person # Corvax-Change end
+
+- type: accessLevel
+  id: InnRoomOne
+  name: id-card-access-level-townie-inn1
+
+- type: accessLevel
+  id: InnRoomTwo
+  name: id-card-access-level-townie-inn2
+
+- type: accessLevel
+  id: InnRoomThree
+  name: id-card-access-level-townie-inn3
+
+- type: accessGroup
+  id: Townie
+  tags:
+  - TownieLaw
+  - TownieMayor
+  - TownieShopkeeper
+  - TownieDoctor
+  - TownieMechanic
+  - WastelandBartender
+  - WastelandReporter
+  - WastelandChaplain # Corvax-Change
+  - TownsPerson # Corvax-Change
+  - WastelandFarmer # Corvax-Change
+  - InnRoomOne
+  - InnRoomTwo
+  - InnRoomThree
+
+# Wastelander
+
+- type: accessLevel
+  id: WastelandChaplain
+  name: id-card-access-level-waste-chaplain
+
+- type: accessLevel
+  id: WastelandFarmer
+  name: id-card-access-level-waste-farmer
+
+# Tribal
+
+- type: accessLevel
+  id: TribeMember
+  name: id-card-access-level-tribe-member
+
+- type: accessLevel
+  id: TribeChief
+  name: id-card-access-level-tribe-chief
+
+#MARK: Followers
+
+- type: accessLevel
+  id: FollowersApocalypse
+  name: id-card-access-level-followers-apocalypse
+
+- type: accessGroup
+  id: FollowersApocalypse
+  tags:
+  - FollowersApocalypse
+
+#MARK: Zetan
+
+- type: accessLevel
+  id: ZetanCaptain
+  name: id-card-access-level-zetan-captain
+
+- type: accessLevel
+  id: Zetan
+  name: id-card-access-level-zetan
+
+- type: accessGroup
+  id: Zetan
+  tags:
+  - ZetanCaptain
+  - Zetan
+
+#MARK: Enclave
+- type: accessLevel
+  id: Enclave
+  name: id-card-access-level-enclave
+
+- type: accessGroup
+  id: EnclaveVault
+  tags:
+  - Enclave
+  - VaultOverseer
+  - VaultGatekeeper
+  - VaultSecurity
+  - VaultEngineer
+  - VaultMedical
+  - VaultDweller
+
+
+#MARK: Keys
+
+- type: accessLevel
+  id: IronKey
+  name: id-card-access-level-ironkey
+
+- type: accessLevel
+  id: BronzeKey
+  name: id-card-access-level-bronzekey
+
+- type: accessLevel
+  id: BrassKey
+  name: id-card-access-level-brasskey
+
+- type: accessLevel
+  id: LegionBrassKey
+  name: id-card-access-level-legion-brasskey
+
+- type: accessLevel
+  id: SilverKey
+  name: id-card-access-level-silverkey
+
+- type: accessGroup
+  id: GoldenKey
+  tags:
+  - IronKey
+  - BronzeKey
+  - BrassKey
+  - SilverKey
+
+#MARK: Dungeons / Bunkers
+- type: accessLevel
+  id: DungeonBunkerA1
+  name: id-card-access-level-bunker-a1
+
+- type: accessLevel
+  id: DungeonBunkerA2
+  name: id-card-access-level-bunker-a2
+
+- type: accessLevel
+  id: DungeonBunkerA3
+  name: id-card-access-level-bunker-a3
+
+- type: accessGroup
+  id: DungeonBunkerAA
+  tags:
+  - DungeonBunkerA1
+  - DungeonBunkerA2
+  - DungeonBunkerA3
+
+- type: accessLevel
+  id: DungeonBlue
+  name: id-card-access-level-blue
+
+- type: accessLevel
+  id: DungeonYellow
+  name: id-card-access-level-yellow
+
+- type: accessLevel
+  id: DungeonRed
+  name: id-card-access-level-red
+
+- type: accessLevel
+  id: DungeonCommon
+  name: id-card-access-level-common
+
+# Misc ancient bunker airlock access
+- type: accessLevel
+  id: AncientBunker
+  name: id-card-access-level-ancient

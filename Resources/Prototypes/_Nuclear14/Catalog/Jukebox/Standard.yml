@@ -1,0 +1,331 @@
+# sorted alphabetically
+# Lobby Music
+- type: jukebox
+  id: AKissToBuildADreamOn
+  name: Louis Armstrong - A Kiss to Build A Dream On
+  path:
+    path: /Audio/_Nuclear14/Lobby/a_kiss_to_build_a_dream_on.ogg
+
+- type: jukebox
+  id: TexBenekeGuy
+  name: Tex Beneke - A Wonderful Guy
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_texbeneke_guy_mono.ogg
+
+- type: jukebox
+  id: AintThatAKickInTheHead
+  name: Dean Martin - Ain't That A Kick In The Head
+  path:
+    path: /Audio/_Nuclear14/Lobby/MUS_Aint_That_A_Kick_In_the_Head.ogg
+
+- type: jukebox
+  id: PatrioticAmerica
+  name: America the Beautiful
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_America.ogg
+
+- type: jukebox
+  id: AmericanSwing
+  name: Gerhard Trede - American Swing
+  path:
+    path: /Audio/_Nuclear14/Lobby/MUS_American_Swing.ogg
+
+- type: jukebox
+  id: ColePorterAnything
+  name: Cole Porter - Anything Goes
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_coleporter_anything_mono.ogg
+
+- type: jukebox
+  id: BigIron
+  name: Marty Robins - Big Iron
+  path:
+    path: /Audio/_Nuclear14/Lobby/MUS_Big_Iron.ogg
+
+- type: jukebox
+  id: RoyBrownButcher
+  name: Roy Brown - Butcher Pete (Pt. 1)
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_roybrown_butcher_mono.ogg
+
+- type: jukebox
+  id: DannyKayeCivilization
+  name: Danny Kaye - Civilization
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_dannykaye_civilization_mono.ogg
+
+- type: jukebox
+  id: BillieHolidayCrazy
+  name: Billie Holiday - Crazy He Calls Me
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_billieholiday_crazy_mono.ogg
+
+- type: jukebox
+  id: PatrioticDixie
+  name: Dixie
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_Dixie.ogg
+
+- type: jukebox
+  id: BillieHolidayEasy
+  name: Billie Holiday - Easy Living
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_billieholiday_easy_mono.ogg
+
+- type: jukebox
+  id: GenericFox
+  name: Gerhard Trede - Fox Boggie
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_fox_mono.ogg
+
+- type: jukebox
+  id: PatrioticPresidential
+  name: Hail Columbia
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_Presidential.ogg
+
+- type: jukebox
+  id: PatrioticMontezuma
+  name: Halls of Montezuma
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_Montezuma.ogg
+
+- type: jukebox
+  id: BobCrosbyHappy
+  name: Bob Crosby - Happy Times
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_bobcrosby_happy_mono.ogg
+
+- type: jukebox
+  id: InkspotsIDont
+  name: Inkspots - I Don't Want to Set the World on Fire
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_inkspots_idont_mono.ogg
+
+- type: jukebox
+  id: GenericJazzy
+  name: Billy Munn - Jazzy Interlude
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_jazzy_mono.ogg
+
+- type: jukebox
+  id: JingleJangleJingle
+  name: Kay Kyser - Jingle Jangle Jingle
+  path:
+    path: /Audio/_Nuclear14/Lobby/MUS_Jingle_Jangle_Jingle.ogg
+
+- type: jukebox
+  id: JoeCool
+  name: Georges Tesperin - Joe Cool
+  path:
+    path: /Audio/_Nuclear14/Lobby/MUS_Joe_Cool_CAS.ogg
+
+- type: jukebox
+  id: JohnnyGuitar
+  name: Peggy Lee - Johnny Guitar
+  path:
+    path: /Audio/_Nuclear14/Lobby/MUS_Johnny_Guitar.ogg
+
+- type: jukebox
+  id: GenericSunning
+  name: Jack Shaindlin - Let's Go Sunning
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_sunning_mono.ogg
+
+- type: jukebox
+  id: RoyBrownMighty
+  name: Roy Brown - Mighty Mighty Man
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_roybrown_mighty_mono.ogg
+
+- type: jukebox
+  id: SomethingsGottaGive
+  name: Bing Crosby - Something's Gotta Give
+  path:
+    path: /Audio/_Nuclear14/Lobby/MUS_Somethings_Gotta_Give.ogg
+
+- type: jukebox
+  id: GenericSwing
+  name: Allan Gray - Swing Doors
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_generic_swing_mono.ogg
+
+- type: jukebox
+  id: BattleHymn
+  name: The Battle Hymn of the Republic
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_BattleHymn_mono.ogg
+
+- type: jukebox
+  id: PatrioticStars
+  name: The Stars and Stripes Forever
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_Stars.ogg
+
+- type: jukebox
+  id: PatrioticWashington
+  name: The Washington Post
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_Washington.ogg
+
+- type: jukebox
+  id: BobCrosbyWay
+  name: Bob Crosby - Way Back Home
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout3/mus_bobcrosby_way_mono.ogg
+
+- type: jukebox
+  id: PatrioticYankee
+  name: Yankee Doodle
+  path:
+    path: /Audio/_Nuclear14/Music/MUS_Patriotic_Yankee.ogg
+
+- type: jukebox
+  id: RideIntoTheSunset
+  name: Let's Ride Into the Sunset Together
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/MUS_Let_s_Ride_Into_The_Sunset_Together.ogg
+
+- type: jukebox
+  id: BlueMoon
+  name: Frank Sinatra - Blue Moon
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/MUS_Blue_Moon.ogg
+
+- type: jukebox
+  id: HeartachesByTheNumber
+  name: Guy Mitchell - Heartaches by the Number
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/MUS_Heartaches_by_the_Number.ogg
+
+- type: jukebox
+  id: LoneStar
+  name: Lone Star
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/MUS_Lone_Star.ogg
+
+- type: jukebox
+  id: ItsASin
+  name: Inkspots - It's a Sin to Tell a Lie
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/MUS_Its_A_Sin_To_Tell_A_Lie.ogg
+
+- type: jukebox
+  id: BeginAgain
+  name: Vera Keyes - Begin Again
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/mus_dlc01_veratheme_01.ogg
+
+- type: jukebox
+  id: MyChrysalisHighwayman
+  name: My Chrysalis Highwayman
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/Worldmap2.ogg
+
+- type: jukebox
+  id: ShadowOfTheValley
+  name: In the Shadow of the Valley
+  path:
+    path: /Audio/_Nuclear14/Music/FalloutNV/MUS_In_The_Shadow_Of_The_Valley.ogg
+
+- type: jukebox
+  id: HesADemon
+  name: Betty Hutton - He's a Demon
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_BettyHutton_HesADemon.ogg
+
+- type: jukebox
+  id: IntoEachLife
+  name: Ella Fitzgerald - Into Each Life Some Rain Must Fall
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_EllaFitzgerald_IntoEachLife.ogg
+
+- type: jukebox
+  id: Personality
+  name: Johnny Mercer - Personality
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_JohnnyMercer_Personality.ogg
+
+- type: jukebox
+  id: ItsAMan
+  name: Betty Hutton - It's a Man
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_BettyHutton_ItsAMan.ogg
+
+- type: jukebox
+  id: GrandmaPlays
+  name: Wynonie Harris - Grandma Plays The Numbers
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_WynonieHarris_GrandmaPlaysTheNumbers.ogg
+
+- type: jukebox
+  id: UraniumFever
+  name: Elton Britt - Uranium Fever
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_EltonBritt_UraniumFever.ogg
+
+- type: jukebox
+  id: AtomBombBaby
+  name: The Five Stars - Atom Bomb Baby
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_TheFiveStars_AtomBombBaby.ogg
+
+- type: jukebox
+  id: AWonderfulGuy
+  name: Tex Beneke - A Wonderful Guy
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout4/MUS_Radio_Diamond_TexBenekeAWonderfulGuy.ogg
+
+- type: jukebox
+  id: CountryRoads
+  name: Spank - Country Roads
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-36.-Spank-Take-Me-Home_-Country-Roads.ogg
+
+- type: jukebox
+  id: PraiseTheLord
+  name: Harry B - Praise the Lord and Pass the Ammunition
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-29.-Kay-Kyser_-Harry-B-Praise-The-Lord-And-Pass-The-Ammunition.ogg
+
+- type: jukebox
+  id: RingOfFire
+  name: Spank - Ring of Fire
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-35.-Spank-Ring-of-Fire.ogg
+
+- type: jukebox
+  id: MisterFiveByFive
+  name: Freddie Slack - Mister Five-by-Five
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-21.-Freddie-Slack-and-His-Orchestra-Mister-Five-By-Five.ogg
+
+- type: jukebox
+  id: SixteenTons
+  name: Tennessee Ernie Ford - Sixteen Tons
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-39.-Tennessee-Ernie-Ford-Sixteen-Tons.ogg
+
+- type: jukebox
+  id: FairWeatherFriend
+  name: Henry King - Fair Weather Friend
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-24.-Henry-King-Just-A-Fair-Weather-Friend.ogg
+
+- type: jukebox
+  id: ICantDance
+  name: Chick Webb - I Can't Dance (Got Ants in my Pants)
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-11.-Chick-Webb-And-His-Orchestra-I-Cant-Dance-I-Got-Ants-in-My-Pants.ogg
+
+- type: jukebox
+  id: OldManMose
+  name: Eddy Duchin - Old Man Mose
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-16.-Eddy-Duchin-Ol-Man-Mose.ogg
+
+- type: jukebox
+  id: StraightenUp
+  name: Andrews Sisters - Straighten up and Fly Right
+  path:
+    path: /Audio/_Nuclear14/Music/Fallout76/1-50.-Vic-Schoen-and-His-Orchestra_-The-Andrews-Sisters-Straighten-Up-and-Fly-Right.ogg

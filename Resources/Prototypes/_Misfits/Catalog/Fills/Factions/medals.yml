@@ -1,0 +1,47 @@
+﻿- type: entity
+  id: MisfitsClothingNeckGoldbearmedalNCR
+  name: "Golden Bear Medal"
+  description: "One of the Republic’s highest distinctions, awarded to personnel who have shown exceptional leadership, outstanding service, or significant contributions to the NCR."
+  parent: ClothingNeckGoldmedal
+
+- type: entity
+  id: MisfitsClothingNeckBronzebearNCR
+  name: "Bronze Bear Medal"
+  description: "Awarded to fighters who have displayed notable courage, resilience, or bravery in the line of duty."
+  parent: ClothingNeckBronzeheart
+
+- type: entity
+  id: MisfitsClothingNeckPredatormedalNCR
+  name: "Predator Medal"
+  description: "Awarded to fighters who have successfully eliminated dangerous threats or completed especially difficult operations under hazardous conditions."
+  parent: ClothingNeckCargomedal
+
+- type: entity
+  id: MisfitsClothingNeckBrahminBrainmedalNCR
+  name: "Brahmin Brain Medal"
+  description: "A lighthearted and unofficial distinction awarded to personnel whose actions, decisions, or misadventures have become particularly memorable across the Republic."
+  parent: ClothingNeckClownmedal
+
+- type: entity
+  id: MisfitsClothingNeckEngineeringmedalNCR
+  name: "Ironhammer Medal"
+  description: "Awarded to NCR engineers who have distinguished themselves through technical expertise, maintenance of vital infrastructure, or outstanding field support."
+  parent: ClothingNeckEngineermedal
+
+- type: entity
+  id: MisfitsClothingNeckMedicalmedalNCR
+  name: "Crimson Cross Medal"
+  description: "Awarded to NCR medical personnel who have shown exceptional skill, professionalism, and commitment in the treatment and care of others."
+  parent: ClothingNeckMedicalmedal
+
+- type: entity
+  id: MisfitsCClothingNeckSecuritymedalNCR
+  name: "Defender of the Homeland Medal"
+  description: "Awarded to enlisted soldiers who have demonstrated dedication, reliability, and distinguished service to the Republic."
+  parent: ClothingNeckSecuritymedal
+
+- type: entity
+  id: MisfitsClothingNeckScoutmedalNCR
+  name: "Longstride Ribbon"
+  description: "For scouts, rangers, or personnel who gather critical intelligence or survive dangerous expeditions beyond NCR territory."
+  parent: ClothingNeckSciencemedal

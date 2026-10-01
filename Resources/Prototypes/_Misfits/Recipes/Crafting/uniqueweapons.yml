@@ -1,0 +1,29 @@
+#craftable unique weapons
+
+- type: construction
+  name: Ratslayer
+  id: N14WeaponSniperRatslayer
+  graph: UniqueWeapons
+  startNode: start
+  targetNode: Ratslayer
+  category: construction-category-weapons
+  description: Time for some rodent huntin'!
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/ratslayer.rsi
+    state: icon
+  objectType: Item
+
+#- type: construction
+#  name: butchered service rifle
+#  id: N14WeaponRifle556Butchered
+#  graph: UniqueWeapons
+#  startNode: start
+#  targetNode: ButcheredServiceRifle
+#  category: construction-category-weapons
+#  description: Eureka!
+#  hide: false
+#  icon:
+#    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/butcheredrifle.rsi
+#    state: icon
+#  objectType: Item

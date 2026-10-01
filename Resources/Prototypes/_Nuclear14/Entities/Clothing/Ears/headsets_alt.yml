@@ -1,0 +1,281 @@
+- type: entity
+  abstract: true
+  parent: Clothing
+  id: N14ClothingHeadsetAlt
+  name: headset
+  description: An earpiece with an intercom built into it, almost like a radio? Takes encryption keys.
+  components:
+  - type: Headset
+    # #Misfits Add - all N14 headsets passively receive PBS (Broadcast) without a key; transmit requires EncryptionKeyPBS
+    passiveChannels:
+    - PBS
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommonUR
+      - EncryptionKeyWastelandGlobal
+  - type: EncryptionKeyHolder
+    keySlots: 4
+  - type: Sprite
+    scale: 0.75, 0.75
+    state: icon
+  - type: Clothing
+    # equippedPrefix: alt
+    slots:
+    - ears
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetVaulttec #No longer used, all Vault dwellers got the same headset now
+  name: Vault-Tec over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMasterUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/centcom.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/centcom.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetVaultCommand #No longer used, all Vault dwellers got the same headset now
+  name: command over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMasterUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/command.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/command.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetVaultDweller
+  name: vault over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyVaultUR
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/vault.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/vault.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetVaultMedical #No longer used, all Vault dwellers got the same headset now
+  name: medical over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMedicalUR
+      - EncryptionKeyCommonUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/medical.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/medical.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetVaultSecurity #No longer used, all Vault dwellers got the same headset now
+  name: security over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurityUR
+      - EncryptionKeyCommonUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/security.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/security.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetVaultEngineering #No longer used, all Vault dwellers got the same headset now
+  name: engineering over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineeringUR
+      - EncryptionKeyCommonUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/engineering.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/engineering.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetVaultScience #No longer used, all Vault dwellers got the same headset now
+  name: science over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyScienceUR
+      - EncryptionKeyCommonUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/science.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/science.rsi
+
+#Misfits Change /Comment-out/: Duplicate BoS headsets removed — consolidated into _Misfits/Entities/Clothing/Ears/bos_headsets.yml.
+#- type: entity
+#  parent: N14ClothingHeadsetAlt
+#  id: N14ClothingHeadsetBOSMidwest
+#  name: Brotherhood radio earpiece
+#  components:
+#  - type: ContainerFill
+#    containers:
+#      key_slots:
+#      - EncryptionKeyBrotherhoodOfSteel
+#      - EncryptionKeyWastelandGlobal
+#  - type: Sprite
+#    sprite: Clothing/Ears/Headsets/command.rsi
+#  - type: Clothing
+#    sprite: Clothing/Ears/Headsets/command.rsi
+#
+#- type: entity
+#  parent: N14ClothingHeadsetAlt
+#  id: N14ClothingHeadsetBOSWashington
+#  name: Brotherhood radio earpiece
+#  components:
+#  - type: ContainerFill
+#    containers:
+#      key_slots:
+#      - EncryptionKeyBrotherhoodOfSteel
+#      - EncryptionKeyWastelandGlobal
+#  - type: Sprite
+#    sprite: Clothing/Ears/Headsets/security.rsi
+#  - type: Clothing
+#    sprite: Clothing/Ears/Headsets/security.rsi
+#  - type: Item
+#    sprite: Clothing/Ears/Headsets/security.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetEnclave
+  name: U.S. Army radio earpiece
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEnclaveUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/enclave_headset.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/enclave_headset.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetNCR
+  name: NCR radio earpiece
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyNCRUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/ncr.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/ncr.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetNCR
+  id: MisfitsClothingHeadsetOSI
+  name: OSI radio earpiece
+  description: An NCR headset fitted with separate Office of Science and Industry encryption.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyNCRUR
+      - EncryptionKeyOSIUR
+      - EncryptionKeyWastelandGlobal
+
+- type: entity
+  parent: N14ClothingHeadsetNCR
+  id: MisfitsClothingHeadsetNCRRanger
+  name: NCR Ranger radio earpiece
+  description: An NCR headset fitted with separate Ranger field encryption.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyNCRUR
+      - EncryptionKeyNCRRangersUR
+      - EncryptionKeyWastelandGlobal
+
+- type: entity
+  parent: N14ClothingHeadsetNCR
+  id: MisfitsClothingHeadsetNCRMaster
+  name: NCR radio earpiece
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyNCRMasterUR
+      - EncryptionKeyWastelandGlobal
+
+
+# #Misfits Change - Legion headset
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetLegion
+  name: Legion radio earpiece
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyLegionUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/legion.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/legion.rsi
+
+# #Misfits Add — Followers of the Apocalypse headset; grants both faction and wasteland channels
+- type: entity
+  parent: N14ClothingHeadsetLightScribe
+  id: N14ClothingHeadsetFollowers
+  name: Followers radio headset
+  components:
+  - type: Item
+    heldPrefix: off
+    size: Small
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyFollowersUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/followerslight.rsi
+    layers:
+    - state: icon
+    - state: light-icon
+      shader: unshaded
+      visible: false
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/followerslight.rsi
+    equippedPrefix: off

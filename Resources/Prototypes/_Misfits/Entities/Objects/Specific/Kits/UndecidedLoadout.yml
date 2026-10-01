@@ -1,0 +1,138 @@
+﻿- type: entity
+  id: LegionPriestessLoadoutKits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PriestessHealingSet
+    - PriestessZealotSet
+    - PriestessPurifierSet
+
+- type: UndecidedLoadoutBackpackSet
+  id: PriestessHealingSet
+  name: undecided-loadout-category-misfits-priestess-healing-name
+  description: undecided-loadout-category-misfits-priestess-healing-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitPriestessHealing
+
+- type: UndecidedLoadoutBackpackSet
+  id: PriestessZealotSet
+  name: undecided-loadout-category-misfits-priestess-zealot-name
+  description: undecided-loadout-category-misfits-priestess-zealot-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitPriestessZealot
+
+- type: UndecidedLoadoutBackpackSet
+  id: PriestessPurifierSet
+  name: undecided-loadout-category-misfits-priestess-purifier-name
+  description: undecided-loadout-category-misfits-priestess-purifier-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitPriestessPurifier
+
+  # acolyte kits
+
+- type: entity
+  id: LegionAcolyteLoadoutKits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AcolyteHealingSet
+    - AcolyteZealotSet
+    - AcolyteSlaverSet
+
+- type: UndecidedLoadoutBackpackSet
+  id: AcolyteHealingSet
+  name: undecided-loadout-category-misfits-acolyte-healing-name
+  description: undecided-loadout-category-misfits-acolyte-healing-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitAcolyteHealing
+
+- type: UndecidedLoadoutBackpackSet
+  id: AcolyteZealotSet
+  name: undecided-loadout-category-misfits-acolyte-zealot-name
+  description: undecided-loadout-category-misfits-acolyte-zealot-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitAcolyteZealot
+
+- type: UndecidedLoadoutBackpackSet
+  id: AcolyteSlaverSet
+  name: undecided-loadout-category-misfits-acolyte-slaver-name
+  description: undecided-loadout-category-misfits-acolyte-slaver-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitAcolyteSlaver
+
+# temple guard kits
+
+- type: entity
+  id: LegionTempleGuardLoadoutKits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - TempleGuardProtectorSet
+    - TempleGuardEnforcerSet
+    - TempleGuardExecutorSet
+
+- type: UndecidedLoadoutBackpackSet
+  id: TempleGuardProtectorSet
+  name: undecided-loadout-category-misfits-temple-guard-protector-name
+  description: undecided-loadout-category-misfits-temple-guard-protector-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitTempleGuardProtector
+
+- type: UndecidedLoadoutBackpackSet
+  id: TempleGuardEnforcerSet
+  name: undecided-loadout-category-misfits-temple-guard-enforcer-name
+  description: undecided-loadout-category-misfits-temple-guard-enforcer-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitTempleGuardEnforcer
+
+- type: UndecidedLoadoutBackpackSet
+  id: TempleGuardExecutorSet
+  name: undecided-loadout-category-misfits-temple-guard-executor-name
+  description: undecided-loadout-category-misfits-temple-guard-executor-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitTempleGuardExecutor

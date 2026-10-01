@@ -1,0 +1,162 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: N14ClothingUniformJumpsuitCaesar
+  name: сaesar tunic
+  description: "Pax Romana!"
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/caesar.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/caesar.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: N14ClothingUniformJumpsuitLegionnaire
+  name: legionnaire Tunic
+  description: Legionnaires tunic in standard colors.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/roman.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/roman.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: N14ClothingUniformJumpsuitLegionnaireOther
+  name: legionnaire Tunic
+  description: "Legionnaires skirt..."
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/romanskirt.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/romanskirt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: N14ClothingUniformJumpsuitSheriff
+  name: sheriff robe
+  description: "Comfortable attire with the badge of the regional sheriff."
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/sheriffsuit.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/sheriffsuit.rsi
+
+#Misfits Change /Comment-out/: Western BoS and Inquisitor uniforms removed — no Western BoS chapter or Inquisitor role in Misfits.
+#- type: entity
+#  parent: ClothingUniformBase
+#  id: NCClothingUniformJumpsuitWesternBoS
+#  name: Western BoS Uniform
+#  description: A rugged uniform of the Western Brotherhood of Steel, symbolizing strength and unity.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernBoS.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernBoS.rsi
+#
+#- type: entity
+#  parent: N14ClothingUniformBase
+#  id: N14ClothingUniformJumpsuitBOSWest
+#  name: Western BoS Uniform
+#  description: A uniform worn by members of the Brotherhood of Steel. This one is green.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernwest.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernwest.rsi
+#
+#- type: entity
+#  parent: N14ClothingUniformBase
+#  id: N14ClothingUniformBosReconWest
+#  name: Western BoS Uniform
+#  description: A uniform worn by members of the Brotherhood of Steel. This one is green.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernwestelder.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernwestelder.rsi
+#
+#- type: entity
+#  parent: N14ClothingUniformBase
+#  id: N14ClothingUniformJumpsuitBOSWestScribe
+#  name: Western BoS Scribe Uniform
+#  description: A uniform worn by members of the Brotherhood of Steel. This one is green.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernwestscribe.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/westernwestscribe.rsi
+#
+#- type: entity
+#  parent: N14ClothingUniformBase
+#  id: N14ClothingUniformJumpsuitBOSWestPaladin
+#  name: Western BoS Paladin Uniform
+#  description: A uniform worn by members of the Brotherhood of Steel. This one is green.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/paladin.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/paladin.rsi
+#
+#- type: entity
+#  parent: N14ClothingUniformBase
+#  id: N14ClothingUniformJumpsuitBOSWestKnight
+#  name: Western BoS Knight Uniform
+#  description: A uniform worn by members of the Brotherhood of Steel. This one is green.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/khing.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/khing.rsi
+#
+#- type: entity
+#  parent: N14ClothingUniformBase
+#  id: N14ClothingUniformJumpsuitBOSWestScout
+#  name: Western BoS Scout Uniform
+#  description: A uniform worn by members of the Brotherhood of Steel. This one is green.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/scout.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/scout.rsi
+#
+#- type: entity
+#  parent: N14ClothingUniformBase
+#  id: N14ClothingUniformJumpsuitInquisitorBOS
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/InquisitorUniform.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Uniforms/Jumpsuit/InquisitorUniform.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformJumpsuitRangerRoman
+  name:  Tunic of Fire
+  description:  A set of clothes consisting of a tunic that once belonged to a legionary, and a white cloth on top, richly decorated with the remains of fabric from the legionary clothing and several gold aureles of legionaries, on the belt is visible a richly decorated harness made of gold
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/rangeroman.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/rangeroman.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformJumpsuitShortOperative
+  name: Black short jumpsuit
+  description:  black jumpsuit with cropped sleeves
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/shortjumpsuit.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Uniforms/Jumpsuit/shortjumpsuit.rsi
+
+#Misfits Change /Fix/: Redirected sprite — Corvax NCRMPUniform.rsi removed (All Rights Reserved). Using _Nuclear14 NCR MP uniform.
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformJumpsuitNCRMP
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/NCRmp.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/NCRmp.rsi

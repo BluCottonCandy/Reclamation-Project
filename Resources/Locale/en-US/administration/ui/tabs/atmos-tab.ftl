@@ -1,0 +1,9 @@
+ui-tab-atmos-set-temperature-title = Temperature
+ui-tab-atmos-add-atmos = Add Atmosphere
+ui-tab-atmos-add-gas = Add Gas
+ui-tab-atmos-fill-gas = Fill with Gas
+ui-tab-atmos-grid = Grid
+ui-tab-atmos-tileX = Tile X
+ui-tab-atmos-tileY = Tile Y
+ui-tab-atmos-temperature = Temperature
+ui-tab-atmos-button = Apply

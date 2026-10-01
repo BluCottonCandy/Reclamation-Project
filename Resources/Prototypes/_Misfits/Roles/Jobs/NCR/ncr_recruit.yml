@@ -1,0 +1,46 @@
+- type: job
+  id: NCRCadet
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  showBorder: true # #Misfits Add - show border for NCR Recruit to make it visually distinct in the job selection screen
+  weight: 10
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  name: job-name-ncr-recruit
+  overwatchCategory: OverwatchNcrEnlisted
+  description: job-description-ncr-recruit
+  playTimeTracker: NCRTrooper
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+  startingGear: NCRCadetGear
+  icon: "JobIconNcrCadet" # Corvax-Change
+  supervisors: job-supervisors-ncr
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRCadetGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRSidecap
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
+    jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
+    shoes: N14ClothingBootsLeatherFilled
+    id: N14IDNCRDogtag
+  innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change
+
+- type: playTimeTracker
+  id: NCRTrooper

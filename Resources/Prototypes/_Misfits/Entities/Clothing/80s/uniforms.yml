@@ -1,0 +1,21 @@
+- type: entity
+  parent: N14ClothingUniformBase
+  id: MisfitsClothingUniform80sPants
+  name: oiled pants
+  description: A battered piece of cloth, distinguish itself from the smells of oils and stains of dirt.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Uniforms/pants.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Uniforms/pants.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: MisfitsClothingTheBlockPants
+  name: The Block Pants
+  description: A pair of pants with some shards of metal sticking out of it.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/80s/Uniforms/Theblockpants.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/80s/Uniforms/Theblockpants.rsi

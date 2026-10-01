@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": ".prosperity",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "radtoad",
+      "directions": 4
+    },
+    {
+      "name": "deadtoad"
+    }
+  ]
+}

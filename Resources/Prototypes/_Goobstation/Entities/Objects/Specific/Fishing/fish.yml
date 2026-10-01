@@ -1,0 +1,579 @@
+# SPDX-FileCopyrightText: 2025 Evige <jussi.heikkila1@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: BaseFish
+  parent: [N14MobBaseSimple, BaseItem]
+  abstract: true
+  name: fish
+  description: Water-born creature from the infinite sea... Or toilet.
+  components:
+  - type: Fish
+    difficulty: 0.029
+  - type: StaticPrice
+    price: 20
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1: Critical
+      5: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0.1
+    baseSprintSpeed: 0.1
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 20
+    damage:
+      types:
+        Asphyxiation: 1
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 1.0
+    damageRecovery:
+      types:
+        Asphyxiation: 0
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatFish
+      amount: 2
+  - type: Bloodstream
+    bloodMaxVolume: 20
+    bloodReagent: Blood
+  - type: ZombieImmune
+
+- type: entity
+  id: BaseFishRare
+  parent: BaseFish
+  abstract: true
+  name: rare fish
+  description: Water-born creature from the infinite sea... Or toilet.
+  components:
+  - type: Fish
+    difficulty: 0.01
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  id: FishAlien
+  parent: BaseFishRare
+  name: alien fish
+  description: Looks pretty... Abductory.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: alien
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishAngler
+  parent: BaseFish
+  name: angler fish
+  description: Scariest thing in existence, after bingles.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: angler
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishBass
+  parent: BaseFish
+  name: bass fish
+  description: Probably the most normal fish in existence. Unless you use it as bass guitar.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: bass
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishBingle
+  parent: BaseFishRare
+  name: bingle fish
+  description: bingle
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: bingle
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishBlob
+  parent: BaseFish
+  name: blob fish
+  description: Unfortuantly, this is not a 5th level bio-hazard threat.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: blob
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishBlueFintuna
+  parent: BaseFish
+  name: blue fintuna
+  description: It's looking straight to you...
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: blue_fintuna
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishBoyFisher
+  parent: BaseFishRare
+  name: boy fisher
+  description: You like kissing fish, don't you?
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: boy_fisher
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishCat
+  parent: BaseFish
+  name: cat fish
+  description: Ironically this looks nothing like a cat. And it doesn't meow.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: catfish
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishTropicalClown
+  parent: BaseFish
+  name: clown clown fish
+  description: That is almost certanly some kind of joke.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: clown
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+  - type: Bloodstream
+    bloodMaxVolume: 20
+    bloodReagent: Laughter
+
+- type: entity
+  id: FishNukeDisk
+  parent: BaseFishRare
+  name: nuke disk fish
+  description: Erm, Actually, it's a bad idea trying to fit a fish inside a nuclear explosion device.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: disk
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishGib
+  parent: BaseFishRare
+  name: gib stick fish
+  description: "My face when i open a present and get gibstick:"
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: gib
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishMutant
+  parent: BaseFishRare
+  name: mutant fish
+  description: Anomalous fish that looks like it ate some nuclear waste.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: mutant
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishNuker
+  parent: BaseFishRare
+  name: nuclear operative fish
+  description: Predator of the nuke disk fish.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: nuker
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishPuffer
+  parent: BaseFish
+  name: puffer fish
+  description: It is poisonous... in many ways.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: pufferfish
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishSilver
+  parent: BaseFish
+  name: silver fish
+  description: Actually contains silver.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: silverfish
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishTropicalSun
+  parent: BaseFish
+  name: tropical sun fish
+  description: It probably looked at the sun for too long...?
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: sun_tropical
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishToxic
+  parent: BaseFishRare
+  name: toxic waste fish
+  description: "Looking at this fish, you understand how much it was a bad idea to allow nuclear waste to be dumped into rivers."
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: toxic
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+- type: entity
+  id: FishTropical
+  parent: BaseFish
+  name: clown fish
+  description: This fish is always searching for something... Or maybe someone?
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: tropical
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+  - type: Bloodstream
+    bloodMaxVolume: 10
+    bloodReagent: Laughter
+
+- type: entity
+  id: FishIan
+  parent: BaseFishRare
+  name: ian fish
+  description: Water-born ian from the sea.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+    state: ian
+  - type: Item
+    sprite: _Goobstation/Objects/Specific/Fishing/fish.rsi
+
+# =========================
+# FISH PARENTS (N14)
+# =========================
+
+- type: entity
+  id: BaseFishWhite
+  parent: BaseFish
+  abstract: true
+  components:
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatWhitefishRaw
+      amount: 1
+    - id: FoodMeatWhitefishRaw
+      prob: 0.5
+      amount: 1
+    - id: FoodMeatWhitefishRaw
+      prob: 0.5
+      amount: 1
+
+
+- type: entity
+  id: BaseFishRed
+  parent: BaseFishRare
+  abstract: true
+  components:
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatRedfishRaw
+      amount: 1
+    - id: FoodMeatRedfishRaw
+      prob: 0.5
+      amount: 1
+    - id: FoodRedCaviar
+      prob: 0.5
+      amount: 1
+
+# =========================
+# COMMON FISH (WHITE MEAT)
+# =========================
+
+- type: entity
+  id: FishSardina
+  parent: BaseFishWhite
+  name: silverside
+  description: Small, nimble fish. A staple of wasteland diets.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/sardina
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/sardina
+
+- type: entity
+  id: FishCarp
+  parent: BaseFishWhite
+  name: river carp
+  description: The most ordinary fish. Stares at you with an empty gaze.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/carp
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/carp
+
+- type: entity
+  id: FishShrimp
+  parent: BaseFishWhite
+  name: titan shrimp
+  description: Mutated oversized shrimp. Lots of meat and lots of legs.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/shrimp
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/shrimp
+
+- type: entity
+  id: FishCrab
+  parent: BaseFishWhite
+  name: swamp crab
+  description: Nasty scavenger with a tough shell. Watch your fingers.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/cancer
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/cancer
+
+- type: entity
+  id: FishBone
+  parent: BaseFishWhite
+  name: skeleton fish
+  description: A creepy pile of bones that refuses to die. A great source of calcium and preservatives.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/bone-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/bone-fish
+
+- type: entity
+  id: FishStar
+  parent: BaseFishWhite
+  name: blood star
+  description: A pulsing sea star. Its slime heals burns well.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/star
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/star
+
+- type: entity
+  id: FishCarrot
+  parent: BaseFishWhite
+  name: mud flounder
+  description: Looks like a dirty carrot. Covered in a thick layer of useful clay.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/carrot-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/carrot-fish
+
+- type: entity
+  id: FishYorsh
+  parent: BaseFishWhite
+  name: silt ruffe
+  description: Slimy, spiny, and unpleasant. Secretes thick mucus.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/yorsh
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/yorsh
+
+# =========================
+# RARE FISH (RED MEAT + CAVIAR 50%)
+# =========================
+
+- type: entity
+  id: FishSvarka
+  parent: BaseFishRed
+  name: welder catfish
+  description: Lives in industrial runoff. Sparks when struck, full of flammable fat inside.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/svarka-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/svarka-fish
+
+- type: entity
+  id: FishPowerArmor
+  parent: BaseFishRed
+  name: armor fish
+  description: Fish with stone skin. To butcher it, you need an angle grinder, not a knife.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/powerarmor-carp
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/powerarmor-carp
+
+- type: entity
+  id: NF14FishAngler
+  parent: BaseFishRed
+  name: deep angler
+  description: A nightmare from the dark. Its lantern keeps glowing even after death.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/anglerfish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/anglerfish
+
+- type: entity
+  id: FishFugu
+  parent: BaseFishRed
+  name: rad puffer
+  description: An inflated ball full of deadly neurotoxin. A delicacy for the reckless.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/fugu
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/fugu
+
+- type: entity
+  id: FishClown
+  parent: BaseFishRed
+  name: clown fish
+  description: Makes funny noises when pressed. They say its meat can change human nature itself.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/clown-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/clown-fish
+
+- type: entity
+  id: FishLegion
+  parent: BaseFishRed
+  name: dream fish
+  description: It has too many eyes. Stare at it long enough and you might see the future... or just catch a trip.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/legion-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/legion-fish
+
+- type: entity
+  id: FishGun
+  parent: BaseFishRed
+  name: ballistic trout
+  description: A living weapon. Smells of gunpowder and violence. Be careful when butchering!
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/gun-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/gun-fish
+
+- type: entity
+  id: FishBomb
+  parent: BaseFishRed
+  name: pyro pike
+  description: Hot to the touch. Its insides can be used as explosives.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/bomb-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/bomb-fish
+
+- type: entity
+  id: FishGold
+  parent: BaseFishRed
+  name: golden carp
+  description: A living legend. Its scales are pure gold. Lucky to catch one!
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/gold-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/gold-fish
+
+- type: entity
+  id: FishExocoetidae
+  parent: BaseFishRed
+  name: air shark
+  description: Evolution gave it wings, and radiation gave it plasteel hide. Queen of the depths.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/exocoetidae
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/exocoetidae
+
+- type: entity
+  id: FishOctopus
+  parent: BaseFishRed
+  name: red octopus
+  description: A smart mollusk with a reserve of ink. Great for making smoke screens.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/octopus
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/octopus
+
+- type: entity
+  id: FishTropic
+  parent: BaseFishRed
+  name: acid eel
+  description: Bright coloring warns of danger. Secretes caustic acid.
+  components:
+  - type: Sprite
+    sprite: Corvax/Mobs/Fish/tropic-fish
+    state: icon
+  - type: Item
+    sprite: Corvax/Mobs/Fish/tropic-fish

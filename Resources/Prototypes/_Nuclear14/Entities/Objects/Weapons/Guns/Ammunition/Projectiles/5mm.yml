@@ -1,0 +1,19 @@
+- type: entity
+  id: N14Bullet5mm
+  name: bullet (5mm)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective # #Misfits Change Add: 5mm is sub-5.56mm; ricochets off power armor.
+    reflective:
+      - MediumCaliber # #Burger - changed to medium caliber; 5mm is sub-5.56 but is designed in lore as an AP round due to high velocity and small profile (was small caliber)
+      - NonEnergy
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 12 # Forge-Change
+  # Misfits Add - 5mm varmint/minigun round; small caliber with notable energy loss
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 6.0
+    maxFalloffTiles: 12.0
+    minDamageMultiplier: 0.50

@@ -1,0 +1,15 @@
+﻿- type: reagent
+  id: yankelsteinium
+  name: reagent-name-yankelsteinium
+  group: Toxins
+  desc: reagent-desc-yankelsteinium
+  flavor: bitter
+  color: "#ada4a3"
+  physicalDesc: reagent-physical-desc-scary
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: 10

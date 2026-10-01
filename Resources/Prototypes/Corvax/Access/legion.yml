@@ -1,0 +1,264 @@
+- type: accessLevel
+  id: CaesarLegion
+  name: id-card-access-level-legion
+
+- type: accessLevel
+  id: CaesarLegionSlave
+  name: id-card-access-level-legion-slave
+
+- type: accessLevel
+  id: CaesarLegionRecruit
+  name: id-card-access-level-legion-recruit
+
+- type: accessLevel
+  id: CaesarLegionTrader
+  name: id-card-access-level-legion-trader
+
+- type: accessLevel
+  id: CaesarLegionHoundmaster
+  name: id-card-access-level-legion-houndmaster
+
+- type: accessLevel
+  id: CaesarLegionFrumentarii
+  name: id-card-access-level-legion-frumentarii
+
+- type: accessLevel
+  id: CaesarLegionVexillarius
+  name: id-card-access-level-legion-vexillarius
+
+- type: accessLevel
+  id: CaesarLegionExplorer
+  name: id-card-access-level-legion-explorer
+
+- type: accessLevel
+  id: CaesarLegionLegionnaireRecruit
+  name: id-card-access-level-legion-recruit-legionary
+
+- type: accessLevel
+  id: CaesarLegionLegionnaireWarrior
+  name: id-card-access-level-legion-prime-legionary
+
+- type: accessLevel
+  id: CaesarLegionLegionnaireVeteran
+  name: id-card-access-level-legion-veteran-legionary
+
+- type: accessLevel
+  id: CaesarLegionDean
+  name: id-card-access-level-legion-decanus
+
+- type: accessLevel
+  id: CaesarLegionVeteranDecanus
+  name: id-card-access-level-legion-veteran-decanus
+
+- type: accessLevel
+  id: CaesarLegionPriestessOfMars
+  name: id-card-access-level-legion-priestess-of-mars
+
+- type: accessLevel
+  id: CaesarLegionAcolyteOfMars
+  name: id-card-access-level-legion-acolyte-of-mars
+
+- type: accessLevel
+  id: CaesarLegionTempleGuard
+  name: id-card-access-level-legion-temple-guard
+
+- type: accessLevel
+  id: CaesarLegionOptio
+  name: id-card-access-level-legion-optio
+
+- type: accessLevel
+  id: CaesarLegionCenturion
+  name: id-card-access-level-legion-centurion
+
+- type: accessLevel
+  id: CaesarLegionLegate
+  name: id-card-access-level-legion-legate
+
+# #Misfits Fix: Legion access hierarchy rebuilt.
+# Previously EVERY group (including Slave) carried the base CaesarLegion tag AND inherited
+# CaesarLegionSlave, so the base tag matched every Legion ID and rank doors were meaningless.
+# Now: Slaves carry ONLY CaesarLegionSlave; CaesarLegion/CaesarLegionRecruit is the non-slave
+# base; each rank adds its own tag and never inherits CaesarLegionSlave.
+- type: accessGroup
+  id: CaesarLegionSlave
+  tags:
+  - CaesarLegionSlave
+
+- type: accessGroup
+  id: CaesarLegionRecruit
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+
+- type: accessGroup
+  id: CaesarLegionTrader
+  tags:
+  - CaesarLegionTrader
+
+- type: accessGroup
+  id: CaesarLegionHoundmaster
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionHoundmaster
+
+- type: accessGroup
+  id: CaesarLegionFrumentarii
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionHoundmaster
+  - CaesarLegionFrumentarii
+  - CaesarLegionVexillarius
+  - CaesarLegionExplorer
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionVeteranDecanus # yes frum have access to everyone except cent, legate, and optio. they are the legio cia. wah wah -legate tytos
+
+- type: accessGroup
+  id: CaesarLegionVexillarius
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionVexillarius
+
+- type: accessGroup
+  id: CaesarLegionExplorer
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionExplorer
+
+- type: accessGroup
+  id: CaesarLegionLegionnaireRecruit
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+
+- type: accessGroup
+  id: CaesarLegionLegionnaireWarrior
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+
+- type: accessGroup
+  id: CaesarLegionLegionnaireVeteran
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+
+- type: accessGroup
+  id: CaesarLegionDean
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+
+- type: accessGroup
+  id: CaesarLegionVeteranDecanus
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionVeteranDecanus
+
+- type: accessGroup
+  id: CaesarLegionPriestessOfMars
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionTempleGuard
+  - CaesarLegionAcolyteOfMars
+  - CaesarLegionPriestessOfMars
+
+- type: accessGroup
+  id: CaesarLegionAcolyteOfMars
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionTempleGuard
+  - CaesarLegionAcolyteOfMars
+
+- type: accessGroup
+  id: CaesarLegionTempleGuard
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionTempleGuard
+
+- type: accessGroup
+  id: CaesarLegionOptio
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionTrader
+  - CaesarLegionHoundmaster
+  - CaesarLegionFrumentarii
+  - CaesarLegionVexillarius
+  - CaesarLegionExplorer
+  - CaesarLegionOptio
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionVeteranDecanus
+  - CaesarLegionAcolyteOfMars
+  - CaesarLegionPriestessOfMars
+
+
+- type: accessGroup
+  id: CaesarLegionCenturion
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionTrader
+  - CaesarLegionHoundmaster
+  - CaesarLegionFrumentarii
+  - CaesarLegionVexillarius
+  - CaesarLegionExplorer
+  - CaesarLegionOptio
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionVeteranDecanus
+  - CaesarLegionCenturion
+  - CaesarLegionAcolyteOfMars
+  - CaesarLegionPriestessOfMars
+
+- type: accessGroup
+  id: CaesarLegionLegate
+  tags:
+  - CaesarLegion
+  - CaesarLegionRecruit
+  - CaesarLegionTrader
+  - CaesarLegionHoundmaster
+  - CaesarLegionFrumentarii
+  - CaesarLegionVexillarius
+  - CaesarLegionExplorer
+  - CaesarLegionOptio
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionAcolyteOfMars
+  - CaesarLegionVeteranDecanus
+  - CaesarLegionPriestessOfMars
+  - CaesarLegionCenturion
+  - CaesarLegionLegate
+
+

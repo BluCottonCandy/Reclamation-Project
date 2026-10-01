@@ -1,0 +1,57 @@
+- type: job
+  id: NCRExecutiveOfficer
+  setPreference: true
+  hideWithoutJobWhitelist: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  overrideConsoleVisibility: false
+  canBeAntag: true
+  name: job-name-ncr-executive-officer
+  overwatchCategory: OverwatchNcrOfficers
+  description: job-description-ncr-executive-officer
+  playTimeTracker: NCRExecutiveOfficer
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # T6 faction timelock (20h NCR)
+      department: NCR
+      min: 72000 # 20 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRSquadLeader
+      min: 28800 # 8 hours as NCO
+  weight: 110
+  startingGear: NCRExecutiveOfficerGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-commander
+  requireAdminNotify: true
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRExecutiveOfficerGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretOfficer
+    ears: MisfitsClothingHeadsetNCRMaster
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingOfficerUniformNCRDesert
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagOfficer
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+
+- type: playTimeTracker
+  id: NCRExecutiveOfficer

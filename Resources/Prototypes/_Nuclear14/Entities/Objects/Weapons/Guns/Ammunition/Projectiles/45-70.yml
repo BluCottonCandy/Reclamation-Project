@@ -1,0 +1,16 @@
+- type: entity
+  id: N14Bullet45-70
+  name: bullet (.45-70 gov't)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35
+        Blunt: 5
+  # Misfits Add - .45-70 lever-action; big slow bullet, moderate-good range retention
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 9.0
+    maxFalloffTiles: 18.0
+    minDamageMultiplier: 0.57

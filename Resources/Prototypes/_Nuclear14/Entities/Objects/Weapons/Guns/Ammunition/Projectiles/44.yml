@@ -1,0 +1,16 @@
+- type: entity
+  id: N14Bullet44
+  name: bullet (.44 magnum)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 30
+        Blunt: 5
+  # Misfits Add - .44 Magnum high-velocity revolver round; better range than standard pistol
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 10.0
+    maxFalloffTiles: 15.0
+    minDamageMultiplier: 0.52

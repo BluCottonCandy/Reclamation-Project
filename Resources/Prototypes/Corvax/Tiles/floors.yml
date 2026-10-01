@@ -1,0 +1,277 @@
+
+# #Misfits Fix: these Corvax wasteland tile names are localized at runtime, so they must use locale keys rather than raw English labels.
+- type: tile
+  id: ForgeFloorWasteland # Forge-Tiles
+  name: tiles-forge-wasteland-floor
+  sprite: /Textures/Corvax/Tiles/wasteland.png
+  variants: 4
+  placementVariants: [0, 1, 2, 3]
+  # #Misfits Tweak: Wendover uses Forge wasteland variants, so opt them into the same terrain blend group.
+  blendGroup: terrain
+  blendPriority: 0
+  blendMaskSet: soft-terrain
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandBottom # Forge-Tiles
+  name: tiles-forge-swampland-bottom-floor
+  sprite: /Textures/Corvax/Tiles/wasteswampbottom.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandTop # Forge-Tiles
+  name: tiles-forge-swampland-top-floor
+  sprite: /Textures/Corvax/Tiles/wasteswamptop.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandRight # Forge-Tiles
+  name: tiles-forge-swampland-right-floor
+  sprite: /Textures/Corvax/Tiles/wasteswampright.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandLeft # Forge-Tiles
+  name: tiles-forge-swampland-left-floor
+  sprite: /Textures/Corvax/Tiles/wasteswampleft.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandTopRight # Forge-Tiles
+  name: tiles-forge-swampland-top-right-floor
+  sprite: /Textures/Corvax/Tiles/wasteswamptopright.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandTopLeft # Forge-Tiles
+  name: tiles-forge-swampland-top-left-floor
+  sprite: /Textures/Corvax/Tiles/wasteswamptopleft.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandTopRightCorner # Forge-Tiles
+  name: tiles-forge-swampland-top-right-corner-floor
+  sprite: /Textures/Corvax/Tiles/wasteswamptoprightcorner.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandTopLeftCorner # Forge-Tiles
+  name: tiles-forge-swampland-top-left-corner-floor
+  sprite: /Textures/Corvax/Tiles/wasteswamptopleftcorner.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandBottomRight # Forge-Tiles
+  name: tiles-forge-swampland-bottom-right-floor
+  sprite: /Textures/Corvax/Tiles/wasteswampbottomright.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandBottomLeft # Forge-Tiles
+  name: tiles-forge-swampland-bottom-left-floor
+  sprite: /Textures/Corvax/Tiles/wasteswampbottomleft.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandBottomRightCorner # Forge-Tiles
+  name: tiles-forge-swampland-bottom-right-corner-floor
+  sprite: /Textures/Corvax/Tiles/wasteswampbottomrightcorner.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorSwamplandBottomLeftCorner # Forge-Tiles
+  name: tiles-forge-swampland-bottom-left-corner-floor
+  sprite: /Textures/Corvax/Tiles/wasteswampbottomleftcorner.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorWastelandDesertVariative # Forge-Tiles
+  name: tiles-forge-dry-desert-floor
+  sprite: /Textures/Corvax/Tiles/wastelanddesertvariative.png
+  variants: 3
+  placementVariants: [0, 1, 2]
+  blendGroup: terrain
+  blendPriority: 0
+  blendMaskSet: soft-terrain
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorWastelandSavansmall # Forge-Tiles
+  name: tiles-forge-small-savanna-grass-floor
+  sprite: /Textures/Corvax/Tiles/savansmall.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorWastelandSavanbig # Forge-Tiles
+  name: tiles-forge-large-savanna-grass-floor
+  sprite: /Textures/Corvax/Tiles/savanbig.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorCaveDesert # Forge-Tiles
+  name: tiles-forge-desert-cave-floor
+  sprite: /Textures/Corvax/Tiles/cavedesert.png
+  baseTurf: FloorWasteland
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  id: ForgeFloorWastelandDesert # Forge-Tiles
+  name: tiles-forge-desert-floor
+  sprite: /Textures/Corvax/Tiles/wastelanddesert.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: ForgeFloorGroundDesert # Forge-Tiles
+  name: tiles-forge-desert-ground-floor
+  sprite: /Textures/Corvax/Tiles/grounddesert.png
+  baseTurf: space
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepDirt
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: true
+  indestructible: true

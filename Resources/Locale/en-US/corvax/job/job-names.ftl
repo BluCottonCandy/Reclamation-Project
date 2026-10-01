@@ -1,0 +1,61 @@
+job-name-iaa = Internal Affairs Agent
+job-name-pilot = Pilot
+JobIAA = Internal Affairs Agent
+JobPilot = Pilot
+# Corvax N14
+job-name-caesar-legion-legate = Legion Legate
+job-description-caesar-legion-legate = Command Caesar's Legion as its supreme field authority and enforce Caesar's will above all other legionaries.
+job-name-caesar-legion-centurion = Legion Centurion
+job-description-caesar-legion-centurion = Lead the Legion beneath the Legate, coordinate officers, and direct the chapter's major campaigns.
+job-name-caesar-legion-veteran-decanus = Legion Veteran Decanus
+job-description-caesar-legion-veteran-decanus = Serve as a seasoned decanus trusted to command veteran legionaries and enforce discipline in Caesar's ranks.
+job-name-caesar-legion-frumentarii = Legion Frumentarii
+job-description-caesar-legion-frumentarii = Serve as Caesar's most trusted eyes, ears, and blades. The Frumentarii gather intelligence, eliminate threats from the shadows, and ensure Caesar's will is carried out beyond the Legion's main force.
+job-name-caesar-legion-vexillarius = Legion Vexillarius
+job-description-caesar-legion-vexillarius = Carry the Legion's standard into battle and rally Caesar's warriors wherever the line begins to falter.
+job-name-caesar-legion-prime-decanus = Legion Prime Decanus
+job-description-caesar-legion-prime-decanus = Command a unit of hardened legionaries as a Prime Decanus. You are the proven backbone of the Legion's officer corps — battle-experienced, disciplined, and trusted with greater authority than a common Decanus.
+job-name-caesar-legion-explorer = Legion Explorer
+job-description-caesar-legion-explorer = Range ahead of the Legion's main force as a scout and hunter. Your eyes and your blade are Caesar's reach into the wilds.
+job-name-caesar-legion-optio = Legion Optio
+job-description-caesar-legion-optio = The second in command, manage the Legion's diplomacy and assist the Centurion on all matters, you are in training to become a Centurion yourself.
+job-name-caesar-legion-dean = Legion Decanus
+job-description-caesar-legion-dean = Lead a smaller fighting unit of the Legion and keep the legionaries beneath you battle-ready and obedient.
+job-name-caesar-legion-forgemaster = Legion Forgemaster
+job-description-caesar-legion-forgemaster = Oversee the Legion's forges and workshop to produce and maintain equipment for Caesar's war machine. Determine what orders to prioritize or reject, keep troublesome recruits from wasting all the steel.
+job-name-caesar-legion-legionnaire-veteran = Legion Veteran Legionnaire
+job-description-caesar-legion-legionnaire-veteran = Fight as a hardened veteran of Caesar's Legion, trusted with the front line's most brutal work.
+job-description-caesar-legionnaire-veteran = Fight as a hardened veteran of Caesar's Legion, trusted with the front line's most brutal work.
+job-name-caesar-legion-legionnaire-warrior = Legion Prime Legionnaire
+job-description-caesar-legion-legionnaire-warrior = Serve as a proven legionary in the Legion's main battle line and hold the standard of Caesar in combat.
+job-description-caesar-legionnaire-warrior = Serve as a proven legionary in the Legion's main battle line and hold the standard of Caesar in combat.
+job-name-caesar-legion-legionnaire-recruit = Legion Legionnaire
+job-description-caesar-legionnaire-recruit = Begin your service as a line legionary, learning discipline and violence under the Legion's command structure.
+job-name-caesar-legion-houndmaster = Legion Houndmaster
+job-description-caesar-legion-houndmaster = Handle the Legion's war dogs and bring them to bear against Caesar's enemies.
+job-name-caesar-legion-auxilia = Legion Auxilia
+job-description-caesar-legion-auxilia = Keep Caesar's warriors in the fight with wasteland medicine, battlefield triage, and discipline equal to any other legionary.
+job-name-caesar-legion-priestess-of-mars = Priestess of Mars
+job-description-caesar-legion-priestess-of-mars = Serve as a sacred woman of the Legion, tending to the spiritual needs of Caesar's warriors, ministering holy rites in the name of Mars, and lending aid to those who fight in his name.
+# #Misfits Change: Legion Recruit removed — replaced by Legionnaire as the entry-level rank.
+# job-name-caesar-legion-recruit = Legion Recruit
+# job-description-caesar-legion-recruit = Enter the Legion at its lowest free rank and prove you deserve to join the legionaries.
+job-name-caesar-legion-citizen = Legion Civilian
+job-description-caesar-legion-citizen = You are a citizen of a tribute town within Caesar's Legion. You follow legion law and Mars, but are neither a slave nor a Legionary.
+job-name-caesar-legion-trader = Legion Trader
+job-description-caesar-legion-trader = You are a caravaneer who works with and in Legion Territory. Its always been safer than the NCR routes.
+job-name-caesar-legion-slave = Legion Slave
+job-description-caesar-legion-slave = You are a slave of Caesar's Legion. Obey, survive, and remember that your life belongs to your masters.
+
+# Misfits Change /Comment-out/: Western BoS chapter removed.
+# # Western BoS
+# job-name-bos-west-elder-comm = Brotherhood Elder
+# job-description-bos-west-elder-comm = Command the entire Brotherhood chapter and decide its doctrine, diplomacy, and strategic goals.
+# job-name-bos-west-paladin = Brotherhood Senior Paladin
+# job-description-bos-west-paladin = Serve as a seasoned paladin trusted with the Brotherhood's most dangerous operations.
+# job-name-bos-west-knight = Brotherhood Senior Knight
+# job-description-bos-west-knight = Act as an experienced knight who anchors Brotherhood patrols and defends recovered assets.
+# job-name-bos-west-scribe = Brotherhood Head Scribe
+# job-description-bos-west-scribe = Lead the scribes, control technical doctrine, and safeguard the chapter's knowledge.
+# job-name-bos-west-gunsmith = Brotherhood Squire
+# job-description-bos-west-gunsmith = Maintain Brotherhood equipment while training under the chapter's senior members.

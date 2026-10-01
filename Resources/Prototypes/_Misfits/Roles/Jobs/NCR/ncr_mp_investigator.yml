@@ -1,0 +1,56 @@
+- type: job
+  id: NCRMPinvestigator
+  setPreference: false
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  name: job-name-ncr-mp-investigator #Misfits Change
+  overwatchCategory: OverwatchNcrMp
+  description: job-description-ncr-mp-investegator
+  playTimeTracker: NCRMPinvestigator
+  requirements:
+    - !type:CharacterWhitelistRequirement
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: NCR
+      min: 216000 # 60 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRExecutiveOfficer
+      min: 216000 # 60 hours
+  startingGear: NCRMPinvestigatorGear
+  alwaysUseSpawner: true
+  icon: "JobIconNCRMPInvestegator"
+  supervisors: job-supervisors-ncr-mp
+  access:
+  - NCR
+  - NCRSGT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+      - type: GrantRangerCombat
+
+- type: startingGear
+  id: NCRMPinvestigatorGear
+  equipment:
+    wallet: N14Wallet
+    head:  N14ClothingHeadHatNCRMPCap
+    ears: N14ClothingHeadsetNCR
+    back: N14ClothingBackpackMilitary
+    jumpsuit: N14ClothingUniformJumpsuitNCRMP
+    shoes: N14ClothingBootsCombatFilled
+    outerClothing: MisfitsNCRMPCombatArmor
+    pocket1: NCRMPinvestigatorKits
+    hands: N14ClothingHandsGlovesCombat
+    id: N14IDNCRDogtagMPInvestigator
+    eyes: ClothingEyesGlassesSunglasses
+
+- type: playTimeTracker
+  id: NCRMPinvestigator

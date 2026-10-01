@@ -1,0 +1,47 @@
+# FactionPlansX = X faction needs to keep it secure and or find it and keep it till round end.
+# Quest = Objectives that factions need to find in the wastes.
+
+## Factions
+- type: stealTargetGroup
+  id: FactionPlansNCR
+  name: NCR Plans Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_red
+
+- type: stealTargetGroup
+  id: FactionPlansEnclave
+  name: U.S. Army Plans Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_enclave
+
+- type: stealTargetGroup
+  id: FactionPlansVault
+  name: GECK Location Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_green
+
+- type: stealTargetGroup
+  id: FactionPlansBOSW
+  name: Brotherhood Plans Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_blue
+
+# #Misfits Change - Legion intelligence holotape for cross-faction steal objectives
+- type: stealTargetGroup
+  id: FactionPlansLegion
+  name: Legion Orders Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_black
+
+## Quests
+- type: stealTargetGroup
+  id: QuestHolotapeFusionplans
+  name: Fusion Plans Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_yellow

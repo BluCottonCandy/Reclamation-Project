@@ -1,0 +1,182 @@
+# wood shelves
+
+- type: construction
+  name: basic wooden shelf
+  id: N14ShelfWood1
+  graph: ShelvesWood
+  startNode: start
+  targetNode: ShelfWood
+  category: construction-category-storage
+  description: A dusty old shelf.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/np13_misc.rsi
+    state: shelf_wood
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: tall wooden shelf
+  id: N14ShelfWood
+  graph: ShelvesWood
+  startNode: start
+  targetNode: ShelfWoodTall
+  category: construction-category-storage
+  description: A tall wooden shelf.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/64x96_furniture.rsi
+    state: wood_shelf
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: wooden showcase shelves
+  id: N14ShelfWoodShowcase
+  graph: ShelvesWood
+  startNode: start
+  targetNode: ShelfWoodShowcase
+  category: construction-category-storage
+  description: A wooden showcase for displaying items.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/64x64_furniture.rsi
+    state: showcase
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: wooden stand
+  id: N14ShelfWoodStand
+  graph: ShelvesWood
+  startNode: start
+  targetNode: ShelfWoodStand
+  category: construction-category-storage
+  description: A stand, not a sit. Good for plants or trophies.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/64x96_furniture.rsi
+    state: stand_wood
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: small wooden stand
+  id: N14ShelfWoodStandSmall
+  graph: ShelvesWood
+  startNode: start
+  targetNode: ShelfWoodStandSmall
+  category: construction-category-storage
+  description: A small stand. For small people.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/64x96_furniture.rsi
+    state: stand_wood_small
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: wooden clothes rack
+  id: N14ShelfWoodClothesRack
+  graph: ShelvesWood
+  startNode: start
+  targetNode: ShelfWoodClothesRack
+  category: construction-category-storage
+  description: A wooden rack for storing clothes.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/64x96_furniture.rsi
+    state: clothing_rack
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+# #Cythisiax Added - Crafting menu expansion: furniture (bench, store)
+- type: construction
+  name: wooden bench
+  id: WoodenBench
+  graph: MisfitsWoodBench
+  startNode: start
+  targetNode: WoodBench
+  category: construction-category-furniture
+  description: Did you get a splinter? Well, at least it's eco friendly.
+  hide: false
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: wooden-bench
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: deli counter
+  id: N14StoreDeliCounter
+  graph: MisfitsStoreDeliCounter
+  startNode: start
+  targetNode: StoreDeliCounter
+  category: construction-category-storage
+  description: A metal counter for showing off food.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/Store_Furniture/delistand.rsi
+    state: deli_stand
+  objectType: Structure
+  placementMode: PlaceFree
+
+- type: construction
+  name: fruit stand
+  id: N14StoreFruitstand
+  graph: MisfitsStoreFruitstand
+  startNode: start
+  targetNode: StoreFruitstand
+  category: construction-category-storage
+  description: A box for displaying produce.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/Store_Furniture/fruitstand.rsi
+    state: fruitstand_empty
+  objectType: Structure
+  placementMode: PlaceFree
+
+- type: construction
+  name: fruit stand
+  id: N14StoreFruitstand1
+  graph: MisfitsStoreFruitstand
+  startNode: start
+  targetNode: StoreFruitstand1
+  category: construction-category-storage
+  description: A box for displaying produce. This one has stuff in it.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/Store_Furniture/fruitstand.rsi
+    state: fruitstand-1
+  objectType: Structure
+  placementMode: PlaceFree
+
+- type: construction
+  name: fruit stand
+  id: N14StoreFruitstand2
+  graph: MisfitsStoreFruitstand
+  startNode: start
+  targetNode: StoreFruitstand2
+  category: construction-category-storage
+  description: A box for displaying produce. This one has stuff in it.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/Store_Furniture/fruitstand.rsi
+    state: fruitstand-2
+  objectType: Structure
+  placementMode: PlaceFree
+
+- type: construction
+  name: fruit stand
+  id: N14StoreFruitstand3
+  graph: MisfitsStoreFruitstand
+  startNode: start
+  targetNode: StoreFruitstand3
+  category: construction-category-storage
+  description: A box for displaying produce. This one has stuff in it.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/Store_Furniture/fruitstand.rsi
+    state: fruitstand-3
+  objectType: Structure
+  placementMode: PlaceFree

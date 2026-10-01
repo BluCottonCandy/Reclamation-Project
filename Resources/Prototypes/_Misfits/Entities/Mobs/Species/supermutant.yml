@@ -1,0 +1,229 @@
+# Super Mutant base mob entity.
+# Full humanoid species with hands, inventory, and clothing support.
+# Doubled health thresholds (200 crit / 400 dead), 50% damage reduction,
+# immune to radiation and stamina damage. Uses supermutant inventory template
+# restricting body-worn slots to SuperMutantWearable-tagged clothing only.
+
+- type: entity
+  save: false
+  name: super mutant
+  id: N14BaseMobSuperMutant
+  parent: BaseMobSpeciesOrganic
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: SuperMutant
+  - type: Inventory
+    templateId: supermutant
+    speciesId: supermutant
+  - type: Body
+    prototype: SuperMutant
+    requiredLegs: 2
+  - type: Icon
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: full
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    netsync: false
+    noRot: true
+    drawdepth: Mobs
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+        state: l_leg
+      - shader: StencilMask
+        map: [ "enum.HumanoidVisualLayers.StencilMask" ]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: female_full
+        visible: false
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "id" ]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+  - type: Perishable
+    rotAfter: 3600
+  - type: Hunger
+    baseDecayRate: 0.024 # #Misfits Add - 3x human default (0.008) to reflect massive size / accelerated metabolism
+    starvationDamage:    # Misfits Change - use custom Starvation type
+      types:
+        Starvation: 0.15
+    recoveryDamage:      # Misfits Add
+      types:
+        Starvation: -0.30
+    starvingSlowdownModifier: 0.5
+  - type: Thirst
+    dehydrationDamage:   # Misfits Add - Dehydration damage
+      types:
+        Dehydration: 0.15
+    recoveryDamage:      # Misfits Add - Dehydration damage
+      types:
+        Dehydration: -0.30
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: SuperMutant
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.0
+    baseSprintSpeed: 3.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      400: Dead
+  - type: Stamina
+    critThreshold: 1000 # 10x human
+    decay: 30   # 10x recovery
+  # #Misfits Add - innate fireman carry. A mutant hauls a body one-handed; carrying or
+  # dragging someone costs them no speed. Only the two player mobs inherit from here
+  # (player supermutant and nightkin) - hostile NPCs sit on the N14MobBaseHostile chain.
+  # The FiremanCarry trait is hidden from these species so the -2 points aren't wasted.
+  - type: CanFiremanCarry
+  # Misfits Change - radiation is absorbed as healing fuel rather than damage.
+  # healFactor 0.1 (default) ≈ 2× super stimpack rate in a moderate rad zone (~50 rads/sec).
+  # healCap scaled to SM health: 360 = 90% of 400 dead threshold (vs 90 = 90% of 100 crit for humans).
+  - type: RadiationReceiver
+  - type: RadiationHealing
+    healCap: 360
+  # Misfits Change - base fist damage 15 (2x Oni modifier brings effective damage to 30).
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 15
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  # Player supermutants use the vocalizations of the existing NPC variants.
+  - type: Vocal
+    sounds:
+      Male: MisfitsSuperMutantEmotes
+      Female: MisfitsSuperMutantEmotes
+      Unsexed: MisfitsSuperMutantEmotes
+  # Misfits Change - 2x multiplier on all outgoing melee damage (unarmed + wielded weapons).
+  - type: Oni
+    modifiers:
+      coefficients:
+        Blunt: 2.0
+        Slash: 2.0
+        Piercing: 2.0
+        Shock: 2.0
+  - type: MeleeThrowOnHit
+    speed: 15
+    lifetime: 0.025
+  # Misfits Change - stuns the grabbed target for 1 second on successful carry.
+  - type: GrabStun
+    stunTime: 1
+  - type: Tag # #Misfits Add - Super Mutants cannot ride mounts (too heavy)
+    tags:
+    - CannotRide
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+  # #Misfits Add - Super Mutants are big stompy bois. Loud footsteps.
+  - type: FootstepVolumeModifier
+    sprintVolumeModifier: 15
+    walkVolumeModifier: 15
+  - type: Butcherable
+    butcheringType: Spike # big fellas still need a spike
+    spawned:
+    - id: N14FoodMeatSupermutant
+      amount: 5
+
+- type: entity
+  save: false
+  parent: MobHumanDummy
+  id: N14MobSuperMutantDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: SuperMutant
+  - type: Icon
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: full
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+        state: l_leg
+      - shader: StencilMask
+        map: [ "enum.HumanoidVisualLayers.StencilMask" ]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: female_full
+        visible: false
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "id" ]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "innerBelt" ]
+      - map: [ "innerNeck" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+  - type: Inventory
+    templateId: supermutant
+    speciesId: supermutant

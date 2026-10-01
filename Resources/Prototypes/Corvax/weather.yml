@@ -1,0 +1,53 @@
+- type: weather
+  id: NCRadioactiveParticles
+  sprite:
+    sprite: /Textures/Effects/weather.rsi
+    state: fallout
+  sound:
+    collection: NCRadioactiveParticles
+    params:
+      loop: true
+      volume: -6
+  duration: 180
+  radioactive: true
+  rads: 2
+  showMessage: true
+  chance: 1 # Misfits: reduced from 2
+  sender: weather-announcement
+  message: weather-radioactive-particles
+
+- type: weather
+  id: NCRadioactiveRain
+  sprite:
+    sprite: /Textures/Effects/weather.rsi
+    state: rain_radioactive
+  sound:
+    path: /Audio/Effects/Weather/rain2.ogg
+    params:
+      loop: true
+      volume: -5
+  duration: 180
+  radioactive: true
+  rads: 0.75
+  showMessage: true
+  chance: 1 # Misfits: reduced from 2
+  sender: weather-announcement
+  message: weather-radioactive-rain
+
+- type: weather
+  id: NCRadioactiveStorm
+  sprite:
+    sprite: /Textures/Effects/weather.rsi
+    state: storm_radioactive
+  sound:
+    path: /Audio/Effects/Weather/rain_heavy.ogg
+    params:
+      loop: true
+      volume: -6
+  duration: 180
+  radioactive: true
+  rads: 1
+  showMessage: true
+  chance: 1
+  sender: weather-announcement
+  message: weather-radioactive-rain

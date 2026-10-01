@@ -1,0 +1,16 @@
+# #Misfits Add - Paracusia perk hallucination + whisper datasets. Kept thematically
+# separate from Stealth Boy datasets so a perk-only character never hears stealth-boy
+# flavor lines (and vice versa). Resolved against
+# Resources/Locale/en-US/_Misfits/traits/paracusia-hallucinations.ftl.
+
+- type: localizedDataset
+  id: ParacusiaHallucinations
+  values:
+    prefix: paracusia-hallucination-
+    count: 152
+
+- type: localizedDataset
+  id: ParacusiaWhispers
+  values:
+    prefix: paracusia-whisper-
+    count: 58

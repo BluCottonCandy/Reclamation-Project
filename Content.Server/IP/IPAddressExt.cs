@@ -93,4 +93,24 @@ namespace Content.Server.IP
                 // And convert the IpAddress to a BitArray.
                 var ipAddressBits = new BitArray(address.GetAddressBytes());
 
-                if (maskAddressBits.Le
+                if (maskAddressBits.Length != ipAddressBits.Length)
+                {
+                    return false;
+                }
+
+                // Compare the prefix bits.
+                for (int maskIndex = 0; maskIndex < maskLength; maskIndex++)
+                {
+                    if (ipAddressBits[maskIndex] != maskAddressBits[maskIndex])
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            throw new NotSupportedException("Only InterNetworkV6 or InterNetwork address families are supported.");
+        }
+    }
+}

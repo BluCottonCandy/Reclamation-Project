@@ -1,0 +1,81 @@
+﻿
+- type: entity
+  name: Dr. Thumper
+  id: MisfitsMobRabbitFollowersPet
+  parent: N14MobRabbit
+  description: A highly trained professional.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    - CannotSuicide
+  - type: Temperature
+    heatDamageThreshold: 800
+    coldDamageThreshold: 0
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/punch3.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 2.5
+  - type: MobPrice
+    price: 3000 # it is a truly valuable creature
+  - type: NpcFactionMember
+    factions:
+    - Followers
+  - type: GhostRole
+    name: ghost-role-information-misfitpet-rabbit-followers-name
+    description: ghost-role-information-misfit-faction-description
+    rules: ghost-role-component-default-rules
+  - type: GhostTakeoverAvailable
+
+- type: entity
+  name: Timmy
+  id: MisfitsMobLizardBoSPet1
+  parent: MobLizard
+  description: Oddly enough, not a deathclaw. You have been lied to.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    - CannotSuicide
+  - type: NpcFactionMember
+    factions:
+    - BrotherhoodOfSteel
+  - type: MobPrice
+    price: 200
+
+
+- type: entity
+  name: Jimmy
+  id: MisfitsMobLizardBoSPet2
+  parent: MobLizard
+  description: Seems very friendly!
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    - CannotSuicide
+  - type: NpcFactionMember
+    factions:
+    - BrotherhoodOfSteel
+  - type: MobPrice
+    price: 200

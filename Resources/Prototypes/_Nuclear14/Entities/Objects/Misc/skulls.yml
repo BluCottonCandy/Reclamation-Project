@@ -1,0 +1,35 @@
+- type: entity
+  parent: BaseItem
+  id: N14MiscBighornerSkull
+  name: bighorner skull
+  description: The cleaned skull of a bighorner.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/bighornerskull.rsi
+    state: icon
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: BaseItem
+  id: N14MiscBrahminSkull
+  name: brahmin skull
+  description: The cleaned skull of a brahmin.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/brahminskull.rsi
+    state: icon
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: BaseItem
+  id: N14MiscRadstagSkull
+  name: radstag skull
+  description: The cleaned skull of a radstag.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/radstagskull.rsi
+    state: icon
+  - type: Item
+    size: Small

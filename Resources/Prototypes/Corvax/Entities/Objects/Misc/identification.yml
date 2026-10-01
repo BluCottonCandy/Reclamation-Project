@@ -1,0 +1,661 @@
+#MARK: Legion
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalLegate
+  name: legion legate medallion
+  description: "The will of Caesar is deathless, feeling this medallion in your hands you know your destiny, to ensure his empire spreads eternal from coast to coast."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-gold
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionLegate
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadge
+  name: distinctive sign
+  description: "This amulet marks you as one who has proven a useful asset of the Legion, more than a mere slave."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionAuxilia
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeCitizen
+  name: Distinctive Sign
+  description: "This amulet marks you as a citizen of the Legion territories, protected from any slavery and allowing free travel in their lands without fear of ambush."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionCitizen
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeTrader
+  name: Distinctive Sign
+  description: "This amulet marks you as a citizen of the Legion territories, protected from any slavery and allowing free travel in their lands without fear of ambush. A small scroll in its hollowed interior show its holder is a licensed member of the Caravan Network."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionTrader
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeRecruit
+  name: distinctive sign
+  description: "This freshly minted medallion marks you as property of the Legion, a soldier who shall enforce Caesar's will at the cost of his own life."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionLegionnaireRecruit # #Misfits Change: Redirected from defunct CaesarLegionRecruit
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalSilver
+  name: legion legionnaire medallion
+  description: "This dull medallion marks you as property of the Legion, a loyal soldier who will strike down the enemies of Caesar without question or thought."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionLegionnaireWarrior
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+#Misfits Change /Add/: Recruit-tier Legion medals so combat roles no longer use sign IDs.
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalRecruit
+  name: legion recruit medallion
+  description: "This freshly minted medallion marks you as property of the Legion, a new soldier who shall enforce Caesar's will at the cost of his own life."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionLegionnaireRecruit # #Misfits Change: Redirected from defunct CaesarLegionRecruit
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalLegionnaireRecruit
+  name: legion legionnaire recruit medallion
+  description: "This freshly minted medallion marks you as property of the Legion, a new soldier who shall enforce Caesar's will at the cost of his own life."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionLegionnaireRecruit
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalHoundmaster
+  name: legion houndmaster medallion
+  description: "This scratched up medallion marks you as property of the Legion, a valuable soldier who will raise loyal and strong hounds to brawl and die in greater glory than the men fighting alongside them."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionHoundmaster
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+#Misfits Change /Add/: Auxilia badge.
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeAuxilia
+  name: distinctive sign
+  description: "This amulet marks you as one who has proven a useful asset of the Legion, more than a mere slave."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionAuxilia
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgePriestessOfMars
+  name: distinctive sign
+  description: "The intricate carvings of this amulet mark you as a Priestess of Mars, a woman bound to Mars who is entrusted to divine and interpret the will of the War God that will guide the Legion to victory."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionPriestessOfMars
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeTempleGuard
+  name: distinctive sign
+  description: "This amulet marks one who has been entrusted with a sacred and specific duty, the protection of the Priestess of Mars and her Temple's sanctity. Let none defile it, or it will be your head."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionTempleGuard
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+#Misfits Change /Add/: Legion Slave sign so the role carries the same legion badge style with its own access data.
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeSlave
+  name: distinctive sign
+  description: "The mark of a slave, property of the Legion meant to work until they die. Perhaps if you have some unique skill or prove your worth, you might escape this fate."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign-slave
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionSlave
+  #Misfits Add - IdCardLegion enables this badge to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalSilver2
+  name: legion veteran legionnaire medallion
+  description: "This battered medallion marks you as property of the Legion, a soldier that has proven their value to Caesar's army, worthy of respect among their peers."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-2
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionLegionnaireVeteran
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalVexillarius
+  name: legion vexillarius medallion
+  description: "This shiny medallion marks you as property of the Legion, a soldier who has the honor of bearing the standard of the Legion, inspiring your fellow warriors past mortal wounds to eternal glory."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-2
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionVexillarius
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalSilver3
+  name: legion decanus medallion
+  description: "This medallion marks you as property of the Legion, a valued soldier of Caesar who has earned the right of command, one who will have stories told of their exploits should they survive Caesar's many enemies."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionDean
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalForgemaster
+  name: legion forgemaster medallion
+  description: "This shiny medallion marks you as property of the Legion, a valued soldier of Caesar who has earned command of the camp's logistics and ensuring the warriors are armed. You are an officer, one who merits respect should you still prove useful."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionForgemaster
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalExplorer
+  name: legion explorer medallion
+  description: "This scratched medallion marks you as property of the Legion, one who has seen many strange sights across the wasteland and survived them all, yet has remained loyal to the vision of Caesar's will."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionExplorer
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalOptio
+  name: legion optio medallion
+  description: "This decorated medallion marks you as property of the Legion, an exceptional soldier  who serves as the second in command and trusted advisor of the Centurion, the mentor you will one day replace. Aide them in diplomacy and matters of tactics."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionOptio
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalFrumentarii
+  name: legion frumentarii medallion
+  description: "This simple medallion marks you as property of the Legion, a devoted spy of Caesar who has dedicated their lives to the most difficult and eternal of duties, to observe the enemy and sabotage them despite any personal risks involved."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionFrumentarii
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalPrimeDecanus
+  name: legion prime decanus medallion
+  description: "This dull medallion marks you as property of the Legion, a valued soldier of Caesar who has earned the right of command, one who has proven their worth beyond that of an eager gloryhound."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionDean
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalVeteranDecanus
+  name: legion veteran decanus medallion
+  description: "This battered medallion marks you as property of the Legion, a valued soldier of Caesar who has earned the right of command, savage in combat and wise in tactics. Yours is a valuable mind and a steady swordarm in service of Caesar's will."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionVeteranDecanus
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalGold
+  name: legion centurion medallion
+  description: "This magnificent medallion marks you as property of the Legion, slave only to the great Caesar eternal now, serving as a commander of warriors, a diplomat to external powers, and a scholar of military tactics without equal."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-gold
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionCenturion
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+### Frumentaria
+
+- type: entity
+  id: AgentPreset
+  abstract: true
+  components:
+  - type: AgentIDCard
+  - type: ActivatableUI
+    key: enum.AgentIDCardUiKey.Key
+    inHandsOnly: true
+#  - type: UserInterface
+#    interfaces:
+#      - key: enum.AgentIDCardUiKey.Key
+#        type: AgentIDCardBoundUserInterface
+
+- type: entity
+  parent: [ N14IDPassportBlank, AgentPreset ]
+  id: N14IDNCRDogtagAgent
+  name: soldier's dogtags
+  description: With any luck, this war will be over in time for the holidays.
+  suffix: Soldier, Cadet, Agent
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ncrdogtag
+  - type: IdCard # #Misfits Add - display "dogtags" instead of default "ID card"
+    nameLocId: n14-id-dogtag-name
+    fullNameLocId: n14-id-dogtag-full-name
+  - type: PresetIdCard
+    job: NCRSoldier
+
+- type: entity
+  parent: [ N14IDPassportBlank, AgentPreset ]
+  id: N14IDBrotherhoodHolotagAgent
+  name: squire's holotags
+  description: You still have something to prove, and all the opportunity to mess it all up first.
+  suffix: Squire, Agent
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  - type: PresetIdCard
+    job: BoSMidSquire
+
+#Misfits Change /Comment-out/: Washington BoS agent holotag removed — job no longer exists.
+#- type: entity
+#  parent: [ N14IDPassportBlank, AgentPreset ]
+#  id: N14IDWashingtonBrotherhoodHolotagAgent
+#  name: initiate's holotags
+#  description: An ID holotag worn by the Brotherhood of Steel.
+#  suffix: Recruit, Agent
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+#    nameLocId: n14-id-holotag-name
+#    fullNameLocId: n14-id-holotag-full-name
+#  - type: PresetIdCard
+#    job: BoSWashingtonInitiate
+
+#Misfits Change /Comment-out/: Washington BoS holotags removed — will create new prototypes.
+##MARK: Washington BoS
+#
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDWashingtonBrotherhoodHolotagRecruit
+#  name: initiate's holotags
+#  description: An ID holotag worn by a Brotherhood initiate.
+#  suffix: Recruit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+#    nameLocId: n14-id-holotag-name
+#    fullNameLocId: n14-id-holotag-full-name
+#  - type: PresetIdCard
+#    job: BoSWashingtonInitiate
+#
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDWashingtonBrotherhoodHolotagSoldier
+#  name: knight's holotags
+#  description: An ID holotag worn by a Brotherhood knight.
+#  suffix: Soldier
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+#    nameLocId: n14-id-holotag-name
+#    fullNameLocId: n14-id-holotag-full-name
+#  - type: PresetIdCard
+#    job: BoSWashingtonKnight
+#
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDWashingtonBrotherhoodHolotagResearcher
+#  name: scribe's holotags
+#  description: An ID holotag worn by a Brotherhood scribe.
+#  suffix: Researcher
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+#    nameLocId: n14-id-holotag-name
+#    fullNameLocId: n14-id-holotag-full-name
+#  - type: PresetIdCard
+#    job: BoSWashingtonScribe
+#
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDWashingtonBrotherhoodHolotagCaptain
+#  name: paladin's holotags
+#  description: An ID holotag worn by a Brotherhood paladin.
+#  suffix: Captain
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+#    nameLocId: n14-id-holotag-name
+#    fullNameLocId: n14-id-holotag-full-name
+#  - type: PresetIdCard
+#    job: BoSWashingtonPaladin
+#
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDWashingtonBrotherhoodHolotagCommander
+#  name: head knight's holotags
+#  description: An ID holotag worn by the Head Knight of the Brotherhood of Steel.
+#  suffix: Commander
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+#    nameLocId: n14-id-holotag-name
+#    fullNameLocId: n14-id-holotag-full-name
+#  - type: PresetIdCard
+#    job: BoSWashingtonCommander
+
+#MARK: Key
+- type: entity
+  parent: N14IDCard
+  id: N14IDKeyIronEmpty
+  name: iron key
+  description: A worn out iron key. I wonder where it goes?
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: iron
+
+#MARK: Brotherhood West
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDBrotherhoodWestHolotag
+  name: head scribe's holotags
+  description: The chapter looks to you for guidance. Do not just recycle past knowledge, they need you to make new discoveries for humanity's survival.
+  suffix: Head Scribe
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: bos_holotag
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  - type: PresetIdCard
+    job: BoSWestScribe
+  # #Misfits Change - enables BOS shared map (tactical table, Pip-Boy, armor HUDs)
+  - type: Tag
+    tags:
+    - IdCardBrotherhood
+  - type: ClothingAddFaction
+    faction: BrotherhoodOfSteel
+
+- type: entity
+  parent: N14IDBrotherhoodWestHolotag
+  id: N14IDBrotherhoodWestHolotagGunsmith
+  name: squire's holotags
+  description: You still have something to prove, and all the opportunity to mess it all up first.
+  suffix: Squire
+  components:
+  - type: PresetIdCard
+    job: BoSMidSquire
+
+- type: entity
+  parent: N14IDBrotherhoodWestHolotag
+  id: N14IDBrotherhoodWestHolotagKnight
+  name: senior knight's holotags
+  description: These holotags are only issued to those who have proven both competent and responsible, worthy of keeping the chapter from descending into insanity.
+  suffix: Senior Knight
+  components:
+  - type: PresetIdCard
+    job: BoSMidKnight
+
+- type: entity
+  parent: N14IDBrotherhoodWestHolotag
+  id: N14IDBrotherhoodWestHolotagPaladin
+  name: senior paladin's holotags
+  description: These holotags are issued to those who have shown bravery in combat, diplomatic skill with outsiders, and loyalty towards their brothers and sisters. Guide the paladins and follow the Chain of Command.
+  suffix: Senior Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSMidPaladin
+
+- type: entity
+  parent: N14IDBrotherhoodWestHolotag
+  id: N14IDBrotherhoodWestHolotagElderCommander
+  name: elder commander's holotags
+  description: The holotags of an elder of the Brotherhood, issued only when a new chapter is founded, or a casualty must be replaced. These belonged to someone before you, can you live up to their glory?
+  suffix: Elder
+  components:
+  - type: PresetIdCard
+    job: BoSWestElderCommander

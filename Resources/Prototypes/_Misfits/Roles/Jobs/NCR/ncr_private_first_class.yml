@@ -1,0 +1,53 @@
+- type: job
+  id: NCRPrivateFirstClass
+  setPreference: false # RETIRED — PFC is now a rank pin earned through NCRTrooper/specialist progression
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 30
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-private-first-class
+  overwatchCategory: OverwatchNcrEnlisted
+  description: job-description-ncr-private-first-class
+  playTimeTracker: NCRPrivateFirstClass
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T2 faction timelock (8h NCR)
+      department: NCR
+      min: 14400 # 4 hours
+    #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+    #  tracker: NCRSoldier
+    #  min: 18000 # 5 hours
+  startingGear: NCRPrivateFirstClassGear
+  icon: "JobIconNcrSoldier"
+  supervisors: job-supervisors-ncr-sergeant
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRPrivateFirstClassGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRHelmetMetalDesert # Corvax-Change
+    neck: ClothingNeckPinNCRPrivate1st
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
+    jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
+    shoes: N14ClothingBootsLeatherFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagPrivateFirstClass
+  innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change
+
+- type: playTimeTracker
+  id: NCRPrivateFirstClass

@@ -1,0 +1,18 @@
+- type: startingGear
+  id: CluwneGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingUniformJumpsuitCluwne
+    back: ClothingBackpackCluwne
+    shoes: ClothingShoesCluwne
+    mask: ClothingMaskCluwne
+    id: CluwnePDA
+    gloves: ClothingHandsGlovesCluwne
+    pocket1: CluwneHorn
+
+- type: startingGear
+  id: HoloClownGear
+  equipment:
+    wallet: N14Wallet
+    pocket1: BikeHorn
+

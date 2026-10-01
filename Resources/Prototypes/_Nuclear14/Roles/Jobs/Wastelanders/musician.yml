@@ -1,0 +1,43 @@
+- type: job
+  id: WastelandMusician
+  setPreference: false # Disabled, use loadouts
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-waste-musician
+  description: job-description-waste-musician
+  playTimeTracker: WastelandMusician
+  requirements:
+    - !type:CharacterOverallTimeRequirement
+      min: 999999
+  startingGear: WastelandMusicianGear
+  icon: "JobIconMusician"
+  supervisors: job-supervisors-hire
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: MikuDay
+    prototype: BoxPerformer
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+
+- type: startingGear
+  id: WastelandMusicianGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitManagerSuit
+    ears: MisfitsClothingHeadsetWastelandScrap
+    back: N14ClothingBackpackTrekker # Corvax-Change
+    eyes: ClothingEyesGlassesSunglasses
+    shoes: N14ClothingShoesBrown
+  satchel: N14ClothingBackpackSatchelMusicianFilled
+  duffelbag: N14ClothingBackpackDuffelMusicianFilled
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+    - AcousticGuitarInstrument
+    - SaxophoneInstrument
+
+- type: playTimeTracker
+  id: WastelandMusician

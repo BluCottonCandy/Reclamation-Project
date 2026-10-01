@@ -1,0 +1,163 @@
+# #Misfits Add - Faction-shared terminal database prototypes.
+# Every terminal exposes a DATABASE tab; the viewer's ID access tags determine which
+# faction database (if any) they see. Empty accessRead = nobody (NO ACCESS sentinel).
+#
+# Tier model:
+#   accessRead     (tag)    Tier 5  - View tab + folder list.
+#   accessWrite    (tag)    Tier 6  - Add subfolders / docs UNDER existing root entries.
+#   leadershipJobs (jobId)  Tier 7  - Create root entries; rollback revisions; MAY tick the
+#                                     "Admin" checkbox to protect their own docs/folders
+#                                     from peer leaders.
+#   adminJobs      (jobId)  Tier 8  - Highest faction rank. Delete/restore any entry,
+#                                     edit Admin-marked entries, and use all Leadership powers.
+#                                     Job-gated so spawned ID cards cannot grant structural power.
+#   adminLabel     (string) Faction-themed label for the Admin checkbox in the UI.
+
+# -- Followers of the Apocalypse: Open Archive --------------------------------
+# Volunteers can read and contribute under existing roots.
+# Doctors manage root records.
+# The Head can mark protected chapter records.
+- type: misfitsTerminalDatabase
+  id: fota-openarchive
+  displayName: Open Archive
+  accentColor: "#E8A838"
+  adminLabel: DIRECTOR
+  accessRead:
+  - FotA
+  accessWrite:
+  - FotA
+  leadershipJobs:
+  - FollowerDoctor
+  - SuperMutantFollowerDoctor
+  adminJobs:
+  - FollowerHead
+
+# ── Brotherhood of Steel: 509th Archive ──────────────────────────────────────
+# Leadership = Heads (Knight / Paladin Commander / Scribe).
+# Admin      = Elder Commander.
+- type: misfitsTerminalDatabase
+  id: bos-509th
+  displayName: 509th Archive
+  accentColor: "#33FF33"
+  adminLabel: ELDER COUNCIL
+  accessRead:
+  - BOS
+  accessWrite:
+  - BOS
+  leadershipJobs:
+  - BoSHeadKnight
+  - BoSMidPaladinCommander # "Head Paladin" job id
+  - BoSHonorGuard          # #Cythisiax Added - "Honor Guard" job id
+  - BoSWestScribe          # "Head Scribe" job id
+  adminJobs:
+  - BoSWestElderCommander  # "Elder Commander" job id
+
+# ── NCR: Salt Dogs ───────────────────────────────────────────────────────────
+# Leadership = Captain, Lieutenant, First Sergeant.
+# Admin      = Major.
+- type: misfitsTerminalDatabase
+  id: ncr-saltdogs
+  displayName: Salt Dogs
+  accentColor: "#FFCC33"
+  adminLabel: HIGH COMMAND
+  accessRead:
+  - NCR
+  accessWrite:
+  - NCR
+  leadershipJobs:
+  - NCRCommander
+  - NCRExecutiveOfficer
+  - NCRPlatoonLeader
+  - NCRFirstSergeant
+  # #Cythisiax Added - OSI Chief Scientist already carries NCR terminal access and is
+  # the highest OSI rank, so grant them the same database administration powers as
+  # NCR High Command (including moving and deleting folders/documents).
+  - OSIChiefScientist
+  adminJobs:
+  - NCRMajor
+  - OSIChiefScientist
+
+# ── Caesar's Legion: Legio Vera ──────────────────────────────────────────────
+# #Misfits Tweak - Legion has no canonical "leadership tier"; using the closest
+# analogues: Centurion / Optio / Priestess / Houndmaster as Leadership, Legate
+# as Admin (HIGH FRUMENTARII). Adjust if Legion gets a dedicated rank pass.
+- type: misfitsTerminalDatabase
+  id: legion-legiovera
+  displayName: Legio Vera
+  accentColor: "#FF3333"
+  adminLabel: HIGH FRUMENTARII
+  accessRead:
+  - LegionBrassKey
+  accessWrite:
+  - LegionBrassKey
+  leadershipJobs:
+  - CaesarLegionCenturion
+  - CaesarLegionOptio
+  - CaesarLegionPriestessOfMars
+  - CaesarLegionHoundmaster
+  adminJobs:
+  - CaesarLegionLegate
+
+# ── Vault: Longwatch ─────────────────────────────────────────────────────────
+# Leadership = Overseer.
+# Admin      = Vault Management.
+- type: misfitsTerminalDatabase
+  id: vault-longwatch
+  displayName: Longwatch
+  accentColor: "#3399FF"
+  adminLabel: MANAGEMENT
+  accessRead:
+  - VaultOverseer
+  accessWrite:
+  - VaultOverseer
+  leadershipJobs:
+  - Overseer
+  adminJobs:
+  - VaultManagement
+
+# ── Enclave: Autumn Harvest ──────────────────────────────────────────────────
+# Leadership = Head Scientist, Senior Officer.
+# Admin      = Reformer + Commander.
+- type: misfitsTerminalDatabase
+  id: enclave-autumnharvest
+  displayName: Autumn Harvest
+  accentColor: "#9933FF"
+  adminLabel: HIGH COMMAND
+  accessRead:
+  - Enclave
+  accessWrite:
+  - Enclave
+  leadershipJobs:
+  - EnclaveHeadScientist
+  - EnclaveSeniorOfficer
+  adminJobs:
+  - EnclaveReformer
+  - EnclaveCommander
+
+# ── Wendover Town: Mayoral Notice ────────────────────────────────────────────
+# #Misfits Tweak - Townie governance is informal; only the Mayor exists. Mayor
+# acts as both Leadership and Admin tiers (Admin checkbox is essentially the
+# mayor's official seal). Leadership list intentionally empty; Admin grants
+# Leadership powers automatically.
+- type: misfitsTerminalDatabase
+  id: town-mayoral
+  displayName: Mayoral Notice
+  accentColor: "#33FF33"
+  adminLabel: MAYORAL SEAL
+  # #Cythisiax Fixed - Whole Townie department (not just the Mayor) can read/write the town
+  # notice board now. The Mayor keeps Admin (delete / MAYORAL SEAL) as before.
+  accessRead:
+  - TownieLaw
+  - TownieMayor
+  - TownieShopkeeper
+  - TownieDoctor
+  - TownieMechanic
+  accessWrite:
+  - TownieLaw
+  - TownieMayor
+  - TownieShopkeeper
+  - TownieDoctor
+  - TownieMechanic
+  leadershipJobs: []
+  adminJobs:
+  - TownMayor

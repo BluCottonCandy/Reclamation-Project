@@ -1,0 +1,86 @@
+# Misfits Add - Ore go in, metal come out. Machine better than forge, need less coal.
+
+# Lead
+- type: latheRecipe
+  id: N14OreProcessorIngotLead
+  result: N14IngotLead1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    RawLead: 100
+    Coal: 30
+
+# Copper
+- type: latheRecipe
+  id: N14OreProcessorIngotCopper
+  result: N14IngotCopper1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    N14RawCopper: 100
+    Coal: 30
+
+# Gold - no coal
+- type: latheRecipe
+  id: N14OreProcessorIngotGold
+  result: N14IngotGold1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    N14RawGold: 100
+
+# Iron
+- type: latheRecipe
+  id: N14OreProcessorIngotIron
+  result: N14IngotIron1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    N14RawIron: 100
+    Coal: 30
+
+# Silver - no coal
+- type: latheRecipe
+  id: N14OreProcessorIngotSilver
+  result: N14IngotSilver1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    N14RawSilver: 100
+
+# Steel
+- type: latheRecipe
+  id: N14OreProcessorSheetSteel
+  result: SheetSteel1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    N14RawIron: 100
+    Coal: 30
+
+# Sulfur
+- type: latheRecipe
+  id: N14OreProcessorSulfurPowder
+  result: SulfurPowder1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    RawSulfur: 100
+
+# Wood go in, charcoal come out. Faster than forge.
+- type: latheRecipe
+  id: N14OreProcessorCharcoal
+  result: Charcoal1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    Wood: 100
+
+# Charcoal go in, coal come out. Need less than forge.
+- type: latheRecipe
+  id: N14OreProcessorCharcoalToCoal
+  result: Coal1
+  applyMaterialDiscount: false
+  completetime: 0
+  materials:
+    Charcoal: 100

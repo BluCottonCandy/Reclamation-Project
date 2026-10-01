@@ -1,0 +1,12 @@
+ui-options-tts-volume = TTS Volume:
+credits-window-tts-title = TTS (Text-To-Speech) Function
+tts-rate-limited = You are generating TTS too quickly!
+humanoid-profile-editor-voice-tab = Voice
+humanoid-profile-editor-voice-placeholder = Search voices...
+humanoid-profile-editor-voice-categories = Categories
+humanoid-profile-editor-voice-other = Other
+humanoid-profile-editor-voice-play = ▶
+humanoid-profile-editor-voice-tooltip-play = Listen
+humanoid-profile-editor-voice-tooltip-sponsoronly = Available to sponsors only
+humanoid-profile-editor-voice-category-tooltip = Show voices from {$category}
+humanoid-profile-editor-voice-match = Found: {$filtered}/{$all}

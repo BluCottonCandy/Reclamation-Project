@@ -1,0 +1,60 @@
+- type: entity
+  parent: N14MobPetDog
+  id: N14MobPetDogLegion
+  name: Legion mongrel
+  description: A strong and hardy dog that faithfully serves the legionnaires.
+  components:
+  - type: RadiationReceiver
+  - type: RandomMetadata
+    nameSegments: [names_N14pet_dog]
+  - type: NpcFactionMember
+    factions:
+      - CaesarLegion
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: wolf
+      sprite: _Nuclear14/Mobs/Animals/dogwolf.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 6.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      110: Critical
+      200: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: wolf
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: LanguageKnowledge # Legion mongrel understands Latin so it can follow Houndmaster commands
+    speaks:
+    - N14Dog
+    understands:
+    - N14Dog
+    - N14Insect
+    - English
+    - Chinese
+    - Latin
+    - Tribal
+    - N14Robot
+    - N14BrotherBeep
+    - Sign
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    attackRate: 0.75
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      types:
+        Blunt: 10
+        Slash: 20

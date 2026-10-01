@@ -1,0 +1,14 @@
+ent-N14WallRoughScrapSlanted = rough scrap wall
+    .desc = A rough wall made from scrap metal.
+ent-N14WallScrapBlueSlanted = blue sheet metal wall
+    .desc = A wall made from blue sheet metal metal.
+ent-N14WallScrapRedSlanted = red sheet metal wall
+    .desc = A wall made from red sheet metal metal.
+ent-N14WallWoodSlanted = wood wall
+    .desc = A wall made from wood.
+ent-N14WallScrapSlanted = sheet metal wall
+    .desc = A slanted wall made from sheet metal.
+ent-N14WallScrapWhiteSlanted = white sheet metal wall
+    .desc = A slanted wall made from white sheet metal.
+ent-N14WallAdobeSlanted = adobe wall
+    .desc = A hand-packed adobe wall made from sun-baked mud brick.

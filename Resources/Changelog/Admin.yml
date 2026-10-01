@@ -1,0 +1,10 @@
+Name: Admin
+AdminOnly: true
+Order: 3
+Entries:
+- author: Misfits
+  changes:
+  - message: Admin changelog merged with N14 and CF, nothing follows at this time.
+    type: Add
+  id: 1
+  time: '2026-03-04T04:26:00.0000000+00:00'

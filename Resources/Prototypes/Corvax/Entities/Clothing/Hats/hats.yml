@@ -1,0 +1,46 @@
+#Misfits Change /Comment-out/: Inquisitor hats removed — no Inquisitor role in Misfits.
+#- type: entity
+#  parent: ClothingHeadBase
+#  id: N14ClothingHeadHatBoSInquisitorHat
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Head/Hats/InquisitorHat.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Head/Hats/InquisitorHat.rsi
+#
+#- type: entity
+#  parent: ClothingHeadBase
+#  id: N14ClothingHeadHatBoSInquisitorBlackHat
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Head/Hats/InquisitorBlackHat.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Head/Hats/InquisitorBlackHat.rsi
+#
+#- type: entity
+#  parent: ClothingHeadBase
+#  id: N14ClothingHeadHatBoSInquisitorCap
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Head/Hats/InquisitorCap.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Head/Hats/InquisitorCap.rsi
+
+#Misfits Change /Fix/: Redirected sprites — Corvax NCRMPBeret.rsi and InquisitorCap.rsi removed (All Rights Reserved). Using _Nuclear14 NCR equivalents.
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatNCRMPBeret
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrberetofficer.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrberetofficer.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatNCRMPCap
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrsidecap.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrsidecap.rsi

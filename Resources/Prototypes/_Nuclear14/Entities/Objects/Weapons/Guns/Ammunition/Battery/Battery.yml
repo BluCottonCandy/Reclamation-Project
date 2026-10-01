@@ -1,0 +1,461 @@
+- type: entity
+  name: microfusion cell
+  description: A microfusion cell, typically used as ammunition for large energy weapons.
+  id: N14BasePowerCell
+  abstract: true
+  parent: BaseItem
+  components:
+  - type: Battery
+    pricePerJoule: 0.015
+  - type: Explosive
+    #Misfits Change - use the structural-capable N14 explosion profile.
+    explosionType: N14DefaultStructural
+    maxIntensity: 200
+    intensitySlope: 1.5
+  - type: Tag
+    tags:
+      - N14MicrofusionCell
+      - N14AmmoCell
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/microfusion.rsi
+  - type: SolutionContainerManager
+    solutions:
+      battery:
+        maxVol: 5
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: Extractable
+    juiceSolution:
+      reagents:
+        - ReagentId: Zinc
+          Quantity: 5
+  - type: Appearance
+  - type: PowerCellVisuals
+  - type: Riggable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
+  - type: HitscanBatteryAmmoProvider
+    proto: N14MFLaserRed
+    fireCost: 50
+
+#MARK: Microfusion Cell — single player-facing type
+# The cell only provides charge. Weapon profiles determine damage and beam color.
+
+- type: entity
+  name: microfusion cell
+  description: A standard microfusion cell used as ammunition for energy weapons. The weapon's internal optics determine beam color and output — the cell simply provides charge.
+  id: N14MicrofusionCell
+  suffix: Full
+  parent: N14BasePowerCell
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/microfusion.rsi
+    layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: empty
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+  - type: Battery
+    maxCharge: 1200
+    startingCharge: 1200
+  - type: HitscanBatteryAmmoProvider
+    proto: N14MFLaserRed
+    fireCost: 50
+
+# Backward-compatible aliases. Kept so existing map files, kits, crates, and
+# trade references continue to work; all normalize to the single MFC behavior.
+- type: entity
+  name: microfusion cell (red)
+  description: A standard microfusion cell calibrated to emit a red laser beam.
+  id: N14MicrofusionCellRed
+  parent: N14MicrofusionCell
+  suffix: Full
+
+- type: entity
+  name: microfusion cell (green)
+  description: A tuned microfusion cell calibrated to emit a green laser beam.
+  id: N14MicrofusionCellGreen
+  parent: N14MicrofusionCell
+  suffix: Full
+
+- type: entity
+  name: microfusion cell (blue)
+  description: An advanced microfusion cell calibrated to emit a blue laser beam.
+  id: N14MicrofusionCellBlue
+  parent: N14MicrofusionCell
+  suffix: Full
+
+- type: entity
+  name: microfusion cell (violet)
+  description: An experimental microfusion cell calibrated to emit a violet laser beam.
+  id: N14MicrofusionCellViolet
+  parent: N14MicrofusionCell
+  suffix: Full
+
+#MARK: Fusion Core — single consolidated type
+# #Misfits Change - Consolidated from 4 colored variants into one generic fusion core.
+# Only the Laser Gatling accepts these (N14FusionCore tag). Weapon controls beam via override.
+# 5000 charge / 50 fireCost = 100 shots. Intended for heavy sustained-fire weapons.
+
+- type: entity
+  name: fusion core
+  description: A heavy fusion core containing concentrated fusion fuel. Provides massive charge reserves for heavy energy weapons. Beam characteristics are determined by the weapon's optics.
+  id: N14FusionCore
+  suffix: Full
+  parent: N14BasePowerCell
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/fusion.rsi
+    layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: empty
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+  - type: Tag
+    tags:
+      - N14FusionCore
+      - N14AmmoCell
+  - type: Item
+    size: Normal
+  - type: Battery
+    maxCharge: 5000
+    startingCharge: 5000
+  - type: HitscanBatteryAmmoProvider
+    proto: N14MFLaserRed
+    fireCost: 50
+
+# Backward-compatible aliases for colored fusion cores.
+- type: entity
+  id: N14FusionCoreRed
+  parent: N14FusionCore
+  suffix: Full
+
+- type: entity
+  id: N14FusionCoreGreen
+  parent: N14FusionCore
+  suffix: Full
+
+- type: entity
+  id: N14FusionCoreBlue
+  parent: N14FusionCore
+  suffix: Full
+
+- type: entity
+  id: N14FusionCoreViolet
+  parent: N14FusionCore
+  suffix: Full
+
+#MARK: Electron Charge Pack — single player-facing type
+# The pack only provides charge. Weapon profiles determine damage and beam color.
+# Pulse weapons deal Heat + Shock damage (effective against mechanical targets).
+
+- type: entity
+  name: electron charge pack
+  description: An electron charge pack used as ammunition for pulse weapons. The weapon's emitter array determines pulse characteristics — the pack simply provides charge.
+  id: N14ElectronChargePack
+  suffix: Full
+  parent: N14BasePowerCell
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/ECP.rsi
+    layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: empty
+        scale: 0.5, 0.5
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        scale: 0.5, 0.5
+        shader: unshaded
+  - type: Tag
+    tags:
+      - N14ElectronChargePack
+      - N14AmmoCell
+  - type: Battery
+    maxCharge: 1600
+    startingCharge: 1600
+  - type: HitscanBatteryAmmoProvider
+    proto: N14RCWLaserGreen
+    fireCost: 50
+
+# Backward-compatible aliases. All normalize to the single ECP behavior.
+- type: entity
+  name: electron charge pack (red)
+  description: A standard electron charge pack calibrated for red pulse discharge.
+  id: N14ElectronChargePackRed
+  parent: N14ElectronChargePack
+  suffix: Full
+
+- type: entity
+  name: electron charge pack (green)
+  description: A tuned electron charge pack calibrated for green pulse discharge.
+  id: N14ElectronChargePackGreen
+  parent: N14ElectronChargePack
+  suffix: Full
+
+- type: entity
+  name: electron charge pack (blue)
+  description: An advanced electron charge pack calibrated for blue pulse discharge.
+  id: N14ElectronChargePackBlue
+  parent: N14ElectronChargePack
+  suffix: Full
+
+- type: entity
+  name: electron charge pack (violet)
+  description: An experimental electron charge pack calibrated for violet pulse discharge.
+  id: N14ElectronChargePackViolet
+  parent: N14ElectronChargePack
+  suffix: Full
+
+#MARK: Legacy Power Cells (commented out — replaced by tiered microfusion/ECP system above)
+
+# - type: entity
+#   name: microfusion cell
+#   description: A small energy container that fits in your palm, commonly used as ammo for any kind of laser weapon.
+#   id: N14PowerCellHigh
+#   suffix: Full
+#   parent: N14BasePowerCell
+#   components:
+#   - type: Sprite
+#     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/microfusion.rsi
+#     layers:
+#       - map: [ "enum.PowerCellVisualLayers.Base" ]
+#         state: empty
+#       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+#         state: o2
+#         shader: unshaded
+#   - type: Battery
+#     maxCharge: 1200
+#     startingCharge: 1200
+
+# - type: entity
+#   name: heavy microfusion cell
+#   description: A microfusion cell, typically used as ammunition for large energy weapons. Modified to expand a lot more charge at once to deal considerably more destruction per shot.
+#   id: N14PowerCellFocused
+#   suffix: Full
+#   parent: N14BasePowerCell
+#   components:
+#   - type: Sprite
+#     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/microfusionfocused.rsi
+#     layers:
+#       - map: [ "enum.PowerCellVisualLayers.Base" ]
+#         state: empty
+#       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+#         state: o2
+#         shader: unshaded
+#   - type: Tag
+#     tags:
+#       - N14PowerCellFocused
+#       - N14AmmoCell
+#   - type: Battery
+#     maxCharge: 1200
+#     startingCharge: 1200
+#   - type: HitscanBatteryAmmoProvider
+#     proto: RedShuttleLaser
+#     fireCost: 75
+
+- type: entity
+  name: energy cell
+  description: An energy cell, typically used as ammunition for small-arms energy weapons.
+  id: N14PowerCellSmall
+  suffix: Full
+  parent: N14BasePowerCell
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/EC.rsi
+    layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: empty
+        scale: 0.5, 0.5
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+        scale: 0.5, 0.5
+  - type: Tag
+    tags:
+      - N14PowerCellSmall
+      - N14AmmoCell
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: HitscanBatteryAmmoProvider
+    proto: N14MFLaserRed
+    fireCost: 50
+
+# - type: entity
+#   name: electron charge pack
+#   description: An electron charge pack, typically used as ammunition for advanced energy weapons.
+#   id: N14PowerCellAdvanced
+#   suffix: Full
+#   parent: N14BasePowerCell
+#   components:
+#   - type: Sprite
+#     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/ECP.rsi
+#     layers:
+#       - map: [ "enum.PowerCellVisualLayers.Base" ]
+#         state: empty
+#         scale: 0.5, 0.5
+#       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+#         state: o2
+#         scale: 0.5, 0.5
+#         shader: unshaded
+#   - type: Tag
+#     tags:
+#       - N14PowerCellAdvanced
+#       - N14AmmoCell
+#   - type: Battery
+#     maxCharge: 2375
+#     startingCharge: 2375
+#   - type: HitscanBatteryAmmoProvider
+#     proto: RedHeavyLaser
+#     fireCost: 125
+
+# - type: entity
+#   name: fusion cell
+#   description: A large energy container about the size of a fist, commonly used as ammo for heavy laser weapons.
+#   id: N14PowerCellFusion
+#   suffix: Full
+#   parent: N14BasePowerCell
+#   components:
+#   - type: Sprite
+#     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/fusion.rsi
+#     layers:
+#       - map: [ "enum.PowerCellVisualLayers.Base" ]
+#         state: empty
+#       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+#         state: o2
+#         shader: unshaded
+#   - type: Tag
+#     tags:
+#       - N14PowerCellFusion
+#       - N14AmmoCell
+#   - type: Battery
+#     maxCharge: 5000
+#     startingCharge: 5000
+#   - type: Item
+#     size: Normal
+#   - type: HitscanBatteryAmmoProvider
+#     proto: RedLaser
+#     fireCost: 50
+
+#MARK: Plasma cartridge
+
+- type: entity
+  name: base plasma cell
+  description: A small green glowing cartridge, commonly used as ammo for any kind of plasma weapon.
+  id: N14BasePlasmaCell
+  abstract: true
+  parent: BaseItem
+  components:
+  - type: Battery
+    pricePerJoule: 0.015
+  - type: Explosive
+    #Misfits Change - use the structural-capable N14 explosion profile.
+    explosionType: N14DefaultStructural
+    maxIntensity: 200
+    intensitySlope: 1.5
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/plasma.rsi
+  - type: SolutionContainerManager
+    solutions:
+      battery:
+        maxVol: 5
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: Extractable
+    juiceSolution:
+      reagents:
+        - ReagentId: Zinc
+          Quantity: 5
+  - type: Appearance
+  - type: PowerCellVisuals
+  - type: Riggable
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletPlasma
+    fireCost: 100
+
+- type: entity
+  name: plasma cartridge
+  description: A small green glowing cartridge, commonly used as ammo for any kind of plasma weapon.
+  id: N14PlasmaCartridge
+  suffix: Full
+  parent: N14BasePlasmaCell
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/plasma.rsi
+    layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: empty
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+  - type: Tag
+    tags:
+      - N14PlasmaCartridge
+      - N14AmmoCell
+  - type: Battery
+    maxCharge: 1800
+    startingCharge: 1800
+
+#MARK: Legacy Plasma Cells (commented out — all plasma weapons now use N14PlasmaCartridge)
+
+# - type: entity
+#   name: plasma cell
+#   parent: N14BasePlasmaCell
+#   description: A small green glowing cartridge, commonly used as ammo for light plasma weaponry.
+#   id: N14PlasmaCell
+#   suffix: Full
+#   components:
+#   - type: Sprite
+#     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/plasma_small.rsi
+#     layers:
+#       - map: [ "enum.PowerCellVisualLayers.Base" ]
+#         state: empty
+#       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+#         state: o2
+#         shader: unshaded
+#   - type: Tag
+#     tags:
+#       - N14PlasmaCell
+#       - N14AmmoCell
+#   - type: Battery
+#     maxCharge: 900
+#     startingCharge: 900
+#   - type: ProjectileBatteryAmmoProvider
+#     proto: BulletLightPlasma
+#     fireCost: 50
+
+- type: entity
+  name: plasma shell
+  description: A big green glowing shell, commonly used as ammo for heavy plasma weapons.
+  id: N14PlasmaShell
+  suffix: Full
+  parent: N14BasePlasmaCell
+  components:
+   - type: Sprite
+     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/plasma_big.rsi
+     layers:
+       - map: [ "enum.PowerCellVisualLayers.Base" ]
+         state: empty
+       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+         state: o2
+         shader: unshaded
+   - type: Item
+     size: Normal
+     shape:
+     - 0,0,1,1
+     - 0,1,0,1
+   - type: Tag
+     tags:
+       - N14PlasmaShell
+       - N14AmmoCell
+   - type: Battery
+     maxCharge: 7500
+     startingCharge: 7500
+   - type: ProjectileBatteryAmmoProvider
+     proto: BulletBigPlasma
+     fireCost: 500

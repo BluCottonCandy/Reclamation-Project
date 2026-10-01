@@ -1,0 +1,766 @@
+- type: entity
+  name: N14BasePistol
+  parent: BaseItem
+  id: N14BaseWeaponPistol
+  description: A rooty tooty point and shooty.
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,1,1
+    - 0,1,0,1
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    minAngle: 1
+    maxAngle: 7
+    angleIncrease: 0.5
+    angleDecay: 4
+    fireRate: 6
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Nuclear14/Weapons/Effects/Reload/Pistols/pistol_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistol
+        insertSound: /Audio/_Nuclear14/Weapons/Effects/Reload/Pistols/pistol_magin.ogg
+        ejectSound: /Audio/_Nuclear14/Weapons/Effects/Reload/Pistols/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 8
+  - type: FollowDistance
+    backStrength: 6
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
+
+- type: entity
+  name: N14BaseInternalPistol
+  parent: BaseItem
+  id: N14BaseWeaponInternalMagPistol
+  description: A rooty tooty point and shooty.
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,1,1
+    - 0,1,0,1
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    minAngle: 1
+    maxAngle: 7
+    angleIncrease: 0.5
+    angleDecay: 4
+    fireRate: 6
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Nuclear14/Weapons/Effects/Reload/Pistols/pistol_cock.ogg
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 5
+  - type: FollowDistance
+    backStrength: 6
+
+- type: entity
+  name: 9mm Pistol
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistol9mm
+  description: The cheap and ubiquitous sidearm, chambered in 9mm ammo.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/9mm.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/9mm.rsi
+  - type: Gun
+    fireRate: 5
+    soundGunshot:
+      collection: N14Pistol9mmGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol9mm
+        whitelist:
+          tags:
+            - N14MagazinePistol9mm
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol9
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol9
+  - type: StaticPrice
+    price: 10
+
+- type: entity
+  name: 10mm Pistol
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistol10mm
+  description: A cheap, ubiquitous sidearm, chambered in 10mm munitions. # TODO: Need to create projectiles, magazines and boxes for 10mm.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/10mm.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/10mm.rsi
+  - type: Gun
+    fireRate: 4
+    soundGunshot:
+      collection: N14Pistol10mmGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol10mm
+        whitelist:
+          tags:
+            - N14MagazinePistol10mm
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol10
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol10
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  name: .45 colt handgun
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistol45Colt
+  description: A rugged handgun chambered in .45.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/colt.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/colt.rsi
+  - type: Gun
+    fireRate: 4
+    soundGunshot:
+      collection: N14PistolColtGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol45
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14MagazinePistol45
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol45
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol45
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: StaticPrice
+    price: 45
+
+- type: entity
+  name: 12.7mm handgun
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistol12mm
+  description: A rugged and robust handgun chambered in 12.7mm ammo. # TODO: Need to create projectiles, magazines and boxes for 12mm.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/12mm.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/12mm.rsi
+  - type: Gun
+    fireRate: 3
+    soundGunshot:
+      collection: N14Pistol12mmGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol12mm
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14MagazinePistol12mm
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol127
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol127
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  name: 10mm pipe pistol
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistol10mmPipe
+  description: A shoddy makeshift 10mm pistol, the grip is incredibly uncomfortable. Uses 10mm ammo.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/10mmPIPEpistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/10mmPIPEpistol.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 0.5
+    angleDecay: 4
+    fireRate: 4
+    soundGunshot:
+      collection: N14Pistol10mmGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol10mm
+        whitelist:
+          tags:
+            - N14MagazinePistol10mm
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol10
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol10
+  - type: StaticPrice
+    price: 15
+
+
+- type: entity
+  parent: N14WeaponPistol10mmPipe
+  id: N14WeaponPistol10mmPipeEmpty
+  suffix: Empty
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        whitelist:
+          tags:
+            - N14MagazinePistol10mm
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol10
+  - type: Construction
+    graph: N14WeaponPistol10mmPipeEmpty
+    node: start
+
+- type: entity
+  name: chinese pistol
+  parent: N14BaseWeaponInternalMagPistol
+  id: N14WeaponPistol9mmChinese
+  description: A foreign long-barrel pistol with an integrated magazine, chambered in 9mm.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/chinesepistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/chinesepistol.rsi
+    size: Small
+  - type: Clothing
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    fireRate: 6
+    soundGunshot:
+      collection: N14PistolChineseGunshot
+    selectedMode: Semiauto
+    availableModes:
+    - Semiauto
+  - type: BallisticAmmoProvider
+    capacity: 14
+    proto: N14CartridgePistol9
+    whitelist:
+      tags:
+      - N14CartridgePistol9
+  - type: StaticPrice
+    price: 20
+
+- type: entity
+  name: the spy
+  parent: N14BaseWeaponInternalMagPistol
+  id: N14WeaponPistol9mmSpy
+  description: A modified version of the common chinese pistol with a integrated silencer, extended magazine, and full-auto conversion. This gun was designed with passion, chambered in 9mm.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/thespy.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/thespy.rsi
+    size: Small
+  - type: Clothing
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    fireRate: 6
+    soundGunshot:
+      collection: N14PistolSpyGunshot
+    selectedMode: Fullauto
+    availableModes:
+    - Fullauto
+  - type: BallisticAmmoProvider
+    capacity: 24
+    proto: N14CartridgePistol9
+    whitelist:
+      tags:
+      - N14CartridgePistol9
+  - type: StaticPrice
+    price: 75
+
+- type: entity
+  name: 22lr Pistol
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistol22lr
+  description: A simple and silenced pistol, chambered in 22lr ammo.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/22lr.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/22lr.rsi
+  - type: Gun
+    fireRate: 4
+    soundGunshot:
+      collection: N14PistolSpyGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol22lr
+        whitelist:
+          tags:
+            - N14MagazinePistol22lr
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol22
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol22
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  name: webley pistol
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistolWebley
+  description: A cheap and simple pre-war canadian pistol, chambered in 9mm ammo.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/webleypistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/webleypistol.rsi
+  - type: Gun
+    fireRate: 5
+    soundGunshot:
+      collection: N14Pistol9mmGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol9mm
+        whitelist:
+          tags:
+            - N14MagazinePistol9mm
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol9
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol9
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  name: desert eagle 44
+  parent: N14BaseWeaponPistol
+  id: N14WeaponDesertEagle44
+  description: An ancient Desert Eagle pistol, in .44 Magnum. Interest in late 20th century films made this one of the most popular handguns of all times.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+  - type: Gun
+    fireRate: 2.5
+    soundGunshot:
+      collection: N14PistolDesertEagleGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol44
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14MagazinePistol44
+      gun_chamber:
+        name: Chamber
+        startingItem: N14Cartridge44Magnum
+        priority: 1
+        whitelist:
+          tags:
+            - N14Cartridge44Magnum
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+
+- type: entity
+  name: lasered desert eagle 44
+  parent: N14BaseWeaponPistol
+  id: N14WeaponLaserdotDesertEagle44
+  description: An ancient Desert Eagle pistol, in .44 Magnum. This one in particular have a laser dot.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/laserdeserteagle.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/laserdeserteagle.rsi
+  - type: Gun
+    fireRate: 3
+    soundGunshot:
+      collection: N14PistolDesertEagleGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol44
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14MagazinePistol44
+      gun_chamber:
+        name: Chamber
+        startingItem: N14Cartridge44Magnum
+        priority: 1
+        whitelist:
+          tags:
+            - N14Cartridge44Magnum
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: FollowDistance
+    backStrength: 3
+
+# #Misfits Add — M1911, M1911 Custom, Maria, That Gun
+# Ported from Fortune13/LoneStar (https://github.com/Cythisiax/LoneStar/), a SS13 Fallout fork.
+
+- type: entity
+  name: M1911 pistol
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistolM1911
+  description: The classic Colt M1911, a semi-automatic pistol chambered in .45 ACP. A staple of NCR officer sidearms and wasteland gunslingers alike.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/m1911.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/m1911.rsi
+  - type: Gun
+    fireRate: 4
+    minAngle: 1
+    maxAngle: 10
+    angleIncrease: 1
+    angleDecay: 8
+    soundGunshot:
+      collection: N14PistolColtGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol45
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14MagazinePistol45
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol45
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol45
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: FollowDistance
+    backStrength: 3
+  - type: StaticPrice
+    price: 70
+
+- type: entity
+  name: M1911 custom
+  parent: N14WeaponPistolM1911
+  id: N14WeaponPistolM1911Custom
+  description: A customised Colt M1911 with a match-grade barrel, adjusted trigger, and improved sights. The tight tolerances give it a noticeably sharper feel.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/m1911custom.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/m1911custom.rsi
+  - type: Gun
+    fireRate: 4
+    minAngle: 0
+    maxAngle: 6
+    angleIncrease: 1
+    angleDecay: 10
+    soundGunshot:
+      collection: N14PistolColtGunshot
+  - type: StaticPrice
+    price: 250
+
+- type: entity
+  name: Maria
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistolMaria
+  description: A pearl-handled 9mm pistol — the personal sidearm of Rose of Sharon Cassidy. Light, fast, and surprisingly deadly. Carries sentimental weight alongside its magazine.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/maria.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/maria.rsi
+  - type: Gun
+    fireRate: 6
+    minAngle: 0
+    maxAngle: 8
+    angleIncrease: 1
+    angleDecay: 12
+    soundGunshot:
+      collection: N14Pistol9mmGunshot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol9mm
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14MagazinePistol9mm
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol9
+        priority: 1
+        whitelist:
+          tags:
+            - N14CartridgePistol9
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: FollowDistance
+    backStrength: 3
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  name: That Gun
+  parent: N14BaseWeaponPistol
+  id: N14WeaponPistolThatGun
+  description: A bizarre-looking pistol modelled after a prop from a pre-war TV show, chambered in .223. Five rounds, semi-automatic, and oddly accurate. Whoever built this knew what they were doing.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/thatgun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/thatgun.rsi
+    size: Small
+    shape:
+    - 0,0,0,1
+    - 0,0,0,1
+  - type: Gun
+    fireRate: 2
+    minAngle: 1
+    maxAngle: 6
+    angleIncrease: 1
+    angleDecay: 8
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: N14RevolverMagnunGunshot
+  - type: RevolverAmmoProvider
+    whitelist:
+      tags:
+        - N14Cartridge556Rifle
+    proto: N14Cartridge556Rifle
+    capacity: 6
+  - type: StaticPrice
+    price: 350

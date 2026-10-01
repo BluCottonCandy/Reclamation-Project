@@ -1,0 +1,1332 @@
+#Misfits Change /Tweak/: Legion rank loadout kits split by hierarchy so command, line officers, veterans, and recruits no longer share the same spawn box.
+# Legion kits
+- type: entity
+  id: LegionLegateloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - LegatePraetorianSet
+    - LegateSagitariaSet
+    - LegateImperatorSet
+
+- type: entity
+  id: LegionCenturionloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - CenturionCommandSet
+    - CenturionMarksmanSet
+    - CenturionVanquisherSet
+  - type: ActivatableUI
+    key: enum.UndecidedLoadoutBackpackUIKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.UndecidedLoadoutBackpackUIKey.Key:
+        type: UndecidedLoadoutBackpackBoundUserInterface
+
+# #Misfits Add - Centurion armor selection kit: three armor variants for the Centurion to pick at spawn.
+# Goes in pocket2 of CaesarLegionCenturionGear. Separate from the weapon/role kit in pocket1.
+- type: entity
+  id: LegionCenturionArmorloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - CenturionArmorStandardSet
+    - CenturionArmorPaladinSlayerSet
+    - CenturionArmorRangerHunterSet
+    - CenturionArmorWarforgedSet
+    - CenturionArmorWarlordSet
+    - CenturionArmorCinderSet
+    - CenturionArmorSaltColumnSet
+    - CenturionArmorUnbrokenSet
+
+- type: entity
+  id: LegionVenatorloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - VenatorMarksmanSet
+    - VenatorStalkerSet
+    - VenatorExecutionerSet
+    - VenatorOperativeSet
+
+- type: entity
+  id: LegionVexillariusloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - VexillariusStandardSet
+    - VexillariusHeraldSet
+    - VexillariusSkirmisherSet
+
+- type: entity
+  id: LegionExplorerloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - ExplorerTrackerSet
+    - ExplorerRaiderSet
+    - ExplorerHunterSet
+
+- type: entity
+  id: LegionOptioloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - OptioPreacherSet
+    - OptioDefenderSet
+    - OptioInquisitorSet
+
+- type: entity
+  id: LegionHoundmasterloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - HoundmasterHunterSet
+    - HoundmasterTamerSet
+    - HoundmasterMedicSet
+
+- type: entity
+  id: LegionAuxilialoadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AuxiliaSkirmisherSet
+    - AuxiliaSpearmanSet
+    - AuxiliaMedicSet
+
+- type: entity
+  id: LegionRecruitDecanusloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RecruitDecanusCommandSet
+    - RecruitDecanusHunterSet
+    - RecruitDecanusCrusherSet
+
+- type: entity
+  id: LegionDeanloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - DecanusGladiatorSet
+    - DecanusCrusherSet
+    - DecanusDemolitionistSet
+    - DecanusSharpshooterSet
+    - DecanusDestroyerSet
+
+- type: entity
+  id: LegionVeteranloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - VeteranRiflemanSet
+    - VeteranBerserkerSet
+    - VeteranGoliathSet # #Misfits Change /Add/: Legion veterans get a dedicated powerfist option.
+
+- type: entity
+  id: LegionWarriorloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - WarriorMedicSet
+    - WarriorGunmanSet
+    - WarriorShieldbearerSet
+
+- type: entity
+  id: LegionLegionnaireRecruitloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - LegionnaireRecruitSkirmisherSet
+    - LegionnaireRecruitSpearmanSet
+    - LegionnaireRecruitMedicSet
+
+- type: entity
+  id: LegionRecruitInitiateloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RecruitInitiateSet
+    - RecruitPorterSet
+    - RecruitCampMedicSet
+
+- type: entity
+  id: LegionRecruitloadoutkits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AuxiliaryRecruitSet
+    - AuxiliarySpearmanSet
+    - AuxiliaryMeleeSet
+    - AuxiliaryHealerSet
+
+#Misfits Change /Comment-out/: Washington BoS undecided loadout entities removed — will create new prototypes.
+##Washington kits
+#
+#- type: entity
+#  id: BoSWashingtonStandartKits
+#  name: Undecided BoS Kit
+#  description: please only take one
+#  parent: BaseItem
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - BaseWashingtonBoSSet
+#    - WattzWashingtonBoSSet
+#    - AutoWashingtonBoSSet
+#    - ProtoWashingtonBoSSet
+#  - type: ActivatableUI
+#    key: enum.UndecidedLoadoutBackpackUIKey.Key
+#  - type: UserInterface
+#    interfaces:
+#      enum.UndecidedLoadoutBackpackUIKey.Key:
+#        type: UndecidedLoadoutBackpackBoundUserInterface
+#
+#- type: entity
+#  id: BoSWashingtonScribeKits
+#  name: Undecided BoS Kit
+#  description: please only take one
+#  parent: BaseItem
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - ScribeMedicWashingtonBoSSet
+#    - ScribeEngineerWashingtonBoSSet
+#  - type: ActivatableUI
+#    key: enum.UndecidedLoadoutBackpackUIKey.Key
+#  - type: UserInterface
+#    interfaces:
+#      enum.UndecidedLoadoutBackpackUIKey.Key:
+#        type: UndecidedLoadoutBackpackBoundUserInterface
+#
+#- type: entity
+#  id: BoSWashingtonCommandKits
+#  name: Undecided BoS Kit
+#  description: please only take one
+#  parent: BaseItem
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - CommandBaseWashingtonBoSSet
+#    - CommandMultiWashingtonBoSSet
+#    - CommandCasterWashingtonBoSSet
+#    - CommandWattzWashingtonBoSSet
+#    - CommandGatlingWashingtonBoSSet
+#  - type: ActivatableUI
+#    key: enum.UndecidedLoadoutBackpackUIKey.Key
+#  - type: UserInterface
+#    interfaces:
+#      enum.UndecidedLoadoutBackpackUIKey.Key:
+#        type: UndecidedLoadoutBackpackBoundUserInterface
+
+#Misfits Change /Comment-out/: Western BoS undecided loadout entities removed — no Western BoS chapter.
+## Brother West Elder kits
+#- type: entity
+#  id: BoSWesternElderKits
+#  name: BoS West Elder Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - KitBrotherWest_ElderlasSet
+#    - KitBrotherWest_ElderrifleSet
+#
+## Brother West Paladin kits
+#- type: entity
+#  id: BoSWesternPaladinKits
+#  name: Undecided Paladin Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - KitBrotherWest_PaladinlasSet
+#    - KitBrotherWest_PaladinrifleSet
+#    - KitBrotherWest_PaladinplasmaSet
+#
+## Brother West Knight kits
+#- type: entity
+#  id: BoSWesternKnightKits
+#  name: Undecided Knight Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - KitBrotherWest_KnightrifleSet
+#    - KitBrotherWest_KnightlaserSet
+#    - KitBrotherWest_KnightplasmaSet
+#
+## Brother West Squire kits
+#- type: entity
+#  id: BoSWesternSquireKits
+#  name: Undecided Squire Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - KitBrotherWest_SquirerifleSet
+#    - KitBrotherWest_SquirelaserSet
+#    - KitBrotherWest_SquireplasmaSet
+#
+## Brother West Scribe kits
+#- type: entity
+#  id: BoSWesternScribeKits
+#  name: Undecided Scribe Kit
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - KitBrotherWest_ScriberifleSet
+#    - KitBrotherWest_ScribelaserSet
+#    - KitBrotherWest_ScribeplasmaSet
+#
+##Inquisitor Brother Kits
+#- type: entity
+#  id: BoSMidwestInquisitorKits
+#  parent: BaseLoadoutKit
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  - type: UndecidedLoadoutBackpack
+#    possibleSets:
+#    - KitMidwestInquisitorInspectorSet
+#    - KitMidwestInquisitorCrusaderSet
+#    - KitMidwestInquisitorPlasmaSet
+
+# NCRMP Investegator Kits
+- type: entity
+  id: NCRMPinvestigatorKits
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - KitNCRMPMilitaryPoliceSet
+    - KitNCRMPinvestigatorBailifSet
+    - KitNCRMPinvestigatorSet
+
+### Sets
+
+# Legion
+
+- type: UndecidedLoadoutBackpackSet
+  id: LegatePraetorianSet
+  # #Misfits Change - Localize active Corvax undecided loadout set text through _Misfits/undecidedloadout.ftl.
+  name: undecided-loadout-category-corvax-legate-praetorian-name
+  description: undecided-loadout-category-corvax-legate-praetorian-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitLegatePraetorian
+
+- type: UndecidedLoadoutBackpackSet
+  id: LegateSagitariaSet
+  name: undecided-loadout-category-corvax-legate-sagitaria-name
+  description: undecided-loadout-category-corvax-legate-sagitaria-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitLegateSagitaria
+
+- type: UndecidedLoadoutBackpackSet
+  id: LegateImperatorSet
+  name: undecided-loadout-category-corvax-legate-imperator-name
+  description: undecided-loadout-category-corvax-legate-imperator-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitLegateImperator
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionCommandSet
+  name: undecided-loadout-category-corvax-centurion-command-name
+  description: undecided-loadout-category-corvax-centurion-command-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionCommand
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionMarksmanSet
+  name: undecided-loadout-category-corvax-centurion-marksman-name
+  description: undecided-loadout-category-corvax-centurion-marksman-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionMarksman
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionVanquisherSet
+  name: undecided-loadout-category-corvax-centurion-vanquisher-name
+  description: undecided-loadout-category-corvax-centurion-vanquisher-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionVanquisher
+
+# #Misfits Add - Centurion armor selection sets (for LegionCenturionArmorloadoutkits in pocket2).
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorStandardSet
+  name: undecided-loadout-category-misfits-centurion-armor-standard-name
+  description: undecided-loadout-category-misfits-centurion-armor-standard-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionArmorStandard
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorPaladinSlayerSet
+  name: undecided-loadout-category-misfits-centurion-armor-paladin-slayer-name
+  description: undecided-loadout-category-misfits-centurion-armor-paladin-slayer-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionArmorPaladinSlayer
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorWarforgedSet
+  name: undecided-loadout-category-misfits-centurion-armor-warforged-name
+  description: undecided-loadout-category-misfits-centurion-armor-warforged-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionWarforged
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorWarlordSet
+  name: undecided-loadout-category-misfits-centurion-armor-warlord-name
+  description: undecided-loadout-category-misfits-centurion-armor-warlord-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionWarlord
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorCinderSet
+  name: undecided-loadout-category-misfits-centurion-armor-cinder-name
+  description: undecided-loadout-category-misfits-centurion-armor-cinder-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionCinder
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorSaltColumnSet
+  name: undecided-loadout-category-misfits-centurion-armor-salt-column-name
+  description: undecided-loadout-category-misfits-centurion-armor-salt-column-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionSaltColumn
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorUnbrokenSet
+  name: undecided-loadout-category-misfits-centurion-armor-unbroken-name
+  description: undecided-loadout-category-misfits-centurion-armor-unbroken-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionUnbroken
+
+- type: UndecidedLoadoutBackpackSet
+  id: CenturionArmorRangerHunterSet
+  name: undecided-loadout-category-misfits-centurion-armor-ranger-hunter-name
+  description: undecided-loadout-category-misfits-centurion-armor-ranger-hunter-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitCenturionArmorRangerHunter
+
+- type: UndecidedLoadoutBackpackSet
+  id: VenatorMarksmanSet
+  name: undecided-loadout-category-corvax-venator-marksman-name
+  description: undecided-loadout-category-corvax-venator-marksman-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVenatorSagitaria
+
+- type: UndecidedLoadoutBackpackSet
+  id: VenatorStalkerSet
+  name: undecided-loadout-category-corvax-venator-stalker-name
+  description: undecided-loadout-category-corvax-venator-stalker-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVenatorStalker
+
+- type: UndecidedLoadoutBackpackSet
+  id: VenatorExecutionerSet
+  name: undecided-loadout-category-corvax-venator-executioner-name
+  description: undecided-loadout-category-corvax-venator-executioner-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVenatorTriaria
+
+- type: UndecidedLoadoutBackpackSet
+  id: VenatorOperativeSet
+  name: undecided-loadout-category-corvax-venator-operative-name
+  description: undecided-loadout-category-corvax-venator-operative-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVenatorOperative
+
+- type: UndecidedLoadoutBackpackSet
+  id: VexillariusStandardSet
+  name: undecided-loadout-category-corvax-vexillarius-standard-name
+  description: undecided-loadout-category-corvax-vexillarius-standard-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVexillariusStandard
+
+- type: UndecidedLoadoutBackpackSet
+  id: VexillariusHeraldSet
+  name: undecided-loadout-category-corvax-vexillarius-herald-name
+  description: undecided-loadout-category-corvax-vexillarius-herald-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVexillariusHerald
+
+- type: UndecidedLoadoutBackpackSet
+  id: VexillariusSkirmisherSet
+  name: undecided-loadout-category-corvax-vexillarius-skirmisher-name
+  description: undecided-loadout-category-corvax-vexillarius-skirmisher-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVexillariusSkirmisher
+  # #Misfits Fix - Use FTL keys so undecided loadout UI stops localizing raw English text as message IDs.
+
+- type: UndecidedLoadoutBackpackSet
+  id: ExplorerTrackerSet
+  name: undecided-loadout-category-explorer-tracker-name
+  description: undecided-loadout-category-explorer-tracker-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitExplorerTracker
+
+- type: UndecidedLoadoutBackpackSet
+  id: ExplorerRaiderSet
+  name: undecided-loadout-category-explorer-raider-name
+  description: undecided-loadout-category-explorer-raider-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitExplorerRaider
+
+- type: UndecidedLoadoutBackpackSet
+  id: ExplorerHunterSet
+  name: undecided-loadout-category-explorer-hunter-name
+  description: undecided-loadout-category-explorer-hunter-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitExplorerHunter
+
+- type: UndecidedLoadoutBackpackSet
+  id: OptioPreacherSet
+  name: undecided-loadout-category-corvax-optio-preacher-name
+  description: undecided-loadout-category-corvax-optio-preacher-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitOptioPreacher
+
+- type: UndecidedLoadoutBackpackSet
+  id: OptioDefenderSet
+  name: undecided-loadout-category-corvax-optio-defender-name
+  description: undecided-loadout-category-corvax-optio-defender-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitOptioDefender
+
+- type: UndecidedLoadoutBackpackSet
+  id: OptioInquisitorSet
+  name: undecided-loadout-category-corvax-optio-inquisitor-name
+  description: undecided-loadout-category-corvax-optio-inquisitor-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitOptioInquisitor
+
+- type: UndecidedLoadoutBackpackSet
+  id: HoundmasterHunterSet
+  name: undecided-loadout-category-corvax-houndmaster-hunter-name
+  description: undecided-loadout-category-corvax-houndmaster-hunter-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitHoundmasterHunter
+
+- type: UndecidedLoadoutBackpackSet
+  id: HoundmasterTamerSet
+  name: undecided-loadout-category-corvax-houndmaster-tamer-name
+  description: undecided-loadout-category-corvax-houndmaster-tamer-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitHoundmasterTamer
+
+- type: UndecidedLoadoutBackpackSet
+  id: HoundmasterMedicSet
+  name: undecided-loadout-category-corvax-houndmaster-medic-name
+  description: undecided-loadout-category-corvax-houndmaster-medic-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitHoundmasterMedic
+
+- type: UndecidedLoadoutBackpackSet
+  id: AuxiliaSkirmisherSet
+  name: undecided-loadout-category-corvax-auxilia-skirmisher-name
+  description: undecided-loadout-category-corvax-auxilia-skirmisher-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitAuxiliaSkirmisher
+
+- type: UndecidedLoadoutBackpackSet
+  id: AuxiliaSpearmanSet
+  name: undecided-loadout-category-corvax-auxilia-spearman-name
+  description: undecided-loadout-category-corvax-auxilia-spearman-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitAuxiliaSpearman
+
+- type: UndecidedLoadoutBackpackSet
+  id: AuxiliaMedicSet
+  name: undecided-loadout-category-corvax-auxilia-medic-name
+  description: undecided-loadout-category-corvax-auxilia-medic-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitAuxiliaMedic
+
+- type: UndecidedLoadoutBackpackSet
+  id: RecruitDecanusCommandSet
+  name: undecided-loadout-category-corvax-recruit-decanus-command-name
+  description: undecided-loadout-category-corvax-recruit-decanus-command-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitDecanusCommand
+
+- type: UndecidedLoadoutBackpackSet
+  id: RecruitDecanusHunterSet
+  name: undecided-loadout-category-corvax-recruit-decanus-hunter-name
+  description: undecided-loadout-category-corvax-recruit-decanus-hunter-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitDecanusHunter
+
+- type: UndecidedLoadoutBackpackSet
+  id: RecruitDecanusCrusherSet
+  name: undecided-loadout-category-corvax-recruit-decanus-crusher-name
+  description: undecided-loadout-category-corvax-recruit-decanus-crusher-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitDecanusCrusher
+
+- type: UndecidedLoadoutBackpackSet
+  id: DecanusGladiatorSet
+  name: undecided-loadout-category-corvax-decanus-gladiator-name
+  description: undecided-loadout-category-corvax-decanus-gladiator-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitDeanGladiator
+
+- type: UndecidedLoadoutBackpackSet
+  id: DecanusCrusherSet
+  name: undecided-loadout-category-corvax-decanus-crusher-name
+  description: undecided-loadout-category-corvax-decanus-crusher-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitDeanCrusher
+
+- type: UndecidedLoadoutBackpackSet
+  id: DecanusDemolitionistSet
+  name: undecided-loadout-category-corvax-decanus-demolitionist-name
+  description: undecided-loadout-category-corvax-decanus-demolitionist-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitDeanDemolitionist
+
+- type: UndecidedLoadoutBackpackSet
+  id: DecanusSharpshooterSet
+  name: undecided-loadout-category-corvax-decanus-sharpshooter-name
+  description: undecided-loadout-category-corvax-decanus-sharpshooter-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitDeanSharpshooter
+
+- type: UndecidedLoadoutBackpackSet
+  id: DecanusDestroyerSet
+  name: undecided-loadout-category-corvax-decanus-destroyer-name
+  description: undecided-loadout-category-corvax-decanus-destroyer-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitDeanDestroyer
+
+- type: UndecidedLoadoutBackpackSet
+  id: VeteranRiflemanSet
+  name: undecided-loadout-category-corvax-veteran-rifleman-name
+  description: undecided-loadout-category-corvax-veteran-rifleman-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVeteranFirearm
+
+- type: UndecidedLoadoutBackpackSet
+  id: VeteranBerserkerSet
+  name: undecided-loadout-category-corvax-veteran-berserker-name
+  description: undecided-loadout-category-corvax-veteran-berserker-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVeteranBerserker
+
+- type: UndecidedLoadoutBackpackSet
+  id: VeteranGoliathSet
+  name: undecided-loadout-category-corvax-veteran-goliath-name
+  description: undecided-loadout-category-corvax-veteran-goliath-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitVeteranGoliath
+
+- type: UndecidedLoadoutBackpackSet
+  id: WarriorMedicSet
+  name: undecided-loadout-category-corvax-warrior-medic-name
+  description: undecided-loadout-category-corvax-warrior-medic-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitWarriorHealer
+
+- type: UndecidedLoadoutBackpackSet
+  id: WarriorGunmanSet
+  name: undecided-loadout-category-corvax-warrior-gunman-name
+  description: undecided-loadout-category-corvax-warrior-gunman-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitWarriorFirearm
+
+- type: UndecidedLoadoutBackpackSet
+  id: WarriorShieldbearerSet
+  name: undecided-loadout-category-corvax-warrior-shieldbearer-name
+  description: undecided-loadout-category-corvax-warrior-shieldbearer-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitWarriorMelee
+
+- type: UndecidedLoadoutBackpackSet
+  id: LegionnaireRecruitSkirmisherSet
+  name: undecided-loadout-category-corvax-recruit-skirmisher-name
+  description: undecided-loadout-category-corvax-recruit-skirmisher-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitBase
+
+- type: UndecidedLoadoutBackpackSet
+  id: LegionnaireRecruitSpearmanSet
+  name: undecided-loadout-category-corvax-recruit-spearman-name
+  description: undecided-loadout-category-corvax-recruit-spearman-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitSpear
+
+- type: UndecidedLoadoutBackpackSet
+  id: LegionnaireRecruitMedicSet
+  name: undecided-loadout-category-corvax-recruit-medic-name
+  description: undecided-loadout-category-corvax-recruit-medic-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitHealer
+
+- type: UndecidedLoadoutBackpackSet
+  id: RecruitInitiateSet
+  name: undecided-loadout-category-corvax-recruit-initiate-name
+  description: undecided-loadout-category-corvax-recruit-initiate-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitInitiate
+
+- type: UndecidedLoadoutBackpackSet
+  id: RecruitPorterSet
+  name: undecided-loadout-category-corvax-recruit-porter-name
+  description: undecided-loadout-category-corvax-recruit-porter-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitPorter
+
+- type: UndecidedLoadoutBackpackSet
+  id: RecruitCampMedicSet
+  name: undecided-loadout-category-corvax-recruit-camp-medic-name
+  description: undecided-loadout-category-corvax-recruit-camp-medic-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitCampMedic
+
+- type: UndecidedLoadoutBackpackSet
+  id: AuxiliaryRecruitSet
+  name: undecided-loadout-category-corvax-auxiliary-recruit-name
+  description: undecided-loadout-category-corvax-auxiliary-recruit-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitBase
+
+- type: UndecidedLoadoutBackpackSet
+  id: AuxiliarySpearmanSet
+  name: undecided-loadout-category-corvax-auxiliary-spearman-name
+  description: undecided-loadout-category-corvax-auxiliary-spearman-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitSpear
+
+- type: UndecidedLoadoutBackpackSet
+  id: AuxiliaryMeleeSet
+  name: undecided-loadout-category-corvax-auxiliary-melee-name
+  description: undecided-loadout-category-corvax-auxiliary-melee-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitMelee
+
+- type: UndecidedLoadoutBackpackSet
+  id: AuxiliaryHealerSet
+  name: undecided-loadout-category-corvax-auxiliary-healer-name
+  description: undecided-loadout-category-corvax-auxiliary-healer-description
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitRecruitHealer
+
+#Misfits Change /Comment-out/: Washington BoS kit sets removed — will create new prototypes.
+## Washington BoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: BaseWashingtonBoSSet
+#  name: undecided-loadout-category-washington-base-name
+#  description: undecided-loadout-category-washington-base-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBaseWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: WattzWashingtonBoSSet
+#  name: undecided-loadout-category-washington-wattz-name
+#  description: undecided-loadout-category-washington-wattz-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  content:
+#  - KitWattzWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: AutoWashingtonBoSSet
+#  name: undecided-loadout-category-washington-auto-name
+#  description: undecided-loadout-category-washington-auto-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitAutoWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: ProtoWashingtonBoSSet
+#  name: undecided-loadout-category-washington-proto-name
+#  description: undecided-loadout-category-washington-proto-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitProtoWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: CommandBaseWashingtonBoSSet
+#  name: undecided-loadout-category-washington-command-base-name
+#  description: undecided-loadout-category-washington-command-base-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitCommandBaseWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: CommandMultiWashingtonBoSSet
+#  name: undecided-loadout-category-washington-command-multi-name
+#  description: undecided-loadout-category-washington-command-multi-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  content:
+#  - KitCommandMultiWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: CommandCasterWashingtonBoSSet
+#  name: undecided-loadout-category-washington-command-caster-name
+#  description: undecided-loadout-category-washington-command-caster-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitCommandCasterWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: CommandWattzWashingtonBoSSet
+#  name: undecided-loadout-category-washington-command-wattz-name
+#  description: undecided-loadout-category-washington-command-wattz-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: marksman
+#  content:
+#  - KitCommandWattzWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: CommandGatlingWashingtonBoSSet
+#  name: undecided-loadout-category-washington-command-gatling-name
+#  description: undecided-loadout-category-washington-command-gatling-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitCommandGatlingWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: ScribeEngineerWashingtonBoSSet
+#  name: undecided-loadout-category-washington-scribe-engineer-name
+#  description: undecided-loadout-category-washington-scribe-engineer-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitScribeEngineerWashingtonBoS
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: ScribeMedicWashingtonBoSSet
+#  name: undecided-loadout-category-washington-scribe-medic-name
+#  description: undecided-loadout-category-washington-scribe-medic-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: medic
+#  content:
+#  - KitScribeMedicWashingtonBoS
+
+# Ranger
+
+- type: UndecidedLoadoutBackpackSet
+  id: RangerSMGSet
+  name: undecided-loadout-category-corvax-ranger-smg-name
+  description: undecided-loadout-category-corvax-ranger-smg-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitSMGRanger
+
+#Misfits Change /Comment-out/: Western BoS kit sets removed — no Western BoS chapter.
+## Brother West Scribe kits
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_ScriberifleSet
+#  name: undecided-loadout-category-scribe-rifle-name
+#  description: undecided-loadout-category-scribe-rifle-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Scriberifle
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_ScribelaserSet
+#  name: undecided-loadout-category-scribe-laser-name
+#  description: undecided-loadout-category-scribe-laser-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Scribelaser
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_ScribeplasmaSet
+#  name: undecided-loadout-category-scribe-plasma-name
+#  description: undecided-loadout-category-scribe-plasma-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Scribeplasma
+#
+## Brother West Squire kits
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_SquirerifleSet
+#  name: undecided-loadout-category-squire-rifle-name
+#  description: undecided-loadout-category-squire-rifle-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Squirerifle
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_SquirelaserSet
+#  name: undecided-loadout-category-squire-laser-name
+#  description: undecided-loadout-category-squire-laser-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Squirelaser
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_SquireplasmaSet
+#  name: undecided-loadout-category-squire-plasma-name
+#  description: undecided-loadout-category-squire-plasma-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Squireplasma
+#
+## Brother West Knight kits
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_KnightrifleSet
+#  name: undecided-loadout-category-knight-rifle-name
+#  description: undecided-loadout-category-knight-rifle-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Knightrifle
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_KnightlaserSet
+#  name: undecided-loadout-category-knight-laser-name
+#  description: undecided-loadout-category-knight-laser-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Knightlaser
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_KnightplasmaSet
+#  name: undecided-loadout-category-knight-plasma-name
+#  description: undecided-loadout-category-knight-plasma-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Knightplasma
+#
+## Brother West Paladin kits
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_PaladinrifleSet
+#  name: undecided-loadout-category-paladin-rifle-name
+#  description: undecided-loadout-category-paladin-rifle-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Paladinrifle
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_PaladinlasSet
+#  name: undecided-loadout-category-paladin-laser-name
+#  description: undecided-loadout-category-paladin-laser-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Paladinlas
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_PaladinplasmaSet
+#  name: undecided-loadout-category-paladin-plasma-name
+#  description: undecided-loadout-category-paladin-plasma-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Paladinplasma
+#
+## Brother West Elder kits
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_ElderrifleSet
+#  name: undecided-loadout-category-elder-rifle-name
+#  description: undecided-loadout-category-elder-rifle-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Elderrifle
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitBrotherWest_ElderlasSet
+#  name: undecided-loadout-category-elder-laser-name
+#  description: undecided-loadout-category-elder-laser-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitBrotherWest_Elderlas
+#
+## Inquisitor Brother Kits
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitMidwestInquisitorInspectorSet
+#  name: undecided-loadout-category-inquisitorinspector-name
+#  description: undecided-loadout-category-inquisitorinspector-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitInquisitorInspector
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitMidwestInquisitorCrusaderSet
+#  name: undecided-loadout-category-inquisitorcrusader-name
+#  description: undecided-loadout-category-inquisitorcrusader-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitInquisitorCrusader
+#
+#- type: UndecidedLoadoutBackpackSet
+#  id: KitMidwestInquisitorPlasmaSet
+#  name: undecided-loadout-category-inquisitorplasma-name
+#  description: undecided-loadout-category-inquisitorplasma-description
+#  sprite:
+#    sprite: _Nuclear14/Objects/Misc/kits.rsi
+#    state: rifleman
+#  content:
+#  - KitInquisitorPlasma
+
+- type: UndecidedLoadoutBackpackSet
+  id: KitNCRMPMilitaryPoliceSet
+  name: undecided-loadout-category-NCRMPMilitaryPolice-name
+  description: undecided-loadout-category-NCRMPMilitaryPolice-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitNCRMPMilitaryPolice
+
+- type: UndecidedLoadoutBackpackSet
+  id: KitNCRMPinvestigatorSet
+  name: undecided-loadout-category-NCRMPinvestigator-name
+  description: undecided-loadout-category-NCRMPinvestigator-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitNCRMPinvestigator
+
+- type: UndecidedLoadoutBackpackSet
+  id: KitNCRMPinvestigatorBailifSet
+  name: undecided-loadout-category-NCRMPinvestigatorBailif-name
+  description: undecided-loadout-category-NCRMPinvestigatorBailif-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitNCRMPbailiff

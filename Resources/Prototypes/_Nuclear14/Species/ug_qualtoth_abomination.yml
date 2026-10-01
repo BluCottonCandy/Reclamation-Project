@@ -1,0 +1,31 @@
+# Ug-Qualtoth Abomination — the fully-transformed Stage 4 species.
+# Not available at round start; reached only via UgQualtothSystem.SetSpecies().
+# N14 TODO: Replace all placeholder RSI states with dedicated abomination artwork.
+#           Target RSI: _Nuclear14/Mobs/Species/UgQualtothAbomination/parts.rsi
+#           Required states: head_m, head_f, torso_m, torso_f, l_arm, r_arm,
+#                            l_hand, r_hand, l_leg, r_leg, l_foot, r_foot
+
+- type: species
+  id: UgQualtothAbomination
+  name: species-name-ug-qualtoth-abomination
+  roundStart: false
+  prototype: N14MobGhoul          # Never spawned via character creation; placeholder entity ref only
+  sprites: UgQualtothAbominationSprites
+  markingLimits: MobHumanMarkingLimits
+  dollPrototype: N14MobGhoulDummy  # Placeholder; not accessible in character creator
+  skinColoration: TintedHues       # Accepts any hue so the dark crimson skin tone set in C# is valid
+
+- type: speciesBaseSprites
+  id: UgQualtothAbominationSprites
+  sprites:
+    Head:  UgQualtothAbominationHead
+    Chest: UgQualtothAbominationChest
+    LArm:  UgQualtothAbominationLArm
+    RArm:  UgQualtothAbominationRArm
+    LHand: UgQualtothAbominationLHand
+    RHand: UgQualtothAbominationRHand
+    LLeg:  UgQualtothAbominationLLeg
+    RLeg:  UgQualtothAbominationRLeg
+    LFoot: UgQualtothAbominationLFoot
+    RFoot: UgQualtothAbominationRFoot
+

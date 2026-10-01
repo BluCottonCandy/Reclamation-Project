@@ -1,0 +1,61 @@
+- type: job
+  id: CaesarLegionHoundmaster
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 120
+  showBorder: true  # #Misfits Change: Starts the "Specialist" tier block below the Decani
+  name: job-name-caesar-legion-houndmaster
+  description: job-description-caesar-legion-houndmaster
+  playTimeTracker: CaesarLegionHoundmaster
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement # Legion total timelock
+      department: CaesarLegion
+      min: 72000 # 20 hours
+    - !type:CharacterSpeciesRequirement # remove vex time req, why would you need playtime as a standard bearer to be the guy who trains dogs?
+      species:
+      - Human
+  startingGear: CaesarLegionHoundmasterGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerWarrior"
+  supervisors: job-name-caesar-legion-other
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionHoundmaster
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: FollowerCommander
+        innateFollowerCapacity: 3
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin, N14PetDogLegion ]
+
+- type: startingGear
+  id: CaesarLegionHoundmasterGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: N14ClothingNeckCoyoteCloak
+    mask: N14ClothingMaskBrownMask
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingShoesKaligi
+    gloves: N14ClothingHandsGlovesTribal
+    outerClothing: N14ClothingLegionReconArmor
+    belt: N14Gladius
+    pocket1: LegionHoundmasterloadoutkits
+    id: N14IDLegionaryMedalHoundmaster
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+    - SyndicateWhistle
+
+- type: playTimeTracker
+  id: CaesarLegionHoundmaster

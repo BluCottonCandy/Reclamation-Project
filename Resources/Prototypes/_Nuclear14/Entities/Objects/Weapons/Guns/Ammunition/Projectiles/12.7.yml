@@ -1,0 +1,18 @@
+- type: entity
+  id: N14Bullet127
+  name: bullet (12.7mm)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 12 # Corvax-Change
+        Blunt: 5
+  # Misfits Add - 12.7mm heavy round; strong range retention
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 8.0
+    maxFalloffTiles: 18.0
+    minDamageMultiplier: 0.65
+  - type: Reflective
+    reflective: MediumCaliber

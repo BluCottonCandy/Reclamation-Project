@@ -1,0 +1,47 @@
+- type: Tag
+  id: SolarAssemblyFlatpack
+
+- type: Tag
+  id: N14Bandage
+
+- type: Tag
+  id: N14Board
+
+- type: Tag
+  id: N14Capacitor
+
+- type: Tag
+  id: N14Diode
+
+- type: Tag
+  id: N14Fuse
+
+- type: Tag
+  id: N14Resistor
+
+- type: Tag
+  id: N14Transistor
+
+- type: Tag
+  id: N14Magazine68Rifle
+
+- type: Tag
+  id: N14Cartridge68Rifle
+
+- type: Tag
+  id: Magazine545Rifle
+
+- type: Tag
+  id: MagazineDrum545Rifle
+
+- type: Tag
+  id: N14Cartridge545Rifle
+
+- type: Tag
+  id: N14PowerCellMagnetoSmall
+
+- type: Tag
+  id: N14AmmoCellMagneto
+
+- type: Tag
+  id: N14PowerCellFocusedYk42b

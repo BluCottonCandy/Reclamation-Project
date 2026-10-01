@@ -1,0 +1,64 @@
+# #Misfits Change /Add/: Legion Auxilia job.
+- type: job
+  id: CaesarLegionAuxilia
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 30
+  name: job-name-caesar-legion-auxilia
+  description: job-description-caesar-legion-auxilia
+  playTimeTracker: CaesarLegionAuxilia
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Female
+    - !type:CharacterGenderRequirement
+      gender: Female
+  startingGear: CaesarLegionAuxiliaGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerRecruit"
+  supervisors: job-name-caesar-legion-female # changed aux and aom to have their own command chain under priestess.
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionRecruit
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+      - type: CPRTraining
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionAuxiliaGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    mask: N14ClothingMaskBrownMask
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsLeather
+    head: N14ClothingHeadHatTribalOutcastHood
+    gloves: N14ClothingHandsGlovesTribal
+    outerClothing: N14ClothingOuterLegionnaireRecruitArmor
+    pocket1: LegionAuxilialoadoutkits
+    id: N14IDLegionaryBadge
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+    - N14HealingPowder
+    - N14HealingPoultice
+    - N14HealingPoultice
+    - N14Hydra
+    - BookLegionLaw #new players get the guidebook
+
+- type: playTimeTracker
+  id: CaesarLegionAuxilia

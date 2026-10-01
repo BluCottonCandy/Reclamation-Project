@@ -1,0 +1,58 @@
+- type: job
+  id: NCRPlatoonLeader
+  setPreference: true
+  hideWithoutJobWhitelist: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  overrideConsoleVisibility: false
+  canBeAntag: true
+  name: job-name-ncr-platoon-leader
+  overwatchCategory: OverwatchNcrOfficers
+  description: job-description-ncr-platoon-leader
+  playTimeTracker: NCRPlatoonLeader
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # T6 faction timelock (20h NCR)
+      department: NCR
+      min: 72000 # 20 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRSquadLeader
+      min: 28800 # 8 hours as NCO
+  weight: 103 # #Misfits Tweak - platoon leader starts below aviation
+  showBorder: true # #Misfits Tweak - starts the platoon/NCO tier
+  startingGear: NCRPlatoonLeaderGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-commander
+  requireAdminNotify: true
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRPlatoonLeaderGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretOfficer
+    ears: N14ClothingHeadsetNCR
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingOfficerUniformNCRDesert
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagOfficer
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+
+- type: playTimeTracker
+  id: NCRPlatoonLeader

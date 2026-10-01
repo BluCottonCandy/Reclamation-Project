@@ -1,0 +1,105 @@
+# legion_priestess_of_mars.yml
+# Priestess of Mars — Caesar's Legion female religious role.
+# Senior support-officer tier (equivalent to Centurion's tier) beneath command.
+# CaesarLegionSlave is the female-accessible entry rank; playtime gates placed there.
+
+- type: job
+  id: CaesarLegionPriestessOfMars
+  setPreference: true
+  hideWithoutJobWhitelist: false  # visible in all menus regardless of whitelist
+  overrideConsoleVisibility: true # force display in crew manifest + job picker
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  weight: 170  # Support-officer tier: below Centurion (190), above NCO group (150)
+  name: job-name-caesar-legion-priestess-of-mars
+  description: job-description-caesar-legion-priestess-of-mars
+  playTimeTracker: CaesarLegionPriestessOfMars
+  requirements:
+    # Priestess is a senior officer — requires meaningful Legion service.
+    # CaesarLegionSlave is the female-accessible entry rank, so hours gate placed there.
+    - !type:CharacterDepartmentTimeRequirement # Legion total timelock (minimum branch total)
+      department: CaesarLegion
+      min: 108000 # 30 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: CaesarLegionAcolyteOfMars
+      min: 43200 # 12 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+    - !type:CharacterSexRequirement
+      sex: Female
+    - !type:CharacterGenderRequirement
+      gender: Female
+  startingGear: CaesarLegionPriestessOfMarsGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerRecruit"
+  supervisors: job-name-caesar-legion-supervisors #pom is a command role, she does not answer to decani. cry about it.
+  canBeAntag: false
+  # Priestesses share base Legion access; they are not combatants and gain
+  # no additional restricted-area access beyond a standard Recruit.
+  accessGroups:
+    - CaesarLegionPriestessOfMars
+  special:
+    - !type:AddComponentSpecial
+      components:
+        - type: BibleUser #Lets them heal with bibles
+        - type: NpcFactionMember
+          factions:
+            - CaesarLegion
+        - type: ReplacementAccent
+          accent: latin
+        - type: CPRTraining # Priestess is a former Auxilia and serves as Legion support officer; retains medical training.
+        - type: Warcry
+          action: ActionMarsWarcry
+          targetDepartment: CaesarLegion
+          range: 6
+          speedBonus: 0.30 # #Misfits Tweak - reduced from 0.50, was too strong
+          duration: 10
+          overlayColor: "#D64545"
+          speechVerb: MisfitsMarsWarcry
+          warcryMessage: warcry-message-mars
+          warcryMessageCount: 6
+          buffPopup: warcry-popup-buffed-mars
+          excludedJobs:
+          - SuperMutantGladiator
+          cautionPopup: true
+          activatorJobs:
+          - CaesarLegionVexillarius
+          - CaesarLegionDean
+          - CaesarLegionPrimeDecanus
+          - CaesarLegionVeteranDecanus
+          - CaesarLegionCenturion
+          - CaesarLegionLegate
+          - CaesarLegionOptio
+          - CaesarLegionPriestessOfMars
+          - CaesarLegionAcolyteOfMars
+    - !type:AddTraitSpecial
+      traits: [ LanguageLatin ]
+
+# Starting loadout — full ceremonial outfit using the Priestess of Mars items.
+- type: startingGear
+  id: CaesarLegionPriestessOfMarsGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14PriestessOfMarsRobes
+    neck: N14PriestessOfMarsCloak
+    mask: N14PriestessOfMarsVeil
+    gloves: N14PriestessOfMarsGloves
+    shoes: N14PriestessOfMarsBoots
+    belt: N14PriestessOfMarsSatchel
+    ears: N14ClothingHeadsetLegion
+    back: N14ClothingBackpackMilitary
+    id: N14IDLegionaryBadgePriestessOfMars
+    outerClothing: N14ClothingOuterPriestessMarsArmor
+    pocket1: LegionPriestessLoadoutKits
+    pocket2: N14Whip
+  storage:
+    back:
+      - N14BoxPlasticFilledMilitaryLegion
+      - N14HealingPowder
+      - N14HealingPoultice
+      - BibleMars
+
+# Playtime tracker — accumulated hours unlock future female Legion ranks.
+- type: playTimeTracker
+  id: CaesarLegionPriestessOfMars

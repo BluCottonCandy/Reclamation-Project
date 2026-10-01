@@ -1,0 +1,2660 @@
+# Blueprint crafting recipes for Brotherhood of Steel and Townsfolk factions.
+# All recipes require a blueprint item in workbench storage.
+
+# =====================================================================
+# BROTHERHOOD OF STEEL WEAPON RECIPES
+# =====================================================================
+
+# --- BoS Tier 1 Weapons (Initiate energy weapons) ---
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserPistol
+  result: N14WeaponLaserPistol
+  category: N14BlueprintBoSWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1000
+
+    Glass: 500
+
+    Circuitry: 400
+
+
+# Recharger variants are intentionally excluded from blueprint crafting.
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRevolver
+  result: N14WeaponLaserRevolver
+  category: N14BlueprintBoSWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1000
+
+    Glass: 250
+
+    Scrap: 500
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPistol10mm
+  result: N14WeaponPistol10mm
+  category: N14BlueprintBoSWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1500
+
+    Scrap: 50
+
+# #Misfits Add - mediocre kinetic sidearms/close-range (T1)
+- type: latheRecipe
+  id: N14BPBoSWeaponPistol9mmChinese
+  result: N14WeaponPistol9mmChinese
+  category: N14BlueprintBoSWeaponsT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1000
+    Scrap: 50
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPistolM1911
+  result: N14WeaponPistolM1911
+  category: N14BlueprintBoSWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 2500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPBoSWeaponShotgunSawedOff
+  result: N14WeaponShotgunSawedOff
+  category: N14BlueprintBoSWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 2000
+    Wood: 1000
+
+# --- BoS Tier 2 Weapons (Knight energy weapons) ---
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifleCrude
+  result: N14WeaponLaserRifleCrude
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3500
+
+    Glass: 350
+
+    Circuitry: 100
+
+    Scrap: 250
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifleMakeshift
+  result: N14WeaponLaserRifleMakeshift
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3500
+
+    Glass: 250
+
+    Circuitry: 100
+
+    Scrap: 200
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifle
+  result: N14WeaponLaserRifle
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 4500
+
+    Glass: 600
+
+    Circuitry: 200
+
+    Plastic: 500
+
+
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPlasmaPistol
+  result: N14WeaponPlasmaPistol
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3000
+
+    Glass: 200
+
+    Circuitry: 100
+
+    ScrapElectronic: 300
+
+
+#- type: latheRecipe
+#  id: N14BPBoSWeaponPlasmaDefender
+#  result: N14WeaponPlasmaDefender
+#  category: N14BlueprintBoSWeaponsT2
+# completetime: 11
+# requiresBlueprint: true
+# availableFaction:
+# - BrotherhoodOfSteel
+# materials:
+#   Steel: 3500
+#   Glass: 800
+#   Circuitry: 400
+#    ScrapElectronic: 500
+
+# #Misfits Add - mediocre kinetic surplus rifles (T2)
+- type: latheRecipe
+  id: N14BPBoSWeaponRifle762M14
+  result: N14WeaponRifle762M14
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 4000
+    Wood: 1500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPBoSWeaponShotgunTrench
+  result: N14WeaponShotgunTrench
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3500
+    N14Iron: 700
+    Scrap: 1000
+
+- type: latheRecipe
+  id: N14BPBoSWeaponRifle10mmM1Carbine
+  result: N14WeaponRifle10mmM1Carbine
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3500
+    Wood: 1000
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPBoSWeaponRifleAk112
+  result: N14WeaponRifleAk112
+  category: N14BlueprintBoSWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 4500
+    Wood: 1500
+    N14Iron: 500
+
+# --- BoS Tier 3 Weapons (Paladin arsenal) ---
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifleAuto
+  result: N14WeaponLaserRifleAuto
+  category: N14BlueprintBoSWeaponsT3
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 5500
+
+    Glass: 1500
+
+    Circuitry: 300
+
+    ScrapElectronic: 500
+
+    Plastic: 1000
+
+    N14Gold: 350
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPlasmaRifle
+  result: N14WeaponPlasmaRifle
+  category: N14BlueprintBoSWeaponsT3
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6000
+
+    Glass: 3500
+
+    Circuitry: 500
+
+    ScrapElectronic: 200
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPlasmaRifleAuto
+  result: N14WeaponPlasmaRifleAuto
+  category: N14BlueprintBoSWeaponsT3
+  completetime: 18
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6000
+
+    Glass: 4000
+
+    Circuitry: 900
+
+    ScrapElectronic: 400
+
+    Plastic: 1200
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPlasmaRifleUrban
+  result: N14WeaponPlasmaRifleUrban
+  category: N14BlueprintBoSWeaponsT3
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6500
+
+    Glass: 2300
+
+    Circuitry: 1100
+
+    Plastic: 1500
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifleWattz2000
+  result: N14WeaponLaserRifleWattz2000
+  category: N14BlueprintBoSWeaponsT4 # #Misfits Change - moved from T3 to T4
+  completetime: 18
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 7500
+
+    Glass: 3000
+
+    Circuitry: 1400
+
+    ScrapElectronic: 450
+
+    N14Silver: 300
+
+    N14Gold: 300
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPlasmaMultiplas
+  result: N14WeaponPlasmaMultiplas
+  category: N14BlueprintBoSWeaponsT3
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6000
+
+    Glass: 1200
+
+    Circuitry: 900
+
+    ScrapElectronic: 550
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRCW
+  result: N14WeaponLaserRCW
+  category: N14BlueprintBoSWeaponsT3 # #Misfits Change - moved from T5 to T3; RCW is now red-beam rapid-fire, not top-tier
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 7000
+
+    Glass: 900
+
+    Circuitry: 500
+
+    ScrapElectronic: 450
+
+    Plastic: 800
+
+
+# --- BoS Tier 4 Weapons (Elder's vault - pre-war prototypes) ---
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRiflePrototypeAER14
+  result: N14WeaponLaserRiflePrototypeAER14
+  category: N14BlueprintBoSWeaponsT4
+  completetime: 25
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 10500
+
+    Glass: 2500
+
+    Circuitry: 1200
+
+    ScrapElectronic: 1000
+
+    N14Brass: 500
+
+    N14Gold: 500
+
+# #Misfits Add - AER-12 recipe at T4; advanced amber-beam laser rifle
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifleAER12
+  result: N14WeaponLaserRifleAER12
+  category: N14BlueprintBoSWeaponsT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 8000
+
+    Glass: 1600
+
+    Circuitry: 900
+
+    ScrapElectronic: 1300
+
+    N14Gold: 400
+
+
+# #Misfits Add - Bozar as T4 craftable BoS weapon blueprint; removed from Knight loadout kit
+- type: latheRecipe
+  id: N14BPBoSWeaponBozarGRA
+  result: N14WeaponRifleBozarGRA
+  category: N14BlueprintBoSWeaponsT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 9000
+
+    N14Gold: 100
+
+    N14Brass: 500
+
+    ScrapElectronic: 1500
+
+    Glass: 300 #scope
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifleWattz3000
+  result: N14WeaponLaserRifleWattz3000
+  category: N14BlueprintBoSWeaponsT5 # #Misfits Change - moved from T4 to T5
+  completetime: 22
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 9500
+
+    Glass: 3400
+
+    Circuitry: 2100
+
+    ScrapElectronic: 1000
+
+    N14Silver: 600
+
+    N14Gold: 600
+
+# #Misfits Add - AER-15 recipe at T5; highest-damage blue-beam laser rifle
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRifleAER15
+  result: N14WeaponLaserRifleAER15
+  category: N14BlueprintBoSWeaponsT5
+  completetime: 30
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 12000
+
+    Glass: 2300
+
+    Circuitry: 500
+
+    ScrapElectronic: 450
+
+    N14Gold: 1000
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponPlasmaCaster
+  result: N14WeaponPlasmaCaster
+  category: N14BlueprintBoSWeaponsT5 # #Misfits Change - moved from T4 to T5
+  completetime: 25
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 11000
+
+    Glass: 65
+
+    Circuitry: 60
+
+    ScrapElectronic: 40
+
+    Plastic: 15
+
+
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserGatling
+  result: N14WeaponLaserGatling
+  category: N14BlueprintBoSWeaponsT5 # #Misfits Change - moved from T4 to T5
+  completetime: 30
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 12000
+
+    Glass: 75
+
+    Circuitry: 60
+
+    ScrapElectronic: 45
+
+    N14Iron: 15
+
+
+# =====================================================================
+# BROTHERHOOD OF STEEL ARMOR RECIPES
+# =====================================================================
+
+# --- BoS Tier 1 Armor ---
+- type: latheRecipe
+  id: N14BPBoSArmorWBoSInitiateArmor
+  result: N14ClothingOuterWBoSInitiateArmor
+  category: N14BlueprintBoSArmorT1
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Cloth: 500
+
+    Thread: 500
+
+    Steel: 1000
+
+    Leather: 200
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorMBoSInitiateArmor
+  result: N14ClothingOuterMBoSInitiateArmor
+  category: N14BlueprintBoSArmorT1
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Cloth: 500
+
+    Thread: 500
+
+    Steel: 1000
+
+    Leather: 200
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorBosScribe
+  result: N14ClothingOuterBosScribe
+  category: N14BlueprintBoSArmorT1
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Cloth: 500
+
+    Thread: 500
+
+    Leather: 200
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorWBoSSquireArmor
+  result: N14ClothingOuterWBoSSquireArmor
+  category: N14BlueprintBoSArmorT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3500
+
+    Cloth: 1500
+
+    Thread: 1000
+
+    Leather: 700
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorMBoSSquireArmor
+  result: N14ClothingOuterMBoSSquireArmor
+  category: N14BlueprintBoSArmorT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3500
+
+    Cloth: 1500
+
+    Thread: 1000
+
+    Leather: 700
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorMidwestArmor
+  result: N14ClothingOuterMidwestArmor
+  category: N14BlueprintBoSArmorT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 3500
+
+    Cloth: 1200
+
+    Thread: 1000
+
+    Leather: 700
+
+
+# --- BoS Tier 3 Armor ---
+- type: latheRecipe
+  id: N14BPBoSArmorWBoSKnightArmor
+  result: N14ClothingOuterWBoSKnightArmor
+  category: N14BlueprintBoSArmorT3
+  completetime: 15
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6000
+
+    Cloth: 700
+
+    Thread: 500
+
+    Leather: 800
+
+    Circuitry: 400
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorMBoSKnightArmor
+  result: N14ClothingOuterMBoSKnightArmor
+  category: N14BlueprintBoSArmorT3
+  completetime: 15
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6000
+
+    Cloth: 700
+
+    Thread: 500
+
+    Leather: 800
+
+    Circuitry: 400
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorWBoSSeniorKArmor
+  result: N14ClothingOuterWBoSSeniorKArmor
+  category: N14BlueprintBoSArmorT3
+  completetime: 17
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 7000
+
+    Cloth: 1000
+
+    Thread: 700
+
+    Leather: 1200
+
+    Circuitry: 400
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorMBoSSeniorKArmor
+  result: N14ClothingOuterMBoSSeniorKArmor
+  category: N14BlueprintBoSArmorT3
+  completetime: 17
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 7000
+
+    Cloth: 1000
+
+    Thread: 700
+
+    Leather: 1200
+
+    Circuitry: 400
+
+
+- type: latheRecipe
+  id: N14BPBoSArmorMidwestArmorMK2
+  result: N14ClothingOuterMidwestArmorMK2
+  category: N14BlueprintBoSArmorT3
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6500
+
+    Cloth: 1200
+
+    Thread: 800
+
+    Leather: 1200
+
+    Circuitry: 600
+
+
+# --- BoS Tier 4 Armor (Power Armor) ---
+- type: latheRecipe
+  id: N14BPBoSArmorPowerArmorT45
+  result: N14ClothingOuterPowerArmorT45
+  category: N14BlueprintBoSArmorT4
+  completetime: 30
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 20000
+
+    N14Iron: 350
+
+    Circuitry: 350
+
+    ScrapElectronic: 3000
+
+    N14Brass: 150
+
+
+
+# =====================================================================
+# BROTHERHOOD OF STEEL AMMO RECIPES
+# =====================================================================
+
+# --- BoS Tier 1 Ammo ---
+
+- type: latheRecipe
+  id: N14BPBoSAmmoElectronChargePackRed
+  result: N14ElectronChargePack
+  category: N14BlueprintBoSAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 200
+
+    Circuitry: 100
+
+    ScrapElectronic: 200
+
+    Lead: 200
+
+
+- type: latheRecipe
+  id: N14BPBoSAmmoBox10mm
+  result: N14AmmoBox10mm
+  category: N14BlueprintBoSAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 100
+
+    N14Brass: 50
+
+    N14Gunpowder: 50
+
+# #Misfits Add - kinetic ammo for T1 mediocre guns (9mm / .45 / 12ga)
+- type: latheRecipe
+  id: N14BPBoSAmmoBox9mm
+  result: N14AmmoBox9mm
+  category: N14BlueprintBoSAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 20
+    N14Brass: 10
+    N14Gunpowder: 10
+
+- type: latheRecipe
+  id: N14BPBoSAmmoMag9mmPistol
+  result: N14MagazinePistol9mm
+  category: N14BlueprintBoSAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 70
+    Lead: 5
+    N14Gunpowder: 5
+
+- type: latheRecipe
+  id: N14BPBoSAmmoBox45
+  result: N14AmmoBox45
+  category: N14BlueprintBoSAmmoT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 25
+    N14Brass: 15
+    N14Gunpowder: 15
+
+- type: latheRecipe
+  id: N14BPBoSAmmoMag45Pistol
+  result: N14MagazinePistol45
+  category: N14BlueprintBoSAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 80
+    Lead: 5
+    N14Gunpowder: 5
+
+- type: latheRecipe
+  id: N14BPBoSAmmoBox12gauge
+  result: N14AmmoBox12gauge
+  category: N14BlueprintBoSAmmoT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 25
+    Plastic: 5
+    N14Gunpowder: 15
+
+# #Misfits Add - kinetic ammo for T2 mediocre guns (7.62 M14 / 5.45 AK-112)
+- type: latheRecipe
+  id: N14BPBoSAmmoBox762
+  result: N14AmmoBox762
+  category: N14BlueprintBoSAmmoT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 45
+    N14Brass: 35
+    N14Gunpowder: 35
+
+- type: latheRecipe
+  id: N14BPBoSAmmoMag762Short
+  result: Magazine762AmmoShort
+  category: N14BlueprintBoSAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 180
+    Lead: 40
+    N14Gunpowder: 40
+
+- type: latheRecipe
+  id: N14BPBoSAmmoBox545
+  result: MagazineBox545
+  category: N14BlueprintBoSAmmoT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 180
+    Steel: 260
+    N14Gunpowder: 180
+    Cardboard: 100
+
+- type: latheRecipe
+  id: N14BPBoSAmmoMag545Rifle
+  result: Magazine545Rifle
+  category: N14BlueprintBoSAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 60
+    Steel: 180
+    N14Gunpowder: 60
+
+# --- BoS Tier 2 Ammo ---
+- type: latheRecipe
+  id: N14BPBoSAmmoPowerCellHigh
+  result: N14MicrofusionCell
+  category: N14BlueprintBoSAmmoT2
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 200
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 200
+
+- type: latheRecipe
+  id: N14BPBoSAmmoPlasmaCartridge
+  result: N14PlasmaCartridge
+  category: N14BlueprintBoSAmmoT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 600
+
+    Circuitry: 100
+
+    ScrapElectronic: 100
+
+    Lead: 600
+
+
+# --- BoS Tier 3 Ammo ---
+
+- type: latheRecipe
+  id: N14BPBoSAmmoPlasmaShell
+  result: N14PlasmaShell
+  category: N14BlueprintBoSAmmoT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 400
+
+    Circuitry: 100
+
+    ScrapElectronic: 100
+
+    Lead: 400
+
+# #Misfits Add - Multiplas-specific ammo recipe; same cost as base plasma cartridge
+- type: latheRecipe
+  id: N14BPBoSAmmoPlasmaCartridgeMultiplas
+  result: N14PlasmaCartridgeMultiplas
+  category: N14BlueprintBoSAmmoT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 400
+
+    Circuitry: 100
+
+    ScrapElectronic: 100
+
+    Lead: 400
+
+# --- BoS Tier 4 Ammo ---
+- type: latheRecipe
+  id: N14BPBoSAmmoFusionCoreRed
+  result: N14FusionCore # #Misfits Change - consolidated to single generic fusion core
+  category: N14BlueprintBoSAmmoT4
+  completetime: 15
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 1000
+
+    Circuitry: 300
+
+    ScrapElectronic: 500
+
+    N14Gold: 500
+
+    Lead: 1000
+
+# #Misfits Removed - duplicate FC recipe commented out; consolidated to single generic fusion core above
+# - type: latheRecipe
+#   id: N14BPBoSAmmoFusionCoreBlue
+#   result: N14FusionCore
+#   category: N14BlueprintBoSAmmoT4
+
+# #Misfits Add - 5.56mm 30-round magazine as T4 BoS ammo blueprint for Bozar
+- type: latheRecipe
+  id: N14BPBoSAmmoMag556Rifle30
+  result: Magazine556Rifle30
+  category: N14BlueprintBoSAmmoT4
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 90
+
+    Steel: 190
+
+    N14Gunpowder: 60
+
+
+# --- BoS Tier 5 Ammo ---
+
+
+# =====================================================================
+# TOWNSFOLK WEAPON RECIPES
+# =====================================================================
+
+# --- Town Tier 1 Weapons ---
+- type: latheRecipe
+  id: N14BPTownWeaponPistol9mm
+  result: N14WeaponPistol9mm
+  category: N14BlueprintTownWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1000
+
+    Scrap: 5
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponPistol10mm
+  result: N14WeaponPistol10mm
+  category: N14BlueprintTownWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1500
+
+    Scrap: 5
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponPistol22lr
+  result: N14WeaponPistol22lr
+  category: N14BlueprintTownWeaponsT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1000
+
+    Scrap: 5
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponRevolver9mm
+  result: N14WeaponRevolver9mm
+  category: N14BlueprintTownWeaponsT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1000
+
+    N14Iron: 2
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponCombatKnife
+  result: N14CombatKnife
+  category: N14BlueprintTownWeaponsT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1000
+
+    Leather: 2
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponShotgunDoubleBarrel
+  result: N14WeaponShotgunDoubleBarrel
+  category: N14BlueprintTownWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2000
+
+    Wood: 10
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponShotgun
+  result: N14WeaponShotgun
+  category: N14BlueprintTownWeaponsT1
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2000
+
+    Wood: 1000
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniperHunting
+  result: N14WeaponSniperHunting
+  category: N14BlueprintTownWeaponsT1
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2000
+
+    Wood: 1000
+
+# #Misfits Add - mediocre civilian-market kinetic guns (T1)
+- type: latheRecipe
+  id: N14BPTownWeaponPistol9mmChinese
+  result: N14WeaponPistol9mmChinese
+  category: N14BlueprintTownWeaponsT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1000
+    Scrap: 50
+
+- type: latheRecipe
+  id: N14BPTownWeaponPistolM1911
+  result: N14WeaponPistolM1911
+  category: N14BlueprintTownWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponPistol12mm
+  result: N14WeaponPistol12mm
+  category: N14BlueprintTownWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponShotgunSawedOff
+  result: N14WeaponShotgunSawedOff
+  category: N14BlueprintTownWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2000
+    Wood: 1000
+
+- type: latheRecipe
+  id: N14BPTownWeaponRevolver357Detective
+  result: N14WeaponRevolver357Detective
+  category: N14BlueprintTownWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1500
+    N14Iron: 100
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniperCowboyRepeater
+  result: N14WeaponSniperCowboyRepeater
+  category: N14BlueprintTownWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2500
+    Wood: 1000
+
+# --- Town Tier 2 Weapons ---
+- type: latheRecipe
+  id: N14BPTownWeaponPistol45Colt
+  result: N14WeaponPistol45Colt
+  category: N14BlueprintTownWeaponsT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+
+    N14Iron: 700
+
+    Wood: 500
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponPistolWebley
+  result: N14WeaponPistolWebley
+  category: N14BlueprintTownWeaponsT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3000
+
+    N14Iron: 700
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifle556Service
+  result: N14WeaponRifle556Service
+  category: N14BlueprintTownWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4000
+
+    Wood: 2500
+
+    N14Iron: 500
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifle556R91
+  result: N14WeaponRifle556R91
+  category: N14BlueprintTownWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4000
+
+    Wood: 1500
+
+    N14Iron: 700
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponMachete
+  result: N14Machete
+  category: N14BlueprintTownWeaponsT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3000
+
+    N14Iron: 700
+
+    Leather: 50
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponHatchet
+  result: N14Hatchet
+  category: N14BlueprintTownWeaponsT2
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2500
+
+    Wood: 250
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponShotgunCaravan
+  result: N14WeaponShotgunCaravan
+  category: N14BlueprintTownWeaponsT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3000
+
+    Wood: 200
+
+    N14Iron: 500
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSMG9mm
+  result: N14WeaponSMG9mm
+  category: N14BlueprintTownWeaponsT2
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+
+    N14Iron: 700
+
+    N14Brass: 250
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniper44LeverCarbine
+  result: N14WeaponSniper44LeverCarbine
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+
+    Wood: 550
+
+    N14Iron: 700
+
+# #Misfits Add - mediocre civilian-market kinetic guns (T2)
+- type: latheRecipe
+  id: N14BPTownWeaponRifle10mmM1Carbine
+  result: N14WeaponRifle10mmM1Carbine
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+    Wood: 1000
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifle762M14
+  result: N14WeaponRifle762M14
+  category: N14BlueprintTownWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4000
+    Wood: 1500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifle762Rangemaster
+  result: N14WeaponRifle762Rangemaster
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+    Wood: 1000
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponShotgunTrench
+  result: N14WeaponShotgunTrench
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+    N14Iron: 700
+    Scrap: 1000
+
+- type: latheRecipe
+  id: N14BPTownWeaponSMG10mmChinese
+  result: N14WeaponSMG10mmChinese
+  category: N14BlueprintTownWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4000
+    N14Iron: 700
+
+- type: latheRecipe
+  id: N14BPTownWeaponSMGPPSh41
+  result: N14WeaponSMGPPSh41
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+    N14Iron: 700
+    N14Brass: 250
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifleAk112
+  result: N14WeaponRifleAk112
+  category: N14BlueprintTownWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4500
+    Wood: 1500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniper308Ross
+  result: N14WeaponSniper308Ross
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+    Wood: 1500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniperPaciencia
+  result: N14WeaponSniperPaciencia
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4000
+    Wood: 2500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniper44LeverShortCarbine
+  result: N14WeaponSniper44LeverShortCarbine
+  category: N14BlueprintTownWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+    Wood: 1500
+    N14Iron: 500
+
+# --- Town Tier 3 Weapons ---
+- type: latheRecipe
+  id: N14BPTownWeaponRevolver44Magnun
+  result: N14WeaponRevolver44Magnum
+  category: N14BlueprintTownWeaponsT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2000
+
+    N14Iron: 120
+
+    Wood: 150
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponDesertEagle44
+  result: N14WeaponDesertEagle44
+  category: N14BlueprintTownWeaponsT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4000
+
+    N14Iron: 120
+
+    N14Brass: 150
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifle308Battle
+  result: N14WeaponRifle308Battle
+  category: N14BlueprintTownWeaponsT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 6500
+
+    Wood: 1500
+
+    N14Iron: 1200
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifleM1Garand
+  result: N14WeaponRifleM1Garand
+  category: N14BlueprintTownWeaponsT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 6500
+
+    Wood: 1500
+
+    N14Iron: 1200
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSMG10mm
+  result: N14WeaponSMG10mm
+  category: N14BlueprintTownWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4500
+
+    N14Iron: 600
+
+    N14Brass: 100
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSMG45
+  result: N14WeaponSMG45
+  category: N14BlueprintTownWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4500
+
+    Wood: 1500
+
+    N14Iron: 700
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponShotgunAuto
+  result: N14WeaponShotgunAuto
+  category: N14BlueprintTownWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 5000
+
+    N14Iron: 1000
+
+    Scrap: 1500
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSledgeHammer
+  result: N14SledgeHammer
+  category: N14BlueprintTownWeaponsT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2500
+
+    Wood: 4500
+
+    N14Iron: 1500
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifle556Carbine
+  result: N14WeaponRifle556Carbine
+  category: N14BlueprintTownWeaponsT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 5500
+
+    N14Iron: 1000
+
+    Plastic: 1500
+
+    N14Brass: 150
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSMG12mm
+  result: N14WeaponSMG12mm
+  category: N14BlueprintTownWeaponsT3
+  completetime: 13
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4500
+
+    N14Iron: 200
+
+    N14Brass: 200
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniper45-70BrushGun
+  result: N14WeaponSniper45-70BrushGun
+  category: N14BlueprintTownWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 5500
+
+    Wood: 450
+
+    N14Iron: 12
+
+    N14Brass: 200
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponRevolver45-70Hunter
+  result: N14WeaponRevolver45-70Hunter
+  category: N14BlueprintTownWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 3500
+
+    N14Iron: 200
+
+    Wood: 250
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponSniper308LeverRifle
+  result: N14WeaponSniper308LeverRifle
+  category: N14BlueprintTownWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2000
+
+    Wood: 400
+
+    N14Iron: 170
+
+
+- type: latheRecipe
+  id: N14BPTownWeaponWeaponSMG9mmCanadian
+  result: N14WeaponSMG9mmCanadian
+  category: N14BlueprintTownWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 4500
+
+    Wood: 1000
+
+    N14Iron: 150
+
+# --- Town Tier 4 Weapons (best civilian can get - NOT top-tier from any faction) ---
+
+- type: latheRecipe
+  id: N14BPTownWeaponRifle762Canadian
+  result: N14WeaponRifle762Canadian
+  category: N14BlueprintTownWeaponsT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 6000
+
+    Wood: 1000
+
+    N14Iron: 1500
+
+    N14Brass: 200
+
+- type: latheRecipe
+  id: N14BPTownWeaponSMG12mmAdvancedCanadian
+  result: N14WeaponSMG12mmAdvancedCanadian
+  category: N14BlueprintTownWeaponsT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 8000
+
+    Wood: 1000
+
+    N14Iron: 1500
+
+    N14Brass: 300
+
+- type: latheRecipe
+  id: N14BPTownWeaponShotgunCanadian
+  result: N14WeaponShotgunCanadian
+  category: N14BlueprintTownWeaponsT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 7500
+
+    Wood: 1500
+
+    N14Iron: 1500
+
+    N14Brass: 500
+
+# =====================================================================
+# TOWNSFOLK ARMOR RECIPES
+# =====================================================================
+
+# --- Town Tier 1 Armor ---
+- type: latheRecipe
+  id: N14BPTownArmorVestLeather
+  result: N14ClothingOuterVestLeather
+  category: N14BlueprintTownArmorT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Leather: 500
+
+    Cloth: 500
+
+    Thread: 200
+
+
+- type: latheRecipe
+  id: N14BPTownArmorChitinArmor
+  result: N14ClothingOuterChitinArmor
+  category: N14BlueprintTownArmorT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Leather: 500
+
+    Cloth: 500
+
+    Thread: 200
+
+
+- type: latheRecipe
+  id: N14BPTownArmorLightLeatherArmor
+  result: N14ClothingOuterLightLeatherArmor
+  category: N14BlueprintTownArmorT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Leather: 700
+
+    Cloth: 500
+
+    Thread: 500
+
+
+# --- Town Tier 2 Armor ---
+- type: latheRecipe
+  id: N14BPTownArmorPoliceVest
+  result: N14ClothingOuterPoliceVest
+  category: N14BlueprintTownArmorT2
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Cloth: 1700
+
+    Thread: 1700
+
+    Leather: 150
+
+    Steel: 2500
+
+
+- type: latheRecipe
+  id: N14BPTownArmorTownGuardLight
+  result: N14ClothingOuterTownGuardLight
+  category: N14BlueprintTownArmorT2
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Leather: 170
+
+    Cloth: 1700
+
+    Thread: 1500
+
+    Steel: 2500
+
+
+- type: latheRecipe
+  id: N14BPTownArmorReinforcedLeatherArmor
+  result: N14ClothingOuterReinforcedLeatherArmor
+  category: N14BlueprintTownArmorT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Leather: 1700
+
+    Cloth: 170
+
+    Thread: 170
+
+    Steel: 2000
+
+
+- type: latheRecipe
+  id: N14BPTownArmorLeatherArmor
+  result: N14ClothingOuterLeatherArmor
+  category: N14BlueprintTownArmorT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Leather: 1500
+
+    Cloth: 100
+
+    Thread: 100
+
+
+# --- Town Tier 3 Armor ---
+- type: latheRecipe
+  id: N14BPTownArmorTownGuardRiot
+  result: N14ClothingOuterTownGuardRiot
+  category: N14BlueprintTownArmorT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 5000
+
+    Leather: 170
+
+    Cloth: 1700
+
+    Thread: 1500
+
+
+- type: latheRecipe
+  id: N14BPTownArmorPoliceCombat
+  result: N14ClothingOuterPoliceCombat
+  category: N14BlueprintTownArmorT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 5000
+
+    Cloth: 170
+
+    Thread: 150
+
+    Leather: 1500
+
+
+- type: latheRecipe
+  id: N14BPTownArmorSheriffVest
+  result: N14ClothingOuterSheriffVest
+  category: N14BlueprintTownArmorT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Leather: 1000
+
+    Steel: 4000
+
+    Cloth: 200
+
+    Thread: 120
+
+
+- type: latheRecipe
+  id: N14BPTownArmorVestRCMP
+  result: N14ClothingOuterVestRCMP
+  category: N14BlueprintTownArmorT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 7000
+
+    N14Iron: 500
+
+    Cloth: 250
+
+    Thread: 300
+
+    Leather: 300
+
+
+# --- Town Tier 4 Armor ---
+- type: latheRecipe
+  id: N14BPTownArmorCombatArmorRCMP
+  result: N14ClothingOuterCombatArmorRCMP
+  category: N14BlueprintTownArmorT4
+  completetime: 18
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 9500
+
+    N14Iron: 750
+
+    Cloth: 450
+
+    Thread: 500
+
+    Leather: 500
+
+    Circuitry: 200
+
+# =====================================================================
+# TOWNSFOLK AMMO RECIPES
+# =====================================================================
+
+# --- Town Tier 1 Ammo ---
+- type: latheRecipe
+  id: N14BPTownAmmoBox9mm
+  result: N14AmmoBox9mm
+  category: N14BlueprintTownAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 100
+
+    N14Brass: 50
+
+    N14Gunpowder: 50
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox10mm
+  result: N14AmmoBox10mm
+  category: N14BlueprintTownAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 100
+
+    N14Brass: 50
+
+    N14Gunpowder: 50
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox22lr
+  result: N14AmmoBox22lr
+  category: N14BlueprintTownAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 100
+
+    N14Brass: 50
+
+    N14Gunpowder: 50
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag9mmPistol
+  result: N14MagazinePistol9mm
+  category: N14BlueprintTownAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 100
+
+    Lead: 50
+
+    N14Gunpowder: 50
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag10mmPistol
+  result: N14MagazinePistol10mm
+  category: N14BlueprintTownAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 100
+
+    Lead: 50
+
+    N14Gunpowder: 50
+
+# #Misfits Add - ammo for T1 mediocre guns (.45 / 12.7mm / .22 drum / .357)
+- type: latheRecipe
+  id: N14BPTownAmmoMag45Pistol
+  result: N14MagazinePistol45
+  category: N14BlueprintTownAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 80
+    Lead: 5
+    N14Gunpowder: 5
+
+- type: latheRecipe
+  id: N14BPTownAmmoMagPistol12mm
+  result: N14MagazinePistol12mm
+  category: N14BlueprintTownAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 90
+    Lead: 6
+    N14Gunpowder: 6
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox357
+  result: N14AmmoBox357
+  category: N14BlueprintTownAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 25
+    N14Brass: 15
+    N14Gunpowder: 15
+
+- type: latheRecipe
+  id: N14BPTownAmmoSpeedLoader357
+  result: N14SpeedLoader357
+  category: N14BlueprintTownAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 10
+    N14Brass: 5
+    N14Gunpowder: 5
+
+# --- Town Tier 2 Ammo ---
+- type: latheRecipe
+  id: N14BPTownAmmoBox556
+  result: N14AmmoBox556
+  category: N14BlueprintTownAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 50
+
+    N14Brass: 50
+
+    N14Gunpowder: 50
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox45
+  result: N14AmmoBox45
+  category: N14BlueprintTownAmmoT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 100
+
+    N14Brass: 40
+
+    N14Gunpowder: 40
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox12gauge
+  result: N14AmmoBox12gauge
+  category: N14BlueprintTownAmmoT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 100
+
+    Plastic: 10
+
+    N14Gunpowder: 20
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag556Rifle
+  result: Magazine556Rifle
+  category: N14BlueprintTownAmmoT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 250
+
+    Lead: 50
+
+    N14Gunpowder: 50
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag9mmSMG
+  result: N14MagazineSMG9mm
+  category: N14BlueprintTownAmmoT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 250
+
+    Lead: 50
+
+    N14Gunpowder: 50
+
+# #Misfits Add - ammo for T2 mediocre guns (7.62 short / 9mm drum / 5.45)
+- type: latheRecipe
+  id: N14BPTownAmmoMag762Short
+  result: Magazine762AmmoShort
+  category: N14BlueprintTownAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 180
+    Lead: 40
+    N14Gunpowder: 40
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag9mmSMGDrum
+  result: N14MagazineSMG9mmDrum
+  category: N14BlueprintTownAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 200
+    Lead: 60
+    N14Gunpowder: 60
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox545
+  result: MagazineBox545
+  category: N14BlueprintTownAmmoT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 180
+    Steel: 260
+    N14Gunpowder: 180
+    Cardboard: 100
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag545Rifle
+  result: Magazine545Rifle
+  category: N14BlueprintTownAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 60
+    Steel: 180
+    N14Gunpowder: 60
+
+# --- Town Tier 3 Ammo ---
+- type: latheRecipe
+  id: N14BPTownAmmoBox762
+  result: N14AmmoBox762
+  category: N14BlueprintTownAmmoT3
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 40
+
+    N14Brass: 35
+
+    N14Gunpowder: 35
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox308
+  result: N14AmmoBox308
+  category: N14BlueprintTownAmmoT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 45
+
+    N14Brass: 35
+
+    N14Gunpowder: 35
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308 recipe
+  result: ClipMagazine308Rifle
+  category: N14BlueprintTownAmmoT3
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 200
+
+    Lead: 50
+
+    N14Gunpowder: 50
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox44Magnum
+  result: N14AmmoBox44Magnum
+  category: N14BlueprintTownAmmoT3
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 45
+
+    N14Brass: 30
+
+    N14Gunpowder: 30
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag762Rifle
+  result: Magazine762Rifle
+  category: N14BlueprintTownAmmoT3
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 100
+
+    Lead: 35
+
+    N14Gunpowder: 20
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag10mmSMG
+  result: N14MagazineSMG10mm
+  category: N14BlueprintTownAmmoT3
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 50
+
+    Lead: 35
+
+    N14Gunpowder: 20
+
+
+# --- Town Tier 4 Ammo ---
+- type: latheRecipe
+  id: N14BPTownAmmoBox127
+  result: N14AmmoBox127
+  category: N14BlueprintTownAmmoT4
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 75
+
+    N14Brass: 55
+
+    N14Gunpowder: 55
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoBox45-70
+  result: N14AmmoBox45-70
+  category: N14BlueprintTownAmmoT4
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Lead: 85
+
+    N14Brass: 55
+
+    N14Gunpowder: 55
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag12mmSMG
+  result: N14MagazineSMG12mm
+  category: N14BlueprintTownAmmoT4
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 50
+
+    Lead: 70
+
+    N14Gunpowder: 35
+
+
+- type: latheRecipe
+  id: N14BPTownAmmoMag556Long
+  result: LongMagazine556Rifle
+  category: N14BlueprintTownAmmoT4
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 50
+
+    Lead: 65
+
+    N14Gunpowder: 400
+
+# =====================================================================
+# #Misfits Add - HELMET RECIPES
+# Helmets pair with their armor tier so players can craft a matching head
+# slot when their issued one breaks. Material costs are scaled to be lighter
+# than the body armor they pair with.
+# =====================================================================
+
+# --- BoS Tier 1 Helmets (initiate) ---
+- type: latheRecipe
+  id: N14BPBoSArmorHelmetBrotherhood
+  result: N14ClothingHeadHatBrotherhoodHelmet
+  category: N14BlueprintBoSArmorT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 800
+    Cloth: 50
+    Leather: 30
+
+# --- BoS Tier 2 Helmets (squire / midwest) ---
+- type: latheRecipe
+  id: N14BPBoSArmorHelmetBrotherhoodKnight
+  result: N14ClothingHeadHatBrotherhoodHelmetKnight
+  category: N14BlueprintBoSArmorT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1500
+    Cloth: 60
+    Leather: 40
+    ScrapElectronic: 30
+
+- type: latheRecipe
+  id: N14BPBoSArmorHelmetBrotherhoodMidwest
+  result: N14ClothingHeadHatBrotherhoodMidwestHelmet
+  category: N14BlueprintBoSArmorT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1500
+    Cloth: 60
+    Leather: 40
+    ScrapElectronic: 30
+
+# --- BoS Tier 3 Helmets (knight / paladin / midwest veteran) ---
+- type: latheRecipe
+  id: N14BPBoSArmorHelmetBrotherhoodCaptain
+  result: N14ClothingHeadHatBrotherhoodHelmetCaptain
+  category: N14BlueprintBoSArmorT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 2500
+    Cloth: 80
+    Leather: 50
+    Circuitry: 40
+
+- type: latheRecipe
+  id: N14BPBoSArmorHelmetBrotherhoodPaladin
+  result: N14ClothingHeadHatBrotherhoodHelmetPaladin
+  category: N14BlueprintBoSArmorT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 2500
+    Cloth: 80
+    Leather: 50
+    Circuitry: 40
+
+- type: latheRecipe
+  id: N14BPBoSArmorHelmetBrotherhoodMK2
+  result: N14ClothingHeadHatBrotherhoodHelmetMK2
+  category: N14BlueprintBoSArmorT3
+  completetime: 11
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 2800
+    Cloth: 80
+    Leather: 50
+    Circuitry: 50
+
+- type: latheRecipe
+  id: N14BPBoSArmorHelmetBrotherhoodMidwestVeteran
+  result: N14ClothingHeadHatBrotherhoodMidwestHelmetVeteran
+  category: N14BlueprintBoSArmorT3
+  completetime: 11
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 2800
+    Cloth: 80
+    Leather: 50
+    Circuitry: 50
+
+# #Misfits Removed - user requested no power armor helmet recipes
+# --- BoS Tier 4 Helmets (T-45 power armor) ---
+# - type: latheRecipe
+#   id: N14BPBoSArmorPowerHelmetT45
+#   result: N14ClothingHeadHelmetPowerArmorT45BOS
+#   category: N14BlueprintBoSArmorT4
+#   completetime: 18
+#   requiresBlueprint: true
+#   availableFaction:
+#   - BrotherhoodOfSteel
+#   materials:
+#     Steel: 4500
+#     N14Iron: 15
+#     Circuitry: 12
+#     ScrapElectronic: 8
+#     N14Brass: 5
+
+# --- Town Tier 1 Helmets (basic guard) ---
+- type: latheRecipe
+  id: N14BPTownArmorHelmetTownGuard
+  result: N14ClothingHeadHatTownGuard
+  category: N14BlueprintTownArmorT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Cloth: 80
+    Leather: 40
+    Thread: 40
+
+# --- Town Tier 2 Helmets (Brodie / metal) ---
+- type: latheRecipe
+  id: N14BPTownArmorHelmetBrodie
+  result: N14ClothingHeadTownGuardBrodie
+  category: N14BlueprintTownArmorT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1000
+    Cloth: 50
+    Leather: 30
+
+- type: latheRecipe
+  id: N14BPTownArmorHelmetMetal
+  result: N14ClothingHeadHatVaultBlueprintHelmetMetal
+  category: N14BlueprintTownArmorT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1200
+    Cloth: 50
+    Leather: 30
+
+# --- Town Tier 3 Helmets (riot / sheriff) ---
+- type: latheRecipe
+  id: N14BPTownArmorHelmetBrodieCover
+  result: N14ClothingHeadTownGuardBrodieCover
+  category: N14BlueprintTownArmorT3
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1500
+    Cloth: 80
+    Leather: 40
+
+- type: latheRecipe
+  id: N14BPTownArmorHelmetBrodieVisor
+  result: N14ClothingHeadTownGuardBrodieVisor
+  category: N14BlueprintTownArmorT3
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 1800
+    Cloth: 80
+    Leather: 40
+    Glass: 200
+
+- type: latheRecipe
+  id: N14BPTownArmorHelmetRCMP
+  result: N14ClothingHeadHatHelmetRCMP
+  category: N14BlueprintTownArmorT3
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2000
+    Cloth: 80
+    Leather: 40
+    Glass: 150
+
+# --- Town Tier 4 Helmets (combat / pre-war military) ---
+
+- type: latheRecipe
+  id: N14BPTownArmorHelmetSpecRCMP
+  result: N14ClothingHeadHatSpecHelmetRCMP
+  category: N14BlueprintTownArmorT4
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Townsfolk
+  materials:
+    Steel: 2200
+    Cloth: 150
+    Leather: 150
+    Plastic: 300
+
+# #Misfits Add - Vertibird turret ammunition belt.
+- type: latheRecipe
+  id: N14BPBoSAmmoVertibirdGunBelt
+  result: N14VertibirdGunBelt
+  category: N14BlueprintBoSAmmoT4
+  completetime: 15
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 1200
+    N14Brass: 600
+    N14Gunpowder: 600
+    Steel: 400
+
+

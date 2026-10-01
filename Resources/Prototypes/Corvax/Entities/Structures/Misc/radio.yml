@@ -1,0 +1,37 @@
+- type: entity
+  parent: N14RadioTable
+  id: N14RadioTableBazaar
+  suffix: Bazaar
+  components:
+  - type: RadioMicrophone
+    frequency: 6996
+  - type: DeviceNetwork
+    receiveFrequency: 6996
+    transmitFrequency: 6996
+
+- type: entity
+  parent: N14RadioTable
+  id: N14RadioTableWasteland
+  suffix: Wasteland
+  components:
+  - type: RadioMicrophone
+    frequency: 1728
+  - type: DeviceNetwork
+    receiveFrequency: 1728
+    transmitFrequency: 1728
+
+- type: entity
+  parent: RadioDJMicrophone
+  id: RadioDJMicrophoneBazaar
+  suffix: Bazaar
+  components:
+  - type: RadioMicrophone
+    frequency: 6996
+
+- type: entity
+  parent: RadioDJMicrophone
+  id: RadioDJMicrophoneWasteland
+  suffix: Wasteland
+  components:
+  - type: RadioMicrophone
+    frequency: 1728

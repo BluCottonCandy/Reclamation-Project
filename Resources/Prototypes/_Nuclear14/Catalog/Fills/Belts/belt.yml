@@ -1,0 +1,239 @@
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBeltRevolverfilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolver44Magnum
+        - id: SpeedLoader44
+        - id: SpeedLoader44
+        - id: SpeedLoader44
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBeltRevolverWebleyFilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolverWebley
+        - id: SpeedLoader44
+        - id: SpeedLoader44
+        - id: SpeedLoader44
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitary
+  id: ClothingBeltMilitaryPreventorFilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: LongMagazine556Rifle
+        - id: LongMagazine556Rifle
+        - id: LongMagazine556Rifle
+        - id: N14MagazinePistol9mm
+        - id: N14MagazinePistol9mm
+        - id: MagazineBox9mm
+        - id: MagazineBox556
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBelt9mmfilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolver9mm
+        - id: SpeedLoader9
+        - id: SpeedLoader9
+        - id: SpeedLoader9
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBelt10mmfilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolver10mm 
+        - id: SpeedLoader10
+        - id: SpeedLoader10
+        - id: SpeedLoader10
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBeltRevolvervetfilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolver45-70RangerSequoia
+        - id: SpeedLoader45-70
+        - id: SpeedLoader45-70
+        - id: SpeedLoader45-70
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBeltRevolverdesertfilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolver45-70Hunter
+        - id: SpeedLoader45-70
+        - id: SpeedLoader45-70
+        - id: SpeedLoader45-70
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBeltRevolverWildWhisper 
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolver45-70WildWhisper 
+        - id: SpeedLoader45-70
+        - id: SpeedLoader45-70
+        - id: SpeedLoader45-70
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRevolver
+  id: ClothingBeltRevolverCaptainfilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14WeaponRevolver44MagnumCaptain
+        - id: SpeedLoader44
+        - id: SpeedLoader44
+        - id: SpeedLoader44
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMedical
+  id: ClothingBeltMedicalfilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14ChemicalSyringeAntidote
+        - id: N14ChemicalSyringeAntidote
+        - id: N14DoctorSyringe
+        - id: N14Stimpak
+        - id: N14Stimpak
+        - id: N14Stimpak
+        - id: N14Stimpak
+        - id: N14RadXCanister
+
+# RCMP
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMountie
+  id: ClothingBeltMountieFilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: Magazine762Rifle
+        - id: Magazine762Rifle
+        - id: N14MagazinePistol9mm
+        - id: N14MagazinePistol9mm
+        - id: MagazineBox9mm
+        - id: MagazineBox762
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMountie
+  id: ClothingBeltMountieFilled2
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14MagazinePistol9mm
+        - id: N14MagazinePistol9mm
+        - id: N14MagazinePistol9mm
+        - id: MagazineBox9mm
+        - id: MagazineBox308
+  
+# Chinese renmants
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitary
+  id: ClothingBeltMilitaryFilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: Magazine762AmmoShort
+        - id: Magazine762AmmoShort
+        - id: Magazine762AmmoShort
+        - id: MagazineBox762
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitary
+  id: ClothingBeltMilitaryFilled2
+  components:
+    - type: StorageFill
+      contents:
+        - id: Magazine762AmmoBelt
+        - id: MagazineBox762
+        - id: MagazineBox762
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitary
+  id: ClothingBeltMilitaryFilled3
+  components:
+    - type: StorageFill
+      contents:
+        - id: Magazine762Rifle
+        - id: Magazine762Rifle
+        - id: MagazineBox762
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitary
+  id: ClothingBeltMilitaryFilled4
+  components:
+    - type: StorageFill
+      contents:
+        - id: MagazineBox9mm
+  
+# Chinese spec ops
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitary
+  id: ClothingBeltMilitaryFilled5 
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14TopMagazineSMG12mm
+        - id: N14TopMagazineSMG12mm
+        - id: N14TopMagazineSMG12mm
+        - id: MagazineBox9mm
+        - id: MagazineBox12
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitary
+  id: ClothingBeltMilitaryFilled6
+  components:
+    - type: StorageFill
+      contents:
+        - id: Magazine308Rifle
+        - id: Magazine308Rifle
+        - id: MagazineBox9mm
+        - id: MagazineBox308
+
+#tribal
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltRope
+  id: ClothingBeltElderRevolver
+  components:
+    - type: StorageFill
+      contents:
+        - id: SpeedLoader45-70
+        - id: SpeedLoader45-70

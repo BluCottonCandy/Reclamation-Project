@@ -1,0 +1,543 @@
+# Consider making our own base mob in future so we're resilient to upstream changes.
+#MARK: Base Simple
+- type: body
+  id: N14Animal
+  name: "N14 animal"
+  root: torso
+  slots:
+    torso:
+      part: TorsoAnimal
+      organs: #Misfits Fix - add stomach so N14 animals can eat/drink and be force-fed
+        stomach: OrganAnimalStomach
+
+- type: entity
+  name: wasteland animal
+  abstract: true
+  id: N14MobBaseSimple
+  parent: SimpleSpaceMobBase
+  description: It's a dirty wasteland animal. Watch out for it's bite, it could be infectious.
+  components:
+  - type: Body
+    prototype: N14Animal
+  - type: InputMover
+  - type: ProximityNPC # Misfits fix — Didn't have comp to reduce tick load and activate ai
+                        #TODO: make every NPC inherit from same base to avoid issues in future
+  - type: MobMover
+  - type: NpcFactionMember
+    factions:
+    - WastelandAnimal
+  - type: Sprite
+    drawdepth: Mobs # Replace this with a mob error or something
+  - type: Physics
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2
+    baseSprintSpeed : 3.9
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.30
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      15: Dead
+  - type: MovementAlwaysTouching
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatRadRaw
+      amount: 1
+    - id: N14MaterialRawLeather1
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 50
+    bloodReagent: WastelandBlood
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: WastelandAnimal
+  - type: Puller
+    needsHands: true
+  - type: IgnitionSource
+  - type: Grammar # Misfits Change - proper noun so names appear capitalized in says/emotes when possessed
+    attributes:
+      proper: true
+  - type: Tag #Misfits Change - footstep sounds
+    tags:
+    - DoorBumpOpener
+    - FootstepSound
+
+#MARK: Base Hostile
+- type: entity
+  abstract: true
+  id: N14MobBaseHostile
+  parent: N14MobBaseSimple
+  description: It's a dirty wasteland animal. Watch out for it's bite, it could be infectious.
+  components:
+  - type: PathfindingCustomizable # Misfits Add — Better/customizable and less exploitable pathfinding
+    nodeLimit: 225
+  - type: Hunger
+    thresholds:
+      Overfed: 200
+      Okay: 150
+      Peckish: 100
+      Starving: 50
+      Dead: 0
+    baseDecayRate: 0.0 # Decay rate decreased to 0, because humanoid raider NPCs are able to starve to death. We generally don't need life sim for any hostile mob.
+  - type: Thirst
+    thresholds:
+      OverHydrated: 200
+      Okay: 150
+      Thirsty: 100
+      Parched: 50
+      Dead: 0
+    baseDecayRate: 0.0 # Decay rate decreased to 0, because hostile mobs can be way too easily defeated by slowness applied to them.
+  - type: NPCRetaliation # Aggro on the attacker when damaged from any range
+    attackMemoryLength: 30
+  - type: NpcFactionMember
+    factions:
+    - WastelandAnimal
+  - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
+  - type: Sprite
+    drawdepth: Mobs
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      15: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatRadRaw
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 50
+    bloodReagent: WastelandBlood
+  - type: CombatMode
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 2
+    range: 1.5
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 2
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        reagents:
+        - ReagentId: Toxin
+          Quantity: 0.1
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: ReplacementAccent
+    accent: genericAggressive
+
+- type: entity
+  abstract: true
+  id: N14MobBaseHostileNoAccent
+  parent: N14MobBaseSimple
+  description: It's a dirty wasteland animal. Watch out for it's bite, it could be infectious.
+  components:
+  - type: PathfindingCustomizable # Misfits Add — Better/customizable and less exploitable pathfinding
+    nodeLimit: 225
+  - type: Hunger
+    thresholds:
+      Overfed: 200
+      Okay: 150
+      Peckish: 100
+      Starving: 50
+      Dead: 0
+    baseDecayRate: 0.0 # Decay rate decreased to 0, because humanoid raider NPCs are able to starve to death. We generally don't need life sim for any hostile mob.
+  - type: Thirst
+    thresholds:
+      OverHydrated: 200
+      Okay: 150
+      Thirsty: 100
+      Parched: 50
+      Dead: 0
+    baseDecayRate: 0.0 # Decay rate decreased to 0, because hostile mobs can be way too easily defeated by slowness applied to them.
+  - type: NPCRetaliation # Aggro on the attacker when damaged from any range
+    attackMemoryLength: 30
+  - type: NpcFactionMember
+    factions:
+    - WastelandAnimal
+  - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
+  - type: Sprite
+    drawdepth: Mobs
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      15: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatRadRaw
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 50
+    bloodReagent: WastelandBlood
+  - type: CombatMode
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 2
+    range: 1.5
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 2
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        reagents:
+        - ReagentId: Toxin
+          Quantity: 0.1
+  - type: MeleeChemicalInjector
+    solution: melee
+
+#MARK: Base Scaley
+- type: entity
+  name: scaley wasteland animal
+  abstract: true
+  id: N14MobBaseHostileScaley
+  parent: N14MobBaseHostile
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14Scale
+  - type: Speech
+    speechSounds: Squeak
+  - type: ReplacementAccent
+    accent: genericAggressive
+
+#MARK: Base Insect
+- type: entity
+  name: wasteland insect
+  abstract: true
+  id: N14MobBaseHostileInsect
+  parent: N14MobBaseHostile
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14Insect
+  - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - WastelandInsect
+  - type: Speech
+    speechSounds: Squeak
+  - type: ReplacementAccent
+    accent: genericAggressive
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.30
+        density: 30
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+
+#MARK: Base Humanoid
+- type: entity
+  name: raider
+  abstract: true
+  id: N14MobBaseHostileRaider
+  parent: N14MobBaseHostile
+  components:
+  - type: Damageable
+    damageContainer: MisfitsNPCBiological # Misfits Change
+  - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - Raider
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    understands:
+    - English
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.50
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  name: feral ghoul
+  abstract: true
+  id: N14MobBaseHostileFeral
+  parent: N14MobBaseHostile
+  description: A mean looking ghoul.
+  components:
+  - type: Damageable
+    damageContainer: MisfitsNPCBiological  # Misfits Change - no hunger/thirst damage for feral ghouls
+    damageModifierSet: GhoulNPC
+  # - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - Feral
+  #- type: MobGhoulAggro #Misfits Change — removed: NPC feral ghouls should be hostile to player ghouls, not neutral.
+  - type: HTN
+    rootTask:
+      task: N14HostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Critical:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.75
+    baseSprintSpeed : 5.5
+  - type: Hands
+  - type: Puller
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.8
+      80: 0.6
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    understands:
+    - English
+  - type: Appearance
+  - type: Clumsy
+    clumsySound:
+      collection: BodyFall
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 100
+    damage:
+      types:
+        Radiation: -5
+
+#MARK: SuperMutant Base
+# Misfits Change - Base entity for all Super Mutant NPC variants
+# Ported from DesertRose2/desertrose supermutant.dm
+- type: entity
+  name: super mutant
+  abstract: true
+  id: N14MobBaseHostileSuperMutant
+  parent: N14MobBaseHostile
+  description: A hulking post-human mutation, product of the FEV virus. Radiation resistant and brutally strong.
+  components:
+  - type: Damageable
+    damageContainer: MisfitsNPCBiological  # Misfits Change
+    damageModifierSet: N14SuperMutant
+  - type: NpcFactionMember
+    factions:
+    - SuperMutant
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.8
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: base_dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.55
+        density: 60
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Hands
+  - type: Puller
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.85
+      80: 0.7
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    understands:
+    - English
+  - type: IdleSound #Misfits Change
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 15
+    maxInterval: 60
+    sound:
+      collection: N14SuperMutantIdle
+      params:
+        volume: -6
+        maxDistance: 7
+  - type: AggroSound #Misfits Change - separate aggro/alert vocalization on combat entry
+    sound:
+      collection: N14SuperMutantAlert
+      params:
+        volume: -3
+        maxDistance: 10
+
+# Wave Defence Base Hostile
+#MARK: WAVE
+- type: entity
+  name: wave attacker
+  abstract: true
+  id: N14MobWave
+  components:
+  - type: ProximityNPC # Misfits Tweak — wave mobs inherit ProximityNPC from their hostile parent; override to stay awake so they rush immediately
+    startAsleep: false
+  - type: HTN
+    rootTask:
+      task: N14HostileCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
+      NavClimb: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+      ESP: !type:Bool
+        true
+      VisionRadius: !type:Single
+        1000.0
+      MeleeRange: !type:Single
+        1.5
+  - type: WaveMob
+    difficulty: 1
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    prob: 0.33
+    makeSentient: true
+    name: hostile wildlife # wave defence
+    description: |
+      Smash, break, kill!
+
+- type: entity
+  abstract: true
+  id: N14MobWaveAnimal
+  parent: N14MobWave
+  components:
+  - type: WaveMob
+    group: Animals
+
+- type: entity
+  abstract: true
+  id: N14MobWaveInsect
+  parent: N14MobWave
+  components:
+  - type: WaveMob
+    group: Insects
+
+#MARK: Base Tameable
+- type: entity
+  abstract: true
+  id: N14TameableMobBase
+  parent: SimpleMobBase
+  components:
+#  - type: NPCTamingOnTouchBehaviour
+#    follow: true
+#    persistent: true
+#    tameChance: 0.5
+#    oneTry: false
+#    successPopup: This pet is your friend now!
+#    deniedPopup: This pet refused to be your friend.
+#    whitelist:
+#      components:
+#      - HumanoidAppearance
+  - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
+  - type: HTN
+    rootTask:
+      task: SimpleFollowHostileCompound # HTN compound must include FollowCompound so pet can follow its owner
+  - type: LanguageKnowledge
+    understands:
+    - English

@@ -1,0 +1,580 @@
+# Wood
+# Walls
+- type: construction
+  name: log wall
+  id: N14WallWoodLog # Forge-Change
+  graph: N14WoodWall
+  startNode: start
+  targetNode: logWall
+  category: construction-category-structures
+  description: Home from home.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/woodlog.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+# # Doors
+- type: construction
+  name: wooden door
+  id: N14DoorMakeshift # Forge-Change
+  graph: N14DoorGraph
+  startNode: start
+  targetNode: woodDoorMakeshift
+  category: construction-category-structures
+  description: A primitive door with manual operation like the cavemen used.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/wooddoor.rsi
+    state: closed
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: bunker door
+  id: N14DoorBunker
+  graph: N14DoorBunker
+  startNode: start
+  targetNode: bunker
+  category: construction-category-structures
+  description: It opens, it closes, it might crush you, and there might be only radiation and monsters behind it. Has to be manually activated.
+  icon:
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/bunkerdoor.rsi
+    state: closed
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: bunker glass airlock
+  id: N14DoorBunkerGlass
+  graph: N14DoorBunker
+  startNode: start
+  targetNode: glassBunker
+  category: construction-category-structures
+  description: It opens, it closes, it might crush you, and there might be only radiation and monsters behind it. Has to be manually activated.
+  icon:
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/glassbunkerdoor.rsi
+    state: closed
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+# Slanted Structures
+## Walls
+- type: construction
+  name: wooden wall
+  id: N14WallWoodSlanted
+  graph: N14WoodWall
+  startNode: start
+  targetNode: WoodWall
+  category: construction-category-structures
+  description: A nice hand built wall.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/wood.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall wooden wall
+  id: N14WallWoodTall
+  graph: N14WoodWall
+  startNode: start
+  targetNode: WallWoodTall
+  category: construction-category-structures
+  description: A tall wooden wall. Made with love and care.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/wood.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: sheet metal wall
+  id: N14WallScrapSlanted
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: SheetScrapWall
+  category: construction-category-structures
+  description: A bare sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrap.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall sheet metal wall
+  id: N14WallScrapTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: SheetScrapWallTall
+  category: construction-category-structures
+  description: A tall, bare, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrap.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: white sheet metal wall
+  id: N14WallScrapWhiteSlanted
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: WhiteScrapWall
+  category: construction-category-structures
+  description: A white sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapwhite.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall white sheet metal wall
+  id: N14WallScrapWhiteTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: WhiteScrapWallTall
+  category: construction-category-structures
+  description: A tall, white, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrapwhite.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: blue sheet metal wall
+  id: N14WallScrapBlueSlanted
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: BlueScrapWall
+  category: construction-category-structures
+  description: A blue sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapblue.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall blue sheet metal wall
+  id: N14WallScrapBlueTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: BlueScrapWallTall
+  category: construction-category-structures
+  description: A tall, blue, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrapblue.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: red sheet metal wall
+  id: N14WallScrapRedSlanted
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: RedScrapWall
+  category: construction-category-structures
+  description: I hope that's red paint...
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapred.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall red sheet metal wall
+  id: N14WallScrapRedTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: RedScrapWallTall
+  category: construction-category-structures
+  description: A tall, red, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrapred.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: rough scrap wall
+  id: N14WallRoughScrapSlanted
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: RoughScrapWall
+  category: construction-category-structures
+  description: A bulky and hastily built scrap wall. Looks sharp.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/roughscrap.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall rough scrap wall
+  id: N14WallRoughScrapTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: RoughScrapWallTall
+  category: construction-category-structures
+  description: A tall, rough, scrap metal wall. There are hasty weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/roughscrap.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+## Half Walls
+- type: construction
+  name: wooden half wall
+  id: N14WallWoodHalf # Forge-Change
+  graph: N14HalfWall
+  startNode: start
+  targetNode: Wood
+  category: construction-category-structures
+  description: A nice half wall for placing a window pane on.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/half/wood.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+## Doors
+- type: construction
+  name: wooden door
+  id: N14DoorWoodSlanted # Forge-Change
+  graph: N14DoorGraph
+  startNode: start
+  targetNode: WoodDoor
+  category: construction-category-structures
+  description: A wooden door good for keeping things out.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Doors/SlantedDoors/wood.rsi
+    state: closed
+  conditions:
+    - !type:TileNotBlocked
+
+## Windows
+- type: construction
+  name: window pane
+  id: N14WindowSlanted # Forge-Change
+  graph: N14WindowPane
+  startNode: start
+  targetNode: N14WindowSlanted
+  category: construction-category-structures
+  description: A window pane for seeing through things.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  hide: false
+  canRotate: false
+  icon:
+    sprite: _Nuclear14/Structures/Windows/slanted/slantedwindow.rsi
+    state: full
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: low metal wall
+  id: N14WallMetalHalf
+  graph: N14HalfWall
+  startNode: start
+  targetNode: Metal
+  category: construction-category-structures
+  description: A low metal wall for cover and window placement.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/half/metal.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: window bars
+  id: N14WindowBars
+  graph: N14WindowBars
+  startNode: start
+  targetNode: bars
+  category: construction-category-structures
+  description: Sturdy metal bars for blocking access through a window.
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Windows/windowbars.rsi
+    state: icon
+  conditions:
+    - !type:TileNotBlocked
+
+
+
+# #Misfits Add: Concrete and brick wall construction recipes
+
+- type: construction
+  name: concrete wall (light)
+  id: N14WallConcreteLight
+  graph: N14ConcreteWall
+  startNode: start
+  targetNode: ConcreteWallLight
+  category: construction-category-structures
+  description: A solid concrete wall. Sturdy and reliable.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/concrete.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: concrete wall (dark)
+  id: N14WallConcreteDark
+  graph: N14ConcreteWall
+  startNode: start
+  targetNode: ConcreteWallDark
+  category: construction-category-structures
+  description: A solid concrete wall with dark finish. Sturdy and reliable.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/concretedark.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: brick wall
+  id: N14WallBrick
+  graph: N14BrickWall
+  startNode: start
+  targetNode: BrickWall
+  category: construction-category-structures
+  description: A traditional brick wall. Classic and durable.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/brick.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: adobe wall
+  id: N14WallAdobe
+  graph: N14AdobeWall
+  startNode: start
+  targetNode: AdobeWall
+  category: construction-category-structures
+  description: A hand-packed adobe wall made from sun-baked mud brick.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/adobe.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall adobe wall
+  id: N14WallAdobeTall
+  graph: N14AdobeWall
+  startNode: start
+  targetNode: AdobeWallTall
+  category: construction-category-structures
+  description: A tall hand-packed adobe wall made from sun-baked mud brick.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/adobe.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+# #Misfits Add: Tent construction recipes
+
+- type: construction
+  name: leather tent wall
+  id: N14TentLeatherWall
+  graph: N14TentWall
+  startNode: start
+  targetNode: LeatherTentWall
+  category: construction-category-structures
+  description: A flexible leather tent wall. Good for temporary shelter.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: leather_edge  # #Misfits Tweak - leather_wall state doesn't exist, leather_edge is the closest available
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: cloth tent wall
+  id: N14TentClothWall
+  graph: N14TentWall
+  startNode: start
+  targetNode: ClothTentWall
+  category: construction-category-structures
+  description: A lightweight cloth tent wall. Portable and easy to set up.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: cloth_edge  # #Misfits Tweak - cloth_wall state doesn't exist, cloth_edge is the closest available
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: leather tent corner
+  id: N14TentLeatherCorner
+  graph: N14TentWall
+  startNode: start
+  targetNode: LeatherTentCorner
+  category: construction-category-structures
+  description: A leather tent corner piece for structural support.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: leather_corner
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: cloth tent corner
+  id: N14TentClothCorner
+  graph: N14TentWall
+  startNode: start
+  targetNode: ClothTentCorner
+  category: construction-category-structures
+  description: A cloth tent corner piece for structural support.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: cloth_corner
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+

@@ -1,0 +1,28 @@
+# Misfits Change /Add/: construction graph for the human target.
+- type: constructionGraph
+  id: TargetHuman
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: targetHuman
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 5
+              doAfter: 5
+
+    - node: targetHuman
+      entity: TargetHuman
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 5
+          steps:
+            - tool: Screwing
+              doAfter: 2

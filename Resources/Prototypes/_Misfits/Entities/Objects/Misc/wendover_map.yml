@@ -1,0 +1,45 @@
+# Misfits Change - Wendover Map items
+# Handheld maps that display a static map image of the Wendover area
+
+# Handheld paper map - no power required
+- type: entity
+  parent: BaseItem
+  id: MisfitsWendoverMap
+  name: Wendover map
+  description: A weathered paper map of the Wendover area. Useful for navigating the wasteland.
+  components:
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Wendover Area Map
+    # World tile bounds of the rendered image (left, bottom, right, top).
+    # #Misfits Fix - Restored the wider Wendover AABB so tactical markers line up with the NCR-side map art.
+    worldBounds: "-517,-308,484,311"
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: map
+  - type: Item
+    size: Small
+  - type: ActivatableUI
+    inHandsOnly: false
+    singleUser: true
+    key: enum.WastelandMapUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  - type: Tag
+    tags:
+    - Document
+
+# Handheld map - alternate variant for spawning
+- type: entity
+  parent: MisfitsWendoverMap
+  id: MisfitsWendoverMapFolded
+  name: folded map
+  description: A folded paper map. Looks like it covers the local area.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: trifold

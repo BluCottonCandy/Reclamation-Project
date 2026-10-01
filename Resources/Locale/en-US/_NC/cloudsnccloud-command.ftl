@@ -1,0 +1,14 @@
+cmd-nccloud-desc = Starts or stops the NC cloud layer on the map.
+cmd-nccloud-help = nccloud <map id> start [duration_seconds]\nnccloud <map id> stop
+cmd-nccloud-hint-map = Map ID
+cmd-nccloud-hint-action = Action (start/stop)
+cmd-nccloud-hint-duration = Duration in seconds
+cmd-nccloud-error-args = Not enough arguments.
+cmd-nccloud-error-map-id = {$value} is not a valid map ID.
+cmd-nccloud-error-map-missing = Map {$mapId} not found.
+cmd-nccloud-error-no-component = Map {$mapId} does not have an NC cloud layer component.
+cmd-nccloud-error-duration = {$value} is not a positive duration in seconds.
+cmd-nccloud-error-action = Unknown action {$value}. Use start or stop.
+cmd-nccloud-start-duration = NC cloud cover started on map {$mapId} for {$seconds} seconds.
+cmd-nccloud-start = NC cloud cover started on map {$mapId}.
+cmd-nccloud-stop = NC cloud cover stopped on map {$mapId}.

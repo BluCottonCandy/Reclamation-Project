@@ -1,0 +1,15 @@
+# #Misfits Add - Stealth Boy hallucination + whisper datasets. Referenced by
+# StealthBoyHallucinationsComponent and resolved against the FTL keys in
+# Resources/Locale/en-US/_Misfits/stealthboy/stealthboy-hallucinations.ftl.
+
+- type: localizedDataset
+  id: StealthBoyHallucinations
+  values:
+    prefix: stealthboy-hallucination-
+    count: 12
+
+- type: localizedDataset
+  id: StealthBoyWhispers
+  values:
+    prefix: stealthboy-whisper-
+    count: 8

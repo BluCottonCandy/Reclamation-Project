@@ -1,0 +1,51 @@
+# #Misfits Change
+# Fallout-themed name list for Protectron robots.
+# RobCo Industries code-style security/utility unit designations: letter-dash-letter+number.
+
+- type: dataset
+  id: RobotProtectronFirst
+  values:
+  - GD-0001
+  - GD-0010
+  - GD-0100
+  - GD-1000
+  - GD-1010
+  - GD-1100
+  - MK-0001
+  - MK-0011
+  - MK-0101
+  - MK-0110
+  - MK-1001
+  - MK-1010
+  - MK-1100
+  - PR-0001
+  - PR-0010
+  - PR-0011
+  - PR-0100
+  - PR-0101
+  - PR-0110
+  - PR-0111
+  - PR-1000
+  - PR-1001
+  - PR-1010
+  - PR-1011
+  - PR-1100
+  - PR-1101
+  - PR-1110
+  - PR-1111
+  - SE-0001
+  - SE-0010
+  - SE-0100
+  - SE-0101
+  - SE-0110
+  - SE-1001
+  - SE-1010
+  - SE-1100
+  - WD-0001
+  - WD-0011
+  - WD-0101
+  - WD-0110
+  - WD-1001
+  - WD-1010
+  - WD-1100
+  - WD-1111

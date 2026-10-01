@@ -1,0 +1,414 @@
+# Blueprint tier categories for faction-specific crafting
+# Each faction has 4 tiers per workbench type (Weapons, Armor, Ammo)
+# Tiers are DPS/Protection-weighted: T1 has most items, T4 has fewest
+
+# === NCR ===
+- type: latheCategory
+  id: N14BlueprintNCRWeaponsT1
+  name: lathe-category-blueprint-ncr-weapons-t1
+
+- type: latheCategory
+  id: N14BlueprintNCRWeaponsT2
+  name: lathe-category-blueprint-ncr-weapons-t2
+
+- type: latheCategory
+  id: N14BlueprintNCRWeaponsT3
+  name: lathe-category-blueprint-ncr-weapons-t3
+
+- type: latheCategory
+  id: N14BlueprintNCRWeaponsT4
+  name: lathe-category-blueprint-ncr-weapons-t4
+
+- type: latheCategory
+  id: N14BlueprintNCRWeaponsT5  # #Misfits Add - T5 for the anti-materiel rifle
+  name: lathe-category-blueprint-ncr-weapons-t5
+
+- type: latheCategory
+  id: N14BlueprintNCRArmorT1
+  name: lathe-category-blueprint-ncr-armor-t1
+
+- type: latheCategory
+  id: N14BlueprintNCRArmorT2
+  name: lathe-category-blueprint-ncr-armor-t2
+
+- type: latheCategory
+  id: N14BlueprintNCRArmorT3
+  name: lathe-category-blueprint-ncr-armor-t3
+
+- type: latheCategory
+  id: N14BlueprintNCRArmorT4
+  name: lathe-category-blueprint-ncr-armor-t4
+
+- type: latheCategory
+  id: N14BlueprintNCRAmmoT1
+  name: lathe-category-blueprint-ncr-ammo-t1
+
+- type: latheCategory
+  id: N14BlueprintNCRAmmoT2
+  name: lathe-category-blueprint-ncr-ammo-t2
+
+- type: latheCategory
+  id: N14BlueprintNCRAmmoT3
+  name: lathe-category-blueprint-ncr-ammo-t3
+
+- type: latheCategory
+  id: N14BlueprintNCRAmmoT4
+  name: lathe-category-blueprint-ncr-ammo-t4
+
+# === CAESAR'S LEGION ===
+- type: latheCategory
+  id: N14BlueprintLegionWeaponsT1
+  name: lathe-category-blueprint-legion-weapons-t1
+
+- type: latheCategory
+  id: N14BlueprintLegionWeaponsT2
+  name: lathe-category-blueprint-legion-weapons-t2
+
+- type: latheCategory
+  id: N14BlueprintLegionWeaponsT3
+  name: lathe-category-blueprint-legion-weapons-t3
+
+- type: latheCategory
+  id: N14BlueprintLegionWeaponsT4
+  name: lathe-category-blueprint-legion-weapons-t4
+
+- type: latheCategory  # #Misfits Add - T5 for Legion Scorcher flamethrower
+  id: N14BlueprintLegionWeaponsT5
+  name: lathe-category-blueprint-legion-weapons-t5
+
+- type: latheCategory
+  id: N14BlueprintLegionArmorT1
+  name: lathe-category-blueprint-legion-armor-t1
+
+- type: latheCategory
+  id: N14BlueprintLegionArmorT2
+  name: lathe-category-blueprint-legion-armor-t2
+
+- type: latheCategory
+  id: N14BlueprintLegionArmorT3
+  name: lathe-category-blueprint-legion-armor-t3
+
+- type: latheCategory
+  id: N14BlueprintLegionArmorT4
+  name: lathe-category-blueprint-legion-armor-t4
+
+- type: latheCategory
+  id: N14BlueprintLegionAmmoT1
+  name: lathe-category-blueprint-legion-ammo-t1
+
+- type: latheCategory
+  id: N14BlueprintLegionAmmoT2
+  name: lathe-category-blueprint-legion-ammo-t2
+
+- type: latheCategory
+  id: N14BlueprintLegionAmmoT3
+  name: lathe-category-blueprint-legion-ammo-t3
+
+- type: latheCategory
+  id: N14BlueprintLegionAmmoT4
+  name: lathe-category-blueprint-legion-ammo-t4
+
+# === BROTHERHOOD OF STEEL ===
+- type: latheCategory
+  id: N14BlueprintBoSWeaponsT1
+  name: lathe-category-blueprint-bos-weapons-t1
+
+- type: latheCategory
+  id: N14BlueprintBoSWeaponsT2
+  name: lathe-category-blueprint-bos-weapons-t2
+
+- type: latheCategory
+  id: N14BlueprintBoSWeaponsT3
+  name: lathe-category-blueprint-bos-weapons-t3
+
+- type: latheCategory
+  id: N14BlueprintBoSWeaponsT4
+  name: lathe-category-blueprint-bos-weapons-t4
+
+- type: latheCategory
+  id: N14BlueprintBoSWeaponsT5
+  name: lathe-category-blueprint-bos-weapons-t5
+
+- type: latheCategory
+  id: N14BlueprintBoSArmorT1
+  name: lathe-category-blueprint-bos-armor-t1
+
+- type: latheCategory
+  id: N14BlueprintBoSArmorT2
+  name: lathe-category-blueprint-bos-armor-t2
+
+- type: latheCategory
+  id: N14BlueprintBoSArmorT3
+  name: lathe-category-blueprint-bos-armor-t3
+
+- type: latheCategory
+  id: N14BlueprintBoSArmorT4
+  name: lathe-category-blueprint-bos-armor-t4
+
+- type: latheCategory
+  id: N14BlueprintBoSAmmoT1
+  name: lathe-category-blueprint-bos-ammo-t1
+
+- type: latheCategory
+  id: N14BlueprintBoSAmmoT2
+  name: lathe-category-blueprint-bos-ammo-t2
+
+- type: latheCategory
+  id: N14BlueprintBoSAmmoT3
+  name: lathe-category-blueprint-bos-ammo-t3
+
+- type: latheCategory
+  id: N14BlueprintBoSAmmoT4
+  name: lathe-category-blueprint-bos-ammo-t4
+
+#- type: latheCategory
+#  id: N14BlueprintBoSAmmoT5
+#  name: lathe-category-blueprint-bos-ammo-t5
+
+# === TOWNSFOLK ===
+- type: latheCategory
+  id: N14BlueprintTownWeaponsT1
+  name: lathe-category-blueprint-town-weapons-t1
+
+- type: latheCategory
+  id: N14BlueprintTownWeaponsT2
+  name: lathe-category-blueprint-town-weapons-t2
+
+- type: latheCategory
+  id: N14BlueprintTownWeaponsT3
+  name: lathe-category-blueprint-town-weapons-t3
+
+- type: latheCategory
+  id: N14BlueprintTownWeaponsT4
+  name: lathe-category-blueprint-town-weapons-t4
+
+- type: latheCategory
+  id: N14BlueprintTownArmorT1
+  name: lathe-category-blueprint-town-armor-t1
+
+- type: latheCategory
+  id: N14BlueprintTownArmorT2
+  name: lathe-category-blueprint-town-armor-t2
+
+- type: latheCategory
+  id: N14BlueprintTownArmorT3
+  name: lathe-category-blueprint-town-armor-t3
+
+- type: latheCategory
+  id: N14BlueprintTownArmorT4
+  name: lathe-category-blueprint-town-armor-t4
+
+- type: latheCategory
+  id: N14BlueprintTownAmmoT1
+  name: lathe-category-blueprint-town-ammo-t1
+
+- type: latheCategory
+  id: N14BlueprintTownAmmoT2
+  name: lathe-category-blueprint-town-ammo-t2
+
+- type: latheCategory
+  id: N14BlueprintTownAmmoT3
+  name: lathe-category-blueprint-town-ammo-t3
+
+- type: latheCategory
+  id: N14BlueprintTownAmmoT4
+  name: lathe-category-blueprint-town-ammo-t4
+
+# === VAULT ===
+- type: latheCategory
+  id: N14BlueprintVaultWeaponsT1
+  name: lathe-category-blueprint-vault-weapons-t1
+
+- type: latheCategory
+  id: N14BlueprintVaultWeaponsT2
+  name: lathe-category-blueprint-vault-weapons-t2
+
+- type: latheCategory
+  id: N14BlueprintVaultWeaponsT3
+  name: lathe-category-blueprint-vault-weapons-t3
+
+- type: latheCategory
+  id: N14BlueprintVaultWeaponsT4
+  name: lathe-category-blueprint-vault-weapons-t4
+
+- type: latheCategory
+  id: N14BlueprintVaultArmorT1
+  name: lathe-category-blueprint-vault-armor-t1
+
+- type: latheCategory
+  id: N14BlueprintVaultArmorT2
+  name: lathe-category-blueprint-vault-armor-t2
+
+- type: latheCategory
+  id: N14BlueprintVaultArmorT3
+  name: lathe-category-blueprint-vault-armor-t3
+
+- type: latheCategory
+  id: N14BlueprintVaultArmorT4
+  name: lathe-category-blueprint-vault-armor-t4
+
+- type: latheCategory
+  id: N14BlueprintVaultAmmoT1
+  name: lathe-category-blueprint-vault-ammo-t1
+
+- type: latheCategory
+  id: N14BlueprintVaultAmmoT2
+  name: lathe-category-blueprint-vault-ammo-t2
+
+- type: latheCategory
+  id: N14BlueprintVaultAmmoT3
+  name: lathe-category-blueprint-vault-ammo-t3
+
+- type: latheCategory
+  id: N14BlueprintVaultAmmoT4
+  name: lathe-category-blueprint-vault-ammo-t4
+
+# === TRIBE ===
+- type: latheCategory
+  id: N14BlueprintTribeWeaponsT1
+  name: lathe-category-blueprint-tribe-weapons-t1
+
+- type: latheCategory
+  id: N14BlueprintTribeWeaponsT2
+  name: lathe-category-blueprint-tribe-weapons-t2
+
+- type: latheCategory
+  id: N14BlueprintTribeWeaponsT3
+  name: lathe-category-blueprint-tribe-weapons-t3
+
+- type: latheCategory
+  id: N14BlueprintTribeWeaponsT4
+  name: lathe-category-blueprint-tribe-weapons-t4
+
+- type: latheCategory
+  id: N14BlueprintTribeArmorT1
+  name: lathe-category-blueprint-tribe-armor-t1
+
+- type: latheCategory
+  id: N14BlueprintTribeArmorT2
+  name: lathe-category-blueprint-tribe-armor-t2
+
+- type: latheCategory
+  id: N14BlueprintTribeArmorT3
+  name: lathe-category-blueprint-tribe-armor-t3
+
+- type: latheCategory
+  id: N14BlueprintTribeArmorT4
+  name: lathe-category-blueprint-tribe-armor-t4
+
+- type: latheCategory
+  id: N14BlueprintTribeAmmoT1
+  name: lathe-category-blueprint-tribe-ammo-t1
+
+- type: latheCategory
+  id: N14BlueprintTribeAmmoT2
+  name: lathe-category-blueprint-tribe-ammo-t2
+
+- type: latheCategory
+  id: N14BlueprintTribeAmmoT3
+  name: lathe-category-blueprint-tribe-ammo-t3
+
+- type: latheCategory
+  id: N14BlueprintTribeAmmoT4
+  name: lathe-category-blueprint-tribe-ammo-t4
+
+# === FACTORY AUTOMATION ===
+- type: latheCategory
+  id: MisfitsBlueprintFactoryAutomation
+  name: lathe-category-blueprint-factory-automation
+
+# === ROBOBRAIN ===
+- type: latheCategory
+  id: N14BlueprintRobobrain
+  name: lathe-category-blueprint-robobrain
+
+# === MMI ===
+- type: latheCategory
+  id: N14BlueprintMMI
+  name: lathe-category-blueprint-mmi
+
+# === C-27 CHASSIS ARMOR === # #Misfits Add - category grouping for C-27 chassis armor blueprint recipes.
+- type: latheCategory
+  id: N14BlueprintC27ArmorGeneric
+  name: lathe-category-blueprint-c27-armor-generic
+
+- type: latheCategory
+  id: N14BlueprintC27ArmorNCR
+  name: lathe-category-blueprint-c27-armor-ncr
+
+- type: latheCategory
+  id: N14BlueprintC27ArmorBoS
+  name: lathe-category-blueprint-c27-armor-bos
+
+- type: latheCategory
+  id: N14BlueprintC27CombatGeneric
+  name: lathe-category-blueprint-c27-combat
+
+# === Z.A.X EQUIPMENT === # #Misfits Add - shared category for future Z.A.X armor and weapons.
+- type: latheCategory
+  id: N14BlueprintZAXEquipment
+  name: lathe-category-blueprint-zax-equipment
+
+# === EIGHTIES MOTORBIKES ===
+- type: latheCategory
+  id: MisfitsBlueprintEightiesMotorbikes
+  name: lathe-category-blueprint-eighties-motorbikes
+
+# === EIGHTIES ORDNANCE === # #Misfits Add - faction council grenade production
+- type: latheCategory
+  id: MisfitsBlueprintEightiesOrdnance
+  name: lathe-category-blueprint-eighties-ordnance
+
+# === EIGHTIES WEAPONS, ARMOR, AND AMMO ===
+- type: latheCategory
+  id: N14BlueprintEightiesWeaponsT1
+  name: lathe-category-blueprint-eighties-weapons-t1
+
+- type: latheCategory
+  id: N14BlueprintEightiesWeaponsT2
+  name: lathe-category-blueprint-eighties-weapons-t2
+
+- type: latheCategory
+  id: N14BlueprintEightiesWeaponsT3
+  name: lathe-category-blueprint-eighties-weapons-t3
+
+- type: latheCategory
+  id: N14BlueprintEightiesWeaponsT4
+  name: lathe-category-blueprint-eighties-weapons-t4
+
+- type: latheCategory
+  id: N14BlueprintEightiesWeaponsT5
+  name: lathe-category-blueprint-eighties-weapons-t5
+
+- type: latheCategory
+  id: N14BlueprintEightiesArmorT1
+  name: lathe-category-blueprint-eighties-armor-t1
+
+- type: latheCategory
+  id: N14BlueprintEightiesArmorT2
+  name: lathe-category-blueprint-eighties-armor-t2
+
+- type: latheCategory
+  id: N14BlueprintEightiesArmorT3
+  name: lathe-category-blueprint-eighties-armor-t3
+
+- type: latheCategory
+  id: N14BlueprintEightiesArmorT4
+  name: lathe-category-blueprint-eighties-armor-t4
+
+- type: latheCategory
+  id: N14BlueprintEightiesAmmoT1
+  name: lathe-category-blueprint-eighties-ammo-t1
+
+- type: latheCategory
+  id: N14BlueprintEightiesAmmoT2
+  name: lathe-category-blueprint-eighties-ammo-t2
+
+- type: latheCategory
+  id: N14BlueprintEightiesAmmoT3
+  name: lathe-category-blueprint-eighties-ammo-t3
+
+- type: latheCategory
+  id: N14BlueprintEightiesAmmoT4
+  name: lathe-category-blueprint-eighties-ammo-t4
+

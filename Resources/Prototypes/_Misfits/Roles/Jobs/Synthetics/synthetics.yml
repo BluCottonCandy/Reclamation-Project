@@ -1,0 +1,245 @@
+# Per-species synthetic robot jobs. #Misfits Change
+# Each robot species (Mr. Handy, Protectron, Mr. Gutsy, Assaultron) gets its own job,
+# locked to that species via CharacterSpeciesRequirement. The species restrictedJobs
+# field ensures only the matching species can see each job in the lobby.
+# Access is gated via per-job whitelist (admin: jobwhitelistadd <player> SyntheticMrHandy).
+
+# #Misfits Add - Empty gear prototype: triggers EquipIdCard in StationSpawningSystem
+# so the job's access tags are applied to the robot's nav card on spawn.
+- type: startingGear
+  id: SyntheticGear
+
+- type: job
+  id: SyntheticMrHandy
+  name: job-name-synthetic-mr-handy
+  description: job-description-synthetic-mr-handy
+  playTimeTracker: SyntheticMrHandy
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  overwatchCategory: OverwatchRobotics
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true # #Misfits Change
+  hideWithoutWhitelist: true # #Misfits Change
+  startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so vault access is applied to nav card
+  access: # #Misfits Add - vault access for vault-assigned robot
+  - VaultDweller
+  spawnLoadout: false
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  requirements: # #Misfits Change: lock to species
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotMrHandy
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - Wastelander
+
+- type: job
+  id: SyntheticProtectron
+  name: job-name-synthetic-protectron
+  description: job-description-synthetic-protectron
+  playTimeTracker: SyntheticProtectron
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  overwatchCategory: OverwatchRobotics
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true # #Misfits Change
+  hideWithoutWhitelist: true # #Misfits Change
+  startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so vault access is applied to nav card
+  access: # #Misfits Add - vault access for vault-assigned robot
+  - VaultDweller
+  spawnLoadout: false
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  requirements: # #Misfits Change: lock to species
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotProtectron
+    - RobotProtectronPolice # #Misfits Add: model variant shares Protectron whitelist/job.
+    - RobotProtectronBuilder # #Misfits Add: model variant shares Protectron whitelist/job.
+    - RobotProtectronFire # #Misfits Add: model variant shares Protectron whitelist/job.
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - Wastelander
+
+- type: job
+  id: SyntheticMrGutsy
+  name: job-name-synthetic-mr-gutsy
+  description: job-description-synthetic-mr-gutsy
+  playTimeTracker: SyntheticMrGutsy
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  overwatchCategory: OverwatchRobotics
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true # #Misfits Change
+  hideWithoutWhitelist: true # #Misfits Change
+  showBorder: true # #Misfits Change - moved from MrHandy; MrGutsy sorts first alphabetically so separator belongs here
+  startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so vault access is applied to nav card
+  access: # #Misfits Add - vault access for vault-assigned robot
+  - VaultDweller
+  spawnLoadout: false
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  requirements: # #Misfits Change: lock to species
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotMrGutsy
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - Wastelander
+
+- type: job
+  id: SyntheticAssaultron
+  name: job-name-synthetic-assaultron
+  description: job-description-synthetic-assaultron
+  playTimeTracker: SyntheticAssaultron
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  overwatchCategory: OverwatchRobotics
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true # #Misfits Change
+  hideWithoutWhitelist: true # #Misfits Change
+  startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so job access is applied to nav card
+  spawnLoadout: false
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  requirements: # #Misfits Change: lock to species
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotAssaultron
+    - RobotAssaultronTesla
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - Wastelander
+
+- type: playTimeTracker
+  id: SyntheticMrHandy
+
+- type: playTimeTracker
+  id: SyntheticProtectron
+
+- type: playTimeTracker
+  id: SyntheticMrGutsy
+
+- type: playTimeTracker
+  id: SyntheticAssaultron
+
+- type: job
+  id: SyntheticSentryBot
+  name: job-name-synthetic-sentrybot
+  description: job-description-synthetic-sentrybot
+  playTimeTracker: SyntheticSentryBot
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so job access is applied to nav card
+  spawnLoadout: false
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotSentryBot
+    - RobotSentryBotLaser # model variant shares SentryBot whitelist/job.
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job;
+         # PlayerSentryBot faction allies with all HostileRobot NPCs (bidirectional friendly)
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - PlayerSentryBot
+          - Wastelander
+
+- type: job
+  id: SyntheticRobobrain
+  name: job-name-synthetic-robobrain
+  description: job-description-synthetic-robobrain
+  playTimeTracker: SyntheticRobobrain
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so vault access is applied to nav card
+  access: # #Misfits Add - vault access for vault-assigned robot
+  - VaultDweller
+  spawnLoadout: false
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotRobobrain
+    - RobotRobobrainLaser # model variant shares Robobrain whitelist/job.
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - Wastelander
+
+- type: playTimeTracker
+  id: SyntheticSentryBot
+
+- type: playTimeTracker
+  id: SyntheticRobobrain
+
+- type: job
+  id: SyntheticProtectronTribal
+  name: job-name-synthetic-protectron-tribal
+  description: job-description-synthetic-protectron-tribal
+  playTimeTracker: SyntheticProtectronTribal
+  icon: JobIconBorg
+  supervisors: job-supervisors-tribal
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  showBorder: true
+  startingGear: SyntheticGear # triggers EquipIdCard so tribe access is applied to nav card
+  access: # tribe access for the tribal bot
+  - TribeMember
+  spawnLoadout: false
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  requirements: # lock to species
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotProtectronTribal
+  special: # register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - PlayerRobot
+      - Wastelander
+      - Tribal
+
+- type: playTimeTracker
+  id: SyntheticProtectronTribal

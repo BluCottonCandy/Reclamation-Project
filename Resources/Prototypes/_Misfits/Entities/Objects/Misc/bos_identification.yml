@@ -1,0 +1,331 @@
+# #Misfits Change - Brotherhood of Steel Washington holotag ID entity definitions.
+# Consolidated here from _Nuclear14/Entities/Objects/Misc/identification.yml.
+#
+# The IdCardBrotherhood tag on the Initiate base enables the BOS shared faction map in the Pip-Boy.
+# All other BOS Washington holotags inherit from N14IDBrotherhoodWashingtonHolotagInitiate, so they
+# automatically get the tag too. The BOS MAP feed is shared across:
+#   - N14BrotherhoodTacticalmap (war table, misc_machines.yml)
+#   - BOS power armor helmets (powerarmorhelmet.yml in _Nuclear14 and Corvax)
+#   - Pip-Boy with any BOS holotag inserted (WastelandMapCartridgeSystem.cs)
+# If you add a new BOS holotag entity that does NOT inherit from N14IDBrotherhoodWashingtonHolotagInitiate,
+# you must manually add the Tag component with IdCardBrotherhood.
+
+#Misfits Change /Comment-out/: Washington BoS holotags removed — will create new prototypes.
+###MARK: Brotherhood Washington
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDBrotherhoodWashingtonHolotagInitiate
+#  name: initiate's holotags
+#  description: An ID holotag worn by a Brotherhood initiate.
+#  suffix: Initiate
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: IdCard
+#    nameLocId: n14-id-holotag-name
+#    fullNameLocId: n14-id-holotag-full-name
+#  - type: PresetIdCard
+#    job: BoSWashingtonInitiate
+#  - type: Tag
+#    tags:
+#    - IdCardBrotherhood  # enables BOS shared map - see tags.yml comment for full faction map checklist
+#  - type: ClothingAddFaction
+#    faction: BrotherhoodOfSteel
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagScribe
+#  name: scribe's holotags
+#  description: An ID holotag worn by a Brotherhood scribe.
+#  suffix: Scribe
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonScribe
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagKnight
+#  name: knight's holotags
+#  description: An ID holotag worn by a Brotherhood knight.
+#  suffix: Knight
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonKnight
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagPaladin
+#  name: paladin's holotags
+#  description: An ID holotag worn by a Brotherhood paladin.
+#  suffix: Paladin
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonPaladin
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagCommander
+#  name: head knight's holotags
+#  description: An ID holotag worn by the Head Knight of the Brotherhood of Steel.
+#  suffix: Head Knight
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonCommander
+
+##MARK: Brotherhood Midwest
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDBrotherhoodHolotag
+  name: senior scribe's holotags
+  description: The chapter cannot be allowed to repeat the past, forgetting the teachings of the Codex. Keep them on the right path, show them the way.
+  suffix: Senior Scribe
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: bos_holotag
+  - type: IdCard
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  - type: PresetIdCard
+    job: BoSMidScribe
+  - type: Tag
+    tags:
+    - IdCardBrotherhood
+  - type: ClothingAddFaction
+    faction: BrotherhoodOfSteel
+
+- type: entity
+  parent: N14IDBrotherhoodHolotag
+  id: N14IDBrotherhoodHolotagSquire
+  name: squire's holotags
+  description: You still have something to prove, and all the opportunity to mess it all up first.
+  suffix: Squire
+  components:
+  - type: PresetIdCard
+    job: BoSMidSquire
+
+- type: entity
+  parent: N14IDBrotherhoodHolotag
+  id: MisfitsIDBOSOffDuty
+  name: off-duty holotags
+  description: You've been given a brief moment of rest, yet these holotags still feel heavy as an anchor around the neck.
+  suffix: Off-Duty
+  components:
+  - type: PresetIdCard
+    job: BoSOffDuty
+
+- type: entity
+  parent: N14IDBrotherhoodHolotag
+  id: N14IDBrotherhoodHolotagKnight
+  name: senior knight's holotags
+  description: These holotags are only issued to those who have proven both competent and responsible, worthy of keeping the chapter from descending into insanity.
+  suffix: Senior Knight
+  components:
+  - type: PresetIdCard
+    job: BoSMidKnight
+
+- type: entity
+  parent: N14IDBrotherhoodHolotag
+  id: N14IDBrotherhoodHolotagPaladin
+  name: senior paladin's holotags
+  description: These holotags are issued to those who have shown bravery in combat, diplomatic skill with outsiders, and loyalty towards their brothers and sisters.
+  suffix: Senior Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSMidPaladin
+
+- type: entity
+  parent: N14IDBrotherhoodHolotag
+  id: N14IDBrotherhoodHolotagCommander
+  name: head paladin's holotags
+  description: The safety of the chapter is in your hands, and all eyes are on you for a possible fumble of diplomacy or a failure to win the upcoming battles.
+  suffix: Head Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSMidPaladinCommander
+
+##MARK: Brotherhood Unified Live Jobs
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDBrotherhoodOfSteelHolotagBase
+  name: Brotherhood holotags
+  description: Holotags marking a member of the Brotherhood of Steel, words flicker over the surface, the names and ranks on its memory ready to be committed to memorial.
+  suffix: Brotherhood
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: bos_holotag
+  - type: IdCard
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  - type: Tag
+    tags:
+    - IdCardBrotherhood
+  - type: ClothingAddFaction
+    faction: BrotherhoodOfSteel
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagInitiate
+  name: initiate's holotags
+  description: These holotags mark you as a hopeful of the chapter's brothers and sisters, ready to cement your life into a rigid caste system for a higher cause.
+  suffix: Initiate
+  components:
+  - type: PresetIdCard
+    job: BoSInitiate  #Misfits Change /Tweak/: Updated to new consolidated BoS Initiate job
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSquire
+  name: squire's holotags
+  description: You still have something to prove, and all the opportunity to mess it all up first.
+  suffix: Squire
+  components:
+  - type: PresetIdCard
+    job: BoSMidSquire
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagScribe
+  name: scribe's holotags
+  description: These holotags have a heavy weight to them, that of responsibility and tradition. Bear this burden with dignity and noble purpose.
+  suffix: Scribe
+  components:
+  - type: PresetIdCard
+    job: BoSScribe  #Misfits Change /Tweak/: Updated to new consolidated BoS Scribe job
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSeniorScribe
+  name: senior scribe's holotags
+  description: The chapter cannot be allowed to repeat the past, forgetting the teachings of the Codex. Keep them on the right path, show them the way.
+  suffix: Senior Scribe
+  components:
+  - type: PresetIdCard
+    job: BoSMidScribe
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagHeadScribe
+  name: head scribe's holotags
+  description: The chapter looks to you for guidance. Do not just recycle past knowledge, they need you to make new discoveries for humanity's survival.
+  suffix: Head Scribe
+  components:
+  - type: PresetIdCard
+    job: BoSWestScribe
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagKnight
+  name: knight's holotags
+  description: Sort the supplies, manage the defense, tend to the prisoners; yours is a practical duty, needed for the daily maintenance of life.
+  suffix: Knight
+  components:
+  - type: PresetIdCard
+    job: BoSKnight  #Misfits Change /Tweak/: Updated to new consolidated BoS Knight job
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSeniorKnight
+  name: senior knight's holotags
+  description: These holotags are only issued to those who have proven both competent and responsible, worthy of keeping the chapter from descending into insanity.
+  suffix: Senior Knight
+  components:
+  - type: PresetIdCard
+    job: BoSMidKnight
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagHeadKnight
+  name: head knight's holotags
+  description: Issued only to those who can bear the stress of managing the problems of the chapter from the guidance of the scribes, and enforce the teachings of the Codex without failure.
+  suffix: Head Knight
+  components:
+  - type: PresetIdCard
+    job: BoSHeadKnight  #Misfits Change /Tweak/: Updated to new consolidated BoS Head Knight job
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagPaladin
+  name: paladin's holotags
+  description: With your rank comes great purpose, as you are expected not just to lead the chapter in combat from the frontline, but prevent it in the first place through diplomacy with untrustworthy outsiders.
+  suffix: Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSPaladin  #Misfits Change /Tweak/: Updated to new consolidated BoS Paladin job
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagSeniorPaladin
+  name: senior paladin's holotags
+  description: These holotags are issued to those who have shown bravery in combat, diplomatic skill with outsiders, and loyalty towards their brothers and sisters. Guide the paladins and follow the Chain of Command.
+  suffix: Senior Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSMidPaladin
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagHeadPaladin
+  name: head paladin's holotags
+  description: The safety of the chapter is in your hands, and all eyes are on you for a possible fumble of diplomacy or a failure to win the upcoming battles. Take care not to let down your brothers and sisters.
+  suffix: Head Paladin
+  components:
+  - type: PresetIdCard
+    job: BoSMidPaladinCommander
+
+# #Cythisiax Commented - Paladin Commander holotag no longer used: the Brotherhood Deserter
+# retired HT Instructor slot used NCR prisoner dogtags instead of BoS holotags.
+#- type: entity
+#  parent: N14IDBrotherhoodOfSteelHolotagBase
+#  id: N14IDBrotherhoodOfSteelHolotagPaladinCommander
+#  name: paladin commander's holotags
+#  description: An ID holotag worn by the Paladin Commander of the Brotherhood of Steel.
+#  suffix: Paladin Commander
+#  components:
+#  - type: PresetIdCard
+#    job: RetiredHTInstructor
+
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagElder
+  name: elder's holotags
+  description: The holotags of an elder of the Brotherhood, issued only when a new chapter is founded, or a casualty must be replaced. These belonged to someone before you, can you live up to their glory?
+  suffix: Elder
+  components:
+  - type: PresetIdCard
+    job: BoSWestElderCommander
+
+# #Cythisiax Added - HONOR GUARD personal-whitelist holotag.
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagBase
+  id: N14IDBrotherhoodOfSteelHolotagHonorGuard
+  name: honor guard's holotags
+  description: Your life has been sworn to the safety of the Elder who appointed you, and you will see their will done. For without them, the Brotherhood of Steel would fall.
+  suffix: Honor Guard
+  components:
+  - type: PresetIdCard
+    job: BoSHonorGuard
+
+##MARK: NCR Specialist Dogtag # #Misfits Tweak - renamed from WS/Corporal
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagWS
+  name: specialist's dogtags
+  description: These dogtags are proof you know what you're doing, so don't expect to take it easy anytime soon.
+  suffix: Specialist
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ncrdogtag
+  - type: PresetIdCard
+    job: NCRWS
+
+#Misfits Add: Legacy Washington holotag ID compatibility for existing map entities.
+- type: entity
+  parent: N14IDBrotherhoodOfSteelHolotagInitiate
+  id: N14IDBrotherhoodWashingtonHolotagInitiate
+  name: initiate's holotags
+  description: Issued to fresh recruits of the Washington Brotherhood, you have a long way to go before you are feared just yet.
+  suffix: LegacyWashington

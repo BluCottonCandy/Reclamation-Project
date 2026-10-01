@@ -1,0 +1,371 @@
+﻿using System.Linq;
+using Content.Server.Administration.Logs;
+using Content.Shared.Materials;
+using Content.Shared.Popups;
+using Content.Shared.Stacks;
+using Content.Shared.Storage;
+using Content.Server.Power.Components;
+using Content.Server.Stack;
+using Content.Shared.ActionBlocker;
+using Content.Shared.Construction;
+using Content.Shared.Database;
+using JetBrains.Annotations;
+using Robust.Server.Containers;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
+using Robust.Shared.IoC;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server.Materials;
+
+/// <summary>
+/// This handles <see cref="SharedMaterialStorageSystem"/>
+/// </summary>
+public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
+{
+    // #Misfits Change Fix: Allow workbench lathe recipes to consume raw material stacks sitting
+    // in the bench storage container, refunding any leftover partial volume into MaterialStorage.
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly IComponentFactory _componentFactory = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly StackSystem _stackSystem = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<MaterialStorageComponent, MachineDeconstructedEvent>(OnDeconstructed);
+
+        SubscribeAllEvent<EjectMaterialMessage>(OnEjectMessage);
+    }
+
+    private void OnDeconstructed(EntityUid uid, MaterialStorageComponent component, MachineDeconstructedEvent args)
+    {
+        if (!component.DropOnDeconstruct)
+            return;
+
+        foreach (var (material, amount) in component.Storage)
+        {
+            SpawnMultipleFromMaterial(amount, material, Transform(uid).Coordinates);
+        }
+    }
+
+    private void OnEjectMessage(EjectMaterialMessage msg, EntitySessionEventArgs args)
+    {
+        if (args.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        var uid = GetEntity(msg.Entity);
+
+        if (!TryComp<MaterialStorageComponent>(uid, out var component))
+            return;
+
+        if (!Exists(uid))
+            return;
+
+        if (!_actionBlocker.CanInteract(player, uid))
+            return;
+
+        if (!component.CanEjectStoredMaterials || !_prototypeManager.TryIndex<MaterialPrototype>(msg.Material, out var material))
+            return;
+
+        if (!TryGetVolumePerSheet(material, msg.Material, out var volumePerSheet))
+            return;
+
+        if (material.StackEntity == null)
+            return;
+
+        var stackEntityId = material.StackEntity.Value;
+
+        var sheetsToExtract = Math.Min(msg.SheetsToExtract, _stackSystem.GetMaxCount(stackEntityId));
+        var volume = sheetsToExtract * volumePerSheet;
+
+        if (volume <= 0)
+            return;
+
+        // #Misfits Fix: Withdraw should be able to eject material that exists in either the
+        // internal pool or the bench's attached storage container.
+        TryComp<StorageComponent>(uid, out var storage);
+        if (!TryConsumeAvailableMaterial(uid, msg.Material, volume, component, null, storage))
+            return;
+
+        var mats = SpawnMultipleFromMaterial(volume, material, Transform(uid).Coordinates, out var overflow);
+        if (overflow > 0)
+            TryChangeMaterialAmount(uid, msg.Material, overflow, component);
+
+        foreach (var mat in mats.Where(mat => !TerminatingOrDeleted(mat)))
+        {
+            _stackSystem.TryMergeToContacts(mat);
+        }
+    }
+
+    private bool TryGetVolumePerSheet(MaterialPrototype material, string materialId, out int volumePerSheet)
+    {
+        volumePerSheet = 0;
+
+        if (material.StackEntity == null)
+            return false;
+
+        var stackEntityId = material.StackEntity.Value;
+
+        if (!_prototypeManager.Index<EntityPrototype>(stackEntityId)
+                .TryGetComponent<PhysicalCompositionComponent>(out var composition, _componentFactory))
+            return false;
+
+        if (composition.MaterialComposition.TryGetValue(materialId, out volumePerSheet) && volumePerSheet > 0)
+            return true;
+
+        foreach (var (key, value) in composition.MaterialComposition)
+        {
+            if (!string.Equals(key, materialId, StringComparison.OrdinalIgnoreCase) || value <= 0)
+                continue;
+
+            volumePerSheet = value;
+            return true;
+        }
+
+        return false;
+    }
+
+    public override bool TryInsertMaterialEntity(EntityUid user,
+        EntityUid toInsert,
+        EntityUid receiver,
+        MaterialStorageComponent? storage = null,
+        MaterialSiloUtilizerComponent? utilizer = null,
+        MaterialComponent? material = null,
+        PhysicalCompositionComponent? composition = null)
+    {
+        if (!Resolve(receiver, ref storage) || !Resolve(toInsert, ref material, ref composition, false))
+            return false;
+        if (TryComp<ApcPowerReceiverComponent>(receiver, out var power) && !power.Powered)
+            return false;
+        if (!base.TryInsertMaterialEntity(user, toInsert, receiver, storage, utilizer, material, composition))
+            return false;
+        _audio.PlayPvs(storage.InsertingSound, receiver);
+        _popup.PopupEntity(Loc.GetString("machine-insert-item", ("user", user), ("machine", receiver),
+            ("item", toInsert)), receiver);
+        QueueDel(toInsert);
+
+        // Logging
+        TryComp<StackComponent>(toInsert, out var stack);
+        var count = stack?.Count ?? 1;
+        _adminLogger.Add(LogType.Action, LogImpact.Low,
+            $"{ToPrettyString(user):player} inserted {count} {ToPrettyString(toInsert):inserted} into {ToPrettyString(receiver):receiver}");
+        return true;
+    }
+
+    /// <summary>
+    ///     Spawn an amount of a material in stack entities.
+    ///     Note the 'amount' is material dependent.
+    ///     1 biomass = 1 biomass in its stack,
+    ///     but 100 plasma = 1 sheet of plasma, etc.
+    /// </summary>
+    public List<EntityUid> SpawnMultipleFromMaterial(int amount, string material, EntityCoordinates coordinates)
+    {
+        return SpawnMultipleFromMaterial(amount, material, coordinates, out _);
+    }
+
+    /// <summary>
+    ///     Spawn an amount of a material in stack entities.
+    ///     Note the 'amount' is material dependent.
+    ///     1 biomass = 1 biomass in its stack,
+    ///     but 100 plasma = 1 sheet of plasma, etc.
+    /// </summary>
+    public List<EntityUid> SpawnMultipleFromMaterial(int amount, string material, EntityCoordinates coordinates, out int overflowMaterial)
+    {
+        overflowMaterial = 0;
+        if (!_prototypeManager.TryIndex<MaterialPrototype>(material, out var stackType))
+        {
+            Log.Error("Failed to index material prototype " + material);
+            return new List<EntityUid>();
+        }
+
+        return SpawnMultipleFromMaterial(amount, stackType, coordinates, out overflowMaterial);
+    }
+
+    /// <summary>
+    ///     Spawn an amount of a material in stack entities.
+    ///     Note the 'amount' is material dependent.
+    ///     1 biomass = 1 biomass in its stack,
+    ///     but 100 plasma = 1 sheet of plasma, etc.
+    /// </summary>
+    [PublicAPI]
+    public List<EntityUid> SpawnMultipleFromMaterial(int amount, MaterialPrototype materialProto, EntityCoordinates coordinates)
+    {
+        return SpawnMultipleFromMaterial(amount, materialProto, coordinates, out _);
+    }
+
+    /// <summary>
+    ///     Spawn an amount of a material in stack entities.
+    ///     Note the 'amount' is material dependent.
+    ///     1 biomass = 1 biomass in its stack,
+    ///     but 100 plasma = 1 sheet of plasma, etc.
+    /// </summary>
+    public List<EntityUid> SpawnMultipleFromMaterial(int amount, MaterialPrototype materialProto, EntityCoordinates coordinates, out int overflowMaterial)
+    {
+        overflowMaterial = 0;
+
+        if (amount <= 0 || materialProto.StackEntity == null)
+            return new List<EntityUid>();
+
+        var entProto = _prototypeManager.Index<EntityPrototype>(materialProto.StackEntity);
+        if (!entProto.TryGetComponent<PhysicalCompositionComponent>(out var composition, _componentFactory))
+            return new List<EntityUid>();
+
+        var materialPerStack = composition.MaterialComposition[materialProto.ID];
+        var amountToSpawn = amount / materialPerStack;
+        overflowMaterial = amount - amountToSpawn * materialPerStack;
+        return _stackSystem.SpawnMultiple(materialProto.StackEntity, amountToSpawn, coordinates);
+    }
+
+    /// <summary>
+    /// Eject a material out of this storage. The internal counts are updated.
+    /// Material that cannot be ejected stays in storage. (e.g. only have 50 but a sheet needs 100).
+    /// </summary>
+    /// <param name="entity">The entity with storage to eject from.</param>
+    /// <param name="material">The material prototype to eject.</param>
+    /// <param name="maxAmount">The maximum amount to eject. If not given, as much as possible is ejected.</param>
+    /// <param name="coordinates">The position where to spawn the created sheets. If not given, they're spawned next to the entity.</param>
+    /// <param name="component">The storage component on <paramref name="entity"/>. Resolved automatically if not given.</param>
+    /// <param name="utilizer">The material silo utilizer component on <paramref name="uid"/>.</param>
+    /// <returns>The stack entities that were spawned.</returns>
+    public List<EntityUid> EjectMaterial(
+        EntityUid entity,
+        string material,
+        int? maxAmount = null,
+        EntityCoordinates? coordinates = null,
+        MaterialStorageComponent? component = null,
+        MaterialSiloUtilizerComponent? utilizer = null)
+    {
+        if (!Resolve(entity, ref component))
+            return new List<EntityUid>();
+
+        coordinates ??= Transform(entity).Coordinates;
+
+        var amount = GetMaterialAmount(entity, material, component, utilizer);
+        if (maxAmount != null)
+            amount = Math.Min(maxAmount.Value, amount);
+
+        var spawned = SpawnMultipleFromMaterial(amount, material, coordinates.Value, out var overflow);
+
+        TryChangeMaterialAmount(entity, material, -(amount - overflow), component, utilizer);
+        return spawned;
+    }
+
+    /// <summary>
+    /// Eject all material stored in an entity, with the same mechanics as <see cref="EjectMaterial"/>.
+    /// </summary>
+    /// <param name="entity">The entity with storage to eject from.</param>
+    /// <param name="coordinates">The position where to spawn the created sheets. If not given, they're spawned next to the entity.</param>
+    /// <param name="component">The storage component on <paramref name="entity"/>. Resolved automatically if not given.</param>
+    /// <param name="utilizer">The material silo utilizer component on <paramref name="uid"/>.</param>
+    /// <returns>The stack entities that were spawned.</returns>
+    public List<EntityUid> EjectAllMaterial(
+        EntityUid entity,
+        EntityCoordinates? coordinates = null,
+        MaterialStorageComponent? component = null,
+        MaterialSiloUtilizerComponent? utilizer = null)
+    {
+        if (!Resolve(entity, ref component))
+            return new List<EntityUid>();
+
+        coordinates ??= Transform(entity).Coordinates;
+
+        var allSpawned = new List<EntityUid>();
+        foreach (var material in component.Storage.Keys.ToArray())
+        {
+            var spawned = EjectMaterial(entity, material, null, coordinates, component, utilizer);
+            allSpawned.AddRange(spawned);
+        }
+
+        return allSpawned;
+    }
+
+    public bool TryConsumeAvailableMaterial(
+        EntityUid uid,
+        string materialId,
+        int volume,
+        MaterialStorageComponent? component = null,
+        MaterialSiloUtilizerComponent? utilizer = null,
+        StorageComponent? storage = null)
+    {
+        if (volume <= 0)
+            return true;
+
+        if (GetAvailableMaterialAmount(uid, materialId, component, utilizer, storage) < volume)
+            return false;
+
+        var availableInPool = GetMaterialAmount(uid, materialId, component, utilizer);
+        var fromPool = Math.Min(availableInPool, volume);
+        if (fromPool > 0 && !TryChangeMaterialAmount(uid, materialId, -fromPool, component, utilizer))
+            return false;
+
+        var remaining = volume - fromPool;
+        if (remaining <= 0)
+            return true;
+
+        if (!Resolve(uid, ref storage, false))
+            return false;
+
+        return TryConsumeStoredMaterial(uid, materialId, remaining, component, utilizer, storage);
+    }
+
+    private bool TryConsumeStoredMaterial(
+        EntityUid uid,
+        string materialId,
+        int volume,
+        MaterialStorageComponent? component,
+        MaterialSiloUtilizerComponent? utilizer,
+        StorageComponent storage)
+    {
+        var remaining = volume;
+
+        foreach (var entity in storage.Container.ContainedEntities.ToArray())
+        {
+            if (!HasComp<MaterialComponent>(entity) ||
+                !TryComp<PhysicalCompositionComponent>(entity, out var composition) ||
+                !composition.MaterialComposition.TryGetValue(materialId, out var volumePerUnit) ||
+                volumePerUnit <= 0)
+            {
+                continue;
+            }
+
+            var stackCount = TryComp<StackComponent>(entity, out var stack) ? stack.Count : 1;
+            var unitsToConsume = Math.Min(stackCount, (int) Math.Ceiling(remaining / (float) volumePerUnit));
+            if (unitsToConsume <= 0)
+                continue;
+
+            var consumedVolume = unitsToConsume * volumePerUnit;
+
+            if (stack != null && stack.Count > unitsToConsume)
+            {
+                _stackSystem.SetCount(entity, stack.Count - unitsToConsume, stack);
+            }
+            else
+            {
+                _container.Remove(entity, storage.Container);
+                QueueDel(entity);
+            }
+
+            remaining -= consumedVolume;
+            if (remaining <= 0)
+                break;
+        }
+
+        if (remaining > 0)
+            return false;
+
+        var leftover = -remaining;
+        if (leftover > 0 && !TryChangeMaterialAmount(uid, materialId, leftover, component, utilizer))
+        {
+            // If we cannot refund over-consumed remainder into the pool (typically capacity-limited),
+            // do not fail the entire recipe queue operation.
+            Log.Warning($"TryConsumeStoredMaterial: could not refund leftover {leftover} of {materialId} to {uid}; continuing.");
+        }
+
+        return true;
+    }
+}

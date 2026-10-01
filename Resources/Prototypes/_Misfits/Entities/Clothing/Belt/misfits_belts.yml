@@ -1,0 +1,73 @@
+# #Misfits Add - Misfits-originated belt prototypes.
+# Inherits N14ClothingBeltStorageBase for standard ammo/small-item storage behaviour.
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: N14ClothingBeltLeatherPouches
+  name: leather pouches belt
+  description: Worn strips of leather stitched into a makeshift belt with small pouches for carrying supplies. Common on wastelanders who can't afford military webbing.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Belt/leatherpouches.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Belt/leatherpouches.rsi
+  - type: Appearance
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: M14ClothingBeltVaultSecurity
+  name: vault security belt
+  description: A used belt used by vault security, it can carry a few magazines but not much else.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Belt/vaultsecuritybelt.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Belt/vaultsecuritybelt.rsi
+  - type: Appearance
+  # #Cythisiax Fixed - belt could only hold ammo; handcuffs & police baton could not be stored
+  - type: Storage
+    whitelist:
+      tags:
+        - CigPack
+        - N14AmmoCell
+        - Handcuffs
+        - N14PoliceBaton
+        # #Cythisiax Added - belt can store the Wendover map (Document)
+        - Document
+      components:
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+# #Misfits Add - BoS Squire webbing variants.
+- type: entity
+  parent: N14ClothingBeltBoSWebbing
+  id: MisfitsClothingBeltSquireWebbingBlack
+  name: black squire webbing
+  description: Lightweight Brotherhood webbing sized for a Squire, with pouches for medicine, tools, and ammunition.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Belt/squirewebbing_black.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Belt/squirewebbing_black.rsi
+
+- type: entity
+  parent: MisfitsClothingBeltSquireWebbingBlack
+  id: MisfitsClothingBeltSquireWebbingBrown
+  name: brown squire webbing
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Belt/squirewebbing_brown.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Belt/squirewebbing_brown.rsi
+
+# #Misfits Add - BoS Paladin webbing variant.
+- type: entity
+  parent: N14ClothingBeltBoSWebbing
+  id: MisfitsClothingBeltPaladinWebbing
+  name: paladin webbing
+  description: Lightweight Brotherhood webbing sized for a Paladin, with pouches for medicine, tools, and ammunition.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Belt/paladinwebbing_black.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Belt/paladinwebbing_black.rsi

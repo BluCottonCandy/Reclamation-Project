@@ -1,0 +1,24 @@
+- type: damageContainer
+  id: MisfitsNPCBiological
+  supportedGroups:
+  - Brute
+  - Burn
+  - Toxin
+  - Airloss
+  - Genetic
+
+- type: damageContainer
+  id: MisfitsC27ZAXNoExternalRepair
+  supportedGroups:
+  - Brute
+  supportedTypes:
+  - Heat
+  - Shock
+  - Caustic
+
+# Aircraft hull integrity is collision-only. Projectiles pass through the
+# aircraft fixture and retain the existing risk to its stacked occupants.
+- type: damageContainer
+  id: AircraftStructural
+  supportedTypes:
+  - Structural

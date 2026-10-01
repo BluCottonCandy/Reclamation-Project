@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Taken from DesertRose2/desertrose https://github.com/DesertRose2/desertrose/blob/master/icons/fallout/mobs/supermutant.dmi",
+  "size": {
+    "x": 44,
+    "y": 44
+  },
+  "states": [
+    {
+      "name": "base",
+      "directions": 4
+    },
+    {
+      "name": "armored",
+      "directions": 4
+    },
+    {
+      "name": "melee",
+      "directions": 4
+    },
+    {
+      "name": "ranged",
+      "directions": 4
+    },
+    {
+      "name": "suicider",
+      "directions": 4
+    },
+    {
+      "name": "nightkin",
+      "directions": 4
+    },
+    {
+      "name": "nightkin_ranged",
+      "directions": 4
+    },
+    {
+      "name": "nightkin_boss",
+      "directions": 4
+    },
+    {
+      "name": "base_dead"
+    },
+    {
+      "name": "melee_dead",
+      "directions": 4
+    },
+    {
+      "name": "ranged_dead"
+    },
+    {
+      "name": "nightkin_dead"
+    },
+    {
+      "name": "nightkin_ranged_dead"
+    },
+    {
+      "name": "nightkin_boss_dead"
+    }
+  ]
+}

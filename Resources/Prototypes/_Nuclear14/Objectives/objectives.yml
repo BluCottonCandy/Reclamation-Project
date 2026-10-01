@@ -1,0 +1,325 @@
+# #Misfits Change /Fix/ - PickRandomEnemyHead replaces PickRandomHead; it excludes same-faction members from being selected as kill targets.
+# #Misfits Change - Split into faction-specific objective pools so N14RuleSystem can route to the
+# correct pool and eliminate mismatched-requirement warnings.
+#
+# GetRandomObjective() requires EXACTLY TWO LEVELS:
+#   Level 1 (top arg)  → picks a group name  (must be a WeightedRandomPrototype)
+#   Level 2 (group)    → picks an entity prototype ID
+#
+# Pattern:
+#   XObjectives (used as GetRandomObjective arg) → XRealObjectives (sole level-1 entry)
+#   XRealObjectives                              → KillXHeadObjective, XStealY, ... (entity IDs)
+
+# #Misfits Tweak - Faction kill/steal objective pools disabled.
+#                  N14RuleSystem now gives every player only the SurviveObjective.
+#                  Kill/steal objectives were removed for being low-RP and encouraging griefing.
+
+# ── Master fallback pool (non-faction players) ──────────────────────────────────────
+# N14Objectives is the top-level arg, so it maps to the three "Real" pools which
+# are themselves WeightedRandomPrototypes containing entity IDs. ✓
+#- type: weightedRandom
+#  id: N14Objectives
+#  weights:
+#    NCRRealObjectives: 1
+#    BOSWRealObjectives: 1
+#    LegionRealObjectives: 1
+
+# ── Per-faction wrapper pools (passed directly as GetRandomObjective arg from N14RuleSystem) ──
+# Each wrapper has ONE entry pointing to its RealObjectives pool, satisfying the two-level contract.
+
+# NCR wrapper → NCRRealObjectives
+#- type: weightedRandom
+#  id: NCRObjectives
+#  weights:
+#    NCRRealObjectives: 1
+
+# NCR actual entity-prototype pool (level 2)
+#- type: weightedRandom
+#  id: NCRRealObjectives
+#  weights:
+#    KillNCRHeadObjective: 1
+#    NCRStealObjective: 1
+#    NCRStealBOSWObjective: 1
+#    NCRStealLegionObjective: 1 # #Misfits Change - steal Legion orders holotape
+
+# Brotherhood of Steel wrapper → BOSWRealObjectives
+#- type: weightedRandom
+#  id: BOSWObjectives
+#  weights:
+#    BOSWRealObjectives: 1
+
+# BOSW actual entity-prototype pool (level 2)
+#- type: weightedRandom
+#  id: BOSWRealObjectives
+#  weights:
+#    KillBOSWHeadObjective: 1
+#    BOSWStealObjective: 1
+#    BOSWStealNCRObjective: 1
+#    BOSWStealLegionObjective: 1 # #Misfits Change - steal Legion battle orders holotape
+
+# Caesar's Legion wrapper → LegionRealObjectives
+# #Misfits Change - New Legion objective pool
+#- type: weightedRandom
+#  id: LegionObjectives
+#  weights:
+#    LegionRealObjectives: 1
+
+# Legion actual entity-prototype pool (level 2)
+#- type: weightedRandom
+#  id: LegionRealObjectives
+#  weights:
+#    KillLegionHeadObjective: 1
+#    LegionStealNCRObjective: 1
+#    LegionStealBOSWObjective: 1
+#    LegionStealEnclaveObjective: 1 # #Misfits Change - steal Enclave technological data
+
+
+# ----------------------------------------
+# NCR
+# ----------------------------------------
+# #Misfits Tweak - All faction kill/steal entity prototypes below are preserved for history
+#                  but are unreachable: their hosting pools are commented out above and
+#                  N14RuleSystem no longer routes any player to these objectives.
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseNCRObjective
+  components:
+  - type: Objective
+    issuer: ncr
+  - type: FactionRequirement
+    factions:
+    - NCR
+
+- type: entity
+  abstract: true
+  parent: [BaseNCRObjective, BaseStealObjective]
+  id: BaseNCRStealObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+  - type: Objective
+    difficulty: 2.75
+  - type: ObjectiveLimit
+    limit: 2 # there is usually only 1 of each steal objective, have 2 max for drama
+
+# Kill - terminate an enemy high-value target
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: [BaseNCRObjective, BaseKillObjective]
+  id: KillNCRHeadObjective
+  # #Misfits Change - Improved lore-based description for NCR kill objective
+  description: Command has identified a high-value target operating in the field. Their continued activity poses a direct threat to NCR interests. Track them down and ensure they never report back.
+  components:
+  - type: Objective
+    difficulty: 3.0
+    unique: true # killing 1 head is enough
+  - type: TargetObjective
+    title: objective-condition-kill-head-title
+  - type: PickRandomEnemyHead # #Misfits Change /Fix/ - never target same-faction members
+  - type: KillPersonCondition
+    requireDead: true # don't count missing evac as killing — heads are higher profile, must confirm the kill
+
+# Steal - recover Enclave intelligence holotape
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseNCRStealObjective
+  id: NCRStealObjective
+  # #Misfits Change - Enclave plans holotape: NCR needs Enclave tech/movement intelligence
+  description: Enclave remnants have been operating in the wastes and command wants to know their plans. Locate and secure their intelligence holotape before it falls into the wrong hands.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansEnclave
+    owner: objective-condition-steal-enclave
+
+# Steal - recover Brotherhood of Steel tactical plans holotape
+# #Misfits Change - New NCR objective: steal Brotherhood operational plans
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseNCRStealObjective
+  id: NCRStealBOSWObjective
+  description: The Brotherhood has been moving against NCR positions. Command needs their operational plans to anticipate their next move. Acquire the Brotherhood's plans holotape and get it to a safe location.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansBOSW
+    owner: objective-condition-steal-brotherhood
+
+
+# ----------------------------------------
+# Brotherhood of Steel - Washington Chapter
+# ----------------------------------------
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseBOSWObjective
+  components:
+  - type: Objective
+    issuer: brotherhoodofsteel #Misfits Change
+  - type: FactionRequirement
+    factions:
+    - BrotherhoodOfSteel
+
+- type: entity
+  abstract: true
+  parent: [BaseBOSWObjective, BaseStealObjective]
+  id: BaseBOSWStealObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+  - type: Objective
+    difficulty: 2.75
+  - type: ObjectiveLimit
+    limit: 2 # there is usually only 1 of each steal objective, have 2 max for drama
+
+# Kill - purge a high-value NCR officer or enemy combatant
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: [BaseBOSWObjective, BaseKillObjective]
+  id: KillBOSWHeadObjective
+  # #Misfits Change - Improved lore-based description for Brotherhood kill objective
+  description: The Elders have marked a high-ranking enemy officer for termination. This individual has been actively disrupting Brotherhood operations and pillaging pre-war technology. Purge them. Ad Victoriam.
+  components:
+  - type: Objective
+    difficulty: 3.0
+    unique: true # killing 1 head is enough
+  - type: TargetObjective
+    title: objective-condition-kill-head-title
+  - type: PickRandomEnemyHead # #Misfits Change /Fix/ - never target same-faction members
+  - type: KillPersonCondition
+    requireDead: true # don't count missing evac as killing — heads are higher profile, must confirm the kill
+
+# Steal - recover a GECK location holotape (pre-war vault technology)
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBOSWStealObjective
+  id: BOSWStealObjective
+  # #Misfits Change - GECK holotape: Brotherhood seeks pre-war technology above all else
+  description: Our scouts have located a holotape containing the coordinates of a Garden of Eden Creation Kit. Pre-war technology of that magnitude belongs in Brotherhood hands. Acquire it before the NCR or scavengers can claim it.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansVault
+    owner: objective-condition-steal-vault
+
+# Steal - capture NCR military intelligence holotape
+# #Misfits Change - New BOSW objective: steal NCR operational plans
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBOSWStealObjective
+  id: BOSWStealNCRObjective
+  description: NCR forces have been documenting Brotherhood movements and supply lines. The Elders want their operational plans neutralised. Locate and secure the NCR plans holotape and bring it back to the Brotherhood.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansNCR
+    owner: objective-condition-steal-ncr
+
+
+# ----------------------------------------
+# Caesar's Legion
+# ----------------------------------------
+# #Misfits Change - Full Legion objective set with lore-accurate descriptions
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseLegionObjective
+  components:
+  - type: Objective
+    issuer: caesarlegion
+  - type: FactionRequirement
+    factions:
+    - CaesarLegion
+
+- type: entity
+  abstract: true
+  parent: [BaseLegionObjective, BaseStealObjective]
+  id: BaseLegionStealObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+  - type: Objective
+    difficulty: 2.75
+  - type: ObjectiveLimit
+    limit: 2 # there is usually only 1 of each steal objective, have 2 max for drama
+
+# Kill - execute an enemy commander in the name of Caesar
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: [BaseLegionObjective, BaseKillObjective]
+  id: KillLegionHeadObjective
+  description: Caesar has declared this target an enemy of the Legion. Their continued existence is an affront to Rome's order. Bring them to heel — or bring us their head. Ave, true to Caesar.
+  components:
+  - type: Objective
+    difficulty: 3.0
+    unique: true # one kill is enough to prove loyalty
+  - type: TargetObjective
+    title: objective-condition-kill-head-title
+  - type: PickRandomEnemyHead # #Misfits Change /Fix/ - never target same-faction members
+  - type: KillPersonCondition
+    requireDead: true # must confirm the kill — the Legion does not leave enemies breathing
+
+# Steal - seize NCR military intelligence holotape
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseLegionStealObjective
+  id: LegionStealNCRObjective
+  description: The NCR's patrols have been encroaching on Legion territory and our frumentarii have tracked a holotape containing their tactical plans. Recover it and deliver it to Legion command so Caesar may exploit their weaknesses.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansNCR
+    owner: objective-condition-steal-ncr
+
+# Steal - capture Brotherhood orders holotape
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseLegionStealObjective
+  id: LegionStealBOSWObjective
+  description: The Brotherhood of Steel sits atop mountains of pre-war weapons that rightfully belong to Caesar's forces. Our frumentarii have located a holotape detailing their orders and armoury locations. Take it.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansBOSW
+    owner: objective-condition-steal-brotherhood
+
+# Steal - acquire Enclave technological data holotape
+# #Misfits Change - New Legion objective: seize Enclave weapons research
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseLegionStealObjective
+  id: LegionStealEnclaveObjective
+  description: Enclave remnants carry data-slates and holotapes documenting pre-war weapons research of immense value. Caesar's engineers want that knowledge. Our frumentarii have located one such holotape — claim it for the Legion.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansEnclave
+    owner: objective-condition-steal-enclave
+
+
+# ----------------------------------------
+# NCR - additional cross-faction objectives
+# ----------------------------------------
+
+# Steal - capture Legion tactical orders holotape
+# #Misfits Change - New NCR objective: intercept Legion battle orders
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseNCRStealObjective
+  id: NCRStealLegionObjective
+  description: Legion frumentarii have been operating behind NCR lines and Command suspects a major offensive is imminent. A holotape containing their battle orders has been spotted in the field. Recover it before we're caught flat-footed.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansLegion
+    owner: objective-condition-steal-legion
+
+
+# ----------------------------------------
+# Brotherhood of Steel - additional cross-faction objectives
+# ----------------------------------------
+
+# Steal - recover Legion battle orders holotape for Brotherhood intelligence
+# #Misfits Change - New BOSW objective: seize Legion orders for tactical advantage
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBOSWStealObjective
+  id: BOSWStealLegionObjective
+  description: Caesar's Legion has been raiding pre-war sites and carting off technology that belongs in Brotherhood vaults. Our scribes have tracked a holotape detailing their looting operations and advance routes. Recover it. Ad Victoriam.
+  components:
+  - type: StealCondition
+    stealGroup: FactionPlansLegion
+    owner: objective-condition-steal-legion

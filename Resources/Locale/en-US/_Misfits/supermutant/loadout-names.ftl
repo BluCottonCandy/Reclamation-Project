@@ -1,0 +1,29 @@
+loadout-name-MisfitsLoadoutSuperMutantGladiatorLoincloth = supermutant gladiator loincloth
+loadout-name-MisfitsLoadoutSuperMutantGladiatorArmor = supermutant gladiator armor
+loadout-name-MisfitsLoadoutSuperMutantGladiatorBoots = supermutant gladiator boots
+loadout-name-MisfitsLoadoutSuperMutantGladiatorHelmet = supermutant gladiator helmet
+loadout-name-MisfitsLoadoutSuperMutantRangerArmor = supermutant ranger duster
+loadout-name-MisfitsLoadoutSuperMutantTrooperArmor = supermutant trooper armor
+loadout-name-MisfitsLoadoutSuperMutantOutfitC = supermutant battle wrap
+loadout-name-MisfitsLoadoutSuperMutantVaultSuit = supermutant vault suit
+loadout-name-MisfitsLoadoutSuperMutantTribalLoincloth = supermutant tribal loincloth
+loadout-name-MisfitsLoadoutSuperMutantNeckGuard = supermutant neck guard
+loadout-name-MisfitsLoadoutSuperMutantNeckTrinket = supermutant skull necklace
+loadout-name-MisfitsLoadoutSuperMutantNeckCapeTribal = supermutant tribal neck cape
+loadout-name-ClothingSuperMutantSkullHelmetTribal = super mutant muffolo skull
+loadout-name-ClothingSuperMutantTribalGloves = supermutant tribal gloves
+loadout-name-ClothingSuperMutantZootSuit = supermutant zoot suit
+loadout-name-ClothingSuperMutantZootHat = super mutant zoot hat
+loadout-name-ClothingSuperMutantZootBoot = supermutant zoot boots
+loadout-name-MisfitsLoadoutSuperMutantCustomizedCombatArmor = customized combat armor
+loadout-name-MisfitsLoadoutSuperMutantRangerHatAlt = supermutant ranger cowboy hat
+loadout-name-MisfitsLoadoutSuperMutantCustomDuster = supermutant customized duster
+loadout-name-MisfitsLoadoutSuperMutantLeatherBoots = supermutant leather boots
+loadout-name-MisfitsLoadoutSuperMutantBlackGloves = supermutant black gloves
+loadout-name-MisfitsLoadoutSuperMutantRangerGasmaskAlt = supermutant ranger gasmask
+
+# Misfits Add - Scavenged super mutant loadout names
+loadout-name-MisfitsLoadoutSuperMutantScavengedGloves = super mutant scavenged gloves
+loadout-name-MisfitsLoadoutSuperMutantScavengedBoots = super mutant scavenged boots
+loadout-name-MisfitsLoadoutSuperMutantScavengedArmor = super mutant scavenged armor
+loadout-name-MisfitsLoadoutSuperMutantScavengedHelmet = super mutant scavenged helmet

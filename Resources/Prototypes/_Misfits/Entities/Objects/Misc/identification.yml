@@ -1,0 +1,33 @@
+# #Misfits Add - Admin/Sysadmin ID cards for debugging and access terminal administration.
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDCardAdmin
+  name: admin ID card
+  description: A debug ID card with universal access. Use with the access terminal to grant any access level.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_blank
+  - type: Access
+    groups:
+    - AllAccessMisfits
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+  - type: IdCard
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: MisfitsIDBadgeAmbassador
+  name: Caravan Representative Badge
+  description: You represent the Caravan Network's interests in the area, keeping the traders in all factions safe and ensuring profits remain high. Maintain your authority, but don't abuse it.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: mayor
+  - type: PresetIdCard
+    job: Ambassador

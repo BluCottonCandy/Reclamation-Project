@@ -1,0 +1,84 @@
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronGrayRusted
+  name: rusted securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-gray-rusted.rsi
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronBlueRusted
+  name: rusted securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-blue-rusted.rsi
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronBrownRusted
+  name: rusted securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-brown-rusted.rsi
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronRedRusted
+  name: rusted securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-red-rusted.rsi
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronYellowRusted
+  name: rusted securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-yellow-rusted.rsi
+
+- type: entity
+  parent: N14MobRobotSecuritronHostile
+  id: N14MobRobotSecuritronGrayRustedHostile
+  name: Rusted Securitron
+  description: A rusted securitron that still rolls around looking for trouble.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-gray-rusted.rsi
+
+- type: entity
+  parent: N14MobRobotSecuritronHostile
+  id: N14MobRobotSecuritronBlueRustedHostile
+  name: Rusted Securitron
+  description: A blue rusted securitron that still rolls around looking for trouble.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-blue-rusted.rsi
+
+- type: entity
+  parent: N14MobRobotSecuritronHostile
+  id: N14MobRobotSecuritronBrownRustedHostile
+  name: Rusted Securitron
+  description: A brown rusted securitron that still rolls around looking for trouble.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-brown-rusted.rsi
+
+- type: entity
+  parent: N14MobRobotSecuritronHostile
+  id: N14MobRobotSecuritronRedRustedHostile
+  name: Rusted Securitron
+  description: A red rusted securitron that still rolls around looking for trouble.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-red-rusted.rsi
+
+- type: entity
+  parent: N14MobRobotSecuritronHostile
+  id: N14MobRobotSecuritronYellowRustedHostile
+  name: Rusted Securitron
+  description: A yellow rusted securitron that still rolls around looking for trouble.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-yellow-rusted.rsi

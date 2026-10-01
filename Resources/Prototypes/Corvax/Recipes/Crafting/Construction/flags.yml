@@ -1,0 +1,152 @@
+- type: construction
+  id: N14DecorationFlagBearerEmpty # Empty
+  graph: DecorationFlagEmpty
+  startNode: start
+  targetNode: FlagEmpty
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: emptyflag
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: Flag of the New California Republic
+  id: N14DecorationFlagNCR # NCR
+  graph: DecorationFlagNCR
+  startNode: start
+  targetNode: FlagNCR
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: ncrflag
+  conditions:
+    - !type:TileNotBlocked
+
+# Misfits Change: No more constructing Yuma flags
+#- type: construction
+#  id: N14DecorationFlagYuma # Yuma Tribe
+#  name: Yuma Tribe Flag
+#  graph: DecorationFlagYuma
+#  startNode: start
+#  targetNode: FlagYuma
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  hide: false
+#  icon:
+#    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+#    state: cornflag
+#  conditions:
+#    - !type:TileNotBlocked
+
+- type: construction
+  id: N14DecorationFlagBrotherhoodMidwest # MW Brotherhood
+  name: Flag of the Brotherhood of Steel
+  graph: DecorationFlagBrotherhoodMidwest
+  startNode: start
+  targetNode: FlagBrotherhoodMidwest
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Decoration/flags2.rsi
+    state: mbosflag
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: N14DecorationFlagLocust # Raiders / Locust
+  name: Flag of the Locust Tribe
+  graph: DecorationFlagLocust
+  startNode: start
+  targetNode: FlagLocust
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: locustflag
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: N14DecorationFlagGunner # Gunners
+  name: Flag of the Gunner Mercenary Corps
+  graph: DecorationFlagGunner
+  startNode: start
+  targetNode: FlagGunner
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: gunnerflag
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: N14DecorationFlagFollowers # Followers
+  name: Flag of the Followers of the Apocalypse
+  graph: DecorationFlagFollowers
+  startNode: start
+  targetNode: FlagFollowers
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: followersflag
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: N14DecorationFlagLegion # Legion
+  name: Flag of Caesar's Legion
+  graph: DecorationFlagLegion
+  startNode: start
+  targetNode: FlagLegion
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: legionflag
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: N14DecorationLegionCross
+  name: Crucifix
+  graph: DecorationLegionCross
+  startNode: start
+  targetNode: LegionCross
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Decoration/Flags/legioncross.rsi
+    state: icon
+  conditions:
+    - !type:TileNotBlocked

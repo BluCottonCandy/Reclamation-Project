@@ -1,0 +1,187 @@
+# #Misfits Change - Global wasteland channel accessible to all headsets via .w
+- type: radioChannel
+  id: WastelandGlobal
+  name: chat-radio-wasteland-global
+  keycode: 'w'
+  frequency: 1500
+  color: "#d8b25c"
+  longRange: true
+
+
+- type: radioChannel
+  id: Eighties
+  name: chat-radio-eighties
+  keycode: 'y'
+  frequency: 1337
+  color: "#795520"
+  longRange: true
+
+
+- type: radioChannel
+  id: VaultCommon
+  name: chat-radio-vault-common
+  keycode: 'v' # Corvax-Change
+  frequency: 1349
+  color: "#3E7BD1"
+
+- type: radioChannel
+  id: VaultCommand
+  name: chat-radio-vault-command
+  frequency: 1350
+  color: "#5B9BD5"
+
+- type: radioChannel
+  id: VaultEngineering
+  name: chat-radio-vault-engineering
+  frequency: 1351
+  color: "#F0A500"
+
+- type: radioChannel
+  id: VaultMedical
+  name: chat-radio-vault-medical
+  frequency: 1352
+  color: "#52B4E9"
+
+- type: radioChannel
+  id: VaultScience
+  name: chat-radio-vault-science
+  frequency: 1353
+  color: "#D381C9"
+
+- type: radioChannel
+  id: VaultSecurity
+  name: chat-radio-vault-security
+  frequency: 1354
+  color: "#A32B2B"
+
+- type: radioChannel
+  id: CaravanCompany
+  name: chat-radio-caravan
+  keycode: 'c'
+  frequency: 1347
+  color: "#b88646"
+
+# - type: radioChannel
+#   id: BrotherhoodMidwest
+#   name: chat-radio-bosmidwest
+#   keycode: 'm'
+#   frequency: 1213
+#   color: "#3B72BF"
+
+# - type: radioChannel
+#   id: BrotherhoodWashington
+#   name: chat-radio-boswashington
+#   keycode: 'w'
+#   frequency: 1313
+#   color: "#a2000f"
+
+- type: radioChannel
+  id: BrotherhoodOfSteel
+  name: chat-radio-bos
+  keycode: 'b'  # #Misfits Change — was 'm', now :b
+  frequency: 1213
+  color: "#3B72BF"
+
+- type: radioChannel
+  id: Enclave
+  name: chat-radio-enclave
+  keycode: 'e'
+  frequency: 1600
+  color: "#c6cf00"
+
+- type: radioChannel
+  id: NCR
+  name: chat-radio-ncr
+  keycode: 'n' # Corvax-Change
+  frequency: 1546
+  color: "#d77715"
+
+# Specialist NCR nets. Their issued headsets also retain the standard NCR key.
+- type: radioChannel
+  id: OSI
+  name: chat-radio-osi
+  keycode: 'o'
+  frequency: 1547
+  color: "#E8E8E8"
+  longRange: true
+
+- type: radioChannel
+  id: NCRRangers
+  name: chat-radio-ncr-rangers
+  keycode: 'r'
+  frequency: 1548
+  color: "#6B8E23"
+  longRange: true
+
+# #Misfits Change — Legion radio channel
+- type: radioChannel
+  id: Legion
+  name: chat-radio-legion
+  keycode: 'l'
+  frequency: 1650
+  color: "#8b0000"
+
+- type: radioChannel
+  id: PBS
+  name: chat-radio-pbs
+  keycode: 'p'
+  frequency: 1667
+  color: "#c44508"
+  longRange: true
+
+# #Misfits Add — Followers of the Apocalypse private radio channel
+# longRange: true so it works without a dedicated telecomms server on the map
+- type: radioChannel
+  id: FollowersOfApocalypse
+  name: chat-radio-followers
+  keycode: 'f'
+  frequency: 1700
+  color: "#5cbf82"
+  longRange: true
+
+# #Misfits Add — Bazaar Townsfolk private radio channel
+# longRange: true so it works without a dedicated telecomms server on the map
+- type: radioChannel
+  id: Townsfolk
+  name: Bazaar
+  keycode: 't'
+  frequency: 6767
+  color: "#019a64"
+  longRange: true
+
+# #Misfits Add - innate Z.A.X binary command network.
+- type: radioChannel
+  id: ZAXBinary
+  name: chat-radio-zax-binary
+  keycode: 'z'
+  frequency: 1007
+  color: "#48d7ff"
+  longRange: true
+
+# Zetan
+
+# - type: radioChannel
+  # id: Handheld
+  # name: chat-radio-handheld
+  # frequency: 1330
+  # color: "#d39f01"
+  # # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
+  # longRange: true
+
+# - type: radioChannel
+  # id: Binary
+  # name: chat-radio-binary
+  # keycode: 'b'
+  # frequency: 1001
+  # color: "#2ed2fd"
+  # # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
+  # longRange: true
+
+# - type: radioChannel
+  # id: Freelance
+  # name: chat-radio-freelance
+  # keycode: 'f'
+  # frequency: 1984
+  # color: "#f6ce64"
+  # # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
+  # longRange: true

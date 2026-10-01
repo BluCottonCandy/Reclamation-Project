@@ -1,0 +1,939 @@
+- type: entity
+  parent: BaseStructure
+  id: N14WorkbenchBase
+  description: A workbench with metal working tools for crafting.
+  name: workbench
+  abstract: true
+  components:
+  - type: InteractionOutline
+  - type: Appearance
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,0,1.25,0.3"
+        density: 3000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    state: workbench
+    # Misfit Remove: Fix the offset issue with construction benches
+    offset: 0.5, 0
+  - type: Lathe
+  - type: MaterialStorage
+  - type: ActivatableUI
+    key: enum.LatheUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+  - type: ExtensionCableReceiver
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Anchorable
+  - type: Rotatable
+  - type: Tag
+    tags:
+    - N14Workbench
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchWeaponbench
+  description: A workbench with weapon working tools for crafting.
+  name: weapon workbench
+  components:
+  - type: Construction
+    graph: N14WorkbenchWeaponbench
+    node: WorkbenchWeaponbench
+  - type: Sprite
+    state: weaponbench
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
+  - type: Storage
+    craft: true
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,12,9
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+      - Scrap
+  - type: Lathe
+    idleState: icon
+    runningState: icon # change this
+    staticRecipes: # Guns or melee weapons related only.
+    # Guns
+    - N14TribalBow
+    - N14TribalWarBow # #Misfits Add
+    - N14TribalRecurveBow # #Misfits Add
+    # Arrows
+    - N14ArrowTribal # #Misfits Add
+    - N14ArrowBroadHead # #Misfits Add
+    - ArrowRegular
+    # Melee
+    - N14Goldenknuckles
+    - N14Brassknuckles
+    - N14ScrapMachete
+    - N14WastelandSpear
+    - N14WastelandTribalJavelin
+    - N14BrassKnife
+    - N14TrainingSword
+    - N14LongSword
+    - N14Bola
+    - ThrowingKnife
+    # Blueprints Corvax Forge
+    # #Misfits Fix: Blueprint items are world-found; the lathe should NOT print them for Paper.
+    # Putting a blueprint in workbench storage unlocks the item recipe via AddStorageBlueprintRecipes.
+    # - N14WeaponLaserRevolverBlueprint
+    # - N14WeaponLaserRifleMakeshiftBlueprint
+    # - N14WeaponRifle556PipeBlueprint
+    # Gun Parts
+    - N14JunkGunpartsAction
+    - N14JunkGunpartsBarrel
+    - N14JunkGunpartsBolt
+    - N14JunkGunpartsFrame
+    - N14JunkGunpartsFramePistol
+    - N14JunkGunpartsReceiver
+    - N14JunkGunpartsRecoilComp
+    - N14JunkGunpartsRifleFrame
+    - N14JunkGunpartsRifleStock
+    - N14JunkGunpartsRifleScope
+    - N14JunkGunpartsStock
+    - N14JunkGunpartsStockWood
+    - N14JunkGunpartsTrigger
+
+- type: entity
+  categories: [ HideSpawnMenu ] # Forge-change
+  parent: N14WorkbenchBase
+  id: N14WorkbenchWeaponbenchFrame
+  description: A workbench with weapon working tools for crafting. This one is still being built!
+  name: weapon workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: weaponbenchframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchWeaponbenchFrame: { state: weaponbenchframe0 }
+          WorkbenchWeaponbenchSteel: { state: weaponbenchframe1 }
+          WorkbenchWeaponbenchUnwelded: { state: weaponbenchframe2 }
+          WorkbenchWeaponbenchCircuitry: { state: weaponbenchframe3 }
+          WorkbenchWeaponbenchUnscrewed: { state: weaponbenchframe4 }
+  - type: Construction
+    graph: N14WorkbenchWeaponbench
+    node: WorkbenchWeaponbenchFrame
+    defaultTarget: WorkbenchWeaponbench
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchAmmobench
+  description: A workbench with ammo working tools for crafting.
+  name: ammo workbench
+  components:
+  - type: Construction
+    graph: N14WorkbenchAmmobench
+    node: WorkbenchAmmobench
+  - type: Sprite
+    state: ammobench
+  # #Misfits Add: ContainerContainer + Storage + UserInterface for blueprint item support
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+  - type: Storage
+    craft: true
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,12,9
+  # #Misfits Add End
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+  - type: Lathe
+    idleState: icon
+    runningState: icon # change this
+    staticRecipes: # Ammo related only.
+    - Magazine556Rifle
+    - Magazine556Rifle30 # Forge-add
+    - LongMagazine556Rifle
+    - LMGMagazine556Rifle
+    - MagazineBox556
+    - N14MagazineMinigun5mm
+    - Magazine762Rifle
+    - Magazine762AmmoShort
+    - Magazine762AmmoBelt
+    - MagazineBox762
+    - SpeedLoader9
+    - N14MagazinePistol9mm
+    - N14MagazineSMG9mm
+    - MagazineBox9mm
+    - SpeedLoader10
+    - N14MagazinePistol10mm
+    - N14MagazineSMG10mm
+    - MagazineBox10mm
+    - N14MagazinePistol12mm
+    - N14MagazineSMG12mm
+    - N14TopMagazineSMG12mm
+    - MagazineBox12
+    - N14ShellShotgun12
+    - N14MagazineShotgun12
+    - MagazineBox12gauge
+    - N14ShellShotgun20
+    - N14MagazineShotgun20
+    - MagazineBox20gauge
+    - N14MagazinePistol22lr
+    - MagazineBox22
+    - SpeedLoader44
+    - MagazineBox44
+    - N14MagazinePistol44
+    - N14MagazinePistol45
+    - Magazine45SubMachineGun
+    - MagazineBox45
+    - Magazine308Rifle
+    - Magazine308RifleLong
+    - ClipMagazine308Rifle
+    - SpeedLoader308Tube
+    - Magazine308RifleSniper # Forge-change
+    - MagazineBox308
+    - SpeedLoader45-70
+    - SpeedLoader45-70Tube
+    - MagazineBox45-70
+    - N14Magazine50AMR
+    - MagazineBox50
+    # Forge-Change-Start
+    # 5.45
+    - MagazineBox545
+    - Magazine545Rifle
+    - MagazineDrum545Rifle
+    # Forge-Change-End
+
+- type: entity
+  categories: [ HideSpawnMenu ] # Forge-change
+  parent: N14WorkbenchBase
+  id: N14WorkbenchAmmobenchFrame
+  description: A workbench with ammo working tools for crafting. This one is still being built!
+  name: ammo workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: ammobenchframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchAmmobenchFrame: { state: ammobenchframe0 }
+          WorkbenchAmmobenchAluminum: { state: ammobenchframe1 }
+          WorkbenchAmmobenchSteel: { state: ammobenchframe2 }
+          WorkbenchAmmobenchScrews: { state: ammobenchframe3 }
+          WorkbenchAmmobenchUnwrenched: { state: ammobenchframe4 }
+          WorkbenchAmmobenchUnscrewed: { state: ammobenchframe5 }
+  - type: Construction
+    graph: N14WorkbenchAmmobench
+    node: WorkbenchAmmobenchFrame
+    defaultTarget: WorkbenchAmmobench
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchArmorbench
+  description: A workbench with armor working tools for crafting.
+  name: armor workbench
+  components:
+  - type: Construction
+    graph: N14WorkbenchArmorbench
+    node: WorkbenchArmorbench
+  - type: Sprite
+    state: armorbench
+  # Forge-Change-Start
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
+  - type: Storage
+    craft: true
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,12,9
+  # Forge-Change-End
+  # Misfits Fix: insertOnInteract is disabled to prevent the MaterialStorage from silently eating
+  # raw materials (sheets/ingots/leather) before they can reach the Storage container used by the
+  # blueprint-based crafting system (Storage + Craftable). Without this fix, players trying to
+  # place SheetSteel or MaterialCloth into the bench for combat-armor recipes would have those
+  # items absorbed into the lathe material pool instead of the physical storage container.
+  # Trade-off: the bench's lathe recipes (leather/metal armor etc.) can no longer auto-consume
+  # materials via direct interaction — materials must be inserted into the Storage UI for crafting,
+  # or a dedicated lathe bench should be used for the purely lathe-based recipe set.
+  - type: MaterialStorage
+    insertOnInteract: false
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+      - RawLeather # move it to the tanning machine
+  - type: Lathe
+    idleState: icon
+    runningState: icon # change this
+    staticRecipes:
+    # Armor
+    - N14ClothingOuterCoatLeatherDuster
+    - N14ClothingOuterCoatWinterArmored
+    - N14ClothingOuterLeatherArmor
+    - N14ClothingOuterChitinArmor
+    - N14ClothingOuterPainspike
+    - N14ClothingOuterTribalArmorHeavy
+    - N14ClothingOuterInsectArmor
+    - N14ClothingOuterMetalArmor
+    - N14ClothingOuterZealotDuster
+    - N14ClothingOuterReinforcedLeatherArmor
+    - N14ClothingOuterLightLeatherArmor
+    - N14ClothingOuterLeatherRobes
+    - N14ClothingOuterBlackRobes
+    # Shield's
+    - N14InsectShield
+    - MakeshiftShield
+    - WoodenBuckler
+    # Forge-Change-Start
+    # Blueprints
+    #- N14ClothingOuterCombatArmorBlueprint  # #Misfits Remove: Blueprint recipe deleted with Stalker14 crafting system
+    #- N14ClothingOuterCombatArmorMK2Blueprint  # #Misfits Remove: Blueprint recipe deleted with Stalker14 crafting system
+    # Forge-Change-End
+    # #Misfits Fix: Faction armor blueprint printing recipes REMOVED from staticRecipes.
+    # Blueprint items are world-found. Placing one in storage dynamically unlocks the
+    # Section-B lathe recipe (in blueprints.yml) for the actual armor. requiresBlueprint:true
+    # on those recipes causes them to appear in the Blueprints tab with correct material costs.
+    # - N14ClothingOuterMBoSInitiateArmorBlueprint
+    # - N14ClothingOuterMidwestArmorBlueprint
+    # - N14ClothingOuterMidwestArmorMK2Blueprint
+    # - N14ClothingOuterLegionnaireBaseArmorBlueprint
+    # - N14ClothingOuterLegionnaireVeteranArmorBlueprint
+    # - N14ClothingOuterNCRVestDesertBlueprint
+    # - N14ClothingOuterNCRCombatArmorBlueprint
+    # - N14ClothingOuterNCRCombatArmorMK2Blueprint
+    # Other
+    - N14MaterialLeather
+    - ClothingBeltQuiver # In misc.yml
+    - ClothingBeltQuiverSpear
+
+- type: entity
+  categories: [ HideSpawnMenu ] # Forge-change
+  parent: N14WorkbenchBase
+  id: N14WorkbenchArmorbenchFrame
+  description: A workbench with armor working tools for crafting. This one is still being built!
+  name: armor workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: armorbenchframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchArmorbenchFrame: { state: armorbenchframe0 }
+          WorkbenchArmorbenchUnwelded: { state: armorbenchframe1 }
+          WorkbenchArmorbenchCircuitry: { state: armorbenchframe2 }
+          WorkbenchArmorbenchUnscrewed: { state: armorbenchframe3 }
+          WorkbenchArmorbenchIron: { state: armorbenchframe4 }
+  - type: Construction
+    graph: N14WorkbenchArmorbench
+    node: WorkbenchArmorbenchFrame
+    defaultTarget: WorkbenchArmorbench
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchTinkerbench
+  description: A workbench with tinkering tools for crafting.
+  name: tinker workbench
+  components:
+  - type: Construction
+    graph: N14WorkbenchTinkerbench
+    node: WorkbenchTinkerbench
+  - type: Sprite
+    state: tinkerbench
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
+  - type: Storage
+    craft: true
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,12,9
+  - type: PointLight
+    color: "#fffbeb"
+    energy: 2
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
+    radius: 1.5
+  - type: Lathe
+    idleState: icon
+    runningState: icon # change this
+    staticRecipes:
+    #Tools
+    - N14Multitool
+    - N14NetworkConfigurator
+    - N14PowerDrill
+    - N14HandheldGPSBasic
+    - N14TRayScanner
+    - N14GasAnalyzer
+    - N14RPED
+    - N14MiningDrill
+    - N14HandheldRadio
+    - N14GeigerCounter
+    - N14HandheldHealthAnalyzer
+    - N14RemoteSignaller
+    - N14Binoculars
+    #Misc
+    - N14FlashlightLantern
+    - N14GlowstickRed
+    - MicroManipulatorStockPart
+    - MatterBinStockPart
+    - N14JunkComponentSensorModule #Misfits Add: For Modular Mines
+    - N14JunkComponentCapacitor1
+    - N14JunkComponentDiode1
+    - N14JunkComponentFuse1
+    - N14JunkComponentSwitch
+    - N14JunkTimer
+    - CassetteTape
+    - TapeRecorder
+    # Explosives - Misfits Add
+    - N14LandMine        # Anti-Personnel Mine
+    - LandMineKick       # Concussion Mine (non-lethal)
+    - LandMineExplosive  # Explosive Mine (~4 tile radius)
+    - LandMineModular    # Modular Mine (empty casing, add payload)
+    - N14ModularGrenade
+    - TimerTrigger
+    - SignalTrigger
+    - VoiceTrigger
+    - N14ChemicalPayload
+    - N14ExplosivePayload
+    - N14FlashPayload
+    # #Misfits Add: Circuits
+    - N14JukeboxCircuitBoard
+    - N14ElectrolysisUnitMachineCircuitboard
+    - N14CentrifugeMachineCircuitboard
+    - N14VinylPlayerCircuitboard
+    - N14TapeDeckCircuitboard
+    - N14StationRadioServerCircuitboard
+    - N14StationRadioRigCircuitboard
+    - N14StationRadioCircuitboard
+    - N14DoorElectronics
+  - type: ActivatableUIRequiresPower
+
+- type: entity
+  categories: [ HideSpawnMenu ] # Forge-change
+  parent: N14WorkbenchBase
+  id: N14WorkbenchTinkerbenchFrame
+  description: A workbench with tinkering tools for crafting. This one is still being built!
+  name: tinker workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: tinkerbench0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchTinkerbenchFrame: { state: tinkerbench0 }
+          WorkbenchTinkerbenchCopper: { state: tinkerbench1 }
+          WorkbenchTinkerbenchAluminum: { state: tinkerbench2 }
+          WorkbenchTinkerbenchCable: { state: tinkerbench3 }
+          WorkbenchTinkerbenchPlastic: { state: tinkerbench4 }
+          WorkbenchTinkerbenchUnwrench: { state: tinkerbench5 }
+          WorkbenchTinkerbenchUnscrewed: { state: tinkerbench6 }
+  - type: Construction
+    graph: N14WorkbenchTinkerbench
+    node: WorkbenchTinkerbenchFrame
+    defaultTarget: WorkbenchTinkerbench
+
+- type: entity
+  parent: BaseStructure
+  id: N14WorkbenchChemistryset
+  description: A chemistry set for crafting drugs and compounds
+  name: chemical set
+  components:
+  - type: Construction
+    graph: N14WorkbenchChemistryset
+    node: WorkbenchChemistryset
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    state: chemicalset
+    drawdepth: SmallObjects
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5" # Misfit Change
+        density: 1500
+        mask:
+        - TabletopMachineMask
+  - type: ActivatableUI
+    key: enum.ChemMasterUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ChemMasterUiKey.Key:
+        type: ChemMasterBoundUserInterface
+  - type: ChemMaster
+    pillDosageLimit: 20
+  - type: ContainerContainer
+    containers:
+      beakerSlot: !type:ContainerSlot
+      outputSlot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      beakerSlot:
+        whitelist:
+          components:
+          - FitsInDispenser
+      outputSlot:
+        whitelistFailPopup: chem-master-component-cannot-put-entity-message
+        whitelist:
+          tags:
+          - Bottle
+          - PillCanister
+  - type: SolutionContainerManager
+    solutions:
+      buffer:
+        maxVol: 10000 # #Misfits Tweak - cap buffer to prevent unlimited super-chem stacking
+      pillBuffer:
+        maxVol: 1000
+  - type: DumpableSolution
+    solution: buffer
+  - type: Anchorable
+  - type: Rotatable
+  # #Misfits
+  - type: AutomationSlots
+    slots:
+    - !type:AutomatedSolution
+      input: AutomationSlotSolution
+      output: AutomationSlotSolution
+      solutionName: buffer
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+
+- type: entity
+  parent: BaseStructure
+  id: N14WorkbenchChemistrysetFrame
+  categories: [ HideSpawnMenu ]
+  description: A chemistry set for crafting drugs and compounds. This one is still being built!
+  name: chemical set frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: chemicalsetframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    drawdepth: SmallObjects
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchChemistrysetFrame: { state: chemicalsetframe0 }
+          WorkbenchChemistrysetSteel: { state: chemicalsetframe1 }
+          WorkbenchChemistrysetGears: { state: chemicalsetframe2 }
+          WorkbenchChemistrysetScrews: { state: chemicalsetframe3 }
+          WorkbenchChemistrysetUnwelded: { state: chemicalsetframe4 }
+          WorkbenchChemistrysetUnscrewed: { state: chemicalsetframe5 }
+  - type: Construction
+    graph: N14WorkbenchChemistryset
+    node: WorkbenchChemistrysetFrame
+    defaultTarget: WorkbenchChemistryset
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchMetal
+  description: A workbench with metal working tools for crafting.
+  name: workbench
+  components:
+  - type: Construction
+    graph: N14WorkbenchMetal
+    node: WorkbenchMetal
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+  - type: Lathe
+    idleState: icon
+    runningState: icon # change this
+    staticRecipes:
+    # Tools
+    - N14Wirecutter
+    - N14Screwdriver
+    - N14Welder
+    - N14Wrench
+    - N14CableStack
+    - N14CableMVStack
+    - N14CableHVStack
+    - N14Crowbar
+    - N14Pickaxe
+    - N14Shovel
+    - N14SprayPainter
+    - N14ClothingEyesGlassesWelding
+    - N14HydroponicsToolHoe
+    - N14HydroponicsToolHatchet
+    - HydroponicsToolSpade
+    - N14HydroponicsToolScythe
+    - N14HydroponicsToolClippers
+    - N14HandLabeler
+    # Kitchen
+    - N14ButchersCleaver
+    - N14KitchenKnife
+    - N14DrinkMug
+    - N14DrinkMugMetal
+    - N14DrinkGlass
+    - N14DrinkShotGlass
+    - N14DrinkGlassCoupeShaped
+    - N14FoodPlate
+    - N14FoodPlateSmall
+    - N14FoodPlatePlastic
+    - N14FoodPlateSmallPlastic
+    - N14FoodPlateTin
+    - N14FoodKebabSkewer
+    - N14JunkCookpot
+    - N14JunkCoffeepot
+    - PlantBag
+    - FoodBowlBig
+    # Janitorial
+    - N14Mop
+    - N14MopBucket
+    - N14Bucket
+    - N14WetFloorSign
+    - N14SprayBottle
+    - N14TrashBag
+    - N14LightReplacer
+    - N14Mousetrap
+    - N14Plunger
+    - N14VehicleWheelchairFolded
+#    - N14WeaponSprayNozzle
+#    - N14ClothingBackpackWaterTank
+    # Chemistry
+    - N14Vial
+    - N14Beaker
+    - N14LargeBeaker
+    - N14Dropper
+#    - N14Syringe
+    - N14SyringeInjectable
+    - N14PillCanister
+    - N14ChemistryEmptyBottle01
+    - N14PillCanisterRadX
+    - N14PillCanisterMentats
+    - N14PillCanisterBuffout
+    - N14PillCanisterCateye
+    - N14PillCanisterFixer
+    - N14JetInhaler
+    - N14Med-XInjector
+    - N14TurboInhaler
+    - N14HydraInhaler
+    - N14ChemicalSyringeAntidoteEmpty
+    - N14PsychoSyringe
+    - N14CombatInjector
+    - N14RadAwayPhialEmpty
+    - N14CleanGauze1
+    # Misc
+    - N14LightTube
+    - N14LedLightTube
+    - N14SodiumLightTube
+    - N14ExteriorLightTube
+    - N14LightBulb
+    - N14LedLightBulb
+    - N14Flare
+    - N14Matchbox
+    - N14JunkComponentScrew
+    - N14JunkComponentGearSmall
+    - N14JunkComponentGearLarge
+    - FloorTileItemMetalIndustrial
+    - FloorTileItemMetalMS13
+    - FloorTileItemMetalGrate
+    - FloorTileItemMetalSolid
+    # Ammo
+    - ArrowRegular
+    # Machine Parts
+    - N14PortableGeneratorWeldingFuelMachineParts
+    #Paperwork
+    - N14WoodPencil # Forge-Change
+    - N14PenReporter # Forge-Change
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchMetalFrame
+  description: A workbench with metal working tools for crafting. This one is still being built!
+  name: workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: workbenchframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchMetalFrame: { state: workbenchframe0 }
+          WorkbenchMetalAluminum: { state: workbenchframe1 }
+          WorkbenchMetalScrews: { state: workbenchframe2 }
+          WorkbenchMetalUnwrenched: { state: workbenchframe3 }
+          WorkbenchMetalUnscrewed: { state: workbenchframe4 }
+  - type: Construction
+    graph: N14WorkbenchMetal
+    node: WorkbenchMetalFrame
+    defaultTarget: WorkbenchMetal
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchForge
+  description: A forge made from pieces of scrap. Looks hot.
+  name: forge
+  components:
+  - type: Construction
+    graph: N14WorkbenchForge
+    node: WorkbenchForge
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/forgeworkbench.rsi
+    state: forge
+  - type: PointLight
+    offset: "-0.13, 0"
+    color: "#f05e1b"
+    radius: 3
+    energy: 3
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+      - Ore
+      - Scrap
+  - type: Lathe
+    idleState: icon
+    runningState: icon # change this
+    staticRecipes:
+    # Ores
+    # #Misfits Change /Add/: Legion coin minting uses the forge's existing precious metal workflow.
+    - N14CurrencyLegionAureus
+    - N14CurrencyLegionDenarius
+    - N14IngotSilver
+    - N14IngotIron
+    - N14IngotGold
+    - N14IngotCopper
+    - N14SheetSteel
+    - N14SheetGlass
+    - N14SheetGlassSand # #Misfits Add: smelt sand into glass as an alternative to quartz
+    - N14IngotLead
+    - SulfurPowder
+    - N14IngotZinc
+    - N14IngotAluminumBauxite
+    - N14IngotBrassZinc
+    - N14SaltRefine
+    # Scrap
+    - SheetPlasticScrap
+    - N14IngotBrassScrap
+    - N14IngotCopperScrap
+    - N14IngotGoldScrap
+    - N14IngotSteelScrap
+    - N14IngotIronScrap
+    - N14IngotLeadScrap
+    # Other
+    - Charcoal
+    - CharcoalToCoal
+
+- type: entity
+  parent: N14WorkbenchBase
+  id: N14WorkbenchForgeFrame
+  description: A forge made from pieces of scrap. Looks hot. This one is still being built!
+  name: forge frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/forgeworkbench.rsi
+    layers:
+    - state: forgeframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchForgeFrame: { state: forgeframe0 }
+          WorkbenchForgeCookpot: { state: forgeframe1 }
+          WorkbenchForgeCookpotUnwelded: { state: forgeframe2 }
+          WorkbenchForgeCharcoal: { state: forgeframe3 }
+          WorkbenchForgeUnwrenched: { state: forgeframe4 }
+          WorkbenchForgeUnwelded: { state: forge }
+  - type: Construction
+    graph: N14WorkbenchForge
+    node: WorkbenchForgeFrame
+    defaultTarget: WorkbenchForge
+
+# ID Printer
+- type: entity
+  parent: BaseLathe
+  id: N14WorkbenchIDPrinter # Circuit imprinter parent of this
+  description: An ID printer.
+  name: ID Printer
+  abstract: true # Base off of this per faction.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/circuit_imprinter.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: [ "enum.LatheVisualLayers.IsRunning" ]
+    - state: unlit
+      shader: unshaded
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+    - state: panel
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot # Corvax-Change
+  - type: Lathe
+    producingSound: /Audio/Machines/circuitprinter.ogg
+    idleState: icon
+    runningState: building
+
+- type: entity
+  parent: N14WorkbenchIDPrinter
+  id: N14WorkbenchIDPrinterTownspeople
+  description: An ID printer for printing town passports
+  suffix: townspeople
+  components:
+  - type: Lathe
+    staticRecipes:
+    - PassportTownsfolk
+    - PassportTownsfolkShopkeeper
+    - PassportTownsfolkMechanic
+    - PassportTownsfolkDoctor
+    - PassportTownsfolkDeputy
+    - PassportTownsfolkSheriff
+    - PassportTownsfolkMayor
+
+- type: entity
+  parent: N14WorkbenchIDPrinter
+  id: N14WorkbenchIDPrinterBrotherhoodMidwest
+  description: An ID printer for printing Brotherhood holotags.
+  suffix: BOS
+  components:
+  - type: Lathe
+    staticRecipes:
+    - HolotagMidwestScribe
+    - HolotagMidwestSquire
+    - HolotagMidwestKnight
+    - HolotagMidwestPaladin
+    #- NCClothingBandageBoS # Misfits Fix: recipe prototype is commented out # Corvax-Change
+
+# Misfits Fix: N14WorkbenchIDPrinterBrotherhoodWashington commented out — all WBOS holotag recipe prototypes are commented out
+#- type: entity
+#  parent: N14WorkbenchIDPrinter
+#  id: N14WorkbenchIDPrinterBrotherhoodWashington
+#  description: An ID printer for printing Washington Brotherhood holotags.
+#  suffix: Washington BOS
+#  components:
+#  - type: Lathe
+#    staticRecipes:
+#    - HolotagWashingtonScribe
+#    - HolotagWashingtonInitiate
+#    - HolotagWashingtonKnight
+#    - HolotagWashingtonPaladin
+
+#- type: entity
+#  parent: N14WorkbenchIDPrinter
+#  id: N14WorkbenchIDPrinterCaravan
+#  description: An ID printer for printing caravan IDs.
+#  suffix: Caravan
+#  components:
+#  - type: Lathe
+#    staticRecipes:
+#    - PassportCaravan
+#    - PassportCaravanTrader
+
+- type: entity
+  parent: N14WorkbenchIDPrinter
+  id: N14WorkbenchIDPrinterNCR
+  description: An ID printer for printing NCR IDs.
+  suffix: NCR
+  components:
+  - type: Lathe
+    staticRecipes:
+    - DogtagNCR
+    - DogtagNCRNCO
+    - NCClothingBandageNCR # Corvax-Change
+
+- type: entity
+  parent: N14WorkbenchIDPrinter
+  id: N14WorkbenchIDPrinterVault
+  description: An ID printer for printing Vault IDs.
+  suffix: Vault
+  components:
+  - type: Lathe
+    staticRecipes:
+    - IDVault
+    - IDVaultEngineer
+    - IDVaultSecurity
+    - IDVaultDoctor

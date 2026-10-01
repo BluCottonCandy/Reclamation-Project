@@ -1,0 +1,11 @@
+﻿- type: reactiveGroup
+  id: Flammable
+
+- type: reactiveGroup
+  id: Extinguish
+
+- type: reactiveGroup
+  id: Acidic
+
+- type: reactiveGroup
+  id: SurgicalInstrument

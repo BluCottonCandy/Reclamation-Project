@@ -1,0 +1,55 @@
+- type: job
+  id: NCRMedic
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  weight: 39 # #Misfits Tweak - Medic belongs below Engineer in the support tier
+  showBorder: false
+  name: job-name-ncr-medic
+  overwatchCategory: OverwatchNcrMedical
+  description: job-description-ncr-medic
+  playTimeTracker: NCRMedic
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # T4 faction timelock (12h NCR)
+      department: NCR
+      min: 43200 # 12 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRTrooper
+      min: 14400 # 4 hours as NCR Trooper
+  startingGear: NCRMedicGear
+  icon: "JobIconNcrMedic"
+  supervisors: job-supervisors-ncr-nco
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRMedic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+      - type: CPRTraining
+
+- type: startingGear
+  id: NCRMedicGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretMedic #Misfits Add - Medics can spawn with a beret, since helmets are given in loadouts.
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
+    jumpsuit: N14ClothingUniformNCRMedicVariant # Corvax-Change
+    shoes: N14ClothingBootsLeatherFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagDoctor
+  innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change
+
+- type: playTimeTracker
+  id: NCRMedic

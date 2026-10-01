@@ -1,0 +1,37 @@
+- type: entity
+  parent: N14MobGhoulFeral
+  id: N14MobGhoulFeralNCRVictim
+  name: Feral Ghoul NCR Victim
+  description: A feral ghoul still wearing scraps of NCR field gear.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+      sprite: _Nuclear14/Mobs/Ghouls/ghoul-ncr-light.rsi
+
+- type: entity
+  parent: N14MobGhoulFeral
+  id: N14MobGhoulFeralNCRRecruit
+  name: Feral Ghoul NCR Recruit
+  description: A feral ghoul wearing the remains of NCR recruit kit.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+      sprite: _Nuclear14/Mobs/Ghouls/ghoul-ncr-recruit.rsi
+
+- type: entity
+  parent: BaseItem
+  id: N14MiscCorpseGhoulNCRTrooper
+  name: dead NCR ghoul trooper
+  description: A dead feral ghoul in the remains of NCR trooper gear.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Ghouls/ghoul-ncr-trooper-corpse.rsi
+    state: dead
+  - type: Item
+    size: Ginormous

@@ -1,0 +1,65 @@
+# #Misfits Add - Vault-assigned robot headset: wasteland + vault comms
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: MisfitsClothingHeadsetRobotVault
+  name: integrated vault comms module
+  description: A hardwired communications module tuned to both wasteland and Vault frequencies.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyVaultUR
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi
+
+# #Misfits Change - Wasteland scrap headset for junk pile loot drops
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: MisfitsClothingHeadsetWastelandScrap
+  name: scrap headset
+  description: A battered, jury-rigged headset salvaged from the wastes. Barely holds together, but it still picks up the wasteland frequency.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi
+
+# Misfits Add - Town Bazaar radio
+- type: entity
+  parent: MisfitsClothingHeadsetWastelandScrap
+  id: MisfitsClothingHeadsetTown
+  name: town headset
+  description: A compact headset issued to trusted members of the Bazaar. Tuned to the local town frequency.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyTownUR
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/centcom.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/centcom.rsi
+
+- type: entity
+  parent: MisfitsClothingHeadsetWastelandScrap
+  id: MisfitsClothingHeadsetEighties
+  name: 80's Headset
+  description: A headset for Eighties raider communication.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyEightiesUR
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/eighties.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/eighties.rsi

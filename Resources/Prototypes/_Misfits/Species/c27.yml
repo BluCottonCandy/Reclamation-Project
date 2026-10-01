@@ -1,0 +1,321 @@
+# C-27 Humanoid Robot species. #Misfits Add
+# A whitelist-only synthetic humanoid race built around the SS13 Hail-Mary "Humanoid Robot" concept.
+# Same humanoid silhouette as humans (uses the same equipment slots) but with a metallic chassis
+# and species-locked outer armor (see _Misfits/InventoryTemplates/c27_inventory_template.yml).
+
+- type: species
+  id: C27
+  name: species-name-c27
+  roundStart: true
+  order: 4 # #Misfits Add - sort just after Super Mutant, before Robot variants
+  whitelistRequired: true # #Misfits Add - administrative whitelist gate
+  restrictedCustomization: true # #Misfits Add - keep marking choices controlled per faction skin
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  allowedLoadoutCategories: # #Misfits Add - show loadout tab despite restrictedCustomization (armor from kit; accessories/weapons still selectable)
+  - Weapons
+  - Accessories
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
+  jobWhitelistUnlock: C27 # #Misfits Add (Phase G) - C27 job whitelist also unlocks species visibility
+  restrictedJobs: # #Misfits Add (Phase G) - C-27 chassis can only take the generic C27 job
+  - C27
+  prototype: N14MobC27
+  sprites: MobC27Sprites
+  markingLimits: MobC27MarkingLimitsGeneric # #Misfits Tweak - per-variant marking defaults so each species locks its own faction torso paint
+  dollPrototype: N14MobC27Dummy
+  skinColoration: Hues
+  defaultSkinTone: "#9a8a72"
+  # #Misfits Tweak - Scale C-27 to 1.25x so the chassis reads as visibly taller than a human
+  # but less imposing than a Super Mutant. SharedHumanoidAppearanceSystem.LoadProfile -> SetScale
+  # applies this to SpriteComponent.Scale, uniformly scaling body AND all equipment layers.
+  # Locked min=default=max so the silhouette stays consistent across all C-27 units.
+  minHeight: 1.0
+  defaultHeight: 1.25
+  maxHeight: 1.5
+  minWidth: 1.0
+  defaultWidth: 1.25
+  maxWidth: 1.5
+  sexes:
+  - Unsexed
+  # #Misfits Add - serial-style designations (Unit-Alpha … Unit-Zulu) so default names
+  # don't fall back to regular human first/last names. Mirrors the per-variant *First
+  # dataset pattern used by RobotMrHandy / RobotProtectron / etc.
+  maleFirstNames: C27FirstGeneric
+  femaleFirstNames: C27FirstGeneric
+  naming: First
+
+# Body sprite layer mapping for the C-27 humanoid robot.
+# All limbs use the unified C-27 parts.rsi (no sex/feet split — DMI source has no foot frames).
+- type: speciesBaseSprites
+  id: MobC27Sprites
+  sprites:
+    Head: MobC27Head
+    Chest: MobC27Torso
+    LArm: MobC27LArm
+    RArm: MobC27RArm
+    LHand: MobC27LHand
+    RHand: MobC27RHand
+    LLeg: MobC27LLeg
+    RLeg: MobC27RLeg
+
+# Marking allotments. Chest is required so every C-27 picks a faction "Model" paint
+# (Generic / NCR / Brotherhood) — see _Misfits/Entities/Mobs/Customization/Markings/c27_model.yml.
+# #Misfits Tweak - Split into three per-variant markingPoints so each model species locks
+# in the matching faction torso paint as its forced default. Players pick the variant via
+# the "Robot Model" dropdown in the lobby (mirrors RobotProtectron family pattern).
+- type: markingPoints
+  id: MobC27MarkingLimitsGeneric
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 1
+      required: true # #Misfits Add - force a Model selection on character creation
+      defaultMarkings: [C27ModelGeneric]
+    Head:
+      points: 1
+      required: false
+
+- type: markingPoints
+  id: MobC27MarkingLimitsNCR
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 1
+      required: true
+      defaultMarkings: [C27ModelNCR]
+    Head:
+      points: 1
+      required: false
+
+- type: markingPoints
+  id: MobC27MarkingLimitsBoS
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 1
+      required: true
+      defaultMarkings: [C27ModelBoS]
+    Head:
+      points: 1
+      required: false
+
+- type: markingPoints
+  id: MobC27MarkingLimitsZAX
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 1
+      required: true
+      defaultMarkings: [C27ModelZAX]
+    Head:
+      points: 1
+      required: false
+
+# #Misfits Add - Hidden NCR variant. Selected via the Robot Model picker in the lobby; not
+# shown directly in the species dropdown (UI hides it via IsHiddenProtectronVariantSpecies).
+- type: species
+  id: C27NCR
+  name: species-name-c27-ncr
+  roundStart: true
+  order: 5
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  allowedLoadoutCategories: # #Misfits Add - show loadout tab for NCR variant
+  - Weapons
+  - Accessories
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
+  jobWhitelistUnlock: C27NCR
+  restrictedJobs:
+  - C27NCR
+  prototype: N14MobC27NCR
+  sprites: MobC27Sprites
+  markingLimits: MobC27MarkingLimitsNCR
+  dollPrototype: N14MobC27NCRDummy
+  skinColoration: Hues
+  defaultSkinTone: "#b59548"
+  minHeight: 1.0
+  defaultHeight: 1.25
+  maxHeight: 1.5
+  minWidth: 1.0
+  defaultWidth: 1.25
+  maxWidth: 1.5
+  sexes:
+  - Unsexed
+  # #Misfits Add - NCR-flavored callsigns (Ranger-Alpha … Ranger-Zulu).
+  maleFirstNames: C27FirstNCR
+  femaleFirstNames: C27FirstNCR
+  naming: First
+
+# #Misfits Add - Hidden Brotherhood of Steel variant. Same access rules as the Generic chassis.
+- type: species
+  id: C27BoS
+  name: species-name-c27-bos
+  roundStart: true
+  order: 6
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  allowedLoadoutCategories: # #Misfits Add - show loadout tab for BoS variant
+  - Weapons
+  - Accessories
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
+  jobWhitelistUnlock: C27BoS
+  restrictedJobs:
+  - C27BoS
+  prototype: N14MobC27BoS
+  sprites: MobC27Sprites
+  markingLimits: MobC27MarkingLimitsBoS
+  dollPrototype: N14MobC27BoSDummy
+  skinColoration: Hues
+  defaultSkinTone: "#2c4a6e"
+  minHeight: 1.0
+  defaultHeight: 1.25
+  maxHeight: 1.5
+  minWidth: 1.0
+  defaultWidth: 1.25
+  maxWidth: 1.5
+  sexes:
+  - Unsexed
+  # #Misfits Add - Brotherhood rank-flavored callsigns (Knight-Alpha … Knight-Zulu).
+  maleFirstNames: C27FirstBoS
+  femaleFirstNames: C27FirstBoS
+  naming: First
+
+- type: species
+  id: C27ZAX
+  name: species-name-c27-zax
+  roundStart: true
+  order: 7
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedTraitCategories: # #Misfits Fix - robot accent perks: allow Speech traits so accents persist on save
+  - Speech
+  - TraitsSpeechUncategorized
+  - TraitsSpeechAccents
+  - TraitsSpeechLanguages
+  allowedLoadoutCategories:
+  - Weapons
+  - Accessories
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
+  jobWhitelistUnlock: C27ZAX
+  restrictedJobs:
+  - C27ZAX
+  prototype: N14MobC27ZAX
+  sprites: MobC27Sprites
+  markingLimits: MobC27MarkingLimitsZAX
+  dollPrototype: N14MobC27ZAXDummy
+  skinColoration: Hues
+  defaultSkinTone: "#7fb6bf"
+  minHeight: 1.0
+  defaultHeight: 1.25
+  maxHeight: 1.5
+  minWidth: 1.0
+  defaultWidth: 1.25
+  maxWidth: 1.5
+  sexes:
+  - Unsexed
+  maleFirstNames: C27FirstZAX
+  femaleFirstNames: C27FirstZAX
+  naming: First
+
+# --- Per-bodypart sprite definitions ---
+# #Misfits Fix - Head + Chest are sex-morphed by HumanoidAppearanceSystem (UpdateLayers passes
+# sexMorph: true), and a profile carried over from another species can still hold Sex=Male or
+# Sex=Female even though C27 only declares Unsexed. Without these aliases the system throws
+# UnknownPrototypeException: MobC27HeadMale / MobC27TorsoFemale on lobby preview reload.
+# Aliasing all three sex variants to the same sprite is the standard SS14 pattern.
+- type: humanoidBaseSprite
+  id: MobC27Head
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobC27HeadMale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobC27HeadFemale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobC27Torso
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobC27TorsoMale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobC27TorsoFemale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobC27LArm
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobC27RArm
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobC27LHand
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobC27RHand
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobC27LLeg
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobC27RLeg
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: r_leg

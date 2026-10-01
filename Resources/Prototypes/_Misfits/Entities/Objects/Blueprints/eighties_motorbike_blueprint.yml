@@ -1,0 +1,14 @@
+- type: entity
+  parent: N14BlueprintBase
+  id: MisfitsBlueprintMotorbikeAssemblyManual
+  name: Motorbike Assembly And Maintenance Manual
+  description: A grease-stained Eighties manual covering motorbike assembly, teardown, and field maintenance. Insert it into a workbench to unlock motorbike flatpack fabrication.
+  components:
+  - type: Blueprint
+    recipes:
+    - MisfitsBPEightiesGreenMotorbikeFlatpack
+    - MisfitsBPEightiesFlameyMotorbikeFlatpack
+    - MisfitsBPEightiesRustyMotorbikeFlatpack
+    - MisfitsBPEightiesScramblerMotorbikeFlatpack
+    - MisfitsBPEightiesClassicMotorbikeFlatpack
+

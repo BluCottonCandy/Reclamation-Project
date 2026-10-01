@@ -1,0 +1,38 @@
+# Ug-Qualtoth mutation markings — applied progressively by UgQualtothSystem as worshippers transform.
+# Each stage is a single full-body overlay that replaces the previous stage's sprite.
+# Stage 1: stage_one overlay
+# Stage 2: stage_two overlay  (stage_one removed)
+# Stage 3: stage_three overlay (stage_two removed)
+# Stage 4: full polymorph (stage_three removed, no marking needed)
+#
+# Art: _Misfits/Mobs/Customization/ug_qualtoth_mutations.rsi
+
+- type: marking
+  id: UgQualtothStage1
+  bodyPart: Chest
+  markingCategory: Chest
+  hidden: true
+  renderOverClothing: true
+  sprites:
+  - sprite: _Misfits/Mobs/Customization/ug_qualtoth_mutations.rsi
+    state: stage_one
+
+- type: marking
+  id: UgQualtothStage2
+  bodyPart: Chest
+  markingCategory: Chest
+  hidden: true
+  renderOverClothing: true
+  sprites:
+  - sprite: _Misfits/Mobs/Customization/ug_qualtoth_mutations.rsi
+    state: stage_two
+
+- type: marking
+  id: UgQualtothStage3
+  bodyPart: Chest
+  markingCategory: Chest
+  hidden: true
+  renderOverClothing: true
+  sprites:
+  - sprite: _Misfits/Mobs/Customization/ug_qualtoth_mutations.rsi
+    state: stage_three

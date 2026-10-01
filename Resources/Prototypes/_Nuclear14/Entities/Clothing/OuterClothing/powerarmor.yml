@@ -1,0 +1,754 @@
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: N14ClothingOuterPowerArmorT45
+  name: T-45 Power Armor
+  description: An old suit of T-45 power armor. It's amazing these still exist, given how many have been mangled and destroyed in combat both before and after the bombs dropped.
+  components:
+  - type: N14PowerArmor # #Misfits Change Add: Marks this and all child power armor variants. Used by CarryingSystem to block non-PA users from picking up PA wearers.
+  - type: N14BosBackpackSlot # #Misfits Add: All power armor gets an extra backpack slot — fusion core occupies the normal back slot
+  # #Misfits Add: Power armor integrity — separate HP pool. While intact, 98.5% of incoming
+  # damage is absorbed by the armor and only 1.5% bleeds through to the wearer.
+  # At 0 integrity the ArmorComponent is stripped and the wearer takes full damage.
+  # Repair with a welder to restore the pool and re-enable absorption.
+  - type: Damageable
+  - type: PowerArmorIntegrity
+    maxIntegrity: 500 # #Misfits Tweak: By Bill, 500 durability for a little more standing power.
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+  - type: Repairable
+    fuelCost: 10
+    doAfterDelay: 18 # #Misfits Tweak - Increased weld repair time from 5s to 30s to 18s; 5s was too fast for combat balance, 30 is too slow, current proposal is 18.
+    qualityNeeded: Welding
+  # End Misfits Add
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45.rsi
+    equipDelay: 3 # Power armour should not be easily stealable, it should take time to take off or put on.
+    unequipDelay: 6
+    equipSound: # Corvax-Change
+      path: /Audio/_Nuclear14/Effects/PowerArmor/PowerArmor_Enter_01.ogg
+      params:
+        volume: -12
+    unequipSound: # Corvax-Change
+      path: /Audio/_Nuclear14/Effects/PowerArmor/PowerArmor_Enter_01.ogg
+      params:
+        volume: -12
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+        Caustic: 0.7
+        Radiation: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.2
+    sprintModifier: 0.2
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    requiredSlot: outerClothing
+    blockUnequipWhenAttached: true
+    replaceCurrentClothing: false
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT45 # #Misfits Change - BOS has its own PA so not everyone gets the tacmap.
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+  - type: TemperatureProtection
+    coefficient: 0.25
+  - type: FireProtection
+    reduction: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.15 # #Misfits Tweak: PA shrugs off most grenade blast — ~18 HP at ground zero vs 120 unarmored
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
+    walkModifier: 0.5
+    sprintModifier: 0.5
+  - type: MultiHandedItem
+  - type: Reflect # #Misfits Change Tweak: Small-caliber rounds (sub-5.56mm) ricochet off power armor at 30% chance. Innate - always active regardless of movement.
+    reflects:
+      - SmallCaliber
+      - MediumCaliber
+    reflectProb: 0.4
+    reflectProbByType:
+      MediumCaliber: 0.15
+    innate: true
+    spread: 90
+  - type: SpearBlock # #Misfits Change Add: Power armor deflects thrown polearms; falls to ground instead of embedding.
+  - type: PowerArmorBrace # #Misfits Change Add: Grants wearer a hotkey to brace (anchor in place, immobile but can fire, slight damage resistance). 5-second cooldown between stance changes.
+    activeModifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+  - type: EmitsSoundOnMove # Corvax-Change
+    soundCollection:
+      collection: N14FootstepPowerArmor
+      params:
+        volume: -6
+    requiresWorn: true
+    distanceWalking: 2
+    distanceSprinting: 3
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: N14ClothingOuterPowerArmorT51
+  name: T-51 Power Armor
+  description: An old T-51 Power Armor suit. Before the world ended, these were the pride of the US military, and proved essential against the People's Liberation Army.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 580 # #Misfits Tweak: By Bill, 580 durability.
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
+        Heat: 0.60
+        Caustic: 0.65
+        Radiation: 0.6
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT51
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+  - type: ExplosionResistance
+    damageCoefficient: 0.12 # #Misfits Tweak: T-51 blast resistance — ~14 HP at ground zero
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: MisfitsEnclavePowerArmor
+  # #Misfits Change - Renamed to APA MK I (removed 'Experimental' prefix per rebalance)
+  name: APA MK I Power Armor
+  description: A set of APA MK I power armor made to fit a supermutant, the extensive modifications have left it less durable than a standard set of APA MK I.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 500 # #Misfits Tweak: By Bill, 500 durability.
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/PowerArmor/Mutant_PA.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/PowerArmor/Mutant_PA.rsi
+    equipDelay: 14400 # The APA MK I Power armor is a living Tomb for whichever poor supermutant they put in it, so it takes the entire round to unequip/equip.
+    unequipDelay: 14400
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    # #Misfits Change - no Radiation coefficient; supermutants take no radiation damage to begin with.
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.70
+        Heat: 0.70
+        Caustic: 0.75
+  - type: Unremoveable # This is your casket. Service guarantees citizenship.
+  - type: Tag
+    tags:
+    - SuperMutantWearable
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: MisfitsEnclavePowerArmorHelmet
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+  - type: ExplosionResistance
+    damageCoefficient: 0.12 # #Misfits Tweak: T-51 blast resistance — ~14 HP at ground zero
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: MisfitsT45ClothingOuterPowerArmorBoS
+  name: T-45 Power Armor [Bos]
+  description: An old suit of T-45 power armor. It's amazing these still exist, given how many have been mangled and destroyed in combat both before and after the bombs dropped.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 500
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+        Caustic: 0.7
+        Radiation: 0.6
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT45BOS
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT51
+  id: N14ClothingOuterPowerArmorT60
+  name: T-60 Power Armor
+  description: An old T-60 power armor suit. It was used by the US military in the last few months before the bombs dropped, and was considered a replacement for the T-45.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 545 # #Misfits Tweak: By Bill, 545 durability.
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.65
+        Caustic: 0.65
+        Radiation: 0.6
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT60
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+# #Misfits Add - BOS-variant T60 that equips the Brotherhood tactical-HUD helmet.
+# Senior Paladins wear this so they can access the shared BOS map feed.
+# The plain N14ClothingOuterPowerArmorT60 is intentionally left alone (NCR crafting ingredient).
+- type: entity
+  parent: N14ClothingOuterPowerArmorT60
+  id: N14ClothingOuterPowerArmorT60BOS
+  name: T-60 Power Armor
+  description: An old T-60 power armor suit from the Brotherhood of Steel. It has a tactical map feed built into the heads-up display, and looks well maintained.
+  components:
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT60BOS # #Misfits Change - BOS T60 uses BOS tactical-HUD helmet
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT60
+  id: N14ClothingOuterPowerArmorT60Tesla
+  name: T-60 Tesla Power Armor
+  description: A suit of T-60 power armor, with tesla coils mounted on the pauldrons, forearms, and the back of the suit. An experimental post-war modification recovered from the east, it is particularly resistant to energy weapons.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60tesla.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60tesla.rsi
+  - type: Reflect # #Misfits Change Tweak: Tesla coils deflect energy and small-caliber rounds at 30% (innate). Heavy rounds still penetrate.
+    reflects:
+      - SmallCaliber
+      - Energy
+    reflectProb: 0.40
+    innate: true
+    spread: 90
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT60
+      gloves: N14ClothingPAGauntletsTesla
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: N14ClothingOuterPowerArmorAdvanced1
+  # #Misfits Change - Renamed X-01 -> APA MK I
+  name: APA MK I Power Armor
+  description: The standard issue model of power armor for U.S. Army infantry personnel. It offers an advanced sensors suite and improved defensive capabilities compared to standard pre-war models.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 560 # #Misfits Tweak: By Bill, 460 a little better than T60 but not T51.
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced1.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced1.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.65
+        Caustic: 0.6
+        Radiation: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.10 # #Misfits Tweak: APA MK I blast resistance — ~12 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorX01
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+  - type: Reflect # #Misfits Change Tweak: Small-caliber rounds (sub-5.56mm) ricochet off power armor at 35% chance. Innate - always active regardless of movement.
+    reflects:
+    - SmallCaliber
+    - MediumCaliber
+    reflectProb: 0.35
+    reflectProbByType:
+      MediumCaliber: 0.15
+    innate: true
+    spread: 90
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorAdvanced1
+  id: N14ClothingOuterPowerArmorAdvanced2
+  # #Misfits Change - Renamed X-02 -> APA MK II
+  name: APA MK II Power Armor
+  description: The next generation in power armor technology. The APA MK II is a more lightweight and sleek design than the APA MK I, offering the wearer unparalleled mobility compared to its alternatives.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 585 # #Misfits Tweak: X-02 durability.
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced2.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced2.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.2
+    sprintModifier: 0.2
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.65
+        Caustic: 0.6
+        Radiation: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.10 # #Misfits Tweak: X-02 blast resistance — ~12 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  # #Misfits Change - Enclave tactical map HUD; action fires from helmet (HEAD slot), not suit
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Enclave Tactical HUD
+    # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Enclave
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  # End Misfits Change
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorX02
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBackX02 # Misfits Change add: This is for X-02, gives it the increased movespeed. Regular PA is 90% the wearer's speed, X-02 is 95%.
+  - type: Reflect # #Misfits Change Tweak: X-02 has improved movespeed and resistances over the X-02 but less reflect chance
+    reflects:
+    - SmallCaliber
+    - MediumCaliber
+    reflectProb: 0.3
+    reflectProbByType:
+      MediumCaliber: 0.1
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorAdvanced2
+  id: N14ClothingOuterPowerArmorAdvanced2Hellfire
+  name: Hellfire Power Armor
+  description: A deep black suit of U.S. Army-manufactured heavy power armor based on pre-war designs such as the T-51, and improving off of data gathered by post-war designs such as the APA MK I. Most commonly fielded on the East Coast, no suit can rival its strength.
+  components:
+  - type: PowerArmorIntegrity
+    maxIntegrity: 620 # #Misfits Tweak: Hellfire durability.
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/hellfire.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/hellfire.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
+        Heat: 0.50
+        Caustic: 0.50
+        Radiation: 0.50
+  - type: ExplosionResistance
+    damageCoefficient: 0.06 # #Misfits Tweak: Hellfire designed for combat — best blast resistance, ~7 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorHellfire
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+  - type: Reflect # #Misfits Change Tweak: Small-caliber rounds (sub-5.56mm) ricochet off power armor at 40% chance. Innate - always active regardless of movement.
+    reflects:
+    - SmallCaliber
+    - MediumCaliber
+    reflectProb: 0.4
+    reflectProbByType:
+      MediumCaliber: 0.20
+    innate: true
+    spread: 90
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: N14ClothingOuterPowerArmorRaider
+  name: Raider Power Armor
+  description: An old T-45 Power Armor suit. It shows signs of rust and aesthetic spikes for pure intimidation. It has not been properly maintained, but is still functional.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 400 # #Misfits Tweak: +150 flat integrity buff
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.75
+        Caustic: 0.75
+        Radiation: 0.65
+  - type: ExplosionResistance
+    damageCoefficient: 0.20 # #Misfits Tweak: Raider PA cobbled together — weakest blast protection, ~24 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT45 # Forge-Change
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+  - type: Reflect # #Misfits Change Tweak: Raider power armor ricochets small-caliber rounds at 30% (innate).
+    reflects:
+      - SmallCaliber
+    reflectProb: 0.35
+    innate: true
+    spread: 90
+  - type: ClothingSpeedModifier # Forge-Change
+    walkModifier: 0.15
+    sprintModifier: 0.15
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45 # #Misfits Add - Midwest PA are loadout options for Paladins/Senior Paladins/Head Paladins. Each parents off of the PA that role usually gets - they're drip, identical statwise.
+  id: N14ClothingOuterPowerArmorMidwest
+  name: Midwest Power Armor
+  description: An unknown model of power armor manufactured by the Brotherhood of Steel. It supports a lighter plating than power armor usually maintains but is more ergonomic as a result, allowing easier movement.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwest.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwest.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorMidwest
+      gloves: N14ClothingPAGauntletsMBoS
+      shoes: N14ClothingPABootsMBoS
+      back: N14ClothingPowerSystemsBack
+
+#Misfit
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT60 # #Misfits Add - Midwest PA are loadout options for Paladins/Senior Paladins/Head Paladins. Each parents off of the PA that role usually gets - they're drip, identical statwise.
+  id: N14ClothingOuterPowerArmorMidwestSilver
+  name: Midwest Silver Power Armor
+  description: An unknown model of power armor manufactured by the Brotherhood of Steel. It has a chain that likely serves some ceremonial purpose, and is decorated in bright silver paint.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/PowerArmor/midwest_silver_pa.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/PowerArmor/midwest_silver_pa.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorMidwestSilver
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+#MIsfit
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorWashT51Elite # #Misfits Add - Midwest PA are loadout options for Paladins/Senior Paladins/Head Paladins. Each parents off of the PA that role usually gets - they're drip, identical statwise.
+  id: N14ClothingOuterPowerArmorMidwestCommander
+  name: Midwest Commander Power Armor
+  description: An unknown model of power armor manufactured by the Brotherhood of Steel. This modified version is commonly used by high-ranking Brotherhood of Steel Paladins, and is a highly coveted reward.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwestcommander.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwestcommander.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorMidwestCommander
+      gloves: N14ClothingPAGauntletsMBoS
+      shoes: N14ClothingPABootsMBoS
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: N14ClothingOuterPowerArmorT51BC
+  name: T-51bc Paladin Commander Power Armor
+  description: The pinnacle of pre-war technology, heroically appropriated by the Brotherhood of Steel. Commonly worn by Paladin Commanders, to have earned this armor is proof one has done their service, tenfold.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 590 # #Misfits Tweak: By Bill, little more durability than normal T-51
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51bc.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51bc.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.575
+        Slash: 0.575
+        Piercing: 0.575
+        Heat: 0.575
+        Caustic: 0.675
+        Radiation: 0.6
+  - type: TemperatureProtection
+    coefficient: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.10 # #Misfits Tweak: T-51bc Paladin blast resistance — ~12 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT51BC
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+  - type: Reflect # #Misfits Change Tweak: T-51BC ricochets small-caliber rounds at 30% (innate).
+    reflects:
+      - SmallCaliber
+    reflectProb: 0.55
+    innate: true
+    spread: 90
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: N14ClothingOuterPowerArmorT45NCR
+  abstract: true # #Misfits Disable - misleading legacy intermediate; use N14ClothingOuterPowerArmorT45NCRSalvaged instead.
+  categories: [ HideSpawnMenu ]
+  name: NCR T-45 Salvaged Power Armor
+  description: Originally existing as T-45d power armor that was recovered by the NCR and repurposed for use within their armed forces, with its internal servos removed this heavy suit of metal is moved by pure muscle.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 325 # #Misfits Tweak: +150 flat integrity buff
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45ncr.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45ncr.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
+        Heat: 0.80
+        Caustic: 0.75
+        Radiation: 0.65
+  - type: TemperatureProtection
+    coefficient: 0.55
+  - type: ExplosionResistance
+    damageCoefficient: 0.20 # #Misfits Tweak: NCR salvaged PA — weakest blast protection after raider, ~24 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT45NCR
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+  - type: Reflect # #Misfits Change Tweak: Salvaged NCR T-45 ricochets small-caliber rounds at 30% (innate).
+    reflects:
+      - SmallCaliber
+    reflectProb: 0.4
+    innate: true
+    spread: 90
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT51
+  id: N14ClothingOuterPowerArmorT51Canadian
+  name: T-51bc "The Canadian Shield" Power Armor
+  description: The pinnacle of pre-war technology used to brutalize Canadian rebels during the northern occupation, this set was liberated by the locals and modified to be used against their American oppressors.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/canadianshield.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/canadianshield.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.675
+        Slash: 0.675
+        Piercing: 0.675
+        Heat: 0.675
+        Caustic: 0.75
+        Radiation: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.12 # #Misfits Tweak: Canadian Shield blast resistance — ~14 HP at ground zero
+  - type: Reflect # #Misfits Change Tweak: T-51bc "Canadian Shield" ricochets small-caliber rounds at 30% (innate).
+    reflects:
+      - SmallCaliber
+    reflectProb: 0.3
+    innate: true
+    spread: 90
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45
+  id: N14ClothingOuterPowerArmorWashT51
+  name: Modified T-51 Power Armor
+  description: A modified set of T-51 power armor, it seems to have some slight upgrades over the pre-war model and is in the colours of the Washington Brotherhood. These suits bring a feeling of terror to those local to Seattle.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 400 # #Misfits Tweak: +150 flat integrity buff
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51wash.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51wash.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.70
+        Heat: 0.70
+        Caustic: 0.75
+        Radiation: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.12 # #Misfits Tweak: Washington BoS T-51 blast resistance — ~14 HP at ground zero
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT51Wash
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+  - type: Reflect # #Misfits Change Tweak: Washington BoS T-51 ricochets small-caliber rounds at 30% (innate).
+    reflects:
+      - SmallCaliber
+    reflectProb: 0.3
+    innate: true
+    spread: 90
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorWashT51
+  id: N14ClothingOuterPowerArmorWashT51Elite
+  name: T-51b Power Armor #Misfits Tweak: Renamed from "elite T-51" to lore-accurate T-51b designation
+  description: The pinnacle of pre-war military engineering, the T-51b was standard issue for front-line infantry units during the Sino-American conflict. This suit's fusion-powered servos and composite plating have withstood the test of time.
+  components:
+  - type: PowerArmorIntegrity
+    brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
+    maxIntegrity: 585 # #Misfits Tweak: By Bill, a little better than T51 but not as good as T51BC
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51washelite.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51washelite.rsi
+  - type: Armor # #Misfits Tweak: Added Heat and Piercing coefficients — pre-reduces damage before integrity absorption so PA stays above Centurion/Vet.Ranger at all integrity levels.
+    modifiers:
+      coefficients:
+        Blunt: 0.575
+        Slash: 0.575
+        Piercing: 0.575
+        Heat: 0.575
+        Caustic: 0.575
+        Radiation: 0.6
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: N14ClothingHeadHelmetPowerArmorT51WashElite
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack

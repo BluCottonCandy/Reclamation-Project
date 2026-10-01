@@ -1,0 +1,17 @@
+marking-SlimeCatEars = Slime Cat Ears
+marking-SlimeCatTail = Slime Cat Tail
+marking-SlimeCatTail-slime_tail_cat_wag = Slime Cat Tail
+marking-SlimeCatEars-ears_slime_cat_outer = Outer Ear
+marking-SlimeCatEars-ears_slime_cat_inner = Inner Ear
+marking-SlimeCatTailStripes = Slime Cat Tail (Striped)
+marking-SlimeCatTailStripes-slime_tail_cat_wag_stripes_prime = Primary Stripes
+marking-SlimeCatTailStripes-slime_tail_cat_wag_stripes_second = Secondary Stripes
+marking-SlimeCatEarsStubby = Stubby Slime Ears
+marking-SlimeCatEarsStubby-ears_slime_stubby_outer = Outer Ear
+marking-SlimeCatEarsStubby-ears_slime_stubby_inner = Inner Ear
+marking-SlimeCatEarsCurled = Curled Slime Ears
+marking-SlimeCatEarsCurled-ears_slime_curled_outer = Outer Ear
+marking-SlimeCatEarsCurled-ears_slime_curled_inner = Inner Ear
+marking-SlimeCatEarsTorn = Torn Slime Ears
+marking-SlimeCatEarsTorn-ears_slime_torn_outer = Outer Ear
+marking-SlimeCatEarsTorn-ears_slime_torn_inner = Inner Ear

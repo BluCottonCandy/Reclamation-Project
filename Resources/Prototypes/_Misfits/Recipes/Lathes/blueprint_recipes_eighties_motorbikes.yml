@@ -1,0 +1,41 @@
+- type: latheRecipe
+  id: MisfitsBPEightiesMotorbikeFlatpackBase
+  abstract: true
+  category: MisfitsBlueprintEightiesMotorbikes
+  completetime: 15
+  requiresBlueprint: true
+  applyMaterialDiscount: false
+  availableFaction:
+  - Eighties
+  materials:
+    Steel: 15000
+    Circuitry: 300
+    Plastic: 1500
+    N14Copper: 500
+    N14Gold: 100
+
+- type: latheRecipe
+  parent: MisfitsBPEightiesMotorbikeFlatpackBase
+  id: MisfitsBPEightiesGreenMotorbikeFlatpack
+  result: MisfitsEightiesGreenMotorbikeFlatpack
+
+- type: latheRecipe
+  parent: MisfitsBPEightiesMotorbikeFlatpackBase
+  id: MisfitsBPEightiesFlameyMotorbikeFlatpack
+  result: MisfitsEightiesFlameyMotorbikeFlatpack
+
+- type: latheRecipe
+  parent: MisfitsBPEightiesMotorbikeFlatpackBase
+  id: MisfitsBPEightiesRustyMotorbikeFlatpack
+  result: MisfitsEightiesRustyMotorbikeFlatpack
+
+- type: latheRecipe
+  parent: MisfitsBPEightiesMotorbikeFlatpackBase
+  id: MisfitsBPEightiesScramblerMotorbikeFlatpack
+  result: MisfitsEightiesScramblerMotorbikeFlatpack
+
+- type: latheRecipe
+  parent: MisfitsBPEightiesMotorbikeFlatpackBase
+  id: MisfitsBPEightiesClassicMotorbikeFlatpack
+  result: MisfitsEightiesClassicMotorbikeFlatpack
+

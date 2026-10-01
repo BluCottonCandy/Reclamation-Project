@@ -1,0 +1,47 @@
+# #Misfits Change
+# Fallout-themed name list for Assaultron robots.
+# Code-style combat unit designations: letter-dash-letter+number binary/alphanumeric combos.
+
+- type: dataset
+  id: RobotAssaultronFirst
+  values:
+  - AX-0101
+  - AX-1001
+  - AX-1100
+  - BX-0110
+  - BX-1010
+  - CX-0011
+  - CX-1101
+  - DX-0111
+  - EX-1011
+  - FX-0010
+  - GX-1110
+  - HX-0100
+  - IX-1001
+  - JX-0110
+  - KX-1010
+  - LX-0101
+  - MX-1100
+  - NX-0011
+  - OX-1111
+  - PX-0001
+  - QX-1000
+  - RX-0110
+  - RX-1010
+  - SX-0101
+  - SX-1001
+  - TX-0111
+  - UX-1110
+  - VX-0010
+  - WX-1101
+  - XR-0011
+  - XR-0110
+  - XR-1001
+  - XR-1100
+  - YX-0101
+  - ZX-0010
+  - ZX-0110
+  - ZX-1001
+  - ZX-1010
+  - ZX-1100
+  - ZX-1111

@@ -1,0 +1,80 @@
+#Misfits Change /Comment-out/: Western BoS scribe robe removed — no Western BoS chapter in Misfits.
+#- type: entity
+#  parent: ClothingOuterStorageBase
+#  id: NCClothingOuterRobeScribeWesternBoS
+#  name: Western BoS Scribe Robe
+#  description: An elegant robe symbolizing the status and knowledge of the scribe of the Western Brotherhood of Steel. It provides comfort and protection in the harsh post-apocalyptic world.
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/robeWesternBoS.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/robeWesternBoS.rsi
+#  - type: Armor
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.8
+#        Slash: 0.85
+#        Piercing: 0.9
+#        Heat: 0.85
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: N14ClothingOuterRadSuitEnclave
+  name: U.S. Army Science Suit
+  description: A state-of-the-art hazardous enviornment and radiation suit utilized by U.S. Army Science personnel. The sealed lining also contains the wearer's own radioactive emissions, letting glowing ghouls work safely around non-ghouls.
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/enclaverad.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/enclaverad.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.90
+        Radiation: 0.001
+  # #Misfits Add - Suppress the wearer's own RadiationSource (e.g. glowing ghouls)
+  # so they don't irradiate people nearby while wearing the suit.
+  - type: RadiationSourceSuppression
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+  - type: ToggleableClothing
+    clothingPrototype: N14ClothingHeadHatHelmetRadHelmetEnclave
+    slot: head
+
+#Misfits Change /Comment-out/: Inquisitor coats removed — no Inquisitor role in Misfits.
+#- type: entity
+#  parent: N14ClothingOuterBase
+#  id: N14ClothingOuterBOSInquisitorCoat
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/InquisitorCoat.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/InquisitorCoat.rsi
+#  - type: Armor
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.8
+#        Slash: 0.8
+#        Piercing: 0.8
+#        Heat: 0.75
+#  - type: ExplosionResistance
+#    damageCoefficient: 0.85
+#
+#- type: entity
+#  parent: N14ClothingOuterBase
+#  id: N14ClothingOuterBOSInquisitorBlackCoat
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/InquisitorBlackCoat.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/InquisitorBlackCoat.rsi
+#  - type: Armor
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.75
+#        Slash: 0.75
+#        Piercing: 0.7
+#        Heat: 0.65
+#  - type: ExplosionResistance
+#    damageCoefficient: 0.8

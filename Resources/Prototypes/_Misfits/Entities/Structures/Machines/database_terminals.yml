@@ -1,0 +1,19 @@
+# #Misfits Add - Faction database terminal entities. Stage 1: only the BoS test entity is shipped.
+# Inherits the standard powered terminal so it works in-world the same as other terminals;
+# the TerminalDatabase component points at a misfitsTerminalDatabase prototype id which controls
+# faction-shared storage, ID-card access tags, and DATABASE-tab content.
+
+# #Misfits Removed - DATABASE tab is now exposed by every terminal automatically.
+# The displayed faction database is resolved per-viewer via ID access tags, so a dedicated
+# BoS database entity is no longer needed. Preserved here per the no-delete policy in case
+# we ever reintroduce per-terminal database pinning.
+#
+# - type: entity
+#   parent: N14ComputerTerminalNew
+#   id: N14ComputerTerminalBoSDatabase
+#   suffix: BoS Database
+#   name: 509th archive terminal
+#   description: A Brotherhood of Steel terminal hardlinked to the 509th Archive. Restricted to authorized BoS personnel.
+#   components:
+#   - type: TerminalDatabase
+#     databaseId: bos-509th

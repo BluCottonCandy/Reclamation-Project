@@ -1,0 +1,56 @@
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerMirelurk
+  name: periodic mirelurk spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Corvax/Mobs/Animals/mirelurk.rsi
+          state: mirelurk
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobMirelurk
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerRadMirelurk
+  name: periodic rad mirelurk spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Corvax/Mobs/Animals/radmirelurk.rsi
+          state: radmirelurk
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRadMirelurk
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerJackal
+  name: periodic jackal spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Corvax/Mobs/Animals/jackal.rsi
+          state: jackal
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobJackal
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2

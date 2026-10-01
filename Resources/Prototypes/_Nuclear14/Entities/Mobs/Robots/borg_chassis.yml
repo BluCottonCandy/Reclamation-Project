@@ -1,0 +1,517 @@
+# this is how you give it modules and a cell, need variants for each that are empty and filled
+  # - type: ContainerFill
+    # containers:
+      # borg_brain:
+        # - PositronicBrain
+      # borg_module:
+        # - BorgModuleOperative
+        # - BorgModuleL6C
+        # - BorgModuleEsword
+  # - type: ItemSlots
+    # slots:
+      # cell_slot:
+        # name: power-cell-slot-component-slot-name-default
+        # startingItem: PowerCellHyper
+
+# Protectrons
+- type: entity
+  parent: N14BaseRobotChassis
+  id: N14RobotProtectron
+  name: protectron
+  components:
+  - type: IdleSound # #Misfits Change: give protectrons their ambient voice lines again
+  - type: SpamEmitSound # #Misfits Change: periodic idle chatter from the Protectron sound set
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: on # #Misfits Fix: lit indicator; BorgSystem overrides at runtime
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: on # #Misfits Fix: 'on' RSI state is the lit variant used as the flashlight glow overlay
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  # - type: Construction
+    # node: cyborg
+  - type: Tag # #Misfits Change: Protectron walks, so it should have footstep sounds
+    tags:
+    - DoorBumpOpener
+    - CanPilot
+    - FootstepSound
+  - type: Speech
+    speechVerb: Robotic
+  - type: Inventory
+    templateId: borgShort
+  - type: ActivatableUI
+    key: enum.BorgUiKey.Key
+  - type: WiresPanel
+  - type: ActivatableUIRequiresPanel
+  - type: Lock
+    locked: true
+  - type: ActivatableUIRequiresLock
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    name: Friendly Protectron
+    description: |
+      Do as your masters say with a literal but reasonable level of logic.
+
+- type: entity
+  parent: N14RobotProtectron
+  id: N14RobotProtectronBuilder
+  name: protectron builder
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron-builder.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: BorgChassis
+    maxModules: 4
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleCargo
+      - BorgModuleEngineering
+    hasMindState: on
+    noMindState: off
+  # - type: Construction
+    # node: mining
+  - type: Inventory
+    templateId: borgTall
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    name: Friendly Protectron Builder
+    description: |
+      Do as your masters say with a literal but reasonable level of logic.
+    
+
+- type: entity
+  parent: N14RobotProtectron
+  id: N14RobotProtectronFire
+  name: protectron firefighter
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron-fire.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    name: Friendly Protectron Firefighter
+    description: |
+      Do as your masters say with a literal but reasonable level of logic.
+        
+- type: entity
+  parent: N14RobotProtectron
+  id: N14RobotProtectronPolice
+  name: protectron police officer
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron-police.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    name: Friendly Protectron Police
+    description: |
+      Do as your masters say with a literal but reasonable level of logic.
+
+- type: entity
+  parent: N14RobotProtectron
+  id: N14RobotSecuritron
+  name: securitron
+  components:
+  - type: SpamEmitSound
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14SecuritronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-gray.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    name: Friendly Securitron
+    description: |
+      Do as your masters say with a literal but reasonable level of logic.
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronBlue
+  name: securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-blue.rsi
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronBrown
+  name: securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-brown.rsi
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronRed
+  name: securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-red.rsi
+
+- type: entity
+  parent: N14RobotSecuritron
+  id: N14RobotSecuritronYellow
+  name: securitron
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/securitron-yellow.rsi
+        
+# Handy Gutsy
+- type: entity
+  parent: N14BaseRobotChassis
+  id: N14RobotMrHandy
+  name: mr handy
+  components:
+  - type: IdleSound # #Misfits Change: give Mr. Handy chassis their ambient voice lines again
+  - type: SpamEmitSound # #Misfits Change: periodic idle chatter from the Mr. Handy sound set
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: on # #Misfits Fix: lit indicator; BorgSystem overrides at runtime
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: on # #Misfits Fix: 'on' RSI state is the lit variant used as the flashlight glow overlay
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SyncSprite
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  # - type: Construction
+    # node: cyborg
+  - type: Speech
+    speechVerb: Robotic
+  - type: Inventory
+    templateId: borgShort
+  - type: ActivatableUI
+    key: enum.BorgUiKey.Key
+  - type: WiresPanel
+  - type: ActivatableUIRequiresPanel
+  - type: Lock
+    locked: true
+  - type: ActivatableUIRequiresLock
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    name: Friendly Mr Handy
+    description: |
+      Do as your masters say with a good amount of logic.
+  - type: StepTriggerImmune
+    
+- type: entity
+  parent: N14RobotMrHandy
+  id: N14RobotMrHandySaw
+  name: mr handy
+  suffix: saw
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/mrhandysaw.rsi
+    
+- type: entity
+  parent: N14RobotMrHandy
+  id: N14RobotMrHandyGun
+  name: mr handy
+  suffix: gun
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/mrhandygun.rsi
+    
+- type: entity
+  parent: N14RobotMrHandy
+  id: N14RobotMrGutsy
+  name: mr gutsy
+  components:
+  - type: IdleSound # #Misfits Change: give Mr. Gutsy chassis their ambient voice lines again
+  - type: SpamEmitSound # #Misfits Change: periodic idle chatter from the Mr. Gutsy sound set
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14GutsyIdle
+      params:
+        volume: -7
+        maxDistance: 6
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
+  - type: BorgChassis
+    maxModules: 6
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+    hasMindState: on
+    noMindState: off
+    
+# Faction Specific Robots
+## Vault
+- type: entity
+  parent: N14RobotMrHandy
+  id: N14RobotMrHandyVault
+  suffix: player, vault
+  components:
+  - type: NpcFactionMember
+    factions:
+      - Vault
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - VaultCommon
+    - VaultCommand
+    - VaultEngineering
+    - VaultMedical
+    - VaultScience
+    - VaultSecurity
+  - type: ActiveRadio
+    channels:
+    - VaultCommon
+    - VaultCommand
+    - VaultEngineering
+    - VaultMedical
+    - VaultScience
+    - VaultSecurity
+  # - type: AccessReader
+    # access: [["VaultOverseer"]
+  - type: Access
+    enabled: false
+    groups:
+    - VaultOverseer
+    
+- type: entity
+  parent: N14RobotMrHandySaw
+  id: N14RobotMrHandySawVault
+  suffix: player, vault, saw
+  components:
+  - type: NpcFactionMember
+    factions:
+      - Vault
+  # - type: IntrinsicRadioTransmitter
+    # channels:
+    # - VaultCommon
+    # - VaultCommand
+    # - VaultEngineering
+    # - VaultMedical
+    # - VaultScience
+    # - VaultSecurity
+  # - type: ActiveRadio
+    # channels:
+    # - VaultCommon
+    # - VaultCommand
+    # - VaultEngineering
+    # - VaultMedical
+    # - VaultScience
+    # - VaultSecurity
+  # - type: AccessReader
+    # access: [["VaultOverseer"]
+  - type: Access
+    enabled: false
+    groups:
+    - VaultOverseer
+    
+## BOS Midwest
+- type: entity
+  id: N14RobotBOSMidwestBase # for inheritance only
+  abstract: true
+  components:
+  - type: NpcFactionMember
+    factions:
+      - BrotherhoodOfSteel
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - BrotherhoodOfSteel
+  - type: ActiveRadio
+    channels:
+    - BrotherhoodOfSteel
+  # - type: AccessReader
+    # access: [["BOSMidwest"]
+  # - type: ContainerFill
+    # containers:
+      # borg_brain:
+        # - PositronicBrain
+      # borg_module:
+        # - BorgModuleService
+        # - BorgModuleMusique
+        # - BorgModuleGardening
+        # - BorgModuleHarvesting
+        # - BorgModuleFireExtinguisher
+        # - BorgModuleRadiationDetection
+        # - BorgModuleTool
+        # - BorgModuleSyndicateWeapon
+  - type: Access
+    enabled: false
+    groups:
+    - BOS
+    
+- type: entity
+  parent: [N14RobotMrHandy, N14RobotBOSMidwestBase]
+  id: N14RobotMrHandyBOSMidwest
+  suffix: player, BOS Midwest
+    
+- type: entity
+  parent: [N14RobotMrHandySaw, N14RobotBOSMidwestBase]
+  id: N14RobotMrHandySawBOSMidwest
+  suffix: player, BOS Midwest, saw
+    
+- type: entity
+  parent: [N14RobotMrGutsy, N14RobotBOSMidwestBase]
+  id: N14RobotMrGutsyBOSMidwest
+  suffix: player, BOS Midwest, gutsy
+    
+## BOS Washington
+- type: entity
+  id: N14RobotBOSWashingtonBase # for inheritance only
+  abstract: true
+  components:
+  - type: NpcFactionMember
+    factions:
+      - BrotherhoodOfSteel
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - BrotherhoodOfSteel
+  - type: ActiveRadio
+    channels:
+    - BrotherhoodOfSteel
+  # - type: AccessReader
+    # access: [["BOSWashington"]
+  # - type: ContainerFill
+    # containers:
+      # borg_brain:
+        # - PositronicBrain
+      # borg_module:
+        # - BorgModuleService
+        # - BorgModuleMusique
+        # - BorgModuleGardening
+        # - BorgModuleHarvesting
+        # - BorgModuleFireExtinguisher
+        # - BorgModuleRadiationDetection
+        # - BorgModuleTool
+        # - BorgModuleSyndicateWeapon
+  - type: Access
+    enabled: false
+    groups:
+    - BOS
+    
+- type: entity
+  parent: [N14RobotMrHandy, N14RobotBOSWashingtonBase]
+  id: N14RobotMrHandyBOSWashington
+  suffix: player, BOS Washington
+    
+- type: entity
+  parent: [N14RobotMrHandySaw, N14RobotBOSWashingtonBase]
+  id: N14RobotMrHandySawBOSWashington
+  suffix: player, BOS Washington, saw
+    
+- type: entity
+  parent: [N14RobotMrGutsy, N14RobotBOSWashingtonBase]
+  id: N14RobotMrGutsyBOSWashington
+  suffix: player, BOS Washington, gutsy

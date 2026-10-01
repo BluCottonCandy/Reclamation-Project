@@ -1,0 +1,1715 @@
+﻿# Blueprint crafting recipes for Vault and Tribe factions.
+# All recipes require a blueprint item in workbench storage.
+
+# =====================================================================
+# VAULT WEAPON RECIPES
+# =====================================================================
+
+# --- Vault Tier 1 Weapons (Standard Vault-Tec security) ---
+- type: latheRecipe
+  id: N14BPVaultWeaponPistol10mm
+  result: N14WeaponPistol10mm
+  category: N14BlueprintVaultWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 2500
+    Plastic: 250
+
+- type: latheRecipe
+  id: N14BPVaultWeaponPoliceBaton
+  result: N14PoliceBaton
+  category: N14BlueprintVaultWeaponsT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 2500
+    Plastic: 500
+
+- type: latheRecipe
+  id: N14BPVaultWeaponLaserPistol
+  result: N14WeaponLaserPistol
+  category: N14BlueprintVaultWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 1000
+    Glass: 550
+    Circuitry: 400
+
+# #Misfits Add - mediocre kinetic security guns (T1)
+- type: latheRecipe
+  id: N14BPVaultWeaponPistol9mmChinese
+  result: N14WeaponPistol9mmChinese
+  category: N14BlueprintVaultWeaponsT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 1500
+    Plastic: 100
+
+- type: latheRecipe
+  id: N14BPVaultWeaponPistolM1911
+  result: N14WeaponPistolM1911
+  category: N14BlueprintVaultWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 2500
+    Plastic: 100
+
+- type: latheRecipe
+  id: N14BPVaultWeaponShotgunSawedOff
+  result: N14WeaponShotgunSawedOff
+  category: N14BlueprintVaultWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 2000
+    Wood: 1000
+
+# --- Vault Tier 2 Weapons (Advanced security) ---
+- type: latheRecipe
+  id: N14BPVaultWeaponSMG10mm
+  result: N14WeaponSMG10mm
+  category: N14BlueprintVaultWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 3500
+    Plastic: 100
+    N14Iron: 500
+
+# Recharger variants are intentionally excluded from blueprint crafting.
+
+- type: latheRecipe
+  id: N14BPVaultWeaponCombatKnife
+  result: N14CombatKnife
+  category: N14BlueprintVaultWeaponsT2
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 200
+    Plastic: 25
+
+# #Misfits Add - mediocre kinetic security guns (T2)
+- type: latheRecipe
+  id: N14BPVaultWeaponRifle10mmM1Carbine
+  result: N14WeaponRifle10mmM1Carbine
+  category: N14BlueprintVaultWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 3500
+    Plastic: 200
+
+- type: latheRecipe
+  id: N14BPVaultWeaponShotgunTrench
+  result: N14WeaponShotgunTrench
+  category: N14BlueprintVaultWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 3500
+    N14Iron: 700
+
+- type: latheRecipe
+  id: N14BPVaultWeaponSMG10mmChinese
+  result: N14WeaponSMG10mmChinese
+  category: N14BlueprintVaultWeaponsT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 3500
+    Plastic: 100
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPVaultWeaponAmerican180
+  result: N14WeaponSMGAmerican180
+  category: N14BlueprintVaultWeaponsT2
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 8000
+    Plastic: 1500
+    N14Silver: 500
+    N14Gold: 300
+
+# --- Vault Tier 3 Weapons (R&D energy weapons) ---
+- type: latheRecipe
+  id: N14BPVaultWeaponPlasmaPistol
+  result: N14WeaponPlasmaPistol
+  category: N14BlueprintVaultWeaponsT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 4000
+    Glass: 375
+    Circuitry: 200
+    ScrapElectronic: 200
+
+- type: latheRecipe
+  id: N14BPVaultWeaponLaserRifle
+  result: N14WeaponLaserRifle
+  category: N14BlueprintVaultWeaponsT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 5000
+    Glass: 575
+    Circuitry: 400
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPVaultWeaponPlasmaDefender
+  result: N14WeaponPlasmaDefender
+  category: N14BlueprintVaultWeaponsT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 6000
+    Glass: 500
+    Circuitry: 400
+    ScrapElectronic: 250
+
+# --- Vault Tier 4 Weapons (Experimental prototypes) ---
+- type: latheRecipe
+  id: N14BPVaultWeaponPlasmaRifle
+  result: N14WeaponPlasmaRifle
+  category: N14BlueprintVaultWeaponsT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 4000
+    Glass: 1500
+    Circuitry: 200
+    ScrapElectronic: 150
+    Plastic: 500
+    N14Gold: 200
+
+- type: latheRecipe
+  id: N14BPVaultWeaponLaserRifleWattz2000
+  result: N14WeaponLaserRifleWattz2000
+  category: N14BlueprintVaultWeaponsT4
+  completetime: 22
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 4000
+    Glass: 3500
+    Circuitry: 200
+    ScrapElectronic: 500
+    N14Gold: 1000
+    N14Copper: 500
+
+- type: latheRecipe
+  id: N14BPVaultWeaponLaserRifleAuto
+  result: N14WeaponLaserRifleAuto
+  category: N14BlueprintVaultWeaponsT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 7000
+    Glass: 1500
+    Circuitry: 400
+    ScrapElectronic: 500
+    Plastic: 750
+    N14Gold: 300
+    N14Silver: 300
+
+- type: latheRecipe
+  id: N14BPVaultWeaponLaserRCW
+  result: N14WeaponLaserRCW
+  category: N14BlueprintVaultWeaponsT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 6000
+    Glass: 2500
+    Circuitry: 700
+    ScrapElectronic: 575
+    Plastic: 750
+    N14Gold: 500
+
+# THE PLASMA CASTER RECIPE (rewards the grind)
+- type: latheRecipe
+  id: N14BPVaultWeaponPlasmaCaster
+  result: N14WeaponPlasmaCaster
+  category: N14BlueprintVaultWeaponsT4
+  completetime: 40
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 40000
+    Glass: 5000
+    Circuitry: 2000
+    ScrapElectronic: 1000
+    Plastic: 1000
+    N14Gold: 500
+    N14Silver: 500
+
+# =====================================================================
+# VAULT ARMOR RECIPES
+# =====================================================================
+
+# --- Vault Tier 1 Armor ---
+- type: latheRecipe
+  id: N14BPVaultArmorVaultSecVest
+  result: N14ClothingOuterVaultSecVest
+  category: N14BlueprintVaultArmorT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Cloth: 1250
+    Thread: 500
+    Plastic: 500
+
+# --- Vault Tier 2 Armor ---
+
+- type: latheRecipe
+  id: M14BPVaultAdvancedVestArmor
+  result: M14ClothingOuterVaultAdvancedVest
+  category: N14BlueprintVaultArmorT2
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Cloth: 900
+    Thread: 600
+    Plastic: 1000
+    Steel: 1000
+    N14Iron: 100
+    Leather: 250
+
+# --- Vault Tier 3 Armor ---
+- type: latheRecipe
+  id: N14BPVaultArmorCombatArmor
+  result: N14ClothingOuterCombatArmor
+  category: N14BlueprintVaultArmorT3
+  completetime: 15
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 4000
+    Cloth: 500
+    Thread: 250
+    Plastic: 250
+    Circuitry: 200
+
+- type: latheRecipe
+  id: N14BPVaultArmorPoliceCombat
+  result: N14ClothingOuterPoliceCombat
+  category: N14BlueprintVaultArmorT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 4300
+    Cloth: 650
+    Thread: 300
+    Plastic: 500
+
+# --- Vault Tier 4 Armor ---
+- type: latheRecipe
+  id: N14BPVaultArmorCombatArmorMK2
+  result: N14ClothingOuterCombatArmorMK2
+  category: N14BlueprintVaultArmorT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 7000
+    Cloth: 500
+    Thread: 200
+    Circuitry: 400
+    ScrapElectronic: 250
+    Plastic: 500
+
+- type: latheRecipe
+  id: M14BPVaultPaintCombatArmor
+  result: M14ClothingOuterVaultCombatArmor
+  category: N14BlueprintVaultArmorT4
+  completetime: 25
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 8000
+    Cloth: 1000
+    Thread: 575
+    Circuitry: 400
+    ScrapElectronic: 900
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPVaultArmorMarineArmor
+  result: N14ClothingOuterMarineArmor
+  category: N14BlueprintVaultArmorT4
+  completetime: 25
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 9000
+    Cloth: 800
+    Thread: 750
+    Circuitry: 400
+    ScrapElectronic: 1000
+    N14Iron: 1500
+
+- type: latheRecipe
+  id: N14BPVaultArmorScoutSuit
+  result: N14ClothingOuterVaultScoutSuit
+  category: N14BlueprintVaultArmorT4
+  completetime: 50
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 20000
+    Cloth: 1500
+    Thread: 1000
+    Circuitry: 1500
+    ScrapElectronic: 1000
+    Plastic: 1200
+
+# =====================================================================
+# VAULT AMMO RECIPES
+# =====================================================================
+
+# --- Vault Tier 1 Ammo ---
+- type: latheRecipe
+  id: N14BPVaultAmmoBox10mm
+  result: N14AmmoBox10mm
+  category: N14BlueprintVaultAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Lead: 1
+    N14Brass: 50
+    N14Gunpowder: 50
+
+- type: latheRecipe
+  id: N14BPVaultAmmoMag10mmPistol
+  result: N14MagazinePistol10mm
+  category: N14BlueprintVaultAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 750
+    Lead: 50
+    N14Gunpowder: 25
+
+# #Misfits Add - ammo for T1 mediocre security guns (9mm / .45 / 12ga / .22)
+- type: latheRecipe
+  id: N14BPVaultAmmoBox9mm
+  result: N14AmmoBox9mm
+  category: N14BlueprintVaultAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Lead: 20
+    N14Brass: 10
+    N14Gunpowder: 10
+
+- type: latheRecipe
+  id: N14BPVaultAmmoMag9mmPistol
+  result: N14MagazinePistol9mm
+  category: N14BlueprintVaultAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 70
+    Lead: 5
+    N14Gunpowder: 5
+
+- type: latheRecipe
+  id: N14BPVaultAmmoBox45
+  result: N14AmmoBox45
+  category: N14BlueprintVaultAmmoT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Lead: 25
+    N14Brass: 15
+    N14Gunpowder: 15
+
+- type: latheRecipe
+  id: N14BPVaultAmmoMag45Pistol
+  result: N14MagazinePistol45
+  category: N14BlueprintVaultAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 80
+    Lead: 5
+    N14Gunpowder: 5
+
+- type: latheRecipe
+  id: N14BPVaultAmmoBox12gauge
+  result: N14AmmoBox12gauge
+  category: N14BlueprintVaultAmmoT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Lead: 25
+    Plastic: 5
+    N14Gunpowder: 15
+
+- type: latheRecipe
+  id: N14BPVaultAmmoBox22lr
+  result: N14AmmoBox22lr
+  category: N14BlueprintVaultAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Lead: 20
+    N14Brass: 10
+    N14Gunpowder: 10
+
+- type: latheRecipe
+  id: N14BPVaultAmmoMagAmerican180Drum
+  result: N14MagazineAmerican180Drum
+  category: N14BlueprintVaultAmmoT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 120
+    Lead: 20
+    N14Gunpowder: 20
+
+# --- Vault Tier 2 Ammo ---
+- type: latheRecipe
+  id: N14BPVaultAmmoPowerCellSmall
+  result: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC; weapon controls beam color
+  category: N14BlueprintVaultAmmoT2
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Glass: 500
+    Circuitry: 100
+    ScrapElectronic: 200
+    N14Gold: 800
+
+- type: latheRecipe
+  id: N14BPVaultAmmoMag10mmSMG
+  result: N14MagazineSMG10mm
+  category: N14BlueprintVaultAmmoT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 500
+    Lead: 200
+    N14Gunpowder: 300
+
+# --- Vault Tier 3 Ammo ---
+# #Misfits Removed - MFC recipe commented out; consolidated to single generic cell at T2
+# - type: latheRecipe
+#   id: N14BPVaultAmmoPowerCellHigh
+#   result: N14MicrofusionCell
+#   category: N14BlueprintVaultAmmoT3
+
+- type: latheRecipe
+  id: N14BPVaultAmmoPlasmaCell
+  result: N14PlasmaCartridge
+  category: N14BlueprintVaultAmmoT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Glass: 450
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 450
+
+# --- Vault Tier 4 Ammo ---
+- type: latheRecipe
+  id: N14BPVaultAmmoPlasmaCartridge
+  result: N14PlasmaShell
+  category: N14BlueprintVaultAmmoT4
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Glass: 600
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 600
+
+- type: latheRecipe
+  id: N14BPVaultAmmoElectronChargePack
+  result: N14ElectronChargePack
+  category: N14BlueprintVaultAmmoT4
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Glass: 100
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 100
+
+# #Misfits Removed - MFC recipe commented out; consolidated to single generic cell at T2
+# - type: latheRecipe
+#   id: N14BPVaultAmmoPowerCellAdvanced
+#   result: N14MicrofusionCell
+#   category: N14BlueprintVaultAmmoT4
+
+# =====================================================================
+# TRIBE WEAPON RECIPES
+# =====================================================================
+
+# --- Tribe Tier 1 Weapons (Basic hunting tools) ---
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalKnife
+  result: N14TribalKnife
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    N14Iron: 750
+    Leather: 250
+
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalClub
+  result: N14TribalClub
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Wood: 1500
+    Leather: 100
+
+- type: latheRecipe
+  id: N14BPTribeWeaponWastelandSpear
+  result: N14WastelandSpear
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Wood: 1200
+    N14Iron: 500
+    Leather: 150
+
+- type: latheRecipe
+  id: N14BPTribeWeaponRevolver44Tribal
+  result: N14WeaponRevolver44Tribal
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    N14Iron: 500
+    Scrap: 250
+    Wood: 250
+
+- type: latheRecipe
+  id: N14BPTribeWeaponBrokenPipe
+  result: N14BrokenPipe
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 2
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 1000
+    ScrapSteel: 300 
+
+- type: latheRecipe
+  id: N14BPTribeWeaponLoveandHate
+  result: N14MeleeHandsGoldenKnuckleSpecial
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 2
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    N14Brass : 1200
+    ScrapSteel: 300
+
+# #Misfits Add - mediocre scavenged kinetic guns (T1)
+- type: latheRecipe
+  id: N14BPTribeWeaponPistol9mmChinese
+  result: N14WeaponPistol9mmChinese
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 1000
+    Scrap: 50
+
+- type: latheRecipe
+  id: N14BPTribeWeaponPistol12mm
+  result: N14WeaponPistol12mm
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 2500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTribeWeaponShotgunSawedOff
+  result: N14WeaponShotgunSawedOff
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 2000
+    Wood: 1000
+
+- type: latheRecipe
+  id: N14BPTribeWeaponSniperCowboyRepeater
+  result: N14WeaponSniperCowboyRepeater
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 2500
+    Wood: 1000
+
+- type: latheRecipe
+  id: N14BPTribeWeaponRevolver357Detective
+  result: N14WeaponRevolver357Detective
+  category: N14BlueprintTribeWeaponsT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 1500
+    N14Iron: 100
+
+# --- Tribe Tier 2 Weapons (Warrior weapons) ---
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalMachete
+  result: N14TribalMachete
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    N14Iron: 1250
+    Leather: 250
+    Wood: 500
+
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalHatchet
+  result: N14TribalHatchet
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    N14Iron: 1000
+    Wood: 500
+    Leather: 100
+
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalSword
+  result: N14TribalSword
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    N14Iron: 1400
+    Leather: 300
+    Cloth: 500
+
+- type: latheRecipe
+  id: N14BPTribeWeaponRevolver44TribalUpgraded
+  result: N14WeaponRevolver44TribalUpgraded
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    N14Iron: 1250
+    Scrap: 200
+    Steel: 700
+
+- type: latheRecipe
+  id: N14BPTribeWeaponPistol10mmPipe
+  result: N14WeaponPistol10mmPipe
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 1250
+    ScrapSteel: 350
+    Wood: 500
+
+- type: latheRecipe
+  id: N14BPTribeWeaponShotgunPipe
+  result: N14WeaponShotgunPipe
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 1000
+    ScrapSteel: 700
+    Wood: 500
+
+# #Misfits Add - mediocre scavenged kinetic guns (T2)
+- type: latheRecipe
+  id: N14BPTribeWeaponSMGPPSh41
+  result: N14WeaponSMGPPSh41
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 3500
+    N14Iron: 700
+    N14Brass: 250
+
+- type: latheRecipe
+  id: N14BPTribeWeaponRifle10mmM1Carbine
+  result: N14WeaponRifle10mmM1Carbine
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 3500
+    Wood: 1000
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTribeWeaponSniper308Ross
+  result: N14WeaponSniper308Ross
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 3500
+    Wood: 1500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPTribeWeaponSniper44LeverShortCarbine
+  result: N14WeaponSniper44LeverShortCarbine
+  category: N14BlueprintTribeWeaponsT2
+  completetime: 9
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 3500
+    Wood: 1500
+    N14Iron: 500
+
+# --- Tribe Tier 3 Weapons (Elder's war knowledge) ---
+- type: latheRecipe
+  id: N14BPTribeWeaponRevolver44TribalExtra
+  result: N14WeaponRevolver44TribalUpgradedExtra
+  category: N14BlueprintTribeWeaponsT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 2000
+    N14Iron: 750
+    Scrap: 100
+    N14Brass: 300
+
+- type: latheRecipe
+  id: N14BPTribeWeaponHandcannon
+  result: N14WeaponRevolver45-70Handcannon
+  category: N14BlueprintTribeWeaponsT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 4000
+    N14Iron: 800
+    Scrap: 300
+
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalBigClub
+  result: N14TribalBigClub
+  category: N14BlueprintTribeWeaponsT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Wood: 3000
+    N14Iron: 500
+    Leather: 200
+
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalSpear
+  result: N14WastelandTribalSpear
+  category: N14BlueprintTribeWeaponsT3
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Wood: 1800
+    N14Iron: 1050
+    Leather: 150
+
+- type: latheRecipe
+  id: N14BPTribeWeaponSMG12mmPipe
+  result: N14WeaponSMG12mmPipe
+  category: N14BlueprintTribeWeaponsT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 800
+    ScrapSteel: 900
+    N14Iron: 1050
+
+- type: latheRecipe
+  id: N14BPTribeWeaponRifle556Pipe
+  result: N14WeaponRifle556Pipe
+  category: N14BlueprintTribeWeaponsT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 1150
+    ScrapSteel: 800
+    Wood: 1050
+
+# --- Tribe Tier 4 Weapons (Shaman's sacred weapons) ---
+- type: latheRecipe
+  id: N14BPTribeWeaponHandcannonUpgraded
+  result: N14WeaponRevolver45-70HandcannonUpgraded
+  category: N14BlueprintTribeWeaponsT4
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 3500
+    N14Iron: 1000
+    N14Brass: 200
+    Leather: 100
+
+- type: latheRecipe
+  id: N14BPTribeWeaponTribalBigClubDecorated
+  result: N14TribalBigClubDecorated
+  category: N14BlueprintTribeWeaponsT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Wood: 3800
+    N14Iron: 1200
+    Leather: 500
+    N14Gold: 250
+
+- type: latheRecipe
+  id: N14BPTribeWeaponPolearm
+  result: N14WastelandPolearm
+  category: N14BlueprintTribeWeaponsT4
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 2500
+    N14Iron: 1000
+    Wood: 2000
+    Leather: 350
+
+- type: latheRecipe
+  id: N14BPTribeWeaponSniper50Pipe
+  result: N14WeaponSniper50Pipe
+  category: N14BlueprintTribeWeaponsT4
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 2000
+    ScrapSteel: 1500
+    N14Iron: 5000
+    Wood: 1500
+
+- type: latheRecipe
+  id: N14BPTribeWeaponSuperSledgeHammer
+  result: N14SuperSledgeHammer
+  category: N14BlueprintTribeWeaponsT4
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 30000
+    N14Iron: 3500
+    Wood: 900
+    Scrap: 5000
+
+# =====================================================================
+# TRIBE ARMOR RECIPES
+# =====================================================================
+
+# --- Tribe Tier 1 Armor ---
+- type: latheRecipe
+  id: N14BPTribeArmorTribalArmor
+  result: N14ClothingOuterTribalArmor
+  category: N14BlueprintTribeArmorT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 100
+    Cloth: 750
+    Thread: 500
+
+- type: latheRecipe
+  id: N14BPTribeArmorDrylanderSimple
+  result: N14ClothingOuterdrylandersimple
+  category: N14BlueprintTribeArmorT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 100
+    Thread: 750
+    Leather: 50
+
+# --- Tribe Tier 2 Armor ---
+- type: latheRecipe
+  id: N14BPTribeArmorBandito
+  result: N14ClothingOuterBandito
+  category: N14BlueprintTribeArmorT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 175
+    Cloth: 1250
+    Thread: 100
+
+- type: latheRecipe
+  id: N14BPTribeArmorForager
+  result: N14ClothingOuterforager
+  category: N14BlueprintTribeArmorT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 150
+    Cloth: 150
+    Thread: 100
+
+- type: latheRecipe
+  id: N14BPTribeArmorHunter
+  result: N14ClothingOuterhunter
+  category: N14BlueprintTribeArmorT2
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 175
+    Cloth: 1250
+    Thread: 100
+
+- type: latheRecipe
+  id: N14BPTribeArmorPoncho
+  result: N14ClothingOuterponcho
+  category: N14BlueprintTribeArmorT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 1200
+    Thread: 125
+    Leather: 50
+
+- type: latheRecipe
+  id: N14BPTribeArmorHeadtaker
+  result: N14ClothingOuterheadtaker
+  category: N14BlueprintTribeArmorT2
+  completetime: 11
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 275
+    N14Iron: 100
+    Cloth: 1750
+    Thread: 750
+
+- type: latheRecipe
+  id: N14BPTribeArmorShaman
+  result: N14ClothingOutershaman
+  category: N14BlueprintTribeArmorT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 2000
+    Thread: 1750
+    Leather: 1500
+
+# --- Tribe Tier 3 Armor ---
+- type: latheRecipe
+  id: N14BPTribeArmorTribalArmorHeavy
+  result: N14ClothingOuterTribalArmorHeavy
+  category: N14BlueprintTribeArmorT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 200
+    N14Iron: 1200
+    Cloth: 200
+    Thread: 150
+
+- type: latheRecipe
+  id: N14BPTribeArmorCombatTribal
+  result: N14ClothingOuterCombatTribal
+  category: N14BlueprintTribeArmorT3
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 300
+    Steel: 3000
+    Cloth: 1050
+    Thread: 900
+
+# --- Tribe Tier 4 Armor ---
+- type: latheRecipe
+  id: N14BPTribeArmorRadArmor
+  result: N14ClothingOuterRadArmor
+  category: N14BlueprintTribeArmorT4
+  completetime: 18
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 300
+    Steel: 2500
+    N14Iron: 1300
+    Cloth: 200
+    Thread: 150
+
+- type: latheRecipe
+  id: N14BPTribeArmorInsectArmor
+  result: N14ClothingOuterInsectArmor
+  category: N14BlueprintTribeArmorT4
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 350
+    Cloth: 200
+    Thread: 150
+    N14Iron: 1200
+
+# =====================================================================
+# TRIBE AMMO RECIPES
+# =====================================================================
+
+# --- Tribe Tier 1 Ammo ---
+- type: latheRecipe
+  id: N14BPTribeAmmoBox44Magnum
+  result: N14AmmoBox44Magnum
+  category: N14BlueprintTribeAmmoT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 1
+    Scrap: 50
+    N14Gunpowder: 75
+
+- type: latheRecipe
+  id: N14BPTribeAmmoBox10mm
+  result: N14AmmoBox10mm
+  category: N14BlueprintTribeAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 1
+    Scrap: 50
+    N14Gunpowder: 50
+
+- type: latheRecipe
+  id: N14BPTribeAmmoSpeedLoader44
+  result: N14SpeedLoader44Magnum
+  category: N14BlueprintTribeAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 75
+    Scrap: 50
+    N14Gunpowder: 50
+
+# #Misfits Add - ammo for T1 mediocre guns (9mm / 12mm mag / .357)
+- type: latheRecipe
+  id: N14BPTribeAmmoBox9mm
+  result: N14AmmoBox9mm
+  category: N14BlueprintTribeAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 20
+    Scrap: 10
+    N14Gunpowder: 10
+
+- type: latheRecipe
+  id: N14BPTribeAmmoMag9mmPistol
+  result: N14MagazinePistol9mm
+  category: N14BlueprintTribeAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 70
+    Lead: 5
+    N14Gunpowder: 5
+
+- type: latheRecipe
+  id: N14BPTribeAmmoMagPistol12mm
+  result: N14MagazinePistol12mm
+  category: N14BlueprintTribeAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 90
+    Lead: 6
+    N14Gunpowder: 6
+
+- type: latheRecipe
+  id: N14BPTribeAmmoBox357
+  result: N14AmmoBox357
+  category: N14BlueprintTribeAmmoT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 25
+    Scrap: 15
+    N14Gunpowder: 15
+
+- type: latheRecipe
+  id: N14BPTribeAmmoSpeedLoader357
+  result: N14SpeedLoader357
+  category: N14BlueprintTribeAmmoT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 10
+    Scrap: 5
+    N14Gunpowder: 5
+
+# --- Tribe Tier 2 Ammo ---
+- type: latheRecipe
+  id: N14BPTribeAmmoBox12gauge
+  result: N14AmmoBox12gauge
+  category: N14BlueprintTribeAmmoT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 150
+    Scrap: 75
+    N14Gunpowder: 1
+
+- type: latheRecipe
+  id: N14BPTribeAmmoBox556
+  result: N14AmmoBox556
+  category: N14BlueprintTribeAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 150
+    Scrap: 75
+    N14Gunpowder: 1
+
+- type: latheRecipe
+  id: N14BPTribeAmmoMag10mmPipe
+  result: N14MagazinePistol10mm
+  category: N14BlueprintTribeAmmoT2
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 75
+    Lead: 75
+    N14Gunpowder: 50
+
+# #Misfits Add - ammo for T2 mediocre guns (9mm drum; .308 box already exists at T3)
+- type: latheRecipe
+  id: N14BPTribeAmmoMag9mmSMGDrum
+  result: N14MagazineSMG9mmDrum
+  category: N14BlueprintTribeAmmoT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Steel: 200
+    Lead: 60
+    N14Gunpowder: 60
+
+# --- Tribe Tier 3 Ammo ---
+- type: latheRecipe
+  id: N14BPTribeAmmoBox127
+  result: N14AmmoBox127
+  category: N14BlueprintTribeAmmoT3
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 2
+    Scrap: 1
+    N14Gunpowder: 150
+
+- type: latheRecipe
+  id: N14BPTribeAmmoBox308
+  result: N14AmmoBox308
+  category: N14BlueprintTribeAmmoT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 250
+    Scrap: 125
+    N14Gunpowder: 175
+
+- type: latheRecipe
+  id: N14BPTribeAmmoSpeedLoader45-70
+  result: N14SpeedLoader45-70
+  category: N14BlueprintTribeAmmoT3
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 125
+    Scrap: 75
+    N14Gunpowder: 1
+
+# --- Tribe Tier 4 Ammo ---
+- type: latheRecipe
+  id: N14BPTribeAmmoBox50
+  result: N14AmmoBox50
+  category: N14BlueprintTribeAmmoT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 4
+    Scrap: 2
+    N14Gunpowder: 3
+    N14Iron: 1
+
+- type: latheRecipe
+  id: N14BPTribeAmmoBox45-70
+  result: N14AmmoBox45-70
+  category: N14BlueprintTribeAmmoT4
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Lead: 350
+    Scrap: 175
+    N14Gunpowder: 250
+
+- type: latheRecipe
+  id: N14BPTribeAmmoMag556Pipe
+  result: Magazine556Rifle
+  category: N14BlueprintTribeAmmoT4
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Scrap: 150
+    Lead: 150
+    N14Gunpowder: 1
+
+# =====================================================================
+# #Misfits Add - HELMET RECIPES
+# Helmets pair with their armor tier so players can craft a matching head
+# slot when their issued one breaks. Material costs are scaled to be lighter
+# than the body armor they pair with.
+# =====================================================================
+
+# --- Vault Tier 1 Helmets (security riot) ---
+- type: latheRecipe
+  id: N14BPVaultArmorHelmetVaultRiot
+  result: N14ClothingHeadHatVaultRiot
+  category: N14BlueprintVaultArmorT1
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 300
+    Plastic: 200
+    Cloth: 200
+
+# --- Vault Tier 2 Helmets (basic metal) ---
+- type: latheRecipe
+  id: M14BPVaultArmorHelmetAdvancedRiot
+  result: M14ClothingHeadHatVaultRiotHelmet
+  category: N14BlueprintVaultArmorT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 500
+    Cloth: 500
+    Leather: 100
+    Plastic: 500
+
+- type: latheRecipe
+  id: N14BPVaultArmorHelmetMetal
+  result: N14ClothingHeadHatVaultBlueprintHelmetMetal
+  category: N14BlueprintVaultArmorT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 800
+    Cloth: 300
+    Leather: 30
+
+# --- Vault Tier 3 Helmets (combat) ---
+- type: latheRecipe
+  id: N14BPVaultArmorHelmetCombat
+  result: N14ClothingHeadHatCombatHelmet
+  category: N14BlueprintVaultArmorT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 800
+    Cloth: 800
+    Leather: 40
+    Plastic: 600
+
+# --- Vault Tier 4 Helmets (combat MK2 / marine) ---
+- type: latheRecipe
+  id: N14BPVaultArmorHelmetCombatMK2
+  result: N14ClothingHeadHatCombatHelmetMK2
+  category: N14BlueprintVaultArmorT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 900
+    Cloth: 100
+    Leather: 50
+    Circuitry: 50
+
+- type: latheRecipe
+  id: M14BPVaultPaintCombatHelmet
+  result: M14ClothingHeadHatVaultCombatHelmet
+  category: N14BlueprintVaultArmorT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 900
+    Cloth: 100
+    Leather: 50
+    Circuitry: 50
+
+- type: latheRecipe
+  id: N14BPVaultArmorHelmetMarine
+  result: N14ClothingHeadHatBaseHelmetmarine
+  category: N14BlueprintVaultArmorT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 3000
+    Cloth: 1000
+    Leather: 500
+    Circuitry: 400
+
+# --- Tribe Tier 1 Helmets (head wraps / drylander) ---
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetRadstagSkull
+  result: N14ClothingTribalRadstagSkull
+  category: N14BlueprintTribeArmorT1
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 25
+    Thread: 8
+
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetTribalShamanHeadband
+  result: N14ClothingTribalShamanHeadband
+  category: N14BlueprintTribeArmorT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 12
+    Thread: 8
+    Leather: 5
+
+# --- Tribe Tier 2 Helmets (warrior wraps / hunter hood) ---
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetTribalHeadWraps
+  result: N14ClothingTribalHeadWraps
+  category: N14BlueprintTribeArmorT1
+  completetime: 3
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 8
+    Thread: 5
+
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetDrylanderGoggles
+  result: N14ClothingDrylanderGoggles
+  category: N14BlueprintTribeArmorT2
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 5
+    Cloth: 4
+    Glass: 100
+
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetTribalShemagh
+  result: N14ClothingTribalShemagh
+  category: N14BlueprintTribeArmorT2
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 10
+    Thread: 6
+
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetTribalHunterHood
+  result: N14ClothingTribalHunterHood
+  category: N14BlueprintTribeArmorT2
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 12
+    Thread: 8
+    Leather: 5
+
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetTribalShamanHat
+  result: N14ClothingTribalShamanHat
+  category: N14BlueprintTribeArmorT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 15
+    Thread: 10
+    Leather: 11
+
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetHeadtakerwraps
+  result: N14ClothingHeadTakerwraps
+  category: N14BlueprintTribeArmorT2
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 15
+    Thread: 10
+    Leather: 8
+
+- type: latheRecipe
+  id: MisfitsBPTribeArmorHelmetHelmetOfPeace
+  result: TribalHelmetofPeace
+  category: N14BlueprintTribeArmorT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials: # TODO: use Broc and Xander in the actual construction, when Tribe gets its BP adjustments
+    Cloth: 15
+    Thread: 10
+    Leather: 11
+
+# --- Tribe Tier 3 Helmets (champion / shaman) ---
+- type: latheRecipe
+  id: MisfitsBPTribeArmorHelmetRadstagSkull
+  result: MisfitsClothingHeadRadstagHelmet
+  category: N14BlueprintTribeArmorT3
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 20
+    Steel: 500
+    Thread: 10
+
+# --- Tribe Tier 4 Helmets (sacred / elder) ---
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetEdlerSkullhelm
+  result: N14ClothingHeadHatEdlerSkullhelm
+  category: N14BlueprintTribeArmorT4
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 32
+    Steel: 1500
+    Thread: 10

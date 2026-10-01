@@ -1,0 +1,17 @@
+#Misfits Add: Construction prototype for body bag in G-menu crafting under medical category.
+# Uses cloth as the primary obtainable material — represents field-stitched cadaver transport bags.
+
+# Body Bag
+- type: construction
+  name: body bag
+  id: MisfitsBodyBag
+  graph: MisfitsBodyBagGraph
+  startNode: start
+  targetNode: bodybag
+  category: construction-category-medical
+  description: A durable bag for storing and transporting cadavers. Crafted from cloth.
+  hide: false
+  icon:
+    sprite: Objects/Specific/Medical/Morgue/bodybags.rsi
+    state: bag_folded
+  objectType: Item

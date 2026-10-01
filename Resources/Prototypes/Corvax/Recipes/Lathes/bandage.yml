@@ -1,0 +1,24 @@
+- type: latheRecipe
+  id: NCClothingBandageNCR
+  result: NCClothingBandageNCRRecruit
+  category: N14Identification
+  completetime: 5
+  materials:
+    Cloth: 200
+
+#Misfits Change /Comment-out/: BoS bandage entity was removed.
+#- type: latheRecipe
+#  id: NCClothingBandageBoS
+#  result: NCClothingBandageBoSRecruit
+#  category: N14Identification
+#  completetime: 5
+#  materials:
+#    Cloth: 200
+
+- type: latheRecipe
+  id: NCClothingBandageLegion
+  result: NCClothingBandageLegionRecruit
+  category: N14Identification
+  completetime: 5
+  materials:
+    Cloth: 200

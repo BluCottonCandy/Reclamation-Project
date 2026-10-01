@@ -1,0 +1,325 @@
+- type: entity
+  name: machete
+  parent: Machete
+  id: N14Machete
+  description: A large, vicious looking blade.
+  components:
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 28
+        Piercing: 10
+    soundHit:
+      collection: N14BladeMediumSwing
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/machete.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/machete.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _Nuclear14/Objects/Weapons/Melee/machete.rsi
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  name: tribal machete
+  parent: N14Machete
+  id: N14TribalMachete
+  description: A tribal machete, made from the materials given by nature, this long blade has the perfect balance between tool and weapon.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/tribal_machete.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/tribal_machete.rsi
+    state: icon
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 30
+        Piercing: 10
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 32
+        Piercing: 6
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/tribal_machete.rsi
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  name: scrap machete
+  parent: N14Machete
+  id: N14ScrapMachete
+  description: A makeshift long blade machete, not the sharpest blade but it can still cut some meat.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/scrap_machete.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/scrap_machete.rsi
+    state: icon
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 16
+        Piercing: 5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 32
+        Piercing: 4
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/scrap_machete.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  name: ripper
+  parent: N14Machete
+  id: N14ripper
+  description: A light one-handed chainsaw originally designed for the pre-war army sappers to clean selvatic and wooded paths, it also works well against flesh.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/ripper.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/ripper.rsi
+    state: icon
+  - type: EmbeddableProjectile
+    sound: /Audio/_Nuclear14/Weapons/Melee/Swing/ripper.ogg
+  - type: EmbedPassiveDamage
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 20
+        Piercing: 9
+  - type: Sharp
+  - type: MeleeWeapon
+    autoAttack: true
+    angle: 0
+    wideAnimationRotation: -135
+    attackRate: 0.25
+    damage:
+      types:
+        Slash: 6
+        Piercing: 3
+        Structural: 18
+    soundHit:
+      path: /Audio/_Nuclear14/Weapons/Melee/Swing/ripper.ogg
+  - type: Item
+    size: Large
+    sprite: _Nuclear14/Objects/Weapons/Melee/ripper.rsi
+  - type: DisarmMalus
+  - type: RefillableSolution
+    solution: Welder
+  - type: SolutionContainerManager
+    solutions:
+      Welder:
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 300
+        maxVol: 300
+  - type: UseDelay
+    delay: 1
+  - type: Tool
+    qualities:
+      - Sawing
+    speedModifier: 3.0
+  - type: StaticPrice
+    price: 50
+  - type: SurgeryTool
+    startSound:
+      path: /Audio/Medical/Surgery/saw.ogg
+  - type: BoneSaw
+    speed: 0.75
+  - type: Scalpel
+    speed: 0.5
+
+- type: entity
+  name: ceremonial sword
+  parent: N14Machete
+  id: N14CeremonialSword
+  description: "An impressive double-edged sword, this weapon's size and sharpness make you think it could cleave a man in two."
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/ceremonialsword.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/ceremonialsword.rsi
+    state: icon
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 32
+        Piercing: 18
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Slash: 40
+        Piercing: 15
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/ceremonialsword.rsi
+  - type: StaticPrice
+    price: 70
+
+- type: entity
+  name: chinese officer sword
+  parent: N14Machete
+  id: N14ChineseSword
+  description: "An impressive double-edged sword used by pre-war chinese officers, this weapon's size and sharpness make you think it could cleave a man in two."
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 40
+        Piercing: 8
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 38
+        Piercing: 9
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
+  - type: StaticPrice
+    price: 70
+
+- type: entity
+  name: longsword
+  parent: N14Machete
+  id: N14LongSword
+  description: You feel like you're in the medieval ages already...
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/long_sword.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 40
+        Piercing: 8
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/long_sword.rsi
+  - type: StaticPrice
+    price: 70
+
+- type: entity
+  name: tribal sword
+  parent: N14Machete
+  id: N14TribalSword
+  description: A tribal sword, made from teeth and claws from the hunts and bound to a piece of wood.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/tribal_sword.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/tribal_sword.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 24
+        Slash: 18
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/tribal_sword.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  name: waster katana
+  parent: N14Machete
+  id: N14WasterKatanaT1
+  description: A crudely made katana, this weapon is a simple blade with a simple hilt, but it can still cut through flesh and bone.
+  components:
+  - type: Tag
+    tags:
+    - WasterKatanaT1
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/wasterkatanat1.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 25
+        Slash: 20
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/wasterkatanat1.rsi
+  - type: Construction
+    graph: N14WasterKatanaT1
+    node: wasterkatana1
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  name: superior waster katana
+  parent: N14Machete
+  id: N14WasterKatanaT2
+  description: A crudely made katana, this weapon is a simple blade with a simple hilt. This one appears upgraded with a better hilt and a sharper blade, making it more effective.
+  components:
+  - type: Tag
+    tags:
+    - WasterKatanaT2
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/wasterkatanat2.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 30
+        Slash: 25
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/wasterkatanat2.rsi
+  - type: Construction
+    graph: N14WasterKatanaT2
+    node: wasterkatana2
+  - type: StaticPrice
+    price: 75

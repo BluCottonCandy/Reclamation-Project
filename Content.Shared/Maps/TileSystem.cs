@@ -1,0 +1,261 @@
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Numerics;
+using Content.Shared._Misfits.RCD;
+using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Decals;
+using Content.Shared.Tiles;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Random;
+using Robust.Shared.Utility;
+
+namespace Content.Shared.Maps;
+
+/// <summary>
+///     Handles server-side tile manipulation like prying/deconstructing tiles.
+/// </summary>
+public sealed class TileSystem : EntitySystem
+{
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
+    [Dependency] private readonly IRobustRandom _robustRandom = default!;
+    [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private readonly SharedDecalSystem _decal = default!;
+    [Dependency] private readonly SharedMapSystem _maps = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<TileChangedEvent>(OnTileChanged);
+    }
+
+    /// <summary>
+    ///     Returns a weighted pick of a tile variant.
+    /// </summary>
+    public byte PickVariant(ContentTileDefinition tile)
+    {
+        return PickVariant(tile, _robustRandom.GetRandom());
+    }
+
+    /// <summary>
+    ///     Returns a weighted pick of a tile variant.
+    /// </summary>
+    public byte PickVariant(ContentTileDefinition tile, int seed)
+    {
+        var rand = new System.Random(seed);
+        return PickVariant(tile, rand);
+    }
+
+    /// <summary>
+    ///     Returns a weighted pick of a tile variant.
+    /// </summary>
+    public byte PickVariant(ContentTileDefinition tile, System.Random random)
+    {
+        var variants = tile.PlacementVariants;
+
+        var sum = variants.Sum();
+        var accumulated = 0f;
+        var rand = random.NextFloat() * sum;
+
+        for (byte i = 0; i < variants.Length; ++i)
+        {
+            accumulated += variants[i];
+
+            if (accumulated >= rand)
+                return i;
+        }
+
+        // Shouldn't happen
+        throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}!");
+    }
+
+    /// <summary>
+    ///     Returns a tile with a weighted random variant.
+    /// </summary>
+    public Tile GetVariantTile(ContentTileDefinition tile, System.Random random)
+    {
+        return new Tile(tile.TileId, variant: PickVariant(tile, random));
+    }
+
+    /// <summary>
+    ///     Returns a tile with a weighted random variant.
+    /// </summary>
+    public Tile GetVariantTile(ContentTileDefinition tile, int seed)
+    {
+        var rand = new System.Random(seed);
+        return new Tile(tile.TileId, variant: PickVariant(tile, rand));
+    }
+
+    public bool PryTile(Vector2i indices, EntityUid gridId)
+    {
+        var grid = Comp<MapGridComponent>(gridId);
+        var tileRef = _maps.GetTileRef(gridId, grid, indices);
+        return PryTile(tileRef);
+    }
+
+	public bool PryTile(TileRef tileRef)
+    {
+        return PryTile(tileRef, false);
+    }
+
+    public bool PryTile(TileRef tileRef, bool pryPlating)
+    {
+        var tile = tileRef.Tile;
+
+        if (tile.IsEmpty)
+            return false;
+
+        var tileDef = (ContentTileDefinition) _tileDefinitionManager[tile.TypeId];
+
+        if (!tileDef.CanCrowbar)
+            return false;
+
+        return DeconstructTile(tileRef);
+    }
+    // Delta V
+    public bool DigTile(TileRef tileRef)
+    {
+        var tile = tileRef.Tile;
+
+        if (tile.IsEmpty)
+            return false;
+
+        var tileDef = (ContentTileDefinition) _tileDefinitionManager[tile.TypeId];
+
+        if (!tileDef.CanShovel)
+            return false;
+
+        return DeconstructTile(tileRef);
+    }
+    // Delta V
+    public bool ReplaceTile(TileRef tileref, ContentTileDefinition replacementTile)
+    {
+        if (!TryComp<MapGridComponent>(tileref.GridUid, out var grid))
+            return false;
+        return ReplaceTile(tileref, replacementTile, tileref.GridUid, grid);
+    }
+
+    public bool ReplaceTile(TileRef tileref, ContentTileDefinition replacementTile, EntityUid grid, MapGridComponent? component = null)
+    {
+        DebugTools.Assert(tileref.GridUid == grid);
+
+        if (!Resolve(grid, ref component))
+            return false;
+
+
+        var variant = PickVariant(replacementTile);
+        var decals = _decal.GetDecalsInRange(tileref.GridUid, _turf.GetTileCenter(tileref).Position, 0.5f);
+        foreach (var (id, _) in decals)
+        {
+            _decal.RemoveDecal(tileref.GridUid, id);
+        }
+
+        _maps.SetTile(grid, component, tileref.GridIndices, new Tile(replacementTile.TileId, 0, variant));
+        return true;
+    }
+
+    public void PreserveUnderlay(EntityUid gridUid, Vector2i indices, string tileId)
+    {
+        var comp = EnsureComp<PreservedTileUnderlayComponent>(gridUid);
+        comp.Underlays[indices] = tileId;
+    }
+
+    public bool TryTakePreservedUnderlay(EntityUid gridUid, Vector2i indices, [NotNullWhen(true)] out ContentTileDefinition? tile)
+    {
+        tile = null;
+
+        if (!TryComp<PreservedTileUnderlayComponent>(gridUid, out var comp) ||
+            !comp.Underlays.Remove(indices, out var tileId))
+        {
+            return false;
+        }
+
+        tile = (ContentTileDefinition) _tileDefinitionManager[tileId];
+        return true;
+    }
+
+    public bool DeconstructTile(TileRef tileRef)
+    {
+        if (tileRef.Tile.IsEmpty)
+            return false;
+
+        var tileDef = (ContentTileDefinition) _tileDefinitionManager[tileRef.Tile.TypeId];
+
+        if (string.IsNullOrEmpty(tileDef.BaseTurf))
+            return false;
+
+        var gridUid = tileRef.GridUid;
+        var mapGrid = Comp<MapGridComponent>(gridUid);
+
+        const float margin = 0.1f;
+        var bounds = mapGrid.TileSize - margin * 2;
+        var indices = tileRef.GridIndices;
+        var coordinates = _maps.GridTileToLocal(gridUid, mapGrid, indices)
+            .Offset(new Vector2(
+                (_robustRandom.NextFloat() - 0.5f) * bounds,
+                (_robustRandom.NextFloat() - 0.5f) * bounds));
+
+        var suppressTileDrop = TryTakeRcdNoDropTile(gridUid, tileRef.GridIndices, tileDef.ID);
+
+        if (!suppressTileDrop)
+        {
+            // Actually spawn the relevant tile item at the right position and give it some random offset.
+            var tileItem = Spawn(tileDef.ItemDropPrototypeName, coordinates);
+            Transform(tileItem).LocalRotation = _robustRandom.NextDouble() * Math.Tau;
+        }
+
+        // Destroy any decals on the tile
+        var decals = _decal.GetDecalsInRange(gridUid, coordinates.SnapToGrid(EntityManager).Position, 0.5f);
+        foreach (var (id, _) in decals)
+        {
+            _decal.RemoveDecal(tileRef.GridUid, id);
+        }
+
+        var replacementTile = TryTakePreservedUnderlay(gridUid, tileRef.GridIndices, out var preservedTile)
+            ? preservedTile
+            : (ContentTileDefinition) _tileDefinitionManager[tileDef.BaseTurf];
+
+        _maps.SetTile(gridUid, mapGrid, tileRef.GridIndices, new Tile(replacementTile.TileId));
+
+        return true;
+    }
+
+    private void OnTileChanged(ref TileChangedEvent args)
+    {
+        TryComp<PreservedTileUnderlayComponent>(args.Entity, out var comp);
+        TryComp<RCDNoDropTileComponent>(args.Entity, out var noDrop);
+
+        if (comp == null && noDrop == null)
+            return;
+
+        foreach (var change in args.Changes)
+        {
+            if (comp != null && comp.Underlays.ContainsKey(change.GridIndices))
+            {
+                if (change.NewTile.IsEmpty || change.NewTile.GetContentTileDefinition(_tileDefinitionManager).IsSubFloor)
+                    comp.Underlays.Remove(change.GridIndices);
+            }
+
+            if (noDrop != null &&
+                noDrop.Tiles.TryGetValue(change.GridIndices, out var expectedTile) &&
+                (change.NewTile.IsEmpty || change.NewTile.GetContentTileDefinition(_tileDefinitionManager).ID != expectedTile))
+            {
+                noDrop.Tiles.Remove(change.GridIndices);
+            }
+        }
+    }
+
+    private bool TryTakeRcdNoDropTile(EntityUid gridUid, Vector2i indices, string tileId)
+    {
+        if (!TryComp<RCDNoDropTileComponent>(gridUid, out var comp) ||
+            !comp.Tiles.TryGetValue(indices, out var expectedTile) ||
+            expectedTile != tileId)
+        {
+            return false;
+        }
+
+        comp.Tiles.Remove(indices);
+        return true;
+    }
+}

@@ -1,0 +1,64 @@
+- type: job
+  id: VaultDoctor
+  weight: 70
+  hideWithoutJobWhitelist: false # #Misfits Tweak - no whitelist gate
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - always visible
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change - open to all
+  name: job-name-vault-doctor
+  description: job-description-vault-doctor
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+  #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+  #  tracker: VaultDweller
+  #  min: 18000 # 5 hours
+  setPreference: true
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  overwatchCategory: OverwatchMedical
+  playTimeTracker: VaultDoctor
+  startingGear: VaultDoctorGear
+  alwaysUseSpawner: true
+  icon: "JobIconVaultMedic" # Forge-Change
+  supervisors: job-supervisors-vault
+  access:
+  - VaultDweller
+  - VaultMedical
+  - VaultChemistry
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Vault
+      - type: CPRTraining
+
+
+- type: startingGear
+  id: VaultDoctorGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitVault14
+    back: ClothingBackpackSatchelLeather
+    shoes: N14ClothingBootsBlack
+    outerClothing: N14ClothingOuterCoatLab
+    id: N14VaultDoctorPDA
+    ears: N14ClothingHeadsetVaultDweller
+    belt: ClothingBeltMedicalFilled
+    gloves: ClothingHandsGlovesNitrile # #Misfits Add - medical gloves for a doctor
+    pocket1: PillCanisterCharcoal # #Misfits Add - activated charcoal (carbon) for overdose/toxin treatment
+    pocket2: N14RadAwayBloodbag # #Misfits Add - RadAway to treat radiation exposure (pairs with RadX in belt)
+  innerClothingSkirt: N14ClothingUniformJumpsuitVault14
+  storage: # Forge-Change
+    back:
+    - N14Bandage
+    - N14Antidote
+    - Portafib
+    - N14Stimpak # #Misfits Add - extra stimpak for the doctor
+    - N14CurrencyPrewarMoney100
+    - N14CurrencyPrewarMoney100
+    - VaultGuidePaper
+- type: playTimeTracker
+  id: VaultDoctor

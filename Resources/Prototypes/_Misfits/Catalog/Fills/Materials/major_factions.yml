@@ -1,0 +1,140 @@
+﻿# medical
+
+- type: entity
+  id: MisfitsCrateMedicalMedical
+  suffix: Filled, Medical, NCR, BoS, Vault
+  parent: N14CrateMedical
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14MedkitStimkitFilled
+    # Standard medical supplies
+    - id: N14Ointment10
+      amount: 3
+    - id: N14CleanGauze10
+      amount: 2
+    - id: Bloodpack
+      amount: 2
+    - id: Brutepack
+    # New topicals
+    - id: MisfitsHealingSalve5
+    - id: MisfitsHerbalAnodyne5
+    - id: MisfitsHerbalAntimicrobial5
+    - id: MisfitsDaturaHide5
+    - id: MisfitsSnakebiteTourniquet5
+    # Medical equipment / drugs
+    - id: N14HandheldHealthAnalyzer
+    - id: N14Antidote
+    - id: N14ChemicalSyringeAntidote
+      amount: 2
+    - id: Portafib
+    - id: N14FixerCanisterFilled
+    - id: N14RadXCanisterFilled
+      amount: 2
+
+- type: entity
+  id: MisfitsCrateMedicalLegion
+  suffix: Filled, Medical, Legion
+  parent: N14CrateMedical
+  components:
+  - type: StorageFill
+    contents:
+    # Basic natural medicine
+    - id: N14HandheldHealthAnalyzer
+    - id: Portafib
+    - id: N14AloeSalve
+      amount: 3
+    - id: N14CleanGauze10
+      amount: 3
+    - id: N14DirtyGauze10
+      amount: 3
+    - id: N14Bitterdrink
+      amount: 2
+    # Traditional medicine
+    - id: N14HealingPowder
+      amount: 2
+    - id: N14HealingPoultice
+      amount: 2
+    - id: N14MourningPoultice
+    # New herbal / low-tech topicals
+    - id: MisfitsHealingSalve5
+    - id: MisfitsHerbalAnodyne5
+    - id: MisfitsHerbalAntimicrobial5
+    - id: MisfitsDaturaHide5
+    - id: MisfitsSnakebiteTourniquet5
+    - id: MisfitsHerbalStimulant
+      amount: 2
+
+# prison shit
+
+- type: entity
+  id: MisfitsCrateFootlockerPrison
+  suffix: Filled, Prison
+  parent: N14CrateFootlocker
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingUniformJumpsuitPrisoner
+      amount: 2
+    - id: N14ClothingShoesBlack
+      amount: 2
+    - id: PaperOffice
+      amount: 4
+    - id: Pen
+    - id: BoxFolderGrey
+    - id: N14FoodPorkBeans
+      amount: 2
+      prob: 0.5
+    - id: N14FoodDinki-Di
+      amount: 2
+      prob: 0.5
+    - id: DrinkWaterBottleFull
+      amount: 2
+
+- type: entity
+  id: MisfitsClosetRustyPrison
+  suffix: Filled, Prison, Cooking
+  parent: ClosetRusty
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ReagentContainerFlour
+      amount: 2
+    - id: N14ReagentContainerRice
+      amount: 2
+    - id: N14FoodCondimentBottleVinegar
+    - id: N14FoodCondimentBottleEnzyme
+    - id: N14ReagentContainerOliveoil
+    - id: N14ReagentContainerSugar
+    - id: N14ReagentContainerCornmeal
+    - id: N14FoodCondimentPacketSalt
+      amount: 2
+    - id: N14FoodCondimentPacketPepper
+      amount: 2
+    - id: KnifePlastic
+      amount: 2
+    - id: N14SackFertilizerFull
+      amount: 2
+
+- type: entity
+  id: MisfitsClosetGunCabinetBrig
+  suffix: Filled, Brig
+  parent: N14ClosetGunCabinet
+  components:
+  - type: StorageFill
+    contents:
+    - id: PaperOffice
+      amount: 4
+    - id: Pen
+    - id: BoxFolderGrey
+    - id: BoxFolderRed
+    - id: SyndicateWhistle
+      amount: 2
+    - id: RadioHandheld
+      amount: 3
+    - id: N14WeaponShotgunCaravan
+    - id: MisfitsMagazineBox20GaugeBeanbag
+    - id: BoxHandcuff
+      amount: 2
+    - id: N14PoliceBaton
+      amount: 3

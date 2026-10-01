@@ -1,0 +1,46 @@
+- type: job
+  id: BoSMidSerf
+  setPreference: false
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  name: job-name-bos-mid-serf #Misfits Change
+  overwatchCategory: OverwatchBosSupport
+  description: job-description-bos-mid-Serf
+  playTimeTracker: BoSMidSerf
+  requirements:
+    - !type:MinPlayersRequirement
+      min: 0
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterOverallTimeRequirement
+      min: 0
+  startingGear: BoSMidSerfGear
+  alwaysUseSpawner: true
+  icon: "JobIconRabMBos"
+  supervisors: job-supervisors-bos-mid-Serf
+  accessGroups:
+  - BOSInitiate
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - BrotherhoodOfSteel
+
+- type: startingGear
+  id: BoSMidSerfGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitSettlerRags
+    shoes: N14ClothingShoesRaider
+    hands: N14ClothingHandsGlovesCloth
+    bandage: NCClothingCollarBoSSerf
+
+
+- type: playTimeTracker
+  id: BoSMidSerf
+
+
+

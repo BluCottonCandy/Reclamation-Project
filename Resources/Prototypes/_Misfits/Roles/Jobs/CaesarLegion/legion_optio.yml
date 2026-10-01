@@ -1,0 +1,91 @@
+- type: job
+  id: CaesarLegionOptio
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 180
+  showBorder: true  # Starts the "Support Officers" tier block below Centurion/Legate
+  name: job-name-caesar-legion-optio
+  description: job-description-caesar-legion-optio
+  playTimeTracker: CaesarLegionOptio
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement # Legion total timelock
+      department: CaesarLegion
+      min: 162000 # 45 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: CaesarLegionVeteranDecanus
+      min: 28800 # 8 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
+  startingGear: CaesarLegionOptioGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerVenator"
+  supervisors: job-name-caesar-legion-supervisors # #Misfits Fix - Optio outranks Decanus, should not be listed as obeying Decani
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionOptio
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+      - type: Warcry
+        action: ActionLegionWarcry
+        targetDepartment: CaesarLegion
+        range: 6
+        speedBonus: 0.30 # #Misfits Tweak - reduced from 0.50, was too strong
+        duration: 10
+        overlayColor: "#D64545"
+        speechVerb: MisfitsLegionWarcry
+        warcryMessage: warcry-message-legion
+        warcryMessageCount: 6
+        buffPopup: warcry-popup-buffed-legion
+        excludedJobs:
+        - SuperMutantGladiator
+        cautionPopup: true
+        activatorJobs:
+        - CaesarLegionVexillarius
+        - CaesarLegionDean
+        - CaesarLegionPrimeDecanus
+        - CaesarLegionVeteranDecanus
+        - CaesarLegionCenturion
+        - CaesarLegionLegate
+        - CaesarLegionOptio
+        - CaesarLegionPriestessOfMars
+        - CaesarLegionAcolyteOfMars
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionOptioGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: M14ClothingNeckLegionMantle
+    mask: N14ClothingMaskBrownMask
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingShoesKaligi
+    head: N14ClothingHeadHatLegionHood
+    outerClothing: N14ClothingOuterLegionnaireOptioArmor
+    gloves: N14ClothingHandsGlovesTribal
+    belt: N14Gladius
+    suitstorage: N14PilumSpear
+    pocket1: LegionOptioloadoutkits
+    id: N14IDLegionaryMedalOptio
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+
+- type: playTimeTracker
+  id: CaesarLegionOptio

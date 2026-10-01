@@ -1,0 +1,125 @@
+- type: entity
+  name: plasma
+  id: BulletPlasma
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite #Misfits Fix — was using stretched ballistic bullet sprite (projectiles2.rsi 'bullet' scale 1.2,0.5). Now uses the proper plasma bolt from plasma.rsi.
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Projectiles/plasma.rsi
+    layers:
+    - state: plasma
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.3,0.15,0.3"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+  - type: Ammo
+    muzzleFlash: PlasmaMuzzleFlashEffect
+  - type: Projectile
+    impactEffect: BulletPlasmaImpactEffect
+    damage:
+      types:
+        Caustic: 18
+        Radiation: 2
+        Structural: 50
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+
+- type: entity
+  name: plasma
+  id: BulletLightPlasma
+  parent: BulletPlasma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    scale: 0.5, 0.5
+  - type: Projectile
+    impactEffect: BulletPlasmaImpactEffect
+    damage:
+      types:
+        Caustic: 15
+        Structural: 25
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+
+- type: entity
+  name: plasma
+  id: BulletBigPlasma
+  parent: BulletPlasma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    scale: 1.0, 1.0
+  - type: Projectile
+    impactEffect: BulletPlasmaImpactEffect
+    damage:
+      types:
+        Caustic: 35
+        Radiation: 5
+        Structural: 100
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+
+- type: entity #TODO: Finish Projectile Laser
+  name: laser
+  id: BulletLaser
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser_greyscale
+      shader: unshaded
+      color: red
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        hard: false
+        mask:
+        - Opaque
+  - type: Projectile
+    impactEffect: BulletImpactEffect
+    damage:
+      types:
+        Heat: 20
+    soundHit:
+      collection: MeatLaserImpact
+
+- type: entity
+  name: recharger laser
+  id: BulletRechargerLaser
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser_greyscale
+      shader: unshaded
+      color: red
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        hard: false
+        mask:
+        - Opaque
+  - type: Projectile
+    impactEffect: BulletImpactEffect
+    damage:
+      types:
+        Heat: 12
+    soundHit:
+      collection: MeatLaserImpact

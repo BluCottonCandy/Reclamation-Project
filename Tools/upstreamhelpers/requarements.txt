@@ -1,0 +1,3 @@
+# YAML library with support for comments and ordering
+# Required for using remove_ymlduplicates.py
+ruamel.yaml

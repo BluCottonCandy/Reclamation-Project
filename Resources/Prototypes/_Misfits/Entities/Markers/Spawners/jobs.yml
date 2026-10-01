@@ -1,0 +1,1270 @@
+# #Misfits Change
+# Spawn point entity prototypes for _Misfits faction jobs.
+# These replace the N14/Corvax spawn point entities for the Misfits Wendover map.
+
+# Brotherhood of Steel - Midwest
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSMidPaladinCommander
+  name: Brotherhood Head Paladin
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidPaladinCommander
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/bosmid.rsi
+    layers:
+      - state: green
+      - state: commander
+
+# #Cythisiax Added - HONOR GUARD personal-whitelist spawn point.
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSHonorGuard
+  name: Brotherhood Honor Guard
+  components:
+  - type: SpawnPoint
+    job_id: BoSHonorGuard
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidKnight
+  name: Brotherhood Senior Knight
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidKnight
+  - type: Sprite
+    layers:
+      - state: green
+      - state: knight
+
+# #Misfits Add - sole Brotherhood lancer spawn point.
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSLancerKnight
+  name: Brotherhood Knight-Lancer
+  components:
+  - type: SpawnPoint
+    job_id: BoSLancerKnight
+  - type: Sprite
+    layers:
+      - state: green
+      - state: knight
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidPaladin
+  name: Brotherhood Senior Paladin
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidPaladin
+  - type: Sprite
+    layers:
+      - state: green
+      - state: paladin
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidSquire
+  name: Brotherhood Squire
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidSquire
+  - type: Sprite
+    layers:
+      - state: green
+      - state: squire
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidScribe
+  name: Brotherhood Senior Scribe
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidScribe
+  - type: Sprite
+    layers:
+      - state: green
+      - state: scribe
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSWestElderCommander
+  name: Brotherhood Elder
+  components:
+  - type: SpawnPoint
+    job_id: BoSWestElderCommander
+  - type: Sprite
+    sprite: Corvax/Markers/boswest.rsi
+    layers:
+      - state: green
+      - state: elder
+
+- type: entity
+  parent: MisfitsSpawnPointBoSWestElderCommander
+  id: MisfitsSpawnPointBoSWestScribe
+  name: Brotherhood Head Scribe
+  components:
+  - type: SpawnPoint
+    job_id: BoSWestScribe
+  - type: Sprite
+    layers:
+      - state: green
+      - state: scribe
+
+#Misfits Change /Tweak/: Overwrote old Washington BoS spawn points with new consolidated Brotherhood jobs.
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSHeadKnight
+  name: Brotherhood Head Knight
+  components:
+  - type: SpawnPoint
+    job_id: BoSHeadKnight
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/boswashington.rsi
+    layers:
+      - state: green
+      - state: commander
+
+- type: entity
+  parent: MisfitsSpawnPointBoSHeadKnight
+  id: MisfitsSpawnPointBoSPaladin
+  name: Brotherhood Paladin
+  components:
+  - type: SpawnPoint
+    job_id: BoSPaladin
+  - type: Sprite
+    layers:
+      - state: green
+      - state: paladin
+
+- type: entity
+  parent: MisfitsSpawnPointBoSHeadKnight
+  id: MisfitsSpawnPointBoSKnight
+  name: Brotherhood Knight
+  components:
+  - type: SpawnPoint
+    job_id: BoSKnight
+  - type: Sprite
+    layers:
+      - state: green
+      - state: knight
+
+- type: entity
+  parent: MisfitsSpawnPointBoSHeadKnight
+  id: MisfitsSpawnPointBoSScribe
+  name: Brotherhood Scribe
+  components:
+  - type: SpawnPoint
+    job_id: BoSScribe
+  - type: Sprite
+    layers:
+      - state: green
+      - state: scribe
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSInitiate
+  name: Brotherhood Initiate
+  components:
+  - type: SpawnPoint
+    job_id: BoSInitiate
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: serf
+
+- type: entity
+  parent: MisfitsSpawnPointBoSHeadKnight
+  id: MisfitsSpawnPointOffDuty
+  name: Off-Duty Brotherhood
+  components:
+  - type: SpawnPoint
+    job_id: BoSOffDuty
+  - type: Sprite
+    layers:
+      - state: green
+
+# Caesar's Legion
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointCaesarLegionLegate
+  name: Legion Legate
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegate
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: centurion
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointCaesarLegionCenturion
+  name: Legion Centurion
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionCenturion
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: centurion
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionVeteranDecanus
+  name: Legion Veteran Decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVeteranDecanus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionVenator
+  name: Legion Frumentarii
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionFrumentarii
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionExplorer
+  name: Legion Explorer
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionExplorer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+# #Misfits Add - Orator spawn point was missing, causing BoS base fallback
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionOptio
+  name: Legion Optio
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionOptio
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionPrimeDecanus
+  name: Legion Prime Decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionPrimeDecanus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionVexillarius
+  name: Legion Vexillarius
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVexillarius
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionDean
+  name: Legion Decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionDean
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionLegionnaireVeteran
+  name: Legion Veteran Legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireVeteran
+  - type: Sprite
+    layers:
+      - state: green
+      - state: veteran
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionLegionnaireWarrior
+  name: Legion Prime Legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireWarrior
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionHoundmaster
+  name: Legion Houndmaster
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionHoundmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionAuxilia
+  name: Legion Auxilia
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionAuxilia
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionTempleGuard
+  name: Legion Temple Guard
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionTempleGuard
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+# Priestess of Mars spawner — 1 slot, same Legion camp area as Auxilia.
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionPriestessOfMars
+  name: Legion Priestess of Mars
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionPriestessOfMars
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+# Acolyte of Mars spawner — 3 slots, same spawn as POM
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionAcolyteOfMars
+  name: Legion Acolyte of Mars
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionAcolyteOfMars
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionLegionnaireRecruit
+  name: Legion Recruit Legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireRecruit
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionRecruit
+  name: Legion Legionnaire
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireRecruit # #Misfits Change: Redirected from defunct CaesarLegionRecruit
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointCaesarLegionSlave
+  name: Legion Slave
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionSlave
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: slave
+
+# NCR
+# #Misfits Add - NCR Major whitelist-only billet; spawns at same location as Captain
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRMajor
+  name: NCR Major
+  components:
+  - type: SpawnPoint
+    job_id: NCRMajor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+# #Misfits Add - NCR Heavy Trooper spawn point; T4.5 heavy weapons specialist
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRHeavyTrooper
+  name: NCR Heavy Trooper
+  components:
+  - type: SpawnPoint
+    job_id: NCRHeavyTrooper
+  - type: Sprite
+    layers:
+      - state: green
+      - state: cadet
+
+- type: entity
+  parent: MisfitsSpawnPointNCRHeavyTrooper
+  id: MisfitsSpawnPointNCRHeavyTrooperLead
+  name: NCR Heavy Trooper Lead
+  components:
+  - type: SpawnPoint
+    job_id: NCRHeavyTrooperLead
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRCadet
+  name: NCR Recruit
+  components:
+  - type: SpawnPoint
+    job_id: NCRCadet
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: cadet
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRMedic
+  name: NCR Medic
+  components:
+  - type: SpawnPoint
+    job_id: NCRMedic
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRDoctor
+  name: NCR Medical Doctor
+  components:
+  - type: SpawnPoint
+    job_id: NCRDoctor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRSGT
+  name: NCR NCO
+  components:
+  - type: SpawnPoint
+    job_id: NCRNCO
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRCaptain
+  name: NCR Commander
+  components:
+  - type: SpawnPoint
+    job_id: NCRCommander
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRLTCol
+  name: NCR Lieutenant Colonel
+  components:
+  - type: SpawnPoint
+    job_id: NCRLTCol
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRProvost
+  name: Provost Job Spawn
+  components:
+  - type: SpawnPoint
+    job_id: NCRProvost
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRLT
+  name: NCR Executive Officer
+  components:
+  - type: SpawnPoint
+    job_id: NCRExecutiveOfficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRFirstSergeant
+  name: NCR Sergeant First Class
+  components:
+  - type: SpawnPoint
+    job_id: NCRFirstSergeant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRStaffSergeant
+  name: NCR Staff Sergeant
+  components:
+  - type: SpawnPoint
+    job_id: NCRStaffSergeant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRWS
+  name: NCR Specialist # #Misfits Tweak - renamed from Corporal
+  components:
+  - type: SpawnPoint
+    job_id: NCRWS
+  - type: Sprite
+    layers:
+      - state: green
+      - state: ws
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCREngineer
+  name: NCR Engineer
+  components:
+  - type: SpawnPoint
+    job_id: NCREngineer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: engineer
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRSoldier
+  name: NCR Private
+  components:
+  - type: SpawnPoint
+    job_id: NCRSoldier
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRPrivateFirstClass
+  name: NCR Private First Class
+  components:
+  - type: SpawnPoint
+    job_id: NCRPrivateFirstClass
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRPrisoner
+  name: NCR Prisoner
+  components:
+  - type: SpawnPoint
+    job_id: NCRPrisoner
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: prisoner
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRMPinvestigator
+  name: NCR MP Investigator
+  components:
+  - type: SpawnPoint
+    job_id: NCRMPinvestigator
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: investigator
+
+# #Misfits Add - Ranger Recruit spawn point was missing, causing fallback to BoS base spawn.
+# Maps to the NCRRangerRecruit job; uses the upstream ranger sprite with recruit state.
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRRangerRecruit
+  name: NCR Ranger Recruit
+  components:
+  - type: SpawnPoint
+    job_id: NCRRangerRecruit
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/rangers.rsi
+    layers:
+      - state: green
+      - state: recruit
+
+# NCR Office of Science and Industry (OSI) spawn points. # #Misfits Add
+# Spawn near the NCRA labs/medic area like the NCR Doctor.
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointOSIChiefScientist
+  name: OSI Chief Scientist
+  components:
+  - type: SpawnPoint
+    job_id: OSIChiefScientist
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointOSIScientist
+  name: OSI Scientist
+  components:
+  - type: SpawnPoint
+    job_id: OSIScientist
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointOSIAssistant
+  name: OSI Assistant
+  components:
+  - type: SpawnPoint
+    job_id: OSIAssistant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointOSIAgent
+  name: OSI Agent
+  components:
+  - type: SpawnPoint
+    job_id: OSIAgent
+  - type: Sprite
+    layers:
+      - state: green
+      - state: ws
+
+# Enclave — expanded 8-role hierarchy (#Misfits Change)
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointEnclaveCommander
+  name: Enclave Commander
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveCommander
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveSeniorOfficer
+  name: Enclave Senior Officer
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveSeniorOfficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveJuniorOfficer
+  name: Enclave Junior Officer
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveJuniorOfficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+# #Misfits Add - Vertibird Pilot spawn point.
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveVertibirdPilot
+  name: Enclave Vertibird Pilot
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveVertibirdPilot
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveNCO
+  name: Enclave NCO
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveNCO
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveEnlisted
+  name: Enclave Enlisted
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveEnlisted
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveHeadScientist
+  name: Enclave Head Scientist
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveHeadScientist
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveScientist
+  name: Enclave Scientist
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveScientist
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveJuniorScientist
+  name: Enclave Junior Scientist
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveJuniorScientist
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+# The Reformer — admin-whitelisted Enclave leader role; spawn point referenced by Vault map  # #Misfits Add
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveReformer
+  name: Enclave Reformer
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveReformer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+# Synthetics — parent N14SpawnPointVaultDweller so robots use vault aesthetic and spawn in vault area  # #Misfits Change
+- type: entity
+  parent: N14SpawnPointVaultDweller  # #Misfits Change - was SpawnPointJobBase; robots spawn at Vault Dweller spots
+  id: MisfitsSpawnPointSyntheticMrHandy
+  name: Synthetic Mr. Handy
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticMrHandy
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticProtectron
+  name: Synthetic Protectron
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticProtectron
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticProtectron
+  id: MisfitsSpawnPointSyntheticProtectronTribal
+  name: Protectron Spirit-Tender
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticProtectronTribal
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticMrGutsy
+  name: Synthetic Mr. Gutsy
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticMrGutsy
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticAssaultron
+  name: Synthetic Assaultron
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticAssaultron
+
+- type: entity  # #Misfits Add - SentryBot spawn point was missing
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticSentryBot
+  name: Synthetic Sentry Bot
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticSentryBot
+
+- type: entity  # #Misfits Add - Robobrain spawn point was missing
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticRobobrain
+  name: Synthetic Robobrain
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticRobobrain
+
+# Super mutant variant spawn points. These are placed by faction on Wendover so
+# aligned variants do not fall back to the generic FEV/supermutant area.
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointSuperMutant
+  name: super mutant
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutant
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+    - state: green
+
+- type: entity
+  parent: MisfitsSpawnPointSuperMutant
+  id: MisfitsSpawnPointSuperMutantGladiator
+  name: super mutant gladiator
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutantGladiator
+
+- type: entity
+  parent: MisfitsSpawnPointSuperMutant
+  id: MisfitsSpawnPointSuperMutantRanger
+  name: super mutant ranger
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutantRanger
+
+- type: entity
+  parent: MisfitsSpawnPointSuperMutant
+  id: MisfitsSpawnPointSuperMutantTrooper
+  name: super mutant trooper
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutantTrooper
+
+- type: entity
+  parent: MisfitsSpawnPointSuperMutant
+  id: MisfitsSpawnPointSuperMutantNCRRanger
+  name: super mutant NCR ranger
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutantNCRRanger
+
+- type: entity
+  parent: MisfitsSpawnPointSuperMutant
+  id: MisfitsSpawnPointSuperMutantNCRTrooper
+  name: super mutant NCR trooper
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutantNCRTrooper
+
+- type: entity
+  parent: MisfitsSpawnPointSuperMutant
+  id: MisfitsSpawnPointSuperMutantTribal
+  name: super mutant tribal
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutantTribal
+
+# Followers of the Apocalypse ranked spawn points. The base N14 marker is the
+# entry-level volunteer marker; these keep ranked roles at the Followers base.
+- type: entity
+  parent: N14SpawnPointFollowers
+  id: MisfitsSpawnPointFollowerDoctor
+  name: follower doctor
+  components:
+  - type: SpawnPoint
+    job_id: FollowerDoctor
+
+- type: entity
+  parent: N14SpawnPointFollowers
+  id: MisfitsSpawnPointFollowerGuard
+  name: follower guard
+  components:
+  - type: SpawnPoint
+    job_id: FollowerGuard
+
+- type: entity
+  parent: N14SpawnPointFollowers
+  id: MisfitsSpawnPointFollowerHead
+  name: follower head
+  components:
+  - type: SpawnPoint
+    job_id: FollowerHead
+
+- type: entity
+  parent: N14SpawnPointFollowers
+  id: MisfitsSpawnPointSuperMutantFollowerDoctor
+  name: super mutant follower doctor
+  components:
+  - type: SpawnPoint
+    job_id: SuperMutantFollowerDoctor
+
+- type: entity
+  parent: N14SpawnPointFollowers
+  id: MisfitsSpawnPointFollowerDirector
+  name: follower director
+  components:
+  - type: SpawnPoint
+    job_id: FollowerDirector
+
+
+# Bwonsamdi spawn point (original prototype ID retained; not placed on Wendover).
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointSentientDeathclaw
+  name: Bwonsamdi
+  components:
+  - type: SpawnPoint
+    job_id: SentientDeathclaw
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+    - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointSentientDeathclawRegular
+  name: sentient deathclaw
+  components:
+  - type: SpawnPoint
+    job_id: SentientDeathclawRegular
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+    - state: green
+
+# #Misfits Removed - Khan spawn point deactivated; Khan job dissolved into Eighties department.
+# #Misfits Removed - Jackal, Viper, Gunner, Fiend spawn points removed as part of Outlaws faction overhaul.
+# #Misfits Removed - Old single-rank Eighties spawn point replaced by 5-rank spawners below.
+# - type: entity
+#   parent: SpawnPointJobBase
+#   id: MisfitsSpawnPointKhan
+#   name: Khan
+#   components:
+#   - type: SpawnPoint
+#     job_id: Khan
+#   - type: Sprite
+#     sprite: Corvax/Markers/jobs.rsi
+#     layers:
+#       - state: green
+#       - state: raider
+#
+# - type: entity
+#   parent: MisfitsSpawnPointKhan
+#   id: MisfitsSpawnPointEighties
+#   name: Eighties
+#   components:
+#   - type: SpawnPoint
+#     job_id: Eighties
+
+# #Misfits Add - Eighties ranked spawn point prototypes.
+# The Block = 1 spawner, Cylinders = 2, Pistons = 3, Oilers = 4, Road Rash = 4.
+# Place the appropriate count of each on the map to enforce slot limits.
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointEightiesBase
+  name: Eighties
+  components:
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: raider
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesTheBlock
+  name: Eighties — The Block
+  components:
+  - type: SpawnPoint
+    job_id: EightiesTheBlock
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesCylinders
+  name: Eighties — Cylinders
+  components:
+  - type: SpawnPoint
+    job_id: EightiesCylinders
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesPistons
+  name: Eighties — Pistons
+  components:
+  - type: SpawnPoint
+    job_id: EightiesPistons
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesOilers
+  name: Eighties — Oilers
+  components:
+  - type: SpawnPoint
+    job_id: EightiesOilers
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesRoadRash
+  name: Eighties — Road Rash
+  components:
+  - type: SpawnPoint
+    job_id: EightiesRoadRash
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointGreatKhan
+  name: Great Khan
+  components:
+  - type: SpawnPoint
+    job_id: GreatKhan
+
+#Misfits Add: Legacy Washington BoS spawnpoint aliases kept for old map compatibility.
+- type: entity
+  parent: MisfitsSpawnPointBoSHeadKnight
+  id: N14SpawnPointBoSWashingtonCommander
+  name: Brotherhood Washington Commander (legacy)
+
+- type: entity
+  parent: MisfitsSpawnPointBoSInitiate
+  id: N14SpawnPointBoSWashingtonInitiate
+  name: Brotherhood Washington Initiate (legacy)
+
+- type: entity
+  parent: MisfitsSpawnPointBoSKnight
+  id: N14SpawnPointBoSWashingtonKnight
+  name: Brotherhood Washington Knight (legacy)
+
+- type: entity
+  parent: MisfitsSpawnPointBoSPaladin
+  id: N14SpawnPointBoSWashingtonPaladin
+  name: Brotherhood Washington Paladin (legacy)
+
+- type: entity
+  parent: MisfitsSpawnPointBoSScribe
+  id: N14SpawnPointBoSWashingtonScribe
+  name: Brotherhood Washington Scribe (legacy)
+
+#Misfits Add: Legacy caravan spawnpoint aliases kept for old map compatibility.
+- type: entity
+  parent: N14SpawnPointWastelander
+  id: N14SpawnPointCaravanGuard
+  name: caravan guard (legacy)
+
+- type: entity
+  parent: N14SpawnPointWastelander
+  id: N14SpawnPointCaravanLeader
+  name: caravan leader (legacy)
+
+- type: entity
+  parent: N14SpawnPointWastelander
+  id: N14SpawnPointCaravanTrader
+  name: caravan trader (legacy)
+
+# #Misfits Add - C-27 Autonomous Unit spawn point.
+# Generic, NCR, and Brotherhood C-27 jobs each get separate spawners so the map
+# can place them with the matching faction.
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointC27
+  name: C-27 Autonomous Unit
+  components:
+  - type: SpawnPoint
+    job_id: C27
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green # base spawn marker; no overlay until C27-specific marker art exists
+
+# #Misfits Add - per-faction spawn points so each whitelisted C-27 job gets its own
+# slot. SpawnPoint accepts a single job_id, so we ship one spawner per sibling job
+# (C27 / C27NCR / C27BoS). All three are placed adjacent to each other on the map.
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointC27NCR
+  name: C-27 Autonomous Unit (NCR)
+  components:
+  - type: SpawnPoint
+    job_id: C27NCR
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointC27BoS
+  name: C-27 Autonomous Unit (Brotherhood)
+  components:
+  - type: SpawnPoint
+    job_id: C27BoS
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRMilitaryPoliceRecruit
+  name: NCR Military Police Recruit
+  components:
+  - type: SpawnPoint
+    job_id: NCRMilitaryPoliceRecruit
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRMilitaryPoliceSergeant
+  name: NCR Military Police Sergeant
+  components:
+  - type: SpawnPoint
+    job_id: NCRMilitaryPoliceSergeant
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRMilitaryPoliceCaptain
+  name: NCR Military Police Captain
+  components:
+  - type: SpawnPoint
+    job_id: NCRMilitaryPoliceCaptain
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRRO
+  name: NCR Requisition Officer
+  components:
+  - type: SpawnPoint
+    job_id: NCRRO
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRCitizen
+  name: NCR Citizen
+  components:
+  - type: SpawnPoint
+    job_id: NCRCitizen
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRTrader
+  name: NCR Trader
+  components:
+  - type: SpawnPoint
+    job_id: NCRTrader
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green

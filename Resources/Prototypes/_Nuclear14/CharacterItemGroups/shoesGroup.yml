@@ -1,0 +1,35 @@
+- type: characterItemGroup
+  id: N14LoadoutShoes
+  items:
+    - type: loadout
+      id: N14LoadoutShoesBlack
+    - type: loadout
+      id: N14LoadoutShoesBrown
+    - type: loadout
+      id: N14LoadoutShoesRags
+    - type: loadout
+      id: N14LoadoutBootsCowboy
+    - type: loadout
+      id: N14LoadoutBootsBlack
+    - type: loadout
+      id: N14ClothingBootsCombat
+    - type: loadout # #Misfits Add - general wasteland footwear
+      id: MisfitsLoadoutShoesJamrock
+    - type: loadout
+      id: MisfitsLoadoutShoesLeatherBoots
+    - type: loadout # #Misfits Add - faction footwear
+      id: MisfitsLoadoutShoesTribal
+    - type: loadout
+      id: MisfitsLoadoutShoesRaider
+    - type: loadout
+      id: ClothingShoesBootsLaceupVault
+    - type: loadout
+      id: N14LoadoutUniversalBootsCombatMK2
+    - type: loadout
+      id: N14LoadoutUniversalBootsFire
+    - type: loadout
+      id: N14LoadoutUniversalBootsMountie
+    - type: loadout #Misfits Add - general wasteland footwear
+      id: MisfitsLoadoutMilitaryCowboyBoots
+    - type: loadout #Misfits Add - general wasteland footwear
+      id: MisfitsLoadoutMilitarySteelTippedBoots

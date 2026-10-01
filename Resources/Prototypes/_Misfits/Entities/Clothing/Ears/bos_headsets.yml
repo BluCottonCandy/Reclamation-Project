@@ -1,0 +1,39 @@
+# #Misfits Change - Unified Brotherhood headset prototypes for live consolidated BOS jobs.
+
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: N14ClothingHeadsetBrotherhoodOfSteel
+  name: Brotherhood radio earpiece
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyBrotherhoodOfSteelUR
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/bos.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/bos.rsi
+
+- type: entity
+  parent: N14ClothingHeadsetLightScribe
+  id: N14ClothingHeadsetBrotherhoodOfSteelScribe
+  name: Brotherhood scribe headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyBrotherhoodOfSteelUR
+      - EncryptionKeyWastelandGlobal
+  # Keep light-capable state names while applying the new BoS sprite set.
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/boslight.rsi
+    layers:
+    - state: icon
+    - state: light-icon
+      shader: unshaded
+      visible: false
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/boslight.rsi
+    equippedPrefix: off

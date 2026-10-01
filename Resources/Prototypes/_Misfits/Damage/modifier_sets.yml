@@ -1,0 +1,19 @@
+# #Misfits Add - C-27 silicon chassis damage modifier set.
+# Mirrors the upstream Metallic set exactly but adds full radiation immunity.
+# C-27 units are sealed robot chassis with no organic components, so ionising
+# radiation has no biological effect on them.
+
+- type: damageModifierSet
+  id: MisfitsC27Silicon
+  coefficients:
+    Shock: 1.0       # vulnerable — electrical disrupts motor control / circuitry # Temp disabled untill someone fixes plasma.
+    Radiation: 0.0   # full immunity — sealed chassis, no organic components
+  # #Misfits Tweak - stripped physical coefficients and flat reductions; physical DR now
+  # comes entirely from armor tier (Armor component on clothing). Bare chassis = 400 eHP
+  # (raw HP only). Keeps flavor: Shock weakness, Radiation immunity.
+
+- type: damageModifierSet
+  id: MisfitsC27ZAXSilicon
+  coefficients:
+    Shock: 1.45
+    Radiation: 0.0

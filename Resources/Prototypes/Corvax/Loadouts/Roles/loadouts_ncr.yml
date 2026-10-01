@@ -1,0 +1,158 @@
+- type: loadout
+  id: LoadoutClothingOuterNCRPouchedVestDesert
+  category: Outer
+  cost: 6
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - NCRCadet
+    - NCRSoldier
+    - NCRPrivateFirstClass
+    - NCRWS
+    - NCREngineer
+    - NCRMedic
+    - NCRNCO
+    - NCRFirstSergeant
+    - NCRHeavyTrooper
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRVertibirdPilot
+    - NCRCommander
+    - NCRMajor
+    - NCRDoctor
+    - NCRRO
+
+    - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+    - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
+  - !type:CharacterPlaytimeRequirement
+    tracker: NCRSoldier
+    min: 12000 # 5 hours veterancy unlock
+  items:
+  - N14ClothingOuterNCRPouchedVestDesert
+
+- type: loadout
+  id: LoadoutClothingOuterNCRVestpaddedWebDesert
+  category: Outer
+  cost: 6
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - NCRCadet
+    - NCRSoldier
+    - NCRPrivateFirstClass
+    - NCRWS
+    - NCREngineer
+    - NCRMedic
+    - NCRNCO
+    - NCRFirstSergeant
+    - NCRHeavyTrooper
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRVertibirdPilot
+    - NCRCommander
+    - NCRMajor
+    - NCRDoctor
+    - NCRRO
+
+    - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+    - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
+  - !type:CharacterPlaytimeRequirement
+    tracker: NCRSoldier
+    min: 36000 # 10 hours veterancy unlock
+  items:
+  - N14ClothingOuterNCRVestpaddedWebDesert
+
+- type: loadout
+  id: LoadoutClothingOuterNCRVeteranArmorDesert
+  category: Outer
+  cost: 6
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - NCRCadet
+    - NCRSoldier
+    - NCRPrivateFirstClass
+    - NCRWS
+    - NCREngineer
+    - NCRMedic
+    - NCRNCO
+    - NCRFirstSergeant
+    - NCRHeavyTrooper
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRVertibirdPilot
+    - NCRCommander
+    - NCRMajor
+    - NCRDoctor
+    - NCRRO
+
+    - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+    - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
+  - !type:CharacterPlaytimeRequirement
+    tracker: NCRSoldier
+    min: 72000 # 20 hours veterancy unlock
+  items:
+  - N14ClothingOuterNCRVeteranArmorDesert
+
+- type: loadout
+  id: LoadoutClothingOuterNCRCombatVeteranArmorDesert
+  category: Outer
+  cost: 4
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    inverted: true
+    jobs:
+    - SuperMutant
+    - Nightkin
+    - SuperMutantGladiator
+    - SuperMutantRanger
+    - SuperMutantTrooper
+    - SuperMutantTribal
+  - !type:CharacterJobRequirement
+    jobs:
+    - NCRNCO
+    - NCRFirstSergeant
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRVertibirdPilot
+    - NCRCommander
+    - NCRMajor
+  - !type:CharacterPlaytimeRequirement
+    tracker: NCRSquadLeader
+    min: 72000 # 20 hours veterancy unlock
+  items:
+  - N14ClothingOuterNCRCombatVeteranArmorDesert
+
+- type: loadout
+  id: LoadoutClothingNeckNCRMPCoat
+  category: Outer
+  cost: 4
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - NCRMilitaryPoliceCaptain
+  - !type:CharacterPlaytimeRequirement
+    tracker: NCRMilitaryPoliceCaptain
+    min: 72000 # 20 hours veterancy unlock
+  items:
+  - N14ClothingNeckNCRMPCoat
+
+- type: loadout
+  id: LoadoutClothingNeckNCRMPBeret
+  category: Outer
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs:
+    - NCRMilitaryPoliceCaptain
+  - !type:CharacterPlaytimeRequirement
+    tracker: NCRMilitaryPoliceCaptain
+    min: 72000 # 20 hours veterancy unlock
+  items:
+  - N14ClothingHeadHatNCRMPBeret

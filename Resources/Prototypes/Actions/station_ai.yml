@@ -1,0 +1,250 @@
+﻿# Actions
+- type: entity
+  id: ActionJumpToCore
+  name: Jump to core
+  description: Sends your eye back to the core.
+  components:
+  - type: InstantAction
+    priority: -10
+    itemIconStyle: BigAction
+    icon:
+      sprite: Interface/Actions/actions_ai.rsi
+      state: ai_core
+    event: !type:JumpToCoreEvent
+
+- type: entity
+  id: ActionShowJobIcons
+  name: Show job icons
+  description: Shows job icons for crew members.
+  components:
+  - type: InstantAction
+    priority: -5
+    itemIconStyle: BigAction
+    icon:
+      sprite: Interface/Actions/actions_ai.rsi
+      state: job_view
+    event: !type:ActionComponentChangeEvent
+      components:
+      - type: ShowJobIcons
+
+- type: entity
+  id: ActionSurvCameraLights
+  name: Toggle camera lights
+  description: Enable surveillance camera lights near wherever you're viewing.
+  components:
+  - type: InstantAction
+    priority: -6
+    itemIconStyle: BigAction
+    icon:
+      sprite: Interface/Actions/actions_ai.rsi
+      state: camera_light
+    event: !type:RelayedActionComponentChangeEvent
+      components:
+      - type: LightOnCollideCollider
+      - type: FixturesChange
+        fixtures:
+          lightTrigger:
+            shape:
+              !type:PhysShapeCircle
+              radius: 0.35
+            density: 80
+            hard: false
+            layer:
+            - GhostImpassable
+
+
+- type: entity
+  id: ActionAIViewLaws
+  name: View Laws
+  description: View the laws that you must follow.
+  components:
+  - type: InstantAction
+    priority: -3
+    itemIconStyle: NoItem
+    icon:
+      sprite: Interface/Actions/actions_ai.rsi
+      state: state_laws
+    event: !type:ToggleLawsScreenEvent
+    useDelay: 0.5
+
+# [Changed by MisfitsCrew/Operator] Adds command actions for selecting and ordering ZAX NPC units through camera view.
+- type: entity
+  id: ActionStationAiSelectNpc
+  name: Select NPC
+  description: Selects or deselects an NPC for command orders.
+  components:
+  - type: EntityTargetAction
+    priority: -20
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/sentient.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    repeat: true
+    deselectOnMiss: false
+    event: !type:StationAiSelectNpcActionEvent
+
+- type: entity
+  id: ActionStationAiClearNpcSelection
+  name: Clear NPC selection
+  description: Clears selected NPCs and restores their normal AI.
+  components:
+  - type: InstantAction
+    priority: -21
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/close.svg.192dpi.png
+    checkConsciousness: false
+    event: !type:StationAiClearNpcSelectionActionEvent
+
+- type: entity
+  id: ActionStationAiMoveNpcs
+  name: Move selected NPCs
+  description: Orders selected NPCs to move to a location.
+  components:
+  - type: WorldTargetAction
+    priority: -22
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/open.svg.192dpi.png
+    repeat: true
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    event: !type:StationAiMoveSelectedNpcsActionEvent
+
+- type: entity
+  id: ActionStationAiFormationMoveNpcs
+  name: Move selected NPCs in formation
+  description: Orders selected NPCs to move around a location in formation.
+  components:
+  - type: WorldTargetAction
+    priority: -23
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/group.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    event: !type:StationAiFormationMoveSelectedNpcsActionEvent
+
+- type: entity
+  id: ActionStationAiMoveAndAttackNpcs
+  name: Move and attack
+  description: Orders selected NPCs to move to a location while engaging hostiles they encounter.
+  components:
+  - type: WorldTargetAction
+    priority: -24
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/point.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    event: !type:StationAiMoveAndAttackSelectedNpcsActionEvent
+
+- type: entity
+  id: ActionStationAiEngageNpcs
+  name: Engage target
+  description: Orders selected NPCs to engage a target.
+  components:
+  - type: EntityTargetAction
+    priority: -25
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/point.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    event: !type:StationAiEngageSelectedNpcsActionEvent
+
+- type: entity
+  id: ActionStationAiHoldNpcs
+  name: Hold selected NPCs
+  description: Orders selected NPCs to hold position and not engage targets.
+  components:
+  - type: InstantAction
+    priority: -26
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/anchor.svg.192dpi.png
+    checkConsciousness: false
+    event: !type:StationAiHoldSelectedNpcsActionEvent
+
+- type: entity
+  id: ActionStationAiHackCamera
+  name: Hack camera
+  description: Remotely hacks a visible camera into the Z.A.X camera network.
+  components:
+  - type: EntityTargetAction
+    priority: -27
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/zap.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    repeat: true
+    deselectOnMiss: false
+    event: !type:StationAiHackCameraActionEvent
+
+- type: entity
+  id: ActionStationAiOpenWendoverMap
+  name: Wendover map
+  description: Opens the integrated Wendover region map.
+  components:
+  - type: InstantAction
+    priority: -28
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Nuclear14/Objects/Misc/clutter.rsi
+      state: map
+    checkCanInteract: false
+    checkConsciousness: false
+    event: !type:OpenUiActionEvent
+      key: enum.WastelandMapUiKey.Key
+
+- type: entity
+  id: ActionStationAiOpenLinkedUnits
+  name: Linked Z.A.X units
+  description: Opens a directory of active Z.A.X-linked units and warps the eye to a selected unit.
+  components:
+  - type: InstantAction
+    priority: -29
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/sentient.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    event: !type:OpenUiActionEvent
+      key: enum.ZaxLinkedUnitsUiKey.Key
+
+# [Changed by MisfitsCrew/Operator] Adds direct-control shunting into an eligible Z.A.X NPC chassis.
+- type: entity
+  id: ActionZaxShunt
+  name: Shunt into Z.A.X unit
+  description: Moves your consciousness into a visible, unoccupied NPC Z.A.X chassis.
+  components:
+  - type: EntityTargetAction
+    priority: -30
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/sentient.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    event: !type:ZaxShuntActionEvent
+
+# [Changed by MisfitsCrew/Operator] Lets the shunted controller return to the protected brain in the physical core.
+- type: entity
+  id: ActionZaxReturnToCore
+  name: Return to Z.A.X core
+  description: Shunts your consciousness back into the main Z.A.X core.
+  components:
+  - type: InstantAction
+    priority: -30
+    itemIconStyle: BigAction
+    icon:
+      sprite: Interface/Actions/actions_ai.rsi
+      state: ai_core
+    checkCanInteract: false
+    checkConsciousness: false
+    event: !type:ZaxReturnToCoreActionEvent

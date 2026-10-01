@@ -1,0 +1,35 @@
+# #Misfits Add - Campfire fuel items that can be added to an RMCCampfire.
+# Uses the CampfireFuel component defined in Content.Shared/_Misfits/Campfire/.
+
+- type: entity
+  id: MisfitsCampfireWood
+  name: firewood
+  description: A bundle of dry wood sticks. Good for keeping a fire going.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Materials/materials.rsi
+    state: wood # #Misfits Fix - Natural/wood.rsi does not exist; wood state in materials.rsi used instead
+  - type: Item
+    size: Normal
+  - type: CampfireFuel
+    fuelAmount: 1
+  # #Misfits Fix - Stack component commented out: Firewood StackPrototype does not exist and maxCount is not a valid StackComponent field
+  #- type: Stack
+  #  stackType: Firewood
+  #  count: 1
+  #  maxCount: 5
+
+- type: entity
+  id: MisfitsCampfireScrapFuel
+  name: scrap bundle
+  description: A bundle of burnable wasteland scrap. Won't last long but it'll do.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Materials/Sheets/metal.rsi
+    state: steel # #Misfits Fix - materials.rsi has no plasteel state; steel in Sheets/metal.rsi used for scrap appearance
+  - type: Item
+    size: Small
+  - type: CampfireFuel
+    fuelAmount: 1

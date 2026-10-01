@@ -1,0 +1,53 @@
+- type: job
+  id: NCRNCO
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  weight: 50
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-nco
+  overwatchCategory: OverwatchNcrNcos
+  description: job-description-ncr-nco
+  playTimeTracker: NCRSquadLeader
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # T5 faction timelock (16h NCR)
+      department: NCR
+      min: 57600 # 16 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRWeaponSpecialist
+      min: 14400 # 4 hours as Weapon Specialist
+  startingGear: NCRNCOGear
+  icon: "JobIconNcrSerg"
+  supervisors: job-supervisors-ncr-nco
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRNCOGear
+  equipment:
+    wallet: N14Wallet
+    ears: N14ClothingHeadsetNCR
+    back: N14ClothingBackpackNCR
+    hands: N14ClothingHandsGlovesCombat
+    jumpsuit: N14ClothingOfficerUniformNCRDesert
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagNCO
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+
+- type: playTimeTracker
+  id: NCRSquadLeader

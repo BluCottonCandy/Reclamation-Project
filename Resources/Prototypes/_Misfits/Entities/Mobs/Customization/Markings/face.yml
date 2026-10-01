@@ -1,0 +1,14 @@
+- type: marking
+  id: warboypaint
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Human, Ghoul]
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Misfits/Mobs/Customization/face.rsi
+    state: warboypaint

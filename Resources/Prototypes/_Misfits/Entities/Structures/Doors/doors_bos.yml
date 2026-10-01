@@ -1,0 +1,19 @@
+﻿- type: entity
+  parent: N14DoorCell
+  id: MisfitsDoorCellBoSMidwestKnight
+  suffix: BoSMidwest, Locked, Knight
+  components:
+  - type: AccessReader
+    access: [["BOSKnight"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorCellRust
+  id: MisfitsDoorCellRustBoSMidwestKnight
+  suffix: BoSMidwest, Locked, Knight
+  components:
+  - type: AccessReader
+    access: [["BOSKnight"]]
+  - type: Wires
+    layoutId: HighSec

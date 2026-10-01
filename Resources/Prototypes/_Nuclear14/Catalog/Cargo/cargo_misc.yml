@@ -1,0 +1,19 @@
+- type: cargoProduct
+  id: UniformCrate
+  icon:
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/caravancompanyuniformhat.rsi
+    state: icon
+  product: N14CrateRedFilledBluelineUniforms
+  cost: 150
+  category: Misc
+  group: market
+
+- type: cargoProduct # Corvax-Add-Start
+  id: FuelTankCrate
+  icon:
+    sprite: _Nuclear14/Objects/Misc/handyfuel.rsi
+    state: fuel
+  product: N14CrateBreakPlainFilledFuelTank
+  cost: 200
+  category: Misc
+  group: market # Corvax-Add-End

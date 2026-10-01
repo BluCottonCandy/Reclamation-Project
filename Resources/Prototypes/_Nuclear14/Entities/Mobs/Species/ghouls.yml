@@ -1,0 +1,216 @@
+- type: entity
+  save: false
+  name: ghoul
+  id: N14BaseMobGhoul
+  parent: BaseMobSpeciesOrganic
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Ghoul
+  - type: Body
+    prototype: Ghoul
+    requiredLegs: 2
+  - type: Icon
+    sprite: _Nuclear14/Mobs/Species/Ghoul/parts.rsi
+    state: full
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Species/Ghoul/parts.rsi
+    netsync: false
+    noRot: true
+    drawdepth: Mobs
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: _Nuclear14/Mobs/Species/Ghoul/parts.rsi
+        state: l_leg
+      - shader: StencilMask
+        map: [ "enum.HumanoidVisualLayers.StencilMask" ]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: female_full
+        visible: false
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "id" ]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+  - type: Perishable
+    rotAfter: 3600 # An entire in-game day.
+  - type: Hunger
+    starvationDamage:   # Misfits Change - use custom Starvation type
+      types:
+        Starvation: 0.15
+    recoveryDamage:     # Misfits Add
+      types:
+        Starvation: -0.30
+    starvingSlowdownModifier: 0.5
+  - type: Thirst
+    dehydrationDamage:  # Misfits Add - Dehydration damage
+      types:
+        Dehydration: 0.15
+    recoveryDamage:     # Misfits Add - Dehydration damage
+      types:
+        Dehydration: -0.30
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Ghoul
+  - type: RadiationReceiver
+  - type: RadiationHealing
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Critical
+      150: Dead
+#  - type: FeralGhoulify # Forge-Change
+  # - type: Special
+
+- type: entity
+  save: false
+  parent: MobHumanDummy
+  id: N14MobGhoulDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Ghoul
+
+
+# Glowing
+- type: entity
+  save: false
+  name: ghoul
+  id: N14BaseMobGhoulGlowing
+  parent: BaseMobSpeciesOrganic
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: GhoulGlowing
+  - type: Body
+    prototype: GhoulGlowing
+    requiredLegs: 2
+  - type: Icon
+    sprite: _Nuclear14/Mobs/Species/GhoulGlowing/parts.rsi
+    state: full
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Species/GhoulGlowing/parts.rsi
+    netsync: false
+    noRot: true
+    drawdepth: Mobs
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - shader: StencilClear
+        sprite: _Nuclear14/Mobs/Species/GhoulGlowing/parts.rsi
+        state: l_leg
+      - shader: StencilMask
+        map: [ "enum.HumanoidVisualLayers.StencilMask" ]
+        sprite: Mobs/Customization/masking_helpers.rsi
+        state: female_full
+        visible: false
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "id" ]
+      - map: [ "gloves" ]
+      - map: [ "shoes" ]
+      - map: [ "ears" ]
+      - map: [ "outerClothing" ]
+      - map: [ "eyes" ]
+      - map: [ "belt" ]
+      - map: [ "neck" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+  - type: Perishable
+    rotAfter: 3600 # An entire in-game day.
+  - type: Hunger
+    starvationDamage:    # Misfits Change - use custom Starvation type
+      types:
+        Starvation: 0.5
+    recoveryDamage:      # Misfits Add
+      types:
+        Starvation: -0.5
+    starvingSlowdownModifier: 0.5
+  - type: Thirst
+    dehydrationDamage:   # Misfits Add - Dehydration damage
+      types:
+        Dehydration: 0.25
+    recoveryDamage:      # Misfits Add - Dehydration damage
+      types:
+        Dehydration: -0.35
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSets: 
+    - GhoulGlowing
+    - N14GammaShield
+  - type: RadiationReceiver
+  - type: RadiationHealing
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      90: Critical
+      130: Dead
+  - type: PointLight
+    radius: 2
+    energy: 0.5
+    color: "#4CBB17FF"
+  - type: RadiationSource
+    intensity: 0.5
+    slope: 0.25
+
+- type: entity
+  save: false
+  parent: MobHumanDummy
+  id: N14MobGhoulGlowingDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: GhoulGlowing

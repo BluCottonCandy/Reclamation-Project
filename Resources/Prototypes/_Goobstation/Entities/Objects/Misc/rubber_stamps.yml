@@ -1,0 +1,25 @@
+- type: entity
+  name: nanotrasen representative rubber stamp
+  parent: RubberStampBase
+  id: RubberStampNanorep
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-nanorep
+    stampedColor: "#2ec69b"
+    stampState: "paper_stamp-ok" # Forge-Change
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi # Forge-Change
+    state: stamp-ok # Forge-Change
+
+- type: entity
+  name: magistrate rubber stamp
+  parent: RubberStampBase
+  id: RubberStampMagistrate
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-magistrate
+    stampedColor: "#76a5b4"
+    stampState: "paper_stamp-ok" # Forge-Change
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi # Forge-Change
+    state: stamp-ok # Forge-Change

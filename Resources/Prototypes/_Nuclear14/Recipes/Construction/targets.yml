@@ -1,0 +1,19 @@
+# Misfits Change /Add/: construction entry for the human target.
+- type: construction
+  name: human target
+  id: TargetHuman
+  graph: TargetHuman
+  startNode: start
+  targetNode: targetHuman
+  category: construction-category-structures
+  description: A shooting target. This one is a human.
+  icon:
+    sprite: Objects/Specific/Security/target.rsi
+    state: target_h
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked

@@ -1,0 +1,308 @@
+﻿# cooking
+
+- type: entity
+  id: MisfitsShelfMetalCookWare
+  suffix: Filled, Cook Ware
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxBeaker
+    - id: FoodBowlBig
+      amount: 3
+    - id: FoodPlate
+      amount: 3
+    - id: FoodPlateSmall
+      amount: 3
+    - id: N14RollingPin
+    - id: KitchenKnife
+    - id: FoodPlateTin
+      amount: 2
+    - id: FoodKebabSkewer
+      amount: 2
+
+- type: entity
+  id: MisfitsShelfMetalCookWare2
+  suffix: Filled, Cook Ware 2
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodBowlBig
+      amount: 5
+    - id: FoodPlate
+      amount: 3
+    - id: FoodPlateSmall
+      amount: 3
+    - id: N14RollingPin
+    - id: KitchenKnife
+    - id: FoodPlateTin
+      amount: 3
+    - id: FoodKebabSkewer
+      amount: 4
+
+- type: entity
+  id: MisfitsShelfMetalCookSupplies
+  suffix: Filled, Cook Supplies
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ReagentContainerFlour
+      amount: 5
+    - id: N14ReagentContainerRice
+      amount: 2
+    - id: N14FoodCondimentBottleVinegar
+    - id: N14FoodCondimentBottleEnzyme
+    - id: N14ReagentContainerOliveoil
+    - id: N14ReagentContainerSugar
+      amount: 2
+    - id: N14ReagentContainerCornmeal
+      amount: 2
+    - id: SprayBottleWater
+    - id: N14FoodCondimentPacketSalt
+      amount: 3
+    - id: N14FoodCondimentPacketPepper
+      amount: 3
+    - id: N14FoodCondimentPacketProtein
+      amount: 2
+
+- type: entity
+  id: MisfitsShelfMetalCookSuppliesRandom
+  suffix: Filled, Cook Supplies, Random
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ReagentContainerFlour
+      prob: 0.5
+    - id: N14ReagentContainerFlour
+      prob: 0.5
+    - id: N14ReagentContainerFlour
+      prob: 0.5
+    - id: N14ReagentContainerFlour
+      prob: 0.5
+    - id: N14ReagentContainerFlour
+      prob: 0.5
+    - id: N14ReagentContainerFlour
+      prob: 0.5
+    - id: N14ReagentContainerRice
+      prob: 0.5
+    - id: N14ReagentContainerRice
+      prob: 0.5
+    - id: N14FoodCondimentBottleVinegar
+      prob: 0.5
+    - id: N14FoodCondimentBottleEnzyme
+      prob: 0.5
+    - id: N14ReagentContainerOliveoil
+      prob: 0.5
+    - id: N14ReagentContainerSugar
+      prob: 0.5
+    - id: N14ReagentContainerSugar
+      prob: 0.5
+    - id: N14ReagentContainerCornmeal
+      prob: 0.5
+    - id: N14ReagentContainerCornmeal
+      prob: 0.5
+    - id: N14FoodCondimentPacketSalt
+      prob: 0.5
+    - id: N14FoodCondimentPacketSalt
+      prob: 0.5
+    - id: N14FoodCondimentPacketSalt
+      prob: 0.5
+    - id: N14FoodCondimentPacketSalt
+      prob: 0.5
+    - id: N14FoodCondimentPacketPepper
+      prob: 0.5
+    - id: N14FoodCondimentPacketPepper
+      prob: 0.5
+    - id: N14FoodCondimentPacketPepper
+      prob: 0.5
+    - id: N14FoodCondimentPacketPepper
+      prob: 0.5
+    - id: N14FoodCondimentPacketProtein
+      prob: 0.5
+    - id: N14FoodCondimentPacketProtein
+      prob: 0.5
+
+- type: entity
+  id: MisfitsFridgeCookSuppliesEssential
+  suffix: Filled, Fridge, Cook Supplies
+  parent: ClosetFridgeWideDirty
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14FoodCondimentPacketPepper
+      amount: 3
+    - id: N14ReagentContainerFlour
+      amount: 2
+    - id: N14ReagentContainerFlourSmall
+      amount: 2
+    - id: N14DrinkMilkBrahmin
+      amount: 4
+    - id: BoxMousetrap
+      amount: 2
+    - id: RadCubeBox
+      amount: 2
+    - id: N14FoodCondimentPacketSalt
+      amount: 3
+    - id: MisfitsDrinkZoyMilk
+      amount: 4
+    - id: SprayBottleWater
+      amount: 1
+    - id: N14ReagentContainerSugar
+      amount: 2
+    - id: N14ReagentContainerSugarSmall
+      amount: 2
+    - id: N14FoodCondimentBottleEnzyme
+      amount: 2
+
+- type: entity
+  id: MisfitsFridgeCookSuppliesMeat
+  suffix: Filled, Fridge, Meat
+  parent: ClosetFridgeWideDirty
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodContainerEgg
+    - id: N14FoodMeatRadchicken
+      amount: 4
+    - id: N14FoodMeatBrahmin
+      amount: 4
+    - id: N14FoodMeatBighorner
+      amount: 4
+      prob: 0.8
+    - id: N14FoodMeatIguana
+      amount: 2
+      prob: 0.3
+    - id: N14FoodFireantNectar
+      prob: 0.6
+    - id: FoodMeatSalami
+      amount: 2
+      prob: 0.9
+    - id: N14FoodMeatRadRaw
+      amount: 4
+    - id: N14FoodMeatRadstag
+      amount: 4
+      prob: 0.8
+    - id: N14FloraProduceWildCaveFungus
+      amount: 4
+    - id: N14FoodCheese
+
+- type: entity
+  id: MisfitsFridgeCookSuppliesMeatExotic
+  suffix: Filled, Fridge, Meat, Exotic
+  parent: ClosetFridgeWideDirty
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14FoodMeatYaoguai
+      amount: 2
+      prob: 0.8
+    - id: N14FoodMeatIguana
+      amount: 2
+      prob: 0.8
+    - id: N14FoodFireantNectar
+      prob: 0.8
+    - id: FoodMeatSalami
+      amount: 2
+      prob: 0.9
+    - id: N14FoodMeatRadRaw
+      amount: 4
+    - id: N14FoodMeatRadstag
+      amount: 4
+      prob: 0.8
+    - id: N14FoodMeatRadscorpion
+      amount: 2
+
+- type: entity
+  id: MisfitsShelfMetalMilitaryRations
+  suffix: Filled, Military Rations
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14FoodTinC1
+      amount: 4
+    - id: N14FoodTinC2
+      amount: 4
+    - id: N14FoodTinC3
+      amount: 4
+    - id: N14FoodTinK
+      amount: 4
+    - id: N14FoodTinKCracker
+      amount: 4
+    - id: DrinkMREFlask
+      amount: 5
+    - id: DrinkFlaskOld
+      amount: 5
+
+  # bar & drinks
+
+- type: entity
+  id: MisfitsShelfWoodShowcaseBarGlasses
+  suffix: Filled, Bar, Glasses
+  parent: N14ShelfWoodShowcase
+  components:
+  - type: StorageFill
+    contents:
+    - id: DrinkGlass
+      amount: 10
+    - id: DrinkGlassCoupeShaped
+      amount: 3
+    - id: DrinkShotGlass
+      amount: 3
+    - id: BarSpoon
+      amount: 2
+    - id: DrinkShaker
+      amount: 2
+
+- type: entity
+  id: MisfitsCrateBreakPlainNukaCola
+  suffix: Filled, Nuka-Cola
+  parent: N14CrateBreakPlain
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14DrinkNukaCola
+      amount: 4
+    - id: N14DrinkNukaColaGrape
+      amount: 2
+    - id: N14DrinkNukaColaCherry
+      amount: 2
+    - id: N14DrinkNukaColaYellow
+      amount: 2
+    - id: N14DrinkNukaColaVictory
+      amount: 1
+    - id: N14DrinkNukaColaQuantum
+      amount: 1
+    - id: N14DrinkNukaColaWild
+      amount: 1
+    - id: N14DrinkNukaColaQuartz
+      amount: 1
+
+- type: entity
+  id: MisfitsShelfMetalAlcohol
+  suffix: Filled, Alcohol
+  parent: ShelfBar
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14DrinkWhisky
+      amount: 2
+    - id: DrinkWineBottleFull
+    - id: DrinkVodkaBottleFull
+      amount: 2
+    - id: DrinkGinBottleFull
+
+- type: entity
+  id: MisfitsShelfMetalAlcoholWhiskeyBeer
+  suffix: Filled, Alcohol
+  parent: ShelfBar
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14DrinkWhisky
+      amount: 3
+    - id: N14DrinkGammagulpBeer
+      amount: 6

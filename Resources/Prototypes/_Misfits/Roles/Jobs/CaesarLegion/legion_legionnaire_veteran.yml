@@ -1,0 +1,65 @@
+- type: job
+  id: CaesarLegionLegionnaireVeteran
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 60
+  showBorder: true
+  name: job-name-caesar-legion-legionnaire-veteran
+  description: job-description-caesar-legion-legionnaire-veteran
+  playTimeTracker: CaesarLegionLegionnaireVeteran
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement # Legion total timelock
+      department: CaesarLegion
+      min: 36000 # 10 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: CaesarLegionLegionnaireWarrior
+      min: 14400 # 4 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
+  startingGear: CaesarLegionLegionnaireVeteranGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerVeteran"
+  supervisors: job-name-caesar-legion-other
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionLegionnaireVeteran
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionLegionnaireVeteranGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: ClothingNeckRedScarf
+    eyes: N14ClothingEyesGlassesWelding
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsBlack
+    head: N14ClothingHeadHatBaseballHelmet # #Misfits Change /Tweak/: Veteran Legionary wears a baseball helmet
+    outerClothing: N14ClothingOuterLegionnaireVeteranArmor
+    gloves: N14ClothingHandsGlovesTribal
+    pocket1: LegionVeteranloadoutkits
+    id: N14IDLegionaryMedalSilver2
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+
+- type: playTimeTracker
+  id: CaesarLegionLegionnaireVeteran

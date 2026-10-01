@@ -1,0 +1,663 @@
+# Biological and conditioning traits
+- type: trait
+  id: N14PillowKnuckles
+  category: Physical
+  points: 1
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14IronFist
+        - N14RadClaws
+  functions:
+    - !type:TraitModifyUnarmed
+      flatDamageIncrease:
+        types:
+          Blunt: -1
+
+- type: trait
+  id: N14IronFist
+  category: Physical
+  points: -2
+  requirements:
+    # Forge-Change-Start
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerGuard
+        - FollowerVolunteer
+    # Forge-Change-End
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14PillowKnuckles
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  functions:
+    - !type:TraitModifyUnarmed
+      flatDamageIncrease:
+        types:
+          Blunt: 2
+
+- type: trait
+  id: N14RadClaws
+  category: Physical
+  points: -2
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14PillowKnuckles
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Ghoul
+        - GhoulGlowing
+  functions:
+    - !type:TraitModifyUnarmed
+      flatDamageIncrease:
+        types:
+          Slash: 1
+          Radiation: 1
+
+- type: trait
+  id: N14WeakLiquor
+  category: Physical
+  points: 0
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14PartyAnimal
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: LightweightDrunk
+          boozeStrengthMultiplier: 2
+
+- type: trait
+  id: N14PartyAnimal
+  category: Physical
+  points: -1
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14WeakLiquor
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: LightweightDrunk
+          boozeStrengthMultiplier: 0.5
+
+- type: trait
+  id: N14ShortArms
+  category: Physical
+  points: 1
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14Blitz
+  functions:
+    - !type:TraitModifyUnarmed
+      rangeModifier: 0.9
+
+- type: trait
+  id: N14Blitz
+  category: Physical
+  points: -2
+  requirements:
+    # Forge-Change-Start
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerGuard
+        - FollowerVolunteer
+    # Forge-Change-End
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14ShortArms
+  functions:
+    - !type:TraitModifyUnarmed
+      rangeModifier: 1.15
+
+- type: trait
+  id: N14ScriptedDeath
+  category: Physical
+  points: 6
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14LifeTaker
+        - N14LifeGiver
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: DeadModifier
+          deadThresholdModifier: -100
+
+- type: trait
+  id: N14LifeTaker
+  category: Physical
+  points: 2
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14ScriptedDeath
+        - N14LifeGiver
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: CritModifier
+          critThresholdModifier: -10
+    - !type:TraitReplaceComponent
+      components:
+        - type: DeadModifier
+          deadThresholdModifier: -20
+
+- type: trait
+  id: N14LifeGiver
+  category: Physical
+  points: -3
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14ScriptedDeath
+        - N14LifeTaker
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: CritModifier
+          critThresholdModifier: 5
+    - !type:TraitReplaceComponent
+      components:
+        - type: DeadModifier
+          deadThresholdModifier: 10
+
+- type: trait
+  id: N14BadReflexes
+  category: Physical
+  points: 1
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14LightningHands
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+        - Ghoul
+        - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Bad Reflexes
+        - SuperMutant
+  functions:
+    - !type:TraitModifyUnarmed
+      attackRateModifier: 1.1
+
+- type: trait
+  id: N14LightningHands
+  category: Physical
+  points: -2
+  requirements:
+    # Forge-Change-Start
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerGuard
+        - FollowerVolunteer
+    # Forge-Change-End
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14BadReflexes
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+        - Ghoul
+        - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Lightning Hands
+        - SuperMutant 
+  functions:
+    - !type:TraitModifyUnarmed
+      attackRateModifier: 0.9
+
+- type: trait
+  id: N14Poisoned
+  category: Physical
+  points: 3
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14UnnaturalReg
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: PassiveDamage
+          allowedStates:
+          - Alive
+          - Critical
+          damageCap: 200
+          damage:
+            types:
+              Poison: 0.07
+
+- type: trait
+  id: N14UnnaturalReg
+  category: Physical
+  points: -7 # Slight nerf, still able to heal out of crit but its nowhere near as able now.
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14Poisoned
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: PassiveDamage
+          allowedStates:
+          - Alive # Forge-Change
+          - Critical # takes a bit to get out of crit, but if no one kills you and you don't lose all your blood, you live!
+          damageCap: 300 # makes it works with life giver
+          damage:
+            types:
+              # #Misfits Fix - PassiveDamage group healing is split across member types; direct types make burn regeneration visible. 1 Hp for every 4 seconds
+              Blunt: -0.20
+              Slash: -0.20
+              Piercing: -0.20
+              Heat: -0.20
+              Cold: -0.20
+              Shock: -0.20
+              Caustic: -0.20
+              Asphyxiation: -0.35 # Last longer in crit, takes a WHIIILE to get back up.
+              Bloodloss: -0.10
+              Poison: -0.10
+              Radiation: -0.10
+
+- type: trait
+  id: N14WorldChampion
+  category: Physical
+  points: -6 #Make super mutants unable to take this when they get added
+  # Forge-Change-Start
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerGuard
+        - FollowerVolunteer
+  # Forge-Change-End
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: MeleeThrowOnHit
+          speed: 10
+          lifetime: 0.025
+          minlifetime: 0.0125
+
+- type: trait
+  id: N14SittingDuck
+  category: Physical
+  points: 4
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14MovingAsset
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: TraitSpeedModifier
+          sprintModifier: 0.9
+          walkModifier: 0.9
+          requiredTriggeredSpeedModifier: 0.9
+
+- type: trait
+  id: N14MovingAsset
+  category: Physical
+  points: -2
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14SittingDuck
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: TraitSpeedModifier
+          sprintModifier: 1.05
+          walkModifier: 1.05
+          requiredTriggeredSpeedModifier: 1.05
+
+- type: trait
+  id: N14StiffJoints
+  category: Physical
+  points: 2
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14DeskNinja
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: ClimbDelayModifier
+          climbDelayMultiplier: 1.25
+        - type: SlippableModifier
+          paralyzeTimeMultiplier: 1.25
+
+- type: trait
+  id: N14DeskNinja
+  category: Physical
+  points: -4
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14StiffJoints
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: ClimbDelayModifier
+          climbDelayMultiplier: 0.5
+        - type: SlippableModifier
+          paralyzeTimeMultiplier: 0.5
+
+- type: trait
+  id: N14SilentTakedown
+  category: Physical
+  points: -3
+  requirements:
+    # Forge-Change-Start
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerGuard
+        - FollowerVolunteer
+        - CaesarLegionSlave # Restricted from Slaves & Prisoners - if they had these traits, they wouldn't be stuck in the first place!
+        - NCRPrisoner
+    # Forge-Change-End
+    # Misfits Fix: CharacterTraitRequirement block removed — all referenced N14ExtremeAug* traits are commented out
+    #- !type:CharacterTraitRequirement
+    #  inverted: true
+    #  traits:
+    #    - N14ExtremeAugKnight
+    #    - N14ExtremeAugScribe
+    #    - N14ExtremeAugPaladin
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: StaminaDamageOnHit
+          damage: 8
+
+- type: trait
+  id: N14GammaShield
+  category: Physical
+  points: -4              # Misfits Change: Gamma Shield is kinda ass, reduced cost from 8 to 4
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Ghoul
+#        - GhoulGlowing   # Misfits Change: Glowing Ghouls get it for free now
+  functions:
+    - !type:TraitAddArmor
+      damageModifierSets:
+        - N14GammaShield
+
+# Agumentations and implants start here
+- type: trait
+  id: N14HandyTools
+  category: Physical
+  points: -5
+  # Misfits Fix: CharacterTraitRequirement block removed — all referenced N14ExtremeAug* traits are commented out
+  requirements:
+  - !type:CharacterJobRequirement
+    inverted: true
+    jobs:
+    - CaesarLegionSlave # Restricted from Slaves & Prisoners - if they had these traits, they wouldn't be stuck in the first place!
+    - NCRPrisoner
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: Prying
+          speedModifier: 0.75
+
+- type: trait
+  id: N14DermalArmorWaster
+  category: Physical
+  points: -8
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidPaladinCommander
+        - BoSMidPaladin
+        - BoSMidKnight
+        - BoSLancerKnight
+        # #Cythisiax Removed - Lancer rank folded into Lancer-Knight
+        #- BoSWashingtonCommander #Misfits Change /Comment-out/: Washington BoS removed
+        #- BoSWashingtonPaladin
+        #- BoSWashingtonKnight
+        - VaultDoctor
+        - VaultDweller
+        - VaultEngineer
+        - TribalElder
+        - Tribal
+        - TribalFarmer
+        - TribalShaman # #Misfits Change - renamed from TribalHealer
+        # Forge-Change-Start
+        - BoSWestElderCommander
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerGuard
+        - FollowerVolunteer
+        # Forge-Change-End
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14DermalArmor
+        - N14PhoenixArmor
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  functions:
+    - !type:TraitAddArmor
+      damageModifierSets:
+        - N14DermalArmor
+
+- type: trait
+  id: N14DermalArmor
+  category: Physical
+  points: -6
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - BoSMidPaladinCommander
+        - BoSMidPaladin
+        - BoSMidKnight
+        - BoSHeadKnight # #Cythisiax Added - Head Knight can take the cheaper Dermal Armor perk
+        #- BoSWashingtonCommander #Misfits Change /Comment-out/: Washington BoS removed
+        #- BoSWashingtonPaladin
+        #- BoSWashingtonKnight
+        # Forge-Change-Start
+        - BoSWestElderCommander
+        # Forge-Change-End
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14DermalArmorWaster
+        - N14PhoenixArmor
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  functions:
+    - !type:TraitAddArmor
+      damageModifierSets:
+        - N14DermalArmor
+
+# Midwestern chapter-only augmentations
+- type: trait
+  id: N14PhoenixArmor
+  category: Physical
+  points: -6
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - BoSMidPaladinCommander
+        - BoSMidPaladin
+        - BoSMidKnight
+        - BoSHeadKnight # #Cythisiax Added - Head Knight can take the Phoenix Armor perk
+        - BoSLancerKnight
+        # #Cythisiax Removed - Lancer rank folded into Lancer-Knight
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - N14DermalArmorWaster
+        - N14DermalArmor
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  functions:
+    - !type:TraitAddArmor
+      damageModifierSets:
+        - N14PhoenixArmor
+
+#Misfits Change /Comment-out/: Washington chapter-only augmentations removed — jobs no longer exist.
+#- type: trait
+#  id: N14ExtremeAugKnight
+#  category: Physical
+#  points: -8
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonKnight
+#    - !type:CharacterTraitRequirement
+#      inverted: true
+#      traits:
+#        - N14DermalArmor
+#        - N14HandyTools
+#        - N14IronFist
+#        - N14PillowKnuckles
+#        - N14SilentTakedown
+#        - N14BrotherBeep
+#    - !type:CharacterSpeciesRequirement
+#      species:
+#        - Human
+#  functions:
+#    - !type:TraitModifyUnarmed
+#      flatDamageIncrease:
+#        types:
+#          Blunt: 1
+#    - !type:TraitAddComponent
+#      components:
+#        - type: Prying
+#          speedModifier: 0.75
+#        - type: StaminaDamageOnHit
+#          damage: 6
+#    - !type:TraitModifyLanguages
+#      languagesSpoken:
+#        - N14BrotherBeep
+#      languagesUnderstood:
+#        - N14BrotherBeep
+#Misfits Removed — converted to a physical item (TrainingManualPowerArmor). Paladin/Senior Paladin/Head Paladin
+# get PowerArmorProficiency innately via AddComponentSpecial in their job specials.
+#- type: trait
+#  id: N14PowerArmorTraining
+#  category: Physical
+#  points: -3
+#  functions:
+#    - !type:TraitAddComponent
+#      components:
+#        - type: PowerArmorProficiency
+#- type: trait
+#  id: N14ExtremeAugScribe
+#  category: Physical
+#  points: -8
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonScribe
+#    - !type:CharacterTraitRequirement
+#      inverted: true
+#      traits:
+#        - N14DermalArmor
+#        - N14GammaShield
+#        - N14GooglyEyes
+#        - N14HandyTools
+#        - N14BrotherBeep
+#    - !type:CharacterSpeciesRequirement
+#      species:
+#        - Human
+#        - Ghoul
+#  functions:
+#    - !type:TraitAddComponent
+#      components:
+#        - type: FlashImmunity
+#        - type: EyeProtection
+#        - type: SurgerySpeedModifier
+#          speedModifier: 1.33
+#    - !type:TraitModifyLanguages
+#      languagesSpoken:
+#        - N14BrotherBeep
+#      languagesUnderstood:
+#        - N14BrotherBeep
+#
+#- type: trait
+#  id: N14ExtremeAugPaladin
+#  category: Physical
+#  points: -8
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonCommander
+#        - BoSWashingtonPaladin
+#    - !type:CharacterTraitRequirement
+#      inverted: true
+#      traits:
+#        - N14DermalArmor
+#        - N14GammaShield
+#        - N14GooglyEyes
+#        - N14HandyTools
+#        - N14IronFist
+#        - N14PillowKnuckles
+#        - N14RadClaws
+#        - N14SilentTakedown
+#        - N14BrotherBeep
+#    - !type:CharacterSpeciesRequirement
+#      species:
+#        - Human
+#        - Ghoul
+#  functions:
+#    - !type:TraitModifyUnarmed
+#      flatDamageIncrease:
+#        types:
+#          Blunt: 1
+#    - !type:TraitAddComponent
+#      components:
+#        - type: FlashImmunity
+#        - type: EyeProtection
+#        - type: StaminaDamageOnHit
+#          damage: 6
+#    - !type:TraitModifyLanguages
+#      languagesSpoken:
+#        - N14BrotherBeep
+#      languagesUnderstood:
+#        - N14BrotherBeep

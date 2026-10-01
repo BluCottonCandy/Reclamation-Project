@@ -1,0 +1,19 @@
+- type: entity
+  id: N14Bullet45
+  name: bullet (.45 auto)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective # #Misfits Change Add: .45 ACP pistol round is sub-5.56mm class; ricochets off power armor.
+    reflective:
+      - SmallCaliber
+      - NonEnergy
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 17
+  # Misfits Add - .45 ACP is subsonic and loses energy at similar rate to 9mm
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 6.0
+    maxFalloffTiles: 12.0
+    minDamageMultiplier: 0.45

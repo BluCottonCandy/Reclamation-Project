@@ -1,0 +1,221 @@
+#Misfits Change /Add/: Rank-specific NCR dogtags for active Misfits NCR jobs.
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagSoldier
+  name: private's dogtags
+  description: You've gotten past basic training, and shown a baseline of competency. Follow orders and don't do anything stupid.
+  suffix: Soldier
+  components:
+  - type: PresetIdCard
+    job: NCRSoldier
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagPrivateFirstClass
+  name: private first class dogtags
+  description: So far you've proven you're better than the average recruit. But you still have a long way to go.
+  suffix: Private First Class
+  components:
+  - type: PresetIdCard
+    job: NCRPrivateFirstClass
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagStaffSergeant
+  name: staff sergeant's dogtags
+  description: You're trusted now, and expected to help new recruits learn the ropes. You have a reputation to lose, so be careful.
+  suffix: Staff Sergeant
+  components:
+  - type: PresetIdCard
+    job: NCRStaffSergeant
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagFirstSergeant
+  name: sergeant first class's dogtags
+  description: You're a valuable asset to the army now, so kiss any request for leave goodbye. Your job isn't done until the NCR stretches coast to coast.
+  suffix: Sergeant First Class
+  components:
+  - type: PresetIdCard
+    job: NCRFirstSergeant
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagMPInvestigator
+  name: MP investigator's dogtags
+  description: Trust nobody, turn over every rock, and question everyone. Someone has to keep the NCRA clean from abuse and corruption, and that's you.
+  suffix: MP Investigator
+  components:
+  - type: PresetIdCard
+    job: NCRMPinvestigator
+
+- type: entity
+  parent: N14IDNCRDogtagDoctor
+  id: N14IDNCRDogtagDoctorSenior
+  name: senior doctor's dogtags
+  description: No matter what you do these idiots will get themselves hurt, so hope for the best but prepare for the worst.
+  suffix: Doctor
+  components:
+  - type: PresetIdCard
+    job: NCRDoctor
+
+- type: entity
+  parent: N14IDNCRDogtagOfficer
+  id: N14IDNCRDogtagCaptain
+  name: captain's dogtags
+  description: You are a trusted asset among the officers now, but these tags feel heavy around your neck. They are burdened with responsibility.
+  suffix: Captain
+  components:
+  - type: PresetIdCard
+    job: NCRCommander
+
+- type: entity
+  parent: N14IDNCRDogtagCaptain
+  id: N14IDNCRDogtagMajor
+  name: major's dogtags
+  description: The soldiers look to you for leadership. Keep them alive, defend Republic assets in the area, and maintain peace in the region where possible.
+  suffix: Major
+  components:
+  - type: PresetIdCard
+    job: NCRMajor
+
+- type: entity
+  parent: N14IDNCRDogtagCaptain
+  id: N14IDNCRDogtagProvost
+  name: Provost Badge
+  description: It is up to you to keep the Republic alive, and sometimes that means amputating bad flesh that poisons the body, no matters its rotten excuses.
+  suffix: Investigator
+  components:
+  - type: PresetIdCard
+    job: NCRProvost
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagMPRecruit
+  name: military police recruit's dogtags
+  description: These shiny dogtags feel heavy. Its up to you to hold the soldiers accountable, and manage the prisoners in humane conditions. Stay alert, without you there is only barbarity.
+  suffix: Military Police Specialist
+  components:
+  - type: PresetIdCard
+    job: NCRMilitaryPoliceRecruit
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagMPSergeant
+  name: military police staff sergeant's dogtags
+  description: These scratched up dogtags have memory tied into them. Its your job to lead the recruits now, and show them how to protect the army's integrity from abuse and corruption.
+  suffix: Military Police Staff Sergeant
+  components:
+  - type: PresetIdCard
+    job: NCRMilitaryPoliceSergeant
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagMPCaptain
+  name: military police first lieutenant's dogtags
+  description: The military police require you to lead them. Keep the base from falling into anarchy, ensure the enlisted respect their superiors, and arrest anyone who threatens the status quo.
+  suffix: Military Police First Lieutenant
+  components:
+  - type: PresetIdCard
+    job: NCRMilitaryPoliceCaptain
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagNCRRO
+  name: Requisition officer's dogtags
+  description: Everything has its place, every bullet is to be accounted for, and every man is to stay well supplied. Manage your hoarded equipment and hand it out to those who truly need it.
+  suffix: Requisition Officer
+  components:
+  - type: PresetIdCard
+    job: NCRRO
+
+- type: entity
+  parent: N14IDNCRDogtagOfficer
+  id: N14IDNCRDogtagltcol
+  name: Lieutenant Colonel's dogtags
+  description: The soldiers are your responsibility, all of them look up to you to stay alive and find victory in the worst of conditions. It serves as a constant sword that dangles above your head.
+  suffix: Lieutenant Colonel
+  components:
+  - type: PresetIdCard
+    job: NCRLTCol
+
+#Misfits Add - Prisoner ID dogtag: NCR prisoners had no ID slot item, so they never got a
+#station general record and were missing from the crew manifest. This fixes that.
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagPrisoner
+  name: prisoner's dogtags
+  description: You've gotten yourself into a real mess now. Maybe if you work hard and prove useful, they'll let you go before your hair goes gray and your bones turn brittle.
+  suffix: Prisoner
+  components:
+  - type: PresetIdCard
+    job: NCRPrisoner
+
+- type: entity
+  parent: N14IDPassportPhoto
+  id: N14IDNCRPassportCitizen
+  name: NCR Civilian Passport
+  description: A passport issued to NCR citizens traveling outside the core territories, it offers protection and rights beyond what wastelanders get. Someone with this is worth ransoming to the soldiers.
+  suffix: Citizen
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport
+  - type: PresetIdCard
+    job: NCRCitizen
+
+- type: entity
+  parent: N14IDPassportPhoto
+  id: N14IDNCRPassportTrader
+  name: NCR Trader Passport
+  description: A passport issued to NCR citizens traveling outside the core territories, it offers protection and rights beyond what wastelanders get. This one has caravaneer papers attached, marking one as an official Caravan Network member in good standing!
+  suffix: Trader
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport
+  - type: PresetIdCard
+    job: NCRTrader
+
+#Misfits Add - NCR Office of Science and Industry (OSI) rank dogtags. Every OSI billet
+#carries an id-slot dogtag so members appear on the crew manifest like other NCR jobs.
+- type: entity
+  parent: N14IDNCRDogtagOfficer
+  id: N14IDNCRDogtagOSIChiefScientist
+  name: OSI chief scientist's dogtags
+  description: Issued to those in charge of entire research outposts, these dogtags are trusted to the brightest and most loyal of government scientists.
+  suffix: Chief Scientist
+  components:
+  - type: PresetIdCard
+    job: OSIChiefScientist
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagOSIScientist
+  name: OSI scientist's dogtags
+  description: Issued to those who have proven themselves capable government scientists, someone with these dogtags are trusted to do some real research.
+  suffix: Scientist
+  components:
+  - type: PresetIdCard
+    job: OSIScientist
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagOSIAssistant
+  name: OSI assistant's dogtags
+  description: These shiny new dogtags are issued to NCR citizens with an interest in a career in government science, looking at them gives a sense of fresh opportunity.
+  suffix: Assistant
+  components:
+  - type: PresetIdCard
+    job: OSIAssistant
+
+- type: entity
+  parent: N14IDNCRDogtagOfficer
+  id: N14IDNCRDogtagOSIAgent
+  name: OSI agent's dogtags
+  description: Issued to government agents attached to the Office of Science and Industry, these are entrusted to those who both assist OSI scientists and will nip any mad science attempts in the bud.
+  suffix: Agent
+  components:
+  - type: PresetIdCard
+    job: OSIAgent

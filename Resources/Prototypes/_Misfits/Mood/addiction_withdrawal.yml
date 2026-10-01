@@ -1,0 +1,74 @@
+# Misfits Change /Add:/ Withdrawal mood effects for each addictive drug.
+# Each drug has a Withdrawal effect (negative moodChange, no timeout) and a moodCategory.
+# Applied by AddictionSystem when the entity is in active un-suppressed withdrawal.
+# Pattern mirrors the vanilla JetWithdrawal / PsychoWithdrawal entries in drugs.yml.
+
+# ── Hydra ──────────────────────────────────────────────────────────────────────
+# Hydra heals wounds; withdrawal leaves the body raw and craving regeneration.
+- type: moodEffect
+  id: HydraWithdrawal
+  moodChange: -5
+  category: "HydraAddiction"
+
+- type: moodCategory
+  id: HydraAddiction
+
+# ── Buffout ────────────────────────────────────────────────────────────────────
+# Buffout bolsters physical strength; withdrawal causes crushing weakness.
+- type: moodEffect
+  id: BuffoutWithdrawal
+  moodChange: -6
+  category: "BuffoutAddiction"
+
+- type: moodCategory
+  id: BuffoutAddiction
+
+# ── Bufftats ───────────────────────────────────────────────────────────────────
+# Bufftats augments agility; withdrawal leaves the body sluggish and aching.
+- type: moodEffect
+  id: BufftatsWithdrawal
+  moodChange: -6
+  category: "BufftatsAddiction"
+
+- type: moodCategory
+  id: BufftatsAddiction
+
+# ── Buffjet ────────────────────────────────────────────────────────────────────
+# Buffjet combines speed and power; its withdrawal is the most punishing.
+- type: moodEffect
+  id: BuffjetWithdrawal
+  moodChange: -7
+  category: "BuffjetAddiction"
+
+- type: moodCategory
+  id: BuffjetAddiction
+
+# ── Daytripper ─────────────────────────────────────────────────────────────────
+# Daytripper induces euphoric hallucinations; withdrawal leaves reality feeling grey.
+- type: moodEffect
+  id: DaytripperWithdrawal
+  moodChange: -5
+  category: "DaytripperAddiction"
+
+- type: moodCategory
+  id: DaytripperAddiction
+
+# ── Cateye ─────────────────────────────────────────────────────────────────────
+# Cateye sharpens night vision; withdrawal is mild but noticeable.
+- type: moodEffect
+  id: CateyeWithdrawal
+  moodChange: -4
+  category: "CateyeAddiction"
+
+- type: moodCategory
+  id: CateyeAddiction
+
+# ── Mentats (shared by all variants: Mentats, MentatsOrange, MentatsGrape, MentatsBerry)
+# Mentats sharpen the mind; withdrawal leaves a dull, foggy emptiness.
+- type: moodEffect
+  id: MentatsWithdrawal
+  moodChange: -5
+  category: "MentatsAddiction"
+
+- type: moodCategory
+  id: MentatsAddiction

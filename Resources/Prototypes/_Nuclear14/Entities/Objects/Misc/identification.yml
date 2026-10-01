@@ -1,0 +1,1048 @@
+# ID Cards
+- type: entity
+  parent: Clothing
+  id: N14IDCard
+  name: identification card
+  description: Make sure you don't lose this, or you're in some deep shit.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/id_cards.rsi
+  - type: Clothing
+    slots:
+    - idcard
+    sprite: Objects/Misc/id_cards.rsi
+  - type: Item
+    heldPrefix: default
+    size: Small
+  - type: Access
+  - type: IdCard
+  - type: NanoChatCard # #Misfits Add - PipBoy Hub requires NanoChatCard for number assignment and messaging
+  - type: StationRecordKeyStorage
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+
+#MARK: Vault
+- type: entity
+  parent: N14IDCard
+  id: N14IDCardVault
+  name: vault ID card
+  description: Proof that you belong underground, but in a good way.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    scale: 0.7, 0.7
+    layers:
+    - state: keycard_vault
+  - type: PresetIdCard
+    job: VaultDweller
+  - type: Tag
+    tags:
+    - IdCardVault
+    - DoorBumpOpener
+  - type: ClothingAddFaction
+    faction: Vault
+
+- type: entity
+  parent: N14IDCardVault
+  id: N14IDCardVaultEngineer
+  name: vault engineer ID card
+  description: Real engineers don't need this to get around, but it keeps security from thinking you're a break-in artist.
+  components:
+  - type: PresetIdCard
+    job: VaultEngineer
+
+- type: entity
+  parent: N14IDCardVault
+  id: N14IDCardVaultSecurity
+  name: vault security ID card
+  description: Down here you're the law, but only so long as there are others alive to follow that law.
+  components:
+  - type: PresetIdCard
+    job: VaultSecurity
+
+- type: entity
+  parent: N14IDCardVault
+  id: N14IDCardVaultDoctor
+  name: vault doctor ID card
+  description: Prevention is preferable to treatment, but you can't prevent your fellow dwellers from getting themselves hurt.
+  components:
+  - type: PresetIdCard
+    job: VaultDoctor
+
+- type: entity
+  parent: N14IDCardVault
+  id: N14IDCardVaultOverseer
+  name: vault overseer ID card
+  description: You're the person in charge down here, don't let anyone forget it. Above all else, don't mess this up.
+  components:
+  - type: PresetIdCard
+    job: Overseer
+
+- type: entity
+  parent: N14IDCardVault
+  id: MisfitsIDCardVaultCargo
+  name: vault cargo specialist ID card
+  description: Import what's needed, export what's not. No society is truly self sustaining, not indefinitely.
+  components:
+  - type: PresetIdCard
+    job: VaultCargoSpecialist
+
+- type: entity
+  parent: N14IDCardVault
+  id: MisfitsIDCardVaultCourier
+  name: vault courier ID card
+  description: Deliver messages and parcels to the right people, and try to make some profit out of it.
+  components:
+  - type: PresetIdCard
+    job: VaultCourier
+
+- type: entity
+  parent: N14IDCardVault
+  id: MisfitsIDCardVaultSalvage
+  name: vault salvage specialist ID card
+  description: Each week that passes the ore and salvage gets a bit thinner, but the vault still needs to be maintained.
+  components:
+  - type: PresetIdCard
+    job: VaultSalvageSpecialist
+
+#MARK: Passports
+- type: entity
+  parent: N14IDCard
+  id: N14IDPassportBlank
+  name: blank passport
+  description: An old pre-war passport that's been scrubbed clean of its old print, now used by wastelanders as personal ID.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_blank
+    scale: 0.7, 0.7
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDPassport
+  name: passport
+  description: An old pre-war passport that's been scrubbed clean of its old print, stamped with some frontier settlement's seal and used by wastelanders as personal ID.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport
+
+#- type: entity
+#  parent: N14IDPassport
+#  id: N14IDPassportCaravan
+#  name: caravan guard ID
+#  description: A stamped passport used by caravan guards as ID.
+#  components:
+#  - type: PresetIdCard
+#    job: CaravanGuard
+#  - type: ClothingAddFaction
+#    faction: CaravanCompany
+#
+#- type: entity
+#  parent: N14IDPassportCaravan
+#  id: N14IDPassportCaravanTrader
+#  name: caravan trader ID
+#  description: A stamped passport used by caravaneers as ID.
+#  components:
+#  - type: PresetIdCard
+#    job: CaravanTrader
+#
+#- type: entity
+#  parent: N14IDPassportCaravan
+#  id: N14IDPassportCaravanLeader
+#  name: caravan leader ID
+#  description: A stamped passport used by caravaneers as ID.
+#  components:
+#  - type: PresetIdCard
+#    job: CaravanLeader
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDPassportPhoto
+  name: passport
+  description: An old pre-war passport that's been scrubbed clean of its old print, now filled in with new information and used by wastelanders as personal ID.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_photo
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDPassportVIP
+  name: passport
+  description: An old pre-war passport that's been scrubbed clean of its old print, this one is in relatively pristine shape and used by a better class of wastelanders as personal ID.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_presidential
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDDoctor
+  name: doctors ID
+  description: Out in the wasteland, this is the best guarantee you have someone actually knows what they're doing when they're poking around your injuries.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: doctor
+  - type: Access
+    tags:
+    - FotA
+    - FotADoctor
+
+
+# #Misfits Change - BoS Midwest holotags commented out.
+# Consolidated to _Misfits/Entities/Objects/Misc/bos_identification.yml
+##MARK: Brotherhood Midwest
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDBrotherhoodHolotag
+#  name: holotag
+#  description: An ID holotag worn by the Brotherhood of Steel.
+#  suffix: Midwest Scribe
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: PresetIdCard
+#    job: BoSMidScribe
+#  - type: ClothingAddFaction
+#    faction: BrotherhoodMidwest
+#
+#- type: entity
+#  parent: N14IDBrotherhoodHolotag
+#  id: N14IDBrotherhoodHolotagSquire
+#  name: holotag
+#  description: An ID holotag worn by the Brotherhood of Steel.
+#  suffix: Midwest Squire
+#  components:
+#  - type: PresetIdCard
+#    job: BoSMidSquire
+#
+#- type: entity
+#  parent: N14IDBrotherhoodHolotag
+#  id: N14IDBrotherhoodHolotagKnight
+#  name: holotag
+#  description: An ID holotag worn by the Brotherhood of Steel.
+#  suffix: Midwest Knight
+#  components:
+#  - type: PresetIdCard
+#    job: BoSMidKnight
+#
+#- type: entity
+#  parent: N14IDBrotherhoodHolotag
+#  id: N14IDBrotherhoodHolotagPaladin
+#  name: holotag
+#  description: An ID holotag worn by the Paladins of the Brotherhood of Steel.
+#  suffix: Midwest Paladin
+#  components:
+#  - type: PresetIdCard
+#    job: BoSMidPaladin
+#
+#- type: entity
+#  parent: N14IDBrotherhoodHolotag
+#  id: N14IDBrotherhoodHolotagCommander
+#  name: holotag
+#  description: An ID holotag worn by the Paladin Commander of the Brotherhood of Steel.
+#  suffix: Midwest Commander
+#  components:
+#  - type: PresetIdCard
+#    job: BoSMidPaladinCommander
+
+# #Misfits Change - BoS Washington holotags commented out.
+# Consolidated to _Misfits/Entities/Objects/Misc/bos_identification.yml
+##MARK: Brotherhood Washington
+#- type: entity
+#  parent: N14IDPassportBlank
+#  id: N14IDBrotherhoodWashingtonHolotagInitiate
+#  name: holotag
+#  description: An ID holotag worn by an Initiate in the Washington Brotherhood of Steel.
+#  suffix: Washington Initiate
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: bos_holotag
+#  - type: PresetIdCard
+#    job: BoSWashingtonInitiate
+#  - type: ClothingAddFaction
+#    faction: BrotherhoodWashington
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagScribe
+#  name: holotag
+#  description: An ID holotag worn by a Scribe in the Washington Brotherhood of Steel.
+#  suffix: Washington Scribe
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonScribe
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagKnight
+#  name: holotag
+#  description: An ID holotag worn by a Knight in the Washington Brotherhood of Steel.
+#  suffix: Washington Knight
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonKnight
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagPaladin
+#  name: holotag
+#  description: An ID holotag worn by a Paladin in the Washington Brotherhood of Steel.
+#  suffix: Washington Paladin
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonPaladin
+#
+#- type: entity
+#  parent: N14IDBrotherhoodWashingtonHolotagInitiate
+#  id: N14IDBrotherhoodWashingtonHolotagCommander
+#  name: holotag
+#  description: An ID holotag worn by the Commander of the Washington Brotherhood of Steel.
+#  suffix: Washington Commander
+#  components:
+#  - type: PresetIdCard
+#    job: BoSWashingtonCommander
+
+#MARK: Enclave
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDEnclaveTrooper
+  name: holotag
+  description: These holotags are proof you are a loyal piece of government property.
+  suffix: Trooper
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: enclave_trooper
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  # - type: PresetIdCard
+  #   job: EnclaveTrooper
+  # #Misfits Change - enables Enclave shared map (tactical helmet HUDs, Pip-Boy)
+  - type: Tag
+    tags:
+    - IdCardEnclave
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDEnclaveOfficer
+  name: holotag
+  description: Lead your fellow patriots to victory, and make sure everyone else remembers why America is the best country in the world.
+  suffix: Officer
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: enclave_officer
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  # #Misfits Fix - Tag officer holotags so the Enclave TacMap Overwatch tracks them
+  # (only Trooper holotags were tagged before, leaving officers off the Enclave feed).
+  - type: Tag
+    tags:
+    - IdCardEnclave
+  # - type: PresetIdCard
+  #   job: EnclaveOfficer
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDEnclaveNoncombat
+  name: holotag
+  description: These holotags mark you as a valuable asset to the government, and a very valuable hostage to everyone else.
+  suffix: Scientist , Noncombat
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: enclave_noncombat
+  - type: IdCard # #Misfits Add - display "holotags" instead of default "ID card"
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
+  # #Misfits Fix - Tag noncombat holotags so the Enclave TacMap Overwatch tracks them
+  # (scientists/noncombat were missing the Enclave tag entirely).
+  - type: Tag
+    tags:
+    - IdCardEnclave
+  # - type: PresetIdCard
+  #   job: EnclaveScientist
+
+# MARK: NCR
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDNCRDogtag
+  name: recruit's dogtags
+  description: With any luck, this war will be over in time for the holidays.
+  suffix: Recruit #Misfits Change - was Soldier, Cadet
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ncrdogtag
+  - type: IdCard
+    nameLocId: n14-id-dogtag-name
+    fullNameLocId: n14-id-dogtag-full-name
+  - type: PresetIdCard
+    job: NCRCadet #Misfits Change - was NCRSoldier
+  - type: Tag
+    tags:
+    - IdCardNCR  # #Misfits Change - enables NCR shared map in Pip-Boy; all NCR dogtags inherit this via parent
+  - type: ClothingAddFaction
+    faction: NCR
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagDoctor
+  name: doctor's dogtags
+  description: Killing a medic is a war crime, and these dogtags should prevent that. But most people in the wasteland will make a point of shooting you first.
+  suffix: Doctor
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ncrdogtag
+  - type: PresetIdCard
+    job: NCRMedic
+
+#Misfits Change - Start - commented out removed NCR job dogtag
+#- type: entity
+#  parent: N14IDNCRDogtag
+#  id: N14IDNCRDogtagWS
+#  name: dogtag
+#  description: An ID dogtag worn by decently ranking members of the NCR.
+#  suffix: WS
+#  components:
+#  - type: Sprite
+#    sprite: _Nuclear14/Objects/Misc/identification.rsi
+#    state: ncrdogtag
+#  - type: PresetIdCard
+#    job: NCRWS
+#Misfits Change - End
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagEngineer
+  name: engineer's dogtags
+  description: You can fix just about anything in this warzone, but you can't fix a bad battle plan. That's for the commanders to worry about.
+  suffix: Engineer
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ncrdogtag
+  - type: PresetIdCard
+    job: NCREngineer
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagNCO
+  name: sergeant's dogtags
+  description: These mark you as a competent soldier, its own kind of curse. You have all the responsibility of a leader, but none of an officer's perks.
+  suffix: SGT
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ncrdogtag
+  - type: PresetIdCard
+    job: NCRNCO
+
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDNCRDogtagOfficer
+  name: officer's dogtags
+  description: These dogtags give you a special kind of authority, command over the local forces. But they can also make any incompetency, real or imagined, shine all the brighter for it.
+  suffix: Officer
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ncrdogtag
+  - type: PresetIdCard
+    job: NCRExecutiveOfficer
+
+#MARK: Desert Rangers
+- type: entity
+  parent: N14IDNCRDogtag
+  id: N14IDBadgeNCRDesertRangerRecruit
+  name: ranger recruit badge
+  description: A shiny badge that marks you as someone who still has something to prove. Try to live up to the legacy of the rangers, or sink in the sand.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ranger_recruit
+  - type: PresetIdCard
+    job: NCRPatrolRanger
+  # #Misfits Fix - Tag every ranger badge so the Rangers TacMap Overwatch tab only
+  # tracks Ranger personnel, not the whole NCR. This is the base of ALL ranger badges
+  # (Desert Ranger, Elite, Chief, Republic Ranger). NOTE: a child Tag component
+  # REPLACES the parent's (composition is not additive for this field), so we must
+  # re-list IdCardNCR here to keep rangers on the standard NCR map/Pip-Boy feed.
+  - type: Tag
+    tags:
+    - IdCardNCR
+    - IdCardNCRRanger
+
+- type: entity
+  parent: N14IDBadgeNCRDesertRangerRecruit
+  id: N14IDBadgeNCRDesertRanger
+  name: ranger badge
+  description: A dull badge that marks you as someone who has worn in their boots. You're more than just a showboat, and trusted to get the job done.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ranger
+  - type: PresetIdCard
+    job: NCRFieldRanger #Misfits Change - was NCRRanger
+
+- type: entity
+  parent: N14IDBadgeNCRDesertRangerRecruit
+  id: N14IDBadgeNCRDesertRangerElite
+  name: ranger elite badge
+  description: A scratched and weathered badge that marks you as the real deal. You have to serve twenty years to get one of these, and not by riding a desk.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ranger_elite
+  - type: PresetIdCard
+    job: NCRVeteranRanger #Misfits Change - was NCRRangerVeteran
+
+- type: entity
+  parent: N14IDBadgeNCRDesertRangerRecruit
+  id: N14IDBadgeNCRDesertRangerChief
+  name: ranger chief badge
+  description: An old badge from the days of the Desert Rangers, carefully polished and preserved, with new names and places engraved on it. It marks you as the person bearing all the responsibility.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: ranger_chief
+  - type: PresetIdCard
+    job: NCRVeteranRanger #Misfits Change - was NCRRangerVeteran
+
+#MARK: NCR Rangers
+- type: entity
+  parent: N14IDBadgeNCRDesertRanger
+  id: N14IDBadgeNCRRanger
+  description: A badge that marks you as a particularly capable piece of equipment in the endless war that is wasteland law enforcement.
+  suffix: NCR
+
+- type: entity
+  parent: N14IDBadgeNCRDesertRangerElite
+  id: N14IDBadgeNCRRangerElite
+  description: A badge that marks you as an unquestioning and loyal piece of government property, ready to do exactly as the president commands.
+  suffix: NCR
+
+#MARK: Townsfolk
+- type: entity
+  parent: N14IDPassportPhoto
+  id: N14IDPassportTownsfolk
+  name: passport
+  description: Proof that you belong in the local settlement, that you're more trustworthy than the drifters in the wasteland.
+  components:
+  - type: ClothingAddFaction
+    faction: Townsfolk
+  - type: PresetIdCard # Forge-Change
+    job: Townsperson # Forge-Change
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: N14IDShopkeeperTown
+  name: Shopkeepers ID
+  description: This settlement passport marks you as a person of some importance. Without a shopkeeper there is no shop, and without a shop there is no settlement.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_presidential
+  - type: PresetIdCard
+    job: TownShopkeeper
+
+- type: entity # Forge-Add-Start
+  parent: N14IDPassportTownsfolk
+  id: N14IDShopkeeperHelperTown
+  name: ShopkeepersHelper ID
+  description: Either by merit or by nepotism, you are here to help out at the general store. Learn what you can to eventually run your own caravan or shopfront.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_presidential
+  - type: PresetIdCard
+    job: TownShopkeeperHelper # Forge-Add-End
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: N14IDPassportTownMechanic
+  name: mechanics ID
+  description: Good mechanics are hard to find in the wasteland, ones willing to put up with noisy drifters are even harder to find. And so your services are in demand, and well paid.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_presidential
+  - type: PresetIdCard
+    job: TownMechanic
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDDoctorTown
+  name: doctors ID
+  description: Someone has to fix up your friends and neighbors when they get hurt, it might as well be someone who knows what they're doing. Hopefully that person is you.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: doctor
+  - type: PresetIdCard
+    job: TownDoctor
+  - type: ClothingAddFaction
+    faction: Townsfolk
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: N14IDReporterTown
+  name: reporter ID
+  description: Issued by the mayor's office to the citizens that make the most noise out of local happenings, this passport gives you a non-existant level of authority to pester the dangerous and powerful in the region for radio show content.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_presidential
+  - type: PresetIdCard
+    job: WastelandReporter
+  - type: ClothingAddFaction
+    faction: Townsfolk
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: N14IDBartenderTown
+  name: innkeeper ID
+  description: People come to you with their problems and a desire to eat something besides pre-war processed junk food. So pour a drink, act as a non-licensed therapist, cook up some greasy eggs and meat, and possibly squeeze out a few caps.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport_presidential
+  - type: PresetIdCard
+    job: WastelandBartender
+  - type: ClothingAddFaction
+    faction: Townsfolk
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: N14IDBadgeTownDeputy
+  name: town guard badge
+  description: This tin badge marks you as one of the town's deputies, a person who has volunteered to help keep your settlement safe from drifters and raiders. Its up to you to prove that you should be trusted with that responsibility.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: deputy
+  - type: PresetIdCard
+    job: TownDeputy
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: N14IDBadgeTownSheriff
+  name: town marshal badge
+  description: This tin badge is worn by the town's marshal, someone who survived long enough as a deputy to prove their mettle and outlive their competition for the job. Advise the mayor and keep the town of out the clutches of outsiders.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: sheriff
+  - type: PresetIdCard
+    job: TownSheriff
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: N14IDBadgeTownMayor
+  name: town mayor badge
+  description: This badge marks you as the mayor of the town, chosen by the citizens to lead them to prosperity and safety. If you fail they'll strip this off your body and toss you out of the gates.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: mayor
+  - type: PresetIdCard
+    job: TownMayor
+
+- type: entity
+  parent: N14IDPassportPhoto
+  id: N14IDPassportWasteChaplain
+  name: chaplain ID
+  description: These papers mark you as a community leader in the local settlement, someone who can be trusted to act as a charity worker, spiritual guide and therapist. Its up to you to make these people care.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport
+  - type: PresetIdCard
+    job: WastelandChaplain
+  - type: ClothingAddFaction # Forge-Add
+    faction: Townsfolk
+
+# Wastelanders
+- type: entity
+  parent: N14IDPassportPhoto
+  id: N14IDPassportWasteFarmer
+  name: farmer ID
+  description: These papers mark you as a citizen of some merit, who can be trusted to grow food to keep everyone fed and not waste the seeds. Keep the crops alive and the innkeeper's storage full, and people will appreciate your efforts.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport
+  - type: PresetIdCard
+    job: WastelandFarmer
+
+#MARK: Raiders / Tribes
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDTribeSawbonePendant
+  name: healer pendant
+  description: This talisman marks a member of the local village, a valued spiritual leader in the tribal community. A name has been etched into the ancient bonesaw.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: sawbone
+  - type: PresetIdCard
+    job: TribalShaman # #Misfits Fix - updated job ID after TribalHealer was renamed to TribalShaman
+  # #Misfits Add - enables Tree TacMap tracking without dropping the inherited door tag.
+  - type: Tag
+    tags:
+    - IdCardTribe
+    - DoorBumpOpener
+  - type: ClothingAddFaction
+    faction: Tribal
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDTribeBulletsPendant
+  name: member pendant
+  description: This talisman marks a member of the local village, someone that belongs in this community. The hollow bullet has a name engraved on it.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: raider
+  - type: PresetIdCard
+    job: Tribal
+  # #Misfits Add - enables Tree TacMap tracking without dropping the inherited door tag.
+  - type: Tag
+    tags:
+    - IdCardTribe
+    - DoorBumpOpener
+  - type: ClothingAddFaction
+    faction: Tribal
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDTribeEnforcerPendant
+  name: farmer pendant
+  description: This talisman marks a member of the local village, one that helps keep the tribe fed. The empty shotgun shell has a name scratched into it.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: enforcer
+  - type: PresetIdCard
+    job: TribalFarmer
+  # #Misfits Add - enables Tree TacMap tracking without dropping the inherited door tag.
+  - type: Tag
+    tags:
+    - IdCardTribe
+    - DoorBumpOpener
+  - type: ClothingAddFaction
+    faction: Tribal
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDTribeBossPendant
+  name: elder pendant
+  description: This talisman marks an elder of the local village, one that guides the tribe in all matters. Each of the rifle rounds is engraved with a previous elder's name.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: boss
+  - type: PresetIdCard
+    job: TribalElder
+  # #Misfits Add - enables Tree TacMap tracking without dropping the inherited door tag.
+  - type: Tag
+    tags:
+    - IdCardTribe
+    - DoorBumpOpener
+  - type: ClothingAddFaction
+    faction: Tribal
+
+# Followers
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDDoctorFollower # specifically so the yml linter stops crying
+  name: followers ID
+  description: This ID card marks you as somebody who can be trusted to help the local community. The Followers of the Apocalypse cross has been stamped on it in black ink.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDFollowerVolunteer
+  name: followers (volunteer) ID
+  description: This clean ID card marks you as an aspiring charity worker in the local community. The Followers of the Apocalypse cross has been stamped on it in black ink.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+  - type: Access
+    tags:
+    - FotA
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDFollowerDoctor
+  name: followers (doctor) ID
+  description: This weathered ID card marks you as a proper miracle worker in the local community. The Followers of the Apocalypse cross has been stamped on it in black ink.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+  - type: Access
+    tags:
+    - FotA
+    - FotADoctor
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDFollowerGuard
+  name: followers (guard) ID
+  description: This scratched up ID card marks you as someone who recognizes even the helpers need a helping hand. The Followers of the Apocalypse cross has been stamped on it in black ink.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+  - type: Access
+    tags:
+    - FotA
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDFollowerHead
+  name: followers (head) ID
+  description: This old ID card marks you as someone with the unenviable task of leading and protecting the local field hospital. The Followers of the Apocalypse cross has been stamped on it in black ink.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+  - type: Access
+    tags:
+    - FotA
+    - FotADoctor
+    - FotAHead
+
+#MARK: Keys
+
+- type: entity
+  parent: N14IDCard
+  id: N14IDKeyIron
+  name: iron key
+  description: A scratched up iron key. I wonder where it goes?
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: iron
+  - type: Access
+    tags:
+    - IronKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
+
+- type: entity
+  parent: N14IDCard
+  id: N14IDKeyBrass
+  name: brass key
+  description: A worn out brass key. I wonder where it goes?
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: brass
+  - type: Access
+    tags:
+    - LegionBrassKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
+
+- type: entity
+  parent: N14IDCard
+  id: N14IDKeyBronze
+  name: bronze key
+  description: A polished bronze key. I wonder where it goes?
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: bronze
+  - type: Access
+    tags:
+    - BronzeKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
+
+- type: entity
+  parent: N14IDCard
+  id: N14IDKeySilver
+  name: silver key
+  description: A tarnished silver key. I wonder where it goes?
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: silver
+  - type: Access
+    tags:
+    - SilverKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
+
+- type: entity
+  parent: N14IDCard
+  id: N14IDKeyGold
+  name: gold key
+  suffix: AllKeyAccess
+  description: A dull gold key. I wonder where it goes?
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: gold
+  - type: Access
+    groups:
+    - GoldenKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
+
+#MARK: Access Cards
+- type: entity
+  parent: N14IDCard
+  id: N14CardAccessBunkerA1
+  name: access card
+  description: A special keycard stamped A1.
+  suffix: bunker A1
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: bunkercard_a1
+    scale: 0.75, 0.75
+  - type: Access
+    tags:
+    - DungeonBunkerA1
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessBunkerA2
+  description: A special keycard stamped A2.
+  suffix: bunker A2
+  components:
+  - type: Sprite
+    state: bunkercard_a2
+  - type: Access
+    tags:
+    - DungeonBunkerA2
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessBunkerA3
+  description: A special keycard stamped A3.
+  suffix: bunker A3
+  components:
+  - type: Sprite
+    state: bunkercard_a3
+  - type: Access
+    tags:
+    - DungeonBunkerA3
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessBunkerAA
+  description: A special keycard stamped AA.
+  suffix: bunker AA
+  components:
+  - type: Sprite
+    state: bunkercard_aa
+  - type: Access
+    groups:
+    - DungeonBunkerAA
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessEnclave
+  description: A strange keycard that has been stamped with an 'E'. What could be its purpose?
+  categories: [ HideSpawnMenu ]
+  suffix: Enclave
+  components:
+  - type: Sprite
+    state: keycard_aa
+  - type: Access
+    tags:
+    - Enclave
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessEnclaveVault
+  description: This Vault-Tec keycard has no name on it, but it has been stamped with an 'E'. This raises more questions than answers, really.
+  suffix: Enclave Vault
+  components:
+  - type: Sprite
+    state: keycard_vault_aa
+  - type: Access
+    groups:
+    - EnclaveVault
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessVault
+  description: This old Vault-Tec keycard has no name stamped on it, but might still be useful.
+  suffix: Vault
+  components:
+  - type: Sprite
+    state: keycard_vault
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessBlue
+  description: A blue keycard for opening something around here, hopefully your efforts aren't doomed.
+  suffix: blue
+  components:
+  - type: Sprite
+    state: keycard_blue
+  - type: Access
+    tags:
+    - DungeonBlue
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessYellow
+  description: A yellow keycard for opening something around here, and if it doesn't, there'll be hell to raise.
+  suffix: yellow
+  components:
+  - type: Sprite
+    state: keycard_yellow
+  - type: Access
+    tags:
+    - DungeonYellow
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessRed
+  description: A red keycard for opening something around here, and if you can't open the door with this, you'll just have to rip and tear it open!
+  suffix: red
+  components:
+  - type: Sprite
+    state: keycard_red
+  - type: Access
+    tags:
+    - DungeonRed
+
+- type: entity
+  parent: N14CardAccessBunkerA1
+  id: N14CardAccessCommon
+  description: A grey keycard stamped "common" for opening things, likely handed out to maintenance technicians and janitors in this old place.
+  suffix: common
+  components:
+  - type: Sprite
+    state: keycard_common
+  - type: Access
+    tags:
+    - DungeonCommon

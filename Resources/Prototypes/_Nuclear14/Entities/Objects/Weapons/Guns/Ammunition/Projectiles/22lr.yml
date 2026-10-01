@@ -1,0 +1,19 @@
+- type: entity
+  id: N14Bullet22
+  name: bullet (.22lr)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective # #Misfits Change Add: .22lr is sub-5.56mm class; ricochets off power armor.
+    reflective:
+      - SmallCaliber
+      - NonEnergy
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+  # Misfits Add - .22 LR is a small rimfire round; loses energy quickly at range
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 5.0
+    maxFalloffTiles: 10.0
+    minDamageMultiplier: 0.45

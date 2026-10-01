@@ -1,0 +1,257 @@
+# See Objects/Decoration/flags.yml for flag items. See wallmounts folder for wall flags.
+- type: entity
+  id: N14DecorationFlagBearerEmpty
+  name: Empty Banner Standard
+  description: A post for hanging banners of various cults, factions and nations. A challenge to everyone else to shoot at you.
+  suffix: Mapping
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: emptyflag
+    snapCardinals: true
+    netsync: false
+    noRot: true
+    drawdepth: Overdoors
+  - type: Damageable
+    damageModifierSet: Wood
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Clickable
+  - type: SpriteFade
+  - type: NoSelfUnbuckle
+  - type: Construction # Forge-Change
+    graph: DecorationFlagEmpty
+    node: FlagEmpty
+
+# Flammable flags
+- type: entity
+  parent: N14DecorationFlagBearerEmpty
+  id: N14DecorationFlagFlammable
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+  - type: ExtinguishOnInteract
+    extinguishAttemptSound:
+      path: /Audio/Items/candle_blowing.ogg
+      params:
+        variation: 0.05
+        volume: 10
+  - type: UseDelay
+  - type: Flammable
+    fireSpread: true
+    canResistFire: false
+    alwaysCombustible: true
+    canExtinguish: true
+    firestacksOnIgnite: 3.0
+    firestackFade: -0.01
+    damage:
+      types:
+        Heat: 0.1
+  - type: Appearance
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Standing
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          N14DecorationFlagBearerEmpty:
+            min: 1
+            max: 1
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagNCR
+  name: Flag of the New California Republic
+  description: The banner of the New California Republic, a nation that despite enemies within and without, has done its best to provide comfort and equality to its citizens.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: ncrflag
+  - type: Construction # Forge-Change
+    graph: DecorationFlagNCR
+    node: FlagNCR
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagOasis
+  name: Flag of the Oasis Tribe
+  description: The banner of the Oasis Tribe, originating in the remains of Pahrump, Nevada. The tribe was incorporated into the New California Republic, yet its members still remember their roots as they settle new lands.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: oasisflag
+  - type: Construction
+    graph: DecorationFlagOasis
+    node: FlagOasis
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagBrotherhoodWashington
+  name: Flag of the Washington Brotherhood of Steel
+  description: The banner of the Washington Brotherhood of Steel, a chapter that split off from the Midwest Brotherhood and settled into Seattle, turning to conscription, slavery, and violent oppression of the locals under the rule of the Elder Immortal.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags2.rsi
+    state: wbosflag
+  - type: Construction
+    graph: DecorationFlagBrotherhoodWashington
+    node: FlagBrotherhoodWashington
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagBrotherhoodMidwest
+  name: Flag of the Brotherhood of Steel
+  description: The banner of the Brotherhood of Steel, descendents of the United States military who now attempt to confiscate and safeguard dangerous technology to prevent another apocalypse.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags2.rsi
+    state: mbosflag
+  - type: Construction # Forge-Change
+    graph: DecorationFlagBrotherhoodMidwest
+    node: FlagBrotherhoodMidwest
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagFollowers
+  name: Flag of the Followers of the Apocalypse
+  description: The banner of the Followers of the Apocalypse, a humanitarian organization with the goal of providing medical services to those in need and a distinct disinterest in taking power, they are rarely a target and often protected by others.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: followersflag
+  - type: Construction # Forge-Change
+    graph: DecorationFlagFollowers
+    node: FlagFollowers
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagEnclave
+  name: Flag of the 'U.S. Army'
+  description: The banner of a group calling themselves the 'U.S. Army', descendents of America's elite who claim to be the true inheritors of the United States federal government.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: enclaveflag
+  - type: Construction
+    graph: DecorationFlagEnclave
+    node: FlagEnclave
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagGunner
+  name: Flag of the Gunner Mercenary Corps
+  description: The banner of the Gunners, a mercenary company from deeper in the unknown United States territory. They act without any moral limitations, but will not murder or pillage any more than the employer has ordered.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: gunnerflag
+  - type: Construction # Forge-Change
+    graph: DecorationFlagGunner
+    node: FlagGunner
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagLocust
+  name: Flag of the Locust Tribe
+  description: The banner of the Locusts, a tribe of raiders native to Wendover, Utah. When the bombs first dropped, Wendover split into three survivor communities, the Locusts, Vultures and Willowers. The Locust Tribe believed the survivors should raid outsiders and take what they could through strength. After the first few years, they turned on the two other tribes as well.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: locustflag
+  - type: Construction # Forge-Change
+    graph: DecorationFlagLocust
+    node: FlagLocust
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagHighvalleyhills
+  name: Flag of High Valley Hills
+  description: The banner of High Valley Hills, a settlement that cropped up around Vault City in the New California Republic from those who were not permitted entry; it is a mix of a slum and work camp for the desperate.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: hvhflag
+  - type: Construction
+    graph: DecorationFlagHighvalleyhills
+    node: FlagHighvalleyhills
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagVaultTecCityCoalition
+  name: Flag of Vault City
+  description: The banner of Vault City, a major settlement that evolved from Vault 8 in what remains of the west coast of the United States. They are a notable exporter of medical technology.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: vtccflag
+  - type: Construction
+    graph: DecorationFlagVaultTecCityCoalition
+    node: FlagVaultTecCityCoalition
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagYuma
+  name: Flag of Yuma City
+  description: The banner of the city of Yuma, Arizona. It serves as both an important source of food for tributes to Caesar's Legion, and an important waterway between Arizona and California's southern edge.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: cornflag
+#  - type: Construction # Forge-Change  # Misfits Change: commented out, this isn't constructable anymore
+#    graph: DecorationFlagYuma
+#    node: FlagYuma
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagKhans
+  name:  Flag of the Great Khans Tribe
+  description: The banner of the Great Khans Tribe, weathered and worn from a long cherished history of raiding the helpless. The decorated skull smiles with mockery at those who would challenge it.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: khanflag
+  - type: Construction
+    graph: DecorationFlagKhans
+    node: FlagKhans
+
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: N14DecorationFlagChurch
+  name: Flag of the Church of Renewal
+  description: The banner of the Church of Renewal, a cult that believes the nuclear apocalypse was a gift of creation, and that forced evolution of humanity is not only our one path to survival, but our sacred destiny.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+    state: cotc
+  - type: Construction
+    graph: DecorationFlagChurch
+    node: FlagChurch

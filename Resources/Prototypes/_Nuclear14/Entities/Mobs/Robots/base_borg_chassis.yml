@@ -1,0 +1,281 @@
+- type: entity
+  parent: BaseMob
+  id: N14BaseRobotChassis
+  name: robot
+  description: A machine designed to serve humankind.
+  save: false
+  abstract: true
+  suffix: player
+  components:
+  - type: Reactive
+    groups:
+      Acidic: [Touch]
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: MetalThud
+  - type: CombatMode
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/metal_thud1.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    range: 1.5
+    damage:
+      groups:
+        Brute: 10
+  - type: NoSlip
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 4.5
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/ms13robots.rsi
+  - type: RotationVisuals
+    horizontalRotation: 90
+  - type: PersistentCurrency # Misfits - Currency wallet
+  - type: PersistentPlayerData # Misfits Add - SPECIAL stats, kill/death/round tracking, character history
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
+  - type: Deathgasp # #Misfits Change: play silicon deathgasp emote when robots enter the dead state
+    prototype: SiliconDeathgasp
+    needsCritical: false
+  - type: HealthExaminable
+    examinableTypes:
+      - Blunt
+      - Slash
+      - Piercing
+      - Heat
+      - Shock
+      - Caustic
+    locPrefix: silicon
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  # - type: SiliconLawBound
+  # - type: EmagSiliconLaw
+    # stunTime: 5
+  # - type: SiliconLawProvider
+    # laws: Crewsimov
+  - type: IonStormTarget
+  - type: Strippable
+  - type: InventorySlots
+  - type: Inventory
+    templateId: borgRobot # #Misfits Change: no equipment slots for robots
+  - type: Hands
+    showInHands: true # #Misfits Change: allow held items to render visually in-world
+    # disableExplosionRecursion: true # not in our version of the game yet 16/07/2024
+  - type: BorgHands
+  - type: ComplexInteraction
+  - type: IntrinsicRadioReceiver
+  # - type: IntrinsicRadioTransmitter
+    # channels:
+    # - Binary
+  # - type: ActiveRadio
+    # channels:
+    # - Binary
+  - type: ZombieImmune
+  - type: Repairable
+    doAfterDelay: 10
+    allowSelfRepair: false
+  - type: ItemToggle
+    onUse: false
+    onActivate: false # #Misfits Change: prevent clicking self in non-combat mode from toggling chassis
+  - type: BorgChassis
+    maxModules: 10
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleJanitor
+      - BorgModuleEngineering
+      - BorgModuleMedical
+      - BorgModuleService
+      - BorgModuleSyndicate
+      - BorgModuleSyndicateAssault
+    hasMindState: on
+    noMindState: off
+  - type: NameIdentifier
+    group: Silicon
+  - type: ContainerContainer
+    containers:
+      borg_brain: !type:ContainerSlot { }
+      cell_slot: !type:ContainerSlot { }
+      borg_module: !type:Container { }
+      part-container: !type:Container
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+    fitsInCharger: true
+  - type: PowerCellDraw
+    drawRate: 0.6
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellAntiqueProto
+  - type: Body
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - KnockedDown
+    - SlowedDown
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Vocal # #Misfits Change: fallback robot emotes for chassis that do not override a model-specific profile
+    sounds:
+      Unsexed: UnisexSilicon
+  - type: UnblockableSpeech
+  # - type: LockedWiresPanel # not in our version of the game yet 16/07/2024
+  - type: Flashable
+  - type: Damageable
+    damageContainer: Silicon
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior # #Misfits Change: play a proper robot death sound when the chassis actually dies
+        sound:
+          path: /Audio/Machines/AI/borg_death.ogg
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior # #Misfits Change: drop loot on death
+        spawn:
+          PowerCellHyper:
+            min: 1
+            max: 1
+          N14Scrap1:
+            min: 2
+            max: 4
+          N14ScrapElectronic1:
+            min: 1
+            max: 3
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - borg_module
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: HandheldLight
+    toggleOnInteract: false
+    wattage: 0.2
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: LightBehaviour
+    behaviours:
+    - !type:FadeBehaviour
+      id: radiating
+      maxDuration: 2.0
+      startValue: 3.0
+      endValue: 2.0
+      isLooped: true
+      reverseWhenFinished: true
+    - !type:PulseBehaviour
+      id: blinking
+      interpolate: Nearest
+      maxDuration: 1.0
+      minValue: 0.1
+      maxValue: 2.0
+      isLooped: true
+  - type: ToggleableLightVisuals
+  - type: PointLight
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    radius: 4
+    netsync: false
+  - type: Pullable
+  - type: Puller
+    needsHands: false
+  - type: StandingState
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - CanPilot
+    - SiliconEmotes
+    # FootstepSound intentionally omitted - only walking robots (Protectron, Assaultron) add it back #Misfits Change
+  - type: Emoting
+  # - type: GuideHelp
+    # guides:
+  - type: Eye
+    visMask:
+      - PsionicInvisibility
+      - Normal
+  - type: LanguageKnowledge # #Misfits Change - standardised robot languages: N14BrotherBeep (faction interop), N14Robot (robot-only), English/Latin/Chinese (common human tongues; 'Chinese' is N14's legacy ID for Spanish)
+    # #Misfits Fix: 'Spanish' is not a valid LanguagePrototype ID in this fork. The in-game
+    # Spanish language uses the legacy prototype id 'Chinese' (see _Nuclear14/Languages/chinese.yml).
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+  - type: CanWalk
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleService
+        - BorgModuleMusique
+        - BorgModuleGardening
+        - BorgModuleHarvesting
+        - BorgModuleFireExtinguisher
+        - BorgModuleRadiationDetection
+        - BorgModuleTool

@@ -1,0 +1,17 @@
+- type: entity
+  name: mantis' seal
+  parent: RubberStampBase
+  id: RubberStampMantis
+  suffix: DO NOT MAP
+  description: An old-fashioned seal for marking important documents, made of polished bronze.
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-mantis
+    stampedColor: "#777777"
+    stampState: "paper_stamp-ok" # Forge-Change
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi # Forge-Change
+    state: stamp-ok # Forge-Change
+  - type: Tag
+    tags:
+      - ForensicBeltEquip

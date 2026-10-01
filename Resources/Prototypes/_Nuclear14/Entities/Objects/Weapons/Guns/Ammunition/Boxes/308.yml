@@ -1,0 +1,56 @@
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseMagazineBox308
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - N14Cartridge308Rifle
+    proto: N14Cartridge308Rifle
+    capacity: 32
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Boxes/308.rsi
+    netsync: false
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+  - type: FoldableAmmoBox #Misfits Change /Add/: Empty cardboard ammo boxes can fold back into one cardboard sheet.
+
+- type: entity
+  parent: BaseMagazineBox308
+  id: MagazineBox308
+  name: ammunition box (.308)
+  components:
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge308Rifle
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  parent: BaseMagazineBox308
+  id: MagazineBoxOver308
+  name: ammunition box (Overpressure .308)
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - N14CartridgeOver308Rifle
+    proto: N14CartridgeOver308Rifle
+    capacity: 24
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]

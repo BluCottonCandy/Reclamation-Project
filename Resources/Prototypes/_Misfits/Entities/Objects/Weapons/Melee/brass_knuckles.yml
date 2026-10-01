@@ -1,0 +1,130 @@
+- type: entity
+  parent: ClothingHandsBase
+  id: N14MeleeHandsBrassKnuckle
+  name: brass knuckle
+  description: A Hardened knuckle grip that is actually made out of steel. They protect your hand, and do more damage, in unarmed combat.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Melee/brassknuckles.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Melee/brassknuckles.rsi
+    slots: [gloves]
+  - type: MeleeWeapon
+    soundHit:
+      collection: MetalThud
+    range: 1.3
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 20
+        Structural: 5
+    animation: WeaponArcFist
+    wideAnimation: WeaponArcFist
+    mustBeEquippedToUse: true
+  - type: StaminaDamageOnHit
+    damage: 10
+
+- type: entity
+  parent: ClothingHandsBase
+  id: N14MeleeHandsSpikedBrassKnuckle
+  name: spiked brass knuckle
+  description: A spiked variant of a brass knuckle, seems more lethal.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Melee/spikedbrassknuckles.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Melee/spikedbrassknuckles.rsi
+  - type: MeleeWeapon
+    soundHit:
+      collection: MetalThud
+    range: 1.3
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 20
+        Structural: 5
+        Piercing: 10
+    animation: WeaponArcFist
+    wideAnimation: WeaponArcFist
+    mustBeEquippedToUse: true
+  - type: StaminaDamageOnHit
+    damage: 10
+
+- type: entity
+  parent: N14MeleeHandsSpikedBrassKnuckle
+  id: N14MeleeHandsSpikedBrassKnuckleSpecial
+  name: logan
+  description: A spiked variant of a brass knuckle, seems more lethal.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Melee/spikedbrassknuckles.rsi
+    state: iconL
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Melee/spikedbrassknuckles.rsi
+  - type: MeleeWeapon
+    soundHit:
+      collection: MetalThud
+    range: 1.3
+    attackRate: 0.8
+    damage:
+      types:
+        Piercing: 30
+    animation: WeaponArcFist
+    wideAnimation: WeaponArcFist
+    mustBeEquippedToUse: true
+
+- type: entity
+  parent: ClothingHandsBase
+  id: N14MeleeHandsGoldenKnuckle
+  name: golden knuckle
+  description: A Hardened knuckle grip that is actually made out of gold. They protect your hand, and do more damage, in unarmed combat.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Melee/goldenknuckles.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _Misfits/Objects/Weapons/Melee/goldenknuckles.rsi
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Melee/goldenknuckles.rsi
+  - type: MeleeWeapon
+    soundHit:
+      collection: MetalThud
+    range: 1.3
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 25
+        Structural: 5
+    animation: WeaponArcFist
+    wideAnimation: WeaponArcFist
+    mustBeEquippedToUse: true
+  - type: StaminaDamageOnHit
+    damage: 10
+
+- type: entity
+  parent: N14MeleeHandsGoldenKnuckle
+  id: N14MeleeHandsGoldenKnuckleSpecial
+  name: love and hate
+  description: golden knuckles with the words (Love and Hate) engraved on them.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Melee/doublegoldenknuckles.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Melee/doublegoldenknuckles.rsi
+    slots: [gloves]
+  - type: MeleeWeapon
+    soundHit:
+      collection: MetalThud
+    range: 1.3
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 25
+        Structural: 5
+    animation: WeaponArcFist
+    wideAnimation: WeaponArcFist
+    mustBeEquippedToUse: true

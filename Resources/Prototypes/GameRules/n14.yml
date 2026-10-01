@@ -1,0 +1,15 @@
+# #Misfits Change - renamed gamemode display name to MFNW (Misfits Nuclear Wasteland)
+- type: gamePreset
+  id: N14
+  name: MFNW
+  showInVote: true
+  description: MFNW
+  rules:
+  - N14Rule
+
+- type: entity
+  id: N14Rule
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: N14Rule

@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Made for Nuclear 14",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "cat_face"
+    },
+    {
+      "name": "delighted"
+    },
+    {
+      "name": "eyebrow"
+    },
+    {
+      "name": "flat_face"
+    },
+    {
+      "name": "gruff"
+    },
+    {
+      "name": "heart"
+    },
+    {
+      "name": "lil_face"
+    },
+    {
+      "name": "shocked"
+    },
+    {
+      "name": "small_face"
+    },
+    {
+      "name": "smiley"
+    },
+    {
+      "name": "stern"
+    },
+    {
+      "name": "tophat"
+    },
+    {
+      "name": "unamused"
+    },
+    {
+      "name": "uwu"
+    },
+    {
+      "name": "yes_man"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Taken from Mojave Sun wall decor set; split into a flag-only RSI for construction icons",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "flag_us"
+    },
+    {
+      "name": "flag_china"
+    },
+    {
+      "name": "flag_cali"
+    },
+    {
+      "name": "flag_arizona"
+    },
+    {
+      "name": "flag_enclave"
+    },
+    {
+      "name": "flag_ncr"
+    },
+    {
+      "name": "flag_legion"
+    },
+    {
+      "name": "flag_rangers"
+    },
+    {
+      "name": "flag_colorado"
+    },
+    {
+      "name": "flag_denver"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+# BoS Midwest
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSMidwestPaladinCommander
+  suffix: BOSM PaladinCommander, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSHeadPaladin"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSMidwestPaladin
+  suffix: BOSM Paladin, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSSeniorPaladin"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSMidwestKnight
+  suffix: BOSM Knight, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSSeniorKnight"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSMidwestScribe
+  suffix: BOSM Scribe, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSSeniorScribe"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSMidwestGeneral
+  suffix: BOSM General, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOS"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSMidwestOffDuty
+  suffix: BOSM, OffDuty, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOS"], ["BOSOffDuty"]]
+
+# BoS Washington
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBoSWashingtonCommander
+  suffix: BOSW Elder, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSHeadKnight"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSWashingtonPaladin
+  suffix: BOSW Paladin, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSPaladin"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSWashingtonKnight
+  suffix: BOSW Knight, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSKnight"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSWashingtonScribe
+  suffix: BOSW Scribe, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSScribe"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBOSWashington
+  suffix: BOSW Initiate, Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["BOSInitiate"]]
+
+# Vault
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultOverseer
+  suffix: Vault Overseer Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultOverseer"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultGatekeeper
+  suffix: Vault Gatekeeper Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultGatekeeper"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultMedical
+  suffix: Vault Doctor Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultMedical"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultEngineer
+  suffix: Vault Engineer Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultEngineer"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultSecurity
+  suffix: Vault Security Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultSecurity"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultDweller
+  suffix: Vault Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultDweller"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultCargo
+  suffix: Vault Cargo Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultCargo"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultCourier
+  suffix: Vault Courier Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultCourier"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsVaultSalvage
+  suffix: Vault Salvage Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["VaultSalvage"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsAncientBunker
+  suffix: Bunker Locked
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AccessReader
+    access: [["AncientBunker"]]

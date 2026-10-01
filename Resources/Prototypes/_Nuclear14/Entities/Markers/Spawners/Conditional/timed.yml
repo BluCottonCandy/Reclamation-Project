@@ -1,0 +1,1020 @@
+#MARK: Hostile Animals
+- type: entity
+  name: Molerat Timed Spawner
+  id: N14TimedSpawnerMolerat
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/molerat.rsi
+          state: molerat
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobMolerat
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+      activationRange: 60 # #Misfits Add - Only spawn when a living player is within 60 tiles
+      maxAlivePerPrototype: 12 # #Misfits Add - Cap alive mobs of this type per map to prevent accumulation
+
+- type: entity
+  name: Pigrat Timed Spawner
+  id: N14TimedSpawnerPigrat
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/pigrat.rsi
+          state: pigrat
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobPigrat
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+      activationRange: 60 # #Misfits Add - Only spawn when a living player is within 60 tiles
+      maxAlivePerPrototype: 12 # #Misfits Add - Cap alive mobs of this type per map
+
+- type: entity
+  name: Radhog Timed Spawner
+  id: N14TimedSpawnerRadhog
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/radhog.rsi
+          state: radhog
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRadhog
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+      activationRange: 60 # #Misfits Add - Only spawn when a living player is within 60 tiles
+      maxAlivePerPrototype: 12 # #Misfits Add - Cap alive mobs of this type per map
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerDogFeral
+  name: Feral Dog Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/dogferal.rsi
+          state: dogferal-1
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobDogFeral
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerGecko
+  name: Gecko Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/gecko.rsi
+          state: gecko
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGecko
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerGeckoFire
+  name: Fire Gecko Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/firegecko.rsi
+          state: gecko
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGeckoFire
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerGeckoGolden
+  name: Golden Gecko Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/goldengecko.rsi
+          state: gecko
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGeckoGolden
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerNightstalkerCub
+  name: Nightstalker Cub Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/nightstalkercub.rsi
+          state: nightstalker
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobNightstalkerCub
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerNightstalker
+  name: Nightstalker Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/nightstalker.rsi
+          state: nightstalker-1
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobNightstalker
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerYaoguai
+  name: Yao Guai Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/yaoguai.rsi
+          state: yaoguai
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobYaoguai
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 1
+
+#MARK: Scaley Animals
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerDeathclaw
+  name: Deathclaw Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/deathclaw.rsi
+          state: deathclaw
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobDeathclaw
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 1
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerDeathclawAlbino
+  name: Deathclaw Albino Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/deathclawalbino.rsi
+          state: deathclawalbino
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobDeathclawAlbino
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 1
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerDeathclawMetal
+  name: Deathclaw Metal Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/deathclawmetal.rsi
+          state: deathclawmetal
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobDeathclawMetal
+      chance: 0.65
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 1
+
+#MARK: Insects
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerBloatfly
+  name: Bloatfly Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Insects/bloatfly.rsi
+          state: bloatfly
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobBloatfly
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 4
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerAnt
+  name: Ant Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Insects/giantant.rsi
+          state: giantant
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGiantAnt
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerFireant
+  name: Fire Ant Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Insects/fireant.rsi
+          state: fireant
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGiantFireAnt
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerRadroach
+  name: Radroach Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Insects/radroach.rsi
+          state: radroach
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRadroach
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 4
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerRadscorpion
+  name: Radscorpion Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Insects/radscorpion.rsi
+          state: radscorpion
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRadscorpion
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerRadscorpionBark
+  name: Radscorpion Bark Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Insects/radscorpionbark.rsi
+          state: radscorpion
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRadscorpionBark
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerCazador
+  name: Cazador Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Insects/cazador.rsi
+          state: cazador
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobCazador
+      chance: 0.75
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 2
+
+# Ranged Raider Variants
+- type: entity
+  name: Raider Ranged Psycho Timed Spawner
+  id: N14TimedSpawnerMobRaiderPsychoRanged
+  parent: N14TimedSpawnerMolerat
+  components:
+  - type: Sprite
+    layers:
+      - state: blue
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+        state: raider_ranged
+      - state: timed
+  - type: TimedSpawner
+    prototypes:
+      - N14MobRaiderPsychoRanged
+    chance: 0.95
+    intervalSeconds: 2400
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 2
+
+- type: entity
+  name: Raider Timed Spawner - Rifle
+  id: N14TimedSpawnerRaiderPsychoHunter
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRaiderHunter
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Raider Timed Spawner - Shotgun
+  id: N14TimedSpawnerRaiderPsychoSkrimisher
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRaiderSkrimisher
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Raider Psycho Boss Timed Spawner
+  id: N14TimedSpawnerMobRaiderBoss
+  parent: N14TimedSpawnerMolerat
+  components:
+  - type: Sprite
+    layers:
+      - state: blue
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+        state: raiderboss
+      - state: timed
+  - type: TimedSpawner
+    prototypes:
+      - N14MobRaiderBoss
+    chance: 0.95
+    intervalSeconds: 2400
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+
+- type: entity
+  name: Gunners Timed Spawner - Private
+  id: N14TimedSpawnerRaiderFernPrivate
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobFernMercPrivate
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Gunners Timed Spawner - Sergeant
+  id: N14TimedSpawnerRaiderFernSergeant
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobFernMercSergeant
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Gunners Timed Spawner - Lieutenant
+  id: N14TimedSpawnerRaiderFern
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobFernMercLieutenant
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Enforcer Timed Spawner - Trooper
+  id: N14TimedSpawnerRaiderEnforcerTrooper
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobEnforcerTrooper
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Enforcer Timed Spawner - Warden
+  id: N14TimedSpawnerRaiderEnforcerWarden
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobEnforcerWarden
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Enforcer Timed Spawner - Chief
+  id: N14TimedSpawnerRaiderEnforcerChief
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
+          state: raider_ranged
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobEnforcerChief
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+# Melee Raider Variants
+- type: entity
+  name: Raider Psycho Timed Spawner
+  id: N14TimedSpawnerMobRaiderPsycho
+  parent: N14TimedSpawnerMolerat
+  components:
+  - type: Sprite
+    layers:
+      - state: blue
+      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+        state: raider_melee
+      - state: timed
+  - type: TimedSpawner
+    prototypes:
+      - N14MobRaiderPsycho
+    chance: 0.95
+    intervalSeconds: 2400
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Gunners Timed Spawner - Melee
+  id: N14TimedSpawnerRaiderFernMelee
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+          state: raider_melee
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRaiderFernMelee
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Enforcer Timed Spawner - Melee
+  id: N14TimedSpawnerRaiderEnforcerMelee
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
+          state: raider_melee
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRaiderEnforcerMelee
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+#MARK: Ghoul
+- type: entity
+  name: Feral Ghoul Timed Spawner
+  id: N14TimedSpawnerFeralGhoul
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Ghouls/f13ghouls.rsi
+          state: feralghoul
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGhoulFeral
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Feral Ghoul Reaver Timed Spawner
+  id: N14TimedSpawnerFeralGhoulReaver
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Ghouls/ghoul-reaver.rsi
+          state: alive
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGhoulFeralReaver
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Feral Ghoul Rotter Timed Spawner
+  id: N14TimedSpawnerFeralGhoulRotter
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Ghouls/ghoul-rotter.rsi
+          state: alive
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGhoulFeralRotter
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Maypole Timed Spawner
+  id: N14TimedSpawnerGhoulMaypole
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Ghouls/maypole.rsi
+          state: alive
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobGhoulMaypole
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+#MARK: Robots
+- type: entity
+  name: Assaultron Timed Spawner
+  id: N14TimedSpawnerAssaultron
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/assaultron.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotAssaultronHostile
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Protectron Timed Spawner
+  id: N14TimedSpawnerProtectron
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/protectron.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotProtectronHostile
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Protectron Builder Timed Spawner
+  id: N14TimedSpawnerProtectronBuilder
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/protectron-builder.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotProtectronBuilderHostile
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Protectron Fire Timed Spawner
+  id: N14TimedSpawnerProtectronFire
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/protectron-fire.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotProtectronFireHostile
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Protectron Police Timed Spawner
+  id: N14TimedSpawnerProtectronPoliceHostile
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/protectron-police.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotProtectronPoliceHostile
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Mr Handy Timed Spawner
+  id: N14TimedSpawnerMrHandyClaw
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotMrHandyClaw
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Mr Handy Gun Timed Spawner
+  id: N14TimedSpawnerMrHandyGun
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/mrhandygun.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotMrHandyGun
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Mr Handy Saw Timed Spawner
+  id: N14TimedSpawnerMrHandySaw
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/mrhandysaw.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotMrHandySaw
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Mr Gutsy Timed Spawner
+  id: N14TimedSpawnerMrHandyGutsy
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotMrHandyGutsy
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Robobrain Timed Spawner
+  id: N14TimedSpawnerRobobrain
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/robobrain.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotRobobrain
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Eyebot Timed Spawner
+  id: N14TimedSpawnerEyebot
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Robots/eyebot.rsi
+          state: icon
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRobotEyebot
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  name: Spore Plant Timed Spawner
+  id: N14TimedSpawnerSporePlant
+  parent: N14TimedSpawnerMolerat
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Plants/sporeplant.rsi
+          state: sporeplant
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobSporeplant
+      chance: 0.65
+      intervalSeconds: 1500
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+# Domesticated / Friendly
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerRadstag
+  name: Radstag Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/radstag.rsi
+          state: radstag
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobRadstag
+      chance: 0.95
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerChicken
+  name: Chicken Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/chicken.rsi
+          state: chicken
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobChicken
+      chance: 0.95
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerBighorner
+  name: Bighorner Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/bighorner.rsi
+          state: bighorner
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobBighorner
+      chance: 0.95
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: N14TimedSpawnerMolerat
+  id: N14TimedSpawnerBrahmin
+  name: Brahmin Timed Spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: _Nuclear14/Mobs/Animals/brahmin.rsi
+          state: brahmin-1
+        - state: timed
+    - type: TimedSpawner
+      prototypes:
+        - N14MobBrahmin
+      chance: 0.95
+      intervalSeconds: 2400
+      minimumEntitiesSpawned: 1
+      maximumEntitiesSpawned: 3

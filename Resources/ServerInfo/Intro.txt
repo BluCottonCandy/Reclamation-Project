@@ -1,0 +1,6 @@
+Welcome to Nuclear 14! You've woken up in the wastelands of Wendover, Utah. Try and survive, thrive and have fun (not at the expense of others hopefully).
+
+Please make sure you understand the server rules (F1) and if you have any questions, consult this guide, other wastelanders or via discord. You can also ask admins for help (ahelp) by hitting the escape key > admin help and typing a message to any online admins. Especially do this if you witness someone breaking rules.
+
+
+Instead of intents, we have combat mode. Check controls below for its keybind. You can't attack anybody with it off, so no more hitting yourself with your own crowbar.

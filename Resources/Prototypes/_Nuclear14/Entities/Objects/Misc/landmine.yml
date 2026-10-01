@@ -1,0 +1,35 @@
+- type: entity
+  name: anti-personnel mine
+  description: A small pressure-activated blast mine. Lethal to unprotected personnel within 2 tiles. Armed mines emit a soft beep. Handle with extreme care. #Misfits Tweak - renamed and updated description to reflect blast radius
+  parent: BaseLandMine
+  id: N14LandMine
+  placement:
+    mode: SnapgridCenter
+  components:
+  # Misfits Add - allow the mine to be picked up as an inventory item when disarmed
+  - type: Item
+    size: Normal
+  # Misfits Note - Physics bodyType no longer needed here; BaseLandMine now uses Dynamic (see land_mine.yml)
+  # - type: Physics
+  #   bodyType: Dynamic
+  #   fixedRotation: true
+  - type: ExplodeOnTrigger
+  - type: Explosive # Should be identical copy of a 40mm grenade.
+    #Misfits Change - use the structural-capable N14 explosion profile.
+    explosionType: N14DefaultStructural
+    maxIntensity: 8
+    intensitySlope: 6
+    totalIntensity: 15
+    maxTileBreak: 0
+    canCreateVacuum: false
+  # Misfits Add - beep when armed; enabled toggled by LandMineSystem
+  - type: AmbientSound
+    enabled: false
+    volume: -6
+    range: 5
+    sound:
+      path: /Audio/Effects/beep_landmine.ogg
+  - type: PointLight # Forge-Change removed tile glow.
+    color: "#FE321099"
+    radius: 1.3
+    energy: 0.5

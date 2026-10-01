@@ -1,0 +1,208 @@
+- type: entity
+  id: BaseMagazine308Rifle
+  name: "magazine (308.)"
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+      - N14Magazine308Rifle
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - N14Cartridge308Rifle
+    proto: N14Cartridge308Rifle
+    capacity: 21
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  id: Magazine308Rifle
+  name: "magazine (.308)"
+  parent: BaseMagazine308Rifle
+  components:
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge308Rifle
+
+- type: entity
+  id: Magazine308RifleLong
+  name: "long magazine (.308)"
+  parent: BaseMagazine308Rifle
+  components:
+  - type: Tag
+    tags:
+      - N14Magazine308RifleLong
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge308Rifle
+    capacity: 40
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag3.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: ClipMagazine308Rifle
+  name: "clip (.308)"
+  description: A 8-round clip for .308 rifles.
+  parent: BaseMagazine308Rifle
+  components:
+  - type: Tag
+    tags:
+      - N14Clip308Rifle
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge308Rifle
+    capacity: 8
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag2.rsi
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,0,0
+
+- type: entity
+  id: Magazine308M60Box
+  name: "M60 Box (.308)"
+  parent: BaseMagazine308Rifle
+  components:
+  - type: Tag
+    tags:
+      - Magazine308M60Box
+  - type: Item # Forge-Change
+    size: Normal
+    shape:
+    - 0,0,1,1
+    - 0,1,0,1
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge308Rifle
+    capacity: 50
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag4.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+
+# #Misfits Removed - GarandEnbloc308 replaced by ClipMagazine308Rifle; all Garands now use the shared .308 clip
+#- type: entity
+#  id: GarandEnbloc308
+#  name: "en-bloc clip (.308)"
+#  description: An 8-round en-bloc clip loaded with .308 Winchester cartridges. Load it into an M1 Garand and listen for that satisfying ping when it runs dry.
+#  parent: BaseMagazine308Rifle
+#  components:
+#  - type: Tag
+#    tags:
+#      - N14GarandEnbloc308
+#  - type: BallisticAmmoProvider
+#    proto: N14Cartridge308Rifle
+#    capacity: 8
+#  - type: Sprite
+#    netsync: false
+#    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/garand308.rsi
+#    layers:
+#    - state: base
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-1
+#      map: ["enum.GunVisualLayers.Mag"]
+#  - type: MagazineVisuals
+#    magState: mag
+#    steps: 1
+#    zeroVisible: true
+#  - type: Appearance
+
+# Misfits Add — SKS 10-round en-bloc clip.
+# Legion-refurbished stockpile rifle; uses a slightly larger clip than the Garand.
+- type: entity
+  id: SKSEnbloc308
+  name: "en-bloc clip (SKS, .308)"
+  description: A 10-round en-bloc clip for the SKS rifle. Standard-issue ammunition for Legion heavy riflemen in the field.
+  parent: BaseMagazine308Rifle
+  components:
+  - type: Tag
+    tags:
+      - N14SKSEnbloc308
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge308Rifle
+    capacity: 10
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/garand308.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1 # #Misfits Fix: RSI only has mag-0 (empty) and mag-1 (loaded); steps:1 maps correctly
+    zeroVisible: true
+  - type: Appearance
+
+- type: entity # Forge-add-start
+  id: Magazine308RifleSniper
+  name: "sniper magazine (.308)"
+  parent: BaseMagazine308Rifle
+  components:
+  - type: Tag
+    tags:
+      - N14Magazine308RifleSnipers
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge308Rifle
+    capacity: 10
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag5.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity # Forge-add-start
+  id: MagazineOver308RifleSniper
+  name: "sniper magazine (Overpressure .308)"
+  description: A .308 overpressure magazine made for the sniper. Due to the bullets being slightly fatter, normal .308 won't fit in this mag.
+  parent: BaseMagazine308Rifle
+  components:
+  - type: Tag
+    tags:
+      - N14MagazineOver308RifleSnipers
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - N14CartridgeOver308Rifle
+    proto: N14CartridgeOver308Rifle
+    capacity: 10
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag5.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+
+# Forge-add-end

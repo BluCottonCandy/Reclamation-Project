@@ -1,0 +1,55 @@
+- type: dataset
+  id: RevenantType
+  values:
+  - essence
+  - ghost
+  - phantom
+  - poltergeist
+  - revenant
+  - soul
+  - shadow
+  - spirit
+
+- type: dataset
+  id: RevenantAdjective
+  values:
+  - hellish
+  - bottomless
+  - cruel
+  - dark
+  - endless
+  - eternal
+  - fiery
+  - hateful
+  - vile
+  - merry
+  - indifferent
+  - malicious
+  - peaceful
+  - searing
+  - quiet
+  - spiteful
+
+- type: dataset
+  id: RevenantTheme
+  values:
+  - agony
+  - rage
+  - death
+  - disease
+  - sorrow
+  - hatred
+  - pity
+  - corruption
+  - toxicity
+  - vengeance
+  - torment
+  - longing
+  - pain
+  #- despair
+  #- desperation
+  #- destruction
+  #- hellfire
+  #- laughter
+  #- screams
+  #- suffering

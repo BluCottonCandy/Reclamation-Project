@@ -1,0 +1,408 @@
+# #Misfits Add - Invisible ghost-role spawner entities for pet companion traits.
+# Each entity carries its own GhostRole + GhostRoleMobSpawner components
+# so multiple pets can coexist without component conflicts on the player entity.
+
+# Base invisible spawner — no sprite, no physics, just a ghost role host
+- type: entity
+  id: MisfitsPetSpawnerBase
+  name: pet spawner
+  abstract: true
+  components:
+  - type: Transform
+  - type: Sprite              # actually, maybe SOME sprite, but not one players will see
+    drawdepth: Overdoors
+    sprite: Markers/cross.rsi
+
+# Dog companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerDog
+  name: companion dog spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-dog-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetDog
+
+# Brahmin companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerBrahmin
+  name: companion brahmin spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-brahmin-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetBrahmin
+
+# Mirelurk companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerMirelurk
+  name: companion mirelurk spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-mirelurk-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetMirelurk
+
+# Rad Chicken companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerRadChicken
+  name: companion rad chicken spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-radchicken-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetRadChicken
+
+# Cat companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCat
+  name: companion cat spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCat
+
+# Cat companion spawners for the variant perk entries
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatBlack
+  name: black cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-black-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatBlack
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatBrownTabby
+  name: brown tabby cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-browntabby-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatBrownTabby
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatCalico
+  name: calico cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-calico-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatCalico
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatGingerTabby
+  name: ginger tabby cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-gingertabby-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatGingerTabby
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatGrayTabby
+  name: gray tabby cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-graytabby-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatGrayTabby
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatMela
+  name: mela cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-mela-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatMela
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatOcicat
+  name: ocicat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-ocicat-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatOcicat
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatSiamese
+  name: siamese cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-siamese-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatSiamese
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatSphinx
+  name: sphinx cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-sphinx-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatSphinx
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatSpoon
+  name: spoon cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-spoon-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatSpoon
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatTortoiseshell
+  name: tortoiseshell cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-tortie-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatTortoiseshell
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCatWhite
+  name: white cat companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-white-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCatWhite
+
+# Centaur companion spawner (Supermutant-only)
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerCentaur
+  name: companion centaur spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-centaur-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetCentaur
+
+# --- N14 upstream pet spawners (converted from TraitAddComponent to fix stacking) ---
+
+# Roach companion spawner (Wastelander/Tribe/Townsfolk)
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerRoach
+  name: companion roach spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-roach-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetRoach
+
+# Pigrat companion spawner (Wastelander/Tribe/Townsfolk)
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerPigrat
+  name: companion pigrat spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-pigrat-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetPigrat
+
+# Eyebot companion spawner (Wastelander/Townsfolk)
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerEyebot
+  name: companion eyebot spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-eyebot-name
+    description: ghost-role-information-n14pet-eyebot-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetEyebot
+
+# Eyebot MBoS companion spawner (Brotherhood of Steel)
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerEyebotMBoS
+  name: companion eyebot mbos spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-eyebot-mbos-name
+    description: ghost-role-information-n14pet-eyebot-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetEyebotMBoS
+
+# Treyebot (Tribe Eyebot) spawner
+- type: entity
+  parent: MisfitsPetSpawnerEyebot
+  id: MisfitsPetSpawnerEyebotTribe
+  name: companion eyebot tribal spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-eyebot-tribe-name
+    description: ghost-role-information-n14pet-eyebot-tribe-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobPetEyebotTribe
+
+# OSI Eyebot companion, issued only by the OSI scientist job specials.
+- type: entity
+  parent: MisfitsPetSpawnerEyebot
+  id: MisfitsPetSpawnerEyebotOSI
+  name: OSI eyebot companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-misfits-pet-eyebot-osi-name
+    description: ghost-role-information-misfits-pet-eyebot-osi-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobPetEyebotOSI
+
+# Enclave Eyebot companion, issued only by the Enclave scientist job specials.
+- type: entity
+  parent: MisfitsPetSpawnerEyebot
+  id: MisfitsPetSpawnerEyebotEnclave
+  name: Enclave eyebot companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-misfits-pet-eyebot-enclave-name
+    description: ghost-role-information-misfits-pet-eyebot-enclave-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobPetEyebotEnclave
+
+# Enclave Cyberdog companion, purchasable only by Enclave scientist roles.
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerDogEnclave
+  name: Enclave cyberdog companion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-misfits-pet-dog-enclave-name
+    description: ghost-role-information-misfits-pet-dog-enclave-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobPetDogEnclave
+
+# Dog companion spawner (Wastelander/Tribe/Townsfolk)
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerDogGeneric
+  name: companion dog generic spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-dog-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetDog
+
+# Dog MBoS companion spawner (Brotherhood of Steel)
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerDogMBoS
+  name: companion dog mbos spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-dog-mbos-name
+    description: ghost-role-information-n14pet-hauler-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetDogMBoS
+
+# Dog Legion companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerDogLegion
+  name: companion dog legion spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-dog-legion-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetDogLegion
+
+# Dog NCR companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerDogNCR
+  name: companion dog ncr spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-dog-ncr-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetDogNCR
+
+# Dog NCR K9 Medical companion spawner
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetSpawnerDogNCRK9Medical
+  name: companion dog ncr k9 medical spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-dog-ncrmed-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: N14MobPetDogNCRMedicK9

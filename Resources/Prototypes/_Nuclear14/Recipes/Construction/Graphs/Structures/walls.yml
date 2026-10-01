@@ -1,0 +1,565 @@
+﻿- type: constructionGraph
+  id: N14WoodWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: Frame
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1
+
+        - to: logWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2
+
+        - to: WallWoodTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: WoodPlank
+              amount: 8
+              doAfter: 3
+
+    - node: Frame
+      entity: N14WallWoodFrame
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+        - to: WoodWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2
+
+    - node: logWall
+      entity: N14WallWoodLog
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+            - !type:DeleteEntity # Forge-Change
+          steps:
+            - tool: Prying
+              doAfter: 10
+
+    - node: WoodWall
+      entity: N14WallWoodSlanted
+      edges:
+        - to: Frame
+          completed:
+            - !type:GivePrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 10
+
+    - node: WallWoodTall
+      entity: N14WallWoodTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - tool: Prying
+              doAfter: 10
+
+- type: constructionGraph
+  id: N14ScrapWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: SheetScrapWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: SheetScrapWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: WhiteScrapWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: WhiteScrapWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: RedScrapWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: RedScrapWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: BlueScrapWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: BlueScrapWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: RoughScrapWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Scrap
+              amount: 5
+              doAfter: 4
+
+    - node: SheetScrapWall
+      entity: N14WallScrapSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: SheetScrapWallTall
+      entity: N14WallScrapTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: WhiteScrapWall
+      entity: N14WallScrapWhiteSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: WhiteScrapWallTall
+      entity: N14WallScrapWhiteTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: BlueScrapWall
+      entity: N14WallScrapBlueSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity # Forge-Change
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: BlueScrapWallTall
+      entity: N14WallScrapBlueTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: RedScrapWall
+      entity: N14WallScrapRedSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity # Forge-Change
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: RedScrapWallTall
+      entity: N14WallScrapRedTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetSteel1
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: RoughScrapWall
+      entity: N14WallRoughScrapSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14Scrap
+              amount: 3
+            - !type:DeleteEntity # Forge-Change
+          steps:
+            - tool: Welding
+              doAfter: 25
+
+    - node: RoughScrapWallTall
+      entity: N14WallRoughScrapTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14Scrap
+              amount: 5
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 25
+
+# #Misfits Add: Concrete wall construction graph
+- type: constructionGraph
+  id: N14ConcreteWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: ConcreteWallLight
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Concrete
+              amount: 4
+              doAfter: 3
+
+        - to: ConcreteWallDark
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: N14Concrete
+              amount: 4
+              doAfter: 3
+
+    - node: ConcreteWallLight
+      entity: N14WallConcreteLight
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialConcrete1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 15
+
+    - node: ConcreteWallDark
+      entity: N14WallConcreteDark
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialConcrete1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 15
+
+# #Misfits Add: Brick wall construction graph
+- type: constructionGraph
+  id: N14BrickWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: BrickWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Brick
+              amount: 6
+              doAfter: 4
+
+    - node: BrickWall
+      entity: N14WallBrick
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialBrick1
+              amount: 3
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 20
+
+# #Misfits Add: Adobe wall construction graph using the existing slanted adobe wall prototype.
+- type: constructionGraph
+  id: N14AdobeWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: AdobeWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Brick
+              amount: 6
+              doAfter: 4
+
+        - to: AdobeWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Brick
+              amount: 10
+              doAfter: 5
+
+    - node: AdobeWall
+      entity: N14WallAdobeSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialBrick1
+              amount: 3
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 20
+
+    - node: AdobeWallTall
+      entity: N14WallAdobeTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialBrick1
+              amount: 5
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 20
+
+# #Misfits Add: Tent construction graphs
+
+- type: constructionGraph
+  id: N14TentWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: LeatherTentWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Leather
+              amount: 3
+              doAfter: 2
+
+        - to: ClothTentWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Thread
+              amount: 4
+              doAfter: 2
+
+        - to: LeatherTentCorner
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Leather
+              amount: 2
+              doAfter: 1
+
+        - to: ClothTentCorner
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Thread
+              amount: 3
+              doAfter: 1
+
+    - node: LeatherTentWall
+      entity: N14TentLeatherWall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialLeather1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: ClothTentWall
+      entity: N14TentClothWall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialThread1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: LeatherTentCorner
+      entity: N14TentLeatherCorner
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialLeather1
+              amount: 1
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: ClothTentCorner
+      entity: N14TentClothCorner
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialThread1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5
+

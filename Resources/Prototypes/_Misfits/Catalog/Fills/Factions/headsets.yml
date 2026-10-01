@@ -1,0 +1,105 @@
+﻿- type: entity
+  name: legion headset box
+  parent: BoxCardboard
+  id: BoxHeadsetLegion
+  description: A box of spare headsets.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ClothingHeadsetLegion
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: headset
+
+- type: entity
+  name: brotherhood headset box
+  parent: BoxCardboard
+  id: BoxHeadsetBrotherhoodOfSteel
+  description: A box of spare headsets.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ClothingHeadsetBrotherhoodOfSteel
+      amount: 4
+    - id: ClothingHeadBrotherhoodScribeHeadset
+  - type: Sprite
+    layers:
+    - state: box
+    - state: headset
+
+- type: entity
+  name: ncr headset box
+  parent: BoxCardboard
+  id: BoxHeadsetNCR
+  description: A box of spare headsets.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ClothingHeadsetNCR
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: headset
+
+- type: entity
+  name: vault headset box
+  parent: BoxCardboard
+  id: BoxHeadsetVault
+  description: A box of spare headsets.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ClothingHeadsetVaultDweller
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: headset
+
+- type: entity
+  name: wasteland headset box
+  parent: BoxCardboard
+  id: BoxHeadsetWasteland
+  description: A box of spare headsets.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyWastelandGlobal
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: headset
+
+- type: entity
+  name: followers headset box
+  parent: BoxCardboard
+  id: BoxHeadsetFollowers
+  description: A box of spare headsets.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ClothingHeadsetFollowers
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: headset
+
+- type: entity
+  name: U.S. Army headset box
+  parent: BoxCardboard
+  id: BoxHeadsetEnclave
+  description: A box of spare headsets.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14ClothingHeadsetEnclave
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: headset

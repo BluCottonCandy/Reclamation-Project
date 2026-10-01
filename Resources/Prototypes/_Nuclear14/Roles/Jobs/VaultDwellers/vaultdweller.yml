@@ -1,0 +1,49 @@
+- type: job
+  id: VaultDweller
+  weight: 10
+  showBorder: true
+  hideWithoutJobWhitelist: false # #Misfits Tweak - no whitelist gate
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - always visible
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change - open to all
+  name: job-name-vault-dweller
+  description: job-description-vault-dweller
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+  setPreference: true
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  overwatchCategory: OverwatchGeneral
+  playTimeTracker: VaultDweller
+  startingGear: VaultDwellerGear
+  alwaysUseSpawner: true
+  icon: "JobIconVaulDweller" # Forge-Change
+  supervisors: job-supervisors-vault
+  access:
+  - VaultDweller
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Vault
+
+- type: startingGear
+  id: VaultDwellerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitVault14
+    back: N14ClothingBackpackVaultBlue # Forge-Change
+    shoes: N14ClothingBootsBlack
+    id: N14VaultPDA
+    ears: N14ClothingHeadsetVaultDweller
+  innerClothingSkirt: N14ClothingUniformJumpsuitVault14
+  storage: # Forge-Change
+    back:
+    - N14Bandage
+    - N14CurrencyPrewarMoney100
+    - VaultGuidePaper
+- type: playTimeTracker
+  id: VaultDweller

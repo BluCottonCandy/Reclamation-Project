@@ -1,0 +1,74 @@
+# Misfits Change - Disabled: armor/weapons removed from roundstart loadout menu
+#- type: loadout
+#  id: LoadoutBoSWashingtonSquire
+#  category: Outer
+#  cost: 1
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonInitiate
+#    - !type:CharacterPlaytimeRequirement
+#      tracker: BoSWashingtonInitiate
+#      min: 72000 # 20 hours veterancy unlock
+#  items:
+#    - N14ClothingOuterWBoSSquireArmor
+#
+# Misfits Change - Disabled: armor/weapons removed from roundstart loadout menu
+#- type: loadout
+#  id: LoadoutBoSWashingtonSeniorKnight
+#  category: Outer
+#  cost: 1
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonKnight
+#    - !type:CharacterPlaytimeRequirement
+#      tracker: BoSWashingtonKnight
+#      min: 144000 # 40 hours veterancy unlock
+#  items:
+#    - N14ClothingOuterWBoSSeniorKArmor
+#
+#Misfits Change /Comment-out/: Washington BoS field scribe loadout removed — job no longer exists.
+#- type: loadout
+#  id: LoadoutBoSWashingtonFieldScribe
+#  category: Uniform
+#  cost: 1
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonScribe
+#    - !type:CharacterPlaytimeRequirement
+#      tracker: BoSWashingtonScribe
+#      min: 72000 # 20 hours veterancy unlock
+#  items:
+#    - N14ClothingUniformJumpsuitBOSWashingtonFieldScribe
+
+# Misfits Change - Disabled: armor/weapons removed from roundstart loadout menu
+#- type: loadout
+#  id: LoadoutBoSWashingtonPA
+#  category: Outer
+#  cost: 9
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonPaladin
+#        - BoSWashingtonCommander
+#  items:
+#    - N14ClothingOuterPowerArmorWashT51
+#
+# Misfits Change - Disabled: armor/weapons removed from roundstart loadout menu
+#- type: loadout
+#  id: LoadoutBoSWashingtonPACommander
+#  category: Outer
+#  cost: 10
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - BoSWashingtonCommander
+#  items:
+#    - N14ClothingOuterPowerArmorWashT51Elite

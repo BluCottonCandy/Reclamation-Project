@@ -1,0 +1,58 @@
+- type: entity
+  abstract: true
+  parent: Clothing
+  id: ClothingMaskBase
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Small
+  - type: Clothing
+    slots: [mask]
+  # #Misfits Change - Enforce repo-wide policy: all mask face coverings block identification.
+  - type: IdentityBlocker
+  - type: HideLayerClothing # Corvax-Change
+    force: true
+    slots:
+    - FacialHair
+
+- type: entity
+  abstract: true
+  parent: ClothingMaskBase
+  id: ClothingMaskPullableBase
+  components:
+  - type: Mask
+
+- type: entity
+  id: ActionToggleMask
+  name: Toggle Mask
+  description: Handy, but prevents insertion of pie into your pie hole.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: { sprite: Clothing/Mask/gas.rsi, state: icon }
+    iconOn: Interface/Default/blocked.png
+    event: !type:ToggleMaskEvent
+
+- type: entity
+  id: ClothingMaskBaseButcherable
+  parent: ClothingMaskBase
+  abstract: true
+  components:
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: MaterialCloth1
+      amount: 1
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+  - type: Tag
+    tags:
+      - ClothMade

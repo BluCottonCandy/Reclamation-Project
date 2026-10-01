@@ -1,0 +1,59 @@
+# #Misfits Add - Enclave Senior Officer role (Major / Captain).
+
+- type: job
+  id: EnclaveSeniorOfficer
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 115
+  displayWeight: 128
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-enclave-senior-officer
+  description: job-description-enclave-senior-officer
+  playTimeTracker: EnclaveSeniorOfficer
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - senior officer faction timelock
+      department: Enclave
+      min: 72000 # 20 hours
+  startingGear: EnclaveSeniorOfficerGear
+  icon: "JobIconEnclaveSeniorOfficer"
+  supervisors: job-supervisors-enclave-senior-officer
+  alwaysUseSpawner: true
+  accessGroups:
+  - EnclaveSeniorOfficer
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Enclave
+      - type: ReplacementAccent
+        accent: n14Enclave
+      - type: PowerArmorProficiency
+
+- type: startingGear
+  id: EnclaveSeniorOfficerGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatEnclaveOfficer
+    back: N14ClothingBackpackMilitary
+    jumpsuit: N14ClothingUniformJumpsuitEnclave
+    shoes: N14ClothingBootsCombatFilled
+    gloves: N14ClothingHandsGlovesCombat
+    belt: ClothingBeltMilitary
+    ears: N14ClothingHeadsetEnclave
+    pocket1: EnclaveOfficerloadoutkits
+    pocket2: RadioHandheld
+    id: N14EnclaveOfficerPipboy
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+
+- type: playTimeTracker
+  id: EnclaveSeniorOfficer

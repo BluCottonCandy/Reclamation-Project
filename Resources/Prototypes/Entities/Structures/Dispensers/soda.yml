@@ -1,0 +1,33 @@
+- type: entity
+  parent: ReagentDispenserBase
+  id: SodaDispenser
+  name: soda dispenser
+  description: A beverage dispenser with a selection of soda and several other common beverages. Has a single fill slot for containers.
+  suffix: Filled
+  components:
+  - type: Rotatable
+  - type: Sprite
+    sprite: Structures/smalldispensers.rsi
+    drawdepth: SmallObjects
+    state: soda
+  - type: ReagentDispenser
+    storageWhitelist:
+      tags:
+      - DrinkBottle
+    pack: SodaDispenserInventory
+  - type: Transform
+    noRot: false
+  - type: Machine
+    board: SodaDispenserMachineCircuitboard
+  # #Misfits Removed - GuideHelp: guide entries not present in Nuclear-14 (Bartender)
+
+- type: entity
+  parent: SodaDispenser
+  id: SodaDispenserEmpty
+  suffix: Empty
+  components:
+  - type: ReagentDispenser
+    storageWhitelist:
+      tags:
+      - DrinkBottle
+    pack: EmptyInventory

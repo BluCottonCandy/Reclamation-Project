@@ -1,0 +1,10 @@
+loadout-description-LoadoutShoesBlack = Step into the shadows with these sleek and stylish black shoes, perfect for ninjas or anyone who wants to leave a mysterious impression.
+loadout-description-LoadoutShoesBlue = From zero-gravity dance floors to cosmic adventures - these sneakers are ready to make your path as bright as space.
+loadout-description-LoadoutShoesBrown = Classic and reliable, these brown shoes are your faithful companion on any adventure.
+loadout-description-LoadoutShoesGreen = Embody the essence of nature with these green shoes. Put them on and let the world become your green and picturesque playground.
+loadout-description-LoadoutShoesOrange = Get ready for exciting adventures on the space station with these bright orange shoes.
+loadout-description-LoadoutShoesPurple = Step into the unknown with the allure of these purple shoes. Embody the mystique of the cosmos as you walk through the mysterious sectors of the station, leaving behind an aura of mystery.
+loadout-description-LoadoutShoesRed = Embrace the spirit of exploration with these bold red shoes, reflecting the spirit of space station explorers. These shoes are not just for walking; they make a statement about your unwavering determination.
+loadout-description-LoadoutShoesWhite = Emphasize your style with these pristine white shoes, a symbol of innovation and progress.
+loadout-description-LoadoutShoesYellow = Illuminate the space station with these radiant yellow shoes, bringing a burst of energy to every step.
+loadout-description-LoadoutShoesSlippersDuck = Have a fun time with these charming duck slippers, which shuffle through life between comfort and eccentricity.

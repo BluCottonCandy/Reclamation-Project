@@ -1,0 +1,63 @@
+# Small, invisible to others
+- type: InteractionPopup
+  id: Subtle
+  popupType: Small
+  logChannel: Emotes
+  others: null
+
+# Small, visible to others
+- type: InteractionPopup
+  id: Visible
+  popupType: Small
+  logChannel: Emotes
+
+# Small, visible to others but not logged into chat
+- type: InteractionPopup
+  id: VisibleNoChat
+  popupType: Small
+  logPopup: false
+
+# Medium, visible to others
+- type: InteractionPopup
+  id: Obvious
+  popupType: Medium
+  logChannel: Emotes
+
+# MediumCaution, visible to others
+- type: InteractionPopup
+  id: Dangerous
+  popupType: MediumCaution
+  logChannel: Emotes
+
+# Delayed popups - logged to chat as emotes #Misfits Change /Tweak: Convert sprite-only delayed interaction popups to chat emotes so players see 'X tries to force down Y' in chat rather than floating sprite text.
+- type: InteractionPopup
+  id: SubtleDelayed
+  popupType: Small
+  logPopup: true
+  logChannel: Emotes
+  others: null
+
+- type: InteractionPopup
+  id: ObviousDelayed
+  popupType: Small
+  logPopup: true
+  logChannel: Emotes
+
+- type: InteractionPopup
+  id: DangerousDelayed
+  popupType: SmallCaution
+  logPopup: true
+  logChannel: Emotes
+
+# Visible only to self
+- type: InteractionPopup
+  id: SubtleFail
+  popupType: SmallCaution
+  target: null
+  others: null
+
+# Visible to self and target, but not others
+- type: InteractionPopup
+  id: Fail
+  popupType: SmallCaution
+  others: null

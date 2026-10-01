@@ -1,0 +1,15 @@
+marking-CatTail-tail_cat_wag = Primary
+marking-CatTailStripes = Cat Tail (Striped)
+marking-CatTailStripes-tail_cat_wag_stripes_prime = Primary Stripes
+marking-CatTailStripes-tail_cat_wag_stripes_second = Secondary Stripes
+marking-CatEars-ears_cat_outer = Outer Ear
+marking-CatEars-ears_cat_inner = Inner Ear
+marking-CatEarsStubby = Stubby Ears
+marking-CatEarsStubby-ears_stubby_outer = Outer Ear
+marking-CatEarsStubby-ears_stubby_inner = Inner Ear
+marking-CatEarsCurled = Curled Ears
+marking-CatEarsCurled-ears_curled_outer = Outer Ear
+marking-CatEarsCurled-ears_curled_inner = Inner Ear
+marking-CatEarsTorn = Torn Ears
+marking-CatEarsTorn-ears_torn_outer = Outer Ear
+marking-CatEarsTorn-ears_torn_inner = Inner Ear

@@ -1,0 +1,46 @@
+using Content.Server.Radio.EntitySystems;
+using Content.Shared.Chat;
+using Content.Shared.Radio;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
+
+namespace Content.Server.Radio.Components;
+
+/// <summary>
+///     Listens for radio messages and relays them to local chat.
+/// </summary>
+[RegisterComponent]
+[Access(typeof(RadioDeviceSystem))]
+public sealed partial class RadioSpeakerComponent : Component
+{
+    /// <summary>
+    /// Whether or not interacting with this entity
+    /// toggles it on or off.
+    /// </summary>
+    [DataField("toggleOnInteract")]
+    public bool ToggleOnInteract = true;
+
+    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
+    public HashSet<string> Channels = new () { SharedChatSystem.CommonChannel };
+
+    [DataField("enabled")]
+    public bool Enabled;
+
+    [DataField("IsSpeaker")] // Set to true for broadcast radio speakers so that it speaks instead of whispers the message.
+    public bool IsSpeaker;
+
+
+    // Goob start
+    /// <summary>
+    /// speaks normally when true whispers when false
+    /// </summary>
+    [DataField]
+    public bool SpeakNormally;
+
+    /// <summary>
+    /// Does the radio need to be on a power grid to work?
+    /// </summary>
+    [DataField]
+    public bool PowerRequired;
+    // Goob end
+}
+

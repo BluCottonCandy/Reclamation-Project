@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Adapted from Fortuna (DesertRose2/desertrose fork of /tg/station) icons/mob/talk.dmi combat state, licensed CC-BY-SA-3.0",
+    "size": {
+        "x": 8,
+        "y": 16
+    },
+    "states": [
+        {
+            "name": "combat"
+        }
+    ]
+}

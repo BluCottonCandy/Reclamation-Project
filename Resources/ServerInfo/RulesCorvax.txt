@@ -1,0 +1,169 @@
+[color=#ff0000][b]Misfits: Nuclear Wasteland Server Rules[/b][/color]
+Misfits: Nuclear Wasteland main goal of this server is not only to provide players with engaging gameplay, but also to create stories that they can share even with friends outside of standard Space Station 14.
+Please note: your own skills and actions will determine the path of your story. The Wasteland is a harsh place. Do not expect help from administrators except in the most urgent cases.
+
+WORK IN PROGRESS
+
+[color=#a4885c][b]Rule 1: Griefing[/b][/color]
+Griefing is strictly prohibited.
+
+Griefing is defined as intentionally disrupting gameplay or damaging the experience of others without meaningful in-character justification.
+
+Examples include:
+• Placing traps or mines in player homes without proper RP context
+• Destroying property without reason
+• Causing chaos purely to inconvenience others
+
+If your actions significantly harm gameplay without proper escalation or believable roleplay reasoning, they may be treated as griefing.
+
+[color=#a4885c][b]Rule 2: Fair Play[/b][/color]
+
+[b]2.1. Metagaming[/b]
+Metagaming is the use of out-of-character information in character.
+
+This includes:
+• Using information from OOC chat, Discord, streams, or ghosting
+• Watching streams to gain tactical knowledge
+• Sharing round information through external communication
+
+If your character could not reasonably know something in roleplay, do not act on it.
+
+Streaming is allowed, but you are responsible for preventing information abuse.
+
+Severe metagaming may result in a ban.
+
+[b]2.2. Multi-Accounting[/b]
+• Using multiple accounts in the same round is forbidden.
+• Ban evasion by creating new accounts is strictly prohibited.
+• Creating new accounts to avoid punishment history is forbidden.
+
+Violation of this rule may result in permanent removal.
+
+[b]2.3. Exploits and Unfair Advantages[/b]
+• Do not use cheats, scripts, macros, clickers, or third-party tools.
+• Do not abuse bugs for advantage.
+• Do not intentionally create excessive server load.
+
+If you discover a bug, report it immediately.
+
+[color=#a4885c][b]Rule 3: Roleplay Standards (Medium RP)[/b][/color]
+This server operates under Medium Roleplay standards. Effort toward immersion is required, but perfection is not expected.
+
+[b]3.1. Character Creation[/b]
+• Names must fit the Fallout setting. No meme names or obvious real-world references.
+• Do not copy previously used characters without permission.
+• Administration may require name changes if they break immersion.
+
+[b]3.2. In-Character and OOC Conduct[/b]
+• Do not break immersion by referencing game mechanics, administrators, or real-world memes in IC chat.
+• Do not argue OOC issues in IC chat. Use admin help instead.
+• Do not insult other players in OOC channels.
+• Keep real-world political or extremist discussions out of the server.
+
+[b]3.3. Maintaining Atmosphere[/b]
+• Avoid directly referencing mechanics such as "admins" or system terminology in character.
+• If you must go AFK, provide a simple in-character explanation when possible.
+• Minor chat errors should not be exaggerated or mocked.
+• Do not use in-game items to create offensive or explicit material.
+
+[b]3.4. Character Knowledge and Limits[/b]
+Your character is not all-knowing.
+
+• Do not act as an expert outside your chosen role.
+• Do not teach others how to play their role unless asked.
+• Do not reference advanced technology that has not been introduced during the round.
+
+[color=#a4885c][b]Rule 4: Erotic Roleplay (ERP)[/b][/color]
+Explicit sexual roleplay is not allowed.
+
+This includes:
+• Explicit sexual descriptions
+• Written erotic content in-game
+• Graphic sexual actions
+
+Light romantic interaction such as flirting, kissing, or hugging is permitted as long as it remains non-explicit and consensual.
+
+If an administrator instructs you to stop, you must stop immediately.
+
+Violations may result in severe punishment.
+
+[color=#a4885c][b]Rule 5: AFK Protection[/b][/color]
+Players who are fully logged out or clearly AFK are protected from direct harm.
+
+You may not:
+• Kill
+• Kidnap
+• Torture
+
+AFK characters may be robbed provided no physical harm is caused.
+
+If a player disconnects during active combat or escalation, they are not protected.
+
+Faction members inside their base during an active raid are not protected.
+
+Abuse of AFK status to avoid consequences is punishable.
+
+[color=#a4885c][b]Rule 6: Armed Conflict and Escalation[/b][/color]
+
+[b]6.1. Escalation Requirement[/b]
+In most situations, you must escalate before initiating lethal force.
+
+Escalation must:
+• Be delivered face-to-face
+• Include a clear, actionable demand
+• Allow a reasonable opportunity to respond
+
+Valid examples:
+• "Drop your weapon."
+• "Leave now and you will not be harmed."
+
+Exceptions include:
+• Active firefights
+• Immediate life-threatening situations
+• Faction warfare
+• High-risk or event zones
+• Hunting wildlife
+
+Fleeing from escalation counts as a response.
+
+Do not use escalation as a pretext for free killing.
+
+[b]6.2. Robbery Standards[/b]
+• Do not completely strip victims of all survival means when possible.
+• If a victim does not resist, you must leave them alive.
+• If they resist with force, the outcome is determined by the conflict.
+
+[b]6.3. Crossfire Conduct[/b]
+If caught in crossfire, you must escalate before directly engaging unless you are clearly being targeted.
+
+Avoid unnecessary entry into active combat zones.
+
+[b]6.4. Early Raid Restriction[/b]
+Do not raid faction bases within the first 30 minutes of a round.
+
+Faction members may be engaged outside their base during this period.
+
+[color=#a4885c][b]Rule 7: New Life Rule (NLR)[/b][/color]
+
+[b]7.1. Within a Round[/b]
+If your character dies and is revived:
+
+• You forget the cause of death.
+• You forget the events leading up to it.
+• You may not seek revenge based on that death.
+
+You may not return on the same character to bypass death or punishment.
+
+[b]7.2. Between Rounds[/b]
+You may remember other characters, but:
+
+• Do not use past round knowledge for mechanical advantage.
+• Do not reference events that contradict the current round.
+• Avoid referencing player identities directly.
+
+Each round is its own story.
+
+[color=#a4885c][b]Additional Points[/b][/color]
+• Head Administration has final authority in all rule interpretations.
+• The server maintains a 17+ expectation.
+• These rules may be updated as needed.

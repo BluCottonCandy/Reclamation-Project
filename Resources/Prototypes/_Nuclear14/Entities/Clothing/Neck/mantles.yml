@@ -1,0 +1,86 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckMantleBrotherhoodWashington
+  name: Brotherhood of Steel Mantle
+  description: A red and black mantle, worn by high-ranking of the Brotherhood of Steel. It represents a high status.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/WBoSmantle.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/WBoSmantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckMantleNCR
+  name: NCR squad leader mantle
+  description: A tiny piece of cloth bound with a rope, commonly used between Sergeants from the NCR army.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/NCRmantle.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/NCRmantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckMantleLeather
+  name: leather mantle
+  description: A comfortable brown leather mantle.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/leathermantle.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/leathermantle.rsi
+  - type: ToggleableClothing
+    clothingPrototype: N14ClothingHeadHatHoodLeatherCloak
+    requiredSlot: neck
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:Container
+  - type: Construction
+    graph: LeatherMantleGraph
+    node: mantle
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: N14MaterialLeather1
+      amount: 2
+
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckTownGuardMantle
+  name: army rain mantle
+  description: A piece of clothing meant to keep the soldiers somewhat dry before the Great War.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/townrainmantle.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/townrainmantle.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckROmantleNCR
+  name: Requisitons Officer's mantle
+  description: A golden threaded mantle bestowed to stationed Requisitons Officers by the Quartermasters corps.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/NCRROmantle.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/NCRROmantle.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingNeckBase
+  id: MisfitsClothingNeckNCRCommissarJacket
+  name: Commissar's jacket
+  description: A long, heavy jacket worn by NCR Commissars, worn loosely to hide their arms within.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Neck/NCRCommissarJacket.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Neck/NCRCommissarJacket.rsi
+  - type: StaticPrice
+    price: 50

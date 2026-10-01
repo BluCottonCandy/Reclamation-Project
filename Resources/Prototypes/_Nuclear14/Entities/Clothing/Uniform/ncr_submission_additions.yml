@@ -1,0 +1,87 @@
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRFatiguePants
+  name: NCR fatigue pants
+  description: NCR fatigue trousers paired with a utility belt rig.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrfatiguepants.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrfatiguepants.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRFatigueShirt
+  name: NCR fatigue shirt
+  description: A light NCR field shirt for desert operations.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrfatigueshirt.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrfatigueshirt.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRMedicVariant
+  name: NCR medic uniform
+  description: An NCR uniform variant marked for medical staff.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrmedic.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrmedic.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRPatrolRanger
+  name: NCR patrol ranger uniform
+  description: A service uniform commonly worn by NCR patrol rangers.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrpatrolrangeruniform.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrpatrolrangeruniform.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRRecon
+  name: NCR recon uniform
+  description: A lighter NCR uniform intended for recon units.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrrecon.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrrecon.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRReconLongSleeve
+  name: NCR recon uniform
+  description: A long-sleeve recon uniform for NCR patrols in rougher weather.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrreconlongsleeve.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrreconlongsleeve.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRShorts
+  name: NCR shorts uniform
+  description: A hot-weather NCR uniform cut down for desert comfort.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrshorts.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrshorts.rsi
+
+- type: entity
+  parent: N14ClothingUniformBase
+  id: N14ClothingUniformNCRUtilityShirt
+  name: NCR utility shirt
+  description: A compact NCR duty uniform with extra utility pockets.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrutilityshirt.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/ncrutilityshirt.rsi

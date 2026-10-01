@@ -1,0 +1,189 @@
+- type: characterItemGroup
+  id: N14LoadoutUniform
+  items:
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitVault14
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitDetectiveAlt
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitBartenderAlt
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitRags
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitSettlerRags
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitCheckered
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitWastelandDoc
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitMerc
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitMerchant
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitTrader
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitCaravan
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitMechanic
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarRelaxed
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarCasual
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitManagerSuit
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarManager
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitBlueSuit
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarLumberjack
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitCombat
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitBrahminFarmer
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitFollowers
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitCowboyBrown
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitCowboyGrey
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitTribal
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitWarriorTribal
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtFalloutBlack
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtFalloutBlue
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtDressBlack
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtDressBlue
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtSundress
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtWastelandDoc
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtMerc
+    - type: loadout
+      id: N14LoadoutUniformJumpskirtTribal
+    - type: loadout
+      id: N14LoadoutOuterDressAsymmetric
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitChinese
+    - type: loadout
+      id: N14ClothingUniformJumpsuitdrylanderTribal
+    - type: loadout
+      id: N14ClothingUniformJumpsuittribalpantsm
+    - type: loadout
+      id: N14ClothingUniformJumpsuittribalpantsf
+    - type: loadout
+      id: N14ClothingUniformJumpsuittribalpantsnecklace
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitDetectiveAltVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitCheckeredVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarRelaxedVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarCasualVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarManagerVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitBlueSuitVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarLumberjackVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitAsylumDress
+    - type: loadout
+      id: ClothingUniformJumpsuitOliveSweaterVault
+    - type: loadout
+      id: N14LoadoutUniversalMPUniformNCRDesert
+    - type: loadout
+      id: N14LoadoutUniversalMPUniformNCRSnow
+    - type: loadout
+      id: N14LoadoutUniversalOfficerUniformNCRDesert
+    - type: loadout
+      id: N14LoadoutUniversalOfficerUniformNCRSnow
+    - type: loadout
+      id: N14LoadoutUniversalUniformBosRecon
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpskirtBOSBlack
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpskirtBOSGold
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpskirtBOSSilver
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpskirtRDFormal
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitBOSBlack
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitBOSGreen
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitBOSRed
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitBOSScribe
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitBOSSilver
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitBOSWashingtonFieldScribe
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitCaravanOveralls
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitCaravanShirt
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitCaravanSuit
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitEnclave
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitFudd
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitMilUniform
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitRCMP
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitRDFormal
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitTownGuard
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitTownGuardLight
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitVancouver
+    - type: loadout
+      id: N14LoadoutUniversalUniformJumpsuitVault
+    - type: loadout
+      id: N14LoadoutUniversalUniformNCRDesert
+    - type: loadout
+      id: N14LoadoutUniversalUniformNCRSnow
+    - type: loadout
+      id: N14LoadoutUniversalUniformRangerPatrol
+    - type: loadout # Misfits 80s
+      id: MisfitsLoadoutUniform80sPants
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformADPUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformMarlowdudsUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformIkedudsUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformHelendudsUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformMasondudsUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformSchlimmUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformKhansUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformKhansUniformShorts
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformEnclaveUniformGrey
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformEnclaveUniformBlue
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformDeadHorsesUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformSorrowsUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformRustwalkersUniform
+    - type: loadout # Misfits
+      id: MisfitsLoadoutUniformWhiteLegsUniform

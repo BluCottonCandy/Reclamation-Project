@@ -1,0 +1,2099 @@
+- type: entity
+  name: rifleman kit
+  parent: BaseItem
+  id: KitBase
+  description: A box containing military supplies.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+#M NCRA Cadet Kits
+
+- type: entity
+  name: cadet's rifleman kit
+  parent: KitBase
+  id: KitNCR_CadetRifleman
+  description: A crate containing all an NCR trooper needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRVestDesert # Forge-Change
+      - id: ClothingBeltNCRPouches
+      - id: N14WeaponSniper556VarmintRifle
+      - id: MagazineBox556 # #Misfits Fix - was abstract BaseMagazineBox556Rifle (Spawn threw, aborting OnUseInHand before QueueDel; kit became infinite)
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadXPill
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: cadet's stormtrooper kit
+  parent: KitBase
+  id: KitNCR_CadetStorm
+  description: A crate containing all an NCR trooper needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRVestDesert # Forge-Change
+      - id: ClothingBeltNCRPouches
+      - id: N14WeaponSMG9mm
+      - id: N14MagazineSMG9mm
+        amount: 4
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: SmokeGrenade
+      - id: N14Stimpak
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: cadet's scout kit
+  parent: KitBase
+  id: KitNCR_CadetScout
+  description: A crate containing all an NCR trooper needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRVestDesert # Forge-Change
+      - id: ClothingBeltNCRBandolier
+      - id: N14WeaponSniper44LeverCarbine
+      - id: MagazineBox44
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadXPill
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# NCRA Trooper Kits
+
+- type: entity
+  name: soldier's rifleman kit
+  parent: KitBase
+  id: KitNCR_Rifleman
+  description: A crate containing all an NCR trooper needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRVestDesert
+      - id: N14ClothingHeadHatNCRHelmetMetalDesert
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle556Service
+      - id: Magazine556Rifle
+        amount: 3
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadXPill
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: soldier's stormtrooper kit
+  parent: KitBase
+  id: KitNCR_Storm
+  description: A crate containing all an NCR trooper needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRVestDesert
+      - id: N14ClothingHeadHatNCRHelmetNoCover
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle556Butchered
+      - id: Magazine556Rifle
+        amount: 4
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: SmokeGrenade
+      - id: N14Stimpak
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: soldier's scout kit
+  parent: KitBase
+  id: KitNCR_Scout
+  description: A crate containing all an NCR trooper needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRPouchedVestDesert # Super - Since the scout kit has no helmet, give them a pouched vest.
+      - id: N14ClothingUniformNCRRecon
+      - id: N14ClothingHeadHatNCRBeretRecon
+      - id: N14ClothingNeckTownGuardMantle
+      - id: ClothingBeltNCR
+      - id: N14WeaponSniper44LeverCarbine
+      - id: MagazineBox44
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadXPill
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: soldier's trench raider kit
+  parent: KitBase
+  id: KitNCR_Point
+  description: A crate containing all an NCR trooper needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRTrenchRaider
+      - id: N14ClothingHeadHatNCRHelmetNoCover
+      - id: N14ClothingMaskSkirmisher
+      - id: ClothingBeltNCRShotgunner
+      - id: N14ClothingNeckTownGuardMantle
+      - id: N14WeaponShotgun
+      - id: MagazineBox12gauge
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14TrenchClub #Misfits Add - Trench raiders need a trench club, right?
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadXPill
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: soldier's charger kit
+  parent: KitBase
+  id: KitNCR_Morale
+  description: A crate containing all an NCR trooper needs to engage the enemy in glorious melee combat!
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRPlateDesert # Forge-Change
+      - id: N14ClothingMaskPlate
+      - id: ClothingBeltNCR
+      - id: N14WastelandFlagSpear
+      #- id: N14ClothingHandsGlovesBlackBiker # Super - Get your gloves from your character's loadout menu!
+      - id: N14Hatchet
+      - id: N14WeaponPistol45Colt
+      - id: N14MagazinePistol45
+        amount: 3
+      - id: N14Psycho
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadXPill
+      - id: N14CleanGauze10
+      - id: N14Flare
+      - id: WarhornNCRBugle # Misfit edit
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# NCRA Engineer Kit
+
+- type: entity
+  name: engineer's construction kit
+  parent: KitBase
+  id: KitNCR_EngiMechanic
+  description: A crate containing all an NCR engineer needs to build defenses and repair structures.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingBeltUtilityFilled
+      - id: N14WeaponRifle556Butchered
+      - id: Magazine556Rifle
+        amount: 3
+      - id: SheetSteel
+      - id: MaterialWoodPlank
+      - id: MaterialWoodPlank
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+
+- type: entity
+  name: engineer's sapper kit
+  parent: KitBase
+  id: KitNCR_EngiDemo
+  description: A crate containing all an NCR engineer needs to kick in doors.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponSMG9mm
+      - id: N14MagazineSMG9mm
+      - id: ClothingBeltNCRShotgunner
+      - id: N14WeaponShotgunShort
+      - id: MagazineBox12gauge
+      - id: N14ShieldMetalHeavy
+      - id: C4
+        amount: 3
+      - id: N14ripper
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14ToolboxMechanical
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: engineer's breacher kit
+  parent: KitBase
+  id: KitNCR_EngiBreach
+  description: A crate containing all an NCR engineer needs to perform their job.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponShotgunAuto
+      - id: N14MagazineShotgun12
+      - id: N14ToolboxMechanical
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: ClothingBeltNCRShotgunner
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14TinNade
+        amount: 2
+      - id: N14Dynamite
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# NCRA Medic Kits
+
+- type: entity
+  name: medic's doctor kit
+  parent: KitBase
+  id: KitNCR_MedSurgeon
+  description: A crate containing advanced medical and surgical equipment intended for use in NCR clinics and field hospitals.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    # Clothing
+    - id: N14ClothingHeadHatNCRBeretMedic
+    - id: N14ClothingOuterNCRPouchedVestDesert
+    - id: N14ClothingBeltMedicalFilled
+    - id: N14ClothingHandsGlovesNitrile
+    - id: ClothingMaskSterile
+    - id: ClothingNeckStethoscope
+    # Clinical / surgical equipment
+    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: N14HandheldHealthAnalyzer
+    - id: SurgicalSterilanSpray
+    - id: N14SmellingSalts
+      amount: 2
+    # Handgun
+    - id: N14WeaponPistol45Colt
+    - id: N14BaseMagazine45Pistol
+      amount: 2
+    # Medical supplies
+    - id: N14SuperStimpak
+    - id: N14Stimpak
+    - id: Bloodpack
+      amount: 2
+    - id: N14Antidote
+    - id: N14RadAwayBloodbag
+    - id: N14CleanGauze10
+      amount: 2
+    - id: N14Ointment10
+    # General supplies
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: Torch
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: medic's field medic kit # #Misfits Change - upstream brute/blood packs and sterile wipes replaced with N14 equivalents
+  parent: KitBase
+  id: KitNCR_MedDoctor
+  description: A crate containing standard field medical equipment for an NCR medic operating alongside patrols and expeditionary forces.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    # Clothing
+    - id: N14ClothingHeadHatNCRHelmetMetalMedic
+    - id: N14ClothingOuterNCRPouchedVestDesert
+    - id: N14ClothingBeltMedicalFilled
+    - id: N14ClothingHandsGlovesNitrile
+    # Field medical equipment
+    - id: N14HandheldHealthAnalyzer
+    - id: N14SmellingSalts
+      amount: 2
+    - id: N14Traumapack
+    # Primary weapon
+    - id: N14WeaponSMG9mm
+    - id: N14MagazineSMG9mm
+      amount: 3
+    # Medical supplies
+    - id: N14Stimpak
+      amount: 2
+    - id: N14Ointment10
+    - id: N14Antidote
+    - id: N14RadAwayBloodbag
+    - id: N14CleanGauze10
+      amount: 2
+    # General supplies
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: medic's combat kit
+  parent: KitBase
+  id: KitNCR_MedCombat
+  description: A crate containing frontline medical and combat equipment for an NCR combat medic operating under fire.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    # Clothing
+    - id: N14ClothingHeadHatNCRHelmetMetalMedic
+    - id: N14ClothingOuterNCRPouchedVestDesert
+    - id: N14ClothingBeltMedicalFilled
+    # Frontline medical equipment
+    - id: DefibrillatorCompact
+    - id: N14HandheldHealthAnalyzer
+    - id: N14MedkitCombatFilled
+    - id: N14SmellingSalts
+    # Primary weapon
+    - id: N14WeaponRifle556Service
+    - id: Magazine556Rifle
+      amount: 3
+    # Emergency medicine
+    - id: N14Stimpak
+      amount: 2
+    - id: N14Antidote
+    - id: N14RadAwayBloodbag
+    - id: N14CleanGauze10
+      amount: 2
+    # Field topicals
+    - id: MisfitsHealingSalve5
+    - id: MisfitsHerbalAnodyne5
+    - id: MisfitsDaturaHide5
+    - id: MisfitsSnakebiteTourniquet5
+    # General supplies
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: Torch
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# NCRA Weapon Specialist Kits
+
+- type: entity
+  name: specialist's heavy sniper kit
+  parent: KitBase
+  id: KitNCR_WSGunner
+  description: A crate containing all an NCR weapon specialist needs to perform their job.
+  components:
+  - type: Sprite
+    state: gunner
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingUniformNCRRecon
+      - id: ClothingBeltNCR
+      - id: N14ClothingHeadHatNCRBeretRecon # Forge-Change
+      - id: N14ClothingNeckCloakNCR # Forge-Change
+      - id: N14WeaponSniper50NCRRifle # Bill- the autorifle was too much. Kill tankies with skillful shots
+      - id: MagazineBox50
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: specialist's grenadier kit
+  parent: KitBase
+  id: KitNCR_WSGrenadier
+  description: A crate containing all an NCR weapon specialist needs to perform their job.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
+      - id: N14ClothingNeckCloakNCR # Forge-Change
+      # #Misfits Change: removed 4x GrenadeFrag — no grenade launcher in this kit, grenades were orphaned
+      # #Misfits Fix - Added grenade rifle + 40mm rounds so the Grenadier kit actually has a primary weapon
+      - id: N14WeaponRifleGrenade
+      - id: 40mmGrenadeFrag
+        amount: 5
+      - id: SmokeGrenade
+      - id: N14WeaponSMG12mm
+      - id: N14MagazineSMG12mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: specialist's sniper kit
+  parent: KitBase
+  id: KitNCR_WSSniper
+  description: A crate containing all an NCR weapon specialist needs to perform their job.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingUniformNCRRecon
+      - id: ClothingBeltNCR
+      - id: N14ClothingHeadHatNCRBeretRecon
+      - id: N14ClothingNeckCloakNCR # Forge-Change
+      - id: N14WeaponRifle308SniperRifle
+      - id: MagazineOver308RifleSniper
+      - id: N14WeaponPistol45Colt
+      - id: N14MagazinePistol45
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: specialist's infiltrator kit
+  parent: KitBase
+  id: KitNCR_WSStealth
+  description: A crate containing all an NCR weapon specialist needs to perform their job.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRVestCoatBlack
+      - id: ClothingBeltNCR
+      - id: N14ClothingMaskBlackBalaclava
+      - id: ClothingEyesNightVisionGoggles
+      - id: N14WeaponSMG9mminfiltrator
+      - id: N14MagazineSMG9mm
+        amount: 4
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: specialist's operative kit
+  parent: KitBase
+  id: KitNCR_WSOperative
+  description: A crate containing all an NCR weapon specialist needs to perform their job.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingUniformNCRRecon
+      - id: ClothingBeltNCR
+      - id: N14ClothingHeadHatNCRBeretRecon
+      - id: N14ClothingNeckCloakNCR # Forge-Change
+      - id: N14WeaponRifleOperative
+      - id: Magazine556Rifle
+        amount: 3
+      - id: N14WeaponPistol45Colt
+      - id: N14MagazinePistol45
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# NCRA Sergeant Kits
+
+- type: entity
+  name: sergeant's assault kit
+  parent: KitBase
+  id: KitNCR_SGTRifleman
+  description: A crate containing all an NCR sergeant needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle556Carbine
+      - id: LongMagazine556Rifle
+        amount: 3
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: sergeant's gunner kit
+  parent: KitBase
+  id: KitNCR_SGTGunner
+  description: A crate containing all an NCR sergeant needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: gunner
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
+      - id: ClothingBeltNCR
+      # Misfits Tweak: AutoRifle was too powerful at roundstart; downgraded to standard LMG.
+      - id: N14WeaponLMG
+      - id: LMGMagazine556Rifle
+        amount: 3
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: sergeant's scout kit
+  parent: KitBase
+  id: KitNCR_SGTScout
+  description: A crate containing all an NCR sergeant needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingUniformNCRRecon
+      - id: N14ClothingHeadHatNCRBeretRecon
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle308Battle
+      - id: ClipMagazine308Rifle
+        amount: 6
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: sergeant's pointman kit
+  parent: KitBase
+  id: KitNCR_SGTPoint
+  description: A crate containing all an NCR sergeant needs to patrol the wasteland.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
+      - id: ClothingBeltNCR
+      - id: N14WeaponShotgunAuto
+      - id: N14MagazineShotgun12
+        amount: 3
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# NCRA Lieutenant Kits
+
+- type: entity
+  name: lieutenant's basic kit
+  parent: KitBase
+  id: KitNCR_LTPencil
+  description: A crate containing all an NCR lieutenant needs to administrate their troops.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: MisfitsClothingOuterNCRTrenchCoat
+      - id: ClothingBeltRevolverCaptainfilled
+      - id: N14WeaponSniper44LeverCarbine
+      - id: MagazineBox44
+      - id: LuxuryPen
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14SuperStimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+        amount: 2
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: lieutenant's scout kit
+  parent: KitBase
+  id: KitNCR_LTScout
+  description: A crate containing all an NCR lieutenant needs to administrate their troops.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: MisfitsClothingOuterNCRTrenchCoat
+      - id: ClothingBeltRevolverfilled
+      - id: N14WeaponRifle308Battle
+      - id: ClipMagazine308Rifle
+        amount: 6
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14SuperStimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+        amount: 2
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: lieutenant's tactical kit
+  parent: KitBase
+  id: KitNCR_LTTactical
+  description: A crate containing all an NCR lieutenant needs to administrate their troops.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: MisfitsNCROfficerArmor
+      - id: ClothingBeltRevolverfilled
+      - id: N14WeaponRifle556Carbine
+      - id: LongMagazine556Rifle
+        amount: 3
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14SuperStimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+        amount: 2
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: lieutenant's commissar kit
+  parent: KitBase
+  id: KitNCR_LTCommissar
+  description: A crate containing all an NCR Commissar needs to execute their tro- duties.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: MisfitsClothingOuterNCRCommissarPlate
+      - id: ClothingBeltNCR
+      - id: NCRCommissarSabre
+      - id: MisfitsClothingNeckNCRCommissarJacket
+      - id: N14WeaponLaserdotDesertEagle44
+      - id: N14MagazinePistol44
+        amount: 4
+      - id: ClothingMaskCommissar
+      - id: N14ClothingHeadHatNCRCommissarHat
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14SuperStimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+        amount: 2
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+#MARK: NCR Ranger Kits
+
+- type: entity
+  name: ranger service kit
+  parent: KitBase
+  id: KitServiceRanger
+  description: A crate containing advanced weaponry for members of the Rangers.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle556Butchered # forge-change
+      - id: Magazine556Rifle
+        amount: 4
+      - id: MagazineBox556
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: ranger rifleman kit
+  parent: KitBase
+  id: KitRiflemanRanger
+  description: A crate containing advanced weaponry for members of the Rangers.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle556Carbine
+      - id: LongMagazine556Rifle
+        amount: 4
+      - id: MagazineBox556
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: ranger marksman kit
+  parent: KitBase
+  id: KitMarksmanRanger
+  description: A crate containing advanced weaponry for members of the Rangers.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle762Marksman
+      - id: Magazine762Rifle
+        amount: 4
+      - id: MagazineBox762
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: ranger CQB specialist kit
+  parent: KitBase
+  id: KitCQBRanger
+  description: A crate containing advanced weaponry for members of the Rangers.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCRPouches
+      - id: N14WeaponShotgunAuto # Forge-Change
+      - id:  N14MagazineShotgun12 # Forge-Change
+        amount: 2 # Forge-Change
+      - id: MagazineBox12gauge # Forge-Change
+      - id: N14CombatKnife
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: ranger trailman kit
+  parent: KitBase
+  id: KitTrailmanRanger
+  description: A crate containing advanced weaponry for members of the Rangers.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCRPouches
+      - id: N14WeaponSniper44LeverCarbine
+      - id: MagazineBox44
+        amount: 3
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# forge-add
+- type: entity
+  name: ranger sniper kit
+  parent: KitBase
+  id: KitSniperRanger
+  description: A crate containing advanced weaponry for members of the Rangers.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCRPouches
+      - id: N14WeaponRifle308SniperRifle
+      - id: Magazine308RifleSniper
+        amount: 3
+      - id: MagazineBox308
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: ranger operative kit
+  parent: KitBase
+  id: KitOperativeRanger
+  description: A crate containing advanced weaponry for members of the Rangers.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifleOperative
+      - id: Magazine556Rifle
+        amount: 3
+      - id: MagazineBox556
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+#MARK: Veteran Kits
+
+- type: entity
+  name: modified ranger service kit
+  parent: KitBase
+  id: KitServiceRangerVeteran
+  description: A cache containing the belongings of a seasoned Ranger.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle556Scout
+      - id: LongMagazine556Rifle
+        amount: 4
+      - id: MagazineBox556
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: veteran ranger precision rifle kit
+  parent: KitBase
+  id: KitRiflemanRangerVeteran
+  description: A cache containing the belongings of a Veteran Ranger.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCRPouches
+      - id: N14WeaponSniper45-70BrushGun
+      - id: SpeedLoader45-70Tube
+        amount: 4
+      - id: MagazineBox45-70
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: veteran ranger heavy sniper kit
+  parent: KitBase
+  id: KitHeavySniperRangerVeteran
+  description: A cache containing the belongings of a Veteran Ranger. # #Misfits Change - Veteran Ranger carries the semi-auto Anti-Materiel rifle with full magazines
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCRPouches
+      - id: N14WeaponSniper50AntiMateriel  # #Misfits Change - Veteran Ranger gets the semi-auto magazine-fed AMR
+      - id: N14Magazine50AMR
+        amount: 4
+      - id: MagazineBox50
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: veteran ranger assault kit
+  parent: KitBase
+  id: KitAssaultRangerVeteran
+  description: A cache containing the belongings of a Veteran Ranger.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle556Carbine
+      - id: LongMagazine556Rifle
+        amount: 4
+      - id: MagazineBox556
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: veteran ranger marksman kit
+  parent: KitBase
+  id: KitMarksmanRangerVeteran
+  description: A cache containing the belongings of a Veteran Ranger.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: ClothingBeltNCR
+      - id: N14WeaponRifle762Marksman
+      - id: Magazine762Rifle
+        amount: 4
+      - id: MagazineBox762
+      - id: N14Stimpak
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# Brotherhood Midwestern Chapter Kits
+# MBoS Initiate & Squire Kits
+#Misfits Change /Tweak/: Initiate kit stripped to wattz pistol only + stimpak per consolidated BoS loadout design.
+- type: entity
+  name: BoS Initiate Laser Kit
+  parent: KitBase
+  id: KitMBoS_IniLas
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+- type: entity
+  name: BoS Initiate Ballistic Kit
+  parent: KitBase
+  id: KitMBoS_IniBal
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRifle556CarbineOld
+      - id: Magazine556Rifle
+        amount: 3
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14BoxCardboardMREBoxKFilled
+
+# MBoS Knight & Senior Knight kits
+- type: entity
+  name: BoS Knight Laser Kit
+  parent: KitBase
+  id: KitMBoS_KniLas
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  #Misfits Change /Tweak/: Added stimpak to knight laser kit.
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponLaserRifleCrude
+      - id: N14MicrofusionCellRed
+        amount: 2
+      - id: N14WeaponPistol12mm
+      - id: N14MagazinePistol12mm
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+- type: entity
+  name: BoS Senior Knight Ballistic Kit
+  parent: KitBase
+  id: KitMBoS_SKniBal
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRifle556Carbine
+      - id: LongMagazine556Rifle
+        amount: 3
+      - id: N14WeaponPistol12mm
+      - id: N14MagazinePistol12mm
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14ClothingOuterCombatArmorSeniorBOS
+      - id: MisfitsGrenadeFragDefensive # #Misfits Add - faction council Senior Knight ordnance
+      - id: EmpGrenade
+
+- type: entity
+  name: BoS Senior Knight Laser Kit
+  parent: KitBase
+  id: KitMBoS_SKniLas
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponLaserRifle
+      - id: N14MicrofusionCell
+        amount: 2
+      - id: N14WeaponPistol12mm
+      - id: N14MagazinePistol12mm
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14ClothingOuterCombatArmorSeniorBOS
+      - id: MisfitsGrenadeFragDefensive # #Misfits Add - faction council Senior Knight ordnance
+      - id: EmpGrenade
+
+- type: entity
+  name: BoS Recon Knight Kit
+  parent: KitBase
+  id: KitMBoS_Recon
+  description: A crate containing everything a recon knight may need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRevolver44Magnum
+      - id: N14SpeedLoader44Magnum
+        amount: 2
+      - id: N14AmmoBox44Magnum
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14ClothingOuterMidwestReconArmor
+      - id: N14ClothingHeadHatBrotherhoodMidwestHelmetRecon
+      - id: SmokeGrenade # #Misfits Add - faction council Recon Knight ordnance
+
+- type: entity
+  name: BoS Knight Ballistic Kit
+  parent: KitBase
+  id: KitMBoS_KniBal
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  #Misfits Change /Tweak/: Added stimpak to knight ballistic kit.
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRifle556CarbineOld
+      - id: Magazine556Rifle
+        amount: 3
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+# Head Knight Kits
+- type: entity
+  name: Head Knight Bunker Warden Kit
+  parent: KitBase
+  id: KitHead_KniBun
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunNeosteadBoS
+    - id: MagazineBox12gauge
+      amount: 1
+    - id: N14WeaponPistolT60
+    - id: N14MagazinePistol44
+      amount: 2
+    - id: N14CleanGauze10
+    - id: N14Stimpak
+      amount: 2
+    - id: N14BoxCardboardMREBoxKFilled
+
+- type: entity
+  name: Head Knight Support Fire Kit
+  parent: KitBase
+  id: KitHead_KniSup
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponRifle556Carbine
+    - id: LongMagazine556Rifle
+      amount: 2
+    - id: N14WeaponPistolT60
+    - id: N14MagazinePistol44
+      amount: 2
+    - id: N14CleanGauze10
+    - id: N14Stimpak
+      amount: 2
+    - id: N14BoxCardboardMREBoxKFilled
+
+# MBoS Scribe Medic Kit
+- type: entity
+  name: BoS Scribe Medical Kit
+  parent: KitBase
+  id: KitMBoS_ScrMed
+  description: A crate containing everything a member of the Brotherhood of Steel Scribes might need for keeping the fighting forces alive.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14HandheldHealthAnalyzer # #Misfits Add - BoS medics should spawn with health analyzer
+      - id: N14CleanGauze10
+      - id: N14Ointment10
+      - id: N14SuperStimpak
+      - id: N14ClothingBeltMedicalFilled
+      - id: ClothingMaskSterile
+      - id: N14ClothingOuterBrotherhoodMidwestMedicalScribeRobes
+      - id: ClothingHandsGlovesChemist
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
+      - id: N14WeaponLaserRifleRecharger
+      - id: MisfitsGrenadeWhitePhosphorus # #Misfits Add - faction council Medical Scribe ordnance
+
+# MBoS Scribe Field Kit
+- type: entity
+  name: BoS Scribe Field Kit
+  parent: KitBase
+  id: KitMBoS_ScrFld
+  description: A crate containing everything a member of the Brotherhood of Steel Scribes might need for supporting their unit in the field.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14CleanGauze10
+      - id: N14Ointment10
+      - id: N14MedkitCombatFilled
+      - id: N14HandheldHealthAnalyzer
+      - id: N14ClothingHandsGlovesCombat
+      - id: N14ClothingBeltBoSWebbing
+      - id: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
+      - id: N14WeaponLaserRifleRecharger
+      - id: MisfitsGrenadePlasma # #Misfits Add - faction council Field Scribe ordnance
+
+# MBoS Scribe Engineer Kit
+- type: entity
+  name: BoS Scribe Engineer Kit
+  parent: KitBase
+  id: KitMBoS_ScrEng
+  description: A crate containing everything a member of the Brotherhood of Steel Scribes might need for their general engineering needs.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14CleanGauze10
+      - id: N14Ointment10
+      - id: N14ClothingOuterMidwestBoSCoat
+      - id: N14ClothingEyesGlassesWelding
+      - id: ClothingHandsGlovesColorYellow
+      - id: N14ClothingBeltUtilityFilled
+      - id: N14BoxCardboardMREBoxKFilled
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
+      - id: N14WeaponLaserRifleRecharger
+      - id: EmpGrenade # #Misfits Add - faction council Engineering Scribe ordnance
+      - id: MisfitsMilitaryDetonator # #Misfits Add - long-range initiator for Scribe demolition work
+
+# Head Scribe Medic Kit
+- type: entity
+  name: BoS Head Scribe Medical Kit
+  parent: KitBase
+  id: KitHead_ScrMed
+  description: A crate containing everything a Head Scribe might need for keeping the fighting forces alive.
+  components:
+  - type: Sprite
+    state: medic
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14HandheldHealthAnalyzer # #Misfits Add - BoS medics should spawn with health analyzer
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: N14SuperStimpak
+    - id: N14ClothingBeltMedicalFilled
+    - id: ClothingMaskSterile
+    - id: N14ClothingOuterBrotherhoodMidwestMedicalScribeRobes
+    - id: ClothingHandsGlovesChemist
+    - id: N14BoxCardboardMREBoxKFilled
+    - id: N14WeaponLaserRifle
+    - id: N14MicrofusionCell
+      amount: 2
+    - id: N14WeaponLaserPistolRecharger
+    - id: MisfitsGrenadeWhitePhosphorus # #Misfits Add - faction council Medical Scribe ordnance
+
+# Head Scribe Field Kit
+- type: entity
+  name: BoS Scribe Field Kit
+  parent: KitBase
+  id: KitHead_ScrFld
+  description: A crate containing everything a Head Scribe might need for supporting their Chapter in the field.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: N14MedkitCombatFilled
+    - id: N14HandheldHealthAnalyzer
+    - id: N14ClothingHandsGlovesCombat
+    - id: N14ClothingBeltBoSWebbing
+    - id: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat
+    - id: N14BoxCardboardMREBoxKFilled
+    - id: N14WeaponLaserRifle
+    - id: N14MicrofusionCell
+      amount: 2
+    - id: N14WeaponLaserPistolRecharger
+    - id: MisfitsGrenadePlasma # #Misfits Add - faction council Field Scribe ordnance
+
+# Head Scribe Engineer Kit
+- type: entity
+  name: BoS Scribe Engineer Kit
+  parent: KitBase
+  id: KitHead_ScrEng
+  description: A crate containing everything a Head Scribe might need for their general engineering needs.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: N14ClothingOuterMidwestBoSCoat
+    - id: N14ClothingEyesGlassesWelding
+    - id: ClothingHandsGlovesColorYellow
+    - id: N14ClothingBeltUtilityFilled
+    - id: N14BoxCardboardMREBoxKFilled
+    - id: N14WeaponLaserRifle
+    - id: N14MicrofusionCell
+      amount: 2
+    - id: N14WeaponLaserPistolRecharger
+    - id: EmpGrenade # #Misfits Add - faction council Engineering Scribe ordnance
+    - id: MisfitsMilitaryDetonator # #Misfits Add - long-range initiator for Scribe demolition work
+
+# MBoS Paladin Kits
+#Misfits Change /Tweak/: Replaced auto laser rifle with auto shotgun + laser pistol sidearm.
+- type: entity
+  name: BoS Paladin Close Range Kit
+  parent: KitBase
+  id: KitMBoS_PalLas
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponShotgunAuto
+      - id: N14MagazineShotgun12
+        amount: 3
+      - id: N14WeaponPistolT60
+      - id: N14MagazinePistol44
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+        amount: 2
+      - id: N14BoxCardboardMREBoxKFilled
+
+- type: entity
+  name: BoS Paladin Enclave Slayer Kit
+  parent: KitBase
+  id: KitMBoS_PalSlay
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: MisfitsPlasmaCutter
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 4
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+        amount: 2
+      - id: N14BoxCardboardMREBoxKFilled
+
+- type: entity
+  name: BoS Paladin Ballistic Kit
+  parent: KitBase
+  id: KitMBoS_PalBal
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRifle556HeavyAssault
+      - id: N14MagazineHeavy556Rifle
+      - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+#Misfits Change /Tweak/: Replaced Wattz 2000 sniper with Bozar GRA across all ranks.
+- type: entity
+  name: BoS Paladin Advanced Laser Kit
+  parent: KitBase
+  id: KitMBoS_PalSni
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponLaserRifle
+      - id: N14MicrofusionCell
+        amount: 2
+      - id: N14WeaponPistol12mm
+      - id: N14MagazinePistol12mm
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+- type: entity
+  name: BoS Paladin Automatic Laser Kit
+  parent: KitBase
+  id: KitMBoS_PalPla
+  description: A crate containing everything a member of the Brotherhood might need.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponLaserRifleAuto # misfits change by bill; makes it easier to balance paladin kits, AER14 too much roundstart.
+      - id: N14MicrofusionCell
+        amount: 1
+      - id: N14WeaponPistol12mm
+      - id: N14MagazinePistol12mm
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+
+#Misfits Change /Comment-out/: Washington BoS kits removed — will create new prototypes.
+## Brotherhood Washington Chapter Kits
+## WBoS Initiate & Squire Kits
+#- type: entity
+#  name: BoS Initiate Laser Kit
+#  parent: KitBase
+#  id: KitWBoS_IniPla
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponLaserRifleCrude
+#      - id: N14MicrofusionCellRed
+#        amount: 3
+#      - id: N14WeaponPistolWebley
+#      - id: N14MagazinePistol9mm
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+#- type: entity
+#  name: BoS Initiate Ballistic Kit
+#  parent: KitBase
+#  id: KitWBoS_IniBal
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponRifle556CarbineOld
+#      - id: Magazine556Rifle
+#        amount: 3
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+## WBoS Knight & Senior Knight kits
+#- type: entity
+#  name: BoS Knight Laser Kit
+#  parent: KitBase
+#  id: KitWBoS_KniPla
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponLaserRifle
+#      - id: N14MicrofusionCellRed
+#        amount: 3
+#      - id: N14WeaponPistolWebley
+#      - id: N14MagazinePistol9mm
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+#- type: entity
+#  name: BoS Knight Ballistic Kit
+#  parent: KitBase
+#  id: KitWBoS_KniBal
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponRifle556Carbine
+#      - id: LongMagazine556Rifle
+#        amount: 3
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+## WBoS Scribe Medic Kit
+#- type: entity
+#  name: BoS Scribe Medical Kit
+#  parent: KitBase
+#  id: KitWBoS_ScrMed
+#  description: A crate containing everything a member of the Brotherhood of Steel Scribes might need for keeping the fighting forces alive.
+#  components:
+#  - type: Sprite
+#    state: medic
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14Ointment10
+#      - id: N14SuperStimpak
+#      - id: N14ClothingBeltMedicalFilled
+#      - id: ClothingMaskSterile
+#      - id: N14ClothingOuterBrotherhoodMedicalScribeRobes
+#      - id: ClothingHandsGlovesChemist
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+## WBoS Scribe Field Kit
+#- type: entity
+#  name: BoS Scribe Field Kit
+#  parent: KitBase
+#  id: KitWBoS_ScrFld
+#  description: A crate containing everything a member of the Brotherhood of Steel Scribes might need for supporting their unit in the field.
+#  components:
+#  - type: Sprite
+#    state: pointman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14Ointment10
+#      - id: N14ClothingHandsGlovesCombat
+#      - id: N14ClothingBeltBoSWebbing
+#      - id: N14ClothingOuterBrotherhoodFieldScribeCoat
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+## WBoS Scribe Engineer Kit
+#- type: entity
+#  name: BoS Scribe Engineer Kit
+#  parent: KitBase
+#  id: KitWBoS_ScrEng
+#  description: A crate containing everything a member of the Brotherhood of Steel Scribes might need for their general engineering needs.
+#  components:
+#  - type: Sprite
+#    state: pointman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14Ointment10
+#      - id: N14ClothingOuterBosScribe
+#      - id: N14ClothingEyesGlassesWelding
+#      - id: ClothingHandsGlovesColorYellow
+#      - id: N14ClothingBeltUtilityFilled
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+## WBoS Paladin Kits
+#- type: entity
+#  name: BoS Paladin Automatic Laser Kit
+#  parent: KitBase
+#  id: KitWBoS_PalPla
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponLaserRifleAuto
+#      - id: N14MicrofusionCellRed
+#        amount: 3
+#      - id: N14WeaponPistolWebley
+#      - id: N14MagazinePistol9mm
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14Stimpak
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+#- type: entity
+#  name: BoS Paladin Sniper Kit
+#  parent: KitBase
+#  id: KitWBoS_PalSni
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponRifle762MarksmanCanadian
+#      - id: Magazine762AmmoShort
+#        amount: 3
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14Stimpak
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+#- type: entity
+#  name: BoS Paladin Ballistic Kit
+#  parent: KitBase
+#  id: KitWBoS_PalBal
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponRifle556Carbine
+#      - id: LongMagazine556Rifle
+#        amount: 3
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14Stimpak
+#      - id: N14BoxCardboardMREBoxKFilled
+#
+#- type: entity
+#  name: BoS Paladin Laser Kit
+#  parent: KitBase
+#  id: KitWBoS_PalLas
+#  description: A crate containing everything a member of the Brotherhood might need.
+#  components:
+#  - type: Sprite
+#    state: rifleman
+#  - type: Item
+#    size: Huge
+#  - type: SpawnItemsOnUse
+#    items:
+#      - id: N14WeaponLaserRifle
+#      - id: N14MicrofusionCellRed
+#        amount: 3
+#      - id: N14WeaponLaserPistol
+#      - id: N14MicrofusionCellRed
+#        amount: 2
+#      - id: N14CleanGauze10
+#      - id: N14Stimpak
+#      - id: N14BoxCardboardMREBoxKFilled
+
+
+# Tribal kits
+#bow
+- type: entity
+  name: Tribal Stalker
+  parent: KitBase
+  id: Kittribalstalker
+  description: A crate containing everything a hunter will need who follows the old ways
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: BowImprovised
+      - id: ClothingBeltQuiver
+      - id: ArrowRegular
+        amount: 17
+      - id: N14WastelandTribalSpear
+
+#tribal two handed club
+- type: entity
+  name: Tribal Champion
+  parent: KitBase
+  id: Kittribalchampion
+  description: A crate containing everything a champion would carry into war
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14TribalBigClub
+      - id: ClothingBeltQuiverSpear
+      - id: N14WastelandTribalJavelin
+        amount: 4
+      - id: N14ClothingNeckCloakYaoguai
+
+#tribal gunslinger
+- type: entity
+  name: Tribal Fire Hand
+  parent: KitBase
+  id: Kittribalfirehand
+  description: A crate containing everything a tribal gunslinger will want
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRevolver44TribalUpgraded
+        amount: 2
+      - id: MagazineBox44
+      - id: ClothingBeltRevolver
+
+#hunt stick
+- type: entity
+  name: Tribal Hunter
+  parent: KitBase
+  id: Kittribalhunter
+  description: A crate containing everything a hunter will need who knows the secrets of powder
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponSniper308Tribal
+      - id: N14TribalMachete
+      - id: MagazineBox308
+
+#tribal rifle
+- type: entity
+  name: Tribal Bone-Breaker
+  parent: KitBase
+  id: Kittribalbonebreaker
+  description: A crate containing everything a warrior will need who knows the secrets of powder
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponSniper556Tribal
+      - id: N14TribalMachete
+      - id: MagazineBox556
+
+#boomstick
+- type: entity
+  name: Tribal Pain Bringer
+  parent: KitBase
+  id: Kittribalpainbringer
+  description: A crate containing everything a warrior will need who knows the secrets of powder but still wants to get close
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponShotgunBoomstick
+      - id: N14ClothingMaskHockey
+      - id: MagazineBox12gauge
+
+# All of the Town Guard kits
+- type: entity
+  name: the Guard's ceremonial kit
+  parent: KitBase
+  id: KitTownGuard_Cere
+  description: A crate containing everything a Guard of The Town requires to perform their duties for the public.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadHatTownGuard
+      - id: N14ClothingOuterTownGuardCoat
+      - id: N14WeaponSniper45-70BrushGun
+      - id: MagazineBox45-70
+        amount: 3
+      - id: N14WeaponRevolver44Magnum
+      - id: SpeedLoader44
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14JunkCeramicFlask
+      - id: N14FoodTinC1
+      - id: N14FoodTinC2
+
+- type: entity
+  name: the Guard's patrol kit
+  parent: KitBase
+  id: KitTownGuard_Patr
+  description: A crate containing everything a Guard of The Town requires to perform their duties for the public.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadTownGuardBrodie
+      - id: N14ClothingOuterTownGuardLight
+      - id: N14WeaponSMG9mmCanadian
+      - id: N14MagazineSMG9mm
+        amount: 4
+      - id: N14WeaponPistolWebley
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14ClothingNeckTownGuardMantle
+      - id: N14CleanGauze10
+      - id: N14JunkCeramicFlask
+      - id: N14FoodTinC1
+      - id: N14FoodTinC2
+
+- type: entity
+  name: the Guard's lawbringer kit
+  parent: KitBase
+  id: KitTownGuard_Lawb
+  description: A crate containing everything a Guard of The Town requires to perform their duties for the public.
+  components:
+  - type: Sprite
+    state: gunner
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadTownGuardBrodie
+      - id: N14ClothingOuterTownGuardLight
+      - id: N14WeaponHMGcanadian
+      - id: Magazine762AmmoBelt
+      - id: N14CleanGauze10
+      - id: N14JunkCeramicFlask
+      - id: N14FoodTinC1
+      - id: N14FoodTinC2
+
+- type: entity
+  name: the Guard's breacher kit
+  parent: KitBase
+  id: KitTownGuard_Brea
+  description: A crate containing everything a Guard of The Town requires to perform their duties for the public.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadTownGuardBrodieCover
+      - id: N14ClothingOuterTownGuardRiot
+      - id: N14WeaponShotgunBlowback
+      - id: MagazineBox12gauge
+      - id: N14WeaponPistolWebley
+      - id: N14MagazinePistol9mm
+        amount: 2
+      - id: N14CleanGauze10
+      - id: N14JunkCeramicFlask
+      - id: N14FoodTinC1
+      - id: N14FoodTinC2
+
+- type: entity
+  name: the Guard's riot kit
+  parent: KitBase
+  id: KitTownGuard_Riot
+  description: A crate containing everything a Guard of The Town requires to perform their duties for the public.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingHeadTownGuardBrodieVisor
+      - id: N14ClothingOuterTownGuardRiot
+      - id: N14WeaponRifle762Fal
+      - id: Magazine762AmmoShort
+        amount: 3
+      - id: N14WeaponRevolver45-70Hunter
+      - id: SpeedLoader45-70
+        amount: 2
+      - id: N14ClothingNeckTownGuardCloak
+      - id: N14CleanGauze10
+      - id: N14JunkCeramicFlask
+      - id: N14FoodTinC1
+      - id: N14FoodTinC2

@@ -1,0 +1,32 @@
+﻿# tools
+
+- type: entity
+  id: MisfitsClosetGenericMechanic
+  suffix: Filled, Mechanical
+  parent: N14ClosetGeneric
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHeadHatHardhatYellowDark
+    - id: ToolboxMechanicalFilled
+    - id: ToolboxElectricalFilled
+    - id: ClothingOuterVestHazard
+    - id: ClothingShoesBootsWork
+    - id: ClothingHandsGlovesColorYellow
+    - id: N14FuelTankHandyRusty
+
+# janitorial
+
+- type: entity
+  id: MisfitsN14ClosetDoubleJanitorial
+  suffix: Filled, Janitorial
+  parent: N14ClosetDouble
+  components:
+  - type: StorageFill
+    contents:
+    - id: WetFloorSign
+      amount: 4
+    - id: TrashBag
+    - id: MopItem
+    - id: FlashlightLantern
+    - id: ClothingHandsGlovesJanitor

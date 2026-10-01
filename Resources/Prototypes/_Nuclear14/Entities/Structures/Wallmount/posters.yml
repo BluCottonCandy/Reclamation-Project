@@ -1,0 +1,537 @@
+- type: entity
+  parent: BaseSign
+  id: N14PosterBase # For 64x64 posters
+  name: Poster
+  suffix: Mapping
+  abstract: true
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _Nuclear14/Structures/Wallmounts/Posters/vault-tec.rsi
+    scale: 0.45, 0.45
+    snapCardinals: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/poster_broken.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          PosterBroken:
+            min: 1
+            max: 1
+        offset: 0
+  - type: Transform
+    anchored: true
+    noRot: true
+
+# NCR Propaganda+
+- type: entity
+  parent: N14SignNotice
+  id: N14PosterWanted
+  name: Old Bounty Ad
+  description: A wanted poster for some drifter, this one is decades old. The face and name have long since faded away.
+  components:
+  - type: Sprite
+    state: wanted_poster
+
+# NCR Propaganda+
+- type: entity
+  parent: N14SignNotice
+  id: N14PosterWantedGoose
+  name: Nate the Rake Bounty Ad
+  description: A wanted poster all the way from the occupied territory of Canada, likely around the time the bombs dropped. It appears to be a bounty posted by Canadian rebels for a war criminal from the United States military.
+  components:
+  - type: Sprite
+    state: wanted_poster_goose
+
+- type: entity
+  parent: N14SignNotice
+  id: N14PosterFallout
+  name: Never Forget
+  description: A post-war poster depicting a nuclear bomb going off in an American city. It urges the viewer to remember the mistakes of our ancestors and not repeat them.
+  components:
+  - type: Sprite
+    state: poster_fallout
+
+- type: entity
+  parent: N14SignNotice
+  id: N14PosterWecan
+  name: We Can Do It!
+  description: A post-war poster depicting a wastelander in overalls giving a thumbs up to the viewers. It urges you to start working in local salvage operations for competitive pay.
+  components:
+  - type: Sprite
+    state: poster_wecan
+
+- type: entity
+  parent: N14SignNotice
+  id: N14PosterNCR1
+  name: NCR Propaganda - Help Build Your Future!
+  suffix: wrench
+  description: Don't settle for living in filth and rubble! Pick up some tools and apply to a federal trade program, help build a better world with your own two hands!
+  components:
+  - type: Sprite
+    state: ncr_sign
+
+- type: entity
+  parent: N14PosterNCR1
+  id: N14PosterNCR2
+  name: NCR Propaganda - Enlist Today!
+  suffix: enlist
+  description: Fight for freedom, fight for the safety of your friends and family!
+  components:
+  - type: Sprite
+    state: ncr_enlist
+
+- type: entity
+  parent: N14PosterNCR1
+  id: N14PosterNCR3
+  name: NCR Propaganda - Information Security
+  suffix: looselip
+  description: What I know - I keep to MYSELF! Careless talk costs lives!
+  components:
+  - type: Sprite
+    state: ncr_looselip
+
+- type: entity
+  parent: N14PosterNCR1
+  id: N14PosterNCR4
+  name: NCR Propaganda - We Want YOU!
+  suffix: you
+  description: NCR Trooper... YOU bring democracy to this land!
+  components:
+  - type: Sprite
+    state: ncr_you
+
+- type: entity
+  parent: N14PosterNCR1
+  id: N14PosterNCR5
+  name: NCR Propaganda - Military Espionage
+  suffix: espionage
+  description: Only you can prevent MILITARY ESPIONAGE! Be careful who you talk to, and secure your documents or radio headsets!
+  components:
+  - type: Sprite
+    state: ncr_espionage
+
+- type: entity
+  parent: N14PosterNCR1
+  id: N14PosterNCR6
+  name: NCR Propaganda - Join the War Effort!
+  suffix: bombs
+  description: Every bomb made is a future Caesar dead! War factories near you are hiring NOW!
+  components:
+  - type: Sprite
+    state: ncr_bombs
+
+# Pristine Posters
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec01
+  name: Vault-Tec Promotional Ad
+  description: "An advertisement from Vault-Tec that remains in remarkably good condition. Either someone is replacing these regularly or these posters used the same things they made spaceships with."
+  components:
+  - type: Sprite
+    state: vault-tec01
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec02
+  name: Vault-Tec Hopeful Ad
+  description: "A beautiful advertisement from Vault-Tec that invokes feeling of family and security, its vibrant colors outshine most you'll see on the surface wasteland."
+  components:
+  - type: Sprite
+    state: vault-tec02
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec05
+  name: Vault-Tec Charming Ad
+  description: "A nearly perfect poster from Vault-Tec that retains its bright colors and sharp corners, even with the passage of time and the greasy fingers of several generations."
+  components:
+  - type: Sprite
+    state: vault-tec05
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec06
+  name: Science, Vault-Tec
+  description: "A poster in near pristine condition that seems to vaguely promote the concept of science overall. You're not sure what this poster is trying to encourage you to do."
+  components:
+  - type: Sprite
+    state: vault-tec06
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec07
+  name: Your Future Matters. Protect It With Vault-Tec™
+  description: "A near-pristine poster advertisement from Vault-Tec that boasts of the 100% nuclear detonation resistant vault doors, and how their shelters have electricity, clean water, RobCo™ Robot Service, and Rad-Away™ Care."
+  components:
+  - type: Sprite
+    state: vault-tec07
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec10
+  name: Be Aware, SAFETY Always!
+  description: "A poster in almost perfect condition promoting safety in the workplace. The elegant, minimalist diamond design is ruined by the inclusion of the brightly colored Vault Boy mascot."
+  components:
+  - type: Sprite
+    state: vault-tec10
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterSafety1
+  name: Worker Wally - Use Your Head!
+  description: "A poster promoting workplace safety through the use of hardhats. 'Use Your Head! Wear A Hardhat.' Even after the companies and factories are long gone, these hardhats are still valuable to find."
+  components:
+  - type: Sprite
+    state: safety1
+    sprite: _Nuclear14/Structures/Wallmounts/Posters/adverts64x64.rsi
+    scale: 0.45, 0.45
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety2
+  name: Workplace Wally - Breathe Easily
+  description: "A poster promoting workplace safety through proper respiratory protection. Respiratory equipment provided by pre-war companies were often cheap and managers would refuse to purchase replacements."
+  components:
+  - type: Sprite
+    state: safety2
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety3
+  name: Worker Wally - Protect Yourself
+  description: "A poster promoting workplace safety through the use of PPE. It features a worker in full protective hardhat, goggles, respirator, ear protection, and high visibility vest."
+  components:
+  - type: Sprite
+    state: safety3
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety4
+  name: Worker Wally - Protection Matters
+  description: "A poster promoting workplace safety through the use of PPE. It features a worker in a full set of protective equipment, each piece probably costing a fortune for a worker to replace if damaged."
+  components:
+  - type: Sprite
+    state: safety4
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety5
+  name: Worker Wally - Protect Your Hands
+  description: "A poster promoting workplace safety through proper hand protection. 'Protect your hands! You work with them.' Given the materials some workers had to handle, gloves would barely have helped in most situations."
+  components:
+  - type: Sprite
+    state: safety5
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety6
+  name: Worker Wally - Eye Safety
+  description: "A poster promoting workplace safety through proper eye protection. These corporate-mandated safety posters were often seen as an annoyance and ignored, and so yet more workers would get injured."
+  components:
+  - type: Sprite
+    state: safety6
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety7
+  name: Worker Wally - Ear Safety
+  description: "A poster promoting workplace safety through ear protection. 'It beats the sound of SILENCE. Use ear protection.' You don't think anybody really listened."
+  components:
+  - type: Sprite
+    state: safety7
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety8
+  name: Worker Wally - Better Safe Than Sorry
+  description: "A poster promoting workplace safety through use of PPE. Useful advice for the workers who were provided such protective equipment in the first place, at least."
+  components:
+  - type: Sprite
+    state: safety8
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety9
+  name: Worker Wally - Moving Parts
+  description: "A posted promoting workplace safety through common sense. 'Moving parts can pack a pinch - avoid getting drawn into working machinery - keep your finger out.' You wonder how many people lost fingers before they had to print these out."
+  components:
+  - type: Sprite
+    state: safety9
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety10
+  name: Worker Wally - Radiation Need Not Be Feared
+  description: "A poster promoting workplace safety through cautious handling of materials. 'Radiation need not be feared. But it must command your RESPECT.' For some odd reason they have the pictured worker saluting the radioactive barrel."
+  components:
+  - type: Sprite
+    state: safety10
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety11
+  name: Worker Wally - Forgotten Meters Measure No Radiation
+  description: "A poster promoting workplace safety through the use of geiger counters. Exposure to radioactive material became all the more common in American factories in the decades leading up to the Great War's end."
+  components:
+  - type: Sprite
+    state: safety11
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterSafety12
+  name: Worker Wally - Protective Equipment MUST BE WORN
+  description: "A  mandatory safety equipment notice featuring a simplified factory worker dressed in goggles, earmuffs, a hardhat, and a respirator in several clear example headshot images. 'This protective equipment MUST BE WORN on this site.' Signs like these were usually posted after accidents had already happened."
+  components:
+  - type: Sprite
+    state: safety12
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterCautionSign1
+  name: Caution - Robot Operating Area. DO NOT ENTER. Authorized Personnel Only.
+  description: "A warning for visitors and workers that the workspace ahead is filled with robots. Automated workers could be unpredictable and possibly violent, even before the bombs dropped. These signs have been lifesavers to some scavengers."
+  components:
+  - type: Sprite
+    state: caution1
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterCautionSign2
+  name: Caution - This Machine Has No Brain Use Your Own
+  description: "A warning for workers to mind themselves when operating heavy machinery. Accidents became all the more common as employees were worked without rest by their managers."
+  components:
+  - type: Sprite
+    state: caution2
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterCautionSign3
+  name: Caution - Robotics Units Can Move At Any Time
+  description: "A warning for workers to be mindful of automated factory robots, these signs became more common as robots replace more and more employees."
+  components:
+  - type: Sprite
+    state: caution3
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterDangerSign1
+  name: Danger - Electrical Hazard
+  description: "A warning for workers about electrical hazards present. Even after two hundred years, best to be careful still."
+  components:
+  - type: Sprite
+    state: danger1
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterDangerSign2
+  name: Danger - Radioactive Material
+  description: "A warning for workers about radioactive material present. You doubt they were properly secured even before the bombs dropped."
+  components:
+  - type: Sprite
+    state: danger2
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterDangerSign3
+  name: Danger - Highly Flammable
+  description: "A warning for workers about flammable material present. It might be useful as fuel if it hasn't been salvaged already."
+  components:
+  - type: Sprite
+    state: danger3
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterDangerSign4
+  name: Danger - No Smoking, No Matches, No Open Flames
+  description: "A warning for workers about what is disallowed in the workspace. Rules such as these were often written in blood from past mistakes."
+  components:
+  - type: Sprite
+    state: danger4
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterAdvertJet
+  name: Fake Jet Advert
+  description: "This unlicensed Vault-Tec poster promotes the use of the post-war drug jet, with a copyright-violating use of the mascot Vault Boy. If the Vault-Tec company was still able to summon its lawyers, someone would be getting sued for this."
+  components:
+  - type: Sprite
+    state: jet1
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterAdvertGrognak1
+  name: Grognak the Barbarian - In the Lair of the Virgin Eater!
+  description: "A poster advertising the pre-war Grognak the Barbarian comic series. This one appears to be in relatively good condition, a collector might be happy to have it on their wall."
+  components:
+  - type: Sprite
+    state: grognak1
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterAdvertNukaCola1
+  name: Old Nuka-Cola Ad
+  description: "An advertisement for Nuka-Cola, its unusually restrained compared to most of the ancient posters for the drink that litter the wasteland. Its still not art fit to decorate your apartment, its a soft drink ad."
+  components:
+  - type: Sprite
+    state: nukacola1
+
+- type: entity
+  parent: N14PosterSafety1
+  id: N14PosterAdvertNukaCola2
+  name: Weathered Nuka-Cola Ad
+  description: "An old pin-up style advertisement for Nuka-Cola, it mostly makes you thirst for some decoration that isn't saturated in Old World corporate product placement."
+  components:
+  - type: Sprite
+    state: nukacola2
+
+# Worn posters
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec03
+  name: Be Smart! BE SAFE!
+  description: "Be smart! BE SAFE! Enjoy Vault Life. Running water, sustained electricity, protected from predators, radiation FREE!"
+  components:
+  - type: Sprite
+    state: vault-tec03
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec04
+  name: Hard Work Is Happy Work
+  description: "An old, worn-out poster from Vault-Tec encouraging the average vault dwellers to work as hard as possible."
+  components:
+  - type: Sprite
+    state: vault-tec04
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec08
+  name: Vault-Tec. Insuring YOUR Family!
+  description: "A worn poster depicting a nuclear family sheltered in the doorway of a vault. 'Vault Tec. Insuring YOUR Family has a brighter FUTURE! Register YOUR place TODAY!' In terms of advertisements from Vault-Tec, this one is oddly restrained."
+  components:
+  - type: Sprite
+    state: vault-tec08
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterVaultTec09
+  name: Weathered Vault-Tec Ad
+  description: "A worn out advertisement from Vault-Tec. Time has not been kind to this poster, and its nearly fallen apart. You can't make out a single thing on it."
+  components:
+  - type: Sprite
+    state: vault-tec09
+
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterAbraxo
+  name: Mister Handy Trusts ABRAXO
+  description: "A worn out poster for Abraxo, linking the well-established household robot to a cleaning product for general use. Given the resentments that rose against robots as they replaced workers, you doubt the effectiveness of this advert."
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Wallmounts/Posters/adverts64x64.rsi
+    state: abraxo
+
+- type: entity
+  parent: N14PosterAbraxo
+  id: N14PosterBoscom
+  name: Boston Communications, The Sky's the Limit
+  description: "A heavily worn poster advertising BosCom's Phone and Television Services. You wonder why the hell a poster for a utility service local to Boston is out here of all places."
+  components:
+  - type: Sprite
+    state: boscom
+
+- type: entity
+  parent: N14PosterAbraxo
+  id: N14PosterGNN
+  name: Galaxy News Network Ad
+  description: "Weather Watch with Horris Aimes - Every Night at 6:30! Reports From Our Brave Boys and Girls in Uniform - Live from the Front Lines! The best programming in the galaxy! GNN, Galaxy News Network!"
+  components:
+  - type: Sprite
+    state: gnn
+
+# Wide Posters (128x64)
+- type: entity
+  parent: N14PosterBase
+  id: N14PosterWideNukacola1
+  name: Nuka-Cola Ad
+  description: "The advert boasts of Nuka-Cola's great new 'Bottle Rocket' shape; it astounds you how the pre-war population weren't disgusted at their drinks being shaped as reminders of the looming nuclear holocaust."
+  components:
+  - type: Sprite
+    state: nukacola1
+    sprite: _Nuclear14/Structures/Wallmounts/Posters/adverts128x64.rsi
+    scale: 0.5, 0.5
+
+- type: entity
+  parent: N14PosterWideNukacola1
+  id: N14PosterWideMassfusion1
+  name: Mass Fusion Ad
+  description: "An advertisement for the Mass Fusion energy company. It says 'Power. People. Perfect. Mass Fusion. We Keep Boston Running.' The only thing you can think as you look at it, is why the hell is an advertisement for a east coast energy company all the way out here?"
+  components:
+  - type: Sprite
+    state: massfusion1
+
+- type: entity
+  parent: N14PosterWideNukacola1
+  id: N14PosterWideRedrocket1
+  name: Red Rocket Ad
+  description: "An advertisement for the Red Rocket Corporation, a pre-war fuel company. The cherry red robot pictured says 'You're Good To Go!!' While it advertises gasoline, deisel and fusion as its product options, you doubt the first two are still good after two centuries."
+  components:
+  - type: Sprite
+    state: redrocket1
+
+- type: entity
+  parent: N14PosterWideNukacola1
+  id: N14PosterWideNukaDark
+  name: Nuka-Cola Dark Ad
+  description: "The advert says its The Most Refreshing Way To Unwind. You don't understand why someone would ever want their rum carbonated."
+  components:
+  - type: Sprite
+    state: nukadark
+
+- type: entity
+  parent: N14PosterWideNukacola1
+  id: N14PosterWideVim
+  name: Vim Ad
+  description: "An advertisement promoting a local health tonic from Maine. You're unsure why a billboard for a beverage local to a state over two thousand miles away somehow ended up here."
+  components:
+  - type: Sprite
+    state: vim
+    scale: 0.4, 0.4
+
+- type: entity
+  parent: N14PosterWideVim
+  id: N14PosterWideVimCaptainsblend
+  name: Vim Captain's Blend Ad
+  description: "An advertisement promoting a local health tonic from Maine. This one never left the testing phase as the bombs dropped, but had an oddly popular fish taste. But why is there an east coast billboard here?"
+  components:
+  - type: Sprite
+    state: vim_captainsblend
+
+- type: entity
+  parent: N14PosterWideVim
+  id: N14PosterWideVimQuartz
+  name: Vim Quartz Ad
+  description: "An advertisement promoting a local health tonic from Maine. It tasted like bubblegum and left people energized, but Nuka Cola won a legal battle over the name. The bombs dropped before anything could be done. Is it possible the Nuka Cola Corporation enforced their copyright by... no, that'd be crazy."
+  components:
+  - type: Sprite
+    state: vim_quartz
+
+- type: entity
+  parent: N14PosterWideVim
+  id: N14PosterWideVimRefresh
+  name: Vim Refresh Ad
+  description: "An advertisement promoting a local health tonic from Maine. This one tasted like apples and was considered an overall improvement over basic Vim. Still, why is an east coast billboard all the way over here?"
+  components:
+  - type: Sprite
+    state: vim_refresh

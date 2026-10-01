@@ -1,0 +1,61 @@
+- type: job
+  id: CaesarLegionLegionnaireWarrior
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 50
+  name: job-name-caesar-legion-legionnaire-warrior
+  description: job-description-caesar-legion-legionnaire-warrior
+  playTimeTracker: CaesarLegionLegionnaireWarrior
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement
+      department: CaesarLegion
+      min: 14400 # 4 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
+  startingGear: CaesarLegionLegionnaireWarriorGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerWarrior"
+  supervisors: job-name-caesar-legion-other
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionLegionnaireWarrior
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionLegionnaireWarriorGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: ClothingNeckRedScarf
+    eyes: N14ClothingEyesGlassesWelding
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingShoesKaligi
+    head: N14ClothingHeadHatLightBaseballHelmet # #Misfits Change /Tweak/: Prime Legionary wears a light baseball helmet
+    outerClothing: MisfitsLegionWarriorArmor # #Misfits Tweak: T3 armor (0.80/0.75) — Warrior Legionnaire tier
+    gloves: N14ClothingHandsGlovesTribal
+    pocket1: LegionWarriorloadoutkits
+    id: N14IDLegionaryMedalSilver
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+
+- type: playTimeTracker
+  id: CaesarLegionLegionnaireWarrior

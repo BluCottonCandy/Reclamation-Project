@@ -1,0 +1,53 @@
+- type: job
+  id: TownShopkeeper
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 50
+  showBorder: true
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-townshopkeeper
+  description: job-description-townshopkeeper
+  playTimeTracker: TownShopkeeper
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+    #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+    #  tracker: TownShopkeeperHelper
+    #  min: 18000 # 5 hours
+  startingGear: TownShopkeeperGear
+  icon: "JobIconTownShopKeeper" # Corvax-Change
+  supervisors: job-supervisors-townsfolk
+  access:
+  - TownieShopkeeper
+  - TownsPerson # Corvax-Change
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+      - type: ProfessionalChef
+
+- type: startingGear
+  id: TownShopkeeperGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitMerchant
+    ears: MisfitsClothingHeadsetTown
+    back: N14ClothingBackpackHiking # Corvax-Change
+    shoes: N14ClothingShoesBlack
+    id: N14IDShopkeeperTown
+    wallet: N14WalletCash
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled  # N14TODO: Trader bag
+  storage: # Corvax-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: TownShopkeeper

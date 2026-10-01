@@ -1,0 +1,53 @@
+- type: job
+  id: TownMechanic
+  setPreference: true
+  weight: 40
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-townmechanic
+  description: job-description-townmechanic
+  playTimeTracker: TownMechanic
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
+    #- !type:CharacterDepartmentTimeRequirement # TEMP REMOVED
+    #  department: Townsfolk
+    #  min: 0 # 2 hours
+  startingGear: TownMechanicGear
+  icon: "JobIconTownMechanic" # Forge-Change
+  supervisors: job-supervisors-townsfolk
+  access:
+  - TownieMechanic
+  - TownsPerson # Forge-Change
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: startingGear
+  id: TownMechanicGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitMechanic
+    ears: MisfitsClothingHeadsetTown
+    back: N14ClothingBackpackExplorer # Forge-Change
+    shoes: N14ClothingShoesBlack
+    id: N14IDPassportTownMechanic # Forge-Change
+    belt: N14ClothingBeltUtilityFilled
+    gloves: ClothingHandsGlovesColorYellow # Forge-Add
+    eyes: N14ClothingEyesGlassesWelding
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+  storage: # Forge-Change
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: TownMechanic

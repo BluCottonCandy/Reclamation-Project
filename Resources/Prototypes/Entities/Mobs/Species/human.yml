@@ -1,0 +1,67 @@
+# Anything human specific (e.g. UI, input) goes under MobHuman
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobHuman
+  name: Urist McHands
+  abstract: true
+  components:
+  - type: Damageable
+    damageTypeCaps:
+      Poison: 100 # N14: Prevent unrecoverable 500+ toxin states
+      Heat: 226 # #Misfits Add - Cap burn damage at softcrit threshold; fire alone can't kill a player
+      Shock: 226 # #Misfits Add - Cap shock/burn at softcrit threshold
+      Cold: 226 # #Misfits Add - Cap cold/burn at softcrit threshold
+      Caustic: 226 # #Misfits Add - Cap caustic/burn at softcrit threshold
+  - type: Perishable
+    rotAfter: 1800 # Half an in-game day.
+  - type: Hunger # Forge-Change
+    baseDecayRate: 0.004 # Misfits Tweak - halved from 0.008 so hunger depletes ~2x slower; Peckish reached ~3.5hrs from typical start vs ~1.7hrs vanilla
+    hungerThresholdDecayModifiers:
+      Overfed: 1
+      Okay: 0.6
+      Peckish: 0.5
+      Starving: 0.4
+      Dead: 0
+    starvationDamage:      # Misfits Change - use custom Starvation type
+      types:
+        Starvation: 0.15
+    recoveryDamage:        # Misfits Add
+      types:
+        Starvation: -0.30
+    starvingSlowdownModifier: 0.5
+  - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Thirst
+    baseDecayRate: 0.02 # Misfits Tweak - reduced from 0.1 (5x slower); first "Thirsty" ~1hr from typical start vs ~13min vanilla; not Parched until ~2hrs
+    dehydrationDamage:  # Misfits Add - Dehydration damage
+      types:
+        Dehydration: 0.15
+    recoveryDamage:     # Misfits Add - Dehydration damage
+      types:
+        Dehydration: -0.30
+  - type: Carriable # Carrying system from nyanotrasen.
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+      - id: N14FoodMeatHuman
+        amount: 5
+  - type: HumanoidAppearance
+    species: Human
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    understands:
+    - English
+  - type: FootPrints
+  - type: PsionicInsulation
+#  - type: Ghoulify # Forge-Change
+  - type: GhoulifyOnRadiationDeath # #Misfits Change: humans who die to radiation become ghouls instead
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobHumanDummy
+  categories: [ HideSpawnMenu ]

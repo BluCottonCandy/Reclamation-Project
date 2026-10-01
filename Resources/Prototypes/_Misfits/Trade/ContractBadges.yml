@@ -1,0 +1,87 @@
+# Contract tier badges awarded by ContractTierSystem when a player unlocks or advances a tier.
+# Each badge is a wearable neck item (medal) appropriate to its tier.
+# All 6 tiers: Road Kill → Lazy Lizard → Junktown Rat → Hub Mercenary → Bunker Buster → Wasteland Legend
+
+- type: entity
+  parent: ClothingNeckMedalBase
+  id: N14ContractBadgeRoadKill
+  name: Road Kill Caravan Badge
+  description: Awarded to contractors who have just joined the caravan network. For now you're Road Kill, but you can improve.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Medals/bronzeheart.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Medals/bronzeheart.rsi
+  - type: Tag
+    tags:
+      - Medal
+
+- type: entity
+  parent: ClothingNeckMedalBase
+  id: N14ContractBadgeLazyLizard
+  name: Lazy Lizard Caravan Badge
+  description: Awarded to contractors who have risen to the rank of Lazy Lizard with the caravan network. You're dependable now, at least for the easy jobs.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Medals/cargomedal.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Medals/cargomedal.rsi
+  - type: Tag
+    tags:
+      - Medal
+
+- type: entity
+  parent: ClothingNeckMedalBase
+  id: N14ContractBadgeJunktownRat
+  name: Junktown Rat Caravan Badge
+  description: Awarded to contractors who have risen to the rank of a Junktown Rat. The caravan network trusts you now, merchants are likely to give you a good deal.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Medals/engineermedal.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Medals/engineermedal.rsi
+  - type: Tag
+    tags:
+      - Medal
+
+- type: entity
+  parent: ClothingNeckMedalBase
+  id: N14ContractBadgeHubMercenary
+  name: Hub Mercenary Caravan Badge
+  description: Awarded to contractors who have risen to the rank of a Hub Mercenary. You are a friend to the caravan network now, and you've been awarded a tiny apartment in The Hub for your services.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Medals/gold.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Medals/gold.rsi
+  - type: Tag
+    tags:
+      - Medal
+
+- type: entity
+  parent: ClothingNeckMedalBase
+  id: N14ContractBadgeBunkerBuster
+  name: Bunker Buster Caravan Badge
+  description: Awarded to contractors near the very top of the caravan network's operatives. Bunker Buster is a rank that bestows great bragging rights. Very few are above your achievements.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+  - type: Tag
+    tags:
+      - Medal
+
+- type: entity
+  parent: ClothingNeckMedalBase
+  id: N14ContractBadgeWastelandLegend
+  name: Wasteland Legend Caravan Badge
+  description: The greatest recognition the caravan network can bestow on its contractors. You are a Wasteland Legend, few if any can truly compare to you.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Clothing/Neck/Medals/securitymedal.rsi
+  - type: Clothing
+    sprite: DeltaV/Clothing/Neck/Medals/securitymedal.rsi
+  - type: Tag
+    tags:
+      - Medal

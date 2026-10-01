@@ -1,0 +1,431 @@
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: N14ClothingBeltStorageBase
+  name: Abstract Belt
+  description: You shouldn't be seeing this.
+  abstract: true
+  components:
+  - type: Storage
+    whitelist:
+      tags:
+        - CigPack
+        - N14AmmoCell
+        # #Cythisiax Added - every N14 belt can store the Wendover map (Document)
+        - Document
+      components:
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltBoSWebbing
+  name: Brotherhood of Steel Carrier
+  description: A simple black carrier capable of holding all kind of ammo.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/boswebbing.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/boswebbing.rsi
+  - type: Appearance
+  # #Cythisiax Added - classic BoS carrier carries a welder for field repairs
+  - type: Storage
+    whitelist:
+      tags:
+        - CigPack
+        - N14AmmoCell
+        - N14Welder
+        - Document
+        - ThrowingKnife
+      components:
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: N14ClothingBeltBoSWebbing
+  name: Brotherhood of Steel Webbing
+  description: A simple black carrier, capable of holding all kind of ammo and medicine for field-use.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/midwestboswebbing.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/midwestboswebbing.rsi
+  - type: Appearance
+  - type: Storage
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - CigPack
+        - N14AmmoCell
+        # #Cythisiax Added - BoS webbing carries welders for field repairs (also covers Squire webbings)
+        - N14Welder
+        # #Cythisiax Added - tool sterilizers (Abraxo) & Wendover map (Document)
+        - Abraxo
+        - Document
+        - ThrowingKnife
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltMilitary
+  name: military carrier
+  description: A simple brown carrier capable of holding all kind of ammo, it was commonly used by the military of the pre-war.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/militarywebbing.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/militarywebbing.rsi
+  - type: Appearance
+  # #Cythisiax Added - military carrier boost: reuses the upstream salvage-rig sprite, so let it carry tools/meds/radio like other webbing, not just ammo
+  - type: Storage
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - N14AmmoCell
+        - Abraxo
+        - Document
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltNCR
+  name: NCR belt
+  description: A leather belt designed by the NCR for their troops.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/ncrbelt.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/ncrbelt.rsi
+  - type: Appearance
+  - type: Storage
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - CigPack
+        - N14AmmoCell
+        # #Cythisiax Added - NCR belt carries welders for field repairs
+        - N14Welder
+        # #Cythisiax Added - tool sterilizers (Abraxo) & Wendover map (Document)
+        - Abraxo
+        - Document
+        - ThrowingKnife
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+- type: entity
+  parent: ClothingBeltNCR
+  id: ClothingBeltNCRShotgunner
+  name: NCR shotgun belt
+  description: An NCR belt variant set up for shotgun shells and close-range kit.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/ncrshotgunner.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/ncrshotgunner.rsi
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltNCRPouches
+  name: NCR pouches bandolier
+  description: A leather bandolier with multiple pouches designed by the NCR for their troops.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/ncrpouches.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/ncrpouches.rsi
+  - type: Appearance
+  # #Cythisiax Added - NCR pouches carry tools & field gear, not just ammo
+  - type: Storage
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - N14AmmoCell
+        - N14Welder
+        - Abraxo
+        - Document
+        - ThrowingKnife
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltNCRHarness
+  name: NCR Harness
+  description: A leather harness designed by the NCR for their troops.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/ncrharness.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/ncrharness.rsi
+  - type: Appearance
+  - type: Storage
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - CigPack
+        - N14AmmoCell
+        # #Cythisiax Added - tool sterilizers (Abraxo) & Wendover map (Document)
+        - Abraxo
+        - Document
+        - ThrowingKnife
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltNCRBandolier
+  name: bandolier
+  description: A bandolier commonly used to carry single shells or cartridges, modified by the NCR for more capacity.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/bandolier.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/bandolier.rsi
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltRope
+  name: rope belt
+  description: A handmade belt with a rope, not the best but at least works.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/ropebelt.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/ropebelt.rsi
+  - type: Storage
+    maxItemSize: Normal
+    defaultStorageOrientation: Vertical
+    grid:
+    - 0,0,5,1
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltQuiverSpear
+  name: spear quiver
+  description: A simple quiver for holding spears
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/quiver_spear.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/quiver_spear.rsi
+  - type: Storage
+    whitelist:
+      tags:
+        - Spear
+    grid:
+    - 0,0,7,3
+    maxItemSize: Large
+  # - type: Appearance
+  # - type: StorageContainerVisuals
+    # maxFillLevels: 3
+    # fillBaseName: fill-
+
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltRevolver
+  name: revolver holster
+  description: Can hold a revolver, speedloaders and cells.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/revolverholster.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/revolverholster.rsi
+  - type: Storage
+    whitelist:
+      tags:
+        - Sidearm
+        - SpeedLoader
+        # #Cythisiax Added - revolver belt fits energy cells
+        - N14AmmoCell
+      components:
+        - BallisticAmmoProvider
+  - type: Appearance
+
+- type: entity
+  parent: ClothingBeltRevolver
+  id: ClothingBeltCowboy
+  name: cowboy belt
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/cowboy.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/cowboy.rsi
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltEnclave
+  name: U.S. Army belt
+  description: A leather belt designed by the U.S. Army.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/enclavebelt.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/enclavebelt.rsi
+
+- type: entity
+  parent: ClothingBeltPlant
+  id: ClothingBeltFarmer
+  name: farmers belt
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/gardener.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/gardener.rsi
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  id: ClothingBeltMountie
+  name: mountie pouched bandolier
+  description: A simple brown bandolier capable of holding all kind of ammo.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/mountiebandolier.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/mountiebandolier.rsi
+  - type: Appearance
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltWasterKatanaBeltT1
+  name: waster katana sheath
+  description: A simple crudely made leather sheath for a waster katana.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/Wastersheatt1.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/Wastersheatt1.rsi
+  - type: Storage
+    grid:
+      - 0,0,3,1
+    whitelist:
+      tags:
+        - WasterKatanaT1
+  - type: ItemMapper
+    mapLayers:
+      sheath-sabre:
+        whitelist:
+          tags:
+          - WasterKatanaT1
+  - type: Appearance
+  - type: Tag
+    tags:
+      - BeltSlotNotBelt
+      - WasterKatanaBeltT1
+  - type: Construction
+    graph: N14WasterKatanaBeltT1
+    node: wasterkatanabelt1
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltWasterKatanaBeltT2
+  name: reinforced waster katana sheath
+  description: An upgraded version of the waster katana sheath, built to hold a superior blade.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Belt/Wastersheatt2.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Belt/Wastersheatt2.rsi
+  - type: Storage
+    grid:
+      - 0,0,3,1
+    whitelist:
+      tags:
+        - WasterKatanaT2
+  - type: ItemMapper
+    mapLayers:
+      sheath-sabre:
+        whitelist:
+          tags:
+          - WasterKatanaT2
+  - type: Appearance
+  - type: Tag
+    tags:
+      - BeltSlotNotBelt
+  - type: Construction
+    graph: N14WasterKatanaBeltT2
+    node: wasterkatanabelt2

@@ -1,0 +1,409 @@
+- type: trait
+  id: N14CarefulSteps
+  category: Mental
+  points: -4
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: StepTriggerImmune
+          whitelist:
+            types:
+              - Shard
+              - Landmine
+              - Mousetrap
+              - SlipEntity
+
+- type: trait
+  id: N14Pickpocket
+  category: Mental
+  points: -6
+  requirements:
+  - !type:CharacterJobRequirement
+    inverted: true
+    jobs:
+    - CaesarLegionSlave # Restricted from Slaves & Prisoners - if they had these traits, they wouldn't be stuck in the first place!
+    - NCRPrisoner
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: Thieving
+          ignoreStripHidden: true
+          stealth: Subtle
+          stripTimeReduction: 0
+          stripTimeMultiplier: 0.667
+
+- type: trait
+  id: N14Pacifist
+  category: Mental
+  points: 8
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - TownSheriff
+        - TownDeputy
+        - NCRCommander
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRVertibirdPilot
+        - NCRVeteranRanger
+        - NCRFieldRanger
+        - NCRPatrolRanger
+     #  - NCRDoctor         I saw hacksaw ridge and thought it was cool, the BOS and legion equivalents in POM and scribes can all be pacifist so a doctor who is largely going to be a noncombatant isn't insane to let be pacifst
+        - NCRFirstSergeant
+        - NCRStaffSergeant
+        - NCRNCO
+        - NCRWS
+        - NCRRO
+        - NCREngineer
+        - NCRMedic
+        - NCRPrivateFirstClass
+        - NCRSoldier
+        - NCRCadet
+        # - NCRCitizen # #Misfits Fix - NCR Citizens should be able to select the Pacifist trait
+#        - CaravanGuard
+        #- BoSWashingtonCommander #Misfits Change /Comment-out/: Washington BoS removed
+        #- BoSWashingtonPaladin
+        #- BoSWashingtonKnight
+        #- BoSWashingtonInitiate
+        - BoSMidPaladinCommander
+        - BoSHonorGuard # #Cythisiax Added - personal-whitelist HONOR GUARD is a combat role
+        - BoSMidPaladin
+        - BoSMidKnight
+        - BoSLancerKnight
+        # #Cythisiax Removed - Lancer rank folded into Lancer-Knight
+        - BoSMidSquire
+        # Forge-Change-Start
+        #- BoSMidInquisitor # Misfits Fix: job prototype commented out
+        - BoSWestElderCommander
+        - CaesarLegionCenturion
+        - CaesarLegionLegate
+        - CaesarLegionVeteranDecanus
+        - CaesarLegionFrumentarii
+        - CaesarLegionPrimeDecanus
+        - CaesarLegionVexillarius
+        - CaesarLegionExplorer
+        - CaesarLegionOptio
+        - CaesarLegionDean
+        - CaesarLegionForgemaster
+        - CaesarLegionLegionnaireVeteran
+        - CaesarLegionLegionnaireWarrior
+        - CaesarLegionLegionnaireRecruit
+        - CaesarLegionHoundmaster
+        - CaesarLegionAuxilia
+        - CaesarLegionTempleGuard
+        # #Misfits Change: CaesarLegionRecruit removed — Legionnaire covers entry-level.
+        # Forge-Change-End
+        - VaultSecurity
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: Pacified
+
+- type: trait
+  id: N14Narcolepsy
+  category: Mental
+  points: 4 # raised from 2, falling asleep in battle with the "cure" being now unobtainable is pretty bad
+  functions:
+    - !type:TraitAddComponent
+      components:
+      - type: Narcolepsy
+        timeBetweenIncidents: 300, 600
+        durationOfIncident: 10, 30
+
+- type: trait
+  id: N14CPRTraining
+  category: Mental
+  points: -6 # #Misfits Tweak - raised from -4; CPR is a strong revival tool, cost should reflect that
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - TribalShaman # #Misfits Change - renamed from TribalHealer
+        #- TownDoctor # Misfits Change - Removed Town Doctor
+        - NCRDoctor
+        - NCRMedic
+        #- BoSWashingtonScribe #Misfits Change /Comment-out/: Washington BoS removed
+        - BoSMidScribe
+        - BoSScribe
+        - BoSWestScribe
+        - VaultDoctor
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerGuard
+        - FollowerVolunteer
+        - SuperMutantFollowerDoctor
+        - CaesarLegionPriestessOfMars
+        - CaesarLegionAuxilia
+        - EnclaveJuniorScientist
+        - EnclaveScientist
+        - EnclaveHeadScientist
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: CPRTraining
+
+- type: trait
+  id: N14SelfAware
+  category: Mental
+  points: -4
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: SelfAware
+          analyzableTypes:
+            - Blunt
+            - Slash
+            - Piercing
+            - Heat
+            - Shock
+            - Cold
+            - Caustic
+          detectableGroups:
+            - Airloss
+            - Toxin
+
+- type: trait
+  id: N14Liar
+  category: Mental
+  points: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement # Misfits Change - one-accent-max group replaces exclusion lists
+      group: N14SpeechAccents
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: ReplacementAccent
+          replacementChance: 0.2
+          accent: liar
+
+# The flood of various & mixed pet traits shall begin here
+- type: trait
+  id: N14PetRoach
+  category: PetsSmall # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab; removed inter-pet exclusion to allow stacking
+  points: -3
+  requirements:
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - Wastelander
+        - Tribe
+        - Townsfolk
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerRoach
+
+- type: trait
+  id: N14PetPigrat
+  category: PetsSmall # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab; removed inter-pet exclusion to allow stacking
+  points: -4
+  requirements:
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - Wastelander
+        - Tribe
+        - Townsfolk
+        - Eighties # #Misfits Add - allow the 80s faction (Eighties department) to take pet pigrats
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerPigrat
+
+#- type: trait
+#  id: N14PetAnt
+#  category: Mental
+#  points: -5
+#  requirements:
+#    - !type:CharacterDepartmentRequirement
+#      departments:
+#        - CaravanCompany
+#    - !type:CharacterTraitRequirement
+#      inverted: true
+#      traits:
+#        - N14PetDogCC
+#  functions:
+#    - !type:TraitAddComponent
+#      components:
+#        - type: GhostRole
+#          name: ghost-role-information-n14pet-ant-name
+#          description: ghost-role-information-n14pet-hauler-description
+#          rules: ghost-role-component-default-rules
+#        - type: GhostRoleMobSpawner
+#          prototype: N14MobPetAnt
+
+# All the eyebots shall be here.
+- type: trait
+  id: N14PetEyebot
+  category: PetsMedium # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab; removed inter-pet exclusion to allow stacking
+  points: -6
+  requirements:
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - Wastelander
+        - Townsfolk
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerEyebot
+
+- type: trait
+  id: N14PetEyebotMBoS
+  category: PetsMedium # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab; removed inter-pet exclusion to allow stacking
+  points: -6
+  requirements:
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - BrotherhoodOfSteel
+        - BrotherhoodOfSteelLancers
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerEyebotMBoS
+
+#Misfits Change /Comment-out/: Washington BoS eyebot pet trait removed — locale commented out.
+#- type: trait
+#  id: N14PetEyebotWBoS
+#  category: Mental
+#  points: -6
+#  requirements:
+#    - !type:CharacterDepartmentRequirement
+#      departments:
+#        - BrotherhoodOfSteel
+#    - !type:CharacterTraitRequirement
+#      inverted: true
+#      traits:
+#        - N14PetDogWBoS
+#  functions:
+#    - !type:TraitAddComponent
+#      components:
+#        - type: GhostRole
+#          name: ghost-role-information-n14pet-eyebot-wbos-name
+#          description: ghost-role-information-n14pet-eyebot-description
+#          rules: ghost-role-component-default-rules
+#        - type: GhostRoleMobSpawner
+#          prototype: N14MobPetEyebotWBoS
+
+# All the dog pet traits because every faction that has turrets needs their own variant
+- type: trait
+  id: N14PetDog
+  category: PetsMedium # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab; removed inter-pet exclusion to allow stacking
+  points: -6
+  requirements:
+    - !type:CharacterOverallTimeRequirement
+      min: 72000
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - Wastelander
+        - Tribe
+        - Townsfolk
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogGeneric
+
+- type: trait
+  id: N14PetDogMBoS
+  category: PetsMedium # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab; removed inter-pet exclusion to allow stacking
+  points: -6
+  requirements:
+    - !type:CharacterOverallTimeRequirement
+      min: 72000
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - BrotherhoodOfSteel
+        - BrotherhoodOfSteelLancers
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogMBoS
+
+#Misfits Change /Comment-out/: Washington BoS dog pet trait removed — locale commented out.
+#- type: trait
+#  id: N14PetDogWBoS
+#  category: Mental
+#  points: -6
+#  requirements:
+#    - !type:CharacterOverallTimeRequirement
+#      min: 72000
+#    - !type:CharacterDepartmentRequirement
+#      departments:
+#        - BrotherhoodOfSteel
+#    - !type:CharacterTraitRequirement
+#      inverted: true
+#      traits:
+#        - N14PetEyebotWBoS
+#  functions:
+#    - !type:TraitAddComponent
+#      components:
+#        - type: GhostRole
+#          name: ghost-role-information-n14pet-dog-wbos-name
+#          description: ghost-role-information-n14pet-generic-description
+#          rules: ghost-role-component-default-rules
+#        - type: GhostRoleMobSpawner
+#          prototype: N14MobPetDogWBoS
+
+# - type: trait
+#   id: N14PetDogCC
+#   category: Mental
+#   points: -5
+#   requirements:
+#     - !type:CharacterOverallTimeRequirement
+#       min: 72000
+#     - !type:CharacterDepartmentRequirement
+#       departments:
+#         - CaravanCompany
+#     - !type:CharacterTraitRequirement
+#       inverted: true
+#       traits:
+#         - N14PetAnt
+#   functions:
+#     - !type:TraitAddComponent
+#       components:
+#         - type: GhostRole
+#           name: ghost-role-information-n14pet-dog-cc-name
+#           description: ghost-role-information-n14pet-generic-description
+#           rules: ghost-role-component-default-rules
+#         - type: GhostRoleMobSpawner
+#           prototype: N14MobPetDogCC
+
+- type: trait
+  id: N14PetDogNCR
+  category: PetsMedium # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab
+  points: -6
+  requirements:
+    - !type:CharacterOverallTimeRequirement
+      min: 72000
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - NCR
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogNCR
+
+- type: trait
+  id: N14PetDogNCRK9Medical
+  category: PetsMedium # #Cythisiax Edited - pet size subcategory; #Misfits Change - moved from Mental to Pets tab
+  points: -6
+  requirements:
+    - !type:CharacterOverallTimeRequirement
+      min: 72000
+    - !type:CharacterDepartmentRequirement
+      departments:
+        - NCR
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - NCRPrisoner
+  functions:
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogNCRK9Medical

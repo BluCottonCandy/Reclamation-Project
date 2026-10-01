@@ -1,0 +1,62 @@
+- type: job
+  id: NCRMilitaryPoliceSergeant
+  setPreference: true # #Misfits Tweak - visible in job selection
+  hideWithoutJobWhitelist: false # #Misfits Tweak - visible in all menus
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-military-police-sergeant
+  overwatchCategory: OverwatchNcrMp
+  description: job-description-ncr-military-police-sergeant
+  playTimeTracker: NCRMilitaryPoliceSergeant
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: MilitaryPolice
+      min: 72000 # 10 hours
+  weight: 2
+  startingGear: NCRMilitaryPoliceSergeantGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-militarypolice-sergeant
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  - NCRLT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+      - type: GrantRangerCombat
+
+- type: startingGear
+  id: NCRMilitaryPoliceSergeantGear
+  equipment:
+    wallet: N14Wallet
+    ears: N14ClothingHeadsetNCR
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingMPUniformNCRDesert
+    outerClothing: MisfitsNCRMPCombatArmor
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    eyes: ClothingEyesGlassesSunglasses
+    pocket1: NCRMPKit_Set
+    id: N14IDNCRDogtagMPSergeant
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+  satchel: N14ClothingBackpackSatchelNCRFilled
+  storage:
+    back:
+      - N14BoxPlasticFilledMilitaryNCR
+      - N14PoliceBaton
+      - N14SpeedLoader44Magnum
+      - N14SpeedLoader44Magnum
+
+- type: playTimeTracker
+  id: NCRMilitaryPoliceSergeant

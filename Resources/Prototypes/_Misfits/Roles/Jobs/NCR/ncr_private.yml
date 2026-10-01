@@ -1,0 +1,53 @@
+- type: job
+  id: NCRSoldier
+  setPreference: false # RETIRED — replaced by NCRCadet (NCR Trooper)
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 20
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-private
+  overwatchCategory: OverwatchNcrEnlisted
+  description: job-description-ncr-private
+  playTimeTracker: NCRSoldier
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T2 faction timelock (4h NCR)
+      department: NCR
+      min: 14400 # 4 hours
+    #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+    #  tracker: NCRCadet
+    #  min: 18000 # 5 hours
+  startingGear: NCRSoldierGear
+  icon: "JobIconNcrSoldier" # Corvax-Change
+  supervisors: job-supervisors-ncr
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRSoldierGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatNCRHelmetMetalDesert # Corvax-Change
+    neck: ClothingNeckPinNCRPrivate
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
+    jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
+    shoes: N14ClothingBootsLeatherFilled
+    belt: ClothingBeltNCR
+    id: N14IDNCRDogtagSoldier
+  innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change
+
+- type: playTimeTracker
+  id: NCRSoldier

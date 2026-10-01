@@ -1,0 +1,67 @@
+#Misfits Change /Uncomment/: Re-enabled BoS hats needed for new consolidated Brotherhood jobs.
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatBanganeBoS
+  name: Brotherhood of Steel Bandana
+  description: A great bandana for a great fighter
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Head/Hats/banganebos.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Head/Hats/banganebos.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatBeretknighBoS
+  name: BoS Knight Beret
+  description: Knights beret. Distinguishing mark of an experienced soldier
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Head/Hats/beretknighbos.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Head/Hats/beretknighbos.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatCapkhighBoS
+  name: BoS Knight Cap
+  description: Knights cap. Convenient, easy, practical
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/Head/Hats/capknighbos.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/Head/Hats/capknighbos.rsi
+
+#Misfits Change /Comment-out/: Remaining Western BoS hats not needed.
+#- type: entity
+#  parent: ClothingHeadBase
+#  id: N14ClothingHeadHatCapkhighbluBoS
+#  name: BoS Knight Striped Cap
+#  description: A knights cap with the distinctive symbol of an experienced fighter. Convenient, easy, and practical
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Head/Hats/capkhighblubos.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Head/Hats/capkhighblubos.rsi
+#
+#- type: entity
+#  parent: ClothingHeadBase
+#  id: N14ClothingHeadHatCapPaladin
+#  name: BoS Paladin Cap
+#  description: The cap of a paladin who can shape destinies
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Head/Hats/cappaladin.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Head/Hats/cappaladin.rsi
+#
+#- type: entity
+#  parent: ClothingHeadBase
+#  id: N14ClothingHeadHatCapScout
+#  name: BoS Scout Cap
+#  description: A young soldier's cap. It smells of sweat and the future
+#  components:
+#  - type: Sprite
+#    sprite: Corvax/Clothing/Head/Hats/capscout.rsi
+#  - type: Clothing
+#    sprite: Corvax/Clothing/Head/Hats/capscout.rsi

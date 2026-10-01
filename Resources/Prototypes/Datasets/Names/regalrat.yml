@@ -1,0 +1,40 @@
+- type: dataset
+  id: RegalRatNameKingdom
+  values:
+  - Plague
+  - Miasma
+  - Tunnel
+  - Junk
+  - Trash
+  - Rat
+  - Parasite
+  - Cheese
+  - Gnawing
+  - Big
+  - Dirty
+  - Gutter
+  - Dump
+  - Service
+  - Specific
+  - Stainless Steel
+
+- type: dataset
+  id: RegalRatNameTitle
+  values:
+  - King
+  - Lord
+  - Prince
+  - Emperor
+  - Chief
+  - Ruler
+  - Master
+  - Shogun
+  - Boyar
+  - Tsar
+  - Fanatic #vs
+  - Connoisseur
+  - President
+  - Mayor
+  - Boss
+  - Prophet
+  - Cheese

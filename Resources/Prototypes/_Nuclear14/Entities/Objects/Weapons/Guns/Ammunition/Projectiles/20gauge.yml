@@ -1,0 +1,28 @@
+- type: entity
+  id: PelletShotgun20
+  name: pellet (20 gauge)
+  categories: [ HideSpawnMenu ]
+  parent: BaseBullet
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    state: buckshot
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 8
+  # Misfits Add - 20 gauge pellets; same rapid falloff as 12 gauge
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 4.0
+    maxFalloffTiles: 8.0
+    minDamageMultiplier: 0.30
+
+- type: entity
+  id: PelletShotgun20Spread
+  categories: [ HideSpawnMenu ]
+  parent: PelletShotgun20
+  components:
+  - type: ProjectileSpread
+    proto: PelletShotgun20
+    count: 6
+    spread: 15

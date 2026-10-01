@@ -1,0 +1,273 @@
+# Expedition categories — Surface and Underground.
+# Each category rotates between the available N14 maps.
+# Maps are in Resources/Maps/N14/.
+
+# ── Old salvage-based tiers (commented out — kept for reference / future use) ──
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionBronze
+#   name: n14-expedition-difficulty-bronze
+#   color: "#CD7F32"
+#   duration: 1800
+#   sortOrder: 0
+#   maps:
+#     - /Maps/Salvage/small-1.yml
+#     - /Maps/Salvage/small-2.yml
+#     - /Maps/Salvage/small-3.yml
+#     - /Maps/Salvage/small-4.yml
+#     - /Maps/Salvage/small-cargo.yml
+#     - /Maps/Salvage/small-chapel.yml
+#
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionIron
+#   name: n14-expedition-difficulty-iron
+#   color: "#71797E"
+#   duration: 1800
+#   sortOrder: 1
+#   maps:
+#     - /Maps/Salvage/small-a-1.yml
+#     - /Maps/Salvage/small-ai-survey-drone.yml
+#     - /Maps/Salvage/small-chef.yml
+#     - /Maps/Salvage/small-party.yml
+#     - /Maps/Salvage/small-ship-1.yml
+#     - /Maps/Salvage/hauling-shuttle.yml
+#     - /Maps/Salvage/cargo-1.yml
+#
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionSilver
+#   name: n14-expedition-difficulty-silver
+#   color: "#C0C0C0"
+#   duration: 1800
+#   sortOrder: 2
+#   maps:
+#     - /Maps/Salvage/medium-1.yml
+#     - /Maps/Salvage/medium-dock.yml
+#     - /Maps/Salvage/medium-library.yml
+#     - /Maps/Salvage/medium-crashed-shuttle.yml
+#     - /Maps/Salvage/medium-template.yml
+#
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionGold
+#   name: n14-expedition-difficulty-gold
+#   color: "#FFD700"
+#   duration: 1800
+#   sortOrder: 3
+#   maps:
+#     - /Maps/Salvage/medium-pet-hospital.yml
+#     - /Maps/Salvage/medium-ruined-emergency-shuttle.yml
+#     - /Maps/Salvage/medium-silent-orchestra.yml
+#     - /Maps/Salvage/ruin-cargo-salvage.yml
+#     - /Maps/Salvage/wh-salvage.yml
+#
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionMithril
+#   name: n14-expedition-difficulty-mithril
+#   color: "#45B6FE"
+#   duration: 1800
+#   sortOrder: 4
+#   maps:
+#     - /Maps/Salvage/asteroid-base.yml
+#     - /Maps/Salvage/engineering-chunk.yml
+#     - /Maps/Salvage/outpost-arm.yml
+#     - /Maps/Salvage/security-chunk.yml
+#     - /Maps/Salvage/medium-pirate.yml
+#     - /Maps/Salvage/medium-vault-1.yml
+#
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionDiamond
+#   name: n14-expedition-difficulty-diamond
+#   color: "#B9F2FF"
+#   duration: 1800
+#   sortOrder: 5
+#   maps:
+#     - /Maps/Salvage/meatball.yml
+#     - /Maps/Salvage/vegan-meatball.yml
+#     - /Maps/Salvage/small-syndicate.yml
+#     - /Maps/Salvage/small-tesla.yml
+#     - /Maps/Salvage/stationstation.yml
+#     - /Maps/Salvage/tick-colony.yml
+
+# ── Active expedition categories ──
+# Maps can optionally define factionSpawns: the majority faction in the gather
+# radius determines where ALL players teleport (minority follows majority).
+#
+# Temporarily disabled due to RAM/engine constraints (server OOM at 8 GB):
+#   - Sunnyvale Surface  (SunnyvaleSurface.yml)
+#   - Mercer Island Surface  (MercerIslandSurface.yml)
+#   - Mercer Island Underground  (MercerIslandSewers.yml)
+# Only the Abandoned Vault (SunnyvaleUnderground) is loaded until limits are raised.
+
+# -- DISABLED: N14ExpeditionSurface (Sunnyvale Surface + Mercer Island Surface) --
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionSurface
+#   name: n14-expedition-difficulty-surface
+#   color: "#C8A25C"  # warm wasteland tan
+#   duration: 1800  # 30 minutes
+#   sortOrder: 0
+#   maps:
+#     - path: /Maps/N14/SunnyvaleSurface.yml
+#       factionSpawns:
+#         - factions: [NCR, Rangers]
+#           position: -351.86, -39.23
+#         - factions: [CaesarLegion]
+#           position: 176.79, -90.29
+#         - factions: [BrotherhoodOfSteel]
+#           position: -30.58, -186.30
+#         - factions: [Townsfolk]
+#           position: 67.69, 191.43
+#         - factions: [Wastelander]
+#           position: -351.86, -39.23
+#         - factions: [PlayerRaider, Raider]
+#           position: -351.86, -39.23
+#         - factions: [Tribal]
+#           position: -315.70, -103.91
+#         - factions: [PlayerSuperMutant, SuperMutant]
+#           position: -315.70, -103.91
+#         - factions: [PlayerRobot, PlayerSentryBot]
+#           position: -351.86, -39.23
+#     - path: /Maps/N14/MercerIslandSurface.yml
+#       factionSpawns:
+#         - factions: [NCR, Rangers]
+#           position: 32.56, 103.61
+#         - factions: [CaesarLegion]
+#           position: 106.68, 79.89
+#         - factions: [BrotherhoodOfSteel]
+#           position: 44.90, 136.90
+#         - factions: [Townsfolk]
+#           position: 99.70, 241.69
+#         - factions: [Wastelander]
+#           position: 9.50, 256.95
+#         - factions: [PlayerRaider, Raider]
+#           position: 110.72, 139.17
+#         - factions: [Tribal]
+#           position: 40.30, 39.26
+#         - factions: [PlayerSuperMutant, SuperMutant]
+#           position: 9.50, 256.95
+#         - factions: [PlayerRobot, PlayerSentryBot]
+#           position: 9.50, 256.95
+
+# -- DISABLED: N14ExpeditionUnderground (Sunnyvale Underground + Mercer Island Sewers) --
+# Sunnyvale Underground kept below as the sole active difficulty.
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionUnderground
+#   name: n14-expedition-difficulty-underground
+#   color: "#6B4F3A"  # dark earthy brown
+#   duration: 900  # 15 minutes — underground maps are small
+#   sortOrder: 1
+#   maps:
+#     - path: /Maps/N14/SunnyvaleUnderground.yml
+#       ...
+#     - path: /Maps/N14/MercerIslandSewers.yml
+#       ...
+
+# #Misfits Removed - Temporarily disabled to focus on procedural options; re-enable when static dungeon is revisited
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionAbandonedVault
+#   name: n14-expedition-difficulty-abandoned-vault
+#   color: "#6B4F3A"  # dark earthy brown
+#   duration: 900  # 15 minutes — underground map
+#   sortOrder: 0
+#   maps:
+#     - runtimeDungeon: true
+#       dungeonConfig: NFCaveFactory
+#       factionSpawns:
+#         - factions: [NCR, Rangers]
+#           position: -12.0, 0.0
+#         - factions: [CaesarLegion]
+#           position: 12.0, 0.0
+#         - factions: [BrotherhoodOfSteel]
+#           position: 0.0, 12.0
+#         - factions: [Townsfolk]
+#           position: 0.0, -12.0
+#         - factions: [Wastelander]
+#           position: -8.0, -8.0
+#         - factions: [PlayerRaider, Raider]
+#           position: 8.0, -8.0
+#         - factions: [Tribal]
+#           position: -8.0, 8.0
+#         - factions: [PlayerSuperMutant, SuperMutant]
+#           position: 8.0, 8.0
+#         - factions: [PlayerRobot, PlayerSentryBot]
+#           position: 0.0, 0.0
+
+# #Misfits Add - Procedural underground expedition difficulties
+# Three themes (Vault, Sewer, Metro) each at their own tier.
+# Maps are generated fresh every launch from a per-launch seed.
+# Grid size 96×96 keeps routes exploratory without making a solo site sprawl.
+# Entries without factionSpawns use one shared staging hub. Additional hubs are
+# only generated when explicit faction spawn groups exist.
+
+- type: n14ExpeditionDifficulty
+  id: N14ExpeditionVaultProcedural
+  name: n14-expedition-difficulty-vault-procgen
+  color: "#5A7A5A"  # vault green
+  duration: 1200    # 20 minutes
+  sortOrder: 1
+  maps:
+    - runtimeProcedural: true
+      proceduralTheme: Vault
+      proceduralGridSize: 96
+      proceduralDifficultyTier: 1
+      proceduralMinRooms: 11
+      proceduralMaxRooms: 15
+      proceduralHubCount: 1
+
+- type: n14ExpeditionDifficulty
+  id: N14ExpeditionSewerProcedural
+  name: n14-expedition-difficulty-sewer-procgen
+  color: "#4A7A4A"  # dirty sewer green
+  duration: 1200    # 20 minutes
+  sortOrder: 2
+  maps:
+    - runtimeProcedural: true
+      proceduralTheme: Sewer
+      proceduralGridSize: 96
+      proceduralDifficultyTier: 1
+      proceduralMinRooms: 11
+      proceduralMaxRooms: 16
+      proceduralHubCount: 1
+
+- type: n14ExpeditionDifficulty
+  id: N14ExpeditionMetroProcedural
+  name: n14-expedition-difficulty-metro-procgen
+  color: "#5A5A8A"  # metro slate blue
+  duration: 1200    # 20 minutes
+  sortOrder: 3
+  maps:
+    - runtimeProcedural: true
+      proceduralTheme: Metro
+      proceduralGridSize: 96
+      proceduralDifficultyTier: 1
+      proceduralMinRooms: 11
+      proceduralMaxRooms: 18
+      proceduralHubCount: 1
+
+# Blind pool used by world entrances. The selected theme is intentionally not
+# revealed before launch.
+- type: n14ExpeditionDifficulty
+  id: N14ExpeditionUnknownProcedural
+  name: n14-expedition-difficulty-unknown-procgen
+  color: "#6B8E5A"
+  duration: 1200
+  sortOrder: 100
+  maps:
+    - runtimeProcedural: true
+      proceduralTheme: Vault
+      proceduralGridSize: 96
+      proceduralDifficultyTier: 1
+      proceduralMinRooms: 11
+      proceduralMaxRooms: 15
+      proceduralHubCount: 1
+    - runtimeProcedural: true
+      proceduralTheme: Sewer
+      proceduralGridSize: 96
+      proceduralDifficultyTier: 1
+      proceduralMinRooms: 11
+      proceduralMaxRooms: 16
+      proceduralHubCount: 1
+    - runtimeProcedural: true
+      proceduralTheme: Metro
+      proceduralGridSize: 96
+      proceduralDifficultyTier: 1
+      proceduralMinRooms: 11
+      proceduralMaxRooms: 18
+      proceduralHubCount: 1

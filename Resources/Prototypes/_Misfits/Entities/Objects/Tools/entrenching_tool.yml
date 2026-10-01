@@ -1,0 +1,31 @@
+# #Misfits Add - Entrenching tool (fieldwork shovel).
+# Used to dig empty sandbags, fill them, and build/dismantle barricades.
+
+- type: entity
+  id: MisfitsEntrenchingTool
+  name: entrenching tool
+  description: A military-issue folding shovel. Used to dig earthworks and construct field barricades.
+    Not particularly useful for gardening.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/shovel.rsi
+    state: icon # #Misfits Fix - shovel.rsi has no 'shovel' state; correct state name is 'icon'
+  - type: Item
+    size: Normal
+  - type: EntrenchingTool
+    digDelay: 5
+    fillDelay: 3
+    layersPerDig: 5
+    totalLayers: 20
+    digSound:
+      path: /Audio/Items/shovel_dig.ogg
+    fillSound:
+      path: /Audio/Items/shovel_dig.ogg
+  - type: MeleeWeapon
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 5
+  - type: StaticPrice
+    price: 80

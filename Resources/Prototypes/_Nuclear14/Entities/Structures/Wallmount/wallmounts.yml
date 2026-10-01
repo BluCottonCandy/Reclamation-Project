@@ -1,0 +1,59 @@
+# For wallmount things that don't fit in any other file.
+
+# Safes
+
+# Vents
+- type: entity
+  parent: BaseSign
+  id: N14WallmountVent
+  name: vent
+  description: An airvent. Could be a good stash.
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: Structures/Storage/storage.rsi
+    layers:
+    - state: vent
+      map: [ "DoorVisualState.DoorOpen" ]
+  - type: SecretStash
+    secretPartName: secret-stash-part-vent
+    maxItemSize: Normal
+    openableStash: true
+  - type: ContainerContainer
+    containers:
+      stash: !type:ContainerSlot {}
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StashVisuals.DoorVisualState:
+        DoorVisualState.DoorOpen:
+          DoorOpen: { state: vent-open }
+          DoorClosed: { state: vent }
+
+- type: entity
+  parent: N14WallmountVent
+  id: N14WallmountVentDamaged
+  suffix: damaged
+  components:
+  - type: Sprite
+    layers:
+    - state: vent-damaged
+      map: [ "DoorVisualState.DoorOpen" ]
+  - type: SecretStash
+    toggleOpen: true
+
+- type: entity
+  parent: N14WallmountVent
+  id: N14WallmountVentOpen
+  suffix: open
+  components:
+  - type: Sprite
+    layers:
+    - state: vent-open
+      map: [ "DoorVisualState.DoorOpen" ]
+  - type: SecretStash
+    toggleOpen: true
+
+# First Aid

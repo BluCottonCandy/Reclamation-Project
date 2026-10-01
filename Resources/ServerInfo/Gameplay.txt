@@ -1,0 +1,92 @@
+[color=#a4885c][b]Understanding IC and OOC[/b][/color]
+
+If you are new to roleplay or unfamiliar with IC and OOC concepts, please read this section carefully.
+
+SS14 is a roleplaying game at its foundation. Each round, you take on the role of a character you created in the lobby. You select their name, background, and job preferences before joining the round.
+
+When you are actively playing your character in a round, you are [b]IC (In Character)[/b].
+This means:
+
+• You act as your character would act within the game world.
+• You do not remember previous rounds.
+• You do not know anything from outside the current round unless it is revealed in character.
+• You behave as if you are truly a member of the station crew.
+
+[b]OOC (Out of Character)[/b] refers to anything outside the game world.
+This includes:
+
+• OOC chat
+• Discord discussions
+• Conversations with friends
+• Streams or external communication
+
+Information learned OOC must never influence your IC actions.
+
+Examples of prohibited behavior:
+• Someone on Discord reveals who the traitor is and you act on it in game.
+• A friend tells you their location while dying and you rush to save them.
+• You read OOC chat about an event and prepare for it IC before it happens.
+
+This is called [b]metagaming[/b] and is a serious violation that may result in a ban.
+
+If you believe someone is using outside information in character, report it through admin help (ahelp) or the appropriate report channels.
+
+[b]Summary:[/b]
+While a round is active, keep round-related discussion inside the round. Do not share or act on external information until the round has ended.
+
+[color=#a4885c][b]Antagonists, RDM, and Self-Antagging[/b][/color]
+
+[b]Antagonist Selection[/b]
+
+If you enable antagonist roles in your character preferences, you are only opting into the chance to receive one. Selection is random and not guaranteed.
+
+If chosen, you will:
+• Receive a notification in chat.
+• Be given objectives accessible through your character interface.
+
+Being selected as an antagonist does not remove roleplay expectations.
+
+[b]Playing an Antagonist[/b]
+
+Your goal is to complete your assigned objectives. These objectives may involve sabotage, theft, escape, or sometimes death.
+
+However:
+
+• You are not automatically permitted to kill indiscriminately.
+• Actions should still fit the setting and roleplay expectations.
+• Chaos for its own sake is discouraged.
+
+Violence can be valid, but it should serve a purpose and contribute to the round’s story rather than simply ending it.
+
+[b]Responding to Antagonists[/b]
+
+If you suspect someone is an antagonist:
+
+• Inform Security through proper IC channels.
+• Protect yourself if necessary.
+• Remember that arrest and due process are preferable when possible.
+
+Survival is important, but escalation should still make sense in context.
+
+[b]RDM (Random Deathmatch)[/b]
+
+RDM is attacking or killing someone without roleplay justification or proper escalation.
+
+Examples include:
+• Killing someone without interaction or motive.
+• Attacking someone purely for amusement.
+
+If you are attacked and unsure whether it was valid, you may contact staff through ahelp when appropriate.
+
+[b]Self-Antagging[/b]
+
+Self-antagging occurs when a player who is not an assigned antagonist deliberately behaves like one.
+
+Examples include:
+• Attempted murder without antagonist status.
+• Sabotaging critical systems without reason.
+• Breaking into high-security areas without roleplay justification.
+
+Minor lawbreaking does not automatically qualify as self-antagging. However, major criminal actions without antagonist status will be treated seriously.
+
+If you are not selected as an antagonist, you are expected to perform your job and participate in the round as a normal crew member.

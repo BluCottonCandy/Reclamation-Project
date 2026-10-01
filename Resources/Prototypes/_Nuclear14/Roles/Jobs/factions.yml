@@ -1,0 +1,276 @@
+# Top-down, highest to lowest rank when possible.
+# - type: department
+#   id: BrotherhoodMidwest
+#   description: department-BrotherhoodMidwest-description
+#   color: "#3B72BF"
+#   roles:
+#   - BoSMidPaladinCommander
+#   - BoSMidPaladin
+#   - BoSMidScribe
+#   - BoSMidKnight
+#   - BoSMidSquire
+#   - BoSMidInquisitor # Forge-Change
+#   - BoSMidSerf  # moved to _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_serf.yml  # #Misfits Fix
+
+# - type: department
+#   id: BrotherhoodWashington
+#   description: department-BrotherhoodWashington-description
+#   color: "#a2000f"
+#   editorHidden: true
+#   roles:
+#   - BoSWashingtonCommander
+#   - BoSWashingtonPaladin
+#   - BoSWashingtonScribe
+#   - BoSWashingtonKnight
+#   - BoSWashingtonInitiate
+
+- type: department
+  id: BrotherhoodOfSteel
+  description: department-BrotherhoodOfSteel-description
+  color: "#3B72BF"
+  uiCategory: MajorFaction
+  roles:
+  # Command (Admin Only)
+  - BoSWestElderCommander        # Elder          | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_elder.yml
+  # Head Officers
+  - BoSMidPaladinCommander       # Head Paladin   | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_headpaladin.yml
+  #Misfits Change /Comment-out/: Washington BoS jobs removed from faction — prototypes commented out.
+  #- BoSWashingtonCommander       # Head Knight (old Washington)
+  - BoSHeadKnight                # Head Knight    | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_headknight.yml  #Misfits Change /Add/
+  - BoSWestScribe                # Head Scribe    | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_headscribe.yml
+  # Senior Members
+  - BoSMidPaladin                # Senior Paladin | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_seniorpaladin.yml
+  - BoSMidKnight                 # Senior Knight  | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_seniorknight.yml
+  - BoSMidScribe                 # Senior Scribe  | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_seniorscribe.yml
+  #Misfits Change - the aviator role moved into its own Lancers department below.
+  # Members
+  #- BoSWashingtonPaladin         # Paladin (old Washington)
+  #- BoSWashingtonKnight          # Knight (old Washington)
+  #- BoSWashingtonScribe          # Scribe (old Washington)
+  - BoSPaladin                   # Paladin        | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_paladin.yml  #Misfits Change /Add/
+  - BoSKnight                    # Knight         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_knight.yml  #Misfits Change /Add/
+  - BoSScribe                    # Scribe         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_scribe.yml  #Misfits Change /Add/
+  # Recruits
+  - BoSMidSquire                 # Squire         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_squire.yml
+  - BoSOffDuty                   # Off-duty       | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_off_duty.yml
+  #- BoSWashingtonInitiate        # Initiate (old Washington)
+  - BoSInitiate                  # Initiate       | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_initiate.yml  #Misfits Change /Add/
+
+# #Misfits Add - Brotherhood Lancers (aviation): the chapter's aviation branch, styled after the
+# Rangers/MilitaryPolice pattern of a sub-branch with its own department block.
+# The ID deliberately extends BrotherhoodOfSteel so ordinal sorting parks it directly
+# beneath the Brotherhood in the character selection screen.
+# #Misfits Change - Knight-Lancer is the sole role in the Brotherhood aviation branch.
+- type: department
+  id: BrotherhoodOfSteelLancers
+  description: department-BrotherhoodOfSteelLancers-description
+  color: "#2F5D8C" # deeper Wendover blue, distinct from the chapter's #3B72BF
+  uiCategory: MajorFaction
+  roles:
+  - BoSLancerKnight  # Knight-Lancer (player-facing) | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_lancer_knight.yml
+
+#- type: department
+#  id: CaravanCompany
+#  description: department-CaravanCompany-description
+#  color: "#a1887f"
+#  roles:
+#  - CaravanLeader
+#  - CaravanTrader
+#  - CaravanGuard
+
+- type: department
+  id: NCR
+  description: department-NCR-description
+  color: "#fbc02d"
+  uiCategory: MajorFaction
+  roles:
+  # Command Officers (Captain/Major pins) — repurposed from NCRCaptain
+  - NCRCommander         # NCR Commander           | _Misfits/Roles/Jobs/NCR/ncr_captain.yml
+  - NCRDoctor            # NCR Medical Doctor      | _Misfits/Roles/Jobs/NCR/ncr_doctor.yml
+  - NCRLTCol             # NCR Lieutenant Colonel  | _Misfits/Roles/Jobs/NCR/ncr_lieutenant_colonel.yml
+  # Junior Officers (2LT/1LT pins) — repurposed from NCRLT
+  - NCRExecutiveOfficer  # NCR Executive Officer   | _Misfits/Roles/Jobs/NCR/ncr_lieutenant.yml
+  - NCRPlatoonLeader     # NCR Platoon Leader      | _Misfits/Roles/Jobs/NCR/ncr_platoon_leader.yml
+  - NCRRO                # NCR Requisition Officer | _Misfits/Roles/Jobs/NCR/ncr_requisition_officer.yml
+  # Aviation (WO1/CW2/CW3 pins) — ranks on the warrant officer track, outside the command ladder
+  - NCRVertibirdPilot    # NCR Vertibird Pilot     | _Misfits/Roles/Jobs/NCR/ncr_vertibird_pilot.yml # #Misfits Add
+  # NCOs — 4 map slots, one job (CPL/SGT/SSG/SFC pins)
+  - NCRNCO               # NCR NCO (4 slots)       | _Misfits/Roles/Jobs/NCR/ncr_sergeant.yml
+  # Specialists (PV2/PFC/SPC pins)
+  - NCREngineer          # NCR Engineer            | _Misfits/Roles/Jobs/NCR/ncr_engineer.yml
+  - NCRMedic             # NCR Medic               | _Misfits/Roles/Jobs/NCR/ncr_medic.yml
+  - NCRWS                # NCR Weapon Specialist   | _Misfits/Roles/Jobs/NCR/ncr_specialist.yml
+  - NCRHeavyTrooperLead  # NCR Heavy Trooper Lead  | _Misfits/Roles/Jobs/NCR/ncr_heavy_trooper_lead.yml # #Misfits Add
+  - NCRHeavyTrooper      # NCR Heavy Trooper       | _Misfits/Roles/Jobs/NCR/ncr_heavy_trooper.yml
+  - SuperMutantNCRTrooper # Super Mutant Trooper   | _Misfits/Roles/Jobs/SuperMutant/supermutant.yml # Misfits Add
+  # Entry
+  - NCRCadet             # NCR Recruit             | _Misfits/Roles/Jobs/NCR/ncr_recruit.yml
+  # Special
+  - NCRCitizen           # NCR Citizen             | _Misfits/Roles/Jobs/NCR/ncr_citizen.yml # Misfits Add
+  - NCRTrader            # NCR Trader              | _Misfits/Roles/Jobs/NCR/ncr_trader.yml # Misfits Add
+  - NCRPrisoner           # NCR Prisoner            | _Misfits/Roles/Jobs/NCR/ncr_prisoner.yml
+  # Special roles outside the visible ladder (hidden from character creation):
+  #- NCRMPinvestigator    # NCR MP Investigator     | _Misfits/Roles/Jobs/NCR/ncr_mp_investigator.yml
+  # Hidden — kept for compatibility, not visible in character creation:
+  #- NCRMajor            # Superseded — Major is now a loadout pin for NCRCommander
+  #- NCRFirstSergeant    # Superseded — SFC is now a loadout pin for NCRNCO
+  #- NCRStaffSergeant    # Superseded — SSG is now a loadout pin for NCRNCO
+  #- NCRPrivateFirstClass # Superseded — PFC is now a loadout pin for specialists
+  #- NCRSoldier          # Retired — replaced by specialist roles + NCRCadet
+
+- type: department # #Misfits Add - Rangers department ladder moved into _Nuclear14 job definitions.
+  id: Rangers
+  description: department-Rangers-description
+  color: "#3ab700"
+  uiCategory: MajorFaction
+  roles:                                                                                                          # #Misfits Change - full Rangers ladder with NCR-prefixed IDs; NCRChiefRanger on top
+  - NCRChiefRanger   # Chief Ranger (admin-only) | _Misfits/Roles/Jobs/Rangers/chief_ranger.yml
+  - NCRVeteranRanger # Veteran Ranger            | _Misfits/Roles/Jobs/Rangers/ranger_veteran.yml
+  - NCRFieldRanger   # Field Ranger              | _Misfits/Roles/Jobs/Rangers/ranger.yml
+  - SuperMutantNCRRanger # Mutant Ranger         | _Misfits/Roles/Jobs/SuperMutant/supermutant.yml # Misfits Add
+  - NCRPatrolRanger  # Patrol Ranger             | _Misfits/Roles/Jobs/Rangers/ranger_recruit.yml
+  - NCRRangerRecruit # Ranger Recruit            | _Misfits/Roles/Jobs/Rangers/ncr_ranger_recruit.yml
+  #- NCRRanger       # NCR Desert Ranger (whitelist-only, outside the ladder) | _Misfits/Roles/Jobs/Rangers/ncr_ranger.yml  # #Misfits Removed - separate whitelist role, not part of station ladder
+
+- type: department
+  id: MilitaryPolice
+  description: department-NCRMilitaryPolice-description
+  color: "#662727"
+  uiCategory: MajorFaction
+  roles:
+  - NCRProvost #_Misfits/Roles/Jobs/NCR/ncr_provost.yml
+  - NCRMilitaryPoliceRecruit
+  - NCRMilitaryPoliceSergeant
+  - NCRMilitaryPoliceCaptain
+
+# #Misfits Add - NCR Office of Science and Industry (OSI). The Republic's civilian
+# science branch, operating beside the military ladder like the Rangers and MP.
+- type: department
+  id: OSI
+  description: department-OSI-description
+  color: "#26a69a"
+  uiCategory: MajorFaction
+  roles:
+  - OSIChiefScientist # OSI Chief Scientist | _Misfits/Roles/Jobs/OSI/osi_jobs.yml
+  - OSIAgent          # OSI Agent (whitelist-only) | _Misfits/Roles/Jobs/OSI/osi_jobs.yml
+  - OSIScientist      # OSI Scientist | _Misfits/Roles/Jobs/OSI/osi_jobs.yml
+  - OSIAssistant      # OSI Assistant | _Misfits/Roles/Jobs/OSI/osi_jobs.yml
+
+- type: department
+  id: Tribe
+  description: department-Tribe-description
+  color: "#d69b3d"
+  uiCategory: MinorFaction
+  roles:
+  - TribalElder
+  - SuperElder # #Misfits Add - sagely old tribal, second-in-command to the Chieftan | _Misfits/Roles/Jobs/Tribe/super_elder.yml
+  - SuperMutantTribal # Misfits Change - dual departmental citizenship for mutants
+  - TribalShaman # #Misfits Change - renamed from TribalHealer
+  - TribalFarmer
+  - Tribal
+  - SyntheticProtectronTribal # Misfits Change
+
+- type: department
+  id: Vault
+  description: department-Vault-description
+  color: "#0d47a1"
+  uiCategory: MinorFaction
+  roles:
+  - Overseer
+  - VaultSecurity
+  - VaultDoctor
+  - VaultEngineer
+  - VaultSalvageSpecialist
+  - VaultCargoSpecialist
+  - VaultCourier
+  - VaultDweller
+  # #Misfits Add - vault-assigned robots (showBorder on MrHandy creates the visual separator; hidden without Robots whitelist)
+  - SyntheticMrHandy
+  - SyntheticProtectron
+  - SyntheticMrGutsy
+  - SyntheticRobobrain
+
+- type: department
+  id: Wastelander
+  description: department-Wastelander-description
+  color: "#81c784"
+  uiCategory: NoFaction
+  roles:
+  - Wastelander
+  - Outcast
+  - WasterTrader
+  # Forge-Change: Followers — moved to FollowersOfTheApocalypse department in _Misfits/Roles/Jobs/Followers/followers.yml
+
+- type: department
+  id: Townsfolk
+  description: department-Townsfolk-description
+  color: "#5c733a"
+  uiCategory: MinorFaction
+  roles:
+  - Ambassador
+  - TownMayor
+  - TownSheriff
+  - TownDeputy
+  # - TownDoctor # #Misfits Tweak - disabled; Followers of the Apocalypse replaces town medical coverage.
+  - TownShopkeeper
+  - TownShopkeeperHelper # Forge-Add
+  - WastelandChaplain # Forge-Change
+  - WastelandBartender # Moved from the Wastelander department, ID unchanged to avoid glitches for players who have it selected.
+  - WastelandReporter # Moved from the Wastelander department, ID unchanged to avoid glitches for players who have it selected.
+  - TownMechanic
+  - Townsperson
+  - WastelandFarmer # Forge-Change
+
+#- type: department #Disabled until roles are implemented.
+#  id: Zetan
+#  description: department-Zetan-description
+#  color: "#7ec133"
+#  roles:
+#  - Zetan
+
+#- type: department #Disabled until roles are implemented.
+#  id: Followers
+#  description: department-Followers-description
+#  color: "#33a1c1"
+#  roles:
+#  - Followers
+
+# #Misfits Add: Caesar's Legion is now a playable faction.
+- type: department # #Misfits Add - Caesar's Legion department block.
+  id: CaesarLegion
+  description: department-CaesarLegion-description
+  color: "#8B0000"
+  weight: -99 # #Misfits Add: sort Legion to the end of the department list
+  uiCategory: MajorFaction
+  roles:
+  # Command (Whitelisted)
+  - CaesarLegionLegate          # Legate              | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - CaesarLegionCenturion       # Centurion           | _Misfits/Roles/Jobs/CaesarLegion/legion_centurion.yml # #Misfits Add
+  # Support Officers #Misfits Add: Optio and Priestess sit in their own tier between Command and NCOs.
+  - CaesarLegionOptio          # Optio                | _Misfits/Roles/Jobs/CaesarLegion/legion_optio.yml # #Misfits Add
+  - CaesarLegionPriestessOfMars # Priestess of Mars   | _Misfits/Roles/Jobs/CaesarLegion/legion_priestess_of_mars.yml # #Misfits Add
+  # Senior NCOs
+  - CaesarLegionVeteranDecanus  # Veteran Decanus     | _Misfits/Roles/Jobs/CaesarLegion/legion_veteran_decanus.yml # #Misfits Add
+  - CaesarLegionPrimeDecanus    # Prime Decanus       | _Misfits/Roles/Jobs/CaesarLegion/legion_prime_decanus.yml # #Misfits Add
+  - CaesarLegionDean            # Decanus             | _Misfits/Roles/Jobs/CaesarLegion/legion_decanus.yml # #Misfits Add
+  - CaesarLegionForgemaster     # Forgemaster         | _Misfits/Roles/Jobs/CaesarLegion/legion_forgemaster.yml # #Misfits Add
+  - CaesarLegionAcolyteOfMars   # Acolyte of Mars     | _Misfits/Roles/Jobs/CaesarLegion/legion_Acolyte.yml # #Misfits Add
+  # Warriors
+  - CaesarLegionLegionnaireVeteran  # Veteran Legionnaire | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_veteran.yml # #Misfits Add
+  - CaesarLegionLegionnaireWarrior  # Legionnaire Warrior | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_warrior.yml # #Misfits Add
+  - CaesarLegionLegionnaireRecruit  # Legionnaire Recruit | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_recruit.yml # #Misfits Add
+  - CaesarLegionTempleGuard         # Temple Guard        | _Misfits/Roles/Jobs/CaesarLegion/legion_temple_guard.yml # #Misfits Add
+  # Specialists # #Misfits Change /Fix/: Match Character Setup and Latejoin order to the requested Legion rank grouping.
+  - CaesarLegionHoundmaster     # Houndmaster         | _Misfits/Roles/Jobs/CaesarLegion/legion_houndmaster.yml # #Misfits Add
+  - CaesarLegionFrumentarii     # Frumentarii         | _Misfits/Roles/Jobs/CaesarLegion/legion_frumentarii.yml  # #Misfits Fix - renamed from legion_venator.yml to match in-game role name
+  - CaesarLegionVexillarius     # Vexillarius         | _Misfits/Roles/Jobs/CaesarLegion/legion_vexillarius.yml # #Misfits Add
+  - CaesarLegionExplorer        # Explorer            | _Misfits/Roles/Jobs/CaesarLegion/legion_explorer.yml # #Misfits Add
+  - CaesarLegionAuxilia         # Auxilia             | _Misfits/Roles/Jobs/CaesarLegion/legion_auxilia.yml # #Misfits Add
+  # Recruits
+  # #Misfits Change: CaesarLegionRecruit removed — replaced by Legionnaire (CaesarLegionLegionnaireRecruit).
+  # - CaesarLegionRecruit         # Recruit             | _Misfits/Roles/Jobs/CaesarLegion/legion_recruit.yml
+  - SuperMutantGladiator        # Mutant Gladiator    | _Misfits/Roles/Jobs/SuperMutant/supermutant.yml   # Misfits Add
+  - CaesarLegionSlave           # Slave               | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml # #Misfits Add
+  - CaesarLegionCitizen         # Civilian            | _Misfits/Roles/Jobs/CaesarLegion/legion_civilian.yml # #Misfits Add
+  - CaesarLegionTrader          # Trader              | _Misfits/Roles/Jobs/CaesarLegion/legion_trader.yml # #Misfits Add
+

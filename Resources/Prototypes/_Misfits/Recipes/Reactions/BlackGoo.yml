@@ -1,0 +1,39 @@
+- type: reaction
+  id: blackgooPowderStim
+  reactants:
+    HealingPowder:
+      amount: 1
+    HealingMixture:
+      amount: 1
+  products:
+    blackgoo: 1
+
+- type: reaction
+  id: blackgooPowderSuper
+  reactants:
+    HealingPowder:
+      amount: 1
+    RobustHealingMixture:
+      amount: 1
+  products:
+    blackgoo: 1
+
+- type: reaction
+  id: blackgooPoulticeSuper
+  reactants:
+    HealingPoultice:
+      amount: 1
+    RobustHealingMixture:
+      amount: 1
+  products:
+    blackgoo: 2
+
+- type: reaction
+  id: blackgooPoulticeStim
+  reactants:
+    HealingPoultice:
+      amount: 1
+    HealingMixture:
+      amount: 1
+  products:
+    blackgoo: 1

@@ -1,0 +1,425 @@
+﻿- type: loadout
+  id: N14InstrumentBanjo
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentBanjo
+
+- type: loadout
+  id: N14InstrumentClarinet
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentClarinet
+
+- type: loadout
+  id: N14InstrumentFlute
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentFlute
+
+- type: loadout
+  id: N14InstrumentGuitar
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentGuitar
+
+- type: loadout
+  id: N14InstrumentHarmonica
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentHarmonica
+
+- type: loadout
+  id: N14InstrumentPanflute
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentPanflute
+
+- type: loadout
+  id: N14InstrumentSaxaphone
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentSaxaphone
+
+- type: loadout
+  id: N14InstrumentTrombone
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentTrombone
+
+- type: loadout
+  id: N14InstrumentTrumpet
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentTrumpet
+
+- type: loadout
+  id: N14InstrumentViolin
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentViolin
+
+# Smokeables
+- type: loadout
+  id: N14LoadoutItemCigsSalem
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutSmokeables
+  items:
+    - N14CigarettePackSalem
+
+- type: loadout
+  id: N14LoadoutItemCigsKool
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutSmokeables
+  items:
+    - N14CigarettePackKool
+
+- type: loadout
+  id: N14LoadoutItemCigsMarlboro
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutSmokeables
+  items:
+    - N14CigarettePackMarlboro
+
+- type: loadout
+  id: N14LoadoutItemCigsWinston
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutSmokeables
+  items:
+    - N14CigarettePackWinston
+
+- type: loadout
+  id: N14LoadoutItemCigsCustom
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutSmokeables
+  items:
+    - N14CigarettePackCustom
+
+- type: loadout
+  id: N14LoadoutItemCigsRepublics
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutSmokeables
+  items:
+    - N14CigarettePackRepublics
+
+- type: loadout
+  id: N14LoadoutItemCigsLuckyStrike
+  category: Items
+  cost: 0
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutSmokeables
+  - !type:CharacterJobRequirement
+    jobs:
+      - EnclaveEnlisted
+      - EnclaveNCO
+      - EnclaveJuniorOfficer
+      - EnclaveVertibirdPilot
+      - EnclaveSeniorOfficer
+      - EnclaveCommander
+      - EnclaveJuniorScientist
+      - EnclaveScientist
+      - EnclaveHeadScientist
+
+  items:
+  - N14CigarettePackLuckyStrike
+
+# Lighters
+- type: loadout
+  id: N14LoadoutItemLighter
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutLighters
+  items:
+    - Lighter
+
+- type: loadout
+  id: N14LoadoutItemLighterCheap
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutLighters
+  items:
+    - CheapLighter
+
+- type: loadout
+  id: N14LoadoutItemMatches
+  category: Items
+  cost: 0
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutLighters
+  items:
+    - Matchbox
+
+- type: loadout
+  id: N14LoadoutItemWallet
+  category: Items
+  cost: 0
+  items:
+    - N14Wallet
+
+- type: loadout
+  id: d6Dice
+  category: Items
+  cost: 0
+  items:
+    - d6Dice
+
+- type: loadout
+  id: N14LoadoutItemCanteen
+  category: Items
+  cost: 0
+  items:
+    - N14JunkVaultCanteen
+
+- type: loadout
+  id: N14LoadoutItemFlask
+  category: Items
+  cost: 0
+  items:
+    - N14JunkCeramicFlask
+
+- type: loadout
+  id: N14LoadoutItemCig
+  category: Items
+  cost: 0
+  items:
+    - N14Cigarette
+
+# Tools
+- type: loadout
+  id: N14LoadoutBeltUtility
+  category: Items
+  cost: 5
+  requirements:
+    - !type:OverallTimeRequirement
+      min: 3600
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingBeltUtilityFilled
+
+- type: loadout
+  id: LoadoutItemBarberScissors
+  category: Items
+  cost: 0
+  items:
+    - BarberScissors
+
+# Food
+- type: loadout
+  id: N14LoadoutFoodPorkBeans
+  category: Items
+  cost: 1
+  items:
+    - N14FoodPorkBeans
+
+- type: loadout
+  id: N14InstrumentElectricGuitar
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentElectricGuitar
+
+- type: loadout
+  id: N14InstrumentBassGuitar
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentBassGuitar
+
+- type: loadout
+  id: N14InstrumentRockGuitar
+  category: Items
+  cost: 0
+  items:
+    - N14InstrumentRockGuitar
+
+- type: loadout
+  id: N14ReagentContainerOliveoil
+  category: Items
+  cost: 1
+  items:
+  - N14ReagentContainerOliveoil
+
+- type: loadout
+  id: FlippoLighter
+  category: Items
+  cost: 0
+  items:
+  - FlippoLighter
+
+- type: loadout
+  id: FlippoEngravedLighter
+  category: Items
+  cost: 1
+  items:
+  - FlippoEngravedLighter
+
+
+
+# Misc
+# Misfits Change: Removed bottlecap (N14CurrencyCap100) loadout entry â€” caps are no longer granted to players at round start via loadouts.
+#- type: loadout
+#  id: N14CurrencyCap100
+#  category: Items
+#  cost: 5
+#  requirements:
+#  - !type:CharacterJobRequirement # Forge-Change
+#      inverted: true
+#      jobs:
+#      - BoSMidSerf
+#      - CaesarLegionSlave
+#      - NCRPrisoner
+#  items:
+#    - N14CurrencyCap100
+
+# Heals and Drugs
+
+- type: loadout
+  id: LoadoutJet
+  category: Items
+  cost: 1
+  items:
+    - N14Jet
+
+- type: loadout
+  id: LoadoutTurbo
+  category: Items
+  cost: 3
+  items:
+    - N14Turbo
+
+- type: loadout
+  id: LoadoutPsycho
+  category: Items
+  cost: 6
+  items:
+    - N14Psycho
+
+
+- type: loadout
+  id: LoadoutHealingPowder
+  category: Items
+  cost: 1
+  items:
+    - N14HealingPowder
+
+
+- type: loadout
+  id: LoadoutHealingPoutltice
+  category: Items
+  cost: 3
+  items:
+    - N14HealingPoultice
+
+# Spray Paint
+- type: loadout
+  id: LoadoutStimpakDirty
+  category: Items
+  cost: 1
+  items:
+    - N14StimpakDirty
+
+- type: loadout
+  id: LoadoutStimpak
+  category: Items
+  cost: 4
+  items:
+    - N14Stimpak
+
+
+# Paints
+
+- type: loadout
+  id: LoadoutSprayPaintBlue
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintBlue
+
+- type: loadout
+  id: LoadoutSprayPaintRed
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintRed
+
+- type: loadout
+  id: LoadoutSprayPaintBlack
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintBlack
+
+- type: loadout
+  id: LoadoutSprayPaintOrange
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintOrange
+
+- type: loadout
+  id: LoadoutSprayPaintPurple
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintPurple
+
+- type: loadout
+  id: LoadoutSprayPaintWhite
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintWhite
+
+- type: loadout
+  id: LoadoutSprayPaintGreen
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintGreen
+
+- type: loadout
+  id: LoadoutSprayPaintDesertTan
+  category: Items
+  cost: 0
+  items:
+    - SprayPaintDesertTan
+
+

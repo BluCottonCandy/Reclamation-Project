@@ -1,0 +1,211 @@
+# #Misfits Add: Faction blueprint lathe recipes.
+#
+# LEGACY FILE — The old 8 blueprint recipes below have been superseded by the
+# tiered faction blueprint system (72 recipes across 6 factions × 4 tiers × 3 types).
+# New recipes are in:
+#   blueprint_recipes_ncr_legion.yml
+#   blueprint_recipes_bos_town.yml
+#   blueprint_recipes_vault_tribe.yml
+# Categories defined in: categories_blueprints.yml
+# Blueprint items defined in: Entities/Objects/Blueprints/blueprints.yml
+#
+# Old recipes are commented out per the no-deletion rule.
+
+# ===========================================================================
+# SECTION A – BLUEPRINT PRINTING RECIPES (already commented out — blueprints are world-found)
+# ===========================================================================
+
+# --- Brotherhood of Steel ---
+
+#- type: latheRecipe
+#  id: N14ClothingOuterMBoSInitiateArmorBlueprint
+#  result: N14ClothingOuterMBoSInitiateArmorBlueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - BrotherhoodOfSteel
+#  materials:
+#    Paper: 100
+
+#- type: latheRecipe
+#  id: N14ClothingOuterMidwestArmorBlueprint
+#  result: N14ClothingOuterMidwestArmorBlueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - BrotherhoodOfSteel
+#  materials:
+#    Paper: 100
+
+#- type: latheRecipe
+#  id: N14ClothingOuterMidwestArmorMK2Blueprint
+#  result: N14ClothingOuterMidwestArmorMK2Blueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - BrotherhoodOfSteel
+#  materials:
+#    Paper: 100
+
+# --- Caesar's Legion ---
+
+#- type: latheRecipe
+#  id: N14ClothingOuterLegionnaireBaseArmorBlueprint
+#  result: N14ClothingOuterLegionnaireBaseArmorBlueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - CaesarLegion
+#  materials:
+#    Paper: 100
+
+#- type: latheRecipe
+#  id: N14ClothingOuterLegionnaireVeteranArmorBlueprint
+#  result: N14ClothingOuterLegionnaireVeteranArmorBlueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - CaesarLegion
+#  materials:
+#    Paper: 100
+
+# --- New California Republic ---
+
+#- type: latheRecipe
+#  id: N14ClothingOuterNCRVestDesertBlueprint
+#  result: N14ClothingOuterNCRVestDesertBlueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - NCR
+#  materials:
+#    Paper: 100
+
+#- type: latheRecipe
+#  id: N14ClothingOuterNCRCombatArmorBlueprint
+#  result: N14ClothingOuterNCRCombatArmorBlueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - NCR
+#  materials:
+#    Paper: 100
+
+#- type: latheRecipe
+#  id: N14ClothingOuterNCRCombatArmorMK2Blueprint
+#  result: N14ClothingOuterNCRCombatArmorMK2Blueprint
+#  category: N14Blueprints
+#  completetime: 1
+#  availableFaction:
+#    - NCR
+#  materials:
+#    Paper: 100
+
+# ===========================================================================
+# SECTION B – OLD BLUEPRINT CRAFTING RECIPES (superseded by tiered system)
+#   #Misfits Change: Commented out — replaced by tiered blueprint recipes in
+#   blueprint_recipes_ncr_legion.yml, blueprint_recipes_bos_town.yml,
+#   blueprint_recipes_vault_tribe.yml
+# ===========================================================================
+
+# --- Brotherhood of Steel ---
+
+#- type: latheRecipe
+#  id: N14ClothingOuterMBoSInitiateArmorBlueprintCraft
+#  result: N14ClothingOuterMBoSInitiateArmor
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - BrotherhoodOfSteel
+#  materials:
+#    Cloth: 100
+#    Thread: 200
+
+#- type: latheRecipe
+#  id: N14ClothingOuterMidwestArmorBlueprintCraft
+#  result: N14ClothingOuterMidwestArmor
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - BrotherhoodOfSteel
+#  materials:
+#    Cloth: 200
+#    Thread: 300
+
+#- type: latheRecipe
+#  id: N14ClothingOuterMidwestArmorMK2BlueprintCraft
+#  result: N14ClothingOuterMidwestArmorMK2
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - BrotherhoodOfSteel
+#  materials:
+#    Cloth: 300
+#    Thread: 400
+
+# --- Caesar's Legion ---
+
+#- type: latheRecipe
+#  id: N14ClothingOuterLegionnaireBaseArmorBlueprintCraft
+#  result: N14ClothingOuterLegionnaireBaseArmor
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - CaesarLegion
+#  materials:
+#    Cloth: 100
+#    Thread: 200
+
+#- type: latheRecipe
+#  id: N14ClothingOuterLegionnaireVeteranArmorBlueprintCraft
+#  result: N14ClothingOuterLegionnaireVeteranArmor
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - CaesarLegion
+#  materials:
+#    Cloth: 200
+#    Thread: 300
+
+# --- New California Republic ---
+
+#- type: latheRecipe
+#  id: N14ClothingOuterNCRVestDesertBlueprintCraft
+#  result: N14ClothingOuterNCRVestDesert
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - NCR
+#  materials:
+#    Cloth: 100
+#    Thread: 200
+
+#- type: latheRecipe
+#  id: N14ClothingOuterNCRCombatArmorBlueprintCraft
+#  result: N14ClothingOuterNCRCombatArmor
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - NCR
+#  materials:
+#    Cloth: 200
+#    Thread: 300
+
+#- type: latheRecipe
+#  id: N14ClothingOuterNCRCombatArmorMK2BlueprintCraft
+#  result: N14ClothingOuterNCRCombatArmorMK2
+#  category: N14Armor
+#  completetime: 7
+#  requiresBlueprint: true
+#  availableFaction:
+#    - NCR
+#  materials:
+#    Cloth: 300
+#    Thread: 400

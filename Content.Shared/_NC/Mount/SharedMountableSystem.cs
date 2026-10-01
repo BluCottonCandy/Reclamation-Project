@@ -1,0 +1,200 @@
+using System.Numerics;
+using Content.Shared._NC.Mountable.Components;
+using Content.Shared.Buckle;
+using Content.Shared.Buckle.Components;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Components;
+using Content.Shared.Movement.Systems;
+using Content.Shared.NPC;
+using Content.Shared.Standing;
+using Content.Shared.Weapons.Melee.Events;
+
+
+namespace Content.Shared._NC.Mountable;
+
+/// <summary>
+/// The system responsible for mount management
+/// </summary>
+public sealed class SharedMountSystem : EntitySystem
+{
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
+    [Dependency] private readonly SharedMoverController _mover = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        // #Misfits Fix — subscribe to the MOUNT's MoveEvent, not the rider's.
+        // The rider is parented to the mount after buckle, so modifying rider
+        // position from the rider's own MoveEvent used the wrong coordinate space
+        // (mountXform.LocalPosition + offset treated as local-to-mount) and
+        // triggered BuckleTransformCheck, causing instant unbuckle & teleports.
+        SubscribeLocalEvent<MountableComponent, MoveEvent>(OnMountMove);
+        SubscribeLocalEvent<RiderComponent, MobStateChangedEvent>(OnMobStateChanged);
+        SubscribeLocalEvent<MountableComponent, MeleeHitEvent>(OnMeleeHit);
+
+        SubscribeLocalEvent<MountableComponent, DownAttemptEvent>(OnDownAttempt);
+        SubscribeLocalEvent<MountableComponent, StrappedEvent>(OnStrapped);
+        SubscribeLocalEvent<MountableComponent, UnstrappedEvent>(OnUnstrapped);
+        SubscribeLocalEvent<MountableComponent, MobStateChangedEvent>(OnMobStateChanged);
+    }
+
+    /// <summary>
+    /// Responsible for shifting the rider when the mount rotates.
+    /// The rider is parented to the mount, so LocalPosition is relative to mount.
+    /// We only need the direction-dependent offset, not the mount's grid position.
+    /// </summary>
+    private void OnMountMove(Entity<MountableComponent> ent, ref MoveEvent args)
+    {
+        // #Misfits Fix — only update rider offset when mount rotation changes
+        if (args.NewRotation == args.OldRotation)
+            return;
+
+        if (ent.Comp.Rider is not { } rider)
+            return;
+
+        var direction = args.NewRotation.GetDir();
+        var offset = ent.Comp.RiderOffset + ent.Comp.DirectionOffsets.GetValueOrDefault(direction, Vector2.Zero);
+        _transform.SetLocalPositionNoLerp(rider, offset);
+    }
+    private void OnMeleeHit(Entity<MountableComponent> ent, ref MeleeHitEvent args)
+    {
+        if (args.User == ent.Comp.Rider) // Don't hit your own horse
+            args.Handled = true;
+    }
+
+    /// <summary>
+    /// Checking that you can't drop a mount with a rider
+    /// </summary>
+    private void OnDownAttempt(Entity<MountableComponent> ent, ref DownAttemptEvent args)
+    {
+        if (ent.Comp.Rider != null)
+            args.Cancel();
+    }
+
+    /// <summary>
+    /// The method of attaching a rider to a mount
+    /// </summary>
+    private void OnStrapped(Entity<MountableComponent> ent, ref StrappedEvent args)
+    {
+        if (_mobState.IsDead(ent))
+        {
+            _buckle.TryUnbuckle(args.Buckle.Owner, ent.Owner);
+            return;
+        }
+
+        EnsureComp<InputMoverComponent>(ent);
+        var rider = EnsureComp<RiderComponent>(args.Buckle.Owner);
+        rider.Mount = ent.Owner;
+        ent.Comp.Rider = args.Buckle.Owner;
+
+        Dirty(ent.Owner, ent.Comp);
+        Dirty(args.Buckle.Owner, rider);
+
+        // #Misfits Fix — set initial rider offset based on current mount facing
+        if (TryComp(ent, out TransformComponent? mountXform))
+        {
+            var direction = mountXform.LocalRotation.GetDir();
+            var offset = ent.Comp.RiderOffset + ent.Comp.DirectionOffsets.GetValueOrDefault(direction, Vector2.Zero);
+            _transform.SetLocalPositionNoLerp(args.Buckle.Owner, offset);
+        }
+
+        var controlAttempt = new MountMovementControlAttemptEvent(args.Buckle.Owner);
+        RaiseLocalEvent(ent.Owner, ref controlAttempt);
+        ent.Comp.RiderControlsMovement = ent.Comp.ControlMovement && !controlAttempt.Cancelled;
+        ent.Comp.HadActiveNpcBeforeMount = HasComp<ActiveNPCComponent>(ent);
+
+        if (ent.Comp.RiderControlsMovement)
+        {
+            _mover.SetRelay(args.Buckle.Owner, ent.Owner);
+            RemComp<ActiveNPCComponent>(ent);
+        }
+
+        if (_standing.IsDown(ent))
+            _standing.Stand(ent);
+
+        if (!TryComp<MovementSpeedModifierComponent>(ent, out var move))
+            return;
+
+        if (!ent.Comp.RiderControlsMovement)
+            return;
+
+        var walk = move.BaseWalkSpeed * ent.Comp.MountedSpeed;
+        var sprint = move.BaseSprintSpeed * ent.Comp.MountedSpeed;
+        _movement.ChangeBaseSpeed(ent, walk, sprint, move.Acceleration, move);
+    }
+
+    /// <summary>
+    /// Unties and removes the rider
+    /// </summary>
+    private void OnUnstrapped(Entity<MountableComponent> ent, ref UnstrappedEvent args)
+    {
+        if (TryComp<RelayInputMoverComponent>(args.Buckle.Owner, out var relay) &&
+            relay.RelayEntity == ent.Owner)
+        {
+            RemComp<RelayInputMoverComponent>(args.Buckle.Owner);
+        }
+
+        RemComp<RiderComponent>(args.Buckle.Owner);
+        ent.Comp.Rider = null;
+        var riderControlledMovement = ent.Comp.RiderControlsMovement;
+        ent.Comp.RiderControlsMovement = false;
+
+        Dirty(ent.Owner, ent.Comp);
+
+        if (ent.Comp.HadActiveNpcBeforeMount)
+            EnsureComp<ActiveNPCComponent>(ent);
+
+        ent.Comp.HadActiveNpcBeforeMount = false;
+        if (!TryComp<MovementSpeedModifierComponent>(ent, out var move))
+            return;
+
+        if (!riderControlledMovement)
+            return;
+
+        var walk = move.BaseWalkSpeed / ent.Comp.DefaultSpeed;
+        var sprint = move.BaseSprintSpeed / ent.Comp.DefaultSpeed;
+        _movement.ChangeBaseSpeed(ent, walk, sprint, move.Acceleration, move);
+    }
+
+    /// <summary>
+    /// Resets the rider if he starts to die
+    /// </summary>
+    private void OnMobStateChanged(Entity<RiderComponent> ent, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Alive || ent.Comp.Mount == null)
+            return;
+
+        _buckle.TryUnbuckle(ent.Owner, ent.Comp.Mount);
+    }
+
+    /// <summary>
+    /// Resets the rider if the mount starts to die and returns everything as it was if everything is fine with it
+    /// </summary>
+    private void OnMobStateChanged(Entity<MountableComponent> ent, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState != MobState.Alive)
+        {
+            ent.Comp.ControlMovement = false;
+            if (ent.Comp.Rider != null)
+                _buckle.TryUnbuckle(ent.Comp.Rider.Value, ent.Owner);
+        }
+        else
+        {
+            ent.Comp.ControlMovement = true;
+            if (ent.Comp.Rider != null)
+                _buckle.TryUnbuckle(ent.Comp.Rider.Value, ent.Owner);
+        }
+    }
+}
+
+[ByRefEvent]
+public record struct MountMovementControlAttemptEvent(EntityUid Rider)
+{
+    public bool Cancelled;
+}

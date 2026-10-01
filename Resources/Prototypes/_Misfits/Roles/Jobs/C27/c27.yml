@@ -1,0 +1,230 @@
+# C-27 Humanoid Robot — department + jobs + playtime tracker. #Misfits Add (Phase G)
+# Mirrors the Synthetics/SuperMutant whitelist-only species-job pattern.
+#
+# #Misfits Change - Split the original single C27 job into three sibling jobs so each
+# faction variant appears as its own entry in the admin role-whitelist UI:
+#   C27     → C-27 Humanoid Robot (Unassigned)  — chassis jumpsuit only, no faction kit
+#   C27NCR  → C-27 NCR Humanoid Robot           — NCR Light kit + headset + dogtag
+#   C27BoS  → C-27 Brotherhood Humanoid Robot   — BoS Light kit + headset + holotag
+# All three share the C27 playTimeTracker so playtime + bypass-role-timer behaviour
+# stays unified, and all three register the PlayerRobot faction.
+
+- type: department
+  id: C27Unit
+  description: department-C27Unit-description
+  color: "#8a96a3" # light brushed-steel grey, distinct from Robots (#607d8b)
+  # #Misfits Tweak - lowered weight from -100 to -102 so the lobby UI sorts
+  # Robots/FEVMutants (-100) and Enclave (-101) between CaesarLegion (-99) and
+  # C27Unit, matching the visual margin/spacing of the other special departments.
+  weight: -102
+  uiCategory: Whitelist
+  roles:
+  - C27       # #Misfits Change - was the only role; now joined by C27NCR / C27BoS below.
+  - C27NCR    # #Misfits Add - NCR variant role
+  - C27BoS    # #Misfits Add - Brotherhood variant role
+  - C27ZAX    # #Misfits Add - Z.A.X chassis variant role
+
+# --- Generic / Unassigned variant ----------------------------------------------------
+- type: job
+  id: C27
+  name: job-name-c27
+  description: job-description-c27
+  playTimeTracker: C27
+  icon: JobIconBorg
+  supervisors: job-supervisors-c27
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true # admin job whitelist required (jobwhitelistadd <player> C27)
+  hideWithoutWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  spawnLoadout: true # #Misfits Tweak (Phase H revised) - loadout tab re-enabled via allowedLoadoutCategories on species
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn (matches synthetic jobs)
+  startingGear: C27GearGeneric # #Misfits Change - was C27Gear (subGear dispatch); now per-job direct gear
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27 # Generic / Unassigned model only — NCR and BoS variants live on their own jobs
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+
+# --- NCR variant ---------------------------------------------------------------------
+- type: job
+  id: C27NCR # #Misfits Add - distinct whitelist entry for NCR-aligned C-27 chassis
+  name: job-name-c27-ncr
+  description: job-description-c27-ncr
+  playTimeTracker: C27NCR # #Misfits Tweak - unique tracker required (1:1 with job ID)
+  icon: JobIconBorg
+  supervisors: job-supervisors-c27
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true # admin job whitelist required (jobwhitelistadd <player> C27NCR)
+  hideWithoutWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  spawnLoadout: true
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  access: # #Misfits Fix - stamp NCR door access onto the spawned dogtag for the NCR C-27 variant.
+  - NCR
+  startingGear: C27GearNCR
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27NCR
+  # #Misfits Tweak - SharedJobSystem requires a unique PlayTimeTracker per job; override here.
+  # (Was sharing tracker 'C27' with the other two siblings, which crashed startup.)
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - NCR
+          - Wastelander
+
+# --- Brotherhood of Steel variant ----------------------------------------------------
+- type: job
+  id: C27BoS # #Misfits Add - distinct whitelist entry for Brotherhood-aligned C-27 chassis
+  name: job-name-c27-bos
+  description: job-description-c27-bos
+  playTimeTracker: C27BoS # #Misfits Tweak - unique tracker required (1:1 with job ID)
+  icon: JobIconBorg
+  supervisors: job-supervisors-c27
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true # admin job whitelist required (jobwhitelistadd <player> C27BoS)
+  hideWithoutWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  spawnLoadout: true
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  accessGroups: # #Misfits Fix - stamp Brotherhood door access onto the spawned holotag for the BoS C-27 variant.
+  - BOSInitiate
+  startingGear: C27GearBoS
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27BoS
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - BrotherhoodOfSteel
+          - Wastelander
+
+# --- Z.A.X variant -------------------------------------------------------------------
+- type: job
+  id: C27ZAX
+  name: job-name-c27-zax
+  description: job-description-c27-zax
+  playTimeTracker: C27ZAX
+  icon: JobIconBorg
+  supervisors: job-supervisors-c27
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  spawnLoadout: true
+  applyTraits: true # #Misfits Fix - robot accent perks: apply selected accents at spawn
+  startingGear: C27GearZAX
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27ZAX
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+
+# Starting gear, one per job. Faction kits open an UndecidedLoadoutBackpack UI that
+# now offers Light only — Medium / Heavy variants are obtained by crafting at an armor
+# workbench using the C-27 Armor Blueprint (NCR / BoS / Generic).
+# #Misfits Removed - subGear dispatch (C27Gear → C27GearNCRKit/C27GearBoSKit) replaced
+# with three plain starting gears, one per sibling job. Old block kept commented for
+# reference per the no-deletion rule.
+#- type: startingGear
+#  id: C27Gear
+#  equipment:
+#    jumpsuit: ClothingC27Chassis
+#  subGear:
+#  - C27GearNCRKit
+#  - C27GearBoSKit
+#- type: startingGear
+#  id: C27GearNCRKit
+#  requirements:
+#  - !type:CharacterSpeciesRequirement
+#    species: [C27NCR]
+#  equipment:
+#    pocket1: C27NCRLoadoutKit
+#    ears: N14ClothingHeadsetNCR
+#    id: N14IDNCRDogtagSoldier
+#- type: startingGear
+#  id: C27GearBoSKit
+#  requirements:
+#  - !type:CharacterSpeciesRequirement
+#    species: [C27BoS]
+#  equipment:
+#    pocket1: C27BoSLoadoutKit
+#    ears: N14ClothingHeadsetBrotherhoodOfSteel
+#    id: N14IDBrotherhoodOfSteelHolotagInitiate
+
+# Generic / Unassigned: chassis, armor selector, field welder, headset, and dogtag.
+- type: startingGear
+  id: C27GearGeneric
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingC27Chassis
+    pocket1: C27GenericLoadoutKit
+    pocket2: N14Welder #they're C-27s they cant use bandages l0l -pierow
+    ears: MisfitsClothingHeadsetWastelandScrap
+    id: N14ClothingNeckDogtags
+
+# NCR: chassis jumpsuit + Light NCR kit + NCR headset + NCR soldier dogtag.
+- type: startingGear
+  id: C27GearNCR
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingC27Chassis
+    pocket1: C27NCRLoadoutKit
+    id: N14IDNCRDogtagSoldier
+
+# Brotherhood: chassis jumpsuit + Light BoS kit + BoS headset + BoS Initiate holotag.
+- type: startingGear
+  id: C27GearBoS
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: ClothingC27Chassis
+    pocket1: C27BoSLoadoutKit
+    id: N14IDBrotherhoodOfSteelHolotagInitiate
+
+# Z.A.X: rapid-response chassis with light generic plating only.
+- type: startingGear
+  id: C27GearZAX
+  equipment:
+    wallet: N14Wallet
+    head: ClothingC27HelmetLightGeneric
+    jumpsuit: ClothingC27Chassis
+    pocket1: N14Welder
+    id: N14ClothingNeckDogtags
+    outerClothing: ClothingC27ArmorLightGeneric
+
+- type: playTimeTracker
+  id: C27
+
+# #Misfits Add - per-variant trackers (SharedJobSystem enforces unique tracker per job).
+- type: playTimeTracker
+  id: C27NCR
+
+- type: playTimeTracker
+  id: C27BoS
+
+- type: playTimeTracker
+  id: C27ZAX

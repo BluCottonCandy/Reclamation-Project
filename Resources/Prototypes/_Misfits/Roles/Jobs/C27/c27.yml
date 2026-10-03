@@ -20,9 +20,9 @@
   uiCategory: Whitelist
   roles:
   - C27       # #Misfits Change - was the only role; now joined by C27NCR / C27BoS below.
-  - C27NCR    # #Misfits Add - NCR variant role
-  - C27BoS    # #Misfits Add - Brotherhood variant role
-  - C27ZAX    # #Misfits Add - Z.A.X chassis variant role
+  # - - C27NCR    # #Misfits Add - NCR variant role # #Reclamation Project - Unhook
+  # - - C27BoS    # #Misfits Add - Brotherhood variant role # #Reclamation Project - Unhook
+  # - - C27ZAX    # #Misfits Add - Z.A.X chassis variant role # #Reclamation Project - Unhook
 
 # --- Generic / Unassigned variant ----------------------------------------------------
 - type: job

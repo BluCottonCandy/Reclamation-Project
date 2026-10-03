@@ -327,11 +327,11 @@
           orGroup: Currency
           amount: 1
           maxAmount: 25
-        - id: N14CurrencyNCRDollar
-          prob: 0.7
-          orGroup: Currency
-          amount: 1
-          maxAmount: 25
+        # - id: N14CurrencyNCRDollar # #Reclamation Project - Unhook
+          # prob: 0.7
+          # orGroup: Currency
+          # amount: 1
+          # maxAmount: 25
 
 - type: entity
   abstract: true
@@ -1005,11 +1005,11 @@
           orGroup: Currency
           amount: 1
           maxAmount: 25
-        - id: N14CurrencyNCRDollar
-          prob: 1
-          orGroup: Currency
-          amount: 1
-          maxAmount: 25
+        # - id: N14CurrencyNCRDollar # #Reclamation Project - Unhook
+          # prob: 1
+          # orGroup: Currency
+          # amount: 1
+          # maxAmount: 25
 
 - type: entity
   abstract: true
@@ -1458,11 +1458,11 @@
           orGroup: Currency
           amount: 1
           maxAmount: 25
-        - id: N14CurrencyNCRDollar
-          prob: 0.7
-          orGroup: Currency
-          amount: 1
-          maxAmount: 25
+        # - id: N14CurrencyNCRDollar # #Reclamation Project - Unhook
+          # prob: 0.7
+          # orGroup: Currency
+          # amount: 1
+          # maxAmount: 25
 
 - type: entity
   abstract: true
@@ -1748,11 +1748,11 @@
           orGroup: Currency
           amount: 1
           maxAmount: 25
-        - id: N14CurrencyNCRDollar
-          prob: 0.9
-          orGroup: Currency
-          amount: 1
-          maxAmount: 25
+        # - id: N14CurrencyNCRDollar # #Reclamation Project - Unhook
+          # prob: 0.9
+          # orGroup: Currency
+          # amount: 1
+          # maxAmount: 25
 
 - type: entity
   abstract: true
@@ -2440,18 +2440,18 @@
         - id: N14CurrencyPrewarMoney500
           prob: 0.05
           orGroup: Currency
-        - id:  N14CurrencyNCRDollar10
-          prob: 0.4
-          orGroup: Currency
-        - id:  N14CurrencyNCRDollar50
-          prob: 0.3
-          orGroup: Currency
-        - id:  N14CurrencyNCRDollar100
-          prob: 0.2
-          orGroup: Currency
-        - id:  N14CurrencyNCRDollar500
-          prob: 0.05
-          orGroup: Currency
+        # - id:  N14CurrencyNCRDollar10 # #Reclamation Project - Unhook
+          # prob: 0.4
+          # orGroup: Currency
+        # - id:  N14CurrencyNCRDollar50 # #Reclamation Project - Unhook
+          # prob: 0.3
+          # orGroup: Currency
+        # - id:  N14CurrencyNCRDollar100 # #Reclamation Project - Unhook
+          # prob: 0.2
+          # orGroup: Currency
+        # - id:  N14CurrencyNCRDollar500 # #Reclamation Project - Unhook
+          # prob: 0.05
+          # orGroup: Currency
 
 - type: entity
   abstract: true

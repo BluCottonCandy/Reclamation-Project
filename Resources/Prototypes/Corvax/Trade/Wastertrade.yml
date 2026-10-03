@@ -452,7 +452,7 @@
   - WasterBuy2_Materials
   - WasterBuy2_Cosmetic
   - WasterBuy2_Storage
-  - WasterBuy2_Currency
+  # - WasterBuy2_Currency # #Reclamation Project - Unhook (NCR/Legion money exchange)
   - WasterBuy2_Sprouts
   - WasterBuy2_Animals
 
@@ -1122,5 +1122,5 @@
   - WasterSell2_Materials
   - WasterSell2_Cosmetic
   - WasterSell2_Storage
-  - WasterSell2_Currency
+  # - WasterSell2_Currency # #Reclamation Project - Unhook (NCR/Legion money exchange)
   - WasterSell2_Bulk

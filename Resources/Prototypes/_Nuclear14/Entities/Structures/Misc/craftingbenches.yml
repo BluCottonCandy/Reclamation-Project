@@ -772,8 +772,8 @@
     staticRecipes:
     # Ores
     # #Misfits Change /Add/: Legion coin minting uses the forge's existing precious metal workflow.
-    - N14CurrencyLegionAureus
-    - N14CurrencyLegionDenarius
+    # - N14CurrencyLegionAureus # #Reclamation Project - Unhook
+    # - N14CurrencyLegionDenarius # #Reclamation Project - Unhook
     - N14IngotSilver
     - N14IngotIron
     - N14IngotGold

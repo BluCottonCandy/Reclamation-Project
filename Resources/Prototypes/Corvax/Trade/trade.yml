@@ -872,7 +872,7 @@
   - CaravanBuy2_Misc
   - CaravanBuy2_Plushies
   - CaravanBuy2_Sprouts
-  - CaravanBuy2_Currency
+  # - CaravanBuy2_Currency # #Reclamation Project - Unhook (NCR/Legion money exchange)
 
 # ----------------------------
 # caravan_sell2 categories
@@ -1416,7 +1416,7 @@
   - CaravanSell2_Ore
   - CaravanSell2_Alcohol
   - CaravanSell2_Fish
-  - CaravanSell2_Currency
+  # - CaravanSell2_Currency # #Reclamation Project - Unhook (NCR/Legion money exchange)
 
 
 

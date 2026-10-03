@@ -44,7 +44,7 @@
           SentientDeathclaw: [ 0, 0 ] # #Cythisiax Add - sentient deathclaw whitelist boss slot (admin-only; no map spawner placed yet).
           C27: [ 2, 2 ]    # #Misfits Add - C-27 Generic slot (whitelist gates actual access)/// Increased to 2 from 1.
           # C27NCR: [ 1, 1 ] # #Misfits Add - C-27 NCR variant. # #Reclamation Project - Unhook
-          C27BoS: [ 1, 1 ] # #Misfits Add - C-27 Brotherhood variant.
+          # C27BoS: [ 1, 1 ] # #Misfits Add - C-27 Brotherhood variant. # #Reclamation Project - Unhook
           # WastelandScavenger: [ 3, 5 ]
           WastelandReporter: [ 1, 2 ]
           # WastelandMusician: [ 2, 3 ]

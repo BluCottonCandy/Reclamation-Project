@@ -71,18 +71,18 @@
       id: MisfitsLoadoutHeadArmyBeretAirborne
     - type: loadout
       id: MisfitsLoadoutHeadArmyBeretSpecial
-    - type: loadout # #Misfits Add - NCR soldier headwear
-      id: MisfitsLoadoutHeadNCRSidecap
-    - type: loadout
-      id: MisfitsLoadoutHeadNCRBeretOfficer
-    - type: loadout
-      id: MisfitsLoadoutHeadNCRBeretMedic
-    - type: loadout
-      id: MisfitsLoadoutHeadNCRBeretQM
+    # - type: loadout # #Misfits Add - NCR soldier headwear # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadNCRSidecap
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadNCRBeretOfficer
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadNCRBeretMedic
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadNCRBeretQM
     - type: loadout # #Misfits Add - NCR Ranger headwear
       id: MisfitsLoadoutHeadArmyBeretRanger
-    - type: loadout
-      id: MisfitsLoadoutHeadNCRBeretRecon
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadNCRBeretRecon
     - type: loadout
       id: MisfitsLoadoutHeadRanger
     - type: loadout
@@ -93,28 +93,28 @@
       id: MisfitsLoadoutHeadBrotherhoodBeret
     - type: loadout
       id: MisfitsLoadoutHeadBrotherhoodFieldCap
-    - type: loadout # #Misfits Add - Eighties bike helmet color variants
-      id: MisfitsLoadoutHeadEightiesHelmetBlue
-    - type: loadout
-      id: MisfitsLoadoutHeadEightiesHelmetWhite
-    - type: loadout
-      id: MisfitsLoadoutHeadEightiesHelmetRed
-    - type: loadout
-      id: MisfitsLoadoutHeadEightiesHelmetBlack
-    - type: loadout
-      id: MisfitsLoadoutHeadEightiesHelmetYellow
-    - type: loadout
-      id: MisfitsLoadoutHeadEightiesHelmetOlive
-    - type: loadout
-      id: MisfitsLoadoutHeadEightiesHelmetBeige
-    - type: loadout # #Misfits Add - Enclave headwear
-      id: MisfitsLoadoutHeadEnclaveIntel
-    - type: loadout
-      id: MisfitsLoadoutHeadEnclavePeacekeeperCap
-    - type: loadout
-      id: MisfitsLoadoutHeadEnclaveOfficer
-    - type: loadout
-      id: MisfitsLoadoutHeadEnclaveScientist
+    # - type: loadout # #Misfits Add - Eighties bike helmet color variants # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEightiesHelmetBlue
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEightiesHelmetWhite
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEightiesHelmetRed
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEightiesHelmetBlack
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEightiesHelmetYellow
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEightiesHelmetOlive
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEightiesHelmetBeige
+    # - type: loadout # #Misfits Add - Enclave headwear # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEnclaveIntel
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEnclavePeacekeeperCap
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEnclaveOfficer
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadEnclaveScientist
     - type: loadout # #Misfits Add - Townsfolk headwear
       id: MisfitsLoadoutHeadDeputy
     - type: loadout
@@ -149,8 +149,8 @@
       id: N14LoadoutUniversalHeadTribalCloakHood
     - type: loadout
       id: N14LoadoutUniversalHeadTribalCloakHoodBr
-    - type: loadout
-      id: N14ClothingHeadHatNCRSlouch
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14ClothingHeadHatNCRSlouch
     - type: loadout
       id: MisfitsClothingHeadRedBandana
     - type: loadout
@@ -159,9 +159,9 @@
       id: MisfitsLoadoutHeadHeadSchlimmHat
     - type: loadout
       id: MisfitsLoadoutHeadHeadAHPhelmet
-    - type: loadout
-      id: MisfitsLoadoutHeadKhanHelmet
-    - type: loadout
-      id: MisfitsLoadoutHeadKhanFurHelmet
-    - type: loadout
-      id: MisfitsLoadoutHeadKhanFullHelmet
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadKhanHelmet
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadKhanFurHelmet
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHeadKhanFullHelmet

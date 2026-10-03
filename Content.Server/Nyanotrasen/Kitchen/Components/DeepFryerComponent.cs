@@ -11,8 +11,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.Nyanotrasen.Kitchen.Components
 {
@@ -75,14 +73,14 @@ namespace Content.Server.Nyanotrasen.Kitchen.Components
         /// into this.
         /// </remarks>
         [ViewVariables(VVAccess.ReadWrite)]
-        [DataField("charredPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-        public string? CharredPrototype { get; set; }
+        [DataField("charredPrototype")]
+        public EntProtoId? CharredPrototype { get; set; }
 
         /// <summary>
         /// What reagents are considered valid cooking oils?
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
-        [DataField("fryingOils", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<ReagentPrototype>))]
+        [DataField("fryingOils")]
         public HashSet<string> FryingOils { get; set; } = new();
 
         /// <summary>
@@ -113,14 +111,14 @@ namespace Content.Server.Nyanotrasen.Kitchen.Components
         /// What flavors go well with deep frying?
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
-        [DataField("goodFlavors", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<FlavorPrototype>))]
+        [DataField("goodFlavors")]
         public HashSet<string> GoodFlavors { get; set; } = new();
 
         /// <summary>
         /// What flavors don't go well with deep frying?
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
-        [DataField("badFlavors", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<FlavorPrototype>))]
+        [DataField("badFlavors")]
         public HashSet<string> BadFlavors { get; set; } = new();
 
         /// <summary>
@@ -220,8 +218,8 @@ namespace Content.Server.Nyanotrasen.Kitchen.Components
         /// <summary>
         /// What upgradeable machine part dictates the quality of the storage size?
         /// </summary>
-        [DataField("machinePartStorageMax", customTypeSerializer: typeof(PrototypeIdSerializer<MachinePartPrototype>))]
-        public string MachinePartStorageMax = "MatterBin";
+        [DataField("machinePartStorageMax")]
+        public ProtoId<MachinePartPrototype> MachinePartStorageMax = "MatterBin";
 
         /// <summary>
         /// How much extra storage is added per part rating?

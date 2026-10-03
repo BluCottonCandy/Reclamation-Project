@@ -2,7 +2,6 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.StatusIcon;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared.Overlays;
 
@@ -15,7 +14,7 @@ public sealed partial class ShowHealthBarsComponent : Component
     /// <summary>
     /// Displays health bars of the damage containers.
     /// </summary>
-    [DataField("damageContainers", customTypeSerializer: typeof(PrototypeIdListSerializer<DamageContainerPrototype>)), AutoNetworkedField]
+    [DataField("damageContainers"), AutoNetworkedField]
     public List<string> DamageContainers = new();
 
     [DataField]

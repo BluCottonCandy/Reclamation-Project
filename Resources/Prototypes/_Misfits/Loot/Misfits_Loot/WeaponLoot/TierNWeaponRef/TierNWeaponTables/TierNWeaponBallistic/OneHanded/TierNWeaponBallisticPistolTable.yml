@@ -5,18 +5,18 @@
     - !type:EntSelector
       id: N14WeaponPistolM1911
       weight: 7
-    - !type:EntSelector
-      id: MisfitsWeaponRangerPowerArmorPistol
-      weight: 7
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: MisfitsWeaponRangerPowerArmorPistol
+      # weight: 7
     - !type:EntSelector
       id: N14WeaponDesertEagle44
       weight: 7
     - !type:EntSelector
       id: N14WeaponPistolT60
       weight: 7
-    - !type:EntSelector
-      id: MisfitsWeaponRangerPowerArmorPistol
-      weight: 7
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: MisfitsWeaponRangerPowerArmorPistol
+      # weight: 7
 
     - !type:EntSelector
       id: N14WeaponPistol22lr

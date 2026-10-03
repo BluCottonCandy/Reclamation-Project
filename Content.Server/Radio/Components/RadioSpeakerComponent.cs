@@ -1,7 +1,6 @@
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Radio;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.Radio.Components;
 
@@ -19,7 +18,7 @@ public sealed partial class RadioSpeakerComponent : Component
     [DataField("toggleOnInteract")]
     public bool ToggleOnInteract = true;
 
-    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
+    [DataField("channels")]
     public HashSet<string> Channels = new () { SharedChatSystem.CommonChannel };
 
     [DataField("enabled")]

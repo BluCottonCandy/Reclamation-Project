@@ -36,8 +36,8 @@
           orGroup: Currency
           amount: 1
           maxAmount: 10
-        - id: N14CurrencyNCRDollar
-          prob: 0.6
-          orGroup: Currency
-          amount: 1
-          maxAmount: 10
+        # - id: N14CurrencyNCRDollar # #Reclamation Project - Unhook
+          # prob: 0.6
+          # orGroup: Currency
+          # amount: 1
+          # maxAmount: 10

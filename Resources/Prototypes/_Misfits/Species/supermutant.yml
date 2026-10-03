@@ -5,7 +5,7 @@
 - type: species
   id: SuperMutant
   name: species-name-supermutant
-  roundStart: true
+  roundStart: false # #Reclamation Project - Unhook (NPC + admin possession only)
   order: 3 # #Misfits Change: sort after Glowing Ghoul
   whitelistRequired: true # #Misfits Change
   restrictedCustomization: true # #Misfits Change

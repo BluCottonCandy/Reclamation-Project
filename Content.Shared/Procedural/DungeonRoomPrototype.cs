@@ -1,6 +1,5 @@
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Procedural;
@@ -10,7 +9,7 @@ public sealed partial class DungeonRoomPrototype : IPrototype
 {
     [IdDataField] public string ID { get; set; } = string.Empty;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField("tags", customTypeSerializer:typeof(PrototypeIdListSerializer<TagPrototype>))]
+    [ViewVariables(VVAccess.ReadWrite), DataField("tags")]
     public List<string> Tags = new();
 
     [DataField("size", required: true)] public Vector2i Size;

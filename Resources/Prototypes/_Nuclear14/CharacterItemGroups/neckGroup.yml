@@ -29,18 +29,18 @@
       id: MisfitsLoadoutNeckPatriotScarf # #Misfits Add - cosmetic patriot scarf
     - type: loadout
       id: MisfitsLoadoutNeckTownGuardMantle # #Misfits Add - cosmetic army rain mantle
-    - type: loadout
-      id: MisfitsLoadoutNeckNCRmantleQM # #Misfits Add - cosmetic NCR Requisitons Officer's mantle
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutNeckNCRmantleQM # #Misfits Add - cosmetic NCR Requisitons Officer's mantle
     - type: loadout
       id: ClothingNeckShawl
-    - type: loadout # #Misfits Add - NCR faction cloaks and mantles
-      id: MisfitsLoadoutNeckCloakNCR
-    - type: loadout
-      id: MisfitsLoadoutNeckCloakNCRSnow
-    - type: loadout
-      id: MisfitsLoadoutNeckMantleNCR
-    - type: loadout # #Misfits Add - NCR Rangers woods cloak
-      id: MisfitsLoadoutNeckCloakNCRWoods
+    # - type: loadout # #Misfits Add - NCR faction cloaks and mantles # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutNeckCloakNCR
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutNeckCloakNCRSnow
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutNeckMantleNCR
+    # - type: loadout # #Misfits Add - NCR Rangers woods cloak # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutNeckCloakNCRWoods
     - type: loadout # #Misfits Add - Tribal cloak
       id: MisfitsLoadoutNeckCloakTribal
     - type: loadout

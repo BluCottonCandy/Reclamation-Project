@@ -452,4 +452,8 @@
         - LowImpassable
         - BulletImpassable
   - type: Occluder
-    boundingBox: "-1,-0.7,1.5,0.4"
+    polygon: # #Reclamation Project - engine 287 replaced boundingBox (-1,-0.7,1.5,0.4)
+    - -1,0.4
+    - 1.5,0.4
+    - 1.5,-0.7
+    - -1,-0.7

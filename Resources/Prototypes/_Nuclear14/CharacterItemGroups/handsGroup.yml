@@ -27,7 +27,7 @@
       id: MisfitsLoadoutHandsNitrilePurple # #Misfits Add - cosmetic purple nitrile gloves
     - type: loadout
       id: MisfitsLoadoutHandsPatrol # #Misfits Add - cosmetic patrol gloves
-    - type: loadout
-      id: MisfitsLoadoutHandsNCR # #Misfits Add - NCR faction fingerless gloves
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutHandsNCR # #Misfits Add - NCR faction fingerless gloves
     - type: loadout
       id: MisfitsLoadoutHandsTribal # #Misfits Add - Tribal faction gloves

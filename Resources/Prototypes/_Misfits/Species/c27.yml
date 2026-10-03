@@ -122,7 +122,7 @@
 - type: species
   id: C27NCR
   name: species-name-c27-ncr
-  roundStart: true
+  roundStart: false # #Reclamation Project - Unhook (variant removed)
   order: 5
   whitelistRequired: true
   restrictedCustomization: true
@@ -164,7 +164,7 @@
 - type: species
   id: C27BoS
   name: species-name-c27-bos
-  roundStart: true
+  roundStart: false # #Reclamation Project - Unhook (variant removed)
   order: 6
   whitelistRequired: true
   restrictedCustomization: true
@@ -205,7 +205,7 @@
 - type: species
   id: C27ZAX
   name: species-name-c27-zax
-  roundStart: true
+  roundStart: false # #Reclamation Project - Unhook (variant removed)
   order: 7
   whitelistRequired: true
   restrictedCustomization: true

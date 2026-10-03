@@ -309,7 +309,7 @@ namespace Content.Shared.Chemistry.Components
             var total = FixedPoint2.Zero;
             foreach (var (reagent, quantity) in Contents)
             {
-                if (prototypes.Contains(reagent.Prototype))
+                if (prototypes.Contains(reagent.Prototype.Id))
                     total += quantity;
             }
 
@@ -589,7 +589,7 @@ namespace Content.Shared.Chemistry.Components
             List<ReagentQuantity> excluded = new();
             for (var i = Contents.Count - 1; i >= 0; i--)
             {
-                if (includedPrototypes.Contains(Contents[i].Reagent.Prototype))
+                if (includedPrototypes.Contains(Contents[i].Reagent.Prototype.Id))
                     continue;
 
                 excluded.Add(Contents[i]);
@@ -791,7 +791,7 @@ namespace Content.Shared.Chemistry.Components
 
             foreach (var (reagent, quantity) in Contents)
             {
-                if (without.Contains(reagent.Prototype))
+                if (without.Contains(reagent.Prototype.Id))
                     continue;
 
                 runningTotalQuantity += quantity;
@@ -834,7 +834,7 @@ namespace Content.Shared.Chemistry.Components
 
             foreach (var (reagent, quantity) in Contents)
             {
-                if (!included.Contains(reagent.Prototype))
+                if (!included.Contains(reagent.Prototype.Id))
                     continue;
 
                 runningTotalQuantity += quantity;

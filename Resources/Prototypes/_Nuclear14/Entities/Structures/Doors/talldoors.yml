@@ -451,7 +451,11 @@
   - type: AnimationPlayer
   - type: Appearance
   - type: Occluder
-    boundingBox: "-1.5,-0.5,2.5,1"
+    polygon: # #Reclamation Project - engine 287 replaced boundingBox (-1.5,-0.5,2.5,1)
+    - -1.5,1
+    - 2.5,1
+    - 2.5,-0.5
+    - -1.5,-0.5
   - type: Fixtures
     fixtures:
       fix1:

@@ -1,7 +1,5 @@
 using Content.Shared.StoreDiscount;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 using Content.Shared.FixedPoint;
 
 namespace Content.Shared.Store;
@@ -24,20 +22,19 @@ public sealed partial class StorePresetPrototype : IPrototype
     /// <summary>
     /// The categories that this store can access
     /// </summary>
-    [DataField("categories", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<StoreCategoryPrototype>))]
+    [DataField("categories")]
     public HashSet<string> Categories { get; private set; } = new();
 
     /// <summary>
     /// The inital balance that the store initializes with.
     /// </summary>
-    [DataField("initialBalance",
-        customTypeSerializer: typeof(PrototypeIdDictionarySerializer<FixedPoint2, CurrencyPrototype>))]
+    [DataField("initialBalance")]
     public Dictionary<string, FixedPoint2>? InitialBalance { get; private set; }
 
     /// <summary>
     /// The currencies that are accepted in the store
     /// </summary>
-    [DataField("currencyWhitelist", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<CurrencyPrototype>))]
+    [DataField("currencyWhitelist")]
     public HashSet<string> CurrencyWhitelist { get; private set; } = new();
 
     [DataField]

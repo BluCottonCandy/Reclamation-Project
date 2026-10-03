@@ -163,9 +163,9 @@
   - type: Item
     id: N14Gladius
     weight: 2
-  - type: Item
-    id: N14ClothingOuterDeanLegionnaireRecruitArmor
-    weight: 1
+  # - type: Item # #Reclamation Project - Unhook
+    # id: N14ClothingOuterDeanLegionnaireRecruitArmor
+    # weight: 1
 
 
 
@@ -228,9 +228,9 @@
   - type: Item
     id: N14WeaponRifleM7Spear
     weight: 1
-  - type: Item
-    id: N14ClothingLegionReconArmor
-    weight: 1
+  # - type: Item # #Reclamation Project - Unhook
+    # id: N14ClothingLegionReconArmor
+    # weight: 1
 
 
 - type: ncContractRewardPool

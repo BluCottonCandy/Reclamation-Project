@@ -23,8 +23,8 @@
     price: 100
   - proto: ClothingBrahdoSaddle_Tribe
     price: 200
-  - proto: ClothingBrahdoSaddle_Followers
-    price: 100
+  # - proto: ClothingBrahdoSaddle_Followers # #Reclamation Project - Unhook
+    # price: 100
 
 - type: storeCategoryStructured
   id: NCRBuy2_Animals

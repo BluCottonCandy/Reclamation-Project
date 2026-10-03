@@ -41,8 +41,8 @@
       id: N14LoadoutUniformJumpsuitCombat
     - type: loadout
       id: N14LoadoutUniformJumpsuitBrahminFarmer
-    - type: loadout
-      id: N14LoadoutUniformJumpsuitFollowers
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniformJumpsuitFollowers
     - type: loadout
       id: N14LoadoutUniformJumpsuitCowboyBrown
     - type: loadout
@@ -97,14 +97,14 @@
       id: N14LoadoutUniformJumpsuitAsylumDress
     - type: loadout
       id: ClothingUniformJumpsuitOliveSweaterVault
-    - type: loadout
-      id: N14LoadoutUniversalMPUniformNCRDesert
-    - type: loadout
-      id: N14LoadoutUniversalMPUniformNCRSnow
-    - type: loadout
-      id: N14LoadoutUniversalOfficerUniformNCRDesert
-    - type: loadout
-      id: N14LoadoutUniversalOfficerUniformNCRSnow
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniversalMPUniformNCRDesert
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniversalMPUniformNCRSnow
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniversalOfficerUniformNCRDesert
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniversalOfficerUniformNCRSnow
     - type: loadout
       id: N14LoadoutUniversalUniformBosRecon
     - type: loadout
@@ -133,8 +133,8 @@
       id: N14LoadoutUniversalUniformJumpsuitCaravanShirt
     - type: loadout
       id: N14LoadoutUniversalUniformJumpsuitCaravanSuit
-    - type: loadout
-      id: N14LoadoutUniversalUniformJumpsuitEnclave
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniversalUniformJumpsuitEnclave
     - type: loadout
       id: N14LoadoutUniversalUniformJumpsuitFudd
     - type: loadout
@@ -151,10 +151,10 @@
       id: N14LoadoutUniversalUniformJumpsuitVancouver
     - type: loadout
       id: N14LoadoutUniversalUniformJumpsuitVault
-    - type: loadout
-      id: N14LoadoutUniversalUniformNCRDesert
-    - type: loadout
-      id: N14LoadoutUniversalUniformNCRSnow
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniversalUniformNCRDesert
+    # - type: loadout # #Reclamation Project - Unhook
+      # id: N14LoadoutUniversalUniformNCRSnow
     - type: loadout
       id: N14LoadoutUniversalUniformRangerPatrol
     - type: loadout # Misfits 80s
@@ -171,19 +171,19 @@
       id: MisfitsLoadoutUniformMasondudsUniform
     - type: loadout # Misfits
       id: MisfitsLoadoutUniformSchlimmUniform
-    - type: loadout # Misfits
-      id: MisfitsLoadoutUniformKhansUniform
-    - type: loadout # Misfits
-      id: MisfitsLoadoutUniformKhansUniformShorts
-    - type: loadout # Misfits
-      id: MisfitsLoadoutUniformEnclaveUniformGrey
-    - type: loadout # Misfits
-      id: MisfitsLoadoutUniformEnclaveUniformBlue
+    # - type: loadout # Misfits # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutUniformKhansUniform
+    # - type: loadout # Misfits # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutUniformKhansUniformShorts
+    # - type: loadout # Misfits # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutUniformEnclaveUniformGrey
+    # - type: loadout # Misfits # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutUniformEnclaveUniformBlue
     - type: loadout # Misfits
       id: MisfitsLoadoutUniformDeadHorsesUniform
     - type: loadout # Misfits
       id: MisfitsLoadoutUniformSorrowsUniform
     - type: loadout # Misfits
       id: MisfitsLoadoutUniformRustwalkersUniform
-    - type: loadout # Misfits
-      id: MisfitsLoadoutUniformWhiteLegsUniform
+    # - type: loadout # Misfits # #Reclamation Project - Unhook
+      # id: MisfitsLoadoutUniformWhiteLegsUniform

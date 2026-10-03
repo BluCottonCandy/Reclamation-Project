@@ -30,33 +30,33 @@
         overflowJobs:
         - Townsperson # #Misfits Change - Townsperson is now the default starter overflow role
         availableJobs:
-          SuperMutantEnclave : [ 0, 0 ] # #Misfits Add - Enclave-aligned supermutant latejoin slot.
-          SuperMutantFollowerDoctor: [ 1, 1 ] # #Misfits Add: FOTA-aligned supermutant.
+          # SuperMutantEnclave : [ 0, 0 ] # #Misfits Add - Enclave-aligned supermutant latejoin slot. # #Reclamation Project - Unhook
+          # SuperMutantFollowerDoctor: [ 1, 1 ] # #Misfits Add: FOTA-aligned supermutant. # #Reclamation Project - Unhook
           Wastelander: [ -1, -1 ]
           WasterTrader: [ 1, 1 ]
-          SuperMutant: [ 5, 5 ] # #Misfits Change /Fix/: make the FEV Mutant role available for mid-round joins.
-          Nightkin: [ 0, 1 ] # #Misfits Add - Nightkin variant, whitelist gated.
-          SuperMutantGladiator: [ 0, 1 ] # #Misfits Add: Gladiator variant.
-          SuperMutantNCRRanger: [ 0, 1 ] # #Misfits Add: NCR Ranger variant.
+          # SuperMutant: [ 5, 5 ] # #Misfits Change /Fix/: make the FEV Mutant role available for mid-round joins. # #Reclamation Project - Unhook
+          # Nightkin: [ 0, 1 ] # #Misfits Add - Nightkin variant, whitelist gated. # #Reclamation Project - Unhook
+          # SuperMutantGladiator: [ 0, 1 ] # #Misfits Add: Gladiator variant. # #Reclamation Project - Unhook
+          # SuperMutantNCRRanger: [ 0, 1 ] # #Misfits Add: NCR Ranger variant. # #Reclamation Project - Unhook
           # SuperMutantNCRTrooper: [ 0, 0 ] # #Misfits Add: NCR Trooper variant.
-          SuperMutantTribal: [ 1, 1 ] # #Misfits Add: Tribal variant.
+          # SuperMutantTribal: [ 1, 1 ] # #Misfits Add: Tribal variant. # #Reclamation Project - Unhook
           SentientDeathclawRegular: [ 0, 0 ] # Two ordinary sentient Deathclaw slots; administrators open them manually when appropriate.
           SentientDeathclaw: [ 0, 0 ] # #Cythisiax Add - sentient deathclaw whitelist boss slot (admin-only; no map spawner placed yet).
           C27: [ 2, 2 ]    # #Misfits Add - C-27 Generic slot (whitelist gates actual access)/// Increased to 2 from 1.
-          C27NCR: [ 1, 1 ] # #Misfits Add - C-27 NCR variant.
-          C27BoS: [ 1, 1 ] # #Misfits Add - C-27 Brotherhood variant.
+          # C27NCR: [ 1, 1 ] # #Misfits Add - C-27 NCR variant. # #Reclamation Project - Unhook
+          # C27BoS: [ 1, 1 ] # #Misfits Add - C-27 Brotherhood variant. # #Reclamation Project - Unhook
           # WastelandScavenger: [ 3, 5 ]
           WastelandReporter: [ 1, 2 ]
           # WastelandMusician: [ 2, 3 ]
           WastelandFarmer: [ 2, 3 ]
           WastelandChaplain: [ 1, 1 ]
           WastelandBartender: [ 1, 2 ]
-          TribalElder: [ 1, 1 ] # #Misfits Tweak - Willowers leadership stays singular while the faction expands to 16 total slots.
-          SuperElder: [ 1, 3 ] # #Misfits Add - sagely elder, 1-3 per round
-          Tribal: [ 8, 8 ]
-          TribalFarmer: [ 4, 4 ]
-          TribalShaman: [ 3, 3 ] # #Misfits Change - renamed from TribalHealer
-          SyntheticProtectronTribal: [1, 1]
+          # TribalElder: [ 1, 1 ] # #Misfits Tweak - Willowers leadership stays singular while the faction expands to 16 total slots. # #Reclamation Project - Unhook
+          # SuperElder: [ 1, 3 ] # #Misfits Add - sagely elder, 1-3 per round # #Reclamation Project - Unhook
+          # Tribal: [ 8, 8 ] # #Reclamation Project - Unhook
+          # TribalFarmer: [ 4, 4 ] # #Reclamation Project - Unhook
+          # TribalShaman: [ 3, 3 ] # #Misfits Change - renamed from TribalHealer # #Reclamation Project - Unhook
+          # SyntheticProtectronTribal: [1, 1] # #Reclamation Project - Unhook
           Ambassador: [1, 1]
           TownMayor: [ 1, 1 ]
           TownSheriff: [ 1, 1 ]
@@ -66,42 +66,42 @@
           TownShopkeeper: [ 1, 1 ]
           TownShopkeeperHelper: [ 1, 1 ] # Forge-Town
           Townsperson: [ -1, -1 ] # #Misfits Change - uncapped, now default starter role
-          NCRLTCol: [ 1, 1 ] #whitelist-only faction rep roles
-          NCRMajor: [ 1, 0 ] # whitelist-only command role; 0 active late-join slots
-          NCRCommander: [ 1, 1 ]
-          NCRProvost: [ 1, 1 ]
-          NCRExecutiveOfficer: [ 1, 1 ]
-          NCRPlatoonLeader: [ 1, 1 ]
-          NCRVertibirdPilot: [ 1, 1 ] # #Misfits Add
-          NCRRO: [ 1, 1 ]
-          NCRChiefRanger: [ 1, 0 ]  # #Misfits Change - admin-only Chief Ranger; renamed from ChiefRanger
-          NCRVeteranRanger: [ 1, 1 ] # #Misfits Change - renamed from RangerVeteran
-          NCRFieldRanger: [ 1, 1 ]   # #Misfits Add - Field Ranger slot
-          NCRPatrolRanger: [ 1, 1 ]  # #Misfits Change - renamed from RangerRecruit (was Patrol Ranger by FTL)
-          NCRRangerRecruit: [ 2, 2 ] # #Misfits Add - entry-level Ranger Recruit slot
-          NCRFirstSergeant: [ 1, 1 ]
+          # NCRLTCol: [ 1, 1 ] #whitelist-only faction rep roles # #Reclamation Project - Unhook
+          # NCRMajor: [ 1, 0 ] # whitelist-only command role; 0 active late-join slots # #Reclamation Project - Unhook
+          # NCRCommander: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRProvost: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRExecutiveOfficer: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRPlatoonLeader: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRVertibirdPilot: [ 1, 1 ] # #Misfits Add # #Reclamation Project - Unhook
+          # NCRRO: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRChiefRanger: [ 1, 0 ]  # #Misfits Change - admin-only Chief Ranger; renamed from ChiefRanger # #Reclamation Project - Unhook
+          # NCRVeteranRanger: [ 1, 1 ] # #Misfits Change - renamed from RangerVeteran # #Reclamation Project - Unhook
+          # NCRFieldRanger: [ 1, 1 ]   # #Misfits Add - Field Ranger slot # #Reclamation Project - Unhook
+          # NCRPatrolRanger: [ 1, 1 ]  # #Misfits Change - renamed from RangerRecruit (was Patrol Ranger by FTL) # #Reclamation Project - Unhook
+          # NCRRangerRecruit: [ 2, 2 ] # #Misfits Add - entry-level Ranger Recruit slot # #Reclamation Project - Unhook
+          # NCRFirstSergeant: [ 1, 1 ] # #Reclamation Project - Unhook
           #NCRStaffSergeant: [ 1, 1 ] # #Misfits Removed - replaced by NCRHeavyTrooper as T5 specialist slot
-          NCRHeavyTrooper: [ 2, 2 ]
-          NCRHeavyTrooperLead: [ 1, 1 ]
-          NCRNCO: [ 3, 3 ]
-          NCRWS: [ 2, 2 ]
-          NCREngineer: [ 2, 2 ]
-          NCRDoctor: [ 1, 1 ]
-          NCRMedic: [ 3, 3 ]
-          NCRPrivateFirstClass: [ 4, 4 ]
-          NCRSoldier: [ 4, 4 ]
-          NCRCadet: [ 7, 7 ]
-          NCRPrisoner : [ 2, 2 ]
-          NCRCitizen : [ 6, 6 ]
-          NCRTrader : [ 1, 1 ]
-          NCRMilitaryPoliceSergeant: [ 1, 1 ]
-          NCRMilitaryPoliceRecruit: [ 2, 2 ]
-          NCRMilitaryPoliceCaptain: [ 1, 1 ]
+          # NCRHeavyTrooper: [ 2, 2 ] # #Reclamation Project - Unhook
+          # NCRHeavyTrooperLead: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRNCO: [ 3, 3 ] # #Reclamation Project - Unhook
+          # NCRWS: [ 2, 2 ] # #Reclamation Project - Unhook
+          # NCREngineer: [ 2, 2 ] # #Reclamation Project - Unhook
+          # NCRDoctor: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRMedic: [ 3, 3 ] # #Reclamation Project - Unhook
+          # NCRPrivateFirstClass: [ 4, 4 ] # #Reclamation Project - Unhook
+          # NCRSoldier: [ 4, 4 ] # #Reclamation Project - Unhook
+          # NCRCadet: [ 7, 7 ] # #Reclamation Project - Unhook
+          # NCRPrisoner : [ 2, 2 ] # #Reclamation Project - Unhook
+          # NCRCitizen : [ 6, 6 ] # #Reclamation Project - Unhook
+          # NCRTrader : [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRMilitaryPoliceSergeant: [ 1, 1 ] # #Reclamation Project - Unhook
+          # NCRMilitaryPoliceRecruit: [ 2, 2 ] # #Reclamation Project - Unhook
+          # NCRMilitaryPoliceCaptain: [ 1, 1 ] # #Reclamation Project - Unhook
           # #Misfits Add - NCR Office of Science and Industry (OSI) slots. Agent is whitelist-gated by the job prototype.
-          OSIChiefScientist: [ 1, 1 ]
-          OSIAgent: [ 2, 2 ]
-          OSIScientist: [ 2, 2 ]
-          OSIAssistant: [ 3, 3 ]
+          # OSIChiefScientist: [ 1, 1 ] # #Reclamation Project - Unhook
+          # OSIAgent: [ 2, 2 ] # #Reclamation Project - Unhook
+          # OSIScientist: [ 2, 2 ] # #Reclamation Project - Unhook
+          # OSIAssistant: [ 3, 3 ] # #Reclamation Project - Unhook
           BoSWestElderCommander: [ 1, 0 ] # Misfits Change # #Misfits Tweak - 0 active slots (admin-notify role)
           BoSMidPaladinCommander: [ 1, 1 ]
           BoSHeadKnight: [ 1, 1 ]  #Misfits Change /Add/: New consolidated BoS jobs
@@ -117,48 +117,48 @@
           BoSMidSquire: [ 3, 3 ]
           BoSInitiate: [ 3, 3 ]  #Misfits Change /Add/
           BoSOffDuty: [4, 4] # Misfits Change - new off-duty BoS role for non-combatants and latejoiners
-          Overseer: [ 1, 1 ]
-          VaultDoctor: [ 3, 3 ]
-          VaultDweller: [ 4, 4 ]
-          VaultEngineer: [ 1, 1 ]
-          VaultSecurity: [ 3, 3 ]
-          VaultCargoSpecialist: [ 1, 1 ]
-          VaultCourier: [ 1, 1 ]
-          VaultSalvageSpecialist: [ 2, 2 ]
-          CaesarLegionLegate: [ 1, 0 ] # Forge-Legion # #Misfits Tweak - 0 active slots (admin-notify role)
-          CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
-          CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion
-          CaesarLegionDean: [ 1, 2 ] # Forge-Legion
-          CaesarLegionForgemaster: [ 1, 1] # Forge-Legion. heh, get it? FORGE legion
-          CaesarLegionLegionnaireVeteran: [ 3, 3 ] # Forge-Legion
-          CaesarLegionLegionnaireWarrior: [ 3, 3 ] # Forge-Legion
-          CaesarLegionLegionnaireRecruit: [ 4, 4 ] # Forge-Legion
-          CaesarLegionVexillarius: [ 2, 2 ] # Forge-Legion
-          CaesarLegionFrumentarii: [ 2, 2 ] # Forge-Legion # #Misfits Tweak - raised total and initial slots from 1 to 2
-          CaesarLegionPrimeDecanus: [ 1, 1 ] # Misfits-Legion
-          CaesarLegionExplorer: [ 4, 4 ] # Misfits-Legion
-          CaesarLegionOptio: [ 1, 1 ] # Misfits-Legion
-          CaesarLegionPriestessOfMars: [ 1, 1 ] # Misfits-Legion — Priestess of Mars late-join slot
-          CaesarLegionAcolyteOfMars: [ 3, 3 ] # Misfits-Legion — Acolyte of Mars late-join slot
-          CaesarLegionTempleGuard: [ 4, 4 ]
-          CaesarLegionHoundmaster: [ 1, 1 ] # Forge-Legion
+          # Overseer: [ 1, 1 ] # #Reclamation Project - Unhook
+          # VaultDoctor: [ 3, 3 ] # #Reclamation Project - Unhook
+          # VaultDweller: [ 4, 4 ] # #Reclamation Project - Unhook
+          # VaultEngineer: [ 1, 1 ] # #Reclamation Project - Unhook
+          # VaultSecurity: [ 3, 3 ] # #Reclamation Project - Unhook
+          # VaultCargoSpecialist: [ 1, 1 ] # #Reclamation Project - Unhook
+          # VaultCourier: [ 1, 1 ] # #Reclamation Project - Unhook
+          # VaultSalvageSpecialist: [ 2, 2 ] # #Reclamation Project - Unhook
+          # CaesarLegionLegate: [ 1, 0 ] # Forge-Legion # #Misfits Tweak - 0 active slots (admin-notify role) # #Reclamation Project - Unhook
+          # CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion # #Reclamation Project - Unhook
+          # CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion # #Reclamation Project - Unhook
+          # CaesarLegionDean: [ 1, 2 ] # Forge-Legion # #Reclamation Project - Unhook
+          # CaesarLegionForgemaster: [ 1, 1] # Forge-Legion. heh, get it? FORGE legion # #Reclamation Project - Unhook
+          # CaesarLegionLegionnaireVeteran: [ 3, 3 ] # Forge-Legion # #Reclamation Project - Unhook
+          # CaesarLegionLegionnaireWarrior: [ 3, 3 ] # Forge-Legion # #Reclamation Project - Unhook
+          # CaesarLegionLegionnaireRecruit: [ 4, 4 ] # Forge-Legion # #Reclamation Project - Unhook
+          # CaesarLegionVexillarius: [ 2, 2 ] # Forge-Legion # #Reclamation Project - Unhook
+          # CaesarLegionFrumentarii: [ 2, 2 ] # Forge-Legion # #Misfits Tweak - raised total and initial slots from 1 to 2 # #Reclamation Project - Unhook
+          # CaesarLegionPrimeDecanus: [ 1, 1 ] # Misfits-Legion # #Reclamation Project - Unhook
+          # CaesarLegionExplorer: [ 4, 4 ] # Misfits-Legion # #Reclamation Project - Unhook
+          # CaesarLegionOptio: [ 1, 1 ] # Misfits-Legion # #Reclamation Project - Unhook
+          # CaesarLegionPriestessOfMars: [ 1, 1 ] # Misfits-Legion — Priestess of Mars late-join slot # #Reclamation Project - Unhook
+          # CaesarLegionAcolyteOfMars: [ 3, 3 ] # Misfits-Legion — Acolyte of Mars late-join slot # #Reclamation Project - Unhook
+          # CaesarLegionTempleGuard: [ 4, 4 ] # #Reclamation Project - Unhook
+          # CaesarLegionHoundmaster: [ 1, 1 ] # Forge-Legion # #Reclamation Project - Unhook
           # #Misfits Change: CaesarLegionRecruit slot removed — CaesarLegionLegionnaireRecruit (line 103) already covers entry-level.
-          CaesarLegionAuxilia: [ 4, 4 ] # #Misfits Change - activated
-          CaesarLegionCitizen: [ 6, 6 ] #
-          CaesarLegionTrader: [ 1, 1 ] #
-          CaesarLegionSlave: [ 3, 3 ] # Forge-Legion
+          # CaesarLegionAuxilia: [ 4, 4 ] # #Misfits Change - activated # #Reclamation Project - Unhook
+          # CaesarLegionCitizen: [ 6, 6 ] # # #Reclamation Project - Unhook
+          # CaesarLegionTrader: [ 1, 1 ] # # #Reclamation Project - Unhook
+          # CaesarLegionSlave: [ 3, 3 ] # Forge-Legion # #Reclamation Project - Unhook
           # #Misfits Change - Khan restored as the single Great Khan role.
-          EightiesTheBlock:  [ 1, 1 ] # leader
-          EightiesCylinders: [ 1, 1 ] # officer tier
-          EightiesPistons:   [ 4, 4 ] # NCO tier
-          EightiesOilers:    [ 4, 4 ] # specialist tier
-          EightiesRoadRash:  [ 4, 4 ] # recruit tier
-          GreatKhan: [ 5, 5 ] # #Misfits Change - five Great Khan slots.
-          FollowerVolunteer: [ 2, 2 ] # #Misfits Change - Followers job replaced by ranked hierarchy
-          FollowerGuard: [ 2, 2 ]      # #Misfits Add - FOTA compound guards
-          FollowerDoctor: [ 2, 2 ]   # #Misfits Add - Doctor rank slot
-          FollowerHead: [ 1, 1 ]     # #Misfits Fix - allow Head to round-start as well as latejoin
-          FollowerDirector: [ 1, 1 ] # #Misfits Add - Director rank slot
+          # EightiesTheBlock:  [ 1, 1 ] # leader # #Reclamation Project - Unhook
+          # EightiesCylinders: [ 1, 1 ] # officer tier # #Reclamation Project - Unhook
+          # EightiesPistons:   [ 4, 4 ] # NCO tier # #Reclamation Project - Unhook
+          # EightiesOilers:    [ 4, 4 ] # specialist tier # #Reclamation Project - Unhook
+          # EightiesRoadRash:  [ 4, 4 ] # recruit tier # #Reclamation Project - Unhook
+          # GreatKhan: [ 5, 5 ] # #Misfits Change - five Great Khan slots. # #Reclamation Project - Unhook
+          # FollowerVolunteer: [ 2, 2 ] # #Misfits Change - Followers job replaced by ranked hierarchy # #Reclamation Project - Unhook
+          # FollowerGuard: [ 2, 2 ]      # #Misfits Add - FOTA compound guards # #Reclamation Project - Unhook
+          # FollowerDoctor: [ 2, 2 ]   # #Misfits Add - Doctor rank slot # #Reclamation Project - Unhook
+          # FollowerHead: [ 1, 1 ]     # #Misfits Fix - allow Head to round-start as well as latejoin # #Reclamation Project - Unhook
+          # FollowerDirector: [ 1, 1 ] # #Misfits Add - Director rank slot # #Reclamation Project - Unhook
           SyntheticMrHandy: [ 1, 3 ]
           SyntheticProtectron: [ 1, 3 ]
           SyntheticMrGutsy: [ 1, 3 ]
@@ -166,13 +166,13 @@
           SyntheticSentryBot: [ 0, 0 ] # #Misfits Add: sentry bot late join slots
           SyntheticRobobrain: [ 1, 3 ] # #Misfits Add: robobrain late join slots
           # #Misfits Add - Enclave faction activation: whitelist-only roles. Spawns at Vault bunker (~-92.5, 50.5).
-          EnclaveReformer: [ 1, 0 ]      # admin-only leader (The Reformer); 0 active latejoin slots
-          EnclaveCommander: [ 1, 1 ]
-          EnclaveSeniorOfficer: [ 1, 1 ]
-          EnclaveJuniorOfficer: [ 1, 1 ]
-          EnclaveVertibirdPilot: [ 1, 1 ] # #Misfits Add
-          EnclaveNCO: [ 2, 2 ]
-          EnclaveEnlisted: [ 4, 4 ]
-          EnclaveHeadScientist: [ 1, 1 ]
-          EnclaveScientist: [ 2, 2 ]
-          EnclaveJuniorScientist: [ 2, 2 ]
+          # EnclaveReformer: [ 1, 0 ]      # admin-only leader (The Reformer); 0 active latejoin slots # #Reclamation Project - Unhook
+          # EnclaveCommander: [ 1, 1 ] # #Reclamation Project - Unhook
+          # EnclaveSeniorOfficer: [ 1, 1 ] # #Reclamation Project - Unhook
+          # EnclaveJuniorOfficer: [ 1, 1 ] # #Reclamation Project - Unhook
+          # EnclaveVertibirdPilot: [ 1, 1 ] # #Misfits Add # #Reclamation Project - Unhook
+          # EnclaveNCO: [ 2, 2 ] # #Reclamation Project - Unhook
+          # EnclaveEnlisted: [ 4, 4 ] # #Reclamation Project - Unhook
+          # EnclaveHeadScientist: [ 1, 1 ] # #Reclamation Project - Unhook
+          # EnclaveScientist: [ 2, 2 ] # #Reclamation Project - Unhook
+          # EnclaveJuniorScientist: [ 2, 2 ] # #Reclamation Project - Unhook

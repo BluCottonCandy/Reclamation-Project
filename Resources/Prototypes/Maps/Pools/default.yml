@@ -1,0 +1,8 @@
+- type: gameMapPool
+  id: DefaultMapPool
+  maps:
+  #- Wave1
+  #- Sunnyvale
+  #- Snowyvale
+  - Wendover
+  #- Pahrump

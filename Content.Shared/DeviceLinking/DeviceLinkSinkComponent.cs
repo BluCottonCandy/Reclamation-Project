@@ -1,5 +1,4 @@
 ﻿using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Shared.DeviceLinking;
 
@@ -11,7 +10,7 @@ public sealed partial class DeviceLinkSinkComponent : Component
     /// <summary>
     /// The ports this sink has
     /// </summary>
-    [DataField("ports", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<SinkPortPrototype>))]
+    [DataField("ports")]
     public HashSet<string>? Ports;
 
     /// <summary>

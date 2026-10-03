@@ -1,5 +1,4 @@
 using Content.Shared.Radio;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.Radio.Components;
 
@@ -12,7 +11,7 @@ public sealed partial class ActiveRadioComponent : Component
     /// <summary>
     ///     The channels that this radio is listening on.
     /// </summary>
-    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
+    [DataField("channels")]
     public HashSet<string> Channels = new();
 
     /// <summary>

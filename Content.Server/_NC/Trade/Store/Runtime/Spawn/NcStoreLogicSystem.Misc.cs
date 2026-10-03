@@ -181,7 +181,7 @@ public sealed partial class NcStoreLogicSystem
         {
             if (remaining <= 0)
                 break;
-            if (!TryComp(ent, out StackComponent? stack) || stack.StackTypeId != stackTypeId)
+            if (!TryComp(ent, out StackComponent? stack) || (string) stack.StackTypeId != stackTypeId)
                 continue;
 
             var spaceLeft = maxCount - stack.Count;

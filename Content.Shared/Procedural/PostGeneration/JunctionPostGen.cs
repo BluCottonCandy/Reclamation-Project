@@ -1,7 +1,5 @@
 using Content.Shared.Maps;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared.Procedural.PostGeneration;
 
@@ -16,10 +14,10 @@ public sealed partial class JunctionPostGen : IPostDunGen
     [DataField("width")]
     public int Width = 3;
 
-    [DataField("tile", customTypeSerializer:typeof(PrototypeIdSerializer<ContentTileDefinition>))]
-    public string Tile = "FloorSteel";
+    [DataField("tile")]
+    public ProtoId<ContentTileDefinition> Tile = "FloorSteel";
 
-    [DataField("entities", customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
+    [DataField("entities")]
     public List<string> Entities = new()
     {
         "CableApcExtension",

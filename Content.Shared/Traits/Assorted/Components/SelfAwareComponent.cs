@@ -1,7 +1,6 @@
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Shared.Traits.Assorted.Components;
 
@@ -16,14 +15,14 @@ public sealed partial class SelfAwareComponent : Component
     // </summary>
     // #Cythisiax Fixed + #Misfits Fixed - init to empty set instead of default! so a freshly-created client-side component is never null;
     // the auto-generated network OnHandleState calls .Clear() on this set, which NRE'd when null after suicide/delimb state desync.
-    [DataField(required: true, customTypeSerializer:typeof(PrototypeIdHashSetSerializer<DamageTypePrototype>)), AutoNetworkedField]
+    [DataField(required: true), AutoNetworkedField]
     public HashSet<string> AnalyzableTypes = new();
 
     // <summary>
     //     Damage groups that an entity is able to detect the presence of when they examine themselves.
     // </summary>
     // #Cythisiax Fixed + #Misfits Fixed - same null-safety as AnalyzableTypes
-    [DataField(required: true, customTypeSerializer:typeof(PrototypeIdHashSetSerializer<DamageGroupPrototype>)), AutoNetworkedField]
+    [DataField(required: true), AutoNetworkedField]
     public HashSet<string> DetectableGroups = new();
 
     // <summary>

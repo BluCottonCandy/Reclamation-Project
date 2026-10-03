@@ -69,8 +69,8 @@
     weight: 50
   - id: caravan_contract_N14WeaponRifleAk112
     weight: 50
-  - id: caravan_contract_N14ClothingLegionReconArmor
-    weight: 50
+  # - id: caravan_contract_N14ClothingLegionReconArmor # #Reclamation Project - Unhook
+    # weight: 50
   - id: caravan_contract_N14PilumSpear
     weight: 50
   # Misfits Add — new contracts: Hard
@@ -83,8 +83,8 @@
     weight: 50
   #- id: caravan_contract_N14WeaponLaserRifleYk42b -another impossible contract; item not obtainable -pierow
     #weight: 50
-  - id: caravan_contract_N14VeteranLegionArmor
-    weight: 50
+  # - id: caravan_contract_N14VeteranLegionArmor # #Reclamation Project - Unhook
+    # weight: 50
   # Misfits Add — new Mithril contract
   # - id: caravan_contract_N14MobCazador #removed, just buggy -pierow
     # weight: 50
@@ -99,8 +99,8 @@
     weight: 50
   - id: caravan_contract_N14HolotapeQuestGECK
     weight: 50
-  - id: caravan_contract_N14HolotapeEnclave
-    weight: 50
+  # - id: caravan_contract_N14HolotapeEnclave # #Reclamation Project - Unhook
+    # weight: 50
   - id: caravan_contract_N14CurrencyPrewar
     weight: 50
 
@@ -748,23 +748,23 @@
     - type: Pool
       id: caravan_silver_nonweapons
 
-- type: storeContract
-  id: caravan_contract_N14ClothingLegionReconArmor
-  name: "Revenge, for Charity"
-  description: "Escaped slaves of Caesar's Legion have pooled together their savings to see at least a few of their tormentors dead. Instead of taking ears, the refugees will be satisfied with this as proof instead."
-  difficulty: Junktown Rat
-  targets:
-  - id: N14ClothingLegionReconArmor
-    required: { min: 1, max: 2 }
-  rewards:
-  - type: Currency
-    id: Caps
-    amount: { min: 175, max: 275 }
-  - type: Pool
-    amount: { min: 1, max: 3 }
-    options:
-    - type: Pool
-      id: caravan_silver
+# - type: storeContract # #Reclamation Project - Unhook
+  # id: caravan_contract_N14ClothingLegionReconArmor
+  # name: "Revenge, for Charity"
+  # description: "Escaped slaves of Caesar's Legion have pooled together their savings to see at least a few of their tormentors dead. Instead of taking ears, the refugees will be satisfied with this as proof instead."
+  # difficulty: Junktown Rat
+  # targets:
+  # - id: N14ClothingLegionReconArmor
+    # required: { min: 1, max: 2 }
+  # rewards:
+  # - type: Currency
+    # id: Caps
+    # amount: { min: 175, max: 275 }
+  # - type: Pool
+    # amount: { min: 1, max: 3 }
+    # options:
+    # - type: Pool
+      # id: caravan_silver
 
 - type: storeContract
   id: caravan_contract_N14PilumSpear
@@ -859,23 +859,23 @@
     # - type: Pool
       # id: caravan_gold_nonweapons
 
-- type: storeContract
-  id: caravan_contract_N14VeteranLegionArmor
-  name: "Blood and Sand"
-  description: "The New California Republic is paying well for proof of dead Legion scum. Strip a set of veteran armor off a fresh corpse as evidence you finished the job, and send it in for your payment."
-  difficulty: Hub Mercenary
-  targets:
-  - id: N14ClothingOuterDeanLegionnaireVeteranArmor
-    required: 1
-  rewards:
-  - type: Currency
-    id: Caps
-    amount: { min: 350, max: 600 }
-  - type: Pool
-    amount: { min: 1, max: 3 }
-    options:
-    - type: Pool
-      id: caravan_gold
+# - type: storeContract # #Reclamation Project - Unhook
+  # id: caravan_contract_N14VeteranLegionArmor
+  # name: "Blood and Sand"
+  # description: "The New California Republic is paying well for proof of dead Legion scum. Strip a set of veteran armor off a fresh corpse as evidence you finished the job, and send it in for your payment."
+  # difficulty: Hub Mercenary
+  # targets:
+  # - id: N14ClothingOuterDeanLegionnaireVeteranArmor
+    # required: 1
+  # rewards:
+  # - type: Currency
+    # id: Caps
+    # amount: { min: 350, max: 600 }
+  # - type: Pool
+    # amount: { min: 1, max: 3 }
+    # options:
+    # - type: Pool
+      # id: caravan_gold
 
 # Misfits Add — new Mithril tier contract
 
@@ -990,23 +990,23 @@
     - type: Pool
       id: caravan_mithril
 
-- type: storeContract
-  id: caravan_contract_N14HolotapeEnclave
-  name: "America the Not-So Beautiful"
-  description: "Information pulled from the cold dead hands of the Enclave is always valuable to the Brotherhood of Steel, and their representatives are interested in more data stolen from the remnants of America's elite."
-  difficulty: Wasteland Legend
-  targets:
-  - id: N14HolotapeEnclave
-    required: 1
-  rewards:
-  - type: Currency
-    id: Caps
-    amount: { min: 2000, max: 2700 }
-  - type: Pool
-    amount: { min: 2, max: 4 }
-    options:
-    - type: Pool
-      id: caravan_diamond
+# - type: storeContract # #Reclamation Project - Unhook
+  # id: caravan_contract_N14HolotapeEnclave
+  # name: "America the Not-So Beautiful"
+  # description: "Information pulled from the cold dead hands of the Enclave is always valuable to the Brotherhood of Steel, and their representatives are interested in more data stolen from the remnants of America's elite."
+  # difficulty: Wasteland Legend
+  # targets:
+  # - id: N14HolotapeEnclave
+    # required: 1
+  # rewards:
+  # - type: Currency
+    # id: Caps
+    # amount: { min: 2000, max: 2700 }
+  # - type: Pool
+    # amount: { min: 2, max: 4 }
+    # options:
+    # - type: Pool
+      # id: caravan_diamond
 
 - type: storeContract
   id: caravan_contract_N14CurrencyPrewar

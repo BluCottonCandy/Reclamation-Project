@@ -609,8 +609,8 @@
     price: 45
   - proto: N14ClothingOuterTownMediumCoat
     price: 50
-  - proto: N14ClothingOuterCoatFollowersArmored
-    price: 55
+  # - proto: N14ClothingOuterCoatFollowersArmored # #Reclamation Project - Unhook
+    # price: 55
   - proto: N14ClothingOuterInsectArmor
     price: 55
   - proto: N14ClothingOuterLightMetalArmor
@@ -872,7 +872,7 @@
   - CaravanBuy2_Misc
   - CaravanBuy2_Plushies
   - CaravanBuy2_Sprouts
-  - CaravanBuy2_Currency
+  # - CaravanBuy2_Currency # #Reclamation Project - Unhook (NCR/Legion money exchange)
 
 # ----------------------------
 # caravan_sell2 categories
@@ -1224,8 +1224,8 @@
     price: 55
   - proto: N14ClothingOuterCoatCombatDuster
     price: 55
-  - proto: N14ClothingOuterCoatFollowersArmored
-    price: 30
+  # - proto: N14ClothingOuterCoatFollowersArmored # #Reclamation Project - Unhook
+    # price: 30
   - proto: N14ClothingOuterInsectArmor
     price: 30
   - proto: N14ClothingOuterLightMetalArmor
@@ -1416,7 +1416,7 @@
   - CaravanSell2_Ore
   - CaravanSell2_Alcohol
   - CaravanSell2_Fish
-  - CaravanSell2_Currency
+  # - CaravanSell2_Currency # #Reclamation Project - Unhook (NCR/Legion money exchange)
 
 
 

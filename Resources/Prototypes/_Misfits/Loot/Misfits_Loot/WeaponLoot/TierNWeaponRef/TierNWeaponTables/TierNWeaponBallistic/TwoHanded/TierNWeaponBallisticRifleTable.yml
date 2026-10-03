@@ -10,9 +10,9 @@
     - !type:EntSelector
       id: N14WeaponRifle556CarbineOld
       weight: 4
-    - !type:EntSelector
-      id: N14WeaponAutoRifle556Legion
-      weight: 4
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: N14WeaponAutoRifle556Legion
+      # weight: 4
     - !type:EntSelector
       id: N14WeaponRifle556Pipe
       weight: 4
@@ -135,9 +135,9 @@
     - !type:EntSelector
       id: N14WeaponSniperEnfield
       weight: 4
-    - !type:EntSelector
-      id: N14WeaponSniper50NCRRifle # shit 1 one shot .50
-      weight: 4
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: N14WeaponSniper50NCRRifle # shit 1 one shot .50
+      # weight: 4
     - !type:EntSelector
       id: N14WeaponSniper50AntiMateriel
       weight: 4

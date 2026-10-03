@@ -55,12 +55,12 @@
       id: N14WeaponTurretCaravan
     - !type:EntSelector
       id: N14WeaponTurretMobileBroken
-    - !type:EntSelector
-      id: N14WeaponTurretNCR
-    - !type:EntSelector
-      id: N14WeaponTurretNCRSecureArea
-    - !type:EntSelector
-      id: N14WeaponTurretNCRSpawnpoint
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: N14WeaponTurretNCR
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: N14WeaponTurretNCRSecureArea
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: N14WeaponTurretNCRSpawnpoint
     - !type:EntSelector
       id: N14WeaponTurretRaider
     - !type:EntSelector

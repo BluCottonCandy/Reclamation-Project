@@ -842,8 +842,8 @@
     price: 55
   - proto: N14ClothingOuterCoatCombatDuster
     price: 55
-  - proto: N14ClothingOuterCoatFollowersArmored
-    price: 30
+  # - proto: N14ClothingOuterCoatFollowersArmored # #Reclamation Project - Unhook
+    # price: 30
   - proto: N14ClothingOuterInsectArmor
     price: 30
   - proto: N14ClothingOuterLightMetalArmor
@@ -866,46 +866,46 @@
     price: 140
   - proto: N14ClothingOuterCombatArmor
     price: 140
-  - proto: N14ClothingOuterNCRPlateDesert
-    price: 100
+  # - proto: N14ClothingOuterNCRPlateDesert # #Reclamation Project - Unhook
+    # price: 100
   - proto: N14ClothingOuterRangerCoat
     price: 170
-  - proto: N14ClothingOuterNCRPatrolRangerArmorVariant
-    price: 160
+  # - proto: N14ClothingOuterNCRPatrolRangerArmorVariant # #Reclamation Project - Unhook
+    # price: 160
   - proto: N14ClothingOuterRangerFieldArmor
     price: 170
   - proto: N14ClothingOuterRangerVest
     price: 120
-  - proto: N14ClothingOuterNCRPouchedVestSnow
-    price: 88
-  - proto: N14ClothingOuterNCRPouchedVestWoods
-    price: 88
-  - proto: N14ClothingOuterNCRPouchedVestDesert
-    price: 80
-  - proto: N14ClothingOuterNCRVestpaddedWebDesert
-    price: 88
-  - proto: N14ClothingOuterNCRCombatArmor
-    price: 160
-  - proto: N14ClothingOuterNCRCombatArmorMK2
-    price: 210
-  - proto: N14ClothingOuterLegionnaireVeteranArmor
-    price: 160
-  - proto: N14ClothingOuterLegionnaireExplorerArmor
-    price: 80
-  - proto: N14ClothingOuterLegionnaireBaseArmor
-    price: 50
-  - proto: N14ClothingOuterLegionnaireRecruitArmor
-    price: 25
-  - proto: N14ClothingOuterLegionnaireReconnaissanceArmor
-    price: 80
-  - proto: N14ClothingOuterLegionnaireVexillariusArmor
-    price: 80
-  - proto: N14ClothingLegionReconArmor
-    price: 120
-  - proto: N14ClothingOuterDeanLegionnairePrimeArmor
-    price: 200
-  - proto: N14ClothingOuterDeanLegionnaireRecruitArmor
-    price: 180
+  # - proto: N14ClothingOuterNCRPouchedVestSnow # #Reclamation Project - Unhook
+    # price: 88
+  # - proto: N14ClothingOuterNCRPouchedVestWoods # #Reclamation Project - Unhook
+    # price: 88
+  # - proto: N14ClothingOuterNCRPouchedVestDesert # #Reclamation Project - Unhook
+    # price: 80
+  # - proto: N14ClothingOuterNCRVestpaddedWebDesert # #Reclamation Project - Unhook
+    # price: 88
+  # - proto: N14ClothingOuterNCRCombatArmor # #Reclamation Project - Unhook
+    # price: 160
+  # - proto: N14ClothingOuterNCRCombatArmorMK2 # #Reclamation Project - Unhook
+    # price: 210
+  # - proto: N14ClothingOuterLegionnaireVeteranArmor # #Reclamation Project - Unhook
+    # price: 160
+  # - proto: N14ClothingOuterLegionnaireExplorerArmor # #Reclamation Project - Unhook
+    # price: 80
+  # - proto: N14ClothingOuterLegionnaireBaseArmor # #Reclamation Project - Unhook
+    # price: 50
+  # - proto: N14ClothingOuterLegionnaireRecruitArmor # #Reclamation Project - Unhook
+    # price: 25
+  # - proto: N14ClothingOuterLegionnaireReconnaissanceArmor # #Reclamation Project - Unhook
+    # price: 80
+  # - proto: N14ClothingOuterLegionnaireVexillariusArmor # #Reclamation Project - Unhook
+    # price: 80
+  # - proto: N14ClothingLegionReconArmor # #Reclamation Project - Unhook
+    # price: 120
+  # - proto: N14ClothingOuterDeanLegionnairePrimeArmor # #Reclamation Project - Unhook
+    # price: 200
+  # - proto: N14ClothingOuterDeanLegionnaireRecruitArmor # #Reclamation Project - Unhook
+    # price: 180
 
 - type: storeCategoryStructured
   id: WasterSell2_Clothes

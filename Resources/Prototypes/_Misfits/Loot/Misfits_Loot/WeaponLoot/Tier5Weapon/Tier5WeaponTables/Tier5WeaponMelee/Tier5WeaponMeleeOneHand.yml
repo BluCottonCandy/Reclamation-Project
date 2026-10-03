@@ -25,10 +25,10 @@
   id: M14WeaponLootTier5_Shield
   table: !type:GroupSelector
     children:
-    - !type:EntSelector
-      id: N14LegionnaireShield
-    - !type:EntSelector
-      id: N14LegionnaireBuckler
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: N14LegionnaireShield
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: N14LegionnaireBuckler
     - !type:EntSelector
       id: N14InsectShield
     - !type:EntSelector

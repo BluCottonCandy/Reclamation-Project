@@ -14,9 +14,9 @@
     - !type:EntSelector
       id: N14WeaponM60GPMG #308
       weight: 1
-    - !type:EntSelector
-      id: MisfitsWeaponRangerPowerArmorLMG # 556
-      weight: 1
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: MisfitsWeaponRangerPowerArmorLMG # 556
+      # weight: 1
     - !type:EntSelector
       id: N14WeaponRifle556HeavyAssault # 556 lol my testies are heavier than that
       weight: 1

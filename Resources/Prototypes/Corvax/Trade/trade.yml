@@ -609,8 +609,8 @@
     price: 45
   - proto: N14ClothingOuterTownMediumCoat
     price: 50
-  - proto: N14ClothingOuterCoatFollowersArmored
-    price: 55
+  # - proto: N14ClothingOuterCoatFollowersArmored # #Reclamation Project - Unhook
+    # price: 55
   - proto: N14ClothingOuterInsectArmor
     price: 55
   - proto: N14ClothingOuterLightMetalArmor
@@ -1224,8 +1224,8 @@
     price: 55
   - proto: N14ClothingOuterCoatCombatDuster
     price: 55
-  - proto: N14ClothingOuterCoatFollowersArmored
-    price: 30
+  # - proto: N14ClothingOuterCoatFollowersArmored # #Reclamation Project - Unhook
+    # price: 30
   - proto: N14ClothingOuterInsectArmor
     price: 30
   - proto: N14ClothingOuterLightMetalArmor

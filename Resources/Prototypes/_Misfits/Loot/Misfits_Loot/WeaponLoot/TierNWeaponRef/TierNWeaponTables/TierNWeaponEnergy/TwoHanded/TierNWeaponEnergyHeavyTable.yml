@@ -21,5 +21,5 @@
   table: !type:GroupSelector
     children:
     - !type:EntSelector
-      id: N14WeaponLegionScorcher
+      id: N14WeaponFlamer # #Reclamation Project - Unhook (was N14WeaponLegionScorcher)
       weight: 1

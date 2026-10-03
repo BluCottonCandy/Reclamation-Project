@@ -5,9 +5,9 @@
     - !type:EntSelector
       id: N14WeaponPistolT60
       weight: 5
-    - !type:EntSelector
-      id: MisfitsWeaponRangerPowerArmorPistol
-      weight: 5
+    # - !type:EntSelector # #Reclamation Project - Unhook
+      # id: MisfitsWeaponRangerPowerArmorPistol
+      # weight: 5
     - !type:EntSelector
       id: N14WeaponLaserdotDesertEagle44 # laser sight deagle
       weight: 5

@@ -1,5 +1,4 @@
 using Content.Shared.Radio;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Shared.Radio.Components;
 
@@ -9,6 +8,6 @@ namespace Content.Shared.Radio.Components;
 [RegisterComponent]
 public sealed partial class DisabledEncryptionChannelsComponent : Component
 {
-    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
+    [DataField("channels")]
     public HashSet<string> Channels = new();
 }

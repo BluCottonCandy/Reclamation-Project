@@ -1,6 +1,5 @@
 ﻿using Content.Server.Worldgen.Systems.Debris;
 using Content.Shared.Maps;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Server.Worldgen.Components.Debris;
 
@@ -24,8 +23,7 @@ public sealed partial class BlobFloorPlanBuilderComponent : Component
     /// <summary>
     ///     The tiles to be used for the floor plan.
     /// </summary>
-    [DataField("floorTileset", required: true,
-        customTypeSerializer: typeof(PrototypeIdListSerializer<ContentTileDefinition>))]
+    [DataField("floorTileset", required: true)]
     public List<string> FloorTileset { get; private set;  } = default!;
 
     /// <summary>

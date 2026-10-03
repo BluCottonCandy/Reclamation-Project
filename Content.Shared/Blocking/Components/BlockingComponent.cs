@@ -3,7 +3,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Blocking;
 
@@ -48,7 +47,7 @@ public sealed partial class BlockingComponent : Component
     [DataField("activeBlockModifier", required: true)]
     public DamageModifierSet ActiveBlockDamageModifier = default!;
 
-    [DataField("blockingToggleAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    [DataField("blockingToggleAction")]
     public string BlockingToggleAction = "ActionToggleBlock";
 
     [DataField, AutoNetworkedField]

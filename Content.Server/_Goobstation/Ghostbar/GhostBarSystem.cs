@@ -38,7 +38,6 @@ public sealed class GhostBarSystem : EntitySystem
     [Dependency] private readonly TraitSystem _trait = default!;
     // Einstein Engines end
 
-    [ValidatePrototypeId<JobPrototype>] // Einstein Engines - validate job prototypes
     private static readonly List<ProtoId<JobPrototype>> _jobComponents = new()
     {
         "Passenger", "Bartender", "Botanist", "Chef", "Janitor"

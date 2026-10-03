@@ -3,8 +3,6 @@ using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.Station.Components;
 
@@ -59,7 +57,7 @@ public sealed partial class StationJobsComponent : Component
     /// <remarks>
     /// This should not be mutated or used directly unless you really know what you're doing, go through StationJobsSystem.
     /// </remarks>
-    [DataField("jobList", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<uint?, JobPrototype>))]
+    [DataField("jobList")]
     public Dictionary<string, uint?> JobList = new();
 
     /// <summary>
@@ -68,13 +66,13 @@ public sealed partial class StationJobsComponent : Component
     /// <remarks>
     /// This should not be mutated, ever.
     /// </remarks>
-    [DataField("roundStartJobList", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<uint?, JobPrototype>))]
+    [DataField("roundStartJobList")]
     public Dictionary<string, uint?> RoundStartJobList = new();
 
     /// <summary>
     /// Overflow jobs that round-start can spawn infinitely many of.
     /// </summary>
-    [DataField("overflowJobs", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<JobPrototype>))]
+    [DataField("overflowJobs")]
     public HashSet<string> OverflowJobs = new();
 
     /// <summary>
@@ -84,7 +82,6 @@ public sealed partial class StationJobsComponent : Component
     [DataField]
     public Dictionary<NetUserId, List<ProtoId<JobPrototype>>> PlayerJobs = new();
 
-    [DataField("availableJobs", required: true,
-        customTypeSerializer: typeof(PrototypeIdDictionarySerializer<List<int?>, JobPrototype>))]
+    [DataField("availableJobs", required: true)]
     public Dictionary<string, List<int?>> SetupAvailableJobs = default!;
 }

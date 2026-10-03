@@ -5,8 +5,6 @@ using Content.Shared.EntityEffects;
 using Content.Shared.Random;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Botany;
@@ -124,13 +122,13 @@ public partial class SeedData
     /// <summary>
     ///     The entity prototype that is spawned when this type of seed is extracted from produce using a seed extractor.
     /// </summary>
-    [DataField("packetPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string PacketPrototype = "SeedBase";
+    [DataField("packetPrototype")]
+    public EntProtoId PacketPrototype = "SeedBase";
 
     /// <summary>
     ///     The entity prototype this seed spawns when it gets harvested.
     /// </summary>
-    [DataField("productPrototypes", customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
+    [DataField("productPrototypes")]
     public List<string> ProductPrototypes = new();
 
     [DataField("chemicals")] public Dictionary<string, SeedChemQuantity> Chemicals = new();
@@ -243,7 +241,7 @@ public partial class SeedData
 
     public float BioluminescentRadius = 2f;
 
-    [DataField("kudzuPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))] public string KudzuPrototype = "WeakKudzu";
+    [DataField("kudzuPrototype")] public EntProtoId KudzuPrototype = "WeakKudzu";
 
     [DataField("turnIntoKudzu")] public bool TurnIntoKudzu;
     [DataField("splatPrototype")] public string? SplatPrototype { get; set; }
@@ -256,7 +254,7 @@ public partial class SeedData
     /// <summary>
     ///     The seed prototypes this seed may mutate into when prompted to.
     /// </summary>
-    [DataField("mutationPrototypes", customTypeSerializer: typeof(PrototypeIdListSerializer<SeedPrototype>))]
+    [DataField("mutationPrototypes")]
     public List<string> MutationPrototypes = new();
 
     public SeedData Clone()

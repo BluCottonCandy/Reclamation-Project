@@ -1,6 +1,5 @@
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 
 namespace Content.Server.Store.Components;
 
@@ -17,6 +16,6 @@ public sealed partial class CurrencyComponent : Component
     /// The FixedPoint2 is the value of each individual currency entity.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("price", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<FixedPoint2, CurrencyPrototype>))]
+    [DataField("price")]
     public Dictionary<string, FixedPoint2> Price = new();
 }

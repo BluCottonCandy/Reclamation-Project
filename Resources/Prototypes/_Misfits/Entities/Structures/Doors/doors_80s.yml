@@ -157,7 +157,11 @@
       types:
         Blunt: 25
   - type: Occluder
-    boundingBox: "-0.9,-0.5,0.9,0.5"
+    polygon: # #Reclamation Project - engine 287 replaced boundingBox (-0.9,-0.5,0.9,0.5)
+    - -0.9,0.5
+    - 0.9,0.5
+    - 0.9,-0.5
+    - -0.9,-0.5
   - type: Appearance
   - type: RadiationBlocker
     resistance: 10

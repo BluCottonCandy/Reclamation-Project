@@ -1,9 +1,8 @@
+using Robust.Shared.Prototypes;
 using Content.Shared.Lathe;
 using Content.Shared.Research.Prototypes;
 using Content.Shared.Research.Systems;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared.Research.Components;
 
@@ -14,8 +13,8 @@ public sealed partial class TechnologyDatabaseComponent : Component
     ///     A main discipline that bypasses the T3 Softcap
     /// </summary>
     [AutoNetworkedField]
-    [DataField("mainDiscipline", customTypeSerializer: typeof(PrototypeIdSerializer<TechDisciplinePrototype>))]
-    public string? MainDiscipline;
+    [DataField("mainDiscipline")]
+    public ProtoId<TechDisciplinePrototype>? MainDiscipline;
 
     [AutoNetworkedField]
     [DataField("currentTechnologyCards")]
@@ -25,14 +24,14 @@ public sealed partial class TechnologyDatabaseComponent : Component
     /// Which research disciplines are able to be unlocked
     /// </summary>
     [AutoNetworkedField]
-    [DataField("supportedDisciplines", customTypeSerializer: typeof(PrototypeIdListSerializer<TechDisciplinePrototype>))]
+    [DataField("supportedDisciplines")]
     public List<string> SupportedDisciplines = new();
 
     /// <summary>
     /// The ids of all the technologies which have been unlocked.
     /// </summary>
     [AutoNetworkedField]
-    [DataField("unlockedTechnologies", customTypeSerializer: typeof(PrototypeIdListSerializer<TechnologyPrototype>))]
+    [DataField("unlockedTechnologies")]
     public List<string> UnlockedTechnologies = new();
 
     /// <summary>
@@ -41,7 +40,7 @@ public sealed partial class TechnologyDatabaseComponent : Component
     /// </summary>
     /// todo: if you unlock all the recipes in a tech, it doesn't count as unlocking the tech. sadge
     [AutoNetworkedField]
-    [DataField("unlockedRecipes", customTypeSerializer: typeof(PrototypeIdListSerializer<LatheRecipePrototype>))]
+    [DataField("unlockedRecipes")]
     public List<string> UnlockedRecipes = new();
 
     [DataField, AutoNetworkedField]

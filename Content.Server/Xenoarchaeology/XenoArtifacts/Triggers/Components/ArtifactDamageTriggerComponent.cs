@@ -1,5 +1,4 @@
 ﻿using Content.Shared.Damage.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Server.Xenoarchaeology.XenoArtifacts.Triggers.Components;
 
@@ -12,7 +11,7 @@ public sealed partial class ArtifactDamageTriggerComponent : Component
     /// <summary>
     /// What damage types are accumulated for the trigger?
     /// </summary>
-    [DataField("damageTypes", customTypeSerializer: typeof(PrototypeIdListSerializer<DamageTypePrototype>))]
+    [DataField("damageTypes")]
     public List<string>? DamageTypes;
 
     /// <summary>

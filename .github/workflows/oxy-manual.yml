@@ -521,8 +521,8 @@ jobs:
                   api('/files/chmod', 'POST', {
                       'root': '/' + folder, 'files': [{'file': 'Robust.Server', 'mode': '755'}]
                   })
-                  mode = str(listing('/' + folder)['Robust.Server'].get('mode_bits', ''))
-                  if mode.lstrip('0') != '755':
+                  executable_mode = str(listing('/' + folder)['Robust.Server'].get('mode_bits', ''))
+                  if executable_mode.lstrip('0') != '755':
                       raise StageError('Could not verify staged executable permission.')
                   print('Staging passed. Live server files and power state were not modified.', flush=True)
                   summary = os.environ.get('GITHUB_STEP_SUMMARY')

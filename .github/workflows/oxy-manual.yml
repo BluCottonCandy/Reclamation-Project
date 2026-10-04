@@ -1,0 +1,53 @@
+name: OXY Manual Build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: oxy-manual
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Check out code and engine
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Install .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build Linux server with bundled client
+        run: dotnet run --project Content.Packaging server --platform linux-x64 --hybrid-acz
+
+      - name: Verify package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from zipfile import ZipFile
+          with ZipFile('release/SS14.Server_linux-x64.zip') as package:
+              names = set(package.namelist())
+              for required in ('Robust.Server', 'Content.Client.zip'):
+                  if required not in names:
+                      raise SystemExit(f'Missing required file: {required}')
+              print('Verified server and bundled client.')
+          PY
+
+      - name: Save server package
+        uses: actions/upload-artifact@v4
+        with:
+          name: oxy-linux-server-${{ github.sha }}
+          path: release/SS14.Server_linux-x64.zip
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0

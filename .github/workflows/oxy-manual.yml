@@ -4,13 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Build package or check OXY connectivity (no deployment)
+        description: Build, check connection, or stage package (server stays online)
         type: choice
         required: true
         default: check
         options:
           - check
           - build
+          - stage
 
 permissions:
   contents: read
@@ -21,7 +22,7 @@ concurrency:
 
 jobs:
   build:
-    if: inputs.mode == 'build'
+    if: inputs.mode == 'build' || (inputs.mode == 'stage' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
@@ -166,3 +167,237 @@ jobs:
           path: ${{ runner.temp }}/oxy-host-keys
           if-no-files-found: error
           retention-days: 7
+
+  stage:
+    if: inputs.mode == 'stage' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Download this run's verified server package
+        uses: actions/download-artifact@v4
+        with:
+          name: oxy-linux-server-${{ github.sha }}
+          path: package
+
+      - name: Upload and validate an isolated staging package
+        env:
+          OXY_API_KEY: ${{ secrets.OXY_API_KEY }}
+          OXY_SSH_KEY: ${{ secrets.OXY_SSH_KEY }}
+          OXY_PANEL_URL: ${{ vars.OXY_PANEL_URL }}
+          OXY_SERVER_ID: ${{ vars.OXY_SERVER_ID }}
+          OXY_SFTP_HOST: ${{ vars.OXY_SFTP_HOST }}
+          OXY_SFTP_PORT: ${{ vars.OXY_SFTP_PORT }}
+          OXY_SFTP_USERNAME: ${{ vars.OXY_SFTP_USERNAME }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          """Stage a package in an isolated OXY folder; never change live files or power."""
+          import base64
+          import hashlib
+          import json
+          import os
+          from pathlib import Path, PurePosixPath
+          import shutil
+          import stat
+          import subprocess
+          import tempfile
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+          import zipfile
+          
+          
+          class StageError(Exception):
+              pass
+          
+          
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, headers, newurl):
+                  return None
+          
+          
+          def prepare(source, destination):
+              expected = {}
+              seen = set()
+              with zipfile.ZipFile(source) as original, zipfile.ZipFile(
+                  destination, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=1
+              ) as output:
+                  for entry in original.infolist():
+                      name = entry.filename
+                      parts = PurePosixPath(name).parts
+                      if not parts or name.startswith('/') or '\\' in name or '..' in parts:
+                          raise StageError('Package contains an unsafe path.')
+                      if ':' in name or any(ord(character) < 32 for character in name):
+                          raise StageError('Package contains an unsupported path.')
+                      if stat.S_ISLNK(entry.external_attr >> 16):
+                          raise StageError('Package contains a symbolic link.')
+                      top = parts[0].lower()
+                      if top in ('data', 'logs', 'server_config.toml') or top.startswith('.'):
+                          continue
+                      if len(parts) == 1 and top.endswith(('.toml', '.db', '.sqlite', '.sqlite3')):
+                          continue
+                      if name in seen:
+                          raise StageError('Package contains duplicate entries.')
+                      seen.add(name)
+                      if entry.is_dir():
+                          output.writestr(entry, b'')
+                          continue
+                      # Reading each entry to its end also verifies its original ZIP CRC.
+                      with original.open(entry) as incoming, output.open(name, 'w', force_zip64=True) as outgoing:
+                          shutil.copyfileobj(incoming, outgoing, length=1024 * 1024)
+                      expected[name] = entry.file_size
+              if not all(name in expected for name in ('Robust.Server', 'Content.Client.zip')):
+                  raise StageError('Package is missing the server or bundled client.')
+              if not any(name.startswith('Resources/') for name in expected):
+                  raise StageError('Package is missing game resources.')
+              return expected
+          
+          
+          def main():
+              if os.environ.get('GITHUB_REF') != 'refs/heads/main':
+                  raise StageError('Staging is restricted to the main branch.')
+              panel = os.environ['OXY_PANEL_URL'].rstrip('/')
+              server = os.environ['OXY_SERVER_ID']
+              host = os.environ['OXY_SFTP_HOST']
+              port = os.environ['OXY_SFTP_PORT']
+              username = os.environ['OXY_SFTP_USERNAME']
+              if (panel, server, host, port, username) != (
+                  'https://panel.oxy.games', '6c120791', 'relay.oxy.games', '2622',
+                  'nibanath22_gmail.com.6c120791'
+              ):
+                  raise StageError('OXY variables do not match the intended server.')
+              token = os.environ.pop('OXY_API_KEY', '')
+              private_key = os.environ.pop('OXY_SSH_KEY', '')
+              if not token or not private_key:
+                  raise StageError('An OXY secret is missing.')
+              base = f'{panel}/api/client/servers/{server}'
+              opener = urllib.request.build_opener(NoRedirect())
+          
+              def api(path, method='GET', payload=None, timeout=45):
+                  body = json.dumps(payload).encode() if payload is not None else None
+                  request = urllib.request.Request(base + path, data=body, method=method, headers={
+                      'Authorization': 'Bearer ' + token,
+                      'Accept': 'application/json', 'Content-Type': 'application/json'
+                  })
+                  try:
+                      with opener.open(request, timeout=timeout) as response:
+                          content = response.read()
+                          return json.loads(content) if content else None
+                  except urllib.error.HTTPError as error:
+                      raise StageError(f'OXY API {path.split("?")[0]} failed: HTTP {error.code}.') from None
+                  except (urllib.error.URLError, TimeoutError, ValueError):
+                      raise StageError('OXY API network or response error; details withheld.') from None
+          
+              def listing(directory):
+                  result = api('/files/list?' + urllib.parse.urlencode({'directory': directory}))
+                  return {item['attributes']['name']: item['attributes'] for item in result['data']}
+          
+              run = os.environ['GITHUB_RUN_ID']
+              attempt = os.environ['GITHUB_RUN_ATTEMPT']
+              if not run.isdigit() or not attempt.isdigit():
+                  raise StageError('Invalid run identifier.')
+              folder = f'.oxy-stage-{run}-{attempt}'
+              live = listing('/')
+              for name in ('Robust.Server', 'server_config.toml', 'data', 'logs'):
+                  if name not in live or live[name].get('is_symlink'):
+                      raise StageError('Expected live files or folders are missing or are symbolic links.')
+              if folder in live:
+                  raise StageError('This staging folder already exists; refusing to overwrite it.')
+              before = api('/resources')['attributes']
+              limit = api('')['attributes']['limits']['disk']
+              print('OXY status read successfully. Live server state:', before['current_state'], flush=True)
+          
+              with tempfile.TemporaryDirectory(prefix='oxy-stage-') as scratch:
+                  scratch = Path(scratch)
+                  package = scratch / 'package.zip'
+                  expected = prepare('package/SS14.Server_linux-x64.zip', package)
+                  required_bytes = package.stat().st_size + sum(expected.values()) + 128 * 1024 * 1024
+                  if limit and int(limit) * 1024 * 1024 - before['resources']['disk_bytes'] < required_bytes:
+                      raise StageError('Insufficient OXY disk quota for archive plus extracted staging files.')
+                  print('Package checked; live config, data, and logs excluded.', flush=True)
+          
+                  scan = subprocess.run(
+                      ['ssh-keyscan', '-T', '15', '-p', port, '-t', 'ed25519', host],
+                      capture_output=True, text=True, timeout=30, check=False
+                  )
+                  keys = [line for line in scan.stdout.splitlines() if line and not line.startswith('#')]
+                  if len(keys) != 1:
+                      raise StageError('Expected exactly one ED25519 host key.')
+                  fields = keys[0].split()
+                  if len(fields) != 3 or fields[:2] != [f'[{host}]:{port}', 'ssh-ed25519']:
+                      raise StageError('Unexpected SFTP host-key format.')
+                  fingerprint = 'SHA256:' + base64.b64encode(
+                      hashlib.sha256(base64.b64decode(fields[2], validate=True)).digest()
+                  ).decode().rstrip('=')
+                  if fingerprint != 'SHA256:jaX+FxW5+EnIYnPGmTN+hpQnYjwg7s60pEqWhkLYX5Q':
+                      raise StageError('SFTP host key changed; refusing authentication.')
+                  hosts = scratch / 'known_hosts'
+                  hosts.write_text(keys[0] + '\n')
+                  keyfile = scratch / 'identity'
+                  keyfile.write_text(private_key.replace('\r', '').rstrip('\n') + '\n')
+                  keyfile.chmod(0o600)
+                  private_key = None
+                  checked = subprocess.run(
+                      ['ssh-keygen', '-y', '-P', '', '-f', str(keyfile)], capture_output=True, timeout=15
+                  )
+                  if checked.returncode:
+                      raise StageError('SSH private key is invalid or needs a passphrase.')
+          
+                  api('/files/create-folder', 'POST', {'root': '/', 'name': folder})
+                  print('Uploading into isolated folder:', folder, flush=True)
+                  batch = scratch / 'upload.batch'
+                  batch.write_text(f'put "{package.as_posix()}" "/{folder}/package.zip"\n')
+                  transferred = subprocess.run([
+                      'sftp', '-q', '-b', str(batch), '-i', str(keyfile), '-P', port,
+                      '-o', 'BatchMode=yes', '-o', 'IdentitiesOnly=yes', '-o', 'ConnectTimeout=20',
+                      '-o', 'PasswordAuthentication=no', '-o', 'KbdInteractiveAuthentication=no',
+                      '-o', 'StrictHostKeyChecking=yes', '-o', 'HostKeyAlgorithms=ssh-ed25519',
+                      '-o', f'UserKnownHostsFile={hosts}', '-o', 'GlobalKnownHostsFile=/dev/null',
+                      f'{username}@{host}'
+                  ], capture_output=True, timeout=1800, check=False)
+                  keyfile.unlink()
+                  if transferred.returncode:
+                      raise StageError('SFTP staging upload failed; live files are unchanged.')
+                  uploaded = listing('/' + folder).get('package.zip', {})
+                  if uploaded.get('size') != package.stat().st_size:
+                      raise StageError('Uploaded archive size does not match.')
+                  print('Upload complete; unpacking only inside staging folder.', flush=True)
+                  api('/files/decompress', 'POST', {'root': '/' + folder, 'file': 'package.zip'}, timeout=330)
+                  staged = listing('/' + folder)
+                  for name, size in expected.items():
+                      if '/' not in name:
+                          entry = staged.get(name, {})
+                          if entry.get('size') != size or not entry.get('is_file') or entry.get('is_symlink'):
+                              raise StageError('A staged root file is missing, unexpected, or the wrong size.')
+                  resources = staged.get('Resources', {})
+                  if not resources or resources.get('is_file') or resources.get('is_symlink'):
+                      raise StageError('Staged Resources directory is missing or invalid.')
+                  for name in ('server_config.toml', 'data', 'logs'):
+                      if name in staged:
+                          raise StageError('Protected live paths unexpectedly appear in staging.')
+                  api('/files/chmod', 'POST', {
+                      'root': '/' + folder, 'files': [{'file': 'Robust.Server', 'mode': '755'}]
+                  })
+                  mode = str(listing('/' + folder)['Robust.Server'].get('mode_bits', ''))
+                  if mode.lstrip('0') != '755':
+                      raise StageError('Could not verify staged executable permission.')
+                  print('Staging passed. Live server files and power state were not modified.', flush=True)
+                  summary = os.environ.get('GITHUB_STEP_SUMMARY')
+                  if summary:
+                      with open(summary, 'a', encoding='utf-8') as out:
+                          out.write(f'### OXY staging passed\n\nFolder: `{folder}`\n\n')
+                          out.write(f'Built revision: `{os.environ["GITHUB_SHA"]}`\n\n')
+                          out.write('Server package uploaded and unpacked; executable permission verified. '
+                                    'Live configuration, data, logs, and server power were unchanged.\n')
+          
+          
+          if __name__ == '__main__':
+              try:
+                  main()
+              except StageError as error:
+                  raise SystemExit(str(error)) from None
+              except Exception:
+                  raise SystemExit('Staging failed; unexpected details withheld. Live files were not modified.') from None
+          PY

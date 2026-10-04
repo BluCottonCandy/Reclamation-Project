@@ -2,6 +2,15 @@ name: OXY Manual Build
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Build package or check OXY connectivity (no deployment)
+        type: choice
+        required: true
+        default: check
+        options:
+          - check
+          - build
 
 permissions:
   contents: read
@@ -12,6 +21,7 @@ concurrency:
 
 jobs:
   build:
+    if: inputs.mode == 'build'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
@@ -51,3 +61,71 @@ jobs:
           if-no-files-found: error
           retention-days: 7
           compression-level: 0
+
+
+  connection-check:
+    if: inputs.mode == 'check'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Read OXY server status
+        env:
+          OXY_API_KEY: ${{ secrets.OXY_API_KEY }}
+          OXY_PANEL_URL: ${{ vars.OXY_PANEL_URL }}
+          OXY_SERVER_ID: ${{ vars.OXY_SERVER_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, sys
+          import urllib.request, urllib.error
+          panel = os.environ['OXY_PANEL_URL'].rstrip('/')
+          server = os.environ['OXY_SERVER_ID']
+          token = os.environ['OXY_API_KEY']
+          if panel != 'https://panel.oxy.games' or server != '6c120791':
+              sys.exit('OXY panel or server variable does not match the intended server.')
+          if not token:
+              sys.exit('OXY_API_KEY is missing.')
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, headers, newurl):
+                  return None
+          request = urllib.request.Request(
+              f'{panel}/api/client/servers/{server}/resources',
+              headers={'Authorization': f'Bearer {token}', 'Accept': 'application/json'})
+          try:
+              opener = urllib.request.build_opener(NoRedirect())
+              with opener.open(request, timeout=30) as response:
+                  result = json.load(response)
+              state = result['attributes']['current_state']
+              if state not in ('running', 'offline', 'starting', 'stopping'):
+                  sys.exit('OXY returned an unexpected server state.')
+              print(f'OXY API connection successful. Server state: {state}')
+          except urllib.error.HTTPError as error:
+              sys.exit(f'OXY API check failed: HTTP {error.code}. Response body withheld.')
+          except (urllib.error.URLError, TimeoutError, ValueError, KeyError):
+              sys.exit('OXY API check failed: network or unexpected response. Details withheld.')
+          PY
+
+      - name: Discover SFTP host key for independent verification
+        env:
+          OXY_SFTP_HOST: ${{ vars.OXY_SFTP_HOST }}
+          OXY_SFTP_PORT: ${{ vars.OXY_SFTP_PORT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$OXY_SFTP_HOST" = 'relay.oxy.games'
+          test "$OXY_SFTP_PORT" = '2622'
+          ssh-keyscan -T 15 -p "$OXY_SFTP_PORT" -t ed25519,rsa "$OXY_SFTP_HOST" > "$RUNNER_TEMP/oxy-host-keys" 2>/dev/null
+          test -s "$RUNNER_TEMP/oxy-host-keys"
+          echo 'SFTP endpoint responded. These host keys are NOT yet trusted:'
+          ssh-keygen -lf "$RUNNER_TEMP/oxy-host-keys" -E sha256
+          echo 'Verify the fingerprints with OXY before enabling SSH authentication.'
+          echo 'No SFTP authentication, upload, or server power action was performed.'
+
+      - name: Save public host keys for verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: oxy-unverified-public-host-keys
+          path: ${{ runner.temp }}/oxy-host-keys
+          if-no-files-found: error
+          retention-days: 7

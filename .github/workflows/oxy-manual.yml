@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Build, check connection, or stage package (server stays online)
+        description: Choose check, build, stage, or deploy (deploy restarts OXY)
         type: choice
         required: true
         default: check
@@ -12,6 +12,7 @@ on:
           - check
           - build
           - stage
+          - deploy
 
 permissions:
   contents: read
@@ -22,7 +23,7 @@ concurrency:
 
 jobs:
   build:
-    if: inputs.mode == 'build' || (inputs.mode == 'stage' && github.ref == 'refs/heads/main')
+    if: inputs.mode == 'build' || ((inputs.mode == 'stage' || inputs.mode == 'deploy') && github.ref == 'refs/heads/main')
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
@@ -169,7 +170,7 @@ jobs:
           retention-days: 7
 
   stage:
-    if: inputs.mode == 'stage' && github.ref == 'refs/heads/main'
+    if: (inputs.mode == 'stage' || inputs.mode == 'deploy') && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-24.04
     timeout-minutes: 45
@@ -180,8 +181,9 @@ jobs:
           name: oxy-linux-server-${{ github.sha }}
           path: package
 
-      - name: Upload and validate an isolated staging package
+      - name: Stage package and deploy when selected
         env:
+          OXY_MODE: ${{ inputs.mode }}
           OXY_API_KEY: ${{ secrets.OXY_API_KEY }}
           OXY_SSH_KEY: ${{ secrets.OXY_SSH_KEY }}
           OXY_PANEL_URL: ${{ vars.OXY_PANEL_URL }}
@@ -203,6 +205,7 @@ jobs:
           import stat
           import subprocess
           import tempfile
+          import time
           import urllib.error
           import urllib.parse
           import urllib.request
@@ -255,7 +258,145 @@ jobs:
               return expected
           
           
+          def promote(api, listing, folder, expected, run, attempt):
+              names = sorted({PurePosixPath(name).parts[0] for name in expected})
+              if any(name.lower() in ('data', 'logs', 'server_config.toml', 'package.zip')
+                     or name.startswith('.') or '/' in name for name in names):
+                  raise StageError('Unsafe deployment root entries.')
+              backup = f'.oxy-rollback-{run}-{attempt}'
+              failed = f'.oxy-failed-{run}-{attempt}'
+              original = listing('/')
+              if backup in original or failed in original:
+                  raise StageError('Recovery folders already exist; refusing deployment.')
+              if any(original.get(name, {}).get('is_symlink') for name in names):
+                  raise StageError('A live game path is a symbolic link; refusing deployment.')
+          
+              def state():
+                  return api('/resources', timeout=15)['attributes']['current_state']
+          
+              def wait_for(target, seconds):
+                  deadline = time.monotonic() + seconds
+                  while time.monotonic() < deadline:
+                      if state() == target:
+                          return
+                      time.sleep(5)
+                  raise StageError(f'Timed out waiting for server state: {target}.')
+          
+              def power(signal):
+                  api('/power', 'POST', {'signal': signal}, timeout=30)
+          
+              def move(source, destination):
+                  api('/files/rename', 'PUT', {
+                      'root': '/', 'files': [{'from': source, 'to': destination}]
+                  })
+          
+              initial = state()
+              if initial not in ('running', 'offline'):
+                  raise StageError('Server is already starting or stopping; retry when stable.')
+              # Create recovery folders before taking the server offline. No deletions are used.
+              api('/files/create-folder', 'POST', {'root': '/', 'name': backup})
+              api('/files/create-folder', 'POST', {'root': '/', 'name': failed})
+              print('Recovery copy folder:', backup, flush=True)
+              print('Beginning manual deployment; configuration, data, and logs stay in place.', flush=True)
+              summary = os.environ.get('GITHUB_STEP_SUMMARY')
+              if summary:
+                  with open(summary, 'a', encoding='utf-8') as out:
+                      out.write(f'\n### Deployment recovery\n\nOld game files: `{backup}`\n\n'
+                                f'Staged/new files: `{folder}`\n\nFailed installation files: `{failed}`\n\n'
+                                'Do not manually cancel during file installation. If interrupted, '
+                                'keep the server offline until the installation or recovery is completed.\n')
+              changed = False
+              try:
+                  if initial == 'running':
+                      print('Requesting a graceful stop and waiting for offline status.', flush=True)
+                      power('stop')
+                  wait_for('offline', 180)
+                  # The server is stopped: refresh paths to avoid stale live-directory information.
+                  original = listing('/')
+                  for name in ('server_config.toml', 'data', 'logs'):
+                      if name not in original or original[name].get('is_symlink'):
+                          raise StageError('Protected live paths are missing or unsafe.')
+                  config = original['server_config.toml']
+                  for name in names:
+                      if original.get(name, {}).get('is_symlink'):
+                          raise StageError('Live game path became a symbolic link.')
+                      if name in original:
+                          # Mark before sending: a network timeout can follow a successful rename.
+                          changed = True
+                          move(name, backup + '/' + name)
+                  for name in names:
+                      changed = True
+                      move(folder + '/' + name, name)
+                  installed = listing('/')
+                  for name, size in expected.items():
+                      if '/' not in name and installed.get(name, {}).get('size') != size:
+                          raise StageError('Installed file size does not match staged package.')
+                  for field in ('size', 'modified_at'):
+                      if installed['server_config.toml'].get(field) != config.get(field):
+                          raise StageError('Live configuration metadata changed unexpectedly.')
+                  api('/files/chmod', 'POST', {
+                      'root': '/', 'files': [{'file': 'Robust.Server', 'mode': '755'}]
+                  })
+                  if str(listing('/')['Robust.Server'].get('mode_bits', '')).lstrip('0') != '755':
+                      raise StageError('Installed executable permission could not be verified.')
+                  print('Installation verified. Starting OXY.', flush=True)
+                  power('start')
+                  wait_for('running', 180)
+                  # Confirm it stays running rather than merely observing the startup transition.
+                  for _ in range(6):
+                      time.sleep(5)
+                      if state() != 'running':
+                          raise StageError('The new server did not stay running after startup.')
+                  print('Deployment passed: server stayed running for 30 seconds.', flush=True)
+                  if summary:
+                      with open(summary, 'a', encoding='utf-8') as out:
+                          out.write('\n### OXY deployment passed\n\nServer restarted and remained running '
+                                    'for 30 seconds. Configuration, data, and logs preserved. '
+                                    'An in-game connection is still needed to verify gameplay.\n')
+              except Exception:
+                  print('Deployment failed. Attempting recovery of the previous game files.', flush=True)
+                  try:
+                      if changed:
+                          if state() != 'offline':
+                              power('stop')
+                              wait_for('offline', 180)
+                          # Inspect actual locations so an ambiguous rename response is recoverable.
+                          saved = listing('/' + backup)
+                          live = listing('/')
+                          staged = listing('/' + folder)
+                          for name in names:
+                              is_new = name in saved or (name not in original and name not in staged)
+                              if is_new and name in live:
+                                  move(name, failed + '/' + name)
+                          for name in saved:
+                              if name not in names:
+                                  raise StageError('Unexpected recovery path; refusing to restore it.')
+                              move(backup + '/' + name, name)
+                          restored = listing('/')
+                          for name in names:
+                              if name in original:
+                                  if name not in restored or restored[name].get('size') != original[name].get('size'):
+                                      raise StageError('Previous files could not be verified after recovery.')
+                              elif name in restored:
+                                  raise StageError('A new game path remains after recovery.')
+                      if initial == 'running':
+                          if state() == 'stopping':
+                              wait_for('offline', 180)
+                          if state() == 'offline':
+                              power('start')
+                          wait_for('running', 180)
+                      print('Previous game files and initial power state restored.', flush=True)
+                  except Exception:
+                      print('Automatic recovery could not finish. Use the retained recovery folders '
+                            'or the OXY backup; inspect power state before taking further action.', flush=True)
+                      raise StageError('Deployment and automatic recovery failed; operator action required.') from None
+                  raise StageError('Deployment failed; the previous installation was restored.') from None
+          
+          
           def main():
+              mode = os.environ.get('OXY_MODE', 'stage')
+              if mode not in ('stage', 'deploy'):
+                  raise StageError('Invalid workflow mode.')
               if os.environ.get('GITHUB_REF') != 'refs/heads/main':
                   raise StageError('Staging is restricted to the main branch.')
               panel = os.environ['OXY_PANEL_URL'].rstrip('/')
@@ -391,6 +532,8 @@ jobs:
                           out.write(f'Built revision: `{os.environ["GITHUB_SHA"]}`\n\n')
                           out.write('Server package uploaded and unpacked; executable permission verified. '
                                     'Live configuration, data, logs, and server power were unchanged.\n')
+                  if mode == 'deploy':
+                      promote(api, listing, folder, expected, run, attempt)
           
           
           if __name__ == '__main__':
@@ -399,5 +542,5 @@ jobs:
               except StageError as error:
                   raise SystemExit(str(error)) from None
               except Exception:
-                  raise SystemExit('Staging failed; unexpected details withheld. Live files were not modified.') from None
+                  raise SystemExit('OXY workflow failed; unexpected details withheld. Inspect the job log and summary.') from None
           PY

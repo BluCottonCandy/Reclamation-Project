@@ -148,7 +148,7 @@ jobs:
           printf '%s\n' "$OXY_SSH_KEY" | tr -d '\r' > "$keyfile"
           unset OXY_SSH_KEY
           ssh-keygen -y -P '' -f "$keyfile" > /dev/null
-          printf '%s\n' 'ls -d /Robust.Server' 'ls -d /server_config.toml' 'ls -d /data' 'ls -d /logs' > "$batchfile"
+          printf '%s\n' 'ls /Robust.Server' 'ls /server_config.toml' 'cd /data' 'cd /logs' > "$batchfile"
           sftp -q -b "$batchfile" -i "$keyfile" -P "$OXY_SFTP_PORT" \
             -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=20 \
             -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no \

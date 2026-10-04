@@ -115,12 +115,49 @@ jobs:
           set -euo pipefail
           test "$OXY_SFTP_HOST" = 'relay.oxy.games'
           test "$OXY_SFTP_PORT" = '2622'
-          ssh-keyscan -T 15 -p "$OXY_SFTP_PORT" -t ed25519,rsa "$OXY_SFTP_HOST" > "$RUNNER_TEMP/oxy-host-keys" 2>/dev/null
+          ssh-keyscan -T 15 -p "$OXY_SFTP_PORT" -t ed25519 "$OXY_SFTP_HOST" > "$RUNNER_TEMP/oxy-host-keys" 2>/dev/null
           test -s "$RUNNER_TEMP/oxy-host-keys"
-          echo 'SFTP endpoint responded. These host keys are NOT yet trusted:'
+          echo 'SFTP endpoint responded. Comparing with the initial connection fingerprint before login:'
           ssh-keygen -lf "$RUNNER_TEMP/oxy-host-keys" -E sha256
-          echo 'Verify the fingerprints with OXY before enabling SSH authentication.'
-          echo 'No SFTP authentication, upload, or server power action was performed.'
+          echo 'This discovery step does not authenticate or modify the server.'
+
+      - name: Test SFTP key login without modifying files
+        env:
+          OXY_SSH_KEY: ${{ secrets.OXY_SSH_KEY }}
+          OXY_SFTP_HOST: ${{ vars.OXY_SFTP_HOST }}
+          OXY_SFTP_PORT: ${{ vars.OXY_SFTP_PORT }}
+          OXY_SFTP_USERNAME: ${{ vars.OXY_SFTP_USERNAME }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$OXY_SFTP_HOST" = 'relay.oxy.games'
+          test "$OXY_SFTP_PORT" = '2622'
+          test "$OXY_SFTP_USERNAME" = 'nibanath22_gmail.com.6c120791'
+          # Trust baseline: key observed on the successful initial connection test.
+          expected='SHA256:jaX+FxW5+EnIYnPGmTN+hpQnYjwg7s60pEqWhkLYX5Q'
+          actual=$(ssh-keygen -lf "$RUNNER_TEMP/oxy-host-keys" -E sha256 | awk '{print $2}')
+          if [ "$actual" != "$expected" ]; then
+            echo 'SFTP host key does not match the pinned fingerprint; refusing login.'
+            exit 1
+          fi
+          test -n "$OXY_SSH_KEY"
+          umask 077
+          keyfile="$RUNNER_TEMP/oxy-private-key"
+          batchfile="$RUNNER_TEMP/oxy-readonly-batch"
+          trap 'rm -f "$keyfile" "$batchfile"' EXIT
+          printf '%s\n' "$OXY_SSH_KEY" | tr -d '\r' > "$keyfile"
+          unset OXY_SSH_KEY
+          ssh-keygen -y -P '' -f "$keyfile" > /dev/null
+          printf '%s\n' 'ls -d /Robust.Server' 'ls -d /server_config.toml' 'ls -d /data' 'ls -d /logs' > "$batchfile"
+          sftp -q -b "$batchfile" -i "$keyfile" -P "$OXY_SFTP_PORT" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=20 \
+            -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no \
+            -o StrictHostKeyChecking=yes -o HostKeyAlgorithms=ssh-ed25519 \
+            -o UserKnownHostsFile="$RUNNER_TEMP/oxy-host-keys" \
+            -o GlobalKnownHostsFile=/dev/null \
+            "$OXY_SFTP_USERNAME@$OXY_SFTP_HOST"
+          echo 'SFTP key login successful; expected server files and folders exist.'
+          echo 'No files were modified and no server power actions were performed.'
 
       - name: Save public host keys for verification
         uses: actions/upload-artifact@v4

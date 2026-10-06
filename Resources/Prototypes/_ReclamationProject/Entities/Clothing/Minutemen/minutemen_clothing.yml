@@ -1,0 +1,119 @@
+# #Reclamation Project - Minutemen faction clothing.
+# Each item reuses an existing item as its parent, so sprites and stats carry over;
+# only the name and description change unless noted.
+# Tiers: Enlisted (Recruit/Private/Corporal), NCO (Sergeant), Officer (Lieutenant and up).
+
+# --- Officer ---
+
+- type: entity
+  parent: N14ClothingUniformRangerBlue
+  id: MinutemenClothingUniformOfficer
+  name: Minutemen officer's uniform
+  description: A pressed blue collar shirt and tan slacks, worn by the officers who lead the Minutemen.
+
+# Buffed over its parent so the officer vest is the strongest Minutemen vest.
+- type: entity
+  parent: falloutNCRmilitarypolicevest
+  id: MinutemenClothingOuterVestOfficer
+  name: Minutemen officer's vest
+  description: A reinforced vest issued to Minutemen officers. Extra plating sits where it counts.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.70
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+
+# Human-sized take on the supersized ranger hat; keeps its armor, drops the super mutant tag.
+- type: entity
+  parent: ClothingHeadBase
+  id: MinutemenClothingHeadHatOfficer
+  name: Minutemen officer's hat
+  description: A wide-brimmed hat lined with ballistic material. The mark of someone who answers the call when the settlements need them.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/rangerhat.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/rangerhat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
+
+# --- NCO ---
+
+- type: entity
+  parent: ClothingUniformJumpsuitFlannelBlackJeans
+  id: MinutemenClothingUniformNCO
+  name: Minutemen sergeant's flannel
+  description: A black flannel shirt and jeans. Practical work clothes for the sergeants who keep the Minutemen in line.
+
+- type: entity
+  parent: N14ClothingOuterVestRCMP
+  id: MinutemenClothingOuterVestNCO
+  name: Minutemen sergeant's vest
+  description: A bulletproof vest issued to Minutemen non-commissioned officers.
+
+- type: entity
+  parent: ClothingHeadHatPirateTricord
+  id: MinutemenClothingHeadHatTricorn
+  name: Minutemen tricorn hat
+  description: A three-cornered hat in the style of the original Minutemen. Worn with pride by their sergeants.
+
+# --- Enlisted ---
+
+- type: entity
+  parent: ClothingUniformJumpsuitFlannelBlackKhakis
+  id: MinutemenClothingUniformEnlisted
+  name: Minutemen flannel and khakis
+  description: A black flannel shirt with tan khaki pants. Standard dress for Minutemen in the ranks.
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: MinutemenClothingOuterVestEnlisted
+  name: Minutemen armor vest
+  description: A standard armored vest handed out to Minutemen recruits and riflemen.
+
+- type: entity
+  parent: ClothingHeadHatCowboyBlack
+  id: MinutemenClothingHeadHatCowboy
+  name: Minutemen cowboy hat
+  description: A black cowboy hat worn by the rank and file of the Minutemen.
+
+# --- Shared by every rank ---
+
+- type: entity
+  parent: N14ClothingHandsGlovesBlackLeather
+  id: MinutemenClothingHandsGloves
+  name: Minutemen leather gloves
+  description: A pair of long black leather gloves issued to the Minutemen.
+
+- type: entity
+  parent: MisfitsNCRMSLBoots
+  id: MinutemenClothingShoesBoots
+  name: Minutemen combat boots
+  description: Reinforced combat boots issued to the Minutemen.
+
+- type: entity
+  parent: N14ClothingNeckRangerDuster
+  id: MinutemenClothingNeckDuster
+  name: Minutemen duster
+  description: A long duster worn by the Minutemen. Goes over armor.
+
+# --- ID ---
+
+# Dogtags in the ID slot, so the rank title has an ID card to show on.
+- type: entity
+  parent: N14ClothingNeckDogtags
+  id: MinutemenIDDogtags
+  name: Minutemen dogtags
+  description: A set of iron dog tags stamped with the Minutemen star, carried by every member of the militia.
+  components:
+  - type: PresetIdCard
+    job: MinutemenRecruit

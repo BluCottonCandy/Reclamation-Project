@@ -1,0 +1,11 @@
+# #Reclamation Project Add - Minutemen door access.
+# Every Minuteman gets Minutemen (regular base doors). Sergeant and up also get MinutemenNCO
+# (NCO/officer rooms and the cells).
+
+- type: accessLevel
+  id: Minutemen
+  name: id-card-access-level-minutemen
+
+- type: accessLevel
+  id: MinutemenNCO
+  name: id-card-access-level-minutemen-nco

@@ -1,0 +1,32 @@
+# #Reclamation Project - Minutemen Corporal: junior NCO leading a fireteam.
+
+- type: job
+  id: MinutemenCorporal
+  setPreference: true
+  weight: 80
+  displayWeight: 80
+  canBeAntag: false
+  name: job-name-minutemen-corporal
+  description: job-description-minutemen-corporal
+  playTimeTracker: MinutemenCorporal
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+  startingGear: MinutemenCorporalGear
+  alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
+  access:
+  - Minutemen
+  icon: "JobIconNcrSpec" # placeholder until Minutemen job icon art exists
+  supervisors: job-supervisors-minutemen-officers
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Minutemen
+          - Wastelander
+
+- type: playTimeTracker
+  id: MinutemenCorporal

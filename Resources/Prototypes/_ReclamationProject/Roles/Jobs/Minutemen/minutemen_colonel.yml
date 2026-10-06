@@ -1,0 +1,37 @@
+# #Reclamation Project - Minutemen Colonel: admin-only in-character role for admins who need to come to the Castle.
+
+- type: job
+  id: MinutemenColonel
+  setPreference: true
+  whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenColonel
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  weight: 130
+  displayWeight: 130
+  canBeAntag: false
+  name: job-name-minutemen-colonel
+  description: job-description-minutemen-colonel
+  playTimeTracker: MinutemenColonel
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+  startingGear: MinutemenColonelGear
+  alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
+  access:
+  - Minutemen
+  - MinutemenNCO
+  icon: "JobIconNcrLeader" # placeholder until Minutemen job icon art exists
+  supervisors: job-supervisors-minutemen-general
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Minutemen
+          - Wastelander
+
+- type: playTimeTracker
+  id: MinutemenColonel

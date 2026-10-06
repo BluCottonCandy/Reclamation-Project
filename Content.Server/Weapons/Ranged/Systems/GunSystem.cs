@@ -17,6 +17,8 @@ using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Reflect;
 using Content.Shared._Misfits.Weapons; // #Misfits Add - GunDamageBonusComponent support
+using Content.Server._ReclamationProject.Weapons.Ranged; // #Reclamation Project Add - crank-charged guns
+using Content.Shared._ReclamationProject.Weapons.Ranged; // #Reclamation Project Add - crank-charged guns
 using Content.Server._Misfits.Weapons.Ranged.Prediction;
 using Content.Shared._Misfits.Weapons.Ranged.Flamer;
 using Content.Shared._Misfits.Weapons.Ranged.Prediction;
@@ -53,6 +55,7 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private GunPredictionSystem _gunPrediction = default!;
     [Dependency] private FlamerLineSystem _flamerLine = default!;
     [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private CrankChargeSystem _crankCharge = default!; // #Reclamation Project Add - crank-charged guns
     private readonly HashSet<EntityUid> _lagCompCandidates = [];
     private float _lagCompAabbEnlargement;
     private float _lagCompHitscanSearchPadding;
@@ -261,6 +264,15 @@ public sealed partial class GunSystem : SharedGunSystem
                         {
                             dmg = new DamageSpecifier(dmg);
                             dmg += gunBonus.BonusDamage;
+                        }
+
+                        // #Reclamation Project Add - Crank-charged guns (laser musket): add the bonus for the
+                        // current crank count. GunShotEvent resets the count after Shoot() returns.
+                        if (dmg != null && TryComp<CrankChargeComponent>(gunUid, out var crank) &&
+                            _crankCharge.GetBonusDamage(crank) is { } crankBonus)
+                        {
+                            dmg = new DamageSpecifier(dmg);
+                            dmg += crankBonus;
                         }
 
                         if (dmg != null && user != null)

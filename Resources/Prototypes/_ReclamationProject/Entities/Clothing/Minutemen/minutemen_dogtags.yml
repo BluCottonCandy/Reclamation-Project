@@ -1,0 +1,68 @@
+# #Reclamation Project Add - One set of dogtags per Minutemen rank.
+# They look the same as MinutemenIDDogtags (the Recruit set). Each is preset to its own rank because
+# PresetIdCardSystem re-applies the preset job to every preset ID at round start on extended-access
+# (low-pop) rounds. With one shared set, every rank would drop to Recruit access and title.
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsPrivate
+  suffix: Private
+  components:
+  - type: PresetIdCard
+    job: MinutemenPrivate
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsCorporal
+  suffix: Corporal
+  components:
+  - type: PresetIdCard
+    job: MinutemenCorporal
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsSergeant
+  suffix: Sergeant
+  components:
+  - type: PresetIdCard
+    job: MinutemenSergeant
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsLieutenant
+  suffix: Lieutenant
+  components:
+  - type: PresetIdCard
+    job: MinutemenLieutenant
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsCaptain
+  suffix: Captain
+  components:
+  - type: PresetIdCard
+    job: MinutemenCaptain
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsCommander
+  suffix: Commander
+  components:
+  - type: PresetIdCard
+    job: MinutemenCommander
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsColonel
+  suffix: Colonel
+  components:
+  - type: PresetIdCard
+    job: MinutemenColonel
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsGeneral
+  suffix: General
+  components:
+  - type: PresetIdCard
+    job: MinutemenGeneral

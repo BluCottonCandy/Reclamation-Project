@@ -83,6 +83,7 @@
   description: department-NCR-description
   color: "#fbc02d"
   uiCategory: MajorFaction
+  editorHidden: true # #Reclamation Project - Unhook: NCR is out of the setting, hide it from the job picker
   roles:
   # Command Officers (Captain/Major pins) — repurposed from NCRCaptain
   - NCRCommander         # NCR Commander           | _Misfits/Roles/Jobs/NCR/ncr_captain.yml
@@ -123,6 +124,7 @@
   description: department-Rangers-description
   color: "#3ab700"
   uiCategory: MajorFaction
+  editorHidden: true # #Reclamation Project - Unhook: NCR is out of the setting, hide it from the job picker
   roles:                                                                                                          # #Misfits Change - full Rangers ladder with NCR-prefixed IDs; NCRChiefRanger on top
   - NCRChiefRanger   # Chief Ranger (admin-only) | _Misfits/Roles/Jobs/Rangers/chief_ranger.yml
   - NCRVeteranRanger # Veteran Ranger            | _Misfits/Roles/Jobs/Rangers/ranger_veteran.yml
@@ -137,6 +139,7 @@
   description: department-NCRMilitaryPolice-description
   color: "#662727"
   uiCategory: MajorFaction
+  editorHidden: true # #Reclamation Project - Unhook: NCR is out of the setting, hide it from the job picker
   roles:
   - NCRProvost #_Misfits/Roles/Jobs/NCR/ncr_provost.yml
   - NCRMilitaryPoliceRecruit

@@ -1,0 +1,28 @@
+# #Reclamation Project - Minutemen department (job-menu tab) and NPC faction.
+
+- type: department
+  id: Minutemen
+  description: department-Minutemen-description
+  color: "#2f4f8f"
+  uiCategory: MajorFaction
+  roles:
+  - MinutemenGeneral     # faction leader (GalaxyCad), whitelist-only
+  - MinutemenColonel     # admin-only
+  - MinutemenCommander
+  - MinutemenCaptain
+  - MinutemenLieutenant
+  - MinutemenSergeant
+  - MinutemenCorporal
+  - MinutemenPrivate
+  - MinutemenRecruit
+
+# Same enemies as Townsfolk. No secure-area faction yet; that comes with the Castle map.
+- type: npcFaction
+  id: Minutemen
+  hostile:
+  - WastelandAnimal
+  - WastelandInsect
+  - Deathclaw
+  - Raider
+  - HostileRobot
+  - Feral

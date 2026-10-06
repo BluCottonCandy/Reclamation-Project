@@ -62,7 +62,9 @@
     startingCharge: 1200
   - type: HitscanBatteryAmmoProvider
     proto: N14MFLaserRed
-    fireCost: 50
+    # #Reclamation Project Change - 48 shots per cell (1200 / 25). Was 50 (24 shots).
+    # Charge stays 1200, so the cell's price and recharge time are unchanged.
+    fireCost: 25
 
 # Backward-compatible aliases. Kept so existing map files, kits, crates, and
 # trade references continue to work; all normalize to the single MFC behavior.

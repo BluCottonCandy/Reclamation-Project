@@ -1,0 +1,77 @@
+# #Reclamation Project Add - Minutemen laser musket.
+# Crank it up to 6 times (alt-click, or right-click > Crank) before a shot. Each crank takes
+# 1.8 s and uses half a shot of cell charge. Damage by cranks: 0=20, 1=30, 2=40, 3=50,
+# 4=60, 5=70, 6=120 Heat. The count resets after every shot. See CrankChargeComponent.
+
+- type: hitscan
+  id: MinutemenLaserMusketBeam
+  damage:
+    types:
+      Heat: 20
+  muzzleFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: muzzle_beam_heavy
+  travelFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: beam_heavy
+  impactFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: impact_beam_heavy
+
+- type: entity
+  name: laser musket
+  parent: N14BaseWeaponPowerCellMedium
+  id: MinutemenWeaponLaserMusket
+  description: A hand-cranked laser rifle the Minutemen build from salvage. Every turn of the crank packs more charge into the next shot, up to six turns.
+  components:
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -24
+    maxAngle: -50
+  # World icon is a wider 40x32 RSI; held and worn art is the 32x32 RSI.
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/laser_musket_icon.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/laser_musket.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/laser_musket.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MicrofusionCellRed
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+            - N14MicrofusionCell
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ReclamationProject/Weapons/Guns/LaserMusket/laser_musket_fire.ogg
+  # The beam sets the uncranked damage (20) and the heavy beam look; the cell only supplies charge.
+  - type: GunDamageBonus
+    hitscanProtoOverride: MinutemenLaserMusketBeam
+  - type: CrankCharge
+    maxCharges: 6
+    crankDelay: 1.8
+    crankCostFraction: 0.5
+    bonusDamageType: Heat
+    # Added to the beam's 20 for 1..6 cranks: 30, 40, 50, 60, 70, 120.
+    bonusByCharge: [10, 20, 30, 40, 50, 100]
+    crankSound:
+      path: /Audio/_ReclamationProject/Weapons/Guns/LaserMusket/laser_musket_crank.ogg
+  - type: FollowDistance
+    backStrength: 5
+  - type: StaticPrice
+    price: 150

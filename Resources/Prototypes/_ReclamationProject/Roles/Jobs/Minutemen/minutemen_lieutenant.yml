@@ -1,0 +1,35 @@
+# #Reclamation Project - Minutemen Lieutenant: junior officer, whitelisted.
+
+- type: job
+  id: MinutemenLieutenant
+  setPreference: true
+  whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenLieutenant
+  jobWhitelistBypassesRoleTimers: true
+  weight: 100
+  displayWeight: 100
+  canBeAntag: false
+  name: job-name-minutemen-lieutenant
+  description: job-description-minutemen-lieutenant
+  playTimeTracker: MinutemenLieutenant
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+  startingGear: MinutemenOfficerGear
+  alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
+  access:
+  - Minutemen
+  - MinutemenNCO
+  icon: "JobIconNcrLeader" # placeholder until Minutemen job icon art exists
+  supervisors: job-supervisors-minutemen-officers
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Minutemen
+          - Wastelander
+
+- type: playTimeTracker
+  id: MinutemenLieutenant

@@ -1,0 +1,120 @@
+# #Reclamation Project Add - Minutemen job spawn points, one per rank.
+# On Wendover they sit at the old NCR base for now; map them into the Castle when it exists.
+# The Minutemen jobs use alwaysUseSpawner, so late joiners spawn here too.
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointRecruit
+  name: Minutemen Recruit
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenRecruit
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+      - state: green
+      - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointPrivate
+  name: Minutemen Private
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenPrivate
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+      - state: green
+      - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointCorporal
+  name: Minutemen Corporal
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenCorporal
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+      - state: green
+      - state: corporal
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointSergeant
+  name: Minutemen Sergeant
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenSergeant
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+      - state: green
+      - state: sergeant
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointLieutenant
+  name: Minutemen Lieutenant
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenLieutenant
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointCaptain
+  name: Minutemen Captain
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenCaptain
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointCommander
+  name: Minutemen Commander
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenCommander
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointColonel
+  name: Minutemen Colonel
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenColonel
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MinutemenSpawnPointGeneral
+  name: Minutemen General
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenGeneral
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: lt

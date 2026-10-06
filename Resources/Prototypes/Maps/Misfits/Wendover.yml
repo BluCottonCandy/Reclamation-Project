@@ -117,6 +117,16 @@
           BoSMidSquire: [ 3, 3 ]
           BoSInitiate: [ 3, 3 ]  #Misfits Change /Add/
           BoSOffDuty: [4, 4] # Misfits Change - new off-duty BoS role for non-combatants and latejoiners
+          # #Reclamation Project - Minutemen ranks. Move these to the Castle station once that map is in.
+          MinutemenGeneral: [ 1, 1 ]    # faction leader (GalaxyCad), job-whitelist only
+          MinutemenColonel: [ 1, 0 ]    # admin-only; admins open the slot when needed
+          MinutemenCommander: [ 1, 1 ]
+          MinutemenCaptain: [ 1, 1 ]
+          MinutemenLieutenant: [ 1, 1 ]
+          MinutemenSergeant: [ 2, 2 ]
+          MinutemenCorporal: [ 3, 3 ]
+          MinutemenPrivate: [ 4, 4 ]
+          MinutemenRecruit: [ 6, 6 ]
           # Overseer: [ 1, 1 ] # #Reclamation Project - Unhook
           # VaultDoctor: [ 3, 3 ] # #Reclamation Project - Unhook
           # VaultDweller: [ 4, 4 ] # #Reclamation Project - Unhook

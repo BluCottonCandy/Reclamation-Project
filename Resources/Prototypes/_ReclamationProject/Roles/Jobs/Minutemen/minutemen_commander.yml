@@ -1,0 +1,35 @@
+# #Reclamation Project - Minutemen Commander: highest player rank, whitelisted.
+
+- type: job
+  id: MinutemenCommander
+  setPreference: true
+  whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenCommander
+  jobWhitelistBypassesRoleTimers: true
+  weight: 120
+  displayWeight: 120
+  canBeAntag: false
+  name: job-name-minutemen-commander
+  description: job-description-minutemen-commander
+  playTimeTracker: MinutemenCommander
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+  startingGear: MinutemenCommanderGear
+  alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
+  access:
+  - Minutemen
+  - MinutemenNCO
+  icon: "JobIconNcrLeader" # placeholder until Minutemen job icon art exists
+  supervisors: job-supervisors-minutemen-general
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Minutemen
+          - Wastelander
+
+- type: playTimeTracker
+  id: MinutemenCommander

@@ -1,0 +1,232 @@
+# #Reclamation Project - Minutemen rank pins.
+# NCR rank names and NCR pin art (state choices match the NCR pins), handed out by
+# minutemen_rank_pin_progressions.yml on the Enclave-style 20 hour ladder.
+# pins.rsi has no Lt Colonel, Colonel or General art, so those borrow major/captain like the Enclave pins.
+
+# Base Minutemen pin — all others inherit from this.
+- type: entity
+  parent: ClothingNeckPinBase
+  id: ClothingNeckPinMinutemenRecruit
+  name: Minutemen recruit pin
+  description: A Commonwealth Minutemen badge showing the wearer's rank.
+  components:
+  - type: RankTitle
+    rankTitle: Recruit
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: recruit
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    clothingVisuals:
+      neck:
+      - state: empty-equipped
+  # The supermutant neck slot only accepts SuperMutantWearable; tagging the base covers the whole set.
+  - type: Tag
+    tags:
+    - SuperMutantWearable
+
+# Enlisted ranks
+- type: entity
+  parent: ClothingNeckPinMinutemenRecruit
+  id: ClothingNeckPinMinutemenPrivate
+  name: Minutemen private pin
+  components:
+  - type: RankTitle
+    rankTitle: Private
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: private
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    clothingVisuals:
+      neck:
+      - state: gold-equipped
+
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenPFC
+  name: Minutemen private first class pin
+  components:
+  - type: RankTitle
+    rankTitle: Private First Class
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: private1st
+
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenSpecialist
+  name: Minutemen specialist pin
+  components:
+  - type: RankTitle
+    rankTitle: Specialist
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: specialist
+
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenCorporal
+  name: Minutemen corporal pin
+  components:
+  - type: RankTitle
+    rankTitle: Corporal
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: corporal
+
+# NCO ranks
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenSergeant
+  name: Minutemen sergeant pin
+  components:
+  - type: RankTitle
+    rankTitle: Sergeant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeant
+
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenStaffSergeant
+  name: Minutemen staff sergeant pin
+  components:
+  - type: RankTitle
+    rankTitle: Staff Sergeant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: mastersergeant
+
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenSergeantFirstClass
+  name: Minutemen sergeant first class pin
+  components:
+  - type: RankTitle
+    rankTitle: Sergeant First Class
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeant1st
+
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenMasterSergeant
+  name: Minutemen master sergeant pin
+  components:
+  - type: RankTitle
+    rankTitle: Master Sergeant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeant1st
+
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenFirstSergeant
+  name: Minutemen first sergeant pin
+  components:
+  - type: RankTitle
+    rankTitle: First Sergeant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeantmajor
+
+# Officer ranks
+- type: entity
+  parent: ClothingNeckPinMinutemenPrivate
+  id: ClothingNeckPinMinutemenSecondLieutenant
+  name: Minutemen second lieutenant pin
+  components:
+  - type: RankTitle
+    rankTitle: Second Lieutenant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: secondlieutenant
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    clothingVisuals:
+      neck:
+      - state: silver-equipped
+
+- type: entity
+  parent: ClothingNeckPinMinutemenSecondLieutenant
+  id: ClothingNeckPinMinutemenFirstLieutenant
+  name: Minutemen first lieutenant pin
+  components:
+  - type: RankTitle
+    rankTitle: First Lieutenant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: firstlieutenant
+
+- type: entity
+  parent: ClothingNeckPinMinutemenSecondLieutenant
+  id: ClothingNeckPinMinutemenCaptain
+  name: Minutemen captain pin
+  components:
+  - type: RankTitle
+    rankTitle: Captain
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: captain
+
+- type: entity
+  parent: ClothingNeckPinMinutemenSecondLieutenant
+  id: ClothingNeckPinMinutemenMajor
+  name: Minutemen major pin
+  components:
+  - type: RankTitle
+    rankTitle: Major
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: major
+
+- type: entity
+  parent: ClothingNeckPinMinutemenSecondLieutenant
+  id: ClothingNeckPinMinutemenLtColonel
+  name: Minutemen lieutenant colonel pin
+  components:
+  - type: RankTitle
+    rankTitle: Lieutenant Colonel
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: major
+
+- type: entity
+  parent: ClothingNeckPinMinutemenSecondLieutenant
+  id: ClothingNeckPinMinutemenColonel
+  name: Minutemen colonel pin
+  components:
+  - type: RankTitle
+    rankTitle: Colonel
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: captain
+
+- type: entity
+  parent: ClothingNeckPinMinutemenSecondLieutenant
+  id: ClothingNeckPinMinutemenGeneral
+  name: Minutemen general pin
+  components:
+  - type: RankTitle
+    rankTitle: General
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: captain

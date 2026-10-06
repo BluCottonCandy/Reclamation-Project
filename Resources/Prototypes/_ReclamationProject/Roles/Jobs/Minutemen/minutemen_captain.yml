@@ -1,0 +1,35 @@
+# #Reclamation Project - Minutemen Captain: senior officer, whitelisted.
+
+- type: job
+  id: MinutemenCaptain
+  setPreference: true
+  whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenCaptain
+  jobWhitelistBypassesRoleTimers: true
+  weight: 110
+  displayWeight: 110
+  canBeAntag: false
+  name: job-name-minutemen-captain
+  description: job-description-minutemen-captain
+  playTimeTracker: MinutemenCaptain
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+  startingGear: MinutemenCaptainGear
+  alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
+  access:
+  - Minutemen
+  - MinutemenNCO
+  icon: "JobIconNcrLeader" # placeholder until Minutemen job icon art exists
+  supervisors: job-supervisors-minutemen-general
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Minutemen
+          - Wastelander
+
+- type: playTimeTracker
+  id: MinutemenCaptain

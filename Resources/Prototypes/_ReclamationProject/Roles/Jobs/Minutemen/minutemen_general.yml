@@ -1,0 +1,37 @@
+# #Reclamation Project - Minutemen General: faction leader (GalaxyCad), whitelist-only.
+
+- type: job
+  id: MinutemenGeneral
+  setPreference: true
+  whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenGeneral
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  weight: 140
+  displayWeight: 140
+  canBeAntag: false
+  name: job-name-minutemen-general
+  description: job-description-minutemen-general
+  playTimeTracker: MinutemenGeneral
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+  startingGear: MinutemenGeneralGear
+  alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
+  access:
+  - Minutemen
+  - MinutemenNCO
+  icon: "JobIconNcrLeader" # placeholder until Minutemen job icon art exists
+  supervisors: job-supervisors-minutemen-commonwealth
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Minutemen
+          - Wastelander
+
+- type: playTimeTracker
+  id: MinutemenGeneral

@@ -1,0 +1,130 @@
+# #Reclamation Project - Minutemen Rank Pin Progressions
+# NCR rank names on the Enclave timing: each job counts only its own tracker
+# (departmentTracker: false) and climbs one pin every 20 hours.
+# NCRRankPinSpawnSystem matches on job ID and puts the earned pin in the player's hand at spawn.
+#
+# Tracker quick-reference (use with: playtime_addrole <user> <tracker> <time>)
+#   MinutemenRecruit     — Minutemen Recruit
+#   MinutemenPrivate     — Minutemen Private
+#   MinutemenCorporal    — Minutemen Corporal
+#   MinutemenSergeant    — Minutemen Sergeant
+#   MinutemenLieutenant  — Minutemen Lieutenant
+#   MinutemenCaptain     — Minutemen Captain
+#   MinutemenCommander   — Minutemen Commander
+#   MinutemenColonel     — Minutemen Colonel (admin-only)
+#   MinutemenGeneral     — Minutemen General (faction leader)
+
+# Recruit: Recruit
+- type: ncrRankPinProgression
+  id: MinutemenRecruitPins
+  jobs:
+    - MinutemenRecruit
+  tracker: MinutemenRecruit
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenRecruit
+
+# Private: PVT → PFC at 20h → SPC at 40h
+- type: ncrRankPinProgression
+  id: MinutemenPrivatePins
+  jobs:
+    - MinutemenPrivate
+  tracker: MinutemenPrivate
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenPrivate
+    - min: 72000   # 20 hours
+      entity: ClothingNeckPinMinutemenPFC
+    - min: 144000  # 40 hours
+      entity: ClothingNeckPinMinutemenSpecialist
+
+# Corporal: CPL
+- type: ncrRankPinProgression
+  id: MinutemenCorporalPins
+  jobs:
+    - MinutemenCorporal
+  tracker: MinutemenCorporal
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenCorporal
+
+# Sergeant: SGT → SSG at 20h → SFC at 40h → MSG at 60h → 1SG at 80h
+- type: ncrRankPinProgression
+  id: MinutemenSergeantPins
+  jobs:
+    - MinutemenSergeant
+  tracker: MinutemenSergeant
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenSergeant
+    - min: 72000   # 20 hours
+      entity: ClothingNeckPinMinutemenStaffSergeant
+    - min: 144000  # 40 hours
+      entity: ClothingNeckPinMinutemenSergeantFirstClass
+    - min: 216000  # 60 hours
+      entity: ClothingNeckPinMinutemenMasterSergeant
+    - min: 288000  # 80 hours
+      entity: ClothingNeckPinMinutemenFirstSergeant
+
+# Lieutenant: 2LT → 1LT at 20h
+- type: ncrRankPinProgression
+  id: MinutemenLieutenantPins
+  jobs:
+    - MinutemenLieutenant
+  tracker: MinutemenLieutenant
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenSecondLieutenant
+    - min: 72000   # 20 hours
+      entity: ClothingNeckPinMinutemenFirstLieutenant
+
+# Captain: CPT → MAJ at 20h
+- type: ncrRankPinProgression
+  id: MinutemenCaptainPins
+  jobs:
+    - MinutemenCaptain
+  tracker: MinutemenCaptain
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenCaptain
+    - min: 72000   # 20 hours
+      entity: ClothingNeckPinMinutemenMajor
+
+# Commander: LTC (highest player rank)
+- type: ncrRankPinProgression
+  id: MinutemenCommanderPins
+  jobs:
+    - MinutemenCommander
+  tracker: MinutemenCommander
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenLtColonel
+
+# Colonel: COL (admin-only, in-character admin help at the Castle)
+- type: ncrRankPinProgression
+  id: MinutemenColonelPins
+  jobs:
+    - MinutemenColonel
+  tracker: MinutemenColonel
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenColonel
+
+# General: GEN (faction leader)
+- type: ncrRankPinProgression
+  id: MinutemenGeneralPins
+  jobs:
+    - MinutemenGeneral
+  tracker: MinutemenGeneral
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinMinutemenGeneral

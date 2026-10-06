@@ -1,0 +1,103 @@
+# #Reclamation Project - Minutemen starting gear: one outfit per tier, plus small per-rank gear that
+# only swaps in that rank's dogtags (see minutemen_dogtags.yml for why each rank needs its own).
+# Every rank carries the laser musket in suit storage, with 2 spare cells in the backpack.
+# The duster takes the neck slot, so the rank pin spawns in hand and gets pinned onto the uniform or vest.
+
+# Enlisted outfit: Recruit (this gear), Private, Corporal
+- type: startingGear
+  id: MinutemenEnlistedGear
+  equipment:
+    wallet: N14Wallet
+    head: MinutemenClothingHeadHatCowboy
+    neck: MinutemenClothingNeckDuster
+    jumpsuit: MinutemenClothingUniformEnlisted
+    outerClothing: MinutemenClothingOuterVestEnlisted
+    gloves: MinutemenClothingHandsGloves
+    shoes: MinutemenClothingShoesBoots
+    ears: MisfitsClothingHeadsetWastelandScrap
+    back: N14ClothingBackpackMilitary
+    id: MinutemenIDDogtags
+    suitstorage: MinutemenWeaponLaserMusket
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+
+- type: startingGear
+  parent: MinutemenEnlistedGear
+  id: MinutemenPrivateGear
+  equipment:
+    id: MinutemenIDDogtagsPrivate
+
+- type: startingGear
+  parent: MinutemenEnlistedGear
+  id: MinutemenCorporalGear
+  equipment:
+    id: MinutemenIDDogtagsCorporal
+
+# NCO outfit: Sergeant
+- type: startingGear
+  id: MinutemenNCOGear
+  equipment:
+    wallet: N14Wallet
+    head: MinutemenClothingHeadHatTricorn
+    neck: MinutemenClothingNeckDuster
+    jumpsuit: MinutemenClothingUniformNCO
+    outerClothing: MinutemenClothingOuterVestNCO
+    gloves: MinutemenClothingHandsGloves
+    shoes: MinutemenClothingShoesBoots
+    ears: MisfitsClothingHeadsetWastelandScrap
+    back: N14ClothingBackpackMilitary
+    id: MinutemenIDDogtagsSergeant
+    suitstorage: MinutemenWeaponLaserMusket
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+
+# Officer outfit: Lieutenant (this gear), Captain, Commander, Colonel, General
+- type: startingGear
+  id: MinutemenOfficerGear
+  equipment:
+    wallet: N14Wallet
+    head: MinutemenClothingHeadHatOfficer
+    neck: MinutemenClothingNeckDuster
+    jumpsuit: MinutemenClothingUniformOfficer
+    outerClothing: MinutemenClothingOuterVestOfficer
+    gloves: MinutemenClothingHandsGloves
+    shoes: MinutemenClothingShoesBoots
+    ears: MisfitsClothingHeadsetWastelandScrap
+    back: N14ClothingBackpackMilitary
+    id: MinutemenIDDogtagsLieutenant
+    suitstorage: MinutemenWeaponLaserMusket
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+
+- type: startingGear
+  parent: MinutemenOfficerGear
+  id: MinutemenCaptainGear
+  equipment:
+    id: MinutemenIDDogtagsCaptain
+
+- type: startingGear
+  parent: MinutemenOfficerGear
+  id: MinutemenCommanderGear
+  equipment:
+    id: MinutemenIDDogtagsCommander
+
+- type: startingGear
+  parent: MinutemenOfficerGear
+  id: MinutemenColonelGear
+  equipment:
+    id: MinutemenIDDogtagsColonel
+
+- type: startingGear
+  parent: MinutemenOfficerGear
+  id: MinutemenGeneralGear
+  equipment:
+    id: MinutemenIDDogtagsGeneral

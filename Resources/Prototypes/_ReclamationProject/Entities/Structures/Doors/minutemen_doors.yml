@@ -1,0 +1,52 @@
+# #Reclamation Project Add - Minutemen locked doors.
+# They replace the NCR locked doors at the old NCR base on Wendover, which is the Minutemen base
+# until the Castle map exists. Same doors as the NCR ones, but with the plain secure-door sprite
+# (no NCR emblem) and Minutemen access.
+
+- type: entity
+  parent: N14DoorWoodSecureNCR
+  id: MinutemenDoorWoodSecureLocked
+  suffix: Minutemen, Locked
+  description: A secure door made from wood, locked to the Minutemen.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/securedoor.rsi
+  - type: AccessReader
+    access: [ [ "Minutemen" ] ]
+  - type: Wires
+    layoutId: AirlockSecurity
+
+# NCO and officer rooms: Sergeant and up.
+- type: entity
+  parent: N14DoorWoodSecureNCR
+  id: MinutemenDoorWoodSecureLockedNCO
+  suffix: Minutemen, Locked, Sergeant+
+  description: A secure door made from wood, locked to Minutemen sergeants and officers.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/securedoor.rsi
+  - type: AccessReader
+    access: [ [ "MinutemenNCO" ] ]
+  - type: Wires
+    layoutId: AirlockSecurity
+
+# Cells: Sergeant and up.
+- type: entity
+  parent: N14DoorCellMetal
+  id: MinutemenDoorCellMetalLockedNCO
+  suffix: Minutemen, Locked, Sergeant+
+  components:
+  - type: AccessReader
+    access: [ [ "MinutemenNCO" ] ]
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: N14DoorMetalBarSlanted
+  id: MinutemenDoorCellSlantedLockedNCO
+  suffix: Minutemen, Locked, Sergeant+
+  components:
+  - type: AccessReader
+    access: [ [ "MinutemenNCO" ] ]
+  - type: Wires
+    layoutId: AirlockSecurity

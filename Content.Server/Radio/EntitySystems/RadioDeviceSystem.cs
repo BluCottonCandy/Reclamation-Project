@@ -225,6 +225,11 @@ public sealed class RadioDeviceSystem : EntitySystem
 
     private void OnListen(EntityUid uid, RadioMicrophoneComponent component, ListenEvent args)
     {
+        if (!component.Enabled ||
+            (TryComp<HeadsetComponent>(uid, out var headset) &&
+             (!headset.Enabled || !headset.IsEquipped || Transform(uid).ParentUid != args.Source)))
+            return;
+
         if (HasComp<RadioSpeakerComponent>(args.Source))
             return; // no feedback loops please.
 
@@ -234,7 +239,10 @@ public sealed class RadioDeviceSystem : EntitySystem
 
     private void OnAttemptListen(EntityUid uid, RadioMicrophoneComponent component, ListenAttemptEvent args)
     {
-        if (component.PowerRequired && !this.IsPowered(uid, EntityManager)
+        if (!component.Enabled ||
+            (TryComp<HeadsetComponent>(uid, out var headset) &&
+             (!headset.Enabled || !headset.IsEquipped || Transform(uid).ParentUid != args.Source)) ||
+            component.PowerRequired && !this.IsPowered(uid, EntityManager)
             || component.UnobstructedRequired && !_interaction.InRangeUnobstructed(args.Source, uid, 0))
             args.Cancel();
     }
@@ -354,7 +362,8 @@ public sealed class RadioDeviceSystem : EntitySystem
 
     private void OnToggleHandheldRadioSpeaker(Entity<RadioMicrophoneComponent> microphone, ref ToggleHandheldRadioSpeakerMessage args)
     {
-        if (!args.Actor.Valid)
+        // Headsets receive privately through HeadsetSystem and have no loudspeaker.
+        if (!args.Actor.Valid || HasComp<HeadsetComponent>(microphone))
             return;
 
         SetSpeakerEnabled(microphone, args.Actor, args.Enabled, true);
@@ -373,6 +382,12 @@ public sealed class RadioDeviceSystem : EntitySystem
         UpdateHandheldRadioUi(microphone);
     }
 
+    public void UpdateHandheldRadioUi(EntityUid uid)
+    {
+        if (TryComp<RadioMicrophoneComponent>(uid, out var microphone))
+            UpdateHandheldRadioUi((uid, microphone));
+    }
+
     private void UpdateHandheldRadioUi(Entity<RadioMicrophoneComponent> radio)
     {
         var speakerComp = CompOrNull<RadioSpeakerComponent>(radio);
@@ -380,7 +395,7 @@ public sealed class RadioDeviceSystem : EntitySystem
 
         var micEnabled = radio.Comp.Enabled;
         var speakerEnabled = speakerComp?.Enabled ?? false;
-        var state = new HandheldRadioBoundUIState(micEnabled, speakerEnabled, frequency);
+        var state = new HandheldRadioBoundUIState(micEnabled, speakerEnabled, frequency, HasComp<HeadsetComponent>(radio));
         if (TryComp<UserInterfaceComponent>(radio, out var uiComp))
             _ui.SetUiState((radio.Owner, uiComp), HandheldRadioUiKey.Key, state); // Frontier: TrySetUiState<SetUiState
     }

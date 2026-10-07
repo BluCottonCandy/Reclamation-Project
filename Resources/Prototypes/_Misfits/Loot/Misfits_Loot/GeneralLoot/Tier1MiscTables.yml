@@ -248,6 +248,10 @@
   id: M14PartsLootTier1_JunkElectronics
   table: !type:GroupSelector
     children:
+    # Roughly 1 in 21 electronics loot rolls (0.4 / 8.4 total weight).
+    - !type:EntSelector
+      id: EncryptionKeyWastelandGlobal
+      weight: 0.4
     - !type:EntSelector
       id: N14JunkTimer
     - !type:EntSelector

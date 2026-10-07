@@ -1,0 +1,16 @@
+- type: entity
+  id: ReclamationHeadsetFrequencyRadio
+  abstract: true
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: Handheld
+    toggleOnInteract: false
+    frequency: 1330
+  - type: ActivatableUI
+    key: enum.HandheldRadioUiKey.Key
+    verbOnly: true
+    verbText: headset-frequency-menu-title
+  - type: UserInterface
+    interfaces:
+      enum.HandheldRadioUiKey.Key:
+        type: HandheldRadioBoundUserInterface

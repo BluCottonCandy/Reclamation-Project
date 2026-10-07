@@ -3,12 +3,11 @@
   parent: N14ClothingHeadsetAlt
   id: MisfitsClothingHeadsetRobotVault
   name: integrated vault comms module
-  description: A hardwired communications module tuned to both wasteland and Vault frequencies.
+  description: A hardwired communications module with Vault encryption and a tunable radio.
   components:
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyWastelandGlobal
       - EncryptionKeyVaultUR
   - type: Sprite
     sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi
@@ -20,12 +19,11 @@
   parent: N14ClothingHeadsetAlt
   id: MisfitsClothingHeadsetWastelandScrap
   name: scrap headset
-  description: A battered, jury-rigged headset salvaged from the wastes. Barely holds together, but it still picks up the wasteland frequency.
+  description: A battered, jury-rigged headset salvaged from the wastes. Its tunable radio still works, but encryption keys must be found separately.
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyWastelandGlobal
+      key_slots: []
   - type: Sprite
     sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi
   - type: Clothing
@@ -41,7 +39,6 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyWastelandGlobal
       - EncryptionKeyTownUR
   - type: Sprite
     sprite: Clothing/Ears/Headsets/centcom.rsi
@@ -57,7 +54,6 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyWastelandGlobal
       - EncryptionKeyEightiesUR
   - type: Sprite
     sprite: _Misfits/Clothing/Ears/Headsets/eighties.rsi

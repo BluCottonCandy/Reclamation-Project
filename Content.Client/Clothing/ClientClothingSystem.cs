@@ -90,15 +90,19 @@ public sealed class ClientClothingSystem : ClothingSystem
 
         List<PrototypeLayerData>? layers = null;
 
+        // Pins keep their existing neck artwork, but use separate badge layer keys so a
+        // neck item can be equipped or removed without replacing the pin's visuals.
+        var visualSlot = args.Slot == "badge" ? "neck" : args.Slot;
+
         // first attempt to get species specific data.
         if (inventory.SpeciesId != null)
-            item.ClothingVisuals.TryGetValue($"{args.Slot}-{inventory.SpeciesId}", out layers);
+            item.ClothingVisuals.TryGetValue($"{visualSlot}-{inventory.SpeciesId}", out layers);
 
         // if that returned nothing, attempt to find generic data
-        if (layers == null && !item.ClothingVisuals.TryGetValue(args.Slot, out layers))
+        if (layers == null && !item.ClothingVisuals.TryGetValue(visualSlot, out layers))
         {
             // No generic data either. Attempt to generate defaults from the item's RSI & item-prefixes
-            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, out layers))
+            if (!TryGetDefaultVisuals(uid, item, visualSlot, inventory.SpeciesId, out layers))
                 return;
         }
 

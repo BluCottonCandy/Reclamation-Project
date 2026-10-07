@@ -53,6 +53,16 @@
       whitelist:
         tags:
           - SuperMutantWearable
+    # A second neck-compatible slot restricted to pins; coats stay in the neck slot.
+    - name: badge
+      slotTexture: neck
+      slotFlags: NECK
+      uiWindowPos: 3,2
+      strippingWindowPos: 3,1
+      displayName: Badge
+      whitelist:
+        components:
+        - ClothingPin
     - name: mask
       slotTexture: mask
       slotFlags: MASK

@@ -1,0 +1,39 @@
+- type: entity
+  parent: GrenadeBase
+  id: ReclamationGhoulDeploymentGrenade
+  name: Synth Reinforcements
+  description: Only use in extreme emergencies, calls two Generation One Synths to aid you
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Grenades/whiteholegrenade.rsi
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        enum.TriggerVisualLayers.Base:
+          Primed: { state: primed }
+          Unprimed: { state: icon }
+  - type: OnUseTimerTrigger
+    delay: 3
+  - type: TimerTriggerVisuals
+    primingSound:
+      path: /Audio/Items/smoke_grenade_prime.ogg
+  - type: SpawnOnTrigger
+    proto: ReclamationGhoulDeploymentPayload
+  - type: SmokeOnTrigger
+    duration: 5
+    spreadAmount: 9
+  - type: SoundOnTrigger
+    sound: /Audio/Items/smoke_grenade_smoke.ogg
+  - type: DeleteOnTrigger
+
+# Keep the temporary mob choice in one place for the future synth replacement.
+- type: entity
+  id: ReclamationGhoulDeploymentPayload
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTableSpawner
+    table: !type:EntSelector
+      id: N14MobGhoulFeral
+      amount: !type:ConstantNumberSelector
+        value: 2
+    offset: 0.5

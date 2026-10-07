@@ -105,6 +105,11 @@
   id: MinutemenClothingNeckDuster
   name: Minutemen duster
   description: A long duster worn by the Minutemen. Goes over armor.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Neck/minutemen_duster.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Neck/minutemen_duster.rsi
 
 # --- ID ---
 

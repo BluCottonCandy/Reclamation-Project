@@ -43,6 +43,8 @@ public sealed partial class HandheldRadioMenu : FancyWindow
 
     public void Update(HandheldRadioBoundUIState state)
     {
+        SpeakerButton.Visible = !state.Headset;
+        Title = Loc.GetString(state.Headset ? "headset-frequency-menu-title" : "handheld-radio-menu-title");
         if (state.MicEnabled != MicButton.Pressed)
             MicButton.Pressed = state.MicEnabled;
 

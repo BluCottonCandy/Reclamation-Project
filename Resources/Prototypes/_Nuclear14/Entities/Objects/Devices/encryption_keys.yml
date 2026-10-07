@@ -188,7 +188,7 @@
   parent: EncryptionKey
   id: EncryptionKeyWastelandGlobal
   name: wasteland radio encryption key
-  description: A common encryption key used across the wasteland.
+  description: A salvaged encryption key granting access to the wasteland radio channel.
   components:
   - type: EncryptionKey
     channels:

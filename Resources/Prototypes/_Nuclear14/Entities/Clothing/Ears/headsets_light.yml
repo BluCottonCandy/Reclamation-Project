@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [Clothing, ReclamationHeadsetFrequencyRadio]
   id: N14ClothingHeadsetLightScribe
   name: headset
   description: A modular intercom that fits over the head. Takes encryption keys and has a powerful light.
@@ -32,7 +32,6 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
-      - EncryptionKeyWastelandGlobal
   - type: EncryptionKeyHolder
     keySlots: 4
   - type: Appearance

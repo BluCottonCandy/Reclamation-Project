@@ -85,7 +85,9 @@ public sealed class RadioSystem : EntitySystem
     /// </summary>
     public int GetFrequency(EntityUid source, RadioChannelPrototype channel)
     {
-        if (TryComp<RadioMicrophoneComponent>(source, out var radioMicrophone))
+        // Headset tuning applies only to the handheld channel, never encryption keys.
+        if ((!HasComp<HeadsetComponent>(source) || channel.ID == "Handheld") &&
+            TryComp<RadioMicrophoneComponent>(source, out var radioMicrophone))
             return radioMicrophone.Frequency;
 
         return channel.Frequency;

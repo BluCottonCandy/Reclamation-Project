@@ -7,6 +7,8 @@ using Content.Server.Language;
 using Content.Server.Radio.Components;
 using Content.Server.Speech;
 using Content.Shared.Chat;
+using Content.Shared._NC.Radio;
+using Robust.Server.GameObjects;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mind;
@@ -28,6 +30,9 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly EncryptionKeySystem _encryptionKeys = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!; // #Misfits Add - remote pilots keep hearing their radio
+
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly RadioDeviceSystem _devices = default!;
 
     public override void Initialize()
     {
@@ -55,6 +60,20 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         var wearer = Transform(ent).ParentUid;
         if (args.Args.User != wearer)
             return;
+
+        if (HasComp<RadioMicrophoneComponent>(ent))
+        {
+            var user = args.Args.User;
+            args.Args.Verbs.Add(new EquipmentVerb
+            {
+                Text = Loc.GetString("headset-frequency-menu-title"),
+                Act = () =>
+                {
+                    _devices.UpdateHandheldRadioUi(ent.Owner);
+                    _ui.TryToggleUi(ent.Owner, HandheldRadioUiKey.Key, user);
+                },
+            });
+        }
 
         var channels = new HashSet<string>();
         foreach (var keyUid in holder.KeyContainer.ContainedEntities)
@@ -164,7 +183,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     private void UpdateRadioChannels(EntityUid uid, HeadsetComponent headset, EncryptionKeyHolderComponent? keyHolder = null)
     {
         // make sure to not add ActiveRadioComponent when headset is being deleted
-        if (!headset.Enabled || MetaData(uid).EntityLifeStage >= EntityLifeStage.Terminating)
+        if (!headset.Enabled || !headset.IsEquipped || MetaData(uid).EntityLifeStage >= EntityLifeStage.Terminating)
             return;
 
         // #Misfits Change - don't early-return if no keyHolder; passive channels still need to be applied.
@@ -177,6 +196,8 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         var keyChannels = keyHolder != null ? keyHolder.Channels : new HashSet<string>();
         var allReceiveChannels = new HashSet<string>(keyChannels);
         allReceiveChannels.UnionWith(headset.PassiveChannels);
+        if (HasComp<RadioMicrophoneComponent>(uid))
+            allReceiveChannels.Add("Handheld");
 
         if (allReceiveChannels.Count == 0)
             RemComp<ActiveRadioComponent>(uid);
@@ -251,6 +272,9 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)
     {
+        if (!component.IsEquipped || !component.Enabled)
+            return;
+
         var parent = Transform(uid).ParentUid;
 
         // #Misfits Fix - a wearer off running a camera remotely, like a vertibird gunner, has their

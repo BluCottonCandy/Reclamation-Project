@@ -280,8 +280,8 @@
       - N14PowerCellSmall
       - N14AmmoCell
   - type: Battery
-    maxCharge: 600
-    startingCharge: 600
+    maxCharge: 1200
+    startingCharge: 1200
   - type: HitscanBatteryAmmoProvider
     proto: N14MFLaserRed
     fireCost: 50

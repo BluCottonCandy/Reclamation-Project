@@ -11,7 +11,7 @@ using Robust.Shared.Utility;
 namespace Content.Server._Misfits.RankTitle;
 
 /// <summary>
-/// Applies the visible rank title from a neck-worn rank pin, or from a rank pin
+/// Applies the visible rank title from a badge- or neck-worn rank pin, or from a rank pin
 /// attached to equipped inner/outer clothing.
 /// </summary>
 public sealed class RankTitleSystem : EntitySystem
@@ -93,6 +93,14 @@ public sealed class RankTitleSystem : EntitySystem
     private bool TryGetRankPin(EntityUid wearer, out EntityUid rankPin)
     {
         rankPin = default;
+
+        if (_inventory.TryGetSlotEntity(wearer, "badge", out var badgeItem) &&
+            badgeItem != null &&
+            HasComp<RankTitleComponent>(badgeItem.Value))
+        {
+            rankPin = badgeItem.Value;
+            return true;
+        }
 
         if (_inventory.TryGetSlotEntity(wearer, "neck", out var neckItem) &&
             neckItem != null &&

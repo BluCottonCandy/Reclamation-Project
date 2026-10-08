@@ -2955,7 +2955,7 @@ namespace Content.Client.Lobby.UI
             var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
             var health = SharedSpecialSystem.GetCurvedEffectModifier(
                 delta,
-                tuning.EnduranceHealthModifierPerPoint);
+                delta > 0f ? tuning.EnduranceHealthBonusPerPoint : tuning.EnduranceHealthModifierPerPoint);
             var needs = SharedSpecialSystem.GetCurvedEffectModifier(
                 delta,
                 -tuning.EnduranceNeedDecayMultiplierPerPoint);

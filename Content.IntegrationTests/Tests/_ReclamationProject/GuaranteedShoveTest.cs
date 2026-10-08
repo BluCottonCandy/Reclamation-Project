@@ -12,6 +12,18 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class GuaranteedShoveTest
 {
+    private const string ShoveTesterId = "GuaranteedShoveTester";
+
+    [TestPrototypes]
+    private const string Prototypes = @"
+- type: entity
+  parent: MobHuman
+  id: GuaranteedShoveTester
+  components:
+  - type: CombatMode
+    disarmFailChance: 1
+";
+
     [TestCase(false)]
     [TestCase(true)]
     public async Task ValidShovesConnectWithoutTrainingAndPreserveWeaponKnockoutChance(bool holdingItem)
@@ -21,12 +33,12 @@ public sealed class GuaranteedShoveTest
         var entities = pair.Server.ResolveDependency<IEntityManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var user = entities.SpawnEntity("MobHuman", map.GridCoords);
+            var user = entities.SpawnEntity(ShoveTesterId, map.GridCoords);
             var target = entities.SpawnEntity("MobHuman", map.GridCoords.Offset(new Vector2(0.5f, 0)));
             var combat = entities.GetComponent<CombatModeComponent>(user);
             entities.System<SharedCombatModeSystem>().SetInCombatMode(user, true);
-            combat.CanDisarm = true;
-            combat.BaseDisarmFailChance = 1f;
+            entities.System<SharedCombatModeSystem>().SetCanDisarm(user, true, combat);
+            Assert.That(combat.BaseDisarmFailChance, Is.EqualTo(1f));
             entities.GetComponent<StaminaComponent>(target).CritThreshold = 10000;
             var hands = entities.System<SharedHandsSystem>();
             EntityUid? item = null;

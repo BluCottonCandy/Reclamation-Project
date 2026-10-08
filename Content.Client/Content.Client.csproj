@@ -6,6 +6,7 @@
     <TargetFramework>$(TargetFramework)</TargetFramework>
     <LangVersion>12</LangVersion>
     <IsPackable>false</IsPackable>
+    <ApplicationIcon>..\Resources\Textures\Logo\Reclamation\reclamation.ico</ApplicationIcon>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>..\bin\Content.Client\</OutputPath>
     <OutputType Condition="'$(FullRelease)' != 'True'">Exe</OutputType>

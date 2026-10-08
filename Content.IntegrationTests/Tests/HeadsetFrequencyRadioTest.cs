@@ -26,6 +26,7 @@ public sealed class HeadsetFrequencyRadioTest
 
     [TestCase("ClothingHeadsetGrey", "ears")]
     [TestCase("N14ClothingHeadsetNCR", "ears")]
+    [TestCase("MinutemenClothingHeadset", "ears")]
     [TestCase("N14ClothingHeadsetBrotherhoodOfSteelScribe", "ears")]
     [TestCase("N14ClothingHeadHatNCRHelmetMetalRadioWood", "head")]
     [TestCase("MisfitsClothingHeadsetWastelandScrap", "ears")]

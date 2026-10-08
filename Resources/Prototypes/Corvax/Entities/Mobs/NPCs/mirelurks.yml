@@ -62,6 +62,9 @@
     - id: N14FoodMeatMirelurkClaw
       amount: 2
       prob: 0.8
+    - id: ReclamationMirelurkCarapace
+      amount: 1
+      prob: 1.0
   - type: LanguageKnowledge # #Misfits Add - understands common wasteland languages; speaks Crab (crustacean mutations)
     speaks:
     - Crab
@@ -125,3 +128,6 @@
     - id: N14FoodMeatRadlurkClaw
       amount: 2
       prob: 0.8
+    - id: ReclamationMirelurkCarapace
+      amount: 1
+      prob: 1.0

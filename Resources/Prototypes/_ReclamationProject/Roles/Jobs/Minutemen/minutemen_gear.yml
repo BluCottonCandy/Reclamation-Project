@@ -14,7 +14,7 @@
     outerClothing: MinutemenClothingOuterVestEnlisted
     gloves: MinutemenClothingHandsGloves
     shoes: MinutemenClothingShoesBoots
-    ears: MisfitsClothingHeadsetWastelandScrap
+    ears: MinutemenClothingHeadset
     back: N14ClothingBackpackMilitary
     id: MinutemenIDDogtags
     suitstorage: MinutemenWeaponLaserMusket
@@ -47,7 +47,7 @@
     outerClothing: MinutemenClothingOuterVestNCO
     gloves: MinutemenClothingHandsGloves
     shoes: MinutemenClothingShoesBoots
-    ears: MisfitsClothingHeadsetWastelandScrap
+    ears: MinutemenClothingHeadset
     back: N14ClothingBackpackMilitary
     id: MinutemenIDDogtagsSergeant
     suitstorage: MinutemenWeaponLaserMusket
@@ -68,7 +68,7 @@
     outerClothing: MinutemenClothingOuterVestOfficer
     gloves: MinutemenClothingHandsGloves
     shoes: MinutemenClothingShoesBoots
-    ears: MisfitsClothingHeadsetWastelandScrap
+    ears: MinutemenClothingHeadset
     back: N14ClothingBackpackMilitary
     id: MinutemenIDDogtagsLieutenant
     suitstorage: MinutemenWeaponLaserMusket

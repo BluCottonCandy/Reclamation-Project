@@ -1,6 +1,6 @@
 # Misfits Change — Guidebook locale overrides
 guide-entry-rules = Server Rules
-guide-entry-nuclear14 = Misfits: Nuclear Wasteland
+guide-entry-nuclear14 = Reclamation Project: Common Wealth
 
 # #Misfits Add — Locale keys for Misfits guidebook pages
 guide-entry-misfits-factionwar = Faction War

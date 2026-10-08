@@ -1,0 +1,18 @@
+- type: Tag
+  id: ReclamationMirelurkCarapace
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationMirelurkCarapace
+  name: mirelurk carapace
+  description: A thick, weathered piece of mirelurk shell. Useful for crafting shell armor.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mirelurk/carapace.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Clothing/Mirelurk/carapace.rsi
+  - type: Tag
+    tags: [ReclamationMirelurkCarapace]
+

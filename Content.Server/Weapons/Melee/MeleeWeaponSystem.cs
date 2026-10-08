@@ -53,6 +53,8 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
+    [Dependency] private readonly Content.Shared.Damage.Systems.StaminaSystem _shoveStamina = default!;
+
     private readonly HashSet<EntityUid> _heavyAttackCandidates = [];
 
     public override void Initialize()
@@ -345,28 +347,30 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         if (attemptEvent.Cancelled)
             return false;
 
-        var chance = CalculateDisarmChance(user, target, inTargetHand, combatMode);
-        if (!_random.Prob(chance))
+        // Shoves always connect after range, capability and cancellation checks.
+        // The separate chance to knock an item away remains unchanged.
+        var chance = inTargetHand == null ? 1f : CalculateDisarmChance(user, target, inTargetHand, combatMode);
+        var knockedItem = inTargetHand != null && _random.Prob(chance);
+        var staminaDamage = TryComp<ShovingComponent>(user, out var shoving)
+            ? shoving.StaminaDamage : ShovingComponent.DefaultStaminaDamage;
+        var handled = false;
+        if (inTargetHand == null || knockedItem)
         {
-            // Don't play a sound as the swing is already predicted.
-            // Also don't play popups because most disarms will miss.
-            return false;
+            var eventArgs = new DisarmedEvent { Target = target, Source = user, PushProbability = 1f, StaminaDamage = staminaDamage };
+            RaiseLocalEvent(target, eventArgs);
+            handled = eventArgs.Handled;
+        }
+        else
+        {
+            // A failed weapon knockout still produces a shove and its stamina damage.
+            _shoveStamina.TakeStaminaDamage(target, staminaDamage, source: user);
         }
 
-        var staminaDamage = (TryComp<ShovingComponent>(user, out var shoving) ? shoving.StaminaDamage : ShovingComponent.DefaultStaminaDamage)
-            * Math.Clamp(chance, 0f, 1f);
-
-        var eventArgs = new DisarmedEvent { Target = target, Source = user, PushProbability = chance, StaminaDamage = staminaDamage };
-        RaiseLocalEvent(target, eventArgs);
-
-        // #Misfits Change /Fix/: if nothing else handled an empty-hand disarm, convert it into an actual shove impulse.
-        if (!eventArgs.Handled && inTargetHand == null)
-            eventArgs.Handled = TryShoveTarget(user, target);
-
-        if (!eventArgs.Handled)
+        var shoved = TryShoveTarget(user, target);
+        if (!handled && !shoved)
             return false;
 
-        var emoteKey = inTargetHand == null ? "disarm-action-shove-emote" : "disarm-action-emote";
+        var emoteKey = knockedItem ? "disarm-action-emote" : "disarm-action-shove-emote";
         var emoteMessage = Loc.GetString(emoteKey, ("targetName", Identity.Entity(target, EntityManager)));
         _chat.TrySendInGameICMessage(user, emoteMessage, InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
 

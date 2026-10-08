@@ -1,0 +1,30 @@
+- type: guideEntry
+  id: ReclamationMedicineField
+  name: guide-entry-reclamation-medicine-field
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Field.xml"
+
+- type: guideEntry
+  id: ReclamationMedicineCore
+  name: guide-entry-reclamation-medicine-core
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Core.xml"
+
+- type: guideEntry
+  id: ReclamationMedicineAdvanced
+  name: guide-entry-reclamation-medicine-advanced
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Advanced.xml"
+
+- type: guideEntry
+  id: ReclamationMedicineCombat
+  name: guide-entry-reclamation-medicine-combat
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Combat.xml"
+
+- type: guideEntry
+  id: ReclamationMedicinePackaging
+  name: guide-entry-reclamation-medicine-packaging
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Packaging.xml"
+
+- type: guideEntry
+  id: ReclamationMedicinePoisons
+  name: guide-entry-reclamation-medicine-poisons
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Poisons.xml"
+

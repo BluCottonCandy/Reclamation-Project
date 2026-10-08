@@ -1,26 +1,29 @@
 <Document>
-# Brotherhood of Steel (Midwest Chapter)
+# Brotherhood of Steel
 
-[textlink="View Full Wiki Page" link="https://wiki.misfitsystems.net/index.php/Brotherhood%20of%20Steel%2FMidwest%20Chapter"/]
+## Faction Alignments
 
-## Midwest Brotherhood of Steel
+[bold]Wastelanders[/bold]
 
-<p>The Midwest Brotherhood of Steel is a pragmatic splinter organization from the original Brotherhood. Unlike their Washington counterparts, they have adapted to the realities of the post-war world by recruiting locally — accepting tribals, ghouls, and even super mutants into their ranks.</p>
-<p>In this region, the Midwest Brotherhood has come searching for their original lost patrols, which over time became the Washington Brotherhood of Steel. They conduct quiet reconnaissance and try to avoid open confrontation with larger forces.</p>
+[color=#a4885c]Standing[/color]: [color=#ffb000]Watchful[/color]
 
-<h3 Text="Philosophy"/>
+[bold]Diamond City[/bold]
 
-<p>The Midwest Brotherhood believes that survival and technological preservation require cooperation with local populations. They are more willing to trade, negotiate, and recruit than the Washington chapter.</p>
+[color=#a4885c]Standing[/color]: [color=#ffb000]Managed[/color]
 
-<h3 Text="Roles"/>
+[bold]Followers of the Apocalypse[/bold]
 
-<p>Paladin: Senior warrior and field commander of the Midwest Brotherhood detachment. Leads operations and makes tactical decisions.</p>
-<p>Knight: Core combat personnel of the Brotherhood. Highly trained and equipped with advanced pre-war gear.</p>
-<p>Scribe: Technical and scholarly members who document, repair, and maintain Brotherhood technology.</p>
-<p>Gunsmith: Specialist in weapon maintenance and production. Keeps Brotherhood armaments in optimal condition.</p>
+[color=#a4885c]Standing[/color]: [color=#cc3333]Hostile[/color]
 
-<h3 Text="Relations"/>
+[bold]Outlaws[/bold]
 
-<p>The Midwest Brotherhood maintains cautious relations with most factions. They will not attack unless provoked, but they will aggressively pursue leads on their lost patrol.</p>
+[color=#a4885c]Standing[/color]: [color=#cc3333]Hostile[/color]
 
+[bold]Super Mutants[/bold]
+
+[color=#a4885c]Standing[/color]: [color=#cc3333]Kill on Sight[/color]
+
+[bold]Automated Units[/bold]
+
+[color=#a4885c]Standing[/color]: [color=#ffb000]Mobile Property[/color]
 </Document>

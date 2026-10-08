@@ -1,0 +1,53 @@
+- type: construction
+  id: ReclamationMirelurkArmor
+  name: mirelurk shell armor
+  description: Bind five mirelurk carapaces with ten pieces of leather to make a complete shell armor set.
+  graph: ReclamationMirelurkArmor
+  startNode: start
+  targetNode: armor
+  category: construction-category-clothing
+  objectType: Item
+  hide: false
+  icon:
+    sprite: _ReclamationProject/Clothing/Mirelurk/suit.rsi
+    state: icon
+
+- type: constructionGraph
+  id: ReclamationMirelurkArmor
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: armor
+      steps:
+        - tag: ReclamationMirelurkCarapace
+          name: mirelurk carapace
+          icon:
+            sprite: _ReclamationProject/Clothing/Mirelurk/carapace.rsi
+            state: icon
+        - tag: ReclamationMirelurkCarapace
+          name: mirelurk carapace
+          icon:
+            sprite: _ReclamationProject/Clothing/Mirelurk/carapace.rsi
+            state: icon
+        - tag: ReclamationMirelurkCarapace
+          name: mirelurk carapace
+          icon:
+            sprite: _ReclamationProject/Clothing/Mirelurk/carapace.rsi
+            state: icon
+        - tag: ReclamationMirelurkCarapace
+          name: mirelurk carapace
+          icon:
+            sprite: _ReclamationProject/Clothing/Mirelurk/carapace.rsi
+            state: icon
+        - tag: ReclamationMirelurkCarapace
+          name: mirelurk carapace
+          icon:
+            sprite: _ReclamationProject/Clothing/Mirelurk/carapace.rsi
+            state: icon
+        - material: Leather
+          amount: 10
+          doAfter: 10
+  - node: armor
+    entity: ReclamationClothingOuterMirelurkArmor
+

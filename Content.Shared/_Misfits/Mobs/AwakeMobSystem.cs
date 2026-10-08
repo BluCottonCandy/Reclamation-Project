@@ -12,9 +12,17 @@ public sealed partial class AwakeMobComponent : Component;
 
 public sealed class AwakeMobSystem : EntitySystem
 {
+    [Dependency] private INetManager _net = default!;
+
     public override void Initialize()
     {
         base.Initialize();
+
+        // Clients receive this networked marker from the server. Changing it during
+        // prediction rollback can invalidate the engine's component enumeration.
+        if (_net.IsClient)
+            return;
+
         SubscribeLocalEvent<MobStateChangedEvent>(OnStateChanged);
         SubscribeLocalEvent<MutatableComponent, SleepStateChangedEvent>(OnSleepStateChanged);
     }

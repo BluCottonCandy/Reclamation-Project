@@ -35,26 +35,27 @@
 - type: guideEntry
   id: MisfitsSynthetics
   name: guide-entry-misfits-synthetics
-  text: "/ServerInfo/_Misfits/Guidebooks/Synthetics.xml"
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Removed.xml"
   filterEnabled: True
 
 # Super Mutants — FEV-mutated faction
+  hideInMenu: true
+
 - type: guideEntry
   id: MisfitsSuperMutants
   name: guide-entry-misfits-supermutants
-  text: "/ServerInfo/_Misfits/Guidebooks/SuperMutants.xml"
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Removed.xml"
   filterEnabled: True
 
 # Whitelists — whitelist-only race roles (Super Mutants, Robots)
+  hideInMenu: true
+
 - type: guideEntry
   id: MisfitsWhitelists
   name: guide-entry-misfits-whitelists
-  text: "/ServerInfo/_Misfits/Guidebooks/Whitelists.xml"
-  children:
-  - MisfitsSuperMutants
-  - MisfitsSynthetics
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Removed.xml"
+  hideInMenu: true
 
-# Faction Sustainability — munitions and medicine guide
 - type: guideEntry
   id: MisfitsFactionSustainability
   name: guide-entry-misfits-factionsustainability
@@ -88,10 +89,12 @@
 - type: guideEntry
   id: MisfitsWiki
   name: guide-entry-misfits-wiki
-  text: "/ServerInfo/_Misfits/Guidebooks/WikiLink.xml"
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Removed.xml"
   priority: -10
 
 # NewPlayer — default guidebook landing page (matches server.default_guide CVar default)
+  hideInMenu: true
+
 - type: guideEntry
   id: NewPlayer
   name: guide-entry-new-player

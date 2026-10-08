@@ -12,13 +12,17 @@
   - N14Medicine
   - N14Cooking
   - N14Bartending
-  - N14CraftingSys
-
 - type: guideEntry
   id: N14Medicine
-  name: guide-entry-medicine
+  name: guide-entry-reclamation-wasteland-medicine
   text: "/ServerInfo/_Misfits/Guidebooks/Crafting/Medicine.xml"
-  filterEnabled: True
+  children:
+  - ReclamationMedicineField
+  - ReclamationMedicineCore
+  - ReclamationMedicineAdvanced
+  - ReclamationMedicineCombat
+  - ReclamationMedicinePackaging
+  - ReclamationMedicinePoisons
 
 - type: guideEntry
   id: N14Materials
@@ -47,5 +51,6 @@
 - type: guideEntry
   id: N14CraftingSys
   name: guide-entry-crafting-sys
-  text: "/ServerInfo/_Misfits/Guidebooks/Crafting/CraftingSys.xml"
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Removed.xml"
   filterEnabled: True
+  hideInMenu: true

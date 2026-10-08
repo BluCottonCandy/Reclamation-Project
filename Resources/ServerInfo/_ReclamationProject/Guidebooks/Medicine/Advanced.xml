@@ -1,0 +1,125 @@
+<Document>
+# Advanced wasteland remedies
+
+<p>Some recipes require scavenged or separately prepared precursors. A catalyst must be present but is not consumed; separate it from the finished medicine before use.</p>
+
+## Antibiotics
+<p>[bold]Mix:[/bold] 2u penicillin + 2u Antiseptic + 1u water</p>
+<p>[bold]Makes:[/bold] 3u antibiotics.</p>
+
+<p>[bold]Effects:[/bold] Disease treatment is not implemented. Currently it can cause vomiting; it does not cure infections.</p>
+## Radshield
+<p>[bold]Mix:[/bold] 3u Antiseptic + 1u water + 2u irradiated fungus extract + 3u rad-x + 1u uranium (catalyst; retained)</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 6u radshield.</p>
+
+<p>[bold]Effects:[/bold] Applies incoming radiation protection; At 25u or more: Causes poison damage.</p>
+## X-111 compound
+<p>[bold]Mix:[/bold] 2u radaway + 1u rad-x + 1u hyronalin + 1u Promethine + 1u refined antidote + 1u uranium (catalyst; retained)</p>
+<p>[bold]Heat:[/bold] at least 434 K (160.85 C).</p>
+<p>[bold]Makes:[/bold] 4u x-111 compound.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation damage; Reduces feralization progression.</p>
+## Blood shield
+<p>[bold]Mix:[/bold] 1u cactus water + 1u fungus extract + 1u broc flower extract</p>
+<p>[bold]Makes:[/bold] 2u blood shield.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn, poison damage.</p>
+## Datura hide
+<p>[bold]Mix:[/bold] 2u datura extract + 1u Wonderglue</p>
+<p>[bold]Makes:[/bold] 2u datura hide.</p>
+
+<p>[bold]Effects:[/bold] Causes heat damage; Applies incoming damage protection.</p>
+## Snakebite tourniquet
+<p>[bold]Mix:[/bold] 1u buffalo gourd juice + 1u Antiseptic</p>
+<p>[bold]Makes:[/bold] 2u snakebite tourniquet.</p>
+
+<p>[bold]Effects:[/bold] Removes cazador venom in the body; Removes nightstalker venom in the body; Removes ash viper venom in the body; Removes fire toxin in the body; Heals poison damage; Reduces bleeding.</p>
+## Fiery purgative
+<p>[bold]Mix:[/bold] 1u vodka + 1u glowpepper juice + 1u white horsenettle extract</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 3u fiery purgative.</p>
+
+<p>[bold]Effects:[/bold] Heals poison, radiation damage; Causes heat damage; Removes cazador venom in the body; Removes nightstalker venom in the body; Removes ash viper venom in the body; Reduces movement speed; Can cause vomiting.</p>
+## Refreshing beverage
+<p>[bold]Mix:[/bold] 3u Antiseptic + 3u blood + 2u water + 3u radaway + 2u super stimpak + 1u refined antidote</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 9u refreshing beverage.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn, airloss, poison, radiation damage; Reduces bleeding; Reduces feralization progression; Suppresses addiction.</p>
+## Glowing blood pack
+<p>[bold]Mix:[/bold] 3u blood + 2u Antiseptic + 1u rad-x + 1u uranium (catalyst; retained)</p>
+<p>[bold]Makes:[/bold] 2u glowing blood pack.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn, asphyxiation, bloodloss damage; Applies incoming radiation protection.</p>
+## Herbal anodyne
+<p>[bold]Mix:[/bold] 2u carrot juice + 1u irradiated fungus extract + 2u nettle juice + 1u razorgrain flour + 2u water</p>
+<p>[bold]Makes:[/bold] 8u herbal anodyne.</p>
+
+<p>[bold]Effects:[/bold] Suppresses chronic pain; Removes drowsiness.</p>
+## Herbal antimicrobial
+<p>[bold]Mix:[/bold] 1u carrot juice + 1u irradiated fungus extract + 2u buffalo gourd juice + 1u nettle juice + 2u water</p>
+<p>[bold]Makes:[/bold] 7u herbal antimicrobial.</p>
+
+<p>[bold]Effects:[/bold] Heals poison damage.</p>
+## Herbal stimulant
+<p>[bold]Mix:[/bold] 1u irradiated fungus extract + 1u buffalo gourd juice + 1u nettle juice + 2u razorgrain flour + 2u water</p>
+<p>[bold]Makes:[/bold] 7u herbal stimulant.</p>
+
+<p>[bold]Effects:[/bold] Removes drowsiness; Increases movement speed.</p>
+## Skeeto spit
+<p>[bold]Mix:[/bold] 2u blood + 2u broc flower extract + 1u silicon + 1u iron + 1u epinephrine</p>
+<p>[bold]Makes:[/bold] 5u skeeto spit.</p>
+
+<p>[bold]Effects:[/bold] Temporarily modifies SPECIAL stats (Endurance +2).</p>
+## Penicillin
+<p>[bold]Mix:[/bold] 2u fungus extract + 1u sugar + 1u water</p>
+<p>[bold]Makes:[/bold] 4u penicillin.</p>
+
+<p>[bold]Effects:[/bold] Disease treatment is not implemented. Currently it can cause vomiting; it does not cure infections.</p>
+## Prussian blue
+<p>[bold]Mix:[/bold] 2u iron + 2u carbon + 2u nitrogen + 1u hyronalin</p>
+<p>[bold]Heat:[/bold] at least 340 K (66.85 C).</p>
+<p>[bold]Makes:[/bold] 3u prussian blue.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation damage; Reduces feralization progression.</p>
+## Pilgrim's remedy
+<p>[bold]Mix:[/bold] 1u agave nectar extract + 1u broc flower extract + 1u xander extract + 1u fungus extract + 1u water</p>
+<p>[bold]Makes:[/bold] 5u pilgrim's remedy.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn, poison, radiation damage; Increases bleeding; Reduces feralization progression.</p>
+## Healing salve
+<p>[bold]Mix:[/bold] 1u broc flower extract + 1u xander extract + 1u agave nectar extract + 1u water</p>
+<p>[bold]Heat:[/bold] at least 330 K (56.85 C).</p>
+<p>[bold]Makes:[/bold] 4u healing salve.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn damage; Reduces bleeding.</p>
+## Lazarus compound
+<p>[bold]Mix:[/bold] 3u epinephrine + 2u epoetine + 2u super stimpak + 2u refined antidote + 1u phalanximine + 1u hyronalin + 2u Promethine + 1u Berserker Mixture + 1u Black Goo</p>
+<p>[bold]Heat:[/bold] at least 374 K (100.85 C).</p>
+<p>[bold]Makes:[/bold] 10u lazarus compound.</p>
+
+<p>[bold]Effects:[/bold] While critically injured: Heals brute, burn, airloss, poison damage; While critically injured: Reduces bleeding; Causes cellular, poison damage; Causes jittering; At 12u or more: Causes cellular, poison damage.</p>
+## Widowbane
+<p>[bold]Mix:[/bold] 2u refined antidote + 2u tarberry juice + 1u widow's mercy (catalyst; retained)</p>
+<p>[bold]Makes:[/bold] 4u widowbane.</p>
+
+<p>[bold]Effects:[/bold] Removes widow's mercy in the body; Heals poison, airloss damage; Can cause vomiting.</p>
+## Cinder serum
+<p>[bold]Mix:[/bold] 2u refined antidote + 2u cactus water + 1u red bell poison (catalyst; retained)</p>
+<p>[bold]Makes:[/bold] 4u cinder serum.</p>
+
+<p>[bold]Effects:[/bold] Removes red bell poison in the body; Heals poison, asphyxiation damage; Causes jittering.</p>
+## Gravesalt
+<p>[bold]Mix:[/bold] 2u refined antidote + 2u table salt + 1u ammonia</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 4u gravesalt.</p>
+
+<p>[bold]Effects:[/bold] Removes ghostcap extract in the body; Removes widow's mercy in the body; Removes red bell poison in the body; Removes ash viper venom in the body; Removes cazador venom in the body; Removes nightstalker venom in the body; Heals poison, asphyxiation damage; Causes brute damage; Can cause vomiting.</p>
+## Promethine
+<p>[bold]Mix:[/bold] 3u radaway + 2u rad-x + 2u epinephrine + 1u phosphorus + 1u silicon</p>
+<p>[bold]Heat:[/bold] at least 320 K (46.85 C).</p>
+<p>[bold]Makes:[/bold] 5u Promethine.</p>
+
+<p>[bold]Effects:[/bold] At 5u or more: Can reverse eligible recent ghoulification; Reduces feralization progression.</p>
+</Document>

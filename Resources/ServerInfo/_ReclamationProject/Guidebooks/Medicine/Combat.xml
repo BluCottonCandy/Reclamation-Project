@@ -1,0 +1,130 @@
+<Document>
+# Wasteland performance chems
+
+<p>These are chemical mixtures. Many performance chems can cause addiction or adverse effects; producing a mixture does not make it safe to combine or overdose.</p>
+
+## Jet
+<p>[bold]Mix:[/bold] 1u ammonia + 1u Abraxo Cleaner</p>
+<p>[bold]Heat:[/bold] at least 374 K (100.85 C).</p>
+<p>[bold]Makes:[/bold] 1u jet.</p>
+
+<p>[bold]Effects:[/bold] Increases movement speed; Applies seeing rainbows; Causes poison damage; Causes jittering; Can cause addiction; At 30u or more: Removes stun; At 30u or more: Removes knockdown.</p>
+## Mentats
+<p>[bold]Mix:[/bold] 1u Abraxo Cleaner + 1u lead</p>
+<p>[bold]Makes:[/bold] 2u mentats.</p>
+
+<p>[bold]Effects:[/bold] Temporarily modifies SPECIAL stats (Perception +2, Intelligence +2); Can cause addiction.</p>
+## Berry mentats
+<p>[bold]Mix:[/bold] 1u mentats + 1u tarberry juice</p>
+<p>[bold]Makes:[/bold] 1u berry mentats.</p>
+
+<p>[bold]Effects:[/bold] Causes jittering; Can cause addiction.</p>
+## Grape mentats
+<p>[bold]Mix:[/bold] 1u mentats + 1u whiskey</p>
+<p>[bold]Makes:[/bold] 1u grape mentats.</p>
+
+<p>[bold]Effects:[/bold] Causes jittering; Can cause addiction.</p>
+## Orange mentats
+<p>[bold]Mix:[/bold] 1u mentats + 1u carrot juice</p>
+<p>[bold]Makes:[/bold] 1u orange mentats.</p>
+
+<p>[bold]Effects:[/bold] Causes jittering; Can cause addiction.</p>
+## Hydra
+<p>[bold]Mix:[/bold] 1u scorpion tail + 1u fungus extract + 1u nightstalker blood</p>
+<p>[bold]Makes:[/bold] 2u Hydra.</p>
+
+<p>[bold]Effects:[/bold] Applies incoming damage protection; Can cause addiction; Causes jittering; At 22u or more: Causes asphyxiation damage.</p>
+## Psycho
+<p>[bold]Mix:[/bold] 1u bloatfly acid + 2u broc flower extract + 1u blood + 2u Antiseptic</p>
+<p>[bold]Makes:[/bold] 3u psycho.</p>
+
+<p>[bold]Effects:[/bold] Can cause addiction; Increases movement speed; At 30u or more: Causes asphyxiation damage.</p>
+## Turbo
+<p>[bold]Mix:[/bold] 1u cazador acid + 1u broc flower extract + 1u jet + 1u Turpentine</p>
+<p>[bold]Makes:[/bold] 3u turbo.</p>
+
+<p>[bold]Effects:[/bold] Increases movement speed; Causes poison damage; Causes jittering; Can cause addiction; At 12u or more: Removes stun; At 12u or more: Removes knockdown; At 15u or more: Causes asphyxiation damage.</p>
+## Buffout
+<p>[bold]Mix:[/bold] 1u uncooked animal proteins + 1u Fire ant nectar + 1u Antiseptic</p>
+<p>[bold]Heat:[/bold] at least 374 K (100.85 C).</p>
+<p>[bold]Makes:[/bold] 1u buffout.</p>
+
+<p>[bold]Effects:[/bold] Can cause addiction; Heals brute, burn damage; At 30u or more: Causes asphyxiation damage; Temporarily modifies SPECIAL stats (Strength +2).</p>
+## Buffjet
+<p>[bold]Mix:[/bold] 1u jet + 1u buffout</p>
+<p>[bold]Makes:[/bold] 1u buffjet.</p>
+
+<p>[bold]Effects:[/bold] Causes poison damage; Causes jittering; Increases movement speed; Can cause addiction; Temporarily modifies SPECIAL stats (Strength +2, Agility +2).</p>
+## Bufftats
+<p>[bold]Mix:[/bold] 1u mentats + 1u buffout</p>
+<p>[bold]Makes:[/bold] 1u bufftats.</p>
+
+<p>[bold]Effects:[/bold] Can cause addiction; Temporarily modifies SPECIAL stats (Strength +2, Perception +2).</p>
+## Med-x
+<p>[bold]Mix:[/bold] 1u Wonderglue + 2u white horsenettle extract + 1u ethanol</p>
+<p>[bold]Heat:[/bold] at least 374 K (100.85 C).</p>
+<p>[bold]Makes:[/bold] 2u med-x.</p>
+
+<p>[bold]Effects:[/bold] Applies incoming damage protection; Causes jittering; At 30u or more: Causes asphyxiation damage; Suppresses chronic pain.</p>
+## Fixer
+<p>[bold]Mix:[/bold] 1u buffalo gourd juice + 1u irradiated fungus extract + 1u saline</p>
+<p>[bold]Makes:[/bold] 3u fixer.</p>
+
+<p>[bold]Effects:[/bold] Removes drunk; Heals poison damage; Suppresses addiction.</p>
+## Cateye
+<p>[bold]Mix:[/bold] 1u carrot juice + 2u welding fuel + 1u silver</p>
+<p>[bold]Makes:[/bold] 3u cateye.</p>
+
+<p>[bold]Effects:[/bold] Grants night vision; can cause addiction.</p>
+## Rushing water
+<p>[bold]Mix:[/bold] 1u jet + 1u water + 1u fixer</p>
+<p>[bold]Makes:[/bold] 2u rushing water.</p>
+
+<p>[bold]Effects:[/bold] Increases movement speed; Heals brute, burn damage; Causes jittering.</p>
+## Daytripper
+<p>[bold]Mix:[/bold] 1u mentats + 1u Nuka-Cola + 1u ethanol + 1u sugar</p>
+<p>[bold]Makes:[/bold] 4u daytripper.</p>
+
+<p>[bold]Effects:[/bold] Applies seeing rainbows; Can cause addiction.</p>
+## Fury
+<p>[bold]Mix:[/bold] 3u Berserker Mixture + 2u buffout + 1u med-x</p>
+<p>[bold]Heat:[/bold] at least 340 K (66.85 C).</p>
+<p>[bold]Makes:[/bold] 2u fury.</p>
+
+<p>[bold]Effects:[/bold] Temporarily modifies SPECIAL stats (Strength +7); Applies incoming damage protection; Can cause addiction; Increases feralization progression; Causes jittering; Increases bleeding; At 6u or more: Causes poison damage.</p>
+## Calmex
+<p>[bold]Mix:[/bold] 2u mentats + 2u med-x + 1u daytripper + 1u ethanol</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 2u calmex.</p>
+
+<p>[bold]Effects:[/bold] Temporarily modifies SPECIAL stats (Perception +3, Agility +3); Can cause addiction.</p>
+## Overdrive
+<p>[bold]Mix:[/bold] 2u sulfuric acid + 2u Nuka-Cola + 2u psycho + 1u epinephrine</p>
+<p>[bold]Heat:[/bold] at least 340 K (66.85 C).</p>
+<p>[bold]Makes:[/bold] 2u overdrive.</p>
+
+<p>[bold]Effects:[/bold] Temporarily modifies SPECIAL stats (Strength +4, Luck +3); Can cause addiction; Causes jittering; At 11u or more: Causes poison damage.</p>
+## X-cell
+<p>[bold]Mix:[/bold] 2u buffout + 2u mentats + 2u daytripper + 2u rad-x + 2u epinephrine + 1u med-x + 1u turbo + 2u Berserker Mixture + 1u Promethine</p>
+<p>[bold]Heat:[/bold] at least 374 K (100.85 C).</p>
+<p>[bold]Makes:[/bold] 2u x-cell.</p>
+
+<p>[bold]Effects:[/bold] Temporarily modifies SPECIAL stats (Strength +2, Perception +2, Endurance +2, Charisma +2, Intelligence +2, Agility +2, Luck +2); Can cause addiction; At 6u or more: Causes poison damage.</p>
+## Crank
+<p>[bold]Mix:[/bold] 1u epinephrine + 1u ammonia + 1u ethanol</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 3u crank.</p>
+
+<p>[bold]Effects:[/bold] Increases movement speed; Temporarily modifies SPECIAL stats (Agility +3); Removes drowsiness; Causes jittering; Can cause addiction; Causes poison damage; At 11u or more: Causes poison, asphyxiation damage.</p>
+## Clearwake
+<p>[bold]Mix:[/bold] 2u epinephrine + 1u Nuka-Cola + 1u jet</p>
+<p>[bold]Makes:[/bold] 4u clearwake.</p>
+
+<p>[bold]Effects:[/bold] Removes drowsiness; Removes stun; Removes knockdown; Heals asphyxiation damage; Causes poison damage; Causes jittering; At 11u or more: Causes poison, asphyxiation damage; Resets the narcolepsy timer.</p>
+## Berserker mixture
+<p>[bold]Mix:[/bold] 1u healing powder + 1u white horsenettle extract + 1u glowpepper juice + 1u nettle juice</p>
+<p>[bold]Makes:[/bold] 4u Berserker Mixture.</p>
+
+<p>[bold]Effects:[/bold] Heals burn, brute damage; Reduces bleeding; Increases movement speed; Applies seeing rainbows; At 5u or more: Removes stun; At 5u or more: Removes knockdown; At 26u or more: Causes asphyxiation damage.</p>
+</Document>
+

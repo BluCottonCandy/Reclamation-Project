@@ -1,0 +1,46 @@
+<Document>
+# Finishing and packaging medicine
+
+<p>These reactions consume the full quantities and create a finished item. They are separate from making the medicinal reagent. Keep enough room in your mixing container for all ingredients.</p>
+
+## Antidote
+<p>[bold]Mix:[/bold] 100u refined antidote + 20u silicon</p>
+<p>[bold]Makes:[/bold] 1 finished antidote.</p>
+
+<p>[bold]Effects:[/bold] Heals poison, radiation damage.</p>
+## Antidote syringe
+<p>[bold]Mix:[/bold] 15u refined antidote + 5u oil + 5u phosphorus</p>
+<p>[bold]Makes:[/bold] 1 finished antidote syringe.</p>
+
+<p>[bold]Effects:[/bold] Heals poison, radiation damage.</p>
+## Radaway
+<p>[bold]Mix:[/bold] 20u radaway + 5u oil + 5u phosphorus</p>
+<p>[bold]Makes:[/bold] 1 finished RadAway.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation damage; Reduces feralization progression.</p>
+## Stimpak
+<p>[bold]Mix:[/bold] 25u stimpak + 5u oil + 5u phosphorus</p>
+<p>[bold]Makes:[/bold] 1 finished stimpak.</p>
+
+<p>[bold]Effects:[/bold] Heals burn, brute, airloss damage; Reduces bleeding; At 30u or more: Can cause vomiting.</p>
+## Dirty stimpak
+<p>[bold]Mix:[/bold] 25u dirty stimpak + 5u oil + 5u phosphorus</p>
+<p>[bold]Makes:[/bold] 1 finished dirty stimpak.</p>
+
+<p>[bold]Effects:[/bold] Applies recovery status; Heals burn, brute, airloss damage; Causes radiation, poison damage; Reduces bleeding; At 30u or more: Heals burn, brute, airloss damage; At 30u or more: Causes poison damage; At 50u or more: Causes poison damage.</p>
+## Bitterdrink
+<p>[bold]Mix:[/bold] 50u bitterdrink + 10u silicon</p>
+<p>[bold]Makes:[/bold] 1 finished Bitterdrink.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation, poison damage; At 25u or more: Can cause vomiting; Reduces feralization progression.</p>
+## Smelling salts
+<p>[bold]Mix:[/bold] 5u sulfur + 5u table salt + 5u ammonia</p>
+<p>[bold]Makes:[/bold] 1 finished smelling salts.</p>
+
+<p>[bold]Effects:[/bold] Heals asphyxiation, cold damage; At 0u or more: While critically injured: Heals asphyxiation, poison, brute, burn damage; At 20u or more: Causes asphyxiation, poison damage; Removes stun; Removes knockdown; Causes jittering; Can cause vomiting.</p>
+## Ointment
+<p>[bold]Mix:[/bold] 5u agave nectar extract + 5u water + 5u ash</p>
+<p>[bold]Makes:[/bold] 1 finished Ointment1.</p>
+
+<p>[bold]Effects:[/bold] Heals blunt, burn damage. Apply to the patient; this is the field item, not the similarly named reagent.</p>
+</Document>

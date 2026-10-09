@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Choose check, build, stage, or deploy (deploy restarts OXY)
+        description: Choose check, build, stage, or deploy (deploy waits for the round to finish)
         type: choice
         required: true
         default: check
@@ -173,7 +173,7 @@ jobs:
     if: (inputs.mode == 'stage' || inputs.mode == 'deploy') && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 360
     steps:
       - name: Download this run's verified server package
         uses: actions/download-artifact@v4
@@ -200,6 +200,7 @@ jobs:
           import hashlib
           import json
           import os
+          import secrets
           from pathlib import Path, PurePosixPath
           import shutil
           import stat
@@ -258,6 +259,61 @@ jobs:
               return expected
           
           
+          def wait_for_round_end(api, listing, state, wait_limit=18000):
+              """Never infer a safe round boundary from power state alone."""
+              ticket = secrets.token_hex(16)
+              deadline = time.monotonic() + wait_limit
+              acknowledgement_deadline = time.monotonic() + 60
+              next_heartbeat = 0
+              acknowledged = False
+              def read_receipt():
+                  if 'reclamation-update.json' not in listing('/data'):
+                      return None
+                  return api('/files/contents?' + urllib.parse.urlencode({
+                      'file': '/data/reclamation-update.json'
+                  }))
+              try:
+                  while time.monotonic() < deadline:
+                      receipt = read_receipt()
+                      power_state = state()
+                      # The server may have finished between the first file read and the power query.
+                      if power_state in ('offline', 'stopping'):
+                          receipt = read_receipt()
+                      if isinstance(receipt, dict) and receipt.get('ticket') == ticket:
+                          status = receipt.get('state')
+                          if status == 'cancelled':
+                              raise StageError('Round-end deployment was cancelled; live files are unchanged.')
+                          if status == 'ready':
+                              # Receipt is issued by the game at a safe boundary, before it shuts down.
+                              if power_state == 'offline':
+                                  print('Round boundary confirmed and server is offline.', flush=True)
+                                  return
+                              if power_state not in ('running', 'stopping'):
+                                  raise StageError('Server restarted unexpectedly after the round-end receipt.')
+                              time.sleep(5)
+                              continue
+                          if status != 'pending':
+                              raise StageError('Unexpected deployment acknowledgement; refusing installation.')
+                          acknowledged = True
+                      if power_state != 'running':
+                          raise StageError('Server stopped without a matching round-end receipt; refusing installation.')
+                      now = time.monotonic()
+                      if not acknowledged and now >= acknowledgement_deadline:
+                          raise StageError('Server did not acknowledge the round-end command. Install the support code once while offline; do not force-stop a live round.')
+                      if now >= next_heartbeat:
+                          api('/command', 'POST', {'command': f'reclamation_update_queue {ticket}'})
+                          next_heartbeat = now + 30
+                      time.sleep(5)
+                  raise StageError('No round boundary reached within five hours; deployment cancelled without stopping the round.')
+              except BaseException:
+                  # Cancellation clears only our ticket. Abrupt runner termination is covered by the 3-minute lease.
+                  try:
+                      if state() == 'running':
+                          api('/command', 'POST', {'command': f'reclamation_update_cancel {ticket}'})
+                  except Exception:
+                      pass
+                  raise
+
           def promote(api, listing, folder, expected, run, attempt):
               names = sorted({PurePosixPath(name).parts[0] for name in expected})
               if any(name.lower() in ('data', 'logs', 'server_config.toml', 'package.zip')
@@ -293,7 +349,10 @@ jobs:
               initial = state()
               if initial not in ('running', 'offline'):
                   raise StageError('Server is already starting or stopping; retry when stable.')
-              # Create recovery folders before taking the server offline. No deletions are used.
+              if initial == 'running':
+                  print('Package is ready. Queueing a player announcement and waiting for the round boundary.', flush=True)
+                  wait_for_round_end(api, listing, state)
+              # The safe shutdown is confirmed before preparing recovery folders. No deletions are used.
               api('/files/create-folder', 'POST', {'root': '/', 'name': backup})
               api('/files/create-folder', 'POST', {'root': '/', 'name': failed})
               print('Recovery copy folder:', backup, flush=True)
@@ -307,9 +366,6 @@ jobs:
                                 'keep the server offline until the installation or recovery is completed.\n')
               changed = False
               try:
-                  if initial == 'running':
-                      print('Requesting a graceful stop and waiting for offline status.', flush=True)
-                      power('stop')
                   wait_for('offline', 180)
                   # The server is stopped: refresh paths to avoid stale live-directory information.
                   original = listing('/')

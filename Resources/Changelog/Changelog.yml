@@ -12221,3 +12221,12 @@ Entries:
   id: 6500
   time: '2026-10-09T12:27:30.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/16
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added navy-blue Minute Men headsets and encryption keys, issued to all
+        Minute Men jobs.
+  id: 6501
+  time: '2026-10-09T12:35:10.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/17

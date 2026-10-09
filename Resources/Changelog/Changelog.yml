@@ -12212,3 +12212,12 @@ Entries:
   id: 6499
   time: '2026-10-09T12:27:03.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/14
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed a client crash that could occur when a character entered critical
+        health.
+  id: 6500
+  time: '2026-10-09T12:27:30.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/16

@@ -6,10 +6,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      jobs:
-      - VaultDweller
-      - Overseer
   items:
     - ClothingHeadHatFlatBlack
 
@@ -21,10 +17,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      jobs:
-      - VaultDweller
-      - Overseer
   items:
     - ClothingHeadHatFlatBrown
 
@@ -36,10 +28,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      jobs:
-      - VaultDweller
-      - Overseer
   items:
     - ClothingHeadHatFedoraBlack
 
@@ -51,10 +39,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      jobs:
-      - VaultDweller
-      - Overseer
   items:
     - ClothingHeadHatFedoraChoc
 

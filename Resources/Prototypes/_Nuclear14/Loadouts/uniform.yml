@@ -39,13 +39,6 @@
   requirements:
    - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-   - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitDetectiveAlt
   category: Uniform
@@ -56,11 +49,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitBartenderAlt
   category: Uniform
@@ -71,11 +59,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitRags
   category: Uniform
@@ -86,11 +69,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitSettlerRags
   category: Uniform
@@ -101,11 +79,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitCheckered
   category: Uniform
@@ -116,11 +89,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitWastelandDoc
   category: Uniform
@@ -131,11 +99,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitMerc
   category: Uniform
@@ -146,11 +109,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitMerchant
   category: Uniform
@@ -161,12 +119,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-#        - CaravanCompany
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitTrader
   category: Uniform
@@ -177,12 +129,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-        # - CaravanCompany
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitCaravan
   category: Uniform
@@ -209,11 +155,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitPreWarRelaxed
   category: Uniform
@@ -224,11 +165,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitPreWarCasual
   category: Uniform
@@ -239,11 +175,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitManagerSuit
   category: Uniform
@@ -254,11 +185,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitPreWarManager
   category: Uniform
@@ -269,11 +195,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitBlueSuit
   category: Uniform
@@ -284,11 +205,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitPreWarLumberjack
   category: Uniform
@@ -299,11 +215,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitCombat
   category: Uniform
@@ -314,11 +225,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitBrahminFarmer
   category: Uniform
@@ -329,11 +235,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitFollowers
   category: Uniform
@@ -360,11 +261,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpsuitCowboyGrey
   category: Uniform
@@ -375,12 +271,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
-#tribe jumpsuits
 - type: loadout
   id: N14LoadoutUniformJumpsuitTribal
   category: Uniform
@@ -482,11 +372,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpskirtFalloutBlue
   category: Uniform
@@ -497,11 +382,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpskirtDressBlack
   category: Uniform
@@ -512,11 +392,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpskirtDressBlue
   category: Uniform
@@ -527,11 +402,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpskirtSundress
   category: Uniform
@@ -542,11 +412,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpskirtWastelandDoc
   category: Uniform
@@ -557,11 +422,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpskirtMerc
   category: Uniform
@@ -572,11 +432,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
 - type: loadout
   id: N14LoadoutUniformJumpskirtTribal
   category: Uniform
@@ -600,10 +455,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
   items:
     - ClothingUniformJumpskirtDressAsymmetric
 
@@ -617,12 +468,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
-
-#Corvax-Add Start
 - type: loadout
   id: N14LoadoutUniformJumpskirtDressLongSleeve
   category: Uniform
@@ -632,10 +477,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
   items:
     - ClothingUniformJumpskirtDressLongSleeve
 
@@ -647,10 +488,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
   items:
     - ClothingUniformJumpskirtDressVictorianRed
 
@@ -662,10 +499,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
   items:
     - ClothingUniformJumpskirtDressBlackTango
 
@@ -677,10 +510,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
   items:
     - ClothingUniformJumpskirtDressBlackTangoAlt
 

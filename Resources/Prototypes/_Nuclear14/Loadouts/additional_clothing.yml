@@ -51,12 +51,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingHeadHatChinese
 
@@ -67,12 +61,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingHeadHatHoodBlackRobe
 
@@ -83,12 +71,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingHeadHatHoodGhillieCloak
 
@@ -99,12 +81,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingHeadHatHoodLeatherCloak
 
@@ -115,12 +91,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingHeadHatHoodLeatherRobe
 
@@ -582,12 +552,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutShoes
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingBootsCombatMK2
 
@@ -598,12 +562,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutShoes
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingBootsFire
 
@@ -901,12 +859,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingUniformJumpsuitFudd
 
@@ -917,12 +869,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingUniformJumpsuitMilUniform
 

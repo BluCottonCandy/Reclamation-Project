@@ -1,0 +1,4370 @@
+# Shared ordinary clothing for character loadouts.
+## Faction outfits, outerwear, weapons, and built-in armor pieces are excluded.
+# Slot groups preserve the standard one-item-per-slot limits.
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesCluwne
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesCluwne
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorBlack
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorBlue
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorBrown
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorGray
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorGray
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorGreen
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorLightBrown
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorLightBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorOrange
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorOrange
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorPurple
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorRed
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorWhite
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorYellow
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesColorYellowBudget
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesColorYellowBudget
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesCombat
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesCombat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesConducting
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesConducting
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesEvening
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesEvening
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesFingerlessInsulated
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesFingerlessInsulated
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesInspection
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesInspection
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesMercFingerless
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesMercFingerless
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesPowerglove
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesPowerglove
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesRobohands
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesRobohands
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsGlovesRyuzoGauntlets
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsGlovesRyuzoGauntlets
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsMercGlovesCombat
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsMercGlovesCombat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHandsTacticalMaidGloves
+  category: Hands
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ClothingHandsTacticalMaidGloves
+
+- type: loadout
+  id: ReclamationLoadoutSharedThievingGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  items:
+  - ThievingGloves
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadAreopagite
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadAreopagite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadCourier
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadCourier
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadFishCap
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadFishCap
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatAnimalCat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatAnimalCat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatAnimalCatBlack
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatAnimalCatBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatAnimalCatBrown
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatAnimalCatBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatAnimalHeadslime
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatAnimalHeadslime
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatAnimalMonkey
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatAnimalMonkey
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeanie
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeanie
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeanieGreen
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeanieGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeanieSubmariner
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeanieSubmariner
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeanieTight
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeanieTight
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeanieWinter
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeanieWinter
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeaverHat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeaverHat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeret
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeret
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeretArtist
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeretArtist
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeretFrench
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeretFrench
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeretMerc
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeretMerc
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeretPeaked
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeretPeaked
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBeretWhite
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBeretWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBizarreSoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBizarreSoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBlacksoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBlacksoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBluesoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBluesoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBow
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBowSmall
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBowSmall
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBowlerHat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBowlerHat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatBunny
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatBunny
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCake
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCake
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCasa
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCasa
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCatEars
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCatEars
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCatEarsValid
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCatEarsValid
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatChickenhead
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatChickenhead
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCone
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCone
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCorpsoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCorpsoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCowboyBlack
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCowboyBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCowboyBountyHunter
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCowboyBountyHunter
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCowboyBrown
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCowboyBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCowboyGrey
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCowboyGrey
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCowboyRed
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCowboyRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatCowboyWhite
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatCowboyWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatDogEars
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatDogEars
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatFedoraBrown
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatFedoraBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatFedoraGrey
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatFedoraGrey
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatFedoraWhite
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatFedoraWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatFez
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatFez
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatFlowerWreath
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatFlowerWreath
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatGreensoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatGreensoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatGreyFlatcap
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatGreyFlatcap
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatGreysoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatGreysoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHardhatBlue
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHardhatBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHardhatOrange
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHardhatOrange
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHardhatRed
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHardhatRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHardhatWhite
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHardhatWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHardhatYellow
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHardhatYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHardhatYellowDark
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHardhatYellowDark
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHeadBandBasic
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHeadBandBasic
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHetmanHat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHetmanHat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHoodBioGeneral
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHoodBioGeneral
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatHoodNunHood
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatHoodNunHood
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatJester
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatJester
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatJesterAlt
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatJesterAlt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatMagician
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatMagician
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatOrangesoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatOrangesoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatOutlawHat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatOutlawHat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPaper
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPaper
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPartyBlue
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPartyBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPartyGreen
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPartyGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPartyRed
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPartyRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPartyYellow
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPartyYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPin
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPin
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPinButterfly
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPinButterfly
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPinMagnetic
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPinMagnetic
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPirate
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPirate
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPirateTricord
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPirateTricord
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatPurplesoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatPurplesoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatRedRacoon
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatRedRacoon
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatRedsoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatRedsoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatRibbon
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatRibbon
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatRichard
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatRichard
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSantahat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSantahat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatShrineMaidenWig
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatShrineMaidenWig
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSkub
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSkub
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSlouch
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSlouch
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSombrero
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSombrero
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSquid
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSquid
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatStrawHat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatStrawHat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSunVisor
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSunVisor
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapBlack
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapBlue
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapCyan
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapCyan
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapGreen
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapPink
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapPink
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapPurple
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapRainbow
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapRainbow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatSurgcapWhite
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatSurgcapWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatTacticalMaidHeadband
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatTacticalMaidHeadband
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatTophat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatTophat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatTrucker
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatTrucker
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatTurbanColorable
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatTurbanColorable
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatUshanka
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatUshanka
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatWelding
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatWelding
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatWeldingMaskFlame
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatWeldingMaskFlame
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatWeldingMaskFlameBlue
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatWeldingMaskFlameBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatWeldingMaskPainted
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatWeldingMaskPainted
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatWitch
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatWitch
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatWitch1
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatWitch1
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatXmasCrown
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatXmasCrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHatYellowsoft
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHatYellowsoft
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHelmetCosmonaut
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHelmetCosmonaut
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHelmetTemplar
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHelmetTemplar
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHelmetThunderdome
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHelmetThunderdome
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadHoodBrown
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadHoodBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadMailCarrier
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadMailCarrier
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadMirror
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadMirror
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadPaperSack
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadPaperSack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadPaperSackSmile
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadPaperSackSmile
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadRastaHat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadRastaHat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadSafari
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadSafari
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingHeadTechPriest
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - ClothingHeadTechPriest
+
+- type: loadout
+  id: ReclamationLoadoutSharedWaterDropletHat
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  items:
+  - WaterDropletHat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingClothWrap
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingClothWrap
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsAnkle
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsAnkle
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsCombat
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsCombat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsCowboyBlack
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsCowboyBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsCowboyBrown
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsCowboyBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsCowboyFancy
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsCowboyFancy
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsCowboyWhite
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsCowboyWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsFishing
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsFishing
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsFull
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsFull
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsMerc
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsMerc
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsMoon
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsMoon
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsMud
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsMud
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsMudThigh
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsMudThigh
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsPerformer
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsPerformer
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsRyuzo
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsRyuzo
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsThigh
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsThigh
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsWinter
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsWinter
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsWinterJani
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsWinterJani
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsWinterMiner
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsWinterMiner
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsWinterWeb
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsWinterWeb
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesBootsWorkColor
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesBootsWorkColor
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesCluwne
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesCluwne
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorBlack
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorBlue
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorBrown
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorGreen
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorOrange
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorOrange
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorPurple
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorRed
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorWhite
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesColorYellow
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesColorYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesDameDane
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesDameDane
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesFlats
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesFlats
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesFlippers
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesFlippers
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesGaloshes
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesGaloshes
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesGeta
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesGeta
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesHighHeels
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesHighHeels
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesHighHeelsLong
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesHighHeelsLong
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesHighheelBoots
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesHighheelBoots
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesJester
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesJester
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesLeather
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesLeather
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesMiscWhite
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesMiscWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesSandals
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesSandals
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesSandalsFlipFlopsAlt
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesSandalsFlipFlopsAlt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesSkater
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesSkater
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesSkates
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesSkates
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesSlippers
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesSlippers
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesSnakeskinBoots
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesSnakeskinBoots
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingShoesTourist
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingShoesTourist
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUnderSocksBee
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingUnderSocksBee
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUnderSocksCoder
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - ClothingUnderSocksCoder
+
+- type: loadout
+  id: ReclamationLoadoutSharedN14ClothingShoesKaligi
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - N14ClothingShoesKaligi
+
+- type: loadout
+  id: ReclamationLoadoutSharedN14ClothingShoesRaider
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  items:
+  - N14ClothingShoesRaider
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingCostumeArcDress
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingCostumeArcDress
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingCostumeBunnySuit
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingCostumeBunnySuit
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingCostumeMioSkirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingCostumeMioSkirt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingCostumeNaota
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingCostumeNaota
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingKimonoBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingKimonoBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingKimonoGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingKimonoGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingKimonoPink
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingKimonoPink
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingKimonoPurple
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingKimonoPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingKimonoSky
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingKimonoSky
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformColorRainbow
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformColorRainbow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformCourier
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformCourier
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformDressRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformDressRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtCasualBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtCasualBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtCasualPurple
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtCasualPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtCasualRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtCasualRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtClerk
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtClerk
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorBrown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorDarkBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorDarkBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorDarkGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorDarkGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorGrey
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorGrey
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorLightBrown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorLightBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorMaroon
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorMaroon
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorPink
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorPink
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorPurple
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorTeal
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorTeal
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorWhite
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtColorYellow
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtColorYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtCurator
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtCurator
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressBlackAndGold
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressBlackAndGold
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressBlueSundress
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressBlueSundress
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressCheongsamBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressCheongsamBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressCheongsamGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressCheongsamGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressCheongsamPurple
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressCheongsamPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressCheongsamRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressCheongsamRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressCheongsamWhite
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressCheongsamWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressClub
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressClub
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressCoveter
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressCoveter
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressEvening
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressEvening
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressFire
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressFire
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressFlamenco
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressFlamenco
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressFlowergirl
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressFlowergirl
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressFluffy
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressFluffy
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressGothic
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressGothic
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressLacyGown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressLacyGown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressLong
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressLong
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressLongFlared
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressLongFlared
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressMidi
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressMidi
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressOpenShoulder
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressOpenShoulder
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressPuffy
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressPuffy
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressRedSwept
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressRedSwept
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressSariGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressSariGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressSariRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressSariRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressShort
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressShort
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressSleeveless
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressSleeveless
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressSpider
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressSpider
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressStriped
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressStriped
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressSundress
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressSundress
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressSundressWhite
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressSundressWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressTea
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressTea
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressVictorianBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressVictorianBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressYellow
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtDressYellowSwoop
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtDressYellowSwoop
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtKimonoColor
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtKimonoColor
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtOfLife
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtOfLife
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtOldDress
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtOldDress
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtPencilSkirtGymBra
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtPencilSkirtGymBra
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtQipao
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtQipao
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtQipaoSlim
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtQipaoSlim
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtSailor
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtSailor
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtSuitBlueBlazer
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtSuitBlueBlazer
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtTacticalMaid
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtTacticalMaid
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtWaitress
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtWaitress
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpskirtWeb
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpskirtWeb
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitAncient
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitAncient
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitAscetic
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitAscetic
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitBarber
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitBarber
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCamouflageShirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCamouflageShirt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCasualBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCasualBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCasualPurple
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCasualPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCasualRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCasualRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCheckered
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCheckered
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitClerk
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitClerk
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCluwne
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCluwne
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorBrown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorDarkBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorDarkBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorDarkGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorDarkGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorGrey
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorGrey
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorLightBrown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorLightBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorMaroon
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorMaroon
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorPink
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorPink
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorPurple
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorTeal
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorTeal
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorWhite
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitColorYellow
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitColorYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCossack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCossack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCowboyBrown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCowboyBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCowboyGrey
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCowboyGrey
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitCurator
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitCurator
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitDameDane
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitDameDane
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitDisheveled
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitDisheveled
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitExplorer
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitExplorer
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitFamilyGuy
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitFamilyGuy
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitFlannel
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitFlannel
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitFlannelBlackJeans
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitFlannelBlackJeans
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitFlannelBlackKhakis
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitFlannelBlackKhakis
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitFlannelJeans
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitFlannelJeans
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitFlannelKhakis
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitFlannelKhakis
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitFlannelOveralls
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitFlannelOveralls
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitGreyShirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitGreyShirt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitHawaiBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitHawaiBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitHawaiBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitHawaiBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitHawaiRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitHawaiRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitHawaiYellow
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitHawaiYellow
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitJeansBrown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitJeansBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitJeansGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitJeansGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitJeansRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitJeansRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitJournalist
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitJournalist
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitKilt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitKilt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitKimono
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitKimono
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitLightBlueShirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitLightBlueShirt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitLoungewear
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitLoungewear
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitLumberjack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitLumberjack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitMercenary
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitMercenary
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitMonasticRobeDark
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitMonasticRobeDark
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitMonasticRobeLight
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitMonasticRobeLight
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitMusician
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitMusician
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitPirate
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitPirate
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitRecruitNT
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitRecruitNT
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitRippedPunk
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitRippedPunk
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSafari
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSafari
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSailor
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSailor
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSober
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSober
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitAmish
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitAmish
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitAristocratic
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitAristocratic
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitAristocraticTuxedo
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitAristocraticTuxedo
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitBlackAlt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitBlackAlt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitBlackMob
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitBlackMob
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitBlueBlazer
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitBlueBlazer
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitBrown
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitBrown
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitBrownAlt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitBrownAlt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitBrownMob
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitBrownMob
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitRegal
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitRegal
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitRegalTuxedo
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitRegalTuxedo
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitRolledSleeves
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitRolledSleeves
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitStriped
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitStriped
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitVictorianRedBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitVictorianRedBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitVictorianRedVest
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitVictorianRedVest
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitVictorianVest
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitVictorianVest
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitWhite
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitWhite
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitWhiteAlt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitWhiteAlt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitSuitWhiteMob
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitSuitWhiteMob
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitTrackpants
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitTrackpants
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitTshirtJeans
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitTshirtJeans
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitTshirtJeansGray
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitTshirtJeansGray
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitTshirtJeansPeach
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitTshirtJeansPeach
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitTurtleneckGrey
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitTurtleneckGrey
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitWaiter
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitWaiter
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitWeb
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitWeb
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformJumpsuitYogaGymBra
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformJumpsuitYogaGymBra
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformKendoHakama
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformKendoHakama
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMNKBlackOveralls
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMNKBlackOveralls
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMNKBlackShoulder
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMNKBlackShoulder
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMNKDressBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMNKDressBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMNKGymBra
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMNKGymBra
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMNKOfficeSkirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMNKOfficeSkirt
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMNKTracksuitBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMNKTracksuitBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMNKUnderGarment
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMNKUnderGarment
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMailCarrier
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMailCarrier
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformMartialGi
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformMartialGi
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformOveralls
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformOveralls
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformRat
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformRat
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformSchoolGakuranBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformSchoolGakuranBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformSkirtCourier
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformSkirtCourier
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformSkirtMailCarrier
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformSkirtMailCarrier
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformSkirtTurtle
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformSkirtTurtle
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformSwimsuitBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformSwimsuitBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedClothingUniformTShirtKhakiPants
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - ClothingUniformTShirtKhakiPants
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformJabroni
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformJabroni
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformMaid
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformMaid
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlBlack
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlBlack
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlBlue
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlBlue
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlCyan
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlCyan
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlDusk
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlDusk
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlGreen
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlGreen
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlOrange
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlOrange
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlPink
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlPink
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlPurple
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlPurple
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformSchoolgirlRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformSchoolgirlRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformShortsRed
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformShortsRed
+
+- type: loadout
+  id: ReclamationLoadoutSharedUniformShortsRedWithTop
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  items:
+  - UniformShortsRedWithTop

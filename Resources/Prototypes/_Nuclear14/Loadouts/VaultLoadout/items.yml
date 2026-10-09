@@ -58,16 +58,8 @@
   category: Shoes
   cost: 2
   requirements:
-    - !type:CharacterDepartmentTimeRequirement
-      department: Vault 
-      min: 1500  # 25 hours
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutShoes
-    - !type:CharacterJobRequirement
-       jobs:
-       - VaultDweller
-       - Overseer
-       - VaultDoctor
   items:
     - ClothingShoesBootsLaceup
 

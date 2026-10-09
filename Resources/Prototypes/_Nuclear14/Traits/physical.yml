@@ -11,14 +11,14 @@
         - N14RadClaws
   functions:
     - !type:TraitModifyUnarmed
-      flatDamageIncrease:
+      damage:
         types:
-          Blunt: -1
+          Blunt: 0
 
 - type: trait
   id: N14IronFist
   category: Physical
-  points: -2
+  points: -6
   requirements:
     # Forge-Change-Start
     - !type:CharacterJobRequirement
@@ -38,14 +38,14 @@
         - Human
   functions:
     - !type:TraitModifyUnarmed
-      flatDamageIncrease:
+      damage:
         types:
-          Blunt: 2
+          Blunt: 18
 
 - type: trait
   id: N14RadClaws
   category: Physical
-  points: -2
+  points: -6
   requirements:
     - !type:CharacterTraitRequirement
       inverted: true
@@ -57,10 +57,9 @@
         - GhoulGlowing
   functions:
     - !type:TraitModifyUnarmed
-      flatDamageIncrease:
+      damage:
         types:
-          Slash: 1
-          Radiation: 1
+          Radiation: 18
 
 - type: trait
   id: N14WeakLiquor

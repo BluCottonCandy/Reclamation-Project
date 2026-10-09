@@ -12237,3 +12237,12 @@ Entries:
   id: 6502
   time: '2026-10-09T12:35:33.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/18
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added rank-specific Minute Men equipment kits and a crank laser shotgun
+        for captains.
+  id: 6503
+  time: '2026-10-09T12:38:08.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/19

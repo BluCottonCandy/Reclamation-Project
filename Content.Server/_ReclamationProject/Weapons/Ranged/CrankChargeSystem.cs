@@ -1,3 +1,6 @@
+using Content.Shared.Damage;
+using Content.Shared.Projectiles;
+using Content.Shared.Weapons.Ranged.Events;
 // #Reclamation Project Add - Server half of crank-charged guns (Minutemen laser musket).
 // Cell charge lives in the server-only BatteryComponent, so paying for a crank happens here.
 using System.Diagnostics.CodeAnalysis;
@@ -13,6 +16,30 @@ public sealed partial class CrankChargeSystem : SharedCrankChargeSystem
 {
     [Dependency] private BatterySystem _battery = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<CrankChargeComponent, AmmoShotEvent>(OnProjectilesFired);
+    }
+
+    private void OnProjectilesFired(EntityUid uid, CrankChargeComponent comp, AmmoShotEvent args)
+    {
+        if (comp.ProjectilePrototype == null || args.FiredProjectiles.Count == 0 ||
+            GetBonusDamage(comp) is not { } bonus)
+            return;
+
+        // The configured bonus is for the whole blast, not once per pellet.
+        var perPellet = bonus / args.FiredProjectiles.Count;
+        foreach (var entity in args.FiredProjectiles)
+        {
+            if (!TryComp<ProjectileComponent>(entity, out var projectile))
+                continue;
+
+            projectile.Damage = new DamageSpecifier(projectile.Damage) + perPellet;
+            Dirty(entity, projectile);
+        }
+    }
 
     protected override bool CanAffordCrank(Entity<CrankChargeComponent> ent, EntityUid user)
     {

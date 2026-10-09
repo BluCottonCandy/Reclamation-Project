@@ -109,10 +109,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.75
-        Slash: 0.85
-        Piercing: 0.85
+        Piercing: 0.8
         Heat: 0.75
+        Blunt: 0.75
+        Slash: 0.8
     priceMultiplier: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -135,10 +135,10 @@
   - type: Armor
     modifiers:
       coefficients:
+        Piercing: 0.8
+        Heat: 0.8
         Blunt: 0.8
         Slash: 0.8
-        Piercing: 0.85
-        Heat: 0.85
     priceMultiplier: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.9
@@ -156,10 +156,10 @@
   - type: Armor
     modifiers:
       coefficients:
+        Piercing: 0.75
+        Heat: 0.8
         Blunt: 0.8
         Slash: 0.7
-        Piercing: 0.75
-        Heat: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.85
   - type: Reflect
@@ -312,10 +312,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85 # Forge-Change
-        Slash: 0.85 # Forge-Change
         Piercing: 0.6 # Forge-Change
         Heat: 0.65 # Forge-Change
+        Blunt: 0.8 # Forge-Change
+        Slash: 0.8 # Forge-Change
     priceMultiplier: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.75 # Forge-Change
@@ -334,10 +334,10 @@
   - type: Armor
     modifiers:
       coefficients:
+        Piercing: 0.8
+        Heat: 0.8
         Blunt: 0.8
         Slash: 0.8
-        Piercing: 0.85
-        Heat: 0.85
     priceMultiplier: 0.4
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -400,6 +400,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-bandito.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-bandito.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterTribalArmor
@@ -411,6 +418,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-forager.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-forager.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterTribalArmor
@@ -422,6 +436,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-headtaker.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-headtaker.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterTribalArmor
@@ -433,6 +454,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-hunter.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-hunter.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterTribalArmor
@@ -444,6 +472,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-poncho.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-poncho.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterTribalArmor
@@ -455,6 +490,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-shaman.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-shaman.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterTribalArmor
@@ -468,6 +510,14 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/drylander-simple.rsi
 
 #MARK: Raiders
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: N14FalloutArmorBase
   id: N14ClothingOuterRaiderBadlands
@@ -481,10 +531,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.95
-        Heat: 0.95
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.9
  # - type: ClothingSpecialModifier
@@ -503,10 +553,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.9
-        Heat: 0.9
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.85
  # - type: ClothingSpecialModifier
@@ -585,10 +635,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.4
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -603,6 +653,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutcombatraider.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutcombatraider.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterCombatArmor
@@ -628,10 +685,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.85
-        Heat: 0.85
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.4
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -649,10 +706,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 1.1
-        Slash: 1.1
-        Piercing: 1.2
-        Heat: 1.2
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0
   - type: ClothingSpeedModifier
     walkModifier: 1.2
@@ -736,10 +793,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.9
@@ -757,10 +814,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.9
@@ -778,10 +835,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.9
@@ -901,10 +958,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.9
@@ -925,10 +982,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.9
@@ -949,10 +1006,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: ClothingSpeedModifier
@@ -972,10 +1029,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
         Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.9
@@ -1334,10 +1391,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.9
-        Heat: 0.9
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.8
@@ -1376,12 +1433,12 @@
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/BoS_Wash/InitiateArmor.rsi
   - type: Armor
-    modifiers: # #Misfits Tweak: Initiate is the lowest BoS rank - weakest armor in the ladder (T2, 0.85/0.80), now below Squire
+    modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.80
-        Heat: 0.80
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.5
   - type: FireProtection
     reduction: 0.1
@@ -1553,12 +1610,12 @@
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/BoS_Midw/InitiateArmor.rsi
   - type: Armor
-    modifiers: # #Misfits Tweak: Initiate is the lowest BoS rank - weakest armor in the ladder (T2, 0.85/0.80), now below Squire
+    modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.80
-        Heat: 0.80
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.5
   - type: FireProtection
     reduction: 0.1
@@ -1704,10 +1761,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.9
-        Heat: 0.9
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -1746,10 +1803,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.75
         Piercing: 0.8
-        Heat: 0.9
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.85
   - type: StaticPrice # Forge-Add
@@ -1768,10 +1825,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.80
-        Piercing: 0.90
-        Heat: 0.70
+        Piercing: 0.8
+        Heat: 0.7
+        Blunt: 0.8
+        Slash: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.80
 
@@ -1788,10 +1845,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.80
-        Slash: 0.80
-        Piercing: 0.85
+        Piercing: 0.8
         Heat: 0.65
+        Blunt: 0.8
+        Slash: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.75
 
@@ -1897,10 +1954,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
         Piercing: 0.8
-        Heat: 0.85
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
     priceMultiplier: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -1924,11 +1981,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.85
-        Heat: 0.6
         Radiation: 0.6
+        Piercing: 0.8
+        Heat: 0.6
+        Blunt: 0.8
+        Slash: 0.8
   - type: TemperatureProtection
     coefficient: 0.5
   - type: ExplosionResistance
@@ -1948,10 +2005,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.825
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
         Slash: 0.725
-        Piercing: 0.825
-        Heat: 0.875
   - type: ExplosionResistance
     damageCoefficient: 0.85
   - type: StaticPrice
@@ -1970,10 +2027,10 @@
   - type: Armor
     modifiers:
       coefficients:
+        Piercing: 0.775
+        Heat: 0.8
         Blunt: 0.775
         Slash: 0.675
-        Piercing: 0.775
-        Heat: 0.825
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0

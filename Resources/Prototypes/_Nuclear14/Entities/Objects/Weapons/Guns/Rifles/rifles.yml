@@ -872,29 +872,29 @@
     price: 175
 
 - type: entity
-  name: pipe assault rifle
+  name: "makeshift assault rifle"
   parent: N14WeaponRifleBase
   id: N14WeaponRifle556Pipe
-  description: A rusty pipe automatic rifle, light and extremely cheap, chambered in 5.56mm
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 5.56mm."
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/pipeassaultrifle.rsi
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_pipeassaultrifle_8975f757.rsi
     quickEquip: false
     slots:
     - Back
     - suitStorage
   - type: Sprite
-    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/pipeassaultrifle.rsi
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_pipeassaultrifle_8975f757.rsi
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
   - type: Gun
-    minAngle: 21
-    maxAngle: 45
-    angleIncrease: 4
-    angleDecay: 16
+    minAngle: 26
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
     fireRate: 3
     soundGunshot:
       collection: N14ServiceGunshot
@@ -921,6 +921,12 @@
             - N14Cartridge556Rifle
   - type: StaticPrice
     price: 20
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
 
 - type: entity
   name: tribal rifle

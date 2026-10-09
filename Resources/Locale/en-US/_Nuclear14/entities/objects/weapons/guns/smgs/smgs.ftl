@@ -1,6 +1,6 @@
-ent-N14WeaponSMG12mmPipeEmpty = 12.7mm pipe SMG
+ent-N14WeaponSMG12mmPipeEmpty = makeshift 12.7mm SMG
     .desc = A crude pipe submachine gun chambered in 12.7mm. Not pretty, but it works.
-ent-N14WeaponSMG10mmPipeEmpty = 10mm pipe SMG
+ent-N14WeaponSMG10mmPipeEmpty = makeshift 10mm SMG
     .desc = A crude pipe submachine gun chambered in 10mm. Not pretty, but it works.
 
 # Ported from Fortune13 / LoneStar / desertrose-1 (SS13) — Misfits Add

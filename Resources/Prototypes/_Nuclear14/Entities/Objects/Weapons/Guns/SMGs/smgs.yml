@@ -197,19 +197,19 @@
     price: 100
 
 - type: entity
-  name: 12.7mm pipe SMG
+  name: "makeshift 12.7mm SMG"
   parent: N14WeaponSMGBase
   id: N14WeaponSMG12mmPipe
-  description: A rickety, makeshift 12mm submachine gun. It looks like it's going to fall apart the second it shoots.
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts."
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/12mmPIPE.rsi
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_12mmpipe_37007d21.rsi
     quickEquip: false
     slots:
     - Back
     - suitStorage
   - type: Sprite
-    sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/12mmPIPE.rsi
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_12mmpipe_37007d21.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -222,16 +222,18 @@
     selectedMode: Fullauto
     availableModes:
     - Fullauto
-    minAngle: 12
+    minAngle: 14
     maxAngle: 38
-    angleIncrease: 4
-    angleDecay: 16
+    angleIncrease: 4.5
+    angleDecay: 12
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Nuclear14/Weapons/Effects/Reload/SMGs/smg_cock.ogg
   - type: GunWieldBonus
-    minAngle: -7
-    maxAngle: -15
+    minAngle: -11
+    maxAngle: -23
+    angleIncrease: 0
+    angleDecay: 0
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -252,7 +254,7 @@
             - N14CartridgePistol127
   - type: StaticPrice
     price: 10
-
+  - type: AmmoCounter
 
 - type: entity
   parent: N14WeaponSMG12mmPipe
@@ -280,19 +282,19 @@
     node: start
 
 - type: entity
-  name: 10mm pipe SMG
+  name: "makeshift 10mm SMG"
   parent: N14WeaponSMGBase
   id: N14WeaponSMG10mmPipe
-  description: A makeshift 10mm SMG, if you shake it you can hear the loose parts rattling inside of the gun.
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts."
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/10mmPIPE.rsi
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_10mmpipe_b9831aeb.rsi
     quickEquip: false
     slots:
     - Back
     - suitStorage
   - type: Sprite
-    sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/10mmPIPE.rsi
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_10mmpipe_b9831aeb.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -305,16 +307,18 @@
     selectedMode: Fullauto
     availableModes:
     - Fullauto
-    minAngle: 8
+    minAngle: 10
     maxAngle: 38
-    angleIncrease: 4
-    angleDecay: 16
+    angleIncrease: 6.5
+    angleDecay: 12
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Nuclear14/Weapons/Effects/Reload/SMGs/smg_cock.ogg
   - type: GunWieldBonus
     minAngle: -7
     maxAngle: -15
+    angleIncrease: 0
+    angleDecay: 0
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -334,6 +338,7 @@
             - N14CartridgePistol10
   - type: StaticPrice
     price: 10
+  - type: AmmoCounter
 
 - type: entity
   parent: N14WeaponSMG10mmPipe

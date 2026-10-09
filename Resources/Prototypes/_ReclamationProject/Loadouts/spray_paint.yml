@@ -1,0 +1,13 @@
+- type: loadout
+  id: LoadoutSprayPaintSageGreen
+  category: Items
+  cost: 0
+  items:
+  - SprayPaintSageGreen
+
+- type: loadout
+  id: LoadoutSprayPaintOliveGreen
+  category: Items
+  cost: 0
+  items:
+  - SprayPaintOliveGreen

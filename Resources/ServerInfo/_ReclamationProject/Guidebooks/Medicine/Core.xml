@@ -1,0 +1,58 @@
+<Document>
+# Wasteland medicine: core mixtures
+
+<p>Amounts are in reagent units (u), not whole plants. Use the exact extracts listed. Heat only recipes with a temperature requirement.</p>
+
+## Antiseptic
+<p>[bold]Mix:[/bold] 1u Abraxo Cleaner + 1u ethanol</p>
+<p>[bold]Makes:[/bold] 2u Antiseptic.</p>
+
+<p>[bold]Effects:[/bold] A preparation ingredient for other medicines; it is not a substitute for a healing chem.</p>
+## Handmade antidote
+<p>[bold]Mix:[/bold] 1u tarberry juice + 1u scorpion tail</p>
+<p>[bold]Makes:[/bold] 2u handmade antidote.</p>
+
+<p>[bold]Effects:[/bold] Heals poison damage; Can cause vomiting.</p>
+## Refined antidote
+<p>[bold]Mix:[/bold] 1u handmade antidote + 1u ethanol</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 2u refined antidote.</p>
+
+<p>[bold]Effects:[/bold] Heals poison, radiation damage.</p>
+## Radaway
+<p>[bold]Mix:[/bold] 1u irradiated fungus extract + 2u Antiseptic + 2u water</p>
+<p>[bold]Makes:[/bold] 3u radaway.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation damage; Reduces feralization progression.</p>
+## Diluted radaway
+<p>[bold]Mix:[/bold] 1u radaway + 2u water</p>
+<p>[bold]Makes:[/bold] 2u diluted radaway.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation damage; Reduces feralization progression.</p>
+## Stimpak
+<p>[bold]Mix:[/bold] 1u broc flower extract + 1u xander extract + 1u blood</p>
+<p>[bold]Makes:[/bold] 2u stimpak.</p>
+
+<p>[bold]Effects:[/bold] Heals burn, brute, airloss damage; Reduces bleeding; At 30u or more: Can cause vomiting.</p>
+## Dirty stimpak
+<p>[bold]Mix:[/bold] 1u broc flower extract + 1u xander extract + 1u waster blood</p>
+<p>[bold]Makes:[/bold] 3u dirty stimpak.</p>
+
+<p>[bold]Effects:[/bold] Applies recovery status; Heals burn, brute, airloss damage; Causes radiation, poison damage; Reduces bleeding; At 30u or more: Heals burn, brute, airloss damage; At 30u or more: Causes poison damage; At 50u or more: Causes poison damage.</p>
+## Bitterdrink
+<p>[bold]Mix:[/bold] 2u brahmin milk + 1u glowpepper juice + 1u pinyon juice</p>
+<p>[bold]Heat:[/bold] at least 354 K (80.85 C).</p>
+<p>[bold]Makes:[/bold] 4u bitterdrink.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation, poison damage; At 25u or more: Can cause vomiting; Reduces feralization progression.</p>
+## Epoetine
+<p>[bold]Mix:[/bold] 2u oxygen + 1u uranium (catalyst; retained)</p>
+<p>[bold]Makes:[/bold] 3u epoetine.</p>
+
+<p>[bold]Effects:[/bold] Heals asphyxiation, bloodloss damage; At 20u or more: Causes asphyxiation, cold damage.</p>
+## Beta epoetine
+<p>[bold]Mix:[/bold] 1u epoetine + 1u carbon + 1u iron</p>
+<p>[bold]Makes:[/bold] 3u beta epoetine.</p>
+
+<p>[bold]Effects:[/bold] Heals asphyxiation, bloodloss damage; Removes heartbreaker toxin in the body; At 25u or more: Causes asphyxiation, cold damage.</p>
+</Document>

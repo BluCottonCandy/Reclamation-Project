@@ -1,63 +1,56 @@
 <Document>
-# Big Guns
-
-[textlink="View Full Wiki Page" link="https://wiki.misfitsystems.net/index.php/Big%20Guns"/]
-
 ## Big Guns
 
-<p>Big Guns are heavy weapons that deal devastating damage. They are difficult to carry and expensive to feed, but nothing matches their raw stopping power once a fight turns serious.</p>
-<p>[bold]Warning:[/bold] Big Guns are usually restricted to military-grade factions. Carrying one openly is enough to attract attention almost anywhere in the Wasteland.</p>
+Big Guns are heavy weapons that deal devastating damage. They are difficult to carry and expensive to feed, but nothing matches their raw stopping power once a fight turns serious.
 
-<h3 Text="Miniguns"/>
+[bold]Warning:[/bold] Big Guns are usually restricted to military-grade factions. Carrying one openly is enough to attract attention almost anywhere in the Wasteland.
 
-<p>Miniguns deliver overwhelming volume of fire and are best used for suppression, defense, and faction-level fire superiority.</p>
+## Miniguns
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Minigun[/bold]</Box>
-  <Box>Standard heavy minigun. High sustained fire rate.</Box>
-  <Box>[bold]Avenger Minigun[/bold]</Box>
-  <Box>Enhanced variant. Higher damage and accuracy than standard.</Box>
-</Table>
+Miniguns deliver overwhelming volume of fire and are best used for suppression, defense, and faction-level fire superiority.
 
-<h3 Text="Launchers"/>
+[bold]Minigun[/bold]
 
-<p>Grenade and missile launchers are area-denial weapons that break fortified positions and punish clustered enemies.</p>
+Notes: Standard heavy minigun. High sustained fire rate.
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Grenade Launcher[/bold]</Box>
-  <Box>Launches explosive grenades at medium range.</Box>
-  <Box>[bold]Missile Launcher[/bold]</Box>
-  <Box>Fires guided missiles. Maximum area denial.</Box>
-  <Box>[bold]Grenade Rifle[/bold]</Box>
-  <Box>Shoulder-fired grenade launcher. More portable than the standard launcher.</Box>
-</Table>
+[bold]Avenger Minigun[/bold]
 
-<h3 Text="Light Machine Guns"/>
+Notes: Enhanced variant. Higher damage and accuracy than standard.
 
-<p>LMGs provide sustained automatic fire and excel in prepared positions or coordinated squad fights.</p>
+## Launchers
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Light Machine Gun (LMG)[/bold]</Box>
-  <Box>Belt-fed automatic. High sustained fire in defensive positions.</Box>
-  <Box>[bold]Auto Rifle (LMG variant)[/bold]</Box>
-  <Box>Lighter LMG profile. More mobile than belt-fed.</Box>
-</Table>
+Grenade and missile launchers are area-denial weapons that break fortified positions and punish clustered enemies.
 
-<h3 Text="Flamers"/>
+[bold]Grenade Launcher[/bold]
 
-<p>The flamer projects burning fuel across a wide area and is especially effective against creatures and lightly armored targets.</p>
+Notes: Launches explosive grenades at medium range.
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Flamer[/bold]</Box>
-  <Box>Wide area incendiary. Very effective at close range against flesh and lightly armored targets.</Box>
-</Table>
+[bold]Missile Launcher[/bold]
+
+Notes: Fires guided missiles. Maximum area denial.
+
+[bold]Grenade Rifle[/bold]
+
+Notes: Shoulder-fired grenade launcher. More portable than the standard launcher.
+
+## Light Machine Guns
+
+LMGs provide sustained automatic fire and excel in prepared positions or coordinated squad fights.
+
+[bold]Light Machine Gun (LMG)[/bold]
+
+Notes: Belt-fed automatic. High sustained fire in defensive positions.
+
+[bold]Auto Rifle (LMG variant)[/bold]
+
+Notes: Lighter LMG profile. More mobile than belt-fed.
+
+## Flamers
+
+The flamer projects burning fuel across a wide area and is especially effective against creatures and lightly armored targets.
+
+[bold]Flamer[/bold]
+
+Notes: Wide area incendiary. Very effective at close range against flesh and lightly armored targets.
 
 </Document>

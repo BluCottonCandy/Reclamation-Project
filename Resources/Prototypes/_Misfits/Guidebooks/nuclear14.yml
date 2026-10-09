@@ -6,7 +6,6 @@
   text: "/ServerInfo/_Misfits/Guidebooks/nuclear14.xml"
   children:
   - Factions                      # Factions & Roles — first, as primary player context
-  - MisfitsWhitelists             # #Misfits Add - whitelist roles (Super Mutants, Robots)
   - MisfitsFactionWar             # #Misfits Add - faction war rules
   - MisfitsFactionSustainability  # #Misfits Add - faction sustainability guide
   - WeaponsAmmo                   # Weapons & ammo guide

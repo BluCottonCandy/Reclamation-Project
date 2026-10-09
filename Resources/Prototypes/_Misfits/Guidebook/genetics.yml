@@ -4,11 +4,9 @@
   id: Genetics
   name: guide-entry-genetics
   text: "/ServerInfo/_Misfits/Guidebook/Genetics.xml"
-  children:
-  - GeneticsMutations
-
 - type: guideEntry
   id: GeneticsMutations
   name: guide-entry-mutations
-  text: "/ServerInfo/_Misfits/Guidebook/Mutations.xml"
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Removed.xml"
   filterEnabled: True
+  hideInMenu: true

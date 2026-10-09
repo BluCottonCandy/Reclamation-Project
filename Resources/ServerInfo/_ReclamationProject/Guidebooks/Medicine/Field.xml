@@ -1,0 +1,91 @@
+<Document>
+# Field crafting and inhalers
+<p>Use whole items and plant materials for these recipes, rather than measured chemical extracts. Open the crafting menu and choose the medical category. Amounts are item or material counts.</p>
+
+## Mortar & pestle
+<p>[bold]Requires:[/bold] 2 x wood plank.</p>
+
+<p>[bold]Effects:[/bold] A tool for processing ingredients; it is not medicine.</p>
+## Healing powder
+<p>[bold]Requires:[/bold] 1 x broc flower + 1 x xander root.</p>
+
+<p>[bold]Effects:[/bold] Applies healing powder haze; Applies recovery status; Heals burn, brute damage; Reduces bleeding; At 30u or more: Can cause vomiting; Suppresses chronic pain.</p>
+## Cleansing powder
+<p>[bold]Requires:[/bold] 1 x irradiated cave fungus + 1 x xander root.</p>
+
+<p>[bold]Effects:[/bold] Heals radiation damage; Reduces feralization progression; Applies drowsiness.</p>
+## Berserker powder
+<p>[bold]Requires:[/bold] 1 x Wild White Horsenettle + 1 x Nettles + 1 x Wild Glowpepper + 1 x xander root + 1 x broc flower.</p>
+
+<p>[bold]Effects:[/bold] Heals burn, brute damage; Reduces bleeding; Increases movement speed; Applies seeing rainbows; At 5u or more: Removes stun; At 5u or more: Removes knockdown; At 26u or more: Causes asphyxiation damage.</p>
+## Stimpak
+<p>[bold]Requires:[/bold] 1 x broc flower + 1 x xander root + 1 x empty syringe + 1 x bloodpack.</p>
+
+<p>[bold]Effects:[/bold] Heals burn, brute, airloss damage; Reduces bleeding; At 30u or more: Can cause vomiting.</p>
+## Jet inhaler
+<p>[bold]Requires:[/bold] 1 x Plastic.</p>
+
+<p>[bold]Effects:[/bold] An empty inhaler body. Fill or assemble it before use.</p>
+## Dirty gauze
+<p>[bold]Requires:[/bold] 2 x Cloth.</p>
+
+<p>[bold]Effects:[/bold] Heals slash, piercing, burn damage; Causes poison damage; Reduces bleeding. Apply to the patient; this is the field item, not the similarly named reagent.</p>
+## Healing poultice
+<p>[bold]Requires:[/bold] 1 x broc flower + 1 x xander root + 1 x Cave Fungus + 1 x agave leaf.</p>
+
+<p>[bold]Effects:[/bold] Applies recovery status; Heals burn, brute, airloss damage; Reduces bleeding; Causes jittering; At 26u or more: Can cause vomiting; At 30u or more: Causes poison damage.</p>
+## Datura hide
+<p>[bold]Requires:[/bold] 4 x Datura Flower + 1 x Wonderglue.</p>
+
+<p>[bold]Effects:[/bold] Heals heat, shock, caustic, cold damage. Apply to the patient; this is the field item, not the similarly named reagent.</p>
+## Snakebite tourniquet
+<p>[bold]Requires:[/bold] 1 x Wild Buffalo Gourd + 1 x Cloth + 1 x Plastic.</p>
+
+<p>[bold]Effects:[/bold] Heals poison damage; Causes brute damage; Reduces bleeding. Apply to the patient; this is the field item, not the similarly named reagent.</p>
+## Fiery purgative
+<p>[bold]Requires:[/bold] 1 x ethanol bottle + 1 x Wild Glowpepper + 1 x Wild White Horsenettle.</p>
+
+<p>[bold]Effects:[/bold] Heals poison, radiation damage; Causes heat damage; Removes cazador venom in the body; Removes nightstalker venom in the body; Removes ash viper venom in the body; Reduces movement speed; Can cause vomiting.</p>
+## Blood shield
+<p>[bold]Requires:[/bold] 2 x Barrel Cactus Fruit + 2 x Cave Fungus + 2 x broc flower.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn, poison damage.</p>
+## Pilgrim's remedy
+<p>[bold]Requires:[/bold] 1 x broc flower + 1 x xander root + 1 x Cave Fungus + 1 x agave leaf + 1 x Datura Flower.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn, poison, radiation damage; Increases bleeding; Reduces feralization progression.</p>
+## Healing salve
+<p>[bold]Requires:[/bold] 1 x broc flower + 1 x xander root + 1 x agave leaf.</p>
+
+<p>[bold]Effects:[/bold] Heals slash, piercing, blunt damage; Reduces bleeding. Apply to the patient; this is the field item, not the similarly named reagent.</p>
+## Gravesalt
+<p>[bold]Requires:[/bold] 1 x Ash + 1 x Cave Fungus + 2 x Wild White Horsenettle + 1 x agave leaf.</p>
+
+<p>[bold]Effects:[/bold] Removes ghostcap extract in the body; Removes widow's mercy in the body; Removes red bell poison in the body; Removes ash viper venom in the body; Removes cazador venom in the body; Removes nightstalker venom in the body; Heals poison, asphyxiation damage; Causes brute damage; Can cause vomiting.</p>
+## Glowing blood pack
+<p>[bold]Requires:[/bold] 1 x bloodpack + 2 x irradiated cave fungus + 1 x ethanol bottle.</p>
+
+<p>[bold]Effects:[/bold] Heals brute, burn, asphyxiation, bloodloss damage; Applies incoming radiation protection.</p>
+## Herbal anodyne
+<p>[bold]Requires:[/bold] 2 x Wild Carrot + 1 x irradiated cave fungus + 2 x Nettles + 1 x Wild White Horsenettle + 1 x agave leaf.</p>
+
+<p>[bold]Effects:[/bold] Heals burn, blunt damage. Apply to the patient; this is the field item, not the similarly named reagent.</p>
+## Herbal antimicrobial
+<p>[bold]Requires:[/bold] 1 x Wild Carrot + 1 x irradiated cave fungus + 2 x Wild Buffalo Gourd + 1 x Nettles + 1 x agave leaf.</p>
+
+<p>[bold]Effects:[/bold] Heals caustic, heat, poison damage. Apply to the patient; this is the field item, not the similarly named reagent.</p>
+## Herbal stimulant
+<p>[bold]Requires:[/bold] 1 x irradiated cave fungus + 1 x Wild Buffalo Gourd + 1 x Nettles + 2 x Wild White Horsenettle.</p>
+
+<p>[bold]Effects:[/bold] Removes drowsiness; Increases movement speed.</p>
+## Hydra inhaler
+<p>Mix 1u scorpion tail + 1u fungus extract + 1u nightstalker blood to make 2u Hydra. Prepare at least 15u, transfer it into an empty Hydra inhaler, and use a screwdriver on the filled inhaler to seal it. This finishing step is performed on the item in-world, not through a visible crafting-menu recipe.</p>
+<p>[bold]Effects of Hydra:[/bold] Applies incoming damage protection; Can cause addiction; Causes jittering; At 22u or more: Causes asphyxiation damage.</p>
+
+## RadAway inhaler
+<p>Craft a Jet inhaler body from 1 plastic. Fill an empty RadAway phial with at least 30u RadAway, then seal it with a screwdriver. Attach the finished RadAway phial to the inhaler body using the RadAway inhaler crafting recipe.</p>
+<p>[bold]Effects of RadAway:[/bold] Heals radiation damage; Reduces feralization progression.</p>
+
+## Bitterdrink
+<p>The old whole-plant bitterdrink recipe is disabled. Use the heated chemistry recipe in Core mixtures, then the bottle conversion in Finishing medicine.</p>
+</Document>

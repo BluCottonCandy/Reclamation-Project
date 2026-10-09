@@ -1,67 +1,64 @@
 <Document>
-# Laser Weapons
-
-[textlink="View Full Wiki Page" link="https://wiki.misfitsystems.net/index.php/Laser%20Weapons"/]
-
 ## Energy Weapons (Laser)
 
-<p>Energy weapons use focused laser technology to deliver precise, armor-punching hits. They do not use conventional ammunition, relying instead on power cells and other specialized energy feeds.</p>
-<p>These weapons are rare and expensive, and are most often seen in the hands of the Brotherhood of Steel, the Enclave, and elite scavengers.</p>
+Energy weapons use focused laser technology to deliver precise, armor-punching hits. They do not use conventional ammunition, relying instead on power cells and other specialized energy feeds.
 
-<h3 Text="Laser Pistols"/>
+## Laser Pistols
 
-<p>Compact laser sidearms useful for self-defense, patrol work, and precision shooting.</p>
+Compact laser sidearms useful for self-defense, patrol work, and precision shooting.
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Laser Pistol[/bold]</Box>
-  <Box>Standard laser sidearm. Common in Brotherhood inventory.</Box>
-  <Box>[bold]Laser Revolver[/bold]</Box>
-  <Box>Revolver-frame laser weapon. Craftable via blueprint.</Box>
-  <Box>[bold]Recharger Pistol[/bold]</Box>
-  <Box>Self-recharging laser pistol. No ammunition required, but lower output.</Box>
-</Table>
+[bold]Laser Pistol[/bold]
 
-<h3 Text="Laser Rifles"/>
+Notes: Standard laser sidearm. Common in Brotherhood inventory.
 
-<p>Laser rifles deliver reliable ranged damage and are iconic weapons for advanced factions.</p>
+[bold]Laser Revolver[/bold]
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Laser Rifle[/bold]</Box>
-  <Box>Standard pre-war laser rifle. Precision and reliable.</Box>
-  <Box>[bold]Auto Laser Rifle[/bold]</Box>
-  <Box>Automatic-fire variant. Higher rate of fire, more energy consumption.</Box>
-  <Box>[bold]AER14 Prototype[/bold]</Box>
-  <Box>Experimental pre-war design. High performance, extremely rare.</Box>
-  <Box>[bold]Wattz 3000[/bold]</Box>
-  <Box>Pre-war high-end laser rifle. Superior range and damage.</Box>
-</Table>
+Notes: Revolver-frame laser weapon. Craftable via blueprint.
 
-<h3 Text="Gatling Laser"/>
+[bold]Recharger Pistol[/bold]
 
-<p>The Gatling Laser is a heavy beam weapon capable of sustained fire that can shred exposed targets very quickly.</p>
+Notes: Self-recharging laser pistol. No ammunition required, but lower output.
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Gatling Laser[/bold]</Box>
-  <Box>Heavy beam weapon. Sustained fire, devastating against exposed targets.</Box>
-</Table>
+## Laser Rifles
 
-<h3 Text="Improvised Energy Weapons"/>
+Laser rifles deliver reliable ranged damage and are iconic weapons for advanced factions.
 
-<p>Makeshift and crude laser weapons built from salvaged parts. Usually less reliable than pre-war models, but far more accessible.</p>
+[bold]Laser Rifle[/bold]
 
-<Table Columns="2">
-  <Box>[bold]Weapon[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Crude Laser Rifle[/bold]</Box>
-  <Box>Post-war construction. Less accurate, lower output than pre-war.</Box>
-  <Box>[bold]Makeshift Laser Rifle[/bold]</Box>
-  <Box>Craftable via blueprint. Better than crude but still imprecise.</Box>
-</Table>
+Notes: Standard pre-war laser rifle. Precision and reliable.
 
+[bold]Auto Laser Rifle[/bold]
+
+Notes: Automatic-fire variant. Higher rate of fire, more energy consumption.
+
+[bold]AER14 Prototype[/bold]
+
+Notes: Experimental pre-war design. High performance, extremely rare.
+
+[bold]Wattz 3000[/bold]
+
+Notes: Pre-war high-end laser rifle. Superior range and damage.
+
+## Gatling Laser
+
+The Gatling Laser is a heavy beam weapon capable of sustained fire that can shred exposed targets very quickly.
+
+[bold]Gatling Laser[/bold]
+
+Notes: Heavy beam weapon. Sustained fire, devastating against exposed targets.
+
+## Improvised Energy Weapons
+
+Makeshift and crude laser weapons built from salvaged parts. Usually less reliable than pre-war models, but far more accessible.
+
+[bold]Crude Laser Rifle[/bold]
+
+Notes: Post-war construction. Less accurate, lower output than pre-war.
+
+[bold]Makeshift Laser Rifle[/bold]
+
+Notes: Craftable via blueprint. Better than crude but still imprecise.
+
+## Laser musket
+The laser musket can be cranked before firing to increase its damage. Extra cranks use extra cell charge, so stronger shots consume more energy. Keep enough charge for the shot itself.
 </Document>

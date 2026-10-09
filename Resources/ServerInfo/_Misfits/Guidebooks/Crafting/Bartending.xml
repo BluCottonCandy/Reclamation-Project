@@ -1,99 +1,164 @@
 <Document>
-# Bartending
+# Drinks and water recipes
 
-[textlink="View Full Wiki Page" link="https://wiki.misfitsystems.net/index.php/Bartending"/]
+Mix the listed reagent units in a container. Heat recipes with a minimum temperature requirement. Scavenged bottled drinks without a mixing recipe are not listed as craftable.
 
-## Bartending, Drinks, and Other Liquids
+## Water
 
-<p>Below is a list of all drink reagents and reactions available in Nuclear 14. They are roughly sorted by base reagents, then reactions and products, classified by their primary component.</p>
+[bold]Mix:[/bold] 1u filtered water
 
-<h3 Text="Animal Products"/>
+[bold]Heat:[/bold] at least 373 K (99.85 C).
 
-<p>Milk from domesticated wasteland animals. A rare and valuable source of nutrition.</p>
-<ul>
-<li>[bold]Brahmin Milk[/bold]</li>
-<li>[bold]Bighorner Milk[/bold]</li>
-<li>[bold]Radstag Milk[/bold]</li>
-</ul>
+[bold]Makes:[/bold] 1u water.
 
-<h3 Text="Water and Base Liquids"/>
+## Filtered water
 
-<p>Water is the most essential liquid in the Wasteland. Always purify water before drinking - dirty and irradiated water can make you sick.</p>
+[bold]Mix:[/bold] 1u charcoal + 1u dirty water
 
-<Table Columns="2">
-  <Box>[bold]Liquid[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Filtered Water[/bold]</Box>
-  <Box>Safe to drink. Purified by filter, chemistry, or boiling.</Box>
-  <Box>[bold]Dirty Water[/bold]</Box>
-  <Box>Carries illness risk. Purify before drinking.</Box>
-  <Box>[bold]Irradiated Water[/bold]</Box>
-  <Box>Causes radiation exposure. Purify before drinking.</Box>
-  <Box>[bold]Salt Water[/bold]</Box>
-  <Box>Used in some crafting recipes. Not safe to drink directly.</Box>
-</Table>
+[bold]Makes:[/bold] 1u filtered water.
 
-<h3 Text="Plant Extracts"/>
+## Dirty water
 
-<p>Plant extracts obtained by grinding or pressing plant products. Used in cooking, crafting, and as drink ingredients. See [textlink="Botany" link="https://wiki.misfitsystems.net/index.php/Botany"/] for plant sources and [textlink="Materials" link="https://wiki.misfitsystems.net/index.php/Materials"/] for base ingredient farming.</p>
+[bold]Mix:[/bold] 1u Abraxo Cleaner + 1u irradiated water
 
-<h3 Text="Plant Drinks, Teas, and Infusions"/>
+[bold]Makes:[/bold] 1u dirty water.
 
-<p>Teas brewed from Wasteland plants. Many have mild medicinal or nutritional properties.</p>
-<ul>
-<li>[bold]Agave Tea[/bold]</li>
-<li>[bold]Blackberry Tea[/bold]</li>
-<li>[bold]Barrel Cactus Tea[/bold]</li>
-<li>[bold]Broc Tea[/bold]</li>
-<li>[bold]Datura Tea[/bold]</li>
-<li>[bold]Honey Mesquite Tea[/bold]</li>
-<li>[bold]Mutfruit Tea[/bold]</li>
-<li>[bold]Nettle Tea[/bold]</li>
-<li>[bold]Prickly Pear Tea[/bold]</li>
-<li>[bold]Starlightberry Tea[/bold]</li>
-<li>[bold]Tarberry Tea[/bold]</li>
-<li>[bold]White Horsenettle Tea[/bold]</li>
-<li>[bold]Xander Tea[/bold]</li>
-<li>[bold]Fire Ant Nectar Tea[/bold]</li>
-</ul>
+## Water
 
-<h3 Text="Carbonated Drinks"/>
+[bold]Mix:[/bold] 2u salt water
 
-<p>Nuka-Cola and other pre-war carbonated beverages. Highly sought after throughout the Wasteland.</p>
+[bold]Heat:[/bold] at least 374 K (100.85 C).
 
-<Table Columns="2">
-  <Box>[bold]Drink[/bold]</Box>
-  <Box>[bold]Notes[/bold]</Box>
-  <Box>[bold]Nuka-Cola[/bold]</Box>
-  <Box>Standard pre-war cola. Widely scavenged.</Box>
-  <Box>[bold]Nuka-Cola Quantum[/bold]</Box>
-  <Box>Glowing blue variant. Rare and highly valued.</Box>
-  <Box>[bold]Nuka-Cola Quartz[/bold]</Box>
-  <Box>White-label variant. Clear with a distinct taste.</Box>
-  <Box>[bold]Nuka-Cola Clear[/bold]</Box>
-  <Box>Colorless formula. Uncommon find.</Box>
-  <Box>[bold]Nuka-Cola Cherry[/bold]</Box>
-  <Box>Red cherry variant.</Box>
-  <Box>[bold]Nuka-Cola Grape[/bold]</Box>
-  <Box>Purple grape variant.</Box>
-  <Box>[bold]Nuka-Cola Wild[/bold]</Box>
-  <Box>Fruit-flavored wild variant.</Box>
-  <Box>[bold]Nuka-Cola Orange[/bold]</Box>
-  <Box>Orange citrus variant.</Box>
-  <Box>[bold]Nuka-Cola Victory[/bold]</Box>
-  <Box>Victory edition. Pre-war promotional variant.</Box>
-  <Box>[bold]Nuka-Cola Yellow[/bold]</Box>
-  <Box>Yellow formula. Citrus based.</Box>
-  <Box>[bold]Irradiated Nuka-Cola[/bold]</Box>
-  <Box>Contaminated - causes minor radiation. Avoid if possible.</Box>
-  <Box>[bold]Vim![/bold]</Box>
-  <Box>RobCo energy drink alternative. Found in northeast Wasteland caches.</Box>
-  <Box>[bold]Vim! Captain's Blend[/bold]</Box>
-  <Box>Specialty Vim variant with added kick.</Box>
-</Table>
+[bold]Makes:[/bold] 1u water, 1u table salt.
 
-<h3 Text="Alcohol"/>
+## Agave tea
 
-<p>Alcoholic beverages brewed and distilled throughout the Wasteland. See the in-game bartending menu for the complete reagent group listing.</p>
+[bold]Mix:[/bold] 1u agave nectar extract + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u agave tea.
+
+## Blackberry tea
+
+[bold]Mix:[/bold] 1u blackberry juice + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u blackberry tea.
+
+## Barrel cactus tea
+
+[bold]Mix:[/bold] 1u cactus water + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u barrel cactus tea.
+
+## Broc tea
+
+[bold]Mix:[/bold] 1u broc flower extract + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u broc tea.
+
+## Datura tea
+
+[bold]Mix:[/bold] 1u datura extract + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u datura tea.
+
+## Honey mesquite tea
+
+[bold]Mix:[/bold] 1u honey mesquite pod extract + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u honey mesquite tea.
+
+## Mutfruit tea
+
+[bold]Mix:[/bold] 1u mutfruit juice + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u mutfruit tea.
+
+## Nettle tea
+
+[bold]Mix:[/bold] 1u nettle juice + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u nettle tea.
+
+## Prickly pear tea
+
+[bold]Mix:[/bold] 1u prickly pear juice + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u prickly pear tea.
+
+## Starlightberry tea
+
+[bold]Mix:[/bold] 1u starlight berry juice + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u starlightberry tea.
+
+## Tarberry tea
+
+[bold]Mix:[/bold] 1u tarberry juice + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u tarberry tea.
+
+## White horsenettle tea
+
+[bold]Mix:[/bold] 1u white horsenettle extract + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u white horsenettle tea.
+
+## Xander tea
+
+[bold]Mix:[/bold] 1u xander extract + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u xander tea.
+
+## Fire ant nectar tea
+
+[bold]Mix:[/bold] 1u Fire ant nectar + 1u water
+
+[bold]Heat:[/bold] at least 354 K (80.85 C).
+
+[bold]Makes:[/bold] 2u fire ant nectar tea.
+
+## Cafe latte
+
+[bold]Mix:[/bold] 1u coffee + 1u brahmin milk
+
+[bold]Makes:[/bold] 2u cafe latte.
+
+## Cream of coconut
+
+[bold]Mix:[/bold] 1u coconut water + 1u sugar + 1u brahmin milk
+
+[bold]Makes:[/bold] 3u cream of coconut.
+
+## White gilgamesh
+
+[bold]Mix:[/bold] 2u beer + 1u brahmin milk
+
+[bold]Makes:[/bold] 3u white gilgamesh.
 
 </Document>

@@ -1,128 +1,1050 @@
 <Document>
-# Cooking
+# Cooking recipes
 
-[textlink="View Full Wiki Page" link="https://wiki.misfitsystems.net/index.php/Cooking"/]
+Use a compatible cooking machine for these recipes. Whole items are counted separately from liquid ingredients in units (u). Add all listed ingredients, then cook for the stated time. Alternate recipes are listed separately.
 
-## Cooking
+## Cooked irradiated meat
 
-<p>Cooking turns raw Wasteland ingredients into meals that are safer, more filling, and usually more valuable than eating ingredients by themselves. Most recipes rely on a heat source plus basic meats, produce, grains, or scavenged pre-war food.</p>
+[bold]Ingredients:[/bold] 1 x raw irradiated meat.
 
-<h3 Text="Cooking Equipment"/>
+[bold]Cook:[/bold] 15 seconds.
 
-<p>A cooking stove or kitchen grill is needed for most hot meals.</p>
-<ul>
-<li>[bold]Cooking Stove[/bold] - Standard cooking equipment found in most settlements and kitchens.</li>
-<li>[bold]Kitchen Grill[/bold] - Outdoor grill suitable for cooking meats and simple meals.</li>
-</ul>
+## Cooked brahmin steak
 
-<h3 Text="Raw Meats"/>
+[bold]Ingredients:[/bold] 1 x raw brahmin steak.
 
-<p>Wasteland creatures provide a wide range of raw meats. [bold]Do not eat raw meat[/bold] unless you have no other choice - always cook it first.</p>
-<ul>
-<li>Brahmin Meat</li>
-<li>Bighorner Meat</li>
-<li>Radstag Meat</li>
-<li>Radhog Meat</li>
-<li>Pigrat Meat</li>
-<li>Yaoguai Meat</li>
-<li>Radscorpion Meat</li>
-<li>Radchicken Meat</li>
-<li>Gecko Meat</li>
-<li>Fire Gecko Meat</li>
-<li>Golden Gecko Meat</li>
-<li>Iguana Meat</li>
-<li>Mirelurk Claw Meat</li>
-<li>Squirrel Meat</li>
-</ul>
+[bold]Cook:[/bold] 15 seconds.
 
-<h3 Text="Fresh Produce"/>
+## Cooked brahmin cutlet
 
-<p>Plants grown by farmers or gathered from the Wasteland. They can be eaten raw, processed into extracts, or used in complete meals.</p>
-<ul>
-<li>Carrot</li>
-<li>Cabbage</li>
-<li>Corn</li>
-<li>Onion</li>
-<li>Potato</li>
-<li>Tomato</li>
-<li>Apple</li>
-</ul>
+[bold]Ingredients:[/bold] 1 x raw brahmin cutlet.
 
-<h3 Text="Cooked Meals"/>
+[bold]Cook:[/bold] 5 seconds.
 
-<p>Prepared meals made at a cooking station. Your best everyday food source when a settlement has a working kitchen.</p>
+## Cooked bighorner steak
 
-<Table Columns="2">
-  <Box>[bold]Meal[/bold]</Box>
-  <Box>[bold]Type[/bold]</Box>
-  <Box>[bold]Ribs[/bold]</Box>
-  <Box>Meat dish</Box>
-  <Box>[bold]Cuban Carp[/bold]</Box>
-  <Box>Fish dish</Box>
-  <Box>[bold]Omelette[/bold]</Box>
-  <Box>Egg dish</Box>
-  <Box>[bold]Fried Egg[/bold]</Box>
-  <Box>Egg dish</Box>
-  <Box>[bold]Enchiladas[/bold]</Box>
-  <Box>Grain and meat</Box>
-  <Box>[bold]Nachos[/bold]</Box>
-  <Box>Grain and cheese</Box>
-  <Box>[bold]Fries[/bold]</Box>
-  <Box>Potato side</Box>
-  <Box>[bold]Queso[/bold]</Box>
-  <Box>Cheese dip</Box>
-  <Box>[bold]Sashimi[/bold]</Box>
-  <Box>Raw fish preparation</Box>
-  <Box>[bold]Loaded Potato[/bold]</Box>
-  <Box>Stuffed potato</Box>
-  <Box>[bold]Fruit Salad[/bold]</Box>
-  <Box>Fresh salad</Box>
-  <Box>[bold]Herb Salad[/bold]</Box>
-  <Box>Fresh salad</Box>
-  <Box>[bold]Coleslaw[/bold]</Box>
-  <Box>Fresh salad</Box>
-</Table>
+[bold]Ingredients:[/bold] 1 x raw bighorner steak.
 
-<h3 Text="Soups &amp; Bowls"/>
+[bold]Cook:[/bold] 15 seconds.
 
-<p>Simple one-pot foods and grain dishes that stretch ingredients further than most plated meals.</p>
-<ul>
-<li>Pea Soup</li>
-<li>Boiled Rice</li>
-<li>Rice Gumbo</li>
-<li>Rice Pudding</li>
-<li>Oatmeal</li>
-</ul>
+## Cooked bighorner cutlet
 
-<h3 Text="Baked Goods"/>
+[bold]Ingredients:[/bold] 1 x raw bighorner cutlet.
 
-<p>Require grain or flour, plus a reliable heat source.</p>
-<ul>
-<li>Plain Bread</li>
-<li>Cornbread</li>
-<li>Banana Bread</li>
-<li>Meat Roll</li>
-<li>Radroll</li>
-<li>Mutfruit Pie</li>
-<li>Blackberry Pie</li>
-<li>Meat Pie</li>
-</ul>
+[bold]Cook:[/bold] 5 seconds.
 
-<h3 Text="Pre-War Packaged Food"/>
+## Cooked radstag steak
 
-<p>Pre-war food can still be found throughout the Wasteland. It stores well and is useful when you need fast calories without cooking.</p>
-<ul>
-<li>Blamco Mac & Cheese</li>
-<li>Cram</li>
-<li>Dandy Boy Apples</li>
-<li>Fancy Lads Snack Cakes</li>
-<li>Instamash</li>
-<li>Pork & Beans</li>
-<li>Dinki-Di</li>
-</ul>
+[bold]Ingredients:[/bold] 1 x raw radstag steak.
 
-<h3 Text="Cooking Recipes"/>
+[bold]Cook:[/bold] 15 seconds.
 
-<p>The full auto-generated list of food recipes is available in-game via the cooking tab of the crafting menu. Check the in-game guidebook under [bold]Cooking[/bold] for live recipe data.</p>
+## Cooked radstag cutlet
+
+[bold]Ingredients:[/bold] 1 x raw radstag cutlet.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cooked gecko steak
+
+[bold]Ingredients:[/bold] 1 x raw gecko meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked yao-guai steak
+
+[bold]Ingredients:[/bold] 1 x raw Yao Guai meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked yao-guai cutlet
+
+[bold]Ingredients:[/bold] 1 x raw yao-guai cutlet.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cooked radscorpion steak
+
+[bold]Ingredients:[/bold] 1 x raw radscorpion meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked radscorpion cutlet
+
+[bold]Ingredients:[/bold] 1 x raw radscorpion cutlet.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Boiled radscorpion leg
+
+[bold]Ingredients:[/bold] 1 x raw radscorpion leg + 15u water.
+
+[bold]Cook:[/bold] 20 seconds.
+
+## Cooked mirelurk claw
+
+[bold]Ingredients:[/bold] 1 x raw mirelurk claw.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked radlurk claw
+
+[bold]Ingredients:[/bold] 1 x raw radlurk claw.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked radroach fillet
+
+[bold]Ingredients:[/bold] 1 x raw radroach fillet.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked radhog meat
+
+[bold]Ingredients:[/bold] 1 x raw radhog meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked radhog cutlet
+
+[bold]Ingredients:[/bold] 1 x raw radhog cutlet.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cooked pigrat meat
+
+[bold]Ingredients:[/bold] 1 x raw pigrat meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked fire gecko steak
+
+[bold]Ingredients:[/bold] 1 x raw fire gecko meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked golden gecko steak
+
+[bold]Ingredients:[/bold] 1 x raw golden gecko meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked iguana
+
+[bold]Ingredients:[/bold] 1 x raw iguana.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked squirrel bits
+
+[bold]Ingredients:[/bold] 1 x raw squirrel bits.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked radchicken meat
+
+[bold]Ingredients:[/bold] 1 x raw radchicken meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked radchicken cutlet
+
+[bold]Ingredients:[/bold] 1 x raw radchicken cutlet.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cooked human meat
+
+[bold]Ingredients:[/bold] 1 x raw human meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked human cutlet
+
+[bold]Ingredients:[/bold] 1 x raw human cutlet.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cooked supermutant meat
+
+[bold]Ingredients:[/bold] 1 x raw supermutant meat.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked supermutant cutlet
+
+[bold]Ingredients:[/bold] 1 x raw supermutant cutlet.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Bun
+
+[bold]Ingredients:[/bold] 1 x dough slice.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Appendix burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x appendix.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Bacon burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw bacon + 2 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Bearger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw Yao Guai meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Big bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Brain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x brain.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Chicken sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw radchicken meat + 5u mayonnaise.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Human burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw human meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Supermutant burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw supermutant meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Crab burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw mirelurk claw.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Fillet-o-carp burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw carp fillet + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Five alarm burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 3 x wild glowpepper.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Mcguffin
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x cheese wedge + 2 x chicken egg.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Bbq rib sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x bbq ribs + 1 x red onion slice.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Rat burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw rat meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Super bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.
+
+[bold]Cook:[/bold] 25 seconds.
+
+## Tofu burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x tofu slice.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Duck sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw duck meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Duck sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw duck meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Bearger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw Yao Guai meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Chicken sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw radchicken meat + 5u mayonnaise.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Chicken sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw chicken meat + 5u mayonnaise.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Crab burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw mirelurk claw.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Five alarm burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 3 x wild glowpepper.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Five alarm burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat + 3 x wild glowpepper.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Bbq rib sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x bbq ribs + 1 x red onion slice.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Super bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.
+
+[bold]Cook:[/bold] 25 seconds.
+
+## Super bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.
+
+[bold]Cook:[/bold] 25 seconds.
+
+## Big bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Big bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Bacon burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw bacon + 2 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Fillet-o-carp burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw carp fillet + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Rat burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw rat meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Mcguffin
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x cheese wedge + 2 x chicken egg.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Appendix burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x appendix.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Brain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x brain.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Tofu burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x tofu slice.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Banana bread
+
+[bold]Ingredients:[/bold] 1 x dough + 1 x banana.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cornbread
+
+[bold]Ingredients:[/bold] 1 x cornmeal dough.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Cornbread muffin
+
+[bold]Ingredients:[/bold] 1 x cornmeal dough slice.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cream cheese bread
+
+[bold]Ingredients:[/bold] 1 x dough + 2 x cheese wedge + 5u brahmin milk.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Meat bread
+
+[bold]Ingredients:[/bold] 1 x dough + 2 x raw rad cutlet + 2 x cheese wedge.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Bread
+
+[bold]Ingredients:[/bold] 1 x dough.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Radroll
+
+[bold]Ingredients:[/bold] 1 x dough + 1 x raw radroach fillet.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Scorpion roll
+
+[bold]Ingredients:[/bold] 1 x dough + 2 x raw radscorpion leg + 2 x cheese wedge.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Tofu bread
+
+[bold]Ingredients:[/bold] 1 x dough + 1 x tofu.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cooked food bread baguette
+
+[bold]Ingredients:[/bold] 1 x dough + 5u table salt + 5u black pepper.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Buttered toast
+
+[bold]Ingredients:[/bold] 1 x bread slice + 1 x stick of butter.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## French toast
+
+[bold]Ingredients:[/bold] 1 x bread slice + 5u brahmin milk + 12u raw egg.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Garlic bread
+
+[bold]Ingredients:[/bold] 1 x bread slice + 1 x garlic + 1 x stick of butter.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Two slice
+
+[bold]Ingredients:[/bold] 2 x bread slice + 5u wine.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Onion rings
+
+[bold]Ingredients:[/bold] 1 x red onion slice.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Margherita pizza
+
+[bold]Ingredients:[/bold] 1 x flat dough + 1 x cheese wedge + 4 x wild tato.
+
+[bold]Cook:[/bold] 30 seconds.
+
+## Mushroom pizza
+
+[bold]Ingredients:[/bold] 1 x flat dough + 5 x cave fungus.
+
+[bold]Cook:[/bold] 30 seconds.
+
+## Meat pizza
+
+[bold]Ingredients:[/bold] 1 x flat dough + 3 x raw irradiated meat + 1 x cheese wedge + 1 x wild tato.
+
+[bold]Cook:[/bold] 30 seconds.
+
+## Vegetable pizza
+
+[bold]Ingredients:[/bold] 1 x flat dough + 1 x wild onion + 1 x wild carrot + 1 x wild maize + 1 x wild tato.
+
+[bold]Cook:[/bold] 30 seconds.
+
+## Boiled spaghetti
+
+[bold]Ingredients:[/bold] 1 x stick of butter + 15u razorgrain flour + 6u raw egg.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Spaghetti
+
+[bold]Ingredients:[/bold] 1 x boiled spaghetti + 2 x wild tato.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Butter noodles
+
+[bold]Ingredients:[/bold] 1 x boiled spaghetti + 1 x stick of butter.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Chow mein
+
+[bold]Ingredients:[/bold] 1 x boiled spaghetti + 1 x wild onion + 1 x wild carrot + 1 x wild maize + 1 x chicken egg.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Oatmeal
+
+[bold]Ingredients:[/bold] 1 x bowl + 15u oats + 10u water.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Boiled rice
+
+[bold]Ingredients:[/bold] 1 x bowl + 15u rice + 10u water.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Rice pudding
+
+[bold]Ingredients:[/bold] 1 x bowl + 15u rice + 10u brahmin milk + 5u sugar.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Roadkill rice
+
+[bold]Ingredients:[/bold] 1 x boiled rice + 3 x raw rad cutlet.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Black-eyed gumbo
+
+[bold]Ingredients:[/bold] 1 x boiled rice + 3 x raw rad cutlet + 2 x wild glowpepper.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Egg-fried rice
+
+[bold]Ingredients:[/bold] 1 x boiled rice + 1 x chicken egg + 1 x wild carrot.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Bisque
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x wild tato + 1 x cave fungus + 1 x Food Meat Fish + 10u water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Nettle soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x nettle + 1 x wild tato + 10u water + 6u raw egg.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Eyeball soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x eyes + 1 x wild carrot + 1 x wild tato + 10u water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Onion soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 5 x red onion slice + 1 x cheese wedge + 10u water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Mushroom soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 2 x cave fungus + 5u water + 5u brahmin milk.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Stew
+
+[bold]Ingredients:[/bold] 1 x bowl + 3 x raw rad cutlet + 1 x wild tato + 1 x wild onion + 1 x cave fungus + 10u water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Tato soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 2 x wild tato + 10u water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Bloodtato soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 2 x wild tato + 50u blood.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Mutie soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 2 x raw radscorpion leg + 5u soy sauce.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Vegetable soup
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x wild maize + 1 x wild carrot + 1 x wild tato + 1 x wild onion + 5u water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Mutfruit pie
+
+[bold]Ingredients:[/bold] 1 x pie dough + 3 x wild mutfruit + 1 x pie tin.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Baklava
+
+[bold]Ingredients:[/bold] 1 x pie dough + 1 x wild pinyon nuts + 1 x pie tin.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Blackberry pie
+
+[bold]Ingredients:[/bold] 1 x pie dough + 3 x wild blackberries + 1 x pie tin.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Meat pie
+
+[bold]Ingredients:[/bold] 1 x pie dough + 3 x raw irradiated meat + 1 x pie tin.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Chocolate lava tart
+
+[bold]Ingredients:[/bold] 1 x pie dough + 3 x chocolate bar + 1 x pie tin + 5u sugar + 5u milk.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cuban carp
+
+[bold]Ingredients:[/bold] 1 x dough + 2 x cheese wedge + 1 x wild glowpepper + 2 x raw carp fillet.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Sashimi
+
+[bold]Ingredients:[/bold] 2 x raw carp fillet + 1u table salt.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Loaded baked potato
+
+[bold]Ingredients:[/bold] 1 x wild tato + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Fries
+
+[bold]Ingredients:[/bold] 1 x wild tato + 5u table salt.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Cheesy fries
+
+[bold]Ingredients:[/bold] 1 x wild tato + 1 x cheese wedge + 5u table salt.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Carrot fries
+
+[bold]Ingredients:[/bold] 1 x wild carrot + 5u table salt.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Food snack popcorn
+
+[bold]Ingredients:[/bold] 1 x wild maize.
+
+[bold]Cook:[/bold] 20 seconds.
+
+## Pancake
+
+[bold]Ingredients:[/bold] 5u razorgrain flour + 5u brahmin milk + 6u raw egg.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Tarberry pancake
+
+[bold]Ingredients:[/bold] 2 x tarberries + 5u razorgrain flour + 5u brahmin milk + 6u raw egg.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Waffles
+
+[bold]Ingredients:[/bold] 5u razorgrain flour + 5u brahmin milk + 6u raw egg + 5u soda water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Soy waffles
+
+[bold]Ingredients:[/bold] 5u razorgrain flour + 5u soy milk + 6u raw egg + 5u soda water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Cookie
+
+[bold]Ingredients:[/bold] 1 x stick of butter + 1 x chocolate bar + 5u razorgrain flour + 5u sugar.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Sugar cookie
+
+[bold]Ingredients:[/bold] 1 x stick of butter + 5u razorgrain flour + 10u sugar.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Raisin cookie
+
+[bold]Ingredients:[/bold] 1 x 4no raisins + 5u razorgrain flour + 5u sugar.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Oatmeal cookie
+
+[bold]Ingredients:[/bold] 1 x stick of butter + 5u oats + 5u sugar.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Chocolate chip pancake
+
+[bold]Ingredients:[/bold] 1 x chocolate bar + 5u razorgrain flour + 5u brahmin milk + 6u raw egg.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Mutfruit cake
+
+[bold]Ingredients:[/bold] 1 x cake + 3 x wild mutfruit.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Carrot cake
+
+[bold]Ingredients:[/bold] 1 x cake + 3 x wild carrot.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Tarberry cake
+
+[bold]Ingredients:[/bold] 1 x cake + 3 x tarberries.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cheese cake
+
+[bold]Ingredients:[/bold] 1 x cake + 3 x cheese wedge + 10u cream.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Pumpkin-spice cake
+
+[bold]Ingredients:[/bold] 1 x cake + 1 x pumpkin.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Cake
+
+[bold]Ingredients:[/bold] 1 x cake batter.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Birthday cake
+
+[bold]Ingredients:[/bold] 1 x cake + 1 x cherry + 5u cream.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Chocolate cake
+
+[bold]Ingredients:[/bold] 1 x cake + 2 x chocolate bar.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Brain cake
+
+[bold]Ingredients:[/bold] 1 x cake + 1 x brain.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Dumplings
+
+[bold]Ingredients:[/bold] 3 x dough slice + 10u water + 6u uncooked animal proteins.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Brownies
+
+[bold]Ingredients:[/bold] 2 x stick of butter + 2 x chocolate bar + 3 x chicken egg + 15u razorgrain flour + 30u sugar.
+
+[bold]Cook:[/bold] 25 seconds.
+
+## Bowl of hot chili
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x wild glowpepper + 1 x raw rad cutlet + 1 x red onion slice + 1 x wild tato.
+
+[bold]Cook:[/bold] 20 seconds.
+
+## Queso
+
+[bold]Ingredients:[/bold] 1 x wild glowpepper + 2 x cheese wedge + 5u black pepper.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Bbq ribs
+
+[bold]Ingredients:[/bold] 2 x raw bighorner steak + 1 x skewer + 5u BBQ sauce.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Enchiladas
+
+[bold]Ingredients:[/bold] 1 x raw gecko meat + 2 x wild glowpepper + 1 x wild maize.
+
+[bold]Cook:[/bold] 20 seconds.
+
+## Herb salad
+
+[bold]Ingredients:[/bold] 1 x bowl + 3 x wild broc flower + 1 x wild mutfruit.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Coleslaw
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x wild onion + 1 x wild cabbage + 5u vinaigrette.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Caesar salad
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x red onion slice + 1 x bread slice + 1 x cheese wedge + 1 x wild cabbage + 5u olive oil.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Kimchi salad
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x carrot + 1 x cabbage + 1 x garlic + 5u vinegar.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Fruit salad
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x orange + 1 x apple + 1 x grapes + 2 x watermelon slice.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Jungle salad
+
+[bold]Ingredients:[/bold] 1 x bowl + 1 x banana + 1 x apple + 1 x grapes + 2 x watermelon slice.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Meat kebab
+
+[bold]Ingredients:[/bold] 3 x raw rad cutlet + 1 x skewer.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Food meat snake kebab
+
+[bold]Ingredients:[/bold] 1 x raw snake meat + 1 x skewer + 5u wine.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Soft taco
+
+[bold]Ingredients:[/bold] 1 x dough slice + 1 x wild tato + 2 x red onion slice + 1 x cheese wedge + 1 x raw rad cutlet.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Chèvre chaud
+
+[bold]Ingredients:[/bold] 1 x chèvre disk + 1 x Cooked Food Bread Baguette Slice.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Stick of cannabis butter
+
+[bold]Ingredients:[/bold] 1 x stick of butter + 6 x cannabis leaves.
+
+[bold]Cook:[/bold] 15 seconds.
+
+## Special brownies
+
+[bold]Ingredients:[/bold] 2 x stick of cannabis butter + 2 x chocolate bar + 3 x chicken egg + 15u razorgrain flour + 30u sugar.
+
+[bold]Cook:[/bold] 25 seconds.
+
+## Corn in butter
+
+[bold]Ingredients:[/bold] 1 x wild maize + 1 x large plate + 1 x stick of butter.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Taco shell
+
+[bold]Ingredients:[/bold] 1 x flattened tortilla dough.
+
+[bold]Cook:[/bold] 5 seconds.
+
+## Meat taco
+
+[bold]Ingredients:[/bold] 1 x taco shell + 1 x raw rad cutlet + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Chicken taco
+
+[bold]Ingredients:[/bold] 1 x taco shell + 1 x raw radchicken meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Fish taco
+
+[bold]Ingredients:[/bold] 1 x taco shell + 1 x Food Meat Fish + 2 x red onion slice + 1 x wild tato + 1 x wild cabbage.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Rat taco
+
+[bold]Ingredients:[/bold] 1 x taco shell + 1 x cheese wedge + 1 x raw rat meat.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Meat taco supreme
+
+[bold]Ingredients:[/bold] 1 x taco shell + 1 x cheese wedge + 1 x raw rad cutlet + 1 x wild tato + 1 x wild cabbage + 2 x red onion slice.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Chicken taco supreme
+
+[bold]Ingredients:[/bold] 1 x taco shell + 1 x cheese wedge + 1 x raw radchicken meat + 1 x wild tato + 1 x wild cabbage + 2 x red onion slice.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Dried tobacco leaves
+
+[bold]Ingredients:[/bold] 1 x coyote tobacco leaves.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Dried cannabis leaves
+
+[bold]Ingredients:[/bold] 1 x cannabis leaves.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Soy waffles
+
+[bold]Ingredients:[/bold] 5u flour + 5u zoy milk + 6u raw egg + 5u soda water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Soy waffles
+
+[bold]Ingredients:[/bold] 5u razorgrain flour + 5u zoy milk + 6u raw egg + 5u soda water.
+
+[bold]Cook:[/bold] 10 seconds.
+
+## Mothmallow tray
+
+[bold]Ingredients:[/bold] 1 x zoybeans + 10u sugar + 5u rum + 5u zoy milk.
+
+[bold]Cook:[/bold] 10 seconds.
 
 </Document>

@@ -3,58 +3,64 @@
 
 [textlink="View Full Wiki Page" link="https://wiki.misfitsystems.net/index.php/Surgery"]
 
-<p>Organ manipulation surgeries allow you to remove, transplant, or replace internal organs. Replacing a damaged or missing organ can resolve conditions that no amount of surface treatment will fix.</p>
+Organ manipulation surgeries allow you to remove, transplant, or replace internal organs. Replacing a damaged or missing organ can resolve conditions that no amount of surface treatment will fix.
 
 <hr/>
 
 ## Standard Anatomy
 
-<p>A typical human body contains the following organs:</p>
+A typical human body contains the following organs:
 
-<ul>
-<li>[bold]Brain[/bold]</li>
-<li>[bold]Eyes[/bold]</li>
-<li>[bold]Heart[/bold]</li>
-<li>[bold]Kidneys[/bold]</li>
-<li>[bold]Liver[/bold]</li>
-<li>[bold]Lungs[/bold]</li>
-<li>[bold]Stomach[/bold]</li>
-</ul>
+[bold]Brain[/bold]
 
-<p>Some species have additional or combined organs. The above list covers the standard human baseline.</p>
+[bold]Eyes[/bold]
+
+[bold]Heart[/bold]
+
+[bold]Kidneys[/bold]
+
+[bold]Liver[/bold]
+
+[bold]Lungs[/bold]
+
+[bold]Stomach[/bold]
+
+Some species have additional or combined organs. The above list covers the standard human baseline.
 
 <hr/>
 
 ## Removing and Transplanting Organs
 
-<p>To [bold]remove[/bold] an organ, apply the corresponding Organ Removal surgery to the target body part. The organ will be extracted without harming the patient.</p>
+To [bold]remove[/bold] an organ, apply the corresponding Organ Removal surgery to the target body part. The organ will be extracted without harming the patient.
 
-<p>To [bold]transplant[/bold] a replacement organ, apply the corresponding Organ Transplant surgery to the same site where the original organ was located.</p>
+To [bold]transplant[/bold] a replacement organ, apply the corresponding Organ Transplant surgery to the same site where the original organ was located.
 
 <hr/>
 
 ## Transplant Effects
 
-<ul>
-<li>Transplanting a [color=#a4885c]brain[/color] — transfers the patient's consciousness to a new body.</li>
-<li>Transplanting a [color=#a4885c]liver[/color] — cures severe poisoning.</li>
-<li>Transplanting [color=#a4885c]lungs[/color] — treats severe asphyxiation.</li>
-<li>Transplanting a [color=#a4885c]heart[/color] — cures rot and organ decay.</li>
-<li>Transplanting [color=#a4885c]eyes[/color] — restores vision and heals eye damage.</li>
-</ul>
+Transplanting a [color=#a4885c]brain[/color] — transfers the patient's consciousness to a new body.
+
+Transplanting a [color=#a4885c]liver[/color] — cures severe poisoning.
+
+Transplanting [color=#a4885c]lungs[/color] — treats severe asphyxiation.
+
+Transplanting a [color=#a4885c]heart[/color] — cures rot and organ decay.
+
+Transplanting [color=#a4885c]eyes[/color] — restores vision and heals eye damage.
 
 <hr/>
 
 ## Sourcing Organs
 
-<p>When a patient needs a replacement organ, their original is usually missing or too damaged to reuse. New organs can be manufactured using a [bold]Medical Biofabricator[/bold] with [bold]Biomass[/bold]. The biofabricator can produce biosynthetic organs for all species.</p>
+When a patient needs a replacement organ, their original is usually missing or too damaged to reuse. New organs can be manufactured using a [bold]Medical Biofabricator[/bold] with [bold]Biomass[/bold]. The biofabricator can produce biosynthetic organs for all species.
 
-<p>Every Chief Medical Officer has access to a Medical Biofabricator board in their starting equipment.</p>
+Every Chief Medical Officer has access to a Medical Biofabricator board in their starting equipment.
 
 <hr/>
 
 ## Organ Rejection
 
-<p>If an organ transplant has no effect, the patient's body has rejected it. This usually means the organ is in poor condition. Use a fresh organ from a donor or manufacture a new one using the Medical Biofabricator.</p>
+If an organ transplant has no effect, the patient's body has rejected it. This usually means the organ is in poor condition. Use a fresh organ from a donor or manufacture a new one using the Medical Biofabricator.
 
 </Document>

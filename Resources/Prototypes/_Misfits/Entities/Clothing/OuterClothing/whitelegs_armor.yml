@@ -18,9 +18,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.88   # slightly worse than NCR Private (0.85) — hides don't stop blunt well
-        Slash: 0.80   # better than baseline (0.85) — layered gecko hide deflects blades
-        Piercing: 0.82 # near-baseline — enough to slow a bullet, not stop it
-        Heat: 0.78    # better than baseline (0.80) — treated hides insulate
+        Piercing: 0.8 # near-baseline — enough to slow a bullet, not stop it
+        Heat: 0.78 # better than baseline (0.80) — treated hides insulate
+        Blunt: 0.8 # slightly worse than NCR Private (0.85) — hides don't stop blunt well
+        Slash: 0.8 # better than baseline (0.85) — layered gecko hide deflects blades
   - type: ExplosionResistance
     damageCoefficient: 0.92 # slightly worse than NCR Private (0.90) — light armor

@@ -12194,3 +12194,12 @@ Entries:
   id: 6497
   time: '2026-10-09T12:23:48.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/12
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Increased Endurance health bonuses to reach +50 HP at 10 Endurance and
+        updated the loadout preview to show the correct values.
+  id: 6498
+  time: '2026-10-09T12:25:43.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/9

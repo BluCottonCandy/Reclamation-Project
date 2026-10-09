@@ -33,7 +33,7 @@ ChangelogEntry = dict[str, Any]
 
 def main():
     if not CHANGELOG_WEBHOOK:
-        return
+        raise SystemExit("CHANGELOG_WEBHOOK is missing. Add it as a repository Actions secret.")
 
     session = requests.Session()
     session.headers["Authorization"]        = f"Bearer {GITHUB_TOKEN}"
@@ -41,6 +41,11 @@ def main():
     session.headers["X-GitHub-Api-Version"] = "2022-11-28"
 
     most_recent = get_most_recent_workflow(session)
+    if most_recent is None:
+        send_discord("Reclamation Project changelog connection is working. New changelog entries will be posted here after this initial setup.")
+        print("First successful publish: established the current changelog as the baseline.")
+        return
+
     last_sha = most_recent['head_commit']['id']
     print(f"Last successful publish job was {most_recent['id']}: {last_sha}")
     last_changelog = yaml.safe_load(get_last_changelog(session, last_sha))

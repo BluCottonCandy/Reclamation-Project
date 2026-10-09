@@ -12203,3 +12203,12 @@ Entries:
   id: 6498
   time: '2026-10-09T12:25:43.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/9
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added craftable Mirelurk shell armor and carapaces harvested from
+        Mirelurks.
+  id: 6499
+  time: '2026-10-09T12:27:03.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/14

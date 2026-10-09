@@ -12185,3 +12185,12 @@ Entries:
   id: 6496
   time: '2026-10-09T12:22:48.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/11
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added wasteland medicine, cooking, and drink recipes to the updated
+        in-game guidebook.
+  id: 6497
+  time: '2026-10-09T12:23:48.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/12

@@ -1,0 +1,99 @@
+# Shell armor uses the blood-red hardsuit's damage types, without powered armor integrity.
+- type: entity
+  parent: [ClothingOuterBase, AllowSuitStorageClothing]
+  id: ReclamationClothingOuterMirelurkArmor
+  name: mirelurk shell armor
+  description: Heavy, scarred mirelurk shell plates bound together with leather. Its helmet, gauntlets, and boots fold into the suit.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mirelurk/suit.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mirelurk/suit.rsi
+    equipDelay: 2.5
+    unequipDelay: 2.5
+  - type: Item
+    size: Huge
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.55
+        Radiation: 0.55
+        Caustic: 0.55
+  - type: ExplosionResistance
+    damageCoefficient: 0.55
+  - type: StaminaDamageResistance
+    coefficient: 0.55
+  - type: ClothingSpeedModifier
+    walkModifier: 0.70
+    sprintModifier: 0.70
+  - type: Reflect
+    reflects: [SmallCaliber, MediumCaliber]
+    reflectProb: 0.4
+    reflectProbByType:
+      MediumCaliber: 0.15
+    innate: true
+    spread: 90
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: ToggleableClothing
+    requiredSlot: outerClothing
+    blockUnequipWhenAttached: true
+    replaceCurrentClothing: false
+    clothingPrototypes:
+      head: ReclamationClothingHeadMirelurkHelmet
+      gloves: ReclamationClothingHandsMirelurkGauntlets
+      shoes: ReclamationClothingShoesMirelurkBoots
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:Container {}
+  - type: Construction
+    graph: ReclamationMirelurkArmor
+    node: armor
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ReclamationClothingHeadMirelurkHelmet
+  name: mirelurk shell helmet
+  description: Scarred shell plates and worn leather, attached to a mirelurk armor suit.
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mirelurk/helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mirelurk/helmet.rsi
+  - type: HideLayerClothing
+    force: true
+    slots:
+    - Hair
+    - FacialHair
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ReclamationClothingHandsMirelurkGauntlets
+  name: mirelurk shell gauntlets
+  description: Scarred shell plates and worn leather, attached to a mirelurk armor suit.
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mirelurk/gloves.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mirelurk/gloves.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ReclamationClothingShoesMirelurkBoots
+  name: mirelurk shell boots
+  description: Scarred shell plates and worn leather, attached to a mirelurk armor suit.
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mirelurk/boots.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mirelurk/boots.rsi
+
+

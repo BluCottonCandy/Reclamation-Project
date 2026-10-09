@@ -82,7 +82,13 @@
         color: '#2b2201'
     slots:
     - outerClothing
-
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingBrahdoSaddle_StorageBase
@@ -102,6 +108,13 @@
   - type: Construction
     graph: ConstructGraph_BrahdoSaddleStorage
     node: saddleStorage
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingBrahdoSaddle_ArmorBase
@@ -135,6 +148,13 @@
     - state: icon-cloth
   - type: Clothing
     sprite: _Misfits/Clothing/Animal/Brahdo/Armor/saddle-followers.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingBrahdoSaddle_ArmorBase
@@ -170,6 +190,13 @@
     - sprite: Objects/Misc/books.rsi
       state: icon_legion
       offset: "-.1,-.1"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingBrahdoSaddle_ArmorBase
@@ -199,6 +226,13 @@
     - state: icon-saddle
     - state: icon-cloth
       color: '#876159'
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingBrahdoSaddle_ArmorBase

@@ -14,7 +14,7 @@
       species:
       - Human
       - Ghoul
-  startingGear: MinutemenPrivateGear
+  startingGear: MinutemenPrivateKitGear
   alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
   access:
   - Minutemen

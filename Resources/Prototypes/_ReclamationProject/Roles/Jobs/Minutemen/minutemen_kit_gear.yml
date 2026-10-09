@@ -1,0 +1,61 @@
+# Rank kits supplement the existing musket, spare cells and survival supplies.
+
+- type: startingGear
+  parent: MinutemenEnlistedGear
+  id: MinutemenRecruitKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+    - MinutemenRecruitKitSelector
+
+- type: startingGear
+  parent: MinutemenPrivateGear
+  id: MinutemenPrivateKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+    - MinutemenPrivateKitSelector
+
+- type: startingGear
+  parent: MinutemenCorporalGear
+  id: MinutemenCorporalKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+    - MinutemenCorporalKitSelector
+
+- type: startingGear
+  parent: MinutemenNCOGear
+  id: MinutemenSergeantKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+    - MinutemenSergeantKitSelector
+
+- type: startingGear
+  parent: MinutemenOfficerGear
+  id: MinutemenLieutenantKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+    - MinutemenLieutenantKitSelector
+
+- type: startingGear
+  parent: MinutemenCaptainGear
+  id: MinutemenCaptainKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+    - MinutemenCaptainKitSelector

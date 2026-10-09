@@ -266,6 +266,8 @@ jobs:
               acknowledgement_deadline = time.monotonic() + 60
               next_heartbeat = 0
               acknowledged = False
+              stop_requested = False
+              shutdown_deadline = None
               def read_receipt():
                   if 'reclamation-update.json' not in listing('/data'):
                       return None
@@ -277,7 +279,7 @@ jobs:
                       receipt = read_receipt()
                       power_state = state()
                       # The server may have finished between the first file read and the power query.
-                      if power_state in ('offline', 'stopping'):
+                      if power_state in ('offline', 'stopping', 'starting'):
                           receipt = read_receipt()
                       if isinstance(receipt, dict) and receipt.get('ticket') == ticket:
                           status = receipt.get('state')
@@ -285,11 +287,21 @@ jobs:
                               raise StageError('Round-end deployment was cancelled; live files are unchanged.')
                           if status == 'ready':
                               # Receipt is issued by the game at a safe boundary, before it shuts down.
+                              if power_state not in ('running', 'stopping', 'starting', 'offline'):
+                                  raise StageError('Unexpected server state after the round-end receipt.')
+                              if not stop_requested:
+                                  # Tell Pterodactyl this stop is intentional, so it does not restart
+                                  # the process while installation is waiting for an offline state.
+                                  api('/power', 'POST', {'signal': 'stop'})
+                                  stop_requested = True
+                                  shutdown_deadline = time.monotonic() + 180
+                                  print('Round boundary confirmed. OXY stop requested for installation.', flush=True)
+                                  power_state = state()
                               if power_state == 'offline':
                                   print('Round boundary confirmed and server is offline.', flush=True)
                                   return
-                              if power_state not in ('running', 'stopping'):
-                                  raise StageError('Server restarted unexpectedly after the round-end receipt.')
+                              if time.monotonic() >= shutdown_deadline:
+                                  raise StageError('OXY did not stop after the confirmed round boundary; refusing installation.')
                               time.sleep(5)
                               continue
                           if status != 'pending':

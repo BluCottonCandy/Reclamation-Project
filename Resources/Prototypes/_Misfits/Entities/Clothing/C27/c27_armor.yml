@@ -144,6 +144,13 @@
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_light_generic.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_light_generic.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: BaseC27ArmorLight
@@ -155,6 +162,13 @@
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_light_ncr.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_light_ncr.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: BaseC27ArmorLight
@@ -168,6 +182,13 @@
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_light_bos.rsi
 
 # === Concrete: Medium tier ===
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: BaseC27ArmorMedium
@@ -259,3 +280,10 @@
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_combat_generic.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_combat_generic.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.5
+        Heat: 0.8
+        Blunt: 0.7
+        Slash: 0.7

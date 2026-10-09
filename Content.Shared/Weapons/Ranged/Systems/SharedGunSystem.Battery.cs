@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Weapons.Ranged;
 using Content.Shared.Examine;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
@@ -70,7 +71,7 @@ public abstract partial class SharedGunSystem
 
         for (var i = 0; i < shots; i++)
         {
-            args.Ammo.Add(GetShootable(component, args.Coordinates));
+            args.Ammo.Add(GetShootable(uid, component, args.Coordinates));
             component.Shots--;
         }
 
@@ -100,8 +101,17 @@ public abstract partial class SharedGunSystem
         Appearance.SetData(uid, AmmoVisuals.AmmoMax, component.Capacity, appearance);
     }
 
-    private (EntityUid? Entity, IShootable) GetShootable(BatteryAmmoProviderComponent component, EntityCoordinates coordinates)
+    private (EntityUid? Entity, IShootable) GetShootable(EntityUid provider, BatteryAmmoProviderComponent component, EntityCoordinates coordinates)
     {
+        // A crank scattergun uses a standard removable cell, but supplies its own projectiles.
+        if (Containers.TryGetContainingContainer(provider, out var container) &&
+            TryComp<CrankChargeComponent>(container.Owner, out var crank) &&
+            crank.ProjectilePrototype is { } projectile)
+        {
+            var entity = Spawn(projectile, coordinates);
+            return (entity, EnsureShootable(entity));
+        }
+
         switch (component)
         {
             case ProjectileBatteryAmmoProviderComponent proj:

@@ -1,0 +1,5 @@
+- type: entity
+  parent: NCRCommissarSabre
+  id: MinutemenOfficerCutlass
+  name: officer cutlass
+  description: A sturdy officer's cutlass for leading the Minute Men from the front.

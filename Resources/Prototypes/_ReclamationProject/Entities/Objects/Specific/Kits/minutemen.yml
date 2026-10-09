@@ -1,0 +1,248 @@
+# Minute Men physical equipment kits. Choose one kit; opening it consumes the box.
+
+- type: entity
+  parent: KitBase
+  id: MinutemenKitLaser
+  name: Minute Men basic laser kit
+  description: "The basics of the basics: enough to get you through and keep you alive. Standard issue for all Minute Men. Contains 1 makeshift laser revolver with a loaded energy cell, 2 spare small energy cells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: ClothingBeltMilitary
+    - id: N14WeaponLaserRevolver
+    - id: N14PowerCellSmall
+    - id: N14PowerCellSmall
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetLaser
+  name: minutemen-kit-laser-name
+  description: minutemen-kit-laser-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - MinutemenKitLaser
+
+- type: entity
+  parent: KitBase
+  id: MinutemenKitPistol
+  name: Minute Men heavy pistol kit
+  description: "A pistol for when you need something with a bit more punch. Contains 1 loaded 12.7mm pistol, 2 spare 12.7mm magazines, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: ClothingBeltMilitary
+    - id: N14WeaponPistol12mm
+    - id: N14MagazinePistol12mm
+    - id: N14MagazinePistol12mm
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetPistol
+  name: minutemen-kit-pistol-name
+  description: minutemen-kit-pistol-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - MinutemenKitPistol
+
+- type: entity
+  parent: KitBase
+  id: MinutemenKitMedic
+  name: Minute Men field medic kit
+  description: "Keep your men alive. Contains 1 MRE kit, 1 military carrier, 1 compact defibrillator, and 1 stocked medical belt. The belt holds 2 rolls of clean gauze (10 uses each), 1 ointment stack (10 uses), 1 stimpak, 1 antidote syringe, 1 RadAway blood bag, and 1 blood pack."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: ClothingBeltMilitary
+    - id: N14ClothingBeltMedicalFilled
+    - id: DefibrillatorCompact
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetMedic
+  name: minutemen-kit-medic-name
+  description: minutemen-kit-medic-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content:
+  - MinutemenKitMedic
+
+- type: entity
+  parent: KitBase
+  id: MinutemenKitOfficer
+  name: Minute Men officer cutlass and hunting revolver kit
+  description: "Lead your men to glory with an officer cutlass and hunting revolver. Contains 1 officer cutlass, 1 loaded .45-70 hunting revolver, 1 box of .45-70 ammunition, 2 loaded .45-70 speedloaders, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: ClothingBeltMilitary
+    - id: MinutemenOfficerCutlass
+    - id: N14WeaponRevolver45-70Hunter
+    - id: MagazineBox45-70
+    - id: SpeedLoader45-70
+    - id: SpeedLoader45-70
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetOfficer
+  name: minutemen-kit-officer-name
+  description: minutemen-kit-officer-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - MinutemenKitOfficer
+
+- type: entity
+  parent: KitBase
+  id: MinutemenKitTrench
+  name: Minute Men trench shotgun kit
+  description: "Show your men how a true leader leads: from the frontline with a trench shotgun. Contains 1 loaded trench shotgun, 1 box of 12-gauge shells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: ClothingBeltMilitary
+    - id: N14WeaponShotgunTrench
+    - id: MagazineBox12gauge
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetTrench
+  name: minutemen-kit-trench-name
+  description: minutemen-kit-trench-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - MinutemenKitTrench
+
+- type: entity
+  parent: KitBase
+  id: MinutemenKitCaptain
+  name: Minute Men captain laser shotgun kit
+  description: "Lead the charge with a hand-cranked laser shotgun. Each turn packs more power into the next blast. Contains 1 crank laser shotgun loaded with a standard microfusion cell, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: ClothingBeltMilitary
+    - id: MinutemenWeaponLaserShotgun
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetCaptain
+  name: minutemen-kit-captain-name
+  description: minutemen-kit-captain-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - MinutemenKitCaptain
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: MinutemenRecruitKitSelector
+  name: Minute Men recruit kit selection box
+  description: Choose your standard-issue equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MinutemenKitSetLaser
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: MinutemenPrivateKitSelector
+  name: Minute Men private kit selection box
+  description: Choose your standard-issue equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MinutemenKitSetLaser
+    - MinutemenKitSetPistol
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: MinutemenCorporalKitSelector
+  name: Minute Men corporal kit selection box
+  description: Choose your standard-issue equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MinutemenKitSetLaser
+    - MinutemenKitSetPistol
+    - MinutemenKitSetMedic
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: MinutemenSergeantKitSelector
+  name: Minute Men sergeant kit selection box
+  description: Choose your standard-issue equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MinutemenKitSetOfficer
+    - MinutemenKitSetTrench
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: MinutemenLieutenantKitSelector
+  name: Minute Men lieutenant kit selection box
+  description: Choose your standard-issue equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MinutemenKitSetOfficer
+    - MinutemenKitSetTrench
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: MinutemenCaptainKitSelector
+  name: Minute Men captain kit selection box
+  description: Choose your standard-issue equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MinutemenKitSetCaptain

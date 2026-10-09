@@ -160,7 +160,7 @@ public abstract partial class SharedCrankChargeSystem : EntitySystem
     /// </summary>
     private FixedPoint2 GetNextShotDamage(Entity<CrankChargeComponent> ent)
     {
-        var total = FixedPoint2.Zero;
+        var total = ent.Comp.ProjectilePrototype != null ? ent.Comp.ProjectileBaseDamage : FixedPoint2.Zero;
 
         if (TryComp<GunDamageBonusComponent>(ent, out var gunBonus))
         {

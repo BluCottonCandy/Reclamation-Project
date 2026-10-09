@@ -50,6 +50,15 @@ public sealed partial class CrankChargeComponent : Component
     /// </summary>
     [DataField]
     public List<FixedPoint2> BonusByCharge = new();
+
+    /// <summary>Optional projectile spread fired instead of the inserted cell's beam.</summary>
+    [DataField]
+    public EntProtoId? ProjectilePrototype;
+
+    /// <summary>Total uncranked damage across all pellets, used by examine.</summary>
+    [DataField]
+    public FixedPoint2 ProjectileBaseDamage;
+
 }
 
 [Serializable, NetSerializable]

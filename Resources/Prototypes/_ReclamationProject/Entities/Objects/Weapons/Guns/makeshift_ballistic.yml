@@ -1,0 +1,958 @@
+# Makeshift ballistic variants. Existing pipe IDs are retained for maps, crafting, and saves.
+
+- type: entity
+  parent: N14WeaponPistol9mm
+  id: N14WeaponPistol9mmMakeshift
+  name: "makeshift 9mm Pistol"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 9mm ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_9mm_7815538f.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_9mm_7815538f.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_viper_2246d4fc.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 3.75
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponPistol45Colt
+  id: N14WeaponPistol45ColtMakeshift
+  name: "makeshift .45 colt handgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_colt_b66574df.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_colt_b66574df.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_viper_2246d4fc.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 3
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponPistol12mm
+  id: N14WeaponPistol12mmMakeshift
+  name: "makeshift 12.7mm handgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 12.7mm ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_12mm_02771247.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_12mm_02771247.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_viper_2246d4fc.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 2.25
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponPistol9mmChinese
+  id: N14WeaponPistol9mmChineseMakeshift
+  name: "makeshift chinese pistol"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 9mm."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_chinesepistol_29d93428.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_chinesepistol_29d93428.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_viper_2246d4fc.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 4
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponPistol22lr
+  id: N14WeaponPistol22lrMakeshift
+  name: "makeshift 22lr Pistol"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 22lr ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_22lr_ac64912f.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_22lr_ac64912f.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_viper_2246d4fc.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 3
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponPistolWebley
+  id: N14WeaponPistolWebleyMakeshift
+  name: "makeshift webley pistol"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 9mm ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_webleypistol_91c2d375.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_webleypistol_91c2d375.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/pistol_viper_2246d4fc.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 3.75
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRevolver9mm
+  id: N14WeaponRevolver9mmMakeshift
+  name: "makeshift 9mm revolver"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 9mm ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/revolver_small_revolver_66302ca2.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/revolver_small_revolver_66302ca2.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 2.25
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRevolver44Magnum
+  id: N14WeaponRevolver44MagnumMakeshift
+  name: "makeshift magnum revolver"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/revolver_magnum_6377d32e.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/revolver_magnum_6377d32e.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 1.125
+  - type: StaticPrice
+    price: 15
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle556R91
+  id: N14WeaponRifle556R91Makeshift
+  name: "makeshift R-91 Rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 5.56 munitions."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_r91_a57b10f7.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_r91_a57b10f7.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle762Chinese
+  id: N14WeaponRifle762ChineseMakeshift
+  name: "makeshift chinese assault rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in the old 7.62 ammunition."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_chineserifle_c436c084.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_chineserifle_c436c084.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 51
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle556Carbine
+  id: N14WeaponRifle556CarbineMakeshift
+  name: "makeshift assault carbine"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 5.56 ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_assaultcarbine_86496975.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_assaultcarbine_86496975.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle762Marksman
+  id: N14WeaponRifle762MarksmanMakeshift
+  name: "makeshift marksman carbine"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 7.62 ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_marksman_96c7c2c0.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_marksman_96c7c2c0.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle556Service
+  id: N14WeaponRifle556ServiceMakeshift
+  name: "makeshift service rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 5.56 ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_servicerifleicon_028dad77.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_servicerifle_a69a470a.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_servicerifle_a69a470a.rsi
+  - type: Gun
+    minAngle: 23
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle308Battle
+  id: N14WeaponRifle308BattleMakeshift
+  name: "makeshift battle rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in the powerful 308."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_battlerifle_ded9d843.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_battlerifle_ded9d843.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 65
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 2.25
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -56
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle556CarbineOld
+  id: N14WeaponRifle556CarbineOldMakeshift
+  name: "makeshift old carbine"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 5.56 ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_carbine_4938978c.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_carbine_4938978c.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 51
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle762Canadian
+  id: N14WeaponRifle762CanadianMakeshift
+  name: "makeshift C70 rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 7.62mm, surprisingly in good state for being 200 a years old rifle."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_canadianrifle_9b291174.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_canadianrifle_9b291174.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 51
+    angleIncrease: 5.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle556EM2
+  id: N14WeaponRifle556EM2Makeshift
+  name: "makeshift EM2 rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 5.56 ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_em2_e4b13d67.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_em2_e4b13d67.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle762Fal
+  id: N14WeaponRifle762FalMakeshift
+  name: "makeshift FAL rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 7.62mm, strong and reliable."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_fal_b52343ab.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_fal_b52343ab.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 3
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle762M14
+  id: N14WeaponRifle762M14Makeshift
+  name: "makeshift M14 rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 7.62mm, build to replace the old M1 garand of the US military, it didnt last for long and got remplaced by the R-91 after a few years of service."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_m14_f3e5aad0.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_m14_f3e5aad0.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 50
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 2.25
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponRifle762SKS
+  id: N14WeaponRifle762SKSMakeshift
+  name: "makeshift SKS chinese carbine"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 7.62mm."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_chinesecarbine_02d6a6a3.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_chinesecarbine_02d6a6a3.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 45
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 1.875
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -38
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 20
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgun
+  id: N14WeaponShotgunMakeshift
+  name: "makeshift shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 12 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_pump_f754848c.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_pump_f754848c.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_pump_f754848c.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 7
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 0.75
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunDoubleBarrel
+  id: N14WeaponShotgunDoubleBarrelMakeshift
+  name: "makeshift double-barrel shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 12 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_double_shotgun_4a0bf1ca.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_double_shotgun_4a0bf1ca.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_double_shotgun_4a0bf1ca.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 7
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 2
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunAuto
+  id: N14WeaponShotgunAutoMakeshift
+  name: "makeshift combat shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 12 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_combat_shotgun_e15b0ab5.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_combat_shotgun_e15b0ab5.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_combat_shotgun_e15b0ab5.rsi
+  - type: Gun
+    minAngle: 25
+    maxAngle: 109
+    angleIncrease: 4.5
+    angleDecay: 4
+    fireRate: 1.5
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunCaravan
+  id: N14WeaponShotgunCaravanMakeshift
+  name: "makeshift caravan shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 20 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_caravan_shotgun_56496bb2.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_caravan_shotgun_56496bb2.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_caravan_shotgun_56496bb2.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 7
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 2
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunLever
+  id: N14WeaponShotgunLeverMakeshift
+  name: "makeshift lever action shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 20 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_lever_shotgun_caf3bfbe.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_lever_shotgun_caf3bfbe.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_lever_shotgun_caf3bfbe.rsi
+  - type: Gun
+    minAngle: 25
+    maxAngle: 109
+    angleIncrease: 4.5
+    angleDecay: 4
+    fireRate: 0.75
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -40
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 10
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunRiot
+  id: N14WeaponShotgunRiotMakeshift
+  name: "makeshift riot shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 20 gauge shells and using a drum magazine."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_riot_shotgun_77c05cf4.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_riot_shotgun_77c05cf4.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_riot_shotgun_77c05cf4.rsi
+  - type: Gun
+    minAngle: 25
+    maxAngle: 109
+    angleIncrease: 4.5
+    angleDecay: 4
+    fireRate: 1.5
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunBlowback
+  id: N14WeaponShotgunBlowbackMakeshift
+  name: "makeshift blowback shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 12 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_blowback_d74404fa.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_blowback_d74404fa.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_blowback_d74404fa.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 7
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 1.5
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunChinese
+  id: N14WeaponShotgunChineseMakeshift
+  name: "makeshift chinese shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 12 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_chinese_shotgun_4aaf9ae4.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_chinese_shotgun_4aaf9ae4.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_chinese_shotgun_4aaf9ae4.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 7
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 2
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponShotgunCanadian
+  id: N14WeaponShotgunCanadianMakeshift
+  name: "makeshift frenchi shotgun"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 12 gauge shells."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_canadian_shotgun_f3d0df36.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_canadian_shotgun_f3d0df36.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/shotgun_canadian_shotgun_f3d0df36.rsi
+  - type: Gun
+    minAngle: 3
+    maxAngle: 7
+    angleIncrease: 1
+    angleDecay: 3
+    fireRate: 2
+  - type: StaticPrice
+    price: 10
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSMG10mmSuppressed
+  id: N14WeaponSMG10mmSuppressedMakeshift
+  name: "makeshift 10mm suppressed SMG"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 10mm, this one comes with a suppressor."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_10mmsmgsuppressed_57c8f7e6.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_10mmsmgsuppressed_57c8f7e6.rsi
+  - type: Gun
+    minAngle: 10
+    maxAngle: 38
+    angleIncrease: 6.5
+    angleDecay: 12
+    fireRate: 6
+  - type: GunWieldBonus
+    minAngle: -7
+    maxAngle: -15
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 10
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSMG9mm
+  id: N14WeaponSMG9mmMakeshift
+  name: "makeshift 9mm SMG"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 9mm ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_9mmsmg_22e8082d.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_9mmsmg_22e8082d.rsi
+  - type: Gun
+    minAngle: 10
+    maxAngle: 38
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 6
+  - type: GunWieldBonus
+    minAngle: -7
+    maxAngle: -15
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 10
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSMG45
+  id: N14WeaponSMG45Makeshift
+  name: "makeshift .45 SMG"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_45smg_f6ad2867.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_45smg_f6ad2867.rsi
+  - type: Gun
+    minAngle: 10
+    maxAngle: 38
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 5.25
+  - type: GunWieldBonus
+    minAngle: -7
+    maxAngle: -15
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 10
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSMG9mmCanadian
+  id: N14WeaponSMG9mmCanadianMakeshift
+  name: "makeshift sten SMG"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 9mm ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_canadiansmg_30b4e3cf.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_canadiansmg_30b4e3cf.rsi
+  - type: Gun
+    minAngle: 10
+    maxAngle: 38
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 6
+  - type: GunWieldBonus
+    minAngle: -7
+    maxAngle: -15
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 10
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSMG10mmChinese
+  id: N14WeaponSMG10mmChineseMakeshift
+  name: "makeshift chinese SMG"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Chambered in 10mm."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_chinesesmg_8164cc11.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/smg_chinesesmg_8164cc11.rsi
+  - type: Gun
+    minAngle: 10
+    maxAngle: 38
+    angleIncrease: 6.5
+    angleDecay: 12
+    fireRate: 5.25
+  - type: GunWieldBonus
+    minAngle: -7
+    maxAngle: -15
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 10
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSniperHunting
+  id: N14WeaponSniperHuntingMakeshift
+  name: "makeshift hunting rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/sniper_hunting_42e10708.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/sniper_hunting_42e10708.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 110
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 1.125
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -104
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 25
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSniper44LeverCarbine
+  id: N14WeaponSniper44LeverCarbineMakeshift
+  name: "makeshift lever action carbine"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/sniper_levercarbine_1eecf450.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/sniper_levercarbine_1eecf450.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 110
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 1.5
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -104
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 25
+  - type: AmmoCounter
+
+- type: entity
+  parent: N14WeaponSniper556VarmintRifle
+  id: N14WeaponSniper556VarmintRifleMakeshift
+  name: "makeshift varmint rifle"
+  description: "An improvised firearm assembled from battered scrap, wood, and salvaged parts. Uses 5.56 ammo."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/sniper_varmint_bddafc81.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Makeshift/sniper_varmint_bddafc81.rsi
+  - type: Gun
+    minAngle: 26
+    maxAngle: 110
+    angleIncrease: 4.5
+    angleDecay: 12
+    fireRate: 1.5
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -104
+    angleIncrease: 0
+    angleDecay: 0
+  - type: StaticPrice
+    price: 25
+  - type: AmmoCounter

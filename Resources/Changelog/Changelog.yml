@@ -12230,3 +12230,10 @@ Entries:
   id: 6501
   time: '2026-10-09T12:35:10.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/17
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Updated laser musket sprites with a worn, salvaged appearance.
+  id: 6502
+  time: '2026-10-09T12:35:33.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/18

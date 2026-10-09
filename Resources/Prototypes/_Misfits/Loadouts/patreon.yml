@@ -24,19 +24,6 @@
     - N14ClothingBootsCombat
 
 - type: loadout
-  id: LoadoutPatreonNuclearPistol10mm
-  category: Patreon
-  cost: 4
-  exclusive: true
-  supporterTier: 3
-  items:
-    - N14WeaponPistol10mm
-
-# #Misfits Add - Patreon shareholder role hats (credits: Misfits Nuclear Wasteland).
-# Each hat reflects the supporter's shareholder role; tier gating matches role rank:
-# Silver = Bondholder / Equity Partner, Gold = Venture Capitalist / Shareholder,
-# Nuclear = Principal Shareholder.
-- type: loadout
   id: LoadoutPatreonBondholderHat
   category: Patreon
   cost: 2

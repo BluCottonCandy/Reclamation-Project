@@ -1,0 +1,14 @@
+- type: entity
+  parent: N14ClothingHeadsetNCR
+  id: MinutemenClothingHeadset
+  name: Minute Men radio earpiece
+  description: A navy blue radio earpiece issued to the Minute Men, fitted with their faction encryption key.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMinutemenUR
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Ears/minutemen.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Ears/minutemen.rsi

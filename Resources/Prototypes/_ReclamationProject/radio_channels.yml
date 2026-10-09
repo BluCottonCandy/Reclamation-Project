@@ -1,0 +1,6 @@
+- type: radioChannel
+  id: Minutemen
+  name: chat-radio-minutemen
+  keycode: 'm'
+  frequency: 1550
+  color: "#6C8CC0"

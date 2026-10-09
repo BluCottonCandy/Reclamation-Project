@@ -1,0 +1,17 @@
+- type: entity
+  parent: EncryptionKeyNCR
+  id: EncryptionKeyMinutemen
+  name: Minute Men encryption key
+  description: An encryption key used by the Minute Men.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Minutemen
+    defaultChannel: Minutemen
+
+- type: entity
+  parent: EncryptionKeyMinutemen
+  id: EncryptionKeyMinutemenUR
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable

@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Laser musket art by aftermath434 for Reclamation Project; held/worn poses traced from makeshift_laser_rifle, taken from desertrose at https://github.com/DesertRose2/desertrose/pull/871/commits/f4440bc93d3bd16b524c3984c722cc7fad0a97bf; laser shotgun redesign generated with OpenAI for Reclamation Project.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BACKPACK",
+      "directions": 4
+    },
+    {
+      "name": "equipped-SUITSTORAGE",
+      "directions": 4
+    }
+  ]
+}

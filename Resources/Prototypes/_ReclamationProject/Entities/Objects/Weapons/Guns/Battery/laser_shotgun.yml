@@ -1,0 +1,50 @@
+# The normal microfusion cell supplies charge; the gun supplies a five-pellet spread.
+- type: entity
+  parent: MinutemenWeaponLaserMusket
+  id: MinutemenWeaponLaserShotgun
+  name: crank laser shotgun
+  description: A salvaged, hand-cranked laser scattergun issued to Minute Men captains. Each crank consumes extra charge and strengthens the next blast, up to six turns.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/laser_shotgun_icon.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/laser_shotgun.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/laser_shotgun.rsi
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MicrofusionCell
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+          - N14MicrofusionCell
+  - type: GunDamageBonus
+    hitscanProtoOverride: null
+    fireCostMultiplier: 3
+  - type: CrankCharge
+    projectilePrototype: MinutemenLaserShotgunSpread
+    projectileBaseDamage: 75
+    bonusByCharge: [10, 20, 30, 40, 50, 70]
+
+- type: entity
+  parent: BulletLaser
+  id: MinutemenLaserShotgunPellet
+  categories: [HideSpawnMenu]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 15
+
+- type: entity
+  parent: [MinutemenLaserShotgunPellet]
+  id: MinutemenLaserShotgunSpread
+  categories: [HideSpawnMenu]
+  components:
+  - type: ProjectileSpread
+    proto: MinutemenLaserShotgunPellet
+    count: 5
+    spread: 10

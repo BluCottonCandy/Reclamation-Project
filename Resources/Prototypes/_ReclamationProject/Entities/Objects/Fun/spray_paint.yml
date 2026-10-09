@@ -1,0 +1,45 @@
+- type: entity
+  parent: PaintBase
+  id: SprayPaintSageGreen
+  name: sage green spray paint
+  description: A tin of muted sage green spray paint.
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/spraycans.rsi
+    layers:
+    - state: spray
+      map: ["Base"]
+    - state: spray_cap_colors
+      map: ["enum.OpenableVisuals.Layer"]
+      color: "#9CAF88"
+  - type: Paint
+    color: "#9CAF88"
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "spray_colors", color: "#9CAF88"}
+          False: {state: "spray_cap_colors", color: "#9CAF88"}
+
+- type: entity
+  parent: PaintBase
+  id: SprayPaintOliveGreen
+  name: olive green spray paint
+  description: A tin of earthy olive green spray paint.
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/spraycans.rsi
+    layers:
+    - state: spray
+      map: ["Base"]
+    - state: spray_cap_colors
+      map: ["enum.OpenableVisuals.Layer"]
+      color: "#6B8E23"
+  - type: Paint
+    color: "#6B8E23"
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "spray_colors", color: "#6B8E23"}
+          False: {state: "spray_cap_colors", color: "#6B8E23"}

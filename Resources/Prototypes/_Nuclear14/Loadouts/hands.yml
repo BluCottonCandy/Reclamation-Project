@@ -5,16 +5,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
   items:
     - N14ClothingHandsGlovesCloth
 
@@ -25,12 +15,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHandsGlovesLeather
 
@@ -41,16 +25,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
   items:
     - N14ClothingHandsGlovesFur
 
@@ -61,12 +35,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHandsGlovesBlackLeather
 
@@ -77,16 +45,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-      - VaultDweller
-      - VaultSecurity
-      - VaultEngineer
-      - Overseer
   items:
     - N14ClothingHandsGlovesNitrile
 
@@ -97,16 +55,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-      - VaultDweller
-      - VaultSecurity
-      - VaultEngineer
-      - Overseer
   items:
     - N14ClothingHandsGlovesNitrilePurple
 

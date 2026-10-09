@@ -5,12 +5,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHeadHatBaseball
 
@@ -21,12 +15,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHeadHatTrucker
 
@@ -47,16 +35,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
   items:
     - N14ClothingHeadHatHeadscarf
 
@@ -67,16 +45,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
   items:
     - N14ClothingHeadHatBandit
 
@@ -104,12 +72,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHeadHatArmyCap
 
@@ -120,12 +82,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHeadHatCowboyGrey
 
@@ -136,12 +92,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHeadHatCowboyGreyBanded
 
@@ -152,12 +102,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHeadHatCowboyBrown
 

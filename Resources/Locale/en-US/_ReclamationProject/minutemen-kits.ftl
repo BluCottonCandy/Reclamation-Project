@@ -1,0 +1,12 @@
+minutemen-kit-laser-name = Basic laser kit
+minutemen-kit-laser-description = The basics of the basics: enough to get you through and keep you alive. Standard issue for all Minute Men. Contains 1 makeshift laser revolver with a loaded energy cell, 2 spare small energy cells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier.
+minutemen-kit-pistol-name = Heavy pistol kit
+minutemen-kit-pistol-description = A pistol for when you need something with a bit more punch. Contains 1 loaded 12.7mm pistol, 2 spare 12.7mm magazines, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier.
+minutemen-kit-medic-name = Field medic kit
+minutemen-kit-medic-description = Keep your men alive. Contains 1 MRE kit, 1 military carrier, 1 compact defibrillator, and 1 stocked medical belt. The belt holds 2 rolls of clean gauze (10 uses each), 1 ointment stack (10 uses), 1 stimpak, 1 antidote syringe, 1 RadAway blood bag, and 1 blood pack.
+minutemen-kit-officer-name = Officer cutlass and hunting revolver kit
+minutemen-kit-officer-description = Lead your men to glory with an officer cutlass and hunting revolver. Contains 1 officer cutlass, 1 loaded .45-70 hunting revolver, 1 box of .45-70 ammunition, 2 loaded .45-70 speedloaders, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier.
+minutemen-kit-trench-name = Trench shotgun kit
+minutemen-kit-trench-description = Show your men how a true leader leads: from the frontline with a trench shotgun. Contains 1 loaded trench shotgun, 1 box of 12-gauge shells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier.
+minutemen-kit-captain-name = Captain laser shotgun kit
+minutemen-kit-captain-description = Lead the charge with a hand-cranked laser shotgun. Each turn packs more power into the next blast. Contains 1 crank laser shotgun loaded with a standard microfusion cell, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier.

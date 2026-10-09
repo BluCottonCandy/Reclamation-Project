@@ -1,5 +1,12 @@
 ﻿using System.Linq;
 using Content.Server.Chat.Managers;
+using System.Text.Json;
+using System.IO;
+using Content.Server.GameTicking;
+using Robust.Shared.ContentPack;
+using Robust.Shared.GameObjects;
+using Robust.Shared.Log;
+using Robust.Shared.Utility;
 using Content.Shared.CCVar;
 using Robust.Server;
 using Robust.Server.Player;
@@ -23,6 +30,13 @@ public sealed class ServerUpdateManager
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IBaseServer _server = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IEntityManager _entities = default!;
+    [Dependency] private readonly IResourceManager _resources = default!;
+
+    private RoundEndDeploymentLease? _deployment;
+    private TimeSpan _deploymentEarliestShutdown;
+    private bool _deploymentShutdown;
+    private static readonly ResPath DeploymentStatePath = new("/reclamation-update.json");
 
     [ViewVariables]
     private bool _updateOnRoundEnd;
@@ -33,7 +47,7 @@ public sealed class ServerUpdateManager
     /// True when the watchdog has signalled a new build is staged and ready to deploy.
     /// Set by <see cref="WatchdogOnUpdateReceived"/>.
     /// </summary>
-    public bool UpdatePending => _updateOnRoundEnd;
+    public bool UpdatePending => _updateOnRoundEnd || _deployment != null;
 
     public void Initialize()
     {
@@ -43,6 +57,14 @@ public sealed class ServerUpdateManager
 
     public void Update()
     {
+        if (_deployment != null && !_deploymentShutdown)
+        {
+            if (!_deployment.IsActive(_gameTiming.RealTime))
+                CancelDeployment(_deployment.Ticket);
+            else if (_gameTiming.RealTime >= _deploymentEarliestShutdown &&
+                     _entities.System<GameTicker>().RunLevel != GameRunLevel.InRound)
+                FinishDeployment();
+        }
         if (_restartTime != null && _restartTime < _gameTiming.RealTime)
         {
             DoShutdown();
@@ -55,6 +77,15 @@ public sealed class ServerUpdateManager
     /// <returns>True if the server is going to restart.</returns>
     public bool RoundEnded()
     {
+        if (_deploymentShutdown)
+            return true;
+        if (_deployment != null)
+        {
+            if (!_deployment.IsActive(_gameTiming.RealTime))
+                CancelDeployment(_deployment.Ticket);
+            else if (_entities.System<GameTicker>().RunLevel != GameRunLevel.InRound && FinishDeployment())
+                return true;
+        }
         if (_updateOnRoundEnd)
         {
             DoShutdown();
@@ -62,6 +93,81 @@ public sealed class ServerUpdateManager
         }
 
         return false;
+    }
+
+    public void QueueDeployment(string ticket)
+    {
+        if (_deploymentShutdown)
+            throw new InvalidOperationException("Deployment shutdown is already in progress.");
+        if (_updateOnRoundEnd)
+            throw new InvalidOperationException("A watchdog update is already pending.");
+        if (_deployment != null)
+        {
+            if (_deployment.Ticket != ticket)
+                throw new InvalidOperationException("Another deployment is already pending.");
+            _deployment.Renew(_gameTiming.RealTime);
+            return;
+        }
+        var lease = new RoundEndDeploymentLease(ticket, _gameTiming.RealTime);
+        // A failed acknowledgement must never arm a shutdown request.
+        WriteDeploymentState(ticket, "pending");
+        _deployment = lease;
+        _deploymentEarliestShutdown = _gameTiming.RealTime + TimeSpan.FromSeconds(15);
+        _chatManager.DispatchServerAnnouncement("A server update is ready. It will be installed after this round ends. The current round will continue normally.");
+        _chatManager.SendAdminAnnouncement("OXY deployment queued for the round boundary.");
+    }
+
+    public void CancelDeployment(string ticket)
+    {
+        if (_deploymentShutdown || _deployment?.Ticket != ticket)
+            return;
+        _deployment = null;
+        _chatManager.DispatchServerAnnouncement("The pending server update was cancelled or its workflow stopped. The server will continue normally.");
+        try
+        {
+            WriteDeploymentState(ticket, "cancelled");
+        }
+        catch (Exception)
+        {
+            Logger.ErrorS("server.update", "Could not write cancelled deployment state; the shutdown request was still cleared.");
+        }
+    }
+
+    private void WriteDeploymentState(string ticket, string state)
+    {
+        var json = JsonSerializer.Serialize(new { ticket, state });
+        if (_resources.UserData.RootDir is not { } root)
+        {
+            _resources.UserData.WriteAllText(DeploymentStatePath, json);
+            return;
+        }
+        // Rename within the same data directory so readers never observe a partial JSON receipt.
+        var temporary = Path.Combine(root, "reclamation-update.json.tmp");
+        File.WriteAllText(temporary, json);
+        File.Move(temporary, Path.Combine(root, "reclamation-update.json"), overwrite: true);
+    }
+
+    private bool FinishDeployment()
+    {
+        if (_deploymentShutdown)
+            return true;
+        if (_deployment == null || !_deployment.IsActive(_gameTiming.RealTime))
+            return false;
+        var ticket = _deployment.Ticket;
+        try
+        {
+            // Require a matching receipt and an offline server before moving any game files.
+            WriteDeploymentState(ticket, "ready");
+        }
+        catch (Exception)
+        {
+            CancelDeployment(ticket);
+            return false;
+        }
+        _deploymentShutdown = true;
+        _chatManager.DispatchServerAnnouncement("The round has finished. Installing the queued server update now; please reconnect shortly.");
+        _server.Shutdown("Installing queued OXY update after the round.");
+        return true;
     }
 
     private void PlayerManagerOnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)

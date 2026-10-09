@@ -276,12 +276,12 @@ loadout-name-N14InstrumentSaxaphone = saxophone
 loadout-name-N14InstrumentPanflute = pan flute
 
 # Weapons
-loadout-name-N14WeaponPistol22lr = .22 LR pistol
-loadout-name-N14WeaponPistol9mm = 9mm pistol
-loadout-name-N14WeaponPistol10mmPipe = 10mm pipe pistol
-loadout-name-N14WeaponRevolver9mm = 9mm revolver
-loadout-name-N14WeaponRifle556Pipe = 5.56 pipe rifle
-loadout-name-N14WeaponShotgunDoubleBarrel = double barrel shotgun
+loadout-name-N14WeaponPistol22lr = makeshift 22lr Pistol
+loadout-name-N14WeaponPistol9mm = makeshift 9mm Pistol
+loadout-name-N14WeaponPistol10mmPipe = makeshift 10mm pistol
+loadout-name-N14WeaponRevolver9mm = makeshift 9mm revolver
+loadout-name-N14WeaponRifle556Pipe = makeshift assault rifle
+loadout-name-N14WeaponShotgunDoubleBarrel = makeshift double-barrel shotgun
 loadout-name-N14SpeedLoader9 = 9mm speed loader
 
 # Melee weapons
@@ -422,43 +422,40 @@ loadout-name-LoadoutClothingOuterMBoSSquireArmor = Brotherhood squire armor (Mid
 # loadout-name-LoadoutClothingHeadHatBoSInquisitorHat = Brotherhood inquisitor hat
 
 # Misfits Add - N14 weapon loadout names
-loadout-name-N14WeaponShotgunBlowback = blowback
+loadout-name-N14WeaponShotgunBlowback = makeshift blowback shotgun
 loadout-name-N14WeaponLaserPistol = laser pistol
 loadout-name-N14WeaponLaserRevolver = laser revolver
 loadout-name-N14WeaponLaserRifleMakeshift = makeshift laser rifle
-loadout-name-N14WeaponPistol10mm = 10mm pistol
-loadout-name-N14WeaponPistol12mm = 12mm pistol
-loadout-name-N14WeaponRifle308Battle = .308 battle rifle
-loadout-name-N14WeaponRifle556Carbine = 5.56 carbine
-loadout-name-N14WeaponRifle556CarbineOld = 5.56 carbine (old)
-loadout-name-N14WeaponRifle556EM2 = EM-2 rifle
-loadout-name-N14WeaponRifle556R91 = R91 assault rifle
-loadout-name-N14WeaponRifle556Service = 5.56 service rifle
-loadout-name-N14WeaponRifle762Canadian = 7.62 Canadian rifle
-loadout-name-N14WeaponRifle762Chinese = 7.62 Chinese assault rifle
-loadout-name-N14WeaponRifle762Fal = FN FAL
-loadout-name-N14WeaponRifle762M14 = M14
-loadout-name-N14WeaponRifle762Marksman = 7.62 marksman rifle
-loadout-name-N14WeaponRifle762SKS = SKS
-loadout-name-N14WeaponShotgun = shotgun
-loadout-name-N14WeaponShotgunAuto = auto shotgun
-loadout-name-N14WeaponShotgunCanadian = Canadian shotgun
-loadout-name-N14WeaponShotgunCaravan = caravan shotgun
-loadout-name-N14WeaponShotgunChinese = Chinese shotgun
-loadout-name-N14WeaponShotgunLever = lever-action shotgun
-loadout-name-N14WeaponShotgunRiot = riot shotgun
-loadout-name-N14WeaponSMG10mm = 10mm SMG
-loadout-name-N14WeaponSMG10mmChinese = Chinese 10mm SMG
-loadout-name-N14WeaponSMG10mmPipe = 10mm pipe SMG
-loadout-name-N14WeaponSMG10mmSuppressed = 10mm SMG (suppressed)
-loadout-name-N14WeaponSMG12mm = 12mm SMG
-loadout-name-N14WeaponSMG12mmPipe = 12mm pipe SMG
-loadout-name-N14WeaponSMG45 = .45 SMG
-loadout-name-N14WeaponSMG9mm = 9mm SMG
-loadout-name-N14WeaponSMG9mmCanadian = Canadian 9mm SMG
-loadout-name-N14WeaponSniper44LeverCarbine = .44 lever carbine
-loadout-name-N14WeaponSniper556VarmintRifle = 5.56 varmint rifle
-loadout-name-N14WeaponSniperHunting = hunting rifle
+loadout-name-N14WeaponPistol12mm = makeshift 12.7mm handgun
+loadout-name-N14WeaponRifle308Battle = makeshift battle rifle
+loadout-name-N14WeaponRifle556Carbine = makeshift assault carbine
+loadout-name-N14WeaponRifle556CarbineOld = makeshift old carbine
+loadout-name-N14WeaponRifle556EM2 = makeshift EM2 rifle
+loadout-name-N14WeaponRifle556R91 = makeshift R-91 Rifle
+loadout-name-N14WeaponRifle556Service = makeshift service rifle
+loadout-name-N14WeaponRifle762Canadian = makeshift C70 rifle
+loadout-name-N14WeaponRifle762Chinese = makeshift chinese assault rifle
+loadout-name-N14WeaponRifle762Fal = makeshift FAL rifle
+loadout-name-N14WeaponRifle762M14 = makeshift M14 rifle
+loadout-name-N14WeaponRifle762Marksman = makeshift marksman carbine
+loadout-name-N14WeaponRifle762SKS = makeshift SKS chinese carbine
+loadout-name-N14WeaponShotgun = makeshift shotgun
+loadout-name-N14WeaponShotgunAuto = makeshift combat shotgun
+loadout-name-N14WeaponShotgunCanadian = makeshift frenchi shotgun
+loadout-name-N14WeaponShotgunCaravan = makeshift caravan shotgun
+loadout-name-N14WeaponShotgunChinese = makeshift chinese shotgun
+loadout-name-N14WeaponShotgunLever = makeshift lever action shotgun
+loadout-name-N14WeaponShotgunRiot = makeshift riot shotgun
+loadout-name-N14WeaponSMG10mmChinese = makeshift chinese SMG
+loadout-name-N14WeaponSMG10mmPipe = makeshift 10mm SMG
+loadout-name-N14WeaponSMG10mmSuppressed = makeshift 10mm suppressed SMG
+loadout-name-N14WeaponSMG12mmPipe = makeshift 12.7mm SMG
+loadout-name-N14WeaponSMG45 = makeshift .45 SMG
+loadout-name-N14WeaponSMG9mm = makeshift 9mm SMG
+loadout-name-N14WeaponSMG9mmCanadian = makeshift sten SMG
+loadout-name-N14WeaponSniper44LeverCarbine = makeshift lever action carbine
+loadout-name-N14WeaponSniper556VarmintRifle = makeshift varmint rifle
+loadout-name-N14WeaponSniperHunting = makeshift hunting rifle
 
 # Misfits Add - Magazine and ammo loadout names
 loadout-name-N14MagazinePistol12mm = 12mm pistol magazine
@@ -866,10 +863,10 @@ loadout-name-N14TrenchClub = trench club
 loadout-name-N14PoliceBaton = police baton
 
 # Firearms
-loadout-name-N14WeaponPistol9mmChinese = chinese pistol
-loadout-name-N14WeaponPistol45Colt = .45 colt handgun
-loadout-name-N14WeaponPistolWebley = webley pistol
-loadout-name-N14WeaponRevolver44Magnum = magnum revolver
+loadout-name-N14WeaponPistol9mmChinese = makeshift chinese pistol
+loadout-name-N14WeaponPistol45Colt = makeshift .45 colt handgun
+loadout-name-N14WeaponPistolWebley = makeshift webley pistol
+loadout-name-N14WeaponRevolver44Magnum = makeshift magnum revolver
 
 # Other loadouts
 loadout-name-LoadoutLegionExplorerVeteranArmor = veteran legion explorer armor
@@ -884,7 +881,6 @@ loadout-name-MisfitsLoadoutFollowerResponderDuster = Follower Responder Duster
 loadout-category-Patreon = Patreon
 loadout-name-LoadoutPatreonSilverUniformVaultJumpsuit = vault jumpsuit (Patreon)
 loadout-name-LoadoutPatreonGoldCombatBoots = combat boots (Patreon)
-loadout-name-LoadoutPatreonNuclearPistol10mm = 10mm pistol (Patreon)
 loadout-name-LoadoutPatreonBondholderHat = bondholder hat (Patreon)
 loadout-name-LoadoutPatreonEquityPartnerHat = equity partner hat (Patreon)
 loadout-name-LoadoutPatreonVentureCapitalistHat = venture capitalist hat (Patreon)

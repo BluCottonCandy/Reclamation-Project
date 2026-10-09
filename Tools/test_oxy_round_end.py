@@ -33,8 +33,9 @@ class RoundEndHandshakeTest(unittest.TestCase):
         ns = workflow_functions()
         receipt = {'ticket': 'old', 'state': receipt_state} if receipt_state else None
         calls = []
+        stopped = False
         def api(path, method='GET', payload=None):
-            nonlocal receipt
+            nonlocal receipt, stopped
             calls.append((path, method, payload))
             if path == '/command' and 'queue' in payload['command']:
                 if receipt_state != 'unsupported':
@@ -42,11 +43,18 @@ class RoundEndHandshakeTest(unittest.TestCase):
                 return None
             if path.startswith('/files/contents'):
                 return receipt.copy() if receipt else None
+            if path == '/power':
+                self.assertEqual(receipt, {'ticket': 'a' * 32, 'state': 'ready'})
+                self.assertEqual(payload, {'signal': 'stop'})
+                stopped = True
+                return None
             raise AssertionError('Unexpected API operation: ' + path)
         def listing(path):
             return {'reclamation-update.json': {}} if receipt else {}
         def state():
             nonlocal receipt
+            if stopped:
+                return 'offline'
             if transition and ns['time'].now >= 10:
                 receipt = {'ticket': 'a' * 32, 'state': transition}
                 return power_state
@@ -57,13 +65,23 @@ class RoundEndHandshakeTest(unittest.TestCase):
         ns, calls, run = self.run_case(power_state='offline', transition='ready')
         run()
         self.assertTrue(any('queue' in (payload or {}).get('command', '') for _, _, payload in calls))
-        self.assertFalse(any(path == '/power' for path, _, _ in calls))
+        self.assertEqual(sum(path == '/power' for path, _, _ in calls), 1)
 
     def test_unexpected_shutdown_never_counts_as_a_round_boundary(self):
         ns, calls, run = self.run_case(power_state='offline', transition='pending')
         with self.assertRaises(ns['StageError']):
             run()
         self.assertFalse(any(path == '/power' for path, _, _ in calls))
+
+    def test_panel_auto_restart_is_stopped_only_after_matching_round_boundary(self):
+        ns, calls, run = self.run_case(power_state='starting', transition='ready')
+        run()
+        self.assertEqual(sum(path == '/power' for path, _, _ in calls), 1)
+
+    def test_running_server_is_stopped_only_after_matching_round_boundary(self):
+        ns, calls, run = self.run_case(power_state='running', transition='ready')
+        run()
+        self.assertEqual(sum(path == '/power' for path, _, _ in calls), 1)
 
     def test_missing_support_does_not_stop_the_server(self):
         ns, calls, run = self.run_case(receipt_state='unsupported')

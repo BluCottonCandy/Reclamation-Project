@@ -890,3 +890,5 @@ loadout-name-LoadoutPatreonEquityPartnerHat = equity partner hat (Patreon)
 loadout-name-LoadoutPatreonVentureCapitalistHat = venture capitalist hat (Patreon)
 loadout-name-LoadoutPatreonShareholderHat = shareholder hat (Patreon)
 loadout-name-LoadoutPatreonPrincipalShareholderHat = principal shareholder hat (Patreon)
+loadout-name-LoadoutSprayPaintSageGreen = sage green spray paint
+loadout-name-LoadoutSprayPaintOliveGreen = olive green spray paint

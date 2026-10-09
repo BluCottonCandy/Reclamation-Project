@@ -23,10 +23,8 @@
   cost: 0
   exclusive: true
   requirements:
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
   items:
     - MisfitsClothingHeadSchlimmHat
 
@@ -326,10 +324,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
   items:
     - M14ClothingUniformADPUniform
 
@@ -401,10 +395,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - Wastelander
-        - Townsfolk
   items:
     - M14ClothingUniformSchlimmUniform
 

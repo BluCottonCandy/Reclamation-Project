@@ -176,16 +176,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
-        - VaultDweller   # Vault gets their own gated version (N14LoadoutHandsGlovesDriver)
-        - VaultSecurity
-        - VaultEngineer
-        - Overseer
   items:
     - N14ClothingHandsGlovesDriver
 
@@ -199,12 +189,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingHandsGlovesBlackBiker
 
@@ -215,12 +199,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
   items:
     - N14ClothingHandsGlovesBrownBiker
 
@@ -251,15 +229,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHands
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
-        - VaultDweller
-        - VaultEngineer
-        - Overseer
   items:
     - N14ClothingHandsGlovesCombat
 # There are already Nitirle gloves in the loadout literally no point for another to exist
@@ -386,16 +355,8 @@
   category: Head
   cost: 0
   requirements:
-    - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
   items:
     - N14ClothingHeadHatWoodBoonie
 
@@ -404,16 +365,8 @@
   category: Head
   cost: 0
   requirements:
-    - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
   items:
     - N14ClothingHeadHatWinterBoonie
 
@@ -440,16 +393,8 @@
   category: Head
   cost: 0
   requirements:
-    - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
   items:
     - N14ClothingHeadHatArmyBeret
 
@@ -458,16 +403,8 @@
   category: Head
   cost: 0
   requirements:
-    - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
   items:
     - N14ClothingHeadHatArmyBeretAirborne
 
@@ -476,16 +413,8 @@
   category: Head
   cost: 0
   requirements:
-    - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
   items:
     - N14ClothingHeadHatArmyBeretSpecial
 
@@ -497,16 +426,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
   items:
     - MisfitsClothingHeadAntlerSkull
 
@@ -516,16 +435,8 @@
   cost: 0
   exclusive: true
   requirements:
-    - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHead
   items:
     - MisfitsClothingHeadRedBandana
 
@@ -903,15 +814,8 @@
   category: Shoes
   cost: 0
   requirements:
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
-        - VaultDoctor
-        - VaultSecurity
-        - VaultEngineer
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutShoes
   items:
     - N14ClothingShoesJamrock
 
@@ -920,16 +824,8 @@
   category: Shoes
   cost: 0
   requirements:
-    - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-        - BoSMidSerf
-        - CaesarLegionSlave
-        - NCRPrisoner
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutShoes
   items:
     - N14ClothingBootsLeather
 
@@ -941,12 +837,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutShoes
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - MisfitsMilitaryCowboyBoots
 
@@ -958,12 +848,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutShoes
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - MisfitsMilitarySteelTippedBoots
 

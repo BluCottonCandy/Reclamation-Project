@@ -119,8 +119,5 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutShoes
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - GreatKhans
   items:
     - MisfitsMilitaryPeltBoots

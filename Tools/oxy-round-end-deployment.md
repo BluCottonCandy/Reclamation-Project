@@ -14,7 +14,7 @@ Do not stop a live round to perform this setup. An older running server will rej
 4. Select **main** and the **deploy** mode, then run it once.
 5. The workflow builds and stages the package while the current server runs.
 6. Once the package is ready, players receive an announcement that it will be installed after the round.
-7. The game finishes its current round, writes a confirmation, and shuts down cleanly. Deployment waits for both that confirmation and OXY's offline state.
+7. The game finishes its current round, writes a confirmation, and holds at that boundary. The workflow then requests an intentional OXY stop and waits for its offline state. This prevents OXY's automatic process recovery from racing installation.
 8. The workflow installs the package, preserves configuration/data/logs, verifies executable permissions, and starts OXY again.
 9. Check the workflow result and connect to the server to verify the update.
 

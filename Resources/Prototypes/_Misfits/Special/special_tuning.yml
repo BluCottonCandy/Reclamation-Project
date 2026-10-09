@@ -11,6 +11,7 @@
   perceptionMineDelayMultiplierPerPoint: 0.03333333
   perceptionFireDelayMultiplierPerPoint: 0.01333333
   enduranceHealthModifierPerPoint: 2.6666667
+  enduranceHealthBonusPerPoint: 6.6666667
   enduranceNeedDecayMultiplierPerPoint: 0.016
   enduranceStaminaRecoveryMultiplierPerPoint: 0.02666667
   enduranceToxinDamageMultiplierPerPoint: 0.02

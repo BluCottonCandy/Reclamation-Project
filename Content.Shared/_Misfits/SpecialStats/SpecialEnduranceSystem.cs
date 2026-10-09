@@ -107,13 +107,11 @@ public sealed class SpecialEnduranceSystem : EntitySystem
             return;
 
         var tuning = _special.GetTuning();
-        var desired = reset
-            ? 0f
-            : _special.GetCurvedEffectModifier(
-                ent.Owner,
-                SpecialStat.Endurance,
-                tuning.EnduranceHealthModifierPerPoint,
-                ent.Comp);
+        var delta = _special.GetCurvedEffectDelta(ent.Owner, SpecialStat.Endurance, ent.Comp);
+        var healthPerPoint = delta > 0f
+            ? tuning.EnduranceHealthBonusPerPoint
+            : tuning.EnduranceHealthModifierPerPoint;
+        var desired = reset ? 0f : SharedSpecialSystem.GetCurvedEffectModifier(delta, healthPerPoint);
         var adjustment = desired - ent.Comp.AppliedHealthThresholdModifier;
 
         if (MathHelper.CloseTo(adjustment, 0f))

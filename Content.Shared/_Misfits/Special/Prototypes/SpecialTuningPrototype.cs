@@ -54,6 +54,10 @@ public sealed partial class SpecialTuningPrototype : IPrototype
     [DataField("enduranceHealthModifierPerPoint")]
     public float EnduranceHealthModifierPerPoint = 2.6666667f;
 
+    // Above-average Endurance reaches +50 health at 10; low-stat penalties retain their existing scale.
+    [DataField("enduranceHealthBonusPerPoint")]
+    public float EnduranceHealthBonusPerPoint = 6.6666667f;
+
     [DataField("enduranceNeedDecayMultiplierPerPoint")]
     public float EnduranceNeedDecayMultiplierPerPoint = 0.016f;
 

@@ -12246,3 +12246,12 @@ Entries:
   id: 6503
   time: '2026-10-09T12:38:08.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/19
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Replaced Wastelander ballistic gun loadouts with makeshift variants.
+    - type: Tweak
+      message: Reduced ballistic gun loadout costs by 5, to a minimum of 1 point.
+  id: 6504
+  time: '2026-10-09T12:38:42.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/22

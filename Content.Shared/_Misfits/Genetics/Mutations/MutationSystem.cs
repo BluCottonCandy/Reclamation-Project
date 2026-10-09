@@ -82,7 +82,7 @@ public sealed partial class MutationSystem : CommonMutationSystem
 
     private void OnMapInit(Entity<MutatableComponent> ent, ref MapInitEvent args)
     {
-        if (TryComp<MobStateComponent>(ent, out var mobState) &&
+        if (_net.IsServer && TryComp<MobStateComponent>(ent, out var mobState) &&
             mobState.CurrentState == MobState.Alive &&
             !HasComp<SleepingComponent>(ent))
             EnsureComp<AwakeMobComponent>(ent);

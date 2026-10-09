@@ -1,4 +1,4 @@
-ent-N14WeaponPistol10mmPipeEmpty = 10mm pipe pistol
+ent-N14WeaponPistol10mmPipeEmpty = makeshift 10mm pistol
     .desc = A shoddy makeshift 10mm pistol, the grip is incredibly uncomfortable. Uses 10mm ammo.
 
 # Ported from Fortune13 / LoneStar (SS13) — Misfits Add

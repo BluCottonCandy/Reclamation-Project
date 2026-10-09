@@ -17,7 +17,7 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponPistol22lr
+    - N14WeaponPistol22lrMakeshift
 
 - type: loadout
   id: N14WeaponRevolver9mm
@@ -37,12 +37,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRevolver9mm
+    - N14WeaponRevolver9mmMakeshift
 
 - type: loadout
   id: N14WeaponPistol10mmPipe
   category: Weapons
-  cost: 2
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
@@ -62,7 +62,7 @@
 - type: loadout
   id: N14WeaponPistol9mm
   category: Weapons
-  cost: 2
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
@@ -77,12 +77,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponPistol9mm
+    - N14WeaponPistol9mmMakeshift
 
 - type: loadout
   id: N14WeaponPistol45Colt
   category: Weapons
-  cost: 3
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
@@ -97,33 +97,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponPistol45Colt
-
-- type: loadout
-  id: N14WeaponPistol10mm
-  category: Weapons
-  cost: 3
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGuns
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponPistol10mm
-
+    - N14WeaponPistol45ColtMakeshift
 
 - type: loadout
   id: N14WeaponPistol12mm
   category: Weapons
-  cost: 3
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
@@ -138,13 +117,13 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponPistol12mm
+    - N14WeaponPistol12mmMakeshift
 
 
 - type: loadout
   id: N14WeaponPistol9mmChinese
   category: Weapons
-  cost: 3
+  cost: 1
   requirements:
     - !type:CharacterTraitRequirement
       traits:
@@ -159,12 +138,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponPistol9mmChinese
+    - N14WeaponPistol9mmChineseMakeshift
 
 - type: loadout
   id: N14WeaponPistolWebley
   category: Weapons
-  cost: 3
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
@@ -179,13 +158,13 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponPistolWebley
+    - N14WeaponPistolWebleyMakeshift
 
 
 - type: loadout
   id: N14WeaponRevolver44Magnum
   category: Weapons
-  cost: 4
+  cost: 1
   requirements:
     - !type:OverallTimeRequirement
       min: 6800
@@ -202,7 +181,7 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRevolver44Magnum
+    - N14WeaponRevolver44MagnumMakeshift
 
 
 
@@ -210,7 +189,7 @@
 - type: loadout
   id: N14WeaponShotgunDoubleBarrel
   category: Weapons
-  cost: 4
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -225,12 +204,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponShotgunDoubleBarrel
+    - N14WeaponShotgunDoubleBarrelMakeshift
 
 - type: loadout
   id: N14WeaponShotgunCaravan
   category: Weapons
-  cost: 4
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -245,13 +224,13 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponShotgunCaravan
+    - N14WeaponShotgunCaravanMakeshift
 
 
 - type: loadout
   id: N14WeaponShotgunLever
   category: Weapons
-  cost: 6
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -266,12 +245,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponShotgunLever
+    - N14WeaponShotgunLeverMakeshift
 
 - type: loadout
   id: N14WeaponShotgun
   category: Weapons
-  cost: 7
+  cost: 2
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -286,224 +265,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponShotgun
+    - N14WeaponShotgunMakeshift
 
 
 
 - type: loadout
   id: N14WeaponShotgunRiot
-  category: Weapons
-  cost: 15
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - NCR
-      - CaesarLegion
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponShotgunRiot
-
-
-- type: loadout
-  id: N14WeaponShotgunAuto
-  category: Weapons
-  cost: 15
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - NCR
-      - CaesarLegion
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponShotgunAuto
-
-
-
-- type: loadout
-  id: N14WeaponShotgunBlowback
-  category: Weapons
-  cost: 18
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - CaesarLegion
-      - NCR
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponShotgunBlowback
-
-- type: loadout
-  id: N14WeaponShotgunChinese
-  category: Weapons
-  cost: 19
-  requirements:
-    - !type:CharacterTraitRequirement
-      traits:
-      - LanguageChinese
-      - LanguageNerd
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - NCR
-      - CaesarLegion
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponShotgunChinese
-
-- type: loadout
-  id: N14WeaponShotgunCanadian
-  category: Weapons
-  cost: 18
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - NCR
-      - CaesarLegion
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponShotgunCanadian
-
-
-
-## SMGs
-
-- type: loadout
-  id: N14WeaponSMG9mm
-  category: Weapons
-  cost: 7
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - NCR
-      - CaesarLegion
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponSMG9mm
-
-- type: loadout
-  id: N14WeaponSMG9mmCanadian
-  category: Weapons
-  cost: 9
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - NCR
-      - CaesarLegion
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponSMG9mmCanadian
-
-
-- type: loadout
-  id: N14WeaponSMG10mm
-  category: Weapons
-  cost: 9
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - NCR
-      - CaesarLegion
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponSMG10mm
-
-- type: loadout
-  id: N14WeaponSMG10mmSuppressed
   category: Weapons
   cost: 10
   requirements:
@@ -525,12 +292,65 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponSMG10mmSuppressed
+    - N14WeaponShotgunRiotMakeshift
+
 
 - type: loadout
-  id: N14WeaponSMG10mmChinese
+  id: N14WeaponShotgunAuto
   category: Weapons
-  cost: 9
+  cost: 10
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+      - NCR
+      - CaesarLegion
+      - BrotherhoodOfSteel
+      - BrotherhoodOfSteelLancers
+      - Rangers
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponShotgunAutoMakeshift
+
+
+
+- type: loadout
+  id: N14WeaponShotgunBlowback
+  category: Weapons
+  cost: 13
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+      - BrotherhoodOfSteel
+      - BrotherhoodOfSteelLancers
+      - CaesarLegion
+      - NCR
+      - Rangers
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponShotgunBlowbackMakeshift
+
+- type: loadout
+  id: N14WeaponShotgunChinese
+  category: Weapons
+  cost: 14
   requirements:
     - !type:CharacterTraitRequirement
       traits:
@@ -554,13 +374,147 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponSMG10mmChinese
+    - N14WeaponShotgunChineseMakeshift
+
+- type: loadout
+  id: N14WeaponShotgunCanadian
+  category: Weapons
+  cost: 13
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+      - BrotherhoodOfSteel
+      - BrotherhoodOfSteelLancers
+      - NCR
+      - CaesarLegion
+      - Rangers
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponShotgunCanadianMakeshift
+
+
+
+## SMGs
+
+- type: loadout
+  id: N14WeaponSMG9mm
+  category: Weapons
+  cost: 2
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+      - BrotherhoodOfSteel
+      - BrotherhoodOfSteelLancers
+      - NCR
+      - CaesarLegion
+      - Rangers
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponSMG9mmMakeshift
+
+- type: loadout
+  id: N14WeaponSMG9mmCanadian
+  category: Weapons
+  cost: 4
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+      - BrotherhoodOfSteel
+      - BrotherhoodOfSteelLancers
+      - NCR
+      - CaesarLegion
+      - Rangers
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponSMG9mmCanadianMakeshift
+
+
+- type: loadout
+  id: N14WeaponSMG10mmSuppressed
+  category: Weapons
+  cost: 5
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+      - BrotherhoodOfSteel
+      - BrotherhoodOfSteelLancers
+      - NCR
+      - CaesarLegion
+      - Rangers
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponSMG10mmSuppressedMakeshift
+
+- type: loadout
+  id: N14WeaponSMG10mmChinese
+  category: Weapons
+  cost: 4
+  requirements:
+    - !type:CharacterTraitRequirement
+      traits:
+      - LanguageChinese
+      - LanguageNerd
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+      - BrotherhoodOfSteel
+      - BrotherhoodOfSteelLancers
+      - NCR
+      - CaesarLegion
+      - Rangers
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponSMG10mmChineseMakeshift
 
 
 - type: loadout
   id: N14WeaponSMG45
   category: Weapons
-  cost: 12
+  cost: 7
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -580,44 +534,14 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponSMG45
+    - N14WeaponSMG45Makeshift
 
 
-
-- type: loadout
-  id: N14WeaponSMG12mm
-  category: Weapons
-  cost: 12
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-      - BrotherhoodOfSteel
-      - BrotherhoodOfSteelLancers
-      - NCR
-      - CaesarLegion
-      - Rangers
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponSMG12mm
-
-
-
-
-## Rifles
 
 - type: loadout
   id: N14WeaponRifle556R91
   category: Weapons
-  cost: 14
+  cost: 9
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -637,12 +561,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle556R91
+    - N14WeaponRifle556R91Makeshift
 
 - type: loadout
   id: N14WeaponRifle556Service
   category: Weapons
-  cost: 9
+  cost: 4
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -662,12 +586,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle556Service
+    - N14WeaponRifle556ServiceMakeshift
 
 - type: loadout
   id: N14WeaponRifle556CarbineOld
   category: Weapons
-  cost: 9
+  cost: 4
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -687,12 +611,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle556CarbineOld
+    - N14WeaponRifle556CarbineOldMakeshift
 
 - type: loadout
   id: N14WeaponRifle762M14
   category: Weapons
-  cost: 11
+  cost: 6
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -712,12 +636,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle762M14
+    - N14WeaponRifle762M14Makeshift
 
 - type: loadout
   id: N14WeaponRifle762SKS
   category: Weapons
-  cost: 10 # this gun is ass
+  cost: 5 # this gun is ass
   requirements:
     - !type:CharacterTraitRequirement
       traits:
@@ -741,13 +665,13 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle762SKS
+    - N14WeaponRifle762SKSMakeshift
 
 
 - type: loadout
   id: N14WeaponRifle762Fal
   category: Weapons
-  cost: 15 # its good, but not 19 points good.
+  cost: 10 # its good, but not 19 points good.
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -767,7 +691,7 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle762Fal
+    - N14WeaponRifle762FalMakeshift
 
 
 
@@ -775,7 +699,7 @@
 - type: loadout
   id: N14WeaponRifle762Canadian
   category: Weapons
-  cost: 18 # 18 leaves room for other items.
+  cost: 13 # 18 leaves room for other items.
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -795,12 +719,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle762Canadian
+    - N14WeaponRifle762CanadianMakeshift
 
 - type: loadout
   id: N14WeaponRifle762Chinese
   category: Weapons
-  cost: 16 # a little cheaper since its kinda shit?
+  cost: 11 # a little cheaper since its kinda shit?
   requirements:
     - !type:CharacterTraitRequirement
       traits:
@@ -824,12 +748,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle762Chinese
+    - N14WeaponRifle762ChineseMakeshift
 
 - type: loadout
   id: N14WeaponRifle762Marksman
   category: Weapons
-  cost: 18 # accuracy MONSTER this should cost an arm and a leg.
+  cost: 13 # accuracy MONSTER this should cost an arm and a leg.
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -849,13 +773,13 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle762Marksman
+    - N14WeaponRifle762MarksmanMakeshift
 
 
 - type: loadout
   id: N14WeaponRifle556Carbine
   category: Weapons
-  cost: 16 # kinda mid with the other 7.62 options on the list im ngl.
+  cost: 11 # kinda mid with the other 7.62 options on the list im ngl.
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -875,14 +799,14 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle556Carbine
+    - N14WeaponRifle556CarbineMakeshift
 
 
 
 - type: loadout
   id: N14WeaponRifle556EM2
   category: Weapons
-  cost: 12 # this gun is dogshit btw why was it previously 24 points?
+  cost: 7 # this gun is dogshit btw why was it previously 24 points?
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -902,7 +826,7 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle556EM2
+    - N14WeaponRifle556EM2Makeshift
 
 
 
@@ -914,7 +838,7 @@
 - type: loadout
   id: N14WeaponSniper556VarmintRifle
   category: Weapons
-  cost: 4 # horrid dogshit
+  cost: 1 # horrid dogshit
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -934,12 +858,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponSniper556VarmintRifle
+    - N14WeaponSniper556VarmintRifleMakeshift
 
 - type: loadout
   id: N14WeaponSniperHunting
   category: Weapons
-  cost: 6 # usable.
+  cost: 1 # usable.
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -959,12 +883,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponSniperHunting
+    - N14WeaponSniperHuntingMakeshift
 
 - type: loadout
   id: N14WeaponSniper44LeverCarbine
   category: Weapons
-  cost: 9 # this is an aura monster and absolutely lethal with high luck
+  cost: 4 # this is an aura monster and absolutely lethal with high luck
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -984,12 +908,12 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponSniper44LeverCarbine
+    - N14WeaponSniper44LeverCarbineMakeshift
 
 - type: loadout
   id: N14WeaponRifle308Battle
   category: Weapons
-  cost: 10
+  cost: 5
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -1009,7 +933,7 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14WeaponRifle308Battle
+    - N14WeaponRifle308BattleMakeshift
 
 
 
@@ -1019,7 +943,7 @@
 - type: loadout
   id: N14WeaponRifle556Pipe
   category: Weapons
-  cost: 3 # frankly dogshit.
+  cost: 1 # frankly dogshit.
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -1045,7 +969,7 @@
 - type: loadout
   id: N14WeaponSMG10mmPipe
   category: Weapons
-  cost: 2 # really dogshit.
+  cost: 1 # really dogshit.
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -1071,7 +995,7 @@
 - type: loadout
   id: N14WeaponSMG12mmPipe
   category: Weapons
-  cost: 3
+  cost: 1
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig

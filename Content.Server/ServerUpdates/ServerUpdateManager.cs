@@ -57,11 +57,11 @@ public sealed class ServerUpdateManager
 
     public void Update()
     {
-        if (_deployment != null && !_deploymentShutdown)
+        if (_deployment != null)
         {
             if (!_deployment.IsActive(_gameTiming.RealTime))
                 CancelDeployment(_deployment.Ticket);
-            else if (_gameTiming.RealTime >= _deploymentEarliestShutdown &&
+            else if (!_deploymentShutdown && _gameTiming.RealTime >= _deploymentEarliestShutdown &&
                      _entities.System<GameTicker>().RunLevel != GameRunLevel.InRound)
                 FinishDeployment();
         }
@@ -119,9 +119,11 @@ public sealed class ServerUpdateManager
 
     public void CancelDeployment(string ticket)
     {
-        if (_deploymentShutdown || _deployment?.Ticket != ticket)
+        if (_deployment?.Ticket != ticket)
             return;
+        var resumeRound = _deploymentShutdown;
         _deployment = null;
+        _deploymentShutdown = false;
         _chatManager.DispatchServerAnnouncement("The pending server update was cancelled or its workflow stopped. The server will continue normally.");
         try
         {
@@ -131,6 +133,8 @@ public sealed class ServerUpdateManager
         {
             Logger.ErrorS("server.update", "Could not write cancelled deployment state; the shutdown request was still cleared.");
         }
+        if (resumeRound && _entities.System<GameTicker>().RunLevel == GameRunLevel.PostRound)
+            _entities.System<GameTicker>().RestartRound();
     }
 
     private void WriteDeploymentState(string ticket, string state)
@@ -165,8 +169,13 @@ public sealed class ServerUpdateManager
             return false;
         }
         _deploymentShutdown = true;
-        _chatManager.DispatchServerAnnouncement("The round has finished. Installing the queued server update now; please reconnect shortly.");
-        _server.Shutdown("Installing queued OXY update after the round.");
+        _chatManager.DispatchServerAnnouncement("Updating Server. Please reconnect shortly.");
+        var reason = JsonSerializer.Serialize(new { reason = "Updating Server", redial = true });
+        foreach (var session in _playerManager.Sessions.ToArray())
+            session.Channel.Disconnect(reason);
+        // Hold at the round boundary. The workflow performs an intentional panel stop,
+        // rather than letting Pterodactyl interpret a process exit as a crash and restart it.
+        // If the workflow disappears, the lease expires and releases this hold.
         return true;
     }
 

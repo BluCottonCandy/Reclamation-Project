@@ -33,6 +33,14 @@
     - SuperMutantWearable
 
 # --- Gloves ---
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: ClothingHandsBase
   id: ClothingSuperMutantGloves
@@ -142,10 +150,10 @@
   - type: Armor # #Misfits Add - 15% physical damage resistance baseline
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.70
-
+        Piercing: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Heat: 0.8
 # --- Gladiator Boots ---
 - type: entity
   parent: ClothingShoesBase
@@ -200,10 +208,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.70
-
+        Piercing: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Heat: 0.8
 - type: entity
   parent: ClothingSuperMutantRangerArmor
   id: ClothingSuperMutantCustomizedCombatArmor
@@ -217,6 +225,13 @@
   - type: Tag
     tags:
     - SuperMutantWearable
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Heat: 0.8
 
 - type: entity
   parent: ClothingHeadBase
@@ -381,10 +396,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.70
-
+        Piercing: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Heat: 0.8
 - type: entity
   parent: ClothingHeadBase
   id: ClothingSuperMutantTrooperHelmet
@@ -421,6 +436,14 @@
     - SuperMutantWearable
 
 # #Misfits Add - Supermutant neck trinket (skull necklace) — standalone spawnable wearable.
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: ClothingNeckBase
   id: ClothingSuperMutantNeckTrinket
@@ -651,10 +674,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.70
-
+        Piercing: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Heat: 0.8
 # Scavenged Armor Set
 
 - type: entity
@@ -673,10 +696,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.70
-
+        Piercing: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Heat: 0.8
 - type: entity
   parent: ClothingShoesBase
   id: ClothingSuperMutantScavengedBoots
@@ -724,4 +747,3 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-

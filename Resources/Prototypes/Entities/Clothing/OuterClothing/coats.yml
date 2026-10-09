@@ -8,6 +8,13 @@
     sprite: Clothing/OuterClothing/Coats/bomber.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/bomber.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterBase
@@ -19,6 +26,13 @@
     sprite: Clothing/OuterClothing/Coats/detective.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/detective.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterCoatDetective
@@ -28,6 +42,13 @@
     contents:
     - id: SmokingPipeFilledTobacco
     - id: FlippoLighter #Not the steal objective, only difference from normal detective trenchcoat
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterBase
@@ -39,6 +60,13 @@
     sprite: Clothing/OuterClothing/Coats/gentlecoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/gentlecoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: [ClothingOuterArmorCaptainCarapace, ClothingOuterStorageBase]
@@ -103,6 +131,13 @@
     sprite: Clothing/OuterClothing/Coats/insp_coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/insp_coat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterBase
@@ -114,6 +149,13 @@
     sprite: Clothing/OuterClothing/Coats/jensencoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/jensencoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterBase
@@ -125,6 +167,13 @@
     sprite: Clothing/OuterClothing/Coats/trenchcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/trenchcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -140,11 +189,23 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatLab]
   id: ClothingOuterCoatLabOpened
   name: lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -160,11 +221,23 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatLabChem]
   id: ClothingOuterCoatLabChemOpened
   name: chemist lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -180,11 +253,23 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatLabViro]
   id: ClothingOuterCoatLabViroOpened
   name: virologist lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -200,11 +285,23 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatLabGene]
   id: ClothingOuterCoatLabGeneOpened
   name: geneticist lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -219,14 +316,24 @@
   - type: Armor
     modifiers:
       coefficients:
-        Slash: 0.95
-        Heat: 0.95
         Caustic: 0.65
-
+        Slash: 0.8
+        Heat: 0.8
+        Piercing: 0.8
+        Blunt: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatLabCmo]
   id: ClothingOuterCoatLabCmoOpened
   name: chief medical officer's lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.65
+        Slash: 0.8
+        Heat: 0.8
+        Piercing: 0.8
+        Blunt: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -242,11 +349,23 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatRnd]
   id: ClothingOuterCoatRndOpened
   name: scientist lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -262,11 +381,23 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatRobo]
   id: ClothingOuterCoatRoboOpened
   name: roboticist lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -281,13 +412,26 @@
   - type: Armor
     modifiers:
       coefficients:
-        Caustic: 0.75
         Radiation: 0.9
-
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: [ClothingOuterStorageFoldableBaseOpened, ClothingOuterCoatRD]
   id: ClothingOuterCoatRDOpened
   name: research director lab coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.9
+        Caustic: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -299,6 +443,13 @@
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase]
@@ -321,6 +472,13 @@
     sprite: Clothing/OuterClothing/Coats/damedanecoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/damedanecoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -332,6 +490,13 @@
     sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -346,10 +511,10 @@
   - type: Armor
     modifiers:
       coefficients:
+        Piercing: 0.8
         Blunt: 0.8
         Slash: 0.65
-        Piercing: 0.85
-
+        Heat: 0.8
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatParamedicWB
@@ -360,6 +525,13 @@
     sprite: Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -371,6 +543,13 @@
     sprite: Clothing/OuterClothing/Coats/syndicate/coatsyndiecap.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/syndicate/coatsyndiecap.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterCoatHoSTrench
@@ -396,12 +575,11 @@
   - type: Armor # DeltaV - tweak for Velta armour
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.85
-        Heat: 0.75
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.75
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatLabSeniorResearcher
@@ -416,7 +594,10 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatLabSeniorPhysician
@@ -431,7 +612,10 @@
     modifiers:
       coefficients:
         Caustic: 0.75
-
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatSpaceAsshole
@@ -442,6 +626,13 @@
     sprite: Clothing/OuterClothing/Coats/space_asshole.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/space_asshole.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -453,6 +644,13 @@
     sprite: Clothing/OuterClothing/Coats/expensive_coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/expensive_coat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterBase
@@ -464,6 +662,13 @@
     sprite: Clothing/OuterClothing/Coats/modern_coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/modern_coat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterBase
@@ -475,6 +680,13 @@
     sprite: Clothing/OuterClothing/Coats/tailcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/tailcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterBase
@@ -486,6 +698,13 @@
     sprite: Clothing/OuterClothing/Coats/victorian_coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/victorian_coat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterBase
@@ -497,6 +716,13 @@
     sprite: Clothing/OuterClothing/Coats/victorian_coat_red.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/victorian_coat_red.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -508,11 +734,26 @@
     sprite: Clothing/OuterClothing/Coats/peacoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/peacoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: [ClothingOuterFoldableBaseOpened, ClothingOuterCoatPeacoat]
   id: ClothingOuterCoatPeacoatOpened
   name: peacoat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -524,11 +765,26 @@
     sprite: Clothing/OuterClothing/Coats/asymmetric_coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/asymmetric_coat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: [ClothingOuterFoldableBaseOpened, ClothingOuterCoatAsymmetric]
   id: ClothingOuterCoatAsymmetricOpened
   name: asymmetric coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase
@@ -540,8 +796,23 @@
     sprite: Clothing/OuterClothing/Coats/submariner.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/submariner.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: [ClothingOuterFoldableBaseOpened, ClothingOuterCoatSubmariner]
   id: ClothingOuterCoatSubmarinerOpened
   name: submariner coat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8

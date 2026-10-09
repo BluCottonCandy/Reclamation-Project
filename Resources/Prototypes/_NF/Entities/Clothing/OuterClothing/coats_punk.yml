@@ -14,6 +14,10 @@
     modifiers:
       coefficients:
         Caustic: 0.4
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodAcidRaincoat
 
@@ -28,6 +32,14 @@
     sprite: _NF/Clothing/OuterClothing/Coats/acid_raincoat_blue.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodAcidRaincoatBlue
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.4
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterCoatAcidRaincoat
@@ -40,6 +52,14 @@
     sprite: _NF/Clothing/OuterClothing/Coats/acid_raincoat_green.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodAcidRaincoatGreen
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.4
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterCoatAcidRaincoat
@@ -52,6 +72,14 @@
     sprite: _NF/Clothing/OuterClothing/Coats/acid_raincoat_magenta.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodAcidRaincoatMagenta
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.4
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterCoatAcidRaincoat
@@ -66,6 +94,15 @@
     clothingPrototype: ClothingHeadHatHoodAcidRaincoatGreen
 
 # Jackets
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.4
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatBomberPunkRed
@@ -76,6 +113,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/bomber_punk_red.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/bomber_punk_red.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -87,6 +131,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_leather.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_leather.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -98,6 +149,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_biker.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_biker.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -109,6 +167,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/blazer_jamrock.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/blazer_jamrock.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -120,6 +185,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/bomber_aerostatic.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/bomber_aerostatic.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -131,6 +203,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_blue.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_blue.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -142,6 +221,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_brown.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_brown.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -153,6 +239,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_red.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_red.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -164,6 +257,13 @@
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_magenta.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_magenta.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -177,6 +277,14 @@
     sprite: _NF/Clothing/OuterClothing/Coats/bomber_pinksleeves.rsi
 
 # Procedural punk jackets
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatBomberRandomized
@@ -224,6 +332,13 @@
         overlay_base_OuterClothing_jacket_06: CyberpunkNeon
         overlay_base_OuterClothing_jacket_07: CyberpunkNeon
         mask_null: ""
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -253,3 +368,10 @@
         base_OuterClothing_letterman: Cyberpunk
       jacket_decor:
         decor_base_OuterClothing_letterman: Cyberpunk
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8

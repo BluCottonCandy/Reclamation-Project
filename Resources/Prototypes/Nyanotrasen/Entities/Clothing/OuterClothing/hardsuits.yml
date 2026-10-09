@@ -6,6 +6,15 @@
   components:
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitMystagogue
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.1
+        Piercing: 0.8
+        Heat: 0.3
+        Blunt: 0.6
+        Slash: 0.8
+        Caustic: 0.2
 
 - type: entity
   parent: ClothingOuterHardsuitSyndie

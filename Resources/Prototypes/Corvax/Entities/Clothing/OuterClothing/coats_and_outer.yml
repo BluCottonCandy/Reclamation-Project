@@ -30,8 +30,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Heat: 0.90
         Radiation: 0.001
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
   # #Misfits Add - Suppress the wearer's own RadiationSource (e.g. glowing ghouls)
   # so they don't irradiate people nearby while wearing the suit.
   - type: RadiationSourceSuppression

@@ -43,6 +43,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutncrengineer.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.60
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterNCRCombatArmor
@@ -87,6 +94,13 @@
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutncrtrenchraider.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutncrtrenchraider.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: N14ClothingOuterNCRCombatArmor

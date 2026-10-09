@@ -32,6 +32,14 @@
     sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_officer_coat.rsi
 
 # T3 — NCR Private First Class
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: N14ClothingOuterNCRVestDesert
   id: MisfitsNCREnhancedVest

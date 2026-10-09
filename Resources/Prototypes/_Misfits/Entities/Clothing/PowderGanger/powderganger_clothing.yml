@@ -15,6 +15,14 @@
     sprite: _Misfits/Clothing/PowderGanger/powderganger_jacket.rsi
 
 # --- Powder Ganger Outfit ---
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: N14ClothingUniformBase
   id: ClothingPowderGangerOutfit
@@ -39,6 +47,14 @@
     sprite: _Misfits/Clothing/PowderGanger/powderganger_vest.rsi
 
 # --- Powder Ganger Duds ---
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: ClothingOuterBase
   id: ClothingPowderGangerDuds
@@ -49,3 +65,10 @@
     sprite: _Misfits/Clothing/PowderGanger/powderganger_duds.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/PowderGanger/powderganger_duds.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8

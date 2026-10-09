@@ -17,9 +17,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
+        Radiation: 0.25
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
         Caustic: 0.9
   - type: ClothingSpeedModifier
     walkModifier: 0.80
@@ -51,11 +53,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
-        Heat: 0.8
         Radiation: 0.5
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
@@ -82,6 +84,16 @@
         shader: unshaded
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitEngineeringUnpainted
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.2
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+        Caustic: 0.5
+        Shock: 0.8
 
 - type: entity
   parent: ClothingOuterHardsuitBase
@@ -101,12 +113,13 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
-        Shock: 0.8
-        Caustic: 0.5
         Radiation: 0.2
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+        Caustic: 0.5
+        Shock: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
@@ -138,10 +151,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
         Radiation: 0.3 #salv is supposed to have radiation hazards in the future
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
         Caustic: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -170,10 +184,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.3
+        Piercing: 0.5
+        Heat: 0.8
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.5
-        Radiation: 0.3
         Caustic: 0.7
   - type: ClothingSpeedModifier
     walkModifier: 0.75
@@ -202,8 +217,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Heat: 0.90
         Radiation: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
         Caustic: 0.5
   - type: StealTarget
     stealGroup: ClothingOuterHardsuitVoidParamed
@@ -269,9 +287,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.25
+        Piercing: 0.6
+        Heat: 0.8
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.6
         Caustic: 0.7
   - type: ClothingSpeedModifier
     walkModifier: 0.75
@@ -299,9 +319,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.25
+        Piercing: 0.7
+        Heat: 0.8
         Blunt: 0.8
         Slash: 0.8
-        Piercing: 0.7
   - type: ClothingSpeedModifier
     walkModifier: 0.65
     sprintModifier: 0.65
@@ -330,9 +352,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.25
+        Piercing: 0.6
+        Heat: 0.8
         Blunt: 0.5
         Slash: 0.6
-        Piercing: 0.6
         Caustic: 0.7
   - type: ClothingSpeedModifier
     walkModifier: 0.7
@@ -437,6 +461,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.25
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
         Caustic: 0.1
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -463,11 +492,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.1
+        Piercing: 0.8
+        Heat: 0.3
         Blunt: 0.6
         Slash: 0.8
-        Piercing: 0.9
-        Heat: 0.3
-        Radiation: 0.1
         Caustic: 0.2
   - type: ExplosionResistance
     damageCoefficient: 0.1
@@ -512,10 +541,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.5
+        Piercing: 0.5
+        Heat: 0.8
         Blunt: 0.6
         Slash: 0.5
-        Piercing: 0.5
-        Radiation: 0.5
         Caustic: 0.6
   - type: ClothingSpeedModifier
     walkModifier: 0.8
@@ -545,10 +575,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.8
         Radiation: 0.5
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
         Caustic: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.85
@@ -819,10 +850,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.95
-        Slash: 0.95
-        Piercing: 1
+        Radiation: 0.25
+        Piercing: 0.8
         Heat: 0.5
+        Blunt: 0.8
+        Slash: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8
@@ -848,10 +880,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.25
+        Piercing: 0.8
+        Heat: 0.4
         Blunt: 0.8
         Slash: 0.8
-        Piercing: 0.9
-        Heat: 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
     walkModifier: 0.6
@@ -881,10 +914,11 @@
   - type: Armor
     modifiers:
       coefficients:
+        Radiation: 0.25
+        Piercing: 0.8
+        Heat: 0.4
         Blunt: 0.7
         Slash: 0.8
-        Piercing: 0.85
-        Heat: 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
     walkModifier: 0.8
@@ -1094,9 +1128,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
+        Radiation: 0.25
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
         Caustic: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -1126,6 +1162,16 @@
     clothingPrototype: ClothingHeadHelmetHardsuitMime
 
 #Santa's Hardsuit
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.25
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+        Caustic: 0.8
+
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitSanta
@@ -1144,9 +1190,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.9
-        Piercing: 0.85
+        Radiation: 0.25
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
         Caustic: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.9

@@ -10,6 +10,13 @@
     sprite: Nyanotrasen/Clothing/Misc/letterman_jacket_blue.rsi
   - type: TemperatureProtection
     coefficient: 0.4
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -24,6 +31,13 @@
   - type: TemperatureProtection
     coefficient: 0.4
 ## mnk
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -37,6 +51,14 @@
     sprite: Nyanotrasen/Clothing/Misc/hoodie_white.rsi
   - type: TemperatureProtection
     coefficient: 0.4
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatMNKBlackTopCoat
@@ -49,6 +71,14 @@
     sprite: Nyanotrasen/Clothing/Misc/black_top_coat.rsi
   - type: TemperatureProtection
     coefficient: 0.4
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
+
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatMNKBlackJacket
@@ -61,6 +91,13 @@
     sprite: Nyanotrasen/Clothing/Misc/black_jacket.rsi
   - type: TemperatureProtection
     coefficient: 0.2
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8
 
 - type: entity
   parent: ClothingOuterBase
@@ -73,3 +110,10 @@
     sprite: Clothing/OuterClothing/Misc/wizard.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Misc/wizard.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.8
+        Heat: 0.8
+        Blunt: 0.8
+        Slash: 0.8

@@ -12162,3 +12162,12 @@ Entries:
   id: 6493
   time: '2026-10-02T22:54:37.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2033
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Updated the loading screen, main menu, window title, and application
+        icon with Reclamation Project branding.
+  id: 6494
+  time: '2026-10-09T12:19:07.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/8

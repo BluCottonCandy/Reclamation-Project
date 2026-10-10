@@ -63,6 +63,7 @@
     steps: 1
     zeroVisible: true
   - type: Appearance
+  - type: AmmoCounter
   - type: StaticPrice
     price: 8
   - type: FollowDistance
@@ -116,6 +117,7 @@
     steps: 1
     zeroVisible: true
   - type: Appearance
+  - type: AmmoCounter
   - type: StaticPrice
     price: 5
   - type: FollowDistance

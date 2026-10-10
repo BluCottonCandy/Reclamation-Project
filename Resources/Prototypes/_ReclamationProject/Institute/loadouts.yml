@@ -1,0 +1,269 @@
+- type: loadout
+  id: LoadoutInstituteScientistLabcoat
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistLabcoat]
+
+- type: loadout
+  id: LoadoutInstituteScientistUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistUniform]
+
+- type: loadout
+  id: LoadoutInstituteScientistSkirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistSkirt]
+
+- type: loadout
+  id: LoadoutInstituteScientistFormalUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistFormalUniform]
+
+- type: loadout
+  id: LoadoutInstituteCommandUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead]
+  items: [InstituteCommandUniform]
+
+- type: loadout
+  id: LoadoutInstituteCommandSkirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead]
+  items: [InstituteCommandSkirt]
+
+- type: loadout
+  id: LoadoutInstituteScientistBeret
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistBeret]
+
+- type: loadout
+  id: LoadoutInstituteScientistWinterCoat
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistWinterCoat]
+
+- type: loadout
+  id: LoadoutInstituteCommandWinterCoat
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead]
+  items: [InstituteCommandWinterCoat]
+
+- type: loadout
+  id: LoadoutInstituteScientistBackpack
+  category: Uncategorized
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistBackpack]
+
+- type: loadout
+  id: LoadoutInstituteScientistSatchel
+  category: Uncategorized
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistSatchel]
+
+- type: loadout
+  id: LoadoutInstituteScientistDuffel
+  category: Uncategorized
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistDuffel]
+
+- type: loadout
+  id: LoadoutInstituteSecurityBoots
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteSecurity]
+  items: [InstituteSecurityBoots]
+
+- type: loadout
+  id: LoadoutInstituteCourserBoots
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [InstituteCourserBoots]
+
+- type: loadout
+  id: LoadoutInstituteSecurityHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteSecurity]
+  items: [InstituteSecurityHelmet]
+
+- type: loadout
+  id: LoadoutInstituteCourserHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [InstituteCourserHelmet]
+
+- type: loadout
+  id: LoadoutInstituteSecurityMask
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteSecurity]
+  items: [InstituteSecurityMask]
+
+- type: loadout
+  id: LoadoutInstituteCourserMask
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [InstituteCourserMask]
+
+- type: loadout
+  id: LoadoutInstituteCourserArmor
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [InstituteCourserArmor]
+
+- type: loadout
+  id: LoadoutInstituteCourserGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [InstituteCourserGloves]
+
+- type: loadout
+  id: LoadoutInstituteSecurityUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteSecurity, InstituteCourser]
+  items: [InstituteSecurityUniform]
+
+- type: loadout
+  id: LoadoutInstituteScientistShoes
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteScientistShoes]
+
+- type: loadout
+  id: LoadoutInstituteSecurityVest
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteSecurity]
+  items: [InstituteSecurityArmorVest]
+
+- type: loadout
+  id: LoadoutInstituteCourserMODSuit
+  category: Uncategorized
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [ReclamationClothingModsuitInstitute]
+
+- type: loadout
+  id: LoadoutInstituteSecurityGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteSecurity]
+  items: [InstituteSecurityGloves]
+
+- type: loadout
+  id: LoadoutInstituteResearchMODSuit
+  category: Uncategorized
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteResearchMODSuit]
+
+- type: loadout
+  id: LoadoutInstituteSecurityMODSuit
+  category: Uncategorized
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteSecurity]
+  items: [InstituteSecurityMODSuit]

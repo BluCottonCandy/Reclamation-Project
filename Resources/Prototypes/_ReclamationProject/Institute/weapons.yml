@@ -1,0 +1,27 @@
+- type: entity
+  parent: N14WeaponLaserRifleAER12
+  id: ReclamationWeaponInstituteAER12
+  name: Institute automatic laser rifle
+  description: An advanced automatic laser rifle with Institute plating.
+  components:
+  - type: Sprite
+    sprite: _Reclamation/Objects/Weapons/institute_aer9.rsi
+  - type: Clothing
+    sprite: _Reclamation/Objects/Weapons/institute_aer9.rsi
+  - type: Item
+    sprite: _Reclamation/Objects/Weapons/institute_aer9.rsi
+
+
+- type: entity
+  parent: N14WeaponLaserPistol
+  id: InstituteWeaponLaserPistol
+  name: Institute laser pistol
+  description: An advanced laser sidearm with white Institute plating and red accents.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/LaserPistol.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/LaserPistol.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/LaserPistol.rsi
+  - type: AmmoCounter

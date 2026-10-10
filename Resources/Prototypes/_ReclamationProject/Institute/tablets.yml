@@ -1,0 +1,99 @@
+- type: entity
+  abstract: true
+  parent: IDCardStandard
+  id: InstituteIDCardBase
+  name: Institute identification card
+  description: A white Institute personnel identification card.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/IDCard.rsi
+    layers:
+    - state: default
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/IDCard.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/IDCard.rsi
+
+- type: entity
+  abstract: true
+  parent: N14BasePipboy
+  id: InstituteTabletBase
+  name: Institute tablet
+  description: An Institute personal information tablet with an integrated ID reader and wasteland navigation programs.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Tablet.rsi
+    scale: 1, 1
+  - type: Icon
+    sprite: _ReclamationProject/Institute/Tablet.rsi
+    state: pda
+  - type: Item
+    sprite: _ReclamationProject/Institute/Tablet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Tablet.rsi
+  - type: Pda
+    penSlot:
+      startingItem: InstitutePenlight
+  - type: PdaBorderColor
+    borderColor: "#e5e5e5"
+
+- type: entity
+  parent: InstituteTabletBase
+  id: InstituteDirectorTablet
+  suffix: Institute Director
+  components:
+  - type: Pda
+    id: InstituteDirectorIDCard
+
+- type: entity
+  parent: InstituteTabletBase
+  id: InstituteDivisionHeadTablet
+  suffix: Institute DivisionHead
+  components:
+  - type: Pda
+    id: InstituteDivisionHeadIDCard
+
+- type: entity
+  parent: InstituteTabletBase
+  id: InstituteScientistTablet
+  suffix: Institute Scientist
+  components:
+  - type: Pda
+    id: InstituteScientistIDCard
+
+- type: entity
+  parent: InstituteTabletBase
+  id: InstituteCourserTablet
+  suffix: Institute Courser
+  components:
+  - type: Pda
+    id: InstituteCourserIDCard
+
+- type: entity
+  parent: InstituteTabletBase
+  id: InstituteSecurityTablet
+  suffix: Institute Security
+  components:
+  - type: Pda
+    id: InstituteSecurityIDCard
+
+- type: entity
+  parent: PenLightBase
+  id: InstitutePenlight
+  name: Institute penlight
+  description: A medical penlight with a slowly self-recharging power cell.
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        startingItem: InstitutePenlightCell
+
+- type: entity
+  parent: PowerCellSmall
+  id: InstitutePenlightCell
+  name: Institute penlight power cell
+  description: A compact self-recharging cell. A full recharge takes about thirty minutes.
+  components:
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 0.2

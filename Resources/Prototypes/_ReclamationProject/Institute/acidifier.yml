@@ -1,0 +1,14 @@
+- type: entity
+  parent: DeathAcidifierImplant
+  id: InstituteAcidifierImplant
+  name: Institute acidifier implant
+  description: An Institute self-destruct implant that dissolves its user and their equipment upon death or activation.
+
+- type: entity
+  parent: DeathAcidifierImplanter
+  id: InstituteAcidifierImplanter
+  name: Institute acidifier implanter
+  description: A single-use implanter containing an Institute acidifier implant.
+  components:
+  - type: Implanter
+    implant: InstituteAcidifierImplant

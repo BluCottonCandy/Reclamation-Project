@@ -1,0 +1,241 @@
+- type: entity
+  parent: ClothingModsuitStandardPowerCell
+  id: ReclamationClothingModsuitInstitute
+  name: Institute Courser MOD suit
+  description: A modular protective suit issued to Institute Coursers.
+  components:
+  - type: Tag
+    tags: [InstituteMODControl]
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ReclamationClothingModsuitHelmetInstitute
+      gloves: ReclamationClothingModsuitGauntletsInstitute
+      outerClothing: ReclamationClothingModsuitChestplateInstitute
+      shoes: ReclamationClothingModsuitBootsInstitute
+
+- type: entity
+  parent: ClothingModsuitHelmetStandard
+  id: ReclamationClothingModsuitHelmetInstitute
+  name: Institute MOD suit helmet
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Radiation: 0.9
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: ComponentToggler
+    components:
+    - type: EyeProtection
+      protectionTime: 10
+
+- type: entity
+  parent: ClothingModsuitChestplateStandard
+  id: ReclamationClothingModsuitChestplateInstitute
+  name: Institute MOD suit chestplate
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Heat: 0.4
+        Radiation: 0.4
+
+- type: entity
+  parent: ClothingModsuitGauntletsStandard
+  id: ReclamationClothingModsuitGauntletsInstitute
+  name: Institute MOD suit gauntlets
+  description: Powered stun gauntlets. Seal them and touch a target with an empty hand outside combat mode to deliver a shock.
+  components:
+  - type: Tag
+    tags: [InstituteStunGauntlets]
+
+- type: entity
+  parent: ClothingModsuitBootsStandard
+  id: ReclamationClothingModsuitBootsInstitute
+  name: Institute MOD suit boots
+
+- type: Tag
+  id: InstituteStunGauntlets
+
+- type: Tag
+  id: InstituteMODControl
+
+- type: entity
+  parent: ClothingModsuitStandardPowerCell
+  id: InstituteResearchMODSuit
+  name: Institute research MOD suit
+  description: A white modular protective suit issued to Institute research personnel.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: InstituteResearchMODHelmet
+      gloves: InstituteResearchMODGauntlets
+      outerClothing: InstituteResearchMODChestplate
+      shoes: InstituteResearchMODBoots
+
+- type: entity
+  parent: ClothingModsuitHelmetStandard
+  id: InstituteResearchMODHelmet
+  name: Institute research MOD helmet
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteHelmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteHelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Radiation: 0.9
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: ComponentToggler
+    components:
+    - type: EyeProtection
+      protectionTime: 10
+
+- type: entity
+  parent: ClothingModsuitChestplateStandard
+  id: InstituteResearchMODChestplate
+  name: Institute research MOD chestplate
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteChestplate.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteChestplate.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+        Radiation: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModsuitGauntletsStandard
+  id: InstituteResearchMODGauntlets
+  name: Institute research MOD gauntlets
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
+
+- type: entity
+  parent: ClothingModsuitBootsStandard
+  id: InstituteResearchMODBoots
+  name: Institute research MOD boots
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteBoots.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteBoots.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+
+- type: entity
+  parent: ClothingModsuitStandardPowerCell
+  id: InstituteSecurityMODSuit
+  name: Institute security MOD suit
+  description: A white modular protective suit issued to Institute security personnel.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: InstituteSecurityMODHelmet
+      gloves: InstituteSecurityMODGauntlets
+      outerClothing: InstituteSecurityMODChestplate
+      shoes: InstituteSecurityMODBoots
+
+- type: entity
+  parent: ClothingModsuitHelmetStandard
+  id: InstituteSecurityMODHelmet
+  name: Institute security MOD helmet
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODSecurityHelmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODSecurityHelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Radiation: 0.9
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: ComponentToggler
+    components:
+    - type: EyeProtection
+      protectionTime: 10
+
+- type: entity
+  parent: ClothingModsuitChestplateStandard
+  id: InstituteSecurityMODChestplate
+  name: Institute security MOD chestplate
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteChestplate.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteChestplate.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.5
+        Radiation: 0.5
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+
+- type: entity
+  parent: ClothingModsuitGauntletsStandard
+  id: InstituteSecurityMODGauntlets
+  name: Institute security MOD gauntlets
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
+
+- type: entity
+  parent: ClothingModsuitBootsStandard
+  id: InstituteSecurityMODBoots
+  name: Institute security MOD boots
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/MODWhiteBoots.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/MODWhiteBoots.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0

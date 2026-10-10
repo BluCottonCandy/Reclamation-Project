@@ -1,0 +1,335 @@
+- type: entity
+  parent: ClothingOuterCoatRnd
+  id: InstituteScientistLabcoat
+  name: Institute Scientist Labcoat
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistLabcoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistLabcoat.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistLabcoat.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitScientist
+  id: InstituteScientistUniform
+  name: Institute scientist uniform
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistUniform.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtScientist
+  id: InstituteScientistSkirt
+  name: Institute scientist jumpskirt
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistSkirt.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistSkirt.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistSkirt.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitScientistFormal
+  id: InstituteScientistFormalUniform
+  name: Institute formal scientist uniform
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistFormalUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistFormalUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistFormalUniform.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitResearchDirector
+  id: InstituteCommandUniform
+  name: Institute command uniform
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/CommandUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/CommandUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/CommandUniform.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtResearchDirector
+  id: InstituteCommandSkirt
+  name: Institute command jumpskirt
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/CommandSkirt.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/CommandSkirt.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/CommandSkirt.rsi
+
+- type: entity
+  parent: ClothingHeadHatBeretRND
+  id: InstituteScientistBeret
+  name: Institute scientist beret
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistBeret.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistBeret.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistBeret.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterSci
+  id: InstituteScientistHood
+  name: Institute winter hood
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistHood.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistHood.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistHood.rsi
+
+- type: entity
+  parent: ClothingOuterWinterSci
+  id: InstituteScientistWinterCoat
+  name: Institute scientist winter coat
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistWinterCoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistWinterCoat.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistWinterCoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.8
+  - type: ToggleableClothing
+    clothingPrototype: InstituteScientistHood
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterRD
+  id: InstituteCommandHood
+  name: Institute winter hood
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/CommandHood.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/CommandHood.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/CommandHood.rsi
+
+- type: entity
+  parent: ClothingOuterWinterRD
+  id: InstituteCommandWinterCoat
+  name: Institute command winter coat
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/CommandWinterCoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/CommandWinterCoat.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/CommandWinterCoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.8
+        Caustic: 0.9
+  - type: ToggleableClothing
+    clothingPrototype: InstituteCommandHood
+
+- type: entity
+  parent: ClothingBackpackScience
+  id: InstituteScientistBackpack
+  name: Institute scientist backpack
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistBackpack.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistBackpack.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistBackpack.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchelScience
+  id: InstituteScientistSatchel
+  name: Institute scientist satchel
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistSatchel.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistSatchel.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistSatchel.rsi
+
+- type: entity
+  parent: ClothingBackpackDuffelScience
+  id: InstituteScientistDuffel
+  name: Institute scientist duffel bag
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/ScientistDuffel.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/ScientistDuffel.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/ScientistDuffel.rsi
+
+- type: entity
+  parent: ClothingShoesSwat
+  id: InstituteSecurityBoots
+  name: Institute security boots
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/SecurityBoots.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/SecurityBoots.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/SecurityBoots.rsi
+
+- type: entity
+  parent: ClothingShoesSwat
+  id: InstituteCourserBoots
+  name: Institute Courser boots
+  description: Standard Institute equipment issued for this role.
+
+- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: InstituteSecurityHelmet
+  name: Institute security helmet
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/SecurityHelmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/SecurityHelmet.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/SecurityHelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Radiation: 0.9
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+
+- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: InstituteCourserHelmet
+  name: Institute Courser helmet
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Radiation: 0.9
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+
+- type: entity
+  parent: ClothingMaskGasSwat
+  id: InstituteSecurityMask
+  name: Institute security mask
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/SecurityMask.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/SecurityMask.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/SecurityMask.rsi
+
+- type: entity
+  parent: ClothingMaskGasSwat
+  id: InstituteCourserMask
+  name: Institute Courser mask
+  description: Standard Institute equipment issued for this role.
+
+- type: entity
+  parent: ClothingOuterArmorSwat
+  id: InstituteCourserArmor
+  name: Institute Courser SWAT vest
+  description: Standard Institute equipment issued for this role.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.3
+        Heat: 0.9
+        Radiation: 0.75
+        Caustic: 0.85
+
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: InstituteCourserGloves
+  name: Institute Courser combat gloves
+  description: Standard Institute equipment issued for this role.
+
+- type: entity
+  parent: ClothingUniformJumpsuitColorBlack
+  id: InstituteSecurityUniform
+  name: Institute security uniform
+  description: Standard Institute equipment issued for this role.
+
+- type: entity
+  parent: ClothingShoesColorBlack
+  id: InstituteScientistShoes
+  name: Institute scientist shoes
+  description: Standard Institute equipment issued for this role.
+
+
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: InstituteSecurityGloves
+  name: Institute security combat gloves
+  description: Combat gloves issued to Institute security personnel.
+
+- type: entity
+  parent: ReclamationClothingOuterInstituteArmorVest
+  id: InstituteSecurityArmorVest
+  name: Institute security armor vest
+  description: A white armored vest issued to Institute security personnel.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.6

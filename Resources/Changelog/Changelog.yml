@@ -12269,3 +12269,14 @@ Entries:
   id: 6506
   time: '2026-10-10T12:44:45.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/25
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added Generation One synth enforcers and riflemen.
+    - type: Tweak
+      message: >-
+        Synth Reinforcements now deploys two synths instead of placeholder feral
+        ghouls.
+  id: 6507
+  time: '2026-10-10T12:44:34.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/24

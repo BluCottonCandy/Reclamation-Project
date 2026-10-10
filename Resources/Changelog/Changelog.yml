@@ -12255,3 +12255,10 @@ Entries:
   id: 6504
   time: '2026-10-09T12:38:42.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/22
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: Fixed missing ammo counters on standard pistols.
+  id: 6505
+  time: '2026-10-10T12:44:21.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/23

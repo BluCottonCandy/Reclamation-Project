@@ -1,5 +1,8 @@
 name: PR Changelogs
-concurrency: commit_action
+concurrency:
+  group: commit_action
+  queue: max
+  cancel-in-progress: false
 on:
   pull_request_target:
     types: [closed]
@@ -53,4 +56,3 @@ jobs:
         git pull --rebase origin main
         git push origin HEAD:main
       shell: bash
-

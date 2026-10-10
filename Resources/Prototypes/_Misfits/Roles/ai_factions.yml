@@ -185,6 +185,8 @@
 - type: npcFaction
   id: Deathclaw
   hostile:
+  - Institute
+  - InstituteSynth
   - Wastelander
   - BrotherhoodOfSteel
   - BrotherhoodOfSteelSecureArea

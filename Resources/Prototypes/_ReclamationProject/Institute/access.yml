@@ -1,0 +1,12 @@
+- type: accessLevel
+  id: Institute
+  name: id-card-access-level-institute
+
+- type: accessLevel
+  id: InstituteCommand
+  name: id-card-access-level-institutecommand
+
+- type: accessLevel
+  id: InstituteSecurity
+  name: id-card-access-level-institutesecurity
+

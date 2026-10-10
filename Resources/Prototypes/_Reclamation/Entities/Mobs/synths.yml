@@ -5,8 +5,11 @@
   id: ReclamationMobGenOneSynthBase
   name: Generation One synth
   description: An exposed mechanical skeleton beneath worn Institute plating.
-  suffix: Hostile AI
+  suffix: Institute AI
   components:
+  - type: NpcFactionMember
+    factions: [InstituteSynth]
+    friendlyOrderable: true
   - type: Inventory
     templateId: ReclamationSynth
   - type: InventorySlots
@@ -43,7 +46,7 @@
   parent: ReclamationMobGenOneSynthBase
   id: ReclamationMobGenOneSynthBaton
   name: Generation One synth enforcer
-  description: A hostile Institute synth carrying an integrated police baton.
+  description: An Institute synth carrying an integrated police baton.
   components:
   - type: Sprite
     layers:

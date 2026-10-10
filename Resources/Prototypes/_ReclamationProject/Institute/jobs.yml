@@ -1,0 +1,134 @@
+- type: department
+  id: Institute
+  description: department-Institute-description
+  color: "#e8e8e8"
+  uiCategory: MajorFaction
+  roles: [InstituteDirector, InstituteDivisionHead, InstituteScientist, InstituteCourser, InstituteSecurity]
+
+- type: job
+  id: InstituteDirector
+  setPreference: true
+  weight: 100
+  displayWeight: 100
+  canBeAntag: false
+  name: job-name-institute-director
+  description: job-description-institute-director
+  playTimeTracker: InstituteDirector
+  startingGear: InstituteDirectorGear
+  alwaysUseSpawner: true
+  access: [Institute, InstituteCommand, InstituteSecurity]
+  icon: JobIconScientist
+  supervisors: job-supervisors-institute
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Institute]
+
+- type: playTimeTracker
+  id: InstituteDirector
+
+- type: job
+  id: InstituteDivisionHead
+  setPreference: true
+  weight: 90
+  displayWeight: 90
+  canBeAntag: false
+  name: job-name-institute-divisionhead
+  description: job-description-institute-divisionhead
+  playTimeTracker: InstituteDivisionHead
+  startingGear: InstituteDivisionHeadGear
+  alwaysUseSpawner: true
+  access: [Institute, InstituteCommand, InstituteSecurity]
+  icon: JobIconScientist
+  supervisors: job-supervisors-institute
+  whitelisted: true
+  hideWithoutJobWhitelist: false
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Institute]
+
+- type: playTimeTracker
+  id: InstituteDivisionHead
+
+- type: job
+  id: InstituteScientist
+  setPreference: true
+  weight: 70
+  displayWeight: 70
+  canBeAntag: false
+  name: job-name-institute-scientist
+  description: job-description-institute-scientist
+  playTimeTracker: InstituteScientist
+  startingGear: InstituteScientistGear
+  alwaysUseSpawner: true
+  access: [Institute]
+  icon: JobIconScientist
+  supervisors: job-supervisors-institute
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Institute]
+
+- type: playTimeTracker
+  id: InstituteScientist
+
+- type: job
+  id: InstituteCourser
+  setPreference: true
+  weight: 80
+  displayWeight: 80
+  canBeAntag: false
+  name: job-name-institute-courser
+  description: job-description-institute-courser
+  playTimeTracker: InstituteCourser
+  startingGear: InstituteCourserGear
+  alwaysUseSpawner: true
+  access: [Institute, InstituteSecurity]
+  icon: JobIconScientist
+  supervisors: job-supervisors-institute
+  whitelisted: true
+  hideWithoutJobWhitelist: false
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Institute]
+
+- type: playTimeTracker
+  id: InstituteCourser
+
+- type: job
+  id: InstituteSecurity
+  setPreference: true
+  weight: 60
+  displayWeight: 60
+  canBeAntag: false
+  name: job-name-institute-security
+  description: job-description-institute-security
+  playTimeTracker: InstituteSecurity
+  startingGear: InstituteSecurityGear
+  alwaysUseSpawner: true
+  access: [Institute, InstituteSecurity]
+  icon: JobIconScientist
+  supervisors: job-supervisors-institute
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Institute]
+
+- type: playTimeTracker
+  id: InstituteSecurity
+

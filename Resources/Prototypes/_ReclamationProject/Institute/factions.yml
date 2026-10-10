@@ -1,0 +1,9 @@
+- type: npcFaction
+  id: Institute
+  friendly: [InstituteSynth]
+  hostile: [WastelandAnimal, WastelandInsect, Deathclaw, Raider, HostileRobot, Feral]
+
+- type: npcFaction
+  id: InstituteSynth
+  friendly: [Institute]
+  hostile: [AnimalFriend, Birb, BrotherhoodOfSteel, BrotherhoodOfSteelSecureArea, CaesarLegion, CaravanCompany, CaravanCompanySecureArea, Cat, Deathclaw, Dragon, Eighties, Enclave, Feral, Followers, GeometerOfBlood, GladiabotBlue, GladiabotFFA, GladiabotGreen, GladiabotRed, GladiabotYellow, GlimmerMonster, HostileRobot, Mailman, Minutemen, Mouse, NCR, NCRSecureArea, NanoTrasen, Passive, PetsNT, Pibble, PlayerRaider, PlayerRobot, PlayerSentryBot, PlayerSuperMutant, PsionicInterloper, Raider, Rangers, Revolutionary, SimpleHostile, SimpleNeutral, SuperMutant, Syndicate, Townsfolk, TownsfolkSecureArea, Tribal, TribalSecureArea, Vault, VaultSecureArea, WastelandAnimal, WastelandInsect, Wastelander, Xeno, Zetan, Zombie]

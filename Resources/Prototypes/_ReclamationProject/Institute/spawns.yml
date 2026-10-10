@@ -1,0 +1,70 @@
+- type: entity
+  parent: SpawnPointJobBase
+  id: InstituteDirectorSpawnPoint
+  name: Institute Director
+  description: Institute job spawn marker.
+  components:
+  - type: SpawnPoint
+    job_id: InstituteDirector
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: InstituteDivisionHeadSpawnPoint
+  name: Institute Division Head
+  description: Institute job spawn marker.
+  components:
+  - type: SpawnPoint
+    job_id: InstituteDivisionHead
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: InstituteScientistSpawnPoint
+  name: Institute Scientist
+  description: Institute job spawn marker.
+  components:
+  - type: SpawnPoint
+    job_id: InstituteScientist
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: InstituteCourserSpawnPoint
+  name: Institute Courser
+  description: Institute job spawn marker.
+  components:
+  - type: SpawnPoint
+    job_id: InstituteCourser
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: InstituteSecuritySpawnPoint
+  name: Institute Security
+  description: Institute job spawn marker.
+  components:
+  - type: SpawnPoint
+    job_id: InstituteSecurity
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+

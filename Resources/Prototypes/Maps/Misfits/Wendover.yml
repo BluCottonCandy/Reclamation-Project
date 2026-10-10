@@ -30,6 +30,11 @@
         overflowJobs:
         - Townsperson # #Misfits Change - Townsperson is now the default starter overflow role
         availableJobs:
+          InstituteDirector: [ 1, 1 ]
+          InstituteDivisionHead: [ 2, 2 ]
+          InstituteScientist: [ 4, 4 ]
+          InstituteCourser: [ 2, 2 ]
+          InstituteSecurity: [ 4, 4 ]
           # SuperMutantEnclave : [ 0, 0 ] # #Misfits Add - Enclave-aligned supermutant latejoin slot. # #Reclamation Project - Unhook
           # SuperMutantFollowerDoctor: [ 1, 1 ] # #Misfits Add: FOTA-aligned supermutant. # #Reclamation Project - Unhook
           Wastelander: [ -1, -1 ]

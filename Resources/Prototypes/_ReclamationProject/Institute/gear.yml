@@ -1,0 +1,120 @@
+- type: startingGear
+  id: InstituteDirectorGear
+  equipment:
+    pocket1: InstituteWeaponLaserPistol
+    wallet: N14Wallet
+    id: InstituteDirectorTablet
+    jumpsuit: InstituteCommandUniform
+    outerClothing: InstituteScientistLabcoat
+    head: InstituteScientistBeret
+    shoes: InstituteScientistShoes
+    back: InstituteResearchMODSuit
+
+- type: entity
+  parent: InstituteIDCardBase
+  id: InstituteDirectorIDCard
+  name: Institute Director ID card
+  description: An Institute personnel identification card.
+  components:
+  - type: PresetIdCard
+    job: InstituteDirector
+
+- type: startingGear
+  id: InstituteDivisionHeadGear
+  equipment:
+    pocket1: InstituteWeaponLaserPistol
+    wallet: N14Wallet
+    id: InstituteDivisionHeadTablet
+    jumpsuit: InstituteCommandUniform
+    outerClothing: InstituteScientistLabcoat
+    head: InstituteScientistBeret
+    shoes: InstituteScientistShoes
+    back: InstituteResearchMODSuit
+
+- type: entity
+  parent: InstituteIDCardBase
+  id: InstituteDivisionHeadIDCard
+  name: Institute Division Head ID card
+  description: An Institute personnel identification card.
+  components:
+  - type: PresetIdCard
+    job: InstituteDivisionHead
+
+- type: startingGear
+  id: InstituteScientistGear
+  equipment:
+    pocket1: InstituteWeaponLaserPistol
+    wallet: N14Wallet
+    id: InstituteScientistTablet
+    jumpsuit: InstituteScientistUniform
+    outerClothing: InstituteScientistLabcoat
+    head: InstituteScientistBeret
+    shoes: InstituteScientistShoes
+    back: InstituteResearchMODSuit
+
+- type: entity
+  parent: InstituteIDCardBase
+  id: InstituteScientistIDCard
+  name: Institute Scientist ID card
+  description: An Institute personnel identification card.
+  components:
+  - type: PresetIdCard
+    job: InstituteScientist
+
+- type: startingGear
+  id: InstituteCourserGear
+  equipment:
+    pocket1: InstituteWeaponLaserPistol
+    wallet: N14Wallet
+    id: InstituteCourserTablet
+    jumpsuit: InstituteSecurityUniform
+    head: InstituteCourserHelmet
+    shoes: InstituteCourserBoots
+    mask: InstituteCourserMask
+    gloves: InstituteCourserGloves
+    outerClothing: InstituteCourserArmor
+    back: ReclamationClothingModsuitInstitute
+    suitstorage: ReclamationWeaponInstituteAER12
+  storage:
+    back:
+    - InstituteAcidifierImplanter
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+
+- type: entity
+  parent: InstituteIDCardBase
+  id: InstituteCourserIDCard
+  name: Institute Courser ID card
+  description: An Institute personnel identification card.
+  components:
+  - type: PresetIdCard
+    job: InstituteCourser
+
+- type: startingGear
+  id: InstituteSecurityGear
+  equipment:
+    pocket1: InstituteWeaponLaserPistol
+    wallet: N14Wallet
+    id: InstituteSecurityTablet
+    jumpsuit: InstituteSecurityUniform
+    head: InstituteSecurityHelmet
+    shoes: InstituteSecurityBoots
+    mask: InstituteSecurityMask
+    gloves: InstituteSecurityGloves
+    outerClothing: InstituteSecurityArmorVest
+    back: InstituteSecurityMODSuit
+    suitstorage: ReclamationWeaponInstituteAER9
+  storage:
+    back:
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed
+
+- type: entity
+  parent: InstituteIDCardBase
+  id: InstituteSecurityIDCard
+  name: Institute Security ID card
+  description: An Institute personnel identification card.
+  components:
+  - type: PresetIdCard
+    job: InstituteSecurity
+

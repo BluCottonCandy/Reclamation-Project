@@ -1,0 +1,17 @@
+department-Institute = The Institute
+department-Institute-description = Institute research, leadership, and security.
+job-supervisors-institute = the Institute Director and Division Heads
+job-name-institute-director = Institute Director
+job-description-institute-director = Serve the Institute as a director.
+job-name-institute-divisionhead = Institute Division Head
+job-description-institute-divisionhead = Serve the Institute as a division head.
+job-name-institute-scientist = Institute Scientist
+job-description-institute-scientist = Serve the Institute as a scientist.
+job-name-institute-courser = Institute Courser
+job-description-institute-courser = Serve the Institute as a courser.
+job-name-institute-security = Institute Security
+job-description-institute-security = Serve the Institute as a security.
+id-card-access-level-institute = Institute
+id-card-access-level-institutecommand = Institute command
+id-card-access-level-institutesecurity = Institute security
+institute-gauntlets-no-power = Your MOD suit does not have enough charge to stun.

@@ -12262,3 +12262,10 @@ Entries:
   id: 6505
   time: '2026-10-10T12:44:21.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/23
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: Fixed missing arms on Generation One synths.
+  id: 6506
+  time: '2026-10-10T12:44:45.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/25

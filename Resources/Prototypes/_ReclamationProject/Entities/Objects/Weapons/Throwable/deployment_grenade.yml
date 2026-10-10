@@ -26,14 +26,16 @@
     sound: /Audio/Items/smoke_grenade_smoke.ogg
   - type: DeleteOnTrigger
 
-# Keep the temporary mob choice in one place for the future synth replacement.
+# Deploy one enforcer and one rifleman.
 - type: entity
   id: ReclamationGhoulDeploymentPayload
   categories: [ HideSpawnMenu ]
   components:
   - type: EntityTableSpawner
-    table: !type:EntSelector
-      id: N14MobGhoulFeral
-      amount: !type:ConstantNumberSelector
-        value: 2
+    table: !type:AllSelector
+      children:
+      - !type:EntSelector
+        id: ReclamationMobGenOneSynthBaton
+      - !type:EntSelector
+        id: ReclamationMobGenOneSynthLaser
     offset: 0.5

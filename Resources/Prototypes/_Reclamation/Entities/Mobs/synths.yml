@@ -1,0 +1,137 @@
+# Robotic physiology with the same combat planner used by raider NPCs.
+- type: entity
+  abstract: true
+  parent: N14MobRobotHostile
+  id: ReclamationMobGenOneSynthBase
+  name: Generation One synth
+  description: An exposed mechanical skeleton beneath worn Institute plating.
+  suffix: Hostile AI
+  components:
+  - type: Inventory
+    templateId: ReclamationSynth
+  - type: InventorySlots
+  - type: Loadout
+    prototypes:
+    - ReclamationGenOneSynthGear
+  - type: Damageable
+    damageContainer: Silicon
+    damageModifierSet: Metallic
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
+  - type: Sprite
+    sprite: _Reclamation/Mobs/Synths/gen_one.rsi
+    layers:
+    - state: alive
+      map: ["enum.DamageStateVisualLayers.Base"]
+    - map: ["outerClothing"]
+  - type: MeleeWeapon
+    hidden: true
+    range: 1.5
+    attackRate: 1.5
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 8
+
+- type: entity
+  parent: ReclamationMobGenOneSynthBase
+  id: ReclamationMobGenOneSynthBaton
+  name: Generation One synth enforcer
+  description: A hostile Institute synth carrying an integrated police baton.
+  components:
+  - type: Sprite
+    layers:
+    - state: alive
+      map: ["enum.DamageStateVisualLayers.Base"]
+    - map: ["outerClothing"]
+    - sprite: _Nuclear14/Objects/Weapons/Melee/policebaton.rsi
+      state: inhand-right
+  - type: MeleeWeapon
+    hidden: true
+    animation: WeaponArcSlash
+    damage:
+      types:
+        Blunt: 8
+  - type: StaminaDamageOnHit
+    damage: 10
+
+- type: entity
+  parent: ReclamationMobGenOneSynthBase
+  id: ReclamationMobGenOneSynthLaser
+  name: Generation One synth rifleman
+  description: An Institute synth wielding an integrated advanced laser rifle.
+  components:
+  - type: Sprite
+    layers:
+    - state: alive
+      map: ["enum.DamageStateVisualLayers.Base"]
+    - map: ["outerClothing"]
+    - sprite: _Reclamation/Objects/Weapons/institute_aer9.rsi
+      state: wielded-inhand-right
+  - type: Gun
+    minAngle: 1
+    maxAngle: 10
+    angleIncrease: 1
+    angleDecay: 4
+    fireRate: 1.33
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: N14LaserAutoRifleGunshot
+  - type: HitscanBatteryAmmoProvider
+    proto: N14MFLaserRed
+    fireCost: 50
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 50
+
+- type: entity
+  parent: N14WeaponLaserRifle
+  id: ReclamationWeaponInstituteAER9
+  name: Institute AER9 laser rifle
+  description: An AER9 rebuilt with ivory Institute plating and red accents.
+  components:
+  - type: Sprite
+    sprite: _Reclamation/Objects/Weapons/institute_aer9.rsi
+  - type: Item
+    sprite: _Reclamation/Objects/Weapons/institute_aer9.rsi
+  - type: Clothing
+    sprite: _Reclamation/Objects/Weapons/institute_aer9.rsi
+
+- type: inventoryTemplate
+  id: ReclamationSynth
+  slots:
+  - name: outerClothing
+    slotTexture: suit
+    slotFlags: OUTERCLOTHING
+    stripTime: 6
+    uiWindowPos: 1,1
+    strippingWindowPos: 1,2
+    displayName: Vest
+
+- type: startingGear
+  id: ReclamationGenOneSynthGear
+  equipment:
+    outerClothing: ReclamationClothingOuterInstituteArmorVest
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ReclamationClothingOuterInstituteArmorVest
+  name: Institute armor Vest
+  description: A white-painted armored vest issued to Institute synths.
+  components:
+  - type: Sprite
+    sprite: _Reclamation/Clothing/Institute/armor_vest.rsi
+  - type: Clothing
+    sprite: _Reclamation/Clothing/Institute/armor_vest.rsi

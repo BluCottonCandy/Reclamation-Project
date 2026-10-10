@@ -12280,3 +12280,10 @@ Entries:
   id: 6507
   time: '2026-10-10T12:44:34.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/24
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added Institute jobs, equipment, and friendly synth commands.
+  id: 6508
+  time: '2026-10-10T13:26:23.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/26

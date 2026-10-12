@@ -5,7 +5,7 @@ Map file: `Resources/Maps/Reclamation/CommonWealth.yml`.
 
 This is a blank 1,000 by 500 tile wasteland ground rectangle, centered on (0, 0). Ground covers x = -500 through 499 and y = -250 through 249. Everything beyond that rectangle is space. There is no biome generation, scenery, buildings, or perimeter wall. Place the perimeter before using this as a player map.
 
-A Wastelander spawn marker sits at the center. The map has gravity, warm daylight, and a static breathable atmosphere. Keep `misfits.atmos_simulated` set to `false` on the mapping server to disable atmosphere simulation. Outside tiles remain space visually; the static atmosphere is map-wide. This base is registered for manual loading but is not added to the normal map rotation.
+A Wastelander spawn marker sits at the center. The map has gravity, warm daylight, and a static breathable atmosphere. Keep `misfits.atmos_simulated` set to `false` on the mapping server to disable atmosphere simulation. Outside tiles remain space visually; the static atmosphere is map-wide. Common Wealth is the only map in the default map pool.
 
 ## Load for editing
 
@@ -23,3 +23,4 @@ Map 9 is only an example runtime ID. It is not a permanent map identifier and do
 Start the server with `--cvar game.map=CommonWealth --cvar game.map_rotation=false --cvar game.lobbyenabled=false --cvar misfits.atmos_simulated=false`. Connect your client to that server. Select Wastelander to spawn at the center if presented with a job selection.
 
 The map can be expanded later with the tile placement tools. Its starting dimensions do not impose an invisible boundary.
+

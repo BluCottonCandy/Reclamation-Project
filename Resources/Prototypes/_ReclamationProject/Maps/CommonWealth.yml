@@ -1,0 +1,17 @@
+# Blank mapping base. Not added to the live map rotation.
+- type: gameMap
+  id: CommonWealth
+  mapName: Common Wealth
+  mapAuthor: Reclamation Project
+  mapPath: /Maps/Reclamation/CommonWealth.yml
+  minPlayers: 0
+  stations:
+    CommonWealth:
+      stationProto: FalloutStation
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: Common Wealth
+      - type: StationJobs
+        overflowJobs: [Wastelander]
+        availableJobs:
+          Wastelander: [-1, -1]

@@ -196,6 +196,10 @@ public sealed partial class CharacterDepartmentTimeRequirement : CharacterRequir
 [Serializable, NetSerializable]
 public sealed partial class CharacterOverallTimeRequirement : CharacterRequirement
 {
+    /// <summary>Enforce this requirement even when ordinary job timers are disabled.</summary>
+    [DataField]
+    public bool AlwaysRequired;
+
     [DataField]
     public TimeSpan Min = TimeSpan.MinValue;
 
@@ -204,7 +208,7 @@ public sealed partial class CharacterOverallTimeRequirement : CharacterRequireme
 
     public override bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
     {
-        return job.JobWhitelistBypassesRoleTimers;
+        return !AlwaysRequired && job.JobWhitelistBypassesRoleTimers;
     }
 
     public override bool IsValid(JobPrototype job,
@@ -220,7 +224,7 @@ public sealed partial class CharacterOverallTimeRequirement : CharacterRequireme
         int depth = 0)
     {
         // Disable the requirement if the role timers are disabled
-        if (!configManager.GetCVar(CCVars.GameRoleTimers))
+        if (!AlwaysRequired && !configManager.GetCVar(CCVars.GameRoleTimers))
         {
             reason = null;
             return !Inverted;

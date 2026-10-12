@@ -39,8 +39,6 @@ public sealed class PersistentCurrencySystem : EntitySystem
     {
         { CurrencyType.Bottlecaps, "N14CurrencyCap" },
         // #Misfits Change - NCRDollars, LegionDenarii, and PrewarMoney are now tracked persistently again
-        { CurrencyType.NCRDollars, "N14CurrencyNCRDollar" },
-        { CurrencyType.LegionDenarii, "N14CurrencyLegionDenarius" },
         { CurrencyType.PrewarMoney, "N14CurrencyPrewar" },
     };
 
@@ -48,8 +46,6 @@ public sealed class PersistentCurrencySystem : EntitySystem
     private static readonly Dictionary<CurrencyType, string> CurrencyDisplayNames = new()
     {
         { CurrencyType.Bottlecaps, "Bottlecaps" },
-        { CurrencyType.NCRDollars, "NCR Dollars" },
-        { CurrencyType.LegionDenarii, "Legion Denarii" },
         { CurrencyType.PrewarMoney, "Pre-War Money" },
     };
 
@@ -249,7 +245,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         if (!TryComp<PersistentCurrencyComponent>(uid, out var comp))
             return;
 
-        if (msg.Amount <= 0)
+        if (msg.Amount <= 0 || !CurrencyPrototypes.ContainsKey(msg.CurrencyType))
             return;
 
         // Check balance

@@ -47,11 +47,6 @@
     fireRate: 3
   - type: StaticPrice
     price: 15
-  - type: GunWieldBonus
-    minAngle: 0
-    maxAngle: 0
-    angleIncrease: 0
-    angleDecay: 0
   - type: AmmoCounter
 
 - type: entity

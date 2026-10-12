@@ -1,4 +1,4 @@
-# Blank mapping base. Not added to the live map rotation.
+# Common Wealth is the default mapping base.
 - type: gameMap
   id: CommonWealth
   mapName: Common Wealth
@@ -15,3 +15,4 @@
         overflowJobs: [Wastelander]
         availableJobs:
           Wastelander: [-1, -1]
+

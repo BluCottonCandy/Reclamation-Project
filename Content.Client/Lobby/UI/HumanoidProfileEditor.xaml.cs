@@ -687,10 +687,10 @@ namespace Content.Client.Lobby.UI
             #endregion Jobs
 
             #region Antags
-            // #Misfits Change - Antags tab removed from character setup (AddTab commented out so no tab renders)
+            // Reclamation: allow players to opt into mid-round antagonist roles.
 
             Antags.Orphan();
-            // CTabContainer.AddTab(Antags, Loc.GetString("humanoid-profile-editor-antags-tab"));
+            CTabContainer.AddTab(Antags, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
             #endregion Antags
 

@@ -1,3 +1,4 @@
+using Content.Shared.Hands.EntitySystems;
 ﻿using Content.Server.IdentityManagement;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.EntitySystems;
@@ -18,6 +19,8 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
     [Dependency] private readonly IComponentFactory _factory = default!;
     [Dependency] private readonly IdentitySystem _identity = default!;
 
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -33,7 +36,7 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
 
     private void OnVerb(EntityUid uid, ChameleonClothingComponent component, GetVerbsEvent<InteractionVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || component.User != args.User)
+        if (!args.CanAccess || !args.CanInteract || (component.User != args.User && !_hands.IsHolding(args.User, uid, out _)))
             return;
 
         args.Verbs.Add(new InteractionVerb()
@@ -55,6 +58,7 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
             return;
         if (!TryComp(user, out ActorComponent? actor))
             return;
+        UpdateUi(uid, component);
         _uiSystem.TryToggleUi(uid, ChameleonUiKey.Key, actor.PlayerSession);
     }
 
@@ -63,7 +67,7 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
         if (!Resolve(uid, ref component))
             return;
 
-        var state = new ChameleonBoundUserInterfaceState(component.Slot, component.Default);
+        var state = new ChameleonBoundUserInterfaceState(component.Slot, component.Default, component.AdditionalTargets, component.RestrictTargets);
         _uiSystem.SetUiState(uid, ChameleonUiKey.Key, state);
     }
 
@@ -84,7 +88,8 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
         // make sure that it is valid change
         if (string.IsNullOrEmpty(protoId) || !_proto.TryIndex(protoId, out EntityPrototype? proto))
             return;
-        if (!IsValidTarget(proto, component.Slot))
+        if (!component.AdditionalTargets.Contains(proto.ID)
+            && (component.RestrictTargets || !IsValidTarget(proto, component.Slot)))
             return;
         component.Default = protoId;
 

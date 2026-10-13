@@ -12294,3 +12294,12 @@ Entries:
   id: 6509
   time: '2026-10-12T10:06:20.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/27
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Removed the incorrect wielding accuracy message from the makeshift .45
+        pistol.
+  id: 6510
+  time: '2026-10-13T12:12:27.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/29

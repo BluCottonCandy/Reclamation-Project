@@ -12328,3 +12328,10 @@ Entries:
   id: 6513
   time: '2026-10-13T12:13:00.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/32
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added Institute chameleon field equipment and MOD suit disguises.
+  id: 6514
+  time: '2026-10-13T12:13:12.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/33

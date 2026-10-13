@@ -74,9 +74,13 @@ namespace Content.Client.Access.UI
             NumberLineEdit.Text = number?.ToString("D4") ?? "";
         }
 
-        public void SetAllowedIcons(string currentJobIconId)
+        public void SetAllowedIcons(string currentJobIconId, bool allowed = true)
         {
             IconGrid.DisposeAllChildren();
+            JobIconLabel.Visible = allowed;
+            IconGrid.Visible = allowed;
+            if (!allowed)
+                return;
 
             var jobIconButtonGroup = new ButtonGroup();
             var i = 0;

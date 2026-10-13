@@ -2,6 +2,7 @@ using Content.Client._Goobstation.Clothing.Components;
 using Content.Client.Clothing;
 using Content.Shared._Goobstation.Clothing;
 using Content.Shared.Clothing;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using System.Linq;
@@ -32,6 +33,11 @@ public sealed class SealableClothingVisualizerSystem : VisualizerSystem<Sealable
     private void OnGetEquipmentVisuals(Entity<SealableClothingVisualsComponent> sealable, ref GetEquipmentVisualsEvent args)
     {
         var (uid, comp) = sealable;
+
+        // A disguise must not reveal the sealed MOD suit layers underneath.
+        if (TryComp<ChameleonClothingComponent>(uid, out var chameleon)
+            && chameleon.Default != MetaData(uid).EntityPrototype?.ID)
+            return;
 
         if (!TryComp(uid, out AppearanceComponent? appearance)
             || !AppearanceSystem.TryGetData<bool>(uid, SealableClothingVisuals.Sealed, out var isSealed, appearance)

@@ -1,7 +1,7 @@
 - type: construction
   id: ReclamationMirelurkArmor
   name: mirelurk shell armor
-  description: Bind five mirelurk carapaces with ten pieces of leather to make a complete shell armor set.
+  description: Bind one queen carapace and five mirelurk carapaces with ten pieces of leather to make a complete shell armor set.
   graph: ReclamationMirelurkArmor
   startNode: start
   targetNode: armor
@@ -20,6 +20,11 @@
     edges:
     - to: armor
       steps:
+        - tag: ReclamationMirelurkQueenCarapace
+          name: mirelurk queen carapace
+          icon:
+            sprite: _ReclamationProject/Mobs/queen_carapace.rsi
+            state: icon
         - tag: ReclamationMirelurkCarapace
           name: mirelurk carapace
           icon:

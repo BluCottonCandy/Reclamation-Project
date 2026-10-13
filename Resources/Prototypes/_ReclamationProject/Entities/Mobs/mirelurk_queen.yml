@@ -1,0 +1,148 @@
+- type: damageModifierSet
+  id: ReclamationMirelurkQueenShell
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.5
+    Heat: 0.5
+
+- type: entity
+  parent: N14MobMirelurk
+  id: ReclamationMobMirelurkQueen
+  name: mirelurk queen
+  description: An enormous, relentless mirelurk with a dark, spiked shell and vicious claws.
+  components:
+  - type: Sprite
+    scale: 1.7, 1.7
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: mirelurk
+      sprite: _ReclamationProject/Mobs/mirelurk_queen.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 5.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.5
+        density: 20
+        mask: [MobMask]
+        layer: [MobLayer]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: Ungibbable
+  - type: Damageable
+    damageModifierSet: ReclamationMirelurkQueenShell
+  - type: Reflect
+    reflects: [SmallCaliber, MediumCaliber, Energy]
+    reflectProb: 0.3
+    reflectProbByType:
+      SmallCaliber: 0.5
+      MediumCaliber: 0.4
+      Energy: 0.5
+    innate: true
+  - type: SlowOnDamage
+    speedModifierThresholds: {}
+  - type: MeleeWeapon
+    attackRate: 4
+    damage:
+      types:
+        Blunt: 20
+        Slash: 30
+        Piercing: 0
+  - type: Butcherable
+    spawned:
+    - id: ReclamationMobBabyMirelurk
+      amount: 4
+      prob: 1.0
+    - id: N14FoodMeatMirelurkClaw
+      amount: 2
+      prob: 0.8
+    - id: ReclamationMirelurkQueenCarapace
+      amount: 1
+      prob: 1.0
+
+- type: Tag
+  id: ReclamationMirelurkQueenCarapace
+
+- type: entity
+  parent: ReclamationMirelurkCarapace
+  id: ReclamationMirelurkQueenCarapace
+  name: mirelurk queen carapace
+  description: A large, dark shell plate covered in tough spikes. Required for crafting mirelurk shell armor.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Mobs/queen_carapace.rsi
+    state: icon
+  - type: Item
+    sprite: _ReclamationProject/Mobs/queen_carapace.rsi
+  - type: Tag
+    tags: [ReclamationMirelurkQueenCarapace]
+
+- type: entity
+  parent: N14MobMirelurk
+  id: ReclamationMobBabyMirelurk
+  name: baby mirelurk
+  description: A pale pink mirelurk hatchling. Small, surprisingly tough, and alarmingly quick.
+  components:
+  - type: Sprite
+    sprite: Mobs/Animals/mothroach.rsi
+    scale: 0.5, 0.5
+    color: "#FFD0DF"
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: mothroach
+      sprite: Mobs/Animals/mothroach.rsi
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: mothroach-moving
+    noMovementLayers:
+      movement:
+        state: mothroach
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mothroach
+      Critical:
+        Base: mothroach_dead
+      Dead:
+        Base: mothroach_dead
+  - type: Reflect
+    reflects: [None]
+    reflectProb: 0
+    reflectProbByType:
+      SmallCaliber: 0
+      MediumCaliber: 0
+      Energy: 0
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 6
+    baseSprintSpeed: 8
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.15
+        density: 20
+        mask: [SmallMobMask]
+        layer: [SmallMobLayer]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      160: Dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 0
+        Slash: 2
+        Piercing: 8
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatMirelurkClaw
+      amount: 1
+      prob: 0.8

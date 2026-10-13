@@ -56,15 +56,22 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
     /// <summary>
     ///     Get a list of valid chameleon targets for these slots.
     /// </summary>
-    public IEnumerable<string> GetValidTargets(SlotFlags slot)
+    public IEnumerable<string> GetValidTargets(SlotFlags slot, IEnumerable<EntProtoId>? additionalTargets = null, bool restrictTargets = false)
     {
         var set = new HashSet<string>();
+        if (!restrictTargets)
         foreach (var availableSlot in _data.Keys)
         {
             if (slot.HasFlag(availableSlot))
             {
                 set.UnionWith(_data[availableSlot]);
             }
+        }
+        if (additionalTargets != null)
+        {
+            foreach (var id in additionalTargets)
+                if (_proto.TryIndex(id, out EntityPrototype? prototype) && !prototype.Abstract)
+                    set.Add(id);
         }
         return set;
     }

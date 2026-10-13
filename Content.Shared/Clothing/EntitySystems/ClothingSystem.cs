@@ -1,3 +1,5 @@
+using Content.Shared._Goobstation.Clothing.Components;
+using Content.Shared._Goobstation.Clothing.Systems;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Clothing.Components;
@@ -28,6 +30,7 @@ public abstract class ClothingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<HideLayerClothingComponent, ClothingPartSealCompleteEvent>(OnHideLayerSealChanged);
 
         SubscribeLocalEvent<ClothingComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<ClothingComponent, ComponentGetState>(OnGetState);
@@ -123,6 +126,9 @@ public abstract class ClothingSystem : EntitySystem
             {
                 if (TryComp(item, out HideLayerClothingComponent? comp))
                 {
+                    if (comp.HideOnSeal && (!TryComp<SealableClothingComponent>(item, out var sealable) || !sealable.IsSealed))
+                        continue;
+
                     if (comp.Slots.Contains(layer))
                     {
                         //Checks for mask toggling. TODO: Make a generic system for this
@@ -244,6 +250,12 @@ public abstract class ClothingSystem : EntitySystem
         args.Handled = _invSystem.TryUnequip(args.User, target, args.Slot, clothing: ent.Comp, predicted: true, checkDoafter: false);
         if (args.Handled)
             _handsSystem.TryPickup(args.User, ent);
+    }
+
+    private void OnHideLayerSealChanged(EntityUid uid, HideLayerClothingComponent component, ref ClothingPartSealCompleteEvent args)
+    {
+        if (component.HideOnSeal && _containerSys.TryGetContainingContainer((uid, null, null), out var container))
+            CheckEquipmentForLayerHide(uid, container.Owner);
     }
 
     private void CheckEquipmentForLayerHide(EntityUid equipment, EntityUid equipee)

@@ -63,7 +63,7 @@ namespace Content.Client.Access.UI
 
             _window.SetCurrentName(cast.CurrentName);
             _window.SetCurrentJob(cast.CurrentJob);
-            _window.SetAllowedIcons(cast.CurrentJobIconId);
+            _window.SetAllowedIcons(cast.CurrentJobIconId, cast.AllowJobIconChange);
             _window.SetCurrentNumber(cast.CurrentNumber); // DeltaV
         }
     }

@@ -27,6 +27,13 @@ public sealed partial class ChameleonClothingComponent : Component
     [DataField(required: true), AutoNetworkedField]
     public EntProtoId? Default;
 
+    /// <summary>Additional disguise appearances allowed for this item, including hidden role IDs.</summary>
+    [DataField]
+    public List<EntProtoId> AdditionalTargets = new();
+
+    [DataField]
+    public bool RestrictTargets;
+
     /// <summary>
     ///     Current user that wears chameleon clothing.
     /// </summary>
@@ -39,11 +46,15 @@ public sealed class ChameleonBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly SlotFlags Slot;
     public readonly string? SelectedId;
+    public readonly List<EntProtoId> AdditionalTargets;
+    public readonly bool RestrictTargets;
 
-    public ChameleonBoundUserInterfaceState(SlotFlags slot, string? selectedId)
+    public ChameleonBoundUserInterfaceState(SlotFlags slot, string? selectedId, List<EntProtoId> additionalTargets, bool restrictTargets)
     {
         Slot = slot;
         SelectedId = selectedId;
+        AdditionalTargets = additionalTargets;
+        RestrictTargets = restrictTargets;
     }
 }
 

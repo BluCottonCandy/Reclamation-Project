@@ -117,7 +117,7 @@ namespace Content.Server.Access.Systems
                 idCard.FullName ?? "",
                 idCard.LocalizedJobTitle ?? "",
                 idCard.JobIcon,
-                currentNumber); // DeltaV - Pass current number
+                currentNumber, Comp<AgentIDCardComponent>(uid).AllowJobIconChange); // DeltaV - Pass current number
 
             _uiSystem.SetUiState(uid, AgentIDCardUiKey.Key, state);
         }
@@ -140,6 +140,9 @@ namespace Content.Server.Access.Systems
 
         private void OnJobIconChanged(EntityUid uid, AgentIDCardComponent comp, AgentIDCardJobIconChangedMessage args)
         {
+            if (!comp.AllowJobIconChange)
+                return;
+
             if (!TryComp<IdCardComponent>(uid, out var idCard))
                 return;
 

@@ -351,8 +351,8 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         // The separate chance to knock an item away remains unchanged.
         var chance = inTargetHand == null ? 1f : CalculateDisarmChance(user, target, inTargetHand, combatMode);
         var knockedItem = inTargetHand != null && _random.Prob(chance);
-        var staminaDamage = TryComp<ShovingComponent>(user, out var shoving)
-            ? shoving.StaminaDamage : ShovingComponent.DefaultStaminaDamage;
+        var staminaDamage = Math.Clamp(TryComp<ShovingComponent>(user, out var shoving)
+            ? shoving.StaminaDamage : ShovingComponent.DefaultStaminaDamage, 0f, ShovingComponent.DefaultStaminaDamage);
         var handled = false;
         if (inTargetHand == null || knockedItem)
         {

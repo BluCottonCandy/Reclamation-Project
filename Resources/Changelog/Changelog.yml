@@ -12303,3 +12303,12 @@ Entries:
   id: 6510
   time: '2026-10-13T12:12:27.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/29
+- author: BluCottonCandy
+  changes:
+    - type: Remove
+      message: Removed NCR and Legion currency from the character wallet.
+    - type: Remove
+      message: Removed Legion coin crafting from the forge.
+  id: 6511
+  time: '2026-10-13T12:12:38.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/30

@@ -1,0 +1,132 @@
+- type: antag
+  id: ActivatedSynth
+  name: activated-synth-name
+  antagonist: true
+  setPreference: true
+  objective: activated-synth-preference-description
+  requirements:
+  - !type:CharacterOverallTimeRequirement
+    min: 36000
+    alwaysRequired: true
+
+# The same selection definition used by sleeper agents, scheduled in hourly batches.
+- type: entity
+  parent: BaseGameRule
+  id: ActivatedSynths
+  categories: [HideSpawnMenu]
+  components:
+  - type: ActivatedSynthRule
+  - type: AntagSelection
+    selectionsComplete: true # Never select at round start or on joining.
+    selectionTime: PrePlayerSpawn # The pre-spawn hook respects selectionsComplete.
+    agentName: activated-synth-name
+    definitions:
+    - prefRoles: [ActivatedSynth]
+      min: 2
+      max: 2
+      blacklist:
+        components: [AntagImmune]
+      mindComponents:
+      - type: ActivatedSynth
+      - type: TraitorRole
+        prototype: ActivatedSynth
+      briefing:
+        text: activated-synth-briefing
+        color: White
+        sound: /Audio/Ambience/Antag/traitor_start.ogg
+
+- type: entity
+  parent: BaseObjective
+  abstract: true
+  id: BaseSynthObjective
+  components:
+  - type: Objective
+    issuer: institute
+    difficulty: 1
+    icon:
+      sprite: Objects/Misc/bureaucracy.rsi
+      state: folder-white
+  - type: RoleRequirement
+    roles:
+      components: [TraitorRole]
+
+- type: entity
+  parent: BaseSynthObjective
+  id: SynthHolodisksObjective
+  categories: [HideSpawnMenu]
+  name: Steal four holo disks
+  description: Acquire four holo disks and keep them on your person or in your inventory.
+  components:
+  - type: SynthObjective
+    task: Holodisks
+
+- type: entity
+  parent: BaseSynthObjective
+  id: SynthRifleObjective
+  categories: [HideSpawnMenu]
+  name: Steal an AER-9 laser rifle
+  description: Acquire a standard AER-9 laser rifle and keep it on your person or in your inventory.
+  components:
+  - type: SynthObjective
+    task: Rifle
+
+- type: entity
+  parent: BaseSynthObjective
+  id: SynthKeysObjective
+  categories: [HideSpawnMenu]
+  name: Steal all four faction encryption keys
+  description: Collect a Minute Men, Brotherhood of Steel, Diamond City, and Railroad encryption key. Keep all four in your inventory. Keys inserted in your headset also count.
+  components:
+  - type: SynthObjective
+    task: Keys
+
+- type: entity
+  parent: BaseSynthObjective
+  id: SynthRailroadObjective
+  categories: [HideSpawnMenu]
+  name: Infiltrate the Railroad
+  description: Earn the Railroad's trust and infiltrate their organization. Explain your actions in your mission report and mark this roleplay objective complete there.
+  components:
+  - type: SynthObjective
+    task: Railroad
+
+- type: entity
+  parent: BaseSynthObjective
+  id: SynthDiamondCityObjective
+  categories: [HideSpawnMenu]
+  name: Infiltrate Diamond City
+  description: Earn the trust of Diamond City's people and infiltrate their organization. Explain your actions in your mission report and mark this roleplay objective complete there.
+  components:
+  - type: SynthObjective
+    task: DiamondCity
+
+- type: entity
+  parent: BaseSynthObjective
+  id: SynthMayorObjective
+  categories: [HideSpawnMenu]
+  name: Become the Mayor of Diamond City
+  description: Become Diamond City's Mayor through your actions in the round. Explain how in your mission report and mark this roleplay objective complete there.
+  components:
+  - type: SynthObjective
+    task: Mayor
+
+- type: radioChannel
+  id: Railroad
+  name: chat-radio-railroad
+  keycode: 'q'
+  frequency: 1560
+  color: "#C6B99A"
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyRailroad
+  name: Railroad encryption key
+  description: An encryption key used by the Railroad.
+  components:
+  - type: EncryptionKey
+    channels: [Railroad]
+    defaultChannel: Railroad
+  - type: Sprite
+    layers:
+    - state: crypt_gray
+    - state: common_label

@@ -1,3 +1,6 @@
+using Content.Server._Reclamation.ActivatedSynth;
+using Content.Shared._Reclamation.ActivatedSynth;
+using Content.Shared.Mind;
 using Content.Server.Administration.Commands;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
@@ -46,6 +49,23 @@ public sealed partial class AdminVerbSystem
             return;
 
         var targetPlayer = targetActor.PlayerSession;
+
+        Verb synth = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-activated-synth"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Structures/Wallmounts/posters.rsi"), "poster5_contraband"),
+            Act = () =>
+            {
+                var minds = EntityManager.System<SharedMindSystem>();
+                if (!minds.TryGetMind(args.Target, out var mind, out _) || HasComp<ActivatedSynthComponent>(mind))
+                    return;
+                _antag.ForceMakeAntag<ActivatedSynthRuleComponent>(targetPlayer, "ActivatedSynths");
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-activated-synth"),
+        };
+        args.Verbs.Add(synth);
 
         Verb traitor = new()
         {

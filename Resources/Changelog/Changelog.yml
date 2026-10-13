@@ -12335,3 +12335,12 @@ Entries:
   id: 6514
   time: '2026-10-13T12:13:12.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/33
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added the Mirelurk Queen and four hatchlings released when butchered.
+    - type: Tweak
+      message: Updated Mirelurk armor crafting to require a Queen carapace.
+  id: 6515
+  time: '2026-10-13T12:23:09.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/34

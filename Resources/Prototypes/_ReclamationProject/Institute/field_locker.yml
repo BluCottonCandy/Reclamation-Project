@@ -1,0 +1,273 @@
+- type: radioChannel
+  id: InstituteRadio
+  name: chat-radio-institute
+  keycode: 'i'
+  frequency: 1520
+  color: "#eeeeee"
+  longRange: true
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyInstitute
+  name: Institute encryption key
+  description: A cipher chip granting access to Institute communications.
+  components:
+  - type: EncryptionKey
+    channels: [InstituteRadio]
+    defaultChannel: InstituteRadio
+  - type: Sprite
+    layers:
+    - state: crypt_gray
+    - state: common_label
+      color: "#ffffff"
+
+- type: entity
+  parent: N14ClothingNeckDogtags
+  id: InstituteChameleonDogtags
+  name: wastelander dogtags
+  suffix: Chameleon
+  description: A set of rough iron dog tags with a name engraved into them, these have become an informal tradition among wastelanders to identify each other quickly, or to give the names of casualties at settlements.
+  components:
+  - type: AgentIDCard
+    allowJobIconChange: false
+  - type: ActivatableUI
+    key: enum.AgentIDCardUiKey.Key
+    inHandsOnly: true
+  - type: ChameleonClothing
+    slot: [idcard]
+    default: N14ClothingNeckDogtags
+    restrictTargets: true
+    additionalTargets:
+    - N14IDLegionaryMedalLegate
+    - N14IDLegionaryBadge
+    - N14IDLegionaryBadgeCitizen
+    - N14IDLegionaryBadgeTrader
+    - N14IDLegionaryBadgeRecruit
+    - N14IDLegionaryMedalSilver
+    - N14IDLegionaryMedalRecruit
+    - N14IDLegionaryMedalLegionnaireRecruit
+    - N14IDLegionaryMedalHoundmaster
+    - N14IDLegionaryBadgeAuxilia
+    - N14IDLegionaryBadgePriestessOfMars
+    - N14IDLegionaryBadgeTempleGuard
+    - N14IDLegionaryBadgeSlave
+    - N14IDLegionaryMedalSilver2
+    - N14IDLegionaryMedalVexillarius
+    - N14IDLegionaryMedalSilver3
+    - N14IDLegionaryMedalForgemaster
+    - N14IDLegionaryMedalExplorer
+    - N14IDLegionaryMedalOptio
+    - N14IDLegionaryMedalFrumentarii
+    - N14IDLegionaryMedalPrimeDecanus
+    - N14IDLegionaryMedalVeteranDecanus
+    - N14IDLegionaryMedalGold
+    - N14IDNCRDogtagAgent
+    - N14IDBrotherhoodHolotagAgent
+    - N14IDKeyIronEmpty
+    - N14IDBrotherhoodWestHolotag
+    - N14IDBrotherhoodWestHolotagGunsmith
+    - N14IDBrotherhoodWestHolotagKnight
+    - N14IDBrotherhoodWestHolotagPaladin
+    - N14IDBrotherhoodWestHolotagElderCommander
+    - MisfitsEightiesIDCard
+    - MisfitsEightiesIDCardCylinders
+    - MisfitsEightiesIDCardPistons
+    - MisfitsEightiesIDCardOilers
+    - MisfitsEightiesIDCardHead
+    - N14IDBrotherhoodHolotag
+    - N14IDBrotherhoodHolotagSquire
+    - MisfitsIDBOSOffDuty
+    - N14IDBrotherhoodHolotagKnight
+    - N14IDBrotherhoodHolotagPaladin
+    - N14IDBrotherhoodHolotagCommander
+    - N14IDBrotherhoodOfSteelHolotagBase
+    - N14IDBrotherhoodOfSteelHolotagInitiate
+    - N14IDBrotherhoodOfSteelHolotagSquire
+    - N14IDBrotherhoodOfSteelHolotagScribe
+    - N14IDBrotherhoodOfSteelHolotagSeniorScribe
+    - N14IDBrotherhoodOfSteelHolotagHeadScribe
+    - N14IDBrotherhoodOfSteelHolotagKnight
+    - N14IDBrotherhoodOfSteelHolotagSeniorKnight
+    - N14IDBrotherhoodOfSteelHolotagHeadKnight
+    - N14IDBrotherhoodOfSteelHolotagPaladin
+    - N14IDBrotherhoodOfSteelHolotagSeniorPaladin
+    - N14IDBrotherhoodOfSteelHolotagHeadPaladin
+    - N14IDBrotherhoodOfSteelHolotagElder
+    - N14IDBrotherhoodOfSteelHolotagHonorGuard
+    - N14IDNCRDogtagWS
+    - N14IDBrotherhoodWashingtonHolotagInitiate
+    - N14IDCardAdmin
+    - MisfitsIDBadgeAmbassador
+    - MisfitsKhansIDCard
+    - N14IDNCRDogtagSoldier
+    - N14IDNCRDogtagPrivateFirstClass
+    - N14IDNCRDogtagStaffSergeant
+    - N14IDNCRDogtagFirstSergeant
+    - N14IDNCRDogtagMPInvestigator
+    - N14IDNCRDogtagDoctorSenior
+    - N14IDNCRDogtagCaptain
+    - N14IDNCRDogtagMajor
+    - N14IDNCRDogtagProvost
+    - N14IDNCRDogtagMPRecruit
+    - N14IDNCRDogtagMPSergeant
+    - N14IDNCRDogtagMPCaptain
+    - N14IDNCRDogtagNCRRO
+    - N14IDNCRDogtagltcol
+    - N14IDNCRDogtagPrisoner
+    - N14IDNCRPassportCitizen
+    - N14IDNCRPassportTrader
+    - N14IDNCRDogtagOSIChiefScientist
+    - N14IDNCRDogtagOSIScientist
+    - N14IDNCRDogtagOSIAssistant
+    - N14IDNCRDogtagOSIAgent
+    - N14ClothingNeckDogtags
+    - N14ClothingNeckDogtagsTrader
+    - N14IDCardVault
+    - N14IDCardVaultEngineer
+    - N14IDCardVaultSecurity
+    - N14IDCardVaultDoctor
+    - N14IDCardVaultOverseer
+    - MisfitsIDCardVaultCargo
+    - MisfitsIDCardVaultCourier
+    - MisfitsIDCardVaultSalvage
+    - N14IDPassportBlank
+    - N14IDPassport
+    - N14IDPassportPhoto
+    - N14IDPassportVIP
+    - N14IDDoctor
+    - N14IDEnclaveTrooper
+    - N14IDEnclaveOfficer
+    - N14IDEnclaveNoncombat
+    - N14IDNCRDogtag
+    - N14IDNCRDogtagDoctor
+    - N14IDNCRDogtagEngineer
+    - N14IDNCRDogtagNCO
+    - N14IDNCRDogtagOfficer
+    - N14IDBadgeNCRDesertRangerRecruit
+    - N14IDBadgeNCRDesertRanger
+    - N14IDBadgeNCRDesertRangerElite
+    - N14IDBadgeNCRDesertRangerChief
+    - N14IDBadgeNCRRanger
+    - N14IDBadgeNCRRangerElite
+    - N14IDPassportTownsfolk
+    - N14IDShopkeeperTown
+    - N14IDShopkeeperHelperTown
+    - N14IDPassportTownMechanic
+    - N14IDDoctorTown
+    - N14IDReporterTown
+    - N14IDBartenderTown
+    - N14IDBadgeTownDeputy
+    - N14IDBadgeTownSheriff
+    - N14IDBadgeTownMayor
+    - N14IDPassportWasteChaplain
+    - N14IDPassportWasteFarmer
+    - N14IDTribeSawbonePendant
+    - N14IDTribeBulletsPendant
+    - N14IDTribeEnforcerPendant
+    - N14IDTribeBossPendant
+    - N14IDDoctorFollower
+    - N14IDFollowerVolunteer
+    - N14IDFollowerDoctor
+    - N14IDFollowerGuard
+    - N14IDFollowerHead
+    - N14IDKeyIron
+    - N14IDKeyBrass
+    - N14IDKeyBronze
+    - N14IDKeySilver
+    - N14IDKeyGold
+    - N14CardAccessBunkerA1
+    - N14CardAccessBunkerA2
+    - N14CardAccessBunkerA3
+    - N14CardAccessBunkerAA
+    - N14CardAccessEnclave
+    - N14CardAccessEnclaveVault
+    - N14CardAccessVault
+    - N14CardAccessBlue
+    - N14CardAccessYellow
+    - N14CardAccessRed
+    - N14CardAccessCommon
+    - MinutemenIDDogtags
+    - MinutemenIDDogtagsPrivate
+    - MinutemenIDDogtagsCorporal
+    - MinutemenIDDogtagsSergeant
+    - MinutemenIDDogtagsLieutenant
+    - MinutemenIDDogtagsCaptain
+    - MinutemenIDDogtagsCommander
+    - MinutemenIDDogtagsColonel
+    - MinutemenIDDogtagsGeneral
+    - InstituteDirectorIDCard
+    - InstituteDivisionHeadIDCard
+    - InstituteScientistIDCard
+    - InstituteCourserIDCard
+    - InstituteSecurityIDCard
+  - type: UserInterface
+    interfaces:
+      enum.AgentIDCardUiKey.Key:
+        type: AgentIDCardBoundUserInterface
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+
+- type: entity
+  parent: MisfitsClothingHeadsetWastelandScrap
+  id: InstituteChameleonScrapHeadset
+  name: scrap headset
+  suffix: Chameleon, Institute
+  description: A disguised Institute headset fitted with Institute and Wasteland encryption keys.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyInstitute
+      - EncryptionKeyWastelandGlobal
+  - type: Tag
+    tags: []
+  - type: ChameleonClothing
+    slot: [ears]
+    default: MisfitsClothingHeadsetWastelandScrap
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+
+- type: entity
+  parent: LockerBaseSecure
+  id: InstituteFieldLocker
+  name: Institute field equipment locker
+  description: A white locker with black accents, stocked with disguises for Institute personnel venturing into the Commonwealth.
+  suffix: Filled
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/field_locker.rsi
+    layers:
+    - state: secure
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: secure_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      sprite: Structures/Storage/closet.rsi
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      sprite: Structures/Storage/closet.rsi
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: secure
+    stateDoorOpen: secure_open
+    stateDoorClosed: secure_door
+  - type: AccessReader
+    access: [[Institute]]
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackChameleon
+    - id: ClothingUniformJumpsuitChameleon
+    - id: ClothingOuterChameleon
+    - id: ClothingNeckChameleon
+    - id: ClothingMaskGasChameleon
+    - id: ClothingHeadHatChameleon
+    - id: ClothingHandsChameleon
+    - id: ClothingEyesChameleon
+    - id: ClothingShoesChameleon
+    - id: BarberScissors
+    - id: InstituteChameleonDogtags
+    - id: InstituteChameleonScrapHeadset

@@ -12,6 +12,40 @@
       gloves: ReclamationClothingModsuitGauntletsInstitute
       outerClothing: ReclamationClothingModsuitChestplateInstitute
       shoes: ReclamationClothingModsuitBootsInstitute
+  - type: ChameleonClothing
+    slot: [back]
+    default: ReclamationClothingModsuitInstitute
+    restrictTargets: true
+    additionalTargets:
+    - ReclamationClothingModsuitInstitute
+    - N14ClothingBackpackTrekker
+    - N14ClothingBackpackHiking
+    - N14ClothingBackpackExplorer
+    - N14ClothingBackpackMilitary
+    - N14ClothingBackpackNCR
+    - N14ClothingBackpackRadioNCR
+    - N14ClothingBackpackRucksackNCR
+    - N14ClothingBackpackTribal
+    - N14ClothingBackpackVaultBlue
+    - N14ClothingBackpackVaultOrange
+    - N14ClothingBackpackVaultGreen
+    - N14ClothingBackpackVaultGreenDark
+    - N14ClothingBackpackVaultPurple
+    - N14ClothingBackpackVaultRed
+    - N14ClothingBackpackVaultBlueDark
+    - N14ClothingBackpackDuffel
+    - N14ClothingBackpackDuffelSalvage
+    - N14ClothingBackpackDuffelMilitary
+    - N14ClothingBackpackDuffelMilitaryMedical
+    - N14ClothingBackpackSatchelTrekker
+    - N14ClothingBackpackSatchelExplorer
+    - N14ClothingBackpackSatchelTribal
+    - N14ClothingBackpackSatchelMilitary
+    - N14ClothingBackpackSatchelNCR
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitHelmetStandard
@@ -33,6 +67,18 @@
     components:
     - type: EyeProtection
       protectionTime: 10
+  - type: HideLayerClothing
+    slots: [Hair, Snout, HeadTop, HeadSide]
+    force: true
+    hideOnSeal: true
+  - type: ChameleonClothing
+    slot: [head]
+    default: ReclamationClothingModsuitHelmetInstitute
+    additionalTargets: [ReclamationClothingModsuitHelmetInstitute]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitChestplateStandard
@@ -47,6 +93,14 @@
         Piercing: 0.4
         Heat: 0.4
         Radiation: 0.4
+  - type: ChameleonClothing
+    slot: [outerClothing]
+    default: ReclamationClothingModsuitChestplateInstitute
+    additionalTargets: [ReclamationClothingModsuitChestplateInstitute]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitGauntletsStandard
@@ -56,11 +110,28 @@
   components:
   - type: Tag
     tags: [InstituteStunGauntlets]
+  - type: ChameleonClothing
+    slot: [gloves]
+    default: ReclamationClothingModsuitGauntletsInstitute
+    additionalTargets: [ReclamationClothingModsuitGauntletsInstitute]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitBootsStandard
   id: ReclamationClothingModsuitBootsInstitute
   name: Institute MOD suit boots
+  components:
+  - type: ChameleonClothing
+    slot: [feet]
+    default: ReclamationClothingModsuitBootsInstitute
+    additionalTargets: [ReclamationClothingModsuitBootsInstitute]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: Tag
   id: InstituteStunGauntlets
@@ -84,6 +155,40 @@
       gloves: InstituteResearchMODGauntlets
       outerClothing: InstituteResearchMODChestplate
       shoes: InstituteResearchMODBoots
+  - type: ChameleonClothing
+    slot: [back]
+    default: InstituteResearchMODSuit
+    restrictTargets: true
+    additionalTargets:
+    - InstituteResearchMODSuit
+    - N14ClothingBackpackTrekker
+    - N14ClothingBackpackHiking
+    - N14ClothingBackpackExplorer
+    - N14ClothingBackpackMilitary
+    - N14ClothingBackpackNCR
+    - N14ClothingBackpackRadioNCR
+    - N14ClothingBackpackRucksackNCR
+    - N14ClothingBackpackTribal
+    - N14ClothingBackpackVaultBlue
+    - N14ClothingBackpackVaultOrange
+    - N14ClothingBackpackVaultGreen
+    - N14ClothingBackpackVaultGreenDark
+    - N14ClothingBackpackVaultPurple
+    - N14ClothingBackpackVaultRed
+    - N14ClothingBackpackVaultBlueDark
+    - N14ClothingBackpackDuffel
+    - N14ClothingBackpackDuffelSalvage
+    - N14ClothingBackpackDuffelMilitary
+    - N14ClothingBackpackDuffelMilitaryMedical
+    - N14ClothingBackpackSatchelTrekker
+    - N14ClothingBackpackSatchelExplorer
+    - N14ClothingBackpackSatchelTribal
+    - N14ClothingBackpackSatchelMilitary
+    - N14ClothingBackpackSatchelNCR
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitHelmetStandard
@@ -109,6 +214,18 @@
     components:
     - type: EyeProtection
       protectionTime: 10
+  - type: HideLayerClothing
+    slots: [Hair, Snout, HeadTop, HeadSide]
+    force: true
+    hideOnSeal: true
+  - type: ChameleonClothing
+    slot: [head]
+    default: InstituteResearchMODHelmet
+    additionalTargets: [InstituteResearchMODHelmet]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitChestplateStandard
@@ -130,6 +247,14 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
+  - type: ChameleonClothing
+    slot: [outerClothing]
+    default: InstituteResearchMODChestplate
+    additionalTargets: [InstituteResearchMODChestplate]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitGauntletsStandard
@@ -140,6 +265,14 @@
     sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
   - type: Clothing
     sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
+  - type: ChameleonClothing
+    slot: [gloves]
+    default: InstituteResearchMODGauntlets
+    additionalTargets: [InstituteResearchMODGauntlets]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitBootsStandard
@@ -153,6 +286,14 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
+  - type: ChameleonClothing
+    slot: [feet]
+    default: InstituteResearchMODBoots
+    additionalTargets: [InstituteResearchMODBoots]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitStandardPowerCell
@@ -170,6 +311,40 @@
       gloves: InstituteSecurityMODGauntlets
       outerClothing: InstituteSecurityMODChestplate
       shoes: InstituteSecurityMODBoots
+  - type: ChameleonClothing
+    slot: [back]
+    default: InstituteSecurityMODSuit
+    restrictTargets: true
+    additionalTargets:
+    - InstituteSecurityMODSuit
+    - N14ClothingBackpackTrekker
+    - N14ClothingBackpackHiking
+    - N14ClothingBackpackExplorer
+    - N14ClothingBackpackMilitary
+    - N14ClothingBackpackNCR
+    - N14ClothingBackpackRadioNCR
+    - N14ClothingBackpackRucksackNCR
+    - N14ClothingBackpackTribal
+    - N14ClothingBackpackVaultBlue
+    - N14ClothingBackpackVaultOrange
+    - N14ClothingBackpackVaultGreen
+    - N14ClothingBackpackVaultGreenDark
+    - N14ClothingBackpackVaultPurple
+    - N14ClothingBackpackVaultRed
+    - N14ClothingBackpackVaultBlueDark
+    - N14ClothingBackpackDuffel
+    - N14ClothingBackpackDuffelSalvage
+    - N14ClothingBackpackDuffelMilitary
+    - N14ClothingBackpackDuffelMilitaryMedical
+    - N14ClothingBackpackSatchelTrekker
+    - N14ClothingBackpackSatchelExplorer
+    - N14ClothingBackpackSatchelTribal
+    - N14ClothingBackpackSatchelMilitary
+    - N14ClothingBackpackSatchelNCR
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitHelmetStandard
@@ -195,6 +370,18 @@
     components:
     - type: EyeProtection
       protectionTime: 10
+  - type: HideLayerClothing
+    slots: [Hair, Snout, HeadTop, HeadSide]
+    force: true
+    hideOnSeal: true
+  - type: ChameleonClothing
+    slot: [head]
+    default: InstituteSecurityMODHelmet
+    additionalTargets: [InstituteSecurityMODHelmet]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitChestplateStandard
@@ -216,6 +403,14 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
+  - type: ChameleonClothing
+    slot: [outerClothing]
+    default: InstituteSecurityMODChestplate
+    additionalTargets: [InstituteSecurityMODChestplate]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitGauntletsStandard
@@ -226,6 +421,14 @@
     sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
   - type: Clothing
     sprite: _ReclamationProject/Institute/MODWhiteGauntlets.rsi
+  - type: ChameleonClothing
+    slot: [gloves]
+    default: InstituteSecurityMODGauntlets
+    additionalTargets: [InstituteSecurityMODGauntlets]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingModsuitBootsStandard
@@ -239,3 +442,11 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
+  - type: ChameleonClothing
+    slot: [feet]
+    default: InstituteSecurityMODBoots
+    additionalTargets: [InstituteSecurityMODBoots]
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface

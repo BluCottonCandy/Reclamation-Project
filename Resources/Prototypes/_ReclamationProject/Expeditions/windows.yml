@@ -1,0 +1,4 @@
+- type: entity
+  parent: N14Window
+  id: ReclamationExpeditionWindow
+  name: window

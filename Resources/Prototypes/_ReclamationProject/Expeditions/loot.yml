@@ -1,0 +1,125 @@
+# Factory counterparts of existing Wastelander loadout choices; no faction gear.
+- type: entity
+  parent: MarkerBase
+  id: ReclamationExpeditionWeaponSpawner
+  name: expedition armory weapon
+  components:
+  - type: RandomSpawner
+    offset: 0
+    rareChance: 0
+    prototypes:
+    - N14WeaponPistol9mm
+    - N14WeaponPistol45Colt
+    - N14WeaponSMG9mm
+    - N14WeaponRifle556Carbine
+    - N14WeaponRifle762M14
+
+# Ammunition for the calibers available in this armory.
+- type: entity
+  parent: MarkerBase
+  id: ReclamationExpeditionAmmoSpawner
+  name: expedition armory ammunition
+  components:
+  - type: RandomSpawner
+    offset: 0
+    rareChance: 0
+    prototypes:
+    - MagazineBox9mm
+    - MagazineBox45
+    - MagazineBox556
+    - MagazineBox762
+
+# All protection coefficients are at least 0.65 (no more than 35% protection).
+- type: entity
+  parent: MarkerBase
+  id: ReclamationExpeditionArmorSpawner
+  name: expedition armory armor
+  components:
+  - type: RandomSpawner
+    offset: 0
+    rareChance: 0
+    prototypes:
+    - N14ClothingOuterLeatherArmor
+    - N14ClothingOuterVestLeather
+    - N14ClothingOuterMetalArmor
+    - N14ClothingOuterCombatArmor
+    - N14ClothingOuterRaiderBadlands
+    - N14ClothingOuterRaiderBlastmaster
+    - N14ClothingOuterRaiderCombat1
+    - N14ClothingOuterRaiderCombat2
+
+- type: entity
+  parent: N14CookingStove
+  id: ReclamationExpeditionStove
+  suffix: Expedition, fixed, always powered
+  components:
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags: None
+  - type: ApcPowerReceiver
+    needsPower: false
+    powerLoad: 0
+
+- type: entity
+  parent: N14VendingMachineNukaColaNew
+  id: ReclamationExpeditionDrinks
+  suffix: Expedition, fixed, always powered
+  components:
+  - type: Anchorable
+    flags: None
+  - type: ApcPowerReceiver
+    needsPower: false
+    powerLoad: 0
+  - type: PointLight
+    enabled: false
+    energy: 0
+  - type: StorageFill
+    contents:
+    - id: N14DrinkNukaCola
+      amount: 3
+
+- type: entity
+  parent: N14CrateMedical
+  id: ReclamationExpeditionMedicalCabinet
+  name: clinic medical supplies
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14Stimpak
+      amount: 2
+    - id: N14Ointment10
+
+- type: entity
+  parent: N14Bed
+  id: ReclamationExpeditionExaminationBed
+  name: examination bed
+  description: A clean bed set aside for examining and treating patients.
+
+- type: entity
+  parent: N14ClosetGrey1
+  id: ReclamationExpeditionArmoryLocker
+  name: armory equipment locker
+  description: A locker for the armory's spare ammunition.
+
+# Keep the tube on the brick behind it, but emit from the center of the
+# clear interior tile. The inherited half-tile offset could hit an occluder.
+- type: entity
+  parent: AlwaysPoweredlightOrange
+  id: ReclamationExpeditionOrangeLight
+  suffix: Expedition, always powered, orange
+  components:
+  - type: PointLight
+    offset: 0, 0
+
+- type: entity
+  parent: N14ClosetCabinetWood
+  id: ReclamationExpeditionPantry
+  name: pantry
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14FoodCram
+      amount: 2
+    - id: N14FoodDandyboyapples
+      amount: 2

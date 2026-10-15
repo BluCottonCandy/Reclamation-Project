@@ -23,7 +23,8 @@
   id: RailroadSafehouse1Intern
   setPreference: true
   weight: 20
-  displayWeight: 220
+  displayWeight: 600
+  showBorder: true
   canBeAntag: false
   name: job-name-railroadsafehouse1intern
   description: job-description-railroadsafehouse1intern
@@ -46,7 +47,7 @@
   id: RailroadSafehouse1Worker
   setPreference: true
   weight: 30
-  displayWeight: 230
+  displayWeight: 500
   canBeAntag: false
   name: job-name-railroadsafehouse1worker
   description: job-description-railroadsafehouse1worker
@@ -69,7 +70,8 @@
   id: RailroadSafehouse1Agent
   setPreference: true
   weight: 50
-  displayWeight: 250
+  displayWeight: 300
+  showBorder: true
   canBeAntag: false
   name: job-name-railroadsafehouse1agent
   description: job-description-railroadsafehouse1agent
@@ -94,7 +96,7 @@
   id: RailroadSafehouse1Runner
   setPreference: true
   weight: 50
-  displayWeight: 250
+  displayWeight: 400
   canBeAntag: false
   name: job-name-railroadsafehouse1runner
   description: job-description-railroadsafehouse1runner
@@ -117,7 +119,8 @@
   id: RailroadSafehouse1Conductor
   setPreference: true
   weight: 70
-  displayWeight: 270
+  displayWeight: 200
+  showBorder: true
   canBeAntag: false
   name: job-name-railroadsafehouse1conductor
   description: job-description-railroadsafehouse1conductor
@@ -143,7 +146,9 @@
   id: RailroadSafehouse1SafehouseOwner
   setPreference: true
   weight: 80
-  displayWeight: 280
+  displayWeight: 100
+  showBorder: true
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse1safehouseowner
   description: job-description-railroadsafehouse1safehouseowner
@@ -169,7 +174,8 @@
   id: RailroadSafehouse2Intern
   setPreference: true
   weight: 20
-  displayWeight: 120
+  displayWeight: 600
+  showBorder: true
   canBeAntag: false
   name: job-name-railroadsafehouse2intern
   description: job-description-railroadsafehouse2intern
@@ -192,7 +198,7 @@
   id: RailroadSafehouse2Worker
   setPreference: true
   weight: 30
-  displayWeight: 130
+  displayWeight: 500
   canBeAntag: false
   name: job-name-railroadsafehouse2worker
   description: job-description-railroadsafehouse2worker
@@ -215,7 +221,8 @@
   id: RailroadSafehouse2Agent
   setPreference: true
   weight: 50
-  displayWeight: 150
+  displayWeight: 300
+  showBorder: true
   canBeAntag: false
   name: job-name-railroadsafehouse2agent
   description: job-description-railroadsafehouse2agent
@@ -240,7 +247,7 @@
   id: RailroadSafehouse2Runner
   setPreference: true
   weight: 50
-  displayWeight: 150
+  displayWeight: 400
   canBeAntag: false
   name: job-name-railroadsafehouse2runner
   description: job-description-railroadsafehouse2runner
@@ -263,7 +270,8 @@
   id: RailroadSafehouse2Conductor
   setPreference: true
   weight: 70
-  displayWeight: 170
+  displayWeight: 200
+  showBorder: true
   canBeAntag: false
   name: job-name-railroadsafehouse2conductor
   description: job-description-railroadsafehouse2conductor
@@ -289,7 +297,9 @@
   id: RailroadSafehouse2SafehouseOwner
   setPreference: true
   weight: 80
-  displayWeight: 180
+  displayWeight: 100
+  showBorder: true
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse2safehouseowner
   description: job-description-railroadsafehouse2safehouseowner

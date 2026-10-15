@@ -83,6 +83,7 @@
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel
+      - type: PowerArmorProficiency
 
 - type: startingGear
   id: BoSKnightGear

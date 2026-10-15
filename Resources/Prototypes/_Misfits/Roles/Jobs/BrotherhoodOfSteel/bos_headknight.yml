@@ -87,6 +87,7 @@
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel
+      - type: PowerArmorProficiency
       - type: LanguageKnowledge # #Misfits Add: Heads understand Brotherhood binary code by default.
         speaks:
         - English

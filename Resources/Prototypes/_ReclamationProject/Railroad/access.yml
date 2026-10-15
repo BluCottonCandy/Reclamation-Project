@@ -1,0 +1,19 @@
+- type: accessLevel
+  id: Railroad
+  name: id-card-access-level-railroad
+
+- type: accessLevel
+  id: RailroadSafehouse1
+  name: id-card-access-level-railroadsafehouse1
+
+- type: accessLevel
+  id: RailroadSafehouse2
+  name: id-card-access-level-railroadsafehouse2
+
+- type: accessLevel
+  id: RailroadSafehouse1Command
+  name: id-card-access-level-railroadsafehouse1command
+
+- type: accessLevel
+  id: RailroadSafehouse2Command
+  name: id-card-access-level-railroadsafehouse2command

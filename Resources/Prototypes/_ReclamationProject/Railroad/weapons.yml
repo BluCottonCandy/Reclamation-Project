@@ -1,0 +1,21 @@
+- type: entity
+  parent: N14WeaponPistol22lr
+  id: RailroadAgentSilencedPistol
+  name: Railroad suppressed 12.7mm pistol
+  description: A covert Railroad pistol built on the silenced .22 design and rechambered for 12.7mm ammunition.
+  components:
+  - type: AmmoCounter
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol12mm
+        priority: 2
+        whitelist:
+          tags: [N14MagazinePistol12mm]
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol127
+        priority: 1
+        whitelist:
+          tags: [N14CartridgePistol127]

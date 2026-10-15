@@ -1,0 +1,4 @@
+- type: npcFaction
+  id: Railroad
+  friendly: [Railroad]
+  hostile: [WastelandInsect, WastelandAnimal, Deathclaw, Raider, HostileRobot, Feral]

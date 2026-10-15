@@ -1,3 +1,4 @@
+using Content.Server.Access.Components;
 using Content.Server.Access.Systems;
 using Content.Server.DetailExaminable;
 using Content.Server.Humanoid;
@@ -223,10 +224,19 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (!TryComp<IdCardComponent>(cardId, out var card))
             return;
 
-        _cardSystem.TryChangeFullName(cardId, characterName, card);
-        _cardSystem.TryChangeJobTitle(cardId, jobPrototype.LocalizedName, card);
+        // Undercover IDs keep a civilian identity while retaining their real job's access.
+        var identityJob = jobPrototype;
+        if (TryComp<PresetIdCardComponent>(cardId, out var preset) &&
+            _prototypeManager.TryIndex(preset.IdentityJob, out JobPrototype? coverJob))
+        {
+            identityJob = coverJob;
+            _cardSystem.TryChangeJobDepartment(cardId, identityJob, card);
+        }
 
-        if (_prototypeManager.TryIndex(jobPrototype.Icon, out var jobIcon))
+        _cardSystem.TryChangeFullName(cardId, characterName, card);
+        _cardSystem.TryChangeJobTitle(cardId, identityJob.LocalizedName, card);
+
+        if (_prototypeManager.TryIndex(identityJob.Icon, out var jobIcon))
             _cardSystem.TryChangeJobIcon(cardId, jobIcon, card);
 
         var extendedAccess = false;

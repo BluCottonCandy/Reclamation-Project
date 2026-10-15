@@ -10,21 +10,21 @@
   description: department-RailroadSafehouse1-description
   color: "#9db39b"
   uiCategory: MajorFaction
-  roles: [RailroadSafehouse1Intern, RailroadSafehouse1Worker, RailroadSafehouse1Agent, RailroadSafehouse1Runner, RailroadSafehouse1Conductor, RailroadSafehouse1SafehouseOwner]
+  roles: [RailroadSafehouse1SafehouseOwner, RailroadSafehouse1Conductor, RailroadSafehouse1Agent, RailroadSafehouse1Runner, RailroadSafehouse1Worker, RailroadSafehouse1Intern]
 
 - type: department
   id: RailroadSafehouse2
   description: department-RailroadSafehouse2-description
   color: "#9db39b"
   uiCategory: MajorFaction
-  roles: [RailroadSafehouse2Intern, RailroadSafehouse2Worker, RailroadSafehouse2Agent, RailroadSafehouse2Runner, RailroadSafehouse2Conductor, RailroadSafehouse2SafehouseOwner]
+  roles: [RailroadSafehouse2SafehouseOwner, RailroadSafehouse2Conductor, RailroadSafehouse2Agent, RailroadSafehouse2Runner, RailroadSafehouse2Worker, RailroadSafehouse2Intern]
 
 - type: job
   id: RailroadSafehouse1Intern
   setPreference: true
   weight: 20
-  displayWeight: 600
-  showBorder: true
+  displayWeight: 100
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse1intern
   description: job-description-railroadsafehouse1intern
@@ -47,7 +47,7 @@
   id: RailroadSafehouse1Worker
   setPreference: true
   weight: 30
-  displayWeight: 500
+  displayWeight: 200
   canBeAntag: false
   name: job-name-railroadsafehouse1worker
   description: job-description-railroadsafehouse1worker
@@ -70,8 +70,8 @@
   id: RailroadSafehouse1Agent
   setPreference: true
   weight: 50
-  displayWeight: 300
-  showBorder: true
+  displayWeight: 400
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse1agent
   description: job-description-railroadsafehouse1agent
@@ -96,7 +96,7 @@
   id: RailroadSafehouse1Runner
   setPreference: true
   weight: 50
-  displayWeight: 400
+  displayWeight: 300
   canBeAntag: false
   name: job-name-railroadsafehouse1runner
   description: job-description-railroadsafehouse1runner
@@ -119,8 +119,8 @@
   id: RailroadSafehouse1Conductor
   setPreference: true
   weight: 70
-  displayWeight: 200
-  showBorder: true
+  displayWeight: 500
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse1conductor
   description: job-description-railroadsafehouse1conductor
@@ -146,7 +146,7 @@
   id: RailroadSafehouse1SafehouseOwner
   setPreference: true
   weight: 80
-  displayWeight: 100
+  displayWeight: 600
   showBorder: true
   showBorderBelow: true
   canBeAntag: false
@@ -174,8 +174,8 @@
   id: RailroadSafehouse2Intern
   setPreference: true
   weight: 20
-  displayWeight: 600
-  showBorder: true
+  displayWeight: 100
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse2intern
   description: job-description-railroadsafehouse2intern
@@ -198,7 +198,7 @@
   id: RailroadSafehouse2Worker
   setPreference: true
   weight: 30
-  displayWeight: 500
+  displayWeight: 200
   canBeAntag: false
   name: job-name-railroadsafehouse2worker
   description: job-description-railroadsafehouse2worker
@@ -221,8 +221,8 @@
   id: RailroadSafehouse2Agent
   setPreference: true
   weight: 50
-  displayWeight: 300
-  showBorder: true
+  displayWeight: 400
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse2agent
   description: job-description-railroadsafehouse2agent
@@ -247,7 +247,7 @@
   id: RailroadSafehouse2Runner
   setPreference: true
   weight: 50
-  displayWeight: 400
+  displayWeight: 300
   canBeAntag: false
   name: job-name-railroadsafehouse2runner
   description: job-description-railroadsafehouse2runner
@@ -270,8 +270,8 @@
   id: RailroadSafehouse2Conductor
   setPreference: true
   weight: 70
-  displayWeight: 200
-  showBorder: true
+  displayWeight: 500
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-railroadsafehouse2conductor
   description: job-description-railroadsafehouse2conductor
@@ -297,7 +297,7 @@
   id: RailroadSafehouse2SafehouseOwner
   setPreference: true
   weight: 80
-  displayWeight: 100
+  displayWeight: 600
   showBorder: true
   showBorderBelow: true
   canBeAntag: false

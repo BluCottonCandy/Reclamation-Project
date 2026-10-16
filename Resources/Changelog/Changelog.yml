@@ -12362,3 +12362,14 @@ Entries:
   id: 6517
   time: '2026-10-16T12:35:42.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/36
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added Railroad safehouse jobs, equipment, and undercover Agent kits.
+    - type: Fix
+      message: Fixed lobby credits pushing chat offscreen.
+    - type: Remove
+      message: Removed the Patreon section from Credits.
+  id: 6518
+  time: '2026-10-16T12:36:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/37

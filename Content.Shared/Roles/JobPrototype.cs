@@ -95,6 +95,10 @@ namespace Content.Shared.Roles
         [DataField]
         public bool ShowBorder { get; private set; } = false;
 
+        /// <summary>Draw a closing separator beneath this job row.</summary>
+        [DataField]
+        public bool ShowBorderBelow { get; private set; } = false;
+
         /// <summary>
         ///     A numerical score for how much easier this job is for antagonists.
         ///     For traitors, reduces starting TC by this amount. Other gamemodes can use it for whatever they find fitting.

@@ -1,0 +1,195 @@
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse1InternSpawnPoint
+  name: Railroad Intern (Safehouse 1) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse1Intern
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse1WorkerSpawnPoint
+  name: Railroad Worker (Safehouse 1) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse1Worker
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse1AgentSpawnPoint
+  name: Railroad Agent (Safehouse 1) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse1Agent
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse1RunnerSpawnPoint
+  name: Railroad Runner (Safehouse 1) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse1Runner
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse1ConductorSpawnPoint
+  name: Railroad Conductor (Safehouse 1) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse1Conductor
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse1SafehouseOwnerSpawnPoint
+  name: Railroad Safehouse Owner (Safehouse 1) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse1SafehouseOwner
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse2InternSpawnPoint
+  name: Railroad Intern (Safehouse 2) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse2Intern
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse2WorkerSpawnPoint
+  name: Railroad Worker (Safehouse 2) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse2Worker
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse2AgentSpawnPoint
+  name: Railroad Agent (Safehouse 2) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse2Agent
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse2RunnerSpawnPoint
+  name: Railroad Runner (Safehouse 2) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse2Runner
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse2ConductorSpawnPoint
+  name: Railroad Conductor (Safehouse 2) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse2Conductor
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadSafehouse2SafehouseOwnerSpawnPoint
+  name: Railroad Safehouse Owner (Safehouse 2) spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadSafehouse2SafehouseOwner
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadAlphaLeaderSpawnPoint
+  name: Railroad Alpha Leader spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadAlphaLeader
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: RailroadInspectorSpawnPoint
+  name: Railroad Inspector spawn point
+  description: Place this marker at the intended Railroad job spawn on Common Wealth.
+  components:
+  - type: SpawnPoint
+    job_id: RailroadInspector
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher

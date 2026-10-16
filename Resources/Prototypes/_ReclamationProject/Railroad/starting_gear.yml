@@ -1,0 +1,244 @@
+- type: startingGear
+  id: RailroadSafehouse1InternGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse1InternID
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse1WorkerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse1WorkerID
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse1AgentGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadChameleonFlannel
+    ears: RailroadChameleonHeadset
+    back: RailroadChameleonBackpack
+    shoes: RailroadChameleonBoots
+    head: RailroadChameleonBeanie
+    gloves: RailroadChameleonGloves
+    outerClothing: RailroadChameleonOuter
+    id: RailroadSafehouse1AgentIDChameleon
+    mask: RailroadChameleonBalaclava
+    neck: RailroadChameleonDuster
+    eyes: RailroadChameleonGlasses
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - RailroadAgentCombatArmor
+    - RailroadAgentSilencedPistol
+
+- type: startingGear
+  id: RailroadSafehouse1RunnerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse1RunnerID
+    mask: RailroadBalaclava
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse1ConductorGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse1ConductorID
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse1SafehouseOwnerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse1SafehouseOwnerID
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse2InternGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse2InternID
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse2WorkerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse2WorkerID
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse2AgentGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadChameleonFlannel
+    ears: RailroadChameleonHeadset
+    back: RailroadChameleonBackpack
+    shoes: RailroadChameleonBoots
+    head: RailroadChameleonBeanie
+    gloves: RailroadChameleonGloves
+    outerClothing: RailroadChameleonOuter
+    id: RailroadSafehouse2AgentIDChameleon
+    mask: RailroadChameleonBalaclava
+    neck: RailroadChameleonDuster
+    eyes: RailroadChameleonGlasses
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - RailroadAgentCombatArmor
+    - RailroadAgentSilencedPistol
+
+- type: startingGear
+  id: RailroadSafehouse2RunnerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse2RunnerID
+    mask: RailroadBalaclava
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse2ConductorGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse2ConductorID
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadSafehouse2SafehouseOwnerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadSafehouse2SafehouseOwnerID
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadAlphaLeaderGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadAlphaLeaderID
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: RailroadInspectorGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadCombatArmor
+    id: RailroadInspectorID
+    neck: RailroadRangerDuster
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+

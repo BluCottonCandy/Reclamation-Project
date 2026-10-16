@@ -361,6 +361,15 @@ namespace Content.Client.LateJoin
                         }
 
                         departmentContents.AddChild(jobButton);
+                        if (prototype.ShowBorderBelow)
+                        {
+                            departmentContents.AddChild(new PanelContainer
+                            {
+                                PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                                MinSize = new Vector2(0, 2),
+                                Margin = new Thickness(3f, 10f, 3f, 6f),
+                            });
+                        }
 
                         jobButton.OnPressed += _ => SelectedId.Invoke((id, jobButton.JobId));
 

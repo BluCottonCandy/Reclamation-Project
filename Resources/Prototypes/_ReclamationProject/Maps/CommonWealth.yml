@@ -15,4 +15,17 @@
         overflowJobs: [Wastelander]
         availableJobs:
           Wastelander: [-1, -1]
-
+          RailroadSafehouse1Intern: [2, 2]
+          RailroadSafehouse1Worker: [2, 2]
+          RailroadSafehouse1Agent: [2, 2]
+          RailroadSafehouse1Runner: [2, 2]
+          RailroadSafehouse1Conductor: [1, 1]
+          RailroadSafehouse1SafehouseOwner: [1, 1]
+          RailroadSafehouse2Intern: [2, 2]
+          RailroadSafehouse2Worker: [2, 2]
+          RailroadSafehouse2Agent: [2, 2]
+          RailroadSafehouse2Runner: [2, 2]
+          RailroadSafehouse2Conductor: [1, 1]
+          RailroadSafehouse2SafehouseOwner: [1, 1]
+          RailroadAlphaLeader: [1, 1]
+          RailroadInspector: [1, 1]

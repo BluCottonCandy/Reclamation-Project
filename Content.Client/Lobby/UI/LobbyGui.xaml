@@ -50,7 +50,7 @@
                     <!-- Vertical Padding-->
                     <Control VerticalExpand="True" />
                     <!-- Left Bot Panel -->
-                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" SeparationOverride="4">
+                    <BoxContainer Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Bottom" SeparationOverride="4" MaxWidth="440">
                         <info:DevInfoBanner Name="DevInfoBanner" VerticalExpand="false" Margin="3 3 3 3" />
                         <PanelContainer StyleClasses="PipBoyPanel">
                             <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
@@ -78,7 +78,7 @@
                         <Label Margin="8 0 0 0" StyleClasses="PipBoyHeading" VAlign="Center"
                                Text="{Loc 'ui-lobby-title'}" />
                         <Label Name="ServerName" Access="Public" StyleClasses="PipBoyHeading" VAlign="Center"
-                               HorizontalExpand="True" HorizontalAlignment="Center" />
+                               HorizontalExpand="True" HorizontalAlignment="Center" ClipText="True" MaxWidth="300" />
                     </BoxContainer>
                     <!-- Accent divider -->
                     <PanelContainer StyleClasses="PipBoyDivider" MinSize="0 2" />

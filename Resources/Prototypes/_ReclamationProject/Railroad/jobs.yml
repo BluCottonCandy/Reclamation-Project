@@ -1,0 +1,378 @@
+- type: department
+  id: Railroad
+  description: department-Railroad-description
+  color: "#9db39b"
+  uiCategory: MajorFaction
+  roles: [RailroadAlphaLeader, RailroadInspector]
+
+- type: department
+  id: RailroadSafehouse1
+  description: department-RailroadSafehouse1-description
+  color: "#9db39b"
+  uiCategory: MajorFaction
+  roles: [RailroadSafehouse1SafehouseOwner, RailroadSafehouse1Conductor, RailroadSafehouse1Agent, RailroadSafehouse1Runner, RailroadSafehouse1Worker, RailroadSafehouse1Intern]
+
+- type: department
+  id: RailroadSafehouse2
+  description: department-RailroadSafehouse2-description
+  color: "#9db39b"
+  uiCategory: MajorFaction
+  roles: [RailroadSafehouse2SafehouseOwner, RailroadSafehouse2Conductor, RailroadSafehouse2Agent, RailroadSafehouse2Runner, RailroadSafehouse2Worker, RailroadSafehouse2Intern]
+
+- type: job
+  id: RailroadSafehouse1Intern
+  setPreference: true
+  weight: 20
+  displayWeight: 100
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse1intern
+  description: job-description-railroadsafehouse1intern
+  playTimeTracker: RailroadSafehouse1Intern
+  startingGear: RailroadSafehouse1InternGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse1intern
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse1Intern
+
+- type: job
+  id: RailroadSafehouse1Worker
+  setPreference: true
+  weight: 30
+  displayWeight: 200
+  canBeAntag: false
+  name: job-name-railroadsafehouse1worker
+  description: job-description-railroadsafehouse1worker
+  playTimeTracker: RailroadSafehouse1Worker
+  startingGear: RailroadSafehouse1WorkerGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse1worker
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse1Worker
+
+- type: job
+  id: RailroadSafehouse1Agent
+  setPreference: true
+  weight: 50
+  displayWeight: 400
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse1agent
+  description: job-description-railroadsafehouse1agent
+  playTimeTracker: RailroadSafehouse1Agent
+  startingGear: RailroadSafehouse1AgentGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse1agent
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse1Agent
+
+- type: job
+  id: RailroadSafehouse1Runner
+  setPreference: true
+  weight: 50
+  displayWeight: 300
+  canBeAntag: false
+  name: job-name-railroadsafehouse1runner
+  description: job-description-railroadsafehouse1runner
+  playTimeTracker: RailroadSafehouse1Runner
+  startingGear: RailroadSafehouse1RunnerGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse1runner
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse1Runner
+
+- type: job
+  id: RailroadSafehouse1Conductor
+  setPreference: true
+  weight: 70
+  displayWeight: 500
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse1conductor
+  description: job-description-railroadsafehouse1conductor
+  playTimeTracker: RailroadSafehouse1Conductor
+  startingGear: RailroadSafehouse1ConductorGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse1conductor
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse1Conductor
+
+- type: job
+  id: RailroadSafehouse1SafehouseOwner
+  setPreference: true
+  weight: 80
+  displayWeight: 600
+  showBorder: true
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse1safehouseowner
+  description: job-description-railroadsafehouse1safehouseowner
+  playTimeTracker: RailroadSafehouse1SafehouseOwner
+  startingGear: RailroadSafehouse1SafehouseOwnerGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse1safehouseowner
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse1SafehouseOwner
+
+- type: job
+  id: RailroadSafehouse2Intern
+  setPreference: true
+  weight: 20
+  displayWeight: 100
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse2intern
+  description: job-description-railroadsafehouse2intern
+  playTimeTracker: RailroadSafehouse2Intern
+  startingGear: RailroadSafehouse2InternGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse2]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse2intern
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse2Intern
+
+- type: job
+  id: RailroadSafehouse2Worker
+  setPreference: true
+  weight: 30
+  displayWeight: 200
+  canBeAntag: false
+  name: job-name-railroadsafehouse2worker
+  description: job-description-railroadsafehouse2worker
+  playTimeTracker: RailroadSafehouse2Worker
+  startingGear: RailroadSafehouse2WorkerGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse2]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse2worker
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse2Worker
+
+- type: job
+  id: RailroadSafehouse2Agent
+  setPreference: true
+  weight: 50
+  displayWeight: 400
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse2agent
+  description: job-description-railroadsafehouse2agent
+  playTimeTracker: RailroadSafehouse2Agent
+  startingGear: RailroadSafehouse2AgentGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse2]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse2agent
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse2Agent
+
+- type: job
+  id: RailroadSafehouse2Runner
+  setPreference: true
+  weight: 50
+  displayWeight: 300
+  canBeAntag: false
+  name: job-name-railroadsafehouse2runner
+  description: job-description-railroadsafehouse2runner
+  playTimeTracker: RailroadSafehouse2Runner
+  startingGear: RailroadSafehouse2RunnerGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse2]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse2runner
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse2Runner
+
+- type: job
+  id: RailroadSafehouse2Conductor
+  setPreference: true
+  weight: 70
+  displayWeight: 500
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse2conductor
+  description: job-description-railroadsafehouse2conductor
+  playTimeTracker: RailroadSafehouse2Conductor
+  startingGear: RailroadSafehouse2ConductorGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse2conductor
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse2Conductor
+
+- type: job
+  id: RailroadSafehouse2SafehouseOwner
+  setPreference: true
+  weight: 80
+  displayWeight: 600
+  showBorder: true
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-railroadsafehouse2safehouseowner
+  description: job-description-railroadsafehouse2safehouseowner
+  playTimeTracker: RailroadSafehouse2SafehouseOwner
+  startingGear: RailroadSafehouse2SafehouseOwnerGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadsafehouse2safehouseowner
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadSafehouse2SafehouseOwner
+
+- type: job
+  id: RailroadAlphaLeader
+  setPreference: true
+  weight: 100
+  displayWeight: 400
+  canBeAntag: false
+  name: job-name-railroadalphaleader
+  description: job-description-railroadalphaleader
+  playTimeTracker: RailroadAlphaLeader
+  startingGear: RailroadAlphaLeaderGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1, RailroadSafehouse2, RailroadSafehouse1Command, RailroadSafehouse2Command]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadalphaleader
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  hideWithoutJobWhitelist: true
+  overrideConsoleVisibility: false
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadAlphaLeader
+
+- type: job
+  id: RailroadInspector
+  setPreference: true
+  weight: 90
+  displayWeight: 390
+  canBeAntag: false
+  name: job-name-railroadinspector
+  description: job-description-railroadinspector
+  playTimeTracker: RailroadInspector
+  startingGear: RailroadInspectorGear
+  alwaysUseSpawner: true
+  access: [Railroad, RailroadSafehouse1, RailroadSafehouse2, RailroadSafehouse1Command, RailroadSafehouse2Command]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-railroadinspector
+  whitelisted: true
+  jobWhitelistBypassesRoleTimers: true
+  hideWithoutJobWhitelist: true
+  overrideConsoleVisibility: false
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Railroad]
+
+- type: playTimeTracker
+  id: RailroadInspector

@@ -79,10 +79,12 @@ public sealed class PresetIdCardSystem : EntitySystem
 
         _accessSystem.SetAccessToJob(uid, job, extended);
 
-        _cardSystem.TryChangeJobTitle(uid, job.LocalizedName);
-        _cardSystem.TryChangeJobDepartment(uid, job);
+        // A cover identity changes the visible job without changing access.
+        var identityJob = _prototypeManager.TryIndex(id.IdentityJob, out JobPrototype? coverJob) ? coverJob : job;
+        _cardSystem.TryChangeJobTitle(uid, identityJob.LocalizedName);
+        _cardSystem.TryChangeJobDepartment(uid, identityJob);
 
-        if (_prototypeManager.TryIndex(job.Icon, out var jobIcon))
+        if (_prototypeManager.TryIndex(identityJob.Icon, out var jobIcon))
             _cardSystem.TryChangeJobIcon(uid, jobIcon);
     }
 }

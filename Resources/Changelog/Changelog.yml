@@ -12344,3 +12344,14 @@ Entries:
   id: 6515
   time: '2026-10-13T12:23:09.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/34
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Replaced Brotherhood starting power armor with Brotherhood combat armor.
+    - type: Remove
+      message: Removed Brotherhood power armor from character loadouts.
+    - type: Add
+      message: Added power armor training to Brotherhood Knight roles.
+  id: 6516
+  time: '2026-10-16T12:35:28.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/35

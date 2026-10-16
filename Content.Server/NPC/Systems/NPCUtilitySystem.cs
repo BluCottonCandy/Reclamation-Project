@@ -47,6 +47,7 @@ public sealed class NPCUtilitySystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
+    [Dependency] private readonly NPCRetaliationSystem _retaliation = default!;
     [Dependency] private readonly OpenableSystem _openable = default!;
     [Dependency] private readonly PuddleSystem _puddle = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -267,7 +268,8 @@ public sealed class NPCUtilitySystem : EntitySystem
             }
             case TargetDistanceCon:
             {
-                var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
+                var radius = _retaliation.GetTargetRange(owner, targetUid,
+                    blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager));
 
                 if (!TryComp<TransformComponent>(targetUid, out var targetXform) ||
                     !TryComp<TransformComponent>(owner, out var xform))
@@ -306,7 +308,8 @@ public sealed class NPCUtilitySystem : EntitySystem
             }
             case TargetInLOSCon:
             {
-                var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
+                var radius = _retaliation.GetTargetRange(owner, targetUid,
+                    blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager));
 
                 return _weather.CanSeeThroughWeather(owner, targetUid) &&
                     _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f, null)
@@ -315,7 +318,8 @@ public sealed class NPCUtilitySystem : EntitySystem
             }
             case TargetInLOSOrCurrentCon:
             {
-                var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
+                var radius = _retaliation.GetTargetRange(owner, targetUid,
+                    blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager));
                 const float bufferRange = 0.5f;
 
                 if (!_weather.CanSeeThroughWeather(owner, targetUid))
@@ -451,6 +455,9 @@ public sealed class NPCUtilitySystem : EntitySystem
             }
             case NearbyHostilesQuery:
             {
+                if (_retaliation.TryGetPursuitTarget(owner, out var attacker))
+                    entities.Add(attacker);
+
                 foreach (var ent in _npcFaction.GetNearbyHostiles(owner, vision))
                 {
                     if (!CanUseNearbyHostile(owner, ent, blackboard))

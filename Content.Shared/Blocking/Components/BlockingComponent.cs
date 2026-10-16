@@ -48,7 +48,7 @@ public sealed partial class BlockingComponent : Component
     public DamageModifierSet ActiveBlockDamageModifier = default!;
 
     [DataField("blockingToggleAction")]
-    public string BlockingToggleAction = "ActionToggleBlock";
+    public string? BlockingToggleAction = "ActionToggleBlock";
 
     [DataField, AutoNetworkedField]
     public EntityUid? BlockingToggleActionEntity;

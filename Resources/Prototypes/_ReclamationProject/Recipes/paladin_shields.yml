@@ -1,0 +1,73 @@
+- type: construction
+  id: ReclamationPaladinShield
+  name: paladin shield
+  description: Build a paladin shield from steel, leather and iron bars.
+  graph: ReclamationPaladinShield
+  startNode: start
+  targetNode: shield
+  category: construction-category-weapons
+  objectType: Item
+  hide: false
+  icon:
+    sprite: _ReclamationProject/Shields/paladin_shield.rsi
+    state: base
+
+- type: constructionGraph
+  id: ReclamationPaladinShield
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: shield
+      steps:
+      - material: Steel
+        amount: 30
+      - material: Steel
+        amount: 20
+      - material: Leather
+        amount: 2
+      - material: N14Iron
+        amount: 10
+        doAfter: 10
+  - node: shield
+    entity: ReclamationPaladinShield
+
+- type: construction
+  id: ReclamationPaladinGreatshield
+  name: paladin greatshield
+  description: Build a paladin greatshield from steel, leather and iron bars, reinforced with glass.
+  graph: ReclamationPaladinGreatshield
+  startNode: start
+  targetNode: shield
+  category: construction-category-weapons
+  objectType: Item
+  hide: false
+  icon:
+    sprite: _ReclamationProject/Shields/paladin_greatshield.rsi
+    state: base
+
+- type: constructionGraph
+  id: ReclamationPaladinGreatshield
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: shield
+      steps:
+      - material: Steel
+        amount: 30
+      - material: Steel
+        amount: 30
+      - material: Steel
+        amount: 30
+      - material: Steel
+        amount: 10
+      - material: Leather
+        amount: 5
+      - material: N14Iron
+        amount: 30
+      - material: Glass
+        amount: 2
+        doAfter: 10
+  - node: shield
+    entity: ReclamationPaladinGreatshield

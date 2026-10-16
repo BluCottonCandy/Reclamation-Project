@@ -35,7 +35,8 @@ public sealed class MirelurkQueenTest
             Assert.That(speed.BaseSprintSpeed, Is.GreaterThan(entities.GetComponent<MovementSpeedModifierComponent>(human).BaseSprintSpeed));
             Assert.That(entities.GetComponent<MobThresholdsComponent>(queen).Thresholds.Where(e => e.Value == MobState.Dead).Min(e => e.Key).Float(), Is.EqualTo(1000));
             var attackRate = entities.GetComponent<MeleeWeaponComponent>(queen).AttackRate;
-            Assert.That(attackRate, Is.EqualTo(2 * entities.GetComponent<MeleeWeaponComponent>(normal).AttackRate));
+            Assert.That(attackRate, Is.EqualTo(2f / 3f).Within(0.0001f));
+            Assert.That(attackRate, Is.LessThan(entities.GetComponent<MeleeWeaponComponent>(normal).AttackRate));
             var reflection = entities.GetComponent<ReflectComponent>(queen);
             var normalReflection = entities.GetComponent<ReflectComponent>(normal);
             Assert.That(reflection.Innate, Is.True);

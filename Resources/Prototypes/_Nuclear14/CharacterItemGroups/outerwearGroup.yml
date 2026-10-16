@@ -2,8 +2,6 @@
   id: N14LoadoutOuter
   items:
     - type: loadout
-      id: N14LoadoutOuterGhostSheet
-    - type: loadout
       id: N14LoadoutOuterJacketLettermanRed
     - type: loadout
       id: N14LoadoutOuterJacketLettermanBrown

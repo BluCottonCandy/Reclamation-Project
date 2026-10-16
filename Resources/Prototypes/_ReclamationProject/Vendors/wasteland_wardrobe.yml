@@ -1,0 +1,1256 @@
+# Wastelander clothing loadout catalog. Clothing costs 20 caps; outerwear exceeding 20% protection costs 50 caps.
+- type: entity
+  parent: Trademachine
+  id: ReclamationWastelanderClothingVendor
+  name: wasteland wardrobe
+  description: A weathered clothing dispenser. Clothing costs 20 caps, or 50 caps for outerwear with stronger protection.
+  suffix: Clothing, 20 or 50 caps
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/Machines/wasteland_wardrobe.rsi
+    layers:
+    - state: base
+  - type: PointLight
+    enabled: false
+  - type: NcStore
+    currencyWhitelist: [Caps]
+    buyPresets: [ReclamationWastelanderClothing]
+
+- type: storePresetStructured
+  id: ReclamationWastelanderClothing
+  currency: Caps
+  categories:
+  - ReclamationWardrobeHead
+  - ReclamationWardrobeHands
+  - ReclamationWardrobeShoes
+  - ReclamationWardrobeMask
+  - ReclamationWardrobeNeck
+  - ReclamationWardrobeEyes
+  - ReclamationWardrobeOuter
+  - ReclamationWardrobeUniform
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeHead
+  name: "Hats"
+  entries:
+  - proto: ClothingHeadAreopagite
+    price: 20
+  - proto: ClothingHeadCourier
+    price: 20
+  - proto: ClothingHeadFishCap
+    price: 20
+  - proto: ClothingHeadHatAnimalCat
+    price: 20
+  - proto: ClothingHeadHatAnimalCatBlack
+    price: 20
+  - proto: ClothingHeadHatAnimalCatBrown
+    price: 20
+  - proto: ClothingHeadHatAnimalHeadslime
+    price: 20
+  - proto: ClothingHeadHatAnimalMonkey
+    price: 20
+  - proto: ClothingHeadHatBeanie
+    price: 20
+  - proto: ClothingHeadHatBeanieGreen
+    price: 20
+  - proto: ClothingHeadHatBeanieSubmariner
+    price: 20
+  - proto: ClothingHeadHatBeanieTight
+    price: 20
+  - proto: ClothingHeadHatBeanieWinter
+    price: 20
+  - proto: ClothingHeadHatBeaverHat
+    price: 20
+  - proto: ClothingHeadHatBeret
+    price: 20
+  - proto: ClothingHeadHatBeretArtist
+    price: 20
+  - proto: ClothingHeadHatBeretFrench
+    price: 20
+  - proto: ClothingHeadHatBeretMerc
+    price: 20
+  - proto: ClothingHeadHatBeretPeaked
+    price: 20
+  - proto: ClothingHeadHatBeretWhite
+    price: 20
+  - proto: ClothingHeadHatBizarreSoft
+    price: 20
+  - proto: ClothingHeadHatBlacksoft
+    price: 20
+  - proto: ClothingHeadHatBluesoft
+    price: 20
+  - proto: ClothingHeadHatBow
+    price: 20
+  - proto: ClothingHeadHatBowSmall
+    price: 20
+  - proto: ClothingHeadHatBowlerHat
+    price: 20
+  - proto: ClothingHeadHatBunny
+    price: 20
+  - proto: ClothingHeadHatCake
+    price: 20
+  - proto: ClothingHeadHatCasa
+    price: 20
+  - proto: ClothingHeadHatChickenhead
+    price: 20
+  - proto: ClothingHeadHatCone
+    price: 20
+  - proto: ClothingHeadHatCorpsoft
+    price: 20
+  - proto: ClothingHeadHatCowboyBlack
+    price: 20
+  - proto: ClothingHeadHatCowboyBountyHunter
+    price: 20
+  - proto: ClothingHeadHatCowboyBrown
+    price: 20
+  - proto: ClothingHeadHatCowboyGrey
+    price: 20
+  - proto: ClothingHeadHatCowboyRed
+    price: 20
+  - proto: ClothingHeadHatCowboyWhite
+    price: 20
+  - proto: ClothingHeadHatFedoraBlack
+    price: 20
+  - proto: ClothingHeadHatFedoraBrown
+    price: 20
+  - proto: ClothingHeadHatFedoraChoc
+    price: 20
+  - proto: ClothingHeadHatFedoraGrey
+    price: 20
+  - proto: ClothingHeadHatFedoraWhite
+    price: 20
+  - proto: ClothingHeadHatFez
+    price: 20
+  - proto: ClothingHeadHatFlatBlack
+    price: 20
+  - proto: ClothingHeadHatFlatBrown
+    price: 20
+  - proto: ClothingHeadHatFlowerWreath
+    price: 20
+  - proto: ClothingHeadHatGreensoft
+    price: 20
+  - proto: ClothingHeadHatGreyFlatcap
+    price: 20
+  - proto: ClothingHeadHatGreysoft
+    price: 20
+  - proto: ClothingHeadHatHardhatBlue
+    price: 20
+  - proto: ClothingHeadHatHardhatOrange
+    price: 20
+  - proto: ClothingHeadHatHardhatRed
+    price: 20
+  - proto: ClothingHeadHatHardhatWhite
+    price: 20
+  - proto: ClothingHeadHatHardhatYellow
+    price: 20
+  - proto: ClothingHeadHatHardhatYellowDark
+    price: 20
+  - proto: ClothingHeadHatHeadBandBasic
+    price: 20
+  - proto: ClothingHeadHatHetmanHat
+    price: 20
+  - proto: ClothingHeadHatHoodBioGeneral
+    price: 20
+  - proto: ClothingHeadHatHoodNunHood
+    price: 20
+  - proto: ClothingHeadHatJester
+    price: 20
+  - proto: ClothingHeadHatJesterAlt
+    price: 20
+  - proto: ClothingHeadHatMagician
+    price: 20
+  - proto: ClothingHeadHatOrangesoft
+    price: 20
+  - proto: ClothingHeadHatOutlawHat
+    price: 20
+  - proto: ClothingHeadHatPaper
+    price: 20
+  - proto: ClothingHeadHatPartyBlue
+    price: 20
+  - proto: ClothingHeadHatPartyGreen
+    price: 20
+  - proto: ClothingHeadHatPartyRed
+    price: 20
+  - proto: ClothingHeadHatPartyYellow
+    price: 20
+  - proto: ClothingHeadHatPin
+    price: 20
+  - proto: ClothingHeadHatPinButterfly
+    price: 20
+  - proto: ClothingHeadHatPinMagnetic
+    price: 20
+  - proto: ClothingHeadHatPirate
+    price: 20
+  - proto: ClothingHeadHatPirateTricord
+    price: 20
+  - proto: ClothingHeadHatPurplesoft
+    price: 20
+  - proto: ClothingHeadHatRedRacoon
+    price: 20
+  - proto: ClothingHeadHatRedsoft
+    price: 20
+  - proto: ClothingHeadHatRibbon
+    price: 20
+  - proto: ClothingHeadHatRichard
+    price: 20
+  - proto: ClothingHeadHatSantahat
+    price: 20
+  - proto: ClothingHeadHatShrineMaidenWig
+    price: 20
+  - proto: ClothingHeadHatSkub
+    price: 20
+  - proto: ClothingHeadHatSlouch
+    price: 20
+  - proto: ClothingHeadHatSombrero
+    price: 20
+  - proto: ClothingHeadHatSquid
+    price: 20
+  - proto: ClothingHeadHatStrawHat
+    price: 20
+  - proto: ClothingHeadHatSunVisor
+    price: 20
+  - proto: ClothingHeadHatSurgcapBlack
+    price: 20
+  - proto: ClothingHeadHatSurgcapBlue
+    price: 20
+  - proto: ClothingHeadHatSurgcapCyan
+    price: 20
+  - proto: ClothingHeadHatSurgcapGreen
+    price: 20
+  - proto: ClothingHeadHatSurgcapPink
+    price: 20
+  - proto: ClothingHeadHatSurgcapPurple
+    price: 20
+  - proto: ClothingHeadHatSurgcapRainbow
+    price: 20
+  - proto: ClothingHeadHatSurgcapWhite
+    price: 20
+  - proto: ClothingHeadHatTacticalMaidHeadband
+    price: 20
+  - proto: ClothingHeadHatTophat
+    price: 20
+  - proto: ClothingHeadHatTrucker
+    price: 20
+  - proto: ClothingHeadHatTurbanColorable
+    price: 20
+  - proto: ClothingHeadHatUshanka
+    price: 20
+  - proto: ClothingHeadHatWelding
+    price: 20
+  - proto: ClothingHeadHatWeldingMaskFlame
+    price: 20
+  - proto: ClothingHeadHatWeldingMaskFlameBlue
+    price: 20
+  - proto: ClothingHeadHatWeldingMaskPainted
+    price: 20
+  - proto: ClothingHeadHatWitch
+    price: 20
+  - proto: ClothingHeadHatWitch1
+    price: 20
+  - proto: ClothingHeadHatXmasCrown
+    price: 20
+  - proto: ClothingHeadHatYellowsoft
+    price: 20
+  - proto: ClothingHeadHelmetCosmonaut
+    price: 20
+  - proto: ClothingHeadHelmetTemplar
+    price: 20
+  - proto: ClothingHeadHelmetThunderdome
+    price: 20
+  - proto: ClothingHeadHoodBrown
+    price: 20
+  - proto: ClothingHeadMailCarrier
+    price: 20
+  - proto: ClothingHeadMirror
+    price: 20
+  - proto: ClothingHeadPaperSack
+    price: 20
+  - proto: ClothingHeadPaperSackSmile
+    price: 20
+  - proto: ClothingHeadRastaHat
+    price: 20
+  - proto: ClothingHeadSafari
+    price: 20
+  - proto: ClothingHeadTechPriest
+    price: 20
+  - proto: MisfitsClothingHeadAntlerSkull
+    price: 20
+  - proto: MisfitsClothingHeadRedBandana
+    price: 20
+  - proto: MisfitsClothingHeadSchlimmHat
+    price: 20
+  - proto: N14ClothingHeadHatArmyBeret
+    price: 20
+  - proto: N14ClothingHeadHatArmyBeretAirborne
+    price: 20
+  - proto: N14ClothingHeadHatArmyBeretSpecial
+    price: 20
+  - proto: N14ClothingHeadHatArmyCap
+    price: 20
+  - proto: N14ClothingHeadHatBandit
+    price: 20
+  - proto: N14ClothingHeadHatBaseball
+    price: 20
+  - proto: N14ClothingHeadHatBeanie
+    price: 20
+  - proto: N14ClothingHeadHatCaravan
+    price: 20
+  - proto: N14ClothingHeadHatCaravanSuit
+    price: 20
+  - proto: N14ClothingHeadHatCaravanUniform
+    price: 20
+  - proto: N14ClothingHeadHatChinese
+    price: 20
+  - proto: N14ClothingHeadHatChineseHelmet
+    price: 20
+  - proto: N14ClothingHeadHatChineseHelmetMk2
+    price: 20
+  - proto: N14ClothingHeadHatCombatHelmet
+    price: 20
+  - proto: N14ClothingHeadHatCowboyBrown
+    price: 20
+  - proto: N14ClothingHeadHatCowboyGrey
+    price: 20
+  - proto: N14ClothingHeadHatCowboyGreyBanded
+    price: 20
+  - proto: N14ClothingHeadHatHeadscarf
+    price: 20
+  - proto: N14ClothingHeadHatHoodBlackRobe
+    price: 20
+  - proto: N14ClothingHeadHatHoodGhillieCloak
+    price: 20
+  - proto: N14ClothingHeadHatHoodLeatherCloak
+    price: 20
+  - proto: N14ClothingHeadHatHoodLeatherRobe
+    price: 20
+  - proto: N14ClothingHeadHatLightBaseballHelmet
+    price: 20
+  - proto: N14ClothingHeadHatPressHelmet
+    price: 20
+  - proto: N14ClothingHeadHatPrewarMilitaryHelmet
+    price: 20
+  - proto: N14ClothingHeadHatTribalOutcastHood
+    price: 20
+  - proto: N14ClothingHeadHatTrucker
+    price: 20
+  - proto: N14ClothingHeadHatWinterBoonie
+    price: 20
+  - proto: N14ClothingHeadHatWoodBoonie
+    price: 20
+  - proto: N14ClothingTribalMuffaloskull
+    price: 20
+  - proto: N14ClothingTribalRadstagSkull
+    price: 20
+  - proto: WaterDropletHat
+    price: 20
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeHands
+  name: "Gloves"
+  entries:
+  - proto: ClothingHandsGlovesColorBlack
+    price: 20
+  - proto: ClothingHandsGlovesColorBlue
+    price: 20
+  - proto: ClothingHandsGlovesColorBrown
+    price: 20
+  - proto: ClothingHandsGlovesColorGray
+    price: 20
+  - proto: ClothingHandsGlovesColorGreen
+    price: 20
+  - proto: ClothingHandsGlovesColorLightBrown
+    price: 20
+  - proto: ClothingHandsGlovesColorOrange
+    price: 20
+  - proto: ClothingHandsGlovesColorPurple
+    price: 20
+  - proto: ClothingHandsGlovesColorRed
+    price: 20
+  - proto: ClothingHandsGlovesColorWhite
+    price: 20
+  - proto: ClothingHandsGlovesColorYellow
+    price: 20
+  - proto: ClothingHandsGlovesColorYellowBudget
+    price: 20
+  - proto: ClothingHandsGlovesCombat
+    price: 20
+  - proto: ClothingHandsGlovesConducting
+    price: 20
+  - proto: ClothingHandsGlovesEvening
+    price: 20
+  - proto: ClothingHandsGlovesFingerlessInsulated
+    price: 20
+  - proto: ClothingHandsGlovesInspection
+    price: 20
+  - proto: ClothingHandsGlovesMercFingerless
+    price: 20
+  - proto: ClothingHandsGlovesPowerglove
+    price: 20
+  - proto: ClothingHandsGlovesRobohands
+    price: 20
+  - proto: ClothingHandsMercGlovesCombat
+    price: 20
+  - proto: ClothingHandsTacticalMaidGloves
+    price: 20
+  - proto: N14ClothingHandsGlovesBlackBiker
+    price: 20
+  - proto: N14ClothingHandsGlovesBlackLeather
+    price: 20
+  - proto: N14ClothingHandsGlovesBrownBiker
+    price: 20
+  - proto: N14ClothingHandsGlovesCloth
+    price: 20
+  - proto: N14ClothingHandsGlovesCombat
+    price: 20
+  - proto: N14ClothingHandsGlovesDriver
+    price: 20
+  - proto: N14ClothingHandsGlovesFur
+    price: 20
+  - proto: N14ClothingHandsGlovesLeather
+    price: 20
+  - proto: N14ClothingHandsGlovesMountie
+    price: 20
+  - proto: N14ClothingHandsGlovesNitrile
+    price: 20
+  - proto: N14ClothingHandsGlovesNitrilePurple
+    price: 20
+  - proto: N14ClothingHandsGlovesPatrol
+    price: 20
+  - proto: ThievingGloves
+    price: 20
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeShoes
+  name: "Footwear"
+  entries:
+  - proto: ClothingClothWrap
+    price: 20
+  - proto: ClothingShoesBootsAnkle
+    price: 20
+  - proto: ClothingShoesBootsCombat
+    price: 20
+  - proto: ClothingShoesBootsCowboyBlack
+    price: 20
+  - proto: ClothingShoesBootsCowboyBrown
+    price: 20
+  - proto: ClothingShoesBootsCowboyFancy
+    price: 20
+  - proto: ClothingShoesBootsCowboyWhite
+    price: 20
+  - proto: ClothingShoesBootsFishing
+    price: 20
+  - proto: ClothingShoesBootsFull
+    price: 20
+  - proto: ClothingShoesBootsLaceup
+    price: 20
+  - proto: ClothingShoesBootsMerc
+    price: 20
+  - proto: ClothingShoesBootsMoon
+    price: 20
+  - proto: ClothingShoesBootsMud
+    price: 20
+  - proto: ClothingShoesBootsMudThigh
+    price: 20
+  - proto: ClothingShoesBootsPerformer
+    price: 20
+  - proto: ClothingShoesBootsRyuzo
+    price: 20
+  - proto: ClothingShoesBootsThigh
+    price: 20
+  - proto: ClothingShoesBootsWinter
+    price: 20
+  - proto: ClothingShoesBootsWinterJani
+    price: 20
+  - proto: ClothingShoesBootsWinterMiner
+    price: 20
+  - proto: ClothingShoesBootsWinterWeb
+    price: 20
+  - proto: ClothingShoesBootsWorkColor
+    price: 20
+  - proto: ClothingShoesColorBlack
+    price: 20
+  - proto: ClothingShoesColorBlue
+    price: 20
+  - proto: ClothingShoesColorBrown
+    price: 20
+  - proto: ClothingShoesColorGreen
+    price: 20
+  - proto: ClothingShoesColorOrange
+    price: 20
+  - proto: ClothingShoesColorPurple
+    price: 20
+  - proto: ClothingShoesColorRed
+    price: 20
+  - proto: ClothingShoesColorWhite
+    price: 20
+  - proto: ClothingShoesColorYellow
+    price: 20
+  - proto: ClothingShoesDameDane
+    price: 20
+  - proto: ClothingShoesFlats
+    price: 20
+  - proto: ClothingShoesFlippers
+    price: 20
+  - proto: ClothingShoesGeta
+    price: 20
+  - proto: ClothingShoesHighHeels
+    price: 20
+  - proto: ClothingShoesHighHeelsLong
+    price: 20
+  - proto: ClothingShoesJester
+    price: 20
+  - proto: ClothingShoesLeather
+    price: 20
+  - proto: ClothingShoesMiscWhite
+    price: 20
+  - proto: ClothingShoesSandals
+    price: 20
+  - proto: ClothingShoesSandalsFlipFlopsAlt
+    price: 20
+  - proto: ClothingShoesSkater
+    price: 20
+  - proto: ClothingShoesSkates
+    price: 20
+  - proto: ClothingShoesSlippers
+    price: 20
+  - proto: ClothingShoesSnakeskinBoots
+    price: 20
+  - proto: ClothingShoesTourist
+    price: 20
+  - proto: ClothingUnderSocksBee
+    price: 20
+  - proto: ClothingUnderSocksCoder
+    price: 20
+  - proto: MisfitsMilitaryCowboyBoots
+    price: 20
+  - proto: MisfitsMilitaryPeltBoots
+    price: 20
+  - proto: MisfitsMilitarySteelTippedBoots
+    price: 20
+  - proto: N14ClothingBootsBlack
+    price: 20
+  - proto: N14ClothingBootsCombat
+    price: 20
+  - proto: N14ClothingBootsCombatMK2
+    price: 20
+  - proto: N14ClothingBootsCowboy
+    price: 20
+  - proto: N14ClothingBootsFire
+    price: 20
+  - proto: N14ClothingBootsLeather
+    price: 20
+  - proto: N14ClothingShoesBlack
+    price: 20
+  - proto: N14ClothingShoesBrown
+    price: 20
+  - proto: N14ClothingShoesJamrock
+    price: 20
+  - proto: N14ClothingShoesKaligi
+    price: 20
+  - proto: N14ClothingShoesRags
+    price: 20
+  - proto: N14ClothingShoesRaider
+    price: 20
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeMask
+  name: "Masks"
+  entries:
+  - proto: ClothingMaskBandSkull
+    price: 20
+  - proto: ClothingMaskBandWhite
+    price: 20
+  - proto: ClothingMaskBat
+    price: 20
+  - proto: ClothingMaskBear
+    price: 20
+  - proto: ClothingMaskBee
+    price: 20
+  - proto: ClothingMaskFox
+    price: 20
+  - proto: ClothingMaskGas
+    price: 20
+  - proto: ClothingMaskJackal
+    price: 20
+  - proto: ClothingMaskMuzzle
+    price: 20
+  - proto: ClothingMaskNeckGaiterWhite
+    price: 20
+  - proto: ClothingMaskPlague
+    price: 20
+  - proto: ClothingMaskRat
+    price: 20
+  - proto: ClothingMaskRaven
+    price: 20
+  - proto: ClothingMaskSterile
+    price: 20
+  - proto: N14ClothingMaskBlackBalaclava
+    price: 20
+  - proto: N14ClothingMaskBlueMask
+    price: 20
+  - proto: N14ClothingMaskBreather
+    price: 20
+  - proto: N14ClothingMaskBrownMask
+    price: 20
+  - proto: N14ClothingMaskGreenMask
+    price: 20
+  - proto: N14ClothingMaskOrangeMask
+    price: 20
+  - proto: N14ClothingMaskPatriotMask
+    price: 20
+  - proto: N14ClothingMaskRedMask
+    price: 20
+  - proto: N14ClothingMaskWhiteBalaclava
+    price: 20
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeNeck
+  name: "Neckwear"
+  entries:
+  - proto: ClothingNeckBellCollar
+    price: 20
+  - proto: ClothingNeckBlueScarf
+    price: 20
+  - proto: ClothingNeckBrownScarf
+    price: 20
+  - proto: ClothingNeckCrucifixColor
+    price: 20
+  - proto: ClothingNeckDesertMask
+    price: 20
+  - proto: ClothingNeckGreenScarf
+    price: 20
+  - proto: ClothingNeckOrangeScarf
+    price: 20
+  - proto: ClothingNeckPatriotScarf
+    price: 20
+  - proto: ClothingNeckRedScarf
+    price: 20
+  - proto: ClothingNeckScarfStripedBlack
+    price: 20
+  - proto: ClothingNeckScarfStripedBlue
+    price: 20
+  - proto: ClothingNeckScarfStripedBrown
+    price: 20
+  - proto: ClothingNeckScarfStripedGreen
+    price: 20
+  - proto: ClothingNeckScarfStripedLightBlue
+    price: 20
+  - proto: ClothingNeckScarfStripedRed
+    price: 20
+  - proto: M14ClothingNeckCloakWesternPoncho
+    price: 20
+  - proto: N14ClothingNeckCloakDarkCloak
+    price: 20
+  - proto: N14ClothingNeckCloakLeather
+    price: 20
+  - proto: N14ClothingNeckMantleLeather
+    price: 20
+  - proto: N14ClothingNeckShawl
+    price: 20
+  - proto: N14ClothingNeckTownGuardMantle
+    price: 20
+  - proto: N14ClothingNeckTribalCloak
+    price: 20
+  - proto: N14ClothingNeckTribalCloakBr
+    price: 20
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeEyes
+  name: "Eyewear"
+  entries:
+  - proto: ClothingEyesEyepatch
+    price: 20
+  - proto: ClothingEyesGlassesChemist
+    price: 20
+  - proto: N14ClothingEyesGlasses
+    price: 20
+  - proto: N14ClothingEyesGlassesGoggles
+    price: 20
+  - proto: N14ClothingEyesGlassesPilot
+    price: 20
+  - proto: N14ClothingEyesGlassesWelding
+    price: 20
+  - proto: N14ClothingEyesJamjars
+    price: 20
+  - proto: N14ClothingEyesSunGlasses
+    price: 20
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeOuter
+  name: "Outerwear"
+  entries:
+  - proto: M14ClothingOuterCombatTalon
+    price: 50
+  - proto: M14ClothingOuterCombatTalonDuster
+    price: 50
+  - proto: M14ClothingOuterDeadHorsesArmor
+    price: 50
+  - proto: M14ClothingOuterDeadHorsesLightArmor
+    price: 50
+  - proto: M14ClothingOuterGunfightersOvercoat
+    price: 50
+  - proto: M14ClothingOuterHighwayPatrolJacket
+    price: 50
+  - proto: M14ClothingOuterMarkedMenCombatPatrolArmor
+    price: 50
+  - proto: M14ClothingOuterMarkedMenCombatTribalArmor
+    price: 50
+  - proto: M14ClothingOuterMarlowGangOvercoat
+    price: 50
+  - proto: M14ClothingOuterRustwalkersArmor
+    price: 50
+  - proto: M14ClothingOuterRustwalkersLightArmor
+    price: 50
+  - proto: M14ClothingOuterSorrowsArmor
+    price: 50
+  - proto: M14ClothingOuterVegabondsVest
+    price: 50
+  - proto: M14ClothingOuterWardenPlate
+    price: 50
+  - proto: M14ClothingOuterWesternWayfarerArmor
+    price: 50
+  - proto: M14ClothingOuterWesternWayfarerHeavyArmor
+    price: 50
+  - proto: MisfitsClothingOuterWhiteLegsArmor
+    price: 50
+  - proto: N14ClothingOuterBattlecoatCoat
+    price: 20
+  - proto: N14ClothingOuterBattlecoatTan
+    price: 20
+  - proto: N14ClothingOuterBlackRobes
+    price: 20
+  - proto: N14ClothingOuterCoatCombatDuster
+    price: 50
+  - proto: N14ClothingOuterCoatDuster
+    price: 20
+  - proto: N14ClothingOuterCoatFollowerLab
+    price: 20
+  - proto: N14ClothingOuterCoatFollowersArmored
+    price: 50
+  - proto: N14ClothingOuterCoatLeatherCoat
+    price: 20
+  - proto: N14ClothingOuterCoatLeatherDuster
+    price: 20
+  - proto: N14ClothingOuterCoatLeatherJacket
+    price: 20
+  - proto: N14ClothingOuterCoatSoldierCoat
+    price: 20
+  - proto: N14ClothingOuterCoatWinterArmored
+    price: 20
+  - proto: N14ClothingOuterCombatArmor
+    price: 50
+  - proto: N14ClothingOuterCombatArmorChinese
+    price: 50
+  - proto: N14ClothingOuterCombatPainspike
+    price: 50
+  - proto: N14ClothingOuterCombatRaider
+    price: 20
+  - proto: N14ClothingOuterFlannelAqua
+    price: 20
+  - proto: N14ClothingOuterFlannelBrown
+    price: 20
+  - proto: N14ClothingOuterFlannelRed
+    price: 20
+  - proto: N14ClothingOuterGhostEchoes
+    price: 20
+  - proto: N14ClothingOuterHarperCoat
+    price: 20
+  - proto: N14ClothingOuterJacketBomber
+    price: 20
+  - proto: N14ClothingOuterJacketLettermanBrown
+    price: 20
+  - proto: N14ClothingOuterJacketLettermanRed
+    price: 20
+  - proto: N14ClothingOuterLeatherArmor
+    price: 50
+  - proto: N14ClothingOuterLeatherRobes
+    price: 20
+  - proto: N14ClothingOuterMetalArmor
+    price: 50
+  - proto: N14ClothingOuterPoliceCombat
+    price: 50
+  - proto: N14ClothingOuterPressArmor
+    price: 20
+  - proto: N14ClothingOuterRaiderBadlands
+    price: 20
+  - proto: N14ClothingOuterRaiderBlastmaster
+    price: 20
+  - proto: N14ClothingOuterRaiderCombat1
+    price: 50
+  - proto: N14ClothingOuterRobeHubologist
+    price: 20
+  - proto: N14ClothingOuterTownCoat
+    price: 20
+  - proto: N14ClothingOuterTownMediumCoat
+    price: 20
+  - proto: N14ClothingOuterVestChinese
+    price: 50
+  - proto: N14ClothingOuterZealotDuster
+    price: 50
+  - proto: N14ClothingScavengerHeavyArmor
+    price: 50
+
+- type: storeCategoryStructured
+  id: ReclamationWardrobeUniform
+  name: "Uniforms"
+  entries:
+  - proto: ClothingCostumeArcDress
+    price: 20
+  - proto: ClothingCostumeBunnySuit
+    price: 20
+  - proto: ClothingCostumeMioSkirt
+    price: 20
+  - proto: ClothingCostumeNaota
+    price: 20
+  - proto: ClothingKimonoBlue
+    price: 20
+  - proto: ClothingKimonoGreen
+    price: 20
+  - proto: ClothingKimonoPink
+    price: 20
+  - proto: ClothingKimonoPurple
+    price: 20
+  - proto: ClothingKimonoSky
+    price: 20
+  - proto: ClothingUniformColorRainbow
+    price: 20
+  - proto: ClothingUniformCourier
+    price: 20
+  - proto: ClothingUniformDressRed
+    price: 20
+  - proto: ClothingUniformJumpskirtCasualBlue
+    price: 20
+  - proto: ClothingUniformJumpskirtCasualPurple
+    price: 20
+  - proto: ClothingUniformJumpskirtCasualRed
+    price: 20
+  - proto: ClothingUniformJumpskirtClerk
+    price: 20
+  - proto: ClothingUniformJumpskirtCurator
+    price: 20
+  - proto: ClothingUniformJumpskirtDressAsymmetric
+    price: 20
+  - proto: ClothingUniformJumpskirtDressBlackAndGold
+    price: 20
+  - proto: ClothingUniformJumpskirtDressBlackTango
+    price: 20
+  - proto: ClothingUniformJumpskirtDressBlackTangoAlt
+    price: 20
+  - proto: ClothingUniformJumpskirtDressBlueSundress
+    price: 20
+  - proto: ClothingUniformJumpskirtDressCheongsamBlue
+    price: 20
+  - proto: ClothingUniformJumpskirtDressCheongsamGreen
+    price: 20
+  - proto: ClothingUniformJumpskirtDressCheongsamPurple
+    price: 20
+  - proto: ClothingUniformJumpskirtDressCheongsamRed
+    price: 20
+  - proto: ClothingUniformJumpskirtDressCheongsamWhite
+    price: 20
+  - proto: ClothingUniformJumpskirtDressClub
+    price: 20
+  - proto: ClothingUniformJumpskirtDressCoveter
+    price: 20
+  - proto: ClothingUniformJumpskirtDressEvening
+    price: 20
+  - proto: ClothingUniformJumpskirtDressFire
+    price: 20
+  - proto: ClothingUniformJumpskirtDressFlamenco
+    price: 20
+  - proto: ClothingUniformJumpskirtDressFlowergirl
+    price: 20
+  - proto: ClothingUniformJumpskirtDressFluffy
+    price: 20
+  - proto: ClothingUniformJumpskirtDressFormalRed
+    price: 20
+  - proto: ClothingUniformJumpskirtDressGothic
+    price: 20
+  - proto: ClothingUniformJumpskirtDressLacyGown
+    price: 20
+  - proto: ClothingUniformJumpskirtDressLong
+    price: 20
+  - proto: ClothingUniformJumpskirtDressLongFlared
+    price: 20
+  - proto: ClothingUniformJumpskirtDressLongSleeve
+    price: 20
+  - proto: ClothingUniformJumpskirtDressMidi
+    price: 20
+  - proto: ClothingUniformJumpskirtDressOpenShoulder
+    price: 20
+  - proto: ClothingUniformJumpskirtDressPuffy
+    price: 20
+  - proto: ClothingUniformJumpskirtDressRedSwept
+    price: 20
+  - proto: ClothingUniformJumpskirtDressSariGreen
+    price: 20
+  - proto: ClothingUniformJumpskirtDressSariRed
+    price: 20
+  - proto: ClothingUniformJumpskirtDressShort
+    price: 20
+  - proto: ClothingUniformJumpskirtDressSleeveless
+    price: 20
+  - proto: ClothingUniformJumpskirtDressSpider
+    price: 20
+  - proto: ClothingUniformJumpskirtDressStriped
+    price: 20
+  - proto: ClothingUniformJumpskirtDressSundress
+    price: 20
+  - proto: ClothingUniformJumpskirtDressSundressWhite
+    price: 20
+  - proto: ClothingUniformJumpskirtDressTea
+    price: 20
+  - proto: ClothingUniformJumpskirtDressVictorianBlack
+    price: 20
+  - proto: ClothingUniformJumpskirtDressVictorianRed
+    price: 20
+  - proto: ClothingUniformJumpskirtDressYellow
+    price: 20
+  - proto: ClothingUniformJumpskirtDressYellowSwoop
+    price: 20
+  - proto: ClothingUniformJumpskirtKimonoColor
+    price: 20
+  - proto: ClothingUniformJumpskirtOfLife
+    price: 20
+  - proto: ClothingUniformJumpskirtOldDress
+    price: 20
+  - proto: ClothingUniformJumpskirtPencilSkirtGymBra
+    price: 20
+  - proto: ClothingUniformJumpskirtQipao
+    price: 20
+  - proto: ClothingUniformJumpskirtQipaoSlim
+    price: 20
+  - proto: ClothingUniformJumpskirtSailor
+    price: 20
+  - proto: ClothingUniformJumpskirtSuitBlueBlazer
+    price: 20
+  - proto: ClothingUniformJumpskirtTacticalMaid
+    price: 20
+  - proto: ClothingUniformJumpskirtWaitress
+    price: 20
+  - proto: ClothingUniformJumpskirtWeb
+    price: 20
+  - proto: ClothingUniformJumpsuitAncient
+    price: 20
+  - proto: ClothingUniformJumpsuitAscetic
+    price: 20
+  - proto: ClothingUniformJumpsuitBarber
+    price: 20
+  - proto: ClothingUniformJumpsuitCamouflageShirt
+    price: 20
+  - proto: ClothingUniformJumpsuitCasualBlue
+    price: 20
+  - proto: ClothingUniformJumpsuitCasualPurple
+    price: 20
+  - proto: ClothingUniformJumpsuitCasualRed
+    price: 20
+  - proto: ClothingUniformJumpsuitCheckered
+    price: 20
+  - proto: ClothingUniformJumpsuitClerk
+    price: 20
+  - proto: ClothingUniformJumpsuitCossack
+    price: 20
+  - proto: ClothingUniformJumpsuitCowboyBrown
+    price: 20
+  - proto: ClothingUniformJumpsuitCowboyGrey
+    price: 20
+  - proto: ClothingUniformJumpsuitCurator
+    price: 20
+  - proto: ClothingUniformJumpsuitDameDane
+    price: 20
+  - proto: ClothingUniformJumpsuitDisheveled
+    price: 20
+  - proto: ClothingUniformJumpsuitExplorer
+    price: 20
+  - proto: ClothingUniformJumpsuitFamilyGuy
+    price: 20
+  - proto: ClothingUniformJumpsuitFlannel
+    price: 20
+  - proto: ClothingUniformJumpsuitFlannelBlackJeans
+    price: 20
+  - proto: ClothingUniformJumpsuitFlannelBlackKhakis
+    price: 20
+  - proto: ClothingUniformJumpsuitFlannelJeans
+    price: 20
+  - proto: ClothingUniformJumpsuitFlannelKhakis
+    price: 20
+  - proto: ClothingUniformJumpsuitFlannelOveralls
+    price: 20
+  - proto: ClothingUniformJumpsuitGreyShirt
+    price: 20
+  - proto: ClothingUniformJumpsuitHawaiBlack
+    price: 20
+  - proto: ClothingUniformJumpsuitHawaiBlue
+    price: 20
+  - proto: ClothingUniformJumpsuitHawaiRed
+    price: 20
+  - proto: ClothingUniformJumpsuitHawaiYellow
+    price: 20
+  - proto: ClothingUniformJumpsuitJeansBrown
+    price: 20
+  - proto: ClothingUniformJumpsuitJeansGreen
+    price: 20
+  - proto: ClothingUniformJumpsuitJeansRed
+    price: 20
+  - proto: ClothingUniformJumpsuitJournalist
+    price: 20
+  - proto: ClothingUniformJumpsuitKilt
+    price: 20
+  - proto: ClothingUniformJumpsuitKimono
+    price: 20
+  - proto: ClothingUniformJumpsuitLightBlueShirt
+    price: 20
+  - proto: ClothingUniformJumpsuitLoungewear
+    price: 20
+  - proto: ClothingUniformJumpsuitLumberjack
+    price: 20
+  - proto: ClothingUniformJumpsuitMercenary
+    price: 20
+  - proto: ClothingUniformJumpsuitMonasticRobeDark
+    price: 20
+  - proto: ClothingUniformJumpsuitMonasticRobeLight
+    price: 20
+  - proto: ClothingUniformJumpsuitMusician
+    price: 20
+  - proto: ClothingUniformJumpsuitOliveSweater
+    price: 20
+  - proto: ClothingUniformJumpsuitPirate
+    price: 20
+  - proto: ClothingUniformJumpsuitRecruitNT
+    price: 20
+  - proto: ClothingUniformJumpsuitRippedPunk
+    price: 20
+  - proto: ClothingUniformJumpsuitSafari
+    price: 20
+  - proto: ClothingUniformJumpsuitSailor
+    price: 20
+  - proto: ClothingUniformJumpsuitSober
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitAmish
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitAristocratic
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitAristocraticTuxedo
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitBlack
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitBlackAlt
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitBlackMob
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitBlueBlazer
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitBrown
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitBrownAlt
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitBrownMob
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitRegal
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitRegalTuxedo
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitRolledSleeves
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitStriped
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitVictorianRedBlack
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitVictorianRedVest
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitVictorianVest
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitWhite
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitWhiteAlt
+    price: 20
+  - proto: ClothingUniformJumpsuitSuitWhiteMob
+    price: 20
+  - proto: ClothingUniformJumpsuitTrackpants
+    price: 20
+  - proto: ClothingUniformJumpsuitTshirtJeans
+    price: 20
+  - proto: ClothingUniformJumpsuitTshirtJeansGray
+    price: 20
+  - proto: ClothingUniformJumpsuitTshirtJeansPeach
+    price: 20
+  - proto: ClothingUniformJumpsuitTurtleneckGrey
+    price: 20
+  - proto: ClothingUniformJumpsuitWaiter
+    price: 20
+  - proto: ClothingUniformJumpsuitWeb
+    price: 20
+  - proto: ClothingUniformJumpsuitYogaGymBra
+    price: 20
+  - proto: ClothingUniformKendoHakama
+    price: 20
+  - proto: ClothingUniformMNKBlackOveralls
+    price: 20
+  - proto: ClothingUniformMNKBlackShoulder
+    price: 20
+  - proto: ClothingUniformMNKDressBlack
+    price: 20
+  - proto: ClothingUniformMNKGymBra
+    price: 20
+  - proto: ClothingUniformMNKOfficeSkirt
+    price: 20
+  - proto: ClothingUniformMNKTracksuitBlack
+    price: 20
+  - proto: ClothingUniformMNKUnderGarment
+    price: 20
+  - proto: ClothingUniformMailCarrier
+    price: 20
+  - proto: ClothingUniformMartialGi
+    price: 20
+  - proto: ClothingUniformOveralls
+    price: 20
+  - proto: ClothingUniformRat
+    price: 20
+  - proto: ClothingUniformSchoolGakuranBlack
+    price: 20
+  - proto: ClothingUniformSkirtCourier
+    price: 20
+  - proto: ClothingUniformSkirtMailCarrier
+    price: 20
+  - proto: ClothingUniformSkirtTurtle
+    price: 20
+  - proto: ClothingUniformSwimsuitBlue
+    price: 20
+  - proto: ClothingUniformTShirtKhakiPants
+    price: 20
+  - proto: M14ClothingUniformADPUniform
+    price: 20
+  - proto: M14ClothingUniformDeadHorsesUniform
+    price: 20
+  - proto: M14ClothingUniformHelendudsUniform
+    price: 20
+  - proto: M14ClothingUniformIkedudsUniform
+    price: 20
+  - proto: M14ClothingUniformMarlowdudsUniform
+    price: 20
+  - proto: M14ClothingUniformMasondudsUniform
+    price: 20
+  - proto: M14ClothingUniformRustwalkersUniform
+    price: 20
+  - proto: M14ClothingUniformSchlimmUniform
+    price: 20
+  - proto: M14ClothingUniformSorrowsUniform
+    price: 20
+  - proto: M14ClothingUniformWhiteLegsUniform
+    price: 20
+  - proto: N14ClothingUniformJumpskirtAsylumDress
+    price: 20
+  - proto: N14ClothingUniformJumpskirtDressBlack
+    price: 20
+  - proto: N14ClothingUniformJumpskirtDressBlue
+    price: 20
+  - proto: N14ClothingUniformJumpskirtFalloutBlack
+    price: 20
+  - proto: N14ClothingUniformJumpskirtFalloutBlue
+    price: 20
+  - proto: N14ClothingUniformJumpskirtMerc
+    price: 20
+  - proto: N14ClothingUniformJumpskirtRDFormal
+    price: 20
+  - proto: N14ClothingUniformJumpskirtSundress
+    price: 20
+  - proto: N14ClothingUniformJumpskirtTribal
+    price: 20
+  - proto: N14ClothingUniformJumpskirtWastelandDoc
+    price: 20
+  - proto: N14ClothingUniformJumpsuitBartenderAlt
+    price: 20
+  - proto: N14ClothingUniformJumpsuitBlueSuit
+    price: 20
+  - proto: N14ClothingUniformJumpsuitBrahminFarmer
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCaravan
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCaravanOveralls
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCaravanShirt
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCaravanSuit
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCheckered
+    price: 20
+  - proto: N14ClothingUniformJumpsuitChinese
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCombat
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCowboyBrown
+    price: 20
+  - proto: N14ClothingUniformJumpsuitCowboyGrey
+    price: 20
+  - proto: N14ClothingUniformJumpsuitDetectiveAlt
+    price: 20
+  - proto: N14ClothingUniformJumpsuitFollowers
+    price: 20
+  - proto: N14ClothingUniformJumpsuitFudd
+    price: 20
+  - proto: N14ClothingUniformJumpsuitManagerSuit
+    price: 20
+  - proto: N14ClothingUniformJumpsuitMechanic
+    price: 20
+  - proto: N14ClothingUniformJumpsuitMerc
+    price: 20
+  - proto: N14ClothingUniformJumpsuitMerchant
+    price: 20
+  - proto: N14ClothingUniformJumpsuitMilUniform
+    price: 20
+  - proto: N14ClothingUniformJumpsuitPreWarCasual
+    price: 20
+  - proto: N14ClothingUniformJumpsuitPreWarLumberjack
+    price: 20
+  - proto: N14ClothingUniformJumpsuitPreWarManager
+    price: 20
+  - proto: N14ClothingUniformJumpsuitPreWarRelaxed
+    price: 20
+  - proto: N14ClothingUniformJumpsuitRDFormal
+    price: 20
+  - proto: N14ClothingUniformJumpsuitRags
+    price: 20
+  - proto: N14ClothingUniformJumpsuitSettlerRags
+    price: 20
+  - proto: N14ClothingUniformJumpsuitTrader
+    price: 20
+  - proto: N14ClothingUniformJumpsuitTribal
+    price: 20
+  - proto: N14ClothingUniformJumpsuitWarriorTribal
+    price: 20
+  - proto: N14ClothingUniformJumpsuitWastelandDoc
+    price: 20
+  - proto: N14ClothingUniformJumpsuitdrylanderTribal
+    price: 20
+  - proto: N14ClothingUniformJumpsuittribalpantsf
+    price: 20
+  - proto: N14ClothingUniformJumpsuittribalpantsm
+    price: 20
+  - proto: N14ClothingUniformJumpsuittribalpantsnecklace
+    price: 20
+  - proto: UniformJabroni
+    price: 20
+  - proto: UniformMaid
+    price: 20
+  - proto: UniformSchoolgirlBlack
+    price: 20
+  - proto: UniformSchoolgirlBlue
+    price: 20
+  - proto: UniformSchoolgirlCyan
+    price: 20
+  - proto: UniformSchoolgirlDusk
+    price: 20
+  - proto: UniformSchoolgirlGreen
+    price: 20
+  - proto: UniformSchoolgirlOrange
+    price: 20
+  - proto: UniformSchoolgirlPink
+    price: 20
+  - proto: UniformSchoolgirlPurple
+    price: 20
+  - proto: UniformSchoolgirlRed
+    price: 20
+  - proto: UniformShortsRed
+    price: 20
+  - proto: UniformShortsRedWithTop
+    price: 20

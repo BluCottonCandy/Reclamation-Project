@@ -6,7 +6,6 @@ using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Armor;
 using Content.Shared.Clothing.Components;
-using Content.Server.Clothing.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
@@ -80,24 +79,7 @@ public sealed class RailroadFactionTest
                     Assert.That(inventory.TryGetSlotEntity(human, slot, out var worn), Is.True, $"{id}: {slot} did not equip");
                     Assert.That(entities.GetComponent<MetaDataComponent>(worn!.Value).EntityPrototype!.ID,
                         Is.EqualTo(expected.Id), $"{id}: wrong item in {slot}");
-                    if (id.Id.EndsWith("Agent") && slot != "wallet")
-                    {
-                        Assert.That(entities.HasComponent<ChameleonClothingComponent>(worn.Value), Is.True, $"Agent {slot} cannot disguise");
-                        var disguise = entities.GetComponent<ChameleonClothingComponent>(worn.Value);
-                        Assert.That(disguise.RestrictTargets, Is.True);
-                        Assert.That(disguise.AdditionalTargets.Select(target => target.Id), Does.Not.Contain("ClothingUniformJumpsuitCaptain"));
-                        foreach (var target in disguise.AdditionalTargets)
-                        {
-                            var normalized = target.Id.Replace("-", "").Replace("_", "").ToLowerInvariant();
-                            Assert.That(normalized, Does.Not.Contain("supermutant"));
-                            Assert.That(normalized, Does.Not.Contain("c27"));
-                            Assert.That(prototypes.Index(target).TryGetComponent("Clothing", out ClothingComponent? clothing), Is.True, target.Id);
-                            Assert.That(clothing!.Slots.HasFlag(disguise.Slot), Is.True, $"{target} has wrong disguise slot");
-                        }
-                        var original = disguise.Default;
-                        entities.System<ChameleonClothingSystem>().SetSelectedPrototype(worn.Value, "ClothingUniformJumpsuitCaptain");
-                        Assert.That(disguise.Default, Is.EqualTo(original), "Station clothing must be rejected by the server too");
-                    }
+                    Assert.That(entities.HasComponent<ChameleonClothingComponent>(worn.Value), Is.False, $"{id}: {slot} still disguises");
                 }
                 Assert.That(inventory.TryGetSlotEntity(human, "id", out var card), Is.True);
                 var access = entities.GetComponent<AccessComponent>(card!.Value);
@@ -110,11 +92,9 @@ public sealed class RailroadFactionTest
                 if (id.Id.EndsWith("Agent"))
                 {
                     var identity = entities.GetComponent<IdCardComponent>(card.Value);
-                    Assert.That(identity.LocalizedJobTitle, Is.EqualTo(prototypes.Index<JobPrototype>("Wastelander").LocalizedName));
-                    Assert.That(identity.JobDepartments.Any(departmentId => departmentId.ToString()!.Contains("Railroad")), Is.False);
-                    var metadata = entities.GetComponent<MetaDataComponent>(card.Value);
-                    Assert.That(metadata.EntityName, Does.Not.Contain("Railroad"));
-                    Assert.That(metadata.EntityDescription, Is.EqualTo(prototypes.Index<EntityPrototype>("N14ClothingNeckDogtags").Description));
+                    Assert.That(identity.LocalizedJobTitle, Is.EqualTo(job.LocalizedName));
+                    Assert.That(entities.GetComponent<MetaDataComponent>(card.Value).EntityPrototype!.ID,
+                        Is.EqualTo(id.Id + "ID"));
                     Assert.That(inventory.TryGetSlotEntity(human, "back", out var backpack), Is.True);
                     var stored = entities.GetComponent<StorageComponent>(backpack!.Value).Container.ContainedEntities;
                     var armor = stored.Single(uid => entities.GetComponent<MetaDataComponent>(uid).EntityPrototype?.ID == "RailroadAgentCombatArmor");
@@ -123,7 +103,7 @@ public sealed class RailroadFactionTest
                     Assert.That(entities.GetComponent<MetaDataComponent>(slots.GetItemOrNull(pistol, "gun_magazine")!.Value).EntityPrototype!.ID, Is.EqualTo("N14MagazinePistol12mm"));
                     Assert.That(entities.GetComponent<MetaDataComponent>(slots.GetItemOrNull(pistol, "gun_chamber")!.Value).EntityPrototype!.ID, Is.EqualTo("N14CartridgePistol127"));
                     Assert.That(inventory.TryGetSlotEntity(human, "outerClothing", out var vest), Is.True);
-                    Assert.That(entities.GetComponent<ChameleonClothingComponent>(vest!.Value).Default?.Id, Is.EqualTo("RailroadVest"));
+                    Assert.That(entities.GetComponent<MetaDataComponent>(vest!.Value).EntityPrototype!.ID, Is.EqualTo("RailroadVest"));
                     Assert.That(entities.HasComponent<ChameleonClothingComponent>(armor), Is.False);
                     var shape = entities.GetComponent<ItemComponent>(armor).Shape!;
                     Assert.That(shape.Count, Is.EqualTo(1));

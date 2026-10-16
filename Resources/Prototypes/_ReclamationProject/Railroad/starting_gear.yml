@@ -34,17 +34,17 @@
   id: RailroadSafehouse1AgentGear
   equipment:
     wallet: N14Wallet
-    jumpsuit: RailroadChameleonFlannel
-    ears: RailroadChameleonHeadset
-    back: RailroadChameleonBackpack
-    shoes: RailroadChameleonBoots
-    head: RailroadChameleonBeanie
-    gloves: RailroadChameleonGloves
-    outerClothing: RailroadChameleonOuter
-    id: RailroadSafehouse1AgentIDChameleon
-    mask: RailroadChameleonBalaclava
-    neck: RailroadChameleonDuster
-    eyes: RailroadChameleonGlasses
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadVest
+    id: RailroadSafehouse1AgentID
+    mask: RailroadBalaclava
+    neck: RailroadRangerDuster
+    eyes: RailroadGlasses
   storage:
     back:
     - N14BoxPlasticFilledWastelander
@@ -139,17 +139,17 @@
   id: RailroadSafehouse2AgentGear
   equipment:
     wallet: N14Wallet
-    jumpsuit: RailroadChameleonFlannel
-    ears: RailroadChameleonHeadset
-    back: RailroadChameleonBackpack
-    shoes: RailroadChameleonBoots
-    head: RailroadChameleonBeanie
-    gloves: RailroadChameleonGloves
-    outerClothing: RailroadChameleonOuter
-    id: RailroadSafehouse2AgentIDChameleon
-    mask: RailroadChameleonBalaclava
-    neck: RailroadChameleonDuster
-    eyes: RailroadChameleonGlasses
+    jumpsuit: RailroadFlannel
+    ears: RailroadScrapHeadset
+    back: RailroadBackpack
+    shoes: RailroadCombatBoots
+    head: RailroadGrayBeanie
+    gloves: RailroadFingerlessGloves
+    outerClothing: RailroadVest
+    id: RailroadSafehouse2AgentID
+    mask: RailroadBalaclava
+    neck: RailroadRangerDuster
+    eyes: RailroadGlasses
   storage:
     back:
     - N14BoxPlasticFilledWastelander

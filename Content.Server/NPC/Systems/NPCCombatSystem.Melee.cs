@@ -99,7 +99,10 @@ public sealed partial class NPCCombatSystem
         // TODO: When I get parallel operators move this as NPC combat shouldn't be handling this.
         _steering.Register(uid, new EntityCoordinates(component.Target, Vector2.Zero), steering);
 
-        if (distance > weapon.Range)
+        var blackboard = Comp<HTNComponent>(uid).Blackboard;
+        var wideAttack = blackboard.TryGetValue<bool>("MeleeWideAttack", out var useWideAttack, EntityManager) && useWideAttack;
+        var attackRange = weapon.Range * (wideAttack ? weapon.HeavyRangeModifier : 1f);
+        if (distance > attackRange)
         {
             component.Status = CombatStatus.TargetOutOfRange;
             return;
@@ -108,7 +111,11 @@ public sealed partial class NPCCombatSystem
         if (weapon.NextAttack > curTime || !Enabled)
             return;
 
-        if (_random.Prob(component.MissChance) &&
+        if (wideAttack)
+        {
+            _melee.AttemptWideAttack(uid, weaponUid, weapon, component.Target);
+        }
+        else if (_random.Prob(component.MissChance) &&
             physicsQuery.TryGetComponent(component.Target, out var targetPhysics) &&
             targetPhysics.LinearVelocity.LengthSquared() != 0f)
         {

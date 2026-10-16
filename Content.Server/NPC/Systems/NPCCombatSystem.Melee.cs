@@ -12,6 +12,7 @@ namespace Content.Server.NPC.Systems;
 public sealed partial class NPCCombatSystem
 {
     [Dependency] private readonly IRobustRandom _rng = default!;
+    [Dependency] private readonly NPCRetaliationSystem _retaliation = default!;
     private const float TargetMeleeLostRange = 14f;
 
     private void InitializeMelee()
@@ -83,7 +84,7 @@ public sealed partial class NPCCombatSystem
             return;
         }
 
-        if (distance > TargetMeleeLostRange)
+        if (distance > _retaliation.GetTargetRange(uid, component.Target, TargetMeleeLostRange))
         {
             component.Status = CombatStatus.TargetUnreachable;
             return;

@@ -2,6 +2,7 @@
 using Content.Shared.Camera;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Events;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Stunnable;
 using Robust.Shared.Containers;
@@ -20,6 +21,7 @@ public partial class SharedScopeSystem
     {
         SubscribeLocalEvent<ScopingComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<ScopingComponent, MoveInputEvent>(OnMoveInput);
+        SubscribeLocalEvent<ScopingComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeed);
         SubscribeLocalEvent<ScopingComponent, PullStartedMessage>(OnPullStarted);
         SubscribeLocalEvent<ScopingComponent, EntParentChangedMessage>(OnParentChanged);
         SubscribeLocalEvent<ScopingComponent, ContainerGettingInsertedAttemptEvent>(OnInsertAttempt);
@@ -37,7 +39,16 @@ public partial class SharedScopeSystem
     private void OnRemove(Entity<ScopingComponent> user, ref ComponentRemove args)
     {
         if (!TerminatingOrDeleted(user))
+        {
+            user.Comp.MovementMultiplier = 1f;
             UpdateOffset(user);
+            _movementSpeed.RefreshMovementSpeedModifiers(user);
+        }
+    }
+
+    private void OnRefreshMovementSpeed(Entity<ScopingComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        args.ModifySpeed(ent.Comp.MovementMultiplier);
     }
 
     /// <summary>

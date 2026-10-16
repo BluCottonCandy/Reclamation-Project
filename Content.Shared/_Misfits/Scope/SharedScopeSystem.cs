@@ -1,6 +1,7 @@
 // #Misfits Add - Core shared scoping system (ported from RMC-14 Scoping)
 using System.Numerics;
 using Content.Shared.Actions;
+using Content.Shared._Misfits.Wielding;
 using Content.Shared.Camera;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands;
@@ -34,6 +35,7 @@ public abstract partial class SharedScopeSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     [Dependency] protected readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
@@ -52,6 +54,7 @@ public abstract partial class SharedScopeSystem : EntitySystem
 
         // Unwield check (if scope requires wielding)
         SubscribeLocalEvent<ScopeComponent, ItemUnwieldedEvent>(OnUnwielded);
+        SubscribeLocalEvent<ScopeComponent, MisfitsItemWieldedEvent>(OnWielded);
 
         // Action grants
         SubscribeLocalEvent<ScopeComponent, GetItemActionsEvent>(OnGetActions);
@@ -100,7 +103,10 @@ public abstract partial class SharedScopeSystem : EntitySystem
 
             var currentDir = _transform.GetWorldRotation(userUid).GetCardinalDir();
             if (currentDir == oldDir)
+            {
+                MoveRelay((scopeUid, scopeComp), scopingComp.EyeOffset);
                 continue;
+            }
 
             // Direction changed — instantly redirect the scope view
             RedirectScope(userUid, (scopeUid, scopeComp), (userUid, scopingComp), currentDir);
@@ -190,6 +196,22 @@ public abstract partial class SharedScopeSystem : EntitySystem
     {
         if (ent.Comp.RequireWielding)
             Unscope(ent);
+
+        if (ent.Comp.ActionsOnlyWhenWielded && args.User is { } user)
+        {
+            _actionsSystem.RemoveAction(user, ent.Comp.ScopingToggleActionEntity);
+            _actionsSystem.RemoveAction(user, ent.Comp.CycleZoomLevelActionEntity);
+        }
+    }
+
+    private void OnWielded(Entity<ScopeComponent> ent, ref MisfitsItemWieldedEvent args)
+    {
+        if (!ent.Comp.ActionsOnlyWhenWielded)
+            return;
+
+        _actionsSystem.AddAction(args.User, ref ent.Comp.ScopingToggleActionEntity, ent.Comp.ScopingToggleAction, ent);
+        if (ent.Comp.ZoomLevels.Count > 1)
+            _actionsSystem.AddAction(args.User, ref ent.Comp.CycleZoomLevelActionEntity, ent.Comp.CycleZoomLevelAction, ent);
     }
 
     #endregion
@@ -198,6 +220,10 @@ public abstract partial class SharedScopeSystem : EntitySystem
 
     private void OnGetActions(Entity<ScopeComponent> ent, ref GetItemActionsEvent args)
     {
+        if (ent.Comp.ActionsOnlyWhenWielded &&
+            (!TryComp<WieldableComponent>(ent, out var wieldable) || !wieldable.Wielded))
+            return;
+
         if (ent.Comp.ScopingToggleAction != null)
             args.AddAction(ref ent.Comp.ScopingToggleActionEntity, ent.Comp.ScopingToggleAction);
 
@@ -355,7 +381,9 @@ public abstract partial class SharedScopeSystem : EntitySystem
         scoping = EnsureComp<ScopingComponent>(user);
         scoping.Scope = scope;
         scoping.AllowMovement = zoomLevel.AllowMovement;
+        scoping.MovementMultiplier = scope.Comp.ScopedMovementMultiplier;
         Dirty(user, scoping);
+        _movementSpeed.RefreshMovementSpeedModifiers(user);
 
         // If this is a scope attachment inside a gun, mark the gun too
         if (scope.Comp.Attachment && TryGetActiveEntity(scope, out var active))
@@ -394,7 +422,13 @@ public abstract partial class SharedScopeSystem : EntitySystem
         if (scope.Comp.User is not { } user)
             return false;
 
+        if (TryComp<ScopingComponent>(user, out var scoping))
+        {
+            scoping.MovementMultiplier = 1f;
+            Dirty(user, scoping);
+        }
         RemCompDeferred<ScopingComponent>(user);
+        _movementSpeed.RefreshMovementSpeedModifiers(user);
 
         // Clean up GunScopingComponent if this was an attachment scope
         if (scope.Comp.Attachment && TryGetActiveEntity(scope, out var active))

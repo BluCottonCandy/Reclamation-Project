@@ -182,6 +182,16 @@
   id: N14WeaponRifle762Marksman
   description: A heavy semiautomatic rifle with a scope, uses 7.62 ammo.
   components:
+  - type: Scope
+    requireWielding: true
+    actionsOnlyWhenWielded: true
+    scopedMovementMultiplier: 0.1
+    zoomLevels:
+    - name: 5x
+      zoom: 1.2
+      offset: 17
+      allowMovement: true
+      doAfter: 0.3
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/marksman.rsi
     quickEquip: false
@@ -718,6 +728,16 @@
   id: N14WeaponRifle762MarksmanCanadian
   description: A pre-war canadian marksman rifle chambered in 7.62mm.
   components:
+  - type: Scope
+    requireWielding: true
+    actionsOnlyWhenWielded: true
+    scopedMovementMultiplier: 0.1
+    zoomLevels:
+    - name: 5x
+      zoom: 1.2
+      offset: 17
+      allowMovement: true
+      doAfter: 0.3
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/canadianmarksman.rsi
     quickEquip: false
@@ -772,6 +792,16 @@
   id: N14WeaponRifle762MarksmanChinese
   description: A pre-war chinese marksman rifle chambered in .308.
   components:
+  - type: Scope
+    requireWielding: true
+    actionsOnlyWhenWielded: true
+    scopedMovementMultiplier: 0.1
+    zoomLevels:
+    - name: 5x
+      zoom: 1.2
+      offset: 17
+      allowMovement: true
+      doAfter: 0.3
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/chinesemarksman.rsi
     quickEquip: false

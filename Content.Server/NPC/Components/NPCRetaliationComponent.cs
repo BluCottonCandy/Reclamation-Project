@@ -1,4 +1,4 @@
-﻿using Content.Server.NPC.Systems;
+using Content.Server.NPC.Systems;
 
 namespace Content.Server.NPC.Components;
 
@@ -27,4 +27,17 @@ public sealed partial class NPCRetaliationComponent : Component
     /// </summary>
     [DataField]
     public bool RetaliateFriendlies;
+
+    /// <summary>Time and maximum range for pursuing an attacker beyond passive sight.</summary>
+    [DataField]
+    public TimeSpan PursuitDuration = TimeSpan.FromSeconds(30);
+
+    [DataField]
+    public float PursuitRange = 64f;
+
+    [ViewVariables]
+    public EntityUid? PursuitTarget;
+
+    [ViewVariables]
+    public TimeSpan PursuitUntil;
 }

@@ -39,6 +39,16 @@
     - type: SurgeryTarget
       canOperate: false
     - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
+    - type: SoundWhileAlive
+    - type: SpamEmitSound
+      minInterval: 10
+      maxInterval: 10
+      enabled: false # ProximityNPC wakes the voice timer along with the AI.
+      sound:
+        collection: ReclamationRaiderVoice
+        params:
+          volume: -6
+          maxDistance: 12
     - type: HTN
       rootTask:
         task: N14RangedHostileCompound

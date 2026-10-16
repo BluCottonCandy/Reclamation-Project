@@ -1,0 +1,8 @@
+- type: soundCollection
+  id: ReclamationRaiderVoice
+  files:
+  - /Audio/_Reclamation/Raiders/think-you-can-hide.ogg
+  - /Audio/_Reclamation/Raiders/all-day.ogg
+  - /Audio/_Reclamation/Raiders/getting-tired.ogg
+  - /Audio/_Reclamation/Raiders/this-will-be-fun.ogg
+  - /Audio/_Reclamation/Raiders/just-getting-started.ogg

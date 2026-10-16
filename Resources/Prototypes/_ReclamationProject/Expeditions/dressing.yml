@@ -1,0 +1,15 @@
+# Reuse the existing wasteland litter artwork as cleanable floor decals.
+- type: decal
+  id: ReclamationExpeditionTinLitter
+  defaultCleanable: true
+  sprite: { sprite: _Nuclear14/Objects/Consumable/Food/dogfood.rsi, state: trash }
+
+- type: decal
+  id: ReclamationExpeditionPacketLitter
+  defaultCleanable: true
+  sprite: { sprite: _Nuclear14/Objects/Consumable/Food/pre-war.rsi, state: crisps_trash }
+
+- type: decal
+  id: ReclamationExpeditionBoxLitter
+  defaultCleanable: true
+  sprite: { sprite: _Nuclear14/Objects/Consumable/Food/pre-war.rsi, state: cram_trash }

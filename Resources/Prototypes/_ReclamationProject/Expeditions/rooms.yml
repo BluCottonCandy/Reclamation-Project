@@ -1,0 +1,1579 @@
+# Rooms
+# Large
+# - 17x5
+- type: dungeonRoom
+  id: ReclamationScience17x5a
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,0
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience17x5b
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 18,0
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience17x5c
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 36,0
+  tags:
+    - ReclamationExperiment
+
+# - 7x7
+- type: dungeonRoom
+  id: ReclamationScience7x7a
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,42
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x7b
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 8,42
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x7c
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 16,42
+  tags:
+    - ReclamationExperiment
+
+# Medium
+# - 11x5
+- type: dungeonRoom
+  id: ReclamationScience11x5a
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,6
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience11x5b
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 12,6
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience11x5c
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 24,6
+  tags:
+    - ReclamationExperiment
+
+# - 7x5
+- type: dungeonRoom
+  id: ReclamationScience7x5a
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,12
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x5b
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 8,12
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x5c
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 16,12
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x5d
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 24,12
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x5e
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 32,12
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x5f
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 40,12
+  tags:
+    - ReclamationExperiment
+
+# - 13x3
+- type: dungeonRoom
+  id: ReclamationScience13x3a
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,30
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience13x3b
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 14,30
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience13x3c
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 28,30
+  tags:
+    - ReclamationExperiment
+
+# - 11x3
+- type: dungeonRoom
+  id: ReclamationScience11x3a
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,34
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience11x3b
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 12,34
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience11x3c
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 24,34
+  tags:
+    - ReclamationExperiment
+
+# - 7x3
+- type: dungeonRoom
+  id: ReclamationScience7x3a
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,38
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x3b
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 8,38
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x3c
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 16,38
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x3d
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 24,38
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x3e
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 32,38
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience7x3f
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 40,38
+  tags:
+    - ReclamationExperiment
+
+# Small
+# - 5x5
+- type: dungeonRoom
+  id: ReclamationScience5x5a
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,18
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience5x5b
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 6,18
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience5x5c
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 12,18
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience5x5d
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 18,18
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience5x5e
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 24,18
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience5x5f
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 30,18
+  tags:
+    - ReclamationExperiment
+
+# - 3x5
+- type: dungeonRoom
+  id: ReclamationScience3x5a
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 0,24
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience3x5b
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 4,24
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience3x5c
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 8,24
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience3x5d
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 12,24
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience3x5e
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 16,24
+  tags:
+    - ReclamationExperiment
+
+- type: dungeonRoom
+  id: ReclamationScience3x5f
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/experiment.yml
+  offset: 20,24
+  tags:
+    - ReclamationExperiment
+
+# Rooms
+# Large
+# - 17x5
+- type: dungeonRoom
+  id: ReclamationLavaBrig17x5a
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,0
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig17x5b
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 18,0
+  tags:
+    - ReclamationLavaBrig
+
+# - 7x7
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x7a
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,42
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x7b
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 8,42
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x7c
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 16,42
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x7d
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 24,42
+  tags:
+    - ReclamationLavaBrig
+
+# Medium
+# - 11x5
+- type: dungeonRoom
+  id: ReclamationLavaBrig11x5a
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,6
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig11x5b
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 12,6
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig11x5c
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 24,6
+  tags:
+    - ReclamationLavaBrig
+
+# - 7x5
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x5a
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,12
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x5b
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 8,12
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x5c
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 16,12
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x5d
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 24,12
+  tags:
+    - ReclamationLavaBrig
+
+# - 13x3
+- type: dungeonRoom
+  id: ReclamationLavaBrig13x3a
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,30
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig13x3b
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 14,30
+  tags:
+    - ReclamationLavaBrig
+
+# - 11x3
+- type: dungeonRoom
+  id: ReclamationLavaBrig11x3a
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,34
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig11x3b
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 12,34
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig11x3c
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 24,34
+  tags:
+    - ReclamationLavaBrig
+
+# - 7x3
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x3a
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,38
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x3b
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 8,38
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x3c
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 16,38
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig7x3d
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 24,38
+  tags:
+    - ReclamationLavaBrig
+
+# Small
+# - 5x5
+- type: dungeonRoom
+  id: ReclamationLavaBrig5x5a
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,18
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig5x5b
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 6,18
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig5x5c
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 12,18
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig5x5d
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 18,18
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig5x5e
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 24,18
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig5x5f
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 30,18
+  tags:
+    - ReclamationLavaBrig
+
+# - 3x5
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5a
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 0,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5b
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 4,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5c
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 8,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5d
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 12,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5e
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 16,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5f
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 20,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5g
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 24,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5h
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 28,24
+  tags:
+    - ReclamationLavaBrig
+
+- type: dungeonRoom
+  id: ReclamationLavaBrig3x5i
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/lava_brig.yml
+  offset: 32,24
+  tags:
+    - ReclamationLavaBrig
+
+# Rooms
+# Large
+# - 17x5
+- type: dungeonRoom
+  id: ReclamationMineshaft17x5a
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 0,0
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft17x5b
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 18,0
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft17x5c
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 36,0
+  tags:
+    - ReclamationMineshaft
+
+# = 11x5
+
+- type: dungeonRoom
+  id: ReclamationMineshaft11x5a
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 0,6
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft11x5b
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 12,6
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft11x5c
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 24,6
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft11x5d
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 36,6
+  tags:
+    - ReclamationMineshaft
+
+# - 7x5
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x5a
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 0,12
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x5b
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 8,12
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x5c
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 16,12
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x5d
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 24,12
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x5e
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 32,12
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x5f
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 40,12
+  tags:
+    - ReclamationMineshaft
+
+# - 5x5
+
+- type: dungeonRoom
+  id: ReclamationMineshaft5x5a
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 0,18
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft5x5b
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 6,18
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft5x5c
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 12,18
+  tags:
+    - ReclamationMineshaft
+
+#  -7x7
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x7a
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 18,18
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x7b
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 26,18
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x7c
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 34,18
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft7x7e
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 42,18
+  tags:
+    - ReclamationMineshaft
+
+#  -3x7
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x7a
+  size: 3,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 0,24
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x7b
+  size: 3,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 4,24
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x7c
+  size: 3,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 8,24
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x7d
+  size: 3,7
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 12,24
+  tags:
+    - ReclamationMineshaft
+
+#  -3x5
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x5a
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 16,26
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x5b
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 20,26
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x5c
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 24,26
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x5e
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 32,26
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft3x5f
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 36,26
+  tags:
+    - ReclamationMineshaft
+
+#  -13x3
+
+- type: dungeonRoom
+  id: ReclamationMineshaft13x3a
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 0,32
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft13x3b
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 14,32
+  tags:
+    - ReclamationMineshaft
+
+- type: dungeonRoom
+  id: ReclamationMineshaft13x3c
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/mineshaft.yml
+  offset: 28,32
+  tags:
+    - Mineshaft
+# Rooms
+# Large
+# - 17x5
+- type: dungeonRoom
+  id: ReclamationSnowyLab17x5a
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,0
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab17x5b
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 18,0
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab17x5c
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 36,0
+  tags:
+    - ReclamationSnowyLabs
+
+# - 7x7
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x7a
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,42
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x7b
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 8,42
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x7c
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 16,42
+  tags:
+    - ReclamationSnowyLabs
+
+# Medium
+# - 11x5
+- type: dungeonRoom
+  id: ReclamationSnowyLab11x5a
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,6
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab11x5b
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 12,6
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab11x5c
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 24,6
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab11x5d
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 36,6
+  tags:
+    - ReclamationSnowyLabs
+
+# - 7x5
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x5a
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,12
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x5b
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 8,12
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x5c
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 16,12
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x5d
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 24,12
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x5e
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 32,12
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x5f
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 40,12
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x5g
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 48,12
+  tags:
+    - ReclamationSnowyLabs
+
+# - 13x3
+- type: dungeonRoom
+  id: ReclamationSnowyLab13x3a
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,30
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab13x3b
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 14,30
+  tags:
+    - ReclamationSnowyLabs
+
+# - 11x3
+- type: dungeonRoom
+  id: ReclamationSnowyLab11x3a
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,34
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab11x3b
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 12,34
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab11x3c
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 24,34
+  tags:
+    - ReclamationSnowyLabs
+
+# - 7x3
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x3a
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,38
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x3b
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 8,38
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x3c
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 16,38
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x3d
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 24,38
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x3e
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 32,38
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x3f
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 40,38
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab7x3g
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 48,38
+  tags:
+    - ReclamationSnowyLabs
+
+# Small
+# - 5x5
+- type: dungeonRoom
+  id: ReclamationSnowyLab5x5a
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,18
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab5x5b
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 6,18
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab5x5c
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 12,18
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab5x5d
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 18,18
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab5x5e
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 24,18
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab5x5f
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 30,18
+  tags:
+    - ReclamationSnowyLabs
+
+# - 3x5
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5a
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 0,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5b
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 4,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5c
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 8,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5d
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 12,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5e
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 16,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5f
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 20,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5g
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 24,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5h
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 28,24
+  tags:
+    - ReclamationSnowyLabs
+
+- type: dungeonRoom
+  id: ReclamationSnowyLab3x5i
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/snowy_labs.yml
+  offset: 32,24
+  tags:
+    - ReclamationSnowyLabs
+
+# Rooms
+# Large
+# - 17x5
+- type: dungeonRoom
+  id: ReclamationHaunted17x5a
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,0
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted17x5b
+  size: 17,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 18,0
+  tags:
+    - ReclamationHaunted
+
+# - 7x7
+- type: dungeonRoom
+  id: ReclamationHaunted7x7a
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,42
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x7b
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 8,42
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x7c
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 16,42
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x7d
+  size: 7,7
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 24,42
+  tags:
+    - ReclamationHaunted
+
+# Medium
+# - 11x5
+- type: dungeonRoom
+  id: ReclamationHaunted11x5a
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,6
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted11x5b
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 12,6
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted11x5c
+  size: 11,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 24,6
+  tags:
+    - ReclamationHaunted
+
+# - 7x5
+- type: dungeonRoom
+  id: ReclamationHaunted7x5a
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,12
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x5b
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 8,12
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x5c
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 16,12
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x5d
+  size: 7,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 24,12
+  tags:
+    - ReclamationHaunted
+
+# - 13x3
+- type: dungeonRoom
+  id: ReclamationHaunted13x3a
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,30
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted13x3b
+  size: 13,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 14,30
+  tags:
+    - ReclamationHaunted
+
+# - 11x3
+- type: dungeonRoom
+  id: ReclamationHaunted11x3a
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,34
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted11x3b
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 12,34
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted11x3c
+  size: 11,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 24,34
+  tags:
+    - ReclamationHaunted
+
+# - 7x3
+- type: dungeonRoom
+  id: ReclamationHaunted7x3a
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,38
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x3b
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 8,38
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x3c
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 16,38
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted7x3d
+  size: 7,3
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 24,38
+  tags:
+    - ReclamationHaunted
+
+# Small
+# - 5x5
+- type: dungeonRoom
+  id: ReclamationHaunted5x5a
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,18
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted5x5b
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 6,18
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted5x5c
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 12,18
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted5x5d
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 18,18
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted5x5e
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 24,18
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted5x5f
+  size: 5,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 30,18
+  tags:
+    - ReclamationHaunted
+
+# - 3x5
+- type: dungeonRoom
+  id: ReclamationHaunted3x5a
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 0,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5b
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 4,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5c
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 8,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5d
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 12,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5e
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 16,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5f
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 20,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5g
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 24,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5h
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 28,24
+  tags:
+    - ReclamationHaunted
+
+- type: dungeonRoom
+  id: ReclamationHaunted3x5i
+  size: 3,5
+  atlas: /Maps/Reclamation/Expeditions/haunted.yml
+  offset: 32,24
+  tags:
+    - ReclamationHaunted

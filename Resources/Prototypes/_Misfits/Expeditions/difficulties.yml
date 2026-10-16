@@ -199,50 +199,34 @@
 - type: n14ExpeditionDifficulty
   id: N14ExpeditionVaultProcedural
   name: n14-expedition-difficulty-vault-procgen
-  color: "#5A7A5A"  # vault green
-  duration: 1200    # 20 minutes
+  color: "#6B8E5A"
+  duration: 1200
   sortOrder: 1
   maps:
-    - runtimeProcedural: true
-      proceduralTheme: Vault
-      proceduralGridSize: 96
-      proceduralDifficultyTier: 1
-      proceduralMinRooms: 11
-      proceduralMaxRooms: 15
-      proceduralHubCount: 1
-
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationExperiment
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationLavaBrig
 - type: n14ExpeditionDifficulty
   id: N14ExpeditionSewerProcedural
   name: n14-expedition-difficulty-sewer-procgen
-  color: "#4A7A4A"  # dirty sewer green
-  duration: 1200    # 20 minutes
+  color: "#6B8E5A"
+  duration: 1200
   sortOrder: 2
   maps:
-    - runtimeProcedural: true
-      proceduralTheme: Sewer
-      proceduralGridSize: 96
-      proceduralDifficultyTier: 1
-      proceduralMinRooms: 11
-      proceduralMaxRooms: 16
-      proceduralHubCount: 1
-
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationMineshaft
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationHaunted
 - type: n14ExpeditionDifficulty
   id: N14ExpeditionMetroProcedural
   name: n14-expedition-difficulty-metro-procgen
-  color: "#5A5A8A"  # metro slate blue
-  duration: 1200    # 20 minutes
+  color: "#6B8E5A"
+  duration: 1200
   sortOrder: 3
   maps:
-    - runtimeProcedural: true
-      proceduralTheme: Metro
-      proceduralGridSize: 96
-      proceduralDifficultyTier: 1
-      proceduralMinRooms: 11
-      proceduralMaxRooms: 18
-      proceduralHubCount: 1
-
-# Blind pool used by world entrances. The selected theme is intentionally not
-# revealed before launch.
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationSnowyLabs
 - type: n14ExpeditionDifficulty
   id: N14ExpeditionUnknownProcedural
   name: n14-expedition-difficulty-unknown-procgen
@@ -250,24 +234,13 @@
   duration: 1200
   sortOrder: 100
   maps:
-    - runtimeProcedural: true
-      proceduralTheme: Vault
-      proceduralGridSize: 96
-      proceduralDifficultyTier: 1
-      proceduralMinRooms: 11
-      proceduralMaxRooms: 15
-      proceduralHubCount: 1
-    - runtimeProcedural: true
-      proceduralTheme: Sewer
-      proceduralGridSize: 96
-      proceduralDifficultyTier: 1
-      proceduralMinRooms: 11
-      proceduralMaxRooms: 16
-      proceduralHubCount: 1
-    - runtimeProcedural: true
-      proceduralTheme: Metro
-      proceduralGridSize: 96
-      proceduralDifficultyTier: 1
-      proceduralMinRooms: 11
-      proceduralMaxRooms: 18
-      proceduralHubCount: 1
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationExperiment
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationLavaBrig
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationMineshaft
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationSnowyLabs
+  - runtimeDungeon: true
+    dungeonConfig: ReclamationHaunted

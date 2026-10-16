@@ -1,5 +1,8 @@
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
+using Content.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Content.Server.Administration;
 using Content.Server.Atmos.EntitySystems; // #Misfits Add - SetMapAtmosphere for static breathable air on expedition maps
 using Content.Server.Chat.Managers;
@@ -64,6 +67,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
     // #Misfits Add - procedural underground expedition generator
     [Dependency] private readonly UndergroundExpeditionMapGenerator _proceduralGen = default!;
 
+    private readonly HashSet<EntityUid> _launchingBoards = new();
     private int _expeditionSeedCounter;
     private bool _enabled;
 
@@ -102,16 +106,12 @@ public sealed class N14ExpeditionSystem : EntitySystem
         var boardQuery = EntityQueryEnumerator<N14ExpeditionBoardComponent, TransformComponent>();
         while (boardQuery.MoveNext(out var uid, out var board, out var xform))
         {
-            if (board.PendingLaunchTime == null)
+            if (board.PendingLaunchTime == null || _launchingBoards.Contains(uid))
                 continue;
 
             if (now >= board.PendingLaunchTime.Value)
             {
                 ExecuteLaunch(uid, board, xform);
-                board.PendingLaunchTime = null;
-                board.PendingDifficulty = null;
-                Dirty(uid, board);
-                UpdateBoardUi(uid, board);
             }
         }
 
@@ -390,7 +390,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
             return;
 
         // Block if busy or cooling down
-        if (board.ActiveExpedition != null || board.PendingLaunchTime != null)
+        if (board.ActiveExpedition != null || board.PendingLaunchTime != null || _launchingBoards.Contains(boardUid))
             return;
 
         if (board.CooldownEnd != null && _timing.CurTime < board.CooldownEnd.Value)
@@ -422,7 +422,35 @@ public sealed class N14ExpeditionSystem : EntitySystem
     /// If another board already rolled the same map path, adds a new session to the existing
     /// expedition instead of loading a duplicate.
     /// </summary>
-    private void ExecuteLaunch(EntityUid boardUid, N14ExpeditionBoardComponent board, TransformComponent boardXform)
+    private async void ExecuteLaunch(EntityUid boardUid, N14ExpeditionBoardComponent board, TransformComponent boardXform)
+    {
+        if (!_launchingBoards.Add(boardUid))
+            return;
+
+        try
+        {
+            await ExecuteLaunchAsync(boardUid, board, boardXform);
+        }
+        catch (Exception e)
+        {
+            Log.Error($"Failed to launch expedition: {e}");
+            if (Exists(boardUid) && !Deleted(boardUid))
+                AnnounceNearby(boardUid, board.GatherRadius, Loc.GetString("n14-expedition-launch-failed"));
+        }
+        finally
+        {
+            _launchingBoards.Remove(boardUid);
+            if (Exists(boardUid) && !Deleted(boardUid))
+            {
+                board.PendingLaunchTime = null;
+                board.PendingDifficulty = null;
+                Dirty(boardUid, board);
+                UpdateBoardUi(boardUid, board);
+            }
+        }
+    }
+
+    private async Task ExecuteLaunchAsync(EntityUid boardUid, N14ExpeditionBoardComponent board, TransformComponent boardXform)
     {
         if (board.PendingDifficulty == null)
             return;
@@ -478,6 +506,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
         Dictionary<int, EntityCoordinates>? factionSpawnMap = null;
         List<(Vector2i position, int factionIndex)>? proceduralHubs = null;
         UndergroundGenParams? genParams = null;
+        Vector2? dungeonArrival = null;
 
         // Either reuse the existing map or load a new one
         if (existingExpedition != null)
@@ -504,9 +533,22 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
                 try
                 {
-                    _dungeon.GenerateDungeonAsync(dungeonConfig, gridUid, gridEnt.Comp, Vector2i.Zero, runtimeSeed)
-                        .GetAwaiter()
-                        .GetResult();
+                    // Yield to DungeonSystem's job queue instead of blocking the server tick.
+                    var generated = await _dungeon.GenerateDungeonAsync(dungeonConfig, gridUid, gridEnt.Comp, Vector2i.Zero, runtimeSeed);
+                    if (!Exists(boardUid) || Deleted(boardUid) || !Exists(mapUid) || Deleted(mapUid))
+                    {
+                        if (Exists(mapUid) && !Deleted(mapUid))
+                            QueueDel(mapUid);
+                        return;
+                    }
+
+                    EntityManager.System<ExpeditionBuildingSystem>().Finish(gridUid, gridEnt.Comp, generated);
+                    dungeonArrival = FindCentralDungeonFloor(gridUid, gridEnt.Comp, generated);
+                    EntityManager.System<ExpeditionDressingSystem>().Dress(gridUid, gridEnt.Comp, generated, dungeonArrival.Value, runtimeSeed);
+                    var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
+                    air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
+                    air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);
+                    _atmosphere.SetMapAtmosphere(mapUid, false, air);
                 }
                 catch (Exception e)
                 {
@@ -623,7 +665,11 @@ public sealed class N14ExpeditionSystem : EntitySystem
         List<(Vector2i position, int factionIndex)>? procHubPositions = null;
         UndergroundGenParams? procGenParams = null;
 
-        if (mapEntry.RuntimeProcedural && mapEntry.ProceduralGridSize > 0)
+        if (dungeonArrival is { } arrival)
+        {
+            defaultSpawn = new EntityCoordinates(gridUid, arrival);
+        }
+        else if (mapEntry.RuntimeProcedural && mapEntry.ProceduralGridSize > 0)
         {
             // These locals are only in scope inside the procedural branch above;
             // hoist them via the variables we declared just before the if/else chain.
@@ -693,7 +739,15 @@ public sealed class N14ExpeditionSystem : EntitySystem
         expedition.Sessions.Add(session);
 
         if (existingExpedition == null)
-            SpawnExitPoints(mapEntry, gridUid, mapUid, procHubPositions);
+        {
+            if (dungeonArrival is { } exitPosition)
+            {
+                var exit = Spawn("N14ExpeditionExitPoint", new EntityCoordinates(gridUid, exitPosition));
+                EnsureComp<N14ExpeditionExitComponent>(exit).ExpeditionMap = mapUid;
+            }
+            else
+                SpawnExitPoints(mapEntry, gridUid, mapUid, procHubPositions);
+        }
 
         board.ActiveExpedition = mapUid;
         Dirty(boardUid, board);
@@ -703,6 +757,40 @@ public sealed class N14ExpeditionSystem : EntitySystem
             ("tier", Loc.GetString(diff.Name)));
         AnnounceToSession(mapUid, session, launchMsg);
         ChatAnnounceToSession(mapUid, session, launchMsg);
+    }
+
+    /// <summary>Choose a clear interior floor nearest the generated building's center.</summary>
+    public Vector2 FindCentralDungeonFloor(EntityUid gridUid, MapGridComponent grid, Dungeon dungeon)
+    {
+        var tiles = dungeon.RoomTiles.Union(dungeon.CorridorTiles).ToArray();
+        if (tiles.Length == 0)
+            throw new InvalidOperationException("Expedition dungeon has no interior tiles.");
+
+        var center = new Vector2((tiles.Min(t => t.X) + tiles.Max(t => t.X)) / 2f,
+            (tiles.Min(t => t.Y) + tiles.Max(t => t.Y)) / 2f);
+        foreach (var tile in tiles.OrderBy(t => Vector2.DistanceSquared(new Vector2(t.X, t.Y), center))
+                     .ThenBy(t => t.X).ThenBy(t => t.Y))
+        {
+            if (_mapManager.GetTileRef(gridUid, grid, tile).Tile.IsEmpty)
+                continue;
+
+            var blocked = false;
+            var anchored = _mapManager.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
+            while (anchored.MoveNext(out var entity))
+            {
+                if (TryComp<PhysicsComponent>(entity, out var physics) && physics.CanCollide &&
+                    (physics.CollisionLayer & (int) (CollisionGroup.Impassable | CollisionGroup.HighImpassable | CollisionGroup.MidImpassable)) != 0)
+                {
+                    blocked = true;
+                    break;
+                }
+            }
+
+            if (!blocked)
+                return new Vector2(tile.X + 0.5f, tile.Y + 0.5f);
+        }
+
+        throw new InvalidOperationException("Expedition dungeon has no clear interior arrival floor.");
     }
 
     private int GetRuntimeExpeditionSeed(EntityUid boardUid, string difficultyId)

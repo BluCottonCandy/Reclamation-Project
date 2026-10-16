@@ -1,0 +1,124 @@
+- type: dungeonConfig
+  id: ReclamationExperiment
+  generator: !type:PrefabDunGen
+    tile: FloorMS13WoodWide
+    roomWhitelist: [ReclamationExperiment]
+    presets: [Bucket, Wow, SpaceShip, Tall]
+  postGeneration:
+  - !type:CorridorPostGen
+    tile: FloorMS13WoodWide
+    width: 3
+  - !type:RoomEntrancePostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+  - !type:BoundaryWallPostGen
+    tile: FloorMS13WoodWide
+    wall: N14WallBrickSlanted
+    cornerWall: N14WallBrickSlanted
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+    width: 1
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+
+- type: dungeonConfig
+  id: ReclamationLavaBrig
+  generator: !type:PrefabDunGen
+    tile: FloorMS13WoodWide
+    roomWhitelist: [ReclamationLavaBrig]
+    presets: [Bucket, Wow, SpaceShip, Tall]
+  postGeneration:
+  - !type:CorridorPostGen
+    tile: FloorMS13WoodWide
+    width: 3
+  - !type:RoomEntrancePostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+  - !type:BoundaryWallPostGen
+    tile: FloorMS13WoodWide
+    wall: N14WallBrickSlanted
+    cornerWall: N14WallBrickSlanted
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+    width: 1
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+
+- type: dungeonConfig
+  id: ReclamationMineshaft
+  generator: !type:PrefabDunGen
+    tile: FloorMS13WoodWide
+    roomWhitelist: [ReclamationMineshaft]
+    presets: [Bucket, Wow, SpaceShip, Tall]
+  postGeneration:
+  - !type:CorridorPostGen
+    tile: FloorMS13WoodWide
+    width: 3
+  - !type:RoomEntrancePostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+  - !type:BoundaryWallPostGen
+    tile: FloorMS13WoodWide
+    wall: N14WallBrickSlanted
+    cornerWall: N14WallBrickSlanted
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+    width: 1
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+
+- type: dungeonConfig
+  id: ReclamationSnowyLabs
+  generator: !type:PrefabDunGen
+    tile: FloorMS13WoodWide
+    roomWhitelist: [ReclamationSnowyLabs]
+    presets: [Bucket, Wow, SpaceShip, Tall]
+  postGeneration:
+  - !type:CorridorPostGen
+    tile: FloorMS13WoodWide
+    width: 3
+  - !type:RoomEntrancePostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+  - !type:BoundaryWallPostGen
+    tile: FloorMS13WoodWide
+    wall: N14WallBrickSlanted
+    cornerWall: N14WallBrickSlanted
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+    width: 1
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+
+- type: dungeonConfig
+  id: ReclamationHaunted
+  generator: !type:PrefabDunGen
+    tile: FloorMS13WoodWide
+    roomWhitelist: [ReclamationHaunted]
+    presets: [Bucket, Wow, SpaceShip, Tall]
+  postGeneration:
+  - !type:CorridorPostGen
+    tile: FloorMS13WoodWide
+    width: 3
+  - !type:RoomEntrancePostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+  - !type:BoundaryWallPostGen
+    tile: FloorMS13WoodWide
+    wall: N14WallBrickSlanted
+    cornerWall: N14WallBrickSlanted
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]
+    width: 1
+  - !type:JunctionPostGen
+    tile: FloorMS13WoodWide
+    entities: [N14DoorWoodSecure]

@@ -12412,3 +12412,12 @@ Entries:
   id: 6521
   time: '2026-10-16T12:54:53.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/39
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added craftable Paladin shields and Greatshields with charge attacks,
+        stationary blocking and welding repairs.
+  id: 6522
+  time: '2026-10-16T12:57:31.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/41

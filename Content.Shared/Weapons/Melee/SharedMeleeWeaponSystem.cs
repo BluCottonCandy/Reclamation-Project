@@ -5,6 +5,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared._NC.Mountable.Components;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Mobs.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Contests;
 using Content.Shared.Damage;
@@ -337,7 +338,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var range = weapon.Range * weapon.HeavyRangeModifier;
         var bounds = Box2.CenteredAround(userMap.Position, new Vector2(range * 2f, range * 2f));
         var targets = new List<NetEntity>();
-        foreach (var candidate in _lookup.GetEntitiesIntersecting(userMap.MapId, bounds, LookupFlags.Dynamic))
+        // Raised shields anchor their wearer and move them into the static lookup tree.
+        // Include stationary mobs without adding walls and furniture as NPC sweep targets.
+        var candidates = _lookup.GetEntitiesIntersecting(userMap.MapId, bounds, LookupFlags.Dynamic);
+        candidates.UnionWith(_lookup.GetEntitiesIntersecting(userMap.MapId, bounds, LookupFlags.Uncontained)
+            .Where(candidate => HasComp<MobStateComponent>(candidate)));
+        foreach (var candidate in candidates)
         {
             if (IsUserRelatedAttackEntity(user, candidate) || !HasComp<DamageableComponent>(candidate) ||
                 !ArcRaySuccessful(candidate, userMap.Position, angle, weapon.Angle, range, userMap.MapId, user, null))

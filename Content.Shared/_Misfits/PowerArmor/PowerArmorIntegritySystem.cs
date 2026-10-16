@@ -142,6 +142,9 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnDamageModify(EntityUid uid, PowerArmorIntegrityComponent comp,
         InventoryRelayedEvent<DamageModifyEvent> args)
     {
+        if (comp.ExternalHandling)
+            return;
+
         var curTick = _timing.CurTick;
         var originalTotal = args.Args.OriginalDamage.GetTotal();
 
@@ -243,6 +246,9 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     /// </summary>
     private void OnInteractUsing(EntityUid uid, PowerArmorIntegrityComponent comp, InteractUsingEvent args)
     {
+        if (comp.ExternalHandling)
+            return;
+
         if (args.Handled)
             return;
 
@@ -272,6 +278,9 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnEquipped(EntityUid uid, PowerArmorIntegrityComponent comp,
         ref ClothingGotEquippedEvent args)
     {
+        if (comp.ExternalHandling)
+            return;
+
         UpdateIntegrityAlert(args.Wearer, uid, comp);
 
         // Track which armor entity the wearer is carrying so we can relay
@@ -293,6 +302,9 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnUnequipped(EntityUid uid, PowerArmorIntegrityComponent comp,
         ref ClothingGotUnequippedEvent args)
     {
+        if (comp.ExternalHandling)
+            return;
+
         _alerts.ClearAlert(args.Wearer, comp.IntegrityAlert);
         RemCompDeferred<PowerArmorWornComponent>(args.Wearer);
 
@@ -337,6 +349,9 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnArmorDamageChanged(EntityUid uid, PowerArmorIntegrityComponent comp,
         DamageChangedEvent args)
     {
+        if (comp.ExternalHandling)
+            return;
+
         if (!TryComp<DamageableComponent>(uid, out var damageable))
             return;
 
@@ -412,6 +427,9 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnExamine(EntityUid uid, PowerArmorIntegrityComponent comp,
         GetVerbsEvent<ExamineVerb> args)
     {
+        if (comp.ExternalHandling)
+            return;
+
         if (!args.CanInteract || !args.CanAccess)
             return;
 
@@ -462,7 +480,7 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     ///     Updates (or sets) the wearer's HUD alert to reflect current armor
     ///     integrity. Higher severity = more health remaining.
     /// </summary>
-    private void UpdateIntegrityAlert(EntityUid wearer, EntityUid armorUid,
+    public void UpdateIntegrityAlert(EntityUid wearer, EntityUid armorUid,
         PowerArmorIntegrityComponent comp)
     {
         if (!TryComp<DamageableComponent>(armorUid, out var damageable))

@@ -35,6 +35,9 @@ namespace Content.Shared._Misfits.PowerArmor;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PowerArmorIntegrityComponent : Component
 {
+    /// <summary>Other equipment manages its own absorption/breakage, reusing this component for integrity HUD data.</summary>
+    [DataField] public bool ExternalHandling;
+
     /// <summary>
     ///     Maximum integrity (HP) the armor can have. Tracks how much total
     ///     damage the armor can absorb before breaking.

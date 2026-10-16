@@ -12405,3 +12405,10 @@ Entries:
   id: 6520
   time: '2026-10-16T12:42:11.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/40
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added voice lines to nearby living raider NPCs.
+  id: 6521
+  time: '2026-10-16T12:54:53.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/39

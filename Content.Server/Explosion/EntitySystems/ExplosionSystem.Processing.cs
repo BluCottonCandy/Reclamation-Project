@@ -420,7 +420,8 @@ public sealed partial class ExplosionSystem
         _toDamage.Clear();
 
         // don't raise BeforeExplodeEvent if the entity is completely immune to explosions
-        var thisDamage = GetDamage(uid, prototype, originalDamage);
+        // Event handlers may absorb damage. Keep each recipient independent.
+        var thisDamage = new DamageSpecifier(GetDamage(uid, prototype, originalDamage));
         if (thisDamage.Empty)
             return;
 
@@ -443,7 +444,7 @@ public sealed partial class ExplosionSystem
             _toDamage.EnsureCapacity(_toDamage.Count + _containedEntities.Count);
             foreach (var contained in _containedEntities)
             {
-                var newDamage = GetDamage(contained, prototype, damage);
+                var newDamage = new DamageSpecifier(GetDamage(contained, prototype, damage));
                 _toDamage.Add((contained, newDamage));
             }
         }

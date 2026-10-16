@@ -1,0 +1,187 @@
+- type: entity
+  id: ReclamationPaladinShield
+  parent: BaseItem
+  name: paladin shield
+  description: A sturdy metal shield built for blocking blows and charging through opposition.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Shields/paladin_shield.rsi
+    state: base
+  - type: Item
+    sprite: _ReclamationProject/Shields/paladin_shield.rsi
+    size: Ginormous
+  - type: Clothing
+    sprite: _ReclamationProject/Shields/paladin_shield.rsi
+    quickEquip: false
+    slots: [Back, suitStorage]
+  - type: Damageable
+    damageContainer: Shield
+  - type: PowerArmorIntegrity
+    externalHandling: true
+    maxIntegrity: 250
+    integrityAlert: ReclamationShieldIntegrity
+  - type: Blocking
+    passiveBlockFraction: 0.3
+    activeBlockFraction: 1
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+    activeBlockModifier:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+  - type: Repairable
+    doAfterDelay: 30
+    qualityNeeded: Welding
+    fuelCost: 5
+  - type: PaladinShield
+    damageCoefficient: 0.7
+    chargeDamage: 40
+    staminaDamage: 10
+  - type: MeleeWeapon
+    attackRate: 1
+    angle: 60
+    range: 1.5
+    heavyRangeModifier: 2
+    damage:
+      types:
+        Blunt: 50
+    soundHit:
+      path: /Audio/Weapons/smash.ogg
+
+- type: entity
+  id: ReclamationPaladinGreatshield
+  parent: ReclamationPaladinShield
+  name: paladin greatshield
+  description: A massive metal shield. Its weight slows the bearer, but its charge sends enemies reeling.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Shields/paladin_greatshield.rsi
+  - type: Item
+    sprite: _ReclamationProject/Shields/paladin_greatshield.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Shields/paladin_greatshield.rsi
+  - type: Blocking
+    passiveBlockFraction: 0.4
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+  - type: MultiHandedItem
+    handsNeeded: 2
+  - type: PowerArmorIntegrity
+    maxIntegrity: 500
+  - type: PaladinShield
+    wearFraction: 0.5
+    brokenPrototype: ReclamationDamagedPaladinGreatshield
+    repairedPrototype: ReclamationPaladinGreatshield
+    staminaImmune: true
+    damageCoefficient: 0.6
+    chargeDamage: 60
+    staminaDamage: 50
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 70
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: HeldSpeedModifier
+
+- type: entity
+  id: ReclamationActionShieldCharge
+  name: Shield charge
+  description: Charge forward and bash enemies in front of you with your shield.
+  categories: [HideSpawnMenu]
+  components:
+  - type: WorldTargetAction
+    icon:
+      sprite: _Misfits/Interface/Actions/melee_charge.rsi
+      state: charge
+    useDelay: 4
+    checkCanAccess: false
+    range: 10
+    event: !type:PaladinShieldChargeEvent
+
+- type: entity
+  id: ReclamationDamagedPaladinShield
+  parent: ReclamationPaladinShield
+  name: damaged Paladin shield
+  description: A battered shield that needs a full weld repair before it can protect its bearer again.
+  components:
+  - type: PaladinShield
+    damaged: true
+  - type: Blocking
+    blockingToggleAction: null
+    passiveBlockFraction: 0
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+    activeBlockModifier:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+  - type: Damageable
+    damage:
+      types:
+        Blunt: 250
+
+- type: entity
+  id: ReclamationDamagedPaladinGreatshield
+  parent: ReclamationPaladinGreatshield
+  name: damaged Greatshield
+  description: A battered greatshield that needs a full weld repair before it can protect its bearer again.
+  components:
+  - type: PaladinShield
+    damaged: true
+  - type: Blocking
+    blockingToggleAction: null
+    passiveBlockFraction: 0
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+    activeBlockModifier:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+  - type: Damageable
+    damage:
+      types:
+        Blunt: 500
+
+- type: alertCategory
+  id: ReclamationShieldIntegrity
+
+- type: alert
+  id: ReclamationShieldIntegrity
+  category: ReclamationShieldIntegrity
+  icons:
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery0
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery3
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery5
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery8
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery10
+  name: alerts-reclamation-shield-integrity-name
+  description: alerts-reclamation-shield-integrity-description
+  minSeverity: 0
+  maxSeverity: 4

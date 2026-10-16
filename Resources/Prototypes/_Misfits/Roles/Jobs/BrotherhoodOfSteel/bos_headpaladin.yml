@@ -53,7 +53,7 @@
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsLeatherFilled
     head: N14ClothingPaladinBeret
-    outerClothing: N14ClothingOuterPowerArmorWashT51Elite #Misfits Tweak: Head Paladin wears T-51b (was T-51BC commander)
+    outerClothing: N14ClothingOuterCombatArmorBOS
     hands: N14ClothingHandsGlovesCombat
     pocket1: BoSBrotherhoodHeadPaladinKits
     id: N14HeadPaladin_PipBoy

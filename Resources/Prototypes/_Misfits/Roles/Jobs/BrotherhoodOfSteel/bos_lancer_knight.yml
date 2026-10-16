@@ -36,6 +36,7 @@
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel
+      - type: PowerArmorProficiency
       - type: VertibirdPilotPerk # #Misfits Add - Knight-Lancer receives the free vertibird perk
 
 - type: startingGear

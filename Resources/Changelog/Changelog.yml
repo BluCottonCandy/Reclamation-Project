@@ -12355,3 +12355,10 @@ Entries:
   id: 6516
   time: '2026-10-16T12:35:28.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/35
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: Fixed reconnecting getting stuck on the Connected screen.
+  id: 6517
+  time: '2026-10-16T12:35:42.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/36

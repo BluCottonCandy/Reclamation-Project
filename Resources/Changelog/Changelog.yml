@@ -12421,3 +12421,18 @@ Entries:
   id: 6522
   time: '2026-10-16T12:57:31.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/41
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added a wasteland clothing vendor with 20-cap clothing and 50-cap
+        protective outerwear.
+    - type: Tweak
+      message: Railroad Agents now start with regular Railroad equipment and IDs.
+    - type: Remove
+      message: >-
+        Removed plain-color jumpsuits, jumpskirts, galoshes, cluwne clothing,
+        cat ears, dog ears, and the ghost sheet from loadouts.
+  id: 6523
+  time: '2026-10-16T13:44:50.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/42

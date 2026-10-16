@@ -12,7 +12,14 @@ using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared.CombatMode;
+using Content.Shared.Blocking;
+using Content.Shared.Hands.EntitySystems;
+using Content.Server.Destructible;
+using Content.Shared.Throwing;
+using Content.Server._ReclamationProject.Mobs;
+using Robust.Shared.Map;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.GameObjects;
 
@@ -21,6 +28,72 @@ namespace Content.IntegrationTests.Tests.NPC;
 [TestFixture]
 public sealed class MirelurkQueenWideSwingTest
 {
+    [Test]
+    public async Task QueenDamagesRaisedShieldWithClawsAndEnragedCharge()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var entities = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var queen = entities.SpawnEntity("ReclamationMobMirelurkQueen", map.GridCoords);
+            var position = map.GridCoords.Offset(new Vector2(2.5f, 0));
+            entities.System<SharedMapSystem>().SetTile(map.Grid, position, map.Tile.Tile);
+            var target = entities.SpawnEntity("MobHuman", position);
+            var shield = entities.SpawnEntity("RiotShield", position);
+            Assert.That(entities.System<SharedHandsSystem>().TryPickup(target, shield), Is.True);
+            entities.RemoveComponent<DestructibleComponent>(shield);
+            var blocking = entities.GetComponent<BlockingComponent>(shield);
+            blocking.ActiveBlockFraction = 1;
+            blocking.ActiveBlockDamageModifier = new DamageModifierSet();
+            Assert.That(entities.System<BlockingSystem>().StartBlocking(shield, blocking, target), Is.True);
+            Assert.That(entities.GetComponent<TransformComponent>(target).Anchored, Is.True);
+            var attack = entities.EnsureComponent<NPCMeleeCombatComponent>(queen);
+            attack.Target = target;
+            attack.MissChance = 0;
+            entities.System<NPCSystem>().WakeNPC(queen);
+            entities.System<SharedCombatModeSystem>().SetInCombatMode(queen, true);
+            entities.GetComponent<MeleeWeaponComponent>(queen).NextAttack = default;
+            entities.System<NPCCombatSystem>().Update(0);
+            Assert.That(entities.GetComponent<DamageableComponent>(shield).TotalDamage.Float(), Is.EqualTo(50));
+            Assert.That(entities.GetComponent<DamageableComponent>(target).TotalDamage.Float(), Is.Zero);
+            entities.GetComponent<StaminaComponent>(target).CritThreshold = 1000;
+            var charge = entities.GetComponent<MirelurkQueenChargeComponent>(queen);
+            charge.Enraged = true;
+            charge.Dashing = true;
+            charge.WindingUp = false;
+            charge.DashDirection = Vector2.UnitX;
+            var thrown = entities.EnsureComponent<ThrownItemComponent>(queen);
+            entities.EventBus.RaiseLocalEvent(queen, new ThrowDoHitEvent(queen, target, thrown, null), true);
+            Assert.That(entities.GetComponent<DamageableComponent>(shield).TotalDamage.Float(), Is.EqualTo(80));
+            Assert.That(entities.GetComponent<DamageableComponent>(target).TotalDamage.Float(), Is.Zero);
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task QueenHitsStationaryAnchoredMob()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var entities = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var queen = entities.SpawnEntity("ReclamationMobMirelurkQueen", map.GridCoords);
+            var position = map.GridCoords.Offset(new Vector2(2.5f, 0));
+            entities.System<SharedMapSystem>().SetTile(map.Grid, position, map.Tile.Tile);
+            var target = entities.SpawnEntity("MobHuman", position);
+            entities.System<SharedTransformSystem>().AnchorEntity(target);
+            Assert.That(entities.GetComponent<TransformComponent>(target).Anchored, Is.True);
+            entities.System<SharedCombatModeSystem>().SetInCombatMode(queen, true);
+            entities.GetComponent<MeleeWeaponComponent>(queen).NextAttack = default;
+            Assert.That(entities.System<SharedMeleeWeaponSystem>().AttemptWideAttack(queen, queen,
+                entities.GetComponent<MeleeWeaponComponent>(queen), target), Is.True);
+            Assert.That(entities.GetComponent<DamageableComponent>(target).TotalDamage.Float(), Is.EqualTo(50));
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [Test]
     public async Task QueenSweepsMultipleTargetsAtDoubleReach()
     {

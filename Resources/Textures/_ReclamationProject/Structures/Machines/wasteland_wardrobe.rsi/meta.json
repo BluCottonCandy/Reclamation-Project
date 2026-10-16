@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Generated with OpenAI image generation for Reclamation Project.",
+  "size": {
+    "x": 32,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "base"
+    }
+  ]
+}

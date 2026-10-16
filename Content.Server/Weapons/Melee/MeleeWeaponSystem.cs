@@ -68,7 +68,8 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         var direction = (aim.Position - position.Position).ToWorldAngle();
         var range = weapon.Range * weapon.HeavyRangeModifier;
         var bounds = Box2.CenteredAround(position.Position, new Vector2(range * 2f, range * 2f));
-        foreach (var candidate in _lookup.GetEntitiesIntersecting(position.MapId, bounds, LookupFlags.Dynamic))
+        // Ability sweeps must also reach living targets anchored by raised shields.
+        foreach (var candidate in _lookup.GetEntitiesIntersecting(position.MapId, bounds, LookupFlags.Uncontained))
         {
             if (IsUserRelatedAttackEntity(user, candidate) || !filter(candidate) ||
                 !ArcRaySuccessful(candidate, position.Position, direction, weapon.Angle, range, position.MapId, user, null))

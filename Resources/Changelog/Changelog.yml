@@ -12373,3 +12373,22 @@ Entries:
   id: 6518
   time: '2026-10-16T12:36:13.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/37
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added randomized wasteland expeditions with furnished rooms, armories,
+        clinics, cafeterias, and holding cells.
+    - type: Add
+      message: >-
+        Added varied raider, super mutant, and feral ghoul encounters, with
+        twenty enemies spread across each expedition.
+    - type: Add
+      message: >-
+        Added orange wall lighting, blood stains, dirt, and litter to
+        expeditions.
+    - type: Fix
+      message: Fixed dungeon generation blocking expedition launches.
+  id: 6519
+  time: '2026-10-16T12:41:50.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/38

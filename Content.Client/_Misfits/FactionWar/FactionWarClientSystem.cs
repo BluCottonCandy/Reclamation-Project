@@ -91,6 +91,12 @@ public sealed class FactionWarClientSystem : EntitySystem
 
     public override void Shutdown()
     {
+        // Console commands outlive entity systems; release them before the next connection.
+        _conHost.UnregisterCommand("war");
+        _conHost.UnregisterCommand("warjoin");
+        _conHost.UnregisterCommand("forcewar");
+        _conHost.UnregisterCommand("surrender");
+
         base.Shutdown();
         _window?.Close();
         _window = null;

@@ -68,6 +68,9 @@ public sealed class GroupClientSystem : EntitySystem
 
     public override void Shutdown()
     {
+        // Console commands outlive entity systems; release them before the next connection.
+        _conHost.UnregisterCommand("group");
+
         base.Shutdown();
         _window?.Close();
         _window = null;

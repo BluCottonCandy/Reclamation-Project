@@ -71,6 +71,9 @@ public sealed class RaidRequestClientSystem : EntitySystem
 
     public override void Shutdown()
     {
+        // Console commands outlive entity systems; release them before the next connection.
+        _conHost.UnregisterCommand("raid");
+
         base.Shutdown();
         _window?.Close();
         _window = null;

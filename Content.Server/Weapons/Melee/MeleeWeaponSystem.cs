@@ -57,6 +57,30 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
     private readonly HashSet<EntityUid> _heavyAttackCandidates = [];
 
+    /// <summary>Uses the normal wide-swing arc and wall checks for a non-damaging ability sweep.</summary>
+    public List<EntityUid> GetWideSweepTargets(EntityUid user, MeleeWeaponComponent weapon,
+        MapCoordinates aim, Predicate<EntityUid> filter)
+    {
+        var position = _transform.GetMapCoordinates(user);
+        var targets = new List<EntityUid>();
+        if (position.MapId != aim.MapId)
+            return targets;
+        var direction = (aim.Position - position.Position).ToWorldAngle();
+        var range = weapon.Range * weapon.HeavyRangeModifier;
+        var bounds = Box2.CenteredAround(position.Position, new Vector2(range * 2f, range * 2f));
+        // Ability sweeps must also reach living targets anchored by raised shields.
+        foreach (var candidate in _lookup.GetEntitiesIntersecting(position.MapId, bounds, LookupFlags.Uncontained))
+        {
+            if (IsUserRelatedAttackEntity(user, candidate) || !filter(candidate) ||
+                !ArcRaySuccessful(candidate, position.Position, direction, weapon.Angle, range, position.MapId, user, null))
+                continue;
+            targets.Add(candidate);
+            if (targets.Count >= weapon.MaxTargets)
+                break;
+        }
+        return targets;
+    }
+
     public override void Initialize()
     {
         base.Initialize();

@@ -5,6 +5,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared._NC.Mountable.Components;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Mobs.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Contests;
 using Content.Shared.Damage;
@@ -316,6 +317,45 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             return false;
 
         return AttemptAttack(user, weaponUid, weapon, new LightAttackEvent(GetNetEntity(target), GetNetEntity(weaponUid), GetNetCoordinates(targetXform.Coordinates)), null);
+    }
+
+    /// <summary>
+    /// Performs an NPC wide swing using server-selected targets and the normal arc/obstruction checks.
+    /// </summary>
+    public bool AttemptWideAttack(EntityUid user, EntityUid weaponUid, MeleeWeaponComponent weapon, EntityUid target)
+    {
+        if (!weapon.CanWideSwing || weapon.DisableHeavy ||
+            !TryComp<TransformComponent>(user, out var userXform) ||
+            !TryComp<TransformComponent>(target, out var targetXform))
+            return false;
+
+        var userMap = TransformSystem.GetMapCoordinates(user, userXform);
+        var targetMap = TransformSystem.GetMapCoordinates(target, targetXform);
+        if (userMap.MapId != targetMap.MapId)
+            return false;
+
+        var angle = (targetMap.Position - userMap.Position).ToWorldAngle();
+        var range = weapon.Range * weapon.HeavyRangeModifier;
+        var bounds = Box2.CenteredAround(userMap.Position, new Vector2(range * 2f, range * 2f));
+        var targets = new List<NetEntity>();
+        // Raised shields anchor their wearer and move them into the static lookup tree.
+        // Include stationary mobs without adding walls and furniture as NPC sweep targets.
+        var candidates = _lookup.GetEntitiesIntersecting(userMap.MapId, bounds, LookupFlags.Dynamic);
+        candidates.UnionWith(_lookup.GetEntitiesIntersecting(userMap.MapId, bounds, LookupFlags.Uncontained)
+            .Where(candidate => HasComp<MobStateComponent>(candidate)));
+        foreach (var candidate in candidates)
+        {
+            if (IsUserRelatedAttackEntity(user, candidate) || !HasComp<DamageableComponent>(candidate) ||
+                !ArcRaySuccessful(candidate, userMap.Position, angle, weapon.Angle, range, userMap.MapId, user, null))
+                continue;
+
+            targets.Add(GetNetEntity(candidate));
+            if (targets.Count >= weapon.MaxTargets)
+                break;
+        }
+
+        return AttemptAttack(user, weaponUid, weapon,
+            new HeavyAttackEvent(GetNetEntity(weaponUid), targets, GetNetCoordinates(targetXform.Coordinates)), null);
     }
 
     public bool AttemptDisarmAttack(EntityUid user, EntityUid weaponUid, MeleeWeaponComponent weapon, EntityUid target)

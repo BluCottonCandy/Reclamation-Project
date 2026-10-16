@@ -60,7 +60,8 @@ public sealed partial class BlockingSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, BlockingComponent component, MapInitEvent args)
     {
-        _actionContainer.EnsureAction(uid, ref component.BlockingToggleActionEntity, component.BlockingToggleAction);
+        if (component.BlockingToggleAction != null)
+            _actionContainer.EnsureAction(uid, ref component.BlockingToggleActionEntity, component.BlockingToggleAction);
         Dirty(uid, component);
     }
 
@@ -90,7 +91,8 @@ public sealed partial class BlockingSystem : EntitySystem
 
     private void OnGetActions(EntityUid uid, BlockingComponent component, GetItemActionsEvent args)
     {
-        args.AddAction(ref component.BlockingToggleActionEntity, component.BlockingToggleAction);
+        if (component.BlockingToggleAction != null)
+            args.AddAction(ref component.BlockingToggleActionEntity, component.BlockingToggleAction);
     }
 
     private void OnToggleAction(EntityUid uid, BlockingComponent component, ToggleActionEvent args)

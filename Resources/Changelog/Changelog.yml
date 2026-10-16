@@ -12392,3 +12392,16 @@ Entries:
   id: 6519
   time: '2026-10-16T12:41:50.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/38
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Improved Mirelurk Queen pursuit and wide attacks.
+    - type: Add
+      message: >-
+        Added a Mirelurk Queen charge and a one-time enraged state at half
+        health.
+    - type: Fix
+      message: Fixed Queen attacks missing stationary targets and raised shield users.
+  id: 6520
+  time: '2026-10-16T12:42:11.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/40

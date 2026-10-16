@@ -89,15 +89,15 @@
     - SemiAuto
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
-  - type: HitscanBatteryAmmoProvider
-    proto: N14MFLaserRed
-    fireCost: 50
-  - type: Battery
-    maxCharge: 500
-    startingCharge: 500
-  - type: BatterySelfRecharger
-    autoRecharge: true
-    autoRechargeRate: 50
+  # Integrated gun and reload behavior used by ranged raiders.
+  - type: BasicEntityAmmoProvider
+    proto: BulletLaser
+    capacity: 10
+    count: 10
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
 
 - type: entity
   parent: N14WeaponLaserRifle

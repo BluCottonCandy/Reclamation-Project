@@ -18,7 +18,6 @@ namespace Content.Client.Eye.Blinding
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly ILightManager _lightManager = default!;
 
         public override bool RequestScreenTexture => true;
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -55,14 +54,6 @@ namespace Content.Client.Eye.Blinding
 
             var blind = _blindableComponent.IsBlind;
 
-            if (!blind && _blindableComponent.LightSetup) // Turn FOV back on if we can see again
-            {
-                _lightManager.Enabled = true;
-                _blindableComponent.LightSetup = false;
-                _blindableComponent.GraceFrame = true;
-                return true;
-            }
-
             return blind;
         }
 
@@ -75,15 +66,6 @@ namespace Content.Client.Eye.Blinding
 
             if (playerEntity == null)
                 return;
-
-            if (!_blindableComponent.GraceFrame)
-            {
-                _blindableComponent.LightSetup = true; // Ok we touched the lights
-                _lightManager.Enabled = false;
-            } else
-            {
-                _blindableComponent.GraceFrame = false;
-            }
 
             if (_entityManager.TryGetComponent<EyeComponent>(playerEntity, out var content))
             {

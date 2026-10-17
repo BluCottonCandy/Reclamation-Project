@@ -7,7 +7,7 @@ n14-expedition-exit-desc = Climb this rope to return through the surface entranc
 n14-expedition-spawn-name = Expedition Spawn Point
 n14-expedition-spawn-desc = Marker for where expedition players arrive. Only visible in the editor.
 
-n14-expedition-select-tier = Select a destination type to begin.
+n14-expedition-select-tier = Select an expedition difficulty to begin.
 n14-expedition-maps-available = {$count} locations available
 n14-expedition-duration = Duration: {$minutes} minutes
 
@@ -20,7 +20,7 @@ n14-expedition-launch-button = Launch Expedition
 n14-expedition-launch-button-active = Expedition Active
 
 n14-expedition-confirm-title = ⚠ Warning
-n14-expedition-confirm-warning = [bold][color=red]ALPHA TEST: Expeditions are dangerous.[/color][/bold]\n\nUpon joining an expedition, if you die in an expedition you may not be recovered when the time runs out.\n\nUnderground expeditions last fifteen minutes due to their size.\nSurface expeditions last thirty minutes due to their size.\n\nUpon joining an expedition, you have a green marker, and there are more green markers around the map that signify your return from the expedition.\n\nItems you have with you in a 3x3 proximity within the green marker will return with you from the expedition.\n\nUpon clicking confirm, those around the expedition board will be teleported alongside you with the expedition.\n\nEach faction has their own specific expedition start location, and if a faction has more members than say, wastelanders, wastelanders also follow to the location of whichever faction has majority members for expedition start location.\n\nALL FACTIONS inside expeditions are automatically at war. Remember who came with you, and who did not.\n\nYou may already have familiarity with some of the grids you are teleporting to.
+n14-expedition-confirm-warning = [bold][color=red]ALPHA TEST: Expeditions are dangerous.[/color][/bold]\n\nUpon joining an expedition, if you die in an expedition you may not be recovered when the time runs out.\n\nExpeditions last twenty minutes. Easy has 20 enemies, Medium has 30 ranged enemies, and Hard has 40 enemies including elites.\n\nUpon joining an expedition, you have a green marker, and there are more green markers around the map that signify your return from the expedition.\n\nItems you have with you in a 3x3 proximity within the green marker will return with you from the expedition.\n\nUpon clicking confirm, those around the expedition board will be teleported alongside you with the expedition.\n\nEach faction has their own specific expedition start location, and if a faction has more members than say, wastelanders, wastelanders also follow to the location of whichever faction has majority members for expedition start location.\n\nALL FACTIONS inside expeditions are automatically at war. Remember who came with you, and who did not.\n\nYou may already have familiarity with some of the grids you are teleporting to.
 n14-expedition-confirm-proceed = Proceed
 n14-expedition-confirm-cancel = Do Not Proceed
 
@@ -51,7 +51,7 @@ n14-expedition-difficulty-sewer-procgen = Sewers (Procedural)
 n14-expedition-difficulty-metro-procgen = Metro Tunnels (Procedural)
 n14-expedition-difficulty-unknown-procgen = Unknown Underground Site
 n14-expedition-entrance-name = auspicious entry
-n14-expedition-entrance-desc = Something lies below. Interact to launch an expedition; the destination is unknown.
+n14-expedition-entrance-desc = Something lies below. Interact to choose an expedition difficulty; the building layout is unknown.
 n14-expedition-entrance-map-label = Auspicious Entry
 n14-expedition-entrance-busy = This entrance is already linked to an active expedition.
 n14-expedition-entrance-cooldown = The passage is unstable. It will be usable again in {$minutes} minutes.
@@ -69,3 +69,7 @@ n14-expedition-disabled = Expeditions are temporarily unavailable.
 # n14-expedition-difficulty-gold = Gold
 # n14-expedition-difficulty-mithril = Mithril
 # n14-expedition-difficulty-diamond = Diamond
+
+n14-expedition-difficulty-easy = Easy - 20 enemies
+n14-expedition-difficulty-medium = Medium - 30 ranged enemies
+n14-expedition-difficulty-hard = Hard - 40 enemies with elites

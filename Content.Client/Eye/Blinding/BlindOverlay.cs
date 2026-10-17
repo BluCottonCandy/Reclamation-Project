@@ -1,3 +1,5 @@
+using Content.Shared._ReclamationProject.Blindness;
+using Robust.Shared.Timing;
 using Content.Client.Movement.Systems;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -15,12 +17,14 @@ namespace Content.Client.Eye.Blinding
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly ILightManager _lightManager = default!;
 
         public override bool RequestScreenTexture => true;
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
         private readonly ShaderInstance _greyscaleShader;
         private readonly ShaderInstance _circleMaskShader;
+        private readonly ShaderInstance _concentrationShader;
 
         private BlindableComponent _blindableComponent = default!;
 
@@ -29,6 +33,7 @@ namespace Content.Client.Eye.Blinding
             IoCManager.InjectDependencies(this);
             _greyscaleShader = _prototypeManager.Index<ShaderPrototype>("GreyscaleFullscreen").InstanceUnique();
             _circleMaskShader = _prototypeManager.Index<ShaderPrototype>("CircleMask").InstanceUnique();
+            _concentrationShader = _prototypeManager.Index<ShaderPrototype>("ReclamationBlindConcentration").InstanceUnique();
         }
         protected override bool BeforeDraw(in OverlayDrawArgs args)
         {
@@ -91,7 +96,26 @@ namespace Content.Client.Eye.Blinding
             var viewport = args.WorldBounds;
             worldHandle.UseShader(_greyscaleShader);
             worldHandle.DrawRect(viewport, Color.White);
-            worldHandle.UseShader(_circleMaskShader);
+            var mask = _circleMaskShader;
+            if (_entityManager.TryGetComponent<BlindConcentrationComponent>(playerEntity, out var focus))
+            {
+                var progress = _entityManager.System<BlindAwarenessSystem>().GetVisualProgress(playerEntity.Value, focus, _timing.CurTime);
+                if (focus.Concentrating || progress > 0f ||
+                    _entityManager.TryGetComponent<EyeClosingComponent>(playerEntity, out var eyelids) && eyelids.EyesClosed)
+                {
+                    _concentrationShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+                    _concentrationShader.SetParameter("Focus", progress);
+                    _concentrationShader.SetParameter("MaximumRadiusMultiplier", focus.MaximumRadiusMultiplier);
+                    _concentrationShader.SetParameter("Radius", 30f);
+                    _concentrationShader.SetParameter("MaskPower", 0.2f);
+                    _concentrationShader.SetParameter("MaskMax", 8f);
+                    _concentrationShader.SetParameter("MaskMult", 0.75f);
+                    _concentrationShader.SetParameter("Pulse", (float) _timing.CurTime.TotalSeconds * 2f);
+                    _concentrationShader.SetParameter("Zoom", content?.Zoom.X ?? 1f);
+                    mask = _concentrationShader;
+                }
+            }
+            worldHandle.UseShader(mask);
             worldHandle.DrawRect(viewport, Color.White);
             worldHandle.UseShader(null);
         }

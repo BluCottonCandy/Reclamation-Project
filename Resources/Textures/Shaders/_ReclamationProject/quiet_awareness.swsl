@@ -1,0 +1,15 @@
+light_mode unshaded;
+uniform highp float Zoom;
+uniform highp float Echo;
+uniform highp vec2 ScreenSize;
+
+void fragment() {
+    highp vec4 sprite = zTexture(UV);
+    highp vec2 aspect = ScreenSize;
+    // Match the original blindness-perk circle, including the closed-eye path.
+    highp float original = clamp(zCircleGradient(aspect, SCREEN_UV * ScreenSize, 8.0, 30.0 / Zoom, 0.0, 0.2) * 0.75, 0.0, 1.0);
+    // The character has not yet been composited into the scene. Discard its echo
+    // before the fullscreen outline pass, preserving the background behind it.
+    highp float outside = step(0.98, original);
+    COLOR = sprite * mix(1.0 - outside, outside, Echo);
+}

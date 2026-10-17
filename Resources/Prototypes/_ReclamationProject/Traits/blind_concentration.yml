@@ -1,0 +1,19 @@
+- type: entity
+  id: ReclamationActionBlindConcentrate
+  name: Listen closely
+  description: Stand still and concentrate on nearby sounds. Pale impressions gradually spread beyond your normal awareness. Moving makes them fade.
+  categories: [HideSpawnMenu]
+  components:
+  - type: InstantAction
+    icon: Interface/Actions/ghostHearingToggled.png
+    event: !type:BlindConcentrateActionEvent
+
+- type: shader
+  id: ReclamationBlindConcentration
+  kind: source
+  path: /Textures/Shaders/_ReclamationProject/blind_concentration.swsl
+
+- type: shader
+  id: ReclamationQuietAwareness
+  kind: source
+  path: /Textures/Shaders/_ReclamationProject/quiet_awareness.swsl

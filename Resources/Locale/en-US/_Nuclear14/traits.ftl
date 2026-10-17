@@ -1,4 +1,4 @@
-trait-name-LanguageTribal = Tribal Language
+﻿trait-name-LanguageTribal = Tribal Language
 trait-description-LanguageTribal = You can understand and speak the local Tribal language, whether through learning or backstory.
 
 trait-name-LanguageChinese = Chinese Language
@@ -64,6 +64,7 @@ trait-description-N14Stomper =
 trait-name-N14Sneak = Sneak
 trait-description-N14Sneak =
     You mastered the art of stealth, your footsteps are a lot more difficult to hear.
+    You cannot be detected by expanded auditory awareness, except for a two-second echo at your position when firing a gun.
 
 trait-name-N14Singer = Singer
 trait-description-N14Singer = You are naturally capable of singing simple melodies with your voice.
@@ -165,18 +166,18 @@ trait-description-N14PetEyebotMBoS =
 
 trait-name-N14PillowKnuckles = Pillow Knuckles
 trait-description-N14PillowKnuckles =
-    Your punches are harmless.
-    Your unarmed attacks deal [color=red]0[/color] damage.
+    Your fists could never cause as much damage as someone else's.
+    You deal [color=red]-1[/color] [color=yellow]Blunt[/color] damage in unarmed melee combat.
 
 trait-name-N14IronFist = Iron Fists
 trait-description-N14IronFist =
     Your knuckles are almost like they're made of iron, no one wants to get punched by you.
-    Your unarmed attacks deal [color=green]18[/color] base [color=yellow]Blunt[/color] damage.
+    You deal [color=green]+1[/color] [color=yellow]Blunt[/color] damage in unarmed melee combat.
 
 trait-name-N14RadClaws = Rad Claws
 trait-description-N14RadClaws =
     Being a ghoul is not all that bad, you've got sharp claws that you can use in a brawl.
-    Your unarmed attacks deal [color=green]18[/color] base [color=yellow]Radiation[/color] damage.
+    You deal [color=green]+1[/color] [color=yellow]Slash[/color] and [color=yellow]Radiation[/color] damage in unarmed melee combat.
 
 trait-name-N14WeakLiquor = Weak Liquor
 trait-description-N14WeakLiquor =

@@ -32,6 +32,9 @@
       traits:
         - N14Stomper
   functions:
+    - !type:TraitAddComponent
+      components:
+        - type: QuietAwareness
     - !type:TraitReplaceComponent
       components:
         - type: FootstepVolumeModifier

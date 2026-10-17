@@ -1,3 +1,5 @@
+using Content.Shared._ReclamationProject.Blindness;
+using Robust.Shared.Timing;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Content.Shared.CCVar;
@@ -10,6 +12,7 @@ namespace Content.Client.Eye.Blinding
 {
     public sealed class BlurryVisionOverlay : Overlay
     {
+        [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -19,6 +22,7 @@ namespace Content.Client.Eye.Blinding
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
         private readonly ShaderInstance _cataractsShader;
         private readonly ShaderInstance _circleMaskShader;
+        private readonly ShaderInstance _concentrationShader;
         private float _magnitude;
         private float _correctionPower = 2.0f;
 
@@ -35,6 +39,7 @@ namespace Content.Client.Eye.Blinding
             IoCManager.InjectDependencies(this);
             _cataractsShader = _prototypeManager.Index<ShaderPrototype>("Cataracts").InstanceUnique();
             _circleMaskShader = _prototypeManager.Index<ShaderPrototype>("CircleMask").InstanceUnique();
+            _concentrationShader = _prototypeManager.Index<ShaderPrototype>("ReclamationBlindConcentration").InstanceUnique();
 
             _circleMaskShader.SetParameter("CircleMinDist", 0.0f);
             _circleMaskShader.SetParameter("CirclePow", NoMotion_Pow);
@@ -89,13 +94,31 @@ namespace Content.Client.Eye.Blinding
 
             // While the cataracts shader is designed to be tame enough to keep motion sickness at bay, the general waviness means that those who are particularly sensitive to motion sickness will probably hurl.
             // So the reasonable alternative here is to replace it with a static effect! Specifically, one that replicates the blindness effect seen across most SS13 servers.
-            if (_configManager.GetCVar(CCVars.ReducedMotion))
+            var hasFocus = _entityManager.TryGetComponent<BlindConcentrationComponent>(playerEntity, out var focus);
+            if (_configManager.GetCVar(CCVars.ReducedMotion) || hasFocus)
             {
                 _circleMaskShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
                 _circleMaskShader.SetParameter("Zoom", zoom);
                 _circleMaskShader.SetParameter("CircleRadius", NoMotion_Radius / strength);
 
-                worldHandle.UseShader(_circleMaskShader);
+                var mask = _circleMaskShader;
+                var progress = focus != null && playerEntity != null
+                    ? _entityManager.System<BlindAwarenessSystem>().GetVisualProgress(playerEntity.Value, focus, _timing.CurTime)
+                    : 0f;
+                if (hasFocus && progress > 0f)
+                {
+                    _concentrationShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+                    _concentrationShader.SetParameter("Focus", progress);
+                    _concentrationShader.SetParameter("MaximumRadiusMultiplier", focus!.MaximumRadiusMultiplier);
+                    _concentrationShader.SetParameter("Pulse", (float) _timing.CurTime.TotalSeconds * 2f);
+                    _concentrationShader.SetParameter("Zoom", zoom);
+                    _concentrationShader.SetParameter("Radius", NoMotion_Radius / strength);
+                    _concentrationShader.SetParameter("MaskPower", NoMotion_Pow);
+                    _concentrationShader.SetParameter("MaskMax", NoMotion_Max);
+                    _concentrationShader.SetParameter("MaskMult", NoMotion_Mult);
+                    mask = _concentrationShader;
+                }
+                worldHandle.UseShader(mask);
                 worldHandle.DrawRect(viewport, Color.White);
                 worldHandle.UseShader(null);
                 return;

@@ -27,6 +27,33 @@ public sealed class BlindConcentrationTests
 ";
 
     [Test]
+    public async Task SneakGunfireRecordsPositionWithoutFollowingShooter()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var entities = pair.Server.ResolveDependency<IEntityManager>();
+        var timing = pair.Server.ResolveDependency<IGameTiming>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var shooter = entities.SpawnEntity("TestBlindWithoutPerk", map.GridCoords);
+            var quiet = entities.AddComponent<QuietAwarenessComponent>(shooter);
+            var gun = entities.SpawnEntity(null, map.GridCoords);
+            entities.AddComponent<Content.Shared.Weapons.Ranged.Components.GunComponent>(gun);
+            var shot = new Content.Shared.Weapons.Ranged.Systems.GunShotEvent(shooter, new());
+            entities.EventBus.RaiseLocalEvent(gun, ref shot);
+            Assert.That(quiet.LastShotAt, Is.EqualTo(timing.CurTime));
+            var origin = quiet.LastShotCoordinates;
+            entities.System<SharedTransformSystem>().SetLocalPosition(shooter,
+                entities.GetComponent<TransformComponent>(shooter).LocalPosition + new System.Numerics.Vector2(5, 0));
+            Assert.That(quiet.LastShotCoordinates, Is.EqualTo(origin));
+            Assert.That(quiet.LastShotCoordinates, Is.Not.EqualTo(entities.GetComponent<TransformComponent>(shooter).Coordinates));
+            entities.DeleteEntity(shooter);
+            entities.DeleteEntity(gun);
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
     public async Task BlindnessTraitPlacesOneBlindfoldInBackpack()
     {
         await using var pair = await PoolManager.GetServerClient();
@@ -63,7 +90,7 @@ public sealed class BlindConcentrationTests
             var awareness = entities.System<BlindAwarenessSystem>();
             Assert.That(awareness.GetRadiusMultiplier(wearer, timing.CurTime), Is.EqualTo(1f));
             Assert.That(inventory.TryEquip(wearer, fold, "eyes", force: true), Is.True);
-            Assert.That(awareness.GetRadiusMultiplier(wearer, timing.CurTime), Is.EqualTo(1.5f));
+            Assert.That(awareness.GetRadiusMultiplier(wearer, timing.CurTime), Is.EqualTo(3f));
             Assert.That(entities.GetComponent<BlindConcentrationComponent>(wearer).Concentrating, Is.False);
             Assert.That(inventory.TryUnequip(wearer, "eyes", force: true), Is.True);
             Assert.That(awareness.GetRadiusMultiplier(wearer, timing.CurTime), Is.EqualTo(1f));

@@ -17,7 +17,7 @@ public sealed class BlindAwarenessSystem : EntitySystem
         foreach (var slot in BlindfoldSlots)
         {
             if (_inventory.TryGetSlotEntity(uid, slot, out var item) && HasComp<BlindfoldComponent>(item.Value))
-                return Math.Max(radius, 1.5f); // Half the ordinary fully focused radius (3x).
+                return Math.Max(radius, 3f); // Matches the ordinary fully focused radius.
         }
         return radius;
     }

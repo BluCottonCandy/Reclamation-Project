@@ -22,19 +22,20 @@ public sealed partial class N14ExpeditionBoardWindow : FancyWindow
 
     private string? _selectedTierId;
     private N14ExpeditionBoardState? _lastState;
-    // Reference to the currently open confirm window (if any). #Misfits Change
-    private N14ExpeditionConfirmWindow? _confirmWindow;
 
     public N14ExpeditionBoardWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        // Launch button opens the dedicated confirm window instead of an inline overlay
+        // Selecting a difficulty and pressing Launch is the complete launch flow.
         LaunchButton.OnPressed += _ =>
         {
             if (_selectedTierId != null)
-                ShowConfirmation();
+            {
+                LaunchButton.Disabled = true;
+                OnLaunchExpedition?.Invoke(_selectedTierId);
+            }
         };
     }
 
@@ -163,54 +164,4 @@ public sealed partial class N14ExpeditionBoardWindow : FancyWindow
         }
     }
 
-    /// <summary>Open the dedicated expedition briefing/confirm window.</summary>
-    private void ShowConfirmation()
-    {
-        // Don't open a second window if one is already showing
-        if (_confirmWindow is { Disposed: false })
-            return;
-
-        _confirmWindow = new N14ExpeditionConfirmWindow();
-        LaunchButton.Disabled = true;
-
-        // Track whether the player made an explicit choice (prevent double-action from OnClose)
-        var decided = false;
-
-        _confirmWindow.OnProceed += () =>
-        {
-            decided = true;
-            _confirmWindow = null;
-            if (_selectedTierId != null)
-                OnLaunchExpedition?.Invoke(_selectedTierId);
-        };
-
-        _confirmWindow.OnCancel += () =>
-        {
-            decided = true;
-            _confirmWindow = null;
-            ReEnableLaunch();
-        };
-
-        // Closing via window X-button should also cancel
-        _confirmWindow.OnClose += () =>
-        {
-            if (!decided)
-            {
-                _confirmWindow = null;
-                ReEnableLaunch();
-            }
-        };
-
-        _confirmWindow.OpenCentered();
-    }
-
-    /// <summary>Re-enable the launch button if the board is still idle.</summary>
-    private void ReEnableLaunch()
-    {
-        if (_lastState is { ExpeditionActive: false, OnCooldown: false, LaunchEndTime: null }
-            && _selectedTierId != null)
-        {
-            LaunchButton.Disabled = false;
-        }
-    }
 }

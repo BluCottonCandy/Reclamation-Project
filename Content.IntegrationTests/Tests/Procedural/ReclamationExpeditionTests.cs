@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Misfits.Expeditions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Content.Server._Misfits.Expeditions;
@@ -15,23 +16,39 @@ namespace Content.IntegrationTests.Tests.Procedural;
 [TestFixture]
 public sealed class ReclamationExpeditionTests
 {
-    [TestCase("ReclamationExperiment", 42)]
-    [TestCase("ReclamationLavaBrig", 103)]
-    [TestCase("ReclamationMineshaft", 77)]
-    [TestCase("ReclamationSnowyLabs", 212)]
-    [TestCase("ReclamationHaunted", 809)]
-    [TestCase("ReclamationExperiment", 0)]
-    [TestCase("ReclamationLavaBrig", 1)]
-    [TestCase("ReclamationMineshaft", 2)]
-    [TestCase("ReclamationSnowyLabs", 3)]
-    [TestCase("ReclamationHaunted", 4)]
-    [TestCase("ReclamationExperiment", 5)]
-    [TestCase("ReclamationLavaBrig", 6)]
-    [TestCase("ReclamationMineshaft", 7)]
-    [TestCase("ReclamationSnowyLabs", 8)]
-    [TestCase("ReclamationHaunted", 9)]
-    public async Task ConvertedRoomsGenerateOnlyWastelandStructures(string config, int seed)
+    [TestCase("ReclamationExperiment", 42, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationLavaBrig", 103, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationMineshaft", 77, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationSnowyLabs", 212, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationHaunted", 809, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationExperiment", 0, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationLavaBrig", 1, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationMineshaft", 2, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationSnowyLabs", 3, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationHaunted", 4, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationExperiment", 5, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationLavaBrig", 6, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationMineshaft", 7, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationSnowyLabs", 8, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationHaunted", 9, N14ExpeditionCombatTier.Easy, null)]
+    [TestCase("ReclamationExperiment", 42, N14ExpeditionCombatTier.Medium, null)]
+    [TestCase("ReclamationExperiment", 42, N14ExpeditionCombatTier.Hard, null)]
+    [TestCase("ReclamationLavaBrig", 103, N14ExpeditionCombatTier.Hard, null)]
+    [TestCase("ReclamationMineshaft", 77, N14ExpeditionCombatTier.Hard, null)]
+    [TestCase("ReclamationSnowyLabs", 212, N14ExpeditionCombatTier.Hard, null)]
+    [TestCase("ReclamationHaunted", 809, N14ExpeditionCombatTier.Hard, null)]
+    [TestCase("ReclamationExperiment", -1, N14ExpeditionCombatTier.Medium, null)]
+    [TestCase("ReclamationExperiment", -1, N14ExpeditionCombatTier.Hard, null)]
+    [TestCase("ReclamationExperiment", 42, N14ExpeditionCombatTier.Hard, N14ExpeditionEnemyFamily.SuperMutants)]
+    [TestCase("ReclamationExperiment", 42, N14ExpeditionCombatTier.Easy, N14ExpeditionEnemyFamily.Ghouls)]
+    public async Task ConvertedRoomsGenerateOnlyWastelandStructures(string config, int seed, N14ExpeditionCombatTier tier, N14ExpeditionEnemyFamily? family)
     {
+        if (seed < 0)
+            seed = Enumerable.Range(0, 10000).First(value =>
+            {
+                var plan = ExpeditionEncounterPlan.Create(tier, value, family);
+                return plan.AdvancedWeapon != null && plan.AdvancedArmor != null;
+            });
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
         var entities = pair.Server.ResolveDependency<IEntityManager>();
@@ -119,20 +136,22 @@ public sealed class ReclamationExpeditionTests
                 Assert.That(facingHall.Count(p => structures[p] == ExpeditionBuildingSystem.Window),
                     Is.GreaterThanOrEqualTo(System.Math.Min(3, facingHall.Length)), "Missing hallway observation windows.");
             }
-            var dressing = entities.System<ExpeditionDressingSystem>().Dress(grid, grid.Comp, dungeon, arrival, seed);
+            var dressing = entities.System<ExpeditionDressingSystem>().Dress(grid, grid.Comp, dungeon, arrival, seed, tier, family);
+            var encounter = ExpeditionEncounterPlan.Create(tier, seed, family);
             Assert.That(dressing.Furniture.Count, Is.GreaterThan(0));
             Assert.That(dressing.Lights.Count, Is.GreaterThan(0));
             Assert.That(dressing.Decals, Is.GreaterThan(0));
             Assert.That(dressing.BloodDecals, Is.GreaterThanOrEqualTo(10), "Expedition needs blood across multiple rooms.");
-            Assert.That(dressing.Hostiles.Count, Is.EqualTo(20));
+            Assert.That(dressing.Hostiles.Count, Is.EqualTo(encounter.Enemies.Length));
+            Assert.That(dressing.Hostiles.Select(uid => entities.GetComponent<MetaDataComponent>(uid).EntityPrototype!.ID), Is.EquivalentTo(encounter.Enemies));
             var enemyIds = dressing.Hostiles.Select(uid => entities.GetComponent<MetaDataComponent>(uid).EntityPrototype!.ID).Distinct().ToArray();
             var enemyFamilies = new[]
             {
-                new[] { "N14MobSuperMutantNPC", "N14MobSuperMutantMelee", "N14MobSuperMutantRanged", "N14MobSuperMutantArmored" },
-                new[] { "N14MobRaiderPsycho", "N14MobRaiderPsychoRanged", "N14MobRaiderHunter", "N14MobRaiderSkrimisher" },
-                new[] { "N14MobGhoulFeral", "N14MobGhoulFeralReaver" }
+                new[] { "ReclamationExpeditionSuperMutantNPC", "ReclamationExpeditionSuperMutantMelee", "ReclamationExpeditionSuperMutantRanged", "ReclamationExpeditionSuperMutantArmored", "ReclamationExpeditionBehemoth", "ReclamationExpeditionNightkinVeteran", "ReclamationExpeditionNightkinElite", "ReclamationExpeditionMutantLeader" },
+                new[] { "N14MobRaiderPsycho", "N14MobRaiderPsychoRanged", "N14MobRaiderHunter", "N14MobRaiderSkrimisher", "N14MobRaiderBoss", "ReclamationExpeditionRaiderLeader" },
+                new[] { "N14MobGhoulFeral", "N14MobGhoulFeralReaver", "ReclamationExpeditionGlowingLeader" }
             };
-            Assert.That(enemyIds.Length, Is.GreaterThanOrEqualTo(2), "Expedition must contain enemy variants.");
+            Assert.That(enemyIds.Length, Is.GreaterThanOrEqualTo(tier == N14ExpeditionCombatTier.Medium && encounter.Family == "Super mutants" ? 1 : 2), "Expedition must contain enemy variants.");
             Assert.That(enemyFamilies.Count(family => enemyIds.All(family.Contains)), Is.EqualTo(1), "Enemy families or faction-specific NPCs must not mix.");
             foreach (var hostile in dressing.Hostiles)
             {
@@ -145,7 +164,7 @@ public sealed class ReclamationExpeditionTests
             }
             var enemyPositions = dressing.Hostiles.Select(uid => maps.LocalToTile(grid, grid.Comp,
                 entities.GetComponent<TransformComponent>(uid).Coordinates)).ToArray();
-            Assert.That(enemyPositions.Distinct().Count(), Is.EqualTo(20));
+            Assert.That(enemyPositions.Distinct().Count(), Is.EqualTo(encounter.Enemies.Length));
             foreach (var p in enemyPositions)
                 Assert.That(enemyPositions.Where(q => p != q).All(q => (p - q).LengthSquared >= 4), Is.True, "Enemies are clustered together.");
             Assert.That(dungeon.Rooms.Count(room => enemyPositions.Any(room.Tiles.Contains)), Is.GreaterThanOrEqualTo(3), "Enemies must spread across rooms.");
@@ -256,6 +275,8 @@ public sealed class ReclamationExpeditionTests
             var gunCount = 0;
             var armorCount = 0;
             var displayedMedicines = 0;
+            var advancedGuns = 0;
+            var advancedArmor = 0;
             var clinic = dressing.Rooms.Single(r => r.Use == "Medical");
             var lootQuery = entities.AllEntityQueryEnumerator<MetaDataComponent, TransformComponent>();
             while (lootQuery.MoveNext(out var uid, out var meta, out var transform))
@@ -272,17 +293,23 @@ public sealed class ReclamationExpeditionTests
                 }
                 if (entities.HasComponent<Content.Shared.Weapons.Ranged.Components.GunComponent>(uid))
                 {
-                    Assert.That(weaponPool.Prototypes.Any(id => id.Id == meta.EntityPrototype.ID), Is.True, "Unexpected expedition weapon.");
+                    var advanced = meta.EntityPrototype.ID == encounter.AdvancedWeapon;
+                    Assert.That(advanced || weaponPool.Prototypes.Any(id => id.Id == meta.EntityPrototype.ID), Is.True, "Unexpected expedition weapon.");
+                    if (advanced) advancedGuns++;
                     Assert.That(dressing.WeaponCounters.Contains(p), Is.True, "Weapon is not on an armory counter.");
                     gunCount++;
                 }
                 if (entities.HasComponent<Content.Shared.Armor.ArmorComponent>(uid))
                 {
-                    Assert.That(armorPool.Prototypes.Any(id => id.Id == meta.EntityPrototype.ID), Is.True);
+                    var advanced = meta.EntityPrototype.ID == encounter.AdvancedArmor;
+                    Assert.That(advanced || armorPool.Prototypes.Any(id => id.Id == meta.EntityPrototype.ID), Is.True);
+                    if (advanced) advancedArmor++;
                     Assert.That(dressing.ArmorCounters.Contains(p), Is.True);
                     armorCount++;
                 }
             }
+            Assert.That(advancedGuns, Is.EqualTo(encounter.AdvancedWeapon == null ? 0 : 1));
+            Assert.That(advancedArmor, Is.EqualTo(encounter.AdvancedArmor == null ? 0 : 1));
             Assert.That(gunCount, Is.EqualTo(dressing.WeaponCounters.Count));
             Assert.That(armorCount, Is.EqualTo(dressing.ArmorCounters.Count));
             Assert.That(displayedMedicines, Is.EqualTo(2), "The clinic's supplies are not visible on its counter.");

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Misfits.Expeditions;
 using System.Numerics;
 using Content.Server.Decals;
 using Content.Server.Spawners.Components;
@@ -27,9 +28,10 @@ public sealed class ExpeditionDressingSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     private static readonly Vector2i[] Directions = { new(1, 0), new(-1, 0), new(0, 1), new(0, -1) };
 
-    public ExpeditionDressingResult Dress(EntityUid gridUid, MapGridComponent grid, Dungeon dungeon, Vector2 arrival, int seed)
+    public ExpeditionDressingResult Dress(EntityUid gridUid, MapGridComponent grid, Dungeon dungeon, Vector2 arrival, int seed, N14ExpeditionCombatTier tier = N14ExpeditionCombatTier.Easy, N14ExpeditionEnemyFamily? family = null)
     {
         var random = new Random(seed ^ 0x47A91);
+        var encounter = ExpeditionEncounterPlan.Create(tier, seed, family);
         var floor = _maps.GetAllTiles(gridUid, grid).Select(t => t.GridIndices).ToHashSet();
         var blocked = new HashSet<Vector2i>();
         var occupied = new HashSet<Vector2i>();
@@ -252,12 +254,12 @@ public sealed class ExpeditionDressingSystem : EntitySystem
                     if (i < guns)
                     {
                         weaponCounters.Add(counter.Value);
-                        Spawn("ReclamationExpeditionWeaponSpawner", _maps.GridTileToLocal(gridUid, grid, counter.Value));
+                        Spawn(i == 0 && encounter.AdvancedWeapon != null ? encounter.AdvancedWeapon : "ReclamationExpeditionWeaponSpawner", _maps.GridTileToLocal(gridUid, grid, counter.Value));
                     }
                     else
                     {
                         armorCounters.Add(counter.Value);
-                        Spawn("ReclamationExpeditionArmorSpawner", _maps.GridTileToLocal(gridUid, grid, counter.Value));
+                        Spawn(i == guns && encounter.AdvancedArmor != null ? encounter.AdvancedArmor : "ReclamationExpeditionArmorSpawner", _maps.GridTileToLocal(gridUid, grid, counter.Value));
                     }
                 }
             }
@@ -389,22 +391,13 @@ public sealed class ExpeditionDressingSystem : EntitySystem
         // Select one enemy family for the entire expedition. A
         // separate random stream keeps its population independent of decoration.
         var enemyRandom = new Random(seed ^ 0x7717);
-        var enemyFamilies = new[]
-        {
-            new[] { "N14MobSuperMutantNPC", "N14MobSuperMutantMelee", "N14MobSuperMutantRanged", "N14MobSuperMutantArmored" },
-            new[] { "N14MobRaiderPsycho", "N14MobRaiderPsychoRanged", "N14MobRaiderHunter", "N14MobRaiderSkrimisher" },
-            new[] { "N14MobGhoulFeral", "N14MobGhoulFeralReaver" }
-        };
-        // Shuffle a balanced rotation so every group actually contains variants,
-        // rather than allowing a random run of twenty identical knife raiders.
-        var enemyTypes = enemyFamilies[enemyRandom.Next(enemyFamilies.Length)]
-            .OrderBy(_ => enemyRandom.Next()).ToArray();
+        var enemyTypes = encounter.Enemies;
         var hostiles = new List<EntityUid>();
         var enemyPositions = new List<Vector2i>();
         var candidates = open.Where(p => dungeon.RoomTiles.Contains(p) && !occupied.Contains(p) &&
                 !doors.Contains(p) && (p - start).LengthSquared >= 144 && !Directions.Any(d => doors.Contains(p + d)))
             .OrderBy(p => p.X).ThenBy(p => p.Y).OrderBy(_ => enemyRandom.Next()).ToArray();
-        const int enemyTarget = 20;
+        var enemyTarget = enemyTypes.Length;
         // Cycle through rooms before adding a second occupant to any room.
         // Small layouts can use a two-tile gap after trying the wider spacing.
         foreach (var spacingSquared in new[] { 9, 4 })

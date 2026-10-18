@@ -12456,3 +12456,20 @@ Entries:
   id: 6525
   time: '2026-10-18T09:20:06.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/44
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Easy, Medium, and Hard expedition difficulties with stronger
+        enemies and improved rewards.
+    - type: Add
+      message: >-
+        Added randomly named raider, behemoth, and glowing ghoul expedition
+        bosses.
+    - type: Fix
+      message: >-
+        Expedition super mutants and behemoths can move through narrow
+        corridors.
+  id: 6526
+  time: '2026-10-18T09:20:22.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/45

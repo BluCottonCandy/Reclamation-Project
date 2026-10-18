@@ -249,7 +249,10 @@ public sealed class ReclamationExpeditionTests
                 Is.EquivalentTo(new[] { "N14Stimpak", "N14Stimpak", "N14Ointment10" }), "Medical crate is not stocked.");
             var armoryLocker = props.Single(p => p.Id == "ReclamationExpeditionArmoryLocker").Uid;
             var equipment = entities.GetComponent<Content.Server.Storage.Components.EntityStorageComponent>(armoryLocker).Contents.ContainedEntities;
-            Assert.That(equipment.Count, Is.EqualTo(3));
+            Assert.That(equipment.Count, Is.EqualTo(tier == N14ExpeditionCombatTier.Hard ? 5 : 3));
+            var attachmentPool = new[] { "N14CombatKnife", "ReclamationGunSuppressor", "ReclamationGunGrip", "ReclamationGunLight", "ReclamationGunStock", "ReclamationGunLaserSight", "ReclamationGunBipod", "ReclamationGunHoloSight" };
+            Assert.That(equipment.Count(uid => attachmentPool.Contains(entities.GetComponent<MetaDataComponent>(uid).EntityPrototype!.ID)),
+                Is.EqualTo(tier == N14ExpeditionCombatTier.Hard ? 2 : 0), "Only hard expeditions stock exactly two attachments.");
             var ammoPool = (Content.Server.Spawners.Components.RandomSpawnerComponent)
                 prototypes.Index<EntityPrototype>("ReclamationExpeditionAmmoSpawner").Components["RandomSpawner"].Component;
             Assert.That(equipment.Count(uid => ammoPool.Prototypes.Any(id => id.Id ==

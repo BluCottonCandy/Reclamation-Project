@@ -1,9 +1,11 @@
 using System.Linq;
+using Content.Shared._ReclamationProject.GunAttachments;
 using Content.Client._Misfits.Movement;
 using Content.Client.Gameplay;
 using Content.Shared.CCVar;
 using Content.Shared.CombatMode;
 using Content.Shared.Effects;
+using Content.Shared.Damage;
 using Content.Shared.Hands.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.StatusEffect;
@@ -26,6 +28,7 @@ namespace Content.Client.Weapons.Melee;
 public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 {
     [Dependency] private readonly IEyeManager _eyeManager = default!;
+    [Dependency] private readonly GunAttachmentsSystem _gunAttachments = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IStateManager _stateManager = default!;
@@ -90,6 +93,11 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 altDown = false;
         }
 
+        // Gun fire has already consumed its binding above. The remaining melee
+        // input is a direct bayonet thrust, independent of the gun's old bash keys.
+        var bayonetStab = TryComp<GunAttachmentsComponent>(weaponUid, out var attachments) &&
+                          _gunAttachments.HasBayonet(attachments);
+
         if (weapon.AutoAttack || !useDown && !altDown)
         {
             if (weapon.Attacking)
@@ -123,8 +131,18 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             coordinates = EntityCoordinates.FromMap(MapManager.GetMap(mousePos.MapId), mousePos, TransformSystem, EntityManager);
         }
 
+        if (bayonetStab && (useDown || altDown))
+        {
+            // Use the spear's existing directional arc attack, without a sprite click.
+            var hovered = _stateManager.CurrentState is GameplayStateBase screen
+                ? screen.GetClickedEntity(mousePos)
+                : null;
+            ClientHeavyAttack(entity, GetBayonetAimCoordinates(coordinates, hovered), weaponUid, weapon);
+            return;
+        }
+
         // Heavy attack.
-        if (!weapon.DisableHeavy &&
+        if (!bayonetStab && !weapon.DisableHeavy &&
             (!weapon.SwapKeys ? altDown : useDown))
         {
             // If it's an unarmed attack then do a disarm
@@ -150,14 +168,14 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
         // Light attack
         if (!weapon.DisableClick &&
-            (!weapon.SwapKeys ? useDown : altDown))
+            (bayonetStab ? useDown || altDown : !weapon.SwapKeys ? useDown : altDown))
         {
             var attackerPos = TransformSystem.GetMapCoordinates(entity);
 
             if (mousePos.MapId != attackerPos.MapId ||
                 (attackerPos.Position - mousePos.Position).Length() > weapon.Range)
             {
-                if (weapon.HeavyOnLightMiss)
+                if (!bayonetStab && weapon.HeavyOnLightMiss)
                     ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
 
                 return;
@@ -174,7 +192,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             if (Interaction.CombatModeCanHandInteract(entity, target))
                 return;
 
-            if (weapon.HeavyOnLightMiss && !CanDoLightAttack(entity, target, weapon, out _))
+            if (!bayonetStab && weapon.HeavyOnLightMiss && !CanDoLightAttack(entity, target, weapon, out _))
             {
                 ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
                 return;
@@ -185,6 +203,17 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 LastRealTick = _lagComp.GetLastRealTick(),
             });
         }
+    }
+
+    private EntityCoordinates GetBayonetAimCoordinates(EntityCoordinates cursor, EntityUid? hovered)
+    {
+        // Humanoid art extends above its physics body. Aim a hovered stab at the
+        // body's coordinates, so clicking a head does not thrust over its hitbox.
+        // Empty-space stabs still use the cursor direction and the normal spear arc.
+        return hovered is { } target && HasComp<DamageableComponent>(target) &&
+               _xformQuery.TryGetComponent(target, out var transform)
+            ? transform.Coordinates
+            : cursor;
     }
 
     protected override bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session, GameTick? lastRealTick = null)

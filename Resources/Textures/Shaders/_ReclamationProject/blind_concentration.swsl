@@ -1,0 +1,32 @@
+uniform highp float Zoom;
+uniform highp float Radius;
+uniform highp float MaskPower;
+uniform highp float MaskMax;
+uniform highp float MaskMult;
+uniform highp float Focus;
+uniform highp float MaximumRadiusMultiplier;
+uniform highp float Pulse;
+uniform sampler2D SCREEN_TEXTURE;
+
+void fragment() {
+    highp vec2 aspect = vec2(1.0 / SCREEN_PIXEL_SIZE.x, 1.0 / SCREEN_PIXEL_SIZE.y);
+    highp float original = clamp(zCircleGradient(aspect, FRAGCOORD.xy, MaskMax, Radius / Zoom, 0.0, MaskPower) * MaskMult, 0.0, 1.0);
+    highp float expanded = clamp(zCircleGradient(aspect, FRAGCOORD.xy, MaskMax, Radius * (1.0 + (MaximumRadiusMultiplier - 1.0) * Focus) / Zoom, 0.0, MaskPower) * MaskMult, 0.0, 1.0);
+    highp float ring = smoothstep(0.98, 1.0, original) * (1.0 - expanded);
+    highp vec2 offset = SCREEN_PIXEL_SIZE * 2.0;
+    // Compare the centre against all eight neighbours so small object contours
+    // remain visible even when opposite sides have similar brightness.
+    highp float centre = zGrayscale(texture(SCREEN_TEXTURE, UV).rgb);
+    highp float contrast = abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV + vec2(offset.x, 0.0)).rgb));
+    contrast = max(contrast, abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV - vec2(offset.x, 0.0)).rgb)));
+    contrast = max(contrast, abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV + vec2(0.0, offset.y)).rgb)));
+    contrast = max(contrast, abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV - vec2(0.0, offset.y)).rgb)));
+    contrast = max(contrast, abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV + offset).rgb)));
+    contrast = max(contrast, abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV - offset).rgb)));
+    contrast = max(contrast, abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV + vec2(offset.x, -offset.y)).rgb)));
+    contrast = max(contrast, abs(centre - zGrayscale(texture(SCREEN_TEXTURE, UV + vec2(-offset.x, offset.y)).rgb)));
+    highp float edge = smoothstep(0.025, 0.16, contrast);
+    highp float echo = 0.14 + edge * (0.65 + 0.08 * sin(Pulse));
+    // Preserve the original view. Only the new annulus gets opaque, detail-free echoes.
+    COLOR = mix(vec4(vec3(0.0), original), vec4(vec3(echo), 1.0), ring);
+}

@@ -1,3 +1,4 @@
+using System.Linq;
 // #Misfits Add - Talent tree view.
 // Renders the talent trees as one menu: a horizontal set of columns, one per category tree.
 // Each perk is a node placed in a tier row, and connector lines are drawn from a perk up to
@@ -25,6 +26,7 @@ public sealed class TalentTreeView : Control
     private readonly Dictionary<string, TalentTreeNode> _nodes = new();
     private readonly Dictionary<string, string> _prereq = new();
     private readonly List<BoxContainer> _columns = new();
+    private string? _selectedCategory;
 
     private static readonly Color EdgeOwned = Color.FromHex("#7fb06b");
     private static readonly Color EdgeLocked = Color.FromHex("#555555");
@@ -40,11 +42,28 @@ public sealed class TalentTreeView : Control
 
         var root = new BoxContainer
         {
-            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
             HorizontalExpand = true,
             VerticalExpand = true,
         };
         AddChild(root);
+
+        var selector = new OptionButton { HorizontalExpand = true, Margin = new Thickness(0, 0, 0, 8) };
+        root.AddChild(selector);
+        var selected = 0;
+        for (var i = 0; i < branches.Count; i++)
+        {
+            selector.AddItem(branches[i].CategoryName, i);
+            if (branches[i].CategoryName == _selectedCategory)
+                selected = i;
+        }
+        selector.OnItemSelected += args =>
+        {
+            selector.SelectId(args.Id);
+            _selectedCategory = branches[args.Id].CategoryName;
+            for (var i = 0; i < _columns.Count; i++)
+                _columns[i].Visible = i == args.Id;
+        };
 
         foreach (var branch in branches)
         {
@@ -90,6 +109,13 @@ public sealed class TalentTreeView : Control
             _columns.Add(column);
             root.AddChild(column);
         }
+        if (branches.Count > 0)
+        {
+            selector.SelectId(selected);
+            _selectedCategory = branches[selected].CategoryName;
+            for (var i = 0; i < _columns.Count; i++)
+                _columns[i].Visible = i == selected;
+        }
     }
 
     /// <summary>
@@ -120,6 +146,8 @@ public sealed class TalentTreeView : Control
             if (!_nodes.TryGetValue(childId, out var child) || !_nodes.TryGetValue(prereqId, out var parent))
                 continue;
 
+            if (!_columns.Any(column => column.Visible && column.Children.Contains(child) && column.Children.Contains(parent)))
+                continue;
             var childPos = GetPositionInView(child);
             var parentPos = GetPositionInView(parent);
 

@@ -63,6 +63,8 @@ public sealed class TalentTreeNode : Button
                 new Label
                 {
                     Text = name,
+                    ClipText = true,
+                    HorizontalExpand = true,
                     VerticalAlignment = VAlignment.Center,
                     Margin = new Thickness(8, 0, 0, 0),
                 },

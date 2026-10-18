@@ -73,6 +73,7 @@
   - !type:TraitAddComponent
     components:
     - type: PermanentBlindness
+    - type: BlindConcentration
 
 - type: trait
   id: N14Nearsighted

@@ -6,6 +6,7 @@ using Content.Shared._Misfits.Silicon;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Robust.Shared.Collections;
@@ -26,12 +27,26 @@ public sealed class NPCRetaliationSystem : EntitySystem
     // #Misfits Change — nearby friendly NPCs within roughly their aggro band will assist when one of them is attacked.
     // This fixes the common case where only the directly-hit mob retaliates while its packmates stay idle outside passive scan range.
     private const float DefaultAssistRange = 14f;
+    [Dependency] private readonly NPCSystem _npc = default!;
 
     /// <inheritdoc />
     public override void Initialize()
     {
         SubscribeLocalEvent<NPCRetaliationComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<HTNComponent, DamageChangedEvent>(OnHostileDamaged);
         SubscribeLocalEvent<NPCRetaliationComponent, DisarmedEvent>(OnDisarmed);
+    }
+
+    private void OnHostileDamaged(Entity<HTNComponent> ent, ref DamageChangedEvent args)
+    {
+        // Some humanoid enemies do not inherit the animal retaliation component.
+        if (HasComp<NPCRetaliationComponent>(ent) || !args.DamageIncreased ||
+            args.Origin is not { } attacker || !_npcFaction.IsEntityHostile(ent.Owner, attacker))
+            return;
+
+        var retaliation = EnsureComp<NPCRetaliationComponent>(ent);
+        if (TryRetaliate((ent.Owner, retaliation), attacker))
+            TryProvokeNearbyFriendlies(ent, attacker);
     }
 
     private void OnDamageChanged(Entity<NPCRetaliationComponent> ent, ref DamageChangedEvent args)
@@ -83,6 +98,10 @@ public sealed class NPCRetaliationSystem : EntitySystem
 
     public bool TryRetaliate(Entity<NPCRetaliationComponent> ent, EntityUid target)
     {
+        if (HasComp<ActorComponent>(ent) || ent.Owner == target ||
+            TryComp<MobStateComponent>(ent, out var state) && state.CurrentState != MobState.Alive)
+            return false;
+
         // don't retaliate against inanimate objects.
         if (!HasComp<MobStateComponent>(target))
             return false;
@@ -122,10 +141,39 @@ public sealed class NPCRetaliationSystem : EntitySystem
         // This cuts perceived combat response delay from 250ms → ~1-2ms (next frame).
         if (TryComp<HTNComponent>(ent.Owner, out var htn))
         {
+            ent.Comp.PursuitTarget = target;
+            ent.Comp.PursuitUntil = _timing.CurTime + ent.Comp.PursuitDuration;
+            htn.Blackboard.SetValue("Target", target);
+            _npc.WakeNPC(ent, htn);
             _htn.Replan(htn);
         }
 
         return true;
+    }
+
+    public bool TryGetPursuitTarget(EntityUid npc, out EntityUid target)
+    {
+        target = default;
+        if (!TryComp<NPCRetaliationComponent>(npc, out var retaliation) ||
+            retaliation.PursuitTarget is not { } attacker ||
+            _timing.CurTime >= retaliation.PursuitUntil || HasComp<ActorComponent>(npc) ||
+            !TryComp<MobStateComponent>(npc, out var npcState) || npcState.CurrentState != MobState.Alive ||
+            !TryComp<MobStateComponent>(attacker, out var state) || state.CurrentState != MobState.Alive ||
+            !TryComp<TransformComponent>(npc, out var transform) ||
+            !TryComp<TransformComponent>(attacker, out var targetTransform) ||
+            !transform.Coordinates.TryDistance(EntityManager, targetTransform.Coordinates, out var distance) ||
+            distance > retaliation.PursuitRange)
+            return false;
+
+        target = attacker;
+        return true;
+    }
+
+    public float GetTargetRange(EntityUid npc, EntityUid target, float ordinaryRange)
+    {
+        return TryGetPursuitTarget(npc, out var attacker) && attacker == target
+            ? Math.Max(ordinaryRange, Comp<NPCRetaliationComponent>(npc).PursuitRange)
+            : ordinaryRange;
     }
 
     private bool CanZaxRetaliateAgainst(EntityUid uid, EntityUid target)

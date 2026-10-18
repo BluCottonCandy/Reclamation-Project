@@ -65,6 +65,14 @@ public sealed partial class ScopeComponent : Component
     [DataField, AutoNetworkedField]
     public bool RequireWielding;
 
+    /// <summary>Only show the scope actions while this weapon is wielded.</summary>
+    [DataField, AutoNetworkedField]
+    public bool ActionsOnlyWhenWielded;
+
+    /// <summary>Movement multiplier applied to the user while scoped.</summary>
+    [DataField, AutoNetworkedField]
+    public float ScopedMovementMultiplier = 1f;
+
     /// <summary>
     /// If true, the scope can be activated by using it in hand (ActivateInWorld).
     /// Used for standalone items like binoculars.

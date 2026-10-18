@@ -46,6 +46,7 @@ public sealed partial class ProximityNPCSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly NPCSystem _npc = default!;
+    [Dependency] private readonly NPCRetaliationSystem _retaliation = default!;
     /// Misfit Change: sound handling moved to <see cref="NPCSystem.SleepNPC"/> <see cref="NPCSystem.WakeNPC"/>
     // [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     // [Dependency] private readonly SharedEmitSoundSystem _emitSound = default!;
@@ -164,7 +165,7 @@ public sealed partial class ProximityNPCSystem : EntitySystem
             //                players and player pets unaffected
 
             var mapPos = _transform.GetMapCoordinates(uid, xform);
-            bool inRange = HasPlayerWithin(mapPos, prox.WakeRange);
+            bool inRange = _retaliation.TryGetPursuitTarget(uid, out _) || HasPlayerWithin(mapPos, prox.WakeRange);
             bool awake = _npc.IsAwake(uid);
 
             if (awake && !inRange && !HasComp<RecruitedFollowerComponent>(uid))

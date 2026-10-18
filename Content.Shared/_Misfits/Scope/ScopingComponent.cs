@@ -29,4 +29,7 @@ public sealed partial class ScopingComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public bool AllowMovement;
+
+    [ViewVariables, AutoNetworkedField]
+    public float MovementMultiplier = 1f;
 }

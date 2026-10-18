@@ -1,0 +1,762 @@
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitHunter
+  name: Hunter
+  description: "You are skilled at finding and eating about anything in the Wastes."
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSniperHuntingMakeshift
+    - id: MagazineBox308
+    - id: DrinkWaterBottleFull
+    - id: ReclamationFoodCannedTuna
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetHunter
+  name: wastelander-kit-hunter-name
+  description: wastelander-kit-hunter-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - ReclamationWastelanderKitHunter
+
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitDoc
+  name: Wasteland Doc
+  description: "You are the only thing that stands between death and your patient."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationTrainingManualCPR
+    - id: N14WeaponPistol9mmMakeshift
+    - id: MagazineBox9mm
+    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: N14Ethanol
+    - id: ClothingHandsGlovesLatex
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetDoc
+  name: wastelander-kit-doc-name
+  description: wastelander-kit-doc-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content:
+  - ReclamationWastelanderKitDoc
+
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitSurvivalist
+  name: Survivalist
+  description: "You know a thing or two, because you've survived a thing or two."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationWeaponRevolver4570Makeshift
+    - id: SpeedLoader45-70
+    - id: MagazineBox45-70
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14BedrollFolded
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetSurvivalist
+  name: wastelander-kit-survivalist-name
+  description: wastelander-kit-survivalist-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitSurvivalist
+
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitMilitarySurplus
+  name: Military Surplus
+  description: "You found a treasure trove of guns, now it's time to use em."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationMilitarySurplusSelector
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetMilitarySurplus
+  name: wastelander-kit-militarysurplus-name
+  description: wastelander-kit-militarysurplus-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitMilitarySurplus
+
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitOutOfLuck
+  name: Shit out of luck
+  description: "You got fucking robbed, but at least you managed to save your lucky kitchen knife."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationLuckyKitchenKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetOutOfLuck
+  name: wastelander-kit-outofluck-name
+  description: wastelander-kit-outofluck-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitOutOfLuck
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: ReclamationWastelanderKitSelector
+  name: Wastelander kit selection box
+  description: Choose the supplies that tell your story in the Wastes.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - ReclamationWastelanderSetHunter
+    - ReclamationWastelanderSetDoc
+    - ReclamationWastelanderSetSurvivalist
+    - ReclamationWastelanderSetMilitarySurplus
+    - ReclamationWastelanderSetOutOfLuck
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusPistol22lrMakeshift
+  name: wastelander-surplus-pistol22lrmakeshift-name
+  description: wastelander-surplus-pistol22lrmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponPistol22lrMakeshift
+  - MagazineBox22
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRevolver9mmMakeshift
+  name: wastelander-surplus-revolver9mmmakeshift-name
+  description: wastelander-surplus-revolver9mmmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRevolver9mmMakeshift
+  - MagazineBox9mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusPistol10mmPipe
+  name: wastelander-surplus-pistol10mmpipe-name
+  description: wastelander-surplus-pistol10mmpipe-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponPistol10mmPipe
+  - MagazineBox10mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusPistol9mmMakeshift
+  name: wastelander-surplus-pistol9mmmakeshift-name
+  description: wastelander-surplus-pistol9mmmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponPistol9mmMakeshift
+  - MagazineBox9mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusPistol45ColtMakeshift
+  name: wastelander-surplus-pistol45coltmakeshift-name
+  description: wastelander-surplus-pistol45coltmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponPistol45ColtMakeshift
+  - MagazineBox45
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusPistol12mmMakeshift
+  name: wastelander-surplus-pistol12mmmakeshift-name
+  description: wastelander-surplus-pistol12mmmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponPistol12mmMakeshift
+  - MagazineBox12
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusPistol9mmChineseMakeshift
+  name: wastelander-surplus-pistol9mmchinesemakeshift-name
+  description: wastelander-surplus-pistol9mmchinesemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponPistol9mmChineseMakeshift
+  - MagazineBox9mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusPistolWebleyMakeshift
+  name: wastelander-surplus-pistolwebleymakeshift-name
+  description: wastelander-surplus-pistolwebleymakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponPistolWebleyMakeshift
+  - MagazineBox9mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRevolver44MagnumMakeshift
+  name: wastelander-surplus-revolver44magnummakeshift-name
+  description: wastelander-surplus-revolver44magnummakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRevolver44MagnumMakeshift
+  - MagazineBox44
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunDoubleBarrelMakeshift
+  name: wastelander-surplus-shotgundoublebarrelmakeshift-name
+  description: wastelander-surplus-shotgundoublebarrelmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunDoubleBarrelMakeshift
+  - MagazineBox12gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunCaravanMakeshift
+  name: wastelander-surplus-shotguncaravanmakeshift-name
+  description: wastelander-surplus-shotguncaravanmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunCaravanMakeshift
+  - MagazineBox20gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunLeverMakeshift
+  name: wastelander-surplus-shotgunlevermakeshift-name
+  description: wastelander-surplus-shotgunlevermakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunLeverMakeshift
+  - MagazineBox20gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunMakeshift
+  name: wastelander-surplus-shotgunmakeshift-name
+  description: wastelander-surplus-shotgunmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunMakeshift
+  - MagazineBox12gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunRiotMakeshift
+  name: wastelander-surplus-shotgunriotmakeshift-name
+  description: wastelander-surplus-shotgunriotmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunRiotMakeshift
+  - MagazineBox20gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunAutoMakeshift
+  name: wastelander-surplus-shotgunautomakeshift-name
+  description: wastelander-surplus-shotgunautomakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunAutoMakeshift
+  - MagazineBox12gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunBlowbackMakeshift
+  name: wastelander-surplus-shotgunblowbackmakeshift-name
+  description: wastelander-surplus-shotgunblowbackmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunBlowbackMakeshift
+  - MagazineBox12gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunChineseMakeshift
+  name: wastelander-surplus-shotgunchinesemakeshift-name
+  description: wastelander-surplus-shotgunchinesemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunChineseMakeshift
+  - MagazineBox12gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusShotgunCanadianMakeshift
+  name: wastelander-surplus-shotguncanadianmakeshift-name
+  description: wastelander-surplus-shotguncanadianmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponShotgunCanadianMakeshift
+  - MagazineBox12gauge
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSMG9mmMakeshift
+  name: wastelander-surplus-smg9mmmakeshift-name
+  description: wastelander-surplus-smg9mmmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSMG9mmMakeshift
+  - MagazineBox9mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSMG9mmCanadianMakeshift
+  name: wastelander-surplus-smg9mmcanadianmakeshift-name
+  description: wastelander-surplus-smg9mmcanadianmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSMG9mmCanadianMakeshift
+  - MagazineBox9mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSMG10mmSuppressedMakeshift
+  name: wastelander-surplus-smg10mmsuppressedmakeshift-name
+  description: wastelander-surplus-smg10mmsuppressedmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSMG10mmSuppressedMakeshift
+  - MagazineBox10mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSMG10mmChineseMakeshift
+  name: wastelander-surplus-smg10mmchinesemakeshift-name
+  description: wastelander-surplus-smg10mmchinesemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSMG10mmChineseMakeshift
+  - MagazineBox10mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSMG45Makeshift
+  name: wastelander-surplus-smg45makeshift-name
+  description: wastelander-surplus-smg45makeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSMG45Makeshift
+  - MagazineBox45
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle556R91Makeshift
+  name: wastelander-surplus-rifle556r91makeshift-name
+  description: wastelander-surplus-rifle556r91makeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle556R91Makeshift
+  - MagazineBox556
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle556ServiceMakeshift
+  name: wastelander-surplus-rifle556servicemakeshift-name
+  description: wastelander-surplus-rifle556servicemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle556ServiceMakeshift
+  - MagazineBox556
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle556CarbineOldMakeshift
+  name: wastelander-surplus-rifle556carbineoldmakeshift-name
+  description: wastelander-surplus-rifle556carbineoldmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle556CarbineOldMakeshift
+  - MagazineBox556
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle762M14Makeshift
+  name: wastelander-surplus-rifle762m14makeshift-name
+  description: wastelander-surplus-rifle762m14makeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle762M14Makeshift
+  - MagazineBox762
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle762SKSMakeshift
+  name: wastelander-surplus-rifle762sksmakeshift-name
+  description: wastelander-surplus-rifle762sksmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle762SKSMakeshift
+  - MagazineBox762
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle762FalMakeshift
+  name: wastelander-surplus-rifle762falmakeshift-name
+  description: wastelander-surplus-rifle762falmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle762FalMakeshift
+  - MagazineBox762
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle762CanadianMakeshift
+  name: wastelander-surplus-rifle762canadianmakeshift-name
+  description: wastelander-surplus-rifle762canadianmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle762CanadianMakeshift
+  - MagazineBox762
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle762ChineseMakeshift
+  name: wastelander-surplus-rifle762chinesemakeshift-name
+  description: wastelander-surplus-rifle762chinesemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle762ChineseMakeshift
+  - MagazineBox762
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle762MarksmanMakeshift
+  name: wastelander-surplus-rifle762marksmanmakeshift-name
+  description: wastelander-surplus-rifle762marksmanmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle762MarksmanMakeshift
+  - MagazineBox762
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle556CarbineMakeshift
+  name: wastelander-surplus-rifle556carbinemakeshift-name
+  description: wastelander-surplus-rifle556carbinemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle556CarbineMakeshift
+  - MagazineBox556
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle556EM2Makeshift
+  name: wastelander-surplus-rifle556em2makeshift-name
+  description: wastelander-surplus-rifle556em2makeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle556EM2Makeshift
+  - MagazineBox556
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSniper556VarmintRifleMakeshift
+  name: wastelander-surplus-sniper556varmintriflemakeshift-name
+  description: wastelander-surplus-sniper556varmintriflemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSniper556VarmintRifleMakeshift
+  - MagazineBox556
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSniperHuntingMakeshift
+  name: wastelander-surplus-sniperhuntingmakeshift-name
+  description: wastelander-surplus-sniperhuntingmakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSniperHuntingMakeshift
+  - MagazineBox308
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSniper44LeverCarbineMakeshift
+  name: wastelander-surplus-sniper44levercarbinemakeshift-name
+  description: wastelander-surplus-sniper44levercarbinemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSniper44LeverCarbineMakeshift
+  - MagazineBox44
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle308BattleMakeshift
+  name: wastelander-surplus-rifle308battlemakeshift-name
+  description: wastelander-surplus-rifle308battlemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle308BattleMakeshift
+  - MagazineBox308
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusRifle556Pipe
+  name: wastelander-surplus-rifle556pipe-name
+  description: wastelander-surplus-rifle556pipe-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponRifle556Pipe
+  - MagazineBox556
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSMG10mmPipe
+  name: wastelander-surplus-smg10mmpipe-name
+  description: wastelander-surplus-smg10mmpipe-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSMG10mmPipe
+  - MagazineBox10mm
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusSMG12mmPipe
+  name: wastelander-surplus-smg12mmpipe-name
+  description: wastelander-surplus-smg12mmpipe-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponSMG12mmPipe
+  - MagazineBox12
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusLaserRevolver
+  name: wastelander-surplus-laserrevolver-name
+  description: wastelander-surplus-laserrevolver-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponLaserRevolver
+  - ReclamationSmallCellBox
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationSurplusLaserRifleMakeshift
+  name: wastelander-surplus-laserriflemakeshift-name
+  description: wastelander-surplus-laserriflemakeshift-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - N14WeaponLaserRifleMakeshift
+  - ReclamationMicrofusionCellBox
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: ReclamationMilitarySurplusSelector
+  name: Military Surplus weapon choice box
+  description: Choose two different makeshift guns. Each comes with a matching box of ammunition; energy weapons receive a matching cell box.
+  components:
+  - type: UndecidedLoadoutBackpack
+    maxSelectedSets: 2
+    possibleSets:
+    - ReclamationSurplusPistol22lrMakeshift
+    - ReclamationSurplusRevolver9mmMakeshift
+    - ReclamationSurplusPistol10mmPipe
+    - ReclamationSurplusPistol9mmMakeshift
+    - ReclamationSurplusPistol45ColtMakeshift
+    - ReclamationSurplusPistol12mmMakeshift
+    - ReclamationSurplusPistol9mmChineseMakeshift
+    - ReclamationSurplusPistolWebleyMakeshift
+    - ReclamationSurplusRevolver44MagnumMakeshift
+    - ReclamationSurplusShotgunDoubleBarrelMakeshift
+    - ReclamationSurplusShotgunCaravanMakeshift
+    - ReclamationSurplusShotgunLeverMakeshift
+    - ReclamationSurplusShotgunMakeshift
+    - ReclamationSurplusShotgunRiotMakeshift
+    - ReclamationSurplusShotgunAutoMakeshift
+    - ReclamationSurplusShotgunBlowbackMakeshift
+    - ReclamationSurplusShotgunChineseMakeshift
+    - ReclamationSurplusShotgunCanadianMakeshift
+    - ReclamationSurplusSMG9mmMakeshift
+    - ReclamationSurplusSMG9mmCanadianMakeshift
+    - ReclamationSurplusSMG10mmSuppressedMakeshift
+    - ReclamationSurplusSMG10mmChineseMakeshift
+    - ReclamationSurplusSMG45Makeshift
+    - ReclamationSurplusRifle556R91Makeshift
+    - ReclamationSurplusRifle556ServiceMakeshift
+    - ReclamationSurplusRifle556CarbineOldMakeshift
+    - ReclamationSurplusRifle762M14Makeshift
+    - ReclamationSurplusRifle762SKSMakeshift
+    - ReclamationSurplusRifle762FalMakeshift
+    - ReclamationSurplusRifle762CanadianMakeshift
+    - ReclamationSurplusRifle762ChineseMakeshift
+    - ReclamationSurplusRifle762MarksmanMakeshift
+    - ReclamationSurplusRifle556CarbineMakeshift
+    - ReclamationSurplusRifle556EM2Makeshift
+    - ReclamationSurplusSniper556VarmintRifleMakeshift
+    - ReclamationSurplusSniperHuntingMakeshift
+    - ReclamationSurplusSniper44LeverCarbineMakeshift
+    - ReclamationSurplusRifle308BattleMakeshift
+    - ReclamationSurplusRifle556Pipe
+    - ReclamationSurplusSMG10mmPipe
+    - ReclamationSurplusSMG12mmPipe
+    - ReclamationSurplusLaserRevolver
+    - ReclamationSurplusLaserRifleMakeshift
+
+- type: entity
+  parent: N14KitchenKnife
+  id: ReclamationLuckyKitchenKnife
+  name: lucky kitchen knife
+  description: You lost everything else, but at least you still have your lucky kitchen knife.
+
+- type: entity
+  parent: N14FoodCannedFish
+  id: ReclamationFoodCannedTuna
+  name: can of tuna
+  description: A single can of preserved tuna. A small comfort in the Wastes.
+
+- type: entity
+  parent: N14WeaponRevolver44MagnumMakeshift
+  id: ReclamationWeaponRevolver4570Makeshift
+  name: makeshift .45-70 Gov revolver
+  description: A heavy improvised hunting revolver, chambered in .45-70 Government.
+  components:
+  - type: RevolverAmmoProvider
+    whitelist:
+      tags:
+      - N14Cartridge45-70
+      - SpeedLoader45-70
+    proto: N14Cartridge45-70
+
+- type: entity
+  parent: BoxCardboard
+  id: ReclamationSmallCellBox
+  name: small energy cell box
+  description: A box containing a charged small energy cell.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14PowerCellSmall
+
+- type: entity
+  parent: BoxCardboard
+  id: ReclamationMicrofusionCellBox
+  name: microfusion cell box
+  description: A box containing a charged microfusion cell.
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14MicrofusionCellRed
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationTrainingManualCPR
+  name: CPR training manual
+  description: A worn first-aid manual covering cardiopulmonary resuscitation. Read it to learn CPR; consumed once learned.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#D9D0B8"
+    - state: icon_text
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - Book
+  - type: GrantTrait
+    trait: N14CPRTraining
+    learnMessage: wastelander-cpr-learned
+    alreadyKnownMessage: wastelander-cpr-already-known
+    alreadyKnownComponents:
+    - type: CPRTraining
+    soundOnUse:
+      path: /Audio/Items/Handling/book_pickup.ogg
+
+# Keep generic NPC equipment unchanged; these overrides are used by the player jobs.
+- type: startingGear
+  parent: WastelanderGear
+  id: ReclamationWastelanderKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - ReclamationWastelanderKitSelector
+
+- type: startingGear
+  parent: WasterTraderGear
+  id: ReclamationWastelanderTraderKitGear
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - ReclamationWastelanderKitSelector

@@ -7,7 +7,7 @@
   name: job-name-wastelander
   description: job-description-wastelander
   playTimeTracker: Wastelander
-  startingGear: WastelanderGear
+  startingGear: ReclamationWastelanderKitGear
   icon: "JobIconWastelander" # Corvax-Change
   supervisors: job-supervisors-wastelander
   requirements: # #Misfits Change: 8h playtime lock, block non-human species
@@ -32,7 +32,7 @@
   name: job-name-outcast
   description: job-description-outcast
   playTimeTracker: Outcast
-  startingGear: WastelanderGear
+  startingGear: ReclamationWastelanderKitGear
   icon: "JobIconWastelander"
   supervisors: job-supervisors-wastelander
   requirements:
@@ -58,7 +58,7 @@
   name: job-name-wasterTrader
   description: job-description-wasterTrader
   playTimeTracker: WasterTrader
-  startingGear: WasterTraderGear
+  startingGear: ReclamationWastelanderTraderKitGear
   icon: "JobIconWastelander" # Corvax-Change
   supervisors: job-supervisors-wastelander
   requirements: # #Misfits Change: 8h playtime lock, block non-human species

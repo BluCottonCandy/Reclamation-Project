@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.UndecidedLoadout.Components;
 using Content.Shared.Item;
 using Content.Shared.UndecidedLoadout;
@@ -18,7 +19,6 @@ public sealed class UndecidedLoadoutBackpackSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
-    private const int MaxSelectedSets = 1;
     public override void Initialize()
     {
         base.Initialize();
@@ -35,7 +35,9 @@ public sealed class UndecidedLoadoutBackpackSystem : EntitySystem
 
     private void OnApprove(Entity<UndecidedLoadoutBackpackComponent> backpack, ref UndecidedLoadoutBackpackApproveMessage args)
     {
-        if (backpack.Comp.SelectedSets.Count != MaxSelectedSets)
+        if (backpack.Comp.SelectedSets.Count != backpack.Comp.MaxSelectedSets ||
+            backpack.Comp.SelectedSets.Distinct().Count() != backpack.Comp.MaxSelectedSets ||
+            backpack.Comp.SelectedSets.Any(i => i < 0 || i >= backpack.Comp.PossibleSets.Count))
             return;
 
         foreach (var i in backpack.Comp.SelectedSets)
@@ -58,7 +60,14 @@ public sealed class UndecidedLoadoutBackpackSystem : EntitySystem
     }
     private void OnChangeSet(Entity<UndecidedLoadoutBackpackComponent> backpack, ref UndecidedLoadoutBackpackChangeSetMessage args)
     {
-        //Swith selecting set
+        if (args.SetNumber < 0 || args.SetNumber >= backpack.Comp.PossibleSets.Count)
+            return;
+
+        if (!backpack.Comp.SelectedSets.Contains(args.SetNumber) &&
+            backpack.Comp.SelectedSets.Count >= backpack.Comp.MaxSelectedSets)
+            return;
+
+        // Switch selected set
         if (!backpack.Comp.SelectedSets.Remove(args.SetNumber))
             backpack.Comp.SelectedSets.Add(args.SetNumber);
 
@@ -84,6 +93,6 @@ public sealed class UndecidedLoadoutBackpackSystem : EntitySystem
             data.Add(i, info);
         }
 
-        _ui.SetUiState(uid, UndecidedLoadoutBackpackUIKey.Key, new UndecidedLoadoutBackpackBoundUserInterfaceState(data, MaxSelectedSets));
+        _ui.SetUiState(uid, UndecidedLoadoutBackpackUIKey.Key, new UndecidedLoadoutBackpackBoundUserInterfaceState(data, component.MaxSelectedSets));
     }
 }

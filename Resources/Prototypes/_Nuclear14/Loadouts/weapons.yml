@@ -16,6 +16,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponPistol22lrMakeshift
 
@@ -36,6 +40,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRevolver9mmMakeshift
 
@@ -56,6 +64,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponPistol10mmPipe
 
@@ -76,6 +88,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponPistol9mmMakeshift
 
@@ -96,6 +112,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponPistol45ColtMakeshift
 
@@ -116,6 +136,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponPistol12mmMakeshift
 
@@ -137,6 +161,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponPistol9mmChineseMakeshift
 
@@ -157,6 +185,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponPistolWebleyMakeshift
 
@@ -180,6 +212,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRevolver44MagnumMakeshift
 
@@ -203,6 +239,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunDoubleBarrelMakeshift
 
@@ -223,6 +263,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunCaravanMakeshift
 
@@ -244,6 +288,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunLeverMakeshift
 
@@ -264,6 +312,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunMakeshift
 
@@ -291,6 +343,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunRiotMakeshift
 
@@ -317,6 +373,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunAutoMakeshift
 
@@ -344,6 +404,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunBlowbackMakeshift
 
@@ -373,6 +437,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunChineseMakeshift
 
@@ -398,6 +466,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponShotgunCanadianMakeshift
 
@@ -427,6 +499,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSMG9mmMakeshift
 
@@ -452,6 +528,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSMG9mmCanadianMakeshift
 
@@ -478,6 +558,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSMG10mmSuppressedMakeshift
 
@@ -507,6 +591,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSMG10mmChineseMakeshift
 
@@ -533,6 +621,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSMG45Makeshift
 
@@ -560,6 +652,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle556R91Makeshift
 
@@ -585,6 +681,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle556ServiceMakeshift
 
@@ -610,6 +710,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle556CarbineOldMakeshift
 
@@ -635,6 +739,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle762M14Makeshift
 
@@ -664,6 +772,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle762SKSMakeshift
 
@@ -690,6 +802,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle762FalMakeshift
 
@@ -718,6 +834,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle762CanadianMakeshift
 
@@ -747,6 +867,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle762ChineseMakeshift
 
@@ -772,6 +896,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle762MarksmanMakeshift
 
@@ -798,6 +926,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle556CarbineMakeshift
 
@@ -825,6 +957,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle556EM2Makeshift
 
@@ -857,6 +993,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSniper556VarmintRifleMakeshift
 
@@ -882,6 +1022,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSniperHuntingMakeshift
 
@@ -907,6 +1051,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSniper44LeverCarbineMakeshift
 
@@ -932,6 +1080,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle308BattleMakeshift
 
@@ -962,6 +1114,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponRifle556Pipe
 
@@ -988,6 +1144,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSMG10mmPipe
 
@@ -1014,6 +1174,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponSMG12mmPipe
 
@@ -1036,6 +1200,10 @@
       - NCR
       - CaesarLegion
       - Rangers
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponLaserPistol
 
@@ -1055,6 +1223,10 @@
       - NCR
       - CaesarLegion
       - Rangers
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponLaserRevolver
 
@@ -1080,6 +1252,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14WeaponLaserRifleMakeshift
 

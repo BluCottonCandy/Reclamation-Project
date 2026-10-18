@@ -1,11 +1,11 @@
 wastelander-kit-hunter-name = Hunter
-wastelander-kit-hunter-description = You are skilled at finding and eating about anything in the Wastes.
+wastelander-kit-hunter-description = You are skilled at finding and eating about anything in the Wastes. Contains a makeshift hunting rifle, one box of .308 ammunition, one bottle of water, and one can of tuna.
 wastelander-kit-doc-name = Wasteland Doc
-wastelander-kit-doc-description = You are the only thing that stands between death and your patient.
+wastelander-kit-doc-description = You are the only thing that stands between death and your patient. Contains a single-use CPR training manual, a makeshift 9mm pistol, one box of 9mm ammunition, a surgical duffel bag filled with surgical tools, one bottle of ethanol, and sterile latex gloves.
 wastelander-kit-survivalist-name = Survivalist
-wastelander-kit-survivalist-description = You know a thing or two, because you've survived a thing or two.
+wastelander-kit-survivalist-description = You know a thing or two, because you've survived a thing or two. Contains a makeshift .45-70 Gov revolver, one .45-70 speedloader, one box of .45-70 ammunition, one MRE box, and one folded bedroll.
 wastelander-kit-militarysurplus-name = Military Surplus
-wastelander-kit-militarysurplus-description = You found a treasure trove of guns, now it's time to use em.
+wastelander-kit-militarysurplus-description = You found a treasure trove of guns, now it's time to use em. Contains a weapon choice box: choose two different makeshift guns, each supplied with one matching ammunition box. Makeshift laser weapons receive a matching energy cell box instead.
 wastelander-kit-outofluck-name = Shit out of luck
 wastelander-kit-outofluck-description = You got fucking robbed, but at least you managed to save your lucky kitchen knife.
 wastelander-surplus-pistol22lrmakeshift-name = makeshift 22lr Pistol

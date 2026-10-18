@@ -2,7 +2,7 @@
   parent: KitBase
   id: ReclamationWastelanderKitHunter
   name: Hunter
-  description: "You are skilled at finding and eating about anything in the Wastes."
+  description: "You are skilled at finding and eating about anything in the Wastes. Contains a makeshift hunting rifle, one box of .308 ammunition, one bottle of water, and one can of tuna."
   components:
   - type: Sprite
     state: marksman
@@ -29,7 +29,7 @@
   parent: KitBase
   id: ReclamationWastelanderKitDoc
   name: Wasteland Doc
-  description: "You are the only thing that stands between death and your patient."
+  description: "You are the only thing that stands between death and your patient. Contains a single-use CPR training manual, a makeshift 9mm pistol, one box of 9mm ammunition, a surgical duffel bag filled with surgical tools, one bottle of ethanol, and sterile latex gloves."
   components:
   - type: Sprite
     state: medic
@@ -58,7 +58,7 @@
   parent: KitBase
   id: ReclamationWastelanderKitSurvivalist
   name: Survivalist
-  description: "You know a thing or two, because you've survived a thing or two."
+  description: "You know a thing or two, because you've survived a thing or two. Contains a makeshift .45-70 Gov revolver, one .45-70 speedloader, one box of .45-70 ammunition, one MRE box, and one folded bedroll."
   components:
   - type: Sprite
     state: rifleman
@@ -86,7 +86,7 @@
   parent: KitBase
   id: ReclamationWastelanderKitMilitarySurplus
   name: Military Surplus
-  description: "You found a treasure trove of guns, now it's time to use em."
+  description: "You found a treasure trove of guns, now it's time to use em. Contains a weapon choice box: choose two different makeshift guns, each supplied with one matching ammunition box. Makeshift laser weapons receive a matching energy cell box instead."
   components:
   - type: Sprite
     state: rifleman

@@ -6,6 +6,20 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Misfits.Expeditions;
 
+public enum N14ExpeditionEnemyFamily : byte
+{
+    SuperMutants,
+    Raiders,
+    Ghouls
+}
+
+public enum N14ExpeditionCombatTier : byte
+{
+    Easy,
+    Medium,
+    Hard
+}
+
 /// <summary>
 /// Defines a category for the N14 expedition system (e.g. Surface / Underground).
 /// Each category has a display color, expedition duration, and pool of map entries.
@@ -46,6 +60,13 @@ public sealed partial class N14ExpeditionDifficultyPrototype : IPrototype
     /// <summary>
     /// Display order in the UI (lower = shown first).
     /// </summary>
+    [DataField]
+    public N14ExpeditionCombatTier CombatTier { get; private set; } = N14ExpeditionCombatTier.Easy;
+
+    /// <summary>Optional curated population; unset uses the normal random family roll.</summary>
+    [DataField]
+    public N14ExpeditionEnemyFamily? EnemyFamily { get; private set; }
+
     [DataField]
     public int SortOrder { get; private set; } = 0;
 }

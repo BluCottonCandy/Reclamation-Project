@@ -95,7 +95,7 @@ public sealed partial class N14ExpeditionBoardComponent : Component
 
     /// <summary>Difficulty pool launched by a direct world entrance.</summary>
     [DataField]
-    public string DirectDifficultyId = "N14ExpeditionUnknownProcedural";
+    public string DirectDifficultyId = "N14ExpeditionEasy";
 
     /// <summary>
     /// Radius around the board to detect players for group teleportation.

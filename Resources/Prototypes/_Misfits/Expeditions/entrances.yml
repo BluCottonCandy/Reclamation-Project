@@ -13,10 +13,14 @@
   - type: Physics
     bodyType: Static
     canCollide: false
+  - type: UserInterface
+    interfaces:
+      enum.N14ExpeditionBoardUiKey.Key:
+        type: N14ExpeditionBoardBoundUserInterface
   - type: N14ExpeditionEntranceLandmark
   - type: N14ExpeditionBoard
     directLaunch: true
-    directDifficultyId: N14ExpeditionUnknownProcedural
+    directDifficultyId: N14ExpeditionEasy
     gatherRadius: 7
     launchCountdownSeconds: 10
     cooldownSeconds: 600

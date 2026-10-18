@@ -1,0 +1,119 @@
+# Expedition-only bodies fit one-tile passages; inherited sprites keep their full size.
+- type: entity
+  parent: N14MobSuperMutantNPC
+  id: ReclamationExpeditionSuperMutantNPC
+  suffix: Expedition, narrow collision
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  parent: N14MobSuperMutantMelee
+  id: ReclamationExpeditionSuperMutantMelee
+  suffix: Expedition, narrow collision
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  parent: N14MobSuperMutantRanged
+  id: ReclamationExpeditionSuperMutantRanged
+  suffix: Expedition, narrow collision
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  parent: N14MobSuperMutantArmored
+  id: ReclamationExpeditionSuperMutantArmored
+  suffix: Expedition, narrow collision
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  parent: N14MobNightkinVeteran
+  id: ReclamationExpeditionNightkinVeteran
+  suffix: Expedition, narrow collision
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  parent: N14MobNightkinElite
+  id: ReclamationExpeditionNightkinElite
+  suffix: Expedition, narrow collision
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  parent: N14MobBehemoth
+  id: ReclamationExpeditionBehemoth
+  suffix: Expedition, narrow collision
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer

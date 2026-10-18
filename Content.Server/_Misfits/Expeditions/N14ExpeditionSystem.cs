@@ -275,6 +275,13 @@ public sealed class N14ExpeditionSystem : EntitySystem
         if (!_playerManager.TryGetSessionByEntity(user, out var playerSession))
             return;
 
+        if (entrance.ActiveExpedition == null || !Exists(entrance.ActiveExpedition.Value))
+        {
+            _ui.TryOpenUi(entranceUid, N14ExpeditionBoardUiKey.Key, user);
+            UpdateBoardUi(entranceUid, entrance);
+            return;
+        }
+
         _quickDialog.OpenConfirmationDialog(
             playerSession,
             Loc.GetString("n14-expedition-entrance-name"),
@@ -372,7 +379,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
         args.Verbs.Add(new AlternativeVerb
         {
             Text = Loc.GetString("n14-expedition-launch-button"),
-            Act = () => TryStartDirectLaunch(uid, board, user),
+            Act = () => OpenDirectLaunchPrompt(uid, board, user),
             ConfirmationPopup = true,
         });
     }
@@ -544,7 +551,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
                     EntityManager.System<ExpeditionBuildingSystem>().Finish(gridUid, gridEnt.Comp, generated);
                     dungeonArrival = FindCentralDungeonFloor(gridUid, gridEnt.Comp, generated);
-                    EntityManager.System<ExpeditionDressingSystem>().Dress(gridUid, gridEnt.Comp, generated, dungeonArrival.Value, runtimeSeed);
+                    EntityManager.System<ExpeditionDressingSystem>().Dress(gridUid, gridEnt.Comp, generated, dungeonArrival.Value, runtimeSeed, diff.CombatTier, diff.EnemyFamily);
                     var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
                     air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
                     air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);

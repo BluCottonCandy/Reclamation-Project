@@ -1,0 +1,150 @@
+- type: dataset
+  id: ReclamationExpeditionRaiderNames
+  values: [Rustjaw, Hacksaw, Scrap King, Mad Mags, Iron Jack, Red Knuckles, Rattletrap, Deadbolt]
+
+- type: dataset
+  id: ReclamationExpeditionMutantNames
+  values: [Knock Down, Puncher, Big Fist, Stomper, Break Stuff, Smash Face, Bonk, Big Lug]
+
+- type: dataset
+  id: ReclamationExpeditionGhoulNames
+  values: [Betty Lou, Peggy Sue, Ethel, Doris, Marjorie, Frank, Eddie, Bobby, Walter, Earl]
+
+# Innate protection, replacing the ordinary mutant's damage modifiers.
+- type: damageModifierSet
+  id: ReclamationExpeditionMutantHide
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.5
+    Heat: 0.5
+    Cold: 0.5
+    Shock: 0.5
+    Caustic: 0.5
+    Radiation: 0.5
+    Poison: 0.5
+    Asphyxiation: 0.5
+    Bloodloss: 0.5
+    Cellular: 0.5
+    Structural: 0.5
+
+- type: entity
+  parent: ReclamationExpeditionBehemoth
+  id: ReclamationExpeditionMutantLeader
+  name: mutant expedition leader
+  suffix: Expedition, named
+  components:
+  - type: RandomMetadata
+    nameSegments: [ReclamationExpeditionMutantNames]
+  - type: Damageable
+    damageModifierSet: ReclamationExpeditionMutantHide
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45NCRSalvaged
+  id: ReclamationExpeditionRaiderPowerArmor
+  name: salvaged raider power armor
+  description: Rusted salvaged power armor bolted permanently onto its wearer.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+  - type: ToggleableClothing
+    requiredSlot: NONE
+    stripDelay: null
+  - type: PowerArmorIntegrity
+    maxIntegrity: 192.5
+  - type: Unremoveable
+
+# Dedicated parts remain equipped even when the wearer dies.
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: ReclamationExpeditionRaiderHelmet
+  components:
+  - type: Unremoveable
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+
+- type: entity
+  parent: N14ClothingPAGauntletsDark
+  id: ReclamationExpeditionRaiderGloves
+  components:
+  - type: Unremoveable
+
+- type: entity
+  parent: N14ClothingPABootsDark
+  id: ReclamationExpeditionRaiderBoots
+  components:
+  - type: Unremoveable
+
+- type: startingGear
+  id: ReclamationExpeditionRaiderLeaderGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitWastelandDoc
+    outerClothing: ReclamationExpeditionRaiderPowerArmor
+    pocket1: N14RaiderStash
+    head: ReclamationExpeditionRaiderHelmet
+    gloves: ReclamationExpeditionRaiderGloves
+    shoes: ReclamationExpeditionRaiderBoots
+
+- type: entity
+  parent: N14MobRaiderHunter
+  id: ReclamationExpeditionRaiderLeader
+  name: raider expedition leader
+  suffix: Expedition, named
+  components:
+  - type: RandomMetadata
+    nameSegments: [ReclamationExpeditionRaiderNames]
+  - type: Loadout
+    prototypes: [ReclamationExpeditionRaiderLeaderGear]
+  - type: PointLight
+    enabled: true
+    radius: 6
+    energy: 1
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+
+- type: entity
+  parent: N14MobGhoulFeral
+  id: ReclamationExpeditionGlowingLeader
+  name: glowing expedition leader
+  suffix: Expedition, named
+  components:
+  - type: RandomMetadata
+    nameSegments: [ReclamationExpeditionGhoulNames]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 7
+        Radiation: 5
+  - type: RadiationSource
+    intensity: 2
+    slope: 0.5
+  - type: PointLight
+    radius: 2
+    energy: 1
+    color: "#65FF47"
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: glowghoul
+      sprite: _Nuclear14/Mobs/Ghouls/glowghoul.rsi
+    - state: unshaded
+      sprite: _Nuclear14/Mobs/Ghouls/glowghoul.rsi
+      shader: unshaded
+      map: ["enum.DamageStateVisualLayers.BaseUnshaded"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: glowghoul
+        BaseUnshaded: unshaded
+      Dead:
+        Base: dead

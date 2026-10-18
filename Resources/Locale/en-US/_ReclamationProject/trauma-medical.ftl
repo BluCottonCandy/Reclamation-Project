@@ -26,3 +26,9 @@ surgery-popup-procedure-ReclamationSurgeryRepairEyes-step-ReclamationSurgeryStep
 surgery-popup-procedure-ReclamationSurgeryRepairStomach-step-ReclamationSurgeryStepRepairStomach = { $user } begins to repair stomach on { $target }.
 
 surgery-popup-missing-tool = You need to hold a { $tool } for this step.
+
+trauma-report-limb = { $part }: { $damage }% toward damage failure — { $status }.
+trauma-limb-disabled = DISABLED; surgery needed
+trauma-limb-warning = WARNING; seek treatment before failure
+trauma-limb-functional = functional
+surgery-popup-procedure-ReclamationSurgeryRepairLimbDamage-step-ReclamationSurgeryStepRepairLimbDamage = { $user } begins to repair limb tissue on { $target }.

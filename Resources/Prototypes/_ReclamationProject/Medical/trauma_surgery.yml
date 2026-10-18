@@ -18,7 +18,6 @@
     duration: 10
     tool:
     - type: BoneSetter
-    - type: BoneGel
   - type: TraumaRepair
     kind: Fracture
   - type: Sprite
@@ -233,3 +232,29 @@
   - type: Item
     size: Small
   - type: TraumaSplint
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairLimbDamage
+  name: Repair limb tissue
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps: [ReclamationSurgeryStepRepairLimbDamage]
+  - type: TraumaRepair
+    kind: LimbDamage
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairLimbDamage
+  name: Repair limb tissue
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+  - type: TraumaRepair
+    kind: LimbDamage
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat

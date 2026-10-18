@@ -5,7 +5,7 @@ using Content.Shared.DoAfter;
 namespace Content.Shared._ReclamationProject.Medical;
 
 [Serializable, NetSerializable]
-public enum TraumaKind { Fracture, InternalBleeding, Lungs, Heart, Liver, Kidneys, Eyes, Stomach }
+public enum TraumaKind { Fracture, InternalBleeding, Lungs, Heart, Liver, Kidneys, Eyes, Stomach, LimbDamage }
 
 /// <summary>Persistent structural injuries, independent of ordinary healable damage.</summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -55,6 +55,12 @@ public sealed partial class TraumaRepairComponent : Component
 
 [RegisterComponent]
 public sealed partial class TraumaSplintComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class TraumaWalkingSupportComponent : Component;
+
+[ByRefEvent]
+public record struct GetBodyStandingSupportEvent(int AdditionalLegs = 0);
 
 [ByRefEvent]
 public record struct TraumaRepairEvent(EntityUid Part, TraumaKind Kind);

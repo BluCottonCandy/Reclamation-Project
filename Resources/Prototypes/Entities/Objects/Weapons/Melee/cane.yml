@@ -4,6 +4,7 @@
   name: cane
   description: A wooden cane.
   components:
+  - type: TraumaWalkingSupport
   - type: Sprite
     sprite: Objects/Weapons/Melee/cane.rsi
     state: cane

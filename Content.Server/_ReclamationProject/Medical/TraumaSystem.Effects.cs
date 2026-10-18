@@ -14,14 +14,21 @@ namespace Content.Server._ReclamationProject.Medical;
 
 public sealed partial class TraumaSystem
 {
-    public static float FractureChance(float blunt, float piercing, float slash)
-        => Math.Clamp((blunt * 1.4f + piercing * .2f + slash * .15f - 8f) * .018f, 0, .85f);
+    // Unusual outcomes remain possible for every damage type. Tiny ticks cannot roll trauma;
+    // a 30-point hit has a 2.2% fallback chance, capped at 5% for off-type injuries.
+    private static float CrossInjuryChance(float total) => Math.Clamp((total - 8f) * .001f, 0, .05f);
 
-    public static float BleedingChance(float blunt, float piercing, float slash)
-        => Math.Clamp((blunt * .15f + piercing + slash * .8f - 8f) * .018f, 0, .8f);
+    public static float FractureChance(float blunt, float piercing, float slash, float other = 0)
+        => Math.Max(CrossInjuryChance(blunt + piercing + slash + other),
+            Math.Clamp((blunt * 1.4f + piercing * .2f + slash * .15f - 8f) * .018f, 0, .85f));
 
-    public static float OrganChance(float blunt, float piercing, float slash)
-        => Math.Clamp((blunt * 1.4f + piercing * .6f + slash * .3f - 10f) * .015f, 0, .8f);
+    public static float BleedingChance(float blunt, float piercing, float slash, float other = 0)
+        => Math.Max(CrossInjuryChance(blunt + piercing + slash + other),
+            Math.Clamp((blunt * .15f + piercing + slash * .8f - 8f) * .018f, 0, .8f));
+
+    public static float OrganChance(float blunt, float piercing, float slash, float other = 0)
+        => Math.Max(CrossInjuryChance(blunt + piercing + slash + other),
+            Math.Clamp((blunt * 1.4f + piercing * .6f + slash * .3f - 10f) * .015f, 0, .8f));
 
     private void RollInjuries(EntityUid part, DamageSpecifier damage)
     {
@@ -29,14 +36,15 @@ public sealed partial class TraumaSystem
             !HasComp<TraumaBodyComponent>(body) || _mob.IsDead(body)) return;
         float Amount(string type) => damage.DamageDict.TryGetValue(type, out var value) ? Math.Max(0, value.Float()) : 0;
         var blunt = Amount("Blunt"); var piercing = Amount("Piercing"); var slash = Amount("Slash");
-        var total = blunt + piercing + slash;
+        var total = damage.GetTotal().Float();
+        var other = Math.Max(0, total - blunt - piercing - slash);
         if (component.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot &&
-            !HasComp<FractureComponent>(part) && _random.Prob(FractureChance(blunt, piercing, slash)))
+            !HasComp<FractureComponent>(part) && _random.Prob(FractureChance(blunt, piercing, slash, other)))
             Fracture(part);
-        if (component.PartType == BodyPartType.Torso && _random.Prob(BleedingChance(blunt, piercing, slash)))
+        if (component.PartType == BodyPartType.Torso && _random.Prob(BleedingChance(blunt, piercing, slash, other)))
             AddInternalBleeding(body, Math.Clamp(total * .04f, .25f, 1.5f));
         var organs = _body.GetPartOrgans(part).Where(o => HasComp<TraumaOrganComponent>(o.Id)).ToArray();
-        if (organs.Length > 0 && _random.Prob(OrganChance(blunt, piercing, slash)))
+        if (organs.Length > 0 && _random.Prob(OrganChance(blunt, piercing, slash, other)))
         {
             var organ = organs[_random.Next(organs.Length)].Id;
             SetOrganDamage(organ, Comp<TraumaOrganComponent>(organ).Damage + Math.Clamp(total * .75f, 5, 45));
@@ -118,6 +126,15 @@ public sealed partial class TraumaSystem
         if (!TryComp<TraumaBodyComponent>(uid, out var medical)) return string.Empty;
         Refresh(uid, medical);
         var lines = new List<string> { Loc.GetString("trauma-report-heading") };
+        foreach (var (part, component) in _body.GetBodyChildren(uid))
+        {
+            if (component.PartType is not (BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot) ||
+                !TryComp<DamageableComponent>(part, out var damage)) continue;
+            var threshold = component.IntegrityThresholds[Content.Shared._Shitmed.Targeting.TargetIntegrity.CriticallyWounded];
+            var percent = MathF.Round(damage.TotalDamage.Float() / Math.Max(1, threshold) * 100);
+            var status = !component.Enabled ? "trauma-limb-disabled" : percent >= 60 ? "trauma-limb-warning" : "trauma-limb-functional";
+            lines.Add(Loc.GetString("trauma-report-limb", ("part", Name(part)), ("damage", percent), ("status", Loc.GetString(status))));
+        }
         if (TryComp<BodyComponent>(uid, out var body) && body.RootContainer.ContainedEntity is { } root)
             foreach (var (part, _) in _body.GetBodyPartChildren(root))
                 if (TryComp<FractureComponent>(part, out var fracture))

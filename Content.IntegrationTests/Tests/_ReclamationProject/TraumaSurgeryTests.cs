@@ -9,6 +9,7 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Standing;
+using Content.Shared.Damage;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -17,6 +18,7 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture, NonParallelizable]
 public sealed class TraumaSurgeryTests
 {
+    [TestCase(TraumaKind.LimbDamage)]
     [TestCase(TraumaKind.Fracture)]
     [TestCase(TraumaKind.InternalBleeding)]
     [TestCase(TraumaKind.Lungs)]
@@ -47,9 +49,16 @@ public sealed class TraumaSurgeryTests
             doctor = em.SpawnEntity("MobHuman", origin.Offset(new Vector2(1.3f, 0)));
             var body = em.System<SharedBodySystem>();
             part = body.GetBodyChildrenOfType(patient,
-                kind == TraumaKind.Fracture ? BodyPartType.Arm : kind == TraumaKind.Eyes ? BodyPartType.Head : BodyPartType.Torso).First().Id;
+                kind is TraumaKind.Fracture or TraumaKind.LimbDamage ? BodyPartType.Arm : kind == TraumaKind.Eyes ? BodyPartType.Head : BodyPartType.Torso).First().Id;
             var trauma = em.System<TraumaSystem>();
-            if (kind == TraumaKind.Fracture) trauma.Fracture(part);
+            if (kind == TraumaKind.LimbDamage)
+            {
+                em.System<DamageableSystem>().SetAllDamage(part, em.GetComponent<DamageableComponent>(part), 3);
+                Assert.That(em.GetComponent<BodyPartComponent>(part).Enabled, Is.True,
+                    "Early tissue repair must be available before limb failure.");
+                Assert.That(trauma.GetReport(patient), Does.Contain("% toward damage failure"));
+            }
+            else if (kind == TraumaKind.Fracture) trauma.Fracture(part);
             else if (kind == TraumaKind.InternalBleeding) trauma.AddInternalBleeding(patient, .5f);
             else
                 foreach (var (organ, _) in body.GetPartOrgans(part))
@@ -79,7 +88,7 @@ public sealed class TraumaSurgeryTests
                 foreach (var held in hands.EnumerateHeld(doctor).ToArray()) hands.TryDrop(doctor, held);
                 if (stepId == "ReclamationSurgeryStepRepairFracture")
                 {
-                    var mender = em.SpawnEntity("ReclamationFractureMender", origin);
+                    var mender = em.SpawnEntity("N14Wrench", origin);
                     tools.Add(mender);
                     Assert.That(hands.TryPickupAnyHand(doctor, mender), Is.True);
                 }

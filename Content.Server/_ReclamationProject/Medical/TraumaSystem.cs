@@ -20,6 +20,8 @@ using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Random;
+using Content.Shared.Hands;
+using Content.Shared.Standing;
 
 namespace Content.Server._ReclamationProject.Medical;
 
@@ -43,6 +45,8 @@ public sealed partial class TraumaSystem : EntitySystem
     // Accumulate a burst's part damage before rolling injuries. Pellets do not each roll a wound.
     private readonly Dictionary<EntityUid, (DamageSpecifier Damage, float Age)> _pending = new();
     private bool _rejuvenating;
+    [Dependency] private readonly TraumaSurgerySystem _traumaSurgery = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
 
     public override void Initialize()
     {
@@ -55,6 +59,8 @@ public sealed partial class TraumaSystem : EntitySystem
         SubscribeLocalEvent<TraumaBodyComponent, TraumaRepairEvent>(OnRepair);
         SubscribeLocalEvent<TraumaBodyComponent, RejuvenateEvent>(OnRejuvenate);
         InitializeSplints();
+        SubscribeLocalEvent<TraumaBodyComponent, DidEquipHandEvent>(OnSupportEquipped);
+        SubscribeLocalEvent<TraumaBodyComponent, DidUnequipHandEvent>(OnSupportRemoved);
     }
 
     public static TraumaKind? KindForSlot(string slot) => slot switch
@@ -101,13 +107,12 @@ public sealed partial class TraumaSystem : EntitySystem
         if (!TryComp<BodyPartComponent>(uid, out var part)) return;
         if (_rejuvenating || !args.DamageIncreased || args.DamageDelta == null ||
             part.Body is not { } body || (!TryComp<TraumaBodyComponent>(body, out var trauma) || trauma.SuppressInjuryRolls)) return;
-        var physical = new DamageSpecifier();
-        foreach (var type in new[] { "Blunt", "Piercing", "Slash" })
-            if (args.DamageDelta.DamageDict.TryGetValue(type, out var value) && value > 0)
-                physical.DamageDict[type] = value;
-        if (physical.Empty) return;
-        if (_pending.TryGetValue(uid, out var pending)) physical += pending.Damage;
-        _pending[uid] = (physical, _pending.TryGetValue(uid, out pending) ? pending.Age : 0f);
+        var injuryDamage = new DamageSpecifier();
+        foreach (var (type, value) in args.DamageDelta.DamageDict)
+            if (value > 0) injuryDamage.DamageDict[type] = value;
+        if (injuryDamage.Empty) return;
+        if (_pending.TryGetValue(uid, out var pending)) injuryDamage += pending.Damage;
+        _pending[uid] = (injuryDamage, _pending.TryGetValue(uid, out pending) ? pending.Age : 0f);
     }
 
     public override void Update(float frameTime)
@@ -172,11 +177,30 @@ public sealed partial class TraumaSystem : EntitySystem
     private void OnRepair(EntityUid uid, TraumaBodyComponent comp, ref TraumaRepairEvent args)
         => Repair(uid, args.Part, args.Kind);
 
+    private void OnSupportEquipped(EntityUid uid, TraumaBodyComponent comp, DidEquipHandEvent args)
+    {
+        if (HasComp<TraumaWalkingSupportComponent>(args.Equipped) && _traumaSurgery.HasWalkingSupport(uid))
+            _standing.Stand(uid);
+    }
+
+    private void OnSupportRemoved(EntityUid uid, TraumaBodyComponent comp, DidUnequipHandEvent args)
+    {
+        if (HasComp<TraumaWalkingSupportComponent>(args.Unequipped) && TryComp<BodyComponent>(uid, out var body) &&
+            body.LegEntities.Count < body.RequiredLegs && !_traumaSurgery.HasWalkingSupport(uid, args.Unequipped))
+            _standing.Down(uid);
+    }
+
     public void Repair(EntityUid uid, EntityUid part, TraumaKind kind)
     {
         if (!TryComp<TraumaBodyComponent>(uid, out var medical) ||
             !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body != uid) return;
-        if (kind == TraumaKind.Fracture)
+        if (kind == TraumaKind.LimbDamage && bodyPart.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot)
+        {
+            if (TryComp<DamageableComponent>(part, out var damage))
+                _damage.SetAllDamage(part, damage, Content.Shared.FixedPoint.FixedPoint2.Zero);
+            _body.CheckBodyPart((part, bodyPart), _body.GetTargetBodyPart(bodyPart), false);
+        }
+        else if (kind == TraumaKind.Fracture)
         {
             RemComp<FractureComponent>(part);
             var enabled = new BodyPartEnableChangedEvent(true);

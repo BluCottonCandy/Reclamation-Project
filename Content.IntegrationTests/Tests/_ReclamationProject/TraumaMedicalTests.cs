@@ -261,5 +261,15 @@ public sealed class TraumaMedicalTests
         Assert.That(TraumaSystem.BleedingChance(0, 0, 30), Is.GreaterThan(TraumaSystem.BleedingChance(30, 0, 0)));
         Assert.That(TraumaSystem.FractureChance(2, 0, 0), Is.Zero);
         Assert.That(TraumaSystem.BleedingChance(0, 2, 0), Is.Zero);
+        foreach (var (blunt, piercing, slash, other) in new[] { (30f, 0f, 0f, 0f), (0f, 30f, 0f, 0f),
+                     (0f, 0f, 30f, 0f), (0f, 0f, 0f, 30f) })
+        {
+            Assert.That(TraumaSystem.FractureChance(blunt, piercing, slash, other), Is.GreaterThan(0));
+            Assert.That(TraumaSystem.BleedingChance(blunt, piercing, slash, other), Is.GreaterThan(0));
+            Assert.That(TraumaSystem.OrganChance(blunt, piercing, slash, other), Is.GreaterThan(0));
+        }
+        Assert.That(TraumaSystem.FractureChance(0, 0, 30), Is.LessThanOrEqualTo(.05f));
+        Assert.That(TraumaSystem.BleedingChance(30, 0, 0), Is.LessThanOrEqualTo(.05f));
+        Assert.That(TraumaSystem.OrganChance(0, 0, 0, 300), Is.LessThanOrEqualTo(.05f));
     }
 }

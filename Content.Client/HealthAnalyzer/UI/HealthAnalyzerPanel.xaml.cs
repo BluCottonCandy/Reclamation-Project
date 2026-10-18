@@ -120,7 +120,7 @@ namespace Content.Client.HealthAnalyzer.UI
 
         public void Populate(HealthAnalyzerScannedUserMessage msg)
         {
-            TraumaReport.SetMessage("[bold][font size=16]" + FormattedMessage.EscapeText(msg.TraumaReport) + "[/font][/bold]");
+            TraumaReport.SetMessage(FormattedMessage.FromMarkupOrThrow("[bold][font size=16]" + FormattedMessage.EscapeText(msg.TraumaReport) + "[/font][/bold]"), tagsAllowed: null);
             TraumaSection.Visible = !string.IsNullOrEmpty(msg.TraumaReport);
             _target = _entityManager.GetEntity(msg.TargetEntity);
             EntityUid? part = msg.Part != null ? _entityManager.GetEntity(msg.Part.Value) : null;

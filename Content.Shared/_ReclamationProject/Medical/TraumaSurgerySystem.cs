@@ -9,6 +9,9 @@ using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Body.Components;
+using Content.Shared.Damage;
+using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Network;
 
 namespace Content.Shared._ReclamationProject.Medical;
@@ -18,6 +21,7 @@ public sealed class TraumaSurgerySystem : EntitySystem
 {
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {
@@ -29,6 +33,7 @@ public sealed class TraumaSurgerySystem : EntitySystem
         SubscribeLocalEvent<TraumaBodyComponent, GetBlurEvent>(OnBlur);
         SubscribeLocalEvent<TraumaBodyComponent, CanSeeAttemptEvent>(OnSee);
         SubscribeLocalEvent<TraumaBodyComponent, RefreshMovementSpeedModifiersEvent>(OnMovement);
+        SubscribeLocalEvent<TraumaBodyComponent, GetBodyStandingSupportEvent>(OnStandingSupport);
     }
 
     public bool NeedsRepair(EntityUid body, EntityUid part, TraumaKind kind)
@@ -37,6 +42,9 @@ public sealed class TraumaSurgerySystem : EntitySystem
             return false;
         if (kind == TraumaKind.Fracture)
             return HasComp<FractureComponent>(part);
+        if (kind == TraumaKind.LimbDamage)
+            return bodyPart.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot &&
+                TryComp<DamageableComponent>(part, out var damage) && damage.TotalDamage > 0;
         if (kind == TraumaKind.InternalBleeding)
             return bodyPart.PartType == BodyPartType.Torso && Comp<TraumaBodyComponent>(body).InternalBleeding > 0;
         return _body.GetPartOrgans(part).Any(o => TryComp<TraumaOrganComponent>(o.Id, out var injury) &&
@@ -98,5 +106,18 @@ public sealed class TraumaSurgerySystem : EntitySystem
         // A splint supports transport, but never restores use of the fractured limb.
         var factor = fractures.All(p => Comp<FractureComponent>(p.Id).Splinted) ? .85f : .7f;
         args.ModifySpeed(factor, factor);
+    }
+
+    public bool HasWalkingSupport(EntityUid uid, EntityUid? excluding = null)
+    {
+        if (!TryComp<BodyComponent>(uid, out var body) || body.RequiredLegs != 2 || body.LegEntities.Count != 1)
+            return false;
+        // A cane replaces one support point, never a second healthy leg or two missing legs.
+        return _hands.EnumerateHeld(uid).Any(item => item != excluding && HasComp<TraumaWalkingSupportComponent>(item));
+    }
+
+    private void OnStandingSupport(EntityUid uid, TraumaBodyComponent comp, ref GetBodyStandingSupportEvent args)
+    {
+        if (HasWalkingSupport(uid)) args.AdditionalLegs = 1;
     }
 }

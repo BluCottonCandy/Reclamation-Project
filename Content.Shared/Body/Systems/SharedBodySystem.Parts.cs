@@ -378,6 +378,10 @@ public partial class SharedBodySystem
             bodyEnt.Comp.LegEntities.Remove(legEnt);
             UpdateMovementSpeed(bodyEnt);
             Dirty(bodyEnt, bodyEnt.Comp);
+            var support = new Content.Shared._ReclamationProject.Medical.GetBodyStandingSupportEvent();
+            RaiseLocalEvent(bodyEnt, ref support);
+            if (support.AdditionalLegs > 0 && bodyEnt.Comp.LegEntities.Count + support.AdditionalLegs >= bodyEnt.Comp.RequiredLegs)
+                return;
             Standing.Down(bodyEnt); // Shitmed Change
         }
     }

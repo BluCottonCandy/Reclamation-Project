@@ -140,7 +140,7 @@ public sealed partial class TraumaSystem
                 if (TryComp<FractureComponent>(part, out var fracture))
                     lines.Add(Loc.GetString(fracture.Splinted ? "trauma-report-splinted" : "trauma-report-fracture", ("part", Name(part))));
         if (medical.InternalBleeding > 0)
-            lines.Add(Loc.GetString("trauma-report-bleeding", ("rate", MathF.Round(medical.InternalBleeding, 2))));
+            lines.Add(Loc.GetString("trauma-report-bleeding", ("rate", Math.Max(1, (int) MathF.Round(medical.InternalBleeding)))));
         foreach (var (kind, value) in new[] { (TraumaKind.Lungs, medical.LungDamage), (TraumaKind.Heart, medical.HeartDamage),
                      (TraumaKind.Liver, medical.LiverDamage), (TraumaKind.Kidneys, medical.KidneyDamage),
                      (TraumaKind.Eyes, medical.EyeDamage), (TraumaKind.Stomach, medical.StomachDamage) })

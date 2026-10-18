@@ -53,10 +53,12 @@ public sealed class TraumaSurgeryTests
             var trauma = em.System<TraumaSystem>();
             if (kind == TraumaKind.LimbDamage)
             {
+                Assert.That(trauma.GetReport(patient), Does.Not.Contain("% to failure"),
+                    "Healthy limbs should not clutter the scan with failure percentages.");
                 em.System<DamageableSystem>().SetAllDamage(part, em.GetComponent<DamageableComponent>(part), 3);
                 Assert.That(em.GetComponent<BodyPartComponent>(part).Enabled, Is.True,
                     "Early tissue repair must be available before limb failure.");
-                Assert.That(trauma.GetReport(patient), Does.Contain("% toward damage failure"));
+                Assert.That(trauma.GetReport(patient), Does.Contain("% to failure"));
             }
             else if (kind == TraumaKind.Fracture) trauma.Fracture(part);
             else if (kind == TraumaKind.InternalBleeding) trauma.AddInternalBleeding(patient, .5f);

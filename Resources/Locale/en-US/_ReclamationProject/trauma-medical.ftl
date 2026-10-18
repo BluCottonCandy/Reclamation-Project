@@ -27,8 +27,8 @@ surgery-popup-procedure-ReclamationSurgeryRepairStomach-step-ReclamationSurgeryS
 
 surgery-popup-missing-tool = You need to hold a { $tool } for this step.
 
-trauma-report-limb = { $part }: { $damage }% toward damage failure — { $status }.
-trauma-limb-disabled = DISABLED; surgery needed
-trauma-limb-warning = WARNING; seek treatment before failure
-trauma-limb-functional = functional
+trauma-report-limb = { $part }  •  { $damage }% to failure  •  { $status }
+trauma-limb-disabled = Disabled — surgery needed
+trauma-limb-warning = At risk — seek treatment
+trauma-limb-functional = Stable
 surgery-popup-procedure-ReclamationSurgeryRepairLimbDamage-step-ReclamationSurgeryStepRepairLimbDamage = { $user } begins to repair limb tissue on { $target }.

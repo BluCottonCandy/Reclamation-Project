@@ -179,12 +179,14 @@ public sealed partial class TraumaSystem : EntitySystem
 
     private void OnSupportEquipped(EntityUid uid, TraumaBodyComponent comp, DidEquipHandEvent args)
     {
+        if (HasComp<TraumaWalkingSupportComponent>(args.Equipped)) _body.UpdateMovementSpeed(uid);
         if (HasComp<TraumaWalkingSupportComponent>(args.Equipped) && _traumaSurgery.HasWalkingSupport(uid))
             _standing.Stand(uid);
     }
 
     private void OnSupportRemoved(EntityUid uid, TraumaBodyComponent comp, DidUnequipHandEvent args)
     {
+        if (HasComp<TraumaWalkingSupportComponent>(args.Unequipped)) _body.UpdateMovementSpeed(uid);
         if (HasComp<TraumaWalkingSupportComponent>(args.Unequipped) && TryComp<BodyComponent>(uid, out var body) &&
             body.LegEntities.Count < body.RequiredLegs && !_traumaSurgery.HasWalkingSupport(uid, args.Unequipped))
             _standing.Down(uid);

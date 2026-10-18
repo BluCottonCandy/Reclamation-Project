@@ -99,6 +99,11 @@ public sealed class TraumaSurgerySystem : EntitySystem
 
     private void OnMovement(EntityUid uid, TraumaBodyComponent comp, RefreshMovementSpeedModifiersEvent args)
     {
+        if (HasWalkingSupport(uid))
+        {
+            args.ModifySpeed(.5f, .5f);
+            return;
+        }
         var fractures = _body.GetBodyChildrenOfType(uid, BodyPartType.Leg)
             .Concat(_body.GetBodyChildrenOfType(uid, BodyPartType.Foot))
             .Where(p => HasComp<FractureComponent>(p.Id)).ToArray();

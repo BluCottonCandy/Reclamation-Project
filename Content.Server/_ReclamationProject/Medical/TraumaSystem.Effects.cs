@@ -129,7 +129,7 @@ public sealed partial class TraumaSystem
         foreach (var (part, component) in _body.GetBodyChildren(uid))
         {
             if (component.PartType is not (BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot) ||
-                !TryComp<DamageableComponent>(part, out var damage)) continue;
+                !TryComp<DamageableComponent>(part, out var damage) || damage.TotalDamage <= 0) continue;
             var threshold = component.IntegrityThresholds[Content.Shared._Shitmed.Targeting.TargetIntegrity.CriticallyWounded];
             var percent = MathF.Round(damage.TotalDamage.Float() / Math.Max(1, threshold) * 100);
             var status = !component.Enabled ? "trauma-limb-disabled" : percent >= 60 ? "trauma-limb-warning" : "trauma-limb-functional";

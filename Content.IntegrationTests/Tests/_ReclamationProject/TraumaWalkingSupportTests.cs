@@ -4,6 +4,7 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Standing;
+using Content.Shared.Movement.Components;
 using Robust.Shared.GameObjects;
 
 namespace Content.IntegrationTests.Tests._ReclamationProject;
@@ -26,12 +27,18 @@ public sealed class TraumaWalkingSupportTests
             var trauma = em.System<TraumaSystem>();
             var standing = em.System<StandingStateSystem>();
             var hands = em.System<SharedHandsSystem>();
+            body.UpdateMovementSpeed(patient);
+            var movement = em.GetComponent<MovementSpeedModifierComponent>(patient);
+            var walkSpeed = movement.CurrentWalkSpeed;
+            var sprintSpeed = movement.CurrentSprintSpeed;
             var left = body.GetBodyChildrenOfType(patient, type, symmetry: BodyPartSymmetry.Left).First().Id;
             var right = body.GetBodyChildrenOfType(patient, type, symmetry: BodyPartSymmetry.Right).First().Id;
             trauma.Fracture(left);
             Assert.That(standing.Stand(patient), Is.False);
             Assert.That(hands.TryPickupAnyHand(patient, cane), Is.True);
             Assert.That(standing.IsDown(patient), Is.False, "A held cane must let the patient stand.");
+            Assert.That(movement.CurrentWalkSpeed, Is.EqualTo(walkSpeed * .5f).Within(.001f));
+            Assert.That(movement.CurrentSprintSpeed, Is.EqualTo(sprintSpeed * .5f).Within(.001f));
             Assert.That(em.GetComponent<BodyPartComponent>(left).Enabled, Is.False, "The cane must not heal the limb.");
             Assert.That(hands.TryDrop(patient, cane), Is.True);
             Assert.That(standing.IsDown(patient), Is.True, "Dropping the support must remove its benefit.");
@@ -40,6 +47,7 @@ public sealed class TraumaWalkingSupportTests
             Assert.That(hands.TryPickupAnyHand(patient, cane), Is.True);
             trauma.Fracture(left);
             Assert.That(standing.IsDown(patient), Is.False, "An already-held cane must support a new injury.");
+            Assert.That(movement.CurrentWalkSpeed, Is.EqualTo(walkSpeed * .5f).Within(.001f));
             trauma.Fracture(right);
             Assert.That(standing.Stand(patient), Is.False, "A cane cannot replace both legs.");
             em.DeleteEntity(patient);

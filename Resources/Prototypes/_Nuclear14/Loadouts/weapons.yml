@@ -1278,6 +1278,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - SpeedLoader9
 
@@ -1298,6 +1302,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - SpeedLoader44
 
@@ -1320,6 +1328,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazinePistol9mm
 
@@ -1340,6 +1352,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazinePistol22lr
 
@@ -1361,6 +1377,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazinePistol10mm
 
@@ -1383,6 +1403,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazinePistol45
 
@@ -1404,6 +1428,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazinePistol12mm
 
@@ -1422,6 +1450,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14PowerCellSmall
 
@@ -1440,6 +1472,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazineShotgun12
 
@@ -1456,6 +1492,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazineShotgun20
 
@@ -1475,6 +1515,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazineSMG9mm
 
@@ -1491,6 +1535,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazineSMG10mm
 
@@ -1507,6 +1555,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - N14MagazineSMG12mm
 
@@ -1523,6 +1575,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - Magazine45SubMachineGun
 
@@ -1539,6 +1595,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - Magazine762AmmoShort
 
@@ -1555,6 +1615,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - Magazine762Rifle
 
@@ -1571,6 +1635,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - Magazine556Rifle
 
@@ -1587,6 +1655,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - LongMagazine556Rifle
 
@@ -1606,6 +1678,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - ClipMagazine308Rifle
 
@@ -1625,6 +1701,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox12gauge
 
@@ -1641,6 +1721,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox20gauge
 
@@ -1657,6 +1741,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox9mm
 
@@ -1673,6 +1761,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox10mm
 
@@ -1689,6 +1781,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox22
 
@@ -1705,6 +1801,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox45
 
@@ -1721,6 +1821,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox556
 
@@ -1738,6 +1842,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox12
 
@@ -1754,6 +1862,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox44
 
@@ -1770,6 +1882,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox762
 
@@ -1786,6 +1902,10 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Wastelander
   items:
     - MagazineBox308
 

@@ -1,0 +1,242 @@
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairFracture
+  name: Set and mend fracture
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps: [ReclamationSurgeryStepRepairFracture]
+  - type: TraumaRepair
+    kind: Fracture
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairFracture
+  name: Set and mend fracture
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: BoneSetter
+    - type: BoneGel
+  - type: TraumaRepair
+    kind: Fracture
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/bonesetter.rsi
+    state: bonesetter
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairInternalBleeding
+  name: Repair internal bleeding
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps: [ReclamationSurgeryStepRepairInternalBleeding]
+  - type: TraumaRepair
+    kind: InternalBleeding
+  - type: SurgeryPartCondition
+    part: Torso
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairInternalBleeding
+  name: Repair internal bleeding
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+    - type: Cautery
+  - type: TraumaRepair
+    kind: InternalBleeding
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairLungs
+  name: Repair lungs
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenRibcage
+    steps: [ReclamationSurgeryStepRepairLungs]
+  - type: TraumaRepair
+    kind: Lungs
+  - type: SurgeryPartCondition
+    part: Torso
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairLungs
+  name: Repair lungs
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+    - type: Cautery
+  - type: TraumaRepair
+    kind: Lungs
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairHeart
+  name: Repair heart
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenRibcage
+    steps: [ReclamationSurgeryStepRepairHeart]
+  - type: TraumaRepair
+    kind: Heart
+  - type: SurgeryPartCondition
+    part: Torso
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairHeart
+  name: Repair heart
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+    - type: Cautery
+  - type: TraumaRepair
+    kind: Heart
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairLiver
+  name: Repair liver
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenRibcage
+    steps: [ReclamationSurgeryStepRepairLiver]
+  - type: TraumaRepair
+    kind: Liver
+  - type: SurgeryPartCondition
+    part: Torso
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairLiver
+  name: Repair liver
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+    - type: Cautery
+  - type: TraumaRepair
+    kind: Liver
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairKidneys
+  name: Repair kidneys
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps: [ReclamationSurgeryStepRepairKidneys]
+  - type: TraumaRepair
+    kind: Kidneys
+  - type: SurgeryPartCondition
+    part: Torso
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairKidneys
+  name: Repair kidneys
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+    - type: Cautery
+  - type: TraumaRepair
+    kind: Kidneys
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairEyes
+  name: Repair eyes
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps: [ReclamationSurgeryStepRepairEyes]
+  - type: TraumaRepair
+    kind: Eyes
+  - type: SurgeryPartCondition
+    part: Head
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairEyes
+  name: Repair eyes
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+    - type: Cautery
+  - type: TraumaRepair
+    kind: Eyes
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+
+- type: entity
+  parent: SurgeryBase
+  id: ReclamationSurgeryRepairStomach
+  name: Repair stomach
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps: [ReclamationSurgeryStepRepairStomach]
+  - type: TraumaRepair
+    kind: Stomach
+  - type: SurgeryPartCondition
+    part: Torso
+
+- type: entity
+  parent: SurgeryStepBase
+  id: ReclamationSurgeryStepRepairStomach
+  name: Repair stomach
+  components:
+  - type: SurgeryStep
+    duration: 10
+    tool:
+    - type: Hemostat
+    - type: Cautery
+  - type: TraumaRepair
+    kind: Stomach
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+    state: hemostat
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationMedicalSplint
+  name: medical splint
+  description: Supports a broken limb for transport. Surgery is still needed to mend the fracture.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/medical.rsi
+    state: brutepack
+  - type: Item
+    size: Small
+  - type: TraumaSplint

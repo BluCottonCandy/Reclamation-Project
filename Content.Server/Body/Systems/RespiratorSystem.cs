@@ -91,7 +91,8 @@ public sealed class RespiratorSystem : EntitySystem
 
             // #Misfits Add - targeted CVar gate: non-crit entities skip breathing/suffocation
             // when CVar disabled, but crit/hardcrit entities still suffocate toward death.
-            if (!suffocationEnabled && !_mobState.IsIncapacitated(uid))
+            if (!suffocationEnabled && !_mobState.IsIncapacitated(uid) &&
+                !(TryComp<Content.Shared._ReclamationProject.Medical.TraumaBodyComponent>(uid, out var trauma) && trauma.LungDamage >= 100f))
             {
                 StopSuffocation((uid, respirator));
                 respirator.SuffocationCycles = 0;
@@ -139,6 +140,9 @@ public sealed class RespiratorSystem : EntitySystem
 
     public void Inhale(EntityUid uid, BodyComponent? body = null)
     {
+        // Ruptured or missing lungs cannot exchange gas, even in a breathable room.
+        if (TryComp<Content.Shared._ReclamationProject.Medical.TraumaBodyComponent>(uid, out var trauma) && trauma.LungDamage >= 100f)
+            return;
         if (!Resolve(uid, ref body, logMissing: false))
             return;
 

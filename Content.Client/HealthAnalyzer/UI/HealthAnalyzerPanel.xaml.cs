@@ -120,6 +120,8 @@ namespace Content.Client.HealthAnalyzer.UI
 
         public void Populate(HealthAnalyzerScannedUserMessage msg)
         {
+            TraumaReport.SetMessage(msg.TraumaReport);
+            TraumaReport.Visible = !string.IsNullOrEmpty(msg.TraumaReport);
             _target = _entityManager.GetEntity(msg.TargetEntity);
             EntityUid? part = msg.Part != null ? _entityManager.GetEntity(msg.Part.Value) : null;
             var isPart = part != null;

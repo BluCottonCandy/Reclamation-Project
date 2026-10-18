@@ -34,6 +34,7 @@ namespace Content.Server.Medical;
 
 public sealed class HealthAnalyzerSystem : EntitySystem
 {
+    [Dependency] private readonly Content.Server._ReclamationProject.Medical.TraumaSystem _trauma = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly PowerCellSystem _cell = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -295,6 +296,6 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             body, // Shitmed Change
             medicalRecord,
             part != null ? GetNetEntity(part) : null // Shitmed Change
-        ));
+        ) { TraumaReport = _trauma.GetReport(target) });
     }
 }

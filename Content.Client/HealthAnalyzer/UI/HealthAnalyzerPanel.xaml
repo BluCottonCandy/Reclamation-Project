@@ -16,6 +16,7 @@
             Name="PatientDataContainer"
             Margin="0 0 0 5"
             Orientation="Vertical">
+            <RichTextLabel Name="TraumaReport" Margin="0 0 0 8" MaxWidth="420"/>
             <BoxContainer Orientation="Horizontal"
                           Margin="0 0 0 5">
                 <PanelContainer>

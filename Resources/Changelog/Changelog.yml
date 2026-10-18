@@ -12473,3 +12473,22 @@ Entries:
   id: 6526
   time: '2026-10-18T09:20:22.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/45
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Blindness characters can concentrate to expand their awareness through
+        pale outlines, with stronger perception while their eyes are closed.
+    - type: Add
+      message: >-
+        Blindness characters start with a blindfold that provides passive
+        awareness while worn.
+    - type: Fix
+      message: Trait categories fit in a compact selector with a scrollable perk list.
+    - type: Fix
+      message: >-
+        Walls block the Blindness perk’s auditory vision, including while
+        wearing a blindfold.
+  id: 6527
+  time: '2026-10-18T09:20:34.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/46

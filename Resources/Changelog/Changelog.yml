@@ -12449,3 +12449,10 @@ Entries:
   id: 6524
   time: '2026-10-18T09:19:53.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/43
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: Synth riflemen now use raider-style integrated laser guns and reloading.
+  id: 6525
+  time: '2026-10-18T09:20:06.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/44

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from cmss13 at https://github.com/cmss13-devs/cmss13/blob/44751f0cc11332a5ba4f05ef91b2d72a0b08082b/icons/obj/items/weapons/guns/attachments/rail.dmi, edited iffbarrel & iffbarrel_a & type88_scope by SG6732, magnetic magnetic_a made by Sigma Draconis, XM43E1 scope by github noctyrnal, reddot and reflex by VictorJob Unmodified subset copied from RMC-14: https://github.com/RMC-14/RMC-14/tree/master/Resources/Textures/_RMC14/Objects/Weapons/Guns/Attachments/rail.rsi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "reflex"
+    },
+    {
+      "name": "reflex_a"
+    }
+  ]
+}

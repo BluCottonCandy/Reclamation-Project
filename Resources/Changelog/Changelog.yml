@@ -12436,3 +12436,16 @@ Entries:
   id: 6523
   time: '2026-10-16T13:44:50.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/42
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added wielded rifle scopes that allow movement with a 90% slowdown while
+        zoomed.
+    - type: Tweak
+      message: >-
+        Hostile NPCs now wake and pursue attackers who shoot them from beyond
+        normal sight range.
+  id: 6524
+  time: '2026-10-18T09:19:53.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/43

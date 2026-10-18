@@ -21,7 +21,7 @@ public sealed class TraumaWalkingSupportTests
         var em = pair.Server.ResolveDependency<IEntityManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var patient = em.SpawnEntity("MobHuman", map.GridCoords);
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
             var cane = em.SpawnEntity(prototype, map.GridCoords);
             var body = em.System<SharedBodySystem>();
             var trauma = em.System<TraumaSystem>();

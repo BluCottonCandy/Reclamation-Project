@@ -38,7 +38,7 @@ public sealed class TraumaMedicalTests
         var em = pair.Server.ResolveDependency<IEntityManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var patient = em.SpawnEntity("MobHuman", map.GridCoords);
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
             Assert.That(em.HasComponent<TraumaBodyComponent>(patient), Is.True, "Organic humanoids must opt in automatically.");
             var trauma = em.System<TraumaSystem>();
             var body = em.System<SharedBodySystem>();
@@ -103,7 +103,7 @@ public sealed class TraumaMedicalTests
         var em = pair.Server.ResolveDependency<IEntityManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var patient = em.SpawnEntity("MobHuman", map.GridCoords);
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
             var body = em.System<SharedBodySystem>();
             var (part, component) = body.GetBodyChildrenOfType(patient, type).First();
             em.System<TraumaSystem>().Fracture(part);
@@ -131,7 +131,7 @@ public sealed class TraumaMedicalTests
         float before = 0;
         await pair.Server.WaitAssertion(() =>
         {
-            patient = em.SpawnEntity("MobHuman", map.GridCoords);
+            patient = em.SpawnTraumaPatient(map.GridCoords);
             var bloodstream = em.GetComponent<BloodstreamComponent>(patient);
             Assert.That(em.System<SharedSolutionContainerSystem>().ResolveSolution(patient, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var blood), Is.True);
             before = blood!.Volume.Float();
@@ -162,20 +162,21 @@ public sealed class TraumaMedicalTests
         var em = pair.Server.ResolveDependency<IEntityManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var brain = em.SpawnEntity("OrganHumanBrain", map.GridCoords);
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
+            var brain = em.System<SharedBodySystem>().GetBodyOrgans(patient).First(o => em.HasComponent<BrainComponent>(o.Id)).Id;
             var damageable = em.EnsureComponent<DamageableComponent>(brain);
             var damage = em.System<DamageableSystem>();
             Assert.That(damage.TryChangeDamage(brain, new DamageSpecifier { DamageDict = new() { ["Blunt"] = 100 } }), Is.Null);
             damage.SetAllDamage(brain, damageable, 10);
             Assert.That(damageable.TotalDamage, Is.EqualTo(FixedPoint2.Zero));
             Assert.That(em.HasComponent<TraumaOrganComponent>(brain), Is.False);
-            em.DeleteEntity(brain);
+            em.DeleteEntity(patient);
         });
         await pair.CleanReturnAsync();
     }
 
     [Test]
-    public async Task FailedLungsCauseSuffocation()
+    public async Task MissingLungsCauseSuffocation()
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -183,10 +184,12 @@ public sealed class TraumaMedicalTests
         EntityUid patient = default;
         await pair.Server.WaitAssertion(() =>
         {
-            patient = em.SpawnEntity("MobHuman", map.GridCoords);
+            patient = em.SpawnTraumaPatient(map.GridCoords);
             var lungs = em.System<SharedBodySystem>().GetBodyOrgans(patient)
                 .First(o => em.TryGetComponent<TraumaOrganComponent>(o.Id, out var injury) && injury.Kind == TraumaKind.Lungs).Id;
-            em.System<TraumaSystem>().SetOrganDamage(lungs, 100);
+            Assert.That(em.System<SharedBodySystem>().RemoveOrgan(lungs), Is.True);
+            em.DeleteEntity(lungs);
+            em.System<TraumaSystem>().Refresh(patient, em.GetComponent<TraumaBodyComponent>(patient));
             Assert.That(em.GetComponent<StaminaComponent>(patient).CritThreshold, Is.LessThan(.1f));
         });
         await pair.RunSeconds(14);
@@ -206,8 +209,8 @@ public sealed class TraumaMedicalTests
         var em = pair.Server.ResolveDependency<IEntityManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var donor = em.SpawnEntity("MobHuman", map.GridCoords);
-            var recipient = em.SpawnEntity("MobHuman", map.GridCoords);
+            var donor = em.SpawnTraumaPatient(map.GridCoords);
+            var recipient = em.SpawnTraumaPatient(map.GridCoords);
             var body = em.System<SharedBodySystem>();
             var trauma = em.System<TraumaSystem>();
             var organ = body.GetBodyOrgans(donor).First(o => em.TryGetComponent<TraumaOrganComponent>(o.Id, out var injury) && injury.Kind == TraumaKind.Lungs).Id;
@@ -234,7 +237,7 @@ public sealed class TraumaMedicalTests
         var em = pair.Server.ResolveDependency<IEntityManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var patient = em.SpawnEntity("MobHuman", map.GridCoords);
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
             var item = em.SpawnEntity("Scalpel", map.GridCoords);
             var body = em.System<SharedBodySystem>();
             var trauma = em.System<TraumaSystem>();

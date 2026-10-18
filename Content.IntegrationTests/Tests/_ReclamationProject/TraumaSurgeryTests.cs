@@ -45,8 +45,8 @@ public sealed class TraumaSurgeryTests
             for (var x = -3; x <= 3; x++)
             for (var y = -3; y <= 3; y++)
                 em.System<SharedMapSystem>().SetTile(map.Grid, origin.Offset(new Vector2(x, y)), map.Tile.Tile);
-            patient = em.SpawnEntity("MobHuman", origin);
-            doctor = em.SpawnEntity("MobHuman", origin.Offset(new Vector2(1.3f, 0)));
+            patient = em.SpawnTraumaPatient(origin);
+            doctor = em.SpawnTraumaPatient(origin.Offset(new Vector2(1.3f, 0)));
             var body = em.System<SharedBodySystem>();
             part = body.GetBodyChildrenOfType(patient,
                 kind is TraumaKind.Fracture or TraumaKind.LimbDamage ? BodyPartType.Arm : kind == TraumaKind.Eyes ? BodyPartType.Head : BodyPartType.Torso).First().Id;

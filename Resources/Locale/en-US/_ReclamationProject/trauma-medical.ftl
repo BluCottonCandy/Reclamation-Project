@@ -1,9 +1,9 @@
 trauma-report-heading = Structural injury scan:
 trauma-report-healthy = No fractures or internal injuries detected.
-trauma-report-fracture = { $part }: fractured; unusable until surgically repaired.
-trauma-report-splinted = { $part }: fractured and splinted; surgery required.
-trauma-report-bleeding = Internal bleeding: { $rate } units of blood per second. Surgical vessel repair required.
-trauma-report-organ = { $organ }: { $damage }% structural damage. Surgical repair required.
+trauma-report-fracture = { $part }: fractured; { $healing }% healed. Surgery can restore use sooner.
+trauma-report-splinted = { $part }: fractured and splinted; { $healing }% healed.
+trauma-report-bleeding = Internal bleeding: { $rate } units of blood per second. Surgery can stop the bleeding.
+trauma-report-organ = { $organ }: { $damage }% structural damage. Surgery can speed recovery.
 trauma-organ-lungs = Lungs
 trauma-organ-heart = Heart
 trauma-organ-liver = Liver
@@ -28,7 +28,7 @@ surgery-popup-procedure-ReclamationSurgeryRepairStomach-step-ReclamationSurgeryS
 surgery-popup-missing-tool = You need to hold a { $tool } for this step.
 
 trauma-report-limb = { $part }  •  { $damage }% to failure  •  { $status }
-trauma-limb-disabled = Disabled — surgery needed
+trauma-limb-disabled = Disabled — healing or surgery needed
 trauma-limb-warning = At risk — seek treatment
 trauma-limb-functional = Stable
 surgery-popup-procedure-ReclamationSurgeryRepairLimbDamage-step-ReclamationSurgeryStepRepairLimbDamage = { $user } begins to repair limb tissue on { $target }.

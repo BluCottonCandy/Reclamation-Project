@@ -24,8 +24,8 @@ public sealed class TraumaArmorTests
         EntityUid bare = default, protectedPatient = default;
         await pair.Server.WaitAssertion(() =>
         {
-            bare = em.SpawnEntity("MobHuman", map.GridCoords);
-            protectedPatient = em.SpawnEntity("MobHuman", map.GridCoords);
+            bare = em.SpawnTraumaPatient(map.GridCoords);
+            protectedPatient = em.SpawnTraumaPatient(map.GridCoords);
             var armor = em.SpawnEntity("N14ClothingOuterCombatArmor", map.GridCoords);
             em.GetComponent<ArmorComponent>(armor).Modifiers = new DamageModifierSet
             {

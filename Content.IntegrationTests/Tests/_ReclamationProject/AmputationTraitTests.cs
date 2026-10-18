@@ -27,7 +27,7 @@ public sealed class AmputationTraitTests
         var prototypes = pair.Server.ResolveDependency<IPrototypeManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var patient = em.SpawnEntity("MobHuman", map.GridCoords);
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
             var body = em.System<SharedBodySystem>();
             var removed = body.GetBodyChildrenOfType(patient, part, symmetry: side)
                 .Concat(body.GetBodyChildrenOfType(patient, child, symmetry: side)).Select(p => p.Id).ToArray();

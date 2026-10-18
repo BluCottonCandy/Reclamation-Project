@@ -22,6 +22,8 @@ using Content.Shared.Rejuvenate;
 using Robust.Shared.Random;
 using Content.Shared.Hands;
 using Content.Shared.Standing;
+using Robust.Shared.Player;
+using Content.Server.GameTicking;
 
 namespace Content.Server._ReclamationProject.Medical;
 
@@ -50,7 +52,8 @@ public sealed partial class TraumaSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<HumanoidAppearanceComponent, MapInitEvent>(OnHumanoidInit, after: new[] { typeof(SharedBodySystem) });
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn);
+        SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<TraumaLimbComponent, DamageChangedEvent>(OnPartDamaged, after: new[] { typeof(SharedBodySystem) });
         SubscribeLocalEvent<BrainComponent, BeforeDamageChangedEvent>(OnBrainDamage);
         SubscribeLocalEvent<BrainComponent, DamageChangedEvent>(OnBrainChanged, after: new[] { typeof(SharedBodySystem) });
@@ -70,12 +73,12 @@ public sealed partial class TraumaSystem : EntitySystem
         _ => null,
     };
 
-    private void OnHumanoidInit(EntityUid uid, HumanoidAppearanceComponent comp, MapInitEvent args)
-        => InitializeBody(uid);
+    private void OnPlayerSpawn(PlayerSpawnCompleteEvent args) => InitializeBody(args.Mob);
+    private void OnPlayerAttached(PlayerAttachedEvent args) => InitializeBody(args.Entity);
 
     public void InitializeBody(EntityUid uid)
     {
-        if (!HasComp<BodyComponent>(uid) || _body.GetBodyOrganComponents<LungComponent>(uid).Count == 0) return;
+        if (!HasComp<HumanoidAppearanceComponent>(uid) || !HasComp<BodyComponent>(uid) || _body.GetBodyOrganComponents<LungComponent>(uid).Count == 0) return;
         var medical = EnsureComp<TraumaBodyComponent>(uid);
         foreach (var (part, _) in _body.GetBodyChildren(uid)) EnsureComp<TraumaLimbComponent>(part);
         foreach (var (organ, component) in _body.GetBodyOrgans(uid))
@@ -94,11 +97,13 @@ public sealed partial class TraumaSystem : EntitySystem
 
     private void OnBrainDamage(EntityUid uid, BrainComponent comp, ref BeforeDamageChangedEvent args)
     {
+        if (!TryComp<OrganComponent>(uid, out var organ) || organ.Body is not { } body || !HasComp<TraumaBodyComponent>(body)) return;
         if (args.Damage.DamageDict.Values.Any(value => value > 0)) args.Cancelled = true;
     }
 
     private void OnBrainChanged(EntityUid uid, BrainComponent comp, DamageChangedEvent args)
     {
+        if (!TryComp<OrganComponent>(uid, out var organ) || organ.Body is not { } body || !HasComp<TraumaBodyComponent>(body)) return;
         if (args.Damageable.TotalDamage > 0) _damage.SetAllDamage(uid, args.Damageable, Content.Shared.FixedPoint.FixedPoint2.Zero);
     }
 
@@ -138,6 +143,7 @@ public sealed partial class TraumaSystem : EntitySystem
             medical.TickAccumulator = 0;
             Refresh(uid, medical);
             if (_mob.IsDead(uid)) continue;
+            HealNaturally(uid, medical, seconds);
             if (medical.InternalBleeding > 0)
                 _blood.TryModifyBloodLevel(uid, -Content.Shared.FixedPoint.FixedPoint2.New(medical.InternalBleeding * seconds), createPuddle: false);
             if (medical.KidneyDamage > 0 && TryComp<ThirstComponent>(uid, out var thirst))

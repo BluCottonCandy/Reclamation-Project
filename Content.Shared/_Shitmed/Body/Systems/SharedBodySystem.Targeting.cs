@@ -75,6 +75,8 @@ public partial class SharedBodySystem
 
     private void ProcessIntegrityTick(Entity<BodyPartComponent> entity)
     {
+        // Player trauma uses its percentage-based recovery instead of this faster legacy tick.
+        if (entity.Comp.Body is { } owner && HasComp<Content.Shared._ReclamationProject.Medical.TraumaBodyComponent>(owner)) return;
         if (!TryComp<DamageableComponent>(entity, out var damageable))
             return;
 

@@ -266,6 +266,9 @@
       species:
         - Human
   functions:
+    - !type:TraitAddComponent
+      components:
+      - type: TraumaRegeneration
     - !type:TraitReplaceComponent
       components:
         - type: PassiveDamage

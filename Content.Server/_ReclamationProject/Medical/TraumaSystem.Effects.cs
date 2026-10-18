@@ -138,7 +138,7 @@ public sealed partial class TraumaSystem
         if (TryComp<BodyComponent>(uid, out var body) && body.RootContainer.ContainedEntity is { } root)
             foreach (var (part, _) in _body.GetBodyPartChildren(root))
                 if (TryComp<FractureComponent>(part, out var fracture))
-                    lines.Add(Loc.GetString(fracture.Splinted ? "trauma-report-splinted" : "trauma-report-fracture", ("part", Name(part))));
+                    lines.Add(Loc.GetString(fracture.Splinted ? "trauma-report-splinted" : "trauma-report-fracture", ("part", Name(part)), ("healing", (int) MathF.Round(fracture.HealingProgress))));
         if (medical.InternalBleeding > 0)
             lines.Add(Loc.GetString("trauma-report-bleeding", ("rate", Math.Max(1, (int) MathF.Round(medical.InternalBleeding)))));
         foreach (var (kind, value) in new[] { (TraumaKind.Lungs, medical.LungDamage), (TraumaKind.Heart, medical.HeartDamage),

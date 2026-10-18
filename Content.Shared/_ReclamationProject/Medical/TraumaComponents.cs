@@ -44,7 +44,11 @@ public sealed partial class TraumaLimbComponent : Component;
 public sealed partial class FractureComponent : Component
 {
     [DataField, AutoNetworkedField] public bool Splinted;
+    [DataField, AutoNetworkedField] public float HealingProgress;
 }
+
+[RegisterComponent]
+public sealed partial class TraumaRegenerationComponent : Component;
 
 /// <summary>Used on both a surgery and its final repair step.</summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]

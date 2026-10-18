@@ -1,0 +1,168 @@
+- type: Tag
+  id: ReclamationGunSuppressor
+- type: Tag
+  id: ReclamationGunGrip
+- type: Tag
+  id: ReclamationGunLight
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationGunSuppressor
+  name: firearm suppressor
+  description: A removable firearm suppressor with a compact muzzle mounting.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/GunAttachments/suppressor.rsi
+    state: suppressor
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [ReclamationGunSuppressor]
+  - type: GunSuppressor
+    velocityMultiplier: 0.9
+    soundReduction: 12
+    hideMuzzleFlash: true
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationGunGrip
+  name: firearm foregrip
+  description: A sturdy foregrip that mounts beneath a firearm.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/GunAttachments/grip.rsi
+    state: verticalgrip
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [ReclamationGunGrip]
+  - type: GunGrip
+    recoilMultiplier: 0.7
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationGunLight
+  name: firearm rail light
+  description: A compact, toggleable light that mounts on a firearm's rail.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/GunAttachments/light.rsi
+    layers:
+    - state: flashlight
+    - state: flashlight-on
+      visible: false
+      shader: unshaded
+      map: [light]
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [ReclamationGunLight]
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    radius: 4
+    energy: 2
+    netsync: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.UnpoweredFlashlightVisuals.LightOn:
+        light:
+          True: {visible: true}
+          False: {visible: false}
+
+- type: entity
+  id: ReclamationActionToggleWeaponLight
+  name: Toggle weapon light
+  description: Switch your mounted weapon light on or off.
+  categories: [HideSpawnMenu]
+  components:
+  - type: InstantAction
+    icon: {sprite: _ReclamationProject/Objects/Weapons/GunAttachments/light.rsi, state: flashlight}
+    iconOn: {sprite: _ReclamationProject/Objects/Weapons/GunAttachments/light.rsi, state: flashlight-on}
+    event: !type:ToggleWeaponLightActionEvent
+
+- type: Tag
+  id: ReclamationGunStock
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationGunStock
+  name: adjustable SMG stock
+  description: An adjustable shoulder stock designed for submachine guns.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/GunAttachments/stock.rsi
+    state: smgstock
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [ReclamationGunStock]
+  - type: GunStock
+
+- type: Tag
+  id: ReclamationGunLaserSight
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationGunLaserSight
+  name: firearm laser sight
+  description: A compact rail-mounted aiming laser.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/GunAttachments/laser.rsi
+    state: lasersight
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [ReclamationGunLaserSight]
+  - type: GunLaserSight
+
+- type: Tag
+  id: ReclamationGunBipod
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationGunBipod
+  name: rifle bipod
+  description: A folding rifle support with two deployable legs.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/GunAttachments/bipod.rsi
+    state: bipod
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [ReclamationGunBipod]
+  - type: GunBipod
+
+- type: entity
+  id: ReclamationActionToggleGunBipod
+  name: Deploy / fold bipod
+  description: Deploy the bipod while lying down, or fold it away.
+  categories: [HideSpawnMenu]
+  components:
+  - type: InstantAction
+    icon: {sprite: _ReclamationProject/Objects/Weapons/GunAttachments/bipod.rsi, state: bipod}
+    iconOn: {sprite: _ReclamationProject/Objects/Weapons/GunAttachments/bipod.rsi, state: bipod-on}
+    event: !type:ToggleGunBipodActionEvent
+
+- type: Tag
+  id: ReclamationGunHoloSight
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationGunHoloSight
+  name: holographic sight
+  description: A compact holographic aiming sight that mounts above the receiver.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/GunAttachments/holo.rsi
+    state: reflex
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [ReclamationGunHoloSight]
+  - type: GunHoloSight

@@ -47,7 +47,6 @@
     duration: 10
     tool:
     - type: Hemostat
-    - type: Cautery
   - type: TraumaRepair
     kind: InternalBleeding
   - type: Sprite
@@ -76,7 +75,6 @@
     duration: 10
     tool:
     - type: Hemostat
-    - type: Cautery
   - type: TraumaRepair
     kind: Lungs
   - type: Sprite
@@ -105,7 +103,6 @@
     duration: 10
     tool:
     - type: Hemostat
-    - type: Cautery
   - type: TraumaRepair
     kind: Heart
   - type: Sprite
@@ -134,7 +131,6 @@
     duration: 10
     tool:
     - type: Hemostat
-    - type: Cautery
   - type: TraumaRepair
     kind: Liver
   - type: Sprite
@@ -163,7 +159,6 @@
     duration: 10
     tool:
     - type: Hemostat
-    - type: Cautery
   - type: TraumaRepair
     kind: Kidneys
   - type: Sprite
@@ -192,7 +187,6 @@
     duration: 10
     tool:
     - type: Hemostat
-    - type: Cautery
   - type: TraumaRepair
     kind: Eyes
   - type: Sprite
@@ -221,7 +215,6 @@
     duration: 10
     tool:
     - type: Hemostat
-    - type: Cautery
   - type: TraumaRepair
     kind: Stomach
   - type: Sprite

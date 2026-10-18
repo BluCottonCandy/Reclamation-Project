@@ -77,7 +77,13 @@ public sealed class TraumaSurgeryTests
                 var component = em.GetComponent<SurgeryStepComponent>(step);
                 var hands = em.System<SharedHandsSystem>();
                 foreach (var held in hands.EnumerateHeld(doctor).ToArray()) hands.TryDrop(doctor, held);
-                if (component.Tool != null)
+                if (stepId == "ReclamationSurgeryStepRepairFracture")
+                {
+                    var mender = em.SpawnEntity("ReclamationFractureMender", origin);
+                    tools.Add(mender);
+                    Assert.That(hands.TryPickupAnyHand(doctor, mender), Is.True);
+                }
+                else if (component.Tool != null)
                     foreach (var registry in component.Tool.Values)
                     {
                         var typeName = registry.Component.GetType().Name.Replace("Component", "");
@@ -85,6 +91,8 @@ public sealed class TraumaSurgeryTests
                         tools.Add(tool);
                         Assert.That(hands.TryPickupAnyHand(doctor, tool), Is.True);
                     }
+                Assert.That(hands.EnumerateHeld(doctor).Count(), Is.EqualTo(1),
+                    "Every surgical step must be usable with one tool in one hand.");
                 Assert.That(surgery.TryDoSurgeryStep(patient, part, doctor, surgeryId, stepId), Is.True,
                     $"Cannot start {surgeryId}/{stepId} with its required tools.");
             });

@@ -24,3 +24,5 @@ surgery-popup-procedure-ReclamationSurgeryRepairLiver-step-ReclamationSurgerySte
 surgery-popup-procedure-ReclamationSurgeryRepairKidneys-step-ReclamationSurgeryStepRepairKidneys = { $user } begins to repair kidneys on { $target }.
 surgery-popup-procedure-ReclamationSurgeryRepairEyes-step-ReclamationSurgeryStepRepairEyes = { $user } begins to repair eyes on { $target }.
 surgery-popup-procedure-ReclamationSurgeryRepairStomach-step-ReclamationSurgeryStepRepairStomach = { $user } begins to repair stomach on { $target }.
+
+surgery-popup-missing-tool = You need to hold a { $tool } for this step.

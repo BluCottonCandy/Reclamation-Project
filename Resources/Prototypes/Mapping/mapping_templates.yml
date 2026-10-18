@@ -590,6 +590,8 @@
         - !type:MappingTemplatePrototype
           id: Hemostat
         - !type:MappingTemplatePrototype
+          id: ReclamationFractureMender
+        - !type:MappingTemplatePrototype
           id: Scalpel
         - !type:MappingTemplatePrototype
           id: Saw

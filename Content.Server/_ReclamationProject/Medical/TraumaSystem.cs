@@ -1,3 +1,4 @@
+using Content.Shared.Atmos.Rotting;
 using System.Linq;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
@@ -30,6 +31,7 @@ namespace Content.Server._ReclamationProject.Medical;
 /// <summary>Structural damage for organic humanoids. Simple NPCs keep their existing medical model.</summary>
 public sealed partial class TraumaSystem : EntitySystem
 {
+    [Dependency] private readonly SharedRottingSystem _rotting = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly MobThresholdSystem _thresholds = default!;
@@ -79,6 +81,7 @@ public sealed partial class TraumaSystem : EntitySystem
     public void InitializeBody(EntityUid uid)
     {
         if (!HasComp<HumanoidAppearanceComponent>(uid) || !HasComp<BodyComponent>(uid) || _body.GetBodyOrganComponents<LungComponent>(uid).Count == 0) return;
+        _rotting.SetRotDelay(uid, TimeSpan.FromHours(1));
         var medical = EnsureComp<TraumaBodyComponent>(uid);
         foreach (var (part, _) in _body.GetBodyChildren(uid)) EnsureComp<TraumaLimbComponent>(part);
         foreach (var (organ, component) in _body.GetBodyOrgans(uid))

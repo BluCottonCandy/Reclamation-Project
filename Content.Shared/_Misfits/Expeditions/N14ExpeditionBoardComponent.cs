@@ -101,7 +101,7 @@ public sealed partial class N14ExpeditionBoardComponent : Component
     /// Radius around the board to detect players for group teleportation.
     /// </summary>
     [DataField]
-    public float GatherRadius = 4f;
+    public float GatherRadius = 2f;
 
     /// <summary>
     /// Seconds to count down before teleporting the group.

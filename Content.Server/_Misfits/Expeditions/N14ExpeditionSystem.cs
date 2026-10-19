@@ -473,7 +473,8 @@ public sealed class N14ExpeditionSystem : EntitySystem
         // cannot change a ruin that is already being generated.
         var nearby = new HashSet<Entity<MobStateComponent>>();
         _lookup.GetEntitiesInRange(boardXform.Coordinates, board.GatherRadius, nearby);
-        nearby.RemoveWhere(ent => !_playerManager.TryGetSessionByEntity(ent, out _));
+        nearby.RemoveWhere(ent => !_playerManager.TryGetSessionByEntity(ent, out _)
+            || !IsWithinGatherRange(boardUid, ent, board.GatherRadius));
 
         // Pick a random map entry from the difficulty pool
         var mapEntry = _random.Pick(diff.Maps);
@@ -720,6 +721,11 @@ public sealed class N14ExpeditionSystem : EntitySystem
         // #Misfits Fix - Per-faction spawn: each player goes to their faction's hub, not all to center
         foreach (var ent in nearby)
         {
+            // Map generation can take time: do not pull in someone who walked away.
+            if (!IsWithinGatherRange(boardUid, ent, board.GatherRadius)
+                || !_playerManager.TryGetSessionByEntity(ent, out _))
+                continue;
+
             EntityCoordinates dest = defaultSpawn;
             if (mapEntry.RuntimeProcedural && procFactionSpawnMap is { Count: > 1 } && procGenParams != null)
             {
@@ -1052,9 +1058,16 @@ public sealed class N14ExpeditionSystem : EntitySystem
         }
     }
 
-    /// <summary>
-    /// Shows a large popup to every mob near a specific entity.
-    /// </summary>
+    /// <summary>Use an exact center-to-center distance, rather than broadphase bounds.</summary>
+    internal bool IsWithinGatherRange(EntityUid boardUid, EntityUid target, float radius)
+    {
+        return Exists(boardUid) && !Deleted(boardUid)
+            && Exists(target) && !Deleted(target)
+            && Transform(boardUid).Coordinates.TryDistance(EntityManager, Transform(target).Coordinates, out var distance)
+            && distance <= radius;
+    }
+
+    /// <summary>Shows a large popup to every mob near a specific entity.</summary>
     private void AnnounceNearby(EntityUid originUid, float radius, string message)
     {
         var nearby = new HashSet<Entity<MobStateComponent>>();

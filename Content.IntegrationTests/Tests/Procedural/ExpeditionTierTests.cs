@@ -38,24 +38,36 @@ public sealed class ExpeditionTierTests
                 var plan = ExpeditionEncounterPlan.Create(tier, seed);
                 families.Add(plan.Family);
                 Assert.That(plan.Enemies.Length, Is.EqualTo(count));
-                Assert.That(plan.Enemies.Count(ExpeditionEncounterPlan.NamedEnemies.Contains), Is.EqualTo(1));
+                Assert.That(plan.Enemies.Count(ExpeditionEncounterPlan.NamedEnemies.Contains), Is.EqualTo(tier == N14ExpeditionCombatTier.Hard ? 1 : 0));
                 foreach (var id in plan.Enemies.Distinct())
                 {
                     var prototype = prototypes.Index<EntityPrototype>(id);
-                    if (tier == N14ExpeditionCombatTier.Medium && id != "ReclamationExpeditionMutantLeader")
-                    {
-                        Assert.That(prototype.Components.ContainsKey("Gun"), Is.True, $"Melee-only enemy {id} in Medium");
-                        var ammo = (BasicEntityAmmoProviderComponent) prototype.Components["BasicEntityAmmoProvider"].Component;
-                        Assert.That(ammo.Proto.Id, Is.Not.AnyOf("N14CartridgePistol9", "N14CartridgePistol10"));
-                    }
                     if (plan.Family == "Super mutants")
                     {
                         var fixtures = (FixturesComponent) prototype.Components["Fixtures"].Component;
                         Assert.That(((PhysShapeCircle) fixtures.Fixtures["fix1"].Shape).Radius, Is.EqualTo(0.35f));
                     }
                 }
-                if (tier != N14ExpeditionCombatTier.Easy)
+                bool IsRanged(string id) => prototypes.Index<EntityPrototype>(id).Components.ContainsKey("Gun");
+                string? Ammo(string id) => prototypes.Index<EntityPrototype>(id).Components.TryGetValue("BasicEntityAmmoProvider", out var component)
+                    ? ((BasicEntityAmmoProviderComponent) component.Component).Proto.Id : null;
+                var ranged = plan.Enemies.Count(IsRanged);
+                var marksmen = plan.Enemies.Count(id => Ammo(id) == "N14Cartridge308Rifle");
+                if (tier == N14ExpeditionCombatTier.Easy)
+                {
+                    Assert.That(plan.Family, Is.Not.EqualTo("Super mutants"));
+                    Assert.That(ranged, Is.EqualTo(plan.Family == "Ghouls" ? 0 : 6));
+                    Assert.That(marksmen, Is.InRange(0, 2));
+                }
+                else if (tier == N14ExpeditionCombatTier.Medium)
+                {
                     Assert.That(plan.Family, Is.Not.EqualTo("Ghouls"));
+                    Assert.That(ranged, Is.EqualTo(15));
+                    Assert.That(marksmen, Is.InRange(1, 2));
+                    Assert.That(plan.Enemies.Where(IsRanged).Select(Ammo).Distinct().Count(), Is.GreaterThanOrEqualTo(4));
+                    Assert.That(plan.Enemies.Where(id => !IsRanged(id)).Distinct().Count(), Is.EqualTo(3));
+                    Assert.That(plan.Enemies.Where(IsRanged).Select(Ammo), Does.Not.Contain("N14CartridgePistol10"));
+                }
                 if (tier == N14ExpeditionCombatTier.Hard)
                 {
                     if (plan.Family == "Raiders")
@@ -67,6 +79,7 @@ public sealed class ExpeditionTierTests
                     {
                         Assert.That(plan.Enemies.Count(id => id == "ReclamationExpeditionBehemoth" || id == "ReclamationExpeditionMutantLeader"), Is.EqualTo(1));
                         Assert.That(plan.Enemies.Count(id => id.StartsWith("ReclamationExpeditionNightkin")), Is.EqualTo(2));
+                        Assert.That(plan.Enemies.Where(id => id != "ReclamationExpeditionMutantLeader" && !id.StartsWith("ReclamationExpeditionNightkin")).All(id => Ammo(id) == "N14Cartridge308Rifle"), Is.True);
                     }
                 }
                 if (plan.AdvancedWeapon != null)
@@ -83,11 +96,11 @@ public sealed class ExpeditionTierTests
                 }
                 if (plan.AdvancedArmor != null && plan.AdvancedWeapon != null) both++;
             }
-            Assert.That(families.Count, Is.EqualTo(tier == N14ExpeditionCombatTier.Easy ? 3 : 2));
+            Assert.That(families.Count, Is.EqualTo(2));
             if (tier == N14ExpeditionCombatTier.Easy)
             {
                 Assert.That(weaponRolls + armorRolls, Is.Zero);
-                Assert.That(families.Contains("Ghouls") && families.Contains("Super mutants"), Is.True);
+                Assert.That(families.Contains("Ghouls") && families.Contains("Raiders"), Is.True);
             }
             else if (tier == N14ExpeditionCombatTier.Hard)
             {

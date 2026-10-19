@@ -1,5 +1,7 @@
 <ScrollContainer xmlns="https://spacestation14.io"
-    ReturnMeasure="True"
+    ReturnMeasure="False"
+    HScrollEnabled="False"
+    HorizontalExpand="True"
     VerticalExpand="True">
     <BoxContainer
         Name="RootContainer"
@@ -164,6 +166,11 @@
             </BoxContainer>
 
             <PanelContainer StyleClasses="LowDivider"/>
+
+            <BoxContainer Name="TraumaSection" Orientation="Vertical">
+                <RichTextLabel Name="TraumaReport" Margin="0 8" HorizontalExpand="True"/>
+                <PanelContainer StyleClasses="LowDivider"/>
+            </BoxContainer>
 
             <GridContainer Margin="0 5 0 0"
                            Columns="2">

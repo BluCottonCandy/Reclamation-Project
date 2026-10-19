@@ -164,6 +164,8 @@
   id: Wrench
   description: 'A common tool for assembly and disassembly. Remember: righty tighty, lefty loosey.'
   components:
+  - type: SurgeryTool
+  - type: BoneSetter
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/SimpleStation14/Items/Handling/wrench_pickup.ogg

@@ -1,0 +1,29 @@
+- type: construction
+  id: ReclamationMedicalSplint
+  name: medical splint
+  description: Supports a broken limb for transport. Surgery is still needed to mend it.
+  graph: ReclamationMedicalSplint
+  startNode: start
+  targetNode: splint
+  category: construction-category-medical
+  hide: false
+  objectType: Item
+  icon:
+    sprite: Objects/Specific/Medical/medical.rsi
+    state: brutepack
+
+- type: constructionGraph
+  id: ReclamationMedicalSplint
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: splint
+      steps:
+      - material: WoodPlank
+        amount: 2
+      - material: Cloth
+        amount: 2
+        doAfter: 5
+  - node: splint
+    entity: ReclamationMedicalSplint

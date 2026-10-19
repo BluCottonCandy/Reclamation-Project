@@ -96,7 +96,9 @@ public sealed class HungerSystem : EntitySystem
     {
         if (!Resolve(uid, ref component))
             return;
-        SetHunger(uid, component.CurrentHunger + amount, component);
+        var absorption = new Content.Shared._ReclamationProject.Medical.NutritionAbsorptionEvent(amount);
+        RaiseLocalEvent(uid, ref absorption);
+        SetHunger(uid, component.CurrentHunger + absorption.Amount, component);
     }
 
     /// <summary>

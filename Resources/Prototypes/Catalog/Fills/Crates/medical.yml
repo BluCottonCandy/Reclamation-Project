@@ -67,6 +67,7 @@
       - id: Drill
       - id: SawElectric # Shitmed Change
       - id: Hemostat
+      - id: ReclamationFractureMender
       # Shitmed Change
       - id: BoneGel
       - id: BoxLatexGloves

@@ -1,0 +1,7 @@
+- type: entity
+  parent: N14Bonesetter
+  id: ReclamationFractureMender
+  name: fracture mender
+  description: A bone setter with a built-in bone-gel applicator. Sets and mends fractures after the surgeon opens an incision.
+  components:
+  - type: BoneGel

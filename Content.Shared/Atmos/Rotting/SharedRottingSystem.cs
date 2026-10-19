@@ -131,6 +131,13 @@ public abstract class SharedRottingSystem : EntitySystem
         return !ev.Handled;
     }
 
+    /// <summary>Sets the delay before a perishable entity begins rotting.</summary>
+    public void SetRotDelay(EntityUid uid, TimeSpan delay)
+    {
+        if (TryComp<PerishableComponent>(uid, out var perishable))
+            perishable.RotAfter = delay;
+    }
+
     public bool IsRotten(EntityUid uid, RottingComponent? rotting = null)
     {
         return Resolve(uid, ref rotting, false);

@@ -407,6 +407,7 @@
     contents:
     - id: N14Scalpel
     - id: N14Hemostat
+    - id: ReclamationFractureMender
     - id: N14Cautery
     - id: N14Retractor
     - id: N14BoneGel

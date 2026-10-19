@@ -102,13 +102,23 @@ public sealed class SurgerySystem : SharedSurgerySystem
         if (!TryComp<BodyPartComponent>(part, out var partComp))
             return;
 
-        _damageable.TryChangeDamage(body,
-            damage,
-            true,
-            origin: user,
-            canSever: false,
-            partMultiplier: partMultiplier,
-            targetPart: _body.GetTargetBodyPart(partComp));
+        TryComp<Content.Shared._ReclamationProject.Medical.TraumaBodyComponent>(body, out var trauma);
+        var wasSuppressed = trauma?.SuppressInjuryRolls ?? false;
+        if (trauma != null) trauma.SuppressInjuryRolls = true;
+        try
+        {
+            _damageable.TryChangeDamage(body,
+                damage,
+                true,
+                origin: user,
+                canSever: false,
+                partMultiplier: partMultiplier,
+                targetPart: _body.GetTargetBodyPart(partComp));
+        }
+        finally
+        {
+            if (trauma != null) trauma.SuppressInjuryRolls = wasSuppressed;
+        }
     }
 
     private void AttemptStartSurgery(Entity<SurgeryToolComponent> ent, EntityUid user, EntityUid target)

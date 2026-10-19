@@ -378,6 +378,10 @@ public partial class SharedBodySystem
             bodyEnt.Comp.LegEntities.Remove(legEnt);
             UpdateMovementSpeed(bodyEnt);
             Dirty(bodyEnt, bodyEnt.Comp);
+            var support = new Content.Shared._ReclamationProject.Medical.GetBodyStandingSupportEvent();
+            RaiseLocalEvent(bodyEnt, ref support);
+            if (support.AdditionalLegs > 0 && bodyEnt.Comp.LegEntities.Count + support.AdditionalLegs >= bodyEnt.Comp.RequiredLegs)
+                return;
             Standing.Down(bodyEnt); // Shitmed Change
         }
     }
@@ -708,6 +712,17 @@ public partial class SharedBodySystem
             walkSpeed += legModifier.WalkSpeed;
             sprintSpeed += legModifier.SprintSpeed;
             acceleration += legModifier.Acceleration;
+        }
+        // A held walking aid supplies the missing support point. Its speed penalty is applied
+        // as a movement modifier, preserving clothing and other existing speed modifiers.
+        var support = new Content.Shared._ReclamationProject.Medical.GetBodyStandingSupportEvent();
+        RaiseLocalEvent(bodyId, ref support);
+        if (support.AdditionalLegs > 0 && body.LegEntities.Count > 0)
+        {
+            var supportedRatio = (body.LegEntities.Count + support.AdditionalLegs) / (float) body.LegEntities.Count;
+            walkSpeed *= supportedRatio;
+            sprintSpeed *= supportedRatio;
+            acceleration *= supportedRatio;
         }
         walkSpeed /= body.RequiredLegs;
         sprintSpeed /= body.RequiredLegs;

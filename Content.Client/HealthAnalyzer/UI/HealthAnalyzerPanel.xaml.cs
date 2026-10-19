@@ -120,6 +120,12 @@ namespace Content.Client.HealthAnalyzer.UI
 
         public void Populate(HealthAnalyzerScannedUserMessage msg)
         {
+            var injuryLines = msg.TraumaReport.Split('\n');
+            var injuryMarkup = "[bold][font size=14][color=#ADD8E6]" + FormattedMessage.EscapeText(injuryLines[0]) + "[/color][/font][/bold]";
+            foreach (var line in injuryLines.Skip(1))
+                injuryMarkup += "\n[font size=12][color=#ADD8E6]• " + FormatInjuryLine(line) + "[/color][/font]";
+            TraumaReport.SetMessage(FormattedMessage.FromMarkupOrThrow(injuryMarkup), tagsAllowed: null);
+            TraumaSection.Visible = !string.IsNullOrEmpty(msg.TraumaReport);
             _target = _entityManager.GetEntity(msg.TargetEntity);
             EntityUid? part = msg.Part != null ? _entityManager.GetEntity(msg.Part.Value) : null;
             var isPart = part != null;
@@ -191,6 +197,7 @@ namespace Content.Client.HealthAnalyzer.UI
             // Total Damage
 
             DamageLabel.Text = damageable.TotalDamage.ToString();
+            DamageLabel.FontColorOverride = Color.FromHex("#FF3333");
 
             // Alerts
 
@@ -319,11 +326,15 @@ namespace Content.Client.HealthAnalyzer.UI
             return _spriteSystem.Frame0(rsiSprite);
         }
 
+        private static string FormatInjuryLine(string text)
+            => System.Text.RegularExpressions.Regex.Replace(FormattedMessage.EscapeText(text),
+                @"\b\d+(?:[.,]\d+)?%?", "[color=#FF3333]$0[/color]");
         private static Label CreateDiagnosticItemLabel(string text)
         {
             return new Label
             {
                 Text = text,
+                FontColorOverride = Color.FromHex("#FF3333"),
             };
         }
 

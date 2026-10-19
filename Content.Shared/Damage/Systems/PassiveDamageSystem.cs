@@ -50,7 +50,8 @@ public sealed class PassiveDamageSystem : EntitySystem
             foreach (var allowedState in comp.AllowedStates)
             {
                 if(allowedState == mobState.CurrentState)
-                    _damageable.TryChangeDamage(uid, comp.Damage, true, false, damage);
+                    _damageable.TryChangeDamage(uid, comp.Damage, true, false, damage,
+                        doPartDamage: comp.Damage.GetTotal() > 0 || !HasComp<Content.Shared._ReclamationProject.Medical.TraumaBodyComponent>(uid));
             }
         }
     }

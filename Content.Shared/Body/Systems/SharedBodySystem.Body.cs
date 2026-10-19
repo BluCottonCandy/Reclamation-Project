@@ -465,7 +465,9 @@ public partial class SharedBodySystem
 
     private void OnStandAttempt(Entity<BodyComponent> ent, ref StandAttemptEvent args)
     {
-        if (ent.Comp.LegEntities.Count < ent.Comp.RequiredLegs)
+        var support = new Content.Shared._ReclamationProject.Medical.GetBodyStandingSupportEvent();
+        RaiseLocalEvent(ent, ref support);
+        if (ent.Comp.LegEntities.Count + support.AdditionalLegs < ent.Comp.RequiredLegs)
             args.Cancel();
     }
 

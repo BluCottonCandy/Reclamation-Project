@@ -1,0 +1,35 @@
+- type: trait
+  id: ReclamationAmputatedLeftArm
+  category: Physical
+  points: 5
+  functions:
+  - !type:TraitAmputateLimb
+    part: Arm
+    symmetry: Left
+
+- type: trait
+  id: ReclamationAmputatedRightArm
+  category: Physical
+  points: 5
+  functions:
+  - !type:TraitAmputateLimb
+    part: Arm
+    symmetry: Right
+
+- type: trait
+  id: ReclamationAmputatedLeftLeg
+  category: Physical
+  points: 5
+  functions:
+  - !type:TraitAmputateLimb
+    part: Leg
+    symmetry: Left
+
+- type: trait
+  id: ReclamationAmputatedRightLeg
+  category: Physical
+  points: 5
+  functions:
+  - !type:TraitAmputateLimb
+    part: Leg
+    symmetry: Right

@@ -12,6 +12,7 @@ namespace Content.Shared.MedicalScanner;
 public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
 {
     public readonly NetEntity? TargetEntity;
+    public string TraumaReport = string.Empty;
     public float Temperature;
     public float BloodLevel;
     public bool? ScanMode;

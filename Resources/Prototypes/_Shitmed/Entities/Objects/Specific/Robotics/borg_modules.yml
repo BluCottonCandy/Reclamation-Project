@@ -16,6 +16,7 @@
     - Cautery
     - SawElectric
     - BoneGel
+    - ReclamationFractureMender
 
 - type: entity
   id: BorgModuleAdvancedSurgery
@@ -32,3 +33,4 @@
     - EnergyCautery
     - AdvancedRetractor
     - BoneGel
+    - ReclamationFractureMender

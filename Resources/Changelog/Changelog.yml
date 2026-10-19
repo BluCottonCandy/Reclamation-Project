@@ -12568,3 +12568,12 @@ Entries:
   id: 6533
   time: '2026-10-19T21:15:58.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/53
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Expedition launches now gather players within two tiles and leave behind
+        anyone who walks away before departure.
+  id: 6534
+  time: '2026-10-19T21:16:22.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/52

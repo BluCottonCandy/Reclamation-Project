@@ -244,6 +244,17 @@ public sealed class ExpeditionDressingSystem : EntitySystem
                         if (!EntityManager.System<EntityStorageSystem>().Insert(box, lockerUid))
                             throw new InvalidOperationException("Could not stock the expedition armory ammunition.");
                     }
+                    if (tier == N14ExpeditionCombatTier.Hard)
+                    {
+                        var attachments = new[] { "N14CombatKnife", "ReclamationGunSuppressor", "ReclamationGunGrip", "ReclamationGunLight",
+                            "ReclamationGunStock", "ReclamationGunLaserSight", "ReclamationGunBipod", "ReclamationGunHoloSight" };
+                        for (var i = 0; i < 2; i++)
+                        {
+                            var attachment = Spawn(attachments[random.Next(attachments.Length)], _maps.GridTileToLocal(gridUid, grid, lockerTile));
+                            if (!EntityManager.System<EntityStorageSystem>().Insert(attachment, lockerUid))
+                                throw new InvalidOperationException("Could not stock expedition attachments.");
+                        }
+                    }
                 }
                 const int guns = 4;
                 for (var i = 0; i < 7; i++)

@@ -894,7 +894,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         Physics.ApplyLinearImpulse(user, -impulseVector, body: userPhysics);
     }
 
-    public void RefreshModifiers(Entity<GunComponent?> gun)
+    public void RefreshModifiers(Entity<GunComponent?> gun, bool rescaleRecoil = false)
     {
         if (!Resolve(gun, ref gun.Comp))
             return;
@@ -915,6 +915,14 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         RaiseLocalEvent(gun, ref ev);
 
+        if (rescaleRecoil && comp.MaxAngleModified.Theta > 0 &&
+            (comp.MaxAngleModified != ev.MaxAngle || comp.MinAngleModified != ev.MinAngle))
+        {
+            // Attachment changes should tighten existing bloom immediately, not only future limits.
+            var scale = Math.Max(0, ev.MaxAngle.Theta) / comp.MaxAngleModified.Theta;
+            comp.CurrentAngle = new Angle(MathHelper.Clamp(comp.CurrentAngle.Theta * scale,
+                Math.Max(0, ev.MinAngle.Theta), Math.Max(Math.Max(0, ev.MinAngle.Theta), ev.MaxAngle.Theta)));
+        }
         comp.SoundGunshotModified = ev.SoundGunshot;
         comp.CameraRecoilScalarModified = ev.CameraRecoilScalar;
         comp.AngleIncreaseModified = ev.AngleIncrease;

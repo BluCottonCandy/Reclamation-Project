@@ -12531,3 +12531,20 @@ Entries:
   id: 6530
   time: '2026-10-19T06:22:10.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/49
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Hunter, Wasteland Doc, Survivalist, Military Surplus, and Shit out
+        of luck starter kits for Wastelanders.
+    - type: Add
+      message: >-
+        Added a consumable CPR training manual and a makeshift .45-70 Gov
+        revolver.
+    - type: Remove
+      message: >-
+        Removed direct gun and ammunition choices from Wastelander weapon
+        loadouts; faction choices remain unchanged.
+  id: 6531
+  time: '2026-10-19T06:22:24.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/50

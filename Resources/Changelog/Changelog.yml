@@ -12548,3 +12548,14 @@ Entries:
   id: 6531
   time: '2026-10-19T06:22:24.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/50
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Lowered the internal-bleeding threshold so ordinary cuts can cause
+        internal injuries.
+    - type: Add
+      message: Internal bleeding now gives immediate pain feedback when it starts.
+  id: 6532
+  time: '2026-10-19T21:15:46.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/54

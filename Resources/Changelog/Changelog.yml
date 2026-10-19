@@ -12505,3 +12505,18 @@ Entries:
   id: 6528
   time: '2026-10-19T06:21:36.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/47
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added player fractures, internal bleeding, organ injuries, and surgical
+        repairs.
+    - type: Add
+      message: Added amputation perks and cane support for one disabled or missing leg.
+    - type: Tweak
+      message: >-
+        Added gradual injury recovery, improved medical scanner readouts, and
+        extended player corpse rot delay to one hour.
+  id: 6529
+  time: '2026-10-19T06:21:55.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/48

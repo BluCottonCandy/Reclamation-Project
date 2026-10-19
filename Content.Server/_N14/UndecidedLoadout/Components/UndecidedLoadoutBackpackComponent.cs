@@ -18,6 +18,10 @@ public sealed partial class UndecidedLoadoutBackpackComponent : Component
     [DataField]
     public List<ProtoId<UndecidedLoadoutBackpackSetPrototype>> PossibleSets = new();
 
+    /// <summary>Number of distinct sets required before redeeming this kit.</summary>
+    [DataField]
+    public int MaxSelectedSets = 1;
+
     [DataField]
     public List<int> SelectedSets = new();
 

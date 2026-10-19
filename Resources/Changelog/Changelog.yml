@@ -12520,3 +12520,14 @@ Entries:
   id: 6529
   time: '2026-10-19T06:21:55.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/48
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Removed caustic protection from crafted Mirelurk shell armor.
+    - type: Fix
+      message: >-
+        Fixed Mirelurk armor side-view alignment, exposed head and foot pixels,
+        and held sprites.
+  id: 6530
+  time: '2026-10-19T06:22:10.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/49

@@ -268,8 +268,11 @@ public sealed partial class TraumaSystem : EntitySystem
     public void AddInternalBleeding(EntityUid uid, float rate)
     {
         if (!TryComp<TraumaBodyComponent>(uid, out var comp)) return;
+        var wasBleeding = comp.InternalBleeding > 0;
         comp.InternalBleeding = Math.Clamp(comp.InternalBleeding + rate, 0, 4);
         Dirty(uid, comp);
+        if (!wasBleeding && comp.InternalBleeding > 0)
+            _popup.PopupEntity(Loc.GetString("trauma-internal-pain"), uid, uid);
     }
 
     private void OnRejuvenate(EntityUid uid, TraumaBodyComponent comp, RejuvenateEvent args)

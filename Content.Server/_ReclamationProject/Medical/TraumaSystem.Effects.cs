@@ -22,9 +22,11 @@ public sealed partial class TraumaSystem
         => Math.Max(CrossInjuryChance(blunt + piercing + slash + other),
             Math.Clamp((blunt * 1.4f + piercing * .2f + slash * .15f - 8f) * .018f, 0, .85f));
 
+    // Lower the penetrating-wound threshold so ordinary knife cuts can roll internal bleeding.
+    // Inputs remain actual post-armor part damage; trivial ticks cannot roll an injury.
     public static float BleedingChance(float blunt, float piercing, float slash, float other = 0)
         => Math.Max(CrossInjuryChance(blunt + piercing + slash + other),
-            Math.Clamp((blunt * .15f + piercing + slash * .8f - 8f) * .018f, 0, .8f));
+            Math.Clamp((blunt * .15f + piercing + slash * .8f - 2f) * .018f, 0, .8f));
 
     public static float OrganChance(float blunt, float piercing, float slash, float other = 0)
         => Math.Max(CrossInjuryChance(blunt + piercing + slash + other),

@@ -12559,3 +12559,12 @@ Entries:
   id: 6532
   time: '2026-10-19T21:15:46.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/54
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Alt-clicking guns now removes their magazines before removing
+        attachments.
+  id: 6533
+  time: '2026-10-19T21:15:58.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/53

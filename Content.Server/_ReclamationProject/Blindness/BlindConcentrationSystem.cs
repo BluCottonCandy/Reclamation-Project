@@ -38,12 +38,31 @@ public sealed class BlindConcentrationSystem : EntitySystem
     private void OnInit(EntityUid uid, BlindConcentrationComponent comp, MapInitEvent args)
     {
         _actions.AddAction(uid, ref comp.Action, "ReclamationActionBlindConcentrate");
-        var blindfold = Spawn("ClothingEyesBlindfold", Transform(uid).Coordinates);
-        if (_inventory.TryGetSlotEntity(uid, "back", out var bag) &&
-            TryComp<StorageComponent>(bag, out var storage) &&
-            _storage.Insert(bag.Value, blindfold, out _, null, storage, false, false))
-            return;
-        _hands.TryPickupAnyHand(uid, blindfold, false, false, false);
+        // Exclusive loadouts delete the default bag and its contents later in this tick.
+        // Wait for equipment selection to finish before creating the one starting blindfold.
+        Timer.Spawn(0, () =>
+        {
+            if (TerminatingOrDeleted(uid) ||
+                !TryComp<BlindConcentrationComponent>(uid, out var current) || current != comp)
+                return;
+            var blindfold = Spawn("ClothingEyesBlindfold", Transform(uid).Coordinates);
+            if (!TryStoreBlindfold(uid, blindfold))
+                _hands.TryPickupAnyHand(uid, blindfold, false, false, false);
+        });
+    }
+
+    private bool TryStoreBlindfold(EntityUid uid, EntityUid blindfold)
+    {
+        var slots = _inventory.GetSlotEnumerator(uid, SlotFlags.BACK);
+        while (slots.MoveNext(out var slot))
+        {
+            if (slot.ContainedEntity is not { } bag || !TryComp<StorageComponent>(bag, out var storage))
+                continue;
+            if (storage.Container.Contains(blindfold) ||
+                _storage.Insert(bag, blindfold, out _, null, storage, false, false))
+                return true;
+        }
+        return false;
     }
 
     private void OnShutdown(EntityUid uid, BlindConcentrationComponent comp, ComponentShutdown args)

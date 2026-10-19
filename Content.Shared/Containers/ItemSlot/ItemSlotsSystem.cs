@@ -117,6 +117,18 @@ namespace Content.Shared.Containers.ItemSlots
             Dirty(uid, itemSlots);
         }
 
+        /// <summary>Changes a slot's interaction priority and synchronizes it to clients.</summary>
+        public void SetPriority(EntityUid uid, string slotId, int priority)
+        {
+            if (!TryComp<ItemSlotsComponent>(uid, out var component)
+                || !TryGetSlot(uid, slotId, out var slot, component)
+                || slot.Priority == priority)
+                return;
+
+            slot.Priority = priority;
+            Dirty(uid, component);
+        }
+
         /// <summary>
         ///     Remove an item slot. This should generally be called whenever a component that added a slot is being
         ///     removed.

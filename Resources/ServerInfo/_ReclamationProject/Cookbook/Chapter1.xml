@@ -283,4 +283,34 @@
 </Box>
 </ColorBox>
 
+<ColorBox Color="#29251D" OutlineColor="#8A713E">
+<Box Orientation="Vertical" Margin="12">
+## Fish from the wastes
+
+Butcher your catch with a knife for raw redfish or whitefish fillets. Both fillets can also be bought through wasteland traders. Heat the fillets on a cooking fire until cooked, then use the steaks in the fish dishes listed in Chapters 04 and 05.
+
+[bold]Boiling needs water:[/bold] A radscorpion leg requires 15 units of water in a compatible cooking machine. A dry fire will not boil it.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Redfish steak
+
+[bold]Ingredients:[/bold] 1 x raw red fish.
+
+[bold]Cook:[/bold] Heat on a cooking fire until cooked (above 305 K).
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Whitefish steak
+
+[bold]Ingredients:[/bold] 1 x raw white fish.
+
+[bold]Cook:[/bold] Heat on a cooking fire until cooked (above 305 K).
+</Box>
+</ColorBox>
+
 </Document>

@@ -99,10 +99,10 @@ public sealed class CookbookTests
                              @"## ([^\r\n]+)\s+\[bold\]Ingredients:\[/bold\] ([^\r\n]+)\s+\[bold\]Cook:\[/bold\] ([^\r\n]+)"))
                     recipes.Add(string.Join("|", match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value));
             }
-            Assert.That(recipes.Count, Is.EqualTo(129));
+            Assert.That(recipes.Count, Is.EqualTo(136));
             // Snapshot of the copied recipes, deliberately independent of future guidebook changes.
             Assert.That(Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join("\n", recipes)))),
-                Is.EqualTo("48D8F585B2D8ECB36A1B7EED7604C754279C24FDE3D07FA43B1FAEF45C21EDF5"));
+                Is.EqualTo("56B53A188CDF92614D41F40D4524427CDA223A7A8C6960CA0EDD50B429005D6C"));
 
             var use = new UseInHandEvent(book);
             entities.EventBus.RaiseLocalEvent(book, use);

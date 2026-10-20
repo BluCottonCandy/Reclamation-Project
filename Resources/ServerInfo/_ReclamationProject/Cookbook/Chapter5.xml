@@ -113,4 +113,24 @@
 </Box>
 </ColorBox>
 
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Fish pie (whitefish)
+
+[bold]Ingredients:[/bold] 1 x wild razorgrain + 1 x whitefish steak + 1 x wild onion + 1 x wild tato.
+
+[bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Fish pie (redfish)
+
+[bold]Ingredients:[/bold] 1 x wild razorgrain + 1 x redfish steak + 1 x wild onion + 1 x wild tato.
+
+[bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+
 </Document>

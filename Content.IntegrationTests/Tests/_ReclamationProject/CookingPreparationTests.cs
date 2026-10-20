@@ -50,18 +50,19 @@ public sealed class CookingPreparationTests
     }
 
     [Test]
-    public async Task ButcheredIguanaDropsItsOwnMeatAndAnimalEyes()
+    public async Task ButcheredIguanaDropsItsOwnMeatEyesAndBrain()
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
         var em = pair.Server.ResolveDependency<IEntityManager>();
-        EntityUid user = default, animal = default, eyes = default;
+        EntityUid user = default, animal = default, eyes = default, brain = default;
         await pair.Server.WaitAssertion(() =>
         {
             user = em.SpawnEntity("MobHuman", map.GridCoords);
             var knife = em.SpawnEntity("KitchenKnife", map.GridCoords);
             Assert.That(em.System<SharedHandsSystem>().TryPickup(user, knife), Is.True);
             animal = em.SpawnEntity("N14MobIguana", map.GridCoords);
+            brain = em.System<BodySystem>().GetBodyOrgans(animal).Single(organ => em.GetComponent<MetaDataComponent>(organ.Id).EntityPrototype?.ID == "OrganAnimalBrain").Id;
             eyes = em.System<BodySystem>().GetBodyOrgans(animal).Single(organ => em.GetComponent<MetaDataComponent>(organ.Id).EntityPrototype?.ID == "OrganAnimalEyes").Id;
             em.System<DamageableSystem>().TryChangeDamage(animal, new DamageSpecifier { DamageDict = new() { ["Blunt"] = 100 } }, ignoreResistances: true, doPartDamage: false, canSever: false);
             var ev = new AfterInteractEvent(user, knife, animal, map.GridCoords, true);
@@ -75,7 +76,29 @@ public sealed class CookingPreparationTests
             Assert.That(em.EntityQuery<MetaDataComponent>().Any(meta => meta.EntityPrototype?.ID == "N14FoodMeatIguana"), Is.True);
             Assert.That(em.EntityExists(eyes), Is.True);
             Assert.That(em.GetComponent<OrganComponent>(eyes).Body, Is.Null);
+            Assert.That(em.EntityExists(brain), Is.True);
+            Assert.That(em.GetComponent<OrganComponent>(brain).Body, Is.Null);
             em.DeleteEntity(user);
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task HumanAppendixExistsAndCanBeRemovedForCooking()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var human = em.SpawnEntity("MobHuman", map.GridCoords);
+            var body = em.System<BodySystem>();
+            var appendix = body.GetBodyOrgans(human).Single(organ => em.HasComponent<AppendixComponent>(organ.Id)).Id;
+            Assert.That(em.GetComponent<OrganComponent>(appendix).SlotId, Is.EqualTo("appendix"));
+            Assert.That(body.RemoveOrgan(appendix), Is.True);
+            Assert.That(em.GetComponent<OrganComponent>(appendix).Body, Is.Null);
+            em.DeleteEntity(appendix);
+            em.DeleteEntity(human);
         });
         await pair.CleanReturnAsync();
     }

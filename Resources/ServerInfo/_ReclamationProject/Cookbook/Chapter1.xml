@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 01[/color]
 
+<CookbookRecipe Search="Cooked irradiated meat 1 x raw irradiated meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked irradiated meat
@@ -12,7 +13,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked brahmin steak 1 x raw brahmin steak.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked brahmin steak
@@ -22,7 +25,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked brahmin cutlet 1 x raw brahmin cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked brahmin cutlet
@@ -32,7 +37,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked bighorner steak 1 x raw bighorner steak.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked bighorner steak
@@ -42,7 +49,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked bighorner cutlet 1 x raw bighorner cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked bighorner cutlet
@@ -52,7 +61,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radstag steak 1 x raw radstag steak.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radstag steak
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radstag cutlet 1 x raw radstag cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radstag cutlet
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked gecko steak 1 x raw gecko meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked gecko steak
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked yao-guai steak 1 x raw Yao Guai meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked yao-guai steak
@@ -92,7 +109,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked yao-guai cutlet 1 x raw yao-guai cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked yao-guai cutlet
@@ -102,7 +121,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radscorpion steak 1 x raw radscorpion meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radscorpion steak
@@ -112,7 +133,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radscorpion cutlet 1 x raw radscorpion cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radscorpion cutlet
@@ -122,7 +145,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Boiled radscorpion leg 1 x raw radscorpion leg + 15u water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Boiled radscorpion leg
@@ -132,7 +157,9 @@
 [bold]Cook:[/bold] 20 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked mirelurk claw 1 x raw mirelurk claw.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked mirelurk claw
@@ -142,7 +169,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radlurk claw 1 x raw radlurk claw.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radlurk claw
@@ -152,7 +181,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radroach fillet 1 x raw radroach fillet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radroach fillet
@@ -162,7 +193,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radhog meat 1 x raw radhog meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radhog meat
@@ -172,7 +205,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radhog cutlet 1 x raw radhog cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radhog cutlet
@@ -182,7 +217,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked pigrat meat 1 x raw pigrat meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked pigrat meat
@@ -192,7 +229,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked fire gecko steak 1 x raw fire gecko meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked fire gecko steak
@@ -202,7 +241,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked golden gecko steak 1 x raw golden gecko meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked golden gecko steak
@@ -212,7 +253,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked iguana 1 x raw iguana.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked iguana
@@ -222,7 +265,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radchicken meat 1 x raw radchicken meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radchicken meat
@@ -232,7 +277,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked radchicken cutlet 1 x raw radchicken cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked radchicken cutlet
@@ -242,7 +289,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked human meat 1 x raw human meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked human meat
@@ -252,7 +301,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked human cutlet 1 x raw human cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked human cutlet
@@ -262,7 +313,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked supermutant meat 1 x raw supermutant meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked supermutant meat
@@ -272,7 +325,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked supermutant cutlet 1 x raw supermutant cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked supermutant cutlet
@@ -282,6 +337,7 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
 <ColorBox Color="#29251D" OutlineColor="#8A713E">
 <Box Orientation="Vertical" Margin="12">
@@ -293,6 +349,7 @@ Butcher your catch with a knife for raw redfish or whitefish fillets. Both fille
 </Box>
 </ColorBox>
 
+<CookbookRecipe Search="Redfish steak 1 x raw red fish.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Redfish steak
@@ -302,7 +359,9 @@ Butcher your catch with a knife for raw redfish or whitefish fillets. Both fille
 [bold]Cook:[/bold] Heat on a cooking fire until cooked (above 305 K).
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Whitefish steak 1 x raw white fish.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Whitefish steak
@@ -312,5 +371,6 @@ Butcher your catch with a knife for raw redfish or whitefish fillets. Both fille
 [bold]Cook:[/bold] Heat on a cooking fire until cooked (above 305 K).
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
 </Document>

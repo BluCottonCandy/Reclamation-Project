@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Content.Client._ReclamationProject.Cookbook;
 using Content.Client.Guidebook;
+using Content.Client.UserInterface.ControlExtensions;
 using Content.Client.Guidebook.Components;
 using Content.Client.Guidebook.Richtext;
 using Content.Shared._ReclamationProject.Cookbook;
@@ -17,6 +18,7 @@ using Content.Shared.Interaction.Events;
 using Robust.Shared.ContentPack;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
+using Robust.Client.UserInterface.Controls;
 
 namespace Content.IntegrationTests.Tests._ReclamationProject;
 
@@ -95,6 +97,24 @@ public sealed class CookbookTests
                 var text = reader.ReadToEnd();
                 using var document = new Document();
                 Assert.That(parser.TryAddMarkup(document, text), Is.True, chapter.Text.ToString());
+                Assert.That(text, Does.Not.Contain("â"), chapter.Text.ToString());
+                var cards = document.GetSearchableControls().OfType<CookbookRecipe>().ToArray();
+                var recipeCount = Regex.Matches(text, "<CookbookRecipe ").Count;
+                Assert.That(cards.Length, Is.EqualTo(recipeCount));
+                foreach (var card in cards)
+                {
+                    card.SetHiddenState(true, "unlikely-no-recipe-match-123");
+                    Assert.That(card.Visible, Is.False);
+                    card.SetHiddenState(true, "");
+                    Assert.That(card.Visible, Is.True);
+                }
+                if (cards.Any(card => card.CheckMatchesSearch("brain burger")))
+                {
+                    foreach (var card in cards)
+                        card.SetHiddenState(true, "BrAiN BuRgEr");
+                    Assert.That(cards.Count(card => card.Visible), Is.EqualTo(1));
+                    Assert.That(cards.Any(card => card.CheckMatchesSearch("animal or humanoid brain")), Is.True);
+                }
                 foreach (Match match in Regex.Matches(text,
                              @"## ([^\r\n]+)\s+\[bold\]Ingredients:\[/bold\] ([^\r\n]+)\s+\[bold\]Cook:\[/bold\] ([^\r\n]+)"))
                     recipes.Add(string.Join("|", match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value));
@@ -116,6 +136,17 @@ public sealed class CookbookTests
             {
                 system.Window.HandleClick(id);
                 Assert.That(system.Window.LastEntry.Id, Is.EqualTo(id));
+                var search = system.Window.GetControlOfType<LineEdit>(true).Single();
+                var cards = system.Window.GetSearchableControls().OfType<CookbookRecipe>().ToArray();
+                search.SetText("no-dish-matches-this-query-123", invokeEvent: true);
+                Assert.That(cards.All(card => !card.Visible), Is.True);
+                search.SetText("", invokeEvent: true);
+                Assert.That(cards.All(card => card.Visible), Is.True);
+                if (cards.Any(card => card.CheckMatchesSearch("brain burger")))
+                {
+                    search.SetText("BrAiN BuRgEr", invokeEvent: true);
+                    Assert.That(cards.Count(card => card.Visible), Is.EqualTo(1));
+                }
             }
             system.Window.Close();
         });

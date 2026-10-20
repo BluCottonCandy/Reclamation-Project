@@ -56,7 +56,7 @@ public sealed class CookbookSystem : EntitySystem
             Name = pair.Value.Name,
             Text = pair.Value.Text,
             Priority = pair.Value.Order,
-            FilterEnabled = true,
+            FilterEnabled = pair.Value.Order != 0,
         });
         Window ??= new GuidebookWindow { Title = Loc.GetString("cookbook-title") };
         Window.UpdateGuides(entries, selected: entries.OrderBy(pair => pair.Value.Priority).First().Key);

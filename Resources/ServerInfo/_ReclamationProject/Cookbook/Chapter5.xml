@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 05[/color]
 
+<CookbookRecipe Search="Mutfruit pie 1 x pie dough + 3 x wild mutfruit + 1 x pie tin.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Mutfruit pie
@@ -12,7 +13,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Baklava 1 x pie dough + 1 x wild pinyon nuts + 1 x pie tin.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Baklava
@@ -22,7 +25,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Blackberry pie 1 x pie dough + 3 x wild blackberries + 1 x pie tin.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Blackberry pie
@@ -32,7 +37,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Meat pie 1 x pie dough + 3 x raw irradiated meat + 1 x pie tin.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Meat pie
@@ -42,7 +49,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cuban carp 1 x dough + 2 x cheese wedge + 1 x wild glowpepper + 2 x raw redfish or whitefish fillet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cuban carp
@@ -52,7 +61,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Sashimi 2 x raw redfish or whitefish fillet + 1u table salt.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Sashimi
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Loaded baked potato 1 x wild tato + 1 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Loaded baked potato
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Fries 1 x wild tato + 5u table salt.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Fries
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cheesy fries 1 x wild tato + 1 x cheese wedge + 5u table salt.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cheesy fries
@@ -92,7 +109,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Carrot fries 1 x wild carrot + 5u table salt.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Carrot fries
@@ -102,7 +121,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Food snack popcorn 1 x wild maize.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Food snack popcorn
@@ -112,7 +133,9 @@
 [bold]Cook:[/bold] 20 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Fish pie (whitefish) 1 x wild razorgrain + 1 x whitefish steak + 1 x wild onion + 1 x wild tato.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Fish pie (whitefish)
@@ -122,7 +145,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Fish pie (redfish) 1 x wild razorgrain + 1 x redfish steak + 1 x wild onion + 1 x wild tato.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Fish pie (redfish)
@@ -132,5 +157,6 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
 </Document>

@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 03[/color]
 
+<CookbookRecipe Search="Banana bread 1 x dough + 1 x banana.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Banana bread
@@ -12,7 +13,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cornbread 1 x cornmeal dough.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cornbread
@@ -22,7 +25,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cornbread muffin 1 x cornmeal dough slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cornbread muffin
@@ -32,7 +37,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cream cheese bread 1 x dough + 2 x cheese wedge + 5u brahmin milk.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cream cheese bread
@@ -42,7 +49,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Meat bread 1 x dough + 2 x raw rad cutlet + 2 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Meat bread
@@ -52,7 +61,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Bread 1 x dough.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Bread
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Radroll 1 x dough + 1 x raw radroach fillet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Radroll
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Scorpion roll 1 x dough + 2 x raw radscorpion leg + 2 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Scorpion roll
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Tofu bread 1 x dough + 1 x tofu.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Tofu bread
@@ -92,7 +109,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cooked food bread baguette 1 x dough + 5u table salt + 5u black pepper.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cooked food bread baguette
@@ -102,7 +121,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Buttered toast 1 x bread slice + 1 x stick of butter.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Buttered toast
@@ -112,7 +133,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="French toast 1 x bread slice + 5u brahmin milk + 12u raw egg.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## French toast
@@ -122,7 +145,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Two slice 2 x bread slice + 5u wine.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Two slice
@@ -132,7 +157,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Onion rings 1 x red onion slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Onion rings
@@ -142,7 +169,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Margherita pizza 1 x flat dough + 1 x cheese wedge + 4 x wild tato.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Margherita pizza
@@ -152,7 +181,9 @@
 [bold]Cook:[/bold] 30 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Mushroom pizza 1 x flat dough + 5 x cave fungus.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Mushroom pizza
@@ -162,7 +193,9 @@
 [bold]Cook:[/bold] 30 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Meat pizza 1 x flat dough + 3 x raw irradiated meat + 1 x cheese wedge + 1 x wild tato.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Meat pizza
@@ -172,7 +205,9 @@
 [bold]Cook:[/bold] 30 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Vegetable pizza 1 x flat dough + 1 x wild onion + 1 x wild carrot + 1 x wild maize + 1 x wild tato.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Vegetable pizza
@@ -182,6 +217,7 @@
 [bold]Cook:[/bold] 30 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
 <ColorBox Color="#29251D" OutlineColor="#8A713E">
 <Box Orientation="Vertical" Margin="12">

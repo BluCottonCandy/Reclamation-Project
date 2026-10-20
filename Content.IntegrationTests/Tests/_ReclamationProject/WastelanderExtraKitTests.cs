@@ -3,11 +3,15 @@ using System.Linq;
 using Content.Server.Storage.Components;
 using Content.Server.UndecidedLoadout.Components;
 using Content.Shared.Armor;
+using Content.Client.Weapons.Ranged.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Item;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Storage;
 using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged;
+using Content.Shared.Weapons.Ranged.Systems;
+using Robust.Client.GameObjects;
 using Content.Shared.Wieldable.Components;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
@@ -33,6 +37,11 @@ public sealed class WastelanderExtraKitTests
             var supplies = EntitySpawnCollection.GetSpawns(em.GetComponent<SpawnItemsOnUseComponent>(doctor).Items);
             Assert.That(supplies.Count(id => id == "N14Stimpak"), Is.EqualTo(2));
             Assert.That(supplies, Has.Count.EqualTo(9));
+            Assert.That(supplies, Does.Contain("N14ClothingBeltUtilityFilled"));
+            var belt = em.SpawnEntity("N14ClothingBeltUtilityFilled", map.GridCoords);
+            Assert.That(em.GetComponent<StorageComponent>(belt).Container.ContainedEntities
+                .Select(uid => em.GetComponent<MetaDataComponent>(uid).EntityPrototype!.ID),
+                Is.EquivalentTo(new[] { "N14Crowbar", "N14Wrench", "N14Screwdriver", "N14Wirecutter", "N14Welder", "N14Multitool" }));
             var revolver = em.SpawnEntity("N14WeaponRevolver9mm", map.GridCoords);
             var loader = em.SpawnEntity("SpeedLoader9", map.GridCoords);
             var ammo = em.SpawnEntity("MagazineBox9mm", map.GridCoords);
@@ -63,10 +72,12 @@ public sealed class WastelanderExtraKitTests
             Assert.That(seen, Is.EquivalentTo(allowed));
             var roller = em.SpawnEntity("ReclamationWastelanderKitHighRoller", map.GridCoords);
             var rollerItems = EntitySpawnCollection.GetSpawns(em.GetComponent<SpawnItemsOnUseComponent>(roller).Items);
-            Assert.That(rollerItems, Is.EquivalentTo(new[] { "ReclamationWeaponPistol45ColtPristine", "MagazineBox45", "ReclamationClothingUniformHighRoller", "ClothingHeadHatFedoraGrey" }));
+            Assert.That(rollerItems, Is.EquivalentTo(new[] { "ReclamationWeaponPistol45ColtPristine", "MagazineBox45", "N14ClothingUniformJumpsuitCheckered", "ReclamationClothingOuterReinforcedLeatherVest", "ClothingShoesBootsCowboyWhite", "ClothingHeadHatFedoraGrey" }));
             foreach (var id in supplies.Concat(rollerItems).Distinct())
                 Assert.That(prototypes.HasIndex<EntityPrototype>(id), Is.True, id);
-            var suit = em.SpawnEntity("ReclamationClothingUniformHighRoller", map.GridCoords);
+            var suit = em.SpawnEntity("ReclamationClothingOuterReinforcedLeatherVest", map.GridCoords);
+            var uniform = em.SpawnEntity("N14ClothingUniformJumpsuitCheckered", map.GridCoords);
+            Assert.That(em.HasComponent<ArmorComponent>(uniform), Is.False);
             var armor = em.GetComponent<ArmorComponent>(suit);
             foreach (var type in new[] { "Blunt", "Slash", "Piercing" })
                 Assert.That((float) armor.Modifiers.Coefficients[type], Is.EqualTo(0.75f));
@@ -112,6 +123,52 @@ public sealed class WastelanderExtraKitTests
             Assert.That(em.System<SharedSolutionContainerSystem>().TryGetSolution(compost, "sack", out _, out var solution), Is.True);
             Assert.That(solution!.Volume.Float(), Is.EqualTo(100f));
             Assert.That(solution.GetTotalPrototypeQuantity("Fertilizer").Float(), Is.EqualTo(100f));
+        });
+        await pair.CleanReturnAsync();
+    }
+    [Test]
+    public async Task MariaMagazineDoesNotCoverTheSlideState()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        EntityUid user = default;
+        var guns = new List<EntityUid>();
+        var network = new List<NetEntity>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            user = server.SpawnEntity("MobHuman", map.GridCoords);
+            foreach (var id in new[] { "N14WeaponPistolMaria", "ReclamationWeaponPistol45ColtPristine" })
+            {
+                var gun = server.SpawnEntity(id, map.GridCoords);
+                guns.Add(gun);
+                network.Add(server.GetNetEntity(gun));
+                server.System<SharedGunSystem>().SetBoltClosed(gun, server.GetComponent<ChamberMagazineAmmoProviderComponent>(gun), true, user);
+            }
+        });
+        await pair.RunTicksSync(20);
+        await pair.Client.WaitAssertion(() =>
+        {
+            var client = pair.Client.ResolveDependency<IEntityManager>();
+            foreach (var net in network)
+            {
+                var gun = client.GetEntity(net);
+                var sprite = client.GetComponent<SpriteComponent>(gun);
+                Assert.That(sprite.LayerMapTryGet(GunVisualLayers.Mag, out _), Is.False);
+                Assert.That(sprite[GunVisualLayers.Base].RsiState.ToString(), Is.EqualTo("base"));
+            }
+        });
+        await pair.Server.WaitAssertion(() =>
+        {
+            foreach (var gun in guns)
+                server.System<SharedGunSystem>().SetBoltClosed(gun, server.GetComponent<ChamberMagazineAmmoProviderComponent>(gun), false, user);
+        });
+        await pair.RunTicksSync(20);
+        await pair.Client.WaitAssertion(() =>
+        {
+            var client = pair.Client.ResolveDependency<IEntityManager>();
+            foreach (var net in network)
+                Assert.That(client.GetComponent<SpriteComponent>(client.GetEntity(net))[GunVisualLayers.Base].RsiState.ToString(), Is.EqualTo("bolt-open"));
         });
         await pair.CleanReturnAsync();
     }

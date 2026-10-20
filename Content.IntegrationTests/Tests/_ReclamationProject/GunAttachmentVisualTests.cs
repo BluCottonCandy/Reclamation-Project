@@ -101,6 +101,10 @@ public sealed class GunAttachmentVisualTests
     [TestCase("N14WeaponPistol45Colt")]
     [TestCase("N14WeaponPistol10mmPipe")]
     [TestCase("N14WeaponPistol10mm", true)]
+    [TestCase("MinutemenWeaponLaserMusket", false)]
+    [TestCase("MinutemenWeaponLaserMusket", true)]
+    [TestCase("MinutemenWeaponLaserShotgun", false)]
+    [TestCase("MinutemenWeaponLaserShotgun", true)]
     public async Task HeldLaserStaysFlushWithMuzzleInEveryDirectionAndWieldedPose(string prototype, bool leftHand = false)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
@@ -156,6 +160,24 @@ public sealed class GunAttachmentVisualTests
                             .Any(layer => layer.Visible && layer.ActualRsi?.Path.ToString().EndsWith("/laser.rsi") == true),
                             Is.False, "Do not expose floating attachments when the muzzle is hidden behind the body.");
                         continue;
+                    }
+                    if (prototype is "MinutemenWeaponLaserMusket" or "MinutemenWeaponLaserShotgun")
+                    {
+                        // Independently checked barrel ends on the unchanged source artwork.
+                        // RSI directions: south, north, east, west; each hand has its own frames.
+                        var sourceDirection = forced ? 2 : (int) SpriteComponent.Layer.GetDirection(main.ActualState!.RsiDirections, angle);
+                        var state = main.State.ToString();
+                        var shotgun = prototype == "MinutemenWeaponLaserShotgun";
+                        var expectedRight = state switch
+                        {
+                            "inhand-left" => shotgun ? new[] { false, true, false, true } : new[] { true, true, true, true },
+                            "inhand-right" => shotgun ? new[] { true, false, false, true } : new[] { true, false, false, false },
+                            "wielded-inhand-left" => shotgun ? new[] { false, false, false, false } : new[] { true, false, true, true },
+                            "wielded-inhand-right" => shotgun ? new[] { true, false, true, true } : new[] { true, true, true, true },
+                            _ => throw new System.InvalidOperationException($"Unexpected held state {state}")
+                        };
+                        Assert.That(mount.Forward.X * (expectedRight[sourceDirection] ? 1 : -1), Is.GreaterThan(0),
+                            $"{prototype}, {state}, source direction {sourceDirection}: attachment must face the barrel, not the stock.");
                     }
                     var laser = sprite.AllLayers.OfType<SpriteComponent.Layer>()
                         .First(layer => layer.Visible && layer.ActualRsi?.Path.ToString().EndsWith("/laser.rsi") == true);
@@ -294,6 +316,10 @@ public sealed class GunAttachmentVisualTests
     [TestCase("N14WeaponRifle556Pipe", true)]
     [TestCase("N14WeaponSniperHunting", false)]
     [TestCase("N14WeaponSniperHunting", true)]
+    [TestCase("MinutemenWeaponLaserMusket", false)]
+    [TestCase("MinutemenWeaponLaserMusket", true)]
+    [TestCase("MinutemenWeaponLaserShotgun", false)]
+    [TestCase("MinutemenWeaponLaserShotgun", true)]
     public async Task AttachmentsNeverChangeNormalHeldGunLayers(string prototype, bool leftHand)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });

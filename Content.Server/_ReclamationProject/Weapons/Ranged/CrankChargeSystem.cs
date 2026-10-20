@@ -4,6 +4,7 @@ using Content.Shared.Weapons.Ranged.Events;
 // #Reclamation Project Add - Server half of crank-charged guns (Minutemen laser musket).
 // Cell charge lives in the server-only BatteryComponent, so paying for a crank happens here.
 using System.Diagnostics.CodeAnalysis;
+using Robust.Shared.Containers;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._ReclamationProject.Weapons.Ranged;
@@ -21,6 +22,42 @@ public sealed partial class CrankChargeSystem : SharedCrankChargeSystem
     {
         base.Initialize();
         SubscribeLocalEvent<CrankChargeComponent, AmmoShotEvent>(OnProjectilesFired);
+        SubscribeLocalEvent<CrankChargeComponent, MapInitEvent>(OnCrankMapInit);
+        SubscribeLocalEvent<CrankChargeComponent, EntInsertedIntoContainerMessage>(OnCellInserted);
+        SubscribeLocalEvent<CrankChargeComponent, EntRemovedFromContainerMessage>(OnCellRemoved);
+        SubscribeLocalEvent<BatteryComponent, ChargeChangedEvent>(OnCellChargeChanged);
+    }
+
+    [Dependency] private readonly SharedContainerSystem _containers = default!;
+
+    private void OnCrankMapInit(EntityUid uid, CrankChargeComponent comp, MapInitEvent args)
+        => UpdateEmptyCell(uid, comp);
+
+    private void OnCellInserted(EntityUid uid, CrankChargeComponent comp, EntInsertedIntoContainerMessage args)
+    {
+        if (args.Container.ID == MagazineSlot) UpdateEmptyCell(uid, comp);
+    }
+
+    private void OnCellRemoved(EntityUid uid, CrankChargeComponent comp, EntRemovedFromContainerMessage args)
+    {
+        if (args.Container.ID == MagazineSlot) UpdateEmptyCell(uid, comp);
+    }
+
+    private void OnCellChargeChanged(EntityUid uid, BatteryComponent comp, ref ChargeChangedEvent args)
+    {
+        if (_containers.TryGetContainingContainer((uid, null, null), out var container) &&
+            container.ID == MagazineSlot && TryComp<CrankChargeComponent>(container.Owner, out var crank))
+            UpdateEmptyCell(container.Owner, crank);
+    }
+
+    private void UpdateEmptyCell(EntityUid uid, CrankChargeComponent comp)
+    {
+        var empty = _itemSlots.GetItemOrNull(uid, MagazineSlot) is not { } cell ||
+            !TryComp<BatteryComponent>(cell, out var battery) || battery.CurrentCharge <= 0 ||
+            (TryComp<HitscanBatteryAmmoProviderComponent>(cell, out var provider) && battery.CurrentCharge < provider.FireCost);
+        if (comp.CellEmpty == empty) return;
+        comp.CellEmpty = empty;
+        Dirty(uid, comp);
     }
 
     private void OnProjectilesFired(EntityUid uid, CrankChargeComponent comp, AmmoShotEvent args)

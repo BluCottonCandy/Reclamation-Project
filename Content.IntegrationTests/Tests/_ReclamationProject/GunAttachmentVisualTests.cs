@@ -17,7 +17,7 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class GunAttachmentVisualTests
 {
-    [TestCase("ReclamationGunSuppressor", "gun_muzzle", 0, "N14WeaponSMG10mm")]
+    [TestCase("ReclamationGunSuppressor", "gun_muzzle", 0, "N14WeaponPistol10mm")]
     [TestCase("N14CombatKnife", "gun_muzzle", 0, "N14WeaponRifle556R91")]
     [TestCase("ReclamationGunGrip", "gun_grip", 1, "N14WeaponSMG10mm")]
     [TestCase("ReclamationGunBipod", "gun_grip", 1, "N14WeaponRifle556R91")]

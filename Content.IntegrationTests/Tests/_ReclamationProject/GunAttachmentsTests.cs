@@ -16,7 +16,7 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class GunAttachmentsTests
 {
-    [TestCase("N14WeaponRifle556R91")]
+    [TestCase("N14WeaponPistol9mm")]
     [TestCase("N14WeaponPistol10mm")]
     public async Task SuppressorChangesSoundAndFlashWithoutChangingDamageOrStacking(string prototype)
     {
@@ -61,6 +61,11 @@ public sealed class GunAttachmentsTests
 
     [TestCase("N14WeaponLaserRifle")]
     [TestCase("N14WeaponLaserPistol")]
+    [TestCase("N14WeaponRifle556R91")]
+    [TestCase("N14WeaponSMG10mm")]
+    [TestCase("N14WeaponShotgun")]
+    [TestCase("N14WeaponRevolver9mm")]
+    [TestCase("N14WeaponRifle556CarbineOldMakeshift")]
     public async Task EnergyWeaponsRejectSuppressors(string prototype)
     {
         await using var pair = await PoolManager.GetServerClient();
@@ -172,7 +177,7 @@ public sealed class GunAttachmentsTests
             Assert.That(slots.TryInsert(gun, GunAttachmentsSystem.GripSlotId, grip, null), Is.True);
             Assert.That(slots.TryInsert(gun, GunAttachmentsSystem.LightSlotId, light, null), Is.True);
             Assert.That(slots.TryEject(gun, GunAttachmentsSystem.MuzzleSlotId, null, out _), Is.True);
-            Assert.That(slots.TryInsert(gun, GunAttachmentsSystem.MuzzleSlotId, suppressor, null), Is.True);
+            Assert.That(slots.TryInsert(gun, GunAttachmentsSystem.MuzzleSlotId, suppressor, null), Is.False);
             Assert.That(entities.GetComponent<GunAttachmentsComponent>(gun).Applied, Is.False);
             entities.DeleteEntity(gun);
             entities.DeleteEntity(knife);

@@ -20,6 +20,10 @@ public sealed partial class CrankChargeComponent : Component
     [DataField, AutoNetworkedField]
     public int Charges;
 
+    /// <summary>Exact empty-cell state replicated for Alt-click verb selection.</summary>
+    [DataField, AutoNetworkedField]
+    public bool CellEmpty;
+
     /// <summary>
     /// Hard cap on cranks.
     /// </summary>

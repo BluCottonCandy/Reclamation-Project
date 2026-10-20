@@ -3,6 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared.Alert;
+using Content.Server.Weapons.Melee;
+using Content.Shared.CombatMode;
 using Content.Shared.Examine;
 using Content.Shared.Verbs;
 using Content.Shared.Blocking;
@@ -190,7 +192,7 @@ public sealed class PaladinShieldTest
             var hands = entities.System<SharedHandsSystem>();
             Assert.That(hands.TryPickup(user, shield), Is.True);
             Assert.That(entities.GetComponent<MeleeWeaponComponent>(shield).Damage.GetTotal().Float(), Is.EqualTo(meleeDamage));
-            Assert.That(entities.GetComponent<MeleeWeaponComponent>(shield).AttackRate, Is.EqualTo(0.5f));
+            Assert.That(entities.GetComponent<MeleeWeaponComponent>(shield).AttackRate, Is.EqualTo(2f));
             Assert.That(entities.System<PaladinShieldProtectionSystem>().GetProtection(user), Is.EqualTo(coefficient));
             var damage = entities.System<DamageableSystem>();
             foreach (var type in new[] { "Blunt", "Slash", "Piercing" })
@@ -252,7 +254,7 @@ public sealed class PaladinShieldTest
             var user = em.SpawnEntity("MobHuman", map.GridCoords);
             var shield = em.SpawnEntity(prototype, map.GridCoords);
             Assert.That(em.System<SharedHandsSystem>().TryPickup(user, shield), Is.True);
-            Assert.That(em.GetComponent<MeleeWeaponComponent>(shield).AttackRate, Is.EqualTo(0.5f));
+            Assert.That(em.GetComponent<MeleeWeaponComponent>(shield).AttackRate, Is.EqualTo(2f));
             em.GetComponent<StaminaComponent>(user).CritThreshold = 500;
             em.System<StaminaSystem>().TakeStaminaDamage(user, 100);
             Assert.That(em.GetComponent<StaminaComponent>(user).StaminaDamage, Is.EqualTo(expectedDamage));
@@ -269,4 +271,47 @@ public sealed class PaladinShieldTest
         await pair.CleanReturnAsync();
     }
 
+    [TestCase("ReclamationPaladinShield", false)]
+    [TestCase("ReclamationPaladinShield", true)]
+    [TestCase("ReclamationPaladinGreatshield", false)]
+    [TestCase("ReclamationPaladinGreatshield", true)]
+    public async Task RealSwingsTakeTwiceTheOriginalCooldown(string prototype, bool wide)
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var em = pair.Server.ResolveDependency<IEntityManager>();
+            var user = em.SpawnEntity("MobHuman", map.GridCoords);
+            var target = em.SpawnEntity("MobHuman", map.GridCoords.Offset(new Vector2(.8f, 0)));
+            em.EnsureComponent<GodmodeComponent>(target);
+            var shield = em.SpawnEntity(prototype, map.GridCoords);
+            Assert.That(em.System<SharedHandsSystem>().TryPickup(user, shield), Is.True);
+            em.System<SharedCombatModeSystem>().SetInCombatMode(user, true);
+            var weapon = em.GetComponent<MeleeWeaponComponent>(shield);
+            var configuredInterval = weapon.AttackRate;
+            var melee = em.System<MeleeWeaponSystem>();
+            var timing = pair.Server.ResolveDependency<IGameTiming>();
+            bool Swing() => wide ? melee.AttemptWideAttack(user, shield, weapon, target)
+                : melee.AttemptLightAttack(user, shield, weapon, target);
+
+            // Exercise the real attack scheduling at the former one-second setting.
+            weapon.AttackRate = 1f;
+            weapon.NextAttack = TimeSpan.Zero;
+            Assert.That(Swing(), Is.True);
+            var formerCooldown = weapon.NextAttack - timing.CurTime;
+            Assert.That(formerCooldown, Is.GreaterThan(TimeSpan.Zero));
+
+            weapon.AttackRate = configuredInterval;
+            weapon.NextAttack = TimeSpan.Zero;
+            Assert.That(Swing(), Is.True);
+            var cooldown = weapon.NextAttack - timing.CurTime;
+            Assert.That(cooldown.TotalSeconds, Is.EqualTo(formerCooldown.TotalSeconds * 2).Within(.001));
+            Assert.That(cooldown.TotalSeconds, Is.EqualTo(wide ? 2.4 : 2).Within(.001));
+            Assert.That(Swing(), Is.False, "A second swing must be rejected until the cooldown expires.");
+            em.DeleteEntity(user);
+            em.DeleteEntity(target);
+        });
+        await pair.CleanReturnAsync();
+    }
 }

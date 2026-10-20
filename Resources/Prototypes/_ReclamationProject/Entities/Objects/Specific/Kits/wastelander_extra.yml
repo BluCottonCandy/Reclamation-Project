@@ -1,0 +1,135 @@
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitBackAlleyDoctor
+  name: Back alley doctor
+  description: "You're more handy than a doctor, but you can still help! Contains a toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingBeltUtility
+    - id: N14JunkAbraxoCleaner
+    - id: N14ClothingHandsGlovesLeather
+    - id: ReclamationBackAlleyClothMask
+    - id: N14Stimpak
+      amount: 2
+    - id: N14WeaponRevolver9mm
+    - id: SpeedLoader9
+    - id: MagazineBox9mm
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetBackAlleyDoctor
+  name: wastelander-kit-backalleydoctor-name
+  description: wastelander-kit-backalleydoctor-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content:
+  - ReclamationWastelanderKitBackAlleyDoctor
+
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitBruiser
+  name: Bruiser
+  description: "You love a good scrap, and you never run from a fight. Contains one random ordinary N14 two-handed melee weapon, one psycho syringe, and one buffout pill."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14Psycho
+    - id: N14BuffoutPill
+    - id: N14BaseBallBat
+      orGroup: melee
+    - id: N14SledgeHammer
+      orGroup: melee
+    - id: N14FireAxe
+      orGroup: melee
+    - id: N14GolfClub
+      orGroup: melee
+    - id: N14WastelandSpear
+      orGroup: melee
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetBruiser
+  name: wastelander-kit-bruiser-name
+  description: wastelander-kit-bruiser-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitBruiser
+
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitHighRoller
+  name: High roller
+  description: "Luck is always on your side, you always make it through! Contains a pristine .45 Colt, one box of .45 ammunition, an armored checkered suit, and a grey fedora."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationWeaponPistol45ColtPristine
+    - id: MagazineBox45
+    - id: ReclamationClothingUniformHighRoller
+    - id: ClothingHeadHatFedoraGrey
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetHighRoller
+  name: wastelander-kit-highroller-name
+  description: wastelander-kit-highroller-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitHighRoller
+
+# Reuses the existing cloth medical-mask art without granting a different kit.
+- type: entity
+  parent: ClothingMaskSterile
+  id: ReclamationBackAlleyClothMask
+  name: cloth mask
+  description: A simple cloth mask for covering your mouth.
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 25
+
+- type: entity
+  parent: N14WeaponPistol45Colt
+  id: ReclamationWeaponPistol45ColtPristine
+  name: pristine .45 Colt
+  description: A pristine pearl-handled handgun chambered in .45.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/maria.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/maria.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/maria.rsi
+
+- type: entity
+  parent: N14ClothingUniformJumpsuitCheckered
+  id: ReclamationClothingUniformHighRoller
+  name: armored checkered suit
+  description: A sharp checkered suit with discreet protective lining.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75

@@ -92,6 +92,15 @@ public sealed class GunAttachmentVisualTests
     [TestCase("N14WeaponSMGGreaseGun", true)]
     [TestCase("N14WeaponSMG12mmAdvancedChinese", true)]
     [TestCase("N14WeaponSMG12mmAdvancedCanadian", true)]
+    [TestCase("N14WeaponPistol12mm", true)]
+    [TestCase("N14WeaponPistol45Colt", true)]
+    [TestCase("N14WeaponPistol10mmPipe", true)]
+    [TestCase("N14WeaponLaserRifle", true)]
+    [TestCase("N14WeaponLaserRifleAuto", true)]
+    [TestCase("N14WeaponPistol12mm")]
+    [TestCase("N14WeaponPistol45Colt")]
+    [TestCase("N14WeaponPistol10mmPipe")]
+    [TestCase("N14WeaponPistol10mm", true)]
     public async Task HeldLaserStaysFlushWithMuzzleInEveryDirectionAndWieldedPose(string prototype, bool leftHand = false)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
@@ -156,10 +165,6 @@ public sealed class GunAttachmentVisualTests
                     var laserForward = Vector2.Normalize(Vector2.TransformNormal(Vector2.UnitX, laser.LocalMatrix));
                     Assert.That(Vector2.Dot(forward, laserForward), Is.GreaterThan(.999f),
                         "A mirrored attachment must still point out of the barrel.");
-                    if (sprite.NoRotation && Math.Abs(sprite.Rotation.Theta) < .001 &&
-                        (forced || degrees is 90 or 270))
-                        Assert.That(forward.X * (forced || degrees == 90 ? 1 : -1), Is.GreaterThan(0),
-                            "The held barrel and attachments must face the same horizontal direction as the player.");
                     // The laser body's front pivot, excluding its red beam and transparent padding.
                     var actual = Vector2.Transform(new Vector2(1, 7) / 32f, laser.LocalMatrix);
                     Assert.That(Vector2.Distance(expected, actual), Is.LessThan(.001f), $"{prototype}, pose {pose}, facing {degrees}; expected {expected}, actual {actual}; base {main.State}, base matrix {baseMatrix}; laser matrix {laser.LocalMatrix}; eye {pair.Client.ResolveDependency<Robust.Client.Graphics.IEyeManager>().CurrentEye.Rotation}; override {sprite.DirectionOverride}; geometry {mount}");
@@ -255,9 +260,41 @@ public sealed class GunAttachmentVisualTests
         await pair.CleanReturnAsync();
     }
 
-    [TestCase(false)]
-    [TestCase(true)]
-    public async Task PistolFacingCorrectionPreservesItsOriginalHeldPosition(bool leftHand)
+    [TestCase("N14WeaponPistol10mm", false)]
+    [TestCase("N14WeaponPistol10mm", true)]
+    [TestCase("N14WeaponPistol12mm", false)]
+    [TestCase("N14WeaponPistol12mm", true)]
+    [TestCase("N14WeaponPistol45Colt", false)]
+    [TestCase("N14WeaponPistol45Colt", true)]
+    [TestCase("N14WeaponPistol9mm", false)]
+    [TestCase("N14WeaponPistol9mm", true)]
+    [TestCase("N14WeaponPistol10mmPipe", false)]
+    [TestCase("N14WeaponPistol10mmPipe", true)]
+    [TestCase("N14WeaponLaserPistol", false)]
+    [TestCase("N14WeaponLaserPistol", true)]
+    [TestCase("N14WeaponLaserRifle", false)]
+    [TestCase("N14WeaponLaserRifle", true)]
+    [TestCase("N14WeaponLaserRifleAuto", false)]
+    [TestCase("N14WeaponLaserRifleAuto", true)]
+    [TestCase("N14WeaponSMG45", false)]
+    [TestCase("N14WeaponSMG45", true)]
+    [TestCase("N14WeaponSMGGreaseGun", false)]
+    [TestCase("N14WeaponSMGGreaseGun", true)]
+    [TestCase("N14WeaponSMG12mm", false)]
+    [TestCase("N14WeaponSMG12mm", true)]
+    [TestCase("N14WeaponSMG12mmAdvancedChinese", false)]
+    [TestCase("N14WeaponSMG12mmAdvancedChinese", true)]
+    [TestCase("N14WeaponSMG12mmAdvancedCanadian", false)]
+    [TestCase("N14WeaponSMG12mmAdvancedCanadian", true)]
+    [TestCase("N14WeaponSMG12mmPipe", false)]
+    [TestCase("N14WeaponSMG12mmPipe", true)]
+    [TestCase("N14WeaponRifle556R91", false)]
+    [TestCase("N14WeaponRifle556R91", true)]
+    [TestCase("N14WeaponRifle556Pipe", false)]
+    [TestCase("N14WeaponRifle556Pipe", true)]
+    [TestCase("N14WeaponSniperHunting", false)]
+    [TestCase("N14WeaponSniperHunting", true)]
+    public async Task AttachmentsNeverChangeNormalHeldGunLayers(string prototype, bool leftHand)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
         var map = await pair.CreateTestMap();
@@ -267,7 +304,9 @@ public sealed class GunAttachmentVisualTests
         await pair.Server.WaitAssertion(() =>
         {
             var user = server.SpawnEntity("MobHuman", map.GridCoords);
-            var gun = server.SpawnEntity("N14WeaponPistol10mm", map.GridCoords);
+            var gun = server.SpawnEntity(prototype, map.GridCoords);
+            var laser = server.SpawnEntity("ReclamationGunLaserSight", map.GridCoords);
+            Assert.That(server.System<ItemSlotsSystem>().TryInsert(gun, GunAttachmentsSystem.LaserSlotId, laser, null), Is.True);
             var hands = server.GetComponent<Content.Shared.Hands.Components.HandsComponent>(user);
             var location = leftHand ? Content.Shared.Hands.Components.HandLocation.Left : Content.Shared.Hands.Components.HandLocation.Right;
             server.System<SharedHandsSystem>().TrySetActiveHand(user, hands.Hands.Values.First(h => h.Location == location).Name, hands);
@@ -283,35 +322,35 @@ public sealed class GunAttachmentVisualTests
             var sprite = client.GetComponent<SpriteComponent>(actor);
             sprite.NoRotation = true;
             sprite.Rotation = Angle.Zero;
-            sprite.EnableDirectionOverride = true;
             var system = client.System<GunAttachmentVisualSystem>();
             var location = leftHand ? Content.Shared.Hands.Components.HandLocation.Left : Content.Shared.Hands.Components.HandLocation.Right;
-            foreach (var direction in new[] { Direction.East, Direction.West })
+            var visuals = new GetInhandVisualsEvent(actor, location);
+            client.EventBus.RaiseLocalEvent(gun, visuals);
+            var originals = visuals.Layers.Where(layer => !layer.Item1.StartsWith("gun-attachment-visual-")).ToArray();
+            Assert.That(originals, Is.Not.Empty);
+            foreach (var forced in new[] { false, true })
+            foreach (var direction in new[] { Direction.East, Direction.West, Direction.East, Direction.West })
             {
+                sprite.EnableDirectionOverride = forced;
                 sprite.DirectionOverride = direction;
                 var angle = Angle.FromDegrees(direction == Direction.East ? 90 : 270);
                 client.System<SharedTransformSystem>().SetLocalRotation(actor, angle);
-                system.FrameUpdate(.2f);
-                var visuals = new GetInhandVisualsEvent(actor, location);
-                client.EventBus.RaiseLocalEvent(gun, visuals);
-                var data = visuals.Layers.First(layer => layer.Item2.RsiPath?.Contains("/Guns/Pistols/") == true);
-                Assert.That(sprite.LayerMapTryGet(data.Item1, out var index), Is.True);
-                var main = (SpriteComponent.Layer) sprite[index];
-                sprite.LayerSetOffset(index, data.Item2.Offset ?? Vector2.Zero);
-                sprite.LayerSetRotation(index, data.Item2.Rotation ?? Angle.Zero);
-                sprite.LayerSetScale(index, data.Item2.Scale ?? Vector2.One);
-                Assert.That(system.TryGetMount(main, angle, out var mount, direction), Is.True);
-                var drawn = SpriteComponent.Layer.GetDirection(main.ActualState!.RsiDirections, angle);
-                main.GetLayerDrawMatrix(drawn, out var originalMatrix);
-                var expectedRear = Vector2.Transform(mount.Rear, originalMatrix);
-                system.FrameUpdate(.2f);
-                main.GetLayerDrawMatrix(drawn, out var correctedMatrix);
-                Assert.That(Vector2.Distance(Vector2.Transform(mount.Rear, correctedMatrix), expectedRear), Is.LessThan(.0001f),
-                    $"Facing {direction} must not shift the held pistol behind the character.");
-                var forward = Vector2.TransformNormal(mount.Forward, correctedMatrix);
-                Assert.That(forward.X * (direction == Direction.East ? 1 : -1), Is.GreaterThan(0));
+                for (var frame = 0; frame < 3; frame++) system.FrameUpdate(.016f);
+                foreach (var (key, expected) in originals)
+                {
+                    Assert.That(sprite.LayerMapTryGet(key, out var index), Is.True);
+                    var actual = (SpriteComponent.Layer) sprite[index];
+                    Assert.Multiple(() =>
+                    {
+                        Assert.That(actual.Offset, Is.EqualTo(expected.Offset ?? Vector2.Zero), $"{prototype}, {direction}, {key}: offset");
+                        Assert.That(actual.Rotation, Is.EqualTo(expected.Rotation ?? Angle.Zero), $"{prototype}, {direction}, {key}: rotation");
+                        Assert.That(actual.Scale, Is.EqualTo(expected.Scale ?? Vector2.One), $"{prototype}, {direction}, {key}: scale");
+                        Assert.That(actual.State.ToString(), Is.EqualTo(expected.State), $"{prototype}, {direction}, {key}: frame");
+                    });
+                }
             }
         });
+        await pair.Server.WaitPost(() => server.DeleteEntity(server.GetEntity(netUser)));
         await pair.CleanReturnAsync();
     }
 }

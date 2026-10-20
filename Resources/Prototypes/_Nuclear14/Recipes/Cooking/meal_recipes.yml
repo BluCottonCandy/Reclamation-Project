@@ -177,14 +177,6 @@
     N14FoodMeatIguana: 1
 
 - type: microwaveMealRecipe
-  id: N14RecipeSquirrelMorsels
-  name: cooked squirrel bits recipe
-  result: N14FoodMeatSquirrelCooked
-  time: 15
-  solids:
-    N14FoodMeatSquirrel: 1
-
-- type: microwaveMealRecipe
   id: N14RecipeSteakRadchicken
   name: radchicken steak recipe
   result: N14FoodMeatRadchickenCooked
@@ -252,17 +244,6 @@
   solids:
     N14CookedFoodBreadBun: 1
     OrganHumanAppendix: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeBaconBurger
-  name: bacon burger recipe
-  result: N14CookedFoodBurgerBacon
-  time: 10
-  solids:
-    N14CookedFoodBreadBun: 1
-    FoodMeatBacon: 1 #N14TODO: switch to N14 bacon if we get that working later
-    N14FoodCheeseSlice: 2
-
 
 - type: microwaveMealRecipe
   id: N14RecipeBearger
@@ -622,16 +603,6 @@
     N14FoodCheeseSlice: 1
     N14FloraProduceWildTato: 1
     N14FoodOnionRedSlice: 2
-
-- type: microwaveMealRecipe
-  id: N14RecipeBaconBurgerUpstreamBun
-  name: bacon burger recipe
-  result: N14CookedFoodBurgerBacon
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    FoodMeatBacon: 1 #Misfits Add - cross-compat: upstream bun alternative
-    N14FoodCheeseSlice: 2
 
 - type: microwaveMealRecipe
   id: N14RecipeCarpBurgerUpstreamBun
@@ -1673,7 +1644,7 @@
   time: 5
   solids:
     N14FoodChevreSlice: 1
-    N14CookedFoodBreadBaguetteSlice: 1
+    FoodBreadBaguetteSlice: 1
 
 - type: microwaveMealRecipe
   id: N14RecipeCannabisButter
@@ -1742,7 +1713,7 @@
   time: 10
   solids:
     N14CookedFoodTacoShell: 1
-    N14FoodMeatFish: 1
+    FoodMeatFish: 1
     N14FoodOnionRedSlice: 2 #N14 change
     N14FloraProduceWildTato: 1 #N14 change
     N14FloraProduceWildCabbage: 1 #N14 change

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Kitchen;
 using Content.Shared.Storage;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -29,6 +30,17 @@ public sealed class CookbookTests
         await pair.Server.WaitAssertion(() =>
         {
             var prototypes = pair.Server.ResolveDependency<IPrototypeManager>();
+            var radhog = prototypes.Index<EntityPrototype>("N14MobRadhog");
+            var hogButcher = (ButcherableComponent) radhog.Components["Butcherable"].Component;
+            Assert.That(EntitySpawnCollection.GetSpawns(hogButcher.SpawnedEntities),
+                Is.EquivalentTo(Enumerable.Repeat("N14FoodMeatRadhog", 4)));
+            var fish = prototypes.Index<FoodRecipePrototype>("N14RecipeTacoFish");
+            Assert.That(fish.IngredientsSolids.Keys, Does.Contain("FoodMeatFish"));
+            Assert.That(fish.IngredientsSolids.Keys, Does.Not.Contain("N14FoodMeatFish"));
+            var chevre = prototypes.Index<FoodRecipePrototype>("N14RecipeFoodBakedChevreChaud");
+            Assert.That(chevre.IngredientsSolids.Keys, Does.Contain("FoodBreadBaguetteSlice"));
+            foreach (var removed in new[] { "N14RecipeSquirrelMorsels", "N14RecipeBaconBurger", "N14RecipeBaconBurgerUpstreamBun", "RecipeBaconBurger" })
+                Assert.That(prototypes.HasIndex<FoodRecipePrototype>(removed), Is.False);
             var variants = prototypes.EnumeratePrototypes<EntityPrototype>().Where(prototype => !prototype.Abstract &&
                 prototypes.EnumerateAllParents<EntityPrototype>(prototype.ID).Any(parent => parent.id == "N14MobBaseHostileSuperMutant")).ToArray();
             Assert.That(variants.Select(prototype => prototype.ID), Does.Contain("N14MobBehemoth"));
@@ -89,10 +101,10 @@ public sealed class CookbookTests
                              @"## ([^\r\n]+)\s+\[bold\]Ingredients:\[/bold\] ([^\r\n]+)\s+\[bold\]Cook:\[/bold\] ([^\r\n]+)"))
                     recipes.Add(string.Join("|", match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value));
             }
-            Assert.That(recipes.Count, Is.EqualTo(174));
+            Assert.That(recipes.Count, Is.EqualTo(171));
             // Snapshot of the copied recipes, deliberately independent of future guidebook changes.
             Assert.That(Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join("\n", recipes)))),
-                Is.EqualTo("D50660147C4239497736DD7228EE6F03A3BB66DA26D6E54E5E8B0C6C277C22C9"));
+                Is.EqualTo("B79A432B05E680AEE560506655F37AB8F0203ED87C4791E6BC1C83930AD81507"));
 
             var use = new UseInHandEvent(book);
             entities.EventBus.RaiseLocalEvent(book, use);

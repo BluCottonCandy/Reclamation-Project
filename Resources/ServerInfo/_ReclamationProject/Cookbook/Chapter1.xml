@@ -225,16 +225,6 @@
 
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Cooked squirrel bits
-
-[bold]Ingredients:[/bold] 1 x raw squirrel bits.
-
-[bold]Cook:[/bold] 15 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
 ## Cooked radchicken meat
 
 [bold]Ingredients:[/bold] 1 x raw radchicken meat.

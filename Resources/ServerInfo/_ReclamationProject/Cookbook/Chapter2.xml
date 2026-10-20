@@ -25,16 +25,6 @@
 
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Bacon burger
-
-[bold]Ingredients:[/bold] 1 x bun + 1 x raw bacon + 2 x cheese wedge.
-
-[bold]Cook:[/bold] 10 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
 ## Bearger
 
 [bold]Ingredients:[/bold] 1 x bun + 1 x raw Yao Guai meat.
@@ -380,16 +370,6 @@
 [bold]Ingredients:[/bold] 1 x bun + 2 x raw meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
 
 [bold]Cook:[/bold] 15 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Bacon burger
-
-[bold]Ingredients:[/bold] 1 x bun + 1 x raw bacon + 2 x cheese wedge.
-
-[bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
 

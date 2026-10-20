@@ -709,7 +709,7 @@
     - Radhog
   - type: Butcherable
     spawned:
-    - id: N14FoodMeatRadstag
+    - id: N14FoodMeatRadhog
       amount: 4
   - type: MeleeWeapon
     range: 2

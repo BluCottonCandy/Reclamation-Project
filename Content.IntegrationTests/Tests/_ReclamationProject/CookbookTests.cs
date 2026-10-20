@@ -1,5 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Storage;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,6 +22,38 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture, NonParallelizable]
 public sealed class CookbookTests
 {
+    [Test]
+    public async Task SuperMutantVariantsYieldOneOrTwoRecipeCompatibleRawMeat()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        await pair.Server.WaitAssertion(() =>
+        {
+            var prototypes = pair.Server.ResolveDependency<IPrototypeManager>();
+            var variants = prototypes.EnumeratePrototypes<EntityPrototype>().Where(prototype => !prototype.Abstract &&
+                prototypes.EnumerateAllParents<EntityPrototype>(prototype.ID).Any(parent => parent.id == "N14MobBaseHostileSuperMutant")).ToArray();
+            Assert.That(variants.Select(prototype => prototype.ID), Does.Contain("N14MobBehemoth"));
+            Assert.That(variants.Select(prototype => prototype.ID), Does.Contain("N14MobNightkinVeteran"));
+            var random = new RobustRandom();
+            random.SetSeed(42);
+            foreach (var prototype in variants)
+            {
+                Assert.That(prototype.Components.TryGetValue("Butcherable", out var component), Is.True, prototype.ID);
+                var butcher = (ButcherableComponent) component!.Component;
+                Assert.That(butcher.Type, Is.EqualTo(ButcheringType.Knife), prototype.ID);
+                var counts = new HashSet<int>();
+                for (var roll = 0; roll < 100; roll++)
+                {
+                    var drops = EntitySpawnCollection.GetSpawns(butcher.SpawnedEntities, random);
+                    Assert.That(drops.Count, Is.InRange(1, 2), prototype.ID);
+                    Assert.That(drops.All(id => id == "N14FoodMeatSupermutant"), Is.True, prototype.ID);
+                    counts.Add(drops.Count);
+                }
+                Assert.That(counts, Is.EquivalentTo(new[] { 1, 2 }), prototype.ID);
+            }
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [Test]
     public async Task StandaloneCookbookPreservesAllCopiedRecipesAndOpensItsOwnWindow()
     {

@@ -35,59 +35,9 @@
 
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Soy waffles
-
-[bold]Ingredients:[/bold] 5u razorgrain flour + 5u soy milk + 6u raw egg + 5u soda water.
-
-[bold]Cook:[/bold] 10 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Cookie
-
-[bold]Ingredients:[/bold] 1 x stick of butter + 1 x chocolate bar + 5u razorgrain flour + 5u sugar.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
 ## Sugar cookie
 
 [bold]Ingredients:[/bold] 1 x stick of butter + 5u razorgrain flour + 10u sugar.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Raisin cookie
-
-[bold]Ingredients:[/bold] 1 x 4no raisins + 5u razorgrain flour + 5u sugar.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Oatmeal cookie
-
-[bold]Ingredients:[/bold] 1 x stick of butter + 5u oats + 5u sugar.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Chocolate chip pancake
-
-[bold]Ingredients:[/bold] 1 x chocolate bar + 5u razorgrain flour + 5u brahmin milk + 6u raw egg.
 
 [bold]Cook:[/bold] 5 seconds.
 </Box>
@@ -125,51 +75,11 @@
 
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Cheese cake
-
-[bold]Ingredients:[/bold] 1 x cake + 3 x cheese wedge + 10u cream.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Pumpkin-spice cake
-
-[bold]Ingredients:[/bold] 1 x cake + 1 x pumpkin.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
 ## Cake
 
 [bold]Ingredients:[/bold] 1 x cake batter.
 
 [bold]Cook:[/bold] 15 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Birthday cake
-
-[bold]Ingredients:[/bold] 1 x cake + 1 x cherry + 5u cream.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Chocolate cake
-
-[bold]Ingredients:[/bold] 1 x cake + 2 x chocolate bar.
-
-[bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
 

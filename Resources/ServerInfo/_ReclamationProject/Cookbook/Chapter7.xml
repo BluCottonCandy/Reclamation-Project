@@ -15,16 +15,6 @@
 
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Brownies
-
-[bold]Ingredients:[/bold] 2 x stick of butter + 2 x chocolate bar + 3 x chicken egg + 15u razorgrain flour + 30u sugar.
-
-[bold]Cook:[/bold] 25 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
 ## Bowl of hot chili
 
 [bold]Ingredients:[/bold] 1 x bowl + 1 x wild glowpepper + 1 x raw rad cutlet + 1 x red onion slice + 1 x wild tato.
@@ -95,51 +85,11 @@
 
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Kimchi salad
-
-[bold]Ingredients:[/bold] 1 x bowl + 1 x carrot + 1 x cabbage + 1 x garlic + 5u vinegar.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Fruit salad
-
-[bold]Ingredients:[/bold] 1 x bowl + 1 x orange + 1 x apple + 1 x grapes + 2 x watermelon slice.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Jungle salad
-
-[bold]Ingredients:[/bold] 1 x bowl + 1 x banana + 1 x apple + 1 x grapes + 2 x watermelon slice.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
 ## Meat kebab
 
 [bold]Ingredients:[/bold] 3 x raw rad cutlet + 1 x skewer.
 
 [bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Food meat snake kebab
-
-[bold]Ingredients:[/bold] 1 x raw snake meat + 1 x skewer + 5u wine.
-
-[bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
 
@@ -155,31 +105,11 @@
 
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Chèvre chaud
-
-[bold]Ingredients:[/bold] 1 x chèvre disk + 1 x baguette slice.
-
-[bold]Cook:[/bold] 5 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
 ## Stick of cannabis butter
 
 [bold]Ingredients:[/bold] 1 x stick of butter + 6 x cannabis leaves.
 
 [bold]Cook:[/bold] 15 seconds.
-</Box>
-</ColorBox>
-
-<ColorBox Color="#201E1B" OutlineColor="#51432F">
-<Box Orientation="Vertical" Margin="12">
-## Special brownies
-
-[bold]Ingredients:[/bold] 2 x stick of cannabis butter + 2 x chocolate bar + 3 x chicken egg + 15u razorgrain flour + 30u sugar.
-
-[bold]Cook:[/bold] 25 seconds.
 </Box>
 </ColorBox>
 

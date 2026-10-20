@@ -37,9 +37,7 @@ public sealed class CookbookTests
             var fish = prototypes.Index<FoodRecipePrototype>("N14RecipeTacoFish");
             Assert.That(fish.IngredientsSolids.Keys, Does.Contain("FoodMeatFish"));
             Assert.That(fish.IngredientsSolids.Keys, Does.Not.Contain("N14FoodMeatFish"));
-            var chevre = prototypes.Index<FoodRecipePrototype>("N14RecipeFoodBakedChevreChaud");
-            Assert.That(chevre.IngredientsSolids.Keys, Does.Contain("FoodBreadBaguetteSlice"));
-            foreach (var removed in new[] { "N14RecipeSquirrelMorsels", "N14RecipeBaconBurger", "N14RecipeBaconBurgerUpstreamBun", "RecipeBaconBurger" })
+            foreach (var removed in new[] { "N14RecipeSquirrelMorsels", "N14RecipeBaconBurger", "N14RecipeBaconBurgerUpstreamBun", "RecipeBaconBurger", "MisfitsRecipeZoyMothMothmallow", "MisfitsRecipeZoyWaffleFlour", "N14RecipeAppendixBurgerUpstreamBun", "N14RecipeBeargerUpstreamBun", "N14RecipeBigBiteBurgerUpstreamBun", "N14RecipeBirthdayCake", "N14RecipeBisque", "N14RecipeBrainBurgerUpstreamBun", "N14RecipeBrownies", "N14RecipeBurgerMcguffinUpstreamBun", "N14RecipeBurgerMcribUpstreamBun", "N14RecipeCannabisBrownies", "N14RecipeCarpBurgerUpstreamBun", "N14RecipeCheeseCake", "N14RecipeCheeseburgerBothUpstream", "N14RecipeCheeseburgerUpstreamBun", "N14RecipeChickenSandwichUpstreamBun", "N14RecipeChickenSandwichUpstreamMeat", "N14RecipeChocolateCake", "N14RecipeChocolateChipPancake", "N14RecipeCocoTart", "N14RecipeCookie", "N14RecipeCookieOatmeal", "N14RecipeCrabBurgerUpstreamBun", "N14RecipeDuckBurger", "N14RecipeDuckBurgerUpstreamBun", "N14RecipeFiveBurgerUpstreamBun", "N14RecipeFoodBakedChevreChaud", "N14RecipeFruitSalad", "N14RecipeGarlicBread", "N14RecipeJungleSalad", "N14RecipeKimchiSalad", "N14RecipeOatmeal", "N14RecipePlainBurgerBothUpstream", "N14RecipePlainBurgerUpstreamBun", "N14RecipePumpkinCake", "N14RecipeRaisinCookie", "N14RecipeRatBurgerUpstreamBun", "N14RecipeSnakeKebab", "N14RecipeSuperBiteBurgerUpstreamBun", "N14RecipeTofuBurgerUpstreamBun", "N14RecipeWaffleSoy", "RecipeMothMothmallow" })
                 Assert.That(prototypes.HasIndex<FoodRecipePrototype>(removed), Is.False);
             var variants = prototypes.EnumeratePrototypes<EntityPrototype>().Where(prototype => !prototype.Abstract &&
                 prototypes.EnumerateAllParents<EntityPrototype>(prototype.ID).Any(parent => parent.id == "N14MobBaseHostileSuperMutant")).ToArray();
@@ -101,10 +99,10 @@ public sealed class CookbookTests
                              @"## ([^\r\n]+)\s+\[bold\]Ingredients:\[/bold\] ([^\r\n]+)\s+\[bold\]Cook:\[/bold\] ([^\r\n]+)"))
                     recipes.Add(string.Join("|", match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value));
             }
-            Assert.That(recipes.Count, Is.EqualTo(171));
+            Assert.That(recipes.Count, Is.EqualTo(129));
             // Snapshot of the copied recipes, deliberately independent of future guidebook changes.
             Assert.That(Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join("\n", recipes)))),
-                Is.EqualTo("B79A432B05E680AEE560506655F37AB8F0203ED87C4791E6BC1C83930AD81507"));
+                Is.EqualTo("48D8F585B2D8ECB36A1B7EED7604C754279C24FDE3D07FA43B1FAEF45C21EDF5"));
 
             var use = new UseInHandEvent(book);
             entities.EventBus.RaiseLocalEvent(book, use);

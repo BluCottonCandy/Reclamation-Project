@@ -406,35 +406,6 @@
     N14FoodTofuSlice: 1
 
 - type: microwaveMealRecipe
-  id: N14RecipeDuckBurger
-  name: duck sandwich recipe
-  result: N14CookedFoodBurgerDuck
-  time: 10
-  solids:
-    N14CookedFoodBreadBun: 1
-    FoodMeatDuck: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeDuckBurgerUpstreamBun
-  name: duck sandwich recipe
-  result: N14CookedFoodBurgerDuck
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    FoodMeatDuck: 1 #Misfits Add - cross-compat: upstream bun alternative
-
-#Cross-compat burgers (upstream bun + N14 meat / N14 bun + upstream meat)
-
-- type: microwaveMealRecipe
-  id: N14RecipePlainBurgerUpstreamBun
-  name: plain burger recipe
-  result: N14CookedFoodBurgerPlain
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatRadRaw: 1 #Misfits Add - cross-compat: upstream bun + N14 meat
-
-- type: microwaveMealRecipe
   id: N14RecipePlainBurgerUpstreamMeat
   name: plain burger recipe
   result: N14CookedFoodBurgerPlain
@@ -442,25 +413,6 @@
   solids:
     N14CookedFoodBreadBun: 1
     FoodMeat: 1 #Misfits Add - cross-compat: N14 bun + upstream meat
-
-- type: microwaveMealRecipe
-  id: N14RecipePlainBurgerBothUpstream
-  name: plain burger recipe
-  result: N14CookedFoodBurgerPlain
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    FoodMeat: 1 #Misfits Add - cross-compat: upstream bun + upstream meat
-
-- type: microwaveMealRecipe
-  id: N14RecipeCheeseburgerUpstreamBun
-  name: cheeseburger recipe
-  result: N14CookedFoodBurgerCheese
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatRadRaw: 1 #Misfits Add - cross-compat: upstream bun + N14 meat
-    N14FoodCheeseSlice: 1
 
 - type: microwaveMealRecipe
   id: N14RecipeCheeseburgerUpstreamMeat
@@ -473,66 +425,6 @@
     N14FoodCheeseSlice: 1
 
 - type: microwaveMealRecipe
-  id: N14RecipeCheeseburgerBothUpstream
-  name: cheeseburger recipe
-  result: N14CookedFoodBurgerCheese
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    FoodMeat: 1 #Misfits Add - cross-compat: upstream bun + upstream meat
-    N14FoodCheeseSlice: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeBeargerUpstreamBun
-  name: bearger recipe
-  result: N14CookedFoodBurgerBear
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatYaoguai: 1 #Misfits Add - cross-compat: upstream bun + N14 meat
-
-- type: microwaveMealRecipe
-  id: N14RecipeChickenSandwichUpstreamBun
-  name: chicken sandwich recipe
-  result: N14CookedFoodBurgerChicken
-  time: 10
-  reagents:
-    Mayo: 5
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatRadchicken: 1 #Misfits Add - cross-compat: upstream bun + N14 meat
-
-- type: microwaveMealRecipe
-  id: N14RecipeChickenSandwichUpstreamMeat
-  name: chicken sandwich recipe
-  result: N14CookedFoodBurgerChicken
-  time: 10
-  reagents:
-    Mayo: 5
-  solids:
-    N14CookedFoodBreadBun: 1
-    FoodMeatChicken: 1 #Misfits Add - cross-compat: N14 bun + upstream meat
-
-- type: microwaveMealRecipe
-  id: N14RecipeCrabBurgerUpstreamBun
-  name: crab burger recipe
-  result: N14CookedFoodBurgerCrab
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatMirelurkClaw: 2 #Misfits Add - cross-compat: upstream bun + N14 meat
-
-- type: microwaveMealRecipe
-  id: N14RecipeFiveBurgerUpstreamBun
-  name: five alarm burger recipe
-  result: N14CookedFoodBurgerFive
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatRadRaw: 1 #Misfits Add - cross-compat: upstream bun + N14 meat
-    N14FloraProduceWildGlowpepper: 3
-
-- type: microwaveMealRecipe
   id: N14RecipeFiveBurgerUpstreamMeat
   name: five alarm burger recipe
   result: N14CookedFoodBurgerFive
@@ -541,30 +433,6 @@
     N14CookedFoodBreadBun: 1
     FoodMeat: 1 #Misfits Add - cross-compat: N14 bun + upstream meat
     N14FloraProduceWildGlowpepper: 3
-
-- type: microwaveMealRecipe
-  id: N14RecipeBurgerMcribUpstreamBun
-  name: BBQ rib sandwich recipe
-  result: N14CookedFoodBurgerMcrib
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14CookedFoodMealRibs: 1
-    N14FoodOnionRedSlice: 1 #Misfits Add - cross-compat: upstream bun alternative
-
-- type: microwaveMealRecipe
-  id: N14RecipeSuperBiteBurgerUpstreamBun
-  name: super bite burger recipe
-  result: N14CookedFoodBurgerSuper
-  time: 25
-  reagents:
-    TableSalt: 5
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatRadRaw: 2 #Misfits Add - cross-compat: upstream bun + N14 meat
-    N14FoodCheeseSlice: 2
-    N14FloraProduceWildTato: 2
-    N14FoodEggChicken: 2
 
 - type: microwaveMealRecipe
   id: N14RecipeSuperBiteBurgerUpstreamMeat
@@ -581,18 +449,6 @@
     N14FoodEggChicken: 2
 
 - type: microwaveMealRecipe
-  id: N14RecipeBigBiteBurgerUpstreamBun
-  name: big bite burger recipe
-  result: N14CookedFoodBurgerBig
-  time: 15
-  solids:
-    FoodBreadBun: 1
-    N14FoodMeatRadRaw: 2 #Misfits Add - cross-compat: upstream bun + N14 meat
-    N14FoodCheeseSlice: 1
-    N14FloraProduceWildTato: 1
-    N14FoodOnionRedSlice: 2
-
-- type: microwaveMealRecipe
   id: N14RecipeBigBiteBurgerUpstreamMeat
   name: big bite burger recipe
   result: N14CookedFoodBurgerBig
@@ -603,64 +459,6 @@
     N14FoodCheeseSlice: 1
     N14FloraProduceWildTato: 1
     N14FoodOnionRedSlice: 2
-
-- type: microwaveMealRecipe
-  id: N14RecipeCarpBurgerUpstreamBun
-  name: fillet-o-carp burger recipe
-  result: N14CookedFoodBurgerCarp
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    FoodMeatFish: 1 #Misfits Add - cross-compat: upstream bun alternative
-    N14FoodCheeseSlice: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeRatBurgerUpstreamBun
-  name: rat burger recipe
-  result: N14CookedFoodBurgerRat
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    FoodMeatRat: 1 #Misfits Add - cross-compat: upstream bun alternative
-
-- type: microwaveMealRecipe
-  id: N14RecipeBurgerMcguffinUpstreamBun
-  name: McGuffin recipe
-  result: N14CookedFoodBurgerMcguffin
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14FoodCheeseSlice: 1
-    N14FoodEggChicken: 2 #Misfits Add - cross-compat: upstream bun alternative
-
-- type: microwaveMealRecipe
-  id: N14RecipeAppendixBurgerUpstreamBun
-  name: appendix burger recipe
-  result: N14CookedFoodBurgerAppendix
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    OrganHumanAppendix: 1 #Misfits Add - cross-compat: upstream bun alternative
-
-- type: microwaveMealRecipe
-  id: N14RecipeBrainBurgerUpstreamBun
-  name: brain burger recipe
-  result: N14CookedFoodBurgerBrain
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    OrganHumanBrain: 1 #Misfits Add - cross-compat: upstream bun alternative
-
-- type: microwaveMealRecipe
-  id: N14RecipeTofuBurgerUpstreamBun
-  name: tofu burger recipe
-  result: N14CookedFoodBurgerTofu
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    N14FoodTofuSlice: 1 #Misfits Add - cross-compat: upstream bun alternative
-
-#Breads & Sandwiches
 
 - type: microwaveMealRecipe
   id: N14RecipeBananaBread
@@ -776,16 +574,6 @@
     Egg: 12 #radchicken eggs give standard egg reagent currently, this is fine
   solids:
     N14CookedFoodBreadPlainSlice: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeGarlicBread
-  name: garlic bread slice recipe
-  result: N14CookedFoodBreadGarlicSlice
-  time: 5
-  solids:
-    N14CookedFoodBreadPlainSlice: 1
-    N14FoodGarlic: 1
-    N14FoodButter: 1
 
 - type: microwaveMealRecipe
   id: N14RecipeTwoBreadSlice
@@ -904,17 +692,6 @@
     N14FoodEggChicken: 1 #N14 change
 
 - type: microwaveMealRecipe
-  id: N14RecipeOatmeal
-  name: oatmeal recipe
-  result: N14CookedFoodOatmeal
-  time: 15
-  reagents:
-    Oats: 15
-    Water: 10
-  solids:
-    FoodBowlBig: 1
-
-- type: microwaveMealRecipe
   id: N14RecipeBoiledRice
   name: boiled rice recipe
   result: N14CookedFoodRiceBoiled
@@ -967,32 +744,6 @@
     N14FloraProduceWildCarrot: 1 #N14 change
 
 #Soups & Stew
-- type: microwaveMealRecipe
-  id: N14RecipeBisque
-  name: bisque recipe
-  result: N14CookedFoodSoupBisque
-  time: 10
-  reagents:
-    Water: 10
-  solids:
-    FoodBowlBig: 1
-    N14FloraProduceWildTato: 1 #N14 change
-    N14FloraProduceWildCaveFungus: 1 #N14 change
-    N14FoodMeatFish: 1
-
-#- type: microwaveMealRecipe
-#  id: N14RecipeMeatballSoup
-#  name: meatball soup recipe
-#  result: N14CookedFoodSoupMeatball
-#  time: 10
-#  reagents:
-#    Water: 10
-#  solids:
-#    FoodBowlBig: 1
-#    N14FoodMeatMeatball: 1
-#    N14FloraProduceWildCarrot: 1
-#    N14FloraProduceWildTato: 1
-
 - type: microwaveMealRecipe
   id: N14RecipeNettleSoup
   name: nettle soup recipe
@@ -1149,21 +900,6 @@
 #Tarts
 
 - type: microwaveMealRecipe
-  id: N14RecipeCocoTart
-  name: chocolate lava tart recipe
-  result: N14CookedFoodTartCoco
-  time: 15
-  reagents:
-    Sugar: 5
-    Milk: 5
-  solids:
-    N14FoodDoughPie: 1
-    FoodSnackChocolateBar: 3
-    FoodPlateTin: 1
-
-#Other
-
-- type: microwaveMealRecipe
   id: N14RecipeCubanCarp
   name: Cuban carp recipe
   result: N14CookedFoodMealCubancarp #this will have to be changed someday
@@ -1266,29 +1002,6 @@
     SodaWater: 5
 
 - type: microwaveMealRecipe
-  id: N14RecipeWaffleSoy
-  name: soy waffle recipe
-  result: N14CookedFoodBakedWaffleSoy
-  time: 10
-  reagents:
-    ExtractRazorgrainFlour: 5
-    MilkSoy: 5
-    Egg: 6
-    SodaWater: 5
-
-- type: microwaveMealRecipe
-  id: N14RecipeCookie
-  name: cookie recipe
-  result: N14CookedFoodBakedCookie
-  time: 5
-  reagents:
-    ExtractRazorgrainFlour: 5
-    Sugar: 5
-  solids:
-    N14FoodButter: 1
-    FoodSnackChocolateBar: 1
-
-- type: microwaveMealRecipe
   id: N14RecipeSugarCookie
   name: sugar cookie recipe
   result: N14CookedFoodBakedCookieSugar
@@ -1298,40 +1011,6 @@
     Sugar: 10
   solids:
     N14FoodButter: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeRaisinCookie
-  name: raisin cookie recipe
-  result: N14CookedFoodBakedCookieRaisin
-  time: 5
-  reagents:
-    ExtractRazorgrainFlour: 5
-    Sugar: 5
-  solids:
-    FoodSnackRaisins: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeCookieOatmeal
-  name: oatmeal cookie recipe
-  result: N14CookedFoodBakedCookieOatmeal
-  time: 5
-  reagents:
-    Oats: 5
-    Sugar: 5
-  solids:
-    N14FoodButter: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeChocolateChipPancake
-  name: chocolate chip pancake recipe
-  result: N14CookedFoodBakedPancakeCc
-  time: 5
-  reagents:
-    ExtractRazorgrainFlour: 5
-    N14MilkBrahmin: 5 #N14 change
-    Egg: 6
-  solids:
-    FoodSnackChocolateBar: 1
 
 - type: microwaveMealRecipe
   id: N14RecipeMutfruitCake
@@ -1361,52 +1040,12 @@
     N14FloraProduceWildTarberries: 3 #N14 change
 
 - type: microwaveMealRecipe
-  id: N14RecipeCheeseCake
-  name: cheese cake recipe
-  result: N14CookedFoodCakeCheese
-  time: 5
-  reagents:
-    Cream: 10
-  solids:
-    N14CookedFoodCakePlain: 1
-    N14FoodCheeseSlice: 3
-
-- type: microwaveMealRecipe
-  id: N14RecipePumpkinCake
-  name: pumpkin cake recipe
-  result: N14CookedFoodCakePumpkin
-  time: 5
-  solids:
-    N14CookedFoodCakePlain: 1
-    N14FoodPumpkin: 1
-
-- type: microwaveMealRecipe
   id: N14RecipeCake
   name: cake recipe
   result: N14CookedFoodCakePlain
   time: 15
   solids:
     N14FoodCakeBatter: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeBirthdayCake
-  name: birthday cake recipe
-  result: N14CookedFoodCakeBirthday
-  time: 5
-  reagents:
-    Cream: 5
-  solids:
-    N14CookedFoodCakePlain: 1
-    FoodCherry: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeChocolateCake
-  name: chocolate cake recipe
-  result: N14CookedFoodCakeChocolate
-  time: 5
-  solids:
-    N14CookedFoodCakePlain: 1
-    FoodSnackChocolateBar: 2
 
 - type: microwaveMealRecipe
   id: N14RecipeBrainCake
@@ -1427,19 +1066,6 @@
     UncookedAnimalProteins: 6
   solids:
     N14FoodDoughSlice: 3
-
-- type: microwaveMealRecipe
-  id: N14RecipeBrownies
-  name: brownie recipe
-  result: N14CookedFoodBakedBrownieBatch
-  time: 25
-  reagents:
-    ExtractRazorgrainFlour: 15
-    Sugar: 30
-  solids:
-    N14FoodButter: 2
-    FoodSnackChocolateBar: 2
-    N14FoodEggChicken: 3
 
 - type: microwaveMealRecipe
   id: N14RecipeHotChili
@@ -1523,46 +1149,6 @@
     N14FloraProduceWildCabbage: 1 #N14 change
 
 - type: microwaveMealRecipe
-  id: N14RecipeKimchiSalad
-  name: kimchi salad recipe
-  result: N14CookedFoodSaladKimchi
-  time: 5
-  reagents:
-    Vinegar: 5
-  solids:
-    FoodBowlBig: 1
-    N14FoodCarrot: 1
-    N14FoodCabbage: 1
-    N14FoodGarlic: 1
-
-- type: microwaveMealRecipe
-  id: N14RecipeFruitSalad
-  name: fruit salad recipe
-  result: N14CookedFoodSaladFruit
-  time: 5
-  solids:
-    FoodBowlBig: 1
-    N14FoodOrange: 1
-    N14FoodApple: 1
-    N14FoodGrape: 1
-    N14FoodWatermelonSlice: 2
-
-- type: microwaveMealRecipe
-  id: N14RecipeJungleSalad
-  name: jungle salad recipe
-  result: N14CookedFoodSaladJungle
-  time: 5
-  solids:
-    FoodBowlBig: 1
-    N14FoodBanana: 1
-    N14FoodApple: 1
-    N14FoodGrape: 1
-    N14FoodWatermelonSlice: 2
-
-# Kebabs
-#Misfits Change /Tweak/: Only keep the variants disabled that still lack bespoke art or would overlap with upstream skewer metamorph recipes.
-
-- type: microwaveMealRecipe
   id: N14RecipeMeatKebab
   name: meat kebab recipe
   result: N14CookedFoodMeatKebab
@@ -1615,17 +1201,6 @@
     # FoodKebabSkewer: 1
 
 - type: microwaveMealRecipe
-  id: N14RecipeSnakeKebab
-  name: snake kebab recipe
-  result: N14FoodMeatSnakeKebab
-  time: 15
-  reagents:
-    Wine: 5
-  solids:
-    FoodMeatSnake: 1
-    FoodKebabSkewer: 1
-
-- type: microwaveMealRecipe
   id: N14RecipeFoodMealSoftTaco
   name: soft taco recipe
   result: N14CookedFoodMealSoftTaco
@@ -1638,15 +1213,6 @@
     N14FoodMeatRadCutlet: 1 #N14 change
 
 - type: microwaveMealRecipe
-  id: N14RecipeFoodBakedChevreChaud
-  name: chevre chaud recipe
-  result: N14CookedFoodBakedChevreChaud
-  time: 5
-  solids:
-    N14FoodChevreSlice: 1
-    FoodBreadBaguetteSlice: 1
-
-- type: microwaveMealRecipe
   id: N14RecipeCannabisButter
   name: cannabis butter recipe
   result: N14FoodCannabisButter
@@ -1654,19 +1220,6 @@
   solids:
     N14FoodButter: 1
     LeavesCannabis: 6
-
-- type: microwaveMealRecipe
-  id: N14RecipeCannabisBrownies
-  name: cannabis brownie recipe
-  result: N14CookedFoodBakedCannabisBrownieBatch
-  time: 25
-  reagents:
-    ExtractRazorgrainFlour: 15
-    Sugar: 30
-  solids:
-    N14FoodCannabisButter: 2
-    FoodSnackChocolateBar: 2
-    N14FoodEggChicken: 3 #N14 change
 
 - type: microwaveMealRecipe
   id: N14RecipeCornInButter

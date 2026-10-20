@@ -5,17 +5,35 @@ using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Damage;
+using Content.Shared.Body.Part;
 using Content.Shared.FixedPoint;
 
 namespace Content.Server._ReclamationProject.Medical;
 
 public sealed partial class TraumaSystem
 {
+    private readonly HashSet<EntityUid> _naturalHealingParts = new();
+
+    private void OnStructuralHealing(EntityUid uid, TraumaLimbComponent comp, ref BeforeDamageChangedEvent args)
+    {
+        if (_rejuvenating || _naturalHealingParts.Contains(uid) ||
+            !TryComp<BodyPartComponent>(uid, out var part) ||
+            (part.Body is { } body && !HasComp<TraumaBodyComponent>(body)) || !args.Damage.DamageDict.Values.Any(value => value < 0))
+            return;
+
+        // Do not mutate reagent prototypes or the body's ordinary health healing specifier.
+        var injuryDamage = new DamageSpecifier(args.Damage);
+        foreach (var type in injuryDamage.DamageDict.Where(entry => entry.Value < 0).Select(entry => entry.Key).ToArray())
+            injuryDamage.DamageDict.Remove(type);
+        args.Damage = injuryDamage;
+        if (injuryDamage.Empty) args.Cancelled = true;
+    }
+
     public float RecoveryPerMinute(EntityUid uid)
     {
         var rate = HasComp<TraumaRegenerationComponent>(uid) ? 3f : 1f;
-        if (TryComp<BuckleComponent>(uid, out var buckle) && buckle.BuckledTo is { } bed && HasComp<HealOnBuckleComponent>(bed))
-            rate = HasComp<SleepingComponent>(uid) ? 10f : 5f;
+        if (TryComp<BuckleComponent>(uid, out var buckle) && buckle.BuckledTo is { } bed && HasComp<HealOnBuckleComponent>(bed) && HasComp<SleepingComponent>(uid))
+            rate = 5f;
         return rate;
     }
 
@@ -47,7 +65,15 @@ public sealed partial class TraumaSystem
             var heal = new DamageSpecifier();
             foreach (var (type, amount) in damage.Damage.DamageDict)
                 if (amount > 0) heal.DamageDict[type] = -FixedPoint2.New(Math.Min(amount.Float(), budget * amount.Float() / total));
-            _damage.TryChangeDamage(part, heal, ignoreResistances: true, interruptsDoAfters: false, canSever: false);
+            _naturalHealingParts.Add(part);
+            try
+            {
+                _damage.TryChangeDamage(part, heal, ignoreResistances: true, interruptsDoAfters: false, canSever: false);
+            }
+            finally
+            {
+                _naturalHealingParts.Remove(part);
+            }
         }
         Refresh(uid, medical);
     }

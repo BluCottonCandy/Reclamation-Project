@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Text.Json;
+using Robust.Shared.ContentPack;
 using System.Numerics;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Wieldable;
@@ -92,6 +94,8 @@ public sealed class GunAttachmentVisualTests
     [TestCase("N14WeaponSMGGreaseGun", true)]
     [TestCase("N14WeaponSMG12mmAdvancedChinese", true)]
     [TestCase("N14WeaponSMG12mmAdvancedCanadian", true)]
+    [TestCase("N14WeaponRifle556CarbineOldMakeshift")]
+    [TestCase("N14WeaponRifle556CarbineOldMakeshift", true)]
     public async Task HeldLaserStaysFlushWithMuzzleInEveryDirectionAndWieldedPose(string prototype, bool leftHand = false)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
@@ -129,6 +133,8 @@ public sealed class GunAttachmentVisualTests
                 var localGun = client.GetEntity(netGun);
                 var system = client.System<GunAttachmentVisualSystem>();
                 var sprite = client.GetComponent<SpriteComponent>(actor);
+                sprite.NoRotation = true;
+                sprite.Rotation = Angle.Zero;
                 foreach (var forced in new[] { false, true })
                 foreach (var degrees in new[] { 0, 45, 90, 135, 180, 225, 270, 315 })
                 {
@@ -255,4 +261,21 @@ public sealed class GunAttachmentVisualTests
         await pair.CleanReturnAsync();
     }
 
+    [Test]
+    public async Task MakeshiftOldCarbineUsesOriginalCarbineHeldMountGeometry()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var resources = pair.Server.ResolveDependency<IResourceManager>();
+            using var stream = resources.ContentFileRead("/GunAttachmentMounts.json");
+            using var document = JsonDocument.Parse(stream);
+            const string original = "_Nuclear14/Objects/Weapons/Guns/Rifles/carbine.rsi/";
+            const string makeshift = "_ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_carbine_4938978c.rsi/";
+            foreach (var state in new[] { "inhand-left", "inhand-right", "wielded-inhand-left", "wielded-inhand-right" })
+                Assert.That(document.RootElement.GetProperty(makeshift + state).GetRawText(),
+                    Is.EqualTo(document.RootElement.GetProperty(original + state).GetRawText()), state);
+        });
+        await pair.CleanReturnAsync();
+    }
 }

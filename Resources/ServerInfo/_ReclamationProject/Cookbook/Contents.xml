@@ -17,22 +17,38 @@ A leather-bound collection of cooking recipes, from a simple cutlet to a full wa
 
 [bold]Alternatives:[/bold] Some dishes have more than one recipe. Each version is kept separately with its own ingredients.
 
+<ColorBox Color="#29251D" OutlineColor="#8A713E">
+<Box Orientation="Vertical" Margin="12">
+## Choose the right cooking method
+
+[bold]Microwave:[/bold] Assembled dishes in this book use a microwave. Set the timer to the listed cooking time. Simply putting their ingredients together on a fire or grill does not assemble a dish.
+
+[bold]Fire and grill:[/bold] Use these to roast individual meats and fish until cooked. Boiling a radscorpion leg still requires water in the microwave.
+
+[bold]Flour:[/bold] Grind razorgrain into razorgrain flour first. Whole razorgrain is not flour. Standard flour and razorgrain flour now satisfy the same flour requirements.
+
+[bold]Eggs:[/bold] A whole-egg ingredient accepts either a chicken egg or an ordinary egg. A quantity in units means raw egg liquid: crack eggs into a container and measure the amount.
+
+[bold]Ingredient variants:[/bold] Ordinary and N14 dough, cheese wedges, butter, tofu, sliced onions, and buns can be used for their matching recipes.
+</Box>
+</ColorBox>
+
 ## Inside this book
 
-[bold][color=#E7C78D]Meat and fish[/color][/bold] — 30 recipes.
+[bold][color=#E7C78D]Meat and fish[/color][/bold] â€” 30 recipes.
 
-[bold][color=#E7C78D]Burgers and sandwiches[/color][/bold] — 23 recipes.
+[bold][color=#E7C78D]Burgers and sandwiches[/color][/bold] â€” 23 recipes.
 
-[bold][color=#E7C78D]Bread, pizza and baking[/color][/bold] — 18 recipes.
+[bold][color=#E7C78D]Bread, pizza and baking[/color][/bold] â€” 18 recipes.
 
-[bold][color=#E7C78D]Pasta, rice and soups[/color][/bold] — 21 recipes.
+[bold][color=#E7C78D]Pasta, rice and soups[/color][/bold] â€” 21 recipes.
 
-[bold][color=#E7C78D]Pies, fish dishes and sides[/color][/bold] — 13 recipes.
+[bold][color=#E7C78D]Pies, fish dishes and sides[/color][/bold] â€” 13 recipes.
 
-[bold][color=#E7C78D]Breakfast and sweet treats[/color][/bold] — 9 recipes.
+[bold][color=#E7C78D]Breakfast and sweet treats[/color][/bold] â€” 9 recipes.
 
-[bold][color=#E7C78D]Meals, salads and snacks[/color][/bold] — 12 recipes.
+[bold][color=#E7C78D]Meals, salads and snacks[/color][/bold] â€” 12 recipes.
 
-[bold][color=#E7C78D]Tacos and pantry[/color][/bold] — 10 recipes.
+[bold][color=#E7C78D]Tacos and pantry[/color][/bold] â€” 10 recipes.
 
 </Document>

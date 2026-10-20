@@ -17,7 +17,7 @@
 <Box Orientation="Vertical" Margin="12">
 ## Appendix burger
 
-[bold]Ingredients:[/bold] 1 x bun + 1 x appendix.
+[bold]Ingredients:[/bold] 1 x bun + 1 x human appendix.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
@@ -47,7 +47,7 @@
 <Box Orientation="Vertical" Margin="12">
 ## Brain burger
 
-[bold]Ingredients:[/bold] 1 x bun + 1 x brain.
+[bold]Ingredients:[/bold] 1 x bun + 1 x animal or humanoid brain.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
@@ -107,7 +107,7 @@
 <Box Orientation="Vertical" Margin="12">
 ## Fillet-o-carp burger
 
-[bold]Ingredients:[/bold] 1 x bun + 1 x raw carp fillet + 1 x cheese wedge.
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw redfish or whitefish fillet + 1 x cheese wedge.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
@@ -230,6 +230,16 @@
 [bold]Ingredients:[/bold] 1 x bun + 2 x raw meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
 
 [bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#29251D" OutlineColor="#8A713E">
+<Box Orientation="Vertical" Margin="12">
+## Buns and organs
+
+Cut a whole bun with a knife to separate its top and bottom for stacked burgers. Microwave recipes use a whole bun.
+
+An appendix is a humanoid organ, obtained through abdominal surgery; ordinary wasteland animals do not supply one. Brain burgers accept animal brains as well as humanoid brains. Fish burgers accept raw redfish and whitefish fillets.
 </Box>
 </ColorBox>
 

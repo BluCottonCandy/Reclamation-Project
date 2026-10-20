@@ -197,19 +197,19 @@ namespace Content.Server.Kitchen.EntitySystems
                         if (!totalReagentsToRemove.ContainsKey(reagent))
                             continue;
 
-                        var quant = solution.GetTotalPrototypeQuantity(reagent);
-
-                        if (quant >= totalReagentsToRemove[reagent])
+                        foreach (var actualReagent in CompatibleReagents(reagent))
                         {
-                            quant = totalReagentsToRemove[reagent];
-                            totalReagentsToRemove.Remove(reagent);
+                            if (!totalReagentsToRemove.TryGetValue(reagent, out var remaining))
+                                break;
+                            var quant = FixedPoint2.Min(solution.GetTotalPrototypeQuantity(actualReagent), remaining);
+                            if (quant <= 0)
+                                continue;
+                            _solutionContainer.RemoveReagent(soln, actualReagent, quant);
+                            if (quant == remaining)
+                                totalReagentsToRemove.Remove(reagent);
+                            else
+                                totalReagentsToRemove[reagent] = remaining - quant;
                         }
-                        else
-                        {
-                            totalReagentsToRemove[reagent] -= quant;
-                        }
-
-                        _solutionContainer.RemoveReagent(soln, reagent, quant);
                     }
                 }
             }
@@ -229,8 +229,7 @@ namespace Content.Server.Kitchen.EntitySystems
                         // #Misfits Fix - also match ancestor prototypes so child entities
                         // (e.g. N14FoodMeatRadstag satisfying a brahmin recipe via parent chain)
                         // are actually consumed instead of being returned to the player.
-                        if (metaData.EntityPrototype.ID == recipeSolid.Key ||
-                            IsPrototypeAncestor(metaData.EntityPrototype, recipeSolid.Key))
+                        if (CompatibleSolids(metaData.EntityPrototype).Contains(recipeSolid.Key))
                         {
                             _container.Remove(item, component.Storage);
                             EntityManager.DeleteEntity(item);
@@ -241,20 +240,23 @@ namespace Content.Server.Kitchen.EntitySystems
             }
         }
 
-        // #Misfits Fix - checks whether ancestorId appears anywhere in the prototype parent chain of proto.
-        // Used to ensure SubtractContents deletes child entities that satisfied a recipe via the ancestor walk.
-        private bool IsPrototypeAncestor(EntityPrototype proto, string ancestorId)
+        private HashSet<string> CompatibleSolids(EntityPrototype proto)
         {
-            while (proto.Parents is { Length: > 0 })
-            {
-                var parentId = proto.Parents[0];
-                if (parentId == ancestorId)
-                    return true;
-                if (!_prototype.TryIndex<EntityPrototype>(parentId, out var parentProto))
-                    break;
-                proto = parentProto;
-            }
-            return false;
+            var ids = _prototype.EnumerateAllParents<EntityPrototype>(proto.ID)
+                .Select(parent => parent.id).ToHashSet();
+            ids.Add(proto.ID);
+            var compatibility = _prototype.Index<CookingIngredientCompatibilityPrototype>("WastelandCooking");
+            if (ids.Overlaps(compatibility.ExactOnly))
+                return ids.Where(id => id == proto.ID || compatibility.ExactOnly.Contains(id)).ToHashSet();
+            foreach (var group in compatibility.SolidGroups)
+                if (ids.Overlaps(group)) ids.UnionWith(group);
+            return ids;
+        }
+
+        private IEnumerable<string> CompatibleReagents(string reagent)
+        {
+            var groups = _prototype.Index<CookingIngredientCompatibilityPrototype>("WastelandCooking").ReagentGroups;
+            return groups.FirstOrDefault(group => group.Contains(reagent)) ?? new HashSet<string> { reagent };
         }
 
         private void OnInit(Entity<MicrowaveComponent> ent, ref ComponentInit args)
@@ -555,36 +557,10 @@ namespace Content.Server.Kitchen.EntitySystems
                 if (metaData.EntityPrototype == null)
                     continue;
 
-                if (solidsDict.ContainsKey(metaData.EntityPrototype.ID))
-                {
-                    solidsDict[metaData.EntityPrototype.ID]++;
-                }
-                else
-                {
-                    solidsDict.Add(metaData.EntityPrototype.ID, 1);
-                }
-
-                // #Misfits Fix - track exact entity IDs separately so we can prefer specific recipes
-                if (exactSolidsDict.ContainsKey(metaData.EntityPrototype.ID))
-                    exactSolidsDict[metaData.EntityPrototype.ID]++;
-                else
-                    exactSolidsDict.Add(metaData.EntityPrototype.ID, 1);
-
-                // #Misfits Fix - also count this entity toward each ancestor prototype ID so
-                // child entities (e.g. N14FoodMeatBrahminCutlet) satisfy recipes that require
-                // their parent (e.g. N14FoodMeatRadCutlet).
-                var proto = metaData.EntityPrototype;
-                while (proto.Parents is { Length: > 0 })
-                {
-                    var parentId = proto.Parents[0];
-                    if (solidsDict.ContainsKey(parentId))
-                        solidsDict[parentId]++;
-                    else
-                        solidsDict.Add(parentId, 1);
-
-                    if (!_prototype.TryIndex<EntityPrototype>(parentId, out proto))
-                        break;
-                }
+                // Count an item once per compatible ingredient ID, even with multiple parents.
+                foreach (var id in CompatibleSolids(metaData.EntityPrototype))
+                    solidsDict[id] = solidsDict.GetValueOrDefault(id) + 1;
+                exactSolidsDict[metaData.EntityPrototype.ID] = exactSolidsDict.GetValueOrDefault(metaData.EntityPrototype.ID) + 1;
 
                 if (!TryComp<SolutionContainerManagerComponent>(item, out var solMan))
                     continue;
@@ -594,10 +570,8 @@ namespace Content.Server.Kitchen.EntitySystems
                     var solution = soln.Comp.Solution;
                     foreach (var (reagent, quantity) in solution.Contents)
                     {
-                        if (reagentDict.ContainsKey(reagent.Prototype))
-                            reagentDict[reagent.Prototype] += quantity;
-                        else
-                            reagentDict.Add(reagent.Prototype, quantity);
+                        foreach (var id in CompatibleReagents(reagent.Prototype))
+                            reagentDict[id] = reagentDict.GetValueOrDefault(id) + quantity;
                     }
                 }
             }
@@ -608,13 +582,14 @@ namespace Content.Server.Kitchen.EntitySystems
 
             List<FoodRecipePrototype> recipes = getRecipesEv.Recipes;
             recipes.AddRange(_recipeManager.Recipes);
-            // #Misfits Fix - prefer exact-match recipes (e.g. radstag recipe) over ancestor-match ones
-            // (e.g. brahmin recipe matching radstag via parent chain). This prevents wrong output when
-            // a more specific recipe exists for the entity that was actually placed in the microwave.
+            // Prefer the complete dish over separately roasting one ingredient. Exact item
+            // matches break ties within equally complex wasteland recipes, not whole meals.
             var portionedRecipe = recipes
                 .Select(r => CanSatisfyRecipe(component, r, solidsDict, reagentDict))
                 .Where(r => r.Item2 > 0)
-                .OrderByDescending(r => CanSatisfyRecipe(component, r.Item1, exactSolidsDict, reagentDict).Item2 > 0)
+                .OrderByDescending(r => r.Item1.IngredientCount())
+                .ThenByDescending(r => r.Item1.ID.StartsWith("N14"))
+                .ThenByDescending(r => CanSatisfyRecipe(component, r.Item1, exactSolidsDict, reagentDict).Item2 > 0)
                 .FirstOrDefault();
 
             _audio.PlayPvs(component.StartCookingSound, uid);

@@ -183,4 +183,18 @@
 </Box>
 </ColorBox>
 
+<ColorBox Color="#29251D" OutlineColor="#8A713E">
+<Box Orientation="Vertical" Margin="12">
+## Prepare the dough first
+
+[bold]Basic dough:[/bold] Mix 15 units of razorgrain flour with 10 units of water. Ordinary flour also makes usable dough. Whole razorgrain must be ground first.
+
+[bold]Cornmeal dough:[/bold] Mix 15 units of maize extract, 10 units of brahmin milk and 6 units of raw egg. Cut the resulting cornmeal dough with a knife to make the slices used for muffins.
+
+[bold]Pizza:[/bold] Flatten basic dough with a rolling pin before adding the pizza ingredients. Both ordinary and wasteland flattened dough work.
+
+[bold]Bread slices:[/bold] Cut a cooked loaf with a knife before making toast or two slice. Assembled breads and pizzas need the microwave and their listed cooking time.
+</Box>
+</ColorBox>
+
 </Document>

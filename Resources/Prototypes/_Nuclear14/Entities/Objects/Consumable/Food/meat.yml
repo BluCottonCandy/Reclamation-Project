@@ -1216,6 +1216,14 @@
           Quantity: 2
         # - ReagentId: N14RadParticleFood
           # Quantity: 0 #Ditto, changing these values to 0 seemed like the best bet for if we want to revert this later. Formerly 3 rads.
+  - type: Perishable
+    rotAfter: 900
+    molsPerSecondPerUnitMass: 0
+  - type: RotInto
+    entity: FoodMeatRotten
+    stage: 1
+  - type: Temperature
+    currentTemperature: 290
   - type: Construction
     graph: MeatRadCutlet
     node: CutletCooked

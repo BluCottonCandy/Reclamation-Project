@@ -217,10 +217,14 @@ public sealed class GunAttachmentVisualSystem : EntitySystem
             var forward = Vector2.TransformNormal(standingMount.Forward, standingMatrix);
             if (desired != 0 && forward.X * desired < 0)
             {
+                // Preserve the original held rear anchor instead of reflecting its position
+                // across the character, which puts the gun behind the other shoulder.
+                var rear = Vector2.Transform(standingMount.Rear, standingMatrix);
+                var correction = new Vector2(2 * rear.X, 0);
                 foreach (var key in binding.BaseKeys)
                 {
                     if (!sprite.LayerMapTryGet(key, out var index) || sprite[index] is not SpriteComponent.Layer layer) continue;
-                    sprite.LayerSetOffset(index, layer.Offset * new Vector2(-1, 1));
+                    sprite.LayerSetOffset(index, layer.Offset * new Vector2(-1, 1) + correction);
                     sprite.LayerSetRotation(index, -layer.Rotation);
                     sprite.LayerSetScale(index, layer.Scale * new Vector2(-1, 1));
                 }

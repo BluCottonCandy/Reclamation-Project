@@ -255,4 +255,63 @@ public sealed class GunAttachmentVisualTests
         await pair.CleanReturnAsync();
     }
 
+    [TestCase(false)]
+    [TestCase(true)]
+    public async Task PistolFacingCorrectionPreservesItsOriginalHeldPosition(bool leftHand)
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        var client = pair.Client.ResolveDependency<IEntityManager>();
+        NetEntity netUser = default, netGun = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            var user = server.SpawnEntity("MobHuman", map.GridCoords);
+            var gun = server.SpawnEntity("N14WeaponPistol10mm", map.GridCoords);
+            var hands = server.GetComponent<Content.Shared.Hands.Components.HandsComponent>(user);
+            var location = leftHand ? Content.Shared.Hands.Components.HandLocation.Left : Content.Shared.Hands.Components.HandLocation.Right;
+            server.System<SharedHandsSystem>().TrySetActiveHand(user, hands.Hands.Values.First(h => h.Location == location).Name, hands);
+            Assert.That(server.System<SharedHandsSystem>().TryPickup(user, gun), Is.True);
+            netUser = server.GetNetEntity(user);
+            netGun = server.GetNetEntity(gun);
+        });
+        await pair.RunTicksSync(20);
+        await pair.Client.WaitAssertion(() =>
+        {
+            var actor = client.GetEntity(netUser);
+            var gun = client.GetEntity(netGun);
+            var sprite = client.GetComponent<SpriteComponent>(actor);
+            sprite.NoRotation = true;
+            sprite.Rotation = Angle.Zero;
+            sprite.EnableDirectionOverride = true;
+            var system = client.System<GunAttachmentVisualSystem>();
+            var location = leftHand ? Content.Shared.Hands.Components.HandLocation.Left : Content.Shared.Hands.Components.HandLocation.Right;
+            foreach (var direction in new[] { Direction.East, Direction.West })
+            {
+                sprite.DirectionOverride = direction;
+                var angle = Angle.FromDegrees(direction == Direction.East ? 90 : 270);
+                client.System<SharedTransformSystem>().SetLocalRotation(actor, angle);
+                system.FrameUpdate(.2f);
+                var visuals = new GetInhandVisualsEvent(actor, location);
+                client.EventBus.RaiseLocalEvent(gun, visuals);
+                var data = visuals.Layers.First(layer => layer.Item2.RsiPath?.Contains("/Guns/Pistols/") == true);
+                Assert.That(sprite.LayerMapTryGet(data.Item1, out var index), Is.True);
+                var main = (SpriteComponent.Layer) sprite[index];
+                sprite.LayerSetOffset(index, data.Item2.Offset ?? Vector2.Zero);
+                sprite.LayerSetRotation(index, data.Item2.Rotation ?? Angle.Zero);
+                sprite.LayerSetScale(index, data.Item2.Scale ?? Vector2.One);
+                Assert.That(system.TryGetMount(main, angle, out var mount, direction), Is.True);
+                var drawn = SpriteComponent.Layer.GetDirection(main.ActualState!.RsiDirections, angle);
+                main.GetLayerDrawMatrix(drawn, out var originalMatrix);
+                var expectedRear = Vector2.Transform(mount.Rear, originalMatrix);
+                system.FrameUpdate(.2f);
+                main.GetLayerDrawMatrix(drawn, out var correctedMatrix);
+                Assert.That(Vector2.Distance(Vector2.Transform(mount.Rear, correctedMatrix), expectedRear), Is.LessThan(.0001f),
+                    $"Facing {direction} must not shift the held pistol behind the character.");
+                var forward = Vector2.TransformNormal(mount.Forward, correctedMatrix);
+                Assert.That(forward.X * (direction == Direction.East ? 1 : -1), Is.GreaterThan(0));
+            }
+        });
+        await pair.CleanReturnAsync();
+    }
 }

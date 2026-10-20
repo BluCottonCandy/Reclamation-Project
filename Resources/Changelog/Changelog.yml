@@ -12592,3 +12592,20 @@ Entries:
   id: 6535
   time: '2026-10-19T21:16:48.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/51
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added the wasteland cookbook with a searchable, standalone cooking
+        reference.
+    - type: Add
+      message: Butchered super mutant NPCs now drop one or two raw super mutant meat.
+    - type: Fix
+      message: Radhogs drop the correct meat, and fish tacos use obtainable fish.
+    - type: Remove
+      message: >-
+        Removed cooking recipes and alternatives without supported N14
+        ingredient supply paths.
+  id: 6536
+  time: '2026-10-20T08:04:52.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/56

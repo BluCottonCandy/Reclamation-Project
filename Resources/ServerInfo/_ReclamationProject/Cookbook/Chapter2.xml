@@ -1,0 +1,456 @@
+<Document>
+# Burgers and sandwiches
+
+[color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 02[/color]
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Bun
+
+[bold]Ingredients:[/bold] 1 x dough slice.
+
+[bold]Cook:[/bold] 5 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Appendix burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x appendix.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Bacon burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw bacon + 2 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Bearger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw Yao Guai meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Big bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
+
+[bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Brain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x brain.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Chicken sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw radchicken meat + 5u mayonnaise.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Human burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw human meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Supermutant burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw supermutant meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Crab burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw mirelurk claw.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Fillet-o-carp burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw carp fillet + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Five alarm burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 3 x wild glowpepper.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Mcguffin
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x cheese wedge + 2 x chicken egg.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Bbq rib sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x bbq ribs + 1 x red onion slice.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Rat burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw rat meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Super bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.
+
+[bold]Cook:[/bold] 25 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Tofu burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x tofu slice.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Duck sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw duck meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Duck sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw duck meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Plain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Cheese burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Bearger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw Yao Guai meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Chicken sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw radchicken meat + 5u mayonnaise.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Chicken sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw chicken meat + 5u mayonnaise.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Crab burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw mirelurk claw.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Five alarm burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw irradiated meat + 3 x wild glowpepper.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Five alarm burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw meat + 3 x wild glowpepper.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Bbq rib sandwich
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x bbq ribs + 1 x red onion slice.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Super bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.
+
+[bold]Cook:[/bold] 25 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Super bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.
+
+[bold]Cook:[/bold] 25 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Big bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw irradiated meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
+
+[bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Big bite burger
+
+[bold]Ingredients:[/bold] 1 x bun + 2 x raw meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
+
+[bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Bacon burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw bacon + 2 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Fillet-o-carp burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw carp fillet + 1 x cheese wedge.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Rat burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw rat meat.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Mcguffin
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x cheese wedge + 2 x chicken egg.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Appendix burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x appendix.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Brain burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x brain.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Tofu burger
+
+[bold]Ingredients:[/bold] 1 x bun + 1 x tofu slice.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+
+</Document>

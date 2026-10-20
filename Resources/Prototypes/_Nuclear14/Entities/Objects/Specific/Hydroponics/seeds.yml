@@ -4,6 +4,9 @@
   id: N14SeedBase
   categories: [ HideSpawnMenu ]
   components:
+    - type: Tag
+      tags:
+      - ReclamationPlantClipping
     - type: SolutionContainerManager
     - type: Sprite
       sprite: Objects/Specific/Hydroponics/seeds.rsi

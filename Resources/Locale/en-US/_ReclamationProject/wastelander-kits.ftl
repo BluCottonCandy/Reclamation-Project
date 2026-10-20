@@ -104,3 +104,6 @@ wastelander-kit-bruiser-name = Bruiser
 wastelander-kit-bruiser-description = You love a good scrap, and you never run from a fight. Contains one random ordinary N14 two-handed melee weapon, one psycho syringe, and one buffout pill.
 wastelander-kit-highroller-name = High roller
 wastelander-kit-highroller-description = Luck is always on your side, you always make it through! Contains a pristine .45 Colt, one box of .45 ammunition, an armored checkered suit, and a grey fedora.
+
+wastelander-kit-farmer-name = Farmer kit
+wastelander-kit-farmer-description = You've always had a green thumb, you can grow anything almost anywhere! Contains a filled botany toolbelt, a clipping bag with one of every N14 plant clipping, and a full compost sack.

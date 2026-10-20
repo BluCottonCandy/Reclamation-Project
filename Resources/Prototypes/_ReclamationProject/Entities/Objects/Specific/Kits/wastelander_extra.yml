@@ -133,3 +133,90 @@
         Blunt: 0.75
         Slash: 0.75
         Piercing: 0.75
+
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitFarmer
+  name: Farmer kit
+  description: "You've always had a green thumb, you can grow anything almost anywhere! Contains a filled botany toolbelt, a clipping bag with one of every N14 plant clipping, and a full compost sack."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14ClothingBeltPlantFilled
+    - id: ReclamationClippingBagFilled
+    - id: N14SackCompostFull
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetFarmer
+  name: wastelander-kit-farmer-name
+  description: wastelander-kit-farmer-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitFarmer
+
+- type: Tag
+  id: ReclamationPlantClipping
+
+- type: entity
+  parent: BaseStorageItem
+  id: ReclamationClippingBag
+  name: plant clipping bag
+  description: A compact woven bag for plant clippings. It only accepts clippings.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/Sacks/daesack4.rsi
+    state: icon
+    scale: 0.75, 0.75
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,1
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,9,4
+    whitelist:
+      tags:
+      - ReclamationPlantClipping
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 100
+
+- type: entity
+  parent: ReclamationClippingBag
+  id: ReclamationClippingBagFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14FloraWildAgaveClippingSeed
+    - id: N14FloraWildBananaYuccaClippingSeed
+    - id: N14FloraWildBarrelCactusClippingSeed
+    - id: N14FloraWildBlackberryClippingSeed
+    - id: N14FloraWildBrocFlowerClippingSeed
+    - id: N14FloraWildBuffaloGourdClippingSeed
+    - id: N14FloraWildCabbageClippingSeed
+    - id: N14FloraWildCarrotClippingSeed
+    - id: N14FloraWildCoyoteTobaccoClippingSeed
+    - id: N14FloraWildCannabisClippingSeed
+    - id: N14FloraDaturaClippingSeed
+    - id: N14FloraWildGlowpepperClippingSeed
+    - id: N14FloraWildMaizeClippingSeed
+    - id: N14FloraWildHoneyMesquiteClippingSeed
+    - id: N14FloraWildMutfruitClippingSeed
+    - id: N14FloraWildNettleClippingSeed
+    - id: N14FloraWildOnionClippingSeed
+    - id: N14FloraWildPinyonClippingSeed
+    - id: N14FloraWildPricklyPearClippingSeed
+    - id: N14FloraWildRazorgrainClippingSeed
+    - id: N14FloraWildStarlightBerryClippingSeed
+    - id: N14FloraWildTarberryClippingSeed
+    - id: N14FloraWildTatoClippingSeed
+    - id: N14FloraWildWhiteHorsenettleClippingSeed
+    - id: N14FloraWildXanderRootClippingSeed

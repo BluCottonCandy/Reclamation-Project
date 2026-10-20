@@ -43,7 +43,7 @@
     chargeDamage: 40
     staminaDamage: 10
   - type: MeleeWeapon
-    attackRate: 1
+    attackRate: 0.5
     angle: 60
     range: 1.5
     heavyRangeModifier: 2
@@ -80,7 +80,7 @@
     wearFraction: 0.5
     brokenPrototype: ReclamationDamagedPaladinGreatshield
     repairedPrototype: ReclamationPaladinGreatshield
-    staminaImmune: true
+    staminaCoefficient: 0.75
     damageCoefficient: 0.6
     chargeDamage: 60
     staminaDamage: 50

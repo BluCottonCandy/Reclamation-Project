@@ -259,12 +259,6 @@
   start: start
   graph:
   - node: start
-    edges:
-    - to: MeatCooked
-      completed:
-      - !type:PlaySound
-        sound: /Audio/Effects/sizzle.ogg
-      steps:
-      - minTemperature: 305
+    # Boiling uses N14RecipeRadscorpionLeg and requires 15 units of water.
   - node: MeatCooked
     entity: N14FoodMeatRadscorpionLegBoiled

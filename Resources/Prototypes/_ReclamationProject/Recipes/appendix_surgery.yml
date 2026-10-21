@@ -1,0 +1,17 @@
+- type: entity
+  parent: SurgeryBase
+  id: SurgeryRemoveAppendix
+  name: Remove appendix
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenRibcage
+    steps:
+    - SurgeryStepClampInternalBleeders
+    - SurgeryStepRemoveOrgan
+  - type: SurgeryPartCondition
+    part: Torso
+  - type: SurgeryOrganCondition
+    organ:
+    - type: Appendix
+    slotId: appendix

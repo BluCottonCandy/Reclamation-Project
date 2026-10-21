@@ -1,0 +1,24 @@
+- type: cookingIngredientCompatibility
+  id: WastelandCooking
+  # Food variants with the same cooking purpose; cooked meat is never raw meat.
+  solidGroups:
+  - [FoodEgg, N14FoodEggChicken]
+  - [FoodCheeseSlice, N14FoodCheeseSlice]
+  - [FoodButter, N14FoodButter]
+  - [FoodDough, N14FoodDough]
+  - [FoodDoughSlice, N14FoodDoughSlice]
+  - [FoodDoughCornmeal, N14FoodDoughCornmeal]
+  - [FoodDoughCornmealSlice, N14FoodDoughCornmealSlice]
+  - [FoodDoughFlat, N14FoodDoughFlat]
+  - [FoodTofu, N14FoodTofu]
+  - [FoodMealRibs, N14CookedFoodMealRibs]
+  - [FoodBreadPlainSlice, N14CookedFoodBreadPlainSlice]
+  - [FoodBreadBun, N14CookedFoodBreadBun]
+  - [FoodOnionSlice, FoodOnionRedSlice, N14FoodOnionRedSlice]
+  - [OrganHumanBrain, OrganAnimalBrain]
+  - [OrganHumanEyes, OrganAnimalEyes]
+  - [FoodMeatFish, FoodMeatRedfishRaw, FoodMeatWhitefishRaw]
+  reagentGroups:
+  - [Flour, ExtractRazorgrainFlour]
+  # A dry leg must not fall back to the generic irradiated-meat parent recipe.
+  exactOnly: [N14FoodMeatRadscorpionLeg]

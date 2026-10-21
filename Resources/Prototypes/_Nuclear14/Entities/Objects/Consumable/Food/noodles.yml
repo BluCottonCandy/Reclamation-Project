@@ -35,7 +35,7 @@
 # Tastes like pasta.
 
 - type: entity
-  name: spaghetti
+  name: pasta tomato
   parent: N14CookedFoodNoodlesBase
   id: N14CookedFoodNoodles
   description: Spaghetti and crushed tatos. People used to eat this slop?

@@ -12811,3 +12811,12 @@ Entries:
   id: 6549
   time: '2026-10-21T15:36:59.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/69
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Expanded Minutemen kits with specialty supplies, including surgery
+        equipment and a CPR manual for field medics.
+  id: 6550
+  time: '2026-10-21T15:37:19.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/70

@@ -12658,3 +12658,20 @@ Entries:
   id: 6539
   time: '2026-10-21T14:13:36.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/59
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Chemicals no longer heal or worsen player internal injuries, fractures,
+        or limb integrity damage.
+    - type: Tweak
+      message: >-
+        Structural injuries recover at 1% per minute naturally, 3% with
+        Unnatural Regeneration, or 5% while sleeping in a healing bed.
+    - type: Tweak
+      message: >-
+        Slightly increased the chance of internal bleeding from qualifying torso
+        wounds.
+  id: 6540
+  time: '2026-10-21T14:21:50.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/60

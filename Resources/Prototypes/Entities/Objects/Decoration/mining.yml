@@ -62,6 +62,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: RoofSupport
   - type: PlacementReplacement
     key: walls
   - type: Tag

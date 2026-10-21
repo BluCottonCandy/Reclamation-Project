@@ -32,7 +32,7 @@ public sealed class WastelanderExtraKitTests
         await pair.Server.WaitAssertion(() =>
         {
             var selector = em.SpawnEntity("ReclamationWastelanderKitSelector", map.GridCoords);
-            Assert.That(em.GetComponent<UndecidedLoadoutBackpackComponent>(selector).PossibleSets, Has.Count.EqualTo(10));
+            Assert.That(em.GetComponent<UndecidedLoadoutBackpackComponent>(selector).PossibleSets, Has.Count.EqualTo(11));
             var doctor = em.SpawnEntity("ReclamationWastelanderKitBackAlleyDoctor", map.GridCoords);
             var supplies = EntitySpawnCollection.GetSpawns(em.GetComponent<SpawnItemsOnUseComponent>(doctor).Items);
             Assert.That(supplies.Count(id => id == "N14Stimpak"), Is.EqualTo(2));

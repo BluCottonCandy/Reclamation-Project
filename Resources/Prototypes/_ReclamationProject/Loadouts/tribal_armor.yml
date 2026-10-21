@@ -1,0 +1,366 @@
+# Ordinary tribal armor for Wastelander loadouts. Existing Misfits entries are retained.
+# Costs follow the original tribal entries; stronger ordinary pieces use the 4-point tier.
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterTribalArmor
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterTribalArmor
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterTribalArmorHeavy
+  category: Outer
+  cost: 4
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterTribalArmorHeavy
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterCombatTribal
+  category: Outer
+  cost: 4
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterCombatTribal
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterBandito
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterBandito
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterforager
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterforager
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterheadtaker
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterheadtaker
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterhunter
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterhunter
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterponcho
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterponcho
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOutershaman
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOutershaman
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterdrylandersimple
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterdrylandersimple
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterTribalCoat
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterTribalCoat
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterElderwintercoat
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterElderwintercoat
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingOuterdrylandelder
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingOuterdrylandelder
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingDrylanderGoggles
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingDrylanderGoggles
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingHeadTakerwraps
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingHeadTakerwraps
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingTribalHeadWraps
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingTribalHeadWraps
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingTribalHood
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingTribalHood
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingTribalShamanHat
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingTribalShamanHat
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingTribalShemagh
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingTribalShemagh
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingTribalHunterHood
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingTribalHunterHood
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingHeadHatTribalPowerhelm
+  category: Head
+  cost: 4
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingHeadHatTribalPowerhelm
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingHeadHatEdlerSkullhelm
+  category: Head
+  cost: 3
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingHeadHatEdlerSkullhelm
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingHeadHatEldersDamagedSkullHelm
+  category: Head
+  cost: 3
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingHeadHatEldersDamagedSkullHelm
+
+- type: loadout
+  id: ReclamationLoadoutTribalMisfitsClothingHeadRadstagHelmet
+  category: Head
+  cost: 3
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - MisfitsClothingHeadRadstagHelmet
+
+- type: loadout
+  id: ReclamationLoadoutTribalN14ClothingDeathclawHelm
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - N14ClothingDeathclawHelm
+
+- type: loadout
+  id: ReclamationLoadoutTribalTribalHelmetofPeace
+  category: Head
+  cost: 2
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Wastelander
+  items:
+  - TribalHelmetofPeace

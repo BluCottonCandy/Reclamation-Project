@@ -12709,3 +12709,16 @@ Entries:
   id: 6542
   time: '2026-10-21T14:22:16.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/62
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added 68 free plushie loadout choices in a compact dropdown under
+        Uncategorized.
+    - type: Add
+      message: >-
+        Base SS14 plushies with supported worn sprites can now be worn on the
+        head.
+  id: 6543
+  time: '2026-10-21T14:22:30.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/63

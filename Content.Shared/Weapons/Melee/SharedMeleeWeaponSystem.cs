@@ -335,7 +335,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             return false;
 
         var angle = (targetMap.Position - userMap.Position).ToWorldAngle();
-        var range = weapon.Range * weapon.HeavyRangeModifier;
+        var range = GetMeleeReach(user, weapon) * weapon.HeavyRangeModifier;
         var bounds = Box2.CenteredAround(userMap.Position, new Vector2(range * 2f, range * 2f));
         var targets = new List<NetEntity>();
         // Raised shields anchor their wearer and move them into the static lookup tree.
@@ -498,7 +498,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     throw new NotImplementedException();
             }
 
-            DoLungeAnimation(user, weaponUid, weapon.Angle, TransformSystem.ToMapCoordinates(GetCoordinates(attack.Coordinates)), weapon.Range, animation);
+            DoLungeAnimation(user, weaponUid, weapon.Angle, TransformSystem.ToMapCoordinates(GetCoordinates(attack.Coordinates)), GetMeleeReach(user, weapon), animation);
         }
 
         var attackEv = new MeleeAttackEvent(weaponUid);
@@ -506,6 +506,17 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         weapon.Attacking = true;
         return true;
+    }
+
+    /// <summary>Player melee gains half a tile over the shortened reach; long weapons keep their advantage.</summary>
+    public float GetMeleeReach(EntityUid user, MeleeWeaponComponent weapon)
+    {
+        if (!HasComp<ActorComponent>(user))
+            return weapon.Range;
+        var reach = weapon.Animation.Id == "WeaponArcThrust" || weapon.Range > 1.5f
+            ? weapon.Range
+            : Math.Min(weapon.Range, 1f);
+        return reach + 0.5f;
     }
 
     protected abstract bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session, GameTick? lastRealTick = null);
@@ -516,7 +527,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (Deleted(target) ||
             !TryComp<TransformComponent>(target, out targetXform) ||
             // Not in LOS.
-            !InRange(user, target.Value, component.Range, session, lastRealTick))
+            !InRange(user, target.Value, GetMeleeReach(user, component), session, lastRealTick))
         {
             return false;
         }
@@ -658,7 +669,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var direction = targetMap.Position - userPos;
         // [Changed by MisfitsCrew/Operator] Wide swings use the cursor for direction, not reach;
         // otherwise the swing only hits when the cursor is placed over the target.
-        var distance = component.Range * component.HeavyRangeModifier;
+        var distance = GetMeleeReach(user, component) * component.HeavyRangeModifier;
 
         var damage = GetDamage(meleeUid, user, component);
         var entities = GetEntityList(ev.Entities);
@@ -855,6 +866,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         }
 
         AddArcBoundsCandidates(resSet, position, angle, arcWidth, range, mapId, ignore, extraIgnored);
+        if (HasComp<ActorComponent>(ignore))
+        {
+            // Match server validation; fixture overlap must not extend a player's swing.
+            resSet.RemoveWhere(target =>
+                (TransformSystem.GetWorldPosition(target) - position).LengthSquared() > range * range);
+        }
 
         return resSet;
     }

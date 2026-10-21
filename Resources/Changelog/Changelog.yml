@@ -12771,3 +12771,16 @@ Entries:
   id: 6546
   time: '2026-10-21T14:23:59.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/66
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Player pickups and ordinary interactions now reach one tile without
+        extra distance from collision size.
+    - type: Tweak
+      message: >-
+        Player melee uses consistent center-based reach for direct attacks and
+        wide swings, with 1.5-tile short attacks and longer spear thrusts.
+  id: 6547
+  time: '2026-10-21T14:24:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/67

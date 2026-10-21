@@ -12801,3 +12801,13 @@ Entries:
   id: 6548
   time: '2026-10-21T15:36:45.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/68
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Equipped the Minutemen General with Commonwealth Sentinel power armor, a
+        laser gatling, Commonwealth Resolve sidearm, officer cutlass, and
+        matching spare ammunition.
+  id: 6549
+  time: '2026-10-21T15:36:59.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/69

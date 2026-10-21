@@ -1,4 +1,7 @@
 ## Plushies
+# Reclamation: selected headwear definitions adapted from Wizden:
+# https://github.com/space-wizards/space-station-14/blob/57ffe625fe0f82db5d7b58713acdb9a52a5258e7/Resources/Prototypes/Entities/Objects/Fun/Plushies/plushies.yml
+# Imported RSI folders retain their original license and artist attribution.
 
 - type: entity
   parent: BaseItem
@@ -156,17 +159,24 @@
           Quantity: 5
   - type: Clothing
     quickEquip: false
-    sprite: Objects/Fun/toys.rsi
-    equippedPrefix: bee
+    sprite: Objects/Fun/Plushies/bee.rsi
     slots:
     - HEAD
-
 - type: entity
   parent: BasePlushie
   id: PlushieHampter
   name: hampter plushie
   description: A cute stuffed toy that resembles a hamster. Its face looks squished.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/hampter.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.04"
   - type: Sprite
     state: plushie_hampter
   - type: EmitSoundOnUse
@@ -196,6 +206,15 @@
   name: RGBee plushie
   description: A cute toy that resembles a bee plushie while you're on LSD.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/bee.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        shader: unshaded
   - type: PointLight
     radius: 1.5
     energy: 2
@@ -208,6 +227,15 @@
   name: nukie plushie
   description: A stuffed toy that resembles a syndicate nuclear operative. The tag claims operatives to be purely fictitious.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/nukie.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.03"
   - type: Sprite
     state: plushie_nuke
 
@@ -217,6 +245,15 @@
   name: rouny plushie
   description: Rouny
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/rouny.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.03"
   - type: Sprite
     state: plushie_rouny
   - type: Rotatable
@@ -240,6 +277,11 @@
   name: arachnid plushie
   description: An adorable stuffed toy that resembles an arachnid. It feels silky..
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/arachnid.rsi
+    slots:
+    - HEAD
   - type: Sprite
     state: plushie_arachnid
   - type: EmitSoundOnUse
@@ -269,6 +311,15 @@
   name: lizard plushie
   description: An adorable stuffed toy that resembles a lizardperson. Made by CentCom as a token initiative to combat speciesism in work environments. "Welcome your new colleagues as you do this plush, with open arms!"
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/lizard.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.03"
   - type: Sprite
     state: plushie_lizard
   - type: EmitSoundOnUse
@@ -310,6 +361,15 @@
   parent: PlushieLizard
   id: PlushieLizardMirrored
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/lizard.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.03"
   - type: Item
     size: Small
   - type: Sprite
@@ -321,6 +381,15 @@
   name: space lizard plushie
   description: An adorable stuffed toy that resembles a lizardperson in an EVA suit. Made by CentCom as a token initiative to combat speciesism in space environments. "Welcome your new colleges as you do this plush, with open arms!"
   components:
+  - type: Clothing
+    sprite: Objects/Fun/Plushies/lizard.rsi
+    slots:
+    - HEAD
+    quickEquip: false
+    clothingVisuals:
+      head:
+      - state: spacelizard-equipped-HELMET
+        offset: "0, 0.09"
   - type: Sprite
     state: plushie_spacelizard
   - type: EmitSoundOnUse
@@ -364,6 +433,15 @@
   name: diona plushie
   description: An adorable stuffed toy that resembles a diona. Love water and cuddles. Do not wet!
   components:
+    - type: Clothing
+      quickEquip: false
+      sprite: Objects/Fun/Plushies/diona.rsi
+      slots:
+      - HEAD
+      clothingVisuals:
+        head:
+        - state: equipped-HELMET
+          offset: "0, 0.09"
     - type: Sprite
       layers:
         - state: plushie_diona
@@ -579,6 +657,11 @@
   name: slime plushie
   description: An adorable stuffed toy that resembles a slime. It's basically a hacky sack.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/slime.rsi
+    slots:
+    - HEAD
   - type: Sprite
     state: plushie_slime
 
@@ -679,6 +762,15 @@
   name: vox plushie
   description: SKREEEEEEEEEEEE!
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/vox.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.09"
   - type: Sprite
     state: plushie_vox
   - type: EmitSoundOnUse
@@ -705,6 +797,15 @@
   name: atmosian plushie
   description: An adorable stuffed toy that resembles a brave atmosian. Unfortunately, he won't fix those depressurizations for you.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/atmosian.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.04"
   - type: Sprite
     state: plushie_atmosian
 
@@ -714,6 +815,15 @@
   name: xeno plushie
   description: An adorable stuffed toy that resembles a scary xenomorf. You're lucky it's just a toy.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/xeno.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.03"
   - type: Item
     size: Normal
   - type: Sprite
@@ -745,6 +855,11 @@
   name: penguin plushie
   description: I use arch btw!
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/penguin.rsi
+    slots:
+    - HEAD
   - type: Sprite
     state: plushie_penguin
 
@@ -754,6 +869,11 @@
   name: human plushie
   description: This is a felt plush of a human. All craftsmanship is of the lowest quality. The human is naked. The human is crying. The human is screaming.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/human.rsi
+    slots:
+    - HEAD
   - type: Sprite
     state: plushie_human
   - type: EmitSoundOnUse
@@ -810,6 +930,11 @@
   name: moth plushie
   description: Cute and fluffy moth plushie. Enjoy, bz!
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/moth.rsi
+    slots:
+    - HEAD
   - type: Sprite
     state: plushie_moth
   - type: EmitSoundOnUse
@@ -1061,6 +1186,15 @@
   name: vulpkanin plushie
   description: A vulpkanin plushie, at least you can hug this one without the risk to get bitten.
   components:
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/Plushies/vulp.rsi
+    slots:
+    - HEAD
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.0625"
   - type: Sprite
     sprite: Objects/Fun/toys.rsi
     state: plushie_vulp
@@ -1083,6 +1217,9 @@
   name: office vulp plushie
   description: The ones who yeeps!
   components:
+  - type: Clothing
+    slots: [NONE]
+    quickEquip: false
   - type: Sprite
     sprite: Objects/Fun/toys.rsi
     state: plushie_trystan
@@ -1093,6 +1230,9 @@
   name: corgi plushie
   description: The ian plushie edition!
   components:
+  - type: Clothing
+    slots: [NONE]
+    quickEquip: false
   - type: Sprite
     sprite: Objects/Fun/corgiplushie.rsi
     state: corgi
@@ -1102,6 +1242,9 @@
   id: PlushieGirlyCorgi
   name: girly corgi plushie
   components:
+  - type: Clothing
+    slots: [NONE]
+    quickEquip: false
   - type: Sprite
     sprite: Objects/Fun/corgiplushie.rsi
     state: girlycorgi
@@ -1111,6 +1254,9 @@
   id: PlushieRobotCorgi
   name: robot corgi plushie
   components:
+  - type: Clothing
+    slots: [NONE]
+    quickEquip: false
   - type: Sprite
     sprite: Objects/Fun/corgiplushie.rsi
     state: robotcorgi

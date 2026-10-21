@@ -1,0 +1,726 @@
+# Cosmetic plushie choices, available to every job without spending loadout points.
+- type: loadoutCategory
+  id: Plushies
+  root: true
+  singleSelection: true
+  selectionIcon: PlushieLizard
+
+- type: loadout
+  id: LoadoutReclamationPlushieAbductor
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieAbductor
+
+- type: loadout
+  id: LoadoutReclamationPlushieAbductorAgent
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieAbductorAgent
+
+- type: loadout
+  id: LoadoutReclamationPlushieArachind
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieArachind
+
+- type: loadout
+  id: LoadoutReclamationPlushieArachne
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieArachne
+
+- type: loadout
+  id: LoadoutReclamationPlushieAtmosian
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieAtmosian
+
+- type: loadout
+  id: LoadoutReclamationPlushieBee
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieBee
+
+- type: loadout
+  id: LoadoutReclamationPlushieBlackFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieBlackFox
+
+- type: loadout
+  id: LoadoutReclamationPlushieBlueFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieBlueFox
+
+- type: loadout
+  id: LoadoutReclamationPlushieCarp
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCarp
+
+- type: loadout
+  id: LoadoutReclamationPlushieCatBlack
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCatBlack
+
+- type: loadout
+  id: LoadoutReclamationPlushieCatGrey
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCatGrey
+
+- type: loadout
+  id: LoadoutReclamationPlushieCatOrange
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCatOrange
+
+- type: loadout
+  id: LoadoutReclamationPlushieCatSiames
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCatSiames
+
+- type: loadout
+  id: LoadoutReclamationPlushieCatTabby
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCatTabby
+
+- type: loadout
+  id: LoadoutReclamationPlushieCatTuxedo
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCatTuxedo
+
+- type: loadout
+  id: LoadoutReclamationPlushieCatWhite
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCatWhite
+
+- type: loadout
+  id: LoadoutReclamationPlushieCoffeeFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCoffeeFox
+
+- type: loadout
+  id: LoadoutReclamationPlushieCorgi
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCorgi
+
+- type: loadout
+  id: LoadoutReclamationPlushieCrimsonFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieCrimsonFox
+
+- type: loadout
+  id: LoadoutReclamationPlushieDangerouslyJoyful
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieDangerouslyJoyful
+
+- type: loadout
+  id: LoadoutReclamationPlushieDeer
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieDeer
+
+- type: loadout
+  id: LoadoutReclamationPlushieDiona
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieDiona
+
+- type: loadout
+  id: LoadoutReclamationPlushieGhost
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieGhost
+
+- type: loadout
+  id: LoadoutReclamationPlushieGhostRevenant
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieGhostRevenant
+
+- type: loadout
+  id: LoadoutReclamationPlushieGirlyCorgi
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieGirlyCorgi
+
+- type: loadout
+  id: LoadoutReclamationPlushieGnome
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieGnome
+
+- type: loadout
+  id: LoadoutReclamationPlushieGrey
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieGrey
+
+- type: loadout
+  id: LoadoutReclamationPlushieHampter
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieHampter
+
+- type: loadout
+  id: LoadoutReclamationPlushieHarpy
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieHarpy
+
+- type: loadout
+  id: LoadoutReclamationPlushieHolocarp
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieHolocarp
+
+- type: loadout
+  id: LoadoutReclamationPlushieHuman
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieHuman
+
+- type: loadout
+  id: LoadoutReclamationPlushieIpc
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieIpc
+
+- type: loadout
+  id: LoadoutReclamationPlushieJester
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieJester
+
+- type: loadout
+  id: LoadoutReclamationPlushieLamp
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieLamp
+
+- type: loadout
+  id: LoadoutReclamationPlushieLizard
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieLizard
+
+- type: loadout
+  id: LoadoutReclamationPlushieLizardMirrored
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieLizardMirrored
+
+- type: loadout
+  id: LoadoutReclamationPlushieLoveable
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieLoveable
+
+- type: loadout
+  id: LoadoutReclamationPlushieMagicarp
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMagicarp
+
+- type: loadout
+  id: LoadoutReclamationPlushieMarbleFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMarbleFox
+
+- type: loadout
+  id: LoadoutReclamationPlushieMechanicalIdol
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMechanicalIdol
+
+- type: loadout
+  id: LoadoutReclamationPlushieMort
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMort
+
+- type: loadout
+  id: LoadoutReclamationPlushieMoth
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMoth
+
+- type: loadout
+  id: LoadoutReclamationPlushieMothBartender
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMothBartender
+
+- type: loadout
+  id: LoadoutReclamationPlushieMothMusician
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMothMusician
+
+- type: loadout
+  id: LoadoutReclamationPlushieMothRandom
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieMothRandom
+
+- type: loadout
+  id: LoadoutReclamationPlushieNar
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieNar
+
+- type: loadout
+  id: LoadoutReclamationPlushieNuke
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieNuke
+
+- type: loadout
+  id: LoadoutReclamationPlushieOrangeFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieOrangeFox
+
+- type: loadout
+  id: LoadoutReclamationPlushiePenguin
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushiePenguin
+
+- type: loadout
+  id: LoadoutReclamationPlushiePeterPro
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushiePeterPro
+
+- type: loadout
+  id: LoadoutReclamationPlushiePinkFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushiePinkFox
+
+- type: loadout
+  id: LoadoutReclamationPlushiePurpleFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushiePurpleFox
+
+- type: loadout
+  id: LoadoutReclamationPlushieRGBee
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieRGBee
+
+- type: loadout
+  id: LoadoutReclamationPlushieRainbowCarp
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieRainbowCarp
+
+- type: loadout
+  id: LoadoutReclamationPlushieRatvar
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieRatvar
+
+- type: loadout
+  id: LoadoutReclamationPlushieRedFox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieRedFox
+
+- type: loadout
+  id: LoadoutReclamationPlushieRobotCorgi
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieRobotCorgi
+
+- type: loadout
+  id: LoadoutReclamationPlushieRouny
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieRouny
+
+- type: loadout
+  id: LoadoutReclamationPlushieShadowkin
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieShadowkin
+
+- type: loadout
+  id: LoadoutReclamationPlushieSharkBlue
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieSharkBlue
+
+- type: loadout
+  id: LoadoutReclamationPlushieSharkGrey
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieSharkGrey
+
+- type: loadout
+  id: LoadoutReclamationPlushieSharkPink
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieSharkPink
+
+- type: loadout
+  id: LoadoutReclamationPlushieSlime
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieSlime
+
+- type: loadout
+  id: LoadoutReclamationPlushieSlips
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieSlips
+
+- type: loadout
+  id: LoadoutReclamationPlushieSnake
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieSnake
+
+- type: loadout
+  id: LoadoutReclamationPlushieSpaceLizard
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieSpaceLizard
+
+- type: loadout
+  id: LoadoutReclamationPlushieThrongler
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieThrongler
+
+- type: loadout
+  id: LoadoutReclamationPlushieTrystan
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieTrystan
+
+- type: loadout
+  id: LoadoutReclamationPlushieVox
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieVox
+
+- type: loadout
+  id: LoadoutReclamationPlushieVulp
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieVulp
+
+- type: loadout
+  id: LoadoutReclamationPlushieXeno
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieXeno
+
+- type: loadout
+  id: LoadoutReclamationPlushie_Scribe
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - Plushie_Scribe

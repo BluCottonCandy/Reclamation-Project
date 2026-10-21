@@ -4,7 +4,7 @@
   parent: KitBase
   id: MinutemenKitLaser
   name: Minute Men basic laser kit
-  description: "The basics of the basics: enough to get you through and keep you alive. Standard issue for all Minute Men. Contains 1 makeshift laser revolver with a loaded energy cell, 2 spare small energy cells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  description: "The basics of the basics: enough to get you through and keep you alive. Standard issue for all Minute Men. Contains 1 makeshift laser revolver with a loaded energy cell, 2 spare small energy cells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier. Also includes binoculars, a flashlight, and 1 additional small energy cell (3 spare cells total)."
   components:
   - type: Sprite
     state: rifleman
@@ -16,6 +16,9 @@
     - id: ClothingBeltMilitary
     - id: N14WeaponLaserRevolver
     - id: N14PowerCellSmall
+    - id: N14PowerCellSmall
+    - id: N14Binoculars
+    - id: N14Flashlight
     - id: N14PowerCellSmall
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -34,7 +37,7 @@
   parent: KitBase
   id: MinutemenKitPistol
   name: Minute Men heavy pistol kit
-  description: "A pistol for when you need something with a bit more punch. Contains 1 loaded 12.7mm pistol, 2 spare 12.7mm magazines, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  description: "A pistol for when you need something with a bit more punch. Contains 1 loaded 12.7mm pistol, 2 spare 12.7mm magazines, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier. Also includes a combat knife, handcuffs, and 1 box of 12.7mm ammunition."
   components:
   - type: Sprite
     state: rifleman
@@ -47,6 +50,9 @@
     - id: N14WeaponPistol12mm
     - id: N14MagazinePistol12mm
     - id: N14MagazinePistol12mm
+    - id: N14CombatKnife
+    - id: Handcuffs
+    - id: MagazineBox12
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -64,7 +70,7 @@
   parent: KitBase
   id: MinutemenKitMedic
   name: Minute Men field medic kit
-  description: "Keep your men alive. Contains 1 MRE kit, 1 military carrier, 1 compact defibrillator, and 1 stocked medical belt. The belt holds 2 rolls of clean gauze (10 uses each), 1 ointment stack (10 uses), 1 stimpak, 1 antidote syringe, 1 RadAway blood bag, and 1 blood pack."
+  description: "Keep your men alive. Contains 1 MRE kit, 1 military carrier, 1 compact defibrillator, and 1 stocked medical belt. The belt holds 2 rolls of clean gauze (10 uses each), 1 ointment stack (10 uses), 1 stimpak, 1 antidote syringe, 1 RadAway blood bag, and 1 blood pack. Also includes a health scanner, a folded body bag, 1 extra blood pack, and a consumable CPR training manual. Includes a surgical duffel bag stocked with surgical tools, a bottle of ethanol, sterile latex gloves, and a sterile mask."
   components:
   - type: Sprite
     state: medic
@@ -74,6 +80,14 @@
     - id: ClothingBeltMilitary
     - id: N14ClothingBeltMedicalFilled
     - id: DefibrillatorCompact
+    - id: N14HandheldHealthAnalyzer
+    - id: BodyBagFolded
+    - id: Bloodpack
+    - id: ReclamationTrainingManualCPR
+    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: N14Ethanol
+    - id: ClothingHandsGlovesLatex
+    - id: ClothingMaskSterile
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -91,7 +105,7 @@
   parent: KitBase
   id: MinutemenKitOfficer
   name: Minute Men officer cutlass and hunting revolver kit
-  description: "Lead your men to glory with an officer cutlass and hunting revolver. Contains 1 officer cutlass, 1 loaded .45-70 hunting revolver, 1 box of .45-70 ammunition, 2 loaded .45-70 speedloaders, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  description: "Lead your men to glory with an officer cutlass and hunting revolver. Contains 1 officer cutlass, 1 loaded .45-70 hunting revolver, 1 box of .45-70 ammunition, 2 loaded .45-70 speedloaders, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier. Also includes binoculars, a loaded flare gun, and 3 spare flare shells."
   components:
   - type: Sprite
     state: marksman
@@ -106,6 +120,11 @@
     - id: MagazineBox45-70
     - id: SpeedLoader45-70
     - id: SpeedLoader45-70
+    - id: N14Binoculars
+    - id: WeaponFlareGun
+    - id: ShellShotgunFlare
+    - id: ShellShotgunFlare
+    - id: ShellShotgunFlare
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -123,7 +142,7 @@
   parent: KitBase
   id: MinutemenKitTrench
   name: Minute Men trench shotgun kit
-  description: "Show your men how a true leader leads: from the frontline with a trench shotgun. Contains 1 loaded trench shotgun, 1 box of 12-gauge shells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  description: "Show your men how a true leader leads: from the frontline with a trench shotgun. Contains 1 loaded trench shotgun, 1 box of 12-gauge shells, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier. Also includes a crowbar, wirecutters, and a combat knife."
   components:
   - type: Sprite
     state: rifleman
@@ -135,6 +154,9 @@
     - id: ClothingBeltMilitary
     - id: N14WeaponShotgunTrench
     - id: MagazineBox12gauge
+    - id: N14Crowbar
+    - id: N14Wirecutter
+    - id: N14CombatKnife
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -152,7 +174,7 @@
   parent: KitBase
   id: MinutemenKitCaptain
   name: Minute Men captain laser shotgun kit
-  description: "Lead the charge with a hand-cranked laser shotgun. Each turn packs more power into the next blast. Contains 1 crank laser shotgun loaded with a standard microfusion cell, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier."
+  description: "Lead the charge with a hand-cranked laser shotgun. Each turn packs more power into the next blast. Contains 1 crank laser shotgun loaded with a standard microfusion cell, 1 MRE kit, 1 stimpak, 1 roll of clean gauze (10 uses), and 1 military carrier. Also includes binoculars, a folded body bag, and 1 additional stimpak (2 total)."
   components:
   - type: Sprite
     state: rifleman
@@ -163,6 +185,9 @@
     - id: N14CleanGauze10
     - id: ClothingBeltMilitary
     - id: MinutemenWeaponLaserShotgun
+    - id: N14Binoculars
+    - id: BodyBagFolded
+    - id: N14Stimpak
     sound:
       path: /Audio/Effects/unwrap.ogg
 

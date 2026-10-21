@@ -1,3 +1,5 @@
+using System.Text.Json;
+using Robust.Shared.ContentPack;
 using System.Linq;
 using System.Numerics;
 using Content.Shared.Hands.EntitySystems;
@@ -92,6 +94,8 @@ public sealed class GunAttachmentVisualTests
     [TestCase("N14WeaponSMGGreaseGun", true)]
     [TestCase("N14WeaponSMG12mmAdvancedChinese", true)]
     [TestCase("N14WeaponSMG12mmAdvancedCanadian", true)]
+    [TestCase("N14WeaponRifle556CarbineOldMakeshift")]
+    [TestCase("N14WeaponRifle556CarbineOldMakeshift", true)]
     [TestCase("N14WeaponPistol12mm", true)]
     [TestCase("N14WeaponPistol45Colt", true)]
     [TestCase("N14WeaponPistol10mmPipe", true)]
@@ -377,6 +381,24 @@ public sealed class GunAttachmentVisualTests
             }
         });
         await pair.Server.WaitPost(() => server.DeleteEntity(server.GetEntity(netUser)));
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task MakeshiftOldCarbineUsesOriginalCarbineHeldMountGeometry()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var resources = pair.Server.ResolveDependency<IResourceManager>();
+            using var stream = resources.ContentFileRead("/GunAttachmentMounts.json");
+            using var document = JsonDocument.Parse(stream);
+            const string original = "_Nuclear14/Objects/Weapons/Guns/Rifles/carbine.rsi/";
+            const string makeshift = "_ReclamationProject/Objects/Weapons/Guns/Makeshift/rifle_carbine_4938978c.rsi/";
+            foreach (var state in new[] { "inhand-left", "inhand-right", "wielded-inhand-left", "wielded-inhand-right" })
+                Assert.That(document.RootElement.GetProperty(makeshift + state).GetRawText(),
+                    Is.EqualTo(document.RootElement.GetProperty(original + state).GetRawText()), state);
+        });
         await pair.CleanReturnAsync();
     }
 }

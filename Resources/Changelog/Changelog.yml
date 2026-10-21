@@ -12609,3 +12609,31 @@ Entries:
   id: 6536
   time: '2026-10-20T08:04:52.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/56
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Back alley doctor, Bruiser, High roller and Farmer Wastelander
+        starter kits.
+    - type: Add
+      message: >-
+        Added a clipping-only plant bag with all 25 N14 clipping types and a
+        Reinforced Leather Vest.
+    - type: Fix
+      message: Full compost sacks now contain their fertilizer.
+    - type: Fix
+      message: >-
+        Maria-style pistols now display the correct slide state without a
+        duplicate magazine sprite covering it.
+  id: 6537
+  time: '2026-10-21T13:36:12.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/57
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Corrected the makeshift old carbine's held facing and laser sight
+        alignment.
+  id: 6538
+  time: '2026-10-21T13:36:25.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/58

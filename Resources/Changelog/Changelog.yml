@@ -12722,3 +12722,12 @@ Entries:
   id: 6543
   time: '2026-10-21T14:22:30.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/63
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added per-character consent preferences for torture and slavery, visible
+        through examination.
+  id: 6544
+  time: '2026-10-21T14:22:56.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/64

@@ -12758,3 +12758,16 @@ Entries:
   id: 6545
   time: '2026-10-21T14:23:29.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/65
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Wooden roof tiles can be constructed for two wood and supported by
+        connected wooden beams.
+    - type: Add
+      message: >-
+        Unsupported wooden roofs collapse after 30 seconds; prying their floor
+        removes them and returns the wood.
+  id: 6546
+  time: '2026-10-21T14:23:59.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/66

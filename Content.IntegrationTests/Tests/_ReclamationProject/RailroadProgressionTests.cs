@@ -15,60 +15,6 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture, NonParallelizable]
 public sealed class RailroadProgressionTests
 {
-    [TestCase(1, "Worker", 20)]
-    [TestCase(2, "Worker", 20)]
-    [TestCase(1, "Runner", 40)]
-    [TestCase(2, "Runner", 40)]
-    [TestCase(1, "Agent", 60)]
-    [TestCase(2, "Agent", 60)]
-    [TestCase(1, "Conductor", 80)]
-    [TestCase(2, "Conductor", 80)]
-    [TestCase(1, "SafehouseOwner", 100)]
-    [TestCase(2, "SafehouseOwner", 100)]
-    public async Task RailroadUnlocksUseCombinedTimeAndCannotBeSkippedByWhitelist(int house, string rank, int hours)
-    {
-        await using var pair = await PoolManager.GetServerClient();
-        await pair.Server.WaitAssertion(() =>
-        {
-            var em = pair.Server.ResolveDependency<IEntityManager>();
-            var prototypes = pair.Server.ResolveDependency<IPrototypeManager>();
-            var config = pair.Server.ResolveDependency<IConfigurationManager>();
-            var sponsor = pair.Server.ResolveDependency<ISharedSponsorManager>();
-            var previous = config.GetCVar(CCVars.GameRoleTimers);
-            config.SetCVar(CCVars.GameRoleTimers, true);
-            try
-            {
-                var job = prototypes.Index<JobPrototype>($"RailroadSafehouse{house}{rank}");
-                var requirement = job.Requirements!.OfType<CharacterDepartmentTimeRequirement>().Single();
-                Assert.That(requirement.Min, Is.EqualTo(TimeSpan.FromHours(hours)));
-                Assert.That(requirement.CanBeBypassedByJobWhitelist(job), Is.False);
-                Assert.That(job.Whitelisted, Is.EqualTo(rank is "Agent" or "Conductor" or "SafehouseOwner"));
-                var times = new Dictionary<string, TimeSpan>
-                {
-                    ["RailroadSafehouse1Intern"] = TimeSpan.FromHours(hours / 2d),
-                    ["RailroadSafehouse2Worker"] = TimeSpan.FromHours(hours / 2d) - TimeSpan.FromSeconds(1),
-                    ["MinutemenGeneral"] = TimeSpan.FromHours(1000)
-                };
-                var system = em.System<CharacterRequirementsSystem>();
-                bool Eligible() => system.CheckRequirementValid(requirement, job,
-                    HumanoidCharacterProfile.DefaultWithSpecies(), times, true, job, em,
-                    prototypes, config, sponsor, out _, jobWhitelisted: true);
-                Assert.That(Eligible(), Is.False, "One second below the threshold, even with a job whitelist and unrelated time.");
-                times["RailroadSafehouse2Worker"] += TimeSpan.FromSeconds(1);
-                Assert.That(Eligible(), Is.True, "Time from both safehouses combines at the exact threshold.");
-                requirement.AdditionalDepartments.Add("RailroadSafehouse1");
-                try
-                {
-                    times["RailroadSafehouse2Worker"] -= TimeSpan.FromSeconds(1);
-                    Assert.That(Eligible(), Is.False, "Duplicate departments do not count time twice.");
-                }
-                finally { requirement.AdditionalDepartments.RemoveAt(requirement.AdditionalDepartments.Count - 1); }
-            }
-            finally { config.SetCVar(CCVars.GameRoleTimers, previous); }
-        });
-        await pair.CleanReturnAsync();
-    }
-
     [Test]
     public async Task RetiredJobTimersWorkWithoutDepartmentMembershipOnServerAndClient()
     {

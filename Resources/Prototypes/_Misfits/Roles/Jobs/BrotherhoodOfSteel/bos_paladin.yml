@@ -65,12 +65,9 @@
     - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
       - Human
-    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T4 faction timelock (12h BoS)
-      department: BrotherhoodOfSteel
-      min: 43200 # 12 hours
     - !type:CharacterPlaytimeRequirement
-      tracker: BoSMidSquire
-      min: 36000 # 10 hours as paladins need to learn how to be a proper paladin via time
+      tracker: BoSKnight
+      min: 18000 # 5 hours in the preceding role.
   startingGear: BoSPaladinGear
   alwaysUseSpawner: true
   icon: "JobIconBosMPaladin"

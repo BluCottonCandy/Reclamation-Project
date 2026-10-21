@@ -3,7 +3,7 @@
   setPreference: true # #Misfits Tweak - visible in job selection
   hideWithoutJobWhitelist: true # #Misfits Change - Elder is whitelist-only; hidden from job picker without it
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  jobWhitelistBypassesRoleTimers: true
   weight: 120
   name: job-name-bos-west-elder-comm
   overwatchCategory: OverwatchBosElder
@@ -13,9 +13,17 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
-    - !type:CharacterDepartmentTimeRequirement
-      department: BrotherhoodOfSteel
-      min: 252000 # 70 hours
+    - !type:CharacterLogicOrRequirement
+      requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: BoSHeadKnight
+        min: 18000 # 5 hours in the preceding role.
+      - !type:CharacterPlaytimeRequirement
+        tracker: BoSWestScribe
+        min: 18000 # 5 hours in the preceding role.
+      - !type:CharacterPlaytimeRequirement
+        tracker: BoSMidPaladinCommander
+        min: 18000 # 5 hours in the preceding role.
   startingGear: BoSWestElderCommanderGear
   alwaysUseSpawner: true
   icon: "JobIconBosMCommander"

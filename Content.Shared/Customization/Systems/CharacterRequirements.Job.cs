@@ -276,6 +276,10 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
     [DataField(required: true)]
     public ProtoId<PlayTimeTrackerPrototype> Tracker;
 
+    /// <summary>Other role trackers whose time contributes to this same requirement.</summary>
+    [DataField]
+    public List<ProtoId<PlayTimeTrackerPrototype>> AdditionalTrackers = new();
+
     public override bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
     {
         return job.JobWhitelistBypassesRoleTimers;
@@ -310,7 +314,9 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
 
         // Get the JobPrototype of the Tracker
         var trackerJob = jobSystem.GetJobPrototype(Tracker);
-        var jobStr = prototypeManager.Index<JobPrototype>(trackerJob).LocalizedName;
+        var trackers = new HashSet<ProtoId<PlayTimeTrackerPrototype>>(AdditionalTrackers) { Tracker };
+        var jobStr = string.Join(" / ", trackers.Select(t =>
+            prototypeManager.Index<JobPrototype>(jobSystem.GetJobPrototype(t)).LocalizedName));
 
         // Retired jobs can retain tracked time and loadout requirements without a department.
         // Department membership only supplies a display color; it must not prevent timer checks.
@@ -321,8 +327,10 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
             departmentColor = department.Color;
         }
 
-        // Get the time for the tracker
-        var time = playTimes.GetValueOrDefault(Tracker);
+        // Count each explicitly selected role once, even if it appears more than once.
+        var time = TimeSpan.Zero;
+        foreach (var tracker in trackers)
+            time += playTimes.GetValueOrDefault(tracker);
         reason = null;
 
         if (time > Max)

@@ -10,11 +10,15 @@
   name: job-name-minutemen-corporal
   description: job-description-minutemen-corporal
   playTimeTracker: MinutemenCorporal
+  jobWhitelistBypassesRoleTimers: true
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
       - Ghoul
+    - !type:CharacterPlaytimeRequirement
+      tracker: MinutemenPrivate
+      min: 18000 # 5 hours in the preceding role.
   startingGear: MinutemenCorporalKitGear
   alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
   access:

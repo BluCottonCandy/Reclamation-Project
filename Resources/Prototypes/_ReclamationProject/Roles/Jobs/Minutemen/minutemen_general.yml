@@ -20,6 +20,9 @@
       species:
       - Human
       - Ghoul
+    - !type:CharacterPlaytimeRequirement
+      tracker: MinutemenColonel
+      min: 18000 # 5 hours in the preceding role.
   startingGear: MinutemenGeneralGear
   alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
   access:

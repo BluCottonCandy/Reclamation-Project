@@ -32,7 +32,7 @@ public sealed class WastelanderExtraKitTests
         await pair.Server.WaitAssertion(() =>
         {
             var selector = em.SpawnEntity("ReclamationWastelanderKitSelector", map.GridCoords);
-            Assert.That(em.GetComponent<UndecidedLoadoutBackpackComponent>(selector).PossibleSets, Has.Count.EqualTo(9));
+            Assert.That(em.GetComponent<UndecidedLoadoutBackpackComponent>(selector).PossibleSets, Has.Count.EqualTo(11));
             var doctor = em.SpawnEntity("ReclamationWastelanderKitBackAlleyDoctor", map.GridCoords);
             var supplies = EntitySpawnCollection.GetSpawns(em.GetComponent<SpawnItemsOnUseComponent>(doctor).Items);
             Assert.That(supplies.Count(id => id == "N14Stimpak"), Is.EqualTo(2));
@@ -97,7 +97,7 @@ public sealed class WastelanderExtraKitTests
         {
             var farmer = em.SpawnEntity("ReclamationWastelanderKitFarmer", map.GridCoords);
             Assert.That(EntitySpawnCollection.GetSpawns(em.GetComponent<SpawnItemsOnUseComponent>(farmer).Items),
-                Is.EquivalentTo(new[] { "N14ClothingBeltPlantFilled", "ReclamationClippingBagFilled", "N14SackCompostFull" }));
+                Is.EquivalentTo(new[] { "N14ClothingBeltPlantFilled", "ReclamationClippingBagFilled", "N14SackCompostFull", "ReclamationTrainingManualAdvancedFarming" }));
             var bag = em.SpawnEntity("ReclamationClippingBagFilled", map.GridCoords);
             var stored = em.GetComponent<StorageComponent>(bag).Container.ContainedEntities;
             var clippings = prototypes.EnumeratePrototypes<EntityPrototype>()

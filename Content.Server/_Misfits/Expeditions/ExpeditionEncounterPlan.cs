@@ -3,7 +3,7 @@ using Content.Shared._Misfits.Expeditions;
 
 namespace Content.Server._Misfits.Expeditions;
 
-/// <summary>One named leader per population, with capped rewards rolled by difficulty.</summary>
+/// <summary>Named leaders on Hard only, with capped rewards rolled by difficulty.</summary>
 public sealed record ExpeditionEncounterPlan(string Family, string[] Enemies, string? AdvancedWeapon, string? AdvancedArmor)
 {
     public static readonly string[] NamedEnemies =
@@ -23,41 +23,65 @@ public sealed record ExpeditionEncounterPlan(string Family, string[] Enemies, st
         var random = new Random(seed ^ 0x7717);
         if (familyOverride == N14ExpeditionEnemyFamily.Ghouls && tier != N14ExpeditionCombatTier.Easy)
             throw new ArgumentException("Ghouls are restricted to Easy expeditions.", nameof(familyOverride));
-        var family = familyOverride.HasValue ? (int) familyOverride.Value : random.Next(tier == N14ExpeditionCombatTier.Easy ? 3 : 2);
+        if (familyOverride == N14ExpeditionEnemyFamily.SuperMutants && tier == N14ExpeditionCombatTier.Easy)
+            throw new ArgumentException("Super mutants cannot appear in Easy expeditions.", nameof(familyOverride));
+        var allowedFamilies = tier == N14ExpeditionCombatTier.Easy
+            ? new[] { N14ExpeditionEnemyFamily.Raiders, N14ExpeditionEnemyFamily.Ghouls }
+            : new[] { N14ExpeditionEnemyFamily.SuperMutants, N14ExpeditionEnemyFamily.Raiders };
+        var family = (int) (familyOverride ?? allowedFamilies[random.Next(allowedFamilies.Length)]);
         var count = tier switch
         {
             N14ExpeditionCombatTier.Medium => 30,
             N14ExpeditionCombatTier.Hard => 40,
             _ => 20
         };
-        string[] pool;
-        var enemies = new List<string> { NamedEnemies[family] };
-        if (family == 0)
+        var enemies = new List<string>();
+        void Fill(int amount, params string[] variants)
         {
-            pool = tier == N14ExpeditionCombatTier.Easy
-                ? new[] { "ReclamationExpeditionSuperMutantNPC", "ReclamationExpeditionSuperMutantMelee", "ReclamationExpeditionSuperMutantRanged", "ReclamationExpeditionSuperMutantArmored" }
-                : new[] { "ReclamationExpeditionSuperMutantRanged" };
-            if (tier == N14ExpeditionCombatTier.Hard)
-                enemies.AddRange(new[] { "ReclamationExpeditionNightkinVeteran", "ReclamationExpeditionNightkinElite" });
+            var shuffled = variants.OrderBy(_ => random.Next()).ToArray();
+            for (var i = 0; i < amount; i++)
+                enemies.Add(shuffled[i % shuffled.Length]);
         }
-        else if (family == 1)
+
+        if (tier == N14ExpeditionCombatTier.Hard)
         {
-            pool = tier switch
+            enemies.Add(NamedEnemies[family]);
+            if (family == (int) N14ExpeditionEnemyFamily.SuperMutants)
             {
-                N14ExpeditionCombatTier.Medium => new[] { "N14MobRaiderHunter", "N14MobRaiderSkrimisher" },
-                N14ExpeditionCombatTier.Hard => new[] { "N14MobRaiderHunter" },
-                _ => new[] { "N14MobRaiderPsycho", "N14MobRaiderPsychoRanged", "N14MobRaiderHunter", "N14MobRaiderSkrimisher" }
-            };
-            if (tier == N14ExpeditionCombatTier.Hard)
-                enemies.AddRange(Enumerable.Repeat("N14MobRaiderBoss", random.Next(3, 6) - 1));
+                enemies.AddRange(new[] { "ReclamationExpeditionNightkinVeteran", "ReclamationExpeditionNightkinElite" });
+                Fill(count - enemies.Count, "ReclamationExpeditionSuperMutantMarksman");
+            }
+            else
+            {
+                // The named leader counts toward the existing three-to-five boss quota.
+                Fill(random.Next(3, 6) - 1, "N14MobRaiderBoss");
+                Fill(count - enemies.Count, "N14MobRaiderHunter");
+            }
+        }
+        else if (family == (int) N14ExpeditionEnemyFamily.Ghouls)
+        {
+            Fill(count, "N14MobGhoulFeral", "N14MobGhoulFeralReaver");
         }
         else
-            pool = new[] { "N14MobGhoulFeral", "N14MobGhoulFeralReaver" };
-
-        // Balanced variants with shuffled order; elites count toward the total.
-        pool = pool.OrderBy(_ => random.Next()).ToArray();
-        for (var i = 0; enemies.Count < count; i++)
-            enemies.Add(pool[i % pool.Length]);
+        {
+            var meleeCount = tier == N14ExpeditionCombatTier.Easy ? 14 : 15;
+            var marksmen = random.Next(1, 3);
+            if (family == (int) N14ExpeditionEnemyFamily.SuperMutants)
+            {
+                Fill(meleeCount, "ReclamationExpeditionSuperMutantNPC", "ReclamationExpeditionSuperMutantMelee", "ReclamationExpeditionSuperMutantArmored");
+                Fill(marksmen, "ReclamationExpeditionSuperMutantMarksman");
+                Fill(count - enemies.Count, "ReclamationExpeditionSuperMutantRanged", "ReclamationExpeditionSuperMutantRifleman", "ReclamationExpeditionSuperMutantShotgunner");
+            }
+            else
+            {
+                Fill(meleeCount, "N14MobRaiderPsycho", "ReclamationExpeditionRaiderBruiser", "ReclamationExpeditionRaiderBaton");
+                Fill(marksmen, "N14MobRaiderHunter");
+                if (tier == N14ExpeditionCombatTier.Easy)
+                    Fill(count - enemies.Count, "N14MobRaiderPsychoRanged", "N14MobRaiderSkrimisher");
+                else
+                    Fill(count - enemies.Count, "N14MobRaiderSkrimisher", "ReclamationExpeditionRaiderRifleman", "ReclamationExpeditionRaiderSmg", "ReclamationExpeditionRaiderShotgunner");
+            }
+        }
         var population = enemies.OrderBy(_ => random.Next()).ToArray();
 
         // Separate stream: changing population composition cannot change loot odds.

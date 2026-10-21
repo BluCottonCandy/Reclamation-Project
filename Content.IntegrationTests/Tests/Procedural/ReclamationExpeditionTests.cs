@@ -147,11 +147,11 @@ public sealed class ReclamationExpeditionTests
             var enemyIds = dressing.Hostiles.Select(uid => entities.GetComponent<MetaDataComponent>(uid).EntityPrototype!.ID).Distinct().ToArray();
             var enemyFamilies = new[]
             {
-                new[] { "ReclamationExpeditionSuperMutantNPC", "ReclamationExpeditionSuperMutantMelee", "ReclamationExpeditionSuperMutantRanged", "ReclamationExpeditionSuperMutantArmored", "ReclamationExpeditionBehemoth", "ReclamationExpeditionNightkinVeteran", "ReclamationExpeditionNightkinElite", "ReclamationExpeditionMutantLeader" },
-                new[] { "N14MobRaiderPsycho", "N14MobRaiderPsychoRanged", "N14MobRaiderHunter", "N14MobRaiderSkrimisher", "N14MobRaiderBoss", "ReclamationExpeditionRaiderLeader" },
+                new[] { "ReclamationExpeditionSuperMutantNPC", "ReclamationExpeditionSuperMutantMelee", "ReclamationExpeditionSuperMutantRanged", "ReclamationExpeditionSuperMutantArmored", "ReclamationExpeditionBehemoth", "ReclamationExpeditionNightkinVeteran", "ReclamationExpeditionNightkinElite", "ReclamationExpeditionMutantLeader", "ReclamationExpeditionSuperMutantMarksman", "ReclamationExpeditionSuperMutantRifleman", "ReclamationExpeditionSuperMutantShotgunner" },
+                new[] { "N14MobRaiderPsycho", "N14MobRaiderPsychoRanged", "N14MobRaiderHunter", "N14MobRaiderSkrimisher", "N14MobRaiderBoss", "ReclamationExpeditionRaiderLeader", "ReclamationExpeditionRaiderBruiser", "ReclamationExpeditionRaiderBaton", "ReclamationExpeditionRaiderRifleman", "ReclamationExpeditionRaiderSmg", "ReclamationExpeditionRaiderShotgunner" },
                 new[] { "N14MobGhoulFeral", "N14MobGhoulFeralReaver", "ReclamationExpeditionGlowingLeader" }
             };
-            Assert.That(enemyIds.Length, Is.GreaterThanOrEqualTo(tier == N14ExpeditionCombatTier.Medium && encounter.Family == "Super mutants" ? 1 : 2), "Expedition must contain enemy variants.");
+            Assert.That(enemyIds.Length, Is.GreaterThanOrEqualTo(2), "Expedition must contain enemy variants.");
             Assert.That(enemyFamilies.Count(family => enemyIds.All(family.Contains)), Is.EqualTo(1), "Enemy families or faction-specific NPCs must not mix.");
             foreach (var hostile in dressing.Hostiles)
             {

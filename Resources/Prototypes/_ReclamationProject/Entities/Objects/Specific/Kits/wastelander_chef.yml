@@ -1,0 +1,80 @@
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitChef
+  name: Wasteland Chef
+  description: "You have a way of making food no matter what. Contains a butcher's cleaver, a kitchen knife, a chef belt, a wasteland cookbook, salt and pepper shakers, and a food grab bag that keeps food fresh. The bag contains two bags of flour, a bag of rice, a bag of cornmeal, and one of each raw meat type used in the cookbook."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14ButchersCleaver
+    - id: N14KitchenKnife
+    - id: ClothingBeltChef
+    - id: ReclamationCookbook
+    - id: N14FoodShakerSalt
+    - id: N14FoodShakerPepper
+    - id: ReclamationChefFoodGrabBagFilled
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetChef
+  name: wastelander-kit-chef-name
+  description: wastelander-kit-chef-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitChef
+
+- type: entity
+  parent: N14Sack4
+  id: ReclamationChefFoodGrabBag
+  name: food grab bag
+  description: A compact, insulated food sack that keeps food fresh while it is stored inside, even when carried in another bag.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,1
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,9,9
+  - type: AntiRottingContainer
+
+- type: entity
+  parent: ReclamationChefFoodGrabBag
+  id: ReclamationChefFoodGrabBagFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: ReagentContainerFlour
+      amount: 2
+    - id: ReagentContainerRice
+    - id: ReagentContainerCornmeal
+    - id: N14FoodMeatRadRaw
+    - id: N14FoodMeatBrahmin
+    - id: N14FoodMeatBighorner
+    - id: N14FoodMeatRadstag
+    - id: N14FoodMeatRadhog
+    - id: N14FoodMeatPigrat
+    - id: N14FoodMeatYaoguai
+    - id: N14FoodMeatRadscorpion
+    - id: N14FoodMeatRadscorpionLeg
+    - id: N14FoodMeatRadchicken
+    - id: N14FoodMeatGecko
+    - id: N14FoodMeatGeckoFire
+    - id: N14FoodMeatGeckoGolden
+    - id: N14FoodMeatIguana
+    - id: N14FoodMeatRadroachFillet
+    - id: N14FoodMeatMirelurkClaw
+    - id: N14FoodMeatRadlurkClaw
+    - id: N14FoodMeatHuman
+    - id: N14FoodMeatSupermutant
+    - id: FoodMeatFish
+    - id: FoodMeatRedfishRaw
+    - id: FoodMeatWhitefishRaw
+    - id: FoodMeatRat

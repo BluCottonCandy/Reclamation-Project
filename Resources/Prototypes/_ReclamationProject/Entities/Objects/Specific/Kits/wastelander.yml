@@ -148,6 +148,8 @@
     - ReclamationWastelanderSetBruiser
     - ReclamationWastelanderSetHighRoller
     - ReclamationWastelanderSetFarmer
+    - ReclamationWastelanderSetChef
+    - ReclamationWastelanderSetTribal
 
 - type: UndecidedLoadoutBackpackSet
   id: ReclamationSurplusPistol22lrMakeshift

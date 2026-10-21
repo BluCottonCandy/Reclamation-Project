@@ -12548,3 +12548,64 @@ Entries:
   id: 6531
   time: '2026-10-19T06:22:24.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/50
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Lowered the internal-bleeding threshold so ordinary cuts can cause
+        internal injuries.
+    - type: Add
+      message: Internal bleeding now gives immediate pain feedback when it starts.
+  id: 6532
+  time: '2026-10-19T21:15:46.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/54
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Alt-clicking guns now removes their magazines before removing
+        attachments.
+  id: 6533
+  time: '2026-10-19T21:15:58.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/53
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Expedition launches now gather players within two tiles and leave behind
+        anyone who walks away before departure.
+  id: 6534
+  time: '2026-10-19T21:16:22.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/52
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Rebalanced expedition enemy variety and melee/ranged counts by
+        difficulty, limiting Easy and Medium to at most two .308 enemies.
+    - type: Tweak
+      message: >-
+        Restricted named expedition enemies to Hard and removed super mutants
+        from Easy.
+    - type: Fix
+      message: Expedition Nightkin now retain visible silhouettes.
+  id: 6535
+  time: '2026-10-19T21:16:48.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/51
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added the wasteland cookbook with a searchable, standalone cooking
+        reference.
+    - type: Add
+      message: Butchered super mutant NPCs now drop one or two raw super mutant meat.
+    - type: Fix
+      message: Radhogs drop the correct meat, and fish tacos use obtainable fish.
+    - type: Remove
+      message: >-
+        Removed cooking recipes and alternatives without supported N14
+        ingredient supply paths.
+  id: 6536
+  time: '2026-10-20T08:04:52.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/56

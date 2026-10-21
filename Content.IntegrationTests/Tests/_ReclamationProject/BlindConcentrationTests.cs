@@ -59,12 +59,17 @@ public sealed class BlindConcentrationTests
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
         var entities = pair.Server.ResolveDependency<IEntityManager>();
+        EntityUid wearer = default, backpack = default;
         await pair.Server.WaitAssertion(() =>
         {
-            var wearer = entities.SpawnEntity("TestBlindWithoutPerk", map.GridCoords);
-            var backpack = entities.SpawnEntity("ClothingBackpack", map.GridCoords);
+            wearer = entities.SpawnEntity("TestBlindWithoutPerk", map.GridCoords);
+            backpack = entities.SpawnEntity("ClothingBackpack", map.GridCoords);
             Assert.That(entities.System<InventorySystem>().TryEquip(wearer, backpack, "back", force: true), Is.True);
             entities.AddComponent<BlindConcentrationComponent>(wearer);
+        });
+        await pair.RunTicksSync(3);
+        await pair.Server.WaitAssertion(() =>
+        {
             var contents = entities.GetComponent<Content.Shared.Storage.StorageComponent>(backpack).Container.ContainedEntities;
             Assert.That(contents.Count, Is.EqualTo(1));
             Assert.That(entities.GetComponent<MetaDataComponent>(contents[0]).EntityPrototype!.ID,

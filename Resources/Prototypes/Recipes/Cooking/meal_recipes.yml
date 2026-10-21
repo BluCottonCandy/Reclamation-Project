@@ -18,16 +18,6 @@
     OrganHumanAppendix: 1
 
 - type: microwaveMealRecipe
-  id: RecipeBaconBurger
-  name: bacon burger recipe
-  result: FoodBurgerBacon
-  time: 10
-  solids:
-    FoodBreadBun: 1
-    FoodMeatBacon: 1
-    FoodCheeseSlice: 2
-
-- type: microwaveMealRecipe
   id: RecipeBaseballBurger
   name: baseball burger recipe
   result: FoodBurgerBaseball

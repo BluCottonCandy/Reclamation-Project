@@ -1,0 +1,38 @@
+<Document>
+# The Wasteland Table
+
+<ColorBox Color="#29251E" OutlineColor="#927548">
+<Box Orientation="Vertical" Margin="12">
+[bold][color=#E7C78D]A well-fed wanderer lives to tell the tale.[/color][/bold]
+
+A leather-bound collection of cooking recipes, from a simple cutlet to a full wasteland feast. Choose a chapter from the contents, then use the filter to find a dish.
+</Box>
+</ColorBox>
+
+## Before you light the stove
+
+[bold]Ingredients:[/bold] Whole items are counted separately from liquids. Liquid amounts are measured in units (u).
+
+[bold]Method:[/bold] Use a compatible cooking machine, add every listed ingredient, then cook for the stated time.
+
+[bold]Alternatives:[/bold] Some dishes have more than one recipe. Each version is kept separately with its own ingredients.
+
+## Inside this book
+
+[bold][color=#E7C78D]Meat and fish[/color][/bold] — 28 recipes.
+
+[bold][color=#E7C78D]Burgers and sandwiches[/color][/bold] — 23 recipes.
+
+[bold][color=#E7C78D]Bread, pizza and baking[/color][/bold] — 18 recipes.
+
+[bold][color=#E7C78D]Pasta, rice and soups[/color][/bold] — 18 recipes.
+
+[bold][color=#E7C78D]Pies, fish dishes and sides[/color][/bold] — 11 recipes.
+
+[bold][color=#E7C78D]Breakfast and sweet treats[/color][/bold] — 9 recipes.
+
+[bold][color=#E7C78D]Meals, salads and snacks[/color][/bold] — 12 recipes.
+
+[bold][color=#E7C78D]Tacos and pantry[/color][/bold] — 10 recipes.
+
+</Document>

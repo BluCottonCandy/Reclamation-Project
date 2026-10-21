@@ -119,10 +119,14 @@ public abstract class SharedRottingSystem : EntitySystem
         if (TryComp<MobStateComponent>(uid, out var mobState) && !_mobState.IsDead(uid, mobState))
             return false;
 
-        if (_container.TryGetOuterContainer(uid, Transform(uid), out var container) &&
-            HasComp<AntiRottingContainerComponent>(container.Owner))
+        // Preserving containers still protect their contents when carried inside another bag.
+        var current = uid;
+        while (current.IsValid())
         {
-            return false;
+            if (_container.TryGetContainingContainer(current, out var container) &&
+                HasComp<AntiRottingContainerComponent>(container.Owner))
+                return false;
+            current = Transform(current).ParentUid;
         }
 
         var ev = new IsRottingEvent();

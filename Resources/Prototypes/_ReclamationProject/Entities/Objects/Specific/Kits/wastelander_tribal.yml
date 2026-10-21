@@ -1,0 +1,23 @@
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitTribal
+  name: Wasteland Tribal Kit
+  description: "You have never really liked living in civilization, you accepted a new way of life, one that lives off the land and relies only on yourself and your God. Contains a selection box: choose one Tribal Stalker, Champion, Hunter, Bone-Breaker, Pain Bringer, or Fire Hand kit."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: Triballoadoutkits
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetTribal
+  name: wastelander-kit-tribal-name
+  description: wastelander-kit-tribal-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - ReclamationWastelanderKitTribal

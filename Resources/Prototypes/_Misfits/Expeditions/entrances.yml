@@ -21,7 +21,7 @@
   - type: N14ExpeditionBoard
     directLaunch: true
     directDifficultyId: N14ExpeditionEasy
-    gatherRadius: 7
+    gatherRadius: 2
     launchCountdownSeconds: 10
     cooldownSeconds: 600
 

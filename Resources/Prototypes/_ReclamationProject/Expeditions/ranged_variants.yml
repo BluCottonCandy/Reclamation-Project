@@ -1,0 +1,77 @@
+# Expedition-only ranged variants. All retain their original enemy family's AI.
+- type: entity
+  parent: ReclamationExpeditionSuperMutantRanged
+  id: ReclamationExpeditionSuperMutantRifleman
+  name: super mutant rifleman
+  suffix: Expedition
+  components:
+  - type: Gun
+    fireRate: 2
+    soundGunshot:
+      collection: N14CarbineGunshot
+  - type: BasicEntityAmmoProvider
+    proto: N14Cartridge556Rifle
+    capacity: 20
+    count: 20
+
+- type: entity
+  parent: ReclamationExpeditionSuperMutantRanged
+  id: ReclamationExpeditionSuperMutantShotgunner
+  name: super mutant shotgunner
+  suffix: Expedition
+  components:
+  - type: Gun
+    minAngle: 34.5
+    maxAngle: 104
+    fireRate: 0.75
+    soundGunshot: /Audio/_Nuclear14/Weapons/Guns/Shotguns/N14WeaponDoubleBarrelShotgun/shot1.ogg
+  - type: BasicEntityAmmoProvider
+    proto: N14ShellShotgun12
+    capacity: 6
+    count: 6
+
+- type: entity
+  parent: N14MobFernMercPrivate
+  id: ReclamationExpeditionRaiderRifleman
+  name: raider rifleman
+  description: A wasteland raider carrying a scavenged carbine.
+  suffix: Expedition
+
+- type: entity
+  parent: N14MobFernMercLieutenant
+  id: ReclamationExpeditionRaiderSmg
+  name: raider SMG gunner
+  description: A wasteland raider armed with a heavy submachine gun.
+  suffix: Expedition
+
+- type: entity
+  parent: N14MobFernMercSergeant
+  id: ReclamationExpeditionRaiderShotgunner
+  name: raider shotgunner
+  description: A wasteland raider with a combat shotgun.
+  suffix: Expedition
+
+- type: entity
+  parent: ReclamationExpeditionSuperMutantRanged
+  id: ReclamationExpeditionSuperMutantMarksman
+  name: super mutant marksman
+  suffix: Expedition
+  components:
+  - type: BasicEntityAmmoProvider
+    proto: N14Cartridge308Rifle
+    capacity: 10
+    count: 10
+
+- type: entity
+  parent: N14MobRaiderFernMelee
+  id: ReclamationExpeditionRaiderBruiser
+  name: raider bruiser
+  description: A wasteland raider ready to crush skulls with a club.
+  suffix: Expedition
+
+- type: entity
+  parent: N14MobRaiderEnforcerMelee
+  id: ReclamationExpeditionRaiderBaton
+  name: raider enforcer
+  description: A wasteland raider armed with a scavenged baton.
+  suffix: Expedition

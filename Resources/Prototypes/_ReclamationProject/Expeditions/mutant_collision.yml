@@ -72,6 +72,13 @@
   id: ReclamationExpeditionNightkinVeteran
   suffix: Expedition, narrow collision
   components:
+  - type: Sprite
+    color: "#FFFFFFFF"
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nightkin_ranged
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+      color: "#FFFFFFB3" # A visible silhouette, not the inherited near-invisible tint.
   - type: Fixtures
     fixtures:
       fix1:
@@ -89,6 +96,13 @@
   id: ReclamationExpeditionNightkinElite
   suffix: Expedition, narrow collision
   components:
+  - type: Sprite
+    color: "#FFFFFFFF"
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nightkin_boss
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+      color: "#FFFFFFB3" # A visible silhouette, not the inherited near-invisible tint.
   - type: Fixtures
     fixtures:
       fix1:

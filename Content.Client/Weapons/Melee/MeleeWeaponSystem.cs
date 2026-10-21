@@ -222,7 +222,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         var targetCoordinates = xform.Coordinates;
         var targetLocalAngle = xform.LocalRotation;
 
-        return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range);
+        return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range, useCenterRange: HasComp<ActorComponent>(user));
     }
 
     protected override void DoDamageEffect(List<EntityUid> targets, EntityUid? user, TransformComponent targetXform)
@@ -282,7 +282,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         var direction = targetMap.Position - userPos;
         // [Changed by MisfitsCrew/Operator] Wide swings use cursor angle with full heavy reach;
         // clamping to cursor distance made hits require hovering the target.
-        var distance = component.Range * component.HeavyRangeModifier;
+        var distance = GetMeleeReach(user, component) * component.HeavyRangeModifier;
 
         // This should really be improved. GetEntitiesInArc uses pos instead of bounding boxes.
         // Server will validate it with InRangeUnobstructed.

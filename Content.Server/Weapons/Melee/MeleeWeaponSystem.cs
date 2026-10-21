@@ -129,6 +129,8 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         // A) Wide-damage is split anyway
         // B) We run the same validation we do for click attacks.
 
+        var centerRange = HasComp<ActorComponent>(ignore);
+        var reach = centerRange ? range : range + WideArcTolerance;
         EntityCoordinates targetCoords;
         Angle targetLocalAngle;
 
@@ -137,7 +139,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
             (targetCoords, targetLocalAngle) = lastRealTick is { } tick
                 ? _lag.GetCoordinatesAngle(targetUid, tick - 1)
                 : _lag.GetCoordinatesAngle(targetUid, session);
-            if (!Interaction.InRangeUnobstructed(ignore, targetUid, targetCoords, targetLocalAngle, range + WideArcTolerance))
+            if (!Interaction.InRangeUnobstructed(ignore, targetUid, targetCoords, targetLocalAngle, reach, useCenterRange: centerRange))
                 return false;
         }
         else
@@ -145,7 +147,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
             var xform = Transform(targetUid);
             targetCoords = xform.Coordinates;
             targetLocalAngle = xform.LocalRotation;
-            if (!Interaction.InRangeUnobstructed(ignore, targetUid, range + WideArcTolerance))
+            if (!Interaction.InRangeUnobstructed(ignore, targetUid, reach, useCenterRange: centerRange))
                 return false;
         }
 
@@ -345,7 +347,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 return false;
         }
 
-        if (!InRange(user, target, component.Range, session, ev.LastRealTick))
+        if (!InRange(user, target, GetMeleeReach(user, component), session, ev.LastRealTick))
         {
             return false;
         }
@@ -414,10 +416,10 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
             (targetCoordinates, targetLocalAngle) = lastRealTick is { } tick
                 ? _lag.GetCoordinatesAngle(target, tick - 1)
                 : _lag.GetCoordinatesAngle(target, pSession);
-            return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range);
+            return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range, useCenterRange: HasComp<ActorComponent>(user));
         }
 
-        return Interaction.InRangeUnobstructed(user, target, range);
+        return Interaction.InRangeUnobstructed(user, target, range, useCenterRange: HasComp<ActorComponent>(user));
     }
 
     protected override void DoDamageEffect(List<EntityUid> targets, EntityUid? user, TransformComponent targetXform)

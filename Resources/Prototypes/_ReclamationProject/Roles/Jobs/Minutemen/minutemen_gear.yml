@@ -1,6 +1,6 @@
 # #Reclamation Project - Minutemen starting gear: one outfit per tier, plus small per-rank gear that
 # only swaps in that rank's dogtags (see minutemen_dogtags.yml for why each rank needs its own).
-# Every rank carries the laser musket in suit storage, with 2 spare cells in the backpack.
+# Most ranks carry a laser musket; the General carries a laser gatling and spare fusion cores.
 # The duster takes the neck slot, so the rank pin spawns in hand and gets pinned onto the uniform or vest.
 
 # Enlisted outfit: Recruit (this gear), Private, Corporal
@@ -101,3 +101,16 @@
   id: MinutemenGeneralGear
   equipment:
     id: MinutemenIDDogtagsGeneral
+    outerClothing: ReclamationMinutemenGeneralPowerArmor
+    suitstorage: N14WeaponLaserGatling
+    belt: ReclamationMinutemenGeneralPistol
+  inhand:
+  - MinutemenOfficerCutlass
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14FusionCore
+    - N14FusionCore
+    - N14MagazinePistol10mm
+    - N14MagazinePistol10mm
+    - MagazineBox10mm

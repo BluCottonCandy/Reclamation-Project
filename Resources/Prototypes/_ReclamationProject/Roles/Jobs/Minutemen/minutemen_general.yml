@@ -37,6 +37,7 @@
         factions:
           - Minutemen
           - Wastelander
+      - type: PowerArmorProficiency
 
 - type: playTimeTracker
   id: MinutemenGeneral

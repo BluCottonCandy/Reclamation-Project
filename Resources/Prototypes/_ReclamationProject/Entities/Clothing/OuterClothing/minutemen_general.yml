@@ -1,0 +1,18 @@
+- type: entity
+  parent: MisfitsClothingOuterPowerArmorRanger
+  id: ReclamationMinutemenGeneralPowerArmor
+  name: Commonwealth Sentinel power armor
+  description: A functioning power armor suit reserved for the General of the Commonwealth Minutemen. A sentinel for the people who call the Commonwealth home.
+  components:
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ReclamationMinutemenGeneralPowerArmorHelmet
+      gloves: N14ClothingPAGauntlets
+      shoes: N14ClothingPABoots
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: MisfitsClothingHeadHelmetPowerArmorRanger
+  id: ReclamationMinutemenGeneralPowerArmorHelmet
+  name: Commonwealth Sentinel helmet
+  description: The matching power armor helmet of the Minutemen General's Commonwealth Sentinel suit.

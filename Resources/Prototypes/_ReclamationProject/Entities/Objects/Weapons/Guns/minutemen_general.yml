@@ -1,0 +1,5 @@
+- type: entity
+  parent: MisfitsWeaponRangerPowerArmorPistol
+  id: ReclamationMinutemenGeneralPistol
+  name: Commonwealth Resolve
+  description: The Minutemen General's distinctive 10mm sidearm, built with an oversized grip for powered gauntlets. A reminder that the Commonwealth stands together.

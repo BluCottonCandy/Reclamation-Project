@@ -133,6 +133,11 @@ public sealed class GunAttachmentsSystem : EntitySystem
         // As in RMC, a light inside an attachment container must still illuminate the world.
         var lightContainer = _containers.EnsureContainer<ContainerSlot>(uid, LightSlotId);
         lightContainer.OccludesLight = false;
+
+        // Alt-click must reload before stripping attachments, independent of names/localization.
+        foreach (var slot in new[] { MuzzleSlotId, GripSlotId, StockSlotId, LaserSlotId, HoloSlotId, LightSlotId })
+            _slots.SetPriority(uid, slot, 10);
+        _slots.SetPriority(uid, "gun_magazine", 20);
     }
 
     private void OnRemove(EntityUid uid, GunAttachmentsComponent component, ComponentRemove args)

@@ -1,0 +1,66 @@
+- type: entity
+  parent: BaseItem
+  id: ReclamationCookbook
+  name: wasteland cookbook
+  description: A black leather-bound cookbook, fastened with a worn brown leather strap. Its pages are packed with recipes for a well-stocked wasteland kitchen.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_strong
+      color: "#1B1B20"
+    - state: decor_spine
+      color: "#3B3430"
+    - state: decor_middle
+      color: "#805335"
+    - state: detail_rivets
+      color: "#B59A68"
+  - type: Item
+    size: Small
+  - type: Tag
+    tags: [Book]
+  - type: EmitSoundOnPickup
+    sound: /Audio/SimpleStation14/Items/Handling/book_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound: /Audio/SimpleStation14/Items/Handling/book_drop.ogg
+  - type: EmitSoundOnLand
+    sound: /Audio/SimpleStation14/Items/Handling/book_drop.ogg
+  - type: Cookbook
+    chapters:
+      contents:
+        name: cookbook-contents
+        text: /ServerInfo/_ReclamationProject/Cookbook/Contents.xml
+        order: 0
+      chapter1:
+        name: cookbook-chapter-1
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter1.xml
+        order: 1
+      chapter2:
+        name: cookbook-chapter-2
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter2.xml
+        order: 2
+      chapter3:
+        name: cookbook-chapter-3
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter3.xml
+        order: 3
+      chapter4:
+        name: cookbook-chapter-4
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter4.xml
+        order: 4
+      chapter5:
+        name: cookbook-chapter-5
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter5.xml
+        order: 5
+      chapter6:
+        name: cookbook-chapter-6
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter6.xml
+        order: 6
+      chapter7:
+        name: cookbook-chapter-7
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter7.xml
+        order: 7
+      chapter8:
+        name: cookbook-chapter-8
+        text: /ServerInfo/_ReclamationProject/Cookbook/Chapter8.xml
+        order: 8

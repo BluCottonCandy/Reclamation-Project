@@ -1,0 +1,11 @@
+cookbook-title = The Wasteland Table
+cookbook-read = Read cookbook
+cookbook-contents = Contents and kitchen notes
+cookbook-chapter-1 = 01. Meat & fish
+cookbook-chapter-2 = 02. Burgers & sandwiches
+cookbook-chapter-3 = 03. Bread, pizza & baking
+cookbook-chapter-4 = 04. Pasta, rice & soups
+cookbook-chapter-5 = 05. Pies, fish dishes & sides
+cookbook-chapter-6 = 06. Breakfast & sweet treats
+cookbook-chapter-7 = 07. Meals, salads & snacks
+cookbook-chapter-8 = 08. Tacos & pantry

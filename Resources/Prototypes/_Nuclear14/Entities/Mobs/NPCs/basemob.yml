@@ -400,6 +400,13 @@
   parent: N14MobBaseHostile
   description: A hulking post-human mutation, product of the FEV virus. Radiation resistant and brutally strong.
   components:
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: N14FoodMeatSupermutant
+      amount: 1
+    - id: N14FoodMeatSupermutant
+      prob: 0.5
   - type: Damageable
     damageContainer: MisfitsNPCBiological  # Misfits Change
     damageModifierSet: N14SuperMutant

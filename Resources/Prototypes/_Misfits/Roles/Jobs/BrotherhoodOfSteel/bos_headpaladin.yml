@@ -3,7 +3,7 @@
   setPreference: true
   hideWithoutJobWhitelist: false # #Misfits Tweak - BoS Heads not whitelisted
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  jobWhitelistBypassesRoleTimers: true
   weight: 110
   showBorder: true
   overrideConsoleVisibility: false
@@ -16,15 +16,9 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
-    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h BoS)
-      department: BrotherhoodOfSteel
-      min: 144000 # 40 hours
-    - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Senior Paladin before Head Paladin
-      tracker: BoSMidPaladin
-      min: 28800 # 8 hours as Senior Paladin
     - !type:CharacterPlaytimeRequirement
-      tracker: BoSMidSquire
-      min: 36000 # 10 hours
+      tracker: BoSMidPaladin
+      min: 18000 # 5 hours in the preceding role.
   startingGear: BoSMidPaladinCommanderGear
   alwaysUseSpawner: true
   icon: "JobIconBosMCommander" # Corvax-Change

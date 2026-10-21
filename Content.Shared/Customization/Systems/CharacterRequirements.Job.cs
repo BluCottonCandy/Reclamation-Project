@@ -124,6 +124,10 @@ public sealed partial class CharacterDepartmentTimeRequirement : CharacterRequir
     [DataField(required: true)]
     public ProtoId<DepartmentPrototype> Department;
 
+    /// <summary>Additional departments whose job time counts toward this requirement.</summary>
+    [DataField]
+    public List<ProtoId<DepartmentPrototype>> AdditionalDepartments = new();
+
     public override bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
     {
         return job.JobWhitelistBypassesRoleTimers;
@@ -150,15 +154,13 @@ public sealed partial class CharacterDepartmentTimeRequirement : CharacterRequir
 
         var department = prototypeManager.Index(Department);
 
-        // Combine all of this department's job playtimes
+        // Count each tracker once even when departments share jobs or equivalent roles.
+        var roles = department.Roles.Concat(AdditionalDepartments
+            .SelectMany(id => prototypeManager.Index(id).Roles));
+        var trackers = roles.Select(id => prototypeManager.Index(id).PlayTimeTracker).Distinct();
         var playtime = TimeSpan.Zero;
-        foreach (var other in department.Roles)
-        {
-            var proto = prototypeManager.Index<JobPrototype>(other).PlayTimeTracker;
-
-            playTimes.TryGetValue(proto, out var otherTime);
-            playtime += otherTime;
-        }
+        foreach (var tracker in trackers)
+            playtime += playTimes.GetValueOrDefault(tracker);
 
         if (playtime > Max)
         {
@@ -274,6 +276,10 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
     [DataField(required: true)]
     public ProtoId<PlayTimeTrackerPrototype> Tracker;
 
+    /// <summary>Other role trackers whose time contributes to this same requirement.</summary>
+    [DataField]
+    public List<ProtoId<PlayTimeTrackerPrototype>> AdditionalTrackers = new();
+
     public override bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
     {
         return job.JobWhitelistBypassesRoleTimers;
@@ -308,19 +314,23 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
 
         // Get the JobPrototype of the Tracker
         var trackerJob = jobSystem.GetJobPrototype(Tracker);
-        var jobStr = prototypeManager.Index<JobPrototype>(trackerJob).LocalizedName;
+        var trackers = new HashSet<ProtoId<PlayTimeTrackerPrototype>>(AdditionalTrackers) { Tracker };
+        var jobStr = string.Join(" / ", trackers.Select(t =>
+            prototypeManager.Index<JobPrototype>(jobSystem.GetJobPrototype(t)).LocalizedName));
 
-        // Get the primary department of the Tracker
-        if (!jobSystem.TryGetPrimaryDepartment(trackerJob, out var department) &&
-            !jobSystem.TryGetDepartment(trackerJob, out department))
+        // Retired jobs can retain tracked time and loadout requirements without a department.
+        // Department membership only supplies a display color; it must not prevent timer checks.
+        var departmentColor = Color.LightBlue;
+        if (jobSystem.TryGetPrimaryDepartment(trackerJob, out var department) ||
+            jobSystem.TryGetDepartment(trackerJob, out department))
         {
-            DebugTools.Assert($"CharacterRequirements: Department not found for job {trackerJob}");
-            reason = null;
-            return false;
+            departmentColor = department.Color;
         }
 
-        // Get the time for the tracker
-        var time = playTimes.GetValueOrDefault(Tracker);
+        // Count each explicitly selected role once, even if it appears more than once.
+        var time = TimeSpan.Zero;
+        foreach (var tracker in trackers)
+            time += playTimes.GetValueOrDefault(tracker);
         reason = null;
 
         if (time > Max)
@@ -331,7 +341,7 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
                 : Loc.GetString("character-timer-role-too-high",
                     ("time", time.TotalMinutes - Max.TotalMinutes),
                     ("job", jobStr),
-                    ("departmentColor", department.Color));
+                    ("departmentColor", departmentColor));
             return false;
         }
 
@@ -343,7 +353,7 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
                 : Loc.GetString("character-timer-role-insufficient",
                     ("time", Min.TotalMinutes - time.TotalMinutes),
                     ("job", jobStr),
-                    ("departmentColor", department.Color));
+                    ("departmentColor", departmentColor));
             return false;
         }
 

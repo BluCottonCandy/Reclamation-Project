@@ -9,6 +9,8 @@
   requireAdminNotify: true
   weight: 140
   displayWeight: 140
+  showBorder: true
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-general
   description: job-description-minutemen-general
@@ -18,6 +20,9 @@
       species:
       - Human
       - Ghoul
+    - !type:CharacterPlaytimeRequirement
+      tracker: MinutemenColonel
+      min: 18000 # 5 hours in the preceding role.
   startingGear: MinutemenGeneralGear
   alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
   access:

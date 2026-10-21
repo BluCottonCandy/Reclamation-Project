@@ -7,6 +7,7 @@
   jobWhitelistBypassesRoleTimers: true
   weight: 100
   displayWeight: 100
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-lieutenant
   description: job-description-minutemen-lieutenant
@@ -16,6 +17,9 @@
       species:
       - Human
       - Ghoul
+    - !type:CharacterPlaytimeRequirement
+      tracker: MinutemenSergeant
+      min: 18000 # 5 hours in the preceding role.
   startingGear: MinutemenLieutenantKitGear
   alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
   access:

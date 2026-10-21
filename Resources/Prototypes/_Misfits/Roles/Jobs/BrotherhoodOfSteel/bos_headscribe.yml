@@ -3,7 +3,7 @@
   setPreference: true
   hideWithoutJobWhitelist: false # #Misfits Tweak - BoS Heads not whitelisted
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  jobWhitelistBypassesRoleTimers: true
   weight: 90
   name: job-name-bos-west-scribe
   overwatchCategory: OverwatchBosScribe
@@ -13,12 +13,9 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
-    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h BoS)
-      department: BrotherhoodOfSteel
-      min: 144000 # 40 hours
-    - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Senior Scribe before Head Scribe
+    - !type:CharacterPlaytimeRequirement
       tracker: BoSMidScribe
-      min: 28800 # 8 hours as Senior Scribe
+      min: 18000 # 5 hours in the preceding role.
   startingGear: BoSWestScribeGear
   alwaysUseSpawner: true
   icon: "JobIconBosMScriptor"

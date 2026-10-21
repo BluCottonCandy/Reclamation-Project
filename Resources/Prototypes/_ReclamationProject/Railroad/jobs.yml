@@ -52,6 +52,12 @@
   name: job-name-railroadsafehouse1worker
   description: job-description-railroadsafehouse1worker
   playTimeTracker: RailroadSafehouse1Worker
+  jobWhitelistBypassesRoleTimers: true
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Intern
+    additionalTrackers: [RailroadSafehouse2Intern]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse1WorkerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -76,6 +82,11 @@
   name: job-name-railroadsafehouse1agent
   description: job-description-railroadsafehouse1agent
   playTimeTracker: RailroadSafehouse1Agent
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Runner
+    additionalTrackers: [RailroadSafehouse2Runner]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse1AgentGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -101,6 +112,12 @@
   name: job-name-railroadsafehouse1runner
   description: job-description-railroadsafehouse1runner
   playTimeTracker: RailroadSafehouse1Runner
+  jobWhitelistBypassesRoleTimers: true
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Worker
+    additionalTrackers: [RailroadSafehouse2Worker]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse1RunnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -125,6 +142,11 @@
   name: job-name-railroadsafehouse1conductor
   description: job-description-railroadsafehouse1conductor
   playTimeTracker: RailroadSafehouse1Conductor
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Agent
+    additionalTrackers: [RailroadSafehouse2Agent]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse1ConductorGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
@@ -153,6 +175,11 @@
   name: job-name-railroadsafehouse1safehouseowner
   description: job-description-railroadsafehouse1safehouseowner
   playTimeTracker: RailroadSafehouse1SafehouseOwner
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Conductor
+    additionalTrackers: [RailroadSafehouse2Conductor]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse1SafehouseOwnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
@@ -203,6 +230,12 @@
   name: job-name-railroadsafehouse2worker
   description: job-description-railroadsafehouse2worker
   playTimeTracker: RailroadSafehouse2Worker
+  jobWhitelistBypassesRoleTimers: true
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Intern
+    additionalTrackers: [RailroadSafehouse2Intern]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse2WorkerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -227,6 +260,11 @@
   name: job-name-railroadsafehouse2agent
   description: job-description-railroadsafehouse2agent
   playTimeTracker: RailroadSafehouse2Agent
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Runner
+    additionalTrackers: [RailroadSafehouse2Runner]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse2AgentGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -252,6 +290,12 @@
   name: job-name-railroadsafehouse2runner
   description: job-description-railroadsafehouse2runner
   playTimeTracker: RailroadSafehouse2Runner
+  jobWhitelistBypassesRoleTimers: true
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Worker
+    additionalTrackers: [RailroadSafehouse2Worker]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse2RunnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -276,6 +320,11 @@
   name: job-name-railroadsafehouse2conductor
   description: job-description-railroadsafehouse2conductor
   playTimeTracker: RailroadSafehouse2Conductor
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Agent
+    additionalTrackers: [RailroadSafehouse2Agent]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse2ConductorGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]
@@ -304,6 +353,11 @@
   name: job-name-railroadsafehouse2safehouseowner
   description: job-description-railroadsafehouse2safehouseowner
   playTimeTracker: RailroadSafehouse2SafehouseOwner
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: RailroadSafehouse1Conductor
+    additionalTrackers: [RailroadSafehouse2Conductor]
+    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
   startingGear: RailroadSafehouse2SafehouseOwnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]

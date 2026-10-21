@@ -5,15 +5,20 @@
   setPreference: true
   weight: 90
   displayWeight: 90
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-sergeant
   description: job-description-minutemen-sergeant
   playTimeTracker: MinutemenSergeant
+  jobWhitelistBypassesRoleTimers: true
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
       - Ghoul
+    - !type:CharacterPlaytimeRequirement
+      tracker: MinutemenCorporal
+      min: 18000 # 5 hours in the preceding role.
   startingGear: MinutemenSergeantKitGear
   alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
   access:

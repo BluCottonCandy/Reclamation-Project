@@ -5,6 +5,7 @@
   setPreference: true
   weight: 60
   displayWeight: 60
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-recruit
   description: job-description-minutemen-recruit

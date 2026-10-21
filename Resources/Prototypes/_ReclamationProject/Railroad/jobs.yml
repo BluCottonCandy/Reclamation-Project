@@ -52,6 +52,11 @@
   name: job-name-railroadsafehouse1worker
   description: job-description-railroadsafehouse1worker
   playTimeTracker: RailroadSafehouse1Worker
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 72000 # 20 hours across all Railroad roles.
   startingGear: RailroadSafehouse1WorkerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -76,13 +81,18 @@
   name: job-name-railroadsafehouse1agent
   description: job-description-railroadsafehouse1agent
   playTimeTracker: RailroadSafehouse1Agent
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 216000 # 60 hours across all Railroad roles.
   startingGear: RailroadSafehouse1AgentGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse1agent
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false
   special:
   - !type:AddComponentSpecial
     components:
@@ -101,6 +111,11 @@
   name: job-name-railroadsafehouse1runner
   description: job-description-railroadsafehouse1runner
   playTimeTracker: RailroadSafehouse1Runner
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 144000 # 40 hours across all Railroad roles.
   startingGear: RailroadSafehouse1RunnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -125,13 +140,18 @@
   name: job-name-railroadsafehouse1conductor
   description: job-description-railroadsafehouse1conductor
   playTimeTracker: RailroadSafehouse1Conductor
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 288000 # 80 hours across all Railroad roles.
   startingGear: RailroadSafehouse1ConductorGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse1conductor
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -153,13 +173,18 @@
   name: job-name-railroadsafehouse1safehouseowner
   description: job-description-railroadsafehouse1safehouseowner
   playTimeTracker: RailroadSafehouse1SafehouseOwner
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 360000 # 100 hours across all Railroad roles.
   startingGear: RailroadSafehouse1SafehouseOwnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse1safehouseowner
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -203,6 +228,11 @@
   name: job-name-railroadsafehouse2worker
   description: job-description-railroadsafehouse2worker
   playTimeTracker: RailroadSafehouse2Worker
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 72000 # 20 hours across all Railroad roles.
   startingGear: RailroadSafehouse2WorkerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -227,13 +257,18 @@
   name: job-name-railroadsafehouse2agent
   description: job-description-railroadsafehouse2agent
   playTimeTracker: RailroadSafehouse2Agent
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 216000 # 60 hours across all Railroad roles.
   startingGear: RailroadSafehouse2AgentGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse2agent
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false
   special:
   - !type:AddComponentSpecial
     components:
@@ -252,6 +287,11 @@
   name: job-name-railroadsafehouse2runner
   description: job-description-railroadsafehouse2runner
   playTimeTracker: RailroadSafehouse2Runner
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 144000 # 40 hours across all Railroad roles.
   startingGear: RailroadSafehouse2RunnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -276,13 +316,18 @@
   name: job-name-railroadsafehouse2conductor
   description: job-description-railroadsafehouse2conductor
   playTimeTracker: RailroadSafehouse2Conductor
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 288000 # 80 hours across all Railroad roles.
   startingGear: RailroadSafehouse2ConductorGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse2conductor
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -304,13 +349,18 @@
   name: job-name-railroadsafehouse2safehouseowner
   description: job-description-railroadsafehouse2safehouseowner
   playTimeTracker: RailroadSafehouse2SafehouseOwner
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+    department: Railroad
+    additionalDepartments: [RailroadSafehouse1, RailroadSafehouse2]
+    min: 360000 # 100 hours across all Railroad roles.
   startingGear: RailroadSafehouse2SafehouseOwnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse2safehouseowner
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial

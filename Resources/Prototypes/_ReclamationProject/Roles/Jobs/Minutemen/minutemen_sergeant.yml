@@ -5,6 +5,7 @@
   setPreference: true
   weight: 90
   displayWeight: 90
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-sergeant
   description: job-description-minutemen-sergeant

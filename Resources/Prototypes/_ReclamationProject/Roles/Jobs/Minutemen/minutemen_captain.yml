@@ -7,6 +7,7 @@
   jobWhitelistBypassesRoleTimers: true
   weight: 110
   displayWeight: 110
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-captain
   description: job-description-minutemen-captain

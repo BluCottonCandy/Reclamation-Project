@@ -9,6 +9,8 @@
   requireAdminNotify: true
   weight: 140
   displayWeight: 140
+  showBorder: true
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-general
   description: job-description-minutemen-general

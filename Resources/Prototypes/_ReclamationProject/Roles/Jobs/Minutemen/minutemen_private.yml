@@ -5,6 +5,7 @@
   setPreference: true
   weight: 70
   displayWeight: 70
+  showBorderBelow: true
   canBeAntag: false
   name: job-name-minutemen-private
   description: job-description-minutemen-private

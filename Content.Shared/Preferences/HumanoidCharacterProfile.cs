@@ -219,6 +219,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             other.SpeechVerbPreference) // #Misfits Add - vocal style
     {
         Special = SpecialProfile.EnsureValid(other.Special);
+        TortureConsent = other.TortureConsent;
+        SlaveryConsent = other.SlaveryConsent;
     }
 
     /// <summary>
@@ -436,6 +438,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             && LoadoutPreferences.SequenceEqual(other.LoadoutPreferences)
             && Appearance.MemberwiseEquals(other.Appearance)
             && SpecialProfile.EnsureValid(Special).MemberwiseEquals(SpecialProfile.EnsureValid(other.Special))
+            && TortureConsent == other.TortureConsent
+            && SlaveryConsent == other.SlaveryConsent
             && FlavorText == other.FlavorText
             && BarkVoice == other.BarkVoice // Corvax-Fallout-Barks
             && SpeechVerbPreference == other.SpeechVerbPreference; // #Misfits Add - vocal style
@@ -443,6 +447,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
     public void EnsureValid(ICommonSession session, IDependencyCollection collection)
     {
+        TortureConsent = ValidateConsent(TortureConsent);
+        SlaveryConsent = ValidateConsent(SlaveryConsent);
         var configManager = collection.Resolve<IConfigurationManager>();
         var prototypeManager = collection.Resolve<IPrototypeManager>();
 
@@ -802,6 +808,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         hashCode.Add(_loadoutPreferences);
         hashCode.Add(Name);
         hashCode.Add(FlavorText);
+        hashCode.Add(TortureConsent);
+        hashCode.Add(SlaveryConsent);
         hashCode.Add(Species);
         hashCode.Add(Age);
         hashCode.Add((int) Sex);

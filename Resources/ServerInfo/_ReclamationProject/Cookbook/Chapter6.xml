@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 06[/color]
 
+<CookbookRecipe Search="Pancake 5u razorgrain flour + 5u brahmin milk + 6u raw egg.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Pancake
@@ -12,7 +13,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Tarberry pancake 2 x tarberries + 5u razorgrain flour + 5u brahmin milk + 6u raw egg.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Tarberry pancake
@@ -22,7 +25,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Waffles 5u razorgrain flour + 5u brahmin milk + 6u raw egg + 5u soda water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Waffles
@@ -32,7 +37,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Sugar cookie 1 x stick of butter + 5u razorgrain flour + 10u sugar.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Sugar cookie
@@ -42,7 +49,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Mutfruit cake 1 x cake + 3 x wild mutfruit.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Mutfruit cake
@@ -52,7 +61,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Carrot cake 1 x cake + 3 x wild carrot.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Carrot cake
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Tarberry cake 1 x cake + 3 x tarberries.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Tarberry cake
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cake 1 x cake batter.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cake
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Brain cake 1 x cake + 1 x brain.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Brain cake
@@ -90,6 +107,27 @@
 [bold]Ingredients:[/bold] 1 x cake + 1 x brain.
 
 [bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+</CookbookRecipe>
+
+<CookbookRecipe Search="Cannabis brownies 2 x stick of cannabis butter + 2 x unwrapped chocolate bar + 3 x chicken or ordinary egg + 15u razorgrain flour or ordinary flour + 30u sugar.">
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Cannabis brownies
+
+[bold]Ingredients:[/bold] 2 x stick of cannabis butter + 2 x unwrapped chocolate bar + 3 x chicken or ordinary egg + 15u razorgrain flour or ordinary flour + 30u sugar.
+
+[bold]Cook:[/bold] 25 seconds.
+</Box>
+</ColorBox>
+</CookbookRecipe>
+
+<ColorBox Color="#29251D" OutlineColor="#8A713E">
+<Box Orientation="Vertical" Margin="12">
+## Finding chocolate
+
+Wasteland traders sell wrapped chocolate bars in their Food category. Unwrap them before cooking. Make cannabis butter using the recipe in Chapter 07.
 </Box>
 </ColorBox>
 

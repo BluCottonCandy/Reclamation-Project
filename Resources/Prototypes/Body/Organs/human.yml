@@ -110,6 +110,9 @@
   parent: BaseHumanOrgan
   name: appendix
   components:
+  - type: Appendix
+  - type: Organ
+    slotId: appendix
   - type: Sprite
     layers:
     - state: appendix

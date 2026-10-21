@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Shared.Actions;
+using Content.Shared._ReclamationProject.Shields;
 using Content.Shared.Climbing.Components;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -37,6 +38,7 @@ public sealed partial class BlockingSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly PaladinShieldProtectionSystem _paladinProtection = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
@@ -306,6 +308,13 @@ public sealed partial class BlockingSystem : EntitySystem
         msg.AddMarkup(Loc.GetString("blocking-fraction", ("value", MathF.Round(fraction * 100, 1))));
 
         AppendCoefficients(modifier, msg);
+        if (TryComp<PaladinShieldComponent>(uid, out var paladin))
+        {
+            msg.PushNewline();
+            msg.AddMarkup(Loc.GetString("paladin-shield-stamina-protection",
+                ("value", MathF.Round((1f - _paladinProtection.GetStaminaCoefficient(uid, paladin)) * 100f, 1))));
+        }
+
 
         _examine.AddDetailedExamineVerb(args, component, msg,
             Loc.GetString("blocking-examinable-verb-text"),

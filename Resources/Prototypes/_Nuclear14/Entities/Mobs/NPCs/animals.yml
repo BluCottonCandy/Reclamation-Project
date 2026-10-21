@@ -827,11 +827,12 @@
         Base: dead
   - type: Stamina
     critThreshold: 20
-  # - type: Butcherable
-    # spawned:
-    # - id: N14FoodMeatRadchicken
-      # amount: 1
-      # prob: 0.95
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatIguana
+      amount: 1
+    - id: N14MaterialRawLeather1
+      amount: 1
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: WastelandAnimal

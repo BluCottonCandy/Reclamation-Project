@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 07[/color]
 
+<CookbookRecipe Search="Dumplings 3 x dough slice + 10u water + 6u uncooked animal proteins.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Dumplings
@@ -12,7 +13,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Bowl of hot chili 1 x bowl + 1 x wild glowpepper + 1 x raw rad cutlet + 1 x red onion slice + 1 x wild tato.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Bowl of hot chili
@@ -22,7 +25,9 @@
 [bold]Cook:[/bold] 20 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Queso 1 x wild glowpepper + 2 x cheese wedge + 5u black pepper.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Queso
@@ -32,7 +37,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Bbq ribs 2 x raw bighorner steak + 1 x skewer + 5u BBQ sauce.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Bbq ribs
@@ -42,7 +49,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Enchiladas 1 x raw gecko meat + 2 x wild glowpepper + 1 x wild maize.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Enchiladas
@@ -52,7 +61,9 @@
 [bold]Cook:[/bold] 20 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Herb salad 1 x bowl + 3 x wild broc flower + 1 x wild mutfruit.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Herb salad
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Coleslaw 1 x bowl + 1 x wild onion + 1 x wild cabbage + 5u vinaigrette.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Coleslaw
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Caesar salad 1 x bowl + 1 x red onion slice + 1 x bread slice + 1 x cheese wedge + 1 x wild cabbage + 5u olive oil.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Caesar salad
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Meat kebab 3 x raw rad cutlet + 1 x skewer.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Meat kebab
@@ -92,7 +109,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Soft taco 1 x dough slice + 1 x wild tato + 2 x red onion slice + 1 x cheese wedge + 1 x raw rad cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Soft taco
@@ -102,7 +121,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Stick of cannabis butter 1 x stick of butter + 6 x cannabis leaves.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Stick of cannabis butter
@@ -112,7 +133,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Corn in butter 1 x wild maize + 1 x large plate + 1 x stick of butter.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Corn in butter
@@ -122,5 +145,6 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
 </Document>

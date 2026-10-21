@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 04[/color]
 
+<CookbookRecipe Search="Boiled spaghetti 1 x stick of butter + 15u razorgrain flour + 6u raw egg.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Boiled spaghetti
@@ -12,17 +13,21 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Pasta tomato 1 x boiled spaghetti + 2 x wild tato.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
-## Spaghetti
+## Pasta tomato
 
 [bold]Ingredients:[/bold] 1 x boiled spaghetti + 2 x wild tato.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Butter noodles 1 x boiled spaghetti + 1 x stick of butter.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Butter noodles
@@ -32,7 +37,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Chow mein 1 x boiled spaghetti + 1 x wild onion + 1 x wild carrot + 1 x wild maize + 1 x chicken egg.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Chow mein
@@ -42,7 +49,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Boiled rice 1 x bowl + 15u rice + 10u water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Boiled rice
@@ -52,7 +61,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Rice pudding 1 x bowl + 15u rice + 10u brahmin milk + 5u sugar.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Rice pudding
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Roadkill rice 1 x boiled rice + 3 x raw rad cutlet.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Roadkill rice
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Black-eyed gumbo 1 x boiled rice + 3 x raw rad cutlet + 2 x wild glowpepper.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Black-eyed gumbo
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Egg-fried rice 1 x boiled rice + 1 x chicken egg + 1 x wild carrot.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Egg-fried rice
@@ -92,7 +109,9 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Nettle soup 1 x bowl + 1 x nettle + 1 x wild tato + 10u water + 6u raw egg.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Nettle soup
@@ -102,7 +121,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Eyeball soup 1 x bowl + 1 x eyes + 1 x wild carrot + 1 x wild tato + 10u water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Eyeball soup
@@ -112,7 +133,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Onion soup 1 x bowl + 5 x red onion slice + 1 x cheese wedge + 10u water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Onion soup
@@ -122,7 +145,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Mushroom soup 1 x bowl + 2 x cave fungus + 5u water + 5u brahmin milk.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Mushroom soup
@@ -132,7 +157,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Stew 1 x bowl + 3 x raw rad cutlet + 1 x wild tato + 1 x wild onion + 1 x cave fungus + 10u water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Stew
@@ -142,7 +169,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Tato soup 1 x bowl + 2 x wild tato + 10u water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Tato soup
@@ -152,7 +181,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Bloodtato soup 1 x bowl + 2 x wild tato + 50u blood.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Bloodtato soup
@@ -162,7 +193,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Mutie soup 1 x bowl + 2 x raw radscorpion leg + 5u soy sauce.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Mutie soup
@@ -172,7 +205,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Vegetable soup 1 x bowl + 1 x wild maize + 1 x wild carrot + 1 x wild tato + 1 x wild onion + 5u water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Vegetable soup
@@ -180,6 +215,51 @@
 [bold]Ingredients:[/bold] 1 x bowl + 1 x wild maize + 1 x wild carrot + 1 x wild tato + 1 x wild onion + 5u water.
 
 [bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+</CookbookRecipe>
+
+<CookbookRecipe Search="Fish soup (whitefish) 1 x whitefish steak + 1 x wild onion + 1 x wild tato.">
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Fish soup (whitefish)
+
+[bold]Ingredients:[/bold] 1 x whitefish steak + 1 x wild onion + 1 x wild tato.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+</CookbookRecipe>
+
+<CookbookRecipe Search="Fish soup (redfish) 1 x redfish steak + 1 x wild onion + 1 x wild tato.">
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Fish soup (redfish)
+
+[bold]Ingredients:[/bold] 1 x redfish steak + 1 x wild onion + 1 x wild tato.
+
+[bold]Cook:[/bold] 10 seconds.
+</Box>
+</ColorBox>
+</CookbookRecipe>
+
+<CookbookRecipe Search="Fish soup (starlight) 1 x whitefish steak + 1 x wild onion + 1 x wild tato + 1 x wild starlight berries.">
+<ColorBox Color="#201E1B" OutlineColor="#51432F">
+<Box Orientation="Vertical" Margin="12">
+## Fish soup (starlight)
+
+[bold]Ingredients:[/bold] 1 x whitefish steak + 1 x wild onion + 1 x wild tato + 1 x wild starlight berries.
+
+[bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+</CookbookRecipe>
+
+<ColorBox Color="#29251D" OutlineColor="#8A713E">
+<Box Orientation="Vertical" Margin="12">
+## Preparing soup ingredients
+
+Use sliced onions for onion soup, rather than whole onions. Raw cutlets may come from brahmin, radstag, bighorner, and other wasteland animals. Animal eyes work in eyeball soup; butchering wasteland animals now releases their eyes. Use a microwave and the listed amount of water for soups.
 </Box>
 </ColorBox>
 

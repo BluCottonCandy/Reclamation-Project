@@ -91,6 +91,8 @@
   id: WasterBuy2_Food
   name: "Food"
   entries:
+  - proto: FoodSnackChocolate
+    price: 10
   - proto: N14FoodMeatBrahminCooked
     price: 20
   - proto: N14FoodMeatRadstagCooked

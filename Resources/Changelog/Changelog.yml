@@ -12637,3 +12637,150 @@ Entries:
   id: 6538
   time: '2026-10-21T13:36:25.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/58
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Gun attachments no longer flip or shift normal held firearm sprites;
+        deployed bipod positioning remains separate.
+    - type: Fix
+      message: >-
+        Laser musket and crank laser shotgun attachments now mount at the
+        correct barrel end without changing the weapon sprites.
+    - type: Tweak
+      message: >-
+        Firearm suppressors now fit ballistic pistols only, with the restriction
+        shown in attachment details.
+    - type: Fix
+      message: >-
+        Alt-click cranks laser muskets and laser shotguns while charged and
+        ejects cells with no usable shots remaining.
+  id: 6539
+  time: '2026-10-21T14:13:36.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/59
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Chemicals no longer heal or worsen player internal injuries, fractures,
+        or limb integrity damage.
+    - type: Tweak
+      message: >-
+        Structural injuries recover at 1% per minute naturally, 3% with
+        Unnatural Regeneration, or 5% while sleeping in a healing bed.
+    - type: Tweak
+      message: >-
+        Slightly increased the chance of internal bleeding from qualifying torso
+        wounds.
+  id: 6540
+  time: '2026-10-21T14:21:50.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/60
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Paladin greatshields now provide 25% passive stamina protection, shown
+        in their Protection panel.
+    - type: Tweak
+      message: >-
+        Both paladin shields now swing half as fast, with a two-second normal
+        attack cooldown.
+  id: 6541
+  time: '2026-10-21T14:22:03.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/61
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed wasteland cooking ingredient compatibility and multi-ingredient
+        microwave recipe selection.
+    - type: Fix
+      message: >-
+        Fixed bun cutting, meat slicing, spoilage, and several meat appearances
+        and drops.
+    - type: Add
+      message: >-
+        Added obtainable animal brains and eyes, human appendix surgery, and
+        chocolate for restored cannabis brownies.
+    - type: Fix
+      message: >-
+        Fixed cookbook filtering, chapter text, counts, and cooking
+        instructions.
+  id: 6542
+  time: '2026-10-21T14:22:16.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/62
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added 68 free plushie loadout choices in a compact dropdown under
+        Uncategorized.
+    - type: Add
+      message: >-
+        Base SS14 plushies with supported worn sprites can now be worn on the
+        head.
+  id: 6543
+  time: '2026-10-21T14:22:30.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/63
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added per-character consent preferences for torture and slavery, visible
+        through examination.
+  id: 6544
+  time: '2026-10-21T14:22:56.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/64
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added the Wasteland Tribal starter kit, offering one of the six existing
+        tribal kits.
+    - type: Add
+      message: >-
+        Added missing ordinary tribal armor and headwear to Wastelander
+        loadouts.
+    - type: Tweak
+      message: >-
+        Heavy tribal armor and tribal armored coats no longer exceed combat
+        armor blunt/slash protection.
+    - type: Add
+      message: >-
+        Added the Wasteland Chef starter kit, including cooking tools, a
+        cookbook, and a compact preserving food bag.
+    - type: Fix
+      message: Preserving bags keep food fresh when carried inside another container.
+    - type: Add
+      message: >-
+        Farmer kits include a single-use Advanced Farming Techniques book that
+        teaches plant analysis without a scanner.
+  id: 6545
+  time: '2026-10-21T14:23:29.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/65
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Wooden roof tiles can be constructed for two wood and supported by
+        connected wooden beams.
+    - type: Add
+      message: >-
+        Unsupported wooden roofs collapse after 30 seconds; prying their floor
+        removes them and returns the wood.
+  id: 6546
+  time: '2026-10-21T14:23:59.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/66
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Player pickups and ordinary interactions now reach one tile without
+        extra distance from collision size.
+    - type: Tweak
+      message: >-
+        Player melee uses consistent center-based reach for direct attacks and
+        wide swings, with 1.5-tile short attacks and longer spear thrusts.
+  id: 6547
+  time: '2026-10-21T14:24:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/67

@@ -10,7 +10,7 @@ public sealed partial class PaladinShieldComponent : Component
     [DataField] public float WearFraction = 0.65f;
     [DataField] public string BrokenPrototype = "ReclamationDamagedPaladinShield";
     [DataField] public string RepairedPrototype = "ReclamationPaladinShield";
-    [DataField] public bool StaminaImmune;
+    [DataField] public float StaminaCoefficient = 1f;
     [DataField] public float DamageCoefficient = 0.7f;
     [DataField] public float ChargeDamage = 40f;
     [DataField] public float StaminaDamage = 10f;

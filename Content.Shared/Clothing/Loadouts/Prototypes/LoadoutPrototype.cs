@@ -31,6 +31,10 @@ public sealed partial class LoadoutPrototype : IPrototype
     [DataField]
     public bool Exclusive;
 
+    /// <summary>When false, send the item to normal loadout bag storage instead of equipping it.</summary>
+    [DataField]
+    public bool AutoEquip = true;
+
     [DataField]
     public bool CustomName = true;
 

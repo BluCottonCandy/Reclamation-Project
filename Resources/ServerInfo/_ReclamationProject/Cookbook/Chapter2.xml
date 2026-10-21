@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 02[/color]
 
+<CookbookRecipe Search="Bun 1 x dough slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Bun
@@ -12,17 +13,21 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Appendix burger 1 x bun + 1 x human appendix.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Appendix burger
 
-[bold]Ingredients:[/bold] 1 x bun + 1 x appendix.
+[bold]Ingredients:[/bold] 1 x bun + 1 x human appendix.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Bearger 1 x bun + 1 x raw Yao Guai meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Bearger
@@ -32,7 +37,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Big bite burger 1 x bun + 2 x raw irradiated meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Big bite burger
@@ -42,17 +49,21 @@
 [bold]Cook:[/bold] 15 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Brain burger 1 x bun + 1 x animal or humanoid brain.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Brain burger
 
-[bold]Ingredients:[/bold] 1 x bun + 1 x brain.
+[bold]Ingredients:[/bold] 1 x bun + 1 x animal or humanoid brain.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cheese burger 1 x bun + 1 x raw irradiated meat + 1 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cheese burger
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Chicken sandwich 1 x bun + 1 x raw radchicken meat + 5u mayonnaise.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Chicken sandwich
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Human burger 1 x bun + 1 x raw human meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Human burger
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Supermutant burger 1 x bun + 1 x raw supermutant meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Supermutant burger
@@ -92,7 +109,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Crab burger 1 x bun + 2 x raw mirelurk claw.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Crab burger
@@ -102,17 +121,21 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Fillet-o-carp burger 1 x bun + 1 x raw redfish or whitefish fillet + 1 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Fillet-o-carp burger
 
-[bold]Ingredients:[/bold] 1 x bun + 1 x raw carp fillet + 1 x cheese wedge.
+[bold]Ingredients:[/bold] 1 x bun + 1 x raw redfish or whitefish fillet + 1 x cheese wedge.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Five alarm burger 1 x bun + 1 x raw irradiated meat + 3 x wild glowpepper.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Five alarm burger
@@ -122,7 +145,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Mcguffin 1 x bun + 1 x cheese wedge + 2 x chicken egg.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Mcguffin
@@ -132,7 +157,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Bbq rib sandwich 1 x bun + 1 x bbq ribs + 1 x red onion slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Bbq rib sandwich
@@ -142,7 +169,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Plain burger 1 x bun + 1 x raw irradiated meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Plain burger
@@ -152,7 +181,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Rat burger 1 x bun + 1 x raw rat meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Rat burger
@@ -162,7 +193,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Super bite burger 1 x bun + 2 x raw irradiated meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Super bite burger
@@ -172,7 +205,9 @@
 [bold]Cook:[/bold] 25 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Tofu burger 1 x bun + 1 x tofu slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Tofu burger
@@ -182,7 +217,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Plain burger 1 x bun + 1 x raw meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Plain burger
@@ -192,7 +229,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Cheese burger 1 x bun + 1 x raw meat + 1 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Cheese burger
@@ -202,7 +241,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Five alarm burger 1 x bun + 1 x raw meat + 3 x wild glowpepper.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Five alarm burger
@@ -212,7 +253,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Super bite burger 1 x bun + 2 x raw meat + 2 x cheese wedge + 2 x wild tato + 2 x chicken egg + 5u table salt.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Super bite burger
@@ -222,7 +265,9 @@
 [bold]Cook:[/bold] 25 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Big bite burger 1 x bun + 2 x raw meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Big bite burger
@@ -230,6 +275,17 @@
 [bold]Ingredients:[/bold] 1 x bun + 2 x raw meat + 1 x cheese wedge + 1 x wild tato + 2 x red onion slice.
 
 [bold]Cook:[/bold] 15 seconds.
+</Box>
+</ColorBox>
+</CookbookRecipe>
+
+<ColorBox Color="#29251D" OutlineColor="#8A713E">
+<Box Orientation="Vertical" Margin="12">
+## Buns and organs
+
+Cut a whole bun with a knife to separate its top and bottom for stacked burgers. Microwave recipes use a whole bun.
+
+A human appendix is obtained through torso surgery: open the ribcage, then choose Remove appendix and use the indicated surgical tools. Ordinary wasteland animals do not supply one. Butchering N14 wasteland animals supplies animal brains; brain burgers accept these as well as humanoid brains. Fish burgers accept raw redfish and whitefish fillets.
 </Box>
 </ColorBox>
 

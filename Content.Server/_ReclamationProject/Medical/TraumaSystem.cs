@@ -56,6 +56,7 @@ public sealed partial class TraumaSystem : EntitySystem
     {
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn);
         SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<TraumaLimbComponent, BeforeDamageChangedEvent>(OnStructuralHealing);
         SubscribeLocalEvent<TraumaLimbComponent, DamageChangedEvent>(OnPartDamaged, after: new[] { typeof(SharedBodySystem) });
         SubscribeLocalEvent<BrainComponent, BeforeDamageChangedEvent>(OnBrainDamage);
         SubscribeLocalEvent<BrainComponent, DamageChangedEvent>(OnBrainChanged, after: new[] { typeof(SharedBodySystem) });

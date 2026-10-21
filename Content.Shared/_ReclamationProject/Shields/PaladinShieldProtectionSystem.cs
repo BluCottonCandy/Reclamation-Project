@@ -59,15 +59,20 @@ public sealed class PaladinShieldProtectionSystem : EntitySystem
     {
         if (args.Value <= 0)
             return;
+        var coefficient = 1f;
         foreach (var held in _hands.EnumerateHeld(user))
         {
-            if (TryComp<PaladinShieldComponent>(held, out var shield) && (shield.StaminaImmune || IsRaised(held)) && IsFunctional(held, shield))
-            {
-                args.Cancelled = true;
-                return;
-            }
+            if (TryComp<PaladinShieldComponent>(held, out var shield))
+                coefficient = Math.Min(coefficient, GetStaminaCoefficient(held, shield));
         }
+        args.Value *= coefficient;
+        if (coefficient == 0)
+            args.Cancelled = true;
     }
+
+    // Shared by actual protection and the riot-shield protection details.
+    public float GetStaminaCoefficient(EntityUid uid, PaladinShieldComponent shield)
+        => !IsFunctional(uid, shield) ? 1f : IsRaised(uid) ? 0f : Math.Clamp(shield.StaminaCoefficient, 0f, 1f);
 
     private void OnDamage(EntityUid uid, HandsComponent comp, DamageModifyEvent args)
     {

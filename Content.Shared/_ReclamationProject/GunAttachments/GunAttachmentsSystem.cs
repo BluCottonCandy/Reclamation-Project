@@ -110,10 +110,12 @@ public sealed class GunAttachmentsSystem : EntitySystem
     private void OnInit(EntityUid uid, GunAttachmentsComponent component, ComponentInit args)
     {
         var tags = new List<ProtoId<TagPrototype>>();
-        // Energy weapons retain bayonets where supported, but cannot be silenced.
-        if (!HasComp<HitscanBatteryAmmoProviderComponent>(uid) &&
+        // Suppressors fit ballistic pistols only; SMGs, revolvers and energy weapons are excluded.
+        if (MetaData(uid).EntityPrototype is { } prototype &&
+            (HasAncestor(prototype, "BaseWeaponPistol") || HasAncestor(prototype, "N14BaseWeaponPistol")) &&
+            !SupportsStock(uid) && !HasComp<HitscanBatteryAmmoProviderComponent>(uid) &&
             !HasComp<ProjectileBatteryAmmoProviderComponent>(uid) &&
-            !(MetaData(uid).EntityPrototype is { } prototype && HasAncestor(prototype, "N14BaseWeaponPowerCell")))
+            !HasAncestor(prototype, "N14BaseWeaponPowerCell"))
             tags.Add("ReclamationGunSuppressor");
         if (SupportsTwoHands(uid))
             tags.Add("CombatKnife");

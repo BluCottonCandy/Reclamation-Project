@@ -3900,7 +3900,8 @@ namespace Content.Client.Lobby.UI
 
             // Fill categories with loadouts
             foreach (var (loadout, usable) in _loadouts
-                .OrderBy(l => l.Key.ID)
+                .OrderBy(l => _prototypeManager.TryIndex(l.Key.Category, out var category) && category.SingleSelection)
+                .ThenBy(l => l.Key.ID)
                 .ThenBy(l => Loc.GetString($"loadout-name-{l.Key.ID}"))
                 .ThenBy(l => l.Key.Cost))
             {

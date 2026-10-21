@@ -22,7 +22,7 @@ public sealed class LoadoutChoicePicker : BoxContainer
     {
         Orientation = LayoutOrientation.Vertical;
         HorizontalExpand = true;
-        ToggleButton = new Button { HorizontalExpand = true };
+        ToggleButton = new Button { HorizontalExpand = false, HorizontalAlignment = HAlignment.Left };
         var sprite = new SpriteView { MinSize = new System.Numerics.Vector2(32, 32) };
         sprite.SetEntity(icon);
         ToggleButton.AddChild(new BoxContainer

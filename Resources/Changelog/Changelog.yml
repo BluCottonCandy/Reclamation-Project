@@ -12688,3 +12688,24 @@ Entries:
   id: 6541
   time: '2026-10-21T14:22:03.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/61
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed wasteland cooking ingredient compatibility and multi-ingredient
+        microwave recipe selection.
+    - type: Fix
+      message: >-
+        Fixed bun cutting, meat slicing, spoilage, and several meat appearances
+        and drops.
+    - type: Add
+      message: >-
+        Added obtainable animal brains and eyes, human appendix surgery, and
+        chocolate for restored cannabis brownies.
+    - type: Fix
+      message: >-
+        Fixed cookbook filtering, chapter text, counts, and cooking
+        instructions.
+  id: 6542
+  time: '2026-10-21T14:22:16.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/62

@@ -51,9 +51,12 @@ public sealed class PlushieLoadoutTests
             var prototypes = pair.Server.ResolveDependency<IPrototypeManager>();
             var category = prototypes.Index<LoadoutCategoryPrototype>("Plushies");
             Assert.That(category.SingleSelection, Is.True);
+            Assert.That(category.Root, Is.False, "The dropdown belongs under Uncategorized, not its own tab.");
             Assert.That(category.SelectionIcon?.Id, Is.EqualTo("PlushieLizard"));
             var choices = prototypes.EnumeratePrototypes<LoadoutPrototype>().Where(p => p.Category.Id == "Plushies").ToArray();
-            Assert.That(choices.Length, Is.EqualTo(72));
+            Assert.That(choices.Length, Is.EqualTo(68));
+            foreach (var removed in new[] { "PlushieThrongler", "PlushieNuke", "PlushieGhost", "PlushieGhostRevenant" })
+                Assert.That(choices.SelectMany(choice => choice.Items).Select(item => item.Id), Does.Not.Contain(removed));
             foreach (var choice in choices)
             {
                 Assert.That(choice.Cost, Is.Zero);

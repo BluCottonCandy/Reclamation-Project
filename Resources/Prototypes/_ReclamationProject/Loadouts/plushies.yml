@@ -1,7 +1,8 @@
 # Cosmetic plushie choices, available to every job without spending loadout points.
 - type: loadoutCategory
   id: Plushies
-  root: true
+  # Non-root categories without a tab appear inside Uncategorized.
+  root: false
   singleSelection: true
   selectionIcon: PlushieLizard
 
@@ -226,26 +227,6 @@
   - PlushieDiona
 
 - type: loadout
-  id: LoadoutReclamationPlushieGhost
-  category: Plushies
-  cost: 0
-  autoEquip: false
-  customName: false
-  customDescription: false
-  items:
-  - PlushieGhost
-
-- type: loadout
-  id: LoadoutReclamationPlushieGhostRevenant
-  category: Plushies
-  cost: 0
-  autoEquip: false
-  customName: false
-  customDescription: false
-  items:
-  - PlushieGhostRevenant
-
-- type: loadout
   id: LoadoutReclamationPlushieGirlyCorgi
   category: Plushies
   cost: 0
@@ -466,16 +447,6 @@
   - PlushieNar
 
 - type: loadout
-  id: LoadoutReclamationPlushieNuke
-  category: Plushies
-  cost: 0
-  autoEquip: false
-  customName: false
-  customDescription: false
-  items:
-  - PlushieNuke
-
-- type: loadout
   id: LoadoutReclamationPlushieOrangeFox
   category: Plushies
   cost: 0
@@ -664,16 +635,6 @@
   customDescription: false
   items:
   - PlushieSpaceLizard
-
-- type: loadout
-  id: LoadoutReclamationPlushieThrongler
-  category: Plushies
-  cost: 0
-  autoEquip: false
-  customName: false
-  customDescription: false
-  items:
-  - PlushieThrongler
 
 - type: loadout
   id: LoadoutReclamationPlushieTrystan

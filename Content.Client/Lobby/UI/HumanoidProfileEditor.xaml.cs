@@ -78,6 +78,7 @@ namespace Content.Client.Lobby.UI
         private readonly SponsorManager _sponsorMan; // Forge-Change
         private readonly SupporterManager _supporterMan; // #Cythisiax Add - Patreon supporter loadouts
 
+        private readonly ConsentPreferencesControl _consent = new();
         private FlavorText.FlavorText? _flavorText;
         private BoxContainer _ccustomspecienamecontainerEdit => CCustomSpecieName;
         private LineEdit _customspecienameEdit => CCustomSpecieNameEdit;
@@ -747,6 +748,20 @@ namespace Content.Client.Lobby.UI
 
             #endregion Markings
 
+            CTabContainer.AddTab(new ScrollContainer
+            {
+                HorizontalExpand = true,
+                VerticalExpand = true,
+                HScrollEnabled = false,
+                Children = { _consent },
+            }, Loc.GetString("consent-tab-title"));
+            _consent.PreferencesChanged += (torture, slavery) =>
+            {
+                if (Profile == null) return;
+                Profile = Profile.WithConsent(torture, slavery);
+                IsDirty = true;
+                UpdateSaveButton();
+            };
             RefreshFlavorText();
 
             RefreshVoiceTab(); // Corvax-TTS
@@ -1086,6 +1101,7 @@ namespace Content.Client.Lobby.UI
             UpdateSkinColor();
             UpdateSpawnPriorityControls();
             UpdateFlavorTextEdit();
+            _consent.SetPreferences(Profile?.TortureConsent ?? default, Profile?.SlaveryConsent ?? default);
             UpdateCustomSpecieNameEdit();
             UpdateAgeEdit();
             UpdateEyePickers();
@@ -3750,6 +3766,9 @@ namespace Content.Client.Lobby.UI
                 }
             }
 
+            foreach (var picker in _loadoutChoicePickers.Values)
+                picker.Refresh();
+
             // Set the remove unusable button's label to have the correct amount of unusable loadouts
             LoadoutsRemoveUnusableButton.Text = Loc.GetString("humanoid-profile-editor-loadouts-remove-unusable-button",
                 ("count", _loadouts
@@ -3763,6 +3782,7 @@ namespace Content.Client.Lobby.UI
             ReloadProfilePreview();
         }
 
+        private readonly Dictionary<string, LoadoutChoicePicker> _loadoutChoicePickers = new();
         private Dictionary<LoadoutPrototype, bool> _loadouts = new();
         private Dictionary<string, EntityUid> _dummyLoadouts = new();
         public void UpdateLoadouts(bool? showUnusable = null, bool reload = false)
@@ -3783,6 +3803,9 @@ namespace Content.Client.Lobby.UI
                 foreach (var uid in _dummyLoadouts)
                     _entManager.QueueDeleteEntity(uid.Value);
                 _loadoutPreferences.Clear();
+                foreach (var category in _loadoutChoicePickers.Keys)
+                    _dummyLoadouts.Remove("choice-icon-" + category);
+                _loadoutChoicePickers.Clear();
             }
 
 
@@ -3893,7 +3916,8 @@ namespace Content.Client.Lobby.UI
 
             // Fill categories with loadouts
             foreach (var (loadout, usable) in _loadouts
-                .OrderBy(l => l.Key.ID)
+                .OrderBy(l => _prototypeManager.TryIndex(l.Key.Category, out var category) && category.SingleSelection)
+                .ThenBy(l => l.Key.ID)
                 .ThenBy(l => Loc.GetString($"loadout-name-{l.Key.ID}"))
                 .ThenBy(l => l.Key.Cost))
             {
@@ -3919,7 +3943,26 @@ namespace Content.Client.Lobby.UI
                 var match = FindCategory(loadout.Category, LoadoutsTabs);
 
                 // If there is no category put it in Uncategorized (this shouldn't happen)
-                (match ?? uncategorized).Children.First().Children.First().AddChild(selector);
+                var container = (match ?? uncategorized).Children.First().Children.First();
+                if (_prototypeManager.TryIndex(loadout.Category, out var category) && category.SingleSelection)
+                {
+                    if (!_loadoutChoicePickers.TryGetValue(category.ID, out var picker))
+                    {
+                        var iconKey = "choice-icon-" + category.ID;
+                        if (!_dummyLoadouts.TryGetValue(iconKey, out var icon))
+                        {
+                            icon = _entManager.SpawnEntity(category.SelectionIcon?.ToString() ?? loadout.Items.First().ToString(), MapCoordinates.Nullspace);
+                            _dummyLoadouts[iconKey] = icon;
+                        }
+                        picker = new LoadoutChoicePicker(icon, Loc.GetString($"loadout-category-{category.ID}"));
+                        _loadoutChoicePickers[category.ID] = picker;
+                        container.AddChild(picker);
+                    }
+                    picker.AddChoice(selector, () => selector.Preference.Selected,
+                        () => selector.ShowUnusable || selector.Valid && selector.Wearable);
+                }
+                else
+                    container.AddChild(selector);
                 } catch (Exception e) {
                     Logger.ErrorS("character setup", $"failed to preview loadout {loadout.ID}: {e}");
                 }
@@ -3942,7 +3985,7 @@ namespace Content.Client.Lobby.UI
                     if (_dummyLoadouts.TryGetValue(selector.Loadout.ID + selector.Loadout.Items.IndexOf(item), out var entity)
                         && _entManager.GetComponent<MetaDataComponent>(entity).EntityPrototype!.ID == item)
                     {
-                        if (!_entManager.HasComponent<ClothingComponent>(entity))
+                        if (!selector.Loadout.AutoEquip || !_entManager.HasComponent<ClothingComponent>(entity))
                         {
                             selector.Wearable = true;
                             continue;
@@ -3954,7 +3997,7 @@ namespace Content.Client.Lobby.UI
                     entity = _entManager.SpawnEntity(item, MapCoordinates.Nullspace);
                     _dummyLoadouts[selector.Loadout.ID + selector.Loadout.Items.IndexOf(item)] = entity;
 
-                    if (!_entManager.HasComponent<ClothingComponent>(entity))
+                    if (!selector.Loadout.AutoEquip || !_entManager.HasComponent<ClothingComponent>(entity))
                     {
                         selector.Wearable = true;
                         continue;
@@ -4038,6 +4081,11 @@ namespace Content.Client.Lobby.UI
                         preference.CustomDescription,
                         preference.CustomColorTint,
                         preference.CustomHeirloom);
+                    if (selected && _prototypeManager.TryIndex(selector.Loadout.Category, out var category) && category.SingleSelection)
+                    {
+                        foreach (var other in _loadoutPreferences.Where(other => other.Loadout.Category == selector.Loadout.Category && other != selector))
+                            Profile = Profile?.WithLoadoutPreference(other.Loadout.ID, false);
+                    }
                     IsDirty = true;
                     UpdateLoadoutPreferences();
                     SetProfile(Profile, CharacterSlot);

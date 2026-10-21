@@ -1,0 +1,12 @@
+- type: microwaveMealRecipe
+  id: N14RecipeCannabisBrownies
+  name: cannabis brownie recipe
+  result: N14CookedFoodBakedCannabisBrownieBatch
+  time: 25
+  reagents:
+    ExtractRazorgrainFlour: 15
+    Sugar: 30
+  solids:
+    N14FoodCannabisButter: 2
+    FoodSnackChocolateBar: 2
+    N14FoodEggChicken: 3

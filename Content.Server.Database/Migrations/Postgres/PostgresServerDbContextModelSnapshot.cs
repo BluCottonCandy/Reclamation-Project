@@ -1595,6 +1595,14 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("species");
 
+                    b.Property<int>("SlaveryConsent")
+                        .HasColumnType("integer")
+                        .HasColumnName("slavery_consent");
+
+                    b.Property<int>("TortureConsent")
+                        .HasColumnType("integer")
+                        .HasColumnName("torture_consent");
+
                     b.Property<string>("SpeechVerbPreference")
                         .IsRequired()
                         .HasColumnType("text")

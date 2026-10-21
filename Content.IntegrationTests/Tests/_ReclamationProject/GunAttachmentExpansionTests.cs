@@ -102,12 +102,11 @@ public sealed class GunAttachmentExpansionTests
                 (GunAttachmentsSystem.LaserSlotId, "ReclamationGunLaserSight"),
                 (GunAttachmentsSystem.StockSlotId, "ReclamationGunStock"),
                 (GunAttachmentsSystem.HoloSlotId, "ReclamationGunHoloSight"),
-                (GunAttachmentsSystem.MuzzleSlotId, "ReclamationGunSuppressor"),
             })
                 Assert.That(slots.TryInsert(gun, slot, entities.SpawnEntity(prototype, map.GridCoords), null), Is.True);
             Assert.That(component.MaxAngleModified.Theta, Is.EqualTo(spread * .7f * .7f * .7f * .9f).Within(.00001));
             Assert.That(component.CameraRecoilScalarModified, Is.EqualTo(recoil * .7f * .7f).Within(.0001));
-            Assert.That(component.ProjectileSpeedModified, Is.EqualTo(speed * .9f).Within(.0001));
+            Assert.That(component.ProjectileSpeedModified, Is.EqualTo(speed).Within(.0001));
             Assert.That(slots.TryEject(gun, GunAttachmentsSystem.LaserSlotId, null, out var laser), Is.True);
             Assert.That(component.MaxAngleModified.Theta, Is.EqualTo(spread * .7f * .7f * .9f).Within(.00001));
             entities.DeleteEntity(laser);

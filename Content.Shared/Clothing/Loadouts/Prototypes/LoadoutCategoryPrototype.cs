@@ -15,6 +15,14 @@ public sealed partial class LoadoutCategoryPrototype : IPrototype
     [DataField]
     public bool Root;
 
+    /// <summary>Only one loadout from this category may be selected and spawned.</summary>
+    [DataField]
+    public bool SingleSelection;
+
+    /// <summary>Entity preview shown on the single-selection dropdown.</summary>
+    [DataField]
+    public ProtoId<EntityPrototype>? SelectionIcon;
+
     [DataField]
     public List<ProtoId<LoadoutCategoryPrototype>> SubCategories = new();
 }

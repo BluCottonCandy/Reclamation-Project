@@ -3,6 +3,7 @@
 
 [color=#B7ABA0]THE WASTELAND TABLE  /  CHAPTER 08[/color]
 
+<CookbookRecipe Search="Taco shell 1 x flattened tortilla dough.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Taco shell
@@ -12,7 +13,9 @@
 [bold]Cook:[/bold] 5 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Meat taco 1 x taco shell + 1 x raw rad cutlet + 1 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Meat taco
@@ -22,7 +25,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Chicken taco 1 x taco shell + 1 x raw radchicken meat + 1 x cheese wedge.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Chicken taco
@@ -32,17 +37,21 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Fish taco 1 x taco shell + 1 x raw redfish or whitefish fillet + 2 x red onion slice + 1 x wild tato + 1 x wild cabbage.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Fish taco
 
-[bold]Ingredients:[/bold] 1 x taco shell + 1 x raw carp fillet + 2 x red onion slice + 1 x wild tato + 1 x wild cabbage.
+[bold]Ingredients:[/bold] 1 x taco shell + 1 x raw redfish or whitefish fillet + 2 x red onion slice + 1 x wild tato + 1 x wild cabbage.
 
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Rat taco 1 x taco shell + 1 x cheese wedge + 1 x raw rat meat.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Rat taco
@@ -52,7 +61,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Meat taco supreme 1 x taco shell + 1 x cheese wedge + 1 x raw rad cutlet + 1 x wild tato + 1 x wild cabbage + 2 x red onion slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Meat taco supreme
@@ -62,7 +73,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Chicken taco supreme 1 x taco shell + 1 x cheese wedge + 1 x raw radchicken meat + 1 x wild tato + 1 x wild cabbage + 2 x red onion slice.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Chicken taco supreme
@@ -72,7 +85,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Dried tobacco leaves 1 x coyote tobacco leaves.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Dried tobacco leaves
@@ -82,7 +97,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Dried cannabis leaves 1 x cannabis leaves.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Dried cannabis leaves
@@ -92,7 +109,9 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
+<CookbookRecipe Search="Soy waffles 5u razorgrain flour + 5u zoy milk + 6u raw egg + 5u soda water.">
 <ColorBox Color="#201E1B" OutlineColor="#51432F">
 <Box Orientation="Vertical" Margin="12">
 ## Soy waffles
@@ -102,5 +121,6 @@
 [bold]Cook:[/bold] 10 seconds.
 </Box>
 </ColorBox>
+</CookbookRecipe>
 
 </Document>

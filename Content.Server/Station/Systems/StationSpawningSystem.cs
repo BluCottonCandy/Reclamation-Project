@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Consent;
 using Content.Server.Access.Components;
 using Content.Server.Access.Systems;
 using Content.Server.DetailExaminable;
@@ -134,6 +135,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             if (profile != null)
             {
                 _metaSystem.SetEntityName(jobEntity, profile.Name);
+                EntityManager.System<CharacterConsentSystem>().ApplyPreferences(jobEntity, profile);
 
                 // # #Cythisiax Added - apply the character's height/width scale to jobEntity bodies that
                 // carry a humanoid appearance (e.g. the sentient deathclaw); the client scales the sprite
@@ -185,6 +187,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (profile != null)
         {
             _humanoidSystem.LoadProfile(entity.Value, profile);
+            EntityManager.System<CharacterConsentSystem>().ApplyPreferences(entity.Value, profile);
             _special.TryApplyProfileBaseValues(entity.Value, profile);
             _metaSystem.SetEntityName(entity.Value, profile.Name);
             if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))

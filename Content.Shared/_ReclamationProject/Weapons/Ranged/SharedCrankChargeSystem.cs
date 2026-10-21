@@ -77,14 +77,18 @@ public abstract partial class SharedCrankChargeSystem : EntitySystem
         if (!_hands.IsHolding((args.User, args.Hands), ent))
             return;
 
+        if (ent.Comp.CellEmpty)
+            return;
+
         var user = args.User;
         args.Verbs.Add(new AlternativeVerb
         {
             Text = Loc.GetString("crank-charge-verb", ("charges", ent.Comp.Charges), ("max", ent.Comp.MaxCharges)),
             Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/rotate_cw.svg.192dpi.png")),
             Act = () => TryStartCrank(ent, user),
-            // Above the cell's eject verb (priority 0), so alt-click cranks and Eject stays in the menu.
-            Priority = 5,
+            // Above attachment-enabled cell ejection (20) and attachment removal (10).
+            // Eject remains available explicitly in the right-click menu.
+            Priority = 30,
         });
     }
 

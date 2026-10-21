@@ -485,6 +485,8 @@ namespace Content.Server.Database
         public string BarkVoice { get; set; } = null!; // Corvax-Fallout-Barks
         public string Voice { get; set; } = null!; // Corvax-TTS
         public string SpeechVerbPreference { get; set; } = "Default"; // #Misfits Add - vocal style
+        public int TortureConsent { get; set; }
+        public int SlaveryConsent { get; set; }
         public int SpecialStrength { get; set; } = 5; // #Misfits Add - character profile SPECIAL
         public int SpecialPerception { get; set; } = 5;
         public int SpecialEndurance { get; set; } = 5;

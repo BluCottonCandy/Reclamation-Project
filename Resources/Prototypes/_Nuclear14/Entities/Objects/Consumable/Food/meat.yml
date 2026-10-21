@@ -299,7 +299,7 @@
   - type: Construction
     graph: MeatRadscorpionLeg
     node: start
-    defaultTarget: MeatCooked
+    defaultTarget: start
   - type: StaticPrice # Forge-Change
     price: 1
 
@@ -585,7 +585,8 @@
   description: A chunk of cooked radhog meat.
   components:
   - type: Sprite
-    state: porkchop_roasted
+    layers:
+    - state: porkchop_roasted
   - type: SolutionContainerManager
     solutions:
       food:
@@ -614,7 +615,8 @@
   description: Cooked morsels of pigrat meat.
   components:
   - type: Sprite
-    state: morsels_roasted
+    layers:
+    - state: morsels_roasted
   - type: SolutionContainerManager
     solutions:
       food:
@@ -1214,6 +1216,14 @@
           Quantity: 2
         # - ReagentId: N14RadParticleFood
           # Quantity: 0 #Ditto, changing these values to 0 seemed like the best bet for if we want to revert this later. Formerly 3 rads.
+  - type: Perishable
+    rotAfter: 900
+    molsPerSecondPerUnitMass: 0
+  - type: RotInto
+    entity: FoodMeatRotten
+    stage: 1
+  - type: Temperature
+    currentTemperature: 290
   - type: Construction
     graph: MeatRadCutlet
     node: CutletCooked
@@ -1462,6 +1472,9 @@
     scale: 1, 1
     sprite: _Misfits/Objects/Consumable/Food/Meat/supermutant.rsi
     state: supermutantmeat-cooked
+  - type: SliceableFood
+    count: 3
+    slice: N14FoodMeatSupermutantCutletCooked
   - type: Construction
     graph: SupermutantMeatSteak
     node: supermutant meat steak

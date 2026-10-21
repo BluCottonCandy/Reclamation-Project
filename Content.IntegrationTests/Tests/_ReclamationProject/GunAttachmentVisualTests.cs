@@ -1,6 +1,6 @@
-using System.Linq;
 using System.Text.Json;
 using Robust.Shared.ContentPack;
+using System.Linq;
 using System.Numerics;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Wieldable;
@@ -19,7 +19,7 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class GunAttachmentVisualTests
 {
-    [TestCase("ReclamationGunSuppressor", "gun_muzzle", 0, "N14WeaponSMG10mm")]
+    [TestCase("ReclamationGunSuppressor", "gun_muzzle", 0, "N14WeaponPistol10mm")]
     [TestCase("N14CombatKnife", "gun_muzzle", 0, "N14WeaponRifle556R91")]
     [TestCase("ReclamationGunGrip", "gun_grip", 1, "N14WeaponSMG10mm")]
     [TestCase("ReclamationGunBipod", "gun_grip", 1, "N14WeaponRifle556R91")]
@@ -96,6 +96,19 @@ public sealed class GunAttachmentVisualTests
     [TestCase("N14WeaponSMG12mmAdvancedCanadian", true)]
     [TestCase("N14WeaponRifle556CarbineOldMakeshift")]
     [TestCase("N14WeaponRifle556CarbineOldMakeshift", true)]
+    [TestCase("N14WeaponPistol12mm", true)]
+    [TestCase("N14WeaponPistol45Colt", true)]
+    [TestCase("N14WeaponPistol10mmPipe", true)]
+    [TestCase("N14WeaponLaserRifle", true)]
+    [TestCase("N14WeaponLaserRifleAuto", true)]
+    [TestCase("N14WeaponPistol12mm")]
+    [TestCase("N14WeaponPistol45Colt")]
+    [TestCase("N14WeaponPistol10mmPipe")]
+    [TestCase("N14WeaponPistol10mm", true)]
+    [TestCase("MinutemenWeaponLaserMusket", false)]
+    [TestCase("MinutemenWeaponLaserMusket", true)]
+    [TestCase("MinutemenWeaponLaserShotgun", false)]
+    [TestCase("MinutemenWeaponLaserShotgun", true)]
     public async Task HeldLaserStaysFlushWithMuzzleInEveryDirectionAndWieldedPose(string prototype, bool leftHand = false)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
@@ -133,8 +146,6 @@ public sealed class GunAttachmentVisualTests
                 var localGun = client.GetEntity(netGun);
                 var system = client.System<GunAttachmentVisualSystem>();
                 var sprite = client.GetComponent<SpriteComponent>(actor);
-                sprite.NoRotation = true;
-                sprite.Rotation = Angle.Zero;
                 foreach (var forced in new[] { false, true })
                 foreach (var degrees in new[] { 0, 45, 90, 135, 180, 225, 270, 315 })
                 {
@@ -154,6 +165,24 @@ public sealed class GunAttachmentVisualTests
                             Is.False, "Do not expose floating attachments when the muzzle is hidden behind the body.");
                         continue;
                     }
+                    if (prototype is "MinutemenWeaponLaserMusket" or "MinutemenWeaponLaserShotgun")
+                    {
+                        // Independently checked barrel ends on the unchanged source artwork.
+                        // RSI directions: south, north, east, west; each hand has its own frames.
+                        var sourceDirection = forced ? 2 : (int) SpriteComponent.Layer.GetDirection(main.ActualState!.RsiDirections, angle);
+                        var state = main.State.ToString();
+                        var shotgun = prototype == "MinutemenWeaponLaserShotgun";
+                        var expectedRight = state switch
+                        {
+                            "inhand-left" => shotgun ? new[] { false, true, false, true } : new[] { true, true, true, true },
+                            "inhand-right" => shotgun ? new[] { true, false, false, true } : new[] { true, false, false, false },
+                            "wielded-inhand-left" => shotgun ? new[] { false, false, false, false } : new[] { true, false, true, true },
+                            "wielded-inhand-right" => shotgun ? new[] { true, false, true, true } : new[] { true, true, true, true },
+                            _ => throw new System.InvalidOperationException($"Unexpected held state {state}")
+                        };
+                        Assert.That(mount.Forward.X * (expectedRight[sourceDirection] ? 1 : -1), Is.GreaterThan(0),
+                            $"{prototype}, {state}, source direction {sourceDirection}: attachment must face the barrel, not the stock.");
+                    }
                     var laser = sprite.AllLayers.OfType<SpriteComponent.Layer>()
                         .First(layer => layer.Visible && layer.ActualRsi?.Path.ToString().EndsWith("/laser.rsi") == true);
                     main.GetLayerDrawMatrix(SpriteComponent.Layer.GetDirection(main.ActualState!.RsiDirections, angle), out var baseMatrix);
@@ -162,10 +191,6 @@ public sealed class GunAttachmentVisualTests
                     var laserForward = Vector2.Normalize(Vector2.TransformNormal(Vector2.UnitX, laser.LocalMatrix));
                     Assert.That(Vector2.Dot(forward, laserForward), Is.GreaterThan(.999f),
                         "A mirrored attachment must still point out of the barrel.");
-                    if (sprite.NoRotation && Math.Abs(sprite.Rotation.Theta) < .001 &&
-                        (forced || degrees is 90 or 270))
-                        Assert.That(forward.X * (forced || degrees == 90 ? 1 : -1), Is.GreaterThan(0),
-                            "The held barrel and attachments must face the same horizontal direction as the player.");
                     // The laser body's front pivot, excluding its red beam and transparent padding.
                     var actual = Vector2.Transform(new Vector2(1, 7) / 32f, laser.LocalMatrix);
                     Assert.That(Vector2.Distance(expected, actual), Is.LessThan(.001f), $"{prototype}, pose {pose}, facing {degrees}; expected {expected}, actual {actual}; base {main.State}, base matrix {baseMatrix}; laser matrix {laser.LocalMatrix}; eye {pair.Client.ResolveDependency<Robust.Client.Graphics.IEyeManager>().CurrentEye.Rotation}; override {sprite.DirectionOverride}; geometry {mount}");
@@ -258,6 +283,104 @@ public sealed class GunAttachmentVisualTests
             sprite.Rotation = originalBodyRotation;
         });
         await pair.Server.WaitPost(() => server.DeleteEntity(user));
+        await pair.CleanReturnAsync();
+    }
+
+    [TestCase("N14WeaponPistol10mm", false)]
+    [TestCase("N14WeaponPistol10mm", true)]
+    [TestCase("N14WeaponPistol12mm", false)]
+    [TestCase("N14WeaponPistol12mm", true)]
+    [TestCase("N14WeaponPistol45Colt", false)]
+    [TestCase("N14WeaponPistol45Colt", true)]
+    [TestCase("N14WeaponPistol9mm", false)]
+    [TestCase("N14WeaponPistol9mm", true)]
+    [TestCase("N14WeaponPistol10mmPipe", false)]
+    [TestCase("N14WeaponPistol10mmPipe", true)]
+    [TestCase("N14WeaponLaserPistol", false)]
+    [TestCase("N14WeaponLaserPistol", true)]
+    [TestCase("N14WeaponLaserRifle", false)]
+    [TestCase("N14WeaponLaserRifle", true)]
+    [TestCase("N14WeaponLaserRifleAuto", false)]
+    [TestCase("N14WeaponLaserRifleAuto", true)]
+    [TestCase("N14WeaponSMG45", false)]
+    [TestCase("N14WeaponSMG45", true)]
+    [TestCase("N14WeaponSMGGreaseGun", false)]
+    [TestCase("N14WeaponSMGGreaseGun", true)]
+    [TestCase("N14WeaponSMG12mm", false)]
+    [TestCase("N14WeaponSMG12mm", true)]
+    [TestCase("N14WeaponSMG12mmAdvancedChinese", false)]
+    [TestCase("N14WeaponSMG12mmAdvancedChinese", true)]
+    [TestCase("N14WeaponSMG12mmAdvancedCanadian", false)]
+    [TestCase("N14WeaponSMG12mmAdvancedCanadian", true)]
+    [TestCase("N14WeaponSMG12mmPipe", false)]
+    [TestCase("N14WeaponSMG12mmPipe", true)]
+    [TestCase("N14WeaponRifle556R91", false)]
+    [TestCase("N14WeaponRifle556R91", true)]
+    [TestCase("N14WeaponRifle556Pipe", false)]
+    [TestCase("N14WeaponRifle556Pipe", true)]
+    [TestCase("N14WeaponSniperHunting", false)]
+    [TestCase("N14WeaponSniperHunting", true)]
+    [TestCase("MinutemenWeaponLaserMusket", false)]
+    [TestCase("MinutemenWeaponLaserMusket", true)]
+    [TestCase("MinutemenWeaponLaserShotgun", false)]
+    [TestCase("MinutemenWeaponLaserShotgun", true)]
+    public async Task AttachmentsNeverChangeNormalHeldGunLayers(string prototype, bool leftHand)
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        var client = pair.Client.ResolveDependency<IEntityManager>();
+        NetEntity netUser = default, netGun = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            var user = server.SpawnEntity("MobHuman", map.GridCoords);
+            var gun = server.SpawnEntity(prototype, map.GridCoords);
+            var laser = server.SpawnEntity("ReclamationGunLaserSight", map.GridCoords);
+            Assert.That(server.System<ItemSlotsSystem>().TryInsert(gun, GunAttachmentsSystem.LaserSlotId, laser, null), Is.True);
+            var hands = server.GetComponent<Content.Shared.Hands.Components.HandsComponent>(user);
+            var location = leftHand ? Content.Shared.Hands.Components.HandLocation.Left : Content.Shared.Hands.Components.HandLocation.Right;
+            server.System<SharedHandsSystem>().TrySetActiveHand(user, hands.Hands.Values.First(h => h.Location == location).Name, hands);
+            Assert.That(server.System<SharedHandsSystem>().TryPickup(user, gun), Is.True);
+            netUser = server.GetNetEntity(user);
+            netGun = server.GetNetEntity(gun);
+        });
+        await pair.RunTicksSync(20);
+        await pair.Client.WaitAssertion(() =>
+        {
+            var actor = client.GetEntity(netUser);
+            var gun = client.GetEntity(netGun);
+            var sprite = client.GetComponent<SpriteComponent>(actor);
+            sprite.NoRotation = true;
+            sprite.Rotation = Angle.Zero;
+            var system = client.System<GunAttachmentVisualSystem>();
+            var location = leftHand ? Content.Shared.Hands.Components.HandLocation.Left : Content.Shared.Hands.Components.HandLocation.Right;
+            var visuals = new GetInhandVisualsEvent(actor, location);
+            client.EventBus.RaiseLocalEvent(gun, visuals);
+            var originals = visuals.Layers.Where(layer => !layer.Item1.StartsWith("gun-attachment-visual-")).ToArray();
+            Assert.That(originals, Is.Not.Empty);
+            foreach (var forced in new[] { false, true })
+            foreach (var direction in new[] { Direction.East, Direction.West, Direction.East, Direction.West })
+            {
+                sprite.EnableDirectionOverride = forced;
+                sprite.DirectionOverride = direction;
+                var angle = Angle.FromDegrees(direction == Direction.East ? 90 : 270);
+                client.System<SharedTransformSystem>().SetLocalRotation(actor, angle);
+                for (var frame = 0; frame < 3; frame++) system.FrameUpdate(.016f);
+                foreach (var (key, expected) in originals)
+                {
+                    Assert.That(sprite.LayerMapTryGet(key, out var index), Is.True);
+                    var actual = (SpriteComponent.Layer) sprite[index];
+                    Assert.Multiple(() =>
+                    {
+                        Assert.That(actual.Offset, Is.EqualTo(expected.Offset ?? Vector2.Zero), $"{prototype}, {direction}, {key}: offset");
+                        Assert.That(actual.Rotation, Is.EqualTo(expected.Rotation ?? Angle.Zero), $"{prototype}, {direction}, {key}: rotation");
+                        Assert.That(actual.Scale, Is.EqualTo(expected.Scale ?? Vector2.One), $"{prototype}, {direction}, {key}: scale");
+                        Assert.That(actual.State.ToString(), Is.EqualTo(expected.State), $"{prototype}, {direction}, {key}: frame");
+                    });
+                }
+            }
+        });
+        await pair.Server.WaitPost(() => server.DeleteEntity(server.GetEntity(netUser)));
         await pair.CleanReturnAsync();
     }
 

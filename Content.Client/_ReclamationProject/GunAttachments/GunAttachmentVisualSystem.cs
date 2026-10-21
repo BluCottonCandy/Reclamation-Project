@@ -32,7 +32,10 @@ public sealed class GunAttachmentVisualSystem : EntitySystem
     private float _reconcileElapsed;
 
     private sealed record HeldBinding(EntityUid User, string[] BaseKeys, string[] AttachmentKeys,
-        Dictionary<string, (Vector2 Offset, Angle Rotation, Vector2 Scale)> OriginalPoses);
+        Dictionary<string, (Vector2 Offset, Angle Rotation, Vector2 Scale)> OriginalPoses)
+    {
+        public bool BipodPoseApplied;
+    }
 
     public readonly record struct Mount(Vector2 Muzzle, Vector2 Rear, Vector2? Stock = null, Vector2? Holo = null)
     {
@@ -177,7 +180,7 @@ public sealed class GunAttachmentVisualSystem : EntitySystem
 
     private void RestoreHeld(EntityUid uid)
     {
-        if (!_held.Remove(uid, out var binding) || !TryComp<SpriteComponent>(binding.User, out var sprite)) return;
+        if (!_held.Remove(uid, out var binding) || !binding.BipodPoseApplied || !TryComp<SpriteComponent>(binding.User, out var sprite)) return;
         foreach (var (key, pose) in binding.OriginalPoses)
         {
             if (!sprite.LayerMapTryGet(key, out var index)) continue;
@@ -194,7 +197,7 @@ public sealed class GunAttachmentVisualSystem : EntitySystem
         foreach (var key in binding.BaseKeys)
         {
             if (!sprite.LayerMapTryGet(key, out var index) || sprite[index] is not SpriteComponent.Layer layer) continue;
-            if (binding.OriginalPoses.TryGetValue(key, out var original))
+            if (binding.BipodPoseApplied && binding.OriginalPoses.TryGetValue(key, out var original))
             {
                 sprite.LayerSetOffset(index, original.Offset);
                 sprite.LayerSetRotation(index, original.Rotation);
@@ -204,31 +207,20 @@ public sealed class GunAttachmentVisualSystem : EntitySystem
         }
         if (main == null) return;
         var rotation = _transform.GetWorldRotation(binding.User) + _eye.CurrentEye.Rotation;
-        if (!gun.BipodDeployed && sprite.NoRotation && Math.Abs(sprite.Rotation.Theta) < .001 &&
-            TryGetMount(main, rotation, out var standingMount,
+        binding.BipodPoseApplied = false;
+        // Normal hand layers belong to ItemSystem. Only attachments follow their
+        // existing frame and transform; mounting geometry must never flip the gun.
+        if (gun.BipodDeployed)
+            ApplyBipodPose(binding, sprite, main, rotation);
+        UpdateLayers(gun, sprite, main, rotation, binding.AttachmentKeys);
+    }
+
+    private void ApplyBipodPose(HeldBinding binding, SpriteComponent sprite, SpriteComponent.Layer main, Angle rotation)
+    {
+        if (TryGetMount(main, rotation, out var mount,
                 sprite.EnableDirectionOverride ? sprite.DirectionOverride : null))
         {
-            var facing = sprite.EnableDirectionOverride
-                ? sprite.DirectionOverride.Convert(RsiDirectionType.Dir4)
-                : SpriteComponent.Layer.GetDirection(RsiDirectionType.Dir4, rotation.Reduced().FlipPositive());
-            var desired = facing == RsiDirection.East ? 1 : facing == RsiDirection.West ? -1 : 0;
-            var drawnDirection = SpriteComponent.Layer.GetDirection(main.ActualState!.RsiDirections, rotation.Reduced().FlipPositive());
-            main.GetLayerDrawMatrix(drawnDirection, out var standingMatrix);
-            var forward = Vector2.TransformNormal(standingMount.Forward, standingMatrix);
-            if (desired != 0 && forward.X * desired < 0)
-            {
-                foreach (var key in binding.BaseKeys)
-                {
-                    if (!sprite.LayerMapTryGet(key, out var index) || sprite[index] is not SpriteComponent.Layer layer) continue;
-                    sprite.LayerSetOffset(index, layer.Offset * new Vector2(-1, 1));
-                    sprite.LayerSetRotation(index, -layer.Rotation);
-                    sprite.LayerSetScale(index, layer.Scale * new Vector2(-1, 1));
-                }
-            }
-        }
-        if (gun.BipodDeployed && TryGetMount(main, rotation, out var mount,
-                sprite.EnableDirectionOverride ? sprite.DirectionOverride : null))
-        {
+            binding.BipodPoseApplied = true;
             var direction = SpriteComponent.Layer.GetDirection(main.ActualState!.RsiDirections, rotation.Reduced().FlipPositive());
             main.GetLayerDrawMatrix(direction, out var matrix);
             var rear = Vector2.Transform(mount.Rear, matrix);
@@ -255,7 +247,6 @@ public sealed class GunAttachmentVisualSystem : EntitySystem
                 if (mirror) sprite.LayerSetScale(index, layer.Scale * new Vector2(1, -1));
             }
         }
-        UpdateLayers(gun, sprite, main, rotation, binding.AttachmentKeys);
     }
 
     private void UpdateLayers(GunAttachmentsComponent gun, SpriteComponent sprite, SpriteComponent.Layer main,

@@ -683,7 +683,8 @@ namespace Content.Shared.Interaction
             float range = InteractionRange,
             CollisionGroup collisionMask = InRangeUnobstructedMask,
             Ignored? predicate = null,
-            bool popup = false)
+            bool popup = false,
+            bool useCenterRange = false)
         {
             if (!Resolve(other, ref other.Comp))
                 return false;
@@ -704,7 +705,8 @@ namespace Content.Shared.Interaction
                 range,
                 collisionMask,
                 predicate,
-                popup);
+                popup,
+                useCenterRange);
         }
 
         /// <summary>
@@ -742,8 +744,18 @@ namespace Content.Shared.Interaction
             float range = InteractionRange,
             CollisionGroup collisionMask = InRangeUnobstructedMask,
             Ignored? predicate = null,
-            bool popup = false)
+            bool popup = false,
+            bool useCenterRange = false)
         {
+            // A player's collision radius must not extend hand or melee reach.
+            // Explicit melee ranges are already adjusted by the melee system.
+            if (HasComp<ActorComponent>(origin) && ShouldCheckAccess(origin))
+            {
+                if (!useCenterRange && MathHelper.CloseTo(range, InteractionRange))
+                    range = 1f;
+                useCenterRange = true;
+            }
+
             Ignored combinedPredicate = e => e == origin.Owner || (predicate?.Invoke(e) ?? false);
             var inRange = true;
             MapCoordinates originPos = default;
@@ -756,7 +768,7 @@ namespace Content.Shared.Interaction
 
             // Alternatively we could check centre distances first though
             // that means we wouldn't be able to easily check overlap interactions.
-            if (range > 0f &&
+            if (!useCenterRange && range > 0f &&
                 _fixtureQuery.TryComp(origin, out var fixtureA) &&
                 // These fixture counts are stuff that has the component but no fixtures for <reasons> (e.g. buttons).
                 // At least until they get removed.

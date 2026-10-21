@@ -106,4 +106,6 @@ wastelander-kit-highroller-name = High roller
 wastelander-kit-highroller-description = Luck is always on your side, you always make it through! Contains a pristine .45 Colt, one box of .45 ammunition, a checkered suit, a Reinforced Leather Vest, white cowboy boots, and a grey fedora.
 
 wastelander-kit-farmer-name = Farmer kit
+wastelander-kit-chef-name = Wasteland Chef
+wastelander-kit-chef-description = You have a way of making food no matter what. Contains a butcher's cleaver, a kitchen knife, a chef belt, a wasteland cookbook, salt and pepper shakers, and a food grab bag that keeps food fresh. The bag contains two bags of flour, a bag of rice, a bag of cornmeal, and one of each raw meat type used in the cookbook.
 wastelander-kit-farmer-description = You've always had a green thumb, you can grow anything almost anywhere! Contains Advanced Farming Techniques, a single-use training book, a filled botany toolbelt, a clipping bag with one of every N14 plant clipping, and a full compost sack.

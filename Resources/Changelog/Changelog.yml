@@ -12731,3 +12731,30 @@ Entries:
   id: 6544
   time: '2026-10-21T14:22:56.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/64
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added the Wasteland Tribal starter kit, offering one of the six existing
+        tribal kits.
+    - type: Add
+      message: >-
+        Added missing ordinary tribal armor and headwear to Wastelander
+        loadouts.
+    - type: Tweak
+      message: >-
+        Heavy tribal armor and tribal armored coats no longer exceed combat
+        armor blunt/slash protection.
+    - type: Add
+      message: >-
+        Added the Wasteland Chef starter kit, including cooking tools, a
+        cookbook, and a compact preserving food bag.
+    - type: Fix
+      message: Preserving bags keep food fresh when carried inside another container.
+    - type: Add
+      message: >-
+        Farmer kits include a single-use Advanced Farming Techniques book that
+        teaches plant analysis without a scanner.
+  id: 6545
+  time: '2026-10-21T14:23:29.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/65

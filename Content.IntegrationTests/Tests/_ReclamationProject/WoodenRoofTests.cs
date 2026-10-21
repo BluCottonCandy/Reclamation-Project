@@ -63,10 +63,11 @@ public sealed class WoodenRoofTests
             building = em.System<ConstructionSystem>().TryStartStructureConstruction(user, "ReclamationWoodenRoof", At(map, 1), Angle.Zero);
         });
         await pair.RunSeconds(6);
+        Assert.That(building.IsCompletedSuccessfully, Is.True);
+        var built = await building;
         await pair.Server.WaitAssertion(() =>
         {
-            Assert.That(building.IsCompletedSuccessfully, Is.True);
-            Assert.That(building.Result, Is.True);
+            Assert.That(built, Is.True);
             Assert.That(Wood(em), Is.EqualTo(8));
             var count = 0;
             var query = em.EntityQueryEnumerator<ConstructedRoofComponent>();
@@ -142,8 +143,11 @@ public sealed class WoodenRoofTests
         await pair.CleanReturnAsync();
     }
 
-    [Test]
-    public async Task LosingAndRestoringSupportResetsTheGracePeriod()
+    [TestCase("WoodenSupport")]
+    [TestCase("WoodenSupportBeam")]
+    [TestCase("WoodenSupportWall")]
+    [TestCase("WoodenSupportWallBroken")]
+    public async Task LosingAndRestoringSupportResetsTheGracePeriod(string support)
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -153,7 +157,7 @@ public sealed class WoodenRoofTests
             Floor(em, map, 0);
             Floor(em, map, -1);
             var roof = em.SpawnEntity("ReclamationWoodenRoof", At(map, 0));
-            var beam = em.SpawnEntity("WoodenSupport", At(map, -1));
+            var beam = em.SpawnEntity(support, At(map, -1));
             var system = em.System<ConstructedRoofSystem>();
             var component = em.GetComponent<ConstructedRoofComponent>(roof);
             system.CheckSupport();

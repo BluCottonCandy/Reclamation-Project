@@ -30,7 +30,6 @@ public sealed class TribalArmorLoadoutTests
         ["N14ClothingOuterdrylandersimple"] = new[] { 0.80f, 0.80f, 0.80f, 0.80f, 0.85f },
         ["N14ClothingOuterTribalCoat"] = new[] { 0.75f, 0.75f, 0.80f, 0.80f, 1.00f },
         ["N14ClothingOuterElderwintercoat"] = new[] { 0.75f, 0.75f, 0.80f, 0.80f, 1.00f },
-        ["N14ClothingOuterdrylandelder"] = new[] { 0.75f, 0.75f, 0.80f, 0.80f, 1.00f },
         ["M14ClothingOuterDeadHorsesArmor"] = new[] { 0.80f, 0.80f, 0.80f, 0.78f, 0.92f },
         ["M14ClothingOuterDeadHorsesLightArmor"] = new[] { 0.80f, 0.80f, 0.80f, 0.78f, 0.92f },
         ["M14ClothingOuterSorrowsArmor"] = new[] { 0.80f, 0.80f, 0.80f, 0.78f, 0.92f },
@@ -112,7 +111,7 @@ public sealed class TribalArmorLoadoutTests
                 Assert.That(available, Is.True, id + " must spawn for a Wastelander.");
             }
             var added = loadouts.Where(loadout => loadout.ID.StartsWith("ReclamationLoadoutTribal")).ToArray();
-            Assert.That(added, Has.Length.EqualTo(26));
+            Assert.That(added, Has.Length.EqualTo(25));
             Assert.That(added.All(loadout => loadout.Items.Count == 1 && Expected.ContainsKey(loadout.Items[0].Id)), Is.True);
         });
         await pair.CleanReturnAsync();

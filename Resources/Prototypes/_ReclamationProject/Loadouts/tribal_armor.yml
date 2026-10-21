@@ -170,20 +170,6 @@
   - N14ClothingOuterElderwintercoat
 
 - type: loadout
-  id: ReclamationLoadoutTribalN14ClothingOuterdrylandelder
-  category: Outer
-  cost: 1
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutOuter
-  - !type:CharacterDepartmentRequirement
-    departments:
-    - Wastelander
-  items:
-  - N14ClothingOuterdrylandelder
-
-- type: loadout
   id: ReclamationLoadoutTribalN14ClothingDrylanderGoggles
   category: Head
   cost: 2

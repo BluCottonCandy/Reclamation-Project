@@ -333,7 +333,7 @@ namespace Content.Server.Database
                 speechVerbPreference // #Misfits Add - vocal style
             );
 
-            return humanoid.WithSpecial(special);
+            return humanoid.WithSpecial(special).WithConsent((ConsentPreference) profile.TortureConsent, (ConsentPreference) profile.SlaveryConsent);
         }
 
         private static Profile ConvertProfiles(HumanoidCharacterProfile humanoid, int slot, Profile? profile = null)
@@ -433,6 +433,8 @@ namespace Content.Server.Database
             profile.Loadouts.AddRange(humanoid.LoadoutPreferences
                 .Select(l => new Loadout(l.LoadoutName, l.CustomName, l.CustomDescription, l.CustomColorTint, l.CustomHeirloom)));
 
+            profile.TortureConsent = (int) HumanoidCharacterProfile.ValidateConsent(humanoid.TortureConsent);
+            profile.SlaveryConsent = (int) HumanoidCharacterProfile.ValidateConsent(humanoid.SlaveryConsent);
             profile.BarkVoice = humanoid.BarkVoice; // Corvax-Fallout-Barks
             profile.SpeechVerbPreference = humanoid.SpeechVerbPreference; // #Misfits Add - vocal style
 

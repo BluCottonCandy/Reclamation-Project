@@ -1522,6 +1522,14 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("species");
 
+                    b.Property<int>("SlaveryConsent")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("slavery_consent");
+
+                    b.Property<int>("TortureConsent")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("torture_consent");
+
                     b.Property<string>("SpeechVerbPreference")
                         .IsRequired()
                         .HasColumnType("TEXT")

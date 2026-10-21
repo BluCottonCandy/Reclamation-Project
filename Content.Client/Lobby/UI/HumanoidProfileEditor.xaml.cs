@@ -78,6 +78,7 @@ namespace Content.Client.Lobby.UI
         private readonly SponsorManager _sponsorMan; // Forge-Change
         private readonly SupporterManager _supporterMan; // #Cythisiax Add - Patreon supporter loadouts
 
+        private readonly ConsentPreferencesControl _consent = new();
         private FlavorText.FlavorText? _flavorText;
         private BoxContainer _ccustomspecienamecontainerEdit => CCustomSpecieName;
         private LineEdit _customspecienameEdit => CCustomSpecieNameEdit;
@@ -747,6 +748,20 @@ namespace Content.Client.Lobby.UI
 
             #endregion Markings
 
+            CTabContainer.AddTab(new ScrollContainer
+            {
+                HorizontalExpand = true,
+                VerticalExpand = true,
+                HScrollEnabled = false,
+                Children = { _consent },
+            }, Loc.GetString("consent-tab-title"));
+            _consent.PreferencesChanged += (torture, slavery) =>
+            {
+                if (Profile == null) return;
+                Profile = Profile.WithConsent(torture, slavery);
+                IsDirty = true;
+                UpdateSaveButton();
+            };
             RefreshFlavorText();
 
             RefreshVoiceTab(); // Corvax-TTS
@@ -1086,6 +1101,7 @@ namespace Content.Client.Lobby.UI
             UpdateSkinColor();
             UpdateSpawnPriorityControls();
             UpdateFlavorTextEdit();
+            _consent.SetPreferences(Profile?.TortureConsent ?? default, Profile?.SlaveryConsent ?? default);
             UpdateCustomSpecieNameEdit();
             UpdateAgeEdit();
             UpdateEyePickers();

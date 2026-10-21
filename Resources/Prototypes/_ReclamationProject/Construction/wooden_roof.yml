@@ -7,7 +7,9 @@
   targetNode: roof
   category: construction-category-structures
   hide: false
-  icon: Decals/Overlays/markups.rsi/square.png
+  icon:
+    sprite: Decals/Overlays/markups.rsi
+    state: square
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -38,7 +40,8 @@
   - type: Sprite
     visible: false
     layers:
-    - texture: Decals/Overlays/markups.rsi/square.png
+    - sprite: Decals/Overlays/markups.rsi
+      state: square
   - type: Fixtures
     fixtures:
       fix1:

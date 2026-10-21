@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Medical;
 using Content.Server.Body.Systems;
 using Content.Server.Temperature.Components;
 using Content.Shared._Misfits.Medical.Cryogenics;
@@ -42,6 +43,11 @@ public sealed partial class TemperatureScaledHealthChange : EntityEffect
 
     public override void Effect(EntityEffectBaseArgs args)
     {
+        // Chemicals never alter player structural injuries, including removed organs/limbs.
+        if (args.EntityManager.HasComponent<TraumaLimbComponent>(args.TargetEntity) ||
+            args.EntityManager.HasComponent<TraumaOrganComponent>(args.TargetEntity))
+            return;
+
         var scale = FixedPoint2.New(1);
 
         if (args is EntityEffectReagentArgs reagentArgs)
@@ -71,7 +77,8 @@ public sealed partial class TemperatureScaledHealthChange : EntityEffect
             // Shitmed Change Start
             targetPart: TargetBodyPart.All,
             partMultiplier: 0.5f,
-            canSever: false);
+            canSever: false,
+            doPartDamage: !args.EntityManager.HasComponent<TraumaBodyComponent>(args.TargetEntity));
             // Shitmed Change End
     }
 

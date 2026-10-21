@@ -12675,3 +12675,16 @@ Entries:
   id: 6540
   time: '2026-10-21T14:21:50.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/60
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Paladin greatshields now provide 25% passive stamina protection, shown
+        in their Protection panel.
+    - type: Tweak
+      message: >-
+        Both paladin shields now swing half as fast, with a two-second normal
+        attack cooldown.
+  id: 6541
+  time: '2026-10-21T14:22:03.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/61

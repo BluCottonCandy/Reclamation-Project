@@ -144,6 +144,10 @@
     - ReclamationWastelanderSetSurvivalist
     - ReclamationWastelanderSetMilitarySurplus
     - ReclamationWastelanderSetOutOfLuck
+    - ReclamationWastelanderSetBackAlleyDoctor
+    - ReclamationWastelanderSetBruiser
+    - ReclamationWastelanderSetHighRoller
+    - ReclamationWastelanderSetFarmer
 
 - type: UndecidedLoadoutBackpackSet
   id: ReclamationSurplusPistol22lrMakeshift

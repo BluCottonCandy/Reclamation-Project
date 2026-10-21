@@ -86,14 +86,14 @@
   parent: N14SackCompost
   id: N14SackCompostFull
   suffix: full
-  # components:
-  # - type: SolutionContainerManager
-    # solutions:
-      # sack:
-        # maxVol: 100
-        # reagents:
-        # - ReagentId: Fertilizer
-          # Quantity: 100
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      sack:
+        maxVol: 100
+        reagents:
+        - ReagentId: Fertilizer
+          Quantity: 100
 
 - type: entity
   parent: N14SackCompost

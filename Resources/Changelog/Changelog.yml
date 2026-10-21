@@ -12637,3 +12637,24 @@ Entries:
   id: 6538
   time: '2026-10-21T13:36:25.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/58
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Gun attachments no longer flip or shift normal held firearm sprites;
+        deployed bipod positioning remains separate.
+    - type: Fix
+      message: >-
+        Laser musket and crank laser shotgun attachments now mount at the
+        correct barrel end without changing the weapon sprites.
+    - type: Tweak
+      message: >-
+        Firearm suppressors now fit ballistic pistols only, with the restriction
+        shown in attachment details.
+    - type: Fix
+      message: >-
+        Alt-click cranks laser muskets and laser shotguns while charged and
+        ejects cells with no usable shots remaining.
+  id: 6539
+  time: '2026-10-21T14:13:36.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/59

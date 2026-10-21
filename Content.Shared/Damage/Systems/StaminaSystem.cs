@@ -270,6 +270,8 @@ public sealed partial class StaminaSystem : EntitySystem
         if (ev.Cancelled)
             return;
 
+        value = ev.Value;
+
         // Have we already reached the point of max stamina damage?
         if (component.Critical)
             return;

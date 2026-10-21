@@ -12784,3 +12784,20 @@ Entries:
   id: 6547
   time: '2026-10-21T14:24:13.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/67
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Railroad, Minutemen, and Brotherhood promotions require five hours in
+        the preceding role, with job-whitelist bypass.
+    - type: Tweak
+      message: Railroad previous-rank time combines across both safehouses.
+    - type: Tweak
+      message: Added separator lines to the Minutemen job menu.
+    - type: Fix
+      message: >-
+        Character setup no longer crashes when a timer references a retired job
+        without a department.
+  id: 6548
+  time: '2026-10-21T15:36:45.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/68

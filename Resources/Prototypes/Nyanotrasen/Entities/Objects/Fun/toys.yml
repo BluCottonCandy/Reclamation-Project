@@ -5,6 +5,9 @@
   suffix: Random
   description: A cute little mothperson that you can hold in the palm of your hand.
   components:
+  - type: Clothing
+    slots: [NONE]
+    quickEquip: false
   - type: Sprite
     sprite: Nyanotrasen/Objects/Fun/Toys/moff.rsi
     layers:
@@ -47,6 +50,9 @@
   name: moth musician plushie
   description: A plushie depicting an adorable mothperson with a tiny synthesizer and tiny glasses.
   components:
+  - type: Clothing
+    slots: [NONE]
+    quickEquip: false
   - type: Sprite
     sprite: Nyanotrasen/Objects/Fun/Toys/moff.rsi
     state: moffmusician
@@ -57,6 +63,9 @@
   name: moth bartender plushie
   description: A plushie depicting an adorable mothperson with a tiny tophat and tiny kevlar vest. It smells like cigarettes.
   components:
+  - type: Clothing
+    slots: [NONE]
+    quickEquip: false
   - type: Sprite
     sprite: Nyanotrasen/Objects/Fun/Toys/moff.rsi
     state: moffbartender

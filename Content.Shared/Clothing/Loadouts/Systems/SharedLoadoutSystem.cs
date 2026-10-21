@@ -98,6 +98,7 @@ public sealed class SharedLoadoutSystem : EntitySystem
         var remainingPoints = Math.Max(0, _configuration.GetCVar(CCVars.GameLoadoutsPoints)
             + SharedSpecialSystem.GetCharismaLoadoutPointModifier(SpecialProfile.EnsureValid(profile.Special).Charisma));
 
+        var selectedCategories = new HashSet<string>();
         foreach (var loadout in profile.LoadoutPreferences)
         {
             if (!loadout.Selected)
@@ -130,6 +131,11 @@ public sealed class SharedLoadoutSystem : EntitySystem
             if (loadoutProto.Cost > remainingPoints)
                 continue;
 
+            // Enforce exclusive choice categories even for manually edited profiles.
+            if (_prototype.TryIndex(loadoutProto.Category, out var category)
+                && category.SingleSelection && !selectedCategories.Add(category.ID))
+                continue;
+
             remainingPoints -= loadoutProto.Cost;
 
             // Spawn the loadout items
@@ -151,7 +157,7 @@ public sealed class SharedLoadoutSystem : EntitySystem
                     heirlooms.Add((item, loadout));
 
                 // Equip it
-                if (EntityManager.TryGetComponent<ClothingComponent>(item, out var clothingComp)
+                if (loadoutProto.AutoEquip && EntityManager.TryGetComponent<ClothingComponent>(item, out var clothingComp)
                     && _characterRequirements.CanEntityWearItem(uid, item, true)
                     && _inventory.TryGetSlots(uid, out var slotDefinitions))
                 {
@@ -189,7 +195,7 @@ public sealed class SharedLoadoutSystem : EntitySystem
                 }
 
                 // Equip the loadout
-                if (!_inventory.TryEquip(uid, item, slot, true, !string.IsNullOrEmpty(slot), true))
+                if (!loadoutProto.AutoEquip || !_inventory.TryEquip(uid, item, slot, true, !string.IsNullOrEmpty(slot), true))
                     failedLoadouts.Add(item);
 
                 i++;

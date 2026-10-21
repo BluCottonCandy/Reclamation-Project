@@ -97,7 +97,7 @@ public sealed class WastelanderExtraKitTests
         {
             var farmer = em.SpawnEntity("ReclamationWastelanderKitFarmer", map.GridCoords);
             Assert.That(EntitySpawnCollection.GetSpawns(em.GetComponent<SpawnItemsOnUseComponent>(farmer).Items),
-                Is.EquivalentTo(new[] { "N14ClothingBeltPlantFilled", "ReclamationClippingBagFilled", "N14SackCompostFull" }));
+                Is.EquivalentTo(new[] { "N14ClothingBeltPlantFilled", "ReclamationClippingBagFilled", "N14SackCompostFull", "ReclamationTrainingManualAdvancedFarming" }));
             var bag = em.SpawnEntity("ReclamationClippingBagFilled", map.GridCoords);
             var stored = em.GetComponent<StorageComponent>(bag).Container.ContainedEntities;
             var clippings = prototypes.EnumeratePrototypes<EntityPrototype>()

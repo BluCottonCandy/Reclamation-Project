@@ -1,0 +1,28 @@
+- type: entity
+  parent: ReclamationTrainingManualCPR
+  id: ReclamationTrainingManualAdvancedFarming
+  name: Advanced Farming Techniques
+  description: A practical handbook on plant health, genetics, and crop chemistry. Read it to learn how to analyze plants, clippings, and produce without a scanner. Consumed once learned.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#386641"
+    - state: icon_text
+  - type: GrantTrait
+    trait: ReclamationAdvancedFarming
+    learnMessage: advanced-farming-learned
+    alreadyKnownMessage: advanced-farming-already-known
+    alreadyKnownComponents:
+    - type: AdvancedFarming
+
+- type: trait
+  id: ReclamationAdvancedFarming
+  category: Mental
+  hidden: true
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: AdvancedFarming

@@ -44,6 +44,8 @@ public sealed partial class BotanySystem : EntitySystem
     {
         base.Initialize();
 
+        InitializeAdvancedFarming();
+
         SubscribeLocalEvent<SeedComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<ProduceComponent, ExaminedEvent>(OnProduceExamined);
         SubscribeLocalEvent<ProduceComponent, StackSplitEvent>(OnProduceStackSplit);

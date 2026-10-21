@@ -141,7 +141,7 @@
   parent: KitBase
   id: ReclamationWastelanderKitFarmer
   name: Farmer kit
-  description: "You've always had a green thumb, you can grow anything almost anywhere! Contains a filled botany toolbelt, a clipping bag with one of every N14 plant clipping, and a full compost sack."
+  description: "You've always had a green thumb, you can grow anything almost anywhere! Contains Advanced Farming Techniques, a single-use training book, a filled botany toolbelt, a clipping bag with one of every N14 plant clipping, and a full compost sack."
   components:
   - type: Sprite
     state: rifleman
@@ -150,6 +150,7 @@
     - id: N14ClothingBeltPlantFilled
     - id: ReclamationClippingBagFilled
     - id: N14SackCompostFull
+    - id: ReclamationTrainingManualAdvancedFarming
     sound:
       path: /Audio/Effects/unwrap.ogg
 

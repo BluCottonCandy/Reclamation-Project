@@ -1,0 +1,53 @@
+# Salvaged T-45 mechanics with the existing Raider armor appearance.
+- type: entity
+  parent: N14ClothingOuterPowerArmorT45NCRSalvaged
+  id: ForgedFurnaceArmor
+  name: Forged Furnace Armor
+  description: A furnace-blackened suit of salvaged armor assembled by the Forged. Stripped-down servos and heavy heat-resistant plating make it slow but dependable. It needs neither power-armor training nor a fusion core.
+  categories: []
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.70
+        Heat: 0.20
+        Caustic: 0.70
+        Radiation: 0.60
+  # Heat armor supplies the fire reduction; avoid multiplying a hidden second reduction.
+  - type: FireProtection
+    reduction: 0
+  - type: TemperatureProtection
+    coefficient: 0.25
+  # Clear both the default and caliber-specific inherited reflection settings.
+  - type: Reflect
+    reflects: None
+    reflectProb: 0
+    minReflectProb: 0
+    reflectProbByType: {}
+    innate: false
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ForgedFurnaceHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: ForgedFurnaceHelmet
+  name: Forged furnace helmet
+  description: An enclosed T-45 helmet rebuilt for the Forged's furnace crews and raiding parties.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.795
+        Slash: 0.795
+        Piercing: 0.845
+        Heat: 0.20
+        Radiation: 0.595

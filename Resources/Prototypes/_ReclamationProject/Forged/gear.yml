@@ -1,0 +1,243 @@
+- type: startingGear
+  id: ForgemasterGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRags
+    back: N14ClothingBackpackSatchelExplorer
+    id: ForgemasterID
+    outerClothing: ForgedFurnaceArmor
+  storage:
+    back:
+    - N14BoxCardboardMREBoxCFilled
+  inhand:
+  - ForgedWeaponFlamer
+  - N14SledgeHammer
+
+- type: entity
+  parent: N14IDCard
+  id: ForgemasterID
+  name: scrap gear
+  description: A worn scrap gear stamped with Forged identification marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    layers:
+    - state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    heldPrefix: gear
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    equippedPrefix: gear
+  - type: IdCard
+    nameLocId: forged-gear-id-name
+    fullNameLocId: forged-gear-id-full-name
+  - type: PresetIdCard
+    job: Forgemaster
+  - type: Access
+    tags: [Forged, ForgedCommand]
+
+- type: startingGear
+  id: ForgedEnforcerGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRags
+    back: N14ClothingBackpackSatchelExplorer
+    id: ForgedEnforcerID
+    outerClothing: ForgedFurnaceArmor
+  storage:
+    back:
+    - MagazineBox12gauge
+  inhand:
+  - N14WeaponShotgunAuto
+  - N14Crowbar
+
+- type: entity
+  parent: N14IDCard
+  id: ForgedEnforcerID
+  name: scrap gear
+  description: A worn scrap gear stamped with Forged identification marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    layers:
+    - state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    heldPrefix: gear
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    equippedPrefix: gear
+  - type: IdCard
+    nameLocId: forged-gear-id-name
+    fullNameLocId: forged-gear-id-full-name
+  - type: PresetIdCard
+    job: ForgedEnforcer
+  - type: Access
+    tags: [Forged]
+
+- type: startingGear
+  id: ForgedFurnaceTenderGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRags
+    back: N14ClothingBackpackSatchelExplorer
+    id: ForgedFurnaceTenderID
+    outerClothing: ForgedTenderSuit
+    belt: N14ClothingBeltUtilityFilled
+    eyes: N14ClothingEyesGlassesWelding
+  storage:
+    back:
+    - N14WeaponPistol9mm
+    - MagazineBox9mm
+    - WelderIndustrial
+
+- type: entity
+  parent: N14IDCard
+  id: ForgedFurnaceTenderID
+  name: scrap gear
+  description: A worn scrap gear stamped with Forged identification marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    layers:
+    - state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    heldPrefix: gear
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    equippedPrefix: gear
+  - type: IdCard
+    nameLocId: forged-gear-id-name
+    fullNameLocId: forged-gear-id-full-name
+  - type: PresetIdCard
+    job: ForgedFurnaceTender
+  - type: Access
+    tags: [Forged]
+
+- type: startingGear
+  id: ForgedRaiderGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRags
+    back: N14ClothingBackpackSatchelExplorer
+    id: ForgedRaiderID
+    outerClothing: N14ClothingOuterRaiderBadlands
+  storage:
+    back:
+    - ForgedRaiderWeaponSelector
+
+- type: entity
+  parent: N14IDCard
+  id: ForgedRaiderID
+  name: scrap gear
+  description: A worn scrap gear stamped with Forged identification marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    layers:
+    - state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    heldPrefix: gear
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
+    equippedPrefix: gear
+  - type: IdCard
+    nameLocId: forged-gear-id-name
+    fullNameLocId: forged-gear-id-full-name
+  - type: PresetIdCard
+    job: ForgedRaider
+  - type: Access
+    tags: [Forged]
+
+- type: startingGear
+  id: ForgedWorkerGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitRags
+    shoes: N14ClothingShoesRags
+
+- type: entity
+  parent: N14ClothingOuterFirefighterSuit
+  id: ForgedTenderSuit
+  name: reinforced furnace suit
+  description: A reinforced fire-resistant suit worn by the Forged's furnace tenders.
+  components:
+  - type: FireProtection
+    reduction: 0
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.80
+        Piercing: 0.80
+        Heat: 0.40
+        Radiation: 0.25
+
+# Local balance candidate: stronger floor fire, leaving other fire sources unchanged.
+- type: entity
+  parent: N14WeaponFlamer
+  id: ForgedWeaponFlamer
+  name: Forged flamer
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/forged_flamer.rsi
+    layers:
+    - state: base
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/forged_flamer.rsi
+    size: Large
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/forged_flamer.rsi
+    quickEquip: false
+    slots: [Back, suitStorage]
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
+      params:
+        volume: 3
+  - type: Wieldable
+  - type: GunRequiresWield
+  # A sealed weapon tank must not detonate when its wielder catches their own fire.
+  - type: VolatileFuelContainer
+    igniteChance: 0
+    shotChance: 0
+  - type: FlamerAmmoProvider
+    fireTilePrototype: ForgedFlamerFire
+
+- type: entity
+  parent: MisfitsTileFire
+  id: ForgedFlamerFire
+  categories: [HideSpawnMenu]
+  components:
+  - type: TileFire
+    standingDamage: 5
+
+- type: entity
+  parent: BaseLoadoutKit
+  id: ForgedRaiderWeaponSelector
+  name: Forged raider weapon selection
+  description: Choose Pepper em up or Leg Breaker.
+  categories: []
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets: [ForgedRaiderShotgunSet, ForgedRaiderMeleeSet]
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedRaiderShotgunSet
+  name: forged-shotgun-name
+  description: forged-shotgun-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [N14WeaponShotgunMakeshift, DrinkBeerBottleFull, N14Jet, N14CleanGauze10, N14Ointment10]
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedRaiderMeleeSet
+  name: forged-melee-name
+  description: forged-melee-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [N14SledgeHammer, N14Psycho, N14Ointment10, N14CleanGauze10, DrinkWhiskeyBottleFull]

@@ -752,7 +752,7 @@ namespace Content.Shared.Interaction
             if (HasComp<ActorComponent>(origin) && ShouldCheckAccess(origin))
             {
                 if (!useCenterRange && MathHelper.CloseTo(range, InteractionRange))
-                    range = 1f;
+                    range = 1.5f;
                 useCenterRange = true;
             }
 

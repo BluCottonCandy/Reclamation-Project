@@ -12,10 +12,10 @@
     sprite: _ReclamationProject/Railroad/combat_armor.rsi
 
 - type: entity
-  parent: RailroadCombatArmor
+  parent: RailroadCombatArmorMk2
   id: RailroadAgentCombatArmor
-  name: Railroad compact combat armor
-  description: A compact suit of black combat armor designed to be carried discreetly by an undercover operative.
+  name: Railroad compact combat armor mk2
+  description: A compact suit of reinforced black combat armor designed to be carried discreetly by an undercover operative.
   components:
   - type: Item
     size: Small
@@ -80,8 +80,16 @@
   parent: N14ClothingOuterVestLeather
   id: RailroadVest
   name: Railroad armored vest
-  description: A discreet black armored vest for Railroad operatives.
+  description: A discreet black armored vest for Railroad operatives, lined with plates as tough as combat armor.
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.7
+        Heat: 0.7
+    priceMultiplier: 0.5
   - type: Sprite
     sprite: _ReclamationProject/Railroad/vest.rsi
   - type: Clothing
@@ -174,3 +182,42 @@
   id: RailroadGlasses
   name: Railroad glasses
   description: Ordinary-looking glasses used as part of a Railroad disguise.
+
+# Rank armor: Agent and above get better protection, topping out below power armor.
+- type: entity
+  parent: RailroadCombatArmor
+  id: RailroadCombatArmorMk2
+  name: Railroad combat armor mk2
+  description: A reinforced suit of matte black combat armor issued to safehouse leadership.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.6
+        Heat: 0.65
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: RailroadCombatArmor
+  id: RailroadArmoredTrenchcoat
+  name: Railroad armored trenchcoat
+  description: A black trenchcoat with white trim, lined with ceramic plates. Worn only by the Railroad's highest leadership.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Railroad/armored_trenchcoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Railroad/armored_trenchcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.55
+        Heat: 0.55
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.7

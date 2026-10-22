@@ -65,17 +65,28 @@ public sealed class SpawnPointSystem : EntitySystem
 
         if (possiblePositions.Count == 0)
         {
-            // Ok we've still not returned, but we need to put them /somewhere/.
-            // TODO: Refactor gameticker spawning code so we don't have to do this!
+            // A late join may have only job markers available. Prefer the requested
+            // job, then other non-observer markers on the intended station. Never
+            // fall back to a marker on an unrelated expedition or deleted map.
+            var fallbackPositions = new List<EntityCoordinates>();
             var points2 = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
+            while (points2.MoveNext(out var uid, out var point, out var xform))
+            {
+                if (point.SpawnType == SpawnPointType.Observer || xform.MapID == MapId.Nullspace ||
+                    (args.Station != null && _stationSystem.GetOwningStation(uid, xform) != args.Station))
+                    continue;
 
-            if (points2.MoveNext(out _, out var xform))
-            {
-                possiblePositions.Add(xform.Coordinates);
+                if (point.SpawnType == SpawnPointType.Job && point.Job?.ID == args.Job?.Prototype)
+                    possiblePositions.Add(xform.Coordinates);
+                else
+                    fallbackPositions.Add(xform.Coordinates);
             }
-            else
+
+            if (possiblePositions.Count == 0)
+                possiblePositions.AddRange(fallbackPositions);
+            if (possiblePositions.Count == 0)
             {
-                Log.Error("No spawn points were available!");
+                Log.Error($"No spawn points were available on the requested station {args.Station}!");
                 return;
             }
         }

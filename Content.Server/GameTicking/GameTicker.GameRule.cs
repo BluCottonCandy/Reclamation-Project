@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._ReclamationProject.Rules;
 using Content.Server.Administration;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared.Administration;
@@ -70,6 +71,13 @@ public sealed partial class GameTicker
     public EntityUid AddGameRule(string ruleId)
     {
         var ruleEntity = Spawn(ruleId, MapCoordinates.Nullspace);
+        // Block before Added handlers can preload an event shuttle or map.
+        if (EntityManager.System<WastelandContentSystem>().IsBlockedRule(ruleEntity))
+        {
+            EndGameRule(ruleEntity);
+            return ruleEntity;
+        }
+
         _sawmill.Info($"Added game rule {ToPrettyString(ruleEntity)}");
         _adminLogger.Add(LogType.EventStarted, $"Added game rule {ToPrettyString(ruleEntity)}");
         var str = Loc.GetString("station-event-system-run-event", ("eventName", ToPrettyString(ruleEntity)));
@@ -129,6 +137,13 @@ public sealed partial class GameTicker
 
         if (MetaData(ruleEntity).EntityPrototype?.ID is not { } id) // you really fucked up
             return false;
+
+        if (EntityManager.System<WastelandContentSystem>().IsBlockedRule(ruleEntity))
+        {
+            RemComp<DelayedStartRuleComponent>(ruleEntity);
+            EndGameRule(ruleEntity);
+            return false;
+        }
 
         // If we already have it, then we just skip the delay as it has already happened.
         if (!RemComp<DelayedStartRuleComponent>(ruleEntity) && ruleData.Delay != null)

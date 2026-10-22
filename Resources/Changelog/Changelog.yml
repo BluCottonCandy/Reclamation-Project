@@ -12820,3 +12820,16 @@ Entries:
   id: 6550
   time: '2026-10-21T15:37:19.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/70
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Razorclaw, an armored deathclaw boss with slash charge sweeps and
+        a half-health enrage.
+    - type: Add
+      message: >-
+        Butchering Razorclaw releases four Baby Deathclaws and provides
+        materials for Razorclaw armor and helmet crafting.
+  id: 6551
+  time: '2026-10-22T04:45:26.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/71

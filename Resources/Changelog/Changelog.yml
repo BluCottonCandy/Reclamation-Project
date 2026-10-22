@@ -12833,3 +12833,16 @@ Entries:
   id: 6551
   time: '2026-10-22T04:45:26.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/71
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed Wastelanders joining or respawning at unrelated expedition markers
+        during active expeditions.
+    - type: Remove
+      message: >-
+        Removed nuclear bombs, authentication disks, and station events from
+        wasteland rounds.
+  id: 6552
+  time: '2026-10-22T08:12:40.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/72

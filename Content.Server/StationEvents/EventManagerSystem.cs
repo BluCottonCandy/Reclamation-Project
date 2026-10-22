@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._ReclamationProject.Rules;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.StationEvents.Components;
@@ -131,6 +132,9 @@ public sealed class EventManagerSystem : EntitySystem
     public Dictionary<EntityPrototype, StationEventComponent> AllEvents()
     {
         var allEvents = new Dictionary<EntityPrototype, StationEventComponent>();
+        if (EntityManager.System<WastelandContentSystem>().IsRestrictedRound)
+            return allEvents;
+
         foreach (var prototype in _prototype.EnumeratePrototypes<EntityPrototype>())
         {
             if (prototype.Abstract)

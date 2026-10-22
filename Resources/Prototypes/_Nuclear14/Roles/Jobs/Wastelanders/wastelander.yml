@@ -1,5 +1,6 @@
 - type: job
   id: Wastelander
+  alwaysUseSpawner: true
   setPreference: true
   weight: 20 # #Misfits Change - no longer default starter, pushed down
   overrideConsoleVisibility: false

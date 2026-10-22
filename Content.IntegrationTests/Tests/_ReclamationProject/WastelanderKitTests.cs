@@ -106,17 +106,27 @@ public sealed class WastelanderKitTests
     }
 
     [Test]
-    public async Task FactionLoadoutsRetainChoicesButWastelanderGunsAreBlocked()
+    public async Task NoRoleCanChooseGunsOrAmmunitionInLoadouts()
     {
         await using var pair = await PoolManager.GetServerClient();
         var proto = pair.Server.ResolveDependency<IPrototypeManager>();
         await pair.Server.WaitAssertion(() =>
         {
-            var gun = proto.Index<LoadoutPrototype>("N14WeaponPistol9mm");
-            var restriction = gun.Requirements.OfType<CharacterDepartmentRequirement>()
-                .Single(r => r.Departments.Count == 1 && r.Departments[0].Id == "Wastelander");
-            Assert.That(restriction.Inverted, Is.True);
-            Assert.That(gun.Items.Single().Id, Is.EqualTo("N14WeaponPistol9mmMakeshift"));
+            // Removing the choices applies equally to every job, species, and whitelist status.
+            var prohibited = new[]
+            {
+                "Gun", "BallisticAmmoProvider", "RevolverAmmoProvider", "CartridgeAmmo", "Ammo",
+                "PowerCell", "HitscanBatteryAmmoProvider", "ProjectileBatteryAmmoProvider",
+            };
+            foreach (var loadout in proto.EnumeratePrototypes<LoadoutPrototype>())
+            {
+                foreach (var item in loadout.Items)
+                {
+                    var entity = proto.Index<EntityPrototype>(item);
+                    Assert.That(prohibited.Any(entity.Components.ContainsKey), Is.False,
+                        $"{loadout.ID} must not offer gun/ammunition item {item} to any role.");
+                }
+            }
         });
         await pair.CleanReturnAsync();
     }

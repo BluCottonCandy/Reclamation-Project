@@ -1,0 +1,68 @@
+- type: job
+  id: TriggermenBoss
+  setPreference: true
+  weight: 30
+  displayWeight: 300
+  canBeAntag: false
+  name: job-name-triggermenboss
+  description: job-description-triggermenboss
+  playTimeTracker: TriggermenBoss
+  startingGear: TriggermenBossGear
+  alwaysUseSpawner: true
+  access: [Triggermen, TriggermenBoss]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggermenboss
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: TriggermenBoss
+
+- type: job
+  id: TriggermenEnforcer
+  setPreference: true
+  weight: 20
+  displayWeight: 200
+  canBeAntag: false
+  name: job-name-triggermenenforcer
+  description: job-description-triggermenenforcer
+  playTimeTracker: TriggermenEnforcer
+  startingGear: TriggermenEnforcerGear
+  alwaysUseSpawner: true
+  access: [Triggermen]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggermenenforcer
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: TriggermenEnforcer
+
+- type: job
+  id: Triggerman
+  setPreference: true
+  weight: 10
+  displayWeight: 100
+  canBeAntag: false
+  name: job-name-triggerman
+  description: job-description-triggerman
+  playTimeTracker: Triggerman
+  startingGear: TriggermanGear
+  alwaysUseSpawner: true
+  access: [Triggermen]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggerman
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: Triggerman

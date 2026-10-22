@@ -1,0 +1,41 @@
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermenBossSpawnPoint
+  name: Triggermen boss spawn point
+  description: Round-start and latejoin spawn for this Triggermen role.
+  components:
+  - type: SpawnPoint
+    job_id: TriggermenBoss
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermenEnforcerSpawnPoint
+  name: Triggermen enforcer spawn point
+  description: Round-start and latejoin spawn for this Triggermen role.
+  components:
+  - type: SpawnPoint
+    job_id: TriggermenEnforcer
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermanSpawnPoint
+  name: Triggermen triggerman spawn point
+  description: Round-start and latejoin spawn for this Triggermen role.
+  components:
+  - type: SpawnPoint
+    job_id: Triggerman
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher

@@ -1,0 +1,61 @@
+- type: construction
+  id: ReclamationRazorclawArmor
+  name: razorclaw armour
+  description: Craft razorclaw armour from a butchered Razorclaw's hide.
+  graph: ReclamationRazorclawArmor
+  startNode: start
+  targetNode: finished
+  category: construction-category-clothing
+  objectType: Item
+  hide: false
+  icon:
+    sprite: _Misfits/Clothing/OuterClothing/Armor/razorclawarmour.rsi
+    state: icon
+
+- type: constructionGraph
+  id: ReclamationRazorclawArmor
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - tag: ReclamationRazorclawHide
+        name: razorclaw hide
+        icon:
+          sprite: _Nuclear14/Objects/Misc/mob_drops.rsi
+          state: hide_deathclaw
+        doAfter: 10
+  - node: finished
+    entity: MisfitsClothingOuterRazorclawArmour
+
+- type: construction
+  id: ReclamationRazorclawHelm
+  name: razorclaw helm
+  description: Craft razorclaw helm from a butchered Razorclaw's skull.
+  graph: ReclamationRazorclawHelm
+  startNode: start
+  targetNode: finished
+  category: construction-category-clothing
+  objectType: Item
+  hide: false
+  icon:
+    sprite: _Misfits/Clothing/Head/razorclawhelm.rsi
+    state: icon
+
+- type: constructionGraph
+  id: ReclamationRazorclawHelm
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - tag: ReclamationRazorclawSkull
+        name: razorclaw skull
+        icon:
+          sprite: Corvax/Decals/bones.rsi
+          state: skullDeathclaw
+        doAfter: 10
+  - node: finished
+    entity: MisfitsClothingHeadRazorclawHelm

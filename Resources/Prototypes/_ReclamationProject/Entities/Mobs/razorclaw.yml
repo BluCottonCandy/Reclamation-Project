@@ -1,0 +1,173 @@
+- type: damageModifierSet
+  id: ReclamationRazorclawHide
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.5
+    Heat: 0.5
+    Cold: 0.5
+    Shock: 0.5
+    Caustic: 0.5
+    Radiation: 0.5
+    Poison: 0.5
+    Cellular: 0.5
+    Bloodloss: 0.5
+    Asphyxiation: 0.5
+
+- type: damageModifierSet
+  id: ReclamationBabyDeathclaw
+  coefficients:
+    Blunt: 1
+    Slash: 1
+    Piercing: 1
+    Heat: 1
+    Cold: 1
+    Shock: 1
+    Caustic: 1
+    Radiation: 1
+    Poison: 1
+    Cellular: 1
+    Bloodloss: 1
+    Asphyxiation: 1
+
+- type: entity
+  parent: ReclamationMobMirelurkQueen
+  id: ReclamationMobRazorclaw
+  name: Razorclaw
+  description: A massive deathclaw with armored scales and wickedly sharp claws. Its rage makes every charge more dangerous.
+  components:
+  - type: Sprite
+    scale: 1, 1
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: deathclaw
+      sprite: _Misfits/Mobs/Animals/deathclawbwonsamdi.rsi
+  - type: DamageStateVisuals
+    states:
+      Alive: {Base: deathclaw}
+      Critical: {Base: crit}
+      Dead: {Base: dead}
+  - type: NpcFactionMember
+    factions: [Deathclaw]
+  - type: Tag
+    tags: [Deathclaw, DoorBumpOpener]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2000: Dead
+  - type: Damageable
+    damageModifierSet: ReclamationRazorclawHide
+  - type: Reflect
+    reflects: [None]
+    reflectProb: 0
+    minReflectProb: 0
+    reflectProbByType:
+      SmallCaliber: 0
+      MediumCaliber: 0
+      Energy: 0
+  - type: MirelurkQueenCharge
+    enrageDamageThreshold: 1000
+    cooldown: 4
+    windup: 1
+    staminaDamage: 0
+    impactDamage:
+      types:
+        Slash: 100
+  - type: MeleeWeapon
+    soundHit: {collection: N14DeathclawAttack}
+    animation: WeaponArcClaw
+    wideAnimation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 10
+        Slash: 40
+        Piercing: 0
+  - type: Butcherable
+    spawned:
+    - id: ReclamationMobBabyDeathclaw
+      amount: 4
+      prob: 1
+    - id: ReclamationRazorclawHide
+      amount: 1
+      prob: 1
+    - id: ReclamationRazorclawSkull
+      amount: 1
+      prob: 1
+
+- type: entity
+  parent: N14MobDeathclawAlbino
+  id: ReclamationMobBabyDeathclaw
+  name: Baby Deathclaw
+  description: A tiny albino deathclaw with claws far more dangerous than its size suggests.
+  components:
+  - type: Sprite
+    scale: 0.25, 0.25
+  - type: DamageStateVisuals
+    states:
+      Alive: {Base: deathclawalbino}
+      Critical: {Base: dead}
+      Dead: {Base: dead}
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.15
+        density: 20
+        mask: [SmallMobMask]
+        layer: [SmallMobLayer]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: Damageable
+    damageModifierSet: ReclamationBabyDeathclaw
+  - type: SlowOnDamage
+    speedModifierThresholds: {}
+  - type: MeleeWeapon
+    range: 1.5
+    damage:
+      groups:
+        Brute: 0
+      types:
+        Blunt: 0
+        Slash: 75
+        Piercing: 0
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatRadRaw
+      amount: 1
+      prob: 1
+
+- type: Tag
+  id: ReclamationRazorclawHide
+
+- type: Tag
+  id: ReclamationRazorclawSkull
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationRazorclawHide
+  name: razorclaw hide
+  description: The thick, plated hide of a Razorclaw. Can be crafted into razorclaw armour.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/mob_drops.rsi
+    state: hide_deathclaw
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags: [ReclamationRazorclawHide]
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationRazorclawSkull
+  name: razorclaw skull
+  description: The formidable skull of a Razorclaw. Can be crafted into a razorclaw helm.
+  components:
+  - type: Sprite
+    sprite: Corvax/Decals/bones.rsi
+    state: skullDeathclaw
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags: [ReclamationRazorclawSkull]

@@ -61,6 +61,8 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
         queen.Comp.Enraged = true;
         queen.Comp.NextCharge = _timing.CurTime;
         queen.Comp.StaminaDamage *= 1.2f;
+        if (queen.Comp.ImpactDamage != null)
+            queen.Comp.ImpactDamage *= 1.2f;
         if (TryComp<PassiveDamageComponent>(queen, out var regeneration))
         {
             regeneration.Interval /= 1.4f;
@@ -232,8 +234,11 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
             _mobState.IsAlive(candidate) && HasComp<StaminaComponent>(candidate) && !_factions.IsEntityFriendly(queen.Owner, candidate));
         foreach (var victim in victims)
         {
-            _stamina.TakeStaminaDamage(victim, queen.Comp.StaminaDamage, source: queen, with: queen);
-            if (queen.Comp.Enraged)
+            if (queen.Comp.StaminaDamage > 0)
+                _stamina.TakeStaminaDamage(victim, queen.Comp.StaminaDamage, source: queen, with: queen);
+            if (queen.Comp.ImpactDamage != null)
+                _damage.TryChangeDamage(victim, queen.Comp.ImpactDamage, origin: queen);
+            else if (queen.Comp.Enraged)
                 _damage.TryChangeDamage(victim, new DamageSpecifier(_prototypes.Index<DamageTypePrototype>("Blunt"), 30), origin: queen);
         }
 

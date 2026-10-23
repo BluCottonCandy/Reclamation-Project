@@ -5,9 +5,9 @@
     wallet: N14Wallet
     id: InstituteDirectorTablet
     jumpsuit: InstituteCommandUniform
-    outerClothing: InstituteScientistLabcoat
+    outerClothing: InstituteDirectorCoat # #Reclamation Project - Director's coat
     head: InstituteScientistBeret
-    shoes: InstituteScientistShoes
+    shoes: N14ClothingBootsCombatMK2Filled # #Reclamation Project - Director's boots
     back: InstituteResearchMODSuit
 
 - type: entity

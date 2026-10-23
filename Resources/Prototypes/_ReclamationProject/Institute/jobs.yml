@@ -28,6 +28,40 @@
     components:
     - type: NpcFactionMember
       factions: [Institute]
+  # #Reclamation Project - Institute relay brain implant
+  - !type:AddInstituteRelayOrganSpecial
+    implant: InstituteRelayImplantCommand
+  # #Reclamation Project - Institute augments: 15% less damage (stacks with armour), Adamantium Skeleton, flash-immune eyes
+  - !type:AddComponentSpecial
+    components:
+    - type: InstituteAugment
+      damageMultiplier: 0.85
+    - type: GibModifier
+      ungibbable: true
+    - type: FlashImmunity
+  # #Reclamation Project - Director: fireman carry + Unnatural Regeneration at 2.5x the N14UnnaturalReg trait (0.5 HP/s per type)
+  - !type:AddComponentSpecial
+    components:
+    - type: CanFiremanCarry
+    - type: TraumaRegeneration
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      damageCap: 300
+      damage:
+        types:
+          Blunt: -0.50
+          Slash: -0.50
+          Piercing: -0.50
+          Heat: -0.50
+          Cold: -0.50
+          Shock: -0.50
+          Caustic: -0.50
+          Asphyxiation: -0.875
+          Bloodloss: -0.25
+          Poison: -0.25
+          Radiation: -0.25
 
 - type: playTimeTracker
   id: InstituteDirector
@@ -55,6 +89,17 @@
     components:
     - type: NpcFactionMember
       factions: [Institute]
+  # #Reclamation Project - Institute relay brain implant
+  - !type:AddInstituteRelayOrganSpecial
+    implant: InstituteRelayImplantCommand
+  # #Reclamation Project - Institute augments: 15% less damage (stacks with armour), Adamantium Skeleton, flash-immune eyes
+  - !type:AddComponentSpecial
+    components:
+    - type: InstituteAugment
+      damageMultiplier: 0.85
+    - type: GibModifier
+      ungibbable: true
+    - type: FlashImmunity
 
 - type: playTimeTracker
   id: InstituteDivisionHead
@@ -78,6 +123,17 @@
     components:
     - type: NpcFactionMember
       factions: [Institute]
+  # #Reclamation Project - Institute relay brain implant
+  - !type:AddInstituteRelayOrganSpecial
+    implant: InstituteRelayImplant
+  # #Reclamation Project - Institute augments: 10% less damage (stacks with armour), Adamantium Skeleton, flash-immune eyes
+  - !type:AddComponentSpecial
+    components:
+    - type: InstituteAugment
+      damageMultiplier: 0.90
+    - type: GibModifier
+      ungibbable: true
+    - type: FlashImmunity
 
 - type: playTimeTracker
   id: InstituteScientist
@@ -105,6 +161,17 @@
     components:
     - type: NpcFactionMember
       factions: [Institute]
+  # #Reclamation Project - Institute relay brain implant
+  - !type:AddInstituteRelayOrganSpecial
+    implant: InstituteRelayImplant
+  # #Reclamation Project - Institute augments: 10% less damage (stacks with armour), Adamantium Skeleton, flash-immune eyes
+  - !type:AddComponentSpecial
+    components:
+    - type: InstituteAugment
+      damageMultiplier: 0.90
+    - type: GibModifier
+      ungibbable: true
+    - type: FlashImmunity
 
 - type: playTimeTracker
   id: InstituteCourser
@@ -128,6 +195,17 @@
     components:
     - type: NpcFactionMember
       factions: [Institute]
+  # #Reclamation Project - Institute relay brain implant
+  - !type:AddInstituteRelayOrganSpecial
+    implant: InstituteRelayImplant
+  # #Reclamation Project - Institute augments: 10% less damage (stacks with armour), Adamantium Skeleton, flash-immune eyes
+  - !type:AddComponentSpecial
+    components:
+    - type: InstituteAugment
+      damageMultiplier: 0.90
+    - type: GibModifier
+      ungibbable: true
+    - type: FlashImmunity
 
 - type: playTimeTracker
   id: InstituteSecurity

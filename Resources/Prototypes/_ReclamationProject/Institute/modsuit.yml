@@ -4,6 +4,8 @@
   name: Institute Courser MOD suit
   description: A modular protective suit issued to Institute Coursers.
   components:
+  # #Reclamation Project - soaks up Institute relay damage
+  - type: InstituteRelayShield
   - type: Tag
     tags: [InstituteMODControl]
   - type: ToggleableClothing
@@ -145,6 +147,8 @@
   name: Institute research MOD suit
   description: A white modular protective suit issued to Institute research personnel.
   components:
+  # #Reclamation Project - soaks up Institute relay damage
+  - type: InstituteRelayShield
   - type: Sprite
     sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
   - type: Clothing
@@ -301,6 +305,8 @@
   name: Institute security MOD suit
   description: A white modular protective suit issued to Institute security personnel.
   components:
+  # #Reclamation Project - soaks up Institute relay damage
+  - type: InstituteRelayShield
   - type: Sprite
     sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
   - type: Clothing

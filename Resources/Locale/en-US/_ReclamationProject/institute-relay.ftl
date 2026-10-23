@@ -1,0 +1,10 @@
+institute-relay-start = You let go of your body and drift out as a relay signal.
+institute-relay-blocked = The relay can't lock onto you here.
+institute-relay-sick = The relay rips through you again too soon. Your stomach turns.
+institute-relay-overload = The relay overloads your circuits.
+institute-relay-wrong-head = The implant screams into your skull and your brain fries!
+institute-relay-passenger-sick = You're torn apart and put back together somewhere else. You feel violently sick.
+institute-relay-ready = Your relay implant has recharged.
+institute-relay-shielded = Your MOD suit shields you from the relay.
+alerts-institute-relay-cooldown-name = Relay recharging
+alerts-institute-relay-cooldown-desc = Your relay implant is still recharging. Relaying again now will make you sick and burn you.

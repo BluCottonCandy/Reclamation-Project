@@ -12926,3 +12926,12 @@ Entries:
   id: 6559
   time: '2026-10-23T10:18:57.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/79
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added mining-capable worker Auto Axes and a craftable deadly upgrade.
+    - type: Tweak
+      message: Rebalanced Forged Furnace Armor and removed its integrity pool.
+  id: 6560
+  time: '2026-10-23T11:34:56.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/80

@@ -14,8 +14,30 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture, NonParallelizable]
 public sealed class PlayerReachTests
 {
+    [TestCase(1.4f, true)]
+    [TestCase(1.6f, false)]
+    public async Task PlayerCanReachItemsOnTablesWithinHandRange(float distance, bool expected)
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var map = await pair.CreateTestMap();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        await pair.Server.WaitAssertion(() =>
+        {
+            var em = pair.Server.ResolveDependency<IEntityManager>();
+            var user = em.SpawnEntity("MobHuman", map.GridCoords);
+            em.SpawnEntity("N14TableMetalRound", map.GridCoords.Offset(new Vector2(0, 1)));
+            var item = em.SpawnEntity("N14CombatKnife", map.GridCoords.Offset(new Vector2(0, distance)));
+            pair.Server.PlayerMan.SetAttachedEntity(session, user);
+            Assert.That(em.System<SharedInteractionSystem>().InRangeUnobstructed(user, item), Is.EqualTo(expected));
+            pair.Server.PlayerMan.SetAttachedEntity(session, null);
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [TestCase(.9f, true)]
-    [TestCase(1.15f, false)]
+    [TestCase(1.15f, true)]
+    [TestCase(1.45f, true)]
+    [TestCase(1.6f, false)]
     [TestCase(1.8f, false)]
     public async Task PlayerInteractionsUseCenterDistance(float distance, bool expected)
     {

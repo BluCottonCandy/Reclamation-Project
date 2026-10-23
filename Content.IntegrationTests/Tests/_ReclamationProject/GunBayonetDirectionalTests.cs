@@ -1,3 +1,5 @@
+#nullable enable annotations
+
 using System.Numerics;
 using Content.Server.Weapons.Melee;
 using Content.Shared.CombatMode;

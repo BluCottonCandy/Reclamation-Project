@@ -5,6 +5,8 @@ using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Containers;
 using Content.Shared.Interaction.Events;
 using JetBrains.Annotations;
+using Content.Shared._Misfits.Weapons.Ranged;
+using Content.Shared.DoAfter;
 
 namespace Content.Shared.Weapons.Ranged.Systems;
 /*
@@ -91,12 +93,52 @@ public partial class SharedGunSystem
 
     public bool TryRevolverInsert(EntityUid revolverUid, RevolverAmmoProviderComponent component, EntityUid uid, EntityUid? user)
     {
-        if (_whitelistSystem.IsWhitelistFail(component.Whitelist, uid))
+        if (!HasComp<FoldableAmmoBoxComponent>(uid) ||
+            !TryComp<BallisticAmmoProviderComponent>(uid, out var box))
+            return TryRevolverInsertAmmo(revolverUid, component, uid, user);
+
+        if (user == null || !box.MayTransfer || box.AmmoCount == 0 || !HasEmptyRevolverChamber(component))
             return false;
 
-        // If it's a speedloader try to get ammo from it.
-        if (HasComp<SpeedLoaderComponent>(uid))
+        if (box.Whitelist?.Tags != null && component.Whitelist?.Tags != null &&
+            !box.Whitelist.Tags.Intersect(component.Whitelist.Tags).Any())
+            return false;
+
+        return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user.Value, TimeSpan.FromSeconds(1),
+            new AmmoFillDoAfterEvent(), used: uid, target: revolverUid, eventTarget: uid)
         {
+            NeedHand = true,
+            BlockDuplicate = true,
+            CancelDuplicate = false,
+            RequireCanInteract = true,
+            BreakOnDropItem = true,
+            BreakOnMove = false,
+            BreakOnDamage = false,
+            MultiplyDelay = false,
+        });
+    }
+
+    private static bool HasEmptyRevolverChamber(RevolverAmmoProviderComponent component)
+    {
+        for (var i = 0; i < component.Capacity; i++)
+            if (component.AmmoSlots[i] == null && component.Chambers[i] == null)
+                return true;
+        return false;
+    }
+
+    private bool TryRevolverInsertAmmo(EntityUid revolverUid, RevolverAmmoProviderComponent component, EntityUid uid, EntityUid? user)
+    {
+        var isAmmoBox = HasComp<FoldableAmmoBoxComponent>(uid) &&
+                        TryComp<BallisticAmmoProviderComponent>(uid, out var provider) && provider.MayTransfer;
+        if (!isAmmoBox && _whitelistSystem.IsWhitelistFail(component.Whitelist, uid))
+            return false;
+
+        // Boxes use the same cylinder filling path as speedloaders, checking the rounds themselves.
+        if (HasComp<SpeedLoaderComponent>(uid) || isAmmoBox)
+        {
+            // Ballistic containers are authoritative on the server. Do not predict box contents twice.
+            if (isAmmoBox && _netManager.IsClient)
+                return true;
             var freeSlots = 0;
 
             for (var i = 0; i < component.Capacity; i++)
@@ -115,14 +157,34 @@ public partial class SharedGunSystem
 
             var xformQuery = GetEntityQuery<TransformComponent>();
             var xform = xformQuery.GetComponent(uid);
-            var ammo = new List<(EntityUid? Entity, IShootable Shootable)>(freeSlots);
-            var ev = new TakeAmmoEvent(freeSlots, ammo, xform.Coordinates, user);
+            var count = isAmmoBox ? 1 : freeSlots;
+            var ammo = new List<(EntityUid? Entity, IShootable Shootable)>(count);
+            var ev = new TakeAmmoEvent(count, ammo, xform.Coordinates, user);
             RaiseLocalEvent(uid, ev);
 
             if (ev.Ammo.Count == 0)
             {
-                Popup(Loc.GetString("gun-speedloader-empty"), revolverUid, user);
+                Popup(isAmmoBox
+                    ? Loc.GetString("gun-ballistic-transfer-empty", ("entity", MetaData(uid).EntityName))
+                    : Loc.GetString("gun-speedloader-empty"), revolverUid, user);
                 return false;
+            }
+
+            if (isAmmoBox)
+            {
+                var rejected = ev.Ammo.Where(round => round.Entity == null ||
+                    _whitelistSystem.IsWhitelistFail(component.Whitelist, round.Entity.Value)).ToList();
+                foreach (var round in rejected)
+                    ev.Ammo.Remove(round);
+                // Return incompatible cartridges instead of consuming or dropping them.
+                if (rejected.Count > 0)
+                    DoAmmoInsert(rejected, Comp<BallisticAmmoProviderComponent>(uid), uid, user);
+                if (ev.Ammo.Count == 0)
+                {
+                    Popup(Loc.GetString("gun-ballistic-transfer-invalid", ("ammoEntity", MetaData(uid).EntityName),
+                        ("targetEntity", MetaData(revolverUid).EntityName)), revolverUid, user);
+                    return false;
+                }
             }
 
             for (var i = 0; i < component.Capacity; i++)
@@ -148,7 +210,7 @@ public partial class SharedGunSystem
 
                 component.AmmoSlots[index] = ent.Value;
                 Containers.Insert(ent.Value, component.AmmoContainer);
-                SetChamber(index, component, uid);
+                SetChamber(index, component, ent.Value);
 
 
             }

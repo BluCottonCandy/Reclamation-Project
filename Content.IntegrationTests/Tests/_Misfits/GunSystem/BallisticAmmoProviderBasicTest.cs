@@ -38,7 +38,7 @@ public sealed partial class BallisticAmmoProviderTests : BallisticAmmoProviderSe
                     new AfterInteractEvent(urist, ammoBoxOne, ammoBoxEmpty, testMap.GridCoords, true));
                 });
 
-        await server.WaitRunTicks(sTime.TickRate * 4);
+        await server.WaitRunTicks(sTime.TickRate * (ammoCompEmpty.Capacity + 2));
 
         Assert.Multiple(() =>
                 {

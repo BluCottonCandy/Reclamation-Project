@@ -1,0 +1,219 @@
+# Institute relay implant: fly out as an unseen view, then relay in where you stopped.
+
+# Effects (Blood Cult in/out sprite recoloured cyan)
+
+- type: entity
+  id: InstituteRelayInEffect
+  name: relay in
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Transform
+    noRot: true
+    anchored: true
+  - type: Sprite
+    layers:
+    - sprite: _ReclamationProject/Institute/relay_teleport.rsi
+      state: relay_in
+      shader: unshaded
+    netsync: false
+    drawdepth: Effects
+  - type: PointLight
+    color: "#40E0FF"
+
+- type: entity
+  id: InstituteRelayOutEffect
+  name: relay out
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Transform
+    noRot: true
+    anchored: true
+  - type: Sprite
+    layers:
+    - sprite: _ReclamationProject/Institute/relay_teleport.rsi
+      state: relay_out
+      shader: unshaded
+    netsync: false
+    drawdepth: Effects
+  - type: PointLight
+    color: "#40E0FF"
+
+# Implants: head organs in the "relay" slot, removed and inserted with head surgery
+
+- type: entity
+  parent: BaseItem
+  id: InstituteRelayImplant
+  name: Institute relay implant
+  description: An Institute chip that sits in the skull, tuned to the relay. It fries the brain of anyone outside the Institute.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: cpu
+  - type: Item
+    size: Tiny
+  - type: Organ
+    slotId: relay
+  - type: InstituteRelayImplant
+
+- type: entity
+  parent: InstituteRelayImplant
+  id: InstituteRelayImplantCommand
+  name: Institute command relay implant
+  description: An Institute chip that sits in the skull and lets its owner relay at will. It fries the brain of anyone outside the Institute.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: cpu_adv
+  - type: InstituteRelayImplant
+    canSelfRelay: true
+
+# Surgery
+
+- type: entity
+  parent: SurgeryBase
+  id: SurgeryRemoveInstituteRelay
+  name: Remove Relay Implant
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps:
+    - SurgeryStepSawBones
+    - SurgeryStepClampInternalBleeders
+    - SurgeryStepRemoveOrgan
+  - type: SurgeryPartCondition
+    part: Head
+  - type: SurgeryOrganCondition
+    organ:
+    - type: InstituteRelayImplant
+    slotId: relay
+
+- type: entity
+  parent: SurgeryBase
+  id: SurgeryInsertInstituteRelay
+  name: Insert Relay Implant
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps:
+    - SurgeryStepSawBones
+    - SurgeryStepInsertOrgan
+    - SurgeryStepSealOrganWound
+  - type: SurgeryPartCondition
+    part: Head
+  - type: SurgeryOrganCondition
+    organ:
+    - type: InstituteRelayImplant
+    inverse: true
+    reattaching: true
+    slotId: relay
+
+# The unseen view the body rides inside while relaying
+
+- type: entity
+  id: InstituteRelayEye
+  name: relay signal
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstituteRelayEye
+  # Moves like an admin ghost: through walls, no gravity, same speed.
+  - type: Physics
+    bodyType: KinematicController
+    bodyStatus: InAir
+    fixedRotation: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 15
+        layer:
+        - GhostImpassable
+  - type: InputMover
+  - type: MovementIgnoreGravity
+  - type: CanMoveInAir
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 24
+    baseWalkSpeed: 12
+  - type: ContainerContainer
+
+# Actions
+
+- type: entity
+  id: ActionInstituteRelay
+  name: Relay
+  description: Leave your body behind as a relay signal. Fly anywhere, then relay in. Using it again within a minute makes you sick.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _ReclamationProject/Institute/relay_teleport.rsi
+      state: relay_out
+    event: !type:InstituteRelayStartEvent
+
+- type: entity
+  id: ActionInstituteRelayArrive
+  name: Relay here
+  description: Relay in at the signal's position.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _ReclamationProject/Institute/relay_teleport.rsi
+      state: relay_in
+    event: !type:InstituteRelayArriveEvent
+
+- type: entity
+  id: ActionInstituteRelayCancel
+  name: Cancel relay
+  description: Drop the signal and relay back to where you started.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon: /Textures/Interface/Actions/eyeclose.png
+    event: !type:InstituteRelayCancelEvent
+
+- type: entity
+  id: ActionInstituteRelayUp
+  name: Relay signal up
+  description: Move the relay signal to the level above.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _MultiZ/Actions/misc.rsi
+      state: z_up
+    event: !type:InstituteRelayUpEvent
+
+- type: entity
+  id: ActionInstituteRelayDown
+  name: Relay signal down
+  description: Move the relay signal to the level below.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _MultiZ/Actions/misc.rsi
+      state: z_down
+    event: !type:InstituteRelayDownEvent
+
+# Cooldown
+
+- type: alert
+  id: InstituteRelayCooldown
+  icons:
+  - sprite: /Textures/_ReclamationProject/Institute/relay_teleport.rsi
+    state: relay_in
+  name: alerts-institute-relay-cooldown-name
+  description: alerts-institute-relay-cooldown-desc

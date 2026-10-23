@@ -1,0 +1,13 @@
+# Institute Director's coat: the Blueshield armored coat with the NT logo removed, recoloured #FFD1A0.
+
+- type: entity
+  parent: ClothingBlueshieldArmoredCoatOpen
+  id: InstituteDirectorCoat
+  name: Institute Director's armored coat
+  description: A heavy coat with sewn-in plates, worn by the Director of the Institute.
+  suffix: Opened
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/DirectorCoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/DirectorCoat.rsi

@@ -29,3 +29,9 @@
           RailroadSafehouse2SafehouseOwner: [1, 1]
           RailroadAlphaLeader: [1, 1]
           RailroadInspector: [1, 1]
+          # #Reclamation Project - Institute jobs (no Institute spawn points mapped yet; they use the station fallback)
+          InstituteDirector: [ 1, 1 ]
+          InstituteDivisionHead: [ 2, 2 ]
+          InstituteScientist: [ 4, 4 ]
+          InstituteCourser: [ 2, 2 ]
+          InstituteSecurity: [ 4, 4 ]

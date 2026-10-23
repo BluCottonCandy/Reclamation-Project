@@ -33,3 +33,39 @@
     sprite: _ReclamationProject/Clothing/Neck/triggermen_overcoat.rsi
   - type: Clothing
     sprite: _ReclamationProject/Clothing/Neck/triggermen_overcoat.rsi
+
+# Uses ordinary flatcap clothing, with throw embedding disabled and no glass construction.
+- type: entity
+  parent: ClothingHeadHatGreyFlatcap
+  id: TriggermenRazorFlatcap
+  name: razor-brim flatcap
+  description: A smart flatcap reinforced with sharpened metal around its brim. A vicious throw sends the steel edge slicing through anyone in its path.
+  components:
+  - type: DamageExaminable
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    attackRate: 0.5
+    damage:
+      types:
+        Slash: 2
+        Piercing: 3
+  - type: DamageOtherOnHit
+    ignoreResistances: true
+    staminaCost: 5
+    maxHitQuantity: 100
+    damage:
+      types:
+        Slash: 10
+        Piercing: 15
+  # Preserve thrown momentum while disabling attachment to targets.
+  - type: EmbeddableProjectile
+    embedOnThrow: false
+  - type: LandAtCursor
+
+- type: entity
+  parent: N14MeleeHandsBrassKnuckle
+  id: TriggermenBrassKnuckles
+  components:
+  - type: Item
+    shape:
+    - 0,0,0,1

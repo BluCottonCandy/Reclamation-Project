@@ -4,7 +4,7 @@
     neck: TriggermenDonMantle
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
-    head: ClothingHeadHatFedoraBlack
+    head: TriggermenRazorFlatcap
     outerClothing: TriggermenArmoredVest
     shoes: N14ClothingShoesBlack
     gloves: N14ClothingHandsGlovesBlackLeather
@@ -13,6 +13,7 @@
     belt: N14WeaponPistol45Colt
   storage:
     back:
+    - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
     - N14MagazinePistol45
     - N14MagazinePistol45
@@ -30,7 +31,7 @@
     neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
-    head: ClothingHeadHatFedoraBlack
+    head: TriggermenRazorFlatcap
     outerClothing: TriggermenArmoredVest
     shoes: N14ClothingShoesBlack
     gloves: N14ClothingHandsGlovesBlackLeather
@@ -39,6 +40,7 @@
     belt: N14WeaponPistol45Colt
   storage:
     back:
+    - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
     - N14MagazinePistol45
     - N14MagazinePistol45
@@ -55,7 +57,7 @@
     neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
-    head: ClothingHeadHatFedoraBlack
+    head: TriggermenRazorFlatcap
     outerClothing: TriggermenArmoredVest
     shoes: N14ClothingShoesBlack
     gloves: N14ClothingHandsGlovesBlackLeather
@@ -64,6 +66,7 @@
     belt: N14WeaponPistol45Colt
   storage:
     back:
+    - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
     - N14MagazinePistol45
     - N14MagazinePistol45

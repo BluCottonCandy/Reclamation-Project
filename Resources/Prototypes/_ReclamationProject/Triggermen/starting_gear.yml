@@ -1,0 +1,69 @@
+- type: startingGear
+  id: TriggermenBossGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitPreWarManager
+    head: ClothingHeadHatFedoraBlack
+    outerClothing: TriggermenArmoredVest
+    shoes: N14ClothingShoesBlack
+    gloves: N14ClothingHandsGlovesBlackLeather
+    back: N14ClothingBackpackSatchelExplorer
+    id: TriggermenBossID
+    belt: N14WeaponPistol45Colt
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MagazinePistol45
+    - N14MagazinePistol45
+    - MagazineBox45
+    - Magazine308Rifle
+    - Magazine308Rifle
+    - MagazineBox308
+  inhand:
+  - N14WeaponLMGAutoRifle
+  - N14BaseBallBat
+
+- type: startingGear
+  id: TriggermenEnforcerGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitPreWarManager
+    head: ClothingHeadHatFedoraBlack
+    outerClothing: TriggermenArmoredVest
+    shoes: N14ClothingShoesBlack
+    gloves: N14ClothingHandsGlovesBlackLeather
+    back: N14ClothingBackpackSatchelExplorer
+    id: TriggermenEnforcerID
+    belt: N14WeaponPistol45Colt
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MagazinePistol45
+    - N14MagazinePistol45
+    - MagazineBox45
+    - Magazine45SubMachineGun
+    - Magazine45SubMachineGun
+  inhand:
+  - N14WeaponSMG45
+  - N14BaseBallBat
+
+- type: startingGear
+  id: TriggermanGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitPreWarManager
+    head: ClothingHeadHatFedoraBlack
+    outerClothing: TriggermenArmoredVest
+    shoes: N14ClothingShoesBlack
+    gloves: N14ClothingHandsGlovesBlackLeather
+    back: N14ClothingBackpackSatchelExplorer
+    id: TriggermanID
+    belt: N14WeaponPistol45Colt
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MagazinePistol45
+    - N14MagazinePistol45
+    - MagazineBox45
+  inhand:
+  - N14BaseBallBat

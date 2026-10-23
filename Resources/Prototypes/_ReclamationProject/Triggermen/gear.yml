@@ -1,0 +1,13 @@
+- type: entity
+  parent: N14ClothingOuterPoliceVestCargo
+  id: TriggermenArmoredVest
+  name: Triggermen armored vest
+  description: A surplus ballistic vest worn by the Triggermen beneath their old-world finery.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.65
+        Heat: 0.80

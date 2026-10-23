@@ -1,0 +1,19 @@
+- type: department
+  id: Triggermen
+  description: department-Triggermen-description
+  color: "#B4A387"
+  uiCategory: MinorFaction
+  roles: [TriggermenBoss, TriggermenEnforcer, Triggerman]
+
+- type: npcFaction
+  id: Triggermen
+  friendly: [Triggermen]
+  hostile: [WastelandAnimal, WastelandInsect, Deathclaw, Raider, HostileRobot, Feral]
+
+- type: accessLevel
+  id: Triggermen
+  name: id-card-access-level-triggermen
+
+- type: accessLevel
+  id: TriggermenBoss
+  name: id-card-access-level-triggermen-boss

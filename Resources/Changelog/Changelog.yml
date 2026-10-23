@@ -12876,3 +12876,16 @@ Entries:
   id: 6555
   time: '2026-10-23T01:59:35.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/75
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Triggermen faction jobs, outfits, rank access, and throwable
+        playing-card IDs.
+    - type: Remove
+      message: >-
+        Removed gun and ammunition choices from character loadouts for every
+        role.
+  id: 6556
+  time: '2026-10-23T01:59:47.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/74

@@ -5,7 +5,7 @@
     shoes: N14ClothingShoesRags
     back: N14ClothingBackpackSatchelExplorer
     id: ForgemasterID
-    outerClothing: ForgedFurnaceArmor
+    outerClothing: ForgedKeeperFurnaceArmor
   storage:
     back:
     - ForgedBrandingIron
@@ -159,6 +159,8 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
+  inhand:
+  - ForgedWorkerAutoAxe
 
 - type: entity
   parent: N14ClothingOuterFirefighterSuit

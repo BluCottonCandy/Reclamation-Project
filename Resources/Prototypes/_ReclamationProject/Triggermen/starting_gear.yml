@@ -1,6 +1,7 @@
 - type: startingGear
   id: TriggermenBossGear
   equipment:
+    neck: TriggermenDonMantle
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
     head: ClothingHeadHatFedoraBlack
@@ -26,6 +27,7 @@
 - type: startingGear
   id: TriggermenEnforcerGear
   equipment:
+    neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
     head: ClothingHeadHatFedoraBlack
@@ -50,6 +52,7 @@
 - type: startingGear
   id: TriggermanGear
   equipment:
+    neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
     head: ClothingHeadHatFedoraBlack
@@ -67,3 +70,33 @@
     - MagazineBox45
   inhand:
   - N14BaseBallBat
+
+- type: startingGear
+  parent: TriggermenEnforcerGear
+  id: TriggermenSotocapoGear
+  equipment:
+    id: TriggermenSotocapoID
+
+- type: startingGear
+  parent: TriggermenEnforcerGear
+  id: TriggermenConsigliereGear
+  equipment:
+    id: TriggermenConsigliereID
+
+- type: startingGear
+  parent: TriggermanGear
+  id: TriggermenSoldatoGear
+  equipment:
+    id: TriggermenSoldatoID
+
+- type: startingGear
+  parent: TriggermenBossGear
+  id: TriggermenCommissionMemberGear
+  equipment:
+    id: TriggermenCommissionMemberID
+
+- type: startingGear
+  parent: TriggermenBossGear
+  id: TriggermenCapoDeiCapiGear
+  equipment:
+    id: TriggermenCapoDeiCapiID

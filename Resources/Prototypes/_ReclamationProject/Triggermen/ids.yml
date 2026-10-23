@@ -35,7 +35,7 @@
   parent: TriggermenCardIDBase
   id: TriggermenBossID
   name: ace of spades
-  description: A worn playing card bearing a discreet Triggermen mark. It identifies a boss and grants their access. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  description: A worn playing card bearing a discreet Triggermen mark. It identifies a Don and grants their access. Its sharpened edge makes it as dangerous to throw as a throwing knife.
   categories: []
   components:
   - type: Sprite
@@ -53,27 +53,8 @@
 - type: entity
   parent: TriggermenCardIDBase
   id: TriggermenEnforcerID
-  name: king of spades
-  description: A worn playing card bearing a discreet Triggermen mark. It identifies an enforcer and grants their access. Its sharpened edge makes it as dangerous to throw as a throwing knife.
-  categories: []
-  components:
-  - type: Sprite
-    sprite: EstacaoPirata/Objects/Misc/cards.rsi
-    layers:
-    - state: sc_King_of_Spades_black
-  - type: Clothing
-    sprite: EstacaoPirata/Objects/Misc/cards.rsi
-  - type: IdCard
-    nameLocId: triggermen-id-king-name
-    fullNameLocId: triggermen-id-king-full-name
-  - type: PresetIdCard
-    job: TriggermenEnforcer
-
-- type: entity
-  parent: TriggermenCardIDBase
-  id: TriggermanID
   name: jack of spades
-  description: A worn playing card bearing a discreet Triggermen mark. It identifies a triggerman and grants their access. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  description: A worn playing card bearing a discreet Triggermen mark. It identifies a Capo and grants their access. Its sharpened edge makes it as dangerous to throw as a throwing knife.
   categories: []
   components:
   - type: Sprite
@@ -86,4 +67,96 @@
     nameLocId: triggermen-id-jack-name
     fullNameLocId: triggermen-id-jack-full-name
   - type: PresetIdCard
+    job: TriggermenEnforcer
+
+- type: entity
+  parent: TriggermenCardIDBase
+  id: TriggermanID
+  name: joker
+  description: A worn playing card bearing a discreet Triggermen mark. It identifies an Associato and grants their access. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  categories: []
+  components:
+  - type: Sprite
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    layers:
+    - state: black_joker
+  - type: Clothing
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+  - type: IdCard
+    nameLocId: triggermen-id-joker-name
+    fullNameLocId: triggermen-id-joker-full-name
+  - type: PresetIdCard
     job: Triggerman
+
+- type: entity
+  parent: TriggermenCardIDBase
+  id: TriggermenSotocapoID
+  name: king of spades
+  description: A marked playing card identifying a Triggermen Sotocapo. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  categories: []
+  components:
+  - type: Sprite
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    layers:
+    - state: sc_King_of_Spades_black
+  - type: Clothing
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+  - type: IdCard
+    nameLocId: triggermen-id-king-name
+    fullNameLocId: triggermen-id-king-full-name
+  - type: PresetIdCard
+    job: TriggermenSotocapo
+
+- type: entity
+  parent: TriggermenCardIDBase
+  id: TriggermenConsigliereID
+  name: queen of spades
+  description: A marked playing card identifying a Triggermen Consigliere. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  categories: []
+  components:
+  - type: Sprite
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    layers:
+    - state: sc_Queen_of_Spades_black
+  - type: Clothing
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+  - type: IdCard
+    nameLocId: triggermen-id-queen-name
+    fullNameLocId: triggermen-id-queen-full-name
+  - type: PresetIdCard
+    job: TriggermenConsigliere
+
+- type: entity
+  parent: TriggermenCardIDBase
+  id: TriggermenSoldatoID
+  name: ten of spades
+  description: A marked playing card identifying a Triggermen Soldato. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  categories: []
+  components:
+  - type: Sprite
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    layers:
+    - state: sc_10_of_Spades_black
+  - type: Clothing
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+  - type: IdCard
+    nameLocId: triggermen-id-ten-name
+    fullNameLocId: triggermen-id-ten-full-name
+  - type: PresetIdCard
+    job: TriggermenSoldato
+
+- type: entity
+  parent: TriggermenBossID
+  id: TriggermenCommissionMemberID
+  description: A marked playing card identifying a Triggermen Membro Della Commissione. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  components:
+  - type: PresetIdCard
+    job: TriggermenCommissionMember
+
+- type: entity
+  parent: TriggermenBossID
+  id: TriggermenCapoDeiCapiID
+  description: A marked playing card identifying a Triggermen Capo Dei Capi. Its sharpened edge makes it as dangerous to throw as a throwing knife.
+  components:
+  - type: PresetIdCard
+    job: TriggermenCapoDeiCapi

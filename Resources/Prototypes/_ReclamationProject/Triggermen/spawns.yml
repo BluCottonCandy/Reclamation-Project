@@ -1,7 +1,7 @@
 - type: entity
   parent: SpawnPointJobBase
   id: TriggermenBossSpawnPoint
-  name: Triggermen boss spawn point
+  name: Triggermen Don spawn point
   description: Round-start and latejoin spawn for this Triggermen role.
   components:
   - type: SpawnPoint
@@ -15,7 +15,7 @@
 - type: entity
   parent: SpawnPointJobBase
   id: TriggermenEnforcerSpawnPoint
-  name: Triggermen enforcer spawn point
+  name: Triggermen Capo spawn point
   description: Round-start and latejoin spawn for this Triggermen role.
   components:
   - type: SpawnPoint
@@ -29,11 +29,81 @@
 - type: entity
   parent: SpawnPointJobBase
   id: TriggermanSpawnPoint
-  name: Triggermen triggerman spawn point
+  name: Triggermen Associato spawn point
   description: Round-start and latejoin spawn for this Triggermen role.
   components:
   - type: SpawnPoint
     job_id: Triggerman
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermenSotocapoSpawnPoint
+  name: Triggermen Sotocapo spawn point
+  description: Round-start and latejoin spawn for this Triggermen rank.
+  components:
+  - type: SpawnPoint
+    job_id: TriggermenSotocapo
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermenConsigliereSpawnPoint
+  name: Triggermen Consigliere spawn point
+  description: Round-start and latejoin spawn for this Triggermen rank.
+  components:
+  - type: SpawnPoint
+    job_id: TriggermenConsigliere
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermenSoldatoSpawnPoint
+  name: Triggermen Soldato spawn point
+  description: Round-start and latejoin spawn for this Triggermen rank.
+  components:
+  - type: SpawnPoint
+    job_id: TriggermenSoldato
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermenCommissionMemberSpawnPoint
+  name: Triggermen Membro Della Commissione spawn point
+  description: Admin-controlled rank spawn; do not allocate public job slots.
+  components:
+  - type: SpawnPoint
+    job_id: TriggermenCommissionMember
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: TriggermenCapoDeiCapiSpawnPoint
+  name: Triggermen Capo Dei Capi spawn point
+  description: Admin-controlled rank spawn; do not allocate public job slots.
+  components:
+  - type: SpawnPoint
+    job_id: TriggermenCapoDeiCapi
   - type: Sprite
     sprite: _Nuclear14/Markers/Jobs/mounties.rsi
     layers:

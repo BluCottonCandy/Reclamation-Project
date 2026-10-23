@@ -11,3 +11,25 @@
         Slash: 0.70
         Piercing: 0.65
         Heat: 0.80
+
+- type: entity
+  parent: ClothingNeckBase
+  id: TriggermenDonMantle
+  name: Don's mantle
+  description: A weighty black mantle with pale fur trim and a discreet gold clasp. Worn by the Don, it carries the quiet authority of someone whose requests are rarely refused.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_don.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_don.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: TriggermenOvercoat
+  name: Triggermen overcoat
+  description: A weathered black overcoat with pale lapels and white accents, draped over the shoulders in the old-world style. Respectable enough for a business meeting, imposing enough for a protection racket.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_overcoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_overcoat.rsi

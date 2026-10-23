@@ -226,6 +226,8 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
             facialHairStyleId = HairStyles.DefaultFacialHairStyle;
         }
 
+        // Reconstitute permanent brand flags after loading the normal database marking strings.
+        appearance = appearance.WithMarkings(Content.Shared._ReclamationProject.Forged.ForgedBrandingProfiles.Prepare(appearance.Markings));
         var markingSet = new MarkingSet();
         var skinColor = appearance.SkinColor;
         if (proto.TryIndex(species, out SpeciesPrototype? speciesProto))

@@ -108,7 +108,7 @@ namespace Content.Server.Preferences.Managers
             }
         }
 
-        public async Task SetProfile(NetUserId userId, int slot, ICharacterProfile profile)
+        public async Task SetProfile(NetUserId userId, int slot, ICharacterProfile profile, bool selectCharacter = true, bool allowBrandChanges = false)
         {
             if (!_cachedPlayerPrefs.TryGetValue(userId, out var prefsData) || !prefsData.PrefsLoaded)
             {
@@ -119,29 +119,58 @@ namespace Content.Server.Preferences.Managers
             if (slot < 0 || slot >= MaxCharacterSlots)
                 return;
 
-            var curPrefs = prefsData.Prefs!;
-            var session = _playerManager.GetSessionById(userId);
-
-            profile.EnsureValid(session, _dependencies);
-
-            if (profile is HumanoidCharacterProfile incomingHumanoid
-                && curPrefs.Characters.TryGetValue(slot, out var existingProfile)
-                && existingProfile is HumanoidCharacterProfile existingHumanoid
-                && existingHumanoid.Species == LockedSpecies
-                && incomingHumanoid.Species != existingHumanoid.Species)
+            // Serialize character saves so a stale editor update cannot race an earned brand out of the database.
+            await prefsData.SaveLock.WaitAsync();
+            try
             {
-                profile = incomingHumanoid.WithSpecies(existingHumanoid.Species);
+                var curPrefs = prefsData.Prefs!;
+                var session = _playerManager.GetSessionById(userId);
+
+                if (allowBrandChanges && profile is HumanoidCharacterProfile requested
+                    && curPrefs.Characters.GetValueOrDefault(slot) is HumanoidCharacterProfile latest)
+                {
+                    if (requested.Name != latest.Name)
+                        throw new InvalidOperationException("Character changed while saving a brand.");
+                    var updated = Content.Shared._ReclamationProject.Forged.ForgedBrandingProfiles.WithoutBrands(latest);
+                    foreach (var marking in requested.Appearance.Markings.Where(m => Content.Shared._ReclamationProject.Forged.ForgedBrandingProfiles.IsBrand(m.MarkingId)))
+                        updated = Content.Shared._ReclamationProject.Forged.ForgedBrandingProfiles.WithBrand(updated, marking.MarkingId);
+                    profile = updated;
+                }
+                if (!allowBrandChanges && profile is HumanoidCharacterProfile incoming)
+                    profile = Content.Shared._ReclamationProject.Forged.ForgedBrandingProfiles.PreserveEarned(incoming,
+                        curPrefs.Characters.GetValueOrDefault(slot) as HumanoidCharacterProfile);
+                profile.EnsureValid(session, _dependencies);
+
+                if (profile is HumanoidCharacterProfile incomingHumanoid
+                    && curPrefs.Characters.TryGetValue(slot, out var existingProfile)
+                    && existingProfile is HumanoidCharacterProfile existingHumanoid
+                    && existingHumanoid.Species == LockedSpecies
+                    && incomingHumanoid.Species != existingHumanoid.Species)
+                {
+                    profile = incomingHumanoid.WithSpecies(existingHumanoid.Species);
+                }
+
+                var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
+                {
+                    [slot] = profile
+                };
+
+                if (ShouldStorePrefs(session.Channel.AuthType))
+                    await _db.SaveCharacterSlotAsync(userId, profile, slot);
+
+                // Server-granted brands must not select a different character slot.
+                prefsData.Prefs = new PlayerPreferences(profiles, selectCharacter ? slot : prefsData.Prefs!.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
+                var msg = new MsgPreferencesAndSettings
+                {
+                    Preferences = prefsData.Prefs,
+                    Settings = new GameSettings { MaxCharacterSlots = MaxCharacterSlots }
+                };
+                _netManager.ServerSendMessage(msg, session.Channel);
             }
-
-            var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
+            finally
             {
-                [slot] = profile
-            };
-
-            prefsData.Prefs = new PlayerPreferences(profiles, slot, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
-
-            if (ShouldStorePrefs(session.Channel.AuthType))
-                await _db.SaveCharacterSlotAsync(userId, profile, slot);
+                prefsData.SaveLock.Release();
+            }
         }
 
         private async void HandleRoundEndReportAnonymityMessage(MsgRoundEndReportAnonymity message)
@@ -194,41 +223,49 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            var curPrefs = prefsData.Prefs!;
-
-            // If they try to delete the slot they have selected then we switch to another one.
-            // Of course, that's only if they HAVE another slot.
-            int? nextSlot = null;
-            if (curPrefs.SelectedCharacterIndex == slot)
+            await prefsData.SaveLock.WaitAsync();
+            try
             {
-                // That ! on the end is because Rider doesn't like .NET 5.
-                var (ns, profile) = curPrefs.Characters.FirstOrDefault(p => p.Key != message.Slot);
-                if (profile == null)
+                var curPrefs = prefsData.Prefs!;
+
+                // If they try to delete the slot they have selected then we switch to another one.
+                // Of course, that's only if they HAVE another slot.
+                int? nextSlot = null;
+                if (curPrefs.SelectedCharacterIndex == slot)
                 {
-                    // Only slot left, can't delete.
+                    // That ! on the end is because Rider doesn't like .NET 5.
+                    var (ns, profile) = curPrefs.Characters.FirstOrDefault(p => p.Key != message.Slot);
+                    if (profile == null)
+                    {
+                        // Only slot left, can't delete.
+                        return;
+                    }
+
+                    nextSlot = ns;
+                }
+
+                var arr = new Dictionary<int, ICharacterProfile>(curPrefs.Characters);
+                arr.Remove(slot);
+
+                prefsData.Prefs = new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
+
+                if (!ShouldStorePrefs(message.MsgChannel.AuthType))
+                {
                     return;
                 }
 
-                nextSlot = ns;
+                if (nextSlot != null)
+                {
+                    await _db.DeleteSlotAndSetSelectedIndex(userId, slot, nextSlot.Value);
+                }
+                else
+                {
+                    await _db.SaveCharacterSlotAsync(userId, null, slot);
+                }
             }
-
-            var arr = new Dictionary<int, ICharacterProfile>(curPrefs.Characters);
-            arr.Remove(slot);
-
-            prefsData.Prefs = new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
-
-            if (!ShouldStorePrefs(message.MsgChannel.AuthType))
+            finally
             {
-                return;
-            }
-
-            if (nextSlot != null)
-            {
-                await _db.DeleteSlotAndSetSelectedIndex(userId, slot, nextSlot.Value);
-            }
-            else
-            {
-                await _db.SaveCharacterSlotAsync(userId, null, slot);
+                prefsData.SaveLock.Release();
             }
         }
 
@@ -397,6 +434,7 @@ namespace Content.Server.Preferences.Managers
 
         private sealed class PlayerPrefData
         {
+            public readonly SemaphoreSlim SaveLock = new(1, 1);
             public bool PrefsLoaded;
             public PlayerPreferences? Prefs;
         }

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Created for Reclamation Project",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "anvil",
+      "directions": 4
+    },
+    {
+      "name": "chain",
+      "directions": 4
+    },
+    {
+      "name": "chain_chest",
+      "directions": 4
+    }
+  ]
+}

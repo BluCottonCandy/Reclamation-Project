@@ -12889,3 +12889,18 @@ Entries:
   id: 6556
   time: '2026-10-23T01:59:47.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/74
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Reload compatible revolvers directly from ammo boxes at one round per
+        second.
+    - type: Tweak
+      message: >-
+        Ammo boxes load magazines and ballistic guns one round every
+        half-second.
+    - type: Tweak
+      message: Player pickup reach is 1.5 tiles, with melee reach unchanged.
+  id: 6557
+  time: '2026-10-23T08:18:58.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/73

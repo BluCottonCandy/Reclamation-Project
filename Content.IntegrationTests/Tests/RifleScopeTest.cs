@@ -1,3 +1,5 @@
+#nullable enable annotations
+
 using System;
 using Content.Server._Misfits.Scope;
 using Content.Shared._Misfits.Scope;

@@ -1,3 +1,5 @@
+#nullable enable annotations
+
 using System.Linq;
 using System.Collections.Generic;
 using Content.Server._Misfits.Expeditions;

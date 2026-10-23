@@ -222,6 +222,8 @@ public abstract partial class SharedGunSystem
             BreakOnDamage = false,
             NeedHand = true,
             BlockDuplicate = true,
+            CancelDuplicate = false,
+            MultiplyDelay = false,
             RequireCanInteract = true,
             BreakOnDropItem = true
         });
@@ -242,11 +244,19 @@ public abstract partial class SharedGunSystem
     /// <remarks/>
     private void OnBallisticAmmoFillDoAfter(EntityUid giverUID, BallisticAmmoProviderComponent giverComp, AmmoFillDoAfterEvent args)
     {
+        if (!args.Cancelled && !Deleted(args.Target) &&
+            TryComp<RevolverAmmoProviderComponent>(args.Target, out var revolver))
+        {
+            args.Repeat = giverComp.MayTransfer &&
+                          TryRevolverInsertAmmo(args.Target.Value, revolver, giverUID, args.User) &&
+                          giverComp.AmmoCount > 0 && HasEmptyRevolverChamber(revolver);
+            return;
+        }
 
         args.Repeat = Timing.IsFirstTimePredicted && !args.Cancelled &&
                       !Deleted(args.Target) && TryComp<BallisticAmmoProviderComponent>(args.Target.Value, out var recieverComp) &&
                       !PopupCancels(recieverComp, args.Target.Value, giverComp, giverUID, args.User) &&
-                      TryAmmoInsert(5, giverUID, recieverComp, args.Target.Value, args.User);
+                      TryAmmoInsert(1, giverUID, recieverComp, args.Target.Value, args.User);
 
         Audio.PlayPredicted(giverComp.SoundInsert, giverUID, args.User, args.Repeat ? _audioParam : _noAmmoAudio);
     }

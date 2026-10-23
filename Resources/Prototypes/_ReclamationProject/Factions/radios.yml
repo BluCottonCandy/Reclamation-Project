@@ -1,7 +1,7 @@
 - type: radioChannel
   id: Forged
   name: chat-radio-forged
-  keycode: 'q'
+  keycode: 'g'
   frequency: 1518
   color: "#D4783B"
   longRange: true

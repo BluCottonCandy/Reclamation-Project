@@ -1,0 +1,70 @@
+- type: gameMap
+  id: ReclamationMercerIsland
+  mapName: 'Mercer Island'
+  mapPath: /Maps/Reclamation/MercerIslandSurface.yml
+  minPlayers: 0
+  stations:
+    MercerIsland:
+      stationProto: FalloutStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Mercer Island'
+        - type: CP14StationAdditionalMap
+          mapPaths:
+          - /Maps/Reclamation/MercerIslandSewers.yml
+        - type: StationJobs
+          overflowJobs:
+            - Wastelander
+          availableJobs:
+            Wastelander: [ -1, -1 ]
+            SuperMutant: [ 0, 1 ] # #Misfits Change /Fix/: make the FEV Mutant role available for mid-round joins.
+            Nightkin: [ 0, 1 ] # #Misfits Add - Nightkin variant, whitelist gated.
+            SuperMutantGladiator: [ 0, 1 ] # #Misfits Add: Gladiator variant latejoin slot.
+            SuperMutantNCRRanger: [ 0, 1 ] # #Misfits Add: NCR Ranger variant latejoin slot.
+            SuperMutantNCRTrooper: [ 0, 1 ] # #Misfits Add: NCR Trooper variant latejoin slot.
+            SuperMutantTribal: [ 0, 1 ] # #Misfits Add: Tribal variant latejoin slot.
+            TownMayor: [ 1, 1 ]
+            TownSheriff: [ 1, 1 ]
+            TownDeputy: [ 2, 2 ]
+            TownDoctor: [ 1, 1 ]
+            TownMechanic: [ 1, 1 ]
+            TownShopkeeper: [ 2, 2 ]
+            Townsperson: [ 4, 4 ]
+#            CaravanLeader: [ 1, 1 ]
+#            CaravanTrader: [ 1, 1 ]
+#            CaravanGuard: [ 2, 2 ]
+
+            # Reclamation: retain original Misfits rank slot counts.
+            BoSMidPaladinCommander: [1, 1]
+            BoSHeadKnight: [1, 1]
+            BoSWestScribe: [1, 1]
+            BoSMidPaladin: [1, 1]
+            BoSMidKnight: [3, 3]
+            BoSLancerKnight: [2, 2]
+            BoSMidScribe: [3, 3]
+            BoSPaladin: [3, 3]
+            BoSKnight: [3, 3]
+            BoSScribe: [3, 3]
+            BoSMidSquire: [3, 3]
+            BoSInitiate: [3, 3]
+            BoSOffDuty: [4, 4]
+            MinutemenColonel: [1, 1]
+            MinutemenCommander: [1, 1]
+            MinutemenCaptain: [1, 1]
+            MinutemenLieutenant: [1, 1]
+            MinutemenSergeant: [2, 2]
+            MinutemenCorporal: [3, 3]
+            MinutemenPrivate: [4, 4]
+            MinutemenRecruit: [6, 6]
+            RailroadSafehouse1Intern: [2, 2]
+            RailroadSafehouse1Worker: [2, 2]
+            RailroadSafehouse1Agent: [2, 2]
+            RailroadSafehouse1Runner: [2, 2]
+            RailroadSafehouse1Conductor: [1, 1]
+            RailroadSafehouse1SafehouseOwner: [1, 1]
+            RailroadSafehouse2Intern: [2, 2]
+            RailroadSafehouse2Worker: [2, 2]
+            RailroadSafehouse2Agent: [2, 2]
+            RailroadSafehouse2Runner: [2, 2]
+            RailroadSafehouse2Conductor: [1, 1]
+            RailroadSafehouse2SafehouseOwner: [1, 1]

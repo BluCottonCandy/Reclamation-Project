@@ -12863,3 +12863,16 @@ Entries:
   id: 6554
   time: '2026-10-23T01:59:25.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/76
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Forged faction roles, equipment, scrap gear IDs, and raider kit
+        choices.
+    - type: Add
+      message: Added salvaged Forged Furnace Armor and a two-handed flamer.
+    - type: Fix
+      message: Fixed a server crash when touching ground fire.
+  id: 6555
+  time: '2026-10-23T01:59:35.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/75

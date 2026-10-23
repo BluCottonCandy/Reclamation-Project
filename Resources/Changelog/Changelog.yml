@@ -12904,3 +12904,16 @@ Entries:
   id: 6557
   time: '2026-10-23T08:18:58.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/73
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Reorganized Triggermen into Mafia ranks with distinct playing-card IDs.
+    - type: Add
+      message: Added a Don's mantle and black Triggermen overcoats.
+    - type: Add
+      message: >-
+        Equipped Triggermen with metal-brimmed black fedoras and compact N14
+        brass knuckles.
+  id: 6558
+  time: '2026-10-23T09:31:15.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/78

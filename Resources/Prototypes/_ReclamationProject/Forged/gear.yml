@@ -8,6 +8,8 @@
     outerClothing: ForgedFurnaceArmor
   storage:
     back:
+    - ForgedBrandingIron
+    - ForgedCaptiveBrandingIron
     - N14BoxCardboardMREBoxCFilled
   inhand:
   - ForgedWeaponFlamer
@@ -241,3 +243,57 @@
     sprite: _Nuclear14/Objects/Misc/kits.rsi
     state: rifleman
   content: [N14SledgeHammer, N14Psycho, N14Ointment10, N14CleanGauze10, DrinkWhiskeyBottleFull]
+
+- type: startingGear
+  parent: ForgedEnforcerGear
+  id: ForgedVeteranGear
+
+- type: startingGear
+  parent: ForgedRaiderGear
+  id: ForgedBrandedGear
+
+- type: startingGear
+  parent: ForgedFurnaceTenderGear
+  id: ForgedSmithyGear
+
+- type: startingGear
+  parent: ForgemasterGear
+  id: ForgedAdminForgemasterGear
+
+- type: entity
+  parent: BaseItem
+  id: ForgedBrandingIron
+  name: Forged branding iron
+  description: An iron bearing a small anvil. Hold it against another person's chest for 20 uninterrupted seconds to leave a permanent Forged brand on their character.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Tools/branding_irons.rsi
+    state: forged
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,0,1
+  - type: ForgedBrandingIron
+    brand: ForgedAnvilBrand
+
+- type: entity
+  parent: ForgedBrandingIron
+  id: ForgedCaptiveBrandingIron
+  name: captive branding iron
+  description: An iron bearing a chain link. Twenty uninterrupted seconds against the left shoulder leave a permanent captive brand on that character.
+  components:
+  - type: Sprite
+    state: captive
+  - type: ForgedBrandingIron
+    brand: ForgedCaptiveBrand
+
+- type: entity
+  parent: ForgedBrandingIron
+  id: ForgedAdminUnbrander
+  name: "{DO NOT MAP} admin unbrander"
+  description: Admin correction tool. Removes both Forged brands from a character and their saved profile. Requires active admin permissions. Do not place this item on maps or in player kits.
+  components:
+  - type: Sprite
+    state: unbrander
+  - type: ForgedBrandingIron
+    unbrand: true

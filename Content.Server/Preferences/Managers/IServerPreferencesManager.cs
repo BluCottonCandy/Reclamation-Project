@@ -22,7 +22,7 @@ namespace Content.Server.Preferences.Managers
         IEnumerable<KeyValuePair<NetUserId, ICharacterProfile>> GetSelectedProfilesForPlayers(List<NetUserId> userIds);
         bool HavePreferencesLoaded(ICommonSession session);
 
-        Task SetProfile(NetUserId userId, int slot, ICharacterProfile profile);
+        Task SetProfile(NetUserId userId, int slot, ICharacterProfile profile, bool selectCharacter = true, bool allowBrandChanges = false);
 
         /// <summary>
         ///     Toggles whether this player's characters are hidden from other players in the end-of-round report.

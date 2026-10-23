@@ -1,0 +1,27 @@
+- type: marking
+  id: ForgedAnvilBrand
+  bodyPart: Chest
+  markingCategory: Chest
+  hidden: true
+  sprites:
+  - sprite: _ReclamationProject/Mobs/Customization/forged_brands.rsi
+    state: anvil
+
+- type: marking
+  id: ForgedCaptiveBrand
+  bodyPart: LArm
+  markingCategory: LeftArm
+  hidden: true
+  sprites:
+  - sprite: _ReclamationProject/Mobs/Customization/forged_brands.rsi
+    state: chain
+
+# Display-only counterpart; saved characters retain the canonical captive brand.
+- type: marking
+  id: ForgedCaptiveChestBrand
+  bodyPart: Chest
+  markingCategory: Chest
+  hidden: true
+  sprites:
+  - sprite: _ReclamationProject/Mobs/Customization/forged_brands.rsi
+    state: chain_chest

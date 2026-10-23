@@ -12917,3 +12917,12 @@ Entries:
   id: 6558
   time: '2026-10-23T09:31:15.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/78
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Forged ranks, permanent character brands, branding irons, and
+        captive-brand removal.
+  id: 6559
+  time: '2026-10-23T10:18:57.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/79

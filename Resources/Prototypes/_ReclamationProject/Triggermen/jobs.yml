@@ -1,8 +1,9 @@
 - type: job
   id: TriggermenBoss
+  showBorder: true
   setPreference: true
-  weight: 30
-  displayWeight: 300
+  weight: 60
+  displayWeight: 600
   canBeAntag: false
   name: job-name-triggermenboss
   description: job-description-triggermenboss
@@ -22,10 +23,59 @@
   id: TriggermenBoss
 
 - type: job
-  id: TriggermenEnforcer
+  id: TriggermenSotocapo
+  showBorder: true
   setPreference: true
-  weight: 20
-  displayWeight: 200
+  weight: 50
+  displayWeight: 500
+  canBeAntag: false
+  name: job-name-triggermensotocapo
+  description: job-description-triggermensotocapo
+  playTimeTracker: TriggermenSotocapo
+  startingGear: TriggermenSotocapoGear
+  alwaysUseSpawner: true
+  access: [Triggermen]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggermensotocapo
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: TriggermenSotocapo
+
+- type: job
+  id: TriggermenConsigliere
+  showBorder: true
+  setPreference: true
+  weight: 50
+  displayWeight: 500
+  canBeAntag: false
+  name: job-name-triggermenconsigliere
+  description: job-description-triggermenconsigliere
+  playTimeTracker: TriggermenConsigliere
+  startingGear: TriggermenConsigliereGear
+  alwaysUseSpawner: true
+  access: [Triggermen]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggermenconsigliere
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: TriggermenConsigliere
+
+- type: job
+  id: TriggermenEnforcer
+  showBorder: true
+  setPreference: true
+  weight: 40
+  displayWeight: 400
   canBeAntag: false
   name: job-name-triggermenenforcer
   description: job-description-triggermenenforcer
@@ -45,10 +95,33 @@
   id: TriggermenEnforcer
 
 - type: job
+  id: TriggermenSoldato
+  setPreference: true
+  weight: 30
+  displayWeight: 300
+  canBeAntag: false
+  name: job-name-triggermensoldato
+  description: job-description-triggermensoldato
+  playTimeTracker: TriggermenSoldato
+  startingGear: TriggermenSoldatoGear
+  alwaysUseSpawner: true
+  access: [Triggermen]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggermensoldato
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: TriggermenSoldato
+
+- type: job
   id: Triggerman
   setPreference: true
-  weight: 10
-  displayWeight: 100
+  weight: 20
+  displayWeight: 200
   canBeAntag: false
   name: job-name-triggerman
   description: job-description-triggerman
@@ -66,3 +139,49 @@
 
 - type: playTimeTracker
   id: Triggerman
+
+- type: job
+  id: TriggermenCommissionMember
+  setPreference: false
+  weight: 70
+  displayWeight: 700
+  canBeAntag: false
+  name: job-name-triggermencommissionmember
+  description: job-description-triggermencommissionmember
+  playTimeTracker: TriggermenCommissionMember
+  startingGear: TriggermenCommissionMemberGear
+  alwaysUseSpawner: true
+  access: [Triggermen, TriggermenBoss]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggermencommissionmember
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: TriggermenCommissionMember
+
+- type: job
+  id: TriggermenCapoDeiCapi
+  setPreference: false
+  weight: 80
+  displayWeight: 800
+  canBeAntag: false
+  name: job-name-triggermencapodeicapi
+  description: job-description-triggermencapodeicapi
+  playTimeTracker: TriggermenCapoDeiCapi
+  startingGear: TriggermenCapoDeiCapiGear
+  alwaysUseSpawner: true
+  access: [Triggermen, TriggermenBoss]
+  icon: JobIconPassenger
+  supervisors: job-supervisors-triggermencapodeicapi
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, Triggermen]
+
+- type: playTimeTracker
+  id: TriggermenCapoDeiCapi

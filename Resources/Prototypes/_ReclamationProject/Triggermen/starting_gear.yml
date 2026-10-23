@@ -1,9 +1,10 @@
 - type: startingGear
   id: TriggermenBossGear
   equipment:
+    neck: TriggermenDonMantle
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
-    head: ClothingHeadHatFedoraBlack
+    head: TriggermenRazorFlatcap
     outerClothing: TriggermenArmoredVest
     shoes: N14ClothingShoesBlack
     gloves: N14ClothingHandsGlovesBlackLeather
@@ -12,6 +13,7 @@
     belt: N14WeaponPistol45Colt
   storage:
     back:
+    - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
     - N14MagazinePistol45
     - N14MagazinePistol45
@@ -26,9 +28,10 @@
 - type: startingGear
   id: TriggermenEnforcerGear
   equipment:
+    neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
-    head: ClothingHeadHatFedoraBlack
+    head: TriggermenRazorFlatcap
     outerClothing: TriggermenArmoredVest
     shoes: N14ClothingShoesBlack
     gloves: N14ClothingHandsGlovesBlackLeather
@@ -37,6 +40,7 @@
     belt: N14WeaponPistol45Colt
   storage:
     back:
+    - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
     - N14MagazinePistol45
     - N14MagazinePistol45
@@ -50,9 +54,10 @@
 - type: startingGear
   id: TriggermanGear
   equipment:
+    neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
-    head: ClothingHeadHatFedoraBlack
+    head: TriggermenRazorFlatcap
     outerClothing: TriggermenArmoredVest
     shoes: N14ClothingShoesBlack
     gloves: N14ClothingHandsGlovesBlackLeather
@@ -61,9 +66,40 @@
     belt: N14WeaponPistol45Colt
   storage:
     back:
+    - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
     - N14MagazinePistol45
     - N14MagazinePistol45
     - MagazineBox45
   inhand:
   - N14BaseBallBat
+
+- type: startingGear
+  parent: TriggermenEnforcerGear
+  id: TriggermenSotocapoGear
+  equipment:
+    id: TriggermenSotocapoID
+
+- type: startingGear
+  parent: TriggermenEnforcerGear
+  id: TriggermenConsigliereGear
+  equipment:
+    id: TriggermenConsigliereID
+
+- type: startingGear
+  parent: TriggermanGear
+  id: TriggermenSoldatoGear
+  equipment:
+    id: TriggermenSoldatoID
+
+- type: startingGear
+  parent: TriggermenBossGear
+  id: TriggermenCommissionMemberGear
+  equipment:
+    id: TriggermenCommissionMemberID
+
+- type: startingGear
+  parent: TriggermenBossGear
+  id: TriggermenCapoDeiCapiGear
+  equipment:
+    id: TriggermenCapoDeiCapiID

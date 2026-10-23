@@ -3,7 +3,7 @@
   description: department-Triggermen-description
   color: "#B4A387"
   uiCategory: MinorFaction
-  roles: [TriggermenBoss, TriggermenEnforcer, Triggerman]
+  roles: [TriggermenBoss, TriggermenSotocapo, TriggermenConsigliere, TriggermenEnforcer, TriggermenSoldato, Triggerman]
 
 - type: npcFaction
   id: Triggermen

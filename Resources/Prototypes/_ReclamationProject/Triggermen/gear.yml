@@ -11,3 +11,61 @@
         Slash: 0.70
         Piercing: 0.65
         Heat: 0.80
+
+- type: entity
+  parent: ClothingNeckBase
+  id: TriggermenDonMantle
+  name: Don's mantle
+  description: A weighty black mantle with pale fur trim and a discreet gold clasp. Worn by the Don, it carries the quiet authority of someone whose requests are rarely refused.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_don.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_don.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: TriggermenOvercoat
+  name: Triggermen overcoat
+  description: A weathered black overcoat with pale lapels and white accents, draped over the shoulders in the old-world style. Respectable enough for a business meeting, imposing enough for a protection racket.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_overcoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Neck/triggermen_overcoat.rsi
+
+# Retain the original prototype ID for existing maps; use black fedora visuals with the same steel-brim mechanics.
+- type: entity
+  parent: ClothingHeadHatFedoraBlack
+  id: TriggermenRazorFlatcap
+  name: razor-brim black fedora
+  description: A black fedora reinforced with sharpened metal around its brim. A vicious throw sends the steel edge slicing through anyone in its path.
+  components:
+  - type: DamageExaminable
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    attackRate: 0.5
+    damage:
+      types:
+        Slash: 2
+        Piercing: 3
+  - type: DamageOtherOnHit
+    ignoreResistances: true
+    staminaCost: 5
+    maxHitQuantity: 100
+    damage:
+      types:
+        Slash: 10
+        Piercing: 15
+  # Preserve thrown momentum while disabling attachment to targets.
+  - type: EmbeddableProjectile
+    embedOnThrow: false
+  - type: LandAtCursor
+
+- type: entity
+  parent: N14MeleeHandsBrassKnuckle
+  id: TriggermenBrassKnuckles
+  components:
+  - type: Item
+    shape:
+    - 0,0,0,1

@@ -11,7 +11,7 @@
   startingGear: TriggermenBossGear
   alwaysUseSpawner: true
   access: [Triggermen, TriggermenBoss]
-  icon: JobIconPassenger
+  icon: JobIconTriggermenBoss
   supervisors: job-supervisors-triggermenboss
   special:
   - !type:AddComponentSpecial
@@ -35,7 +35,7 @@
   startingGear: TriggermenSotocapoGear
   alwaysUseSpawner: true
   access: [Triggermen]
-  icon: JobIconPassenger
+  icon: JobIconTriggermenSotocapo
   supervisors: job-supervisors-triggermensotocapo
   special:
   - !type:AddComponentSpecial
@@ -59,7 +59,7 @@
   startingGear: TriggermenConsigliereGear
   alwaysUseSpawner: true
   access: [Triggermen]
-  icon: JobIconPassenger
+  icon: JobIconTriggermenConsigliere
   supervisors: job-supervisors-triggermenconsigliere
   special:
   - !type:AddComponentSpecial
@@ -83,7 +83,7 @@
   startingGear: TriggermenEnforcerGear
   alwaysUseSpawner: true
   access: [Triggermen]
-  icon: JobIconPassenger
+  icon: JobIconTriggermenEnforcer
   supervisors: job-supervisors-triggermenenforcer
   special:
   - !type:AddComponentSpecial
@@ -106,7 +106,7 @@
   startingGear: TriggermenSoldatoGear
   alwaysUseSpawner: true
   access: [Triggermen]
-  icon: JobIconPassenger
+  icon: JobIconTriggermenSoldato
   supervisors: job-supervisors-triggermensoldato
   special:
   - !type:AddComponentSpecial
@@ -129,7 +129,7 @@
   startingGear: TriggermanGear
   alwaysUseSpawner: true
   access: [Triggermen]
-  icon: JobIconPassenger
+  icon: JobIconTriggerman
   supervisors: job-supervisors-triggerman
   special:
   - !type:AddComponentSpecial
@@ -152,7 +152,7 @@
   startingGear: TriggermenCommissionMemberGear
   alwaysUseSpawner: true
   access: [Triggermen, TriggermenBoss]
-  icon: JobIconPassenger
+  icon: JobIconTriggermenCommissionMember
   supervisors: job-supervisors-triggermencommissionmember
   special:
   - !type:AddComponentSpecial
@@ -175,7 +175,7 @@
   startingGear: TriggermenCapoDeiCapiGear
   alwaysUseSpawner: true
   access: [Triggermen, TriggermenBoss]
-  icon: JobIconPassenger
+  icon: JobIconTriggermenCapoDeiCapi
   supervisors: job-supervisors-triggermencapodeicapi
   special:
   - !type:AddComponentSpecial

@@ -1,6 +1,7 @@
 - type: startingGear
   id: TriggermenBossGear
   equipment:
+    ears: TriggermenHeadset
     neck: TriggermenDonMantle
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
@@ -28,6 +29,7 @@
 - type: startingGear
   id: TriggermenEnforcerGear
   equipment:
+    ears: TriggermenHeadset
     neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
@@ -54,6 +56,7 @@
 - type: startingGear
   id: TriggermanGear
   equipment:
+    ears: TriggermenHeadset
     neck: TriggermenOvercoat
     wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager

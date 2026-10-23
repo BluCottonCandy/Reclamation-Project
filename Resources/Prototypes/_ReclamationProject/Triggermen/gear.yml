@@ -34,12 +34,12 @@
   - type: Clothing
     sprite: _ReclamationProject/Clothing/Neck/triggermen_overcoat.rsi
 
-# Uses ordinary flatcap clothing, with throw embedding disabled and no glass construction.
+# Retain the original prototype ID for existing maps; use black fedora visuals with the same steel-brim mechanics.
 - type: entity
-  parent: ClothingHeadHatGreyFlatcap
+  parent: ClothingHeadHatFedoraBlack
   id: TriggermenRazorFlatcap
-  name: razor-brim flatcap
-  description: A smart flatcap reinforced with sharpened metal around its brim. A vicious throw sends the steel edge slicing through anyone in its path.
+  name: razor-brim black fedora
+  description: A black fedora reinforced with sharpened metal around its brim. A vicious throw sends the steel edge slicing through anyone in its path.
   components:
   - type: DamageExaminable
   - type: MeleeWeapon

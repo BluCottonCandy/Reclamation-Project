@@ -89,6 +89,13 @@ public sealed class RailroadFactionTest
                 Assert.That(channels, Does.Contain("Railroad"));
                 Assert.That(channels, Does.Contain("WastelandGlobal"));
 
+                // Each rank gets its own kit selection box, shared by both safehouses.
+                var rank = id.Id.StartsWith("RailroadSafehouse") ? id.Id["RailroadSafehouse1".Length..] : id.Id["Railroad".Length..];
+                Assert.That(inventory.TryGetSlotEntity(human, "back", out var pack), Is.True);
+                Assert.That(entities.GetComponent<StorageComponent>(pack!.Value).Container.ContainedEntities
+                    .Select(uid => entities.GetComponent<MetaDataComponent>(uid).EntityPrototype?.ID),
+                    Does.Contain($"Railroad{rank}KitSelector"), $"{id}: missing kit selection box");
+
                 if (id.Id.EndsWith("Agent"))
                 {
                     var identity = entities.GetComponent<IdCardComponent>(card.Value);
@@ -109,7 +116,7 @@ public sealed class RailroadFactionTest
                     Assert.That(shape.Count, Is.EqualTo(1));
                     Assert.That(shape[0].Width + 1, Is.EqualTo(1));
                     Assert.That(shape[0].Height + 1, Is.EqualTo(2));
-                    var baseArmor = entities.SpawnEntity("N14ClothingOuterCombatArmor", map.GridCoords);
+                    var baseArmor = entities.SpawnEntity("N14ClothingOuterCombatArmorMK2", map.GridCoords);
                     Assert.That(entities.GetComponent<ArmorComponent>(armor).Modifiers.Coefficients,
                         Is.EquivalentTo(entities.GetComponent<ArmorComponent>(baseArmor).Modifiers.Coefficients));
                     entities.DeleteEntity(baseArmor);

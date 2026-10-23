@@ -1,0 +1,34 @@
+# The patient climbs in, a Railroad operator starts it, the patient agrees and picks a new look.
+# Only changes the body for this round; the saved character is untouched.
+- type: entity
+  parent: BaseMachine
+  id: RailroadBiosculptor
+  name: Biosculptor
+  description: A strange machine recovered by the Railroad and repurposed to assist with their disguises and give people a new life.
+  components:
+  - type: Sprite
+    sprite: _Shitmed/Structures/Machines/limbgrower.rsi
+    snapCardinals: true
+    layers:
+    - state: limbgrower_idleoff
+      map: ["enum.ReconstructionPodVisuals.Running"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ReconstructionPodVisuals.Running:
+        enum.ReconstructionPodVisuals.Running:
+          True: { state: limbgrower_idleon }
+          False: { state: limbgrower_idleoff }
+  - type: ReconstructionPod
+  - type: AccessReader
+    access: [["Railroad"]]
+  - type: ContainerContainer
+    containers:
+      reconstruction-body: !type:ContainerSlot
+  - type: DragInsertContainer
+    containerId: reconstruction-body
+  - type: ExitContainerOnMove
+    containerId: reconstruction-body
+  - type: InteractionOutline
+  - type: StaticPrice
+    price: 800

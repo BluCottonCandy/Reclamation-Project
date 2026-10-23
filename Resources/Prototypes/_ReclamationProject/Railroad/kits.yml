@@ -1,0 +1,488 @@
+# Railroad physical equipment kits. Each rank's selection box offers the kits listed for it; choose one.
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitPistol
+  name: Railroad 10mm pistol kit
+  description: "A cheap, common sidearm that won't draw attention. Contains 1 loaded 10mm pistol, 2 spare 10mm magazines, a combat knife, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponPistol10mm
+    - id: N14MagazinePistol10mm
+    - id: N14MagazinePistol10mm
+    - id: N14CombatKnife
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetPistol
+  name: railroad-kit-pistol-name
+  description: railroad-kit-pistol-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - RailroadKitPistol
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitDoubleBarrel
+  name: Railroad double-barrel shotgun kit
+  description: "A farmer's shotgun nobody looks at twice. Contains 1 double-barrel shotgun, 1 box of 12-gauge shells, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponShotgunDoubleBarrel
+    - id: MagazineBox12gauge
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetDoubleBarrel
+  name: railroad-kit-doublebarrel-name
+  description: railroad-kit-doublebarrel-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - RailroadKitDoubleBarrel
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitMedic
+  name: Railroad safehouse medic kit
+  description: "Patch up runaways and wounded agents. Contains 1 stocked medical belt, 1 compact defibrillator, a health scanner, a folded body bag, 1 blood pack, a CPR training manual, a surgical duffel bag stocked with surgical tools, a bottle of ethanol, sterile latex gloves, a sterile mask, and 1 MRE kit."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14ClothingBeltMedicalFilled
+    - id: DefibrillatorCompact
+    - id: N14HandheldHealthAnalyzer
+    - id: BodyBagFolded
+    - id: Bloodpack
+    - id: ReclamationTrainingManualCPR
+    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: N14Ethanol
+    - id: ClothingHandsGlovesLatex
+    - id: ClothingMaskSterile
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetMedic
+  name: railroad-kit-medic-name
+  description: railroad-kit-medic-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content:
+  - RailroadKitMedic
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitSMG
+  name: Railroad 10mm SMG kit
+  description: "Fast, light firepower for smuggling runs. Contains 1 loaded 10mm SMG, 2 spare 10mm SMG magazines, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponSMG10mm
+    - id: N14MagazineSMG10mm
+    - id: N14MagazineSMG10mm
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetSMG
+  name: railroad-kit-smg-name
+  description: railroad-kit-smg-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - RailroadKitSMG
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitSuppressedSMG
+  name: Railroad suppressed SMG kit
+  description: "Quiet work for quiet people. Contains 1 loaded 10mm suppressed SMG, 2 spare 10mm SMG magazines, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponSMG10mmSuppressed
+    - id: N14MagazineSMG10mm
+    - id: N14MagazineSMG10mm
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetSuppressedSMG
+  name: railroad-kit-suppressedsmg-name
+  description: railroad-kit-suppressedsmg-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - RailroadKitSuppressedSMG
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitTech
+  name: Railroad tech kit
+  description: "Tools for bypassing locks, rewiring terminals and keeping safehouse gear running. Contains 1 stocked utility belt, a multitool, a remote signaller, a flashlight, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14ClothingBeltUtilityFilled
+    - id: N14Multitool
+    - id: RemoteSignaller
+    - id: N14Flashlight
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetTech
+  name: railroad-kit-tech-name
+  description: railroad-kit-tech-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - RailroadKitTech
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitLaser
+  name: Railroad AER-9 laser rifle kit
+  description: "A reliable pre-war laser rifle. Contains 1 AER-9 laser rifle with a loaded microfusion cell, 2 spare microfusion cells, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponLaserRifle
+    - id: N14MicrofusionCellRed
+    - id: N14MicrofusionCellRed
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetLaser
+  name: railroad-kit-laser-name
+  description: railroad-kit-laser-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - RailroadKitLaser
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitCombatShotgun
+  name: Railroad combat shotgun kit
+  description: "For when the extraction goes loud. Contains 1 loaded combat shotgun, 1 spare shotgun magazine, 1 box of 12-gauge shells, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponShotgunAuto
+    - id: N14MagazineShotgun12
+    - id: MagazineBox12gauge
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetCombatShotgun
+  name: railroad-kit-combatshotgun-name
+  description: railroad-kit-combatshotgun-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - RailroadKitCombatShotgun
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitGreaseGun
+  name: Railroad grease gun kit
+  description: "Old, ugly and dependable. Contains 1 loaded M3A1 grease gun, 2 spare .45 SMG magazines, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponSMGGreaseGun
+    - id: Magazine45SubMachineGun
+    - id: Magazine45SubMachineGun
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetGreaseGun
+  name: railroad-kit-greasegun-name
+  description: railroad-kit-greasegun-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - RailroadKitGreaseGun
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitSMG12mm
+  name: Railroad 12.7mm SMG kit
+  description: "Heavy-hitting submachine gun for safehouse owners. Contains 1 loaded 12.7mm SMG, 2 spare 12.7mm SMG magazines, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponSMG12mm
+    - id: N14MagazineSMG12mm
+    - id: N14MagazineSMG12mm
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetSMG12mm
+  name: railroad-kit-smg12mm-name
+  description: railroad-kit-smg12mm-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - RailroadKitSMG12mm
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitInfiltrator
+  name: Railroad infiltrator kit
+  description: "A compact, quiet SMG for inspecting safehouses unannounced. Contains 1 loaded infiltrator SMG, 2 spare 9mm SMG magazines, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponSMG9mminfiltrator
+    - id: N14MagazineSMG9mm
+    - id: N14MagazineSMG9mm
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetInfiltrator
+  name: railroad-kit-infiltrator-name
+  description: railroad-kit-infiltrator-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - RailroadKitInfiltrator
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitLMG
+  name: Railroad Bren gun kit
+  description: "The Railroad's only machine gun, kept for the Alpha Leader. Contains 1 loaded Bren machine gun, 2 spare .308 Bren magazines, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: gunner
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponLMGBren
+    - id: Magazine308RifleLong
+    - id: Magazine308RifleLong
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetLMG
+  name: railroad-kit-lmg-name
+  description: railroad-kit-lmg-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: gunner
+  content:
+  - RailroadKitLMG
+
+- type: entity
+  parent: KitBase
+  id: RailroadKitAER12
+  name: Railroad AER-12 laser rifle kit
+  description: "A rare automatic laser rifle. Contains 1 AER-12 laser rifle with a loaded microfusion cell, 3 spare microfusion cells, 1 MRE kit, 1 stimpak, and 1 roll of clean gauze (10 uses)."
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14WeaponLaserRifleAER12
+    - id: N14MicrofusionCellRed
+    - id: N14MicrofusionCellRed
+    - id: N14MicrofusionCellRed
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: RailroadKitSetAER12
+  name: railroad-kit-aer12-name
+  description: railroad-kit-aer12-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content:
+  - RailroadKitAER12
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadInternKitSelector
+  name: Railroad intern kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetPistol
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadWorkerKitSelector
+  name: Railroad worker kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetPistol
+    - RailroadKitSetDoubleBarrel
+    - RailroadKitSetMedic
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadRunnerKitSelector
+  name: Railroad runner kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetPistol
+    - RailroadKitSetDoubleBarrel
+    - RailroadKitSetMedic
+    - RailroadKitSetSMG
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadAgentKitSelector
+  name: Railroad agent kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetSuppressedSMG
+    - RailroadKitSetTech
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadConductorKitSelector
+  name: Railroad conductor kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetLaser
+    - RailroadKitSetCombatShotgun
+    - RailroadKitSetGreaseGun
+    - RailroadKitSetMedic
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadSafehouseOwnerKitSelector
+  name: Railroad safehouse owner kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetLaser
+    - RailroadKitSetCombatShotgun
+    - RailroadKitSetGreaseGun
+    - RailroadKitSetMedic
+    - RailroadKitSetSMG12mm
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadInspectorKitSelector
+  name: Railroad inspector kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetInfiltrator
+    - RailroadKitSetLaser
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: RailroadAlphaLeaderKitSelector
+  name: Railroad Alpha Leader kit selection box
+  description: Choose your equipment.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - RailroadKitSetLMG
+    - RailroadKitSetAER12

@@ -1,0 +1,30 @@
+reconstruction-pod-verb-start = Start biosculpting
+reconstruction-pod-busy = The biosculptor is already running.
+reconstruction-pod-empty = There is nobody in the biosculptor.
+reconstruction-pod-inside = You can't run the biosculptor from inside it.
+reconstruction-pod-access-denied = The controls are locked. You need Railroad access.
+reconstruction-pod-invalid-patient = The biosculptor can't work on this patient.
+reconstruction-pod-not-ready = The patient hasn't chosen a new look yet.
+reconstruction-pod-ready-patient = Your new look is set. Someone outside has to start the biosculptor.
+reconstruction-pod-declined-patient = You decide against it. Step out whenever you like.
+reconstruction-pod-started = The biosculptor hums to life. Stay by the controls.
+reconstruction-pod-started-patient = The biosculptor hums to life around you.
+reconstruction-pod-finished = The biosculpting is complete.
+reconstruction-pod-finished-patient = The biosculptor opens. You feel like a different person.
+reconstruction-pod-cancel-left = The patient left the biosculptor. The biosculpting stops.
+reconstruction-pod-cancel-operator = You stopped running the biosculptor. The biosculpting stops.
+
+reconstruction-window-title = Biosculptor
+reconstruction-window-consent = Do you want to change your appearance?
+    Someone outside will have to run the biosculptor. This only lasts for this round.
+reconstruction-window-yes = Yes
+reconstruction-window-no = No
+reconstruction-window-confirm = Confirm new look
+reconstruction-window-name = Name
+reconstruction-window-sex = Body type
+reconstruction-window-skin = Skin
+reconstruction-window-eyes = Eyes
+reconstruction-window-hair = Hair
+reconstruction-window-height = Height
+reconstruction-window-width = Width
+reconstruction-window-markings = Markings

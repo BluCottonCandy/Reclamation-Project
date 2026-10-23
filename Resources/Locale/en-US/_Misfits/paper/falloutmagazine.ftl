@@ -138,7 +138,7 @@ falloutmagazine-wastelandsurvivalguiderandom1 = no.1 Farming The Wastes
 falloutmagazine-wastelandsurvivalguiderandom2 = no.2 Insect Repellent Special
 falloutmagazine-wastelandsurvivalguiderandom3 = no.3 The Bright Side of Radiation Poisoning
 falloutmagazine-wastelandsurvivalguiderandom4 = no.4 The Scrapyard Home Decoration Guide
-falloutmagazine-wastelandsurvivalguiderandom5 = no.5 Guide To The Bazaar
+falloutmagazine-wastelandsurvivalguiderandom5 = no.5 Guide To The Diamond City
 falloutmagazine-wastelandsurvivalguiderandom6 = no.6 Wendover Coupon Spectacular
 falloutmagazine-wastelandsurvivalguiderandom7 = no.7 Water Aerobics for Ghouls
 falloutmagazine-wastelandsurvivalguiderandom8 = no.8 Self-Defense Secrets
@@ -158,14 +158,14 @@ falloutmagazine-liveandloverandom9 = no.9 I Married a Robot
 
 falloutmagazine-liveandlovedirty1 = Dirty Live and Love
 
-falloutmagazine-astonishingtales1 = Tales from the Great Salt Lake Desert
+falloutmagazine-astonishingtales1 = Tales from the Commonwealth
 
 falloutmagazine-astonishingtalesrandom1 = no.1 Curse of the Wendigo
 falloutmagazine-astonishingtalesrandom2 = no.2 The Mothman Cometh!
-falloutmagazine-astonishingtalesrandom3 = no.3 The Beast of Wendover
+falloutmagazine-astonishingtalesrandom3 = no.3 The Beast of the Boston Harbor
 falloutmagazine-astonishingtalesrandom4 = no.4 Sideshow Snallygaster
-falloutmagazine-astonishingtalesrandom5 = no.5 Who goes there? The strange encounter in Salt Lake City
-falloutmagazine-astonishingtalesrandom6 = no.6 The Cult of Ag-Qualoth
+falloutmagazine-astonishingtalesrandom5 = no.5 Who goes there? The strange encounter in Qunicy
+falloutmagazine-astonishingtalesrandom6 = no.6 The Witch Cult of Salem
 
 falloutmagazine-chinesearmyspecops1 = Chinese Army:
 

@@ -1,0 +1,164 @@
+- type: department
+  id: Forged
+  description: department-Forged-description
+  color: "#D4783B"
+  uiCategory: MinorFaction
+  roles: [Forgemaster, ForgedEnforcer, ForgedFurnaceTender, ForgedRaider, ForgedWorker]
+
+- type: accessLevel
+  id: Forged
+  name: access-forged
+
+- type: accessLevel
+  id: ForgedCommand
+  name: access-forged-command
+
+- type: job
+  id: Forgemaster
+  name: job-name-forgemaster
+  description: job-description-forgemaster
+  playTimeTracker: Forgemaster
+  startingGear: ForgemasterGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 50
+  icon: JobIconPassenger
+  supervisors: job-supervisors-forged
+  access: [Forged, ForgedCommand]
+
+- type: playTimeTracker
+  id: Forgemaster
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointForgemaster
+  name: Forgemaster spawn
+  components:
+  - type: SpawnPoint
+    job_id: Forgemaster
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: job
+  id: ForgedEnforcer
+  name: job-name-forgedenforcer
+  description: job-description-forgedenforcer
+  playTimeTracker: ForgedEnforcer
+  startingGear: ForgedEnforcerGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 40
+  icon: JobIconPassenger
+  supervisors: job-supervisors-forged
+  access: [Forged]
+
+- type: playTimeTracker
+  id: ForgedEnforcer
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointForgedEnforcer
+  name: Enforcer spawn
+  components:
+  - type: SpawnPoint
+    job_id: ForgedEnforcer
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: job
+  id: ForgedFurnaceTender
+  name: job-name-forgedfurnacetender
+  description: job-description-forgedfurnacetender
+  playTimeTracker: ForgedFurnaceTender
+  startingGear: ForgedFurnaceTenderGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 30
+  icon: JobIconPassenger
+  supervisors: job-supervisors-forged
+  access: [Forged]
+
+- type: playTimeTracker
+  id: ForgedFurnaceTender
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointForgedFurnaceTender
+  name: Furnace Tender spawn
+  components:
+  - type: SpawnPoint
+    job_id: ForgedFurnaceTender
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: job
+  id: ForgedRaider
+  name: job-name-forgedraider
+  description: job-description-forgedraider
+  playTimeTracker: ForgedRaider
+  startingGear: ForgedRaiderGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 20
+  icon: JobIconPassenger
+  supervisors: job-supervisors-forged
+  access: [Forged]
+
+- type: playTimeTracker
+  id: ForgedRaider
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointForgedRaider
+  name: Forged Raider spawn
+  components:
+  - type: SpawnPoint
+    job_id: ForgedRaider
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: job
+  id: ForgedWorker
+  name: job-name-forgedworker
+  description: job-description-forgedworker
+  playTimeTracker: ForgedWorker
+  startingGear: ForgedWorkerGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 10
+  icon: JobIconPassenger
+  supervisors: job-supervisors-forged
+  access: []
+
+- type: playTimeTracker
+  id: ForgedWorker
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointForgedWorker
+  name: Captive Worker spawn
+  components:
+  - type: SpawnPoint
+    job_id: ForgedWorker
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher

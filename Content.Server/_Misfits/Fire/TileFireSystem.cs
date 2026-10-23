@@ -104,8 +104,8 @@ public sealed class TileFireSystem : EntitySystem
         if (_timing.CurTime < touch.NextTouchAt)
             return;
 
+        // This cooldown is server-only; dirtying it asserts on contact in debug builds.
         touch.NextTouchAt = _timing.CurTime + fire.Comp.TouchCooldown;
-        Dirty(target, touch);
 
         if (_flammableQuery.TryComp(target, out var flammable))
         {

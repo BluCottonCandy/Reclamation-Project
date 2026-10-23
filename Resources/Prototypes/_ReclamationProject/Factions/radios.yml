@@ -1,0 +1,115 @@
+- type: radioChannel
+  id: Forged
+  name: chat-radio-forged
+  keycode: 'g'
+  frequency: 1518
+  color: "#D4783B"
+  longRange: true
+
+- type: entity
+  parent: EncryptionKeyEighties
+  id: EncryptionKeyForged
+  name: Forged encryption key
+  description: A radio encryption key for private Forged communication.
+  components:
+  - type: EncryptionKey
+    channels: [Forged]
+    defaultChannel: Forged
+
+- type: entity
+  parent: MisfitsClothingHeadsetEighties
+  id: ForgedHeadset
+  name: Forged headset
+  description: A salvaged headset fitted with a Forged encryption key and wasteland radio access.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyForged
+
+- type: radioChannel
+  id: Triggermen
+  name: chat-radio-triggermen
+  keycode: 'j'
+  frequency: 1519
+  color: "#B8B8B8"
+  longRange: true
+
+- type: entity
+  parent: EncryptionKeyEighties
+  id: EncryptionKeyTriggermen
+  name: Triggermen encryption key
+  description: A radio encryption key for private Triggermen communication.
+  components:
+  - type: EncryptionKey
+    channels: [Triggermen]
+    defaultChannel: Triggermen
+
+- type: entity
+  parent: MisfitsClothingHeadsetEighties
+  id: TriggermenHeadset
+  name: Triggermen headset
+  description: A salvaged headset fitted with a Triggermen encryption key and wasteland radio access.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyTriggermen
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggermenBoss
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: sc_Ace_of_Spades_black
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggermenSotocapo
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: sc_King_of_Spades_black
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggermenConsigliere
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: sc_Queen_of_Spades_black
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggermenEnforcer
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: sc_Jack_of_Spades_black
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggermenSoldato
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: sc_10_of_Spades_black
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggerman
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: black_joker
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggermenCommissionMember
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: sc_Ace_of_Spades_black
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTriggermenCapoDeiCapi
+  icon:
+    sprite: /Textures/EstacaoPirata/Objects/Misc/cards.rsi
+    state: sc_Ace_of_Spades_black

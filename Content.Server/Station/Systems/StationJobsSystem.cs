@@ -58,6 +58,7 @@ public sealed partial class StationJobsSystem : EntitySystem
         if (!TryComp<StationJobsComponent>(msg.Station, out var stationJobs))
             return;
 
+        AddRaiderFactionJobs(msg.Station, stationJobs);
         var mapJobList = stationJobs.SetupAvailableJobs;
 
         stationJobs.RoundStartTotalJobs = mapJobList.Values.Where(x => x[0] is not null && x[0] > 0).Sum(x => x[0]!.Value);

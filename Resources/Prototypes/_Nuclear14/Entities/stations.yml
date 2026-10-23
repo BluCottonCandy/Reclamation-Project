@@ -13,3 +13,17 @@
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform
+    - type: RaiderFactionJobs
+      jobs:
+        Forgemaster: 1
+        ForgedVeteran: 2
+        ForgedEnforcer: 2
+        ForgedBranded: 2
+        ForgedRaider: 2
+        ForgedWorker: 2
+        TriggermenBoss: 1
+        TriggermenSotocapo: 2
+        TriggermenConsigliere: 2
+        TriggermenEnforcer: 2
+        TriggermenSoldato: 2
+        Triggerman: 2

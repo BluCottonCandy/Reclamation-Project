@@ -1,11 +1,12 @@
 - type: startingGear
   id: ForgemasterGear
   equipment:
+    ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
     back: N14ClothingBackpackSatchelExplorer
     id: ForgemasterID
-    outerClothing: ForgedFurnaceArmor
+    outerClothing: ForgedKeeperFurnaceArmor
   storage:
     back:
     - ForgedBrandingIron
@@ -42,6 +43,7 @@
 - type: startingGear
   id: ForgedEnforcerGear
   equipment:
+    ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
     back: N14ClothingBackpackSatchelExplorer
@@ -81,6 +83,7 @@
 - type: startingGear
   id: ForgedFurnaceTenderGear
   equipment:
+    ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
     back: N14ClothingBackpackSatchelExplorer
@@ -121,6 +124,7 @@
 - type: startingGear
   id: ForgedRaiderGear
   equipment:
+    ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
     back: N14ClothingBackpackSatchelExplorer
@@ -159,6 +163,8 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
+  inhand:
+  - ForgedWorkerAutoAxe
 
 - type: entity
   parent: N14ClothingOuterFirefighterSuit

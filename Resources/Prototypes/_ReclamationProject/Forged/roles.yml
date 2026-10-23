@@ -25,7 +25,7 @@
   weight: 50
   displayWeight: 500
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged, ForgedCommand]
 
@@ -57,7 +57,7 @@
   weight: 40
   displayWeight: 400
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged]
 
@@ -89,7 +89,7 @@
   weight: 30
   displayWeight: 300
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged]
 
@@ -121,7 +121,7 @@
   weight: 20
   displayWeight: 200
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged]
 
@@ -153,7 +153,7 @@
   weight: 10
   displayWeight: 100
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged]
 
@@ -185,7 +185,7 @@
   weight: 0
   displayWeight: 0
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: []
 
@@ -217,7 +217,7 @@
   weight: 60
   displayWeight: 600
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged, ForgedCommand]
 
@@ -249,7 +249,7 @@
   weight: 70
   displayWeight: 700
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged, ForgedCommand]
 
@@ -281,7 +281,7 @@
   weight: 0
   displayWeight: 0
   showBorder: true
-  icon: JobIconPassenger
+  icon: JobIconEighties
   supervisors: job-supervisors-forged
   access: [Forged]
 

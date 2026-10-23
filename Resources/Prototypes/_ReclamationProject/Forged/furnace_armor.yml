@@ -1,21 +1,54 @@
-# Salvaged T-45 mechanics with the existing Raider armor appearance.
+# Unpowered Furnace Armor: ordinary protection, with no power-armor integrity pool.
 - type: entity
-  parent: N14ClothingOuterPowerArmorT45NCRSalvaged
+  parent: ClothingOuterHardsuitBase
   id: ForgedFurnaceArmor
   name: Forged Furnace Armor
   description: A furnace-blackened suit of salvaged armor assembled by the Forged. Stripped-down servos and heavy heat-resistant plating make it slow but dependable. It needs neither power-armor training nor a fusion core.
   categories: []
   components:
+  - type: N14PowerArmor
+    requiresProficiency: false
+  - type: N14BosBackpackSlot
+  - type: ClothingSpeedModifier
+    walkModifier: 0.65
+    sprintModifier: 0.65
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
+    walkModifier: 0.5
+    sprintModifier: 0.5
+  - type: MultiHandedItem
+  - type: UserInterface
+    interfaces:
+      enum.ToggleClothingUiKey.Key:
+        type: ToggleableClothingBoundUserInterface
+  - type: EmitsSoundOnMove
+    soundCollection:
+      collection: N14FootstepPowerArmor
+      params:
+        volume: -6
+    requiresWorn: true
+    distanceWalking: 2
+    distanceSprinting: 3
   - type: Sprite
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+    equipDelay: 6
+    unequipDelay: 6
+    equipSound:
+      path: /Audio/_Nuclear14/Effects/PowerArmor/PowerArmor_Enter_01.ogg
+      params:
+        volume: -12
+    unequipSound:
+      path: /Audio/_Nuclear14/Effects/PowerArmor/PowerArmor_Enter_01.ogg
+      params:
+        volume: -12
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.70
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
         Heat: 0.20
         Caustic: 0.70
         Radiation: 0.60
@@ -24,7 +57,7 @@
     reduction: 0
   - type: TemperatureProtection
     coefficient: 0.25
-  # Clear both the default and caliber-specific inherited reflection settings.
+  # No passive projectile reflection.
   - type: Reflect
     reflects: None
     reflectProb: 0
@@ -32,6 +65,9 @@
     reflectProbByType: {}
     innate: false
   - type: ToggleableClothing
+    requiredSlot: outerClothing
+    blockUnequipWhenAttached: true
+    replaceCurrentClothing: false
     clothingPrototypes:
       head: ForgedFurnaceHelmet
       gloves: N14ClothingPAGauntletsDark
@@ -46,8 +82,44 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.795
-        Slash: 0.795
-        Piercing: 0.845
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.20
+        Radiation: 0.595
+
+- type: entity
+  parent: ForgedFurnaceArmor
+  id: ForgedKeeperFurnaceArmor
+  name: Forge Keeper's Furnace Armor
+  description: Reinforced furnace-blackened armor reserved for the Forge Keeper. Its heavy plates provide protection without a separate integrity pool, fusion core, or training requirement.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.20
+        Caustic: 0.70
+        Radiation: 0.60
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ForgedKeeperFurnaceHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+
+- type: entity
+  parent: ForgedFurnaceHelmet
+  id: ForgedKeeperFurnaceHelmet
+  name: Forge Keeper's furnace helmet
+  description: A reinforced furnace helmet reserved for the Forge Keeper.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
         Heat: 0.20
         Radiation: 0.595

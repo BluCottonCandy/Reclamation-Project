@@ -31,16 +31,17 @@ namespace Content.Client.Lobby.UI
 
         public void SwitchState(LobbyGuiState state)
         {
-            DefaultState.Visible = false;
-            CharacterSetupState.Visible = false;
-
             switch (state)
             {
                 case LobbyGuiState.Default:
+                    CharacterSetupState.Visible = false;
                     DefaultState.Visible = true;
                     RightSide.Visible = true;
                     break;
                 case LobbyGuiState.CharacterSetup:
+                    // Prepare the editor first so a failed refresh cannot hide the lobby.
+                    UserInterfaceManager.GetUIController<LobbyUIController>().ReloadCharacterSetup();
+                    DefaultState.Visible = false;
                     CharacterSetupState.Visible = true;
                     RightSide.Visible = false;
                     var actualWidth = (float) UserInterfaceManager.RootControl.PixelWidth;
@@ -48,8 +49,6 @@ namespace Content.Client.Lobby.UI
 
                     if (1 - (setupWidth / actualWidth) > 0.30)
                         RightSide.Visible = false;
-
-                    UserInterfaceManager.GetUIController<LobbyUIController>().ReloadCharacterSetup();
 
                     break;
             }

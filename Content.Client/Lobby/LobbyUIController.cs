@@ -76,7 +76,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
 
-        _preferencesManager.OnServerDataLoaded += PreferencesDataLoaded;
     }
 
     public void OnStateEntered(LobbyState state)

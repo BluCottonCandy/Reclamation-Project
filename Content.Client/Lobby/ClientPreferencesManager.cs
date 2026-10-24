@@ -33,7 +33,7 @@ namespace Content.Client.Lobby
         public void Initialize()
         {
             _netManager.RegisterNetMessage<MsgPreferencesAndSettings>(HandlePreferencesAndSettings);
-            _netManager.RegisterNetMessage<MsgUpdateCharacter>();
+            _netManager.RegisterNetMessage<MsgUpdateCharacter>(HandleServerCharacterUpdate);
             _netManager.RegisterNetMessage<MsgSelectCharacter>();
             _netManager.RegisterNetMessage<MsgDeleteCharacter>();
             _netManager.RegisterNetMessage<MsgRoundEndReportAnonymity>();
@@ -57,6 +57,9 @@ namespace Content.Client.Lobby
 
         public void SelectCharacter(int slot)
         {
+            if (!Preferences.Characters.ContainsKey(slot))
+                return;
+
             Preferences = new PlayerPreferences(Preferences.Characters, slot, Preferences.AdminOOCColor, Preferences.AnonymousRoundEndReport);
             var msg = new MsgSelectCharacter
             {
@@ -105,6 +108,12 @@ namespace Content.Client.Lobby
 
         public void DeleteCharacter(int slot)
         {
+            // Switch to another character before deleting this one, including stale UI requests.
+            if (slot == Preferences.SelectedCharacterIndex
+                || Preferences.Characters.Count <= 1
+                || !Preferences.Characters.ContainsKey(slot))
+                return;
+
             var characters = Preferences.Characters.Where(p => p.Key != slot);
             Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor, Preferences.AnonymousRoundEndReport);
             var msg = new MsgDeleteCharacter
@@ -122,6 +131,22 @@ namespace Content.Client.Lobby
                 Anonymous = anonymous
             };
             _netManager.ClientSendMessage(msg);
+        }
+
+        private void HandleServerCharacterUpdate(MsgUpdateCharacter message)
+        {
+            // A delayed server save must not replace newer local characters, selection, or edits.
+            // Only earned brands are server-owned; merge those into this character's latest draft.
+            if (message.Profile is not HumanoidCharacterProfile saved
+                || !Preferences.Characters.TryGetValue(message.Slot, out var current)
+                || current is not HumanoidCharacterProfile draft
+                || saved.Name != draft.Name)
+                return;
+
+            var profile = Content.Shared._ReclamationProject.Forged.ForgedBrandingProfiles.PreserveEarned(draft, saved);
+            var characters = new Dictionary<int, ICharacterProfile>(Preferences.Characters) { [message.Slot] = profile };
+            Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor, Preferences.AnonymousRoundEndReport);
+            OnServerDataLoaded?.Invoke();
         }
 
         private void HandlePreferencesAndSettings(MsgPreferencesAndSettings message)

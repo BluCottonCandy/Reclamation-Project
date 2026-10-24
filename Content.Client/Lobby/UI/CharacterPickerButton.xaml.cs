@@ -73,8 +73,6 @@ public sealed partial class CharacterPickerButton : ContainerButton
 
         ConfirmDeleteButton.OnPressed += _ =>
         {
-            Parent?.RemoveChild(this);
-            Parent?.RemoveChild(ConfirmDeleteButton);
             OnDeletePressed?.Invoke();
         };
 

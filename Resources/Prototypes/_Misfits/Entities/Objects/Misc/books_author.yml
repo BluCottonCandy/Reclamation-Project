@@ -15,7 +15,6 @@
       - state: fallout_icon_minutemen
         color: "#ffffff"
       - state: fallout_detail_leatherstrap
-        color: ""
     - type: Paper
       content: book-text-minutemen
 
@@ -80,7 +79,6 @@
       - state: fallout_icon_institute
         color: "#c40405"
       - state: fallout_overlay_null
-        color: ""
     - type: Paper
       content: book-text-institute
 
@@ -101,7 +99,6 @@
       - state: fallout_icon_diamondcity
         color: "#ffffff"
       - state: fallout_overlay_null
-        color: ""
     - type: Paper
       content: book-text-diamondcity
 
@@ -143,7 +140,6 @@
       - state: fallout_icon_forged
         color: "#cc6910"
       - state: fallout_detail_damagedcorner
-        color: ""
     - type: Paper
       content: book-text-forged
 
@@ -160,11 +156,9 @@
       - state: fallout_cover_base
         color: "#000000"
       - state: fallout_decor_null
-        color: ""
       - state: fallout_icon_disciple
         color: "#7b0001"
       - state: fallout_overlay_blood
-        color: ""
     - type: Paper
       content: book-text-disciple
 
@@ -185,7 +179,6 @@
       - state: fallout_icon_operator
         color: "#a17434"
       - state: fallout_overlay_null
-        color: ""
     - type: Paper
       content: book-text-operator
 
@@ -206,7 +199,6 @@
       - state: fallout_icon_pack
         color: "#90ae72"
       - state: fallout_overlay_null
-        color: ""
     - type: Paper
       content: book-text-pack
 

@@ -21,6 +21,19 @@
     coefficient: 0.75
   - type: FireProtection
     reduction: 0.1
+  # #Reclamation Project - runs on a fusion core: 30 min per core while worn, a crawl without one
+  - type: FusionCorePowered
+  - type: ItemSlots
+    slots:
+      fusion_core:
+        name: fusion core
+        startingItem: N14FusionCore
+        whitelist:
+          tags:
+          - N14FusionCore
+  - type: ContainerContainer
+    containers:
+      fusion_core: !type:ContainerSlot
 
 - type: entity
   parent: N14ClothingPowerSystemsBack

@@ -66,6 +66,7 @@
     - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
         - Human
+        - Courser
     #- !type:CharacterOverallTimeRequirement # TEMP REMOVED
     #  min: 0
   startingGear: BoSInitiateGear

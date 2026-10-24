@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Created by adom for Nuclear 14 (power systems icon). Background removed and split into charge layers for Reclamation Project",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "empty"
+    },
+    {
+      "name": "o1"
+    },
+    {
+      "name": "o2"
+    }
+  ]
+}

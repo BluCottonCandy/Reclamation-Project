@@ -13,6 +13,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
     - !type:CharacterPlaytimeRequirement
       tracker: BoSMidScribe
       min: 18000 # 5 hours in the preceding role.

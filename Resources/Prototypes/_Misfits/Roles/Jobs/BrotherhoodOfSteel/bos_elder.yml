@@ -13,6 +13,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
     - !type:CharacterLogicOrRequirement
       requirements:
       - !type:CharacterPlaytimeRequirement

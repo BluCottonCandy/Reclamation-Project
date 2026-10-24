@@ -47,6 +47,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -112,6 +113,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -176,6 +178,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -239,6 +242,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -303,6 +307,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
   special:
   - !type:AddComponentSpecial

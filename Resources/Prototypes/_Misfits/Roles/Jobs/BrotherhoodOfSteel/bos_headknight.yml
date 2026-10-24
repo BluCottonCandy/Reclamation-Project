@@ -68,6 +68,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
     - !type:CharacterPlaytimeRequirement
       tracker: BoSMidKnight
       min: 18000 # 5 hours in the preceding role.

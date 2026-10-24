@@ -15,6 +15,7 @@
   - !type:CharacterSpeciesRequirement # #Misfits Fix - restrict to organic species only
     species:
     - Human
+    - Courser
     - Ghoul
   startingGear: WhiteLegsGear
   alwaysUseSpawner: true

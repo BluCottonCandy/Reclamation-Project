@@ -14,6 +14,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: MilitaryPolice

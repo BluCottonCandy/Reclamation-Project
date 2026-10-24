@@ -22,6 +22,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
   startingGear: BoSHonorGuardGear
   alwaysUseSpawner: true
   requireAdminNotify: true

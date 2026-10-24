@@ -10,6 +10,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
   setPreference: true
   overrideConsoleVisibility: true
   canBeAntag: false

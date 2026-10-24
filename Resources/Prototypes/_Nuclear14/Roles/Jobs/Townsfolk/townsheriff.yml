@@ -13,6 +13,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
       - GhoulGlowing
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - re-enable timelock, 10h Townsfolk requirement

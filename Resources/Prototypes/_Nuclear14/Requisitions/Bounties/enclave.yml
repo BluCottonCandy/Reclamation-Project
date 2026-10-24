@@ -141,20 +141,6 @@
   reward: 1400
 
 - type: requisitionsBounty
-  id: EnclaveBountyFusionCoreRed
-  pools: [ Enclave ]
-  item: N14FusionCoreRed
-  amount: 3
-  reward: 1400
-
-- type: requisitionsBounty
-  id: EnclaveBountyFusionCoreViolet
-  pools: [ Enclave ]
-  item: N14FusionCoreViolet
-  amount: 3
-  reward: 1400
-
-- type: requisitionsBounty
   id: EnclaveBountyMicrofusionCellViolet
   pools: [ Enclave ]
   item: N14MicrofusionCellViolet

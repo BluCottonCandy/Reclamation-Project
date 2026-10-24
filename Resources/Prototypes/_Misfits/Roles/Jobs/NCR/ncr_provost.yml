@@ -13,6 +13,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
         - Ghoul
   startingGear: NCRProvostGear
   icon: "JobIconNcrLeader"

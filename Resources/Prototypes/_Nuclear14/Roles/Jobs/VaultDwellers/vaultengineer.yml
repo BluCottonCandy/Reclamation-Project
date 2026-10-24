@@ -10,6 +10,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
   #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
   #  tracker: VaultDweller
   #  min: 18000 # 5 hours

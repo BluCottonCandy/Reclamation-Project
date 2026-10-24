@@ -16,6 +16,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
   startingGear: VaultManagementGear
   alwaysUseSpawner: true
   icon: "JobIconVaultOverseer" # Reuse overseer icon for now

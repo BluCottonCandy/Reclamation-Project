@@ -17,6 +17,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Add - admin-only leadership timelock
       department: Enclave

@@ -6,6 +6,23 @@
   components:
   # #Reclamation Project - soaks up Institute relay damage
   - type: InstituteRelayShield
+  # #Reclamation Project - deflects 35% of bullets and 50% of lasers, only while sealed and powered
+  - type: Reflect
+    reflects:
+    - NonEnergy
+    - SmallCaliber
+    - MediumCaliber
+    - Energy
+    reflectProb: 0.35
+    reflectProbByType:
+      Energy: 0.5
+    innate: true
+    spread: 90
+  - type: InstituteSuitDeflect
+  # #Reclamation Project - 0.6 charge/s: a full high-capacity cell (1080) lasts 30 minutes sealed
+  - type: PowerCellDraw
+    drawRate: 0.6
+    useRate: 5
   - type: Tag
     tags: [InstituteMODControl]
   - type: ToggleableClothing
@@ -149,6 +166,23 @@
   components:
   # #Reclamation Project - soaks up Institute relay damage
   - type: InstituteRelayShield
+  # #Reclamation Project - deflects 35% of bullets and 50% of lasers, only while sealed and powered
+  - type: Reflect
+    reflects:
+    - NonEnergy
+    - SmallCaliber
+    - MediumCaliber
+    - Energy
+    reflectProb: 0.35
+    reflectProbByType:
+      Energy: 0.5
+    innate: true
+    spread: 90
+  - type: InstituteSuitDeflect
+  # #Reclamation Project - 0.6 charge/s: a full high-capacity cell (1080) lasts 30 minutes sealed
+  - type: PowerCellDraw
+    drawRate: 0.6
+    useRate: 5
   - type: Sprite
     sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
   - type: Clothing
@@ -307,6 +341,23 @@
   components:
   # #Reclamation Project - soaks up Institute relay damage
   - type: InstituteRelayShield
+  # #Reclamation Project - deflects 35% of bullets and 50% of lasers, only while sealed and powered
+  - type: Reflect
+    reflects:
+    - NonEnergy
+    - SmallCaliber
+    - MediumCaliber
+    - Energy
+    reflectProb: 0.35
+    reflectProbByType:
+      Energy: 0.5
+    innate: true
+    spread: 90
+  - type: InstituteSuitDeflect
+  # #Reclamation Project - 0.6 charge/s: a full high-capacity cell (1080) lasts 30 minutes sealed
+  - type: PowerCellDraw
+    drawRate: 0.6
+    useRate: 5
   - type: Sprite
     sprite: _ReclamationProject/Institute/MODWhiteControl.rsi
   - type: Clothing

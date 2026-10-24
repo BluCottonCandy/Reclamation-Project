@@ -26,6 +26,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
     - !type:CharacterSexRequirement
       sex: Female
     - !type:CharacterGenderRequirement

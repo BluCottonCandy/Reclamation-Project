@@ -16,6 +16,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # junior-officer-equivalent faction timelock
       department: Enclave

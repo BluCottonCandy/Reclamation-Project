@@ -20,6 +20,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
       - GhoulGlowing
    # - !type:CharacterOverallTimeRequirement

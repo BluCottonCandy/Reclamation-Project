@@ -47,8 +47,9 @@
 - type: entity
   parent: BaseItem
   id: InstituteRelayImplant
-  name: Institute relay implant
-  description: An Institute chip that sits in the skull, tuned to the relay. It fries the brain of anyone outside the Institute.
+  name: unknown device
+  suffix: Institute relay
+  description: A tiny chip of unknown make, found tucked beneath the brain. It hums faintly and is warm to the touch.
   components:
   - type: Sprite
     sprite: Objects/Misc/module.rsi
@@ -62,8 +63,9 @@
 - type: entity
   parent: InstituteRelayImplant
   id: InstituteRelayImplantCommand
-  name: Institute command relay implant
-  description: An Institute chip that sits in the skull and lets its owner relay at will. It fries the brain of anyone outside the Institute.
+  name: unknown device
+  suffix: Institute command relay
+  description: A tiny chip of unknown make, found tucked beneath the brain. It hums faintly and is warm to the touch.
   components:
   - type: Sprite
     sprite: Objects/Misc/module.rsi
@@ -71,12 +73,12 @@
   - type: InstituteRelayImplant
     canSelfRelay: true
 
-# Surgery
+# Surgery: the chip sits beneath the brain, so it only shows up once the brain is removed.
 
 - type: entity
   parent: SurgeryBase
   id: SurgeryRemoveInstituteRelay
-  name: Remove Relay Implant
+  name: Remove Unknown Object
   categories: [ HideSpawnMenu ]
   components:
   - type: Surgery
@@ -87,6 +89,9 @@
     - SurgeryStepRemoveOrgan
   - type: SurgeryPartCondition
     part: Head
+  # Only reachable once the brain is out.
+  - type: SurgeryOrganSlotEmptyCondition
+    slotId: brain
   - type: SurgeryOrganCondition
     organ:
     - type: InstituteRelayImplant
@@ -95,7 +100,7 @@
 - type: entity
   parent: SurgeryBase
   id: SurgeryInsertInstituteRelay
-  name: Insert Relay Implant
+  name: Insert Unknown Object
   categories: [ HideSpawnMenu ]
   components:
   - type: Surgery
@@ -106,6 +111,9 @@
     - SurgeryStepSealOrganWound
   - type: SurgeryPartCondition
     part: Head
+  # Only reachable once the brain is out.
+  - type: SurgeryOrganSlotEmptyCondition
+    slotId: brain
   - type: SurgeryOrganCondition
     organ:
     - type: InstituteRelayImplant

@@ -1,0 +1,13 @@
+fusion-core-depleted = Your power armour's fusion core is dead. The servos lock up and every step is a struggle.
+fusion-core-powered = Your power armour hums back to life.
+fusion-core-switched-on = You switch your power armour on.
+fusion-core-switched-off = You switch your power armour off. The servos go slack.
+fusion-core-verb-remove = Remove fusion core
+fusion-core-verb-install = Install fusion core
+fusion-core-being-removed = SOMEONE IS REMOVING YOUR CORE!
+fusion-core-being-installed = Someone is fitting a fusion core into your power armour.
+fusion-core-start-removing = You start prying out {$target}'s fusion core...
+fusion-core-start-installing = You start fitting a fusion core into {$target}'s power armour...
+fusion-core-removed-from-you = Your fusion core has been pulled out!
+fusion-core-installed-in-you = A fresh fusion core clicks into your power armour.
+fusion-core-cant-reach-own = You can't reach your own fusion core from inside the suit.

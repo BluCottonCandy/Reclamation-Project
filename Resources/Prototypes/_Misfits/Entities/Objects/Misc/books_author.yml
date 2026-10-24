@@ -1,0 +1,218 @@
+- type: entity
+  parent: FalloutBookBase
+  id: BookMinutemen
+  name: Minutemen Doctrine
+  description: The militia doctrine of serving in the Minutemen.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#193c7c"
+      - state: fallout_decor_null
+      - state: fallout_icon_minutemen
+        color: "#ffffff"
+      - state: fallout_overlay_null
+    - type: Paper
+      content: book-text-minutemen
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookRailroad
+  name: Railroad Smuggling Guide
+  description: A comprehensive guide to how the Railroad operates.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#ad9414"
+      - state: fallout_decor_null
+      - state: fallout_icon_railroad
+        color: "#ffffff"
+      - state: fallout_detail_bookmark
+        color: "#282828"
+    - type: Paper
+      content: book-text-railroad
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookBos
+  name: Brotherhood of Steel Codex
+  description: A copy of the codex of the Brotherhood of Steel.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#ff9000"
+      - state: fallout_decor_spine
+        color: "#e58f1f"
+      - state: fallout_icon_bos
+        color: "#ffffff"
+      - state: fallout_detail_bookmark
+        color: "#838383"
+    - type: Paper
+      content: book-text-bos
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookInstitute
+  name: Institute Textbook
+  description: A textbook describing the practices of the Institute.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#ffffff"
+      - state: fallout_decor_spine
+        color: "#1c1c1c"
+      - state: fallout_icon_institute
+        color: "#c40405"
+      - state: fallout_overlay_null
+    - type: Paper
+      content: book-text-institute
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookDiamondCity
+  name: Diamond City Newspaper Collection
+  description: A collection explaining the history and information about Diamond City.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#408060"
+      - state: fallout_decor_triplestripe
+        color: "#8e7a5f"
+      - state: fallout_icon_diamondcity
+        color: "#ffffff"
+      - state: fallout_overlay_null
+    - type: Paper
+      content: book-text-diamondcity
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookTriggermen
+  name: Triggermen Dossier
+  description: A collection of documents explaining the customs of the Triggermen.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#35291b"
+      - state: fallout_decor_triplestripe
+        color: "#ffffff"
+      - state: fallout_icon_triggermen
+        color: "#C0C0C0"
+      - state: fallout_detail_bookmark
+        color: "#141412"
+    - type: Paper
+      content: book-text-triggermen
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookForged
+  name: Singed Forged Book
+  description: A burned book containing information on the Forged.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base_burned
+        color: "#2d1303"
+      - state: fallout_decor_spine_faded
+        color: "#31180a"
+      - state: fallout_icon_forged
+        color: "#cc6910"
+      - state: fallout_detail_damagedcorner
+    - type: Paper
+      content: book-text-forged
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookDisciple
+  name: Disciples Handbook
+  description: A bloody book containing information on the Disciples.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#000000"
+      - state: fallout_decor_null
+      - state: fallout_icon_disciple
+        color: "#7b0001"
+      - state: fallout_overlay_blood
+    - type: Paper
+      content: book-text-disciple
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookOperator
+  name: Operator Manual
+  description: A secretive manual to how the Operators function.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#0a0a0a"
+      - state: fallout_decor_triplestripe
+        color: "#ffffff"
+      - state: fallout_icon_operator
+        color: "#a17434"
+      - state: fallout_overlay_null
+    - type: Paper
+      content: book-text-operator
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookPack
+  name: Pack Customs
+  description: A book featuring multiple animals describing the customs of the Pack.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#4a3a23"
+      - state: fallout_decor_lattice
+        color: "#1f1f1e"
+      - state: fallout_icon_pack
+        color: "#90ae72"
+      - state: fallout_overlay_null
+    - type: Paper
+      content: book-text-pack
+
+- type: entity
+  parent: FalloutBookBase
+  id: BookAtomcat
+  name: Atom Cat Operating Manual
+  description: A book explaining how the Atom Cats run, it is covered in hair grease.
+  components:
+    - type: Sprite
+      sprite: "_Misfits/Objects/Misc/books.rsi"
+      layers:
+      - state: falloutpaper
+      - state: fallout_cover_base
+        color: "#8A624A"
+      - state: fallout_decor_null
+      - state: fallout_icon_atomcat
+        color: "#dbb41d"
+      - state: fallout_overlay_null
+    - type: Paper
+      content: book-text-atomcat

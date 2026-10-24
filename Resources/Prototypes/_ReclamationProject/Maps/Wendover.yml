@@ -1,0 +1,77 @@
+- type: gameMap
+  id: ReclamationWendover
+  mapName: Wendover
+  mapPath: /Maps/Reclamation/Wendover-edit.yml
+  minPlayers: 0
+  mapsAbove:
+  - /Maps/Reclamation/Wendover-sky-edit.yml
+  mapsBelow:
+  - /Maps/Reclamation/Wendover-vault-edit.yml
+  - /Maps/Reclamation/Wendover-enclave-edit.yml
+  stations:
+    Wendover:
+      stationProto: FalloutStation
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: Wendover
+      - type: StationJobs
+        overflowJobs: [Townsperson]
+        availableJobs:
+          Wastelander: [-1, -1]
+          WasterTrader: [1, 1]
+          WastelandReporter: [1, 2]
+          WastelandFarmer: [2, 3]
+          WastelandChaplain: [1, 1]
+          WastelandBartender: [1, 2]
+          TownMayor: [1, 1]
+          TownSheriff: [1, 1]
+          TownDeputy: [6, 6]
+          TownMechanic: [2, 2]
+          TownShopkeeper: [1, 1]
+          TownShopkeeperHelper: [1, 1]
+          Townsperson: [-1, -1]
+          BoSMidPaladinCommander: [1, 1]
+          BoSHeadKnight: [1, 1]
+          BoSWestScribe: [1, 1]
+          BoSMidPaladin: [1, 1]
+          BoSMidKnight: [3, 3]
+          BoSLancerKnight: [2, 2]
+          BoSMidScribe: [3, 3]
+          BoSPaladin: [3, 3]
+          BoSKnight: [3, 3]
+          BoSScribe: [3, 3]
+          BoSMidSquire: [3, 3]
+          BoSInitiate: [3, 3]
+          BoSOffDuty: [4, 4]
+          MinutemenColonel: [1, 1]
+          MinutemenCommander: [1, 1]
+          MinutemenCaptain: [1, 1]
+          MinutemenLieutenant: [1, 1]
+          MinutemenSergeant: [2, 2]
+          MinutemenCorporal: [3, 3]
+          MinutemenPrivate: [4, 4]
+          MinutemenRecruit: [6, 6]
+          Forgemaster: [1, 1]
+          ForgedVeteran: [2, 2]
+          ForgedEnforcer: [2, 2]
+          ForgedBranded: [2, 2]
+          ForgedRaider: [2, 2]
+          ForgedWorker: [2, 2]
+          TriggermenBoss: [1, 1]
+          TriggermenSotocapo: [2, 2]
+          TriggermenConsigliere: [2, 2]
+          TriggermenEnforcer: [2, 2]
+          TriggermenSoldato: [2, 2]
+          Triggerman: [2, 2]
+          RailroadSafehouse1Intern: [2, 2]
+          RailroadSafehouse1Worker: [2, 2]
+          RailroadSafehouse1Runner: [2, 2]
+          RailroadSafehouse1Agent: [2, 2]
+          RailroadSafehouse1Conductor: [1, 1]
+          RailroadSafehouse1SafehouseOwner: [1, 1]
+          RailroadSafehouse2Intern: [2, 2]
+          RailroadSafehouse2Worker: [2, 2]
+          RailroadSafehouse2Runner: [2, 2]
+          RailroadSafehouse2Agent: [2, 2]
+          RailroadSafehouse2Conductor: [1, 1]
+          RailroadSafehouse2SafehouseOwner: [1, 1]

@@ -52,7 +52,16 @@ jobs:
               for required in ('Robust.Server', 'Content.Client.zip'):
                   if required not in names:
                       raise SystemExit(f'Missing required file: {required}')
-              print('Verified server and bundled client.')
+              for required in (
+                  'Resources/Prototypes/_ReclamationProject/Maps/Wendover.yml',
+                  'Resources/Maps/Reclamation/Wendover-edit.yml',
+                  'Resources/Maps/Reclamation/Wendover-sky-edit.yml',
+                  'Resources/Maps/Reclamation/Wendover-vault-edit.yml',
+                  'Resources/Maps/Reclamation/Wendover-enclave-edit.yml',
+              ):
+                  if required not in names:
+                      raise SystemExit(f'Missing edited Wendover file: {required}; refusing deployment.')
+              print('Verified server, bundled client, and all edited Wendover map files.')
           PY
 
       - name: Save server package

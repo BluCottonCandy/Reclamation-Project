@@ -24,6 +24,7 @@ using Content.Server._ReclamationProject.Institute.Relay;
 using Content.Shared._ReclamationProject.Institute.Relay;
 using Content.Shared.Damage;
 using Content.Shared.Actions;
+using Content.Server.Body.Components;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
@@ -86,6 +87,8 @@ public sealed class InstituteRelayTest
                 && entities.GetComponent<MetaDataComponent>(coat.Value).EntityPrototype?.ID == "InstituteDirectorCoat", "Director has no Director's coat");
             Assert.That(inventory.TryGetSlotEntity(director.Value, "shoes", out var boots)
                 && entities.GetComponent<MetaDataComponent>(boots.Value).EntityPrototype?.ID == "N14ClothingBootsCombatMK2Filled", "Director has no combat boots MK2");
+            Assert.That(inventory.TryGetSlotEntity(director.Value, "back", out var suit)
+                && entities.GetComponent<MetaDataComponent>(suit.Value).EntityPrototype?.ID == "InstituteCommandMODSuit", "Director has no command MOD suit");
             Assert.That(entities.HasComponent<CanFiremanCarryComponent>(director.Value), "Director can't fireman carry");
             Assert.That(entities.HasComponent<TraumaRegenerationComponent>(director.Value), "Director lacks trauma regeneration");
             var regen = entities.GetComponent<PassiveDamageComponent>(director.Value);
@@ -265,8 +268,13 @@ public sealed class InstituteRelayTest
             Assert.That(surgery.AllSurgeries, Does.Contain(new EntProtoId("SurgeryRemoveInstituteRelay")));
             Assert.That(surgery.AllSurgeries, Does.Contain(new EntProtoId("SurgeryInsertInstituteRelay")));
             var directorHead = bodies.GetBodyChildrenOfType(director, BodyPartType.Head).First().Id;
-            Assert.That(SurgeryValid(director, directorHead, "SurgeryRemoveInstituteRelay"), Is.True, "can't remove the relay implant by surgery");
+            // Hidden under the brain: no surgery option until the brain is out.
+            Assert.That(SurgeryValid(director, directorHead, "SurgeryRemoveInstituteRelay"), Is.False, "chip surgery shown with the brain still in");
+            var brain = bodies.GetBodyOrganComponents<BrainComponent>(director).First().Comp.Owner;
+            Assert.That(bodies.RemoveOrgan(brain), Is.True);
+            Assert.That(SurgeryValid(director, directorHead, "SurgeryRemoveInstituteRelay"), Is.True, "can't remove the chip once the brain is out");
             Assert.That(SurgeryValid(director, directorHead, "SurgeryInsertInstituteRelay"), Is.False, "insert offered while the chip is in");
+            Assert.That(entities.GetComponent<MetaDataComponent>(chip).EntityName, Is.EqualTo("unknown device"), "the chip isn't an unknown device");
             Assert.That(bodies.RemoveOrgan(chip), Is.True);
             Assert.That(entities.System<SharedActionsSystem>().GetActions(director).Any(a => a.Id == relayAction), Is.False,
                 "Relay button stayed after the implant was removed");
@@ -275,7 +283,7 @@ public sealed class InstituteRelayTest
             var thief = entities.SpawnEntity("MobHuman", map.GridCoords);
             var (thiefHead, thiefHeadComp) = bodies.GetBodyChildrenOfType(thief, BodyPartType.Head).First();
             Assert.That(thiefHeadComp.Organs.ContainsKey(InstituteRelayImplantComponent.SlotId), Is.True, "head has no relay slot");
-            Assert.That(SurgeryValid(thief, thiefHead, "SurgeryInsertInstituteRelay"), Is.True, "can't insert the relay implant by surgery");
+            Assert.That(SurgeryValid(thief, thiefHead, "SurgeryInsertInstituteRelay"), Is.False, "chip insert shown with the brain still in");
             Assert.That(SurgeryValid(thief, thiefHead, "SurgeryRemoveInstituteRelay"), Is.False, "remove offered on an empty head");
             Assert.That(bodies.InsertOrgan(thiefHead, chip, InstituteRelayImplantComponent.SlotId, thiefHeadComp), Is.True);
             Assert.That(entities.System<MobStateSystem>().IsDead(thief), Is.True, "outsider survived a surgically inserted relay implant");

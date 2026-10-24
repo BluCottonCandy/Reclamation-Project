@@ -29,6 +29,7 @@
     - !type:CharacterSpeciesRequirement # #Misfits Change - robots, super mutants, and glowing ghouls cannot be Rangers
       species:
       - Human
+      - Courser
       - Ghoul
 
 - type: startingGear

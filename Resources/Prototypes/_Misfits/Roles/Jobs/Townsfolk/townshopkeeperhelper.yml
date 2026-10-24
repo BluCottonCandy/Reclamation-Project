@@ -12,6 +12,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
       - GhoulGlowing
     #- !type:CharacterDepartmentTimeRequirement # TEMP REMOVED

@@ -1,0 +1,80 @@
+# Institute command MOD suit (Director + Division Head): the Courser suit renamed, with the best
+# stats of the three Institute suits: Courser armour and stun gauntlets, Research-speed boots.
+
+- type: entity
+  parent: ReclamationClothingModsuitInstitute
+  id: InstituteCommandMODSuit
+  name: Institute command MOD suit
+  description: A modular protective suit reserved for the Institute's Director and Division Heads.
+  components:
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: InstituteCommandMODHelmet
+      gloves: InstituteCommandMODGauntlets
+      outerClothing: InstituteCommandMODChestplate
+      shoes: InstituteCommandMODBoots
+  - type: ChameleonClothing
+    slot: [back]
+    default: InstituteCommandMODSuit
+    restrictTargets: true
+    additionalTargets:
+    - InstituteCommandMODSuit
+    - N14ClothingBackpackTrekker
+    - N14ClothingBackpackHiking
+    - N14ClothingBackpackExplorer
+    - N14ClothingBackpackMilitary
+    - N14ClothingBackpackDuffel
+    - N14ClothingBackpackSatchelTrekker
+    - N14ClothingBackpackSatchelExplorer
+
+- type: entity
+  parent: ReclamationClothingModsuitHelmetInstitute
+  id: InstituteCommandMODHelmet
+  name: Institute command MOD suit helmet
+  description: A command-grade MOD helmet with built-in night vision and thermal sight.
+  components:
+  # Night vision and thermals, each with its own toggle button while the helmet is up.
+  - type: NightVision
+    isEquipment: true
+  - type: ThermalVision
+    isEquipment: true
+    color: "#98EEFB"
+    lightRadius: 15
+  - type: ChameleonClothing
+    slot: [head]
+    default: InstituteCommandMODHelmet
+    additionalTargets: [InstituteCommandMODHelmet]
+
+- type: entity
+  parent: ReclamationClothingModsuitChestplateInstitute
+  id: InstituteCommandMODChestplate
+  name: Institute command MOD suit chestplate
+  components:
+  - type: ChameleonClothing
+    slot: [outerClothing]
+    default: InstituteCommandMODChestplate
+    additionalTargets: [InstituteCommandMODChestplate]
+
+- type: entity
+  parent: ReclamationClothingModsuitGauntletsInstitute
+  id: InstituteCommandMODGauntlets
+  name: Institute command MOD suit gauntlets
+  components:
+  - type: ChameleonClothing
+    slot: [gloves]
+    default: InstituteCommandMODGauntlets
+    additionalTargets: [InstituteCommandMODGauntlets]
+
+- type: entity
+  parent: ReclamationClothingModsuitBootsInstitute
+  id: InstituteCommandMODBoots
+  name: Institute command MOD suit boots
+  components:
+  # Research-suit speed: no slowdown from the boots.
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: ChameleonClothing
+    slot: [feet]
+    default: InstituteCommandMODBoots
+    additionalTargets: [InstituteCommandMODBoots]

@@ -8,7 +8,7 @@
     outerClothing: InstituteDirectorCoat # #Reclamation Project - Director's coat
     head: InstituteScientistBeret
     shoes: N14ClothingBootsCombatMK2Filled # #Reclamation Project - Director's boots
-    back: InstituteResearchMODSuit
+    back: InstituteCommandMODSuit # #Reclamation Project - command MOD suit
 
 - type: entity
   parent: InstituteIDCardBase
@@ -29,7 +29,7 @@
     outerClothing: InstituteScientistLabcoat
     head: InstituteScientistBeret
     shoes: InstituteScientistShoes
-    back: InstituteResearchMODSuit
+    back: InstituteCommandMODSuit # #Reclamation Project - command MOD suit
 
 - type: entity
   parent: InstituteIDCardBase

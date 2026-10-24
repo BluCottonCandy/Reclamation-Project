@@ -16,6 +16,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
     - !type:CharacterPlaytimeRequirement
       tracker: MinutemenCaptain

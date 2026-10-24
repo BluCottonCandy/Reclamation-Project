@@ -22,6 +22,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -87,6 +88,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -150,6 +152,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -213,6 +216,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -276,6 +280,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
     - Ghoul
     - GhoulGlowing
   - !type:CharacterPlaytimeRequirement

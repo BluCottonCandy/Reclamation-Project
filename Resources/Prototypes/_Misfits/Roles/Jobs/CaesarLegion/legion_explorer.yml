@@ -14,6 +14,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
     # #Misfits Change: Explorer is now open to Female characters.
   startingGear: CaesarLegionExplorerGear
   alwaysUseSpawner: true

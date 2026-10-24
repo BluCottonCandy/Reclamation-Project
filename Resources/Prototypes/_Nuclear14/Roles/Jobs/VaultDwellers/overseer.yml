@@ -9,6 +9,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
+    - Courser
   - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - reduced from 70h to 40h, inline with other faction leadership locks
     department: Vault
     min: 144000 # 40 hours

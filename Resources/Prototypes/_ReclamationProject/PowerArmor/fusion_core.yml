@@ -1,0 +1,18 @@
+# Power armour runs on fusion cores: the power systems back piece holds one and drains it while worn.
+
+- type: entity
+  id: ActionFusionCorePower
+  name: Power armour on/off
+  description: Switch your power armour on or off. Off saves your fusion core, but you can barely move.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    useDelay: 1
+    icon:
+      sprite: _ReclamationProject/Objects/Power/fusion_core.rsi
+      state: empty
+    iconOn:
+      sprite: _ReclamationProject/Objects/Power/fusion_core.rsi
+      state: icon
+    event: !type:FusionCorePowerToggleEvent

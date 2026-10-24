@@ -14,6 +14,7 @@
     - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
       - Human
+      - Courser
     - !type:CharacterPlaytimeRequirement
       tracker: BoSKnight
       min: 18000 # 5 hours in the preceding role.

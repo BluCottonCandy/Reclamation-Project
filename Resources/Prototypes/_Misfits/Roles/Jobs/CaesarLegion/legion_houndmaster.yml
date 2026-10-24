@@ -15,6 +15,7 @@
     - !type:CharacterSpeciesRequirement # remove vex time req, why would you need playtime as a standard bearer to be the guy who trains dogs?
       species:
       - Human
+      - Courser
   startingGear: CaesarLegionHoundmasterGear
   alwaysUseSpawner: true
   icon: "JobIconlegionerWarrior"

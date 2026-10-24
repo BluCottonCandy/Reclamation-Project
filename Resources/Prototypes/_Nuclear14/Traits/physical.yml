@@ -36,6 +36,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
   functions:
     - !type:TraitModifyUnarmed
       damage:
@@ -194,6 +195,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
         - Ghoul
         - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Bad Reflexes
         - SuperMutant
@@ -222,6 +224,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
         - Ghoul
         - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Lightning Hands
         - SuperMutant 
@@ -241,6 +244,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
   functions:
     - !type:TraitReplaceComponent
       components:
@@ -265,6 +269,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
   functions:
     - !type:TraitAddComponent
       components:
@@ -480,6 +485,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
   functions:
     - !type:TraitAddArmor
       damageModifierSets:
@@ -510,6 +516,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
   functions:
     - !type:TraitAddArmor
       damageModifierSets:
@@ -537,6 +544,7 @@
     - !type:CharacterSpeciesRequirement
       species:
         - Human
+        - Courser
   functions:
     - !type:TraitAddArmor
       damageModifierSets:

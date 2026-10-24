@@ -15,6 +15,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
       - GhoulGlowing
   special:
@@ -40,6 +41,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
       - GhoulGlowing
   special:
@@ -66,6 +68,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
       - GhoulGlowing
     - !type:CharacterPlaytimeRequirement

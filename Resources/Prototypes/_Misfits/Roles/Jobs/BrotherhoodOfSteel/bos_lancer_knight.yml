@@ -19,6 +19,7 @@
     - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
       - Human
+      - Courser
     # #Cythisiax Changed - entry rung gates on chapter service rather than Lancers time,
     # otherwise nobody could ever accumulate the required aviation service. (was 10h Lancers)
     - !type:CharacterPlaytimeRequirement

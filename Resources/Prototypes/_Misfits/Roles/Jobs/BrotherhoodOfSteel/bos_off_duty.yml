@@ -13,6 +13,7 @@
     - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
       - Human
+      - Courser
   startingGear: BoSOffDutyGear
   alwaysUseSpawner: true
   icon: "JobIconRabMBos"

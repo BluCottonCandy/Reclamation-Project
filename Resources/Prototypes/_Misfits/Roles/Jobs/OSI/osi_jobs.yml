@@ -21,6 +21,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T6 faction timelock (20h NCR)
       department: NCR
@@ -92,6 +93,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T4 faction timelock (12h NCR)
       department: NCR
@@ -157,6 +159,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T2 faction timelock (4h NCR)
       department: NCR
@@ -223,6 +226,7 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
+      - Courser
       - Ghoul
   startingGear: OSIAgentGear
   icon: "JobIconNcrSpec"

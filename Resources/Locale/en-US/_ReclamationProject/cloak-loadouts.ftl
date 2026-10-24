@@ -1,0 +1,9 @@
+loadout-name-ReclamationLoadoutNeckCloakAce = pilot's cloak
+loadout-name-ReclamationLoadoutNeckCloakAro = werewolf cloak
+loadout-name-ReclamationLoadoutNeckCloakBi = poison cloak
+loadout-name-ReclamationLoadoutNeckCloakEnby = treasure hunter cloak
+loadout-name-ReclamationLoadoutNeckCloakGay = multi-level marketing cloak
+loadout-name-ReclamationLoadoutNeckCloakLesbian = poet cloak
+loadout-name-ReclamationLoadoutNeckCloakPan = chef's cloak
+loadout-name-ReclamationLoadoutNeckCloakTrans = vampire cloak
+loadout-name-ReclamationLoadoutNeckCloakIntersex = cyclops cloak

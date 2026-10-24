@@ -1,5 +1,6 @@
 - type: characterItemGroup
   id: N14LoadoutNeck
+  maxItems: 1
   items:
     - type: loadout
       id: N14LoadoutNeckCloakLeather
@@ -75,3 +76,21 @@
       id: N14LoadoutUniversalNeckTribalCloakBr
     - type: loadout
       id: MisfitsLoadoutOuterCloakWesternPoncho
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakAce
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakAro
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakBi
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakEnby
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakGay
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakLesbian
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakPan
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakTrans
+    - type: loadout
+      id: ReclamationLoadoutNeckCloakIntersex

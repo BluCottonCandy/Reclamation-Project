@@ -12958,3 +12958,14 @@ Entries:
   id: 6561
   time: '2026-10-24T13:23:31.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/81
+- author: aftermath434
+  changes:
+    - type: Add
+      message: Power armor Fusion cores / small UI changes
+    - type: Add
+      message: 'Courser race with their own body parts '
+    - type: Add
+      message: 'Modsuit for directors and modsuit changes '
+  id: 6562
+  time: '2026-10-24T22:44:07.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/85

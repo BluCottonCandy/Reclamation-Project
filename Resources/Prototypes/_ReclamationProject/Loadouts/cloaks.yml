@@ -1,0 +1,116 @@
+- type: loadout
+  id: ReclamationLoadoutNeckCloakAce
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakAce
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakAro
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakAro
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakBi
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakBi
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakEnby
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakEnby
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakGay
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakGay
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakLesbian
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakLesbian
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakPan
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakPan
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakTrans
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakTrans
+
+- type: loadout
+  id: ReclamationLoadoutNeckCloakIntersex
+  category: Accessories
+  cost: 0
+  exclusive: true
+  customName: false
+  customDescription: false
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  items:
+  - ClothingNeckCloakIntersex

@@ -53,8 +53,22 @@ namespace Content.Server.Database
                 .AsSingleQuery()
                 .SingleOrDefaultAsync(p => p.UserId == userId.UserId, cancel);
 
-            if (prefs is null || prefs.Profiles.Count == 0)
+            if (prefs is null)
                 return null;
+
+            // An existing empty preference row must be repaired, not reinserted by InitPrefsAsync.
+            var repaired = prefs.Profiles.Count == 0;
+            if (repaired)
+                prefs.Profiles.Add(ConvertProfiles(new HumanoidCharacterProfile(), 0));
+
+            // Repair stale persisted selections before sending preferences or spawning a player.
+            if (!prefs.Profiles.Any(p => p.Slot == prefs.SelectedCharacterSlot))
+            {
+                prefs.SelectedCharacterSlot = prefs.Profiles.Min(p => p.Slot);
+                repaired = true;
+            }
+            if (repaired)
+                await db.DbContext.SaveChangesAsync(cancel);
 
             var maxSlot = prefs.Profiles.Max(p => p.Slot) + 1;
             var profiles = new Dictionary<int, ICharacterProfile>(maxSlot);

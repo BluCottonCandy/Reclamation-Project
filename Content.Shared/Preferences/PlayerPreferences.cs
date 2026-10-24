@@ -16,7 +16,13 @@ namespace Content.Shared.Preferences
         public PlayerPreferences(IEnumerable<KeyValuePair<int, ICharacterProfile>> characters, int selectedCharacterIndex, Color adminOOCColor, bool anonymousRoundEndReport = false)
         {
             _characters = new Dictionary<int, ICharacterProfile>(characters);
-            SelectedCharacterIndex = selectedCharacterIndex;
+            // Old saves and optimistic client deletions can retain a slot that no longer exists.
+            // Keep all surviving characters and recover a usable selection on both sides.
+            if (_characters.Count == 0)
+                _characters.Add(0, new HumanoidCharacterProfile());
+            SelectedCharacterIndex = _characters.ContainsKey(selectedCharacterIndex)
+                ? selectedCharacterIndex
+                : _characters.Keys.Min();
             AdminOOCColor = adminOOCColor;
             AnonymousRoundEndReport = anonymousRoundEndReport;
         }

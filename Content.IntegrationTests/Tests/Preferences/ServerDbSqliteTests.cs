@@ -109,6 +109,40 @@ namespace Content.IntegrationTests.Tests.Preferences
         }
 
         [Test]
+        public async Task TestMissingSelectedSlotIsRepairedAndPersisted()
+        {
+            var pair = await PoolManager.GetServerClient();
+            var db = GetDb(pair.Server);
+            var user = NewUserId();
+            await db.InitPrefsAsync(user, CharlieCharlieson());
+            await db.SaveCharacterSlotAsync(user, new HumanoidCharacterProfile(), 3);
+            await db.SaveSelectedCharacterIndexAsync(user, 2);
+
+            var prefs = await db.GetPlayerPreferencesAsync(user);
+            Assert.That(prefs!.SelectedCharacterIndex, Is.Zero);
+            Assert.That(prefs.Characters.Keys, Is.EquivalentTo(new[] { 0, 3 }));
+            Assert.That(prefs.SelectedCharacter.Name, Is.EqualTo("Charlie Charlieson"));
+            var reloaded = await db.GetPlayerPreferencesAsync(user);
+            Assert.That(reloaded!.SelectedCharacterIndex, Is.Zero);
+            await pair.CleanReturnAsync();
+        }
+
+        [Test]
+        public async Task TestEmptyExistingPreferencesAreRepaired()
+        {
+            var pair = await PoolManager.GetServerClient();
+            var db = GetDb(pair.Server);
+            var user = NewUserId();
+            await db.InitPrefsAsync(user, CharlieCharlieson());
+            await db.SaveCharacterSlotAsync(user, null, 0);
+            var prefs = await db.GetPlayerPreferencesAsync(user);
+            Assert.That(prefs, Is.Not.Null);
+            Assert.That(prefs!.Characters.Keys, Is.EquivalentTo(new[] { 0 }));
+            Assert.That(prefs.SelectedCharacter, Is.TypeOf<HumanoidCharacterProfile>());
+            await pair.CleanReturnAsync();
+        }
+
+        [Test]
         public async Task TestNoPendingDatabaseChanges()
         {
             var pair = await PoolManager.GetServerClient();

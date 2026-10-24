@@ -102,6 +102,12 @@ namespace Content.Client.Lobby.UI
 
                 characterPickerButton.OnDeletePressed += () =>
                 {
+                    // A confirmation opened before a selection change may still be queued.
+                    if (_preferencesManager.Preferences.SelectedCharacterIndex == slot)
+                    {
+                        ReloadCharacterPickers();
+                        return;
+                    }
                     DeleteCharacter?.Invoke(slot);
                 };
             }

@@ -71,19 +71,25 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            var curPrefs = prefsData.Prefs!;
-
-            if (!curPrefs.Characters.ContainsKey(index))
+            // Selection writes must be ordered with profile saves and deletions too.
+            await prefsData.SaveLock.WaitAsync();
+            try
             {
-                // Non-existent slot.
-                return;
+                var curPrefs = prefsData.Prefs!;
+                if (!curPrefs.Characters.ContainsKey(index))
+                    return;
+
+                prefsData.Prefs = new PlayerPreferences(curPrefs.Characters, index, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
+                if (ShouldStorePrefs(message.MsgChannel.AuthType))
+                    await _db.SaveSelectedCharacterIndexAsync(userId, index);
             }
-
-            prefsData.Prefs = new PlayerPreferences(curPrefs.Characters, index, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
-
-            if (ShouldStorePrefs(message.MsgChannel.AuthType))
+            catch (Exception e)
             {
-                await _db.SaveSelectedCharacterIndexAsync(message.MsgChannel.UserId, message.SelectedCharacterIndex);
+                _sawmill.Error($"Failed to select character slot {index} for user {userId}: {e}");
+            }
+            finally
+            {
+                prefsData.SaveLock.Release();
             }
         }
 
@@ -160,11 +166,9 @@ namespace Content.Server.Preferences.Managers
 
                 // Server-granted brands must not select a different character slot.
                 prefsData.Prefs = new PlayerPreferences(profiles, selectCharacter ? slot : prefsData.Prefs!.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
-                var msg = new MsgPreferencesAndSettings
-                {
-                    Preferences = prefsData.Prefs,
-                    Settings = new GameSettings { MaxCharacterSlots = MaxCharacterSlots }
-                };
+                // Return only this character's authoritative brand state. A full preference
+                // snapshot can overwrite newer optimistic character creations and selections.
+                var msg = new MsgUpdateCharacter { Slot = slot, Profile = profile };
                 _netManager.ServerSendMessage(msg, session.Channel);
             }
             finally
@@ -228,40 +232,18 @@ namespace Content.Server.Preferences.Managers
             {
                 var curPrefs = prefsData.Prefs!;
 
-                // If they try to delete the slot they have selected then we switch to another one.
-                // Of course, that's only if they HAVE another slot.
-                int? nextSlot = null;
-                if (curPrefs.SelectedCharacterIndex == slot)
-                {
-                    // That ! on the end is because Rider doesn't like .NET 5.
-                    var (ns, profile) = curPrefs.Characters.FirstOrDefault(p => p.Key != message.Slot);
-                    if (profile == null)
-                    {
-                        // Only slot left, can't delete.
-                        return;
-                    }
+                // Enforce the same rule as the picker, after pending selections have completed.
+                if (slot == curPrefs.SelectedCharacterIndex
+                    || curPrefs.Characters.Count <= 1
+                    || !curPrefs.Characters.ContainsKey(slot))
+                    return;
 
-                    nextSlot = ns;
-                }
+                if (ShouldStorePrefs(message.MsgChannel.AuthType))
+                    await _db.SaveCharacterSlotAsync(userId, null, slot);
 
                 var arr = new Dictionary<int, ICharacterProfile>(curPrefs.Characters);
                 arr.Remove(slot);
-
-                prefsData.Prefs = new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
-
-                if (!ShouldStorePrefs(message.MsgChannel.AuthType))
-                {
-                    return;
-                }
-
-                if (nextSlot != null)
-                {
-                    await _db.DeleteSlotAndSetSelectedIndex(userId, slot, nextSlot.Value);
-                }
-                else
-                {
-                    await _db.SaveCharacterSlotAsync(userId, null, slot);
-                }
+                prefsData.Prefs = new PlayerPreferences(arr, curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.AnonymousRoundEndReport);
             }
             finally
             {

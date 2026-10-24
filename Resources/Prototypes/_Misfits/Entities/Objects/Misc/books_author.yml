@@ -10,11 +10,10 @@
       - state: falloutpaper
       - state: fallout_cover_base
         color: "#193c7c"
-      - state: fallout_decor_stripe
-        color: "#ffffff"
+      - state: fallout_decor_null
       - state: fallout_icon_minutemen
         color: "#ffffff"
-      - state: fallout_detail_leatherstrap
+      - state: fallout_overlay_null
     - type: Paper
       content: book-text-minutemen
 
@@ -30,8 +29,7 @@
       - state: falloutpaper
       - state: fallout_cover_base
         color: "#ad9414"
-      - state: fallout_decor_triplestripe
-        color: "#282828"
+      - state: fallout_decor_null
       - state: fallout_icon_railroad
         color: "#ffffff"
       - state: fallout_detail_bookmark
@@ -73,8 +71,6 @@
       - state: fallout_cover_base
         color: "#ffffff"
       - state: fallout_decor_spine
-        color: "#f7f7f7"
-      - state: fallout_decor_stripe
         color: "#1c1c1c"
       - state: fallout_icon_institute
         color: "#c40405"
@@ -114,7 +110,7 @@
       - state: falloutpaper
       - state: fallout_cover_base
         color: "#35291b"
-      - state: fallout_decor_lattice
+      - state: fallout_decor_triplestripe
         color: "#ffffff"
       - state: fallout_icon_triggermen
         color: "#C0C0C0"
@@ -213,12 +209,10 @@
       layers:
       - state: falloutpaper
       - state: fallout_cover_base
-        color: "#eeeacd"
-      - state: fallout_decor_triplestripe
-        color: "#85602b"
+        color: "#8A624A"
+      - state: fallout_decor_null
       - state: fallout_icon_atomcat
         color: "#dbb41d"
-      - state: fallout_detail_bookmark
-        color: "#140702"
+      - state: fallout_overlay_null
     - type: Paper
       content: book-text-atomcat

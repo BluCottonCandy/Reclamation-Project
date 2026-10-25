@@ -55,7 +55,7 @@
   setPreference: true
   hideWithoutJobWhitelist: false # #Misfits Tweak - BoS Heads not whitelisted
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   weight: 100
   #showBorder: true #Misfits Tweak: Removed border so head ranks group together visually
   overrideConsoleVisibility: false

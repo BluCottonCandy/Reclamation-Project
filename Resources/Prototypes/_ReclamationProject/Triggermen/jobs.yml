@@ -8,6 +8,15 @@
   name: job-name-triggermenboss
   description: job-description-triggermenboss
   playTimeTracker: TriggermenBoss
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: TriggermenConsigliere
+      min: 18000 # Five hours in either preceding rank.
+    - !type:CharacterPlaytimeRequirement
+      tracker: TriggermenSotocapo
+      min: 18000 # Five hours in either preceding rank.
   startingGear: TriggermenBossGear
   alwaysUseSpawner: true
   access: [Triggermen, TriggermenBoss]
@@ -32,6 +41,10 @@
   name: job-name-triggermensotocapo
   description: job-description-triggermensotocapo
   playTimeTracker: TriggermenSotocapo
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: TriggermenEnforcer
+    min: 18000 # Five hours in the preceding rank.
   startingGear: TriggermenSotocapoGear
   alwaysUseSpawner: true
   access: [Triggermen]
@@ -56,6 +69,10 @@
   name: job-name-triggermenconsigliere
   description: job-description-triggermenconsigliere
   playTimeTracker: TriggermenConsigliere
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: TriggermenEnforcer
+    min: 18000 # Five hours in the preceding rank.
   startingGear: TriggermenConsigliereGear
   alwaysUseSpawner: true
   access: [Triggermen]
@@ -80,6 +97,10 @@
   name: job-name-triggermenenforcer
   description: job-description-triggermenenforcer
   playTimeTracker: TriggermenEnforcer
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: TriggermenSoldato
+    min: 18000 # Five hours in the preceding rank.
   startingGear: TriggermenEnforcerGear
   alwaysUseSpawner: true
   access: [Triggermen]
@@ -103,6 +124,10 @@
   name: job-name-triggermensoldato
   description: job-description-triggermensoldato
   playTimeTracker: TriggermenSoldato
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: Triggerman
+    min: 18000 # Five hours in the preceding rank.
   startingGear: TriggermenSoldatoGear
   alwaysUseSpawner: true
   access: [Triggermen]

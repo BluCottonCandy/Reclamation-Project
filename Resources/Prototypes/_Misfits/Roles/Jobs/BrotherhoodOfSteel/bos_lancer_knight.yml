@@ -7,7 +7,7 @@
   id: BoSLancerKnight
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: false
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   weight: 45
   overrideConsoleVisibility: true
   canBeAntag: false

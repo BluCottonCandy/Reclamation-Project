@@ -14,6 +14,10 @@
   name: job-name-institute-director
   description: job-description-institute-director
   playTimeTracker: InstituteDirector
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: InstituteDivisionHead
+    min: 18000 # Five hours in the preceding rank.
   startingGear: InstituteDirectorGear
   alwaysUseSpawner: true
   access: [Institute, InstituteCommand, InstituteSecurity]
@@ -21,7 +25,7 @@
   supervisors: job-supervisors-institute
   whitelisted: true
   hideWithoutJobWhitelist: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -75,6 +79,10 @@
   name: job-name-institute-divisionhead
   description: job-description-institute-divisionhead
   playTimeTracker: InstituteDivisionHead
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: InstituteScientist
+    min: 18000 # Five hours in the preceding rank.
   startingGear: InstituteDivisionHeadGear
   alwaysUseSpawner: true
   access: [Institute, InstituteCommand, InstituteSecurity]
@@ -82,7 +90,7 @@
   supervisors: job-supervisors-institute
   whitelisted: true
   hideWithoutJobWhitelist: false
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -154,10 +162,13 @@
   supervisors: job-supervisors-institute
   whitelisted: true
   hideWithoutJobWhitelist: false
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   # #Reclamation Project - only the Courser race (Gen 3 synth) can be a Courser
   requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: InstituteSecurity
+    min: 18000 # Five hours in the preceding rank.
   - !type:CharacterSpeciesRequirement
     species:
     - Courser

@@ -52,7 +52,7 @@
   name: job-name-railroadsafehouse1worker
   description: job-description-railroadsafehouse1worker
   playTimeTracker: RailroadSafehouse1Worker
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
   - !type:CharacterPlaytimeRequirement
     tracker: RailroadSafehouse1Intern
@@ -93,7 +93,7 @@
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse1agent
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   special:
   - !type:AddComponentSpecial
     components:
@@ -112,7 +112,7 @@
   name: job-name-railroadsafehouse1runner
   description: job-description-railroadsafehouse1runner
   playTimeTracker: RailroadSafehouse1Runner
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
   - !type:CharacterPlaytimeRequirement
     tracker: RailroadSafehouse1Worker
@@ -153,7 +153,7 @@
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse1conductor
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -186,7 +186,7 @@
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse1safehouseowner
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -230,7 +230,7 @@
   name: job-name-railroadsafehouse2worker
   description: job-description-railroadsafehouse2worker
   playTimeTracker: RailroadSafehouse2Worker
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
   - !type:CharacterPlaytimeRequirement
     tracker: RailroadSafehouse1Intern
@@ -271,7 +271,7 @@
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse2agent
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   special:
   - !type:AddComponentSpecial
     components:
@@ -290,7 +290,7 @@
   name: job-name-railroadsafehouse2runner
   description: job-description-railroadsafehouse2runner
   playTimeTracker: RailroadSafehouse2Runner
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
   - !type:CharacterPlaytimeRequirement
     tracker: RailroadSafehouse1Worker
@@ -331,7 +331,7 @@
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse2conductor
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -364,7 +364,7 @@
   icon: JobIconPassenger
   supervisors: job-supervisors-railroadsafehouse2safehouseowner
   whitelisted: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial

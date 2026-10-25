@@ -52,7 +52,7 @@
   id: BoSPaladin
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   weight: 50
   showBorder: true
   overrideConsoleVisibility: true

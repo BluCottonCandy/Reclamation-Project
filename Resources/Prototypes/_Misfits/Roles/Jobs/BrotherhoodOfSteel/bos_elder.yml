@@ -1,9 +1,10 @@
 - type: job
   id: BoSWestElderCommander
   setPreference: true # #Misfits Tweak - visible in job selection
+  whitelisted: true
   hideWithoutJobWhitelist: true # #Misfits Change - Elder is whitelist-only; hidden from job picker without it
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   weight: 120
   name: job-name-bos-west-elder-comm
   overwatchCategory: OverwatchBosElder

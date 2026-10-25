@@ -5,7 +5,7 @@
   setPreference: true
   whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenGeneral
   hideWithoutJobWhitelist: true
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requireAdminNotify: true
   weight: 140
   displayWeight: 140

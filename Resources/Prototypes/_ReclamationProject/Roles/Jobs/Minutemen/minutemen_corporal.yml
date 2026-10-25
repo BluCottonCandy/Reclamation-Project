@@ -10,7 +10,7 @@
   name: job-name-minutemen-corporal
   description: job-description-minutemen-corporal
   playTimeTracker: MinutemenCorporal
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
     - !type:CharacterSpeciesRequirement
       species:

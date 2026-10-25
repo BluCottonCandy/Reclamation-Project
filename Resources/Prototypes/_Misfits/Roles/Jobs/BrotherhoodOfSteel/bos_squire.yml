@@ -2,7 +2,7 @@
   id: BoSMidSquire # It was renamed to Initiate, but don't change the ID!
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   weight: 20
   showBorder: true
   overrideConsoleVisibility: true

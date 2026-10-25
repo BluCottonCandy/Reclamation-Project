@@ -4,7 +4,7 @@
   id: MinutemenCaptain
   setPreference: true
   whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenCaptain
-  jobWhitelistBypassesRoleTimers: true
+  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   weight: 110
   displayWeight: 110
   showBorderBelow: true

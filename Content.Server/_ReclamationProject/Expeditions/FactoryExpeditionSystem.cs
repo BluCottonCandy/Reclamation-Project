@@ -12,6 +12,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
 using Content.Shared.Popups;
+using Content.Shared.Power.Generator;
 using Content.Shared.Storage;
 using Content.Shared.Throwing;
 using Content.Shared.Movement.Pulling.Components;
@@ -39,6 +40,7 @@ public sealed class FactoryExpeditionSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedContainerSystem _containers = default!;
     [Dependency] private readonly ThrownItemSystem _thrown = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {
@@ -159,6 +161,7 @@ public sealed class FactoryExpeditionSystem : EntitySystem
             return;
 
         comp.Powered = true;
+        _appearance.SetData(uid, GeneratorVisuals.Running, true);
         QueueDel(args.Used);
         var map = Transform(uid).MapID;
         var doors = EntityQueryEnumerator<FactoryVaultDoorComponent, TransformComponent>();

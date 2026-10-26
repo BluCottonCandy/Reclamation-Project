@@ -26,20 +26,37 @@
 - type: entity
   parent: BaseStructure
   id: FactoryHugeGenerator
-  name: huge rusted factory generator
+  name: pre-war factory generator
   description: A long-abandoned generator with an empty drive-gear socket. Insert the heavy rusty gear to open the factory vault.
   components:
   - type: Sprite
-    sprite: _ReclamationProject/Expeditions/factory_generator.rsi
-    state: icon
+    sprite: _Nuclear14/Structures/Power/generator.rsi
+    offset: 0.5, 0
+    layers:
+    - state: generator_off
+      map: ["enum.GeneratorVisualLayers.Body"]
+    - sprite: _ReclamationProject/Expeditions/factory_generator_gear.rsi
+      state: spinning
+      visible: false
+      map: ["installed-gear"]
     drawdepth: Mobs
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.GeneratorVisuals.Running:
+        enum.GeneratorVisualLayers.Body:
+          True: { state: generator_on }
+          False: { state: generator_off }
+        installed-gear:
+          True: { visible: true }
+          False: { visible: false }
   - type: Physics
     bodyType: Static
   - type: Fixtures
     fixtures:
       machine:
         shape: !type:PhysShapeAabb
-          bounds: "-0.8,-0.5,0.8,0.5"
+          bounds: "-0.4,-0.1,1.2,0.5"
         density: 1000
         layer: [Impassable]
   - type: FactoryGenerator
@@ -48,7 +65,7 @@
   parent: N14DoorVault
   id: FactoryVaultDoor
   name: factory vault door
-  description: Its motor will not move until the huge generator is running.
+  description: Its motor will not move until the pre-war generator is running.
   components:
   - type: FactoryVaultDoor
 

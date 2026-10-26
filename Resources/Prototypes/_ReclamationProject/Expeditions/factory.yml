@@ -15,9 +15,7 @@
   - type: HeldSpeedModifier
     walkModifier: 0.5
     sprintModifier: 0.5
-  - type: PullSpeedModifier
-    walkModifier: 0.5
-    sprintModifier: 0.5
+    applyWhenPulled: true
   - type: Physics
     bodyType: Dynamic
   - type: Pullable

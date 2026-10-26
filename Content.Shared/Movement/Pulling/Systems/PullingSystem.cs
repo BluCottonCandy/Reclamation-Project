@@ -292,7 +292,7 @@ public sealed class PullingSystem : EntitySystem
             HasComp<MobStateComponent>(component.Pulling.Value))
             return;
 
-        if (TryComp<Content.Shared._ReclamationProject.Expeditions.PullSpeedModifierComponent>(component.Pulling, out var dragSpeed))
+        if (TryComp<Content.Shared.Item.HeldSpeedModifierComponent>(component.Pulling, out var dragSpeed) && dragSpeed.ApplyWhenPulled)
         {
             args.ModifySpeed(dragSpeed.WalkModifier, dragSpeed.SprintModifier);
             return;
@@ -636,7 +636,7 @@ public sealed class PullingSystem : EntitySystem
         Dirty(pullerUid, pullerComp);
         Dirty(pullableUid, pullableComp);
 
-        if (HasComp<Content.Shared._ReclamationProject.Expeditions.PullSpeedModifierComponent>(pullableUid))
+        if (TryComp<Content.Shared.Item.HeldSpeedModifierComponent>(pullableUid, out var dragSpeed) && dragSpeed.ApplyWhenPulled)
             _modifierSystem.RefreshMovementSpeedModifiers(pullerUid);
 
         _adminLogger.Add(LogType.Action, LogImpact.Low,

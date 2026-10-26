@@ -1,0 +1,15 @@
+# Factory floors retain their original artwork but conceal utilities underneath.
+- type: tile
+  id: FactoryCoveredFloorMS13BrickConcrete
+  parent: FloorMS13BrickConcrete
+  isSubfloor: false
+
+- type: tile
+  id: FactoryCoveredN14FloorConcreteTileGoon
+  parent: N14FloorConcreteTileGoon
+  isSubfloor: false
+
+- type: tile
+  id: FactoryCoveredN14FloorConcreteHexacreteDark
+  parent: N14FloorConcreteHexacreteDark
+  isSubfloor: false

@@ -106,9 +106,9 @@ public abstract partial class SharedGunSystem
     private void OnGunCycle(Entity<GunComponent> ent, ref GunCycledEvent<EntityEventArgs> ev)
     {
         var comp = ent.Comp;
-        if (comp.FireRateModified < 0f)
+        // Uninitialized map weapons can have a zero cached rate. Never convert its reciprocal to a TimeSpan.
+        if (!float.IsFinite(comp.FireRateModified) || comp.FireRateModified <= 0f)
         {
-            DebugTools.Assert(DebugFireRate(comp.FireRateModified));
             return;
         }
         comp.NextFire = Timing.CurTime + TimeSpan.FromSeconds(1 / comp.FireRateModified);

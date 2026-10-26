@@ -35,6 +35,13 @@
     layers:
     - state: generator_off
       map: ["enum.GeneratorVisualLayers.Body"]
+    - sprite: _ReclamationProject/Expeditions/factory_generator_belt.rsi
+      state: moving
+      visible: false
+      map: ["installed-belt"]
+    - sprite: _ReclamationProject/Expeditions/factory_generator_gear.rsi
+      state: driven-idle
+      map: ["driven-gear"]
     - sprite: _ReclamationProject/Expeditions/factory_generator_gear.rsi
       state: spinning
       visible: false
@@ -50,6 +57,12 @@
         installed-gear:
           True: { visible: true }
           False: { visible: false }
+        installed-belt:
+          True: { visible: true }
+          False: { visible: false }
+        driven-gear:
+          True: { state: driven-spinning }
+          False: { state: driven-idle }
   - type: Physics
     bodyType: Static
   - type: Fixtures

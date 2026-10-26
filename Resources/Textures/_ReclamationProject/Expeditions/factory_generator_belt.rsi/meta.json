@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Generated with OpenAI image generation for Reclamation Project; mechanically resized to the existing generator sprite grid.",
+  "size": {
+    "x": 64,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "belt"
+    },
+    {
+      "name": "moving",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    }
+  ]
+}

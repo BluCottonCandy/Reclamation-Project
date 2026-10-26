@@ -99,36 +99,6 @@ entities:
             angle: 1.5707963267948966 rad
           decals:
             1: -13.796331,-12.046259
-        - node:
-            id: WarnCornerSE
-            color: '#FFFF00FF'
-            angle: 4.71238898038469 rad
-          decals:
-            3: 7.294064,8.45765
-        - node:
-            id: WarnCornerSE
-            color: '#FFFF00FF'
-            angle: 6.283185307179586 rad
-          decals:
-            2: 8.631562,8.470209
-        - node:
-            id: WarnLineE
-            color: '#FFFF00FF'
-            angle: 1.5707963267948966 rad
-          decals:
-            6: 7.915718,7.6601744
-        - node:
-            id: WarnLineE
-            color: '#FFFF00FF'
-            angle: 3.141592653589793 rad
-          decals:
-            4: 9.435317,9.129539
-        - node:
-            id: WarnLineE
-            color: '#FFFF00FF'
-            angle: 6.283185307179586 rad
-          decals:
-            5: 6.490309,9.1358185
     - type: RadiationGridResistance
 - proto: AirlockHatch
   entities:

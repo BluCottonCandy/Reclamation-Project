@@ -7,6 +7,7 @@ namespace Content.Server._ReclamationProject.Expeditions;
 public sealed partial class FactoryDepartureComponent : Component
 {
     [DataField] public ResPath MapPath = new("/Maps/Reclamation/Expeditions/Factory.yml");
+    [DataField] public List<ResPath>? MapPool;
     [DataField] public float Duration = 1200;
     [DataField] public float GatherRadius = 3;
 }

@@ -23,6 +23,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Robust.Shared.Random;
 
 namespace Content.Server._ReclamationProject.Expeditions;
 
@@ -41,6 +42,7 @@ public sealed class FactoryExpeditionSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _containers = default!;
     [Dependency] private readonly ThrownItemSystem _thrown = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -109,7 +111,7 @@ public sealed class FactoryExpeditionSystem : EntitySystem
         args.Handled = true;
         _ui.SetUiState(uid, N14ExpeditionBoardUiKey.Key, new N14ExpeditionBoardState(
             false, null, null,
-            new List<N14ExpeditionTierInfo> { new("FactoryEasy", "Easy — Factory", Color.Green, 1, comp.Duration / 60f) },
+            new List<N14ExpeditionTierInfo> { new("FactoryEasy", "Easy — Factory", Color.Green, comp.MapPool?.Count ?? 1, comp.Duration / 60f) },
             false, null));
         _ui.TryOpenUi(uid, N14ExpeditionBoardUiKey.Key, args.User);
     }
@@ -190,7 +192,8 @@ public sealed class FactoryExpeditionSystem : EntitySystem
         }
         if (!party.Contains(args.User))
             party.Add(args.User);
-        if (!_loader.TryLoadMap(comp.MapPath, out var map, out _))
+        var mapPath = comp.MapPool is { Count: > 0 } ? _random.Pick(comp.MapPool) : comp.MapPath;
+        if (!_loader.TryLoadMap(mapPath, out var map, out _))
         {
             _popup.PopupEntity(Loc.GetString("factory-launch-failed"), uid, args.User);
             return;

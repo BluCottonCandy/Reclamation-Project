@@ -178,10 +178,12 @@ public sealed class ClientClothingSystem : ClothingSystem
     {
         var item = GetEntity(args.Item);
 
-        if (!TryComp(item, out ClothingComponent? clothing) || clothing.InSlot == null)
+        if (!TryComp(item, out ClothingComponent? clothing))
             return;
 
-        RenderEquipment(uid, item, clothing.InSlot, component, null, clothing);
+        // Use the actual container slot, including for remote wearers whose local
+        // equip bookkeeping may not have been populated yet.
+        RenderEquipment(uid, item, args.ContainerId, component, null, clothing);
     }
 
     private void OnDidUnequip(EntityUid uid, SpriteComponent component, DidUnequipEvent args)

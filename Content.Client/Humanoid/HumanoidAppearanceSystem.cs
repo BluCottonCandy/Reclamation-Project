@@ -27,9 +27,27 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         Subs.CVar(_configurationManager, CCVars.AccessibilityServerCensorNudity, OnCvarChanged, true);
     }
 
+    private readonly HashSet<EntityUid> _pendingVisuals = new();
+
     private void OnHandleState(EntityUid uid, HumanoidAppearanceComponent component, ref AfterAutoHandleStateEvent args)
     {
-        UpdateSprite(component, Comp<SpriteComponent>(uid));
+        // Wait until the complete entity state has been applied. Rebuilding layers
+        // during state handling can leave visuals from a different state behind.
+        _pendingVisuals.Add(uid);
+    }
+
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+
+        foreach (var uid in _pendingVisuals)
+        {
+            if (TryComp(uid, out HumanoidAppearanceComponent? humanoid) &&
+                TryComp(uid, out SpriteComponent? sprite))
+                UpdateSprite(humanoid, sprite);
+        }
+
+        _pendingVisuals.Clear();
     }
 
     private void OnCvarChanged(bool value)

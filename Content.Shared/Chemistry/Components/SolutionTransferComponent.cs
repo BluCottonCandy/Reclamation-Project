@@ -9,6 +9,10 @@ namespace Content.Shared.Chemistry.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class SolutionTransferComponent : Component
 {
+    /// <summary>Transfer each item in a reagent-bearing stack without deleting its unused pieces.</summary>
+    [DataField, AutoNetworkedField]
+    public bool StackAware;
+
     /// <summary>
     ///     The amount of solution to be transferred from this solution when clicking on other solutions with it.
     /// </summary>

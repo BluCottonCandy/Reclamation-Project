@@ -65,6 +65,7 @@
   - type: DrainableSolution
     solution: compost
   - type: SolutionTransfer
+    stackAware: true
     canChangeTransferAmount: false
   - type: DeleteOnSolutionEmpty
     solution: compost

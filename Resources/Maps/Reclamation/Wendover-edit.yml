@@ -2323839,6 +2323839,33 @@ entities:
     - type: Transform
       parent: 1
       pos: 253.5,195.5
+    - type: EncryptionKeyHolder
+      keySlots: 21
+    - type: ContainerFill
+      containers:
+        key_slots:
+        - EncryptionKeyCommon
+        - EncryptionKeyCargo
+        - EncryptionKeyEngineering
+        - EncryptionKeyMedical
+        - EncryptionKeyScience
+        - EncryptionKeySecurity
+        - EncryptionKeyService
+        - EncryptionKeyCommand
+        - EncryptionKeyJustice
+        - EncryptionKeyBrotherhoodOfSteel
+        - EncryptionKeyEnclave
+        - EncryptionKeyNCR
+        - EncryptionKeyLegion
+        - EncryptionKeyVault
+        - EncryptionKeyPBS
+        - EncryptionKeyMinutemen
+        - EncryptionKeyForged
+        - EncryptionKeyTriggermen
+        - EncryptionKeyRailroad
+        - EncryptionKeyInstitute
+        - EncryptionKeyWastelandGlobal
+
 - proto: Telecrystal1
   entities:
   - uid: 199843

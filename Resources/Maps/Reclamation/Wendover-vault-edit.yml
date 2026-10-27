@@ -328663,6 +328663,33 @@ entities:
     - type: Transform
       parent: 2
       pos: -200.5,-3.5
+    - type: EncryptionKeyHolder
+      keySlots: 21
+    - type: ContainerFill
+      containers:
+        key_slots:
+        - EncryptionKeyCommon
+        - EncryptionKeyCargo
+        - EncryptionKeyEngineering
+        - EncryptionKeyMedical
+        - EncryptionKeyScience
+        - EncryptionKeySecurity
+        - EncryptionKeyService
+        - EncryptionKeyCommand
+        - EncryptionKeyJustice
+        - EncryptionKeyBrotherhoodOfSteel
+        - EncryptionKeyEnclave
+        - EncryptionKeyNCR
+        - EncryptionKeyLegion
+        - EncryptionKeyVault
+        - EncryptionKeyPBS
+        - EncryptionKeyMinutemen
+        - EncryptionKeyForged
+        - EncryptionKeyTriggermen
+        - EncryptionKeyRailroad
+        - EncryptionKeyInstitute
+        - EncryptionKeyWastelandGlobal
+
 - proto: TelescopicBaton
   entities:
   - uid: 135

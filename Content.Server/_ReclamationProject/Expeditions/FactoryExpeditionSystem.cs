@@ -24,6 +24,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server._ReclamationProject.Expeditions;
 
@@ -109,19 +110,40 @@ public sealed class FactoryExpeditionSystem : EntitySystem
         if (args.Handled || !HasComp<HandsComponent>(args.User))
             return;
         args.Handled = true;
+        var tiers = new List<N14ExpeditionTierInfo>
+        {
+            new("FactoryEasy", "Easy — Factory", Color.Green, comp.MapPool?.Count ?? 1, comp.Duration / 60f)
+        };
+        if (comp.MediumMapPool is { Count: > 0 })
+            tiers.Add(new("FactoryMedium", "Medium — Factory", Color.Yellow, comp.MediumMapPool.Count, comp.Duration / 60f));
+        if (comp.HardMapPool is { Count: > 0 })
+            tiers.Add(new("FactoryHard", "Hard — Factory", Color.Red, comp.HardMapPool.Count, comp.Duration / 60f));
         _ui.SetUiState(uid, N14ExpeditionBoardUiKey.Key, new N14ExpeditionBoardState(
-            false, null, null,
-            new List<N14ExpeditionTierInfo> { new("FactoryEasy", "Easy — Factory", Color.Green, comp.MapPool?.Count ?? 1, comp.Duration / 60f) },
-            false, null));
+            false, null, null, tiers, false, null));
         _ui.TryOpenUi(uid, N14ExpeditionBoardUiKey.Key, args.User);
     }
 
     private void SelectDeparture(EntityUid uid, FactoryDepartureComponent comp, N14ExpeditionLaunchMessage args)
     {
-        if (args.DifficultyId != "FactoryEasy" || !HasComp<HandsComponent>(args.Actor)
+        List<ResPath>? mapPool;
+        switch (args.DifficultyId)
+        {
+            case "FactoryEasy":
+                mapPool = comp.MapPool;
+                break;
+            case "FactoryMedium" when comp.MediumMapPool is { Count: > 0 }:
+                mapPool = comp.MediumMapPool;
+                break;
+            case "FactoryHard" when comp.HardMapPool is { Count: > 0 }:
+                mapPool = comp.HardMapPool;
+                break;
+            default:
+                return;
+        }
+        if (!HasComp<HandsComponent>(args.Actor)
             || !_transform.GetMapCoordinates(args.Actor).InRange(_transform.GetMapCoordinates(uid), comp.GatherRadius))
             return;
-        Depart(uid, comp, new ActivateInWorldEvent(args.Actor, uid, true));
+        Depart(uid, comp, new ActivateInWorldEvent(args.Actor, uid, true), mapPool);
         _ui.CloseUi(uid, N14ExpeditionBoardUiKey.Key, args.Actor);
     }
 
@@ -177,7 +199,7 @@ public sealed class FactoryExpeditionSystem : EntitySystem
         _popup.PopupEntity(Loc.GetString("factory-generator-started"), uid, args.User, PopupType.Large);
     }
 
-    private void Depart(EntityUid uid, FactoryDepartureComponent comp, ActivateInWorldEvent args)
+    private void Depart(EntityUid uid, FactoryDepartureComponent comp, ActivateInWorldEvent args, List<ResPath>? mapPool)
     {
         if (args.Handled || !HasComp<HandsComponent>(args.User))
             return;
@@ -192,7 +214,7 @@ public sealed class FactoryExpeditionSystem : EntitySystem
         }
         if (!party.Contains(args.User))
             party.Add(args.User);
-        var mapPath = comp.MapPool is { Count: > 0 } ? _random.Pick(comp.MapPool) : comp.MapPath;
+        var mapPath = mapPool is { Count: > 0 } ? _random.Pick(mapPool) : comp.MapPath;
         if (!_loader.TryLoadMap(mapPath, out var map, out _))
         {
             _popup.PopupEntity(Loc.GetString("factory-launch-failed"), uid, args.User);

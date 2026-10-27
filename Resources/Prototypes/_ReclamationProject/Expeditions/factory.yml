@@ -211,7 +211,10 @@
     duration: 1200
     mapPool:
     - /Maps/Reclamation/Expeditions/Factory.yml
+    mediumMapPool:
     - /Maps/Reclamation/Expeditions/Factory2.yml
+    hardMapPool:
+    - /Maps/Reclamation/Expeditions/Factory3.yml
 
 - type: entity
   parent: MarkerBase

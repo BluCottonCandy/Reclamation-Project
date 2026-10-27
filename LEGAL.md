@@ -25,3 +25,7 @@ Commit [87c70a8](https://github.com/Simple-Station/Einstein-Engines/commit/87c70
 Most assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. License and copyright are listed in metadata files. [Example](./Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
 Note that some assets are under non-commercial licenses ([CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar) and must be removed for commercial use of the project.
+
+### Factory Three map exception
+
+The original map contributions in `Resources/Maps/Reclamation/Expeditions/Factory3.yml` are not offered under the default asset license. See [Factory3.LICENSE.txt](Resources/Maps/Reclamation/Expeditions/Factory3.LICENSE.txt). Third-party assets retain their existing licenses.

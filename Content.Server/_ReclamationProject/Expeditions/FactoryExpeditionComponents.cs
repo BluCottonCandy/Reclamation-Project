@@ -8,6 +8,8 @@ public sealed partial class FactoryDepartureComponent : Component
 {
     [DataField] public ResPath MapPath = new("/Maps/Reclamation/Expeditions/Factory.yml");
     [DataField] public List<ResPath>? MapPool;
+    [DataField] public List<ResPath>? MediumMapPool;
+    [DataField] public List<ResPath>? HardMapPool;
     [DataField] public float Duration = 1200;
     [DataField] public float GatherRadius = 3;
 }

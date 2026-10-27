@@ -1,0 +1,17 @@
+Factory expedition map attribution
+
+Applies to: Factory.yml and Factory2.yml
+
+Copyright (c) 2026 BluCottonCandy.
+Original factory map layouts and creative detailing by BluCottonCandy,
+created for Reclamation Project.
+
+This notice identifies the author's original creative contributions. It
+claims no ownership of third-party tiles, sprites, entities, code, or
+other pre-existing material referenced by these maps. Those materials
+retain their respective copyright notices and licenses.
+
+This attribution notice does not change the repository's existing license
+terms or withdraw permissions previously granted. Refer to the root
+LEGAL.md and the applicable asset license metadata for licensing terms.
+It is not a transfer of copyright ownership to a separate legal entity.

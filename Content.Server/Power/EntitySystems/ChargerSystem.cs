@@ -178,7 +178,8 @@ internal sealed class ChargerSystem : EntitySystem
         switch (component.Status)
         {
             case CellChargerStatus.Off:
-                receiver.Load = 0;
+                // Keep requesting power while an item waits, so power restoration can restart charging.
+                receiver.Load = container.ContainedEntities.Count > 0 ? component.ChargeRate : 0;
                 _appearance.SetData(uid, CellVisual.Light, CellChargerStatus.Off, appearance);
                 break;
             case CellChargerStatus.Empty:
@@ -250,7 +251,14 @@ internal sealed class ChargerSystem : EntitySystem
         if (!SearchForBattery(targetEntity, out var batteryUid, out var heldBattery))
             return;
 
-        _battery.SetCharge(batteryUid.Value, heldBattery.CurrentCharge + component.ChargeRate * frameTime, heldBattery);
+        // Zero requested/received power can appear powered; never create charge from that state.
+        var chargeRate = receiverComponent.NeedsPower
+            ? Math.Min(component.ChargeRate, receiverComponent.PowerReceived)
+            : component.ChargeRate;
+        if (chargeRate <= 0)
+            return;
+
+        _battery.SetCharge(batteryUid.Value, heldBattery.CurrentCharge + chargeRate * frameTime, heldBattery);
         // Just so the sprite won't be set to 99.99999% visibility
         if (heldBattery.MaxCharge - heldBattery.CurrentCharge < 0.01)
         {

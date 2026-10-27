@@ -43,6 +43,7 @@ public sealed partial class NpcFactionSystem
             return;
 
         component.IsActive = true;
+        component.AddedTo = factionComponent;
         AddFaction(args.Equipee, component.Faction);
     }
 
@@ -52,6 +53,11 @@ public sealed partial class NpcFactionSystem
             return;
 
         component.IsActive = false;
+        var addedTo = component.AddedTo;
+        component.AddedTo = null;
+        if (!TryComp<NpcFactionMemberComponent>(args.Equipee, out var current) || !ReferenceEquals(current, addedTo))
+            return;
+
         RemoveFaction(args.Equipee, component.Faction);
     }
 }

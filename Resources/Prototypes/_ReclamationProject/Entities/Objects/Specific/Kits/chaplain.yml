@@ -1,0 +1,46 @@
+- type: entity
+  parent: KitBase
+  id: ReclamationWastelanderKitChaplain
+  name: Wasteland Chaplain
+  description: "You can't expect God to do everything, now can you? Contains a makeshift shotgun, one box of 12 gauge shells, faith implanter, Bible, loaf of bread, and bottle of wine."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunMakeshift
+    - id: MagazineBox12gauge
+    - id: ReclamationFaithImplanter
+    - id: Bible
+    - id: FoodBreadPlain
+    - id: DrinkWineBottleFull
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ReclamationWastelanderSetChaplain
+  name: wastelander-kit-chaplain-name
+  description: wastelander-kit-chaplain-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content:
+  - ReclamationWastelanderKitChaplain
+
+- type: entity
+  parent: BaseImplantOnlyImplanter
+  id: ReclamationFaithImplanter
+  name: faith implanter
+  description: A single-use implant that allows its recipient to use a Bible to heal others.
+  components:
+  - type: Implanter
+    implant: ReclamationFaithImplant
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: ReclamationFaithImplant
+  name: faith implant
+  description: Allows its recipient to heal others with a Bible.
+  categories: [HideSpawnMenu]
+  components:
+  - type: BibleUser

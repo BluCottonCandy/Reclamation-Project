@@ -2,6 +2,10 @@
   id: N14LoadoutOuter
   items:
     - type: loadout
+      id: ReclamationLoadoutChaplainClothingOuterNunRobe
+    - type: loadout
+      id: ReclamationLoadoutChaplainClothingOuterHoodieChaplain
+    - type: loadout
       id: N14LoadoutOuterJacketLettermanRed
     - type: loadout
       id: N14LoadoutOuterJacketLettermanBrown

@@ -18,6 +18,9 @@
   id: N14Wirecutter
   description: This kills the wire.
   components:
+  # Improvised equivalents reuse the ordinary surgery tool checks and repair steps.
+  - type: BoneSaw
+    speed: 0.35
   - type: Sprite
     sprite: _Nuclear14/Objects/Tools/wirecutters.rsi
     netsync: false
@@ -56,6 +59,11 @@
   id: N14Screwdriver
   description: Industrial grade torque in a small screwdriving package.
   components:
+  # Improvised equivalents reuse the ordinary surgery tool checks and repair steps.
+  - type: Retractor
+    speed: 0.45
+  - type: Tending
+    speed: 0.65
   - type: Sprite
     sprite: _Nuclear14/Objects/Tools/screwdriver.rsi
     netsync: false
@@ -91,6 +99,12 @@
   id: N14Wrench
   description: 'A common tool for assembly and disassembly. Remember: righty tighty, lefty loosey.'
   components:
+  # Improvised equivalents reuse the ordinary surgery tool checks and repair steps.
+  - type: SurgeryTool
+  - type: BoneSetter
+    speed: 0.5
+  - type: BoneGel
+    speed: 0.35
   - type: Sprite
     sprite: _Nuclear14/Objects/Tools/wrench.rsi
     state: icon
@@ -114,6 +128,9 @@
   id: N14Crowbar
   description: A multipurpose tool to pry open doors and fighting inter uhh planet invaders from China?
   components:
+  # Improvised equivalents reuse the ordinary surgery tool checks and repair steps.
+  - type: Retractor
+    speed: 0.35
   - type: MeleeWeapon
     wideAnimationRotation: 135
     attackRate: 1.0

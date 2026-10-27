@@ -3,59 +3,65 @@
 - type: startingGear
   parent: MinutemenEnlistedGear
   id: MinutemenRecruitKitGear
+  equipment:
+    pocket2: MinutemenRecruitKitSelector
   storage:
     back:
     - N14BoxPlasticFilledWastelander
     - N14MicrofusionCellRed
     - N14MicrofusionCellRed
-    - MinutemenRecruitKitSelector
 
 - type: startingGear
   parent: MinutemenPrivateGear
   id: MinutemenPrivateKitGear
+  equipment:
+    pocket2: MinutemenPrivateKitSelector
   storage:
     back:
     - N14BoxPlasticFilledWastelander
     - N14MicrofusionCellRed
     - N14MicrofusionCellRed
-    - MinutemenPrivateKitSelector
 
 - type: startingGear
   parent: MinutemenCorporalGear
   id: MinutemenCorporalKitGear
+  equipment:
+    pocket2: MinutemenCorporalKitSelector
   storage:
     back:
     - N14BoxPlasticFilledWastelander
     - N14MicrofusionCellRed
     - N14MicrofusionCellRed
-    - MinutemenCorporalKitSelector
 
 - type: startingGear
   parent: MinutemenNCOGear
   id: MinutemenSergeantKitGear
+  equipment:
+    pocket2: MinutemenSergeantKitSelector
   storage:
     back:
     - N14BoxPlasticFilledWastelander
     - N14MicrofusionCellRed
     - N14MicrofusionCellRed
-    - MinutemenSergeantKitSelector
 
 - type: startingGear
   parent: MinutemenOfficerGear
   id: MinutemenLieutenantKitGear
+  equipment:
+    pocket2: MinutemenLieutenantKitSelector
   storage:
     back:
     - N14BoxPlasticFilledWastelander
     - N14MicrofusionCellRed
     - N14MicrofusionCellRed
-    - MinutemenLieutenantKitSelector
 
 - type: startingGear
   parent: MinutemenCaptainGear
   id: MinutemenCaptainKitGear
+  equipment:
+    pocket2: MinutemenCaptainKitSelector
   storage:
     back:
     - N14BoxPlasticFilledWastelander
     - N14MicrofusionCellRed
     - N14MicrofusionCellRed
-    - MinutemenCaptainKitSelector

@@ -2,12 +2,13 @@
   parent: KitBase
   id: ReclamationWastelanderKitBackAlleyDoctor
   name: Back alley doctor
-  description: "You're more handy than a doctor, but you can still help! Contains a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition."
+  description: "You're more handy than a doctor, but you can still help! Contains a single-use CPR training manual, a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition."
   components:
   - type: Sprite
     state: medic
   - type: SpawnItemsOnUse
     items:
+    - id: ReclamationTrainingManualCPR
     - id: N14ClothingBeltUtilityFilled
     - id: N14JunkAbraxoCleaner
     - id: N14ClothingHandsGlovesLeather

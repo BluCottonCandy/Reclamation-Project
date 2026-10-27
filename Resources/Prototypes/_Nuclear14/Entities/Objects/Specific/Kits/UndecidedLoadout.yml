@@ -6,6 +6,8 @@
   parent: BaseItem
   categories: [ HideSpawnMenu ]
   components:
+  - type: Item
+    size: Small
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/kits.rsi
     state: rifleman

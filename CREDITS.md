@@ -131,3 +131,8 @@ The following SS13 projects have contributed audio, sprites, or other assets tra
 
 See [LEGAL.md](./LEGAL.md) and [LICENSE-AGPLv3.txt](./LICENSE-AGPLv3.txt) for full licensing terms.
 Individual asset licenses are specified in `attributions.yml` files co-located with the assets throughout the `Resources/` directory tree.
+
+## Community Sprite Contributions
+
+- **afuckingheretic9161** — Standard gas mask replacement sprite.
+- **skaothi** — Pride cloak resprites: asexual, aromantic, bisexual, nonbinary, gay, lesbian, pansexual, and transgender. The intersex cloak retains its existing artwork and attribution.

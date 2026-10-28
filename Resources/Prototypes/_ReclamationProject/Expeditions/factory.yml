@@ -2,7 +2,7 @@
   parent: BaseItem
   id: FactoryRustyGear
   name: heavy rusty gear
-  description: A massive corroded generator gear. Requires two free hands to carry and cannot be stored in bags or crates. Insert it into the factory generator.
+  description: A massive corroded generator gear. Requires two free hands to carry and cannot be stored in bags or crates. Insert it into the generator.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Expeditions/factory_gear.rsi
@@ -24,8 +24,8 @@
 - type: entity
   parent: BaseStructure
   id: FactoryHugeGenerator
-  name: pre-war factory generator
-  description: A long-abandoned generator with an empty drive-gear socket. Insert the heavy rusty gear to open the factory vault.
+  name: pre-war generator
+  description: A long-abandoned generator with an empty drive-gear socket. Insert the heavy rusty gear to open the secured vault.
   components:
   - type: Sprite
     sprite: _Nuclear14/Structures/Power/generator.rsi
@@ -75,7 +75,7 @@
 - type: entity
   parent: N14DoorVault
   id: FactoryVaultDoor
-  name: factory vault door
+  name: secured vault door
   description: Its motor will not move until the pre-war generator is running.
   components:
   - type: FactoryVaultDoor
@@ -83,7 +83,7 @@
 - type: entity
   parent: MarkerBase
   id: FactoryGunLootSpawner
-  name: factory expedition gun loot
+  name: expedition gun loot
   suffix: Random gun, 5% advanced expedition reward
   components:
   - type: Sprite
@@ -113,7 +113,7 @@
 - type: entity
   parent: MarkerBase
   id: FactoryAdvancedGunLootSpawner
-  name: factory expedition advanced gun loot
+  name: expedition advanced gun loot
   suffix: Guaranteed advanced gun, old expedition reward pool
   components:
   - type: Sprite
@@ -136,7 +136,7 @@
 - type: entity
   parent: MarkerBase
   id: FactoryArmorLootSpawner
-  name: factory expedition armor loot
+  name: expedition armor loot
   suffix: Random armor, old expedition armory pool
   components:
   - type: Sprite
@@ -159,7 +159,7 @@
 - type: entity
   parent: MarkerBase
   id: FactoryArrival
-  name: factory expedition arrival
+  name: expedition arrival
   components:
   - type: Sprite
     layers:
@@ -169,7 +169,7 @@
 - type: entity
   parent: MarkerBase
   id: FactoryReturnMarker
-  name: factory return destination
+  name: expedition return destination
   components:
   - type: Sprite
     layers:
@@ -179,7 +179,7 @@
   parent: BaseStructure
   id: FactoryExtraction
   name: rusted escape ladder
-  description: A rusty ladder leading back outside. Use it to leave the factory. Examine it to read the remaining mission time.
+  description: A weathered escape ladder. Use it to leave the expedition. Examine it to read the remaining mission time.
   components:
   - type: Sprite
     sprite: _Nuclear14/Structures/Misc/ladder.rsi
@@ -194,7 +194,7 @@
 - type: entity
   parent: FactoryExtraction
   id: FactoryDeparture
-  name: factory expedition departure
+  name: expedition entrance
   description: An old expedition entrance. Choose a destination to begin a 20-minute expedition with everyone standing within three tiles.
   components:
   - type: Sprite
@@ -211,6 +211,7 @@
     duration: 1200
     mapPool:
     - /Maps/Reclamation/Expeditions/Factory.yml
+    - /Maps/Reclamation/Expeditions/Cave1.yml
     mediumMapPool:
     - /Maps/Reclamation/Expeditions/Factory2.yml
     hardMapPool:
@@ -219,7 +220,7 @@
 - type: entity
   parent: MarkerBase
   id: FactoryGlowingGhoulSpawner
-  name: factory glowing ghoul boss spawner
+  name: glowing ghoul boss spawner
   suffix: Guaranteed expedition leader
   components:
   - type: Sprite

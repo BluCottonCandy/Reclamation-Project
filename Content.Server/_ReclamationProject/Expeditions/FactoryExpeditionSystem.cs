@@ -112,12 +112,12 @@ public sealed class FactoryExpeditionSystem : EntitySystem
         args.Handled = true;
         var tiers = new List<N14ExpeditionTierInfo>
         {
-            new("FactoryEasy", "Easy — Factory", Color.Green, comp.MapPool?.Count ?? 1, comp.Duration / 60f)
+            new("FactoryEasy", "Easy", Color.Green, comp.MapPool?.Count ?? 1, comp.Duration / 60f)
         };
         if (comp.MediumMapPool is { Count: > 0 })
-            tiers.Add(new("FactoryMedium", "Medium — Factory", Color.Yellow, comp.MediumMapPool.Count, comp.Duration / 60f));
+            tiers.Add(new("FactoryMedium", "Medium", Color.Yellow, comp.MediumMapPool.Count, comp.Duration / 60f));
         if (comp.HardMapPool is { Count: > 0 })
-            tiers.Add(new("FactoryHard", "Hard — Factory", Color.Red, comp.HardMapPool.Count, comp.Duration / 60f));
+            tiers.Add(new("FactoryHard", "Hard", Color.Red, comp.HardMapPool.Count, comp.Duration / 60f));
         _ui.SetUiState(uid, N14ExpeditionBoardUiKey.Key, new N14ExpeditionBoardState(
             false, null, null, tiers, false, null));
         _ui.TryOpenUi(uid, N14ExpeditionBoardUiKey.Key, args.User);

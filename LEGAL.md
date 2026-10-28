@@ -29,3 +29,7 @@ Note that some assets are under non-commercial licenses ([CC-BY-NC-SA 3.0](https
 ### Factory Three map exception
 
 The original map contributions in `Resources/Maps/Reclamation/Expeditions/Factory3.yml` are not offered under the default asset license. See [Factory3.LICENSE.txt](Resources/Maps/Reclamation/Expeditions/Factory3.LICENSE.txt). Third-party assets retain their existing licenses.
+
+### Cave One map exception
+
+The original map contributions in `Resources/Maps/Reclamation/Expeditions/Cave1.yml` are not offered under the default asset license. See [Cave1.LICENSE.txt](Resources/Maps/Reclamation/Expeditions/Cave1.LICENSE.txt). Third-party assets retain their existing licenses.

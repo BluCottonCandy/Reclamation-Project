@@ -77,7 +77,7 @@ public sealed class FilterOrganFailureTest
             Check(body.RemoveOrgan(liver) && trauma.GetFailedFilterCount(subject) == 1, "missing liver also prevents filtering");
             Check(body.InsertOrgan(torso, liver, "liver"), "repaired liver reinserted");
             Check(trauma.GetFailedFilterCount(subject) == 0, "reinsertion restores filtering");
-            Check(trauma.GetReport(subject).Contains("HP"), "compact scanner health report retained");
+            Check(trauma.GetReport(subject).Contains("/"), "compact scanner health report retained");
             entities.QueueDeleteEntity(subject);
 
         });

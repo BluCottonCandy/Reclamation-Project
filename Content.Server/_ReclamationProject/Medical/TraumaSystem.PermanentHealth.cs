@@ -93,18 +93,18 @@ public sealed partial class TraumaSystem
         {
             // A fracture repair may request enable before tissue is repaired.
             // Rearm only after some health has genuinely been restored.
-            if (GetLimbHealth(uid, comp) > 0f)
+            if (comp.TemporaryHealth <= 0f && GetLimbHealth(uid, comp) > 0f)
                 comp.FailureRecorded = false;
             return;
         }
         if (!part.Enabled || comp.FailureRecorded || comp.MaximumHealth <= 0f || !_body.BodyHasChild(body, uid)) return;
         InitializeLimbHealth(uid, part);
         comp.FailureRecorded = true; // Latch before damage/disable callbacks can re-enter.
-        comp.MaximumHealth = Math.Max(0f, comp.MaximumHealth - _random.Next(10, 26));
-        var ratio = Math.Max(.00001f, comp.MaximumHealth) / Math.Max(.00001f, comp.AppliedMaximumHealth);
+        comp.MaximumHealth = Math.Min(15f, Math.Max(0f, comp.MaximumHealth - _random.Next(10, 26)));
+        var ratio = Math.Max(.00001f, comp.MaximumHealth + comp.TemporaryHealth) / Math.Max(.00001f, comp.AppliedMaximumHealth);
         foreach (var threshold in part.IntegrityThresholds.Keys.ToArray())
             part.IntegrityThresholds[threshold] *= ratio;
-        comp.AppliedMaximumHealth = comp.MaximumHealth;
+        comp.AppliedMaximumHealth = comp.MaximumHealth + comp.TemporaryHealth;
         Dirty(uid, comp);
         Dirty(uid, part);
 
@@ -128,12 +128,43 @@ public sealed partial class TraumaSystem
         }
     }
 
+    private void RestoreDisabledLimb(EntityUid part)
+    {
+        if (!TryComp<TraumaLimbComponent>(part, out var health) ||
+            health.OriginalFailureThreshold <= 0f || !TryComp<DamageableComponent>(part, out var damage)) return;
+        // Bone setting can salvage even zero-capacity limbs, but only to the
+        // scarred fifteen-point limit. Ordinary healing cannot raise this cap.
+        health.MaximumHealth = 15f;
+        if (TryComp<BodyPartComponent>(part, out var limb))
+        {
+            var effectiveMaximum = health.MaximumHealth + health.TemporaryHealth;
+            var ratio = Math.Max(.00001f, effectiveMaximum) / Math.Max(.00001f, health.AppliedMaximumHealth);
+            foreach (var key in limb.IntegrityThresholds.Keys.ToArray()) limb.IntegrityThresholds[key] *= ratio;
+            health.AppliedMaximumHealth = effectiveMaximum;
+            Dirty(part, limb);
+        }
+        Dirty(part, health);
+        var target = Math.Min(15f, health.MaximumHealth);
+        var targetDamage = FixedPoint2.New((health.MaximumHealth - target) * health.OriginalFailureThreshold / 100f);
+        var total = damage.TotalDamage;
+        if (total <= targetDamage) return;
+        var heal = new DamageSpecifier();
+        foreach (var (type, amount) in damage.Damage.DamageDict)
+            if (amount > 0) heal.DamageDict[type] = -FixedPoint2.NewCeiling((total - targetDamage).Float() * amount.Float() / total.Float());
+        _authorizedStructuralHealingParts.Add(part);
+        try
+        {
+            _damage.TryChangeDamage(part, heal, ignoreResistances: true, interruptsDoAfters: false, canSever: false);
+        }
+        finally { _authorizedStructuralHealingParts.Remove(part); }
+    }
+
     public float GetLimbHealth(EntityUid uid, TraumaLimbComponent health)
     {
-        if (health.MaximumHealth <= 0f || !TryComp<DamageableComponent>(uid, out var damage)) return 0f;
+        if (health.MaximumHealth + health.TemporaryHealth <= 0f || !TryComp<DamageableComponent>(uid, out var damage)) return 0f;
         // Damage uses fixed-point units while thresholds use floats. Round away
         // sub-unit noise so a fully failed limb cannot appear barely alive.
-        return MathF.Round(Math.Clamp(health.MaximumHealth - damage.TotalDamage.Float() /
-            Math.Max(.00001f, health.OriginalFailureThreshold) * 100f, 0f, health.MaximumHealth), 2);
+        return MathF.Round(Math.Clamp(health.MaximumHealth + health.TemporaryHealth - damage.TotalDamage.Float() /
+            Math.Max(.00001f, health.OriginalFailureThreshold) * 100f, 0f, health.MaximumHealth + health.TemporaryHealth), 2);
     }
 }

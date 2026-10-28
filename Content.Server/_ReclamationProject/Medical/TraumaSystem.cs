@@ -67,6 +67,7 @@ public sealed partial class TraumaSystem : EntitySystem
         InitializeSplints();
         InitializePermanentHealth();
         InitializeFilterFailure();
+        InitializeMedX();
         SubscribeLocalEvent<TraumaBodyComponent, DidEquipHandEvent>(OnSupportEquipped);
         SubscribeLocalEvent<TraumaBodyComponent, DidUnequipHandEvent>(OnSupportRemoved);
     }
@@ -148,6 +149,7 @@ public sealed partial class TraumaSystem : EntitySystem
             var seconds = medical.TickAccumulator;
             medical.TickAccumulator = 0;
             Refresh(uid, medical);
+            UpdateMedX(uid, medical);
             if (_mob.IsDead(uid)) continue;
             HealNaturally(uid, medical, seconds);
             if (medical.InternalBleeding > 0)
@@ -186,7 +188,7 @@ public sealed partial class TraumaSystem : EntitySystem
     }
 
     private void OnRepair(EntityUid uid, TraumaBodyComponent comp, ref TraumaRepairEvent args)
-        => Repair(uid, args.Part, args.Kind);
+        => Repair(uid, args.Part, args.Kind, surgical: true);
 
     private void OnSupportEquipped(EntityUid uid, TraumaBodyComponent comp, DidEquipHandEvent args)
     {
@@ -203,10 +205,13 @@ public sealed partial class TraumaSystem : EntitySystem
             _standing.Down(uid);
     }
 
-    public void Repair(EntityUid uid, EntityUid part, TraumaKind kind)
+    public void Repair(EntityUid uid, EntityUid part, TraumaKind kind, bool surgical = false)
     {
         if (!TryComp<TraumaBodyComponent>(uid, out var medical) ||
             !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body != uid) return;
+        var treatment = new Content.Shared.Chemistry.MedicalTreatmentAttemptEvent();
+        RaiseLocalEvent(uid, ref treatment);
+        if (treatment.Cancelled) return;
         if (kind == TraumaKind.LimbDamage && bodyPart.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot)
         {
             if (TryComp<DamageableComponent>(part, out var damage))
@@ -215,6 +220,7 @@ public sealed partial class TraumaSystem : EntitySystem
         }
         else if (kind == TraumaKind.Fracture)
         {
+            if (surgical) RestoreDisabledLimb(part);
             RemComp<FractureComponent>(part);
             var enabled = new BodyPartEnableChangedEvent(true);
             RaiseLocalEvent(part, ref enabled);

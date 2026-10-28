@@ -9,6 +9,9 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
+using Content.Shared.FixedPoint;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization.Manager;
 
@@ -39,6 +42,8 @@ public sealed class PermanentTraumaHealthTest
             }
             var subject = Spawn();
             var recipient = Spawn();
+            Check(trauma.GetReport(subject).Contains("No fractures or internal injuries detected.") &&
+                !trauma.GetReport(subject).Contains("100/100"), "healthy organs and limbs are hidden");
             var organs = body.GetBodyOrgans(subject).Where(o => entities.HasComponent<TraumaOrganComponent>(o.Id)).ToArray();
             Check(organs.Length >= 6, "medical organs have health pools");
             var heart = organs.First(o => entities.GetComponent<TraumaOrganComponent>(o.Id).Kind == TraumaKind.Heart).Id;
@@ -66,8 +71,22 @@ public sealed class PermanentTraumaHealthTest
             trauma.SetOrganDamage(heart, 15);
             trauma.Repair(subject, torso, TraumaKind.Heart);
             Check(health.CurrentHealth == 15 && health.MaximumHealth == 15, "85-point example repairs to fifteen of fifteen");
+            trauma.Refresh(subject, entities.GetComponent<TraumaBodyComponent>(subject));
+            Check(entities.GetComponent<TraumaBodyComponent>(subject).HeartDamage == 85f,
+                "repaired 15/15 heart retains an 85 percent loss of original capacity");
+            Check(Math.Abs(entities.GetComponent<TraumaBodyComponent>(subject).AppliedHeart - .575f) < .0001f,
+                "worn repaired heart still lowers critical threshold");
+            var thresholds = entities.System<MobThresholdSystem>();
+            var alert = thresholds.GetHealthAlertPercentage(subject, MobState.Alive, FixedPoint2.Zero, FixedPoint2.Zero);
+            Check(Math.Abs(alert.Float() - .425f) < .011f,
+                "worn heart shows lost capacity on the normal health scale without body damage");
+            var critical = thresholds.GetThresholdForState(subject, MobState.Critical);
+            Check(Math.Abs(thresholds.GetHealthAlertPercentage(subject, MobState.Alive, critical, FixedPoint2.New(1)).Float() - 1f) < .011f,
+                "health indicator reaches fully depleted at the actual reduced critical threshold");
+            Check(thresholds.GetHealthAlertPercentage(subject, MobState.Critical, critical, FixedPoint2.New(.25)) == FixedPoint2.New(.25),
+                "critical-state alert behavior is unchanged");
             var report = trauma.GetReport(subject);
-            Check(report.Contains("15/15 HP") && report.Contains("-85 max") && !report.Contains("to failure"), "scanner shows clear compact health and permanent loss");
+            Check(report.Contains("15/15") && !report.Contains(" max") && !report.Contains("HP =") && !report.Contains("100/100"), "scanner shows worn health without redundant labels or healthy parts");
             var node = serialization.WriteValue(health, alwaysWrite: true, notNullableOverride: true);
             var restored = serialization.Read<TraumaOrganComponent>(node, notNullableOverride: true);
             Check(restored.MaximumHealth == 15 && restored.Damage == health.Damage, "organ max health survives serialization");
@@ -93,7 +112,7 @@ public sealed class PermanentTraumaHealthTest
             var limb = entities.GetComponent<TraumaLimbComponent>(arm);
             trauma.Fracture(arm);
             maximum = limb.MaximumHealth;
-            Check(maximum >= 75 && maximum <= 90 && !armComp.Enabled && trauma.GetLimbHealth(arm, limb) == 0, "limb disable loses 10 to 25 max health and has zero current health");
+            Check(maximum > 0 && maximum <= 15 && !armComp.Enabled && trauma.GetLimbHealth(arm, limb) == 0, "limb disable caps remaining capacity at fifteen and has zero current health");
             trauma.Fracture(arm);
             Check(limb.MaximumHealth == maximum, "repeat fracture while disabled does not reroll wear");
             trauma.Repair(subject, arm, TraumaKind.Fracture);

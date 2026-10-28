@@ -3,7 +3,7 @@ trauma-report-healthy = No fractures or internal injuries detected.
 trauma-report-fracture = { $part }: bone healing { $healing }% (100% = mended).
 trauma-report-splinted = { $part }: splinted; bone healing { $healing }%.
 trauma-report-bleeding = Internal bleeding: { $rate } units of blood per second. Surgery can stop the bleeding.
-trauma-report-organ = { $organ }: { $health }/{ $maximum } HP · -{ $lost } max · { $status }
+trauma-report-organ = { $organ }: { $health }/{ $maximum } · { $status }
 trauma-organ-lungs = Lungs
 trauma-organ-heart = Heart
 trauma-organ-liver = Liver
@@ -27,15 +27,16 @@ surgery-popup-procedure-ReclamationSurgeryRepairStomach-step-ReclamationSurgeryS
 
 surgery-popup-missing-tool = You need to hold a { $tool } for this step.
 
-trauma-report-limb = { $part }: { $health }/{ $maximum } HP · -{ $lost } max · { $status }
+trauma-report-limb = { $part }: { $health }/{ $maximum } · { $status }
 trauma-limb-disabled = Disabled
 trauma-limb-warning = At risk — seek treatment
 trauma-limb-functional = Working
 surgery-popup-procedure-ReclamationSurgeryRepairLimbDamage-step-ReclamationSurgeryStepRepairLimbDamage = { $user } begins to repair limb tissue on { $target }.
-trauma-health-legend = HP = current/max. Lost max health needs replacement.
 trauma-replacement-required = Replace
 trauma-organ-disabled = Failed
 trauma-organ-missing = { $organ }: { $count } missing.
 trauma-scan-fractured = Disabled; bone { $healing }% healed
 trauma-scan-splinted = Disabled; splinted, { $healing }% healed
 trauma-filter-failure = Chem metabolism stopped · +{ $rate } poison/sec
+
+guide-entry-reclamation-medical-system = Organ and Limb Health

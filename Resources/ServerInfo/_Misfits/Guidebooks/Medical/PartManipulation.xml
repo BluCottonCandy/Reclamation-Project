@@ -50,5 +50,5 @@ If a reattached limb is unresponsive, the nerve damage is too severe for reattac
 
 ## Permanent limb health
 
-Each full limb disable removes 10–25 points from its maximum health. The scanner shows current/max HP and permanent loss. Surgery can restore current health to the reduced maximum, but cannot restore the lost maximum. A fresh replacement limb starts at 100 maximum HP; a used transplant keeps its previous wear. A limb with zero maximum HP must be replaced.
+Each full limb disable removes 10-25 points and caps the remaining capacity at 15. The scanner lists injured or permanently worn limbs using their remaining health, such as 15/15; healthy, undamaged limbs are hidden. Surgery can restore current health to the reduced maximum, but cannot restore the lost maximum. A fresh replacement limb starts at 100 maximum HP; a used transplant keeps its previous wear. A limb with zero maximum HP can be salvaged to 15/15 by bone-setting surgery; restoring 100 requires a fresh replacement.
 </Document>

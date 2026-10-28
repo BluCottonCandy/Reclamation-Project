@@ -23,6 +23,9 @@ public sealed partial class TraumaBodyComponent : Component
     [DataField] public float AppliedRecovery = 1f;
     [DataField] public float AppliedHeart = 1f;
     [DataField] public float PreviousHunger;
+    public float LastMedXAmount;
+    public int PendingMedXDoses;
+    public bool UpdatingMedX;
     public bool SuppressInjuryRolls;
     public float TickAccumulator;
     public float SymptomAccumulator;
@@ -46,6 +49,7 @@ public sealed partial class TraumaOrganComponent : Component
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class TraumaLimbComponent : Component
 {
+    [DataField, AutoNetworkedField] public float TemporaryHealth;
     [DataField, AutoNetworkedField] public float MaximumHealth = 100f;
     [DataField, AutoNetworkedField] public float OriginalFailureThreshold;
     [DataField] public float AppliedMaximumHealth = 100f;

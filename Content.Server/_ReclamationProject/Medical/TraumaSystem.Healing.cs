@@ -12,11 +12,11 @@ namespace Content.Server._ReclamationProject.Medical;
 
 public sealed partial class TraumaSystem
 {
-    private readonly HashSet<EntityUid> _naturalHealingParts = new();
+    private readonly HashSet<EntityUid> _authorizedStructuralHealingParts = new();
 
     private void OnStructuralHealing(EntityUid uid, TraumaLimbComponent comp, ref BeforeDamageChangedEvent args)
     {
-        if (_rejuvenating || _naturalHealingParts.Contains(uid) ||
+        if (_rejuvenating || _authorizedStructuralHealingParts.Contains(uid) ||
             !TryComp<BodyPartComponent>(uid, out var part) ||
             (part.Body is { } body && !HasComp<TraumaBodyComponent>(body)) || !args.Damage.DamageDict.Values.Any(value => value < 0))
             return;
@@ -65,14 +65,14 @@ public sealed partial class TraumaSystem
             var heal = new DamageSpecifier();
             foreach (var (type, amount) in damage.Damage.DamageDict)
                 if (amount > 0) heal.DamageDict[type] = -FixedPoint2.New(Math.Min(amount.Float(), budget * amount.Float() / total));
-            _naturalHealingParts.Add(part);
+            _authorizedStructuralHealingParts.Add(part);
             try
             {
                 _damage.TryChangeDamage(part, heal, ignoreResistances: true, interruptsDoAfters: false, canSever: false);
             }
             finally
             {
-                _naturalHealingParts.Remove(part);
+                _authorizedStructuralHealingParts.Remove(part);
             }
         }
         Refresh(uid, medical);

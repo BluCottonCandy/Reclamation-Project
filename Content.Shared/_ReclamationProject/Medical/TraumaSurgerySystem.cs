@@ -1,6 +1,7 @@
 using Robust.Shared.GameStates;
 using System.Linq;
 using Content.Shared._Shitmed.Body.Events;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
 using Content.Shared._Shitmed.Medical.Surgery.Steps;
@@ -18,7 +19,7 @@ using Robust.Shared.Network;
 namespace Content.Shared._ReclamationProject.Medical;
 
 /// <summary>Integrates injury repair with Shitmed's tool checks, prerequisites and do-afters.</summary>
-public sealed class TraumaSurgerySystem : EntitySystem
+public sealed partial class TraumaSurgerySystem : EntitySystem
 {
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -42,11 +43,15 @@ public sealed class TraumaSurgerySystem : EntitySystem
     {
         if (!HasComp<TraumaBodyComponent>(body) || !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body != body)
             return false;
-        if (kind is TraumaKind.Fracture or TraumaKind.LimbDamage &&
+        if (kind == TraumaKind.LimbDamage &&
             TryComp<TraumaLimbComponent>(part, out var limb) && limb.MaximumHealth <= 0f)
             return false;
         if (kind == TraumaKind.Fracture)
-            return HasComp<FractureComponent>(part);
+            return HasComp<FractureComponent>(part) ||
+                bodyPart.PartType is (BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot) &&
+                TryComp<TraumaLimbComponent>(part, out var health) && health.OriginalFailureThreshold > 0f &&
+                TryComp<DamageableComponent>(part, out var tissue) &&
+                tissue.TotalDamage.Float() >= health.MaximumHealth * health.OriginalFailureThreshold / 100f;
         if (kind == TraumaKind.LimbDamage)
             return bodyPart.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot &&
                 TryComp<DamageableComponent>(part, out var damage) && damage.TotalDamage > 0;
@@ -76,9 +81,12 @@ public sealed class TraumaSurgerySystem : EntitySystem
     private void OnEnable(EntityUid uid, TraumaLimbComponent marker, ref BodyPartEnableChangedEvent args)
     {
         if (!TryComp<BodyPartComponent>(uid, out var comp)) return;
-        if (args.Enabled)
+        var protectedLimb = HasLimbDisableProtection(uid);
+        if (protectedLimb) args = new BodyPartEnableChangedEvent(true);
+        if (args.Enabled && !protectedLimb)
         {
-            var blocked = marker.MaximumHealth <= 0f || HasComp<FractureComponent>(uid);
+            var blocked = marker.MaximumHealth + marker.TemporaryHealth <= 0f ||
+                marker.TemporaryHealth <= 0f && HasComp<FractureComponent>(uid);
             if (comp.Body is { } body)
             {
                 var related = comp.PartType switch
@@ -90,7 +98,8 @@ public sealed class TraumaSurgerySystem : EntitySystem
                 };
                 if (related != BodyPartType.Other)
                     blocked |= _body.GetBodyChildrenOfType(body, related, symmetry: comp.Symmetry)
-                        .Any(p => HasComp<FractureComponent>(p.Id));
+                        .Any(p => HasComp<FractureComponent>(p.Id) &&
+                            (!TryComp<TraumaLimbComponent>(p.Id, out var health) || health.TemporaryHealth <= 0f));
             }
             if (blocked) args = new BodyPartEnableChangedEvent(false);
         }
@@ -104,10 +113,10 @@ public sealed class TraumaSurgerySystem : EntitySystem
     private void OnLimbHealthState(EntityUid uid, TraumaLimbComponent comp, ref AfterAutoHandleStateEvent args)
     {
         if (_net.IsServer || !TryComp<BodyPartComponent>(uid, out var part)) return;
-        var ratio = Math.Max(.00001f, comp.MaximumHealth) / Math.Max(.00001f, comp.AppliedMaximumHealth);
+        var ratio = Math.Max(.00001f, comp.MaximumHealth + comp.TemporaryHealth) / Math.Max(.00001f, comp.AppliedMaximumHealth);
         foreach (var key in part.IntegrityThresholds.Keys.ToArray())
             part.IntegrityThresholds[key] *= ratio;
-        comp.AppliedMaximumHealth = comp.MaximumHealth;
+        comp.AppliedMaximumHealth = comp.MaximumHealth + comp.TemporaryHealth;
     }
 
     private void OnBlur(EntityUid uid, TraumaBodyComponent comp, GetBlurEvent args)
@@ -127,7 +136,8 @@ public sealed class TraumaSurgerySystem : EntitySystem
         }
         var fractures = _body.GetBodyChildrenOfType(uid, BodyPartType.Leg)
             .Concat(_body.GetBodyChildrenOfType(uid, BodyPartType.Foot))
-            .Where(p => HasComp<FractureComponent>(p.Id)).ToArray();
+            .Where(p => HasComp<FractureComponent>(p.Id) &&
+                (!TryComp<TraumaLimbComponent>(p.Id, out var health) || health.TemporaryHealth <= 0f)).ToArray();
         if (fractures.Length == 0) return;
         // A splint supports transport, but never restores use of the fractured limb.
         var factor = fractures.All(p => Comp<FractureComponent>(p.Id).Splinted) ? .85f : .7f;

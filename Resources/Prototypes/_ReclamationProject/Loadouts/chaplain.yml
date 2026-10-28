@@ -1,0 +1,66 @@
+- type: loadout
+  id: ReclamationLoadoutChaplainClothingUniformJumpsuitChaplain
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [Wastelander, Outcast, WasterTrader]
+  items:
+  - ClothingUniformJumpsuitChaplain
+
+- type: loadout
+  id: ReclamationLoadoutChaplainClothingUniformJumpskirtChaplain
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [Wastelander, Outcast, WasterTrader]
+  items:
+  - ClothingUniformJumpskirtChaplain
+
+- type: loadout
+  id: ReclamationLoadoutChaplainClothingOuterNunRobe
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [Wastelander, Outcast, WasterTrader]
+  items:
+  - ClothingOuterNunRobe
+
+- type: loadout
+  id: ReclamationLoadoutChaplainClothingOuterHoodieChaplain
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [Wastelander, Outcast, WasterTrader]
+  items:
+  - ClothingOuterHoodieChaplain
+
+- type: loadout
+  id: ReclamationLoadoutChaplainClothingNeckStoleChaplain
+  category: Accessories
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  - !type:CharacterJobRequirement
+    jobs: [Wastelander, Outcast, WasterTrader]
+  items:
+  - ClothingNeckStoleChaplain
+
+

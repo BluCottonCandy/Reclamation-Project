@@ -1,3 +1,4 @@
+using Content.Shared.Chemistry;
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
@@ -55,6 +56,11 @@ public sealed class HealingSystem : EntitySystem
 
     private void OnDoAfter(Entity<DamageableComponent> entity, ref HealingDoAfterEvent args)
     {
+        var treatment = new MedicalTreatmentAttemptEvent();
+        RaiseLocalEvent(entity.Owner, ref treatment);
+        if (treatment.Cancelled)
+            return;
+
         var dontRepeat = false;
 
         if (!TryComp(args.Used, out HealingComponent? healing))
@@ -183,6 +189,11 @@ public sealed class HealingSystem : EntitySystem
 
     private bool TryHeal(EntityUid uid, EntityUid user, EntityUid target, HealingComponent component)
     {
+        var treatment = new MedicalTreatmentAttemptEvent();
+        RaiseLocalEvent(target, ref treatment);
+        if (treatment.Cancelled)
+            return false;
+
         if (!TryComp<DamageableComponent>(target, out var targetDamage))
             return false;
 

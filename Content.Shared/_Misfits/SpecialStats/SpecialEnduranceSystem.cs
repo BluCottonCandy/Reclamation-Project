@@ -12,7 +12,7 @@ using Robust.Shared.Maths;
 namespace Content.Shared._Misfits.SpecialStats;
 
 /// <summary>
-/// Applies Endurance health bonuses when S.P.E.C.I.A.L. changes.
+/// Applies Endurance survival modifiers when S.P.E.C.I.A.L. changes.
 /// </summary>
 public sealed class SpecialEnduranceSystem : EntitySystem
 {
@@ -106,12 +106,8 @@ public sealed class SpecialEnduranceSystem : EntitySystem
         if (!TryComp<MobThresholdsComponent>(ent.Owner, out var thresholds))
             return;
 
-        var tuning = _special.GetTuning();
-        var delta = _special.GetCurvedEffectDelta(ent.Owner, SpecialStat.Endurance, ent.Comp);
-        var healthPerPoint = delta > 0f
-            ? tuning.EnduranceHealthBonusPerPoint
-            : tuning.EnduranceHealthModifierPerPoint;
-        var desired = reset ? 0f : SharedSpecialSystem.GetCurvedEffectModifier(delta, healthPerPoint);
+        // Undo any previously applied health bonus; Endurance no longer changes health thresholds.
+        const float desired = 0f;
         var adjustment = desired - ent.Comp.AppliedHealthThresholdModifier;
 
         if (MathHelper.CloseTo(adjustment, 0f))

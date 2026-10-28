@@ -144,6 +144,9 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         var oldTags = _access.TryGetTags(targetId) ?? new List<ProtoId<AccessLevelPrototype>>();
         oldTags = oldTags.ToList();
 
+        // The UI only submits visible buttons. Preserve access outside this console's editable list.
+        newAccessList = newAccessList.Union(oldTags.Where(tag => !component.AccessLevels.Contains(tag))).ToList();
+
         var privilegedId = component.PrivilegedIdSlot.Item;
 
         if (oldTags.SequenceEqual(newAccessList))
@@ -183,11 +186,13 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         if (!Resolve(uid, ref component))
             return true;
 
+        if (component.PrivilegedIdSlot.Item is not { } privilegedId)
+            return false;
+
         if (!TryComp<AccessReaderComponent>(uid, out var reader))
             return true;
 
-        var privilegedId = component.PrivilegedIdSlot.Item;
-        return privilegedId != null && _accessReader.IsAllowed(privilegedId.Value, uid, reader);
+        return _accessReader.IsAllowed(privilegedId, uid, reader);
     }
 
     private void UpdateStationRecord(EntityUid uid, EntityUid targetId, string newFullName, ProtoId<AccessLevelPrototype> newJobTitle, JobPrototype? newJobProto)

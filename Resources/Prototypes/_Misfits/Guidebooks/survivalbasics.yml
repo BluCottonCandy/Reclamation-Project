@@ -8,9 +8,21 @@
   text: "/ServerInfo/_Misfits/Guidebooks/Survival/index.xml"
   children:
   - N14Basics
+  - ReclamationEnraged
+  - ReclamationBruiserKit
 
 - type: guideEntry
   id: N14Basics
   name: guide-entry-basics
   text: "/ServerInfo/_Misfits/Guidebooks/Survival/Basics.xml"
   filterEnabled: True
+
+- type: guideEntry
+  id: ReclamationBruiserKit
+  name: guide-entry-bruiser-kit
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/Bruiser.xml"
+
+- type: guideEntry
+  id: ReclamationEnraged
+  name: guide-entry-endurance-enraged
+  text: "/ServerInfo/_Misfits/Guidebooks/Survival/Enraged.xml"

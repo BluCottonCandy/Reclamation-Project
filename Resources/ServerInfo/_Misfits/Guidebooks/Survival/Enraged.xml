@@ -1,0 +1,15 @@
+<Document>
+# Endurance: Enraged
+
+Characters with 10 Endurance automatically become [bold]Enraged[/bold] when an injury would put them into critical condition or kill them. This also prevents soft critical condition.
+
+Enraged lasts [bold]10 seconds[/bold]. During that time, you cannot enter critical condition or die, but you take [bold]25% more damage[/bold]. Movement slowdowns are ignored for the duration. Normal slowdowns return when it ends. It does not heal you: damage continues to accumulate.
+
+[bold]Healing and chems are blocked while Enraged.[/bold] You cannot eat, drink, or receive injections or medical treatment. Chemical effects already in your bloodstream are also suppressed until the state ends. Other players cannot heal you through it.
+
+When Enraged ends, critical condition and death apply normally again. Injuries that are still lethal can kill you immediately.
+
+Enraged has a [bold]five-minute cooldown[/bold], measured from activation. It cannot activate again during that cooldown.
+
+Endurance no longer grants additional health.
+</Document>

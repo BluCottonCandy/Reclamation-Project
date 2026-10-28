@@ -148,6 +148,7 @@
     - ReclamationWastelanderSetBruiser
     - ReclamationWastelanderSetHighRoller
     - ReclamationWastelanderSetFarmer
+    - ReclamationWastelanderSetChaplain
 
 - type: UndecidedLoadoutBackpackSet
   id: ReclamationSurplusPistol22lrMakeshift
@@ -752,15 +753,18 @@
 - type: startingGear
   parent: WastelanderGear
   id: ReclamationWastelanderKitGear
+  equipment:
+    pocket2: ReclamationWastelanderKitSelector
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - ReclamationWastelanderKitSelector
 
 - type: startingGear
   parent: WasterTraderGear
   id: ReclamationWastelanderTraderKitGear
+  equipment:
+    pocket2: ReclamationWastelanderKitSelector
   storage:
     back:
+    - N14Multitool
     - N14BoxPlasticFilledWastelander
-    - ReclamationWastelanderKitSelector

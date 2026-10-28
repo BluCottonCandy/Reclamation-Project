@@ -2,12 +2,13 @@
   parent: KitBase
   id: ReclamationWastelanderKitBackAlleyDoctor
   name: Back alley doctor
-  description: "You're more handy than a doctor, but you can still help! Contains a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition."
+  description: "You're more handy than a doctor, but you can still help! Contains a single-use CPR training manual, a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition."
   components:
   - type: Sprite
     state: medic
   - type: SpawnItemsOnUse
     items:
+    - id: ReclamationTrainingManualCPR
     - id: N14ClothingBeltUtilityFilled
     - id: N14JunkAbraxoCleaner
     - id: N14ClothingHandsGlovesLeather
@@ -34,7 +35,7 @@
   parent: KitBase
   id: ReclamationWastelanderKitBruiser
   name: Bruiser
-  description: "You love a good scrap, and you never run from a fight. Contains one random ordinary N14 two-handed melee weapon, one psycho syringe, and one buffout pill."
+  description: "You love a good scrap, and you never run from a fight. Contains one random two-handed melee weapon (including a 2% chance of a super sledgehammer), one psycho syringe, and one buffout pill."
   components:
   - type: Sprite
     state: rifleman
@@ -42,15 +43,28 @@
     items:
     - id: N14Psycho
     - id: N14BuffoutPill
+    # Relative group weights: 6 ordinary weapons x 49 + super sledge x 6 = 300.
+    # Super sledge: 6/300 = 2%; each ordinary weapon: 49/300.
     - id: N14BaseBallBat
+      prob: 49
       orGroup: melee
     - id: N14SledgeHammer
+      prob: 49
       orGroup: melee
     - id: N14FireAxe
+      prob: 49
       orGroup: melee
     - id: N14GolfClub
+      prob: 49
       orGroup: melee
     - id: N14WastelandSpear
+      prob: 49
+      orGroup: melee
+    - id: N14TribalBigClubDecorated
+      prob: 49
+      orGroup: melee
+    - id: N14SuperSledgeHammer
+      prob: 6
       orGroup: melee
     sound:
       path: /Audio/Effects/unwrap.ogg

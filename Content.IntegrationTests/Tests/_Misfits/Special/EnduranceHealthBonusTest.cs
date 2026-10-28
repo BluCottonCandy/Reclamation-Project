@@ -11,7 +11,7 @@ namespace Content.IntegrationTests.Tests._Misfits.Special;
 public sealed class EnduranceHealthBonusTest
 {
     [Test]
-    public async Task BonusRecalculatesWithoutStackingAndPreservesPenalties()
+    public async Task EnduranceDoesNotChangeHealthThresholds()
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -41,12 +41,12 @@ public sealed class EnduranceHealthBonusTest
                 }
             }
 
-            Check(10, 50f);
-            Check(10, 50f);
-            Check(6, 6.6666667f);
+            Check(10, 0f);
+            Check(10, 0f);
+            Check(6, 0f);
             Check(5, 0f);
-            Check(1, -13.3333335f);
-            Check(10, 50f);
+            Check(1, 0f);
+            Check(10, 0f);
             entities.RemoveComponent<SpecialComponent>(mob);
             foreach (var state in states)
                 Assert.That((float) thresholds.GetThresholdForState(mob, state),

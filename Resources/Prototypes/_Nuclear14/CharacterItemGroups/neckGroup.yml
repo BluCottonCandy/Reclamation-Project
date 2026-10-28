@@ -3,6 +3,8 @@
   maxItems: 1
   items:
     - type: loadout
+      id: ReclamationLoadoutChaplainClothingNeckStoleChaplain
+    - type: loadout
       id: N14LoadoutNeckCloakLeather
     - type: loadout
       id: N14LoadoutNeckMantleLeather

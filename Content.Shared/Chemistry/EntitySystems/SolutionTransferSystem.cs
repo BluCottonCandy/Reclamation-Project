@@ -111,6 +111,14 @@ public sealed class SolutionTransferSystem : EntitySystem
 
         var (uid, comp) = ent;
 
+        if (comp.StackAware || TryComp<SolutionTransferComponent>(target, out var stackTransfer) && stackTransfer.StackAware)
+        {
+            var stackEvent = new StackSolutionTransferEvent(args);
+            RaiseLocalEvent(uid, ref stackEvent);
+            return;
+        }
+
+
         //Special case for reagent tanks, because normally clicking another container will give solution, not take it.
         if (comp.CanReceive
             && !HasComp<RefillableSolutionComponent>(target) // target must not be refillable (e.g. Reagent Tanks)
@@ -233,3 +241,7 @@ public record struct SolutionTransferAttemptEvent(EntityUid From, EntityUid To, 
         CancelReason = reason;
     }
 }
+
+/// <summary>Server-side stack conversion uses the ordinary solution interaction and transfer APIs.</summary>
+[ByRefEvent]
+public record struct StackSolutionTransferEvent(AfterInteractEvent Interaction);

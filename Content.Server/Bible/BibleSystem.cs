@@ -1,3 +1,4 @@
+using Content.Shared.Implants.Components;
 using Content.Server.Bible.Components;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
@@ -92,6 +93,23 @@ namespace Content.Server.Bible
             }
         }
 
+        private bool CanUseBible(EntityUid user)
+        {
+            if (HasComp<BibleUserComponent>(user))
+                return true;
+
+            if (!TryComp<ImplantedComponent>(user, out var implanted))
+                return false;
+
+            foreach (var implant in implanted.ImplantContainer.ContainedEntities)
+            {
+                if (HasComp<BibleUserComponent>(implant))
+                    return true;
+            }
+
+            return false;
+        }
+
         private void OnAfterInteract(EntityUid uid, BibleComponent component, AfterInteractEvent args)
         {
             if (!args.CanReach)
@@ -105,7 +123,7 @@ namespace Content.Server.Bible
                 return;
             }
 
-            if (!HasComp<BibleUserComponent>(args.User))
+            if (!CanUseBible(args.User))
             {
                 _popupSystem.PopupEntity(Loc.GetString("bible-sizzle"), args.User, args.User);
 
@@ -163,7 +181,7 @@ namespace Content.Server.Bible
             if (!args.CanInteract || !args.CanAccess || component.AlreadySummoned || component.SpecialItemPrototype == null)
                 return;
 
-            if (component.RequiresBibleUser && !HasComp<BibleUserComponent>(args.User))
+            if (component.RequiresBibleUser && !CanUseBible(args.User))
                 return;
 
             AlternativeVerb verb = new()
@@ -228,7 +246,7 @@ namespace Content.Server.Bible
             var (uid, component) = ent;
             if (component.AlreadySummoned || component.SpecialItemPrototype == null)
                 return;
-            if (component.RequiresBibleUser && !HasComp<BibleUserComponent>(user))
+            if (component.RequiresBibleUser && !CanUseBible(user))
                 return;
             if (!Resolve(user, ref position))
                 return;

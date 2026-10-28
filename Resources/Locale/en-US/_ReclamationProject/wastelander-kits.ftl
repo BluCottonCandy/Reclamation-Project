@@ -99,11 +99,16 @@ wastelander-cpr-already-known = You already know CPR.
 wastelander-kit-window-description = Choose your equipment below, then approve your selection.
 
 wastelander-kit-backalleydoctor-name = Back alley doctor
-wastelander-kit-backalleydoctor-description = You're more handy than a doctor, but you can still help! Contains a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition.
+wastelander-kit-backalleydoctor-description = You're more handy than a doctor, but you can still help! Contains a single-use CPR training manual, a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition.
 wastelander-kit-bruiser-name = Bruiser
-wastelander-kit-bruiser-description = You love a good scrap, and you never run from a fight. Contains one random ordinary N14 two-handed melee weapon, one psycho syringe, and one buffout pill.
+wastelander-kit-bruiser-description = You love a good scrap, and you never run from a fight. Contains one random two-handed melee weapon (including a 2% chance of a super sledgehammer), one psycho syringe, and one buffout pill.
 wastelander-kit-highroller-name = High roller
 wastelander-kit-highroller-description = Luck is always on your side, you always make it through! Contains a pristine .45 Colt, one box of .45 ammunition, a checkered suit, a Reinforced Leather Vest, white cowboy boots, and a grey fedora.
 
 wastelander-kit-farmer-name = Farmer kit
 wastelander-kit-farmer-description = You've always had a green thumb, you can grow anything almost anywhere! Contains a filled botany toolbelt, a clipping bag with one of every N14 plant clipping, and a full compost sack.
+
+wastelander-kit-chaplain-name = Wasteland Chaplain
+wastelander-kit-chaplain-description = You can't expect God to do everything, now can you? Contains a makeshift shotgun, one box of 12 gauge shells, faith implanter, Bible, loaf of bread, and bottle of wine.
+
+guide-entry-bruiser-kit = Bruiser Kit

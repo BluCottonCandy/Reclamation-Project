@@ -2,6 +2,10 @@
   id: N14LoadoutUniform
   items:
     - type: loadout
+      id: ReclamationLoadoutChaplainClothingUniformJumpsuitChaplain
+    - type: loadout
+      id: ReclamationLoadoutChaplainClothingUniformJumpskirtChaplain
+    - type: loadout
       id: N14LoadoutUniformJumpsuitVault14
     - type: loadout
       id: N14LoadoutUniformJumpsuitDetectiveAlt

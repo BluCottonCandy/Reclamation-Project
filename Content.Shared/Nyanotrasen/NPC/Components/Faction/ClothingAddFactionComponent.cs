@@ -1,3 +1,4 @@
+using Content.Shared.NPC.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.NPC.Prototypes;
 
@@ -11,6 +12,11 @@ namespace Content.Shared.Nyanotrasen.NPC.Components.Faction
     public sealed partial class ClothingAddFactionComponent : Component
     {
         public bool IsActive = false;
+
+        // Only undo the temporary grant on the faction component this item actually modified.
+        // Job setup can replace that component with permanent faction membership after equipment is applied.
+        public NpcFactionMemberComponent? AddedTo;
+
 
         /// <summary>
         /// Faction added

@@ -1,6 +1,7 @@
 - type: startingGear
   id: RailroadSafehouse1InternGear
   equipment:
+    pocket2: RailroadInternKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -13,11 +14,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadInternKitSelector
 
 - type: startingGear
   id: RailroadSafehouse1WorkerGear
   equipment:
+    pocket2: RailroadWorkerKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -30,11 +31,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadWorkerKitSelector
 
 - type: startingGear
   id: RailroadSafehouse1AgentGear
   equipment:
+    pocket2: RailroadAgentKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -52,11 +53,11 @@
     - N14BoxPlasticFilledWastelander
     - RailroadAgentCombatArmor
     - RailroadAgentSilencedPistol
-    - RailroadAgentKitSelector
 
 - type: startingGear
   id: RailroadSafehouse1RunnerGear
   equipment:
+    pocket2: RailroadRunnerKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -71,11 +72,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadRunnerKitSelector
 
 - type: startingGear
   id: RailroadSafehouse1ConductorGear
   equipment:
+    pocket2: RailroadConductorKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -89,11 +90,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadConductorKitSelector
 
 - type: startingGear
   id: RailroadSafehouse1SafehouseOwnerGear
   equipment:
+    pocket2: RailroadSafehouseOwnerKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -107,11 +108,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadSafehouseOwnerKitSelector
 
 - type: startingGear
   id: RailroadSafehouse2InternGear
   equipment:
+    pocket2: RailroadInternKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -124,11 +125,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadInternKitSelector
 
 - type: startingGear
   id: RailroadSafehouse2WorkerGear
   equipment:
+    pocket2: RailroadWorkerKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -141,11 +142,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadWorkerKitSelector
 
 - type: startingGear
   id: RailroadSafehouse2AgentGear
   equipment:
+    pocket2: RailroadAgentKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -163,11 +164,11 @@
     - N14BoxPlasticFilledWastelander
     - RailroadAgentCombatArmor
     - RailroadAgentSilencedPistol
-    - RailroadAgentKitSelector
 
 - type: startingGear
   id: RailroadSafehouse2RunnerGear
   equipment:
+    pocket2: RailroadRunnerKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -182,11 +183,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadRunnerKitSelector
 
 - type: startingGear
   id: RailroadSafehouse2ConductorGear
   equipment:
+    pocket2: RailroadConductorKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -200,11 +201,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadConductorKitSelector
 
 - type: startingGear
   id: RailroadSafehouse2SafehouseOwnerGear
   equipment:
+    pocket2: RailroadSafehouseOwnerKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -218,11 +219,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadSafehouseOwnerKitSelector
 
 - type: startingGear
   id: RailroadAlphaLeaderGear
   equipment:
+    pocket2: RailroadAlphaLeaderKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -235,11 +236,11 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadAlphaLeaderKitSelector
 
 - type: startingGear
   id: RailroadInspectorGear
   equipment:
+    pocket2: RailroadInspectorKitSelector
     wallet: N14Wallet
     jumpsuit: RailroadFlannel
     ears: RailroadScrapHeadset
@@ -252,4 +253,3 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander
-    - RailroadInspectorKitSelector

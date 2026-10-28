@@ -747,6 +747,13 @@ namespace Content.Shared.Interaction
             bool popup = false,
             bool useCenterRange = false)
         {
+            // Lag-compensated hits can outlive a target or its historical parent.
+            // Reject stale coordinates before map conversion or fixture queries.
+            if (!Resolve(origin, ref origin.Comp, false) ||
+                !Resolve(other, ref other.Comp, false) ||
+                !otherCoordinates.IsValid(EntityManager))
+                return false;
+
             // A player's collision radius must not extend hand or melee reach.
             // Explicit melee ranges are already adjusted by the melee system.
             if (HasComp<ActorComponent>(origin) && ShouldCheckAccess(origin))

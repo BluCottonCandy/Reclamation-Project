@@ -124,6 +124,7 @@
 - type: startingGear
   id: ForgedRaiderGear
   equipment:
+    pocket2: ForgedRaiderWeaponSelector
     ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
@@ -132,7 +133,6 @@
     outerClothing: N14ClothingOuterRaiderBadlands
   storage:
     back:
-    - ForgedRaiderWeaponSelector
 
 - type: entity
   parent: N14IDCard

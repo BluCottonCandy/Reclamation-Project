@@ -22,6 +22,7 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
     private static readonly SlotFlags[] Slots = Enum.GetValues<SlotFlags>().Except(IgnoredSlots).ToArray();
 
     private readonly Dictionary<SlotFlags, List<string>> _data = new();
+    private readonly HashSet<EntityUid> _pendingVisuals = new();
 
     public override void Initialize()
     {
@@ -40,7 +41,22 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
 
     private void HandleState(EntityUid uid, ChameleonClothingComponent component, ref AfterAutoHandleStateEvent args)
     {
-        UpdateVisuals(uid, component);
+        // Clothing and item states can still be applied after the disguise state.
+        // Rebuild from the final state before rendering, rather than mid-update.
+        _pendingVisuals.Add(uid);
+    }
+
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+
+        foreach (var uid in _pendingVisuals)
+        {
+            if (TryComp(uid, out ChameleonClothingComponent? component))
+                UpdateVisuals(uid, component);
+        }
+
+        _pendingVisuals.Clear();
     }
 
     protected override void UpdateSprite(EntityUid uid, EntityPrototype proto)

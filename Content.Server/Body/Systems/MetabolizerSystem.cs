@@ -1,3 +1,4 @@
+using Content.Shared.Chemistry;
 using Content.Server.Body.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Shared.Administration.Logs;
@@ -193,6 +194,11 @@ namespace Content.Server.Body.Systems
                     }
 
                     var actualEntity = ent.Comp2?.Body ?? solutionEntityUid.Value;
+                    var treatment = new MedicalTreatmentAttemptEvent();
+                    RaiseLocalEvent(actualEntity, ref treatment);
+                    if (treatment.Cancelled)
+                        continue;
+
                     var ev = new TryMetabolizeReagent(reagent, proto, quantity);
                     RaiseLocalEvent(actualEntity, ref ev);
 

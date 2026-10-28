@@ -12969,3 +12969,51 @@ Entries:
   id: 6562
   time: '2026-10-24T22:44:07.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/85
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added the Wasteland Chaplain kit with a makeshift shotgun, shotgun
+        ammunition, faith implanter, Bible, bread, and wine.
+    - type: Add
+      message: Unlocked chaplain clothing in Wastelander loadouts.
+    - type: Add
+      message: Added a CPR training manual to the Back Alley Doctor kit.
+    - type: Tweak
+      message: Player kit selectors now spawn in pockets instead of bags.
+    - type: Tweak
+      message: >-
+        Expanded improvised surgery support for screwdrivers, wirecutters,
+        wrenches, and crowbars.
+    - type: Fix
+      message: Restored cooking guidebook recipes.
+    - type: Fix
+      message: Wall chargers no longer charge cells without supplied power.
+    - type: Fix
+      message: Compost stacks now produce the correct amount of liquid fertilizer.
+    - type: Fix
+      message: >-
+        ID terminals preserve Brotherhood access and permissions outside their
+        editable list.
+    - type: Fix
+      message: >-
+        Removing Brotherhood holotags no longer removes permanent faction
+        membership or makes hostile creatures ignore the wearer.
+    - type: Fix
+      message: Chameleon disguises and hairstyle changes now refresh correctly.
+    - type: Tweak
+      message: >-
+        Bruiser kits have a 2% super sledge chance, with the remaining chance
+        shared between ordinary weapons, including the sledgehammer and
+        decorated war club.
+    - type: Add
+      message: >-
+        Added Enraged for characters with 10 Endurance, replacing bonus health
+        from Endurance.
+    - type: Add
+      message: Added guidebook entries explaining Enraged and Bruiser kit rewards.
+    - type: Fix
+      message: Fixed a stale melee-target crash.
+  id: 6563
+  time: '2026-10-28T11:23:14.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/90

@@ -130,7 +130,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
 
             foreach (var (slot, entProtos) in startingGear.Storage)
             {
-                if (entProtos.Count == 0)
+                if (entProtos == null || entProtos.Count == 0) // #Reclamation Project - an empty YAML list (e.g. "back:") loads as null
                     continue;
 
                 foreach (var ent in entProtos)

@@ -131,8 +131,6 @@
     back: N14ClothingBackpackSatchelExplorer
     id: ForgedRaiderID
     outerClothing: N14ClothingOuterRaiderBadlands
-  storage:
-    back:
 
 - type: entity
   parent: N14IDCard

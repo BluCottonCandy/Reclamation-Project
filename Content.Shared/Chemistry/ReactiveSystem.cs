@@ -38,6 +38,11 @@ public sealed class ReactiveSystem : EntitySystem
         if (!TryComp(uid, out ReactiveComponent? reactive))
             return;
 
+        var attempt = new MedicalTreatmentAttemptEvent();
+        RaiseLocalEvent(uid, ref attempt);
+        if (attempt.Cancelled)
+            return;
+
         // If we have a source solution, use the reagent quantity we have left. Otherwise, use the reaction volume specified.
         var args = new EntityEffectReagentArgs(uid, EntityManager, null, source, source?.GetReagentQuantity(reagentQuantity.Reagent) ?? reagentQuantity.Quantity, proto, method, 1f);
 

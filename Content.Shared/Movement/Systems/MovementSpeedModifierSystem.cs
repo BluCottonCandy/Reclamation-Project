@@ -30,10 +30,7 @@ namespace Content.Shared.Movement.Systems
             if (!HasComp<MotorbikeComponent>(uid) && !HasComp<MountableComponent>(uid))
             {
                 const float maxMod = 1.35f;
-                if (ev.WalkSpeedModifier > maxMod)
-                    ev.ModifySpeed(maxMod / ev.WalkSpeedModifier, 1f, bypassImmunity: true);
-                if (ev.SprintSpeedModifier > maxMod)
-                    ev.ModifySpeed(1f, maxMod / ev.SprintSpeedModifier, bypassImmunity: true);
+                ev.CapSpeed(maxMod);
             }
 
             if (MathHelper.CloseTo(ev.WalkSpeedModifier, move.WalkSpeedModifier) &&
@@ -78,8 +75,16 @@ namespace Content.Shared.Movement.Systems
     {
         public SlotFlags TargetSlots { get; } = ~SlotFlags.POCKET;
 
-        public float WalkSpeedModifier { get; private set; } = 1.0f;
-        public float SprintSpeedModifier { get; private set; } = 1.0f;
+        private float _walkSpeedModifier = 1f;
+        private float _sprintSpeedModifier = 1f;
+        private float _walkBonuses = 1f;
+        private float _sprintBonuses = 1f;
+
+        // Keep bonuses separately so temporary slowdown immunity is independent of
+        // subscriber order and preserves buffs, including when a slowdown is zero.
+        public bool IgnoreSlowdowns;
+        public float WalkSpeedModifier => IgnoreSlowdowns ? _walkBonuses : _walkSpeedModifier;
+        public float SprintSpeedModifier => IgnoreSlowdowns ? _sprintBonuses : _sprintSpeedModifier;
 
         /// <summary>
         ///    Whether this entity is immune to most movement speed modifiers.
@@ -92,8 +97,18 @@ namespace Content.Shared.Movement.Systems
             if (IsImmune && !bypassImmunity)
                 return;
 
-            WalkSpeedModifier *= walk;
-            SprintSpeedModifier *= sprint;
+            _walkSpeedModifier *= walk;
+            _sprintSpeedModifier *= sprint;
+            _walkBonuses *= MathF.Max(1f, walk);
+            _sprintBonuses *= MathF.Max(1f, sprint);
+        }
+
+        public void CapSpeed(float maximum)
+        {
+            _walkSpeedModifier = MathF.Min(_walkSpeedModifier, maximum);
+            _sprintSpeedModifier = MathF.Min(_sprintSpeedModifier, maximum);
+            _walkBonuses = MathF.Min(_walkBonuses, maximum);
+            _sprintBonuses = MathF.Min(_sprintBonuses, maximum);
         }
 
         public RefreshMovementSpeedModifiersEvent(bool isImmune = false)

@@ -362,6 +362,20 @@ public sealed class MobThresholdSystem : EntitySystem
             return;
         }
 
+        // Give protective effects a chance to prevent the threshold state itself,
+        // rather than leaving thresholds critical while the actual mob remains alive.
+        var attempt = new BeforeMobStateChangedEvent(mobState.CurrentState, newState, true);
+        RaiseLocalEvent(target, ref attempt);
+        if (attempt.Cancelled)
+        {
+            if (thresholds.CurrentThresholdState != mobState.CurrentState)
+            {
+                thresholds.CurrentThresholdState = mobState.CurrentState;
+                Dirty(target, thresholds);
+            }
+            return;
+        }
+
         if (mobState.CurrentState != MobState.Dead || thresholds.AllowRevives)
         {
             thresholds.CurrentThresholdState = newState;

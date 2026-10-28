@@ -44,6 +44,11 @@ public sealed class InjectorSystem : SharedInjectorSystem
 
     private void UseInjector(Entity<InjectorComponent> injector, EntityUid target, EntityUid user)
     {
+        var attempt = new MedicalTreatmentAttemptEvent();
+        RaiseLocalEvent(target, ref attempt);
+        if (attempt.Cancelled)
+            return;
+
         // Handle injecting/drawing for solutions
         if (injector.Comp.ToggleState == InjectorToggleMode.Inject)
         {

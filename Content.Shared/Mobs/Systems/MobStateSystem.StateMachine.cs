@@ -33,7 +33,7 @@ public partial class MobStateSystem
 
         var ev = new UpdateMobStateEvent {Target = entity, Component = component, Origin = origin};
         RaiseLocalEvent(entity, ref ev);
-        ChangeState(entity, component, ev.State, origin: origin);
+        ChangeState(entity, component, ev.State, origin: origin, fromUpdate: true);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public partial class MobStateSystem
     #region Private Implementation
 
     //Actually change the MobState
-    private void ChangeState(EntityUid target, MobStateComponent component, MobState newState, EntityUid? origin = null)
+    private void ChangeState(EntityUid target, MobStateComponent component, MobState newState, EntityUid? origin = null, bool fromUpdate = false)
     {
         var oldState = component.CurrentState;
         //make sure we are allowed to enter the new state
@@ -104,6 +104,11 @@ public partial class MobStateSystem
             return;
 
         if (oldState == MobState.Dead && HasComp<DebrainedComponent>(target))
+            return;
+
+        var attempt = new BeforeMobStateChangedEvent(oldState, newState, fromUpdate);
+        RaiseLocalEvent(target, ref attempt);
+        if (attempt.Cancelled)
             return;
 
         OnExitState(target, component, oldState);
@@ -131,3 +136,10 @@ public partial class MobStateSystem
 [ByRefEvent]
 public record struct UpdateMobStateEvent(EntityUid Target, MobStateComponent Component, MobState State,
     EntityUid? Origin = null);
+
+/// <summary>Allows a temporary effect to prevent a state transition before its side effects run.</summary>
+[ByRefEvent]
+public record struct BeforeMobStateChangedEvent(MobState OldState, MobState NewState, bool FromUpdate)
+{
+    public bool Cancelled;
+}

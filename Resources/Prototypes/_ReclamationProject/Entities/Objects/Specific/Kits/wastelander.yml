@@ -29,12 +29,13 @@
   parent: KitBase
   id: ReclamationWastelanderKitDoc
   name: Wasteland Doc
-  description: "You are the only thing that stands between death and your patient. Contains a single-use CPR training manual, a makeshift 9mm pistol, one box of 9mm ammunition, a surgical duffel bag filled with surgical tools, one bottle of ethanol, and sterile latex gloves."
+  description: "You are the only thing that stands between death and your patient. Contains an N14 health scanner, a single-use CPR training manual, a makeshift 9mm pistol, one box of 9mm ammunition, a surgical duffel bag filled with surgical tools, one bottle of ethanol, and sterile latex gloves."
   components:
   - type: Sprite
     state: medic
   - type: SpawnItemsOnUse
     items:
+    - id: N14HandheldHealthAnalyzer
     - id: ReclamationTrainingManualCPR
     - id: N14WeaponPistol9mmMakeshift
     - id: MagazineBox9mm

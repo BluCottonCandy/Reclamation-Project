@@ -47,4 +47,8 @@ Every Chief Medical Officer has access to a Medical Biofabricator board in their
 
 If a reattached limb is unresponsive, the nerve damage is too severe for reattachment alone to restore function. Treat the limb with Tend Wounds surgery or topical wound care until enough damage is healed for it to function again.
 
+
+## Permanent limb health
+
+Each full limb disable removes 10–25 points from its maximum health. The scanner shows current/max HP and permanent loss. Surgery can restore current health to the reduced maximum, but cannot restore the lost maximum. A fresh replacement limb starts at 100 maximum HP; a used transplant keeps its previous wear. A limb with zero maximum HP must be replaced.
 </Document>

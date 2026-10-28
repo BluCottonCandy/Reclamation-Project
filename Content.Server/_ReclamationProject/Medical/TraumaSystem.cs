@@ -65,6 +65,7 @@ public sealed partial class TraumaSystem : EntitySystem
         SubscribeLocalEvent<TraumaBodyComponent, TraumaRepairEvent>(OnRepair);
         SubscribeLocalEvent<TraumaBodyComponent, RejuvenateEvent>(OnRejuvenate);
         InitializeSplints();
+        InitializePermanentHealth();
         SubscribeLocalEvent<TraumaBodyComponent, DidEquipHandEvent>(OnSupportEquipped);
         SubscribeLocalEvent<TraumaBodyComponent, DidUnequipHandEvent>(OnSupportRemoved);
     }
@@ -84,7 +85,7 @@ public sealed partial class TraumaSystem : EntitySystem
         if (!HasComp<HumanoidAppearanceComponent>(uid) || !HasComp<BodyComponent>(uid) || _body.GetBodyOrganComponents<LungComponent>(uid).Count == 0) return;
         _rotting.SetRotDelay(uid, TimeSpan.FromHours(1));
         var medical = EnsureComp<TraumaBodyComponent>(uid);
-        foreach (var (part, _) in _body.GetBodyChildren(uid)) EnsureComp<TraumaLimbComponent>(part);
+        foreach (var (part, component) in _body.GetBodyChildren(uid)) InitializeLimbHealth(part, component);
         foreach (var (organ, component) in _body.GetBodyOrgans(uid))
         {
             if (KindForSlot(component.SlotId) is not { } kind || HasComp<BrainComponent>(organ)) continue;
@@ -242,7 +243,7 @@ public sealed partial class TraumaSystem : EntitySystem
     public void SetOrganDamage(EntityUid organ, float damage)
     {
         if (HasComp<BrainComponent>(organ) || !TryComp<TraumaOrganComponent>(organ, out var injury)) return;
-        injury.Damage = Math.Clamp(damage, 0, 100);
+        SetOrganHealthDamage(organ, injury, damage);
         Dirty(organ, injury);
         if (TryComp<OrganComponent>(organ, out var component) && component.Body is { } body &&
             TryComp<TraumaBodyComponent>(body, out var medical)) Refresh(body, medical);

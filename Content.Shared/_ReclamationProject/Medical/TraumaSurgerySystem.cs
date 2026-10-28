@@ -1,3 +1,4 @@
+using Robust.Shared.GameStates;
 using System.Linq;
 using Content.Shared._Shitmed.Body.Events;
 using Content.Shared._Shitmed.Medical.Surgery;
@@ -30,6 +31,7 @@ public sealed class TraumaSurgerySystem : EntitySystem
         SubscribeLocalEvent<TraumaRepairComponent, SurgeryStepEvent>(OnStep);
         SubscribeLocalEvent<TraumaLimbComponent, BodyPartEnableChangedEvent>(OnEnable,
             before: new[] { typeof(SharedBodySystem) });
+        SubscribeLocalEvent<TraumaLimbComponent, AfterAutoHandleStateEvent>(OnLimbHealthState);
         SubscribeLocalEvent<TraumaBodyComponent, GetBlurEvent>(OnBlur);
         SubscribeLocalEvent<TraumaBodyComponent, CanSeeAttemptEvent>(OnSee);
         SubscribeLocalEvent<TraumaBodyComponent, RefreshMovementSpeedModifiersEvent>(OnMovement);
@@ -40,6 +42,9 @@ public sealed class TraumaSurgerySystem : EntitySystem
     {
         if (!HasComp<TraumaBodyComponent>(body) || !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body != body)
             return false;
+        if (kind is TraumaKind.Fracture or TraumaKind.LimbDamage &&
+            TryComp<TraumaLimbComponent>(part, out var limb) && limb.MaximumHealth <= 0f)
+            return false;
         if (kind == TraumaKind.Fracture)
             return HasComp<FractureComponent>(part);
         if (kind == TraumaKind.LimbDamage)
@@ -48,7 +53,7 @@ public sealed class TraumaSurgerySystem : EntitySystem
         if (kind == TraumaKind.InternalBleeding)
             return bodyPart.PartType == BodyPartType.Torso && Comp<TraumaBodyComponent>(body).InternalBleeding > 0;
         return _body.GetPartOrgans(part).Any(o => TryComp<TraumaOrganComponent>(o.Id, out var injury) &&
-            injury.Kind == kind && injury.Damage > 0);
+            injury.Kind == kind && injury.MaximumHealth > 0f && injury.Damage > 0);
     }
 
     private void OnValid(EntityUid uid, TraumaRepairComponent comp, ref SurgeryValidEvent args)
@@ -70,23 +75,39 @@ public sealed class TraumaSurgerySystem : EntitySystem
 
     private void OnEnable(EntityUid uid, TraumaLimbComponent marker, ref BodyPartEnableChangedEvent args)
     {
-        // Ordinary medicine and passive part healing must not re-enable a broken limb.
-        if (!args.Enabled || !TryComp<BodyPartComponent>(uid, out var comp)) return;
-        var blocked = HasComp<FractureComponent>(uid);
-        if (comp.Body is { } body)
+        if (!TryComp<BodyPartComponent>(uid, out var comp)) return;
+        if (args.Enabled)
         {
-            var related = comp.PartType switch
+            var blocked = marker.MaximumHealth <= 0f || HasComp<FractureComponent>(uid);
+            if (comp.Body is { } body)
             {
-                BodyPartType.Leg => BodyPartType.Foot,
-                BodyPartType.Arm => BodyPartType.Hand,
-                BodyPartType.Hand => BodyPartType.Arm,
-                _ => BodyPartType.Other,
-            };
-            if (related != BodyPartType.Other)
-                blocked |= _body.GetBodyChildrenOfType(body, related, symmetry: comp.Symmetry)
-                    .Any(p => HasComp<FractureComponent>(p.Id));
+                var related = comp.PartType switch
+                {
+                    BodyPartType.Leg => BodyPartType.Foot,
+                    BodyPartType.Arm => BodyPartType.Hand,
+                    BodyPartType.Hand => BodyPartType.Arm,
+                    _ => BodyPartType.Other,
+                };
+                if (related != BodyPartType.Other)
+                    blocked |= _body.GetBodyChildrenOfType(body, related, symmetry: comp.Symmetry)
+                        .Any(p => HasComp<FractureComponent>(p.Id));
+            }
+            if (blocked) args = new BodyPartEnableChangedEvent(false);
         }
-        if (blocked) args = new BodyPartEnableChangedEvent(false);
+
+        // Server-side permanent wear observes the final requested state, before
+        // SharedBodySystem applies it. This also covers fracture-driven failure.
+        var changed = new TraumaLimbStateChangeEvent(args.Enabled);
+        RaiseLocalEvent(uid, ref changed);
+    }
+
+    private void OnLimbHealthState(EntityUid uid, TraumaLimbComponent comp, ref AfterAutoHandleStateEvent args)
+    {
+        if (_net.IsServer || !TryComp<BodyPartComponent>(uid, out var part)) return;
+        var ratio = Math.Max(.00001f, comp.MaximumHealth) / Math.Max(.00001f, comp.AppliedMaximumHealth);
+        foreach (var key in part.IntegrityThresholds.Keys.ToArray())
+            part.IntegrityThresholds[key] *= ratio;
+        comp.AppliedMaximumHealth = comp.MaximumHealth;
     }
 
     private void OnBlur(EntityUid uid, TraumaBodyComponent comp, GetBlurEvent args)

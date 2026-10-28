@@ -63,4 +63,14 @@ Every Chief Medical Officer has access to a Medical Biofabricator board in their
 
 If an organ transplant has no effect, the patient's body has rejected it. This usually means the organ is in poor condition. Use a fresh organ from a donor or manufacture a new one using the Medical Biofabricator.
 
+
+## Organ and limb health
+
+Scanner entries show current / maximum HP. For example, [bold]Heart: 15/15 HP · -85 max · Working[/bold] means the heart is fully repaired, but has lost 85 points of permanent maximum health.
+
+Every full organ failure removes a random 25–85 points of maximum health. Each limb disable removes 10–25 points. These losses stack, down to zero. A disabled part is charged once; repeated updates or detaching and reattaching it do not erase or reroll its history.
+
+Surgery and natural healing restore current health only, up to the remaining maximum. They cannot remove permanent loss. Replace the damaged organ or limb with a fresh one to restore a maximum of 100. A used transplant retains its previous maximum health. At zero maximum health, replacement is required.
+
+The brain keeps its existing damage protection. Fracture healing progress is separate: 100% means the bone has mended, not that permanent health has been restored.
 </Document>

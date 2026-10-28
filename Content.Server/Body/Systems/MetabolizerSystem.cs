@@ -140,6 +140,13 @@ namespace Content.Server.Body.Systems
                 return;
             }
 
+            // Reuse the treatment gate used by Enraged. Check before processing
+            // effects or removing reagents so blocked chemicals remain unprocessed.
+            var metabolismAttempt = new MedicalTreatmentAttemptEvent(IsMetabolism: true);
+            RaiseLocalEvent(ent.Comp2?.Body ?? solutionEntityUid.Value, ref metabolismAttempt);
+            if (metabolismAttempt.Cancelled)
+                return;
+
             // randomize the reagent list so we don't have any weird quirks
             // like alphabetical order or insertion order mattering for processing
             _reagentBuffer.Clear();
@@ -194,11 +201,6 @@ namespace Content.Server.Body.Systems
                     }
 
                     var actualEntity = ent.Comp2?.Body ?? solutionEntityUid.Value;
-                    var treatment = new MedicalTreatmentAttemptEvent();
-                    RaiseLocalEvent(actualEntity, ref treatment);
-                    if (treatment.Cancelled)
-                        continue;
-
                     var ev = new TryMetabolizeReagent(reagent, proto, quantity);
                     RaiseLocalEvent(actualEntity, ref ev);
 

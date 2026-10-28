@@ -66,6 +66,7 @@ public sealed partial class TraumaSystem : EntitySystem
         SubscribeLocalEvent<TraumaBodyComponent, RejuvenateEvent>(OnRejuvenate);
         InitializeSplints();
         InitializePermanentHealth();
+        InitializeFilterFailure();
         SubscribeLocalEvent<TraumaBodyComponent, DidEquipHandEvent>(OnSupportEquipped);
         SubscribeLocalEvent<TraumaBodyComponent, DidUnequipHandEvent>(OnSupportRemoved);
     }
@@ -153,8 +154,7 @@ public sealed partial class TraumaSystem : EntitySystem
                 _blood.TryModifyBloodLevel(uid, -Content.Shared.FixedPoint.FixedPoint2.New(medical.InternalBleeding * seconds), createPuddle: false);
             if (medical.KidneyDamage > 0 && TryComp<ThirstComponent>(uid, out var thirst))
                 _thirst.ModifyThirst(uid, thirst, -.015f * medical.KidneyDamage / 100f * seconds);
-            if (medical.KidneyDamage >= 75)
-                ApplySystemicDamage(uid, "Poison", .2f * medical.KidneyDamage / 100f * seconds);
+            ApplyFilterFailurePoison(uid, seconds);
             medical.SymptomAccumulator += seconds;
             if (medical.SymptomAccumulator < 30f) continue;
             medical.SymptomAccumulator = 0;

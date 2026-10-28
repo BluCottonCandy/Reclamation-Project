@@ -38,3 +38,4 @@ trauma-organ-disabled = Failed
 trauma-organ-missing = { $organ }: { $count } missing.
 trauma-scan-fractured = Disabled; bone { $healing }% healed
 trauma-scan-splinted = Disabled; splinted, { $healing }% healed
+trauma-filter-failure = Chem metabolism stopped · +{ $rate } poison/sec

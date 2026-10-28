@@ -129,6 +129,9 @@ public sealed partial class TraumaSystem
         Refresh(uid, medical);
         var lines = new List<string> { Loc.GetString("trauma-report-heading") };
         lines.Add(Loc.GetString("trauma-health-legend"));
+        var filters = GetFailedFilterCount(uid);
+        if (filters > 0)
+            lines.Add(Loc.GetString("trauma-filter-failure", ("rate", filters)));
         foreach (var (part, component) in _body.GetBodyChildren(uid))
         {
             if (!IsLimb(component) || !TryComp<TraumaLimbComponent>(part, out var health)) continue;

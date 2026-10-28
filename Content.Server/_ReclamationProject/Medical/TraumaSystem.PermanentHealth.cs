@@ -41,7 +41,8 @@ public sealed partial class TraumaSystem
     private void OnOrganState(EntityUid uid, TraumaOrganComponent comp, ref OrganEnableChangedEvent args)
     {
         if (comp.Detaching) return; // Ordinary removal is not another organ failure.
-        if (args.Enabled && (comp.MaximumHealth <= 0f || comp.Damage >= comp.MaximumHealth))
+        if (args.Enabled && (comp.MaximumHealth <= 0f || comp.Damage >= comp.MaximumHealth ||
+            IsFilterOrgan(comp) && comp.FailureRecorded && comp.Damage > 0f))
             args = new OrganEnableChangedEvent(false);
         if (!args.Enabled)
             WearOrgan(uid, comp);
@@ -55,12 +56,13 @@ public sealed partial class TraumaSystem
         comp.Damage = Math.Clamp(damage, 0f, comp.MaximumHealth);
         if (comp.MaximumHealth > 0f && comp.Damage >= comp.MaximumHealth)
             WearOrgan(uid, comp);
-        else if (comp.MaximumHealth > 0f)
+        else if (comp.MaximumHealth > 0f && (!IsFilterOrgan(comp) || comp.Damage <= 0f))
             comp.FailureRecorded = false;
 
         if (TryComp<OrganComponent>(uid, out var organ) && organ.Body != null)
         {
-            var enabled = comp.MaximumHealth > 0f && comp.Damage < comp.MaximumHealth;
+            var enabled = comp.MaximumHealth > 0f && comp.Damage < comp.MaximumHealth &&
+                (!IsFilterOrgan(comp) || !comp.FailureRecorded || comp.Damage <= 0f);
             if (organ.Enabled != enabled)
             {
                 var ev = new OrganEnableChangedEvent(enabled);
@@ -68,6 +70,9 @@ public sealed partial class TraumaSystem
             }
         }
     }
+
+    private static bool IsFilterOrgan(TraumaOrganComponent organ)
+        => organ.Kind is TraumaKind.Liver or TraumaKind.Kidneys;
 
     private static bool IsLimb(BodyPartComponent part)
         => part.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot;

@@ -73,4 +73,12 @@ Every full organ failure removes a random 25–85 points of maximum health. Each
 Surgery and natural healing restore current health only, up to the remaining maximum. They cannot remove permanent loss. Replace the damaged organ or limb with a fresh one to restore a maximum of 100. A used transplant retains its previous maximum health. At zero maximum health, replacement is required.
 
 The brain keeps its existing damage protection. Fracture healing progress is separate: 100% means the bone has mended, not that permanent health has been restored.
+
+## Liver and kidney failure
+
+A failed liver causes 1 poison damage per second. Failed kidneys cause another 1 per second, for 2 poison per second when both are down. Missing filter organs count as failed.
+
+If either fails, chemical metabolism stops for the whole body. Chemicals stay in the body unprocessed. Physical surgery and other non-chemical treatment can still be used.
+
+Failed liver and kidney function returns after full repair to their remaining maximum health, or replacement. Partial natural recovery does not immediately restart metabolism. The scanner shows a short warning while filter failure is active.
 </Document>

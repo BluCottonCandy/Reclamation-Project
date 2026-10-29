@@ -1,0 +1,14 @@
+- type: entity
+  id: ActionIntelligenceOverride
+  name: Override
+  description: Bypass an electronic door or reprogram an AI robot to protect players. Unlimited uses with a one-minute shared cooldown. Wooden doors and player-controlled robots are unaffected.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: _Nuclear14/Mobs/Robots/protectron.rsi
+      state: icon
+    range: 2
+    checkCanAccess: false
+    useDelay: 60
+    event: !type:IntelligenceOverrideActionEvent

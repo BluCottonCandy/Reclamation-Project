@@ -13091,3 +13091,50 @@ Entries:
   id: 6565
   time: '2026-10-29T02:14:22.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/93
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added four authored expeditions: Factory One, Factory Two, Factory
+        Three, and Cave One.
+    - type: Tweak
+      message: >-
+        Easy expeditions choose Factory One or Cave One equally; Medium uses
+        Factory Two and Hard uses Factory Three.
+    - type: Tweak
+      message: >-
+        Replaced procedural launching on every original expedition entrance
+        variant with the authored-map difficulty selector, including
+        automatically spawned entrances.
+    - type: Add
+      message: >-
+        Added a 20-minute expedition deadline with return-before-cleanup
+        handling for players, corpses, and ghosts, and retry protection if
+        extraction fails.
+    - type: Add
+      message: >-
+        Added a two-handed rusty gear objective that slows carrying and dragging
+        by 50%, cannot be stored, throws only one tile, and cannot leave the
+        expedition.
+    - type: Add
+      message: >-
+        Installing the gear activates the pre-war generator's animated gears and
+        belt and opens the secured vault.
+    - type: Add
+      message: >-
+        Added generic expedition arrival, return, and escape-ladder markers and
+        visible gun, armor, and enemy placement markers.
+    - type: Tweak
+      message: Expedition gun reward pools contain guns rather than melee weapons.
+    - type: Tweak
+      message: >-
+        Included roofed authored factory and cave layouts, mapped enemies and
+        rewards, and always-powered authored doors while retaining the
+        generator-gated vault objective.
+    - type: Fix
+      message: >-
+        Map validation checks only YAML map files instead of trying to parse
+        copyright and license notices as maps.
+  id: 6566
+  time: '2026-10-29T02:49:43.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/89

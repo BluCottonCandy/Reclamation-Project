@@ -13024,3 +13024,70 @@ Entries:
   id: 6564
   time: '2026-10-29T00:01:39.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/94
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added permanent organ and limb health capacity loss after complete
+        failure, preserved through saving and transplantation.
+    - type: Tweak
+      message: >-
+        Fully disabled limbs are capped at 15 health. Bone-setting surgery can
+        salvage attached arms, hands, legs, and feet from 0/0 to 15/15, but
+        other healing and repeated bone setting cannot raise that cap.
+    - type: Tweak
+      message: >-
+        Organ surgery repairs only to remaining capacity; fresh replacements
+        restore full capacity while used replacements retain wear.
+    - type: Add
+      message: >-
+        Failed or missing liver and kidneys cause 1 poison damage per second
+        each and stop chemical metabolism until repaired or replaced.
+    - type: Fix
+      message: >-
+        Permanently worn hearts retain their reduced critical threshold after
+        repair.
+    - type: Tweak
+      message: >-
+        The health indicator includes heart-related capacity loss relative to
+        the normal critical threshold.
+    - type: Tweak
+      message: >-
+        Medical scans hide healthy parts, retain small text, and show compact
+        health/status readings with at most one decimal place instead of long
+        decimals, HP explanations, or redundant max-loss labels.
+    - type: Add
+      message: >-
+        Back Alley Doctor and Wasteland Doc kits now include an N14 health
+        scanner.
+    - type: Add
+      message: >-
+        Med-X gives temporary limb health and keeps attached limbs usable
+        despite disabling injuries while active, without restoring failed
+        organs.
+    - type: Tweak
+      message: >-
+        Every Med-X dose permanently removes 15 health capacity from both the
+        liver and kidneys; overlapping doses extend use without stacking the
+        temporary boost.
+    - type: Fix
+      message: >-
+        Enraged restores use of attached disabled limbs and prevents limb
+        disabling until the effect ends, without healing the underlying
+        injuries.
+    - type: Add
+      message: >-
+        Added a complete Organ and Limb Health guide covering the medical
+        system, scanner, treatment, bone-setting salvage, replacements, Med-X,
+        and Enraged limb protection.
+    - type: Fix
+      message: >-
+        Made the medical overview and surgery guides accessible from the main
+        guidebook menu.
+    - type: Fix
+      message: >-
+        Fixed medical integration-test compilation so automated build and
+        validation checks can run.
+  id: 6565
+  time: '2026-10-29T02:14:22.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/93

@@ -26,6 +26,10 @@ public sealed partial class HeldSpeedModifierComponent : Component
     [DataField] [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float SprintModifier = 1.0f;
 
+    /// <summary>Also use these modifiers when this item is dragged, replacing the normal pull penalty.</summary>
+    [DataField, AutoNetworkedField]
+    public bool ApplyWhenPulled;
+
     /// <summary>
     /// If true, values from <see cref="ClothingSpeedModifierComponent"/> will attempted to be used before the ones in this component.
     /// </summary>

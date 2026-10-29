@@ -1,0 +1,19 @@
+Factory Three - original map contributions
+
+Copyright (c) 2026 BluCottonCandy. All rights reserved in the original
+copyrightable map layout and creative detailing authored by BluCottonCandy
+for Reclamation Project.
+
+Permission is granted for development, editing, and operation of this map
+as part of Reclamation Project. No other permission to copy, redistribute,
+adapt, or operate the author's original map contributions is granted
+without prior permission from BluCottonCandy, except as permitted by law.
+
+This restriction applies only to original map contributions owned by
+BluCottonCandy. It does not claim ownership of, relicense, or restrict
+third-party sprites, tiles, entities, code, or other pre-existing material.
+Those materials retain their respective licenses and attribution.
+
+Factory3.yml is an explicit exception to the repository's default asset
+licensing statement. This notice does not alter any license or permission
+previously granted for other maps or other published material.

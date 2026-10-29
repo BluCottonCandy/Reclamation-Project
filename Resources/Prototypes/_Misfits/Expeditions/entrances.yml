@@ -18,12 +18,18 @@
       enum.N14ExpeditionBoardUiKey.Key:
         type: N14ExpeditionBoardBoundUserInterface
   - type: N14ExpeditionEntranceLandmark
-  - type: N14ExpeditionBoard
-    directLaunch: true
-    directDifficultyId: N14ExpeditionEasy
-    gatherRadius: 2
-    launchCountdownSeconds: 10
-    cooldownSeconds: 600
+  # Retain legacy prototype IDs so existing map placements and the automatic
+  # entrance spawner all use authored expeditions instead of procedural runs.
+  - type: FactoryDeparture
+    duration: 1200
+    gatherRadius: 3
+    mapPool:
+    - /Maps/Reclamation/Expeditions/Factory.yml
+    - /Maps/Reclamation/Expeditions/Cave1.yml
+    mediumMapPool:
+    - /Maps/Reclamation/Expeditions/Factory2.yml
+    hardMapPool:
+    - /Maps/Reclamation/Expeditions/Factory3.yml
 
 - type: entity
   parent: N14ExpeditionEntranceBase

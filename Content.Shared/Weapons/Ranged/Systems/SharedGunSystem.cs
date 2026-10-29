@@ -166,10 +166,11 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (user == null)
             return;
 
-        if (!TryGetGun(user.Value, out var ent, out var gun))
-            return;
-
-        if (ent != gunUid)
+        // Releasing the trigger must also reset an offhand's semi-auto/burst state,
+        // including after the player loses the Perception bonus.
+        if (!TryComp<GunComponent>(gunUid, out var gun) ||
+            (!IsHeldGun(user.Value, gunUid) &&
+             (!TryGetGun(user.Value, out var active, out _) || active != gunUid)))
             return;
 
         StopShooting(gunUid, gun);
@@ -226,7 +227,50 @@ public abstract partial class SharedGunSystem : EntitySystem
         return false;
     }
 
-    private void StopShooting(EntityUid uid, GunComponent gun)
+    /// <summary>
+    /// Selects at most one additional held gun. The same check is used by client
+    /// prediction and the server; mounted/mech weapons are never offhand guns.
+    /// </summary>
+    public bool TryGetOffhandGun(EntityUid user, EntityUid activeGun,
+        out EntityUid offhand, [NotNullWhen(true)] out GunComponent? gun)
+    {
+        offhand = default;
+        gun = null;
+        if (_special.GetEffective(user, SpecialStat.Perception) < 10 ||
+            HasComp<MechPilotComponent>(user) || HasComp<MechComponent>(user) ||
+            !HasComp<GunComponent>(activeGun) || HasComp<GunRequiresWieldComponent>(activeGun) ||
+            !TryComp<HandsComponent>(user, out var hands) || hands.ActiveHandEntity != activeGun)
+            return false;
+
+        foreach (var handName in hands.SortedHands)
+        {
+            if (hands.Hands[handName].HeldEntity is not { } held || held == activeGun ||
+                HasComp<GunRequiresWieldComponent>(held) || !TryComp<GunComponent>(held, out var heldGun))
+                continue;
+
+            offhand = held;
+            gun = heldGun;
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool IsHeldGun(EntityUid user, EntityUid gun)
+    {
+        if (!TryComp<HandsComponent>(user, out var hands))
+            return false;
+
+        foreach (var hand in hands.Hands.Values)
+        {
+            if (hand.HeldEntity == gun)
+                return true;
+        }
+
+        return false;
+    }
+
+    public void StopShooting(EntityUid uid, GunComponent gun)
     {
         if (gun.ShotCounter == 0)
             return;
@@ -278,11 +322,14 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         if (!TryGetGun(pilot.Value, out var ent, out var gun) ||
             HasComp<ItemComponent>(user) ||
-            ent != GetEntity(netGun))
+            (ent != GetEntity(netGun) &&
+             (!TryGetOffhandGun(pilot.Value, ent, out var offhand, out _) || offhand != GetEntity(netGun))))
         {
             return null;
         }
 
+        ent = GetEntity(netGun);
+        gun = Comp<GunComponent>(ent);
         gun.ShootCoordinates = GetCoordinates(coordinates);
         gun.Target = GetEntity(target);
         return AttemptShoot(user.Value, ent, gun, predictedProjectiles, session);

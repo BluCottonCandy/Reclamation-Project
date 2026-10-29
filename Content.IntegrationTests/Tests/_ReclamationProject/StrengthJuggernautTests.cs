@@ -37,12 +37,12 @@ public sealed class StrengthJuggernautTests
                 var state = em.EnsureComponent<StrengthJuggernautComponent>(user);
                 Assert.That(state.Action, Is.Null);
                 var action = new StrengthJuggernautActionEvent { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref action);
+                em.EventBus.RaiseLocalEvent(user, action);
                 Assert.That(action.Handled, Is.False);
                 stats.TrySetBase(user, SpecialStat.Strength, 10);
                 Assert.That(state.Action, Is.Not.Null);
                 action = new() { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref action);
+                em.EventBus.RaiseLocalEvent(user, action);
                 Assert.That(action.Handled, Is.True);
                 Assert.That(state.EndsAt - timing.CurTime, Is.EqualTo(TimeSpan.FromSeconds(15)));
                 Assert.That(state.NextUseAt - timing.CurTime, Is.EqualTo(TimeSpan.FromMinutes(3)));
@@ -72,7 +72,7 @@ public sealed class StrengthJuggernautTests
                 result = DamageSpecifier.ApplyModifierSets(damage, hit.ModifiersList);
                 Assert.That(result.DamageDict["Blunt"].Float(), Is.EqualTo(20));
                 action = new() { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref action);
+                em.EventBus.RaiseLocalEvent(user, action);
                 Assert.That(action.Handled, Is.False);
                 Assert.That(state.NextUseAt, Is.EqualTo(cooldown));
             }

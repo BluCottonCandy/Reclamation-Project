@@ -1,3 +1,4 @@
+#nullable enable
 using Robust.Shared.GameObjects;
 using System.Linq;
 using System.Reflection;
@@ -36,7 +37,7 @@ public sealed class FilterOrganFailureTest
             EntityUid Organ(TraumaKind kind) => body.GetBodyOrgans(subject).First(o => entities.TryGetComponent<TraumaOrganComponent>(o.Id, out var h) && h.Kind == kind).Id;
             var liver = Organ(TraumaKind.Liver); var kidneys = Organ(TraumaKind.Kidneys);
             var damage = entities.GetComponent<DamageableComponent>(subject);
-            float Poison() => damage.Damage.DamageDict.GetValueOrDefault("Poison").Float();
+            float Poison() => damage.Damage.DamageDict.TryGetValue("Poison", out var poison) ? poison.Float() : 0f;
             Check(trauma.GetFailedFilterCount(subject) == 0, "healthy filter organs do not poison");
             trauma.SetOrganDamage(liver, 100);
             Check(trauma.GetFailedFilterCount(subject) == 1, "failed liver counts once");

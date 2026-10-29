@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using Robust.Shared.Random;
 using Content.Server.Body.Components;
@@ -57,7 +58,7 @@ public sealed partial class TraumaSystem
     public void Refresh(EntityUid uid, TraumaBodyComponent medical)
     {
         // Newly transplanted organs and limbs join the same injury model.
-        foreach (var (part, _) in _body.GetBodyChildren(uid)) EnsureComp<TraumaLimbComponent>(part);
+        foreach (var (part, component) in _body.GetBodyChildren(uid)) InitializeLimbHealth(part, component);
         foreach (var (organ, component) in _body.GetBodyOrgans(uid))
             if (KindForSlot(component.SlotId) is { } kind && !HasComp<TraumaOrganComponent>(organ))
             {
@@ -71,7 +72,14 @@ public sealed partial class TraumaSystem
             var matches = organs.Where(o => Comp<TraumaOrganComponent>(o.Id).Kind == kind).ToArray();
             var original = medical.OriginalOrgans.GetValueOrDefault(kind, matches.Length);
             var count = Math.Max(original, matches.Length);
-            return count == 0 ? 0 : (matches.Sum(o => Comp<TraumaOrganComponent>(o.Id).Damage) +
+            // A worn heart remains weaker after repair: lost permanent capacity
+            // must still lower the body's critical threshold.
+            float OrganDamage(EntityUid organ)
+            {
+                var health = Comp<TraumaOrganComponent>(organ);
+                return kind == TraumaKind.Heart ? 100f - health.CurrentHealth : health.DamagePercent;
+            }
+            return count == 0 ? 0 : (matches.Sum(o => OrganDamage(o.Id)) +
                 Math.Max(0, original - matches.Length) * 100f) / count;
         }
         var lungs = Damage(TraumaKind.Lungs); var heart = Damage(TraumaKind.Heart);
@@ -109,7 +117,7 @@ public sealed partial class TraumaSystem
         {
             var injury = Comp<TraumaOrganComponent>(organ);
             if (injury.Kind is not (TraumaKind.Liver or TraumaKind.Kidneys)) continue;
-            var intervalFactor = 1f / Math.Max(.1f, 1f - .9f * injury.Damage / 100f);
+            var intervalFactor = 1f / Math.Max(.1f, 1f - .9f * injury.DamagePercent / 100f);
             if (intervalFactor == injury.AppliedMetabolism) continue;
             var metabolic = new ApplyMetabolicMultiplierEvent(organ, intervalFactor / injury.AppliedMetabolism, true);
             RaiseLocalEvent(organ, ref metabolic);
@@ -123,31 +131,54 @@ public sealed partial class TraumaSystem
         }
     }
 
+    private static string ScanHealth(float value)
+        => value.ToString("0.#", CultureInfo.InvariantCulture);
+
     public string GetReport(EntityUid uid)
     {
         if (!TryComp<TraumaBodyComponent>(uid, out var medical)) return string.Empty;
         Refresh(uid, medical);
         var lines = new List<string> { Loc.GetString("trauma-report-heading") };
+        var filters = GetFailedFilterCount(uid);
+        if (filters > 0)
+            lines.Add(Loc.GetString("trauma-filter-failure", ("rate", filters)));
         foreach (var (part, component) in _body.GetBodyChildren(uid))
         {
-            if (component.PartType is not (BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot) ||
-                !TryComp<DamageableComponent>(part, out var damage) || damage.TotalDamage <= 0) continue;
-            var threshold = component.IntegrityThresholds[Content.Shared._Shitmed.Targeting.TargetIntegrity.CriticallyWounded];
-            var percent = MathF.Round(damage.TotalDamage.Float() / Math.Max(1, threshold) * 100);
-            var status = !component.Enabled ? "trauma-limb-disabled" : percent >= 60 ? "trauma-limb-warning" : "trauma-limb-functional";
-            lines.Add(Loc.GetString("trauma-report-limb", ("part", Name(part)), ("damage", percent), ("status", Loc.GetString(status))));
+            if (!IsLimb(component) || !TryComp<TraumaLimbComponent>(part, out var health)) continue;
+            var currentHealth = GetLimbHealth(part, health);
+            if (health.MaximumHealth >= 100f && currentHealth >= health.MaximumHealth &&
+                component.Enabled && !HasComp<FractureComponent>(part)) continue;
+            var status = health.MaximumHealth <= 0f ? "trauma-replacement-required" :
+                !component.Enabled ? "trauma-limb-disabled" : "trauma-limb-functional";
+            var summary = Loc.GetString(status);
+            if (health.MaximumHealth > 0f && TryComp<FractureComponent>(part, out var fracture))
+                summary = Loc.GetString(fracture.Splinted ? "trauma-scan-splinted" : "trauma-scan-fractured",
+                    ("healing", (int) MathF.Round(fracture.HealingProgress)));
+            lines.Add(Loc.GetString("trauma-report-limb", ("part", Name(part)),
+                ("health", ScanHealth(currentHealth)),
+                ("maximum", ScanHealth(health.MaximumHealth + health.TemporaryHealth)),
+                ("status", summary)));
         }
-        if (TryComp<BodyComponent>(uid, out var body) && body.RootContainer.ContainedEntity is { } root)
-            foreach (var (part, _) in _body.GetBodyPartChildren(root))
-                if (TryComp<FractureComponent>(part, out var fracture))
-                    lines.Add(Loc.GetString(fracture.Splinted ? "trauma-report-splinted" : "trauma-report-fracture", ("part", Name(part)), ("healing", (int) MathF.Round(fracture.HealingProgress))));
         if (medical.InternalBleeding > 0)
             lines.Add(Loc.GetString("trauma-report-bleeding", ("rate", Math.Max(1, (int) MathF.Round(medical.InternalBleeding)))));
-        foreach (var (kind, value) in new[] { (TraumaKind.Lungs, medical.LungDamage), (TraumaKind.Heart, medical.HeartDamage),
-                     (TraumaKind.Liver, medical.LiverDamage), (TraumaKind.Kidneys, medical.KidneyDamage),
-                     (TraumaKind.Eyes, medical.EyeDamage), (TraumaKind.Stomach, medical.StomachDamage) })
-            if (value > 0) lines.Add(Loc.GetString("trauma-report-organ", ("organ", Loc.GetString("trauma-organ-" + kind.ToString().ToLowerInvariant())),
-                ("damage", MathF.Round(value))));
+        var attached = _body.GetBodyOrgans(uid).Where(o => HasComp<TraumaOrganComponent>(o.Id)).ToArray();
+        foreach (var (organ, component) in attached)
+        {
+            var health = Comp<TraumaOrganComponent>(organ);
+            if (health.MaximumHealth >= 100f && health.CurrentHealth >= health.MaximumHealth &&
+                component.Enabled) continue;
+            var status = health.MaximumHealth <= 0f ? "trauma-replacement-required" :
+                !component.Enabled || health.CurrentHealth <= 0f ? "trauma-organ-disabled" : "trauma-limb-functional";
+            lines.Add(Loc.GetString("trauma-report-organ", ("organ", Name(organ)),
+                ("health", ScanHealth(health.CurrentHealth)), ("maximum", ScanHealth(health.MaximumHealth)),
+                ("status", Loc.GetString(status))));
+        }
+        foreach (var (kind, count) in medical.OriginalOrgans)
+        {
+            var missing = count - attached.Count(o => Comp<TraumaOrganComponent>(o.Id).Kind == kind);
+            if (missing > 0)
+                lines.Add(Loc.GetString("trauma-organ-missing", ("organ", Loc.GetString("trauma-organ-" + kind.ToString().ToLowerInvariant())), ("count", missing)));
+        }
         if (lines.Count == 1) lines.Add(Loc.GetString("trauma-report-healthy"));
         return string.Join("\n", lines);
     }

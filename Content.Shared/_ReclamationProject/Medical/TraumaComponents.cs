@@ -23,6 +23,9 @@ public sealed partial class TraumaBodyComponent : Component
     [DataField] public float AppliedRecovery = 1f;
     [DataField] public float AppliedHeart = 1f;
     [DataField] public float PreviousHunger;
+    public float LastMedXAmount;
+    public int PendingMedXDoses;
+    public bool UpdatingMedX;
     public bool SuppressInjuryRolls;
     public float TickAccumulator;
     public float SymptomAccumulator;
@@ -34,11 +37,27 @@ public sealed partial class TraumaOrganComponent : Component
 {
     [DataField, AutoNetworkedField] public TraumaKind Kind;
     [DataField, AutoNetworkedField] public float Damage;
+    [DataField, AutoNetworkedField] public float MaximumHealth = 100f;
+    [DataField] public bool FailureRecorded;
+    public bool Detaching;
+
+    public float CurrentHealth => Math.Clamp(MaximumHealth - Damage, 0f, MaximumHealth);
+    public float DamagePercent => MaximumHealth <= 0f ? 100f : Math.Clamp(Damage / MaximumHealth * 100f, 0f, 100f);
     [DataField] public float AppliedMetabolism = 1f;
 }
 
-[RegisterComponent, NetworkedComponent]
-public sealed partial class TraumaLimbComponent : Component;
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+public sealed partial class TraumaLimbComponent : Component
+{
+    [DataField, AutoNetworkedField] public float TemporaryHealth;
+    [DataField, AutoNetworkedField] public float MaximumHealth = 100f;
+    [DataField, AutoNetworkedField] public float OriginalFailureThreshold;
+    [DataField] public float AppliedMaximumHealth = 100f;
+    [DataField] public bool FailureRecorded;
+}
+
+[ByRefEvent]
+public record struct TraumaLimbStateChangeEvent(bool Enabled);
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class FractureComponent : Component

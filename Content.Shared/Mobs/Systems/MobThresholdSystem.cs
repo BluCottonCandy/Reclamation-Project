@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Alert;
+using Content.Shared._ReclamationProject.Medical;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Components;
@@ -160,6 +161,22 @@ public sealed class MobThresholdSystem : EntitySystem
 
         percentage = damage / threshold;
         return true;
+    }
+
+    /// <summary>
+    /// Include health capacity lost to heart injuries in the living health indicator.
+    /// This changes presentation only; actual critical/death checks use their real thresholds.
+    /// </summary>
+    public FixedPoint2 GetHealthAlertPercentage(EntityUid target, MobState state, FixedPoint2 damage,
+        FixedPoint2 fallback)
+    {
+        if (state != MobState.Alive || !TryComp<TraumaBodyComponent>(target, out var medical) ||
+            medical.HeartDamage <= 0f || !TryGetThresholdForState(target, MobState.Critical, out var critical))
+            return fallback;
+
+        var heartFactor = 1f - .5f * Math.Clamp(medical.HeartDamage, 0f, 100f) / 100f;
+        var normalCritical = critical.Value.Float() / heartFactor;
+        return FixedPoint2.New(1f - heartFactor + damage.Float() / normalCritical);
     }
 
     /// <summary>
@@ -413,7 +430,8 @@ public sealed class MobThresholdSystem : EntitySystem
             if (TryGetNextState(target, currentMobState, out var nextState, threshold) &&
                 TryGetPercentageForState(target, nextState.Value, damageable.TotalDamage, out var percentage))
             {
-                percentage = FixedPoint2.Clamp(percentage.Value, 0, 1);
+                percentage = FixedPoint2.Clamp(GetHealthAlertPercentage(target, currentMobState,
+                    damageable.TotalDamage, percentage.Value), 0, 1);
 
                 severity = (short) MathF.Round(
                     MathHelper.Lerp(

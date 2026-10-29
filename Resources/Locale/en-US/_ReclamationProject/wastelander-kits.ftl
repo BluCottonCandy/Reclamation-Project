@@ -1,7 +1,7 @@
 wastelander-kit-hunter-name = Hunter
 wastelander-kit-hunter-description = You are skilled at finding and eating about anything in the Wastes. Contains a makeshift hunting rifle, one box of .308 ammunition, one bottle of water, and one can of tuna.
 wastelander-kit-doc-name = Wasteland Doc
-wastelander-kit-doc-description = You are the only thing that stands between death and your patient. Contains a single-use CPR training manual, a makeshift 9mm pistol, one box of 9mm ammunition, a surgical duffel bag filled with surgical tools, one bottle of ethanol, and sterile latex gloves.
+wastelander-kit-doc-description = You are the only thing that stands between death and your patient. Contains an N14 health scanner, a single-use CPR training manual, a makeshift 9mm pistol, one box of 9mm ammunition, a surgical duffel bag filled with surgical tools, one bottle of ethanol, and sterile latex gloves.
 wastelander-kit-survivalist-name = Survivalist
 wastelander-kit-survivalist-description = You know a thing or two, because you've survived a thing or two. Contains a makeshift .45-70 Gov revolver, one .45-70 speedloader, one box of .45-70 ammunition, one MRE box, and one folded bedroll.
 wastelander-kit-militarysurplus-name = Military Surplus
@@ -99,7 +99,7 @@ wastelander-cpr-already-known = You already know CPR.
 wastelander-kit-window-description = Choose your equipment below, then approve your selection.
 
 wastelander-kit-backalleydoctor-name = Back alley doctor
-wastelander-kit-backalleydoctor-description = You're more handy than a doctor, but you can still help! Contains a single-use CPR training manual, a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition.
+wastelander-kit-backalleydoctor-description = You're more handy than a doctor, but you can still help! Contains an N14 health scanner, a single-use CPR training manual, a filled toolbelt, Abraxo cleaner, leather gloves, a cloth mask, two stimpaks, a 9mm revolver, a matching speedloader, and one box of 9mm ammunition.
 wastelander-kit-bruiser-name = Bruiser
 wastelander-kit-bruiser-description = You love a good scrap, and you never run from a fight. Contains one random two-handed melee weapon (including a 2% chance of a super sledgehammer), one psycho syringe, and one buffout pill.
 wastelander-kit-highroller-name = High roller

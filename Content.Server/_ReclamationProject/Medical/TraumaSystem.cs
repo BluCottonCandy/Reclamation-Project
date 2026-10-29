@@ -65,6 +65,9 @@ public sealed partial class TraumaSystem : EntitySystem
         SubscribeLocalEvent<TraumaBodyComponent, TraumaRepairEvent>(OnRepair);
         SubscribeLocalEvent<TraumaBodyComponent, RejuvenateEvent>(OnRejuvenate);
         InitializeSplints();
+        InitializePermanentHealth();
+        InitializeFilterFailure();
+        InitializeMedX();
         SubscribeLocalEvent<TraumaBodyComponent, DidEquipHandEvent>(OnSupportEquipped);
         SubscribeLocalEvent<TraumaBodyComponent, DidUnequipHandEvent>(OnSupportRemoved);
     }
@@ -84,7 +87,7 @@ public sealed partial class TraumaSystem : EntitySystem
         if (!HasComp<HumanoidAppearanceComponent>(uid) || !HasComp<BodyComponent>(uid) || _body.GetBodyOrganComponents<LungComponent>(uid).Count == 0) return;
         _rotting.SetRotDelay(uid, TimeSpan.FromHours(1));
         var medical = EnsureComp<TraumaBodyComponent>(uid);
-        foreach (var (part, _) in _body.GetBodyChildren(uid)) EnsureComp<TraumaLimbComponent>(part);
+        foreach (var (part, component) in _body.GetBodyChildren(uid)) InitializeLimbHealth(part, component);
         foreach (var (organ, component) in _body.GetBodyOrgans(uid))
         {
             if (KindForSlot(component.SlotId) is not { } kind || HasComp<BrainComponent>(organ)) continue;
@@ -146,14 +149,14 @@ public sealed partial class TraumaSystem : EntitySystem
             var seconds = medical.TickAccumulator;
             medical.TickAccumulator = 0;
             Refresh(uid, medical);
+            UpdateMedX(uid, medical);
             if (_mob.IsDead(uid)) continue;
             HealNaturally(uid, medical, seconds);
             if (medical.InternalBleeding > 0)
                 _blood.TryModifyBloodLevel(uid, -Content.Shared.FixedPoint.FixedPoint2.New(medical.InternalBleeding * seconds), createPuddle: false);
             if (medical.KidneyDamage > 0 && TryComp<ThirstComponent>(uid, out var thirst))
                 _thirst.ModifyThirst(uid, thirst, -.015f * medical.KidneyDamage / 100f * seconds);
-            if (medical.KidneyDamage >= 75)
-                ApplySystemicDamage(uid, "Poison", .2f * medical.KidneyDamage / 100f * seconds);
+            ApplyFilterFailurePoison(uid, seconds);
             medical.SymptomAccumulator += seconds;
             if (medical.SymptomAccumulator < 30f) continue;
             medical.SymptomAccumulator = 0;
@@ -185,7 +188,7 @@ public sealed partial class TraumaSystem : EntitySystem
     }
 
     private void OnRepair(EntityUid uid, TraumaBodyComponent comp, ref TraumaRepairEvent args)
-        => Repair(uid, args.Part, args.Kind);
+        => Repair(uid, args.Part, args.Kind, surgical: true);
 
     private void OnSupportEquipped(EntityUid uid, TraumaBodyComponent comp, DidEquipHandEvent args)
     {
@@ -202,10 +205,13 @@ public sealed partial class TraumaSystem : EntitySystem
             _standing.Down(uid);
     }
 
-    public void Repair(EntityUid uid, EntityUid part, TraumaKind kind)
+    public void Repair(EntityUid uid, EntityUid part, TraumaKind kind, bool surgical = false)
     {
         if (!TryComp<TraumaBodyComponent>(uid, out var medical) ||
             !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body != uid) return;
+        var treatment = new Content.Shared.Chemistry.MedicalTreatmentAttemptEvent();
+        RaiseLocalEvent(uid, ref treatment);
+        if (treatment.Cancelled) return;
         if (kind == TraumaKind.LimbDamage && bodyPart.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot)
         {
             if (TryComp<DamageableComponent>(part, out var damage))
@@ -214,6 +220,7 @@ public sealed partial class TraumaSystem : EntitySystem
         }
         else if (kind == TraumaKind.Fracture)
         {
+            if (surgical) RestoreDisabledLimb(part);
             RemComp<FractureComponent>(part);
             var enabled = new BodyPartEnableChangedEvent(true);
             RaiseLocalEvent(part, ref enabled);
@@ -242,7 +249,7 @@ public sealed partial class TraumaSystem : EntitySystem
     public void SetOrganDamage(EntityUid organ, float damage)
     {
         if (HasComp<BrainComponent>(organ) || !TryComp<TraumaOrganComponent>(organ, out var injury)) return;
-        injury.Damage = Math.Clamp(damage, 0, 100);
+        SetOrganHealthDamage(organ, injury, damage);
         Dirty(organ, injury);
         if (TryComp<OrganComponent>(organ, out var component) && component.Body is { } body &&
             TryComp<TraumaBodyComponent>(body, out var medical)) Refresh(body, medical);

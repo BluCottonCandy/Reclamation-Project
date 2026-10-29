@@ -63,4 +63,28 @@ Every Chief Medical Officer has access to a Medical Biofabricator board in their
 
 If an organ transplant has no effect, the patient's body has rejected it. This usually means the organ is in poor condition. Use a fresh organ from a donor or manufacture a new one using the Medical Biofabricator.
 
+
+## Organ and limb health
+
+The scanner only lists damaged, worn, failed, or missing organs and injured limbs. For example, [bold]Heart: 15/15 · Working[/bold] means the heart is fully repaired to its remaining health capacity. Healthy, undamaged parts are hidden.
+
+Every full organ failure removes a random 25–85 points of maximum health. Each full limb disable removes 10-25 points and caps the remaining capacity at 15. These losses stack, down to zero. A disabled part is charged once; repeated updates or detaching and reattaching it do not erase or reroll its history.
+
+Surgery and natural healing restore current health only, up to the remaining maximum. They cannot remove permanent loss. Replace the damaged organ or limb with a fresh one to restore a maximum of 100. A used transplant retains its previous maximum health. At zero maximum health, organs require replacement. Attached limbs can instead be salvaged by bone-setting surgery to 15/15, but cannot recover above that cap without a fresh replacement.
+
+The brain keeps its existing damage protection. Fracture healing progress is separate: 100% means the bone has mended, not that permanent health has been restored.
+
+A damaged or permanently worn heart lowers the damage needed to enter critical state. The health indicator includes this lost capacity against the normal critical threshold, even when ordinary body damage has been healed. Repairing to 15/15 does not restore the strength of a fresh 100/100 heart.
+
+## Liver and kidney failure
+
+A failed liver causes 1 poison damage per second. Failed kidneys cause another 1 per second, for 2 poison per second when both are down. Missing filter organs count as failed.
+
+If either fails, chemical metabolism stops for the whole body. Chemicals stay in the body unprocessed. Physical surgery and other non-chemical treatment can still be used.
+
+Failed liver and kidney function returns after full repair to their remaining maximum health, or replacement. Partial natural recovery does not immediately restart metabolism. The scanner shows a short warning while filter failure is active.
+
+## Temporary support from Med-X
+
+See [bold]Organ and Limb Health[/bold] in the Surgery guide for temporary limb support from Med-X, its permanent liver and kidney costs, and the complete medical-system overview.
 </Document>

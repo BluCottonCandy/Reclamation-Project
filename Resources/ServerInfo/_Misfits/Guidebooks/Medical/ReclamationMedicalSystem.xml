@@ -1,0 +1,59 @@
+<Document>
+# Organ and Limb Health
+
+Your body has ordinary damage, structural organ injuries, and limb injuries. Healing one does not automatically repair the others. Use a health scanner to identify the damaged part before treating it.
+
+## Reading the scanner
+
+Healthy, undamaged parts are hidden. An entry such as [bold]Heart: 72/72 · Working[/bold] is fully repaired to its remaining capacity. [bold]Heart: 5/15[/bold] has five health left and can only be repaired to fifteen. Failed, disabled, fractured, and missing parts are listed, along with internal bleeding and blocked chemical metabolism.
+
+## Permanent wear and replacement
+
+A full organ failure permanently removes 25–85 points of its original 100-point health capacity. Each full limb disable removes 10-25 points and caps the remaining capacity at 15. A continuous failure is charged once; a new failure after recovery can cause further loss. The brain keeps its existing protection.
+
+Surgery and natural healing restore current health only to the remaining capacity. They cannot restore permanent loss. A fresh organ or limb restores full capacity; a used transplant retains its wear. An organ with no permanent capacity needs replacement. A zero-capacity attached limb can be salvaged with bone-setting surgery to 15/15; only a fresh replacement restores 100.
+
+## What injuries do
+
+Heart damage lowers how much ordinary damage you can take before going critical. Permanent heart wear still weakens you after repair. The health indicator counts the lost capacity against your normal critical threshold.
+
+Lung injuries reduce stamina capacity. Kidney injuries reduce stamina recovery and increase thirst. Liver injuries increase vulnerability to poison. Stomach injuries impair nutrition and may cause vomiting. Eye injuries blur vision and can cause blindness. Fractures disable limbs; leg and foot fractures hinder movement. Internal bleeding drains blood until treated.
+
+## Treatment
+
+Use the existing surgery procedures to repair organ tissue, limb tissue, fractures, and internal bleeding. A splint supports an injured limb but does not repair the fracture or erase permanent wear. Some ordinary tools support improvised surgery; proper surgical tools remain suitable. The surgery, body-part manipulation, and organ manipulation pages explain the procedures.
+
+## Failed or missing liver and kidneys
+
+A failed or missing liver causes 1 poison damage per second. Failed or missing kidneys cause another 1 per second. With both down, the total is 2 per second.
+
+If either filter organ fails or is missing, chemical metabolism stops. Medicines remain unprocessed and cannot help until filter function returns. Physical surgery remains possible. Fully repair each failed filter to its remaining capacity, or install a working replacement. A zero-capacity filter must be replaced.
+
+## Restoring disabled limbs with a bone setter
+
+This applies to arms, hands, legs, and feet on both sides.
+
+After a full disable, the damaged limb can never recover above 15 permanent health. Further failures can lower its available capacity, even to zero. Bone-setting surgery can salvage it back to 15/15, but natural healing, other surgery, and repeated bone setting cannot raise the cap above 15. Only a fresh replacement restores 100-point capacity.
+
+Open the surgical incision, then use the existing [bold]Set and mend fracture[/bold] procedure with a bone setter. It mends the fracture and repairs tissue to 15/15, even if its remaining capacity was zero. It also works on a fully disabled limb without a fracture. A zero-capacity attached limb can be salvaged to 15/15 with bone-setting surgery. Repeating bone setting cannot raise the 15-point cap.
+
+## Med-X: temporary limb function at a permanent cost
+
+While Med-X is present and your body can metabolize chemicals, attached arms, hands, legs, and feet receive 15 temporary health points and cannot be disabled by damage or fractures. Even exhausting that temporary health does not disable the attached limb until Med-X wears off. It does not replace missing limbs or prevent amputation.
+
+Med-X does not add temporary health to organs or restore failed organ function. A failed heart, lungs, eyes, or stomach remains failed unless treated.
+
+The temporary limb boost does not stack. Another dose extends the time Med-X remains in your system. Once it wears off, temporary health and disable protection disappear. Untreated fractures and severe tissue damage can disable the limbs again. The original injuries remain and still need treatment.
+
+[bold]Every dose permanently removes 15 health points from both your liver and kidneys.[/bold] Two doses cost each filter 30 points, even if the doses overlap. Surgery cannot restore that lost capacity. Destroying either filter stops chemical metabolism, including Med-X's limb support.
+
+Existing Med-X damage protection and overdose effects still apply. Other medicines and Hydra do not gain the new limb-disable protection.
+
+## Endurance 10: Enraged limb function
+
+While Enraged is active, attached arms, hands, legs, and feet remain usable even if fractured or disabled. Further damage cannot disable them during the effect. This does not heal tissue or mend bones, and does not replace missing limbs. Once Enraged ends, the normal disabling effects of those injuries return. The existing Enraged damage, treatment restrictions, cooldown, and expiry effects still apply.
+
+## Doctor kits
+
+Back Alley Doctor and Wasteland Doc kits include an N14 health scanner. Use it to distinguish ordinary wounds from structural injuries and permanent wear.
+</Document>

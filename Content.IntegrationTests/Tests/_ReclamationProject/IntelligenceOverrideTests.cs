@@ -31,12 +31,12 @@ public sealed class IntelligenceOverrideTests
                 em.System<SharedSpecialSystem>().TrySetBase(user, SpecialStat.Intelligence, 10);
                 var state = em.GetComponent<IntelligenceOverrideComponent>(user);
                 var action = new IntelligenceOverrideActionEvent { Performer = user, Target = wood };
-                em.EventBus.RaiseLocalEvent(user, ref action);
+                em.EventBus.RaiseLocalEvent(user, action);
                 Assert.That(action.Handled, Is.False);
                 Assert.That(state.NextUseAt, Is.EqualTo(TimeSpan.Zero));
                 Assert.That(em.System<EmagSystem>().DoEmagEffect(user, door), Is.False);
                 action = new() { Performer = user, Target = door };
-                em.EventBus.RaiseLocalEvent(user, ref action);
+                em.EventBus.RaiseLocalEvent(user, action);
                 Assert.That(action.Handled, Is.True);
                 Assert.That(em.HasComponent<EmaggedComponent>(door), Is.True);
                 Assert.That(state.NextUseAt - timing.CurTime, Is.EqualTo(TimeSpan.FromMinutes(1)));

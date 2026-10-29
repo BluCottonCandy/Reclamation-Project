@@ -54,7 +54,7 @@ public sealed class PerceptionDualGunTests
             try
             {
                 pair.Server.PlayerMan.SetAttachedEntity(session, user);
-                em.GetComponent<CombatModeComponent>(user).IsInCombatMode = true;
+                em.System<SharedCombatModeSystem>().SetInCombatMode(user, true);
                 var hands = em.System<SharedHandsSystem>();
                 Assert.That(hands.TryPickup(user, primary), Is.True);
                 var handComp = em.GetComponent<HandsComponent>(user);
@@ -68,7 +68,10 @@ public sealed class PerceptionDualGunTests
                 var secondaryAmmo = em.GetComponent<BasicEntityAmmoProviderComponent>(secondary);
                 var target = em.GetNetCoordinates(map.GridCoords.Offset(new System.Numerics.Vector2(10, 0)));
                 void Fire(EntityUid gun) => guns.ShootRequested(em.GetNetEntity(gun), target, null, null, session);
+                // Test setup deliberately rewinds the cooldown between independent authorization cases.
+#pragma warning disable RA0002
                 void Ready() { primaryGun.NextFire = secondaryGun.NextFire = timing.CurTime; }
+#pragma warning restore RA0002
                 special.TrySetBase(user, SpecialStat.Perception, 9);
                 Ready(); Fire(secondary);
                 Assert.That(secondaryAmmo.Count, Is.EqualTo(8), "A direct offhand request below Perception 10 is rejected.");

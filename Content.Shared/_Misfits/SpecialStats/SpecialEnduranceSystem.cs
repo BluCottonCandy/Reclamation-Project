@@ -106,8 +106,15 @@ public sealed class SpecialEnduranceSystem : EntitySystem
         if (!TryComp<MobThresholdsComponent>(ent.Owner, out var thresholds))
             return;
 
-        // Undo any previously applied health bonus; Endurance no longer changes health thresholds.
-        const float desired = 0f;
+        // Restore the original health curve from before the increased +50-health bonus.
+        var tuning = _special.GetTuning();
+        var desired = reset
+            ? 0f
+            : _special.GetCurvedEffectModifier(
+                ent.Owner,
+                SpecialStat.Endurance,
+                tuning.EnduranceHealthModifierPerPoint,
+                ent.Comp);
         var adjustment = desired - ent.Comp.AppliedHealthThresholdModifier;
 
         if (MathHelper.CloseTo(adjustment, 0f))

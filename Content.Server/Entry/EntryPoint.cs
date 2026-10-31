@@ -204,6 +204,7 @@ namespace Content.Server.Entry
 
         protected override void Dispose(bool disposing)
         {
+            IoCManager.Resolve<IEntityManager>().System<Content.Server._Reclamation.Bunkers.PersonalBunkerSystem>().SaveBeforeShutdown();
             _playTimeTracking?.Shutdown();
             _dbManager?.Shutdown();
             IoCManager.Resolve<ServerApi>().Shutdown();

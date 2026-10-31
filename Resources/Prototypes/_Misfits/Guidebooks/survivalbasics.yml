@@ -8,6 +8,7 @@
   text: "/ServerInfo/_Misfits/Guidebooks/Survival/index.xml"
   children:
   - N14Basics
+  - ReclamationPersonalBunkers
   - ReclamationSpecial
   - ReclamationBruiserKit
 
@@ -76,3 +77,8 @@
   priority: 70
   name: guide-entry-special-luck
   text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SpecialLuck.xml"
+
+- type: guideEntry
+  id: ReclamationPersonalBunkers
+  name: guide-entry-personal-bunkers
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/PersonalBunkers.xml"

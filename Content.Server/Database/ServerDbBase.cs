@@ -80,6 +80,15 @@ namespace Content.Server.Database
             return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor), prefs.AnonymousRoundEndReport);
         }
 
+        // The database row survives character renames, but not deletion/recreation.
+        public async Task<int?> GetBunkerProfileIdAsync(NetUserId userId, int slot, string name)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.Profile
+                .Where(p => p.Preference.UserId == userId.UserId && p.Slot == slot && p.CharacterName == name)
+                .Select(p => (int?) p.Id).SingleOrDefaultAsync();
+        }
+
         public async Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index)
         {
             await using var db = await GetDb();

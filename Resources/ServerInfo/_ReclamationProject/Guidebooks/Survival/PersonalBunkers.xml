@@ -1,0 +1,15 @@
+<Document>
+# Personal Bunkers
+
+Use a bunker hatch and choose Enter my room to enter your character's private quarters, or Enter cryo to rest as usual. Each character has a separate room, saved on this server. Renaming your character keeps their room; deleting the character does not transfer it to a new character.
+
+Your room starts with a small concrete interior, a roof, breathable air, and a lit exit ladder. Bring furniture and decorations to make it your own. Use the ladder to return to the hatch you entered through. Anything you are dragging follows you through the hatch and ladder.
+
+Rooms save when the last occupant leaves, with a final safety save at round end or normal server shutdown. There is no repeating autosave while you are inside. Furniture, decorations, and items inside containers are saved. Players, bodies, and everything they are wearing or carrying are excluded. An occupied room stays loaded. If you enter critical condition or go SSD inside, your body and belongings are returned to the entrance hatch. The room saves when empty, just as if you had left through the ladder. Ghosts are returned to the hatch when no living, awake player remains inside, so observers cannot keep an abandoned room loaded.
+
+## Display weapons
+
+Weapons left in the room become permanent decorations after the last occupant leaves, even inside containers. Weapons remain functional while someone is inside. Guns lose their loaded ammunition and cannot shoot or be reloaded. Melee weapons lose their original damage and deal only 1 blunt. Taking a display weapon out of the room does not restore it.
+
+Keep functional weapons on your person. Your equipped and carried items, including the contents of your bags, are excluded from room saves and display conversion.
+</Document>

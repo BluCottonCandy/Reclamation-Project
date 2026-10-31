@@ -13206,3 +13206,26 @@ Entries:
   id: 6571
   time: '2026-10-31T03:19:48.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/99
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Intelligence 10 grants Override, reusing emag behavior on electronic
+        doors even during outages. Wooden/mechanical doors remain immune.
+        Unlimited uses with a three-minute shared cooldown after success.
+    - type: Add
+      message: >-
+        Override reprograms AI robots to protect players and fight other robots
+        and wasteland enemies, without following the hacker. Player robots and
+        other overridden robots remain friendly.
+    - type: Add
+      message: Added the Intelligence Override guidebook entry.
+    - type: Add
+      message: >-
+        Override uses a Protectron icon and a purely cosmetic green-and-black
+        animated hand aura while targeting, with original artwork attribution.
+    - type: Tweak
+      message: Increased Override’s shared cooldown to three minutes.
+  id: 6572
+  time: '2026-10-31T03:31:28.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/100

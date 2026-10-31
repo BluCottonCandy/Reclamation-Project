@@ -13,6 +13,7 @@ public sealed partial class SpecialProfile
     // SPECIAL uses Fallout-style 1-10 stats with 5 as the neutral midpoint.
     public const int Minimum = 1;
     public const int Maximum = 10;
+    public const int SecondaryMaximum = 9;
     public const int DefaultValue = 5;
 
     // Players start at the default total and may distribute a small bonus pool.
@@ -65,7 +66,25 @@ public sealed partial class SpecialProfile
 
     public int AvailablePoints => MaxTotal - Total;
 
-    public bool IsValid =>
+    public int MaxedStatCount
+    {
+        get
+        {
+            var count = 0;
+            foreach (var stat in SpecialStats.All)
+                if (Get(stat) == Maximum)
+                    count++;
+            return count;
+        }
+    }
+
+    /// <summary>Only one allocated stat may reach ten; lowering it unlocks the others.</summary>
+    public int GetMaximum(SpecialStat stat) =>
+        Get(stat) == Maximum || MaxedStatCount == 0 ? Maximum : SecondaryMaximum;
+
+    public bool IsValid => ValuesAndBudgetAreValid && MaxedStatCount <= 1;
+
+    private bool ValuesAndBudgetAreValid =>
         IsWithinBounds(Strength) &&
         IsWithinBounds(Perception) &&
         IsWithinBounds(Endurance) &&
@@ -79,14 +98,25 @@ public sealed partial class SpecialProfile
 
     public static SpecialProfile EnsureValid(SpecialProfile? profile)
     {
-        // Invalid profiles fall back completely instead of being partially
-        // clamped, so malformed or over-budget input cannot preserve advantages.
+        // Preserve the existing fallback for malformed/over-budget data. Legacy
+        // profiles with multiple tens are migrated without resetting unrelated stats.
         if (profile == null)
             return Default();
 
         var clone = profile.Clone();
 
-        return clone.IsValid ? clone : Default();
+        if (!clone.ValuesAndBudgetAreValid)
+            return Default();
+
+        if (clone.MaxedStatCount > 1)
+        {
+            // Refund one point per former ten. With no ten selected, players can
+            // spend one of those points on their preferred capstone in Customize.
+            foreach (var stat in SpecialStats.All)
+                if (clone.Get(stat) == Maximum)
+                    clone.Set(stat, SecondaryMaximum);
+        }
+        return clone;
     }
 
     public int Get(SpecialStat stat)

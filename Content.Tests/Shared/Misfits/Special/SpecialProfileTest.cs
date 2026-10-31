@@ -74,4 +74,41 @@ public sealed class SpecialProfileTest
         Assert.That(sanitized.Total, Is.EqualTo(SpecialProfile.DefaultTotal));
         Assert.That(sanitized.AvailablePoints, Is.EqualTo(SpecialProfile.BonusPoints));
     }
+
+    [Test]
+    public void MultipleTensRefundPointsWithoutChangingOtherStats()
+    {
+        var old = new SpecialProfile { Strength = 10, Perception = 10, Endurance = 4, Charisma = 4, Intelligence = 4, Agility = 4, Luck = 4 };
+        Assert.That(old.Total, Is.EqualTo(SpecialProfile.MaxTotal));
+        Assert.That(old.IsValid, Is.False);
+        var migrated = SpecialProfile.EnsureValid(old);
+        Assert.That(migrated.Strength, Is.EqualTo(9));
+        Assert.That(migrated.Perception, Is.EqualTo(9));
+        Assert.That(migrated.Endurance, Is.EqualTo(4));
+        Assert.That(migrated.Charisma, Is.EqualTo(4));
+        Assert.That(migrated.Intelligence, Is.EqualTo(4));
+        Assert.That(migrated.Agility, Is.EqualTo(4));
+        Assert.That(migrated.Luck, Is.EqualTo(4));
+        Assert.That(migrated.AvailablePoints, Is.EqualTo(old.AvailablePoints + 2));
+        Assert.That(migrated.IsValid, Is.True);
+        Assert.That(old.Strength, Is.EqualTo(10), "Migration must not mutate the source object.");
+        var selected = migrated.With(SpecialStat.Strength, 10);
+        Assert.That(selected.IsValid, Is.True);
+        Assert.That(selected.GetMaximum(SpecialStat.Perception), Is.EqualTo(9));
+        Assert.That(selected.With(SpecialStat.Perception, 10).IsValid, Is.False);
+        Assert.That(SpecialProfile.EnsureValid(migrated).MemberwiseEquals(migrated), Is.True);
+    }
+
+    [Test]
+    public void EveryStatCanBeTheSingleTen()
+    {
+        foreach (var selected in SpecialStats.All)
+        {
+            var profile = SpecialProfile.Default().With(selected, 10);
+            Assert.That(profile.IsValid, Is.True);
+            Assert.That(SpecialProfile.EnsureValid(profile).MemberwiseEquals(profile), Is.True);
+            foreach (var stat in SpecialStats.All)
+                Assert.That(profile.GetMaximum(stat), Is.EqualTo(stat == selected ? 10 : 9));
+        }
+    }
 }

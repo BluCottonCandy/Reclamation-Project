@@ -2696,7 +2696,8 @@ namespace Content.Client.Lobby.UI
             _specialPointsLabel.Text = Loc.GetString(
                 "humanoid-profile-editor-special-points-label",
                 ("points", special.AvailablePoints),
-                ("max", SpecialProfile.BonusPoints));
+                ("max", SpecialProfile.BonusPoints)) + "\n" +
+                Loc.GetString("humanoid-profile-editor-special-single-ten");
 
             foreach (var stat in SpecialStats.All)
             {
@@ -2781,7 +2782,8 @@ namespace Content.Client.Lobby.UI
             {
                 Text = "+",
                 MinWidth = 32,
-                Disabled = value >= SpecialProfile.Maximum || special.AvailablePoints <= 0,
+                Disabled = value >= special.GetMaximum(stat) || special.AvailablePoints <= 0,
+                ToolTip = Loc.GetString("humanoid-profile-editor-special-single-ten"),
             };
             plusButton.StyleClasses.Add(StyleNano.StyleClassPipBoyButton);
             plusButton.OnPressed += _ => SetSpecialValue(stat, value + 1);

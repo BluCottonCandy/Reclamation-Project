@@ -15,3 +15,5 @@ humanoid-profile-editor-special-points-label = Available SPECIAL points: {$point
 
 humanoid-profile-editor-special-info-tooltip = Show effect details
 humanoid-profile-editor-special-current-header = Current effects:
+
+humanoid-profile-editor-special-single-ten = Only one SPECIAL stat may reach 10. All other stats are capped at 9, including bonuses.

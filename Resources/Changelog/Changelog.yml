@@ -13229,3 +13229,12 @@ Entries:
   id: 6572
   time: '2026-10-31T03:31:28.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/100
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Reduced Forged Furnace Armor and Forge Keeper Furnace Armor movement
+        slowdown from 35% to 25%.
+  id: 6573
+  time: '2026-10-31T03:31:39.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/101

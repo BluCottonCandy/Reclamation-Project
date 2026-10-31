@@ -1,5 +1,9 @@
 <Document>
-# Agility
+# Agility: Quickstep
 
-Agility increases movement speed.
+Agility changes the speed of timed actions shown by do-after progress bars, rather than walking or sprinting. Agility 5 is neutral. The original speed curve is preserved: [bold]1: -5%; 2: -3.5%; 3: -2.25%; 4: -1%; 5: 0%; 6: +1%; 7: +2.25%; 8: +3.75%; 9: +5.5%; 10: +7.5%[/bold]. A 10-second action at Agility 10 takes about 9.30 seconds. Explicitly fixed-duration actions are unaffected. Active chem Agility boosts also improve timed-action speed instead of movement.
+
+At [bold]10 effective Agility[/bold], you gain [bold]Quickstep[/bold]. Activate it to dash up to [bold]five tiles[/bold] in the direction you are moving, or forward if you are standing still. This is longer than the ordinary 3.5-tile melee dash.
+
+Quickstep costs [bold]no stamina[/bold] and has a [bold]30-second cooldown from activation[/bold]. It uses physical dash movement: obstacles can stop you, and you cannot use it while immobilized or already being thrown. It grants no attack, healing or invulnerability. Temporarily lowering Agility does not reset its cooldown.
 </Document>

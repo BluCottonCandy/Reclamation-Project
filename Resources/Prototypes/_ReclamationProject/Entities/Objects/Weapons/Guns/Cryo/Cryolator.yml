@@ -54,8 +54,8 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 4
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletCryolator
+  - type: GunDamageBonus
+    hitscanProtoOverride: BulletCryolator
     fireCost: 200
   - type: StaticPrice
     price: 300
@@ -114,8 +114,8 @@
     - SemiAuto
   - type: FollowDistance
     backStrength: 4
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletCrystalizingCryolator
+  - type: GunDamageBonus
+    hitscanProtoOverride: BulletCrystalizingCryolator
     fireCost: 600
   - type: StaticPrice
     price: 300

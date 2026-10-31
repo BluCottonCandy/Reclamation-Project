@@ -54,8 +54,8 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 6
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletFlame
+  - type: GunDamageBonus
+    hitscanProtoOverride: BulletFlame
     fireCost: 200
   - type: StaticPrice
     price: 400
@@ -114,8 +114,8 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 6
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletIncinerator
+  - type: GunDamageBonus
+    hitscanProtoOverride: BulletIncinerator
     fireCost: 600
   - type: StaticPrice
     price: 500

@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Misfits.SpecialStats;
 using System.Threading.Tasks;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
@@ -18,6 +19,7 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly SpecialDoAfterSystem _agility = default!;
 
     /// <summary>
     ///     We'll use an excess time so stuff like finishing effects can show.
@@ -202,6 +204,15 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
             Log.Error($"Attempting to start a doAfter with invalid user: {ToPrettyString(args.User)}.");
             id = null;
             return false;
+        }
+
+        // Clone before scaling: callers may retry or reuse their original arguments.
+        // Preserve explicit fixed-duration opt-outs and instant actions.
+        if (args.MultiplyDelay && args.Delay > TimeSpan.Zero)
+        {
+            var delay = _agility.GetDelay(args.User, args.Delay);
+            if (delay != args.Delay)
+                args = new DoAfterArgs(args) { Delay = delay };
         }
 
         // Duplicate blocking & cancellation.

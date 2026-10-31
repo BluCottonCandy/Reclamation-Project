@@ -31,7 +31,7 @@ public sealed partial class DrugSpecialBoostComponent : Component
     [DataField, AutoNetworkedField]
     public int CharismaBoost;
 
-    /// <summary>Temporary Agility delta — adds movement speed bonus via DrugSpecialBoostSystem.</summary>
+    /// <summary>Temporary Agility delta — adds do-after speed via SpecialDoAfterSystem.</summary>
     [DataField, AutoNetworkedField]
     public int AgilityBoost;
 

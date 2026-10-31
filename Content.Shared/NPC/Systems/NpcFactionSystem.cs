@@ -191,6 +191,9 @@ public sealed partial class NpcFactionSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp1, false))
             return Array.Empty<EntityUid>();
 
+        if (HasComp<Content.Shared._ReclamationProject.Intelligence.OverriddenRobotComponent>(ent))
+            return GetOverrideHostiles(ent, range);
+
         var hostiles = GetNearbyFactions(ent, range, ent.Comp1.HostileFactions)
             // ignore mobs that have both hostile faction and the same faction,
             // otherwise having multiple factions is strictly negative
@@ -242,6 +245,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
     /// </remarks>
     public bool IsEntityFriendly(Entity<NpcFactionMemberComponent?> ent, Entity<NpcFactionMemberComponent?> other)
     {
+        if (TryOverrideRelationship(ent.Owner, other.Owner, out var friendly))
+            return friendly;
         if (!Resolve(ent, ref ent.Comp, false) || !Resolve(other, ref other.Comp, false))
             return false;
 
@@ -255,6 +260,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
 
     public bool IsEntityHostile(Entity<NpcFactionMemberComponent?, FactionExceptionComponent?> ent, Entity<NpcFactionMemberComponent?> other)
     {
+        if (TryOverrideRelationship(ent.Owner, other.Owner, out var friendly))
+            return !friendly;
         if (!Resolve(ent, ref ent.Comp1, false) || !Resolve(other, ref other.Comp, false))
             return false;
 

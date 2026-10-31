@@ -13238,3 +13238,24 @@ Entries:
   id: 6573
   time: '2026-10-31T03:31:39.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/101
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Agility 10 grants Quickstep, a stamina-free five-tile physical dash with
+        a 30-second cooldown.
+    - type: Tweak
+      message: >-
+        Agility now speeds up do-after progress bars instead of walking and
+        sprinting, preserving the previous per-level speed curve. Chem Agility
+        movement boosts now apply to timed actions too.
+    - type: Add
+      message: Updated the Agility SPECIAL description and guidebook entry.
+    - type: Fix
+      message: >-
+        Quickstep now predicts its movement on the client. Charge movement locks
+        synchronize across client corrections, overlapping charges cannot add
+        duplicate impulses, and interrupted charges release their movement lock.
+  id: 6574
+  time: '2026-10-31T03:55:34.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/102

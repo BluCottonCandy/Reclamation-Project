@@ -55,11 +55,9 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 4
-  - type: GunDamageBonus
-    bonusDamage:
-      types:
-        Cold: 10
-    fireCostMultiplier: 2
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletCryolator
+    fireCost: 200
   - type: StaticPrice
     price: 300
 
@@ -118,11 +116,9 @@
     - SemiAuto
   - type: FollowDistance
     backStrength: 4
-  - type: GunDamageBonus
-    bonusDamage:
-      types:
-        Pierce: 10
-    fireCostMultiplier: 5
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletCrystalizingCryolator
+    fireCost: 600
   - type: StaticPrice
     price: 300
 

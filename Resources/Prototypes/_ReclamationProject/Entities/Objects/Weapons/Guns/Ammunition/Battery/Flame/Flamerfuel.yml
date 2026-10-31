@@ -30,9 +30,6 @@
   - type: Appearance
   - type: PowerCellVisuals
   - type: Riggable
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletFlame
-    fireCost: 100
 
 - type: entity
   name: flamer fuel cannister
@@ -43,6 +40,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Flame/flamerfuel.rsi
+    scale: 0.3, 0.3
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty
@@ -66,6 +64,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Flame/enrichedflamerfuel.rsi
+    scale: 0.3, 0.3
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty

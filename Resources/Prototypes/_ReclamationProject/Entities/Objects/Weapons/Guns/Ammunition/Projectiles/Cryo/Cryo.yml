@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/cryolator.rsi
-    scale: 0.7, 0.7
+    scale: 0.9, 0.9
     layers:
     - state: cryoflame
       shader: unshaded
@@ -15,7 +15,7 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.8,-0.8,0.8,0.8"
+          bounds: "-0.6,-0.6,0.6,0.6"
         hard: false
         mask:
         - Impassable
@@ -23,10 +23,10 @@
   - type: Ammo
     muzzleFlash: CryolatorMuzzleFlashEffect
   - type: Projectile
-    impactEffect: BulletCryoImpactEffect
+    impactEffect: BulletCryolatorImpactEffect
     damage:
       types:
-        Cold: 25
+        Cold: 30
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
 
@@ -50,7 +50,7 @@
   - type: AnimationPlayer
 
 - type: entity
-  id: BulletCryoImpactEffect
+  id: BulletCryolatorImpactEffect
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
@@ -62,6 +62,76 @@
       map: ["enum.EffectLayers.Unshaded"]
       sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/cryolator.rsi
       state: impact_cryolator
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu
+
+- type: entity
+  name: crystal shard
+  id: BulletCrystalizingCryolator
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/crystalizingcryolator.rsi
+    scale: 0.5, 0.5
+    layers:
+    - state: crystalshot
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+  - type: Ammo
+    muzzleFlash: CrystalizingCryolatorMuzzleFlashEffect
+  - type: Projectile
+    impactEffect: BulletCrystalizingCryolatorImpactEffect
+    damage:
+      types:
+        Cold: 20
+        Pierce: 10
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+
+- type: entity
+  id: CrystalizingCryolatorMuzzleFlashEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.5
+  - type: Sprite
+    drawdepth: Effects
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/crystalizingcryolator.rsi
+      state: muzzle_crystal
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: AnimationPlayer
+
+- type: entity
+  id: BulletCrystalizingCryolatorImpactEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.25
+  - type: Sprite
+    drawdepth: Effects
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/crystalizingcryolator.rsi
+      state: impact_crystal
   - type: EffectVisuals
   - type: Tag
     tags:

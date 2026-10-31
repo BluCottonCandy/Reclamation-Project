@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/flamer.rsi
-    scale: 0.7, 0.7
+    scale: 0.9, 0.9
     layers:
     - state: flamershot
       shader: unshaded
@@ -15,7 +15,7 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.8,-0.8,0.8,0.8"
+          bounds: "-0.6,-0.6,0.6,0.6"
         hard: false
         mask:
         - Impassable
@@ -67,3 +67,71 @@
     tags:
       - HideContextMenu
 
+- type: entity
+  name: plasma
+  id: BulletIncinerator
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/incinerator.rsi
+    scale: 0.7, 0.7
+    layers:
+    - state: incineratorshot
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.3,0.3,0.3"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+  - type: Ammo
+    muzzleFlash: IncineratorMuzzleFlashEffect
+  - type: Projectile
+    impactEffect: BulletIncineratorImpactEffect
+    damage:
+      types:
+        Heat: 35
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+
+- type: entity
+  id: IncineratorMuzzleFlashEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.5
+  - type: Sprite
+    drawdepth: Effects
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/incinerator.rsi
+      state: muzzle_incinerator
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: AnimationPlayer
+
+- type: entity
+  id: BulletIncineratorImpactEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.25
+  - type: Sprite
+    drawdepth: Effects
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/incinerator.rsi
+      state: impact_incinerator
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu

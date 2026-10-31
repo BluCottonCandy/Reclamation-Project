@@ -55,11 +55,9 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 6
-  - type: GunDamageBonus
-    bonusDamage:
-      types:
-        Heat: 5
-    fireCostMultiplier: 2.0
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletFlame
+    fireCost: 200
   - type: StaticPrice
     price: 400
 
@@ -118,11 +116,9 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 6
-  - type: GunDamageBonus
-    bonusDamage:
-      types:
-        Heat: 10
-    fireCostMultiplier: 4.0
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletIncinerator
+    fireCost: 600
   - type: StaticPrice
     price: 500
 

@@ -29,9 +29,6 @@
   - type: Appearance
   - type: PowerCellVisuals
   - type: Riggable
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletCryolator
-    fireCost: 100
 
 - type: entity
   name: cryocell
@@ -42,6 +39,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Cryo/cryocell.rsi
+    scale: 0.2, 0.2
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty
@@ -65,6 +63,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Cryo/supercooledcryocell.rsi
+    scale: 0.2, 0.2
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty

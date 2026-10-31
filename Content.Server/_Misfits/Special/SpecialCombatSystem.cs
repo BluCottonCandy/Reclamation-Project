@@ -17,6 +17,8 @@ public sealed class SpecialCombatSystem : EntitySystem
 {
     [Dependency] private readonly SharedSpecialSystem _special = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly Content.Shared._ReclamationProject.Strength.SharedStrengthJuggernautSystem _juggernautDamage = default!;
+    [Dependency] private readonly Content.Server._ReclamationProject.Strength.StrengthJuggernautSystem _juggernaut = default!;
 
     public override void Initialize()
     {
@@ -59,6 +61,9 @@ public sealed class SpecialCombatSystem : EntitySystem
 
         if (!TryComp<SpecialComponent>(args.User, out var special))
             return;
+
+        _juggernautDamage.ApplyDamageBonus(args);
+        _juggernaut.ApplyHitEffects(args);
 
         var damage = args.BaseDamage;
 

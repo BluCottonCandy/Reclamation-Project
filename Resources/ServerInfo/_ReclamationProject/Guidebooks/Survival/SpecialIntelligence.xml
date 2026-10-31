@@ -7,5 +7,5 @@ Intelligence improves crafting and medical abilities. At [bold]10 effective Inte
 
 [bold]AI robots:[/bold] Reprogram a living AI-controlled robot to be friendly toward all players and other overridden robots, and hostile toward unhacked AI robots and the usual wasteland enemies. Player-controlled robots and player character bodies are protected. The conversion lasts for the robot's remaining life. It operates independently and does not follow you.
 
-Override has [bold]unlimited uses[/bold] and a [bold]one-minute shared cooldown[/bold] after a successful door or robot hack. Invalid, out-of-range, immune, or already overridden targets do not consume the cooldown. Temporarily lowering Intelligence does not reset it.
+Override has [bold]unlimited uses[/bold] and a [bold]three-minute shared cooldown[/bold] after a successful door or robot hack. Invalid, out-of-range, immune, or already overridden targets do not consume the cooldown. Temporarily lowering Intelligence does not reset it.
 </Document>

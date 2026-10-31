@@ -39,7 +39,7 @@ public sealed class IntelligenceOverrideTests
                 em.EventBus.RaiseLocalEvent(user, action);
                 Assert.That(action.Handled, Is.True);
                 Assert.That(em.HasComponent<EmaggedComponent>(door), Is.True);
-                Assert.That(state.NextUseAt - timing.CurTime, Is.EqualTo(TimeSpan.FromMinutes(1)));
+                Assert.That(state.NextUseAt - timing.CurTime, Is.EqualTo(TimeSpan.FromMinutes(3)));
             }
             finally
             {

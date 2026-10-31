@@ -26,7 +26,7 @@ namespace Content.Server._ReclamationProject.Intelligence;
 
 public sealed class IntelligenceOverrideSystem : EntitySystem
 {
-    public static readonly TimeSpan Cooldown = TimeSpan.FromMinutes(1);
+    public static readonly TimeSpan Cooldown = TimeSpan.FromMinutes(3);
     [Dependency] private readonly SharedSpecialSystem _special = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly IGameTiming _timing = default!;

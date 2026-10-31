@@ -1,0 +1,14 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Restore the approved Strength, Charisma, Intelligence, and Agility level-10 abilities to the main game build and their SPECIAL guidebook pages.
+- type: Add
+  message: Strength 10 grants Juggernaut, increasing melee and structural damage by 25% and knocking melee targets back and down for 15 seconds. Three-minute cooldown, followed by a four-second stun.
+- type: Add
+  message: Charisma 10 grants Rally to nearby players for 20 seconds, reducing stamina damage by 25%, increasing movement speed by 20%, and preventing damage slowdown. Three-minute cooldown; excludes the caster and does not affect later arrivals.
+- type: Add
+  message: Intelligence 10 grants Override for electronic doors, powered or unpowered, and AI robots. Reprogrammed robots protect players without following them. Three-minute cooldown and cosmetic green grasp effect.
+- type: Fix
+  message: Agility improves timed-action speed instead of movement speed, and Agility 10 grants a longer, stamina-free Quickstep with a 30-second cooldown. Smooth predicted movement also fixes charge rubber-banding.
+- type: Fix
+  message: Correct character-creation Agility descriptions and restore all four named SPECIAL guidebook entries while retaining Luck and the one-stat-at-10 limit.

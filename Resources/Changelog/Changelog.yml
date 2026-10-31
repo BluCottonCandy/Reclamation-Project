@@ -13287,3 +13287,19 @@ Entries:
   id: 6575
   time: '2026-10-31T05:22:41.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/103
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Characters may allocate only one SPECIAL stat to 10; all other stats are
+        capped at 9, including temporary bonuses.
+    - type: Fix
+      message: >-
+        Existing valid characters with multiple 10s have those stats lowered to
+        9 and the points refunded so they can choose their capstone in
+        Customize. Other allocated stats are preserved.
+    - type: Add
+      message: The SPECIAL editor and guidebook explain the one-capstone limit.
+  id: 6576
+  time: '2026-10-31T05:22:50.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/104

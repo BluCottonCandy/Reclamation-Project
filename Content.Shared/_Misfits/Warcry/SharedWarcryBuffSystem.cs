@@ -1,4 +1,8 @@
 using Content.Shared.Movement.Systems;
+using Content.Shared._ReclamationProject.Charisma;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
+using Robust.Shared.GameStates;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Misfits.Warcry;
@@ -16,9 +20,46 @@ public sealed class SharedWarcryBuffSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<CharismaRallyBuffComponent, RefreshMovementSpeedModifiersEvent>(OnRallyMovement);
+        SubscribeLocalEvent<CharismaRallyBuffComponent, ModifySlowOnDamageSpeedEvent>(OnRallyDamageSlowdown);
+        SubscribeLocalEvent<CharismaRallyBuffComponent, BeforeStaminaDamageEvent>(OnRallyStamina);
+        SubscribeLocalEvent<CharismaRallyBuffComponent, AfterAutoHandleStateEvent>(OnRallyState);
+        SubscribeLocalEvent<CharismaRallyBuffComponent, ComponentShutdown>(OnRallyShutdown);
         SubscribeLocalEvent<WarcryBuffComponent, ComponentStartup>(OnBuffStartup);
         SubscribeLocalEvent<WarcryBuffComponent, ComponentRemove>(OnBuffRemove);
         SubscribeLocalEvent<WarcryBuffComponent, RefreshMovementSpeedModifiersEvent>(OnBuffRefreshSpeed);
+    }
+
+    private bool RallyActive(CharismaRallyBuffComponent buff) => buff.ExpiresAt > _timing.CurTime;
+
+    private void OnRallyMovement(EntityUid uid, CharismaRallyBuffComponent buff, RefreshMovementSpeedModifiersEvent args)
+    {
+        if (RallyActive(buff))
+            args.ModifySpeed(1.2f, 1.2f);
+    }
+
+    private void OnRallyDamageSlowdown(EntityUid uid, CharismaRallyBuffComponent buff, ref ModifySlowOnDamageSpeedEvent args)
+    {
+        if (RallyActive(buff))
+            args.Speed = 1f;
+    }
+
+    private void OnRallyStamina(EntityUid uid, CharismaRallyBuffComponent buff, ref BeforeStaminaDamageEvent args)
+    {
+        if (RallyActive(buff) && args.Value > 0)
+            args.Value *= 0.75f;
+    }
+
+    private void OnRallyState(EntityUid uid, CharismaRallyBuffComponent buff, ref AfterAutoHandleStateEvent args)
+    {
+        _movementSpeed.RefreshMovementSpeedModifiers(uid);
+    }
+
+    private void OnRallyShutdown(EntityUid uid, CharismaRallyBuffComponent buff, ComponentShutdown args)
+    {
+        buff.ExpiresAt = TimeSpan.Zero;
+        if (!TerminatingOrDeleted(uid))
+            _movementSpeed.RefreshMovementSpeedModifiers(uid);
     }
 
     private void OnBuffStartup(EntityUid uid, WarcryBuffComponent component, ComponentStartup args)

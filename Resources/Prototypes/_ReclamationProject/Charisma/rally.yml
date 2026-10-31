@@ -1,0 +1,10 @@
+- type: entity
+  id: ActionCharismaRally
+  name: Rally
+  description: Rally nearby players for 20 seconds, granting 20% faster movement, 25% less stamina damage, and no damage slowdown. Does not affect you. Three-minute cooldown.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 180
+    icon: _Misfits/Interface/Actions/warcry.png
+    event: !type:CharismaRallyActionEvent

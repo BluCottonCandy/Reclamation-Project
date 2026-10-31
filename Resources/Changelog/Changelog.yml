@@ -13303,3 +13303,40 @@ Entries:
   id: 6576
   time: '2026-10-31T05:22:50.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/104
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Bunker hatches offer cryo or server-saved personal quarters with a roof,
+        lighting, breathable air, and a return ladder.
+    - type: Add
+      message: >-
+        Each character owns a separate room that survives renaming. Furniture,
+        decorations, and container contents persist.
+    - type: Add
+      message: >-
+        Rooms save on last departure, round end, and normal shutdown, keep a
+        previous snapshot backup, and unload when unused. No repeating autosave
+        while occupied.
+    - type: Add
+      message: >-
+        Weapons left behind become permanent decorations: guns cannot fire or
+        reload and lose loaded ammunition; melee deals 1 blunt. Carried
+        equipment stays functional.
+    - type: Add
+      message: Dragged objects follow players through bunker entrances and exits.
+    - type: Add
+      message: >-
+        Critical and SSD characters return safely to the entrance hatch with
+        their belongings, saving the room when empty.
+    - type: Fix
+      message: >-
+        Ghosts return to the hatch when no living, awake player remains,
+        allowing abandoned rooms to save and unload.
+    - type: Add
+      message: >-
+        Personal Bunkers guidebook explains ownership, saving, exits, and
+        display weapons.
+  id: 6577
+  time: '2026-10-31T05:48:57.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/105

@@ -1,0 +1,12 @@
+- type: entity
+  id: ActionAgilityQuickstep
+  name: Quickstep
+  description: Dash up to five tiles in your movement direction, or forward when stationary. Costs no stamina. Thirty-second cooldown.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _Misfits/Interface/Actions/melee_charge.rsi
+      state: charge
+    useDelay: 30
+    event: !type:AgilityQuickstepActionEvent

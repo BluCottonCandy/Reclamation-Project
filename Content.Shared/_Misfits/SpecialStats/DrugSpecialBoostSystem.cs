@@ -1,13 +1,12 @@
 // #Misfits Add - Manages DrugSpecialBoostComponent lifecycle (expiry) and translates
 // drug-sourced SPECIAL stat deltas into tangible in-game effects:
 //   • Perception → gun spread / recoil reduction  (stacks with SpecialPerceptionSystem base)
-//   • Agility    → walk/sprint speed bonus         (stacks with SpecialMovementSystem base)
-//   • Strength   → melee damage bonus              (stacks with SpecialMovementSystem wield-counter)
-// Component expiry is polled every update; on removal speed modifiers are refreshed.
+//   • Agility    → do-after speed bonus           (applied by SpecialDoAfterSystem)
+//   • Strength   → melee damage bonus              (stacks with base Strength scaling)
+// Component expiry is polled every update; expired Agility boosts are ignored by SpecialDoAfterSystem.
 
 using Angle = Robust.Shared.Maths.Angle;
 using Content.Shared._Misfits.PlayerData.Components;
-using Content.Shared.Movement.Systems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Timing;
@@ -19,22 +18,18 @@ namespace Content.Shared._Misfits.SpecialStats;
 /// its active stat deltas into gameplay effects via event subscriptions.
 /// <list type="bullet">
 ///   <item>Perception boost → gun spread/recoil reduction (identical rate to SpecialPerceptionSystem)</item>
-///   <item>Agility boost    → walk/sprint speed multiplier (identical rate to SpecialMovementSystem)</item>
+///   <item>Agility boost    → do-after speed multiplier (handled by SpecialDoAfterSystem)</item>
 ///   <item>Strength boost   → melee damage bonus (+4 % per point)</item>
 /// </list>
 /// </summary>
 public sealed class DrugSpecialBoostSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
 
     // ── Constants matching existing base-SPECIAL systems so stacking scales uniformly ──
 
     /// <summary>Spread/recoil reduction per PER point (mirrors SpecialPerceptionSystem).</summary>
     private const float PerceptionReductionPerPoint = 0.005f;
-
-    /// <summary>Walk/sprint speed bonus per AGI point (mirrors SpecialMovementSystem).</summary>
-    private const float AgilitySpeedBonusPerPoint = 0.015f;
 
     /// <summary>Bonus melee damage fraction per STR point (e.g. STR +2 → +8 % damage).</summary>
     private const float StrengthDamageBonusPerPoint = 0.04f;
@@ -53,9 +48,6 @@ public sealed class DrugSpecialBoostSystem : EntitySystem
         SubscribeLocalEvent<DrugSpecialBoostComponent, ComponentStartup>(OnStartup);
 
         // ── Per-frame event hooks ───────────────────────────────────────────────
-        // Agility: modify movement speed whenever the engine recalculates it.
-        SubscribeLocalEvent<DrugSpecialBoostComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
-
         // Perception: tighten gun spread/recoil for every shot fired by the holder.
         // Global subscription — we identify the holder by walking the transform parent.
         SubscribeLocalEvent<GunRefreshModifiersEvent>(OnGunRefresh);
@@ -70,19 +62,6 @@ public sealed class DrugSpecialBoostSystem : EntitySystem
     private void OnStartup(Entity<DrugSpecialBoostComponent> ent, ref ComponentStartup args)
     {
         _tracked.Add(ent);
-    }
-
-    // ── Agility → movement speed ───────────────────────────────────────────────
-
-    private void OnRefreshSpeed(EntityUid uid, DrugSpecialBoostComponent comp, ref RefreshMovementSpeedModifiersEvent args)
-    {
-        if (comp.AgilityBoost <= 0)
-            return;
-
-        // Each AGI point above 0 gives AgilitySpeedBonusPerPoint boost.
-        // This delta stacks on top of SpecialMovementSystem's base AGI contribution.
-        var bonus = 1f + comp.AgilityBoost * AgilitySpeedBonusPerPoint;
-        args.ModifySpeed(bonus, bonus);
     }
 
     // ── Perception → gun spread / recoil ───────────────────────────────────────
@@ -147,11 +126,6 @@ public sealed class DrugSpecialBoostSystem : EntitySystem
                 continue;
 
             _tracked.RemoveAt(i);
-
-            // Agility boost was active — force a speed recalculation on expiry
-            // so the player is not stuck with the bonus after the drug wears off.
-            if (ent.Comp.AgilityBoost != 0)
-                _speedModifier.RefreshMovementSpeedModifiers(ent.Owner);
 
             RemComp<DrugSpecialBoostComponent>(ent.Owner);
         }

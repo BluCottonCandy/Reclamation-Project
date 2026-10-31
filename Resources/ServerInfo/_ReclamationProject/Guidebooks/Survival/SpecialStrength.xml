@@ -1,5 +1,13 @@
 <Document>
-# Strength
+# Strength: Juggernaut
 
-Strength increases melee damage.
+Strength increases melee damage. At [bold]10 effective Strength[/bold], you also gain the [bold]Juggernaut[/bold] action, shown as a white flexing body with a red exclamation mark.
+
+Activate Juggernaut for [bold]15 seconds[/bold] of [bold]25% more melee and structural damage[/bold]. Structural damage receives the same 25% increase, not a second stacked increase. Both unarmed attacks and melee weapons benefit; shooting and thrown-weapon damage do not.
+
+Every successful melee hit against a living enemy knocks them down briefly and pushes them away. Wide swings can affect multiple enemies.
+
+[bold]When the ability ends, you are stunned for four seconds.[/bold] Plan an escape or have someone cover you before exhaustion hits. Juggernaut does not protect you from damage or death.
+
+The cooldown is [bold]three minutes from activation[/bold]. Dropping below Strength 10 removes the action until you qualify again, but does not reset its cooldown.
 </Document>

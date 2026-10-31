@@ -20,6 +20,10 @@ public sealed partial class ActiveWarcryComponent : Component
     [DataField, AutoNetworkedField]
     public Color Color = Color.Red;
 
+    /// <summary>Use a faint shaded fill and softened boundary instead of a bright outline.</summary>
+    [DataField, AutoNetworkedField]
+    public bool SoftEdge;
+
     /// <summary>
     /// When the overlay should stop being shown.
     /// </summary>

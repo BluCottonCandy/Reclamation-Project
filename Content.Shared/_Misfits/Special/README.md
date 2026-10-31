@@ -6,7 +6,7 @@ Runtime systems should query `SharedSpecialSystem` instead of reading fields dir
 
 - `GetBase(entity, stat)` for character-creation values.
 - `GetModifier(entity, stat)` for temporary modifier totals.
-- `GetEffective(entity, stat)` for gameplay-safe values clamped to 1-10.
+- `GetEffective(entity, stat)` for gameplay-safe values: only the single stat allocated to 10 may reach 10; all other stats cap at 9, including bonuses.
 - `GetCurvedEffectDelta(entity, stat)` for gameplay effects that should scale non-linearly around 5.
 - `GetCurvedEffectModifier(entity, stat, multiplierPerPoint)` for effects that multiply that curved delta by a tuning value.
 - `HasRequirement(entity, stat, minimum)` for perks, weapons, or future skill gates.

@@ -1,10 +1,11 @@
 using System.Numerics;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Actions;
 using Content.Shared.Movement.Events;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Systems;
 
 
 namespace Content.Shared._Misfits.MeleeCharge;
@@ -12,11 +13,11 @@ namespace Content.Shared._Misfits.MeleeCharge;
 
 public sealed class MeleeChargeSystem : EntitySystem
 {
-    [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private ActionBlockerSystem _blocker = default!;
     [Dependency] private ThrowingSystem _throwing = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
 
     public override void Initialize()
     {
@@ -26,16 +27,20 @@ public sealed class MeleeChargeSystem : EntitySystem
         SubscribeLocalEvent<MeleeChargeComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<MeleeChargeComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<MeleeChargeComponent, LandEvent>(OnLand);
+        SubscribeLocalEvent<MeleeChargeComponent, StopThrowEvent>(OnStopThrow);
         SubscribeLocalEvent<MeleeChargeEvent>(OnDash);
     }
 
     private void OnDash(MeleeChargeEvent ev)
     {
+        if (ev.Handled || HasComp<MeleeChargeComponent>(ev.Performer))
+            return;
+
         if (TryComp<MeleeChargeAudioComponent>(ev.Performer, out var audio))
             _audio.PlayPredicted(audio.ActivationSound, ev.Performer, ev.Performer);
 
         PerformDash(ev.Performer, ev.Target, ev.Speed, ev.Range);
-        _actions.StartUseDelay(ev.Action);
+        ev.Handled = HasComp<ThrownItemComponent>(ev.Performer);
     }
 
     private void OnShutdown(Entity<MeleeChargeComponent> ent, ref ComponentShutdown args)
@@ -56,6 +61,12 @@ public sealed class MeleeChargeSystem : EntitySystem
         RemCompDeferred<MeleeChargeComponent>(ent);
     }
 
+    private void OnStopThrow(Entity<MeleeChargeComponent> ent, ref StopThrowEvent args)
+    {
+        // Also release the lock when interrupted or landing in zero gravity.
+        RemCompDeferred<MeleeChargeComponent>(ent);
+    }
+
     private void OnMoveAttempt(Entity<MeleeChargeComponent> ent, ref UpdateCanMoveEvent args)
     {
         if (ent.Comp.LifeStage > ComponentLifeStage.Running)
@@ -67,10 +78,15 @@ public sealed class MeleeChargeSystem : EntitySystem
 
     public void PerformDash(EntityUid ent, EntityCoordinates targetPosition, float speed = 10f, float maxDistance = 3.5f)
     {
-        EnsureComp<MeleeChargeComponent>(ent, out var dash);
+        if (HasComp<MeleeChargeComponent>(ent) || HasComp<ThrownItemComponent>(ent) ||
+            !TryComp<PhysicsComponent>(ent, out var body))
+            return;
 
         var entMapPos = _transform.ToMapCoordinates(Transform(ent).Coordinates);
         var targetMapPos = _transform.ToMapCoordinates(targetPosition);
+
+        if (targetMapPos.MapId != entMapPos.MapId)
+            return;
 
         var distance = Vector2.Distance(entMapPos.Position, targetMapPos.Position);
 
@@ -82,9 +98,18 @@ public sealed class MeleeChargeSystem : EntitySystem
         }
 
 
+        if (distance <= 0.01f || speed <= 0 || maxDistance <= 0)
+            return;
+
+        EnsureComp<MeleeChargeComponent>(ent);
+        // A charge has its own velocity. Adding an impulse to walking/running momentum makes
+        // its trajectory depend on the arrival time of movement input on the two peers.
+        _physics.SetLinearVelocity(ent, Vector2.Zero, body: body);
         var finalTarget = _transform.ToCoordinates(targetMapPos);
 
         _throwing.TryThrow(ent, finalTarget, speed, null, 0f, 10, true, false, false, false, false);
+        if (!HasComp<ThrownItemComponent>(ent))
+            RemCompDeferred<MeleeChargeComponent>(ent);
     }
 
 }

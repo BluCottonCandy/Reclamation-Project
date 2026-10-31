@@ -134,7 +134,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
             return;
         }
 
-        if (IsBolted(uid) || !airlock.Powered)
+        if (IsBolted(uid) || !airlock.Powered && !args.IgnoreDoorPower)
         {
             args.Handled = true;
             return;

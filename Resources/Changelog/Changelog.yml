@@ -13259,3 +13259,120 @@ Entries:
   id: 6574
   time: '2026-10-31T03:55:34.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/102
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Luck 10 grants Scrounger's Fortune: a five-second search reveals one
+        random loot pile within four tiles, with a ten-minute cooldown after a
+        successful find.
+    - type: Add
+      message: >-
+        Four finite scrap-pile rarities appear at 50%, 35%, 10%, and 5%, with
+        three items in Old scrap, two in Overlooked scrap and Easy-to-miss
+        piles, and one to three in Something shiny.
+    - type: Add
+      message: >-
+        Added a search-radius circle and a Luck guidebook entry explaining how
+        to search, open finds, and manage the cooldown without listing loot or
+        drop chances.
+    - type: Tweak
+      message: >-
+        Opening a fortune pile now drops its existing loot onto the floor and
+        removes the pile instead of showing a storage window.
+    - type: Fix
+      message: >-
+        The rarest pile uses the standard 12.7mm SMG, excludes the makeshift
+        assault rifle, and includes spare microfusion cells.
+  id: 6575
+  time: '2026-10-31T05:22:41.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/103
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Characters may allocate only one SPECIAL stat to 10; all other stats are
+        capped at 9, including temporary bonuses.
+    - type: Fix
+      message: >-
+        Existing valid characters with multiple 10s have those stats lowered to
+        9 and the points refunded so they can choose their capstone in
+        Customize. Other allocated stats are preserved.
+    - type: Add
+      message: The SPECIAL editor and guidebook explain the one-capstone limit.
+  id: 6576
+  time: '2026-10-31T05:22:50.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/104
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Bunker hatches offer cryo or server-saved personal quarters with a roof,
+        lighting, breathable air, and a return ladder.
+    - type: Add
+      message: >-
+        Each character owns a separate room that survives renaming. Furniture,
+        decorations, and container contents persist.
+    - type: Add
+      message: >-
+        Rooms save on last departure, round end, and normal shutdown, keep a
+        previous snapshot backup, and unload when unused. No repeating autosave
+        while occupied.
+    - type: Add
+      message: >-
+        Weapons left behind become permanent decorations: guns cannot fire or
+        reload and lose loaded ammunition; melee deals 1 blunt. Carried
+        equipment stays functional.
+    - type: Add
+      message: Dragged objects follow players through bunker entrances and exits.
+    - type: Add
+      message: >-
+        Critical and SSD characters return safely to the entrance hatch with
+        their belongings, saving the room when empty.
+    - type: Fix
+      message: >-
+        Ghosts return to the hatch when no living, awake player remains,
+        allowing abandoned rooms to save and unload.
+    - type: Add
+      message: >-
+        Personal Bunkers guidebook explains ownership, saving, exits, and
+        display weapons.
+  id: 6577
+  time: '2026-10-31T05:48:57.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/105
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Restore Strength, Charisma, Intelligence and Agility level-10 abilities
+        that were missing from the main game build.
+    - type: Add
+      message: >-
+        Strength 10 Juggernaut grants 25% more melee and structural damage and
+        melee knockback/knockdown for 15 seconds, with a three-minute cooldown
+        and four-second exhaustion stun.
+    - type: Add
+      message: >-
+        Charisma 10 Rally buffs nearby players for 20 seconds with 25% less
+        stamina damage, 20% faster movement and no damage slowdown. Three-minute
+        cooldown; excludes the caster and later arrivals.
+    - type: Add
+      message: >-
+        Intelligence 10 Override hacks electronic doors even while unpowered and
+        reprograms AI robots to protect players without following. Three-minute
+        shared cooldown, Protectron icon and cosmetic green grasp.
+    - type: Fix
+      message: >-
+        Agility now speeds up timed-action progress bars instead of movement.
+        Agility 10 grants a longer, stamina-free Quickstep with a 30-second
+        cooldown.
+    - type: Fix
+      message: Smooth predicted movement prevents charge and dash rubber-banding.
+    - type: Fix
+      message: >-
+        Restore the four named SPECIAL guidebook entries and correct
+        character-creation Agility descriptions while preserving Luck and the
+        one-stat-at-10 restriction.
+  id: 6578
+  time: '2026-10-31T06:33:29.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/106

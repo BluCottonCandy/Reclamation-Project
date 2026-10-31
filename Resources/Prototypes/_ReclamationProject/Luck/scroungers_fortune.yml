@@ -1,0 +1,406 @@
+- type: entity
+  id: ActionScroungersFortune
+  name: Scrounger's Fortune
+  description: Search for five seconds to uncover one scrap pile within four tiles. Luck 10 required. Ten-minute cooldown after a successful find.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _Nuclear14/Structures/Decoration/crafting_junk.rsi
+      state: Junk_1
+    event: !type:ScroungersFortuneActionEvent
+
+- type: entity
+  id: ReclamationFortunePileBase
+  parent: BaseStructure
+  abstract: true
+  description: A promising pile of overlooked salvage. Rummage through it to uncover its contents.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/crafting_junk.rsi
+    state: Junk_1
+    noRot: true
+    drawdepth: Items
+    scale: 0.8, 0.8
+  # Salvage should never become an indestructible barricade.
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+  - type: ScroungerPile
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+
+- type: entityTable
+  id: ReclamationFortuneOldLoot
+  table: !type:GroupSelector
+    rolls: !type:ConstantNumberSelector
+      value: 3
+    children:
+    - !type:GroupSelector
+      weight: 50
+      children:
+      - !type:EntSelector
+        id: Gauze
+      - !type:EntSelector
+        id: N14Bandage
+      - !type:EntSelector
+        id: N14Ointment10
+      - !type:EntSelector
+        id: Brutepack
+    - !type:GroupSelector
+      weight: 40
+      children:
+      - !type:EntSelector
+        id: MagazineBox10mm
+      - !type:EntSelector
+        id: MagazineBox556
+      - !type:EntSelector
+        id: MagazineBox762
+      - !type:EntSelector
+        id: Magazine762Rifle
+      - !type:EntSelector
+        id: Magazine556Rifle
+      - !type:EntSelector
+        id: MagazineBox9mm
+      - !type:EntSelector
+        id: N14MagazinePistol10mm
+      - !type:EntSelector
+        id: N14MagazinePistol9mm
+      - !type:EntSelector
+        id: N14MagazineSMG10mm
+      - !type:EntSelector
+        id: N14MagazineSMG9mm
+    - !type:GroupSelector
+      weight: 10
+      children:
+      - !type:EntSelector
+        id: N14WeaponPistol9mm
+      - !type:EntSelector
+        id: N14WeaponPistol10mm
+
+- type: entityTable
+  id: ReclamationFortuneOverlookedLoot
+  table: !type:GroupSelector
+    rolls: !type:ConstantNumberSelector
+      value: 2
+    children:
+    - !type:GroupSelector
+      weight: 25
+      children:
+      - !type:EntSelector
+        id: N14WeaponSMG9mm
+      - !type:EntSelector
+        id: N14WeaponSMG10mm
+    - !type:GroupSelector
+      weight: 50
+      children:
+      - !type:EntSelector
+        id: MedicatedSuture
+      - !type:EntSelector
+        id: RegenerativeMesh
+      - !type:EntSelector
+        id: N14MedkitFilled
+    - !type:GroupSelector
+      weight: 25
+      children:
+      - !type:EntSelector
+        id: MagazineBox10mm
+      - !type:EntSelector
+        id: MagazineBox556
+      - !type:EntSelector
+        id: MagazineBox762
+      - !type:EntSelector
+        id: Magazine762Rifle
+      - !type:EntSelector
+        id: Magazine556Rifle
+      - !type:EntSelector
+        id: MagazineBox9mm
+      - !type:EntSelector
+        id: N14MagazinePistol10mm
+      - !type:EntSelector
+        id: N14MagazinePistol9mm
+      - !type:EntSelector
+        id: N14MagazineSMG10mm
+      - !type:EntSelector
+        id: N14MagazineSMG9mm
+
+- type: entityTable
+  id: ReclamationFortuneHiddenLoot
+  table: !type:GroupSelector
+    rolls: !type:ConstantNumberSelector
+      value: 2
+    children:
+    - !type:NestedSelector
+      tableId: M14WeaponLootTier2_GunsAll
+      weight: 35
+    - !type:GroupSelector
+      weight: 15
+      children:
+      - !type:EntSelector
+        id: N14MedkitCombatFilled
+    - !type:GroupSelector
+      weight: 50
+      children:
+      - !type:EntSelector
+        id: Magazine45SubMachineGun
+      - !type:EntSelector
+        id: Magazine556Rifle
+      - !type:EntSelector
+        id: MagazineBox10mm
+      - !type:EntSelector
+        id: MagazineBox12gauge
+      - !type:EntSelector
+        id: MagazineBox20gauge
+      - !type:EntSelector
+        id: MagazineBox22
+      - !type:EntSelector
+        id: MagazineBox308
+      - !type:EntSelector
+        id: N14AmmoBox357
+      - !type:EntSelector
+        id: MagazineBox45
+      - !type:EntSelector
+        id: MagazineBox556
+      - !type:EntSelector
+        id: MagazineBox762
+      - !type:EntSelector
+        id: Magazine762Rifle
+      - !type:EntSelector
+        id: Magazine556Rifle
+      - !type:EntSelector
+        id: MagazineBox9mm
+      - !type:EntSelector
+        id: N14MagazineAmerican180Drum
+      - !type:EntSelector
+        id: N14MagazinePistol10mm
+      - !type:EntSelector
+        id: N14MagazinePistol22lr
+      - !type:EntSelector
+        id: N14MagazinePistol45
+      - !type:EntSelector
+        id: N14MagazinePistol9mm
+      - !type:EntSelector
+        id: N14MagazineSMG10mm
+      - !type:EntSelector
+        id: N14MicrofusionCell
+      - !type:EntSelector
+        id: N14PowerCellSmall
+
+- type: entityTable
+  id: ReclamationFortuneShinyLoot
+  table: !type:GroupSelector
+    rolls: !type:IntegerRangeNumberRNGSelector
+      min: 1
+      max: 4 # Exclusive upper bound: one to three items.
+    children:
+    - !type:GroupSelector
+      weight: 35
+      children:
+      - !type:EntSelector
+        id: N14Glock
+      - !type:EntSelector
+        id: N14WeaponLaserRifle
+      - !type:EntSelector
+        id: N14WeaponPistol10mm
+      - !type:EntSelector
+        id: N14WeaponPistol12mm
+      - !type:EntSelector
+        id: N14WeaponPistol22lr
+      - !type:EntSelector
+        id: N14WeaponPistol45Colt
+      - !type:EntSelector
+        id: N14WeaponPistol9mm
+      - !type:EntSelector
+        id: N14WeaponPistol9mmChinese
+      - !type:EntSelector
+        id: N14WeaponPistolWebley
+      - !type:EntSelector
+        id: N14WeaponRevolver44Magnum
+      - !type:EntSelector
+        id: N14WeaponRevolver9mm
+      - !type:EntSelector
+        id: N14WeaponRifle308Battle
+      - !type:EntSelector
+        id: N14WeaponRifle556Carbine
+      - !type:EntSelector
+        id: N14WeaponRifle556CarbineOld
+      - !type:EntSelector
+        id: N14WeaponRifle556EM2
+      - !type:EntSelector
+        id: N14WeaponRifle556R91
+      - !type:EntSelector
+        id: N14WeaponRifle556Service
+      - !type:EntSelector
+        id: N14WeaponRifle762Canadian
+      - !type:EntSelector
+        id: N14WeaponRifle762Chinese
+      - !type:EntSelector
+        id: N14WeaponRifle762Fal
+      - !type:EntSelector
+        id: N14WeaponRifle762M14
+      - !type:EntSelector
+        id: N14WeaponRifle762Marksman
+      - !type:EntSelector
+        id: N14WeaponRifle762SKS
+      - !type:EntSelector
+        id: N14WeaponSMG10mm
+      - !type:EntSelector
+        id: N14WeaponSMG10mmChinese
+      - !type:EntSelector
+        id: N14WeaponSMG10mmSuppressed
+      - !type:EntSelector
+        id: N14WeaponSMG12mm
+      - !type:EntSelector
+        id: N14WeaponSMG45
+      - !type:EntSelector
+        id: N14WeaponSMG9mm
+      - !type:EntSelector
+        id: N14WeaponSMG9mmCanadian
+      - !type:EntSelector
+        id: N14WeaponShotgun
+      - !type:EntSelector
+        id: N14WeaponShotgunAuto
+      - !type:EntSelector
+        id: N14WeaponShotgunBlowback
+      - !type:EntSelector
+        id: N14WeaponShotgunCanadian
+      - !type:EntSelector
+        id: N14WeaponShotgunCaravan
+      - !type:EntSelector
+        id: N14WeaponShotgunChinese
+      - !type:EntSelector
+        id: N14WeaponShotgunDoubleBarrel
+      - !type:EntSelector
+        id: N14WeaponShotgunLever
+      - !type:EntSelector
+        id: N14WeaponShotgunRiot
+      - !type:EntSelector
+        id: N14WeaponSniper44LeverCarbine
+      - !type:EntSelector
+        id: N14WeaponSniper556VarmintRifle
+      - !type:EntSelector
+        id: N14WeaponSniperHunting
+    - !type:GroupSelector
+      weight: 25
+      children:
+      - !type:EntSelector
+        id: N14MedkitCombatFilled
+      - !type:EntSelector
+        id: N14SuperStimpak
+    - !type:GroupSelector
+      weight: 40
+      children:
+      - !type:EntSelector
+        id: ClipMagazine308Rifle
+      - !type:EntSelector
+        id: LongMagazine556Rifle
+      - !type:EntSelector
+        id: Magazine45SubMachineGun
+      - !type:EntSelector
+        id: Magazine556Rifle
+      - !type:EntSelector
+        id: Magazine762AmmoShort
+      - !type:EntSelector
+        id: Magazine762Rifle
+      - !type:EntSelector
+        id: MagazineBox10mm
+      - !type:EntSelector
+        id: MagazineBox12
+      - !type:EntSelector
+        id: MagazineBox12gauge
+      - !type:EntSelector
+        id: MagazineBox20gauge
+      - !type:EntSelector
+        id: MagazineBox22
+      - !type:EntSelector
+        id: MagazineBox308
+      - !type:EntSelector
+        id: MagazineBox44
+      - !type:EntSelector
+        id: MagazineBox45
+      - !type:EntSelector
+        id: MagazineBox556
+      - !type:EntSelector
+        id: MagazineBox762
+      - !type:EntSelector
+        id: Magazine762Rifle
+      - !type:EntSelector
+        id: Magazine556Rifle
+      - !type:EntSelector
+        id: MagazineBox9mm
+      - !type:EntSelector
+        id: N14MagGlock
+      - !type:EntSelector
+        id: N14AmmoBoxGlock45
+      - !type:EntSelector
+        id: N14MicrofusionCell
+      - !type:EntSelector
+        id: N14MagazinePistol10mm
+      - !type:EntSelector
+        id: N14MagazinePistol12mm
+      - !type:EntSelector
+        id: N14MagazinePistol22lr
+      - !type:EntSelector
+        id: N14MagazinePistol45
+      - !type:EntSelector
+        id: N14MagazinePistol9mm
+      - !type:EntSelector
+        id: N14MagazineSMG10mm
+      - !type:EntSelector
+        id: N14MagazineSMG12mm
+      - !type:EntSelector
+        id: N14MagazineSMG9mm
+      - !type:EntSelector
+        id: N14MagazineShotgun12
+      - !type:EntSelector
+        id: N14MagazineShotgun20
+
+- type: entity
+  id: ReclamationOldScrap
+  parent: ReclamationFortunePileBase
+  name: old scrap
+  components:
+  - type: Sprite
+    state: Junk_1
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: ReclamationFortuneOldLoot
+
+- type: entity
+  id: ReclamationOverlookedScrap
+  parent: ReclamationFortunePileBase
+  name: overlooked scrap
+  components:
+  - type: Sprite
+    state: Junk_2
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: ReclamationFortuneOverlookedLoot
+
+- type: entity
+  id: ReclamationEasyToMissPile
+  parent: ReclamationFortunePileBase
+  name: easy-to-miss pile
+  components:
+  - type: Sprite
+    state: Junk_3
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: ReclamationFortuneHiddenLoot
+
+- type: entity
+  id: ReclamationSomethingShiny
+  parent: ReclamationFortunePileBase
+  name: something shiny
+  components:
+  - type: Sprite
+    state: Junk_4
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: ReclamationFortuneShinyLoot

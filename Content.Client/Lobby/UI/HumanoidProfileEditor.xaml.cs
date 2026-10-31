@@ -2696,7 +2696,8 @@ namespace Content.Client.Lobby.UI
             _specialPointsLabel.Text = Loc.GetString(
                 "humanoid-profile-editor-special-points-label",
                 ("points", special.AvailablePoints),
-                ("max", SpecialProfile.BonusPoints));
+                ("max", SpecialProfile.BonusPoints)) + "\n" +
+                Loc.GetString("humanoid-profile-editor-special-single-ten");
 
             foreach (var stat in SpecialStats.All)
             {
@@ -2781,7 +2782,8 @@ namespace Content.Client.Lobby.UI
             {
                 Text = "+",
                 MinWidth = 32,
-                Disabled = value >= SpecialProfile.Maximum || special.AvailablePoints <= 0,
+                Disabled = value >= special.GetMaximum(stat) || special.AvailablePoints <= 0,
+                ToolTip = Loc.GetString("humanoid-profile-editor-special-single-ten"),
             };
             plusButton.StyleClasses.Add(StyleNano.StyleClassPipBoyButton);
             plusButton.OnPressed += _ => SetSpecialValue(stat, value + 1);
@@ -3046,14 +3048,14 @@ namespace Content.Client.Lobby.UI
         private static string GetAgilityEffectDetails(int value, SpecialTuningPrototype tuning)
         {
             var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
-            var move = SharedSpecialSystem.GetCurvedEffectModifier(
+            var doAfter = SharedSpecialSystem.GetCurvedEffectModifier(
                 delta,
-                tuning.AgilityMovementSpeedMultiplierPerPoint);
+                tuning.AgilityDoAfterSpeedMultiplierPerPoint);
             var actionDelay = SharedSpecialSystem.GetCurvedEffectModifier(
                 delta,
                 -tuning.AgilityActionDelayMultiplierPerPoint);
 
-            return $"movement speed {FormatSignedPercent(move)}, melee attack delay {FormatSignedPercent(actionDelay)}.";
+            return $"do-after speed {FormatSignedPercent(doAfter)}, melee attack delay {FormatSignedPercent(actionDelay)}.";
         }
 
         private static string GetLuckEffectDetails(int value, SpecialTuningPrototype tuning)

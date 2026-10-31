@@ -1,0 +1,10 @@
+- type: entity
+  id: ActionStrengthJuggernaut
+  name: Juggernaut
+  description: For 15 seconds, deal 25% more melee and structural damage and knock enemies back and down with melee hits. Three-minute cooldown. You are stunned for four seconds when it ends.
+  categories: [HideSpawnMenu]
+  components:
+  - type: InstantAction
+    icon: _ReclamationProject/Interface/Actions/juggernaut.png
+    useDelay: 180
+    event: !type:StrengthJuggernautActionEvent

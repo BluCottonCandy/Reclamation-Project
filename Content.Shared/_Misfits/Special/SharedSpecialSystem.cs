@@ -137,11 +137,28 @@ public sealed class SharedSpecialSystem : EntitySystem
     }
 
     /// <summary>
-    /// Gets the gameplay-facing stat value after clamping to 1-10.
+    /// Gets gameplay-facing SPECIAL. Only the single allocated ten can reach ten, including with bonuses.
     /// </summary>
     public int GetEffective(EntityUid uid, SpecialStat stat, SpecialComponent? component = null)
     {
-        return Math.Clamp(GetUnclampedEffective(uid, stat, component), SpecialProfile.Minimum, SpecialProfile.Maximum);
+        if (!SpecialStats.IsEnabled(stat) || !UsesSpecialStats(uid) || !Resolve(uid, ref component, false))
+            return SpecialProfile.DefaultValue;
+
+        var maximum = SpecialProfile.SecondaryMaximum;
+        if (GetBase(component, stat) == SpecialProfile.Maximum)
+        {
+            maximum = SpecialProfile.Maximum;
+            // Also defend against raw component writes or old unnormalized saves.
+            foreach (var other in SpecialStats.All)
+            {
+                if (other != stat && GetBase(component, other) >= SpecialProfile.Maximum)
+                {
+                    maximum = SpecialProfile.SecondaryMaximum;
+                    break;
+                }
+            }
+        }
+        return Math.Clamp(GetUnclampedEffective(uid, stat, component), SpecialProfile.Minimum, maximum);
     }
 
     /// <summary>
@@ -341,6 +358,13 @@ public sealed class SharedSpecialSystem : EntitySystem
             !Resolve(uid, ref component, false))
             return false;
 
+        if (value == SpecialProfile.Maximum)
+        {
+            foreach (var other in SpecialStats.All)
+                if (other != stat && GetBase(component, other) >= SpecialProfile.Maximum)
+                    return false;
+        }
+
         SetBase(component, stat, value);
         Dirty(uid, component);
         RaiseSpecialChanged(uid);
@@ -463,6 +487,16 @@ public sealed class SharedSpecialSystem : EntitySystem
         component.BaseIntelligence = Math.Clamp(component.BaseIntelligence, SpecialProfile.Minimum, SpecialProfile.Maximum);
         component.BaseAgility = Math.Clamp(component.BaseAgility, SpecialProfile.Minimum, SpecialProfile.Maximum);
         component.BaseLuck = Math.Clamp(component.BaseLuck, SpecialProfile.Minimum, SpecialProfile.Maximum);
+        var maxed = 0;
+        foreach (var stat in SpecialStats.All)
+            if (GetBase(component, stat) == SpecialProfile.Maximum)
+                maxed++;
+        if (maxed > 1)
+        {
+            foreach (var stat in SpecialStats.All)
+                if (GetBase(component, stat) == SpecialProfile.Maximum)
+                    SetBase(component, stat, SpecialProfile.SecondaryMaximum);
+        }
         Dirty(uid, component);
     }
 

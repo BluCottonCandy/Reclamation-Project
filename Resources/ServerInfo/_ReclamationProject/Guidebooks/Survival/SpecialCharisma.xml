@@ -1,5 +1,13 @@
 <Document>
-# Charisma
+# Charisma: Rally
 
 Charisma increases the loadout points available during character creation.
+
+At [bold]10 effective Charisma[/bold], you gain [bold]Rally[/bold]. Activate it to encourage every living player within [bold]six tiles[/bold], regardless of faction. It does not affect the person using it or NPCs.
+
+For [bold]20 seconds[/bold], affected players gain [bold]20% faster walking and sprinting[/bold], take [bold]25% less stamina damage[/bold], and ignore movement slowdown caused by damage. Other restrictions, such as heavy equipment or disabled limbs, still apply. Rally does not heal injuries or revive anyone.
+
+When activated, you call out one of four encouraging phrases. The softly shaded light-blue circle shows the activation range. Only players inside it when you activate Rally receive the buff. They keep it if they leave; entering the circle later gives no benefit.
+
+Rally has a [bold]three-minute cooldown from activation[/bold]. Multiple Rallies refresh the duration without stacking their bonuses. Temporarily lowering Charisma does not reset the cooldown.
 </Document>

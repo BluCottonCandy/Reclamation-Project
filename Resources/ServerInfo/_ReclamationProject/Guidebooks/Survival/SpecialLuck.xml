@@ -1,5 +1,9 @@
 <Document>
-# Luck
+# Luck: Scrounger's Fortune
 
-Luck improves critical hits and lucky scavenging.
+At [bold]10 effective Luck[/bold], you gain [bold]Scrounger's Fortune[/bold]. Activate the action and stand still for a [bold]five-second base search[/bold]. Moving or taking damage cancels the search.
+
+A small circle shows the [bold]four-tile search radius[/bold]. Completing the search uncovers [bold]one scrap pile[/bold] on a clear, reachable floor tile nearby. Click the pile to spill its contents onto the floor. The pile disappears after being opened and cannot be opened twice.
+
+A successful find starts a [bold]ten-minute cooldown[/bold]. Cancelled searches and searches with no suitable floor space do not consume the cooldown. Temporarily lowering Luck does not reset it.
 </Document>

@@ -22,7 +22,7 @@
   charismaNeutralFollowerMinimum: 8
   intelligenceLatheTimeMultiplierPerPoint: 0.06666667
   intelligenceLatheMaterialUseMultiplierPerPoint: 0.03333333
-  agilityMovementSpeedMultiplierPerPoint: 0.01
+  agilityDoAfterSpeedMultiplierPerPoint: 0.01
   agilityActionDelayMultiplierPerPoint: 0.01333333
   luckCriticalChancePerPoint: 0.005
   luckSingleShotCriticalChancePerPoint: 0.03333333

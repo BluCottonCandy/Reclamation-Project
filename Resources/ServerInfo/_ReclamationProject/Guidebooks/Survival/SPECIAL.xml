@@ -4,4 +4,8 @@
 Your SPECIAL attributes shape your character's strengths and weaknesses. Select a stat below to read about its effects and special abilities.
 
 The entries follow SPECIAL order: Strength, Perception, Endurance, Charisma, Intelligence, Agility, and Luck.
+
+[bold]Choose one capstone:[/bold] Only one allocated SPECIAL stat may reach 10. Every other stat is capped at 9, including temporary chem and equipment bonuses. Lower your current 10 before raising a different stat to 10.
+
+Existing characters with several stats at 10 have those stats lowered to 9, returning one allocation point per lowered stat. Choose your preferred capstone in Customize. Other allocated stats and the total point budget are preserved.
 </Document>

@@ -32,6 +32,19 @@ public sealed class WarcryOverlay(IEntityManager entityManager) : Overlay
                 continue;
             }
 
+            if (active.SoftEdge)
+            {
+                // Layer faint discs to shade the center and feather outward to a subtle boundary.
+                const int bands = 24;
+                for (var i = 0; i < bands; i++)
+                {
+                    var radius = active.Radius * (1f - i / (float) bands);
+                    worldHandle.DrawCircle(position, radius, active.Color.WithAlpha(0.004f));
+                }
+                worldHandle.DrawCircle(position, active.Radius, active.Color.WithAlpha(0.12f), filled: false);
+                continue;
+            }
+
             worldHandle.DrawCircle(position, active.Radius, active.Color.WithAlpha(FillAlpha));
             worldHandle.DrawCircle(position, active.Radius, active.Color.WithAlpha(OutlineAlpha), filled: false);
         }

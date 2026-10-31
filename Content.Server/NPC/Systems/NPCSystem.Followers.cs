@@ -286,6 +286,9 @@ namespace Content.Server.NPC.Systems
 
         private bool CanRecruitNeutralFollower(EntityUid user, EntityUid target, HTNComponent htn, NpcFactionMemberComponent targetFaction)
         {
+            if (HasComp<Content.Shared._ReclamationProject.Intelligence.OverriddenRobotComponent>(target))
+                return false;
+
             if (!TryComp<NpcFactionMemberComponent>(user, out var userFaction))
                 return false;
 

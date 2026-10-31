@@ -13340,3 +13340,39 @@ Entries:
   id: 6577
   time: '2026-10-31T05:48:57.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/105
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Restore Strength, Charisma, Intelligence and Agility level-10 abilities
+        that were missing from the main game build.
+    - type: Add
+      message: >-
+        Strength 10 Juggernaut grants 25% more melee and structural damage and
+        melee knockback/knockdown for 15 seconds, with a three-minute cooldown
+        and four-second exhaustion stun.
+    - type: Add
+      message: >-
+        Charisma 10 Rally buffs nearby players for 20 seconds with 25% less
+        stamina damage, 20% faster movement and no damage slowdown. Three-minute
+        cooldown; excludes the caster and later arrivals.
+    - type: Add
+      message: >-
+        Intelligence 10 Override hacks electronic doors even while unpowered and
+        reprograms AI robots to protect players without following. Three-minute
+        shared cooldown, Protectron icon and cosmetic green grasp.
+    - type: Fix
+      message: >-
+        Agility now speeds up timed-action progress bars instead of movement.
+        Agility 10 grants a longer, stamina-free Quickstep with a 30-second
+        cooldown.
+    - type: Fix
+      message: Smooth predicted movement prevents charge and dash rubber-banding.
+    - type: Fix
+      message: >-
+        Restore the four named SPECIAL guidebook entries and correct
+        character-creation Agility descriptions while preserving Luck and the
+        one-stat-at-10 restriction.
+  id: 6578
+  time: '2026-10-31T06:33:29.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/106

@@ -13185,3 +13185,24 @@ Entries:
   id: 6570
   time: '2026-10-31T03:19:33.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/98
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Charisma 10 grants Rally, buffing nearby players for 20 seconds with 20%
+        faster movement, 25% less stamina damage, and no damage slowdown.
+        Three-minute cooldown; the caster and NPCs are excluded.
+    - type: Add
+      message: >-
+        Rally reuses the Legion warcry circle in light blue. Targets are
+        selected at activation and retain their buff outside the circle; later
+        arrivals receive no buff.
+    - type: Add
+      message: Added the Charisma Rally guidebook entry.
+    - type: Add
+      message: >-
+        Rally has a softly shaded light-blue circle and randomly speaks one of
+        four encouragements when activated.
+  id: 6571
+  time: '2026-10-31T03:19:48.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/99

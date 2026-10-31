@@ -3048,14 +3048,14 @@ namespace Content.Client.Lobby.UI
         private static string GetAgilityEffectDetails(int value, SpecialTuningPrototype tuning)
         {
             var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
-            var move = SharedSpecialSystem.GetCurvedEffectModifier(
+            var doAfter = SharedSpecialSystem.GetCurvedEffectModifier(
                 delta,
-                tuning.AgilityMovementSpeedMultiplierPerPoint);
+                tuning.AgilityDoAfterSpeedMultiplierPerPoint);
             var actionDelay = SharedSpecialSystem.GetCurvedEffectModifier(
                 delta,
                 -tuning.AgilityActionDelayMultiplierPerPoint);
 
-            return $"movement speed {FormatSignedPercent(move)}, melee attack delay {FormatSignedPercent(actionDelay)}.";
+            return $"do-after speed {FormatSignedPercent(doAfter)}, melee attack delay {FormatSignedPercent(actionDelay)}.";
         }
 
         private static string GetLuckEffectDetails(int value, SpecialTuningPrototype tuning)

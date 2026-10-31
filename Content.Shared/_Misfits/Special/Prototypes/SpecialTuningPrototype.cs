@@ -90,9 +90,9 @@ public sealed partial class SpecialTuningPrototype : IPrototype
     [DataField("intelligenceLatheMaterialUseMultiplierPerPoint")]
     public float IntelligenceLatheMaterialUseMultiplierPerPoint = 0.03333333f;
 
-    // Agility: movement and general action speed.
-    [DataField("agilityMovementSpeedMultiplierPerPoint")]
-    public float AgilityMovementSpeedMultiplierPerPoint = 0.01f;
+    // Agility: timed actions and close-quarters action speed.
+    [DataField("agilityDoAfterSpeedMultiplierPerPoint")]
+    public float AgilityDoAfterSpeedMultiplierPerPoint = 0.01f;
 
     [DataField("agilityActionDelayMultiplierPerPoint")]
     public float AgilityActionDelayMultiplierPerPoint = 0.01333333f;

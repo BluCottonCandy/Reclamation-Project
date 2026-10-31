@@ -13259,3 +13259,31 @@ Entries:
   id: 6574
   time: '2026-10-31T03:55:34.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/102
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Luck 10 grants Scrounger's Fortune: a five-second search reveals one
+        random loot pile within four tiles, with a ten-minute cooldown after a
+        successful find.
+    - type: Add
+      message: >-
+        Four finite scrap-pile rarities appear at 50%, 35%, 10%, and 5%, with
+        three items in Old scrap, two in Overlooked scrap and Easy-to-miss
+        piles, and one to three in Something shiny.
+    - type: Add
+      message: >-
+        Added a search-radius circle and a Luck guidebook entry explaining how
+        to search, open finds, and manage the cooldown without listing loot or
+        drop chances.
+    - type: Tweak
+      message: >-
+        Opening a fortune pile now drops its existing loot onto the floor and
+        removes the pile instead of showing a storage window.
+    - type: Fix
+      message: >-
+        The rarest pile uses the standard 12.7mm SMG, excludes the makeshift
+        assault rifle, and includes spare microfusion cells.
+  id: 6575
+  time: '2026-10-31T05:22:41.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/103

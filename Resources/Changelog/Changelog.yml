@@ -13151,3 +13151,12 @@ Entries:
   id: 6567
   time: '2026-10-31T03:18:18.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/95
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        The cane blade loadout now provides its cane sheath with the blade
+        already inside.
+  id: 6568
+  time: '2026-10-31T03:18:28.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/96

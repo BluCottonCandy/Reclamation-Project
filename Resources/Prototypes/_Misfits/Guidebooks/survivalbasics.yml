@@ -8,7 +8,7 @@
   text: "/ServerInfo/_Misfits/Guidebooks/Survival/index.xml"
   children:
   - N14Basics
-  - ReclamationEnraged
+  - ReclamationSpecial
   - ReclamationBruiserKit
 
 - type: guideEntry
@@ -24,5 +24,55 @@
 
 - type: guideEntry
   id: ReclamationEnraged
+  priority: 30
   name: guide-entry-endurance-enraged
   text: "/ServerInfo/_Misfits/Guidebooks/Survival/Enraged.xml"
+
+- type: guideEntry
+  id: ReclamationPerceptionDualGuns
+  priority: 20
+  name: guide-entry-perception-dual-guns
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/PerceptionDualGuns.xml"
+
+- type: guideEntry
+  id: ReclamationSpecial
+  name: guide-entry-special-abilities
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SPECIAL.xml"
+  children:
+  - ReclamationSpecialStrength
+  - ReclamationPerceptionDualGuns
+  - ReclamationEnraged
+  - ReclamationSpecialCharisma
+  - ReclamationSpecialIntelligence
+  - ReclamationSpecialAgility
+  - ReclamationSpecialLuck
+
+- type: guideEntry
+  id: ReclamationSpecialStrength
+  priority: 10
+  name: guide-entry-special-strength
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SpecialStrength.xml"
+
+- type: guideEntry
+  id: ReclamationSpecialCharisma
+  priority: 40
+  name: guide-entry-special-charisma
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SpecialCharisma.xml"
+
+- type: guideEntry
+  id: ReclamationSpecialIntelligence
+  priority: 50
+  name: guide-entry-special-intelligence
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SpecialIntelligence.xml"
+
+- type: guideEntry
+  id: ReclamationSpecialAgility
+  priority: 60
+  name: guide-entry-special-agility
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SpecialAgility.xml"
+
+- type: guideEntry
+  id: ReclamationSpecialLuck
+  priority: 70
+  name: guide-entry-special-luck
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SpecialLuck.xml"

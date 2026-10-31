@@ -1,0 +1,11 @@
+<Document>
+# Perception: Dual Wield
+
+At [bold]10 effective Perception[/bold], you can fire two held guns together. Hold a gun in each hand, enter combat mode, and aim and fire normally. The active gun's fire button controls both guns.
+
+[bold]Both guns must be usable one-handed.[/bold] Weapons that require wielding with two hands cannot be used for dual firing. Mounted and mech weapons are excluded.
+
+Each gun uses its own ammunition, firing mode, and cooldown. Automatic weapons keep firing while you hold the button; semi-automatic weapons fire once per press. Reload each weapon normally. An empty or blocked gun does not stop the other gun from firing.
+
+Releasing fire resets both triggers. Losing the second gun or dropping below 10 Perception immediately removes dual firing; the active gun still works normally.
+</Document>

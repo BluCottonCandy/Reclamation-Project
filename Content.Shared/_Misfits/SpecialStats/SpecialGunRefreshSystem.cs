@@ -40,12 +40,17 @@ public sealed class SpecialGunRefreshSystem : EntitySystem
 
     private void OnGunUnequipped(Entity<GunComponent> ent, ref GotUnequippedHandEvent args)
     {
+        _gun.StopShooting(ent.Owner, ent.Comp);
         _gun.RefreshModifiers((ent.Owner, ent.Comp));
     }
 
     private void RefreshActiveGun(EntityUid user)
     {
-        if (_gun.TryGetGun(user, out var gunUid, out var gun))
-            _gun.RefreshModifiers((gunUid, gun));
+        if (!_gun.TryGetGun(user, out var gunUid, out var gun))
+            return;
+
+        _gun.RefreshModifiers((gunUid, gun));
+        if (_gun.TryGetOffhandGun(user, gunUid, out var offhand, out var offhandGun))
+            _gun.RefreshModifiers((offhand, offhandGun));
     }
 }

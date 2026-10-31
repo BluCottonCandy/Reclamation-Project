@@ -96,6 +96,7 @@ public sealed partial class GunSystem : SharedGunSystem
     }
 
     private bool _spreadOverlay;
+    private readonly HashSet<EntityUid> _triggerGuns = new();
 
     public override void Initialize()
     {
@@ -144,64 +145,74 @@ public sealed partial class GunSystem : SharedGunSystem
         if (!Timing.IsFirstTimePredicted)
             return;
 
-        var entityNull = _player.LocalEntity;
-
-        if (entityNull == null || !TryComp<CombatModeComponent>(entityNull, out var combat) || !combat.IsInCombatMode)
+        var user = _player.LocalEntity;
+        if (user == null || !TryComp<CombatModeComponent>(user, out var combat) || !combat.IsInCombatMode ||
+            !TryGetGun(user.Value, out var primary, out var primaryGun))
         {
+            StopInactiveTriggerGuns(null, null);
             return;
         }
 
-        var entity = entityNull.Value;
-
-        if (!TryGetGun(entity, out var gunUid, out var gun))
-        {
-            return;
-        }
-
-        var useKey = gun.UseKey ? EngineKeyFunctions.Use : EngineKeyFunctions.UseSecondary;
-
-        if (_inputSystem.CmdStates.GetState(useKey) != BoundKeyState.Down && !gun.BurstActivated)
-        {
-            if (gun.ShotCounter != 0)
-                EntityManager.RaisePredictiveEvent(new RequestStopShootEvent { Gun = GetNetEntity(gunUid) });
-            return;
-        }
-
-        if (gun.NextFire > Timing.CurTime)
-            return;
-
+        EntityUid? secondary = TryGetOffhandGun(user.Value, primary, out var offhand, out var offhandGun)
+            ? offhand : null;
+        StopInactiveTriggerGuns(primary, secondary);
+        var useKey = primaryGun.UseKey ? EngineKeyFunctions.Use : EngineKeyFunctions.UseSecondary;
+        var triggerHeld = _inputSystem.CmdStates.GetState(useKey) == BoundKeyState.Down;
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
-
-        if (mousePos.MapId == MapId.Nullspace)
+        if (mousePos.MapId == MapId.Nullspace || _player.LocalSession is not { } session)
         {
-            if (gun.ShotCounter != 0)
-                EntityManager.RaisePredictiveEvent(new RequestStopShootEvent { Gun = GetNetEntity(gunUid) });
-
+            StopInactiveTriggerGuns(null, null);
             return;
         }
-        //if(Inputting really fast ignore)
-        // Define target coordinates relative to gun entity, so that network latency on moving grids doesn't fuck up the target location.
-        var coordinates = _xform.ToCoordinates(entity, mousePos);
 
+        var coordinates = GetNetCoordinates(_xform.ToCoordinates(user.Value, mousePos));
         NetEntity? target = null;
         if (_state.CurrentState is GameplayStateBase screen)
             target = GetNetEntity(screen.GetClickedEntity(mousePos));
 
-        Log.Debug($"Sending shoot request tick {Timing.CurTick} / {Timing.CurTime}");
+        FireHeldGun(primary, primaryGun);
+        if (secondary is { } second && offhandGun != null)
+            FireHeldGun(second, offhandGun);
 
-        if (_player.LocalSession is not { } session)
-            return;
-
-        var projectiles = ShootRequested(GetNetEntity(gunUid), GetNetCoordinates(coordinates), target, null, session);
-
-        EntityManager.RaisePredictiveEvent(new RequestShootEvent
+        void FireHeldGun(EntityUid uid, GunComponent gun)
         {
-            Target = target,
-            Coordinates = GetNetCoordinates(coordinates),
-            Gun = GetNetEntity(gunUid),
-            Shot = projectiles?.Select(p => p.Id).ToList(),
-            LastRealTick = _lagComp.GetLastRealTick(), // #Misfits Add
-        });
+            if (!triggerHeld && !gun.BurstActivated)
+            {
+                StopTriggerGun(uid);
+                return;
+            }
+
+            _triggerGuns.Add(uid);
+            // Each gun keeps its own rate of fire, fire mode and projectile prediction.
+            if (gun.NextFire > Timing.CurTime)
+                return;
+
+            var projectiles = ShootRequested(GetNetEntity(uid), coordinates, target, null, session);
+            EntityManager.RaisePredictiveEvent(new RequestShootEvent
+            {
+                Target = target,
+                Coordinates = coordinates,
+                Gun = GetNetEntity(uid),
+                Shot = projectiles?.Select(p => p.Id).ToList(),
+                LastRealTick = _lagComp.GetLastRealTick(),
+            });
+        }
+    }
+
+    private void StopInactiveTriggerGuns(EntityUid? primary, EntityUid? secondary)
+    {
+        foreach (var uid in _triggerGuns.ToArray())
+        {
+            if (uid != primary && uid != secondary)
+                StopTriggerGun(uid);
+        }
+    }
+
+    private void StopTriggerGun(EntityUid uid)
+    {
+        _triggerGuns.Remove(uid);
+        if (!Deleted(uid) && TryComp<GunComponent>(uid, out var gun) && gun.ShotCounter != 0)
+            EntityManager.RaisePredictiveEvent(new RequestStopShootEvent { Gun = GetNetEntity(uid) });
     }
 
     public override List<EntityUid>? Shoot(EntityUid gunUid,

@@ -74,13 +74,13 @@ public sealed class EmagSystem : EntitySystem
     /// <summary>
     /// Does the emag effect on a specified entity
     /// </summary>
-    public bool DoEmagEffect(EntityUid user, EntityUid target)
+    public bool DoEmagEffect(EntityUid user, EntityUid target, bool ignoreDoorPower = false)
     {
         // prevent emagging twice
         if (HasComp<EmaggedComponent>(target))
             return false;
 
-        var onAttemptEmagEvent = new OnAttemptEmagEvent(user);
+        var onAttemptEmagEvent = new OnAttemptEmagEvent(user, IgnoreDoorPower: ignoreDoorPower);
         RaiseLocalEvent(target, ref onAttemptEmagEvent);
 
         // prevent emagging if attempt fails
@@ -100,4 +100,4 @@ public sealed class EmagSystem : EntitySystem
 public record struct GotEmaggedEvent(EntityUid UserUid, bool Handled = false, bool Repeatable = false);
 
 [ByRefEvent]
-public record struct OnAttemptEmagEvent(EntityUid UserUid, bool Handled = false);
+public record struct OnAttemptEmagEvent(EntityUid UserUid, bool Handled = false, bool IgnoreDoorPower = false);

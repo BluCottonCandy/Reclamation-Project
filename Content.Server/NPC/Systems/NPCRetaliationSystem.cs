@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server._Misfits.Silicon;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN; // #Misfits Add
@@ -96,10 +97,30 @@ public sealed class NPCRetaliationSystem : EntitySystem
         return assistRange > 0f ? assistRange : DefaultAssistRange;
     }
 
+    /// <summary>Discard old aggro when an NPC is reprogrammed.</summary>
+    public void ClearRetaliation(EntityUid uid)
+    {
+        if (TryComp<NPCRetaliationComponent>(uid, out var retaliation))
+        {
+            retaliation.AttackMemories.Clear();
+            retaliation.PursuitTarget = null;
+            retaliation.PursuitUntil = TimeSpan.Zero;
+        }
+        if (TryComp<FactionExceptionComponent>(uid, out var exceptions))
+        {
+            foreach (var hostile in exceptions.Hostiles.ToArray())
+                _npcFaction.DeAggroEntity((uid, exceptions), hostile);
+        }
+    }
+
     public bool TryRetaliate(Entity<NPCRetaliationComponent> ent, EntityUid target)
     {
         if (HasComp<ActorComponent>(ent) || ent.Owner == target ||
             TryComp<MobStateComponent>(ent, out var state) && state.CurrentState != MobState.Alive)
+            return false;
+
+        if (HasComp<Content.Shared._ReclamationProject.Intelligence.OverriddenRobotComponent>(ent) &&
+            _npcFaction.IsOverrideProtectedPlayer(target))
             return false;
 
         // don't retaliate against inanimate objects.

@@ -13,6 +13,11 @@
     - state: dasbunker_open
       map: ["base"]
   - type: InteractionOutline
+  - type: PersonalBunkerEntrance
+  - type: UserInterface
+    interfaces:
+      enum.PersonalBunkerUiKey.Key:
+        type: PersonalBunkerBoundUserInterface
   - type: Cryostorage
   - type: Physics
     canCollide: false
@@ -50,3 +55,30 @@
         base:
           True: { state: enclave }
           False: { state: enclave_open }
+- type: entity
+  parent: BaseStructure
+  id: ReclamationPersonalBunkerExit
+  name: bunker ladder
+  description: Return to the hatch you entered through. Your room is saved when empty.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/laddersms13.rsi
+    state: dasbunker_open
+    noRot: true
+  - type: InteractionOutline
+  - type: PersonalBunkerExit
+  - type: PointLight
+    radius: 8
+    energy: 1.5
+    color: "#ffd6a0"
+
+- type: entity
+  parent: N14WallConcreteLight
+  id: ReclamationPersonalBunkerWall
+  name: reinforced bunker wall
+  components:
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds: []

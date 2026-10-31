@@ -1,0 +1,16 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Bunker hatches now offer cryo or a persistent room owned by your character and saved on the server.
+- type: Add
+  message: Personal bunker rooms have a roof, breathable air, lighting, and a return ladder, and save furniture and container contents.
+- type: Add
+  message: Weapons left in bunker rooms become permanent decorations after the last occupant leaves; weapons remain functional while the room is occupied. Guns cannot fire or hold ammo; melee weapons deal 1 blunt. Carried equipment is excluded.
+- type: Add
+  message: Added a Personal Bunkers guidebook entry explaining room saves and decorative weapons.
+- type: Tweak
+  message: Bunker rooms save on departure instead of repeatedly while occupied. Dragged objects follow you in and out.
+- type: Add
+  message: Critical or SSD characters in personal bunkers are automatically returned to the entrance hatch, saving the room when empty.
+- type: Fix
+  message: Ghosts leave personal bunkers automatically when no living, awake player remains inside, allowing empty rooms to save and unload.

@@ -11,5 +11,5 @@ When Enraged ends, critical condition and death apply normally again. Injuries t
 
 Enraged has a [bold]five-minute cooldown[/bold], measured from activation. It cannot activate again during that cooldown.
 
-Endurance no longer grants additional health.
+Endurance 5 gives no health bonus. Above that, your bonus health is [bold]6 Endurance: +2.7; 7: +6; 8: +10; 9: +14.7; 10: +20[/bold] (rounded). This increases the damage you can take before critical condition and death; it does not heal existing injuries. Endurance below 5 reduces those thresholds. At 10 Endurance, you receive both the +20 health bonus and Enraged.
 </Document>

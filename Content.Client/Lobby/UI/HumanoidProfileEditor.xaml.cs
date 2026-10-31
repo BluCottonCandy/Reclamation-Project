@@ -2987,6 +2987,7 @@ namespace Content.Client.Lobby.UI
         private static string GetEnduranceEffectDetails(int value, SpecialTuningPrototype tuning)
         {
             var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
+            var health = SharedSpecialSystem.GetCurvedEffectModifier(delta, tuning.EnduranceHealthModifierPerPoint);
             var needs = SharedSpecialSystem.GetCurvedEffectModifier(
                 delta,
                 -tuning.EnduranceNeedDecayMultiplierPerPoint);
@@ -2997,7 +2998,7 @@ namespace Content.Client.Lobby.UI
                 delta,
                 -tuning.EnduranceToxinDamageMultiplierPerPoint);
 
-            return $"hunger/thirst decay {FormatSignedPercent(needs)}, stamina recovery {FormatSignedPercent(stamina)}, poison/rad damage {FormatSignedPercent(toxin)}.";
+            return $"health {health:+0.##;-0.##;0}, hunger/thirst decay {FormatSignedPercent(needs)}, stamina recovery {FormatSignedPercent(stamina)}, poison/rad damage {FormatSignedPercent(toxin)}.";
         }
 
         private static string GetCharismaEffectDetails(int value, SpecialTuningPrototype tuning)

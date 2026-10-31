@@ -1,7 +1,7 @@
 # Description of Special labels in character creation screen
 special-character-creation-description-strength = Increases melee damage.
 special-character-creation-description-perception = Improves ranged weapon handling.
-special-character-creation-description-endurance = Improves resistance to toxins, stamina recovery, and food and water efficiency.
+special-character-creation-description-endurance = Improves health, resistance to toxins, stamina recovery, and food and water efficiency.
 special-character-creation-description-charisma = Gives more loadout points.
 special-character-creation-description-intelligence = Improves crafting and medical abilities.
 special-character-creation-description-agility = Increases movement speed.

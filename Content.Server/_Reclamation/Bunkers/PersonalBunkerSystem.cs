@@ -207,7 +207,10 @@ public sealed class PersonalBunkerSystem : EntitySystem
             Notice(user, "Your character's room record is not ready. Please try again shortly.");
             return;
         }
-        if (identity.Profile.Result is not {} profile)
+#pragma warning disable RA0004 // IsCompletedSuccessfully above guarantees this read cannot block or deadlock.
+        var completedProfile = identity.Profile.Result;
+#pragma warning restore RA0004
+        if (completedProfile is not {} profile)
         {
             Notice(user, "This character has no saved server profile yet.");
             return;

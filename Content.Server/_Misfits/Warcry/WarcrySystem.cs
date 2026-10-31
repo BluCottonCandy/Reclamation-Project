@@ -1,4 +1,7 @@
 using Content.Server.Actions;
+using Content.Shared._ReclamationProject.Charisma;
+using Content.Shared.Mobs.Components;
+using Robust.Shared.Player;
 using Content.Server.Chat.Systems;
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Warcry;
@@ -71,6 +74,13 @@ public sealed class WarcrySystem : EntitySystem
             RemComp<WarcryBuffComponent>(uid);
         }
 
+        var rallyQuery = EntityQueryEnumerator<CharismaRallyBuffComponent>();
+        while (rallyQuery.MoveNext(out var uid, out var rally))
+        {
+            if (!Paused(uid) && rally.ExpiresAt <= now)
+                RemComp<CharismaRallyBuffComponent>(uid);
+        }
+
         var activeQuery = EntityQueryEnumerator<ActiveWarcryComponent>();
         while (activeQuery.MoveNext(out var uid, out var active))
         {
@@ -135,6 +145,7 @@ public sealed class WarcrySystem : EntitySystem
         var active = EnsureComp<ActiveWarcryComponent>(uid);
         active.Radius = scaledRange;
         active.Color = component.OverlayColor;
+        active.SoftEdge = false;
         active.ExpiresAt = expiry;
         Dirty(uid, active);
 
@@ -153,6 +164,41 @@ public sealed class WarcrySystem : EntitySystem
 
         if (!buffedAny)
             _popup.PopupEntity(Loc.GetString("warcry-popup-no-allies"), uid, uid, PopupType.SmallCaution);
+    }
+
+    /// <summary>Snapshots nearby player bodies once; the circle is visual, not a recurring aura.</summary>
+    public void ActivateRally(EntityUid source, bool includeSelf = false)
+    {
+        const float range = 6f;
+        var expiry = _timing.CurTime + TimeSpan.FromSeconds(20);
+        _targets.Clear();
+        _lookup.GetEntitiesInRange(Transform(source).Coordinates, range, _targets);
+        if (includeSelf)
+            _targets.Add(source);
+        foreach (var target in _targets)
+        {
+            if ((!includeSelf && target == source) || !HasComp<ActorComponent>(target) ||
+                !HasComp<MobStateComponent>(target) || _mobState.IsDead(target) ||
+                !HasComp<MovementSpeedModifierComponent>(target))
+                continue;
+            var buff = EnsureComp<CharismaRallyBuffComponent>(target);
+            buff.ExpiresAt = expiry;
+            Dirty(target, buff);
+            _movementSpeed.RefreshMovementSpeedModifiers(target);
+            _popup.PopupEntity(Loc.GetString("charisma-rally-buffed"), target, target);
+        }
+        var active = EnsureComp<ActiveWarcryComponent>(source);
+        active.Radius = range;
+        active.Color = Color.LightBlue;
+        active.SoftEdge = true;
+        active.ExpiresAt = expiry;
+        Dirty(source, active);
+        _chat.TrySendInGameICMessage(
+            source,
+            Loc.GetString($"charisma-rally-shout-{_random.Next(1, 5)}"),
+            InGameICChatType.Speak,
+            false);
+        _popup.PopupCoordinates(Loc.GetString("charisma-rally-nearby", ("user", source)), Transform(source).Coordinates);
     }
 
     private string GetWarcryMessage(WarcryComponent component)

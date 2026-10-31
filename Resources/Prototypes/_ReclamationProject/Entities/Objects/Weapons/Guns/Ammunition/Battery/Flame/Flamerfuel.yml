@@ -27,6 +27,10 @@
       reagents:
         - ReagentId: Iron
           Quantity: 5
+  - type: Tag
+    tags:
+      - N14FlamerFuel
+      - N14AmmoCell
   - type: Appearance
   - type: PowerCellVisuals
   - type: Riggable
@@ -40,17 +44,13 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Flame/flamerfuel.rsi
-    scale: 0.3, 0.3
+    scale: 0.45, 0.45
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
         state: o3
         shader: unshaded
-  - type: Tag
-    tags:
-      - N14FlamerFuel
-      - N14AmmoCell
   - type: Battery
     maxCharge: 10000
     startingCharge: 10000
@@ -64,17 +64,13 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Flame/enrichedflamerfuel.rsi
-    scale: 0.3, 0.3
+    scale: 0.45, 0.45
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
         state: o3
         shader: unshaded
-  - type: Tag
-    tags:
-      - N14EnrichedFlamerFuel
-      - N14AmmoCell
   - type: Battery
     maxCharge: 20000
     startingCharge: 20000

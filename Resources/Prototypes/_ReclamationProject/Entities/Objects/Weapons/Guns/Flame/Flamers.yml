@@ -37,7 +37,6 @@
         whitelist:
           tags:
             - N14FlamerFuel
-            - N14EnrichedFlamerFuel
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -98,7 +97,6 @@
         whitelist:
           tags:
             - N14FlamerFuel
-            - N14EnrichedFlamerFuel
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -153,7 +151,6 @@
         whitelist:
           tags:
             - N14FlamerFuel
-            - N14EnrichedFlamerFuel
   - type: Appearance
   - type: ContainerContainer
     containers:

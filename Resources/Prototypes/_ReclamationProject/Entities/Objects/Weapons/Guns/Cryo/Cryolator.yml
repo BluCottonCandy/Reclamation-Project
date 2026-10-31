@@ -40,7 +40,6 @@
         whitelist:
           tags:
             - N14CryoCell
-            - N14SuperCooledCryoCell
   - type: Gun
     minAngle: 25
     maxAngle: 55
@@ -101,7 +100,6 @@
         whitelist:
           tags:
             - N14CryoCell
-            - N14SuperCooledCryoCell
   - type: Gun
     minAngle: 25
     maxAngle: 55
@@ -153,7 +151,6 @@
         whitelist:
           tags:
             - N14CryoCell
-            - N14SuperCooledCryoCell
   - type: Appearance
   - type: ContainerContainer
     containers:

@@ -26,9 +26,16 @@
       reagents:
         - ReagentId: Zinc
           Quantity: 5
+  - type: Tag
+    tags:
+      - N14CryoCell
+      - N14AmmoCell
   - type: Appearance
   - type: PowerCellVisuals
   - type: Riggable
+  - type: HitscanBatteryAmmoProvider
+    proto: BulletCryolator
+    fireCost: 50
 
 - type: entity
   name: cryocell
@@ -39,17 +46,13 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Cryo/cryocell.rsi
-    scale: 0.2, 0.2
+    scale: 0.3, 0.3
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
         state: o3
         shader: unshaded
-  - type: Tag
-    tags:
-      - N14CryoCell
-      - N14AmmoCell
   - type: Battery
     maxCharge: 10000
     startingCharge: 10000
@@ -63,17 +66,13 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Battery/Cryo/supercooledcryocell.rsi
-    scale: 0.2, 0.2
+    scale: 0.3, 0.3
     layers:
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: empty
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
         state: o3
         shader: unshaded
-  - type: Tag
-    tags:
-      - N14SuperCooledCryoCell
-      - N14AmmoCell
   - type: Battery
     maxCharge: 20000
     startingCharge: 20000

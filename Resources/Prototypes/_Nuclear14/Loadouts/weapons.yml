@@ -203,7 +203,7 @@
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutMelee
   items:
-    - CaneBlade
+    - CaneSheathFilled
 
 - type: loadout
   id: ThrowingKnife

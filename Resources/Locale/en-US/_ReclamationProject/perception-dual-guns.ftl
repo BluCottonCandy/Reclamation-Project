@@ -4,4 +4,4 @@ guide-entry-perception-dual-guns = Perception: Dual Wield
 guide-entry-special-charisma = Charisma
 guide-entry-special-intelligence = Intelligence
 guide-entry-special-agility = Agility
-guide-entry-special-luck = Luck
+guide-entry-special-luck = Luck: Scrounger’s Fortune

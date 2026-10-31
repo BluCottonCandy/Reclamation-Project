@@ -13138,3 +13138,16 @@ Entries:
   id: 6566
   time: '2026-10-29T02:49:43.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/89
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Restored the original Endurance health scaling, reaching +20 health at
+        Endurance 10, while keeping Enraged.
+    - type: Fix
+      message: >-
+        Updated Endurance character setup information and its guidebook entry to
+        describe the restored health bonus.
+  id: 6567
+  time: '2026-10-31T03:18:18.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/95

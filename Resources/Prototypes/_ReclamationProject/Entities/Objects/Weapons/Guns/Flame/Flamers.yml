@@ -41,8 +41,8 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: Gun
-    minAngle: 25
-    maxAngle: 55
+    minAngle: 15
+    maxAngle: 35
     angleIncrease: 4
     angleDecay: 12
     projectileSpeed: 10
@@ -98,8 +98,8 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: Gun
-    minAngle: 25
-    maxAngle: 55
+    minAngle: 15
+    maxAngle: 35
     angleIncrease: 4
     angleDecay: 12
     projectileSpeed: 10

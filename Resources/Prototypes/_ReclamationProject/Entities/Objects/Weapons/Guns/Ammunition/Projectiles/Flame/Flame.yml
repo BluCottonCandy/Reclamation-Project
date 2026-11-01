@@ -1,7 +1,7 @@
 - type: entity
-  name: plasma
+  name: flamethrower shot
   id: BulletFlame
-  parent: BaseBulletIncendiary
+  parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -23,10 +23,10 @@
   - type: Ammo
     muzzleFlash: FlamerMuzzleFlashEffect
   - type: Projectile
-    impactEffect: BulletFlamerImpactEffect
     damage:
       types:
-        Heat: 25
+        Heat: 12
+    impactEffect: BulletFlamerImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
   - type: PointLight
@@ -103,7 +103,7 @@
     impactEffect: BulletIncineratorImpactEffect
     damage:
       types:
-        Heat: 35
+        Heat: 25
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
   - type: PointLight
@@ -119,7 +119,7 @@
     explosionType: N14DefaultStructural
     maxIntensity: 2 # max 30 per tile
     intensitySlope: 1
-    totalIntensity: 20 # 60 total damage to distribute over tiles
+    totalIntensity: 10 # 60 total damage to distribute over tiles
     maxTileBreak: 2
 
 - type: entity

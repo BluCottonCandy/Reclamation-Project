@@ -1,3 +1,4 @@
+using Content.Shared._Reclamation.Bunkers;
 using System;
 using Content.Server.UserInterface;
 using Content.Shared._Misfits.Holotape;
@@ -11,7 +12,7 @@ using Robust.Shared.Player;
 
 // #Misfits Add - Server system for terminal notebook note CRUD.
 // Handles player-submitted notes, deletion (own notes only), and state push.
-// Auto-generates deterministic terminal IDs from grid position on MapInit.
+// Uses stable map-position IDs, or saved unique IDs for crafted terminals.
 
 namespace Content.Server._Misfits.Holotape;
 
@@ -33,7 +34,7 @@ public sealed class TerminalNotebookSystem : EntitySystem
         // Initialize the persistent data store (loads from disk)
         _dataStore.Initialize();
 
-        // Auto-generate a deterministic terminalId from grid position on map spawn
+        // Assign a notebook identity on map spawn, preserving IDs from saved entities.
         SubscribeLocalEvent<TerminalNotebookComponent, MapInitEvent>(OnMapInit);
 
         // Subscribe to client BUI messages on entities with TerminalNotebookComponent
@@ -46,13 +47,19 @@ public sealed class TerminalNotebookSystem : EntitySystem
 
     /// <summary>
     /// On MapInit, if the terminal still has the default ID, generate a unique
-    /// deterministic ID based on its world grid position. This ensures the same
-    /// physical terminal gets the same note storage across round restarts.
+    /// crafted ID or a deterministic key based on its world grid position.
+    /// Saved terminals retain their existing identity and notebook.
     /// </summary>
     private void OnMapInit(EntityUid uid, TerminalNotebookComponent notebook, MapInitEvent args)
     {
         if (!string.IsNullOrEmpty(notebook.TerminalId) && notebook.TerminalId != "default-terminal")
             return;
+
+        if (notebook.GenerateUniqueId)
+        {
+            notebook.TerminalId = "crafted-terminal-" + Guid.NewGuid().ToString("N");
+            return;
+        }
 
         // Build a deterministic key from the entity's world position
         var xform = Transform(uid);
@@ -74,6 +81,7 @@ public sealed class TerminalNotebookSystem : EntitySystem
     /// </summary>
     private void OnRequestNotes(EntityUid uid, TerminalNotebookComponent notebook, RequestTerminalNotesMessage msg)
     {
+        if(BunkerComputerSecurity.IsLocked(EntityManager,uid))return;
         PushNotesState(uid, notebook, msg.Actor);
     }
 
@@ -82,6 +90,7 @@ public sealed class TerminalNotebookSystem : EntitySystem
     /// </summary>
     private void OnSubmitNote(EntityUid uid, TerminalNotebookComponent notebook, SubmitTerminalNoteMessage msg)
     {
+        if(BunkerComputerSecurity.IsLocked(EntityManager,uid))return;
         // Reject empty notes
         if (string.IsNullOrWhiteSpace(msg.Text))
             return;
@@ -119,6 +128,7 @@ public sealed class TerminalNotebookSystem : EntitySystem
     /// </summary>
     private void OnDeleteNote(EntityUid uid, TerminalNotebookComponent notebook, DeleteTerminalNoteMessage msg)
     {
+        if(BunkerComputerSecurity.IsLocked(EntityManager,uid))return;
         var requesterId = GetUserId(msg.Actor);
 
         // Deny if we can't identify the requester

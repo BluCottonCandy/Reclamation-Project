@@ -1,0 +1,35 @@
+- type: construction
+  id: ReclamationBunkerTerminalCompact
+  hide: false
+  name: compact bunker terminal
+  description: A self-powered computer with persistent terminal notes.
+  graph: ReclamationBunkerTerminalCompact
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: _Nuclear14/Structures/Machines/Terminals/terminal_new.rsi
+    state: computer
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ReclamationBunkerTerminalClassic
+  hide: false
+  name: bunker computer
+  description: A self-powered computer with persistent terminal notes.
+  graph: ReclamationBunkerTerminalClassic
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: _Nuclear14/Structures/Machines/Terminals/terminal.rsi
+    state: computer
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  conditions:
+  - !type:TileNotBlocked

@@ -1,3 +1,4 @@
+using Content.Shared._Reclamation.Bunkers;
 using System;
 using System.Collections.Generic;
 using Content.Server.UserInterface;
@@ -88,7 +89,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     /// </summary>
     public TerminalDatabaseState BuildState(EntityUid uid, EntityUid viewer, Guid? openDocumentId = null)
     {
-        var proto = ResolveDatabaseForViewer(viewer);
+        var proto = ResolveDatabaseForViewer(uid, viewer);
         if (proto == null)
         {
             // NO ACCESS sentinel — empty folder list, all flags false.
@@ -154,19 +155,41 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     /// order (effectively load order). If a viewer has multiple matching factions, the
     /// first match wins — design DB prototypes accordingly.
     /// </summary>
-    private MisfitsTerminalDatabasePrototype? ResolveDatabaseForViewer(EntityUid viewer)
+    private sealed record DatabaseContext(string ID, MisfitsTerminalDatabasePrototype? Prototype = null)
     {
+        public bool Local => Prototype == null;
+        public string DisplayName => Prototype?.DisplayName ?? "LOCAL DATABASE";
+        public string AccentColor => Prototype?.AccentColor ?? "#33FF33";
+        public string AdminLabel => Prototype?.AdminLabel ?? "LOCAL";
+        public string ExportHolotapePrototype => Prototype?.ExportHolotapePrototype ?? "N14HolotapeYellow";
+        public List<string> AccessRead => Prototype!.AccessRead;
+        public List<string> AccessWrite => Prototype!.AccessWrite;
+        public List<string> AdminJobs => Prototype!.AdminJobs;
+        public List<string> LeadershipJobs => Prototype!.LeadershipJobs;
+    }
+
+    private DatabaseContext? ResolveDatabaseForViewer(EntityUid uid, EntityUid viewer)
+    {
+        if(BunkerComputerSecurity.IsLocked(EntityManager,uid))return null;
+        if (TryComp<TerminalDatabaseAccessComponent>(uid, out var gateway) && gateway.LocalDatabase)
+        {
+            // Never fall back to faction data, even if this terminal's identity is unavailable.
+            if (!TryComp<TerminalNotebookComponent>(uid, out var notebook) || string.IsNullOrEmpty(notebook.TerminalId))
+                return null;
+            return new DatabaseContext("local-" + notebook.TerminalId);
+        }
+
         if (HasComp<StationAiHeldComponent>(viewer) &&
             _prototype.TryIndex<MisfitsTerminalDatabasePrototype>(ZaxVaultDatabaseId, out var vaultDatabase))
         {
-            return vaultDatabase;
+            return new DatabaseContext(vaultDatabase.ID, vaultDatabase);
         }
 
         foreach (var proto in _prototype.EnumeratePrototypes<MisfitsTerminalDatabasePrototype>())
         {
-            var (read, _, _, _) = ResolveAccess(viewer, proto);
+            var (read, _, _, _) = ResolveAccess(viewer, new DatabaseContext(proto.ID, proto));
             if (read)
-                return proto;
+                return new DatabaseContext(proto.ID, proto);
         }
         return null;
     }
@@ -213,7 +236,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
 
     private void OnOpenDocument(EntityUid uid, TerminalDatabaseAccessComponent comp, OpenDatabaseDocumentMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         PushFullState(uid, msg.Actor, openDocumentId: msg.DocumentId);
@@ -225,7 +248,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     //   - MarkAsAdmin additionally requires Admin (Tier 8).
     private void OnCreateFolder(EntityUid uid, TerminalDatabaseAccessComponent comp, CreateDatabaseFolderMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -278,7 +301,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
 
     private void OnCreateDocument(EntityUid uid, TerminalDatabaseAccessComponent comp, CreateDatabaseDocumentMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -334,7 +357,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
 
     private void OnEditDocument(EntityUid uid, TerminalDatabaseAccessComponent comp, EditDatabaseDocumentMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -358,7 +381,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     // entries remain exclusive to the database's highest configured rank.
     private void OnRenameEntry(EntityUid uid, TerminalDatabaseAccessComponent comp, RenameDatabaseEntryMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -392,7 +415,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     // configured in AdminJobs, regardless of protection or authorship.
     private void OnDeleteFolder(EntityUid uid, TerminalDatabaseAccessComponent comp, DeleteDatabaseFolderMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -416,7 +439,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
 
     private void OnDeleteDocument(EntityUid uid, TerminalDatabaseAccessComponent comp, DeleteDatabaseDocumentMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -495,7 +518,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
 
     private void OnRollbackDocument(EntityUid uid, TerminalDatabaseAccessComponent comp, RollbackDatabaseDocumentMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -514,7 +537,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     // #Misfits Change - Restore mirrors delete and is highest-rank only.
     private void OnRestoreEntry(EntityUid uid, TerminalDatabaseAccessComponent comp, RestoreDatabaseEntryMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -541,7 +564,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     // out of the normal faction UI during the recursive hierarchy refactor.
     private void OnPermanentDeleteEntry(EntityUid uid, TerminalDatabaseAccessComponent comp, PermanentDeleteDatabaseEntryMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -599,7 +622,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     //     (the schema nests one level deep).
     private void OnMoveEntry(EntityUid uid, TerminalDatabaseAccessComponent comp, MoveDatabaseEntryMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -682,7 +705,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
     // documents are blocked unless the actor has Leadership (mirrors viewer visibility).
     private void OnExportDocument(EntityUid uid, TerminalDatabaseAccessComponent comp, ExportDatabaseDocumentMessage msg)
     {
-        var proto = ResolveDatabaseForViewer(msg.Actor);
+        var proto = ResolveDatabaseForViewer(uid, msg.Actor);
         if (proto == null)
             return;
         var perms = ResolveAccess(msg.Actor, proto);
@@ -746,8 +769,11 @@ public sealed class TerminalDatabaseSystem : EntitySystem
 
     // ── Access / identity helpers ────────────────────────────────────────────
 
-    private (bool read, bool write, bool leadership, bool admin) ResolveAccess(EntityUid viewer, MisfitsTerminalDatabasePrototype proto)
+    private (bool read, bool write, bool leadership, bool admin) ResolveAccess(EntityUid viewer, DatabaseContext proto)
     {
+        if (proto.Local)
+            return (true, true, true, true);
+
         if (HasComp<StationAiHeldComponent>(viewer) && proto.ID == ZaxVaultDatabaseId)
             return (true, true, true, true);
 

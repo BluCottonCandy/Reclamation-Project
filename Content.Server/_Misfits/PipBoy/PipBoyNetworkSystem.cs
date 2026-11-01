@@ -29,6 +29,9 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
     private readonly Dictionary<uint, PipBoyDeadDrop> _deadDrops = new();
     private uint _nextDeadDropId = 1;
 
+    /// <summary>Remove a round-scoped channel owned by a subsystem.</summary>
+    public void RemoveGroup(uint groupId) => _groups.Remove(groupId);
+
     #region Groups
 
     /// <summary>Create a new group. Returns the group ID.</summary>

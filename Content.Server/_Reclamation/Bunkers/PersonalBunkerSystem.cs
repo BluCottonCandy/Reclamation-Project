@@ -299,6 +299,13 @@ public sealed class PersonalBunkerSystem : EntitySystem
         ReturnToHatch(room, user);
     }
 
+    /// <summary>Resolve the real-world hatch for computer maps inside instanced rooms.</summary>
+    public EntityCoordinates GetExteriorCoordinates(EntityUid entity)
+    {
+        var room=_rooms.Values.FirstOrDefault(r=>r.Map==Transform(entity).MapUid);
+        return room!=null && Exists(room.Hatch)?Transform(room.Hatch).Coordinates:Transform(entity).Coordinates;
+    }
+
     private bool ReturnToHatch(Room room, EntityUid user)
     {
         var hatch = room.Hatch;

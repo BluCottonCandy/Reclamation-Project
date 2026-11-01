@@ -1,0 +1,99 @@
+- type: Tag
+  id: ReclamationRedMenaceTape
+
+- type: Tag
+  id: ReclamationGameHolotape
+
+- type: entity
+  id: ReclamationGameHolotapeBase
+  parent: N14HolotapeGreen
+  abstract: true
+  components:
+  - type: Tag
+    tags: [ReclamationGameHolotape]
+  - type: HolotapeData
+    localized: true
+
+- type: entity
+  id: ReclamationHolotapeRedMenace
+  parent: ReclamationGameHolotapeBase
+  name: Vault Carnage (Video game)
+  description: A pre-war first-person shooter. Clear sealed chambers and collect weapons. Insert it into a compatible computer and enter Vault Carnage to play.
+  components:
+  - type: HolotapeData
+    title: Vault Carnage
+    content: A pre-war first-person shooter. Clear sealed chambers and collect weapons.
+    gameProgram: vault carnage
+    localized: true
+
+- type: entity
+  id: ReclamationHolotapeClassicRedMenace
+  parent: ReclamationGameHolotapeBase
+  name: Red Menace (Video game)
+  description: A pre-war platform game. Climb the factory and dodge rolling barrels. Insert it into a compatible computer and enter Red Menace to play.
+  components:
+  - type: HolotapeData
+    title: Red Menace
+    content: A pre-war platform game. Climb the factory and dodge rolling barrels.
+    gameProgram: red menace
+    localized: true
+
+- type: entity
+  id: ReclamationHolotapeAtomicDefense
+  parent: ReclamationGameHolotapeBase
+  name: Atomic Defense (Video game)
+  description: An old missile-defense game. Protect the wasteland settlements from bombardment. Insert it into a compatible computer and enter Atomic Defense to play.
+  components:
+  - type: HolotapeData
+    title: Atomic Defense
+    content: An old missile-defense game. Protect the wasteland settlements from bombardment.
+    gameProgram: atomic defense
+    localized: true
+
+- type: entity
+  id: ReclamationHolotapeZetanSiege
+  parent: ReclamationGameHolotapeBase
+  name: Zetan Siege (Video game)
+  description: An old alien-invasion shooter. Defeat formations of invading Zetans. Insert it into a compatible computer and enter Zetan Siege to play.
+  components:
+  - type: HolotapeData
+    title: Zetan Siege
+    content: An old alien-invasion shooter. Defeat formations of invading Zetans.
+    gameProgram: zetan siege
+    localized: true
+
+- type: entity
+  id: ReclamationHolotapeVaultRunner
+  parent: ReclamationGameHolotapeBase
+  name: Vault Runner (Video game)
+  description: An old treasure-hunting platform game. Leap across the ruined wasteland. Insert it into a compatible computer and enter Vault Runner to play.
+  components:
+  - type: HolotapeData
+    title: Vault Runner
+    content: An old treasure-hunting platform game. Leap across the ruined wasteland.
+    gameProgram: vault runner
+    localized: true
+
+- type: entity
+  id: ReclamationHolotapeWastelandQuest
+  parent: ReclamationGameHolotapeBase
+  name: Wasteland Quest (Video game)
+  description: An old text-based fantasy adventure. Choose two companions and uncover the mystery of a haunted watchtower. Insert it into a compatible computer and enter Wasteland Quest to play.
+  components:
+  - type: HolotapeData
+    title: Wasteland Quest
+    content: An old text-based fantasy adventure. Choose two companions and uncover the mystery of a haunted watchtower.
+    gameProgram: wasteland quest
+    localized: true
+
+- type: entity
+  id: ReclamationHolotapeRobotRevolt
+  parent: ReclamationGameHolotapeBase
+  name: Robot Revolt (Video game)
+  description: An old arena shooter. Survive waves of rogue robots. Insert it into a compatible computer and enter Robot Revolt to play.
+  components:
+  - type: HolotapeData
+    title: Robot Revolt
+    content: An old arena shooter. Survive waves of rogue robots.
+    gameProgram: robot revolt
+    localized: true

@@ -121,6 +121,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
     public HolotapeWindow()
     {
         RobustXamlLoader.Load(this);
+        InitializeCommandPrompt();
 
         // Apply terminal-style backgrounds programmatically
         BackgroundPanel.PanelOverride = new StyleBoxFlat(Color.FromHex("#0a0a0a"));
@@ -174,6 +175,8 @@ public sealed partial class HolotapeWindow : DefaultWindow
     {
         base.FrameUpdate(args);
         SyncOverwatchFeedEye();
+        if(_desktopScrollFrames>0){_desktopScrollFrames--;_desktopScroll.VScrollTarget=float.MaxValue;}
+        if (_scrollHistoryFrames-- > 0) _commandScroll.VScrollTarget = float.MaxValue;
     }
 
     // ── Public API ───────────────────────────────────────────────────────────
@@ -319,6 +322,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
 
     private void SwitchToDataTab()
     {
+        if(_desktopEnabled && _desktopState?.Locked==true)return;
         _showingNotes = false;
         DataPanel.Visible = true;
         NotesPanel.Visible = false;
@@ -329,7 +333,9 @@ public sealed partial class HolotapeWindow : DefaultWindow
 
     private void SwitchToNotesTab()
     {
+        if(_desktopEnabled && _desktopState?.Locked==true)return;
         _showingNotes = true;
+        CloseTerminalGame();
         DataPanel.Visible = false;
         NotesPanel.Visible = true;
         LinksPanel.Visible = false;
@@ -343,7 +349,9 @@ public sealed partial class HolotapeWindow : DefaultWindow
     // #Misfits Add - Switch to the LINKS tab showing device link port controls
     private void SwitchToLinksTab()
     {
+        if(_desktopEnabled && _desktopState?.Locked==true)return;
         _showingNotes = false;
+        CloseTerminalGame();
         DataPanel.Visible = false;
         NotesPanel.Visible = false;
         LinksPanel.Visible = true;
@@ -354,7 +362,9 @@ public sealed partial class HolotapeWindow : DefaultWindow
     // #Misfits Add - Switch to the DATABASE tab showing the faction-shared knowledge base
     private void SwitchToDatabaseTab()
     {
+        if(_desktopEnabled && _desktopState?.Locked==true)return;
         _showingNotes = false;
+        CloseTerminalGame();
         DataPanel.Visible = false;
         NotesPanel.Visible = false;
         LinksPanel.Visible = false;
@@ -373,7 +383,9 @@ public sealed partial class HolotapeWindow : DefaultWindow
 
     private void SwitchToOverwatchTab()
     {
+        if(_desktopEnabled && _desktopState?.Locked==true)return;
         _showingNotes = false;
+        CloseTerminalGame();
         DataPanel.Visible = false;
         NotesPanel.Visible = false;
         LinksPanel.Visible = false;
@@ -725,6 +737,8 @@ public sealed partial class HolotapeWindow : DefaultWindow
                 : "SECURE LINK STANDBY";
         OverwatchSignalLabel.FontColorOverride = Color.FromHex(hasCurrent || hasLastKnown ? TermGreen : TermDimGreen);
         SyncOverwatchFeedEye();
+        if(_desktopScrollFrames>0){_desktopScrollFrames--;_desktopScroll.VScrollTarget=float.MaxValue;}
+        if (_scrollHistoryFrames-- > 0) _commandScroll.VScrollTarget = float.MaxValue;
     }
 
     private void SyncOverwatchFeedEye()

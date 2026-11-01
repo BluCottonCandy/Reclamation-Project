@@ -1,3 +1,6 @@
+using Content.Shared._Misfits.PipBoy;
+using Content.Server._Misfits.PipBoy;
+using Content.Shared.PDA;
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.DeviceNetwork.Systems;
@@ -124,6 +127,7 @@ public sealed class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
     /// <seealso cref="Cartridges.NotekeeperCartridgeSystem.UpdateUiState"/>
     public void UpdateCartridgeUiState(EntityUid loaderUid, BoundUserInterfaceState state, ICommonSession? session = default!, CartridgeLoaderComponent? loader = default!)
     {
+        if(PipBoyLocked(loaderUid) && state is not PipBoyHubUiState)return;
         if (!Resolve(loaderUid, ref loader))
             return;
 
@@ -244,6 +248,7 @@ public sealed class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
     /// </summary>
     public void ActivateProgram(EntityUid loaderUid, EntityUid programUid, CartridgeLoaderComponent? loader = default!)
     {
+        if(PipBoyLocked(loaderUid) && !HasComp<PipBoyHubCartridgeComponent>(programUid))return;
         if (!Resolve(loaderUid, ref loader))
             return;
 
@@ -265,6 +270,7 @@ public sealed class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
     /// </summary>
     public void DeactivateProgram(EntityUid loaderUid, EntityUid programUid, CartridgeLoaderComponent? loader = default!)
     {
+        if(PipBoyLocked(loaderUid))return;
         if (!Resolve(loaderUid, ref loader))
             return;
 
@@ -380,9 +386,14 @@ public sealed class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
         RelayEvent(component, new CartridgeDeviceNetPacketEvent(uid, args));
     }
 
+    private bool PipBoyLocked(EntityUid uid) => TryComp<PdaComponent>(uid,out var pda) &&
+        TryComp<PipBoyNetworkComponent>(pda.ContainedId,out var network) && network.IsLocked;
+
     private void OnLoaderUiMessage(EntityUid loaderUid, CartridgeLoaderComponent component, CartridgeLoaderUiMessage message)
     {
         var cartridge = GetEntity(message.CartridgeUid);
+        if (PipBoyLocked(loaderUid) && message.Action != CartridgeUiMessageAction.UIReady &&
+            !(message.Action==CartridgeUiMessageAction.Activate && HasComp<PipBoyHubCartridgeComponent>(cartridge))) return;
 
         switch (message.Action)
         {
@@ -413,6 +424,7 @@ public sealed class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
     private void OnUiMessage(EntityUid uid, CartridgeLoaderComponent component, CartridgeUiMessage args)
     {
         var cartridgeEvent = args.MessageEvent;
+        if(PipBoyLocked(uid) && (cartridgeEvent is not PipBoyHubUiMessageEvent hub || hub.Type!=PipBoyHubMessageType.PasswordUnlock))return;
         cartridgeEvent.LoaderUid = GetNetEntity(uid);
         cartridgeEvent.Actor = args.Actor;
 

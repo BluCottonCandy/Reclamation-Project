@@ -29,6 +29,8 @@ public sealed class HolotapeBoundUserInterfaceState : BoundUserInterfaceState
     /// <summary>
     /// Display title shown at the top of the terminal viewer (e.g. "OVERSEER'S LOG #3").
     /// </summary>
+    public readonly string? GameProgram;
+    public readonly bool CommandPrompt;
     public readonly string Title;
 
     /// <summary>
@@ -73,8 +75,12 @@ public sealed class HolotapeBoundUserInterfaceState : BoundUserInterfaceState
         bool hasLinkSource = false,
         List<string>? linkPorts = null,
         TerminalDatabaseState? database = null,
-        OverwatchConsoleState? overwatch = null)
+        OverwatchConsoleState? overwatch = null,
+        bool commandPrompt = false,
+        string? gameProgram = null)
     {
+        GameProgram = gameProgram;
+        CommandPrompt = commandPrompt;
         Title = title;
         Content = content;
         Notes = notes;

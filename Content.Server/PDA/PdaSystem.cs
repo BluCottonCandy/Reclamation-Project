@@ -1,3 +1,5 @@
+using Content.Shared._Misfits.PipBoy;
+using Content.Server._Misfits.PipBoy;
 using Content.Server.AlertLevel;
 using Content.Server.CartridgeLoader;
 using Content.Server.Chat.Managers;
@@ -195,6 +197,9 @@ namespace Content.Server.PDA
             if (!PdaUiKey.Key.Equals(args.UiKey))
                 return;
 
+            if(TryComp<PipBoyNetworkComponent>(ent.Comp.ContainedId,out var network) && network.IsLocked &&
+                _cartridgeLoader.TryGetProgram<PipBoyHubCartridgeComponent>(ent.Owner,out var hub))
+                _cartridgeLoader.ActivateProgram(ent.Owner,hub.Value);
             UpdatePdaUi(ent.Owner, ent.Comp);
         }
 

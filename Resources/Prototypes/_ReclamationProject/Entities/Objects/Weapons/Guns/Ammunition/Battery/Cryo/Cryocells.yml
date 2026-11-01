@@ -30,7 +30,6 @@
   - type: PowerCellVisuals
   - type: Riggable
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletCryolator
     fireCost: 50
 
 - type: entity

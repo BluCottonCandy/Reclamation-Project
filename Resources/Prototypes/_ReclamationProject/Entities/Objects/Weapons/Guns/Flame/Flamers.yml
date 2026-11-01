@@ -54,10 +54,11 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 6
-  - type: ProjectileBatteryAmmoProvider
-    fireCost: 200
   - type: StaticPrice
     price: 400
+  - type: FlamerAmmoProvider
+    fireCost: 200
+    projectileProto: BulletFlame
 
 - type: entity
   name: Incinerator
@@ -113,10 +114,12 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 6
-  - type: ProjectileBatteryAmmoProvider
-    fireCost: 600
   - type: StaticPrice
     price: 500
+  - type: FlamerAmmoProvider
+    fireCost: 600
+    projectileProto: BulletIncinerator
+
 
 - type: entity
   id: N14Flamebase

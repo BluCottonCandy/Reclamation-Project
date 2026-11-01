@@ -31,7 +31,6 @@
   - type: PowerCellVisuals
   - type: Riggable
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletFlame
     fireCost: 50
 
 - type: entity

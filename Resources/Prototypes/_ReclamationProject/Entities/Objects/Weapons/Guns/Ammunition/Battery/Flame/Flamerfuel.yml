@@ -32,6 +32,7 @@
   - type: Riggable
   - type: FlamerAmmoProvider
     fireCost: 50
+    projectileProto: BulletFlame
 
 - type: entity
   name: flamer fuel cannister

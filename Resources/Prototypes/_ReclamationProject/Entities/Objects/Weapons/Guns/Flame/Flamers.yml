@@ -54,8 +54,6 @@
     - FullAuto
   - type: FollowDistance
     backStrength: 6
-  - type: TimedDespawn
-    lifetime: 1
   - type: StaticPrice
     price: 400
 

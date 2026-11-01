@@ -29,6 +29,7 @@
     impactEffect: BulletFlamerImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+    range: 6
   - type: PointLight
     enabled: true
     color: "#ff4300"

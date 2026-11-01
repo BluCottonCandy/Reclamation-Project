@@ -15,7 +15,7 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,0.5"
+          bounds: "-0.4,-0.4,0.4,0.4"
         hard: false
         mask:
         - Impassable
@@ -25,7 +25,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 15
+        Heat: 25
     impactEffect: BulletFlamerImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
@@ -115,7 +115,7 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     #Misfits Change - use the structural-capable N14 explosion profile.
-    explosionType: FireBomb
+    explosionType: Misfits40mmIncendiary
     maxIntensity: 4 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 10 # 60 total damage to distribute over tiles

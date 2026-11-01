@@ -79,7 +79,7 @@
       - N14AmmoCell
   - type: ProjectileBatteryAmmoProvider
     proto: BulletCrystalizingCryolator
-    fireCost: 800
+    fireCost: 600
   - type: Battery
     maxCharge: 20000
     startingCharge: 20000

@@ -1,0 +1,143 @@
+- type: entity
+  id: ReclamationLightTubeWhite
+  parent: LightTube
+  name: white light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeWhite
+    node: finished
+  - type: LightBulb
+    color: "#FFFFFF"
+
+- type: entity
+  id: ReclamationLightTubeWarmWhite
+  parent: LightTube
+  name: warm white light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeWarmWhite
+    node: finished
+  - type: LightBulb
+    color: "#FFE4CE"
+
+- type: entity
+  id: ReclamationLightTubeRed
+  parent: LightTube
+  name: red light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeRed
+    node: finished
+  - type: LightBulb
+    color: "#FF6666"
+
+- type: entity
+  id: ReclamationLightTubeOrange
+  parent: LightTube
+  name: orange light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeOrange
+    node: finished
+  - type: LightBulb
+    color: "#FFAA55"
+
+- type: entity
+  id: ReclamationLightTubeYellow
+  parent: LightTube
+  name: yellow light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeYellow
+    node: finished
+  - type: LightBulb
+    color: "#FFFF88"
+
+- type: entity
+  id: ReclamationLightTubeGreen
+  parent: LightTube
+  name: green light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeGreen
+    node: finished
+  - type: LightBulb
+    color: "#77FF88"
+
+- type: entity
+  id: ReclamationLightTubeCyan
+  parent: LightTube
+  name: cyan light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeCyan
+    node: finished
+  - type: LightBulb
+    color: "#77FFFF"
+
+- type: entity
+  id: ReclamationLightTubeSkyBlue
+  parent: LightTube
+  name: sky blue light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeSkyBlue
+    node: finished
+  - type: LightBulb
+    color: "#88CCFF"
+
+- type: entity
+  id: ReclamationLightTubeBlue
+  parent: LightTube
+  name: blue light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeBlue
+    node: finished
+  - type: LightBulb
+    color: "#6688FF"
+
+- type: entity
+  id: ReclamationLightTubePurple
+  parent: LightTube
+  name: purple light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubePurple
+    node: finished
+  - type: LightBulb
+    color: "#BB77FF"
+
+- type: entity
+  id: ReclamationLightTubePink
+  parent: LightTube
+  name: pink light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubePink
+    node: finished
+  - type: LightBulb
+    color: "#FF88CC"
+
+- type: entity
+  id: ReclamationLightTubeBlacklight
+  parent: LightTube
+  name: blacklight light tube
+  description: A colored fluorescent light tube.
+  components:
+  - type: Construction
+    graph: ReclamationLightTubeBlacklight
+    node: finished
+  - type: LightBulb
+    color: "#5D0CED"

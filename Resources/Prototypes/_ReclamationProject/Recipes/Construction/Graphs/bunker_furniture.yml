@@ -1,0 +1,361 @@
+- type: constructionGraph
+  id: ReclamationWeaponPlaque
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationWeaponPlaque
+    edges:
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: weapon
+      steps:
+      - tool: Screwing
+        doAfter: 2
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 2
+      - !type:DeleteEntity {}
+
+- type: constructionGraph
+  id: ReclamationBunkerWallLight
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationBunkerWallLight
+    edges:
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: light_bulb
+      steps:
+      - tool: Screwing
+        doAfter: 2
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      - !type:DeleteEntity {}
+
+- type: constructionGraph
+  id: ReclamationCarpetRed
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetRed
+
+- type: constructionGraph
+  id: ReclamationCarpetBlack
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetBlack
+
+- type: constructionGraph
+  id: ReclamationCarpetBlue
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetBlue
+
+- type: constructionGraph
+  id: ReclamationCarpetGreen
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetGreen
+
+- type: constructionGraph
+  id: ReclamationCarpetOrange
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetOrange
+
+- type: constructionGraph
+  id: ReclamationCarpetSkyBlue
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetSkyBlue
+
+- type: constructionGraph
+  id: ReclamationCarpetPurple
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetPurple
+
+- type: constructionGraph
+  id: ReclamationCarpetPink
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetPink
+
+- type: constructionGraph
+  id: ReclamationCarpetCyan
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetCyan
+
+- type: constructionGraph
+  id: ReclamationCarpetWhite
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationCarpetWhite
+
+- type: constructionGraph
+  id: ReclamationLightTubeWhite
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeWhite
+
+- type: constructionGraph
+  id: ReclamationLightTubeWarmWhite
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeWarmWhite
+
+- type: constructionGraph
+  id: ReclamationLightTubeRed
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeRed
+
+- type: constructionGraph
+  id: ReclamationLightTubeOrange
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeOrange
+
+- type: constructionGraph
+  id: ReclamationLightTubeYellow
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeYellow
+
+- type: constructionGraph
+  id: ReclamationLightTubeGreen
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeGreen
+
+- type: constructionGraph
+  id: ReclamationLightTubeCyan
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeCyan
+
+- type: constructionGraph
+  id: ReclamationLightTubeSkyBlue
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeSkyBlue
+
+- type: constructionGraph
+  id: ReclamationLightTubeBlue
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeBlue
+
+- type: constructionGraph
+  id: ReclamationLightTubePurple
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubePurple
+
+- type: constructionGraph
+  id: ReclamationLightTubePink
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubePink
+
+- type: constructionGraph
+  id: ReclamationLightTubeBlacklight
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: finished
+      steps:
+      - material: Glass
+        amount: 2
+        doAfter: 2
+  - node: finished
+    entity: ReclamationLightTubeBlacklight

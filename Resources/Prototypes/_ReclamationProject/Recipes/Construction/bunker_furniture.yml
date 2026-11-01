@@ -1,0 +1,341 @@
+- type: construction
+  hide: false
+  id: ReclamationWeaponPlaque
+  name: weapon plaque
+  description: Weapon plaque for furnishing your home.
+  graph: ReclamationWeaponPlaque
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Wallmounts/signs.rsi
+    state: kiddieplaque
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: true
+
+- type: construction
+  hide: false
+  id: ReclamationBunkerWallLight
+  name: bunker wall light
+  description: Bunker wall light for furnishing your home.
+  graph: ReclamationBunkerWallLight
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Wallmounts/Lighting/light_tube.rsi
+    state: base
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: true
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetRed
+  name: red carpet
+  description: Red carpet for furnishing your home.
+  graph: ReclamationCarpetRed
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-red
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetBlack
+  name: black carpet
+  description: Black carpet for furnishing your home.
+  graph: ReclamationCarpetBlack
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-black
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetBlue
+  name: blue carpet
+  description: Blue carpet for furnishing your home.
+  graph: ReclamationCarpetBlue
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-blue
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetGreen
+  name: green carpet
+  description: Green carpet for furnishing your home.
+  graph: ReclamationCarpetGreen
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-green
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetOrange
+  name: orange carpet
+  description: Orange carpet for furnishing your home.
+  graph: ReclamationCarpetOrange
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-orange
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetSkyBlue
+  name: skyblue carpet
+  description: Skyblue carpet for furnishing your home.
+  graph: ReclamationCarpetSkyBlue
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-skyblue
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetPurple
+  name: purple carpet
+  description: Purple carpet for furnishing your home.
+  graph: ReclamationCarpetPurple
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-purple
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetPink
+  name: pink carpet
+  description: Pink carpet for furnishing your home.
+  graph: ReclamationCarpetPink
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-pink
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetCyan
+  name: cyan carpet
+  description: Cyan carpet for furnishing your home.
+  graph: ReclamationCarpetCyan
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-cyan
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationCarpetWhite
+  name: white carpet
+  description: White carpet for furnishing your home.
+  graph: ReclamationCarpetWhite
+  startNode: start
+  targetNode: finished
+  category: construction-category-furniture
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-white
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeWhite
+  name: white light tube
+  description: White light tube for furnishing your home.
+  graph: ReclamationLightTubeWhite
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeWarmWhite
+  name: warm white light tube
+  description: Warm white light tube for furnishing your home.
+  graph: ReclamationLightTubeWarmWhite
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeRed
+  name: red light tube
+  description: Red light tube for furnishing your home.
+  graph: ReclamationLightTubeRed
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeOrange
+  name: orange light tube
+  description: Orange light tube for furnishing your home.
+  graph: ReclamationLightTubeOrange
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeYellow
+  name: yellow light tube
+  description: Yellow light tube for furnishing your home.
+  graph: ReclamationLightTubeYellow
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeGreen
+  name: green light tube
+  description: Green light tube for furnishing your home.
+  graph: ReclamationLightTubeGreen
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeCyan
+  name: cyan light tube
+  description: Cyan light tube for furnishing your home.
+  graph: ReclamationLightTubeCyan
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeSkyBlue
+  name: sky blue light tube
+  description: Sky blue light tube for furnishing your home.
+  graph: ReclamationLightTubeSkyBlue
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeBlue
+  name: blue light tube
+  description: Blue light tube for furnishing your home.
+  graph: ReclamationLightTubeBlue
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubePurple
+  name: purple light tube
+  description: Purple light tube for furnishing your home.
+  graph: ReclamationLightTubePurple
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubePink
+  name: pink light tube
+  description: Pink light tube for furnishing your home.
+  graph: ReclamationLightTubePink
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: ReclamationLightTubeBlacklight
+  name: blacklight light tube
+  description: Blacklight light tube for furnishing your home.
+  graph: ReclamationLightTubeBlacklight
+  startNode: start
+  targetNode: finished
+  category: construction-category-utilities
+  icon:
+    sprite: Objects/Power/light_tube.rsi
+    state: normal
+  objectType: Item

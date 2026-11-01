@@ -21,6 +21,7 @@
         layer:
         - Opaque
   - type: Door
+    generateKeyOnConstruction: false
     canCrush: false
     performCollisionCheck: false
     bumpOpen: false

@@ -26,6 +26,10 @@ public sealed partial class DoorComponent : Component
     [Access(typeof(SharedDoorSystem))]
     public DoorState State = DoorState.Closed;
 
+    /// <summary>Whether completing construction automatically assigns this door a lock and key.</summary>
+    [DataField]
+    public bool GenerateKeyOnConstruction = true;
+
     #region Timing
     // if you want do dynamically adjust these times, you need to add networking for them. So for now, they are all
     // read-only.

@@ -1,4 +1,5 @@
 - type: construction
+  hide: false
   id: Mannequin
   name: mannequin
   description: A wooden stand for displaying clothing and armor.

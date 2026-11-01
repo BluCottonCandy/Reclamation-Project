@@ -11,15 +11,24 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+  - type: InventorySlots
   - type: Appearance
   - type: Sprite
     sprite: Structures/Decoration/mannequin.rsi
     state: mannequin
     noRot: true
     layers:
+    - sprite: Structures/Decoration/mannequin.rsi
+      state: mannequin
+      shader: StencilClear
     - map: [ "mannequin" ]
       sprite: Structures/Decoration/mannequin.rsi
       state: mannequin
+    - map: ["enum.HumanoidVisualLayers.StencilMask"]
+      shader: StencilMask
+      sprite: Mobs/Customization/masking_helpers.rsi
+      state: unisex_full
+      visible: false
     - map: [ "jumpsuit" ]
     - map: [ "outerClothing" ]
     - map: [ "eyes" ]

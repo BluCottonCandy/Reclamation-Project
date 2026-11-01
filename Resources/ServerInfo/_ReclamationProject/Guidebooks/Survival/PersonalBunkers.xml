@@ -16,4 +16,12 @@ Armor and helmets left behind also become permanent decorations, including armor
 Build a mannequin from the G menu under Furniture using 5 wood planks. Open its inventory to dress it in clothing and armor. A screwdriver dismantles it and returns its clothing and materials.
 
 Keep functional weapons and armor on your person. Your equipped and carried items, including the contents of your bags, are excluded from room saves and display conversion.
+
+## Furnishing your room
+
+Use the G menu to craft a weapon plaque (2 wood planks), a shower (3 steel), a bunker wall light (2 steel), carpet squares in every available color (2 cloth each), and curtains in every available color (2 cloth each). Colored light tubes cost 2 glass each. Bunker wall lights work without electrical wiring but still need an intact tube; changing the tube changes the light color.
+
+Crafted curtains have no locks or keys. Plaques and bunker wall lights can be mounted directly on bunker walls.
+
+Use a weapon on a plaque to display that weapon, then use an empty hand to remove it. Plaques hold one weapon of any size. Mounted weapons still follow the bunker display conversion rules when the last occupant leaves. Empty the plaque or remove a light's tube before dismantling its fixture with a screwdriver.
 </Document>

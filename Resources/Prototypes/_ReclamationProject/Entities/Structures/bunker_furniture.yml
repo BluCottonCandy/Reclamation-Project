@@ -1,0 +1,50 @@
+- type: entity
+  id: ReclamationWeaponPlaque
+  parent: SignKiddiePlaque
+  name: weapon plaque
+  description: A wooden wall plaque for displaying a weapon. Use a weapon on it to mount it; use an empty hand to take it back.
+  components:
+  - type: Sprite
+    noRot: false
+  - type: WeaponPlaque
+  - type: ItemSlots
+    slots:
+      weapon:
+        ejectOnInteract: true
+        whitelist:
+          components: [Gun, MeleeWeapon, BunkerDisplayWeapon]
+        blacklist:
+          components: [MobState]
+  - type: ContainerContainer
+    containers:
+      weapon: !type:ContainerSlot
+        showEnts: true
+        occludes: false
+  - type: Construction
+    graph: ReclamationWeaponPlaque
+    node: finished
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: [Destruction]
+
+- type: entity
+  id: ReclamationBunkerWallLight
+  parent: PoweredlightEmpty
+  name: bunker wall light
+  description: A self-powered wall fixture. Insert a light tube to illuminate your room.
+  suffix: Empty, self-powered
+  components:
+  - type: Sprite
+    offset: 0, 0
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Construction
+    graph: ReclamationBunkerWallLight
+    node: finished

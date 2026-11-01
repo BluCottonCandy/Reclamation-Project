@@ -116,11 +116,11 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     #Misfits Change - use the structural-capable N14 explosion profile.
-    explosionType: N14DefaultStructural
+    explosionType: FireBomb
     maxIntensity: 2 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 10 # 60 total damage to distribute over tiles
-    maxTileBreak: 2
+    maxTileBreak: 1
 
 - type: entity
   id: IncineratorMuzzleFlashEffect

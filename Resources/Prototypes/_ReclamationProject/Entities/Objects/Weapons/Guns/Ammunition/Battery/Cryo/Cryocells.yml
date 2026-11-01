@@ -75,7 +75,7 @@
         shader: unshaded
   - type: Tag
     tags:
-      - N14SupercooledCryoCell
+      - N14SuperCooledCryoCell
       - N14AmmoCell
   - type: ProjectileBatteryAmmoProvider
     proto: BulletCrystalizingCryolator

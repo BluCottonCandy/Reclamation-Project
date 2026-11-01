@@ -91,12 +91,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14SupercooledCryoCell
+        startingItem: N14SuperCooledCryoCell
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14SupercooledCryoCell
+            - N14SuperCooledCryoCell
   - type: Gun
     minAngle: 25
     maxAngle: 55

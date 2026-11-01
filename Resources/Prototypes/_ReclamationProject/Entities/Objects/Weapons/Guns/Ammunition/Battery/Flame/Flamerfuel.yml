@@ -53,7 +53,7 @@
       - N14AmmoCell
   - type: ProjectileBatteryAmmoProvider
     proto: BulletFlame
-    fireCost: 600
+    fireCost: 100
   - type: Battery
     maxCharge: 10000
     startingCharge: 10000
@@ -80,7 +80,7 @@
       - N14AmmoCell
   - type: ProjectileBatteryAmmoProvider
     proto: BulletIncinerator
-    fireCost: 600
+    fireCost: 400
   - type: Battery
     maxCharge: 20000
     startingCharge: 20000

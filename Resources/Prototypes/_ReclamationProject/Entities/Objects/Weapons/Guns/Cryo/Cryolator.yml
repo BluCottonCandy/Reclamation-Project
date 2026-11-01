@@ -8,8 +8,8 @@
   components:
   - type: Wieldable
   - type: GunWieldBonus
-    minAngle: -24
-    maxAngle: -58
+    minAngle: -25
+    maxAngle: -45
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Cryo/cryolator.rsi
     layers:
@@ -43,10 +43,10 @@
   - type: Gun
     minAngle: 25
     maxAngle: 55
-    angleIncrease: 4
-    angleDecay: 12
+    angleIncrease: 2
+    angleDecay: 6
     projectileSpeed: 10
-    fireRate: 4
+    fireRate: 8
     soundGunshot:
       path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
     selectedMode: FullAuto
@@ -65,8 +65,8 @@
   components:
   - type: Wieldable
   - type: GunWieldBonus
-    minAngle: -24
-    maxAngle: -58
+    minAngle: -25
+    maxAngle: -45
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Cryo/crystalizingcryolator.rsi
     layers:
@@ -100,8 +100,8 @@
   - type: Gun
     minAngle: 25
     maxAngle: 55
-    angleIncrease: 4
-    angleDecay: 12
+    angleIncrease: 2
+    angleDecay: 6
     projectileSpeed: 30
     fireRate: 2
     soundGunshot:

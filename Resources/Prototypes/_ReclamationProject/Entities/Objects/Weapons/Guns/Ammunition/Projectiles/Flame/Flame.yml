@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/flamer.rsi
-    scale: 0.9, 0.9
+    scale: 1.0, 1.0
     layers:
     - state: flamershot
       shader: unshaded
@@ -15,7 +15,7 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.6,-0.6,0.6,0.6"
+          bounds: "-0.5,-0.5,0.5,0.5"
         hard: false
         mask:
         - Impassable
@@ -25,7 +25,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 12
+        Heat: 15
     impactEffect: BulletFlamerImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
@@ -35,8 +35,7 @@
     radius: 2.0
     energy: 7.0
   - type: IgniteOnCollide
-    fireStacks: 0.25
-
+    fireStacks: 0.5
 
 - type: entity
   id: FlamerMuzzleFlashEffect
@@ -83,7 +82,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/incinerator.rsi
-    scale: 0.7, 0.7
+    scale: 1.0, 1.0
     layers:
     - state: incineratorshot
       shader: unshaded
@@ -92,7 +91,7 @@
       projectile:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.3,-0.3,0.3,0.3"
+          bounds: "-0.2,-0.2,0.2,0.2"
         hard: false
         mask:
         - Impassable
@@ -117,17 +116,17 @@
   - type: Explosive
     #Misfits Change - use the structural-capable N14 explosion profile.
     explosionType: FireBomb
-    maxIntensity: 2 # max 30 per tile
+    maxIntensity: 4 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 10 # 60 total damage to distribute over tiles
-    maxTileBreak: 1
+    maxTileBreak: 0
 
 - type: entity
   id: IncineratorMuzzleFlashEffect
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
-    lifetime: 0.5
+    lifetime: 0.75
   - type: Sprite
     drawdepth: Effects
     layers:

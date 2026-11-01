@@ -1,0 +1,50 @@
+<Document>
+# Bunker PCs
+
+## Crafting and desktop
+
+The G menu's Furniture category offers a compact bunker terminal and an older-style bunker computer. Each costs 10 steel, 4 LV wires, 2 junk circuit boards, 2 electronic scrap, and 1 glass, and works without electrical wiring. Computers open to a Pip-Boy-style app launcher. Terminal Notes and Database have their own app tiles. Choose Command Screen to use the command prompt, or use the inserted game's icon, exterior map, messenger, public chat, settings, and lock screen apps. Commands and responses stay in a scrolling transcript for the current open terminal session only. Closing the terminal clears the transcript; it is never written into bunker saves or the database. Type hello or hi for a greeting, help for commands, notes for TERMINAL NOTES, or database for the local database. Open the computer and choose TERMINAL NOTES to write personal records using the existing terminal notebook. Each computer has its own notebook; notes follow it when moved and remain available after your bunker is saved and reloaded. The existing notebook rules allow authors to delete their own entries.
+
+The DATABASE tab is open to everyone who can use that computer. It has its own folders and documents, independent of faction databases and other computers. Anyone using it may create, edit, and delete records, so it is not a private or access-controlled archive. Its contents persist with the computer's saved identity.
+
+Insert the Vault Carnage (Video game) holotape, then type vault carnage to play the retro shooter. Without that tape inserted, the command is unrecognized. Eject it using the computer's right-click menu; ejecting it also closes a running game. Notes and the local database do not need the game tape. W/S or Up/Down move, A/D or Left/Right turn, and Space or clicking fires. Explore nine chambers in sequence using the green-on-black display and bottom status bar. Clear every enemy in the current chamber to unlock the next. Every room contains a random weapon pickup, one health pickup restoring 50 HP (up to 100), one ammo pickup refilling all collected guns, and one armor pickup refilling armor to 100. Armor absorbs half of incoming damage until depleted. Health and armor are shown on the bottom HUD. Bright armored enemies are tougher and hit harder. Walk over pickups to collect them.
+
+Use 1-4 to select pistol, shotgun, missile launcher, or dual pistols. The pistol has unlimited ammunition. Other guns hold at most 10 shells, 5 missiles, or 50 dual-pistol rounds total, including reserves. Dual pistols use two rounds per click. Press R to reload, or let an empty magazine reload automatically while reserves remain. Reload animations briefly lower the weapons; reloading never creates extra ammunition. Escape closes the game and returns to the prompt. Progress is never saved; every launch starts a fresh game.
+
+Eject its game holotape before dismantling a computer. Dismantling or breaking a computer returns its construction materials. Breaking it also drops any inserted game holotape intact. A newly built computer starts a separate notebook.
+Game holotapes can also be found by successfully searching junk piles. Each of the seven games has its own independent 5% chance per successful search, in addition to the normal loot. Simply reopening a depleted pile does not reroll its contents.
+
+## Holotape arcade library
+
+Insert the matching game tape and type its title at the command prompt. Each tape unlocks only its own game. Escape quits without saving, and ejecting the tape closes its program. All games use original terminal artwork in green and black.
+
+- Vault Carnage: our chamber-based first-person shooter. Its weapons, enemies, pickups, and progression are preserved.
+- Red Menace: climb ladders and jump over rolling barrels to rescue a worker at the top of a factory. Left/right moves, up/down climbs, and Space jumps.
+- Atomic Defense: protect six settlements for sixty seconds. WASD/arrows aim; Space or clicking launches an interceptor. Click directly where you want an interception blast.
+- Zetan Siege: defeat three waves of alien formations. Left/right moves and Space fires.
+- Vault Runner: leap across wasteland pits and traps, gather salvage, and reach the distant bunker. Left/right moves and Space jumps.
+- Wasteland Quest: a text-based party adventure. Choose two companions, then use story and battle buttons to explore, fight, and level up.
+- Robot Revolt: survive five waves of rogue robots. WASD/arrows moves, clicking aims and fires, and holding Space continues shooting toward the last aim point.
+
+These are independent games inspired by classic holotape arcade genres, with no imported Fallout game code or artwork.
+## Wasteland Quest
+
+Choose exactly two companions at the Lantern Tavern: Mira, a mysterious woman and archer; Bram, an outgoing, blunt barbarian; Vey, a snobby mage; Rook, a shady thief; and Elena, a straightforward, kind warrior. Each has different health, focus, attacks, and a class skill. Click a companion again to deselect them before starting.
+
+Follow the story from the tavern to Ashvale's town square and the crossroads. Explore the forest, lake, and hills, recover three warding seals, and confront the watchtower's bell keeper. The journal records your objective and recovered seals. Searching a location can uncover supplies once per day. The merchant sells healing potions for 10 gold. Sleeping at the tavern is free and fully restores both companions' health and focus, starts a new day, and makes searches available again.
+
+Battles are turn-based. Choose an enemy, then strike, use a class skill, guard, or drink a potion for the acting companion. Both conscious companions act before the enemies respond. Skills cost 4 focus. Guarding reduces incoming damage and restores 2 focus. A potion restores 24 health and 4 focus. Archers deal a powerful single-target shot; barbarians and mages attack all enemies; thieves weaken a target; warriors heal and shield conscious allies. Retreat can fail and gives enemies a turn.
+
+Every defeated enemy group awards experience to both companions and gold to the party. Leveling increases health, focus, and attack, up to level 10. A fallen companion gets back up with at least 1 health after victory. If the whole party falls, a patrol brings them to the tavern at half health and half their gold is lost. Rest before setting out again. Escape or Close the game quits; adventures are never saved and restarting begins with a new party.
+## Computer apps and public chat
+
+The map app shows the world outside your bunker, using the return hatch to select the right map. It does not display your interior room coordinates.
+
+Messenger uses the existing Pip-Boy/NanoChat messaging network. Your computer profile has a number that can send to Pip-Boy numbers and other computer profiles. Public Chat is one shared computer channel. It keeps up to 200 recent messages for the current round, including messages posted while you were away. Public messages and computer inboxes reset with the round.
+
+Click your name or icon in the top bar to edit your profile. Choose a cosmetic icon by its generic name and a description of up to 160 characters. These are cosmetic; selecting a job icon grants no job or access. Your username is your character's name and cannot be edited in this profile. Profile descriptions and icons are saved between rounds. Clicking another speaker's name shows their profile without allowing edits.
+
+Set a passcode in Settings, then use Lock Screen. A locked computer stays locked when closed and reopened, and server checks reject app requests until the correct passcode is entered. Closing a lock app cannot bypass the passcode. Pip-Boy launchers also enforce their existing lock across apps.
+
+Vault Carnage rooms now include different layouts, exterior windows with a simple cloudy sky, and more detailed panels and floors. Scouts, guards, marksmen, brutes, and commanders differ in health, movement, attack range, and damage.
+</Document>

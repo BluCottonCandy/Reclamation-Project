@@ -1,3 +1,5 @@
+using Content.Shared.Storage;
+
 namespace Content.Shared._Misfits.Scavenging;
 
 /// <summary>
@@ -6,6 +8,10 @@ namespace Content.Shared._Misfits.Scavenging;
 [RegisterComponent]
 public sealed partial class JunkPileSearchableComponent : Component
 {
+    /// <summary>Additional independent loot rolls after a successful search.</summary>
+    [DataField]
+    public List<EntitySpawnEntry> BonusContents = new();
+
     [DataField("searchDuration")]
     public float SearchDuration = 3f;
 

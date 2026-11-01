@@ -116,6 +116,10 @@ public sealed class JunkPileSearchSystem : EntitySystem
         {
             Spawn(prototype, coordinates);
         }
+        foreach (var prototype in EntitySpawnCollection.GetSpawns(ent.Comp.BonusContents, _random))
+        {
+            Spawn(prototype, coordinates);
+        }
 
         if (TryComp<LuckJunkBonusComponent>(ent, out var luck))
             _luck.TryGrantJunkBonus((ent, luck), args.User);

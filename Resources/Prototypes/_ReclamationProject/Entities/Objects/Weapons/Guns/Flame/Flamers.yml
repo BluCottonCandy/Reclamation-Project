@@ -88,12 +88,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14FlamerFuel
+        startingItem: N14EnrichedFlamerFuel
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14FlamerFuel
+            - N14EnrichedFlamerFuel
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9

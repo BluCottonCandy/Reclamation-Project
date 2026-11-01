@@ -51,6 +51,9 @@
     tags:
       - N14FlamerFuel
       - N14AmmoCell
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletFlame
+    fireCost: 600
   - type: Battery
     maxCharge: 10000
     startingCharge: 10000
@@ -73,8 +76,11 @@
         shader: unshaded
   - type: Tag
     tags:
-      - N14FlamerFuel
+      - N14EnrichedFlamerFuel
       - N14AmmoCell
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletIncinerator
+    fireCost: 600
   - type: Battery
     maxCharge: 20000
     startingCharge: 20000

@@ -39,6 +39,7 @@ public sealed class RandomAccessKeySystem : EntitySystem
         // #Cythisiax Edited - generate a key for EVERY constructed door, not only the pre-marked
         // "locked" metal/wood door variants that carried RandomAccessKey in their YAML prototype.
         SubscribeLocalEvent<DoorComponent, ConstructionCompletedEvent>(OnConstructionCompleted);
+        SubscribeLocalEvent<DoorComponent, ComponentStartup>(OnDoorStartup);
 
         // #Cythisiax Edited - using the assigned key on the door now toggles its lock state instead of
         // opening/closing it. Empty-hand clicks still open an unlocked door and deny a locked one.
@@ -46,10 +47,18 @@ public sealed class RandomAccessKeySystem : EntitySystem
         SubscribeLocalEvent<RandomAccessKeyComponent, ExaminedEvent>(OnExamined);
     }
 
+    private void OnDoorStartup(Entity<DoorComponent> ent, ref ComponentStartup args)
+    {
+        // Clear automatically generated locks from older saved curtains as well.
+        if (ent.Comp.GenerateKeyOnConstruction || !HasComp<RandomAccessKeyComponent>(ent)) return;
+        RemComp<RandomAccessKeyComponent>(ent);
+        RemComp<AccessReaderComponent>(ent);
+    }
+
     // #Cythisiax Edited - generic key minting for any simple (non-airlock) door that finishes construction.
     private void OnConstructionCompleted(Entity<DoorComponent> ent, ref ConstructionCompletedEvent args)
     {
-        if (args.UserUid == null)
+        if (args.UserUid == null || !ent.Comp.GenerateKeyOnConstruction)
             return;
 
         // #Cythisiax Added - skip airlock-style doors (bunker doors, windoors, blast doors, ...). Their

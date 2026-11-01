@@ -1,0 +1,79 @@
+- type: entity
+  id: ReclamationCarpetRed
+  parent: FloorCarpetItemRed
+  components:
+  - type: Construction
+    graph: ReclamationCarpetRed
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetBlack
+  parent: FloorCarpetItemBlack
+  components:
+  - type: Construction
+    graph: ReclamationCarpetBlack
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetBlue
+  parent: FloorCarpetItemBlue
+  components:
+  - type: Construction
+    graph: ReclamationCarpetBlue
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetGreen
+  parent: FloorCarpetItemGreen
+  components:
+  - type: Construction
+    graph: ReclamationCarpetGreen
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetOrange
+  parent: FloorCarpetItemOrange
+  components:
+  - type: Construction
+    graph: ReclamationCarpetOrange
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetSkyBlue
+  parent: FloorCarpetItemSkyBlue
+  components:
+  - type: Construction
+    graph: ReclamationCarpetSkyBlue
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetPurple
+  parent: FloorCarpetItemPurple
+  components:
+  - type: Construction
+    graph: ReclamationCarpetPurple
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetPink
+  parent: FloorCarpetItemPink
+  components:
+  - type: Construction
+    graph: ReclamationCarpetPink
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetCyan
+  parent: FloorCarpetItemCyan
+  components:
+  - type: Construction
+    graph: ReclamationCarpetCyan
+    node: finished
+
+- type: entity
+  id: ReclamationCarpetWhite
+  parent: FloorCarpetItemWhite
+  components:
+  - type: Construction
+    graph: ReclamationCarpetWhite
+    node: finished

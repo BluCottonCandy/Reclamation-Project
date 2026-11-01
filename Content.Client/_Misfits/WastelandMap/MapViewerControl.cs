@@ -50,6 +50,7 @@ public sealed class MapViewerControl : Control
         RectClipContent = true;
     }
 
+    public bool ShowPlayerPosition { get; set; } = true;
     private Texture? _texture;
     private Box2 _worldBounds;
     private WastelandMapTrackedBlip[] _trackedBlips = [];
@@ -248,7 +249,7 @@ public sealed class MapViewerControl : Control
     private bool TryGetPlayerUv(out Vector2 uv)
     {
         uv = default;
-
+        if(!ShowPlayerPosition)return false;
         if (_worldBounds.Width <= 0 || _worldBounds.Height <= 0)
             return false;
 

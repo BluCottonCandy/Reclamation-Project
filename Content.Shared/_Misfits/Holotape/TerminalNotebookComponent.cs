@@ -18,4 +18,7 @@ public sealed partial class TerminalNotebookComponent : Component
     /// </summary>
     [DataField("terminalId")]
     public string TerminalId { get; set; } = string.Empty;
+    /// <summary>Assign crafted terminals a permanent identity independent of their position.</summary>
+    [DataField]
+    public bool GenerateUniqueId;
 }

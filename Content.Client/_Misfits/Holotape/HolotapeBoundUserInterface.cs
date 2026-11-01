@@ -1,3 +1,4 @@
+using Content.Shared._Reclamation.Bunkers;
 using Content.Shared._Misfits.Holotape;
 using Content.Shared._Misfits.Overwatch;
 using Content.Client.Eye;
@@ -34,6 +35,9 @@ public sealed class HolotapeBoundUserInterface : BoundUserInterface
     {
         base.Open();
         _window = this.CreateWindow<HolotapeWindow>();
+
+        _window.OnComputerMessage += message => SendMessage(message);
+        SendMessage(new ComputerMessage(ComputerAction.Refresh));
 
         // Wire up notebook events to send BUI messages to the server
         _window.OnSubmitNote += (author, text) =>
@@ -94,6 +98,12 @@ public sealed class HolotapeBoundUserInterface : BoundUserInterface
             SendMessage(new MoveDatabaseEntryMessage(folderId, subParent, subId, docId, targetFolderId, targetSubfolderId));
     }
 
+    protected override void ReceiveMessage(BoundUserInterfaceMessage message)
+    {
+        base.ReceiveMessage(message);
+        if(message is ComputerDesktopUpdate update)_window?.UpdateDesktop(update.State);
+    }
+
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
@@ -105,6 +115,8 @@ public sealed class HolotapeBoundUserInterface : BoundUserInterface
         // #Misfits Add - Set header/title based on whether holotape item or built-in terminal
         _window.SetHolotapeMode(cast.IsHolotapeItem);
         _window.UpdateContent(cast.Title, cast.Content);
+        _window.SetCommandPrompt(cast.CommandPrompt);
+        _window.SetGameProgram(cast.GameProgram);
 
         // Update the NOTES tab (null notes means no notebook on this terminal)
         _window.UpdateNotes(cast.Notes, cast.ViewerUserId);
@@ -118,6 +130,7 @@ public sealed class HolotapeBoundUserInterface : BoundUserInterface
         var watch = EntMan.System<OverwatchConsoleSystem>().GetLocalWatch();
         var eye = ResolveOverwatchEye(watch);
         _window.UpdateOverwatch(cast.Overwatch, watch, eye);
+        _window.RefreshDesktopLayout();
     }
 
     private IEye? ResolveOverwatchEye(OverwatchWatchingComponent? watch)

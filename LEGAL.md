@@ -33,3 +33,7 @@ The original map contributions in `Resources/Maps/Reclamation/Expeditions/Factor
 ### Cave One map exception
 
 The original map contributions in `Resources/Maps/Reclamation/Expeditions/Cave1.yml` are not offered under the default asset license. See [Cave1.LICENSE.txt](Resources/Maps/Reclamation/Expeditions/Cave1.LICENSE.txt). Third-party assets retain their existing licenses.
+
+### Frontier mannequin attribution
+
+The mannequin entity, inventory template, and construction graph in `Resources/Prototypes/_ReclamationProject/` are adapted from [Frontier Station](https://github.com/new-frontiers-14/frontier-station-14) under AGPL-3.0. The mannequin sprite is by BombasterDS under CC-BY-SA-3.0; its original credit and source are preserved in `Resources/Textures/Structures/Decoration/mannequin.rsi/meta.json`. Adaptations use this project's existing stripping interface and a wood-only recipe.

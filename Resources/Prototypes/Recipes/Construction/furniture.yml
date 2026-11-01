@@ -597,17 +597,18 @@
 
 #bathroom
 - type: construction
+  hide: false
   name: shower
   id: Shower
   graph: Shower
   startNode: start
   targetNode: shower
   category: construction-category-furniture
-  description: A shower, complete with bluespace water.
+  description: A wall-mounted shower with a steady supply of water.
   icon:
     sprite: Structures/Furniture/shower.rsi
     state: shower
-    objectType: Structure
+  objectType: Structure
   placementMode: SnapgridCenter
   canRotate: true
   canBuildInImpassable: false
@@ -737,6 +738,7 @@
     - !type:TileNotBlocked
 
 - type: construction
+  hide: false
   id: Curtains
   name: curtains
   description: Contains less than 1% mercury.
@@ -752,6 +754,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsBlack
   name: black curtains
   description: Hides what others shouldn't see.
@@ -767,6 +770,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsBlue
   name: blue curtains
   description: Hides what others shouldn't see.
@@ -782,6 +786,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsCyan
   name: cyan curtains
   description: Hides what others shouldn't see.
@@ -797,6 +802,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsGreen
   name: green curtains
   description: Hides what others shouldn't see.
@@ -812,6 +818,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsOrange
   name: orange curtains
   description: Hides what others shouldn't see.
@@ -827,6 +834,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsPink
   name: pink curtains
   description: Hides what others shouldn't see.
@@ -842,6 +850,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsPurple
   name: purple curtains
   description: Hides what others shouldn't see.
@@ -857,6 +866,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsRed
   name: red curtains
   description: Hides what others shouldn't see.
@@ -872,6 +882,7 @@
   canBuildInImpassable: true
 
 - type: construction
+  hide: false
   id: CurtainsWhite
   name: white curtains
   description: Hides what others shouldn't see.

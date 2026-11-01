@@ -7,9 +7,24 @@ Your room starts with a small concrete interior, a roof, breathable air, and a l
 
 Rooms save when the last occupant leaves, with a final safety save at round end or normal server shutdown. There is no repeating autosave while you are inside. Furniture, decorations, and items inside containers are saved. Players, bodies, and everything they are wearing or carrying are excluded. An occupied room stays loaded. If you enter critical condition or go SSD inside, your body and belongings are returned to the entrance hatch. The room saves when empty, just as if you had left through the ladder. Ghosts are returned to the hatch when no living, awake player remains inside, so observers cannot keep an abandoned room loaded.
 
-## Display weapons
+## Display weapons and armor
 
 Weapons left in the room become permanent decorations after the last occupant leaves, even inside containers. Weapons remain functional while someone is inside. Guns lose their loaded ammunition and cannot shoot or be reloaded. Melee weapons lose their original damage and deal only 1 blunt. Taking a display weapon out of the room does not restore it.
 
-Keep functional weapons on your person. Your equipped and carried items, including the contents of your bags, are excluded from room saves and display conversion.
+Armor and helmets left behind also become permanent decorations, including armor worn by a mannequin or stored inside a container. Decorative armor provides no damage, stamina, reflection, explosion, or environmental protection. Picking it up or reloading the room does not restore its protection. Armor you are wearing or carrying out remains functional.
+
+Build a mannequin from the G menu under Furniture using 5 wood planks. Open its inventory to dress it in clothing and armor. A screwdriver dismantles it and returns its clothing and materials.
+
+Keep functional weapons and armor on your person. Your equipped and carried items, including the contents of your bags, are excluded from room saves and display conversion.
+
+## Furnishing your room
+
+Use the G menu to craft a weapon plaque (2 wood planks), a shower (3 steel), a bunker wall light (2 steel), carpet squares in every available color (2 cloth each), and curtains in every available color (2 cloth each). Colored light tubes cost 2 glass each. Bunker wall lights work without electrical wiring but still need an intact tube; changing the tube changes the light color.
+
+Crafted curtains have no locks or keys. Plaques and bunker wall lights can be mounted directly on bunker walls.
+
+Use a weapon on a plaque to display that weapon, then use an empty hand to remove it. Plaques hold one weapon of any size. Mounted weapons still follow the bunker display conversion rules when the last occupant leaves. Empty the plaque or remove a light's tube before dismantling its fixture with a screwdriver.
+## Bunker PCs
+
+Open Bunker PCs under Survival in this guidebook for computer crafting, apps, records, messaging, profiles, passcodes, and holotape games.
 </Document>

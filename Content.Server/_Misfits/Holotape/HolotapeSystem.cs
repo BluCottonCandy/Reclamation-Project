@@ -1,3 +1,7 @@
+using Content.Shared._Reclamation.Bunkers;
+using Content.Shared.Containers.ItemSlots;
+using Robust.Shared.Containers;
+using System.Linq;
 using Content.Server.UserInterface;
 using Content.Shared._Misfits.Holotape;
 using Content.Shared._Misfits.Overwatch;
@@ -45,6 +49,8 @@ public sealed class HolotapeSystem : EntitySystem
 
         // Clear used entry tracking on round restart
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+        SubscribeLocalEvent<HolotapeReaderComponent, EntInsertedIntoContainerMessage>(OnGameTapeInserted);
+        SubscribeLocalEvent<HolotapeReaderComponent, EntRemovedFromContainerMessage>(OnGameTapeRemoved);
 
         // Localize holotape/terminal content on map spawn
         SubscribeLocalEvent<HolotapeDataComponent, MapInitEvent>(OnHolotapeDataMapInit);
@@ -148,9 +154,22 @@ public sealed class HolotapeSystem : EntitySystem
         if (args.Handled)
             return;
 
+        if(BunkerComputerSecurity.IsLocked(EntityManager,uid)){args.Handled=true;return;}
         // Check if the used item is a holotape with content
         if (!TryComp<HolotapeDataComponent>(args.Used, out var holotapeData))
             return;
+
+        if (TryComp<TerminalDatabaseAccessComponent>(uid, out var gateway) && gateway.LocalDatabase &&
+            !string.IsNullOrEmpty(holotapeData.GameProgram))
+        {
+            args.Handled = true;
+            if (EntityManager.System<ItemSlotsSystem>().TryInsert(uid, "game-holotape", args.Used, args.User))
+            {
+                _ui.OpenUi(uid, HolotapeUiKey.Key, args.User);
+                RefreshTerminalState(uid, args.User);
+            }
+            return;
+        }
 
         // Open the holotape's own UI (the holotape entity has UserInterface + HolotapeUiKey)
         if (!_ui.HasUi(args.Used, HolotapeUiKey.Key))
@@ -220,6 +239,9 @@ public sealed class HolotapeSystem : EntitySystem
     /// </summary>
     private HolotapeBoundUserInterfaceState BuildTerminalState(EntityUid uid, EntityUid actor, Guid? openDatabaseDocumentId)
     {
+        if (BunkerComputerSecurity.IsLocked(EntityManager, uid))
+            return new HolotapeBoundUserInterfaceState("LOCKED", "", commandPrompt: true);
+
         // ── DATA tab content ───────────────────────────────────────────────
         var title = string.Empty;
         var content = string.Empty;
@@ -274,13 +296,40 @@ public sealed class HolotapeSystem : EntitySystem
             hasLinkSource: hasLinkSource,
             linkPorts: linkPorts,
             database: databaseState,
-            overwatch: overwatchState);
+            overwatch: overwatchState,
+            commandPrompt: TryComp<TerminalDatabaseAccessComponent>(uid, out var access) && access.LocalDatabase,
+            gameProgram: GetGameProgram(uid));
+    }
+
+    private string? GetGameProgram(EntityUid uid)
+    {
+        if (EntityManager.System<ItemSlotsSystem>().TryGetSlot(uid, "game-holotape", out var slot) &&
+            slot.Item is {} tape && TryComp<HolotapeDataComponent>(tape, out var data))
+            return data.GameProgram;
+        return null;
+    }
+
+    private void OnGameTapeInserted(EntityUid uid, HolotapeReaderComponent comp, EntInsertedIntoContainerMessage args)
+    {
+        if (args.Container.ID == "game-holotape") RefreshGameTapeViewers(uid);
+    }
+
+    private void OnGameTapeRemoved(EntityUid uid, HolotapeReaderComponent comp, EntRemovedFromContainerMessage args)
+    {
+        if (args.Container.ID == "game-holotape") RefreshGameTapeViewers(uid);
+    }
+
+    private void RefreshGameTapeViewers(EntityUid uid)
+    {
+        foreach (var actor in _ui.GetActors(uid, HolotapeUiKey.Key).ToArray())
+            RefreshTerminalState(uid, actor);
     }
 
     // #Misfits Add - Validate port exists on the terminal's DeviceLinkSourceComponent and invoke it.
     // This allows terminals to fire device link signals (e.g. Open/Close door) from the UI.
     private void OnInvokeLinkPort(EntityUid uid, HolotapeReaderComponent comp, InvokeTerminalLinkPortMessage args)
     {
+        if (BunkerComputerSecurity.IsLocked(EntityManager,uid)) return;
         if (!TryComp<DeviceLinkSourceComponent>(uid, out var linkSource))
             return;
 

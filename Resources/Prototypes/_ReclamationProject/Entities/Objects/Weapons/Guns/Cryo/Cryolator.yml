@@ -56,9 +56,6 @@
     backStrength: 4
   - type: StaticPrice
     price: 300
-  - type: FlamerAmmoProvider
-    fireCost: 200
-    projectileProto: BulletCryolator
 
 - type: entity
   name: Crystalizing Cyrolator
@@ -116,9 +113,6 @@
     backStrength: 4
   - type: StaticPrice
     price: 300
-  - type: FlamerAmmoProvider
-    fireCost: 600
-    projectileProto: BulletCrystalizingCryolator
 
 - type: entity
   id: R14Cryobase

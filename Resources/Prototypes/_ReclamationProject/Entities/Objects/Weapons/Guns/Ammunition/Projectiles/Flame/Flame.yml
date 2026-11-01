@@ -1,7 +1,7 @@
 - type: entity
   name: plasma
   id: BulletFlame
-  parent: BaseBullet
+  parent: BaseBulletIncendiary
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -29,6 +29,14 @@
         Heat: 25
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+  - type: PointLight
+    enabled: true
+    color: "#ff4300"
+    radius: 2.0
+    energy: 7.0
+  - type: IgniteOnCollide
+    fireStacks: 0.25
+
 
 - type: entity
   id: FlamerMuzzleFlashEffect
@@ -68,9 +76,9 @@
       - HideContextMenu
 
 - type: entity
-  name: plasma
+  name: incinerator explosive
   id: BulletIncinerator
-  parent: BaseBullet
+  parent: BaseFireExplosiveProjectile
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -98,6 +106,21 @@
         Heat: 35
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+  - type: PointLight
+    enabled: true
+    color: "#ff4300"
+    radius: 2.0
+    energy: 7.0
+  - type: IgniteOnCollide
+    fireStacks: 0.25
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    #Misfits Change - use the structural-capable N14 explosion profile.
+    explosionType: N14DefaultStructural
+    maxIntensity: 2 # max 30 per tile
+    intensitySlope: 1
+    totalIntensity: 20 # 60 total damage to distribute over tiles
+    maxTileBreak: 2
 
 - type: entity
   id: IncineratorMuzzleFlashEffect

@@ -30,7 +30,7 @@
   - type: Appearance
   - type: PowerCellVisuals
   - type: Riggable
-  - type: ProjectileBatteryAmmoProvider
+  - type: FlamerAmmoProvider
     fireCost: 50
 
 - type: entity

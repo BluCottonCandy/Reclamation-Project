@@ -2,8 +2,8 @@
 
 - type: entity
   name: Cyrolator
-  parent: R14Cryobase
-  id: R14Cryolator
+  parent: N14Cryobase
+  id: N14Cryolator
   description: An experimental cryo weapon.
   components:
   - type: Wieldable
@@ -59,8 +59,8 @@
 
 - type: entity
   name: Crystalizing Cyrolator
-  parent: R14Cryobase
-  id: R14CrystalizingCryolator
+  parent: N14Cryobase
+  id: N14CrystalizingCryolator
   description: A modified experimental cryo weapon.
   components:
   - type: Wieldable
@@ -115,7 +115,7 @@
     price: 300
 
 - type: entity
-  id: R14Cryobase
+  id: N14Cryobase
   parent: BaseItem
   abstract: true
   components:

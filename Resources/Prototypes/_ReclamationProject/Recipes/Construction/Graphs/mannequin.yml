@@ -1,0 +1,29 @@
+# Adapted from Frontier Station (AGPL-3.0); sprite by BombasterDS (CC-BY-SA-3.0).
+# https://github.com/new-frontiers-14/frontier-station-14
+- type: constructionGraph
+  id: Mannequin
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: mannequin
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 2
+    - node: mannequin
+      entity: ReclamationMannequin
+      edges:
+        - to: start
+          completed:
+            - !type:EmptyAllContainers
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank
+              amount: 5
+          steps:
+            - tool: Screwing
+              doAfter: 3

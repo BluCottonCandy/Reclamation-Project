@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made By BombasterDS; imported from https://github.com/new-frontiers-14/frontier-station-14/tree/master/Resources/Textures/Structures/Decoration/mannequin.rsi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "mannequin",
+      "directions": 4
+    }
+  ]
+}

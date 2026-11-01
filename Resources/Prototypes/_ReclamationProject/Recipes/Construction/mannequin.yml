@@ -1,0 +1,16 @@
+- type: construction
+  id: Mannequin
+  name: mannequin
+  description: A wooden stand for displaying clothing and armor.
+  graph: Mannequin
+  startNode: start
+  targetNode: mannequin
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Decoration/mannequin.rsi
+    state: mannequin
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked

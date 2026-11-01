@@ -255,6 +255,10 @@ public sealed class PersonalBunkerSystem : EntitySystem
                 var displays = EntityQueryEnumerator<BunkerDisplayWeaponComponent, TransformComponent>();
                 while (displays.MoveNext(out var display, out _, out var transform))
                     if (transform.GridUid == grid) _displays.Decommission(display);
+                // Also migrate armor in older room saves that predate decorative armor.
+                var armor = EntityQueryEnumerator<TransformComponent>();
+                while (armor.MoveNext(out var item, out var transform))
+                    if (transform.GridUid == grid) _displays.DecommissionArmor(item);
                 var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
                 air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
                 air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);

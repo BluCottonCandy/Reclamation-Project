@@ -1,0 +1,34 @@
+- type: entity
+  parent: ClothingBeltMedicalEMT
+  id: ReclamationClothingBeltSurgical
+  name: surgical belt
+  description: A medical belt arranged to carry surgical instruments, a health scanner, and ethanol for cleaning tools. Keep your mask separately.
+  components:
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,7,5
+    whitelist:
+      tags:
+      - DiscreteHealthAnalyzer
+      - Bottle
+      components:
+      - SurgeryTool
+
+- type: entity
+  parent: ReclamationClothingBeltSurgical
+  id: ReclamationClothingBeltSurgicalFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: Hemostat
+    - id: ReclamationFractureMender
+    - id: SawElectric
+    - id: Drill
+    - id: Cautery
+    - id: Retractor
+    - id: Scalpel
+    - id: BoneGel
+    - id: N14HandheldHealthAnalyzer
+    - id: N14Ethanol

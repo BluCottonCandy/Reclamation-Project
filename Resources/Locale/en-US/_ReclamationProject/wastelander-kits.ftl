@@ -1,7 +1,7 @@
 wastelander-kit-hunter-name = Hunter
 wastelander-kit-hunter-description = You are skilled at finding and eating about anything in the Wastes. Contains a makeshift hunting rifle, one box of .308 ammunition, one bottle of water, and one can of tuna.
 wastelander-kit-doc-name = Wasteland Doc
-wastelander-kit-doc-description = You are the only thing that stands between death and your patient. Contains an N14 health scanner, a single-use CPR training manual, a makeshift 9mm pistol, one box of 9mm ammunition, a surgical duffel bag filled with surgical tools, one bottle of ethanol, and sterile latex gloves.
+wastelander-kit-doc-description = You are the only thing that stands between death and your patient. Contains a surgical belt stocked with surgical tools, an N14 health scanner, and one bottle of ethanol; a single-use CPR training manual; a makeshift 9mm pistol; one box of 9mm ammunition; sterile latex gloves; and a separate sterile mask.
 wastelander-kit-survivalist-name = Survivalist
 wastelander-kit-survivalist-description = You know a thing or two, because you've survived a thing or two. Contains a makeshift .45-70 Gov revolver, one .45-70 speedloader, one box of .45-70 ammunition, one MRE box, and one folded bedroll.
 wastelander-kit-militarysurplus-name = Military Surplus

@@ -11,7 +11,7 @@
 - type: UndecidedLoadoutBackpackSet
   id: MPMedicalKit
   name: Medical Military Police Kit
-  description: This kit contains standard-issue NCRMP medical equipment. This includes - 2 stimpaks, one super stimpak, antidote, webley revolver, clean gauze, surgical duffel bag, handcuffs and a police baton.
+  description: This kit contains standard-issue NCRMP medical equipment. This includes - 2 stimpaks, one super stimpak, antidote, webley revolver, clean gauze, a stocked surgical belt with an N14 health scanner and ethanol, a separate sterile mask, handcuffs and a police baton.
   sprite:
     sprite: _Nuclear14/Objects/Misc/kits.rsi
     state: medic
@@ -55,7 +55,7 @@
   name: Medical Military Police Kit
   parent: KitBase
   id: KitMedicalMP
-  description: A crate for when someone gets hurt.
+  description: "A field medical kit with a surgical belt stocked with surgical tools, an N14 health scanner and ethanol, a separate sterile mask, and standard military-police medical supplies."
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/kits.rsi
@@ -64,7 +64,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-     - id: ClothingBackpackDuffelSurgeryFilled
+     - id: ReclamationClothingBeltSurgicalFilled
+     - id: ClothingMaskSterile
      - id: N14Stimpak
      - id: N14Stimpak
      - id: N14SuperStimpak

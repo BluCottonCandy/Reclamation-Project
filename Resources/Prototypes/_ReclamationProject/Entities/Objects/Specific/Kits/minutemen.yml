@@ -70,7 +70,7 @@
   parent: KitBase
   id: MinutemenKitMedic
   name: Minute Men field medic kit
-  description: "Keep your men alive. Contains 1 MRE kit, 1 military carrier, 1 compact defibrillator, and 1 stocked medical belt. The belt holds 2 rolls of clean gauze (10 uses each), 1 ointment stack (10 uses), 1 stimpak, 1 antidote syringe, 1 RadAway blood bag, and 1 blood pack. Also includes a health scanner, a folded body bag, 1 extra blood pack, and a consumable CPR training manual. Includes a surgical duffel bag stocked with surgical tools, a bottle of ethanol, sterile latex gloves, and a sterile mask."
+  description: "Keep your men alive. Contains 1 MRE kit, 1 military carrier, 1 compact defibrillator, 1 stocked medical belt, and a surgical belt stocked with surgical tools, an N14 health scanner, and a bottle of ethanol. The medical belt holds 2 rolls of clean gauze (10 uses each), 1 ointment stack (10 uses), 1 stimpak, 1 antidote syringe, 1 RadAway blood bag, and 1 blood pack. Also includes a folded body bag, 1 extra blood pack, a consumable CPR training manual, sterile latex gloves, and a separate sterile mask."
   components:
   - type: Sprite
     state: medic
@@ -80,12 +80,10 @@
     - id: ClothingBeltMilitary
     - id: N14ClothingBeltMedicalFilled
     - id: DefibrillatorCompact
-    - id: N14HandheldHealthAnalyzer
     - id: BodyBagFolded
     - id: Bloodpack
     - id: ReclamationTrainingManualCPR
-    - id: ClothingBackpackDuffelSurgeryFilled
-    - id: N14Ethanol
+    - id: ReclamationClothingBeltSurgicalFilled
     - id: ClothingHandsGlovesLatex
     - id: ClothingMaskSterile
     sound:

@@ -338,7 +338,7 @@
   name: medic's doctor kit
   parent: KitBase
   id: KitNCR_MedSurgeon
-  description: A crate containing advanced medical and surgical equipment intended for use in NCR clinics and field hospitals.
+  description: "A crate containing advanced medical supplies, a stocked surgical belt with surgical tools, an N14 health scanner and ethanol, and a separate sterile mask for NCR clinics and field hospitals."
   components:
   - type: Sprite
     state: medic
@@ -354,14 +354,13 @@
     - id: ClothingMaskSterile
     - id: ClothingNeckStethoscope
     # Clinical / surgical equipment
-    - id: ClothingBackpackDuffelSurgeryFilled
-    - id: N14HandheldHealthAnalyzer
+    - id: ReclamationClothingBeltSurgicalFilled
     - id: SurgicalSterilanSpray
     - id: N14SmellingSalts
       amount: 2
     # Handgun
     - id: N14WeaponPistol45Colt
-    - id: N14BaseMagazine45Pistol
+    - id: N14MagazinePistol45
       amount: 2
     # Medical supplies
     - id: N14SuperStimpak

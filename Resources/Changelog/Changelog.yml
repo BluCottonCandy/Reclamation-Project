@@ -13506,3 +13506,32 @@ Entries:
   id: 6579
   time: '2026-11-01T14:30:46.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/107
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Surgical belts using the EMT belt appearance, with room for a full set
+        of surgical tools, an N14 health scanner, and ethanol for cleaning
+        tools.
+    - type: Tweak
+      message: >-
+        Wasteland Doc, Minutemen medic, Railroad medic, NCR surgeon, and
+        military-police medic kits now provide stocked surgical belts instead of
+        surgical duffels.
+    - type: Tweak
+      message: >-
+        These kits supply sterile masks separately; masks cannot be stored in
+        surgical belts. Scanners and ethanol are included inside the stocked
+        belt without duplicates.
+    - type: Fix
+      message: >-
+        The NCR surgeon kit now supplies valid spare .45 pistol magazines
+        instead of an abstract prototype that prevented it from opening
+        correctly.
+    - type: Add
+      message: >-
+        Updated surgical-kit descriptions and the Surgery guidebook with
+        surgical belt contents and mask storage instructions.
+  id: 6580
+  time: '2026-11-01T14:36:27.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/108

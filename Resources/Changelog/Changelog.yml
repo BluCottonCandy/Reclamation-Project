@@ -13535,3 +13535,14 @@ Entries:
   id: 6580
   time: '2026-11-01T14:36:27.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/108
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Prevent a leaked network memory stream from triggering a fatal engine
+        exception that restarts the server.
+    - type: Fix
+      message: Clean up player state streams when a network-state send fails.
+  id: 6581
+  time: '2026-11-02T07:51:24.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/109

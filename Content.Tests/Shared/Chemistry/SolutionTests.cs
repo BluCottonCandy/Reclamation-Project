@@ -31,7 +31,9 @@ public sealed class SolutionTests : ContentUnitTest
             Assert.That(clone.CanReact, Is.False);
             Assert.That(clone.Name, Is.EqualTo(original.Name));
             Assert.That(clone.MaxVolume, Is.EqualTo(original.MaxVolume));
-            Assert.That(clone.Contents, Is.EqualTo(original.Contents));
+            Assert.That(clone.Contents.Count, Is.EqualTo(original.Contents.Count));
+            Assert.That(clone.GetTotalPrototypeQuantity("water"), Is.EqualTo(FixedPoint2.New(5)));
+            Assert.That(clone.Volume, Is.EqualTo(original.Volume));
         });
         clone.AddReagent("water", FixedPoint2.New(1));
         Assert.That(original.Volume, Is.EqualTo(FixedPoint2.New(5)));

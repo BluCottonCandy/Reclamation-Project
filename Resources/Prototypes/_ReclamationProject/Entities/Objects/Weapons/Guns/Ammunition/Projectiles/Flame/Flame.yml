@@ -25,7 +25,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 25
+        Heat: 30
     impactEffect: BulletFlamerImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
@@ -35,7 +35,7 @@
     radius: 2.0
     energy: 7.0
   - type: IgniteOnCollide
-    fireStacks: 0.5
+    fireStacks: 0.25
   - type: TimedDespawn
     lifetime: 1
 
@@ -84,7 +84,7 @@
   components:
   - type: Sprite
     sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/Projectiles/incinerator.rsi
-    scale: 1.0, 1.0
+    scale: 1.2, 1.2
     layers:
     - state: incineratorshot
       shader: unshaded
@@ -104,7 +104,7 @@
     impactEffect: BulletIncineratorImpactEffect
     damage:
       types:
-        Heat: 25
+        Heat: 30
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
   - type: PointLight
@@ -118,10 +118,12 @@
   - type: Explosive
     #Misfits Change - use the structural-capable N14 explosion profile.
     explosionType: IncineratorExplosion
-    maxIntensity: 3 # max 30 per tile
+    maxIntensity: 2 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 10 # 60 total damage to distribute over tiles
     maxTileBreak: 0
+  - type: TimedDespawn
+    lifetime: 1
 
 - type: entity
   id: IncineratorMuzzleFlashEffect

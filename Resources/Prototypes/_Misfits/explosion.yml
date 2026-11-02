@@ -123,12 +123,12 @@
   id: IncineratorExplosion
   damagePerIntensity:
     types:
-      Heat: 1
-      Blunt: 2
-      Piercing: 3
+      Heat: 3
+      Blunt: 1
+      Piercing: 1
   lightColor: Orange
   texturePath: /Textures/Effects/fire.rsi
   fireStates: 6
-  fireStacks: 0.5
+  fireStacks: 0.25
   tileBreakChance: [0]
   tileBreakIntensity: [0]

@@ -26,9 +26,11 @@
     impactEffect: BulletCryolatorImpactEffect
     damage:
       types:
-        Cold: 20
+        Cold: 30
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
+  - type: TimedDespawn
+    lifetime: 1
 
 - type: entity
   id: CryolatorMuzzleFlashEffect
@@ -95,8 +97,8 @@
     impactEffect: BulletCrystalizingCryolatorImpactEffect
     damage:
       types:
+        Pierce: 20        
         Cold: 20
-        Pierce: 10
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
 

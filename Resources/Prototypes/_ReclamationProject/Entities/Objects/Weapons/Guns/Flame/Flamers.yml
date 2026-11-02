@@ -43,8 +43,8 @@
   - type: Gun
     minAngle: 5
     maxAngle: 30
-    angleIncrease: 2
-    angleDecay: 6
+    angleIncrease: 1
+    angleDecay: 3
     projectileSpeed: 10
     fireRate: 8
     soundGunshot:
@@ -100,8 +100,8 @@
   - type: Gun
     minAngle: 5
     maxAngle: 30
-    angleIncrease: 2
-    angleDecay: 6
+    angleIncrease: 1
+    angleDecay: 3
     projectileSpeed: 10
     fireRate: 1
     soundGunshot:
@@ -113,7 +113,6 @@
     backStrength: 6
   - type: StaticPrice
     price: 500
-
 
 - type: entity
   id: N14Flamebase

@@ -42,9 +42,9 @@
             - N14CryoCell
   - type: Gun
     minAngle: 25
-    maxAngle: 55
-    angleIncrease: 2
-    angleDecay: 6
+    maxAngle: 50
+    angleIncrease: 1
+    angleDecay: 3
     projectileSpeed: 10
     fireRate: 8
     soundGunshot:
@@ -99,9 +99,9 @@
             - N14SuperCooledCryoCell
   - type: Gun
     minAngle: 25
-    maxAngle: 55
-    angleIncrease: 2
-    angleDecay: 6
+    maxAngle: 50
+    angleIncrease: 1
+    angleDecay: 3
     projectileSpeed: 30
     fireRate: 2
     soundGunshot:

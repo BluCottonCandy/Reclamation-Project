@@ -29,7 +29,6 @@
     impactEffect: BulletFlamerImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
-    range: 6
   - type: PointLight
     enabled: true
     color: "#ff4300"
@@ -37,6 +36,8 @@
     energy: 7.0
   - type: IgniteOnCollide
     fireStacks: 0.5
+  - type: TimedDespawn
+    lifetime: 1
 
 - type: entity
   id: FlamerMuzzleFlashEffect
@@ -116,8 +117,8 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     #Misfits Change - use the structural-capable N14 explosion profile.
-    explosionType: Misfits40mmIncendiary
-    maxIntensity: 4 # max 30 per tile
+    explosionType: IncineratorExplosion
+    maxIntensity: 3 # max 30 per tile
     intensitySlope: 1
     totalIntensity: 10 # 60 total damage to distribute over tiles
     maxTileBreak: 0

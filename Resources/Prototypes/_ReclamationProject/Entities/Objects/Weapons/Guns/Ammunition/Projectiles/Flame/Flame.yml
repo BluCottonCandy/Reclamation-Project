@@ -124,6 +124,11 @@
     maxTileBreak: 0
   - type: TimedDespawn
     lifetime: 1
+  - type: OnUseTimerTrigger
+    delay: .9
+  - type: SpawnOnTrigger
+    proto: Incineratortimedexplosion
+  - type: DeleteOnTrigger
 
 - type: entity
   id: IncineratorMuzzleFlashEffect
@@ -161,3 +166,15 @@
   - type: Tag
     tags:
       - HideContextMenu
+
+- type: entity
+  id: Incineratortimedexplosion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: IncineratorExplosion
+    maxIntensity: 2 # max 30 per tile
+    intensitySlope: 1
+    totalIntensity: 10 # 60 total damage to distribute over tiles
+    maxTileBreak: 0

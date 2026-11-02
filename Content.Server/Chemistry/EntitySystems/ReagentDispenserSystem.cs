@@ -37,6 +37,7 @@ namespace Content.Server.Chemistry.EntitySystems
         {
             base.Initialize();
 
+            SubscribeLocalEvent<ReagentDispenserComponent, ComponentInit>(OnDispenserInit);
             SubscribeLocalEvent<ReagentDispenserComponent, ComponentStartup>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ReagentDispenserComponent, SolutionContainerChangedEvent>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ReagentDispenserComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState);
@@ -164,6 +165,27 @@ namespace Content.Server.Chemistry.EntitySystems
             _audioSystem.PlayPvs(reagentDispenser.Comp.ClickSound, reagentDispenser, AudioParams.Default.WithVolume(-2f));
         }
 
+        // Runtime item slots are not serialized by ItemSlotsComponent. Rebind both new and loaded machines
+        // before startup, so their saved source bottles and output beaker remain accessible.
+        private void OnDispenserInit(EntityUid uid, ReagentDispenserComponent component, ComponentInit args)
+        {
+            component.StorageSlotIds.Clear();
+            for (var i = 0; i < component.NumSlots; i++)
+            {
+                var id = ReagentDispenserComponent.BaseStorageSlotId + i;
+                var slot = i < component.StorageSlots.Count ? component.StorageSlots[i] : new ItemSlot();
+                if (i >= component.StorageSlots.Count)
+                    component.StorageSlots.Add(slot);
+                slot.Whitelist = component.StorageWhitelist;
+                slot.Swap = false;
+                slot.EjectOnBreak = true;
+                slot.Name = "Storage Slot " + (i + 1);
+                component.StorageSlotIds.Add(id);
+                _itemSlotsSystem.AddItemSlot(uid, id, slot);
+            }
+            _itemSlotsSystem.AddItemSlot(uid, SharedReagentDispenser.OutputSlotName, component.BeakerSlot);
+        }
+
         /// <summary>
         /// Automatically generate storage slots for all NumSlots, and fill them with their initial chemicals.
         /// The actual spawning of entities happens in ItemSlotsSystem's MapInit.
@@ -178,29 +200,14 @@ namespace Content.Server.Chemistry.EntitySystems
                 preLoad.AddRange(packPrototype.Inventory);
             }
 
-            // Populate storage slots with base storage slot whitelist
-            for (var i = 0; i < component.NumSlots; i++)
+            // Only fresh dispensers receive a starting inventory. Saved bottles are already in the slots.
+            for (var i = 0; i < Math.Min(component.NumSlots, preLoad.Count); i++)
             {
-                var storageSlotId = ReagentDispenserComponent.BaseStorageSlotId + i;
-                ItemSlot storageComponent = new();
-                storageComponent.Whitelist = component.StorageWhitelist;
-                storageComponent.Swap = false;
-                storageComponent.EjectOnBreak = true;
-
-                component.StorageSlotIds.Add(storageSlotId);
-                component.StorageSlots.Add(storageComponent);
-                component.StorageSlots[i].Name = "Storage Slot " + (i+1);
-                _itemSlotsSystem.AddItemSlot(uid, component.StorageSlotIds[i], component.StorageSlots[i]);
-
-                // #Misfits Fix - These slots are created during MapInit, so ItemSlotsSystem may not spawn StartingItem for them.
-                if (i < preLoad.Count && component.StorageSlots[i].ContainerSlot is { } container)
-                {
-                    var item = Spawn(preLoad[i], Transform(uid).Coordinates);
-                    _containerSystem.Insert(item, container);
-                }
+                if (component.StorageSlots[i].ContainerSlot is not { ContainedEntity: null } container)
+                    continue;
+                var item = Spawn(preLoad[i], Transform(uid).Coordinates);
+                _containerSystem.Insert(item, container);
             }
-
-            _itemSlotsSystem.AddItemSlot(uid, SharedReagentDispenser.OutputSlotName, component.BeakerSlot);
         }
     }
 }

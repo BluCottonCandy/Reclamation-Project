@@ -735,6 +735,14 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
 
     private void OnSolutionStartup(Entity<SolutionComponent> entity, ref ComponentStartup args)
     {
+        // ChemMaster buffers separate stored reagents; they are not reaction vessels. Apply this
+        // before startup reactions, including when loading older chemistry sets with reactive buffers.
+        if (TryComp<ContainedSolutionComponent>(entity, out var contained)
+            && HasComp<ChemMasterComponent>(contained.Container)
+            && (contained.ContainerName == SharedChemMaster.BufferSolutionName
+                || contained.ContainerName == SharedChemMaster.PillBufferSolutionName))
+            entity.Comp.Solution.CanReact = false;
+
         UpdateChemicals(entity);
     }
 

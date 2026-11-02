@@ -7,7 +7,11 @@ Your room starts with a small concrete interior, a roof, breathable air, and a l
 
 Rooms save when the last occupant leaves, with a final safety save at round end or normal server shutdown. There is no repeating autosave while you are inside. Furniture, decorations, and items inside containers are saved. Players, bodies, and everything they are wearing or carrying are excluded. An occupied room stays loaded. If you enter critical condition or go SSD inside, your body and belongings are returned to the entrance hatch. The room saves when empty, just as if you had left through the ladder. Ghosts are returned to the hatch when no living, awake player remains inside, so observers cannot keep an abandoned room loaded.
 
+Dispenser source bottles, inserted beakers, and their remaining chemicals are preserved when your room reloads. Chemistry-set buffers do not trigger reactions when the room reloads; use a suitable reaction container to mix chemicals. Shelves can be opened normally after returning.
+
 ## Display weapons and armor
+
+Toolboxes are excluded from decorative weapon conversion and remain usable storage after saving.
 
 Weapons left in the room become permanent decorations after the last occupant leaves, even inside containers. Weapons remain functional while someone is inside. Guns lose their loaded ammunition and cannot shoot or be reloaded. Melee weapons lose their original damage and deal only 1 blunt. Taking a display weapon out of the room does not restore it.
 

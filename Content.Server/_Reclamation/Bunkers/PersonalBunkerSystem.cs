@@ -19,6 +19,8 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Storage;
+using Content.Shared.Timing;
 using Robust.Server.GameObjects;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Containers;
@@ -62,6 +64,8 @@ public sealed class PersonalBunkerSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly BunkerDisplayWeaponSystem _displays = default!;
 
+    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+
     private sealed record Identity(string Account, Task<int?> Profile);
     private sealed class Room(string key, EntityUid map, EntityUid grid, EntityUid hatch)
     {
@@ -71,6 +75,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
         public EntityUid Hatch = hatch;
         public TimeSpan? EmptySince;
     }
+
     private readonly Dictionary<EntityUid, Identity> _identities = new();
     private readonly Dictionary<string, Room> _rooms = new();
     private readonly Queue<(EntityUid Hatch, EntityUid User)> _loads = new();
@@ -258,7 +263,17 @@ public sealed class PersonalBunkerSystem : EntitySystem
                 // Also migrate armor in older room saves that predate decorative armor.
                 var armor = EntityQueryEnumerator<TransformComponent>();
                 while (armor.MoveNext(out var item, out var transform))
-                    if (transform.GridUid == grid) _displays.DecommissionArmor(item);
+                {
+                    if (transform.GridUid != grid)
+                        continue;
+                    _displays.DecommissionArmor(item);
+                    _displays.RestoreToolbox(item);
+                    // Stored furniture can contain cooldown timestamps from a different server uptime.
+                    // Reset its interaction delays, including legacy saves, so shelves open immediately.
+                    if (HasComp<StorageComponent>(item) && TryComp<UseDelayComponent>(item, out var delay))
+                        foreach (var id in delay.Delays.Keys.ToArray())
+                            _useDelay.CancelDelay((item, delay), id);
+                }
                 var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
                 air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
                 air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);

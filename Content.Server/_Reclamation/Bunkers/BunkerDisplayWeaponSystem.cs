@@ -8,6 +8,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Components;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.PowerCell;
+using Content.Shared.Tag;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
@@ -20,6 +21,7 @@ namespace Content.Server._Reclamation.Bunkers;
 public sealed class BunkerDisplayWeaponSystem : EntitySystem
 {
     [Dependency] private readonly IComponentFactory _factory = default!;
+    [Dependency] private readonly TagSystem _tags = default!;
     private static readonly string[] Disabled =
     {
         "Gun", "BallisticAmmoProvider", "ChamberMagazineAmmoProvider", "MagazineAmmoProvider",
@@ -85,6 +87,12 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
 
     public void Decommission(EntityUid uid)
     {
+        // A toolbox is working storage, even though it can also be swung as a weapon.
+        if (_tags.HasTag(uid, "Toolbox"))
+        {
+            RestoreToolbox(uid);
+            return;
+        }
         DecommissionArmor(uid);
         if (HasComp<MobStateComponent>(uid) || (!HasComp<GunComponent>(uid) && !HasComp<MeleeWeaponComponent>(uid)
             && !HasComp<BunkerDisplayWeaponComponent>(uid))) return;
@@ -111,5 +119,25 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
             melee.ResistanceBypass = false;
             Dirty(uid, melee);
         }
+    }
+
+    /// <summary>Repair toolboxes already marked as display weapons by an older bunker save.</summary>
+    public void RestoreToolbox(EntityUid uid)
+    {
+        if (!_tags.HasTag(uid, "Toolbox") || !HasComp<BunkerDisplayWeaponComponent>(uid))
+            return;
+
+        RemComp<BunkerDisplayWeaponComponent>(uid);
+        if (MetaData(uid).EntityPrototype is not { } prototype)
+            return;
+
+        // Loading recreates most prototype components, but saved melee overrides need resetting.
+        if (prototype.Components.TryGetValue("MeleeWeapon", out var melee))
+            EntityManager.AddComponent(uid, melee, overwrite: true);
+        foreach (var name in Disabled)
+            if (prototype.Components.TryGetValue(name, out var component)
+                && _factory.TryGetRegistration(name, out var registration)
+                && !EntityManager.HasComponent(uid, registration.Type))
+                EntityManager.AddComponent(uid, component);
     }
 }

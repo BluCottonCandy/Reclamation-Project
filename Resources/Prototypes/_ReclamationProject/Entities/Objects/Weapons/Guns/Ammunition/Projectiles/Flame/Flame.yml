@@ -118,9 +118,9 @@
   - type: Explosive
     #Misfits Change - use the structural-capable N14 explosion profile.
     explosionType: IncineratorExplosion
-    maxIntensity: 2 # max 30 per tile
+    maxIntensity: 4 # max 30 per tile
     intensitySlope: 1
-    totalIntensity: 10 # 60 total damage to distribute over tiles
+    totalIntensity: 12 # 60 total damage to distribute over tiles
     maxTileBreak: 0
   - type: TimedDespawn
     lifetime: 1

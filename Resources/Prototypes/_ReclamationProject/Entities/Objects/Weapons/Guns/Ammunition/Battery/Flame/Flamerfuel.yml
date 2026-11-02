@@ -53,10 +53,10 @@
       - N14AmmoCell
   - type: ProjectileBatteryAmmoProvider
     proto: BulletFlame
-    fireCost: 100
+    fireCost: 10
   - type: Battery
-    maxCharge: 10000
-    startingCharge: 10000
+    maxCharge: 1000
+    startingCharge: 1000
 
 - type: entity
   name: enriched flamer fuel cannister
@@ -80,7 +80,7 @@
       - N14AmmoCell
   - type: ProjectileBatteryAmmoProvider
     proto: BulletIncinerator
-    fireCost: 400
+    fireCost: 50
   - type: Battery
-    maxCharge: 20000
-    startingCharge: 20000
+    maxCharge: 2000
+    startingCharge: 2000

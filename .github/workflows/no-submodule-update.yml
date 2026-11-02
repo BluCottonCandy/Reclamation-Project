@@ -12,12 +12,15 @@ jobs:
     steps:
       # #Misfits Change - Allowlisted actors get green check instead of grey skip
       - name: Check submodule update permission
+        env:
+          ACTOR: ${{ github.actor }}
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: |
           ALLOWED="sleepyyapril VMSolidus DEATHB4DEFEAT Cythisiax"
-          if echo "$ALLOWED" | grep -qw "${{ github.actor }}"; then
-            echo "✅ ${{ github.actor }} is allowed to update submodules"
+          if [ "$ACTOR" = "$REPOSITORY_OWNER" ] || echo "$ALLOWED" | grep -qw "$ACTOR"; then
+            echo "✅ $ACTOR is allowed to update submodules"
             exit 0
           else
-            echo "❌ ${{ github.actor }} is not allowed to update submodules"
+            echo "❌ $ACTOR is not allowed to update submodules"
             exit 1
           fi

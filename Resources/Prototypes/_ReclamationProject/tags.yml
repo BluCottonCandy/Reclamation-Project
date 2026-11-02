@@ -1,0 +1,12 @@
+#MARK: Alphabetical order.
+- type: Tag
+  id: N14CryoCell
+
+- type: Tag
+  id: N14EnrichedFlamerFuel
+
+- type: Tag
+  id: N14FlamerFuel
+
+- type: Tag
+  id: N14SuperCooledCryoCell

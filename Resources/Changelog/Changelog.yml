@@ -13546,3 +13546,18 @@ Entries:
   id: 6581
   time: '2026-11-02T07:51:24.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/109
+- author: Davisrocket
+  changes:
+    - type: Add
+      message: New explosion type for incinerator
+    - type: Add
+      message: >-
+        Added incinerator, flamer, cryolator, and crystalizing cryolator with
+        fully custom sprites
+    - type: Add
+      message: >-
+        Added custom ammo, custom morphing projectiles, and made a small balance
+        on making the weapons functional
+  id: 6582
+  time: '2026-11-02T08:08:04.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/110

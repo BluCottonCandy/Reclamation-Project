@@ -30,4 +30,8 @@ public sealed partial class HolotapeDataComponent : Component
     /// </summary>
     [DataField]
     public bool Localized;
+
+    /// <summary>Optional built-in arcade program carried by a physical game holotape.</summary>
+    [DataField]
+    public string? GameProgram;
 }

@@ -1,0 +1,85 @@
+- type: entity
+  id: ReclamationBunkerTerminalCompact
+  parent: N14ComputerTerminalNew
+  name: compact bunker terminal
+  description: A restored computer for personal records. Its terminal notes stay with this computer.
+  components:
+  - type: BunkerComputer
+  - type: PipBoyNetwork
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: TerminalDatabaseAccess
+    localDatabase: true
+  - type: ItemSlots
+    slots:
+      game-holotape:
+        name: red-menace-game-slot
+        whitelist:
+          tags: [ReclamationGameHolotape]
+  - type: ContainerContainer
+    containers:
+      game-holotape: !type:ContainerSlot {}
+  - type: TerminalNotebook
+    terminalId: ""
+    generateUniqueId: true
+  - type: Construction
+    graph: ReclamationBunkerTerminalCompact
+    node: finished
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1: {min: 10, max: 10}
+          CableApcStack1: {min: 4, max: 4}
+          N14JunkComponentBoard1: {min: 2, max: 2}
+          N14ScrapElectronic1: {min: 2, max: 2}
+          SheetGlass1: {min: 1, max: 1}
+      - !type:DoActsBehavior
+        acts: [Destruction]
+
+- type: entity
+  id: ReclamationBunkerTerminalClassic
+  parent: N14ComputerTerminal
+  name: bunker computer
+  description: A restored computer for personal records. Its terminal notes stay with this computer.
+  components:
+  - type: BunkerComputer
+  - type: PipBoyNetwork
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: TerminalDatabaseAccess
+    localDatabase: true
+  - type: ItemSlots
+    slots:
+      game-holotape:
+        name: red-menace-game-slot
+        whitelist:
+          tags: [ReclamationGameHolotape]
+  - type: ContainerContainer
+    containers:
+      game-holotape: !type:ContainerSlot {}
+  - type: TerminalNotebook
+    terminalId: ""
+    generateUniqueId: true
+  - type: Construction
+    graph: ReclamationBunkerTerminalClassic
+    node: finished
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1: {min: 10, max: 10}
+          CableApcStack1: {min: 4, max: 4}
+          N14JunkComponentBoard1: {min: 2, max: 2}
+          N14ScrapElectronic1: {min: 2, max: 2}
+          SheetGlass1: {min: 1, max: 1}
+      - !type:DoActsBehavior
+        acts: [Destruction]

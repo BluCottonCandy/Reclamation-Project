@@ -1,3 +1,4 @@
+using Content.Shared._Misfits.PipBoy;
 using Content.Client.GameTicking.Managers;
 using Content.Shared.PDA;
 using Robust.Shared.Utility;
@@ -472,8 +473,24 @@ namespace Content.Client.PDA
         /// <summary>
         /// Changes the current view to the home screen (view 0) and sets the tabs `IsCurrent` flag accordingly
         /// </summary>
+        private bool PipBoyLocked()
+        {
+            var entities=IoCManager.Resolve<IEntityManager>();
+            return _pdaEntity is {} device && entities.TryGetComponent<PdaComponent>(device,out var pda) &&
+                pda.ContainedId is {} card && entities.TryGetComponent<PipBoyNetworkComponent>(card,out var network) && network.IsLocked;
+        }
+
+        protected override void FrameUpdate(FrameEventArgs args)
+        {
+            base.FrameUpdate(args);
+            var locked=PipBoyLocked();
+            HomeButton.Disabled=locked;ProgramListButton.Disabled=locked;SettingsButton.Disabled=locked;ProgramCloseButton.Disabled=locked;
+            if(locked && _currentView!=ProgramContentView)ChangeView(ProgramContentView);
+        }
+
         public void ToHomeScreen()
         {
+            if(PipBoyLocked())return;
             HomeButton.IsCurrent = true;
             ProgramListButton.IsCurrent = false;
             SettingsButton.IsCurrent = false;
@@ -487,6 +504,7 @@ namespace Content.Client.PDA
         /// </summary>
         public void HideProgramHeader()
         {
+            if(PipBoyLocked())return;
             ProgramTitle.IsCurrent = false;
             ProgramTitle.Visible = false;
             ProgramCloseButton.Visible = false;
@@ -519,6 +537,7 @@ namespace Content.Client.PDA
         /// </summary>
         public void ChangeView(int view)
         {
+            if(PipBoyLocked() && view!=ProgramContentView)return;
             if (ViewContainer.ChildCount <= view)
                 return;
 

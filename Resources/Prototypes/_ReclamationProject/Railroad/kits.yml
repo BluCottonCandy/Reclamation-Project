@@ -62,7 +62,7 @@
   parent: KitBase
   id: RailroadKitMedic
   name: Railroad safehouse medic kit
-  description: "Patch up runaways and wounded agents. Contains 1 stocked medical belt, 1 compact defibrillator, a health scanner, a folded body bag, 1 blood pack, a CPR training manual, a surgical duffel bag stocked with surgical tools, a bottle of ethanol, sterile latex gloves, a sterile mask, and 1 MRE kit."
+  description: "Patch up runaways and wounded agents. Contains 1 stocked medical belt, 1 compact defibrillator, a folded body bag, 1 blood pack, a CPR training manual, a surgical belt stocked with surgical tools, an N14 health scanner, and a bottle of ethanol, sterile latex gloves, a separate sterile mask, and 1 MRE kit."
   components:
   - type: Sprite
     state: medic
@@ -71,12 +71,10 @@
     - id: N14BoxCardboardMREBoxCFilled
     - id: N14ClothingBeltMedicalFilled
     - id: DefibrillatorCompact
-    - id: N14HandheldHealthAnalyzer
     - id: BodyBagFolded
     - id: Bloodpack
     - id: ReclamationTrainingManualCPR
-    - id: ClothingBackpackDuffelSurgeryFilled
-    - id: N14Ethanol
+    - id: ReclamationClothingBeltSurgicalFilled
     - id: ClothingHandsGlovesLatex
     - id: ClothingMaskSterile
     sound:

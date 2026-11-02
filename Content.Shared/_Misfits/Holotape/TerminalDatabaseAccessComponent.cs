@@ -9,4 +9,9 @@ namespace Content.Shared._Misfits.Holotape;
 /// <see cref="HolotapeDataComponent"/>.
 /// </summary>
 [RegisterComponent]
-public sealed partial class TerminalDatabaseAccessComponent : Component;
+public sealed partial class TerminalDatabaseAccessComponent : Component
+{
+    /// <summary>Use this terminal's persistent notebook identity, with public local access.</summary>
+    [DataField]
+    public bool LocalDatabase;
+}

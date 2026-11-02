@@ -10,6 +10,21 @@
   - type: JunkPileSearchable
     searchDuration: 0.2
     cooldownSeconds: 3600
+    bonusContents:
+    - id: ReclamationHolotapeRedMenace
+      prob: 0.05
+    - id: ReclamationHolotapeClassicRedMenace
+      prob: 0.05
+    - id: ReclamationHolotapeAtomicDefense
+      prob: 0.05
+    - id: ReclamationHolotapeZetanSiege
+      prob: 0.05
+    - id: ReclamationHolotapeVaultRunner
+      prob: 0.05
+    - id: ReclamationHolotapeWastelandQuest
+      prob: 0.05
+    - id: ReclamationHolotapeRobotRevolt
+      prob: 0.05
   - type: LuckJunkBonus
   - type: Sprite
     sprite: _Nuclear14/Structures/Decoration/crafting_junk.rsi

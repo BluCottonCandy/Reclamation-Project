@@ -9,19 +9,14 @@
   children:
   - N14Basics
   - ReclamationPersonalBunkers
+  - ReclamationBunkerComputers
   - ReclamationSpecial
-  - ReclamationBruiserKit
 
 - type: guideEntry
   id: N14Basics
   name: guide-entry-basics
   text: "/ServerInfo/_Misfits/Guidebooks/Survival/Basics.xml"
   filterEnabled: True
-
-- type: guideEntry
-  id: ReclamationBruiserKit
-  name: guide-entry-bruiser-kit
-  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/Bruiser.xml"
 
 - type: guideEntry
   id: ReclamationEnraged
@@ -82,3 +77,8 @@
   id: ReclamationPersonalBunkers
   name: guide-entry-personal-bunkers
   text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/PersonalBunkers.xml"
+
+- type: guideEntry
+  id: ReclamationBunkerComputers
+  name: guide-entry-bunker-computers
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/BunkerComputers.xml"

@@ -13376,3 +13376,162 @@ Entries:
   id: 6578
   time: '2026-10-31T06:33:29.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/106
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Craft mannequins from 5 wood with no rods; their equipped clothing
+        displays correctly and persists in bunker saves.
+    - type: Tweak
+      message: >-
+        Armor left behind in a saved bunker becomes decorative and provides no
+        protection, including stored armor and armor on mannequins. Worn and
+        carried-out armor remains functional.
+    - type: Fix
+      message: >-
+        Decorative armor stays decorative after reloading a bunker, including
+        older saves.
+    - type: Add
+      message: >-
+        Craft weapon plaques from 2 wood to display a gun or melee weapon of any
+        size.
+    - type: Add
+      message: >-
+        Craft showers from 3 steel, all 10 carpet colors and all available
+        curtain colors from 2 cloth, self-powered wall lights from 2 steel, and
+        12 light-tube colors from 2 glass.
+    - type: Fix
+      message: >-
+        Carpet and light-tube crafting consumes the correct materials instead of
+        refunding them. Curtains have no automatic locks or keys, and old
+        generated curtain locks clear on reload.
+    - type: Fix
+      message: >-
+        Weapon plaques and wall lights can be placed on bunker walls; furniture
+        recipes appear in the G menu.
+    - type: Add
+      message: >-
+        Craft compact and classic bunker computers from 10 steel, 4 LV wire, 2
+        junk circuit boards, 2 electronic scrap, and 1 glass.
+    - type: Add
+      message: >-
+        Each computer has its own persistent notebook and database, accessible
+        to its users and separate from other computers and faction databases.
+    - type: Add
+      message: >-
+        Computer desktop apps for Command Screen, Terminal Notes, Database,
+        exterior Map, Messenger, Public Chat, Settings, Lock Screen, and the
+        inserted holotape game.
+    - type: Add
+      message: >-
+        A command prompt with greetings, help, and session-only input/output
+        history that clears when closed.
+    - type: Add
+      message: >-
+        Public computer chat with up to 200 recent messages per round, plus
+        private messaging with computer profiles and Pip-Boy numbers. Computer
+        chat history resets each round.
+    - type: Add
+      message: >-
+        Character profiles with persistent descriptions and cosmetic icons.
+        Names cannot be edited; icon names are generic and alphabetized, with
+        larger profile icons and previews.
+    - type: Fix
+      message: >-
+        Computer and Pip-Boy locks cannot be bypassed by closing the lock app,
+        switching programs, or reopening the device. Locked app requests are
+        rejected by the server.
+    - type: Fix
+      message: Messenger opens safely even when no other recipients are available.
+    - type: Fix
+      message: >-
+        The map viewer avoids invalid fallback bounds on maps without a preset
+        configuration.
+    - type: Add
+      message: >-
+        Seven playable holotapes: Vault Carnage, Red Menace, Atomic Defense,
+        Zetan Siege, Vault Runner, Wasteland Quest, and Robot Revolt. Insert the
+        matching tape to launch; Escape or tape ejection closes the game without
+        saving progress.
+    - type: Add
+      message: >-
+        Vault Carnage has nine sequential chambers with varied layouts, five
+        enemy types, cloudy skies through sealed windows, wall/floor details,
+        and a bottom status display.
+    - type: Add
+      message: >-
+        Vault Carnage weapon pickups include shotgun, missile launcher, and dual
+        pistols, with reload animations and total capacities of 10 shells, 5
+        missiles, and 50 dual-pistol rounds. The starting pistol has unlimited
+        ammunition.
+    - type: Add
+      message: >-
+        Each Vault Carnage chamber contains a weapon, a 50-HP health pickup, an
+        all-weapon ammo refill, and an armor refill. Clear its enemies to
+        advance.
+    - type: Fix
+      message: >-
+        Arcade aiming matches the rendered playfield at different UI scales,
+        including shots to the right in Atomic Defense. Interceptors detonate at
+        the selected target.
+    - type: Add
+      message: >-
+        Wasteland Quest is a text RPG with a two-person party chosen from an
+        archer, barbarian, mage, thief, and warrior, each with a distinct
+        personality and skill.
+    - type: Add
+      message: >-
+        Wasteland Quest includes branching forest, lake, and hill exploration,
+        turn-based combat, potions, shops, experience, levels, tavern healing,
+        three warding seals, and a final story encounter.
+    - type: Fix
+      message: >-
+        Breaking a crafted computer returns its materials and drops an inserted
+        game tape intact; dismantling requires the tape to be removed first.
+    - type: Add
+      message: >-
+        Expanded Personal Bunkers guidebook instructions for decorative
+        equipment, furniture, computers, messaging, profiles, security, and all
+        seven games.
+    - type: Add
+      message: >-
+        Each of the seven game holotapes has an independent 5% bonus chance on a
+        successful junk-pile search, alongside normal loot. Cancelled searches
+        and reopening depleted piles do not grant extra rolls.
+    - type: Add
+      message: >-
+        A dedicated Bunker PCs guidebook entry under Survival covers crafting,
+        apps, per-computer records, messaging, profiles, security, and all seven
+        games.
+  id: 6579
+  time: '2026-11-01T14:30:46.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/107
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Surgical belts using the EMT belt appearance, with room for a full set
+        of surgical tools, an N14 health scanner, and ethanol for cleaning
+        tools.
+    - type: Tweak
+      message: >-
+        Wasteland Doc, Minutemen medic, Railroad medic, NCR surgeon, and
+        military-police medic kits now provide stocked surgical belts instead of
+        surgical duffels.
+    - type: Tweak
+      message: >-
+        These kits supply sterile masks separately; masks cannot be stored in
+        surgical belts. Scanners and ethanol are included inside the stocked
+        belt without duplicates.
+    - type: Fix
+      message: >-
+        The NCR surgeon kit now supplies valid spare .45 pistol magazines
+        instead of an abstract prototype that prevented it from opening
+        correctly.
+    - type: Add
+      message: >-
+        Updated surgical-kit descriptions and the Surgery guidebook with
+        surgical belt contents and mask storage instructions.
+  id: 6580
+  time: '2026-11-01T14:36:27.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/108

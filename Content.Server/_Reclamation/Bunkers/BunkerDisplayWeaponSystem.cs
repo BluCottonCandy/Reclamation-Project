@@ -1,12 +1,11 @@
-using System.Linq;
+using Content.Shared.Armor;
+using Content.Shared.Clothing.Components;
+using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Components;
-using Content.Shared.PowerCell.Components;
-using Content.Shared.PowerCell.Components;
-using Content.Shared.PowerCell.Components;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.PowerCell;
 using Content.Shared.Weapons.Melee;
@@ -31,15 +30,47 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
         "Sharp", "EmbeddableProjectile", "MeleeChemicalInjector", "MeleeStaminaCost",
         "UseDelay", "Projectile", "Explosive", "OnUseTimerTrigger", "TriggerOnUse"
     };
+    // Armor on mannequins and inside nested containers uses the same departure/save path as weapons.
+    private static readonly string[] ArmorProtection =
+    {
+        "Armor", "PowerArmorIntegrity", "PowerArmorBrace", "Reflect", "ExplosionResistance",
+        "StaminaDamageResistance", "FireProtection", "TemperatureProtection", "PressureProtection",
+        "EyeProtection", "GloveHeatResistance", "Insulated", "DiseaseProtection",
+        "ClothingModifyStunTime", "SpearBlock"
+    };
+
     public override void Initialize()
     {
         SubscribeLocalEvent<BunkerDisplayWeaponComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<BunkerDisplayArmorComponent, MapInitEvent>(OnArmorMapInit);
+        SubscribeLocalEvent<BunkerDisplayArmorComponent, ExaminedEvent>(OnArmorExamine);
         SubscribeLocalEvent<BunkerDisplayWeaponComponent, ShotAttemptedEvent>(OnShoot);
         SubscribeLocalEvent<BunkerDisplayWeaponComponent, ContainerIsInsertingAttemptEvent>(OnInsert);
         SubscribeLocalEvent<BunkerDisplayWeaponComponent, MeleeHitEvent>(OnMelee);
         SubscribeLocalEvent<BunkerDisplayWeaponComponent, ExaminedEvent>(OnExamine);
     }
     private void OnMapInit(Entity<BunkerDisplayWeaponComponent> ent, ref MapInitEvent args) => Decommission(ent);
+    private void OnArmorMapInit(Entity<BunkerDisplayArmorComponent> ent, ref MapInitEvent args) => DecommissionArmor(ent);
+    private void OnArmorExamine(Entity<BunkerDisplayArmorComponent> ent, ref ExaminedEvent args)
+        => args.PushMarkup(Loc.GetString("bunker-display-armor-examine"));
+
+    /// <summary>Keep the original clothing visuals and slots, but permanently strip its protection.</summary>
+    public void DecommissionArmor(EntityUid uid)
+    {
+        if (HasComp<MobStateComponent>(uid)) return;
+        var protective = HasComp<ArmorComponent>(uid) || HasComp<PowerArmorIntegrityComponent>(uid)
+            || HasComp<BunkerDisplayArmorComponent>(uid);
+        if (!protective && HasComp<ClothingComponent>(uid))
+            foreach (var name in ArmorProtection)
+                if (_factory.TryGetRegistration(name, out var registration)
+                    && EntityManager.HasComponent(uid, registration.Type)) protective = true;
+        if (!protective) return;
+        EnsureComp<BunkerDisplayArmorComponent>(uid);
+        foreach (var name in ArmorProtection)
+            if (_factory.TryGetRegistration(name, out var registration))
+                EntityManager.RemoveComponent(uid, registration.Type);
+    }
+
     private void OnShoot(Entity<BunkerDisplayWeaponComponent> ent, ref ShotAttemptedEvent args) => args.Cancel();
     private void OnInsert(Entity<BunkerDisplayWeaponComponent> ent, ref ContainerIsInsertingAttemptEvent args) => args.Cancel();
     private void OnExamine(Entity<BunkerDisplayWeaponComponent> ent, ref ExaminedEvent args)
@@ -54,6 +85,7 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
 
     public void Decommission(EntityUid uid)
     {
+        DecommissionArmor(uid);
         if (HasComp<MobStateComponent>(uid) || (!HasComp<GunComponent>(uid) && !HasComp<MeleeWeaponComponent>(uid)
             && !HasComp<BunkerDisplayWeaponComponent>(uid))) return;
         EnsureComp<BunkerDisplayWeaponComponent>(uid);

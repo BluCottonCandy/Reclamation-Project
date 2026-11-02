@@ -204,7 +204,7 @@ public sealed class WastelandMapSystem : EntitySystem
     // #Misfits Add - Compute the combined world AABB of all grids on a MapId.
     private Box2 ComputeMapBounds(MapId mapId)
     {
-        var bounds = new Box2(float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+        var bounds = default(Box2);
         var any = false;
 
         foreach (var grid in _mapManager.GetAllGrids(mapId))
@@ -212,7 +212,6 @@ public sealed class WastelandMapSystem : EntitySystem
             var gridBounds = grid.Comp.LocalAABB;
             if (gridBounds.IsEmpty())
                 continue;
-            any = true;
             // #Misfits Fix - Map-grid combos may have empty LocalAABB but non-empty tile data.
             // Compute from tiles in that case (same pattern as MapPainter).
             if (gridBounds.IsEmpty() && grid.Comp.ChunkCount > 0)
@@ -230,10 +229,10 @@ public sealed class WastelandMapSystem : EntitySystem
                 if (minX <= maxX)
                 {
                     gridBounds = new Box2(minX, minY, maxX + 1, maxY + 1);
-                    any = true;
-                }
+                        }
             }
-            bounds = bounds.Union(gridBounds);
+            bounds = any ? bounds.Union(gridBounds) : gridBounds;
+            any = true;
         }
 
         return any ? bounds : new Box2(-517, -308, 484, 311); // fallback to Wendover bounds

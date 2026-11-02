@@ -1,7 +1,7 @@
 - type: entity
   name: shower
   id: Shower
-  description: A shower, complete with bluespace water.
+  description: A wall-mounted shower with a steady supply of water.
   placement:
     mode: SnapgridCenter
     snap:

@@ -94,11 +94,11 @@
   - type: Ammo
     muzzleFlash: CrystalizingCryolatorMuzzleFlashEffect
   - type: Projectile
-    impactEffect: BulletCrystalizingCryolatorImpactEffect
     damage:
       types:
-        Pierce: 20        
+        Piercing: 15
         Cold: 20
+    impactEffect: BulletCrystalizingCryolatorImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
 

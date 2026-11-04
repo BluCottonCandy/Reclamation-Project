@@ -13589,3 +13589,12 @@ Entries:
   id: 6584
   time: '2026-11-04T07:59:00.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/112
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: Bunker saves no longer fail because of the 1,000-entity or 4 MiB limits.
+    - type: Tweak
+      message: Bunker snapshots larger than 4 MiB can be loaded.
+  id: 6585
+  time: '2026-11-04T10:50:38.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/114

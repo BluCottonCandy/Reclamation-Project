@@ -1,3 +1,8 @@
+using Content.Server.Mail.Components;
+using Content.Shared.Access.Components;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Armor;
 using Content.Shared.Clothing.Components;
 using Content.Shared._Misfits.PowerArmor;
@@ -21,6 +26,9 @@ namespace Content.Server._Reclamation.Bunkers;
 public sealed class BunkerDisplayWeaponSystem : EntitySystem
 {
     [Dependency] private readonly IComponentFactory _factory = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly TagSystem _tags = default!;
     private static readonly string[] Disabled =
     {
@@ -43,6 +51,8 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
 
     public override void Initialize()
     {
+        SubscribeLocalEvent<BunkerDisplayItemComponent, MapInitEvent>(OnItemMapInit);
+        SubscribeLocalEvent<BunkerDisplayItemComponent, ContainerIsInsertingAttemptEvent>(OnItemInsert);
         SubscribeLocalEvent<BunkerDisplayWeaponComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BunkerDisplayArmorComponent, MapInitEvent>(OnArmorMapInit);
         SubscribeLocalEvent<BunkerDisplayArmorComponent, ExaminedEvent>(OnArmorExamine);
@@ -85,8 +95,70 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
         args.ModifiersList.Clear();
     }
 
+    private void OnItemMapInit(Entity<BunkerDisplayItemComponent> ent, ref MapInitEvent args) => DecommissionItem(ent);
+    private void OnItemInsert(Entity<BunkerDisplayItemComponent> ent, ref ContainerIsInsertingAttemptEvent args) => args.Cancel();
+
+    private void RemoveComponents(EntityUid uid, params string[] names)
+    {
+        foreach (var name in names)
+            if (_factory.TryGetRegistration(name, out var registration))
+                EntityManager.RemoveComponent(uid, registration.Type);
+    }
+
+    private void DecommissionItem(EntityUid uid)
+    {
+        var ammo = !HasComp<GunComponent>(uid) && HasComp<BallisticAmmoProviderComponent>(uid);
+        var id = HasComp<IdCardComponent>(uid);
+        if (!ammo && !id && !HasComp<BunkerDisplayItemComponent>(uid)) return;
+        var display = EnsureComp<BunkerDisplayItemComponent>(uid);
+        if (display.OriginalName.Length == 0) display.OriginalName = Name(uid);
+        display.Ammo |= ammo;
+        display.Id |= id;
+        if (display.Ammo)
+        {
+            var children = Transform(uid).ChildEnumerator;
+            var cartridges = new List<EntityUid>();
+            while (children.MoveNext(out var child))
+                if (HasComp<AmmoComponent>(child)) cartridges.Add(child);
+            foreach (var child in cartridges) Del(child);
+            RemoveComponents(uid, "BallisticAmmoProvider", "MagazineAmmoProvider", "ContainerAmmoProvider", "BasicEntityAmmoProvider", "StorageFill");
+            _appearance.SetData(uid, AmmoVisuals.AmmoCount, 1);
+            _appearance.SetData(uid, AmmoVisuals.AmmoMax, 1);
+            _appearance.SetData(uid, AmmoVisuals.HasAmmo, true);
+            _appearance.SetData(uid, AmmoVisuals.MagLoaded, true);
+        }
+        if (display.Id)
+            RemoveComponents(uid, "IdCard", "Access", "PresetIdCard", "NanoChatCard", "StationRecordKeyStorage", "AgentIDCard");
+        _metadata.SetEntityName(uid, $"decorative {display.OriginalName}");
+        _metadata.SetEntityDescription(uid, display.Id
+            ? "A decommissioned ID kept for display. It provides no identification, access or messaging."
+            : "An inert ammunition display. It cannot hold or supply ammunition.");
+    }
+
+    private void NormalizeStims(EntityUid uid)
+    {
+        if (!TryComp<SolutionComponent>(uid, out var component)) return;
+        var solution = component.Solution;
+        var canReact = solution.CanReact;
+        solution.CanReact = false;
+        try
+        {
+            foreach (var reagent in solution.Contents.ToArray())
+            {
+                if (reagent.Reagent.Prototype != "RobustHealingMixture" && reagent.Reagent.Prototype != "UltraRobustHealingMixture") continue;
+                _solutions.RemoveReagent((uid, component), reagent);
+                _solutions.TryAddReagent((uid, component), "HealingMixture", reagent.Quantity);
+            }
+        }
+        finally { solution.CanReact = canReact; }
+    }
+
     public void Decommission(EntityUid uid)
     {
+        // Delete parcels without opening them; the mail teleporter machine is deliberately retained.
+        if (HasComp<MailComponent>(uid)) { Del(uid); return; }
+        NormalizeStims(uid);
+        DecommissionItem(uid);
         // A toolbox is working storage, even though it can also be swung as a weapon.
         if (_tags.HasTag(uid, "Toolbox"))
         {
@@ -104,7 +176,8 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
         foreach (var child in contents)
         {
             if (HasComp<GunComponent>(child) || HasComp<MeleeWeaponComponent>(child)) Decommission(child);
-            else if (HasComp<AmmoComponent>(child) || HasComp<BallisticAmmoProviderComponent>(child) || HasComp<PowerCellComponent>(child)) Del(child);
+            else if (HasComp<BallisticAmmoProviderComponent>(child)) DecommissionItem(child);
+            else if (HasComp<AmmoComponent>(child) || HasComp<PowerCellComponent>(child)) Del(child);
         }
         foreach (var name in Disabled)
             if (_factory.TryGetRegistration(name, out var registration))

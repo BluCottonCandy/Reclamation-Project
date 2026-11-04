@@ -11,6 +11,11 @@ Dispenser source bottles, inserted beakers, and their remaining chemicals are pr
 
 ## Display weapons and armor
 
+Ammo boxes and magazines left in the saved room become decorative: they still look filled but cannot hold or supply ammunition. IDs become decorative and lose access, identification and messaging functionality.
+
+Super and ultra stim liquids left in the room become normal stim liquid when saved, keeping the same volume and container names. Mail and parcels are deleted on save. The mail machine stays.
+
+
 Toolboxes are excluded from decorative weapon conversion and remain usable storage after saving.
 
 Weapons left in the room become permanent decorations after the last occupant leaves, even inside containers. Weapons remain functional while someone is inside. Guns lose their loaded ammunition and cannot shoot or be reloaded. Melee weapons lose their original damage and deal only 1 blunt. Taking a display weapon out of the room does not restore it.

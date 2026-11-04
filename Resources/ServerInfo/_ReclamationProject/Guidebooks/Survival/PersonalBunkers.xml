@@ -9,6 +9,10 @@ Rooms save when the last occupant leaves, with a final safety save at round end 
 
 Dispenser source bottles, inserted beakers, and their remaining chemicals are preserved when your room reloads. Chemistry-set buffers do not trigger reactions when the room reloads; use a suitable reaction container to mix chemicals. Shelves can be opened normally after returning.
 
+## Save failures
+
+If a save fails, an empty room still unloads after its normal grace period rather than repeatedly retrying. Its last successful save is retained, but changes since that save may be lost.
+
 ## Display weapons and armor
 
 Ammo boxes and magazines left in the saved room become decorative: they still look filled but cannot hold or supply ammunition. IDs become decorative and lose access, identification and messaging functionality.

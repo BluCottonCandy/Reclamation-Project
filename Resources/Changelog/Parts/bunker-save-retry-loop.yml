@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Empty bunkers now unload even if saving fails, preventing an endless save retry loop. The last successful save is kept, but unsaved changes may be lost.

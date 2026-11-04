@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Content.Server.Administration.Managers;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Database;
 using Content.Server.GameTicking;
@@ -65,6 +66,8 @@ public sealed class PersonalBunkerSystem : EntitySystem
     [Dependency] private readonly BunkerDisplayWeaponSystem _displays = default!;
 
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
+
+    [Dependency] private readonly IAdminManager _admins = default!;
 
     private sealed record Identity(string Account, Task<int?> Profile);
     private sealed class Room(string key, EntityUid map, EntityUid grid, EntityUid hatch)
@@ -363,6 +366,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
         {
             _forcedExits.Remove(body);
             if (!Exists(body)) continue;
+            if (IsActiveAdminGhost(body)) continue;
             if (_mobState.IsAlive(body) && TryComp<ActorComponent>(body, out var actor)
                 && actor.PlayerSession.Status == SessionStatus.InGame) continue;
             var room = _rooms.Values.FirstOrDefault(room => room.Map == Transform(body).MapUid);
@@ -380,6 +384,14 @@ public sealed class PersonalBunkerSystem : EntitySystem
         return false;
     }
 
+    private bool IsActiveAdminGhost(EntityUid uid)
+    {
+        return HasComp<GhostComponent>(uid)
+            && TryComp<ActorComponent>(uid, out var actor)
+            && actor.PlayerSession.Status == SessionStatus.InGame
+            && _admins.IsAdmin(actor.PlayerSession);
+    }
+
     private void EvictUnattendedGhosts()
     {
         foreach (var room in _rooms.Values.ToArray())
@@ -388,7 +400,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
             var ghosts = new List<EntityUid>();
             var query = EntityQueryEnumerator<GhostComponent, TransformComponent>();
             while (query.MoveNext(out var ghost, out _, out var transform))
-                if (transform.MapUid == room.Map) ghosts.Add(ghost);
+                if (transform.MapUid == room.Map && !IsActiveAdminGhost(ghost)) ghosts.Add(ghost);
             foreach (var ghost in ghosts) ReturnToHatch(room, ghost);
         }
     }

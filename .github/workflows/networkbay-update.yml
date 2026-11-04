@@ -553,9 +553,21 @@ jobs:
                       if len(payload['files']) != 1:
                           raise StageError('Expected one atomic file move.')
                       move = payload['files'][0]
-                      return request_api(path, 'PATCH', {
-                          'path': server_path(payload['root'], move['from']),
-                          'to': server_path(payload['root'], move['to'])}, timeout)
+                      source = server_path(payload['root'], move['from'])
+                      destination = server_path(payload['root'], move['to'])
+                      batch = scratch / 'rename.batch'
+                      batch.write_text(f'rename "{source}" "{destination}"\n')
+                      moved = subprocess.run([
+                          'sftp', '-q', '-b', str(batch), '-i', str(keyfile), '-P', port,
+                          '-o', 'BatchMode=yes', '-o', 'IdentitiesOnly=yes', '-o', 'ConnectTimeout=20',
+                          '-o', 'PasswordAuthentication=no', '-o', 'KbdInteractiveAuthentication=no',
+                          '-o', 'StrictHostKeyChecking=yes', '-o', 'HostKeyAlgorithms=ssh-ed25519',
+                          '-o', f'UserKnownHostsFile={hosts}', '-o', 'GlobalKnownHostsFile=/dev/null',
+                          f'{username}@{host}'
+                      ], capture_output=True, timeout=60, check=False)
+                      if moved.returncode:
+                          raise StageError('SFTP atomic file move failed; inspect recovery directories.')
+                      return None
                   if path == '/files/decompress':
                       return request_api(path, 'POST', {
                           'path': server_path(payload['root'], payload['file'])}, timeout)

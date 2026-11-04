@@ -102,16 +102,28 @@ jobs:
                   return None
           request = urllib.request.Request(
               f'{panel}/api/client/servers/{server}/resources',
-              headers={'Authorization': f'Bearer {token}', 'Accept': 'application/json'})
+              headers={'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.wisp.v1+json',
+                       'Content-Type': 'application/json', 'User-Agent': 'Reclamation-GitHub-Updater/1.0'})
           try:
               opener = urllib.request.build_opener(NoRedirect())
               with opener.open(request, timeout=30) as response:
                   result = json.load(response)
+              if 'attributes' not in result or 'current_state' not in result.get('attributes', {}):
+                  print('Host resource response fields:', ', '.join(sorted(result)))
+                  print('Host numeric power status:', result.get('status'))
+                  sys.exit('Host API response needs a verified NetworkBay adapter; no changes made.')
               state = result['attributes']['current_state']
               if state not in ('running', 'offline', 'starting', 'stopping'):
                   sys.exit('NETWORKBAY returned an unexpected server state.')
               print(f'NETWORKBAY API connection successful. Server state: {state}')
           except urllib.error.HTTPError as error:
+              print('Response type:', error.headers.get('Content-Type', 'unknown'))
+              print('Response server:', error.headers.get('Server', 'unknown'))
+              try:
+                  failure = json.load(error)
+                  print('Error classes:', [item.get('code', '') for item in failure.get('errors', []) if isinstance(item, dict)])
+              except (ValueError, AttributeError):
+                  pass
               sys.exit(f'NETWORKBAY API check failed: HTTP {error.code}. Response body withheld.')
           except (urllib.error.URLError, TimeoutError, ValueError, KeyError):
               sys.exit('NETWORKBAY API check failed: network or unexpected response. Details withheld.')
@@ -500,7 +512,8 @@ jobs:
                   body = json.dumps(payload).encode() if payload is not None else None
                   request = urllib.request.Request(base + path, data=body, method=method, headers={
                       'Authorization': 'Bearer ' + token,
-                      'Accept': 'application/json', 'Content-Type': 'application/json'
+                      'Accept': 'application/vnd.wisp.v1+json', 'Content-Type': 'application/json',
+                      'User-Agent': 'Reclamation-GitHub-Updater/1.0'
                   })
                   try:
                       with opener.open(request, timeout=timeout) as response:

@@ -5,11 +5,11 @@
   description: Standard Institute equipment issued for this role.
   components:
   - type: Sprite
-    sprite: _ReclamationProject/Institute/ScientistLabcoat.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/Labcoat.rsi
   - type: Clothing
-    sprite: _ReclamationProject/Institute/ScientistLabcoat.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/Labcoat.rsi
   - type: Item
-    sprite: _ReclamationProject/Institute/ScientistLabcoat.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/Labcoat.rsi
 
 - type: entity
   parent: ClothingUniformJumpsuitScientist
@@ -18,11 +18,11 @@
   description: Standard Institute equipment issued for this role.
   components:
   - type: Sprite
-    sprite: _ReclamationProject/Institute/ScientistUniform.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/Uniform.rsi
   - type: Clothing
-    sprite: _ReclamationProject/Institute/ScientistUniform.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/Uniform.rsi
   - type: Item
-    sprite: _ReclamationProject/Institute/ScientistUniform.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/Uniform.rsi
 
 - type: entity
   parent: ClothingUniformJumpskirtScientist
@@ -225,11 +225,11 @@
   description: Standard Institute equipment issued for this role.
   components:
   - type: Sprite
-    sprite: _ReclamationProject/Institute/SecurityHelmet.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/SynthHelmet.rsi
   - type: Clothing
-    sprite: _ReclamationProject/Institute/SecurityHelmet.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/SynthHelmet.rsi
   - type: Item
-    sprite: _ReclamationProject/Institute/SecurityHelmet.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/SynthHelmet.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -245,9 +245,15 @@
 - type: entity
   parent: ClothingHeadHelmetSwat
   id: InstituteCourserHelmet
-  name: Institute Courser helmet
+  name: Institute Courser field helmet
   description: Standard Institute equipment issued for this role.
   components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/CourserFieldHelmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/CourserFieldHelmet.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/CourserFieldHelmet.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -282,9 +288,15 @@
 - type: entity
   parent: ClothingOuterArmorSwat
   id: InstituteCourserArmor
-  name: Institute Courser SWAT vest
+  name: Institute Courser coat
   description: Standard Institute equipment issued for this role.
   components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/CourserCoat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/CourserCoat.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/CourserCoat.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -333,3 +345,87 @@
         Slash: 0.6
         Piercing: 0.6
         Heat: 0.6
+
+# Sprites by skaothi; attribution and license are recorded in the RSI metadata.
+- type: entity
+  parent: InstituteScientistUniform
+  id: InstituteAdvancedSystemsUniform
+  name: Institute Advanced Systems uniform
+  description: A white Institute uniform bearing the red markings of Advanced Systems.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/AdvancedSystemsUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/AdvancedSystemsUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/AdvancedSystemsUniform.rsi
+
+# Sprites by skaothi; attribution and license are recorded in the RSI metadata.
+- type: entity
+  parent: InstituteScientistUniform
+  id: InstituteBioscienceUniform
+  name: Institute Bioscience uniform
+  description: A white Institute uniform bearing the green markings of Bioscience.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/BioscienceUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/BioscienceUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/BioscienceUniform.rsi
+
+# Sprites by skaothi; attribution and license are recorded in the RSI metadata.
+- type: entity
+  parent: InstituteScientistUniform
+  id: InstituteEngineerUniform
+  name: Institute engineering uniform
+  description: A white Institute uniform bearing the yellow markings of the engineering division.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/EngineerUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/EngineerUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/EngineerUniform.rsi
+
+# Sprites by skaothi; attribution and license are recorded in the RSI metadata.
+- type: entity
+  parent: InstituteScientistUniform
+  id: InstituteSynthRetentionUniform
+  name: Institute Synth Retention Bureau uniform
+  description: A white Institute uniform bearing the dark markings of the Synth Retention Bureau.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/SynthRetentionUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/SynthRetentionUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/SynthRetentionUniform.rsi
+
+# Sprites by skaothi; attribution and license are recorded in the RSI metadata.
+- type: entity
+  parent: ClothingUniformBase
+  id: InstituteCourserLeatherUniform
+  name: Institute Courser leather uniform
+  description: A dark leather uniform issued to Institute Coursers.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/CourserLeatherUniform.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/CourserLeatherUniform.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/CourserLeatherUniform.rsi
+
+# Sprites by skaothi; attribution and license are recorded in the RSI metadata.
+- type: entity
+  parent: InstituteCourserArmor
+  id: InstituteCourserCoatAlternate
+  name: Institute Courser coat, alternate
+  description: An alternate dark coat issued to Institute Coursers.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/Skaothi/CourserCoatAlternate.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Institute/Skaothi/CourserCoatAlternate.rsi
+  - type: Item
+    sprite: _ReclamationProject/Institute/Skaothi/CourserCoatAlternate.rsi

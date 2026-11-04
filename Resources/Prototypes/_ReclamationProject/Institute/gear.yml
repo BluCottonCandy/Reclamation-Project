@@ -67,7 +67,7 @@
     pocket1: InstituteWeaponLaserPistol
     wallet: N14Wallet
     id: InstituteCourserTablet
-    jumpsuit: InstituteSecurityUniform
+    jumpsuit: InstituteCourserLeatherUniform
     head: InstituteCourserHelmet
     shoes: InstituteCourserBoots
     mask: InstituteCourserMask

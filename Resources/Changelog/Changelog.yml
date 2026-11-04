@@ -13568,3 +13568,24 @@ Entries:
   id: 6583
   time: '2026-11-04T07:56:27.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/111
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Chemistry and drink dispensers retain accessible contents after bunker
+        reloads.
+    - type: Fix
+      message: >-
+        Chemistry-set buffers no longer unexpectedly mix or react when a bunker
+        loads.
+    - type: Fix
+      message: >-
+        Shelves and other bunker storage no longer inherit stale interaction
+        cooldowns.
+    - type: Fix
+      message: >-
+        Toolboxes stay functional after saving, and previously decorative
+        toolboxes are repaired on reload.
+  id: 6584
+  time: '2026-11-04T07:59:00.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/112

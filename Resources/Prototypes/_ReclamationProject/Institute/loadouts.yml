@@ -267,3 +267,63 @@
   - !type:CharacterJobRequirement
     jobs: [InstituteSecurity]
   items: [InstituteSecurityMODSuit]
+
+- type: loadout
+  id: LoadoutInstituteAdvancedSystemsUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteAdvancedSystemsUniform]
+
+- type: loadout
+  id: LoadoutInstituteBioscienceUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteBioscienceUniform]
+
+- type: loadout
+  id: LoadoutInstituteEngineerUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteEngineerUniform]
+
+- type: loadout
+  id: LoadoutInstituteSynthRetentionUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteDirector, InstituteDivisionHead, InstituteScientist]
+  items: [InstituteSynthRetentionUniform]
+
+- type: loadout
+  id: LoadoutInstituteCourserLeatherUniform
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [InstituteCourserLeatherUniform]
+
+- type: loadout
+  id: LoadoutInstituteCourserCoatAlternate
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [InstituteCourser]
+  items: [InstituteCourserCoatAlternate]

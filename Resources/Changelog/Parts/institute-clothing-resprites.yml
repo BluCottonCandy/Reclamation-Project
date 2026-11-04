@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Institute uniforms, lab coats, Synth armor and helmets, and Courser outfits now use new sprites by skaothi.
+- type: Add
+  message: Added division uniform choices to Institute science loadouts and an alternate coat for Coursers.

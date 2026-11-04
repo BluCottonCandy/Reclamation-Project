@@ -135,6 +135,6 @@
   description: A white-painted armored vest issued to Institute synths.
   components:
   - type: Sprite
-    sprite: _Reclamation/Clothing/Institute/armor_vest.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/SynthArmor.rsi
   - type: Clothing
-    sprite: _Reclamation/Clothing/Institute/armor_vest.rsi
+    sprite: _ReclamationProject/Institute/Skaothi/SynthArmor.rsi

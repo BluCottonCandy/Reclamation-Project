@@ -13672,3 +13672,16 @@ Entries:
   id: 6588
   time: '2026-11-04T13:47:54.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/117
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Institute uniforms, lab coats, Synth armor and helmets, and Courser
+        outfits now use sprites by skaothi.
+    - type: Add
+      message: >-
+        Institute science roles can choose division uniforms in loadouts, and
+        Coursers have an alternate coat and new leather uniform.
+  id: 6589
+  time: '2026-11-04T20:48:35.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/118

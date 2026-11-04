@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Armor examine details no longer list zero-value protections, including Smithy armor's shock, poison, and caustic entries. Actual protection values are unchanged.
+- type: Fix
+  message: Added a whitelist-only Smithy job slot and dedicated spawn inside the Forged base on Wendover.

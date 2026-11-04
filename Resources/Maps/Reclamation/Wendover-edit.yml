@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/24/2026 07:44:40
-  entityCount: 294457
+  entityCount: 294458
 maps:
 - 1
 grids:
@@ -2334634,6 +2334634,13 @@ entities:
     components:
     - type: Transform
       pos: -127.5,-220.5
+      parent: 1
+- proto: SpawnPointForgedSmithy
+  entities:
+  - uid: 294852
+    components:
+    - type: Transform
+      pos: -174.5,104.5
       parent: 1
 - proto: SpawnPointForgemaster
   entities:

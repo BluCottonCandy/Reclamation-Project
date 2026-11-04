@@ -1,3 +1,5 @@
+using Content.Shared.CCVar;
+using Robust.Shared.Configuration;
 using Content.Server.Access.Systems;
 using Content.Server._Misfits.Requisitions;
 using Content.Server.Cargo.Components;
@@ -51,6 +53,7 @@ namespace Content.Server.Mail.Systems
 {
     public sealed class MailSystem : EntitySystem
     {
+        [Dependency] private readonly IConfigurationManager _configuration = default!;
         [Dependency] private readonly AccessReaderSystem _accessSystem = default!;
         [Dependency] private readonly CargoSystem _cargoSystem = default!;
         [Dependency] private readonly ChatSystem _chatSystem = default!;
@@ -99,6 +102,10 @@ namespace Content.Server.Mail.Systems
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
+
+            // Disabled by default for every teleporter, including machines spawned or restored mid-round.
+            if (!_configuration.GetCVar(CCVars.MailAutomaticDeliveryEnabled))
+                return;
 
             var query = EntityQueryEnumerator<MailTeleporterComponent>();
             while (query.MoveNext(out var uid, out var mailTeleporter))

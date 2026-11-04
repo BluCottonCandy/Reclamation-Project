@@ -195,7 +195,10 @@ public sealed class PersonalBunkerSystem : EntitySystem
         var empty = _rooms.Values.Where(r => r.EmptySince is {} since && _time.CurTime - since >= TimeSpan.FromSeconds(10)).ToArray();
         if (empty.Length > 0)
         {
-            if (!SaveAll()) return;
+            // Attempt once, then retire vacant rooms even if saving failed. Keeping them here
+            // would retry the same failing transaction every two seconds and stall the server.
+            // The previous manifest remains the recovery point when new progress cannot be saved.
+            SaveAll();
             foreach (var room in empty)
             {
                 // Recheck after saving. Never delete an occupied room or its bodies.
@@ -512,7 +515,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
         }
         catch (Exception e)
         {
-            Log.Error($"Bunker save failed; rooms remain loaded and prior manifest is preserved: {e}");
+            Log.Error($"Bunker save failed; prior manifest is preserved. Vacant rooms will unload without retrying; unsaved progress may be lost: {e}");
             return false;
         }
         finally { _savingGrid = null; }

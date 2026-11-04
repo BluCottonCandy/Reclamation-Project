@@ -4,12 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Choose check, build, stage, or deploy (deploy waits for the round to finish)
+        description: Choose check, verify, build, stage, or deploy (deploy waits for the round to finish)
         type: choice
         required: true
         default: check
         options:
           - check
+          - verify
           - build
           - stage
           - deploy
@@ -113,22 +114,6 @@ jobs:
                   sys.exit('NETWORKBAY returned an unexpected server state.')
               print(f'NETWORKBAY API connection successful. Server state: {state}')
 
-              for route in ('/files/list?directory=/', '/files/directory?path=/'):
-                  probe = urllib.request.Request(
-                      f'{panel}/api/client/servers/{server}' + route,
-                      headers={'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.wisp.v1+json',
-                               'Content-Type': 'application/json', 'User-Agent': 'Reclamation-GitHub-Updater/1.0'})
-                  try:
-                      with opener.open(probe, timeout=30) as reply:
-                          listing = json.load(reply)
-                      print('Directory API', route.split('?')[0], 'fields', list(listing))
-                      entries = listing.get('data', [])
-                      if entries:
-                          print('Directory entry fields:', list(entries[0].get('attributes', entries[0])))
-                  except ValueError:
-                      print('Directory API', route.split('?')[0], 'returned non-JSON content')
-                  except urllib.error.HTTPError as probe_error:
-                      print('Directory API', route.split('?')[0], 'HTTP', probe_error.code)
           except urllib.error.HTTPError as error:
               print('Response type:', error.headers.get('Content-Type', 'unknown'))
               print('Response server:', error.headers.get('Server', 'unknown'))
@@ -208,12 +193,13 @@ jobs:
           retention-days: 7
 
   stage:
-    if: (inputs.mode == 'stage' || inputs.mode == 'deploy') && github.ref == 'refs/heads/main'
+    if: always() && github.ref == 'refs/heads/main' && ((inputs.mode == 'verify' && needs.build.result == 'skipped') || ((inputs.mode == 'stage' || inputs.mode == 'deploy') && needs.build.result == 'success'))
     needs: build
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
       - name: Download this run's verified server package
+        if: inputs.mode != 'verify'
         uses: actions/download-artifact@v4
         with:
           name: networkbay-linux-server-${{ github.sha }}
@@ -444,8 +430,6 @@ jobs:
                   api('/files/chmod', 'POST', {
                       'root': '/', 'files': [{'file': 'Robust.Server', 'mode': '755'}]
                   })
-                  if str(listing('/')['Robust.Server'].get('mode_bits', '')).lstrip('0') != '755':
-                      raise StageError('Installed executable permission could not be verified.')
                   print('Installation verified. Starting NETWORKBAY.', flush=True)
                   power('start')
                   wait_for('running', 180)
@@ -502,7 +486,7 @@ jobs:
           
           def main():
               mode = os.environ.get('NETWORKBAY_MODE', 'stage')
-              if mode not in ('stage', 'deploy'):
+              if mode not in ('verify', 'stage', 'deploy'):
                   raise StageError('Invalid workflow mode.')
               if os.environ.get('GITHUB_REF') != 'refs/heads/main':
                   raise StageError('Staging is restricted to the main branch.')
@@ -523,7 +507,7 @@ jobs:
               base = f'{panel}/api/client/servers/{server}'
               opener = urllib.request.build_opener(NoRedirect())
           
-              def api(path, method='GET', payload=None, timeout=45):
+              def request_api(path, method='GET', payload=None, timeout=45):
                   body = json.dumps(payload).encode() if payload is not None else None
                   request = urllib.request.Request(base + path, data=body, method=method, headers={
                       'Authorization': 'Bearer ' + token,
@@ -533,21 +517,95 @@ jobs:
                   try:
                       with opener.open(request, timeout=timeout) as response:
                           content = response.read()
-                          return json.loads(content) if content else None
+                          result = json.loads(content) if content else None
+                          if isinstance(result, dict) and result.get('errors'):
+                              raise StageError('NetworkBay reported an API operation failure; details withheld.')
+                          return result
                   except urllib.error.HTTPError as error:
-                      raise StageError(f'NETWORKBAY API {path.split("?")[0]} failed: HTTP {error.code}.') from None
+                      raise StageError(f'NetworkBay API {path.split("?")[0]} failed: HTTP {error.code}.') from None
                   except (urllib.error.URLError, TimeoutError, ValueError):
-                      raise StageError('NETWORKBAY API network or response error; details withheld.') from None
-          
+                      raise StageError('NetworkBay API network or response error; details withheld.') from None
+
+              def server_path(root, name):
+                  joined = root.rstrip('/') + '/' + name.lstrip('/')
+                  if '..' in PurePosixPath(joined).parts or any(c in joined for c in ('"', '\n', '\r')):
+                      raise StageError('Unsafe remote file path.')
+                  return joined
+
+              def api(path, method='GET', payload=None, timeout=45):
+                  # Preserve the existing promotion/recovery logic while adapting WISP's wire format.
+                  if path == '/resources':
+                      result = request_api(path, timeout=timeout)
+                      state = result.get('status')
+                      if state not in ('running', 'offline', 'starting', 'stopping'):
+                          raise StageError('Unexpected NetworkBay power state.')
+                      process = result.get('process', {})
+                      return {'attributes': {'current_state': state, 'resources': {
+                          'disk_bytes': process.get('disk', {}).get('used', 0)}}}
+                  if path.startswith('/files/contents?'):
+                      filename = urllib.parse.parse_qs(urllib.parse.urlsplit(path).query)['file'][0]
+                      result = request_api('/files/read?' + urllib.parse.urlencode({'path': filename}), timeout=timeout)
+                      return json.loads(result['content'])
+                  if path == '/files/create-folder':
+                      return request_api('/files/directory', 'POST', {
+                          'path': server_path(payload['root'], payload['name'])}, timeout)
+                  if path == '/files/rename':
+                      if len(payload['files']) != 1:
+                          raise StageError('Expected one atomic file move.')
+                      move = payload['files'][0]
+                      return request_api(path, 'PATCH', {
+                          'path': server_path(payload['root'], move['from']),
+                          'to': server_path(payload['root'], move['to'])}, timeout)
+                  if path == '/files/decompress':
+                      return request_api(path, 'POST', {
+                          'path': server_path(payload['root'], payload['file'])}, timeout)
+                  if path == '/files/chmod':
+                      # WISP directory metadata omits permission bits. Verify over the existing SFTP channel.
+                      for file in payload['files']:
+                          if file['mode'] != '755' or file['file'] != 'Robust.Server':
+                              raise StageError('Unexpected permission change.')
+                          remote = server_path(payload['root'], file['file'])
+                          batch = scratch / 'chmod.batch'
+                          batch.write_text(f'chmod 755 "{remote}"\nls -l "{remote}"\n')
+                          result = subprocess.run([
+                              'sftp', '-q', '-b', str(batch), '-i', str(keyfile), '-P', port,
+                              '-o', 'BatchMode=yes', '-o', 'IdentitiesOnly=yes', '-o', 'ConnectTimeout=20',
+                              '-o', 'PasswordAuthentication=no', '-o', 'KbdInteractiveAuthentication=no',
+                              '-o', 'StrictHostKeyChecking=yes', '-o', 'HostKeyAlgorithms=ssh-ed25519',
+                              '-o', f'UserKnownHostsFile={hosts}', '-o', 'GlobalKnownHostsFile=/dev/null',
+                              f'{username}@{host}'
+                          ], capture_output=True, text=True, timeout=60, check=False)
+                          if result.returncode or not any(line.startswith('-rwxr-xr-x')
+                                                          for line in result.stdout.splitlines()):
+                              raise StageError('Could not verify server executable permission over SFTP.')
+                      return None
+                  return request_api(path, method, payload, timeout)
+
               def listing(directory):
-                  result = api('/files/list?' + urllib.parse.urlencode({'directory': directory}))
-                  return {item['attributes']['name']: item['attributes'] for item in result['data']}
-          
+                  entries = {}
+                  page = 1
+                  while page <= 1000:
+                      result = request_api('/files/directory?' + urllib.parse.urlencode({
+                          'path': directory, 'per_page': 25, 'page': page}))
+                      for item in result['data']:
+                          entry = dict(item['attributes'])
+                          entry['is_file'] = entry['type'] == 'file'
+                          entry['is_symlink'] = bool(entry.get('symlink')) or entry['type'] == 'symlink'
+                          if entry['name'] in entries:
+                              raise StageError('Duplicate directory entry; pagination could not be verified.')
+                          entries[entry['name']] = entry
+                      pagination = result.get('meta', {}).get('pagination') or {}
+                      total = pagination.get('totalPages', pagination.get('total_pages', 1))
+                      if page >= int(total):
+                          return entries
+                      page += 1
+                  raise StageError('Directory pagination exceeded the safety limit.')
+
               run = os.environ['GITHUB_RUN_ID']
               attempt = os.environ['GITHUB_RUN_ATTEMPT']
               if not run.isdigit() or not attempt.isdigit():
                   raise StageError('Invalid run identifier.')
-              folder = f'.networkbay-stage-{run}-{attempt}'
+              folder = f'.networkbay-verify-{run}-{attempt}' if mode == 'verify' else f'.networkbay-stage-{run}-{attempt}'
               live = listing('/')
               for name in ('Robust.Server', 'server_config.toml', 'data', 'logs'):
                   if name not in live or live[name].get('is_symlink'):
@@ -561,7 +619,15 @@ jobs:
               with tempfile.TemporaryDirectory(prefix='networkbay-stage-') as scratch:
                   scratch = Path(scratch)
                   package = scratch / 'package.zip'
-                  expected = prepare('package/SS14.Server_linux-x64.zip', package)
+                  source = 'package/SS14.Server_linux-x64.zip'
+                  if mode == 'verify':
+                      source = scratch / 'fixture.zip'
+                      with zipfile.ZipFile(source, 'w') as fixture:
+                          fixture.writestr('Robust.Server', '#!/bin/sh\nexit 0\n')
+                          fixture.writestr('Content.Client.zip', b'connection-test-only')
+                          fixture.writestr('Resources/connection-test.txt', 'isolated deployment verification')
+                      print('Verifying file operations with a tiny isolated fixture; live files and power stay unchanged.', flush=True)
+                  expected = prepare(source, package)
                   required_bytes = package.stat().st_size + sum(expected.values()) + 128 * 1024 * 1024
                   if limit and int(limit) * 1024 * 1024 - before['resources']['disk_bytes'] < required_bytes:
                       raise StageError('Insufficient NETWORKBAY disk quota for archive plus extracted staging files.')
@@ -606,7 +672,6 @@ jobs:
                       '-o', f'UserKnownHostsFile={hosts}', '-o', 'GlobalKnownHostsFile=/dev/null',
                       f'{username}@{host}'
                   ], capture_output=True, timeout=1800, check=False)
-                  keyfile.unlink()
                   if transferred.returncode:
                       raise StageError('SFTP staging upload failed; live files are unchanged.')
                   uploaded = listing('/' + folder).get('package.zip', {})
@@ -629,10 +694,22 @@ jobs:
                   api('/files/chmod', 'POST', {
                       'root': '/' + folder, 'files': [{'file': 'Robust.Server', 'mode': '755'}]
                   })
-                  executable_mode = str(listing('/' + folder)['Robust.Server'].get('mode_bits', ''))
-                  if executable_mode.lstrip('0') != '755':
-                      raise StageError('Could not verify staged executable permission.')
                   print('Staging passed. Live server files and power state were not modified.', flush=True)
+                  if mode == 'verify':
+                      original_config = live['server_config.toml']
+                      api('/files/create-folder', 'POST', {'root': '/' + folder, 'name': 'move-test'})
+                      api('/files/rename', 'PUT', {'root': '/', 'files': [{
+                          'from': folder + '/Resources/connection-test.txt',
+                          'to': folder + '/move-test/connection-test.txt'}]})
+                      if 'connection-test.txt' not in listing('/' + folder + '/move-test'):
+                          raise StageError('Isolated file move could not be verified.')
+                      restored_live = listing('/')
+                      for field in ('size', 'modified_at'):
+                          if restored_live['server_config.toml'].get(field) != original_config.get(field):
+                              raise StageError('Live configuration changed during verification.')
+                      if api('/resources')['attributes']['current_state'] != before['current_state']:
+                          raise StageError('Server power state changed during verification.')
+                      print('Verification passed: API, pinned SFTP, isolated upload/extraction, pagination, chmod and rename. Live files and power unchanged.', flush=True)
                   summary = os.environ.get('GITHUB_STEP_SUMMARY')
                   if summary:
                       with open(summary, 'a', encoding='utf-8') as out:

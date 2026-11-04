@@ -86,8 +86,6 @@ public sealed class PersonalBunkerSystem : EntitySystem
     private TimeSpan _nextScan;
     private bool _stopping;
     private const int MaxRooms = 32;
-    private const int MaxEntities = 1000;
-    private const int MaxSaveBytes = 4 * 1024 * 1024;
 
     public override void Initialize()
     {
@@ -232,7 +230,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
                 if (manifest.TryGetValue(key, out var filename))
                 {
                     var path = SafeFile(filename);
-                    if (!File.Exists(path) || new FileInfo(path).Length > MaxSaveBytes) throw new IOException("Invalid bunker save.");
+                    if (!File.Exists(path)) throw new IOException("Invalid bunker save.");
                     using var reader = File.OpenText(path);
                     if (!_loader.TryLoadGrid(reader, filename, out var loadedMap, out var loadedGrid,
                         new DeserializationOptions { InitializeMaps = true })) throw new IOException("Bunker grid could not be loaded.");
@@ -464,7 +462,6 @@ public sealed class PersonalBunkerSystem : EntitySystem
                 var query = EntityQueryEnumerator<TransformComponent>();
                 while (query.MoveNext(out var uid, out _))
                     if (IsRoomBelonging(uid, room.Grid)) belongings.Add(uid);
-                if (belongings.Count > MaxEntities) throw new IOException("Bunker entity limit exceeded.");
                 // Autosaving an occupied room must never change weapons being used inside it.
                 // Only abandoned room belongings become decorations after the last occupant leaves.
                 if (!Occupied(room))
@@ -477,7 +474,6 @@ public sealed class PersonalBunkerSystem : EntitySystem
                     throw new IOException("Bunker serialization failed.");
                 _savingGrid = null;
                 var yaml = writer.ToString();
-                if (Encoding.UTF8.GetByteCount(yaml) > MaxSaveBytes) throw new IOException("Bunker save size limit exceeded.");
                 var filename = room.Key + "_" + Guid.NewGuid().ToString("N") + ".yml";
                 var path = SafeFile(filename);
                 File.WriteAllText(path, yaml, Encoding.UTF8);

@@ -1,93 +1,60 @@
-Here is the translation with the original Markdown formatting preserved:
+# Reclamation Project
 
-# Nuclear 14 / Misfits: Nuclear Wasteland
+**Reclamation Project** is a Fallout-themed, high-roleplay server for **Space Station 14**. This repository contains our server's code, maps, and content.
 
-**Misfits: Nuclear Wasteland** is a english fork of the first Russian-language adaptation of the original **Nuclear 14** fork, created by Peptide90 in 2022 with contributions from the community. The project combines the best Fallout-themed developments with the capabilities of the Space Station 14 engine.
+Join our community on [Discord](https://discord.gg/bxWtYSzZp) for announcements, development updates, and information about playing or contributing.
 
-## About the Project
+## Our roots
 
-Nuclear 14 is the first Fallout fork for Space Station 14, utilizing:
+Reclamation Project is a fork of [Misfits: Nuclear Wasteland](https://github.com/Misfit-Sanctuary/nuclear-14). Misfits is an English-language fork of the Russian-language adaptation of **Nuclear 14**, originally created by Peptide90 in 2022 with community contributions.
 
-* Assets from various Fallout13 (F13/SS13) builds. Desert Rose 2, Lone Star, etc.
-* Unique materials created by the community
-* A highly modular system from the upstream Einstein Engines repository
+Our project builds on that history, including work from Nuclear 14, Einstein Engines, Space Station 14, and the wider Fallout13/Space Station 13 community. Original contributors retain their credits and the applicable licenses for their work.
 
-The theme and locations differ from classic F13, offering players a new experience. The codebase is licensed under AGPLv3, which allows for free use and development of the project.
+## Community and development
 
-## Features of the Russian Version
+We develop Reclamation Project around our own wasteland setting, maps, and roleplay community. Bug reports, feedback, and contributions are welcome.
 
-Misfits: Nuclear Wasteland adds:
+- [Reclamation Project Discord](https://discord.gg/bxWtYSzZp)
+- [Report a bug](https://github.com/BluCottonCandy/Reclamation-Project/issues)
+- [Contribute a change](https://github.com/BluCottonCandy/Reclamation-Project/pulls)
 
-* Full interface and content localization to English.
-* Regular updates and support
+## Building and running locally
 
-To participate in development, join our [Discord](https://discord.gg/yXsJnq3FbU).
+Install Git and the .NET 10 SDK. The SDK version and roll-forward policy are defined in [global.json](./global.json).
 
-## Links
+Clone this repository and initialize its engine submodule:
 
-* [Discord](https://discord.gg/yXsJnq3FbU) (official community)
-* Game servers: via launcher (`tbd`) or in Discord
+```sh
+git clone --recurse-submodules https://github.com/BluCottonCandy/Reclamation-Project.git
+cd Reclamation-Project
+```
 
-## Building
+If you have already cloned it, initialize or update the submodules:
 
-### Requirements
-
-* Git
-* .NET SDK 10.0.101
+```sh
+git submodule update --init --recursive
+```
 
 ### Windows
 
-1. Clone the repository:
-```sh
-git clone https://github.com/Misfit-Sanctuary/nuclear-14.git
+Build and launch the local client and server:
 
+```bat
+Scripts\bat\buildAllDebug.bat
+Scripts\bat\runQuickAll.bat
 ```
-
-
-2. Initialize submodules:
-```sh
-git submodule update --init --recursive
-
-```
-
-
-3. Build the project:
-```sh
-Scripts/bat/buildAllDebug.bat
-
-```
-
-
-4. Run client and server:
-```sh
-Scripts/bat/runQuickAll.bat
-
-```
-
-
-5. Connect to localhost via the client
 
 ### Linux
 
-Similar to Windows, but use the `.sh` scripts:
-
 ```sh
-Scripts/sh/buildAllDebug.sh
-Scripts/sh/runQuickAll.sh
-
+sh Scripts/sh/buildAllDebug.sh
+sh Scripts/sh/runQuickAll.sh
 ```
 
-### MacOS
+Connect to `localhost` in the client to use your local test server.
 
-Theoretically similar to Linux, but has not been tested
+## Licensing and attribution
 
-## License
+See [LEGAL.md](./LEGAL.md) for the full licensing details, asset credits, and exceptions. Code includes AGPLv3 and earlier MIT-licensed contributions; assets have their own licenses and attribution requirements. Some Reclamation maps have separate license notices.
 
-Detailed information about code and asset licensing is available in [LEGAL.md](https://www.google.com/search?q=./LEGAL.md). Key provisions:
-
-* Code: AGPLv3
-* Assets: individual licenses (check meta.json)
-* Copyright compliance is mandatory
-
----
-
+Check the relevant license and metadata files before reusing code, maps, or artwork. This README does not change any existing licenses or ownership.

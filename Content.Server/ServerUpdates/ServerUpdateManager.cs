@@ -1,4 +1,4 @@
-ï»¿using System.Linq;
+﻿using System.Linq;
 using Content.Server.Chat.Managers;
 using System.Text.Json;
 using System.IO;

@@ -13561,3 +13561,10 @@ Entries:
   id: 6582
   time: '2026-11-02T08:08:04.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/110
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Updated the worn gas mask sprite. Artwork by afuckingheretic9161.
+  id: 6583
+  time: '2026-11-04T07:56:27.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/111

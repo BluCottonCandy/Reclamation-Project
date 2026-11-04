@@ -1,0 +1,10 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Bunker chemistry and drink dispensers retain accessible source bottles and inserted beakers after reloading.
+- type: Fix
+  message: Chemistry-set buffers no longer unexpectedly react when a saved bunker loads.
+- type: Fix
+  message: Wooden shelves and other bunker storage no longer inherit stale interaction cooldowns after reloading.
+- type: Fix
+  message: Toolboxes remain functional after bunker saves, and previously converted toolboxes can be used again when the room loads.

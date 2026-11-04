@@ -13607,3 +13607,48 @@ Entries:
   id: 6586
   time: '2026-11-04T10:50:54.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/115
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Reworked Forged rank outfits and added three specialized kit choices
+        each for Unbranded, Branded, Tempered and Forged.
+    - type: Add
+      message: >-
+        Tempered medical kits include scanners, CPR books, 30 burn mesh and 30
+        sutures; Combat Medics receive two N14 combat medkits.
+    - type: Add
+      message: >-
+        Added Embercleaver, the Forged's unique heat-and-slash machete,
+        alongside revised rank weapons and spare ammunition.
+    - type: Tweak
+      message: >-
+        Revised Branded, Tempered and Smithy armor protection, movement
+        penalties and sprites; Smithy armor has no separate integrity pool.
+    - type: Tweak
+      message: >-
+        All Forged ranks start with Forged gas masks; Branded and Tempered
+        receive matching combat boots and leather gloves.
+    - type: Tweak
+      message: >-
+        Rank IDs are now working lighters, with gold engraved lighters for
+        Smithy and Forge Keeper.
+    - type: Tweak
+      message: >-
+        Every rank kit includes one bandolier; Smithy and Forge Keeper spawn
+        wearing one, and Captive Workers keep their axe.
+    - type: Tweak
+      message: >-
+        Flamer and Incinerator canisters are refillable with welding fuel and
+        provide 100 shots when full.
+    - type: Fix
+      message: >-
+        Smithy is whitelist-only, and leadership starting instructions reflect
+        the revised hierarchy.
+    - type: Fix
+      message: >-
+        Lighter IDs use the proper sprites and activate with Activate Item
+        instead of attempting to equip.
+  id: 6587
+  time: '2026-11-04T12:19:01.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/116

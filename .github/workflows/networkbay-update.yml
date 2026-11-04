@@ -1,4 +1,4 @@
-name: OXY Manual Build
+name: NetworkBay Update
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: oxy-manual
+  group: networkbay-manual
   cancel-in-progress: false
 
 jobs:
@@ -67,7 +67,7 @@ jobs:
       - name: Save server package
         uses: actions/upload-artifact@v4
         with:
-          name: oxy-linux-server-${{ github.sha }}
+          name: networkbay-linux-server-${{ github.sha }}
           path: release/SS14.Server_linux-x64.zip
           if-no-files-found: error
           retention-days: 7
@@ -79,24 +79,24 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - name: Read OXY server status
+      - name: Read NETWORKBAY server status
         env:
-          OXY_API_KEY: ${{ secrets.OXY_API_KEY }}
-          OXY_PANEL_URL: ${{ vars.OXY_PANEL_URL }}
-          OXY_SERVER_ID: ${{ vars.OXY_SERVER_ID }}
+          NETWORKBAY_API_KEY: ${{ secrets.NETWORKBAY_API_KEY }}
+          NETWORKBAY_PANEL_URL: ${{ vars.NETWORKBAY_PANEL_URL }}
+          NETWORKBAY_SERVER_ID: ${{ vars.NETWORKBAY_SERVER_ID }}
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json, os, sys
           import urllib.request, urllib.error
-          panel = os.environ['OXY_PANEL_URL'].rstrip('/')
-          server = os.environ['OXY_SERVER_ID']
-          token = os.environ['OXY_API_KEY']
-          if panel != 'https://panel.oxy.games' or server != '6c120791':
-              sys.exit('OXY panel or server variable does not match the intended server.')
+          panel = os.environ['NETWORKBAY_PANEL_URL'].rstrip('/')
+          server = os.environ['NETWORKBAY_SERVER_ID']
+          token = os.environ['NETWORKBAY_API_KEY']
+          if panel != 'https://panel.naidru.ca' or server != '3f6a75df':
+              sys.exit('NETWORKBAY panel or server variable does not match the intended server.')
           if not token:
-              sys.exit('OXY_API_KEY is missing.')
+              sys.exit('NETWORKBAY_API_KEY is missing.')
           class NoRedirect(urllib.request.HTTPRedirectHandler):
               def redirect_request(self, req, fp, code, msg, headers, newurl):
                   return None
@@ -109,72 +109,74 @@ jobs:
                   result = json.load(response)
               state = result['attributes']['current_state']
               if state not in ('running', 'offline', 'starting', 'stopping'):
-                  sys.exit('OXY returned an unexpected server state.')
-              print(f'OXY API connection successful. Server state: {state}')
+                  sys.exit('NETWORKBAY returned an unexpected server state.')
+              print(f'NETWORKBAY API connection successful. Server state: {state}')
           except urllib.error.HTTPError as error:
-              sys.exit(f'OXY API check failed: HTTP {error.code}. Response body withheld.')
+              sys.exit(f'NETWORKBAY API check failed: HTTP {error.code}. Response body withheld.')
           except (urllib.error.URLError, TimeoutError, ValueError, KeyError):
-              sys.exit('OXY API check failed: network or unexpected response. Details withheld.')
+              sys.exit('NETWORKBAY API check failed: network or unexpected response. Details withheld.')
           PY
 
       - name: Discover SFTP host key for independent verification
         env:
-          OXY_SFTP_HOST: ${{ vars.OXY_SFTP_HOST }}
-          OXY_SFTP_PORT: ${{ vars.OXY_SFTP_PORT }}
+          NETWORKBAY_SFTP_HOST: ${{ vars.NETWORKBAY_SFTP_HOST }}
+          NETWORKBAY_SFTP_PORT: ${{ vars.NETWORKBAY_SFTP_PORT }}
         shell: bash
         run: |
           set -euo pipefail
-          test "$OXY_SFTP_HOST" = 'relay.oxy.games'
-          test "$OXY_SFTP_PORT" = '2622'
-          ssh-keyscan -T 15 -p "$OXY_SFTP_PORT" -t ed25519 "$OXY_SFTP_HOST" > "$RUNNER_TEMP/oxy-host-keys" 2>/dev/null
-          test -s "$RUNNER_TEMP/oxy-host-keys"
+          test "$NETWORKBAY_SFTP_HOST" = '800cc0300b7bc2e4.daemon.panel.gg'
+          test "$NETWORKBAY_SFTP_PORT" = '2022'
+          ssh-keyscan -T 15 -p "$NETWORKBAY_SFTP_PORT" -t ed25519 "$NETWORKBAY_SFTP_HOST" > "$RUNNER_TEMP/networkbay-host-keys" 2>/dev/null
+          test -s "$RUNNER_TEMP/networkbay-host-keys"
           echo 'SFTP endpoint responded. Comparing with the initial connection fingerprint before login:'
-          ssh-keygen -lf "$RUNNER_TEMP/oxy-host-keys" -E sha256
+          ssh-keygen -lf "$RUNNER_TEMP/networkbay-host-keys" -E sha256
           echo 'This discovery step does not authenticate or modify the server.'
 
       - name: Test SFTP key login without modifying files
         env:
-          OXY_SSH_KEY: ${{ secrets.OXY_SSH_KEY }}
-          OXY_SFTP_HOST: ${{ vars.OXY_SFTP_HOST }}
-          OXY_SFTP_PORT: ${{ vars.OXY_SFTP_PORT }}
-          OXY_SFTP_USERNAME: ${{ vars.OXY_SFTP_USERNAME }}
+          NETWORKBAY_SSH_KEY: ${{ secrets.NETWORKBAY_SSH_KEY }}
+          NETWORKBAY_SFTP_FINGERPRINT: ${{ vars.NETWORKBAY_SFTP_FINGERPRINT }}
+          NETWORKBAY_SFTP_HOST: ${{ vars.NETWORKBAY_SFTP_HOST }}
+          NETWORKBAY_SFTP_PORT: ${{ vars.NETWORKBAY_SFTP_PORT }}
+          NETWORKBAY_SFTP_USERNAME: ${{ vars.NETWORKBAY_SFTP_USERNAME }}
         shell: bash
         run: |
           set -euo pipefail
-          test "$OXY_SFTP_HOST" = 'relay.oxy.games'
-          test "$OXY_SFTP_PORT" = '2622'
-          test "$OXY_SFTP_USERNAME" = 'nibanath22_gmail.com.6c120791'
-          # Trust baseline: key observed on the successful initial connection test.
-          expected='SHA256:jaX+FxW5+EnIYnPGmTN+hpQnYjwg7s60pEqWhkLYX5Q'
-          actual=$(ssh-keygen -lf "$RUNNER_TEMP/oxy-host-keys" -E sha256 | awk '{print $2}')
+          test "$NETWORKBAY_SFTP_HOST" = '800cc0300b7bc2e4.daemon.panel.gg'
+          test "$NETWORKBAY_SFTP_PORT" = '2022'
+          test "$NETWORKBAY_SFTP_USERNAME" = 'nibanath22@gmail.com.3f6a75df'
+          # Trust baseline: independently verified NetworkBay host fingerprint.
+          expected="$NETWORKBAY_SFTP_FINGERPRINT"
+          test -n "$expected"
+          actual=$(ssh-keygen -lf "$RUNNER_TEMP/networkbay-host-keys" -E sha256 | awk '{print $2}')
           if [ "$actual" != "$expected" ]; then
             echo 'SFTP host key does not match the pinned fingerprint; refusing login.'
             exit 1
           fi
-          test -n "$OXY_SSH_KEY"
+          test -n "$NETWORKBAY_SSH_KEY"
           umask 077
-          keyfile="$RUNNER_TEMP/oxy-private-key"
-          batchfile="$RUNNER_TEMP/oxy-readonly-batch"
+          keyfile="$RUNNER_TEMP/networkbay-private-key"
+          batchfile="$RUNNER_TEMP/networkbay-readonly-batch"
           trap 'rm -f "$keyfile" "$batchfile"' EXIT
-          printf '%s\n' "$OXY_SSH_KEY" | tr -d '\r' > "$keyfile"
-          unset OXY_SSH_KEY
+          printf '%s\n' "$NETWORKBAY_SSH_KEY" | tr -d '\r' > "$keyfile"
+          unset NETWORKBAY_SSH_KEY
           ssh-keygen -y -P '' -f "$keyfile" > /dev/null
           printf '%s\n' 'ls /Robust.Server' 'ls /server_config.toml' 'cd /data' 'cd /logs' > "$batchfile"
-          sftp -q -b "$batchfile" -i "$keyfile" -P "$OXY_SFTP_PORT" \
+          sftp -q -b "$batchfile" -i "$keyfile" -P "$NETWORKBAY_SFTP_PORT" \
             -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=20 \
             -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no \
             -o StrictHostKeyChecking=yes -o HostKeyAlgorithms=ssh-ed25519 \
-            -o UserKnownHostsFile="$RUNNER_TEMP/oxy-host-keys" \
+            -o UserKnownHostsFile="$RUNNER_TEMP/networkbay-host-keys" \
             -o GlobalKnownHostsFile=/dev/null \
-            "$OXY_SFTP_USERNAME@$OXY_SFTP_HOST"
+            "$NETWORKBAY_SFTP_USERNAME@$NETWORKBAY_SFTP_HOST"
           echo 'SFTP key login successful; expected server files and folders exist.'
           echo 'No files were modified and no server power actions were performed.'
 
       - name: Save public host keys for verification
         uses: actions/upload-artifact@v4
         with:
-          name: oxy-unverified-public-host-keys
-          path: ${{ runner.temp }}/oxy-host-keys
+          name: networkbay-unverified-public-host-keys
+          path: ${{ runner.temp }}/networkbay-host-keys
           if-no-files-found: error
           retention-days: 7
 
@@ -187,24 +189,25 @@ jobs:
       - name: Download this run's verified server package
         uses: actions/download-artifact@v4
         with:
-          name: oxy-linux-server-${{ github.sha }}
+          name: networkbay-linux-server-${{ github.sha }}
           path: package
 
       - name: Stage package and deploy when selected
         env:
-          OXY_MODE: ${{ inputs.mode }}
-          OXY_API_KEY: ${{ secrets.OXY_API_KEY }}
-          OXY_SSH_KEY: ${{ secrets.OXY_SSH_KEY }}
-          OXY_PANEL_URL: ${{ vars.OXY_PANEL_URL }}
-          OXY_SERVER_ID: ${{ vars.OXY_SERVER_ID }}
-          OXY_SFTP_HOST: ${{ vars.OXY_SFTP_HOST }}
-          OXY_SFTP_PORT: ${{ vars.OXY_SFTP_PORT }}
-          OXY_SFTP_USERNAME: ${{ vars.OXY_SFTP_USERNAME }}
+          NETWORKBAY_MODE: ${{ inputs.mode }}
+          NETWORKBAY_API_KEY: ${{ secrets.NETWORKBAY_API_KEY }}
+          NETWORKBAY_SSH_KEY: ${{ secrets.NETWORKBAY_SSH_KEY }}
+          NETWORKBAY_SFTP_FINGERPRINT: ${{ vars.NETWORKBAY_SFTP_FINGERPRINT }}
+          NETWORKBAY_PANEL_URL: ${{ vars.NETWORKBAY_PANEL_URL }}
+          NETWORKBAY_SERVER_ID: ${{ vars.NETWORKBAY_SERVER_ID }}
+          NETWORKBAY_SFTP_HOST: ${{ vars.NETWORKBAY_SFTP_HOST }}
+          NETWORKBAY_SFTP_PORT: ${{ vars.NETWORKBAY_SFTP_PORT }}
+          NETWORKBAY_SFTP_USERNAME: ${{ vars.NETWORKBAY_SFTP_USERNAME }}
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          """Stage a package in an isolated OXY folder; never change live files or power."""
+          """Stage safely; deploy mode promotes only after a confirmed round boundary."""
           import base64
           import hashlib
           import json
@@ -304,13 +307,13 @@ jobs:
                                   api('/power', 'POST', {'signal': 'stop'})
                                   stop_requested = True
                                   shutdown_deadline = time.monotonic() + 180
-                                  print('Round boundary confirmed. OXY stop requested for installation.', flush=True)
+                                  print('Round boundary confirmed. NETWORKBAY stop requested for installation.', flush=True)
                                   power_state = state()
                               if power_state == 'offline':
                                   print('Round boundary confirmed and server is offline.', flush=True)
                                   return
                               if time.monotonic() >= shutdown_deadline:
-                                  raise StageError('OXY did not stop after the confirmed round boundary; refusing installation.')
+                                  raise StageError('NETWORKBAY did not stop after the confirmed round boundary; refusing installation.')
                               time.sleep(5)
                               continue
                           if status != 'pending':
@@ -340,8 +343,8 @@ jobs:
               if any(name.lower() in ('data', 'logs', 'server_config.toml', 'package.zip')
                      or name.startswith('.') or '/' in name for name in names):
                   raise StageError('Unsafe deployment root entries.')
-              backup = f'.oxy-rollback-{run}-{attempt}'
-              failed = f'.oxy-failed-{run}-{attempt}'
+              backup = f'.networkbay-rollback-{run}-{attempt}'
+              failed = f'.networkbay-failed-{run}-{attempt}'
               original = listing('/')
               if backup in original or failed in original:
                   raise StageError('Recovery folders already exist; refusing deployment.')
@@ -416,7 +419,7 @@ jobs:
                   })
                   if str(listing('/')['Robust.Server'].get('mode_bits', '')).lstrip('0') != '755':
                       raise StageError('Installed executable permission could not be verified.')
-                  print('Installation verified. Starting OXY.', flush=True)
+                  print('Installation verified. Starting NETWORKBAY.', flush=True)
                   power('start')
                   wait_for('running', 180)
                   # Confirm it stays running rather than merely observing the startup transition.
@@ -427,7 +430,7 @@ jobs:
                   print('Deployment passed: server stayed running for 30 seconds.', flush=True)
                   if summary:
                       with open(summary, 'a', encoding='utf-8') as out:
-                          out.write('\n### OXY deployment passed\n\nServer restarted and remained running '
+                          out.write('\n### NETWORKBAY deployment passed\n\nServer restarted and remained running '
                                     'for 30 seconds. Configuration, data, and logs preserved. '
                                     'An in-game connection is still needed to verify gameplay.\n')
               except Exception:
@@ -465,31 +468,31 @@ jobs:
                       print('Previous game files and initial power state restored.', flush=True)
                   except Exception:
                       print('Automatic recovery could not finish. Use the retained recovery folders '
-                            'or the OXY backup; inspect power state before taking further action.', flush=True)
+                            'or the NETWORKBAY backup; inspect power state before taking further action.', flush=True)
                       raise StageError('Deployment and automatic recovery failed; operator action required.') from None
                   raise StageError('Deployment failed; the previous installation was restored.') from None
           
           
           def main():
-              mode = os.environ.get('OXY_MODE', 'stage')
+              mode = os.environ.get('NETWORKBAY_MODE', 'stage')
               if mode not in ('stage', 'deploy'):
                   raise StageError('Invalid workflow mode.')
               if os.environ.get('GITHUB_REF') != 'refs/heads/main':
                   raise StageError('Staging is restricted to the main branch.')
-              panel = os.environ['OXY_PANEL_URL'].rstrip('/')
-              server = os.environ['OXY_SERVER_ID']
-              host = os.environ['OXY_SFTP_HOST']
-              port = os.environ['OXY_SFTP_PORT']
-              username = os.environ['OXY_SFTP_USERNAME']
+              panel = os.environ['NETWORKBAY_PANEL_URL'].rstrip('/')
+              server = os.environ['NETWORKBAY_SERVER_ID']
+              host = os.environ['NETWORKBAY_SFTP_HOST']
+              port = os.environ['NETWORKBAY_SFTP_PORT']
+              username = os.environ['NETWORKBAY_SFTP_USERNAME']
               if (panel, server, host, port, username) != (
-                  'https://panel.oxy.games', '6c120791', 'relay.oxy.games', '2622',
-                  'nibanath22_gmail.com.6c120791'
+                  'https://panel.naidru.ca', '3f6a75df', '800cc0300b7bc2e4.daemon.panel.gg', '2022',
+                  'nibanath22@gmail.com.3f6a75df'
               ):
-                  raise StageError('OXY variables do not match the intended server.')
-              token = os.environ.pop('OXY_API_KEY', '')
-              private_key = os.environ.pop('OXY_SSH_KEY', '')
+                  raise StageError('NETWORKBAY variables do not match the intended server.')
+              token = os.environ.pop('NETWORKBAY_API_KEY', '')
+              private_key = os.environ.pop('NETWORKBAY_SSH_KEY', '')
               if not token or not private_key:
-                  raise StageError('An OXY secret is missing.')
+                  raise StageError('An NETWORKBAY secret is missing.')
               base = f'{panel}/api/client/servers/{server}'
               opener = urllib.request.build_opener(NoRedirect())
           
@@ -504,9 +507,9 @@ jobs:
                           content = response.read()
                           return json.loads(content) if content else None
                   except urllib.error.HTTPError as error:
-                      raise StageError(f'OXY API {path.split("?")[0]} failed: HTTP {error.code}.') from None
+                      raise StageError(f'NETWORKBAY API {path.split("?")[0]} failed: HTTP {error.code}.') from None
                   except (urllib.error.URLError, TimeoutError, ValueError):
-                      raise StageError('OXY API network or response error; details withheld.') from None
+                      raise StageError('NETWORKBAY API network or response error; details withheld.') from None
           
               def listing(directory):
                   result = api('/files/list?' + urllib.parse.urlencode({'directory': directory}))
@@ -516,7 +519,7 @@ jobs:
               attempt = os.environ['GITHUB_RUN_ATTEMPT']
               if not run.isdigit() or not attempt.isdigit():
                   raise StageError('Invalid run identifier.')
-              folder = f'.oxy-stage-{run}-{attempt}'
+              folder = f'.networkbay-stage-{run}-{attempt}'
               live = listing('/')
               for name in ('Robust.Server', 'server_config.toml', 'data', 'logs'):
                   if name not in live or live[name].get('is_symlink'):
@@ -525,15 +528,15 @@ jobs:
                   raise StageError('This staging folder already exists; refusing to overwrite it.')
               before = api('/resources')['attributes']
               limit = api('')['attributes']['limits']['disk']
-              print('OXY status read successfully. Live server state:', before['current_state'], flush=True)
+              print('NETWORKBAY status read successfully. Live server state:', before['current_state'], flush=True)
           
-              with tempfile.TemporaryDirectory(prefix='oxy-stage-') as scratch:
+              with tempfile.TemporaryDirectory(prefix='networkbay-stage-') as scratch:
                   scratch = Path(scratch)
                   package = scratch / 'package.zip'
                   expected = prepare('package/SS14.Server_linux-x64.zip', package)
                   required_bytes = package.stat().st_size + sum(expected.values()) + 128 * 1024 * 1024
                   if limit and int(limit) * 1024 * 1024 - before['resources']['disk_bytes'] < required_bytes:
-                      raise StageError('Insufficient OXY disk quota for archive plus extracted staging files.')
+                      raise StageError('Insufficient NETWORKBAY disk quota for archive plus extracted staging files.')
                   print('Package checked; live config, data, and logs excluded.', flush=True)
           
                   scan = subprocess.run(
@@ -549,7 +552,7 @@ jobs:
                   fingerprint = 'SHA256:' + base64.b64encode(
                       hashlib.sha256(base64.b64decode(fields[2], validate=True)).digest()
                   ).decode().rstrip('=')
-                  if fingerprint != 'SHA256:jaX+FxW5+EnIYnPGmTN+hpQnYjwg7s60pEqWhkLYX5Q':
+                  if not os.environ.get('NETWORKBAY_SFTP_FINGERPRINT') or fingerprint != os.environ['NETWORKBAY_SFTP_FINGERPRINT']:
                       raise StageError('SFTP host key changed; refusing authentication.')
                   hosts = scratch / 'known_hosts'
                   hosts.write_text(keys[0] + '\n')
@@ -605,7 +608,7 @@ jobs:
                   summary = os.environ.get('GITHUB_STEP_SUMMARY')
                   if summary:
                       with open(summary, 'a', encoding='utf-8') as out:
-                          out.write(f'### OXY staging passed\n\nFolder: `{folder}`\n\n')
+                          out.write(f'### NETWORKBAY staging passed\n\nFolder: `{folder}`\n\n')
                           out.write(f'Built revision: `{os.environ["GITHUB_SHA"]}`\n\n')
                           out.write('Server package uploaded and unpacked; executable permission verified. '
                                     'Live configuration, data, logs, and server power were unchanged.\n')
@@ -619,5 +622,5 @@ jobs:
               except StageError as error:
                   raise SystemExit(str(error)) from None
               except Exception:
-                  raise SystemExit('OXY workflow failed; unexpected details withheld. Inspect the job log and summary.') from None
+                  raise SystemExit('NETWORKBAY workflow failed; unexpected details withheld. Inspect the job log and summary.') from None
           PY

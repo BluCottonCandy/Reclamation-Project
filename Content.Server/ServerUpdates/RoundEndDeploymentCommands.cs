@@ -9,7 +9,7 @@ public sealed class QueueRoundEndDeploymentCommand : IConsoleCommand
 {
     [Dependency] private readonly ServerUpdateManager _updates = default!;
     public string Command => "reclamation_update_queue";
-    public string Description => "Queue or renew an OXY deployment without ending the current round.";
+    public string Description => "Queue or renew an server deployment without ending the current round.";
     public string Help => "reclamation_update_queue <32-character hexadecimal ticket>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
@@ -36,7 +36,7 @@ public sealed class CancelRoundEndDeploymentCommand : IConsoleCommand
 {
     [Dependency] private readonly ServerUpdateManager _updates = default!;
     public string Command => "reclamation_update_cancel";
-    public string Description => "Cancel the matching queued OXY deployment.";
+    public string Description => "Cancel the matching queued server deployment.";
     public string Help => "reclamation_update_cancel <ticket>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)

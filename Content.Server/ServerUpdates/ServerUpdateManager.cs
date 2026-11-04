@@ -1,4 +1,4 @@
-﻿using System.Linq;
+ï»¿using System.Linq;
 using Content.Server.Chat.Managers;
 using System.Text.Json;
 using System.IO;
@@ -114,7 +114,7 @@ public sealed class ServerUpdateManager
         _deployment = lease;
         _deploymentEarliestShutdown = _gameTiming.RealTime + TimeSpan.FromSeconds(15);
         _chatManager.DispatchServerAnnouncement("A server update is ready. It will be installed after this round ends. The current round will continue normally.");
-        _chatManager.SendAdminAnnouncement("OXY deployment queued for the round boundary.");
+        _chatManager.SendAdminAnnouncement("server deployment queued for the round boundary.");
     }
 
     public void CancelDeployment(string ticket)

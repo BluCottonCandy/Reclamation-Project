@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Bunkers no longer reject saves for exceeding 1,000 entities or 4 MiB, preventing repeated failed saves caused by those limits.
+- type: Tweak
+  message: Bunker snapshots larger than 4 MiB can now be loaded.

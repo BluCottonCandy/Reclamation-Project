@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Active admin ghosts can remain inside personal bunkers for inspection. Ordinary ghosts are still returned to the hatch when the room has no living, awake players.

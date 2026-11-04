@@ -1,0 +1,460 @@
+# Rank kit selectors reuse the existing loadout and SpawnItemsOnUse systems.
+- type: entity
+  parent: ClothingBeltNCRBandolier
+  id: ForgedBandolier
+  name: raider bandolier
+  description: A battered ammunition bandolier favored by the Forged.
+
+- type: entity
+  parent: BaseItem
+  id: ForgedKitMolotov
+  name: Molotov
+  description: A fuel-filled glass bottle with a fitted cloth wick. Ignite it before throwing.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Consumable/Drinks/milk.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 50
+  - type: Molotov
+    wickOffset: "0,-0.0625"
+
+- type: entity
+  parent: N14Machete
+  id: ForgedEmbercleaver
+  name: Embercleaver
+  description: A furnace-blackened machete with copper fittings and a heat-bright cutting edge. Among the Forged, its scorched blade settles arguments that words cannot.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Melee/embercleaver.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Melee/embercleaver.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Melee/embercleaver.rsi
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 40
+        Heat: 10
+        Piercing: 0
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitUnbrandedBurnTender
+  name: "Unbranded Burn Tender"
+  description: "Patch up the next recruit before the forge claims them. Contains 1 gauze stack, 1 burn ointment stack, 1 stimpak, 1 makeshift 9mm pistol, 1 box of 9mm ammunition, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: N14Stimpak
+    - id: N14WeaponPistol9mmMakeshift
+    - id: MagazineBox9mm
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitUnbrandedBurnTenderSet
+  name: forged-kit-unbranded-burntender-name
+  description: forged-kit-unbranded-burntender-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content: [ForgedKitUnbrandedBurnTender]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitUnbrandedBrandBreaker
+  name: "Unbranded Brand Breaker"
+  description: "Earn your place with scrap iron and bruised knuckles. Contains 1 crowbar, 1 sledgehammer, 1 gauze stack, 1 burn ointment stack, 1 Psycho syringe, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14Crowbar
+    - id: N14SledgeHammer
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: N14Psycho
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitUnbrandedBrandBreakerSet
+  name: forged-kit-unbranded-brandbreaker-name
+  description: forged-kit-unbranded-brandbreaker-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitUnbrandedBrandBreaker]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitUnbrandedFurnaceBreacher
+  name: "Unbranded Furnace Breacher"
+  description: "Your first breach begins with buckshot and a burning bottle. Contains 1 makeshift shotgun, 1 box of 12-gauge shells, 1 Molotov, 1 lighter, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunMakeshift
+    - id: MagazineBox12gauge
+    - id: ForgedKitMolotov
+    - id: CheapLighter
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitUnbrandedFurnaceBreacherSet
+  name: forged-kit-unbranded-furnacebreacher-name
+  description: forged-kit-unbranded-furnacebreacher-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitUnbrandedFurnaceBreacher]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitBrandedBrandBreaker
+  name: "Branded Brand Breaker"
+  description: "Let the mark on your chest speak through every swing. Contains 1 decorated war club, 1 throwing knife, 1 Psycho syringe, 1 gauze stack, 1 burn ointment stack, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14TribalBigClubDecorated
+    - id: ThrowingKnife
+    - id: N14Psycho
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitBrandedBrandBreakerSet
+  name: forged-kit-branded-brandbreaker-name
+  description: forged-kit-branded-brandbreaker-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitBrandedBrandBreaker]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitBrandedScrapMauler
+  name: "Branded Scrap Mauler"
+  description: "Steel in your hands, spikes on your fists, and no room to back down. Contains 1 sledgehammer, 1 crowbar, 1 pair of spiked brass knuckles, 1 gauze stack, 1 burn ointment stack, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14SledgeHammer
+    - id: N14Crowbar
+    - id: N14MeleeHandsSpikedBrassKnuckle
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitBrandedScrapMaulerSet
+  name: forged-kit-branded-scrapmauler-name
+  description: forged-kit-branded-scrapmauler-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitBrandedScrapMauler]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitBrandedCloseQuarters
+  name: "Branded Close Quarters"
+  description: "Close the distance before they have time to fear the flames. Contains 1 makeshift shotgun, 1 box of 12-gauge shells, 1 combat knife, 1 Molotov, 1 lighter, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunMakeshift
+    - id: MagazineBox12gauge
+    - id: N14CombatKnife
+    - id: ForgedKitMolotov
+    - id: CheapLighter
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitBrandedCloseQuartersSet
+  name: forged-kit-branded-closequarters-name
+  description: forged-kit-branded-closequarters-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitBrandedCloseQuarters]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitTemperedBurnTender
+  name: "Tempered Burn Tender"
+  description: "Keep the raiding party alive through smoke, fire, and shattered cover. Contains 1 N14 medical kit, 1 gauze stack, 1 burn ointment stack, 1 American-180, 1 spare American-180 drum magazine, 1 box of .22 LR ammunition, 3 smoke grenades, 1 pair of night vision goggles, 1 N14 health scanner, 3 burn mesh stacks, 3 suture stacks, 1 CPR training book, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14MedkitFilled
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: N14WeaponSMGAmerican180
+    - id: N14MagazineAmerican180Drum
+    - id: MagazineBox22
+    - id: N14HandheldHealthAnalyzer
+    - id: RegenerativeMesh
+    - id: RegenerativeMesh
+    - id: RegenerativeMesh
+    - id: MedicatedSuture
+    - id: MedicatedSuture
+    - id: MedicatedSuture
+    - id: ReclamationTrainingManualCPR
+    - id: SmokeGrenade
+    - id: SmokeGrenade
+    - id: SmokeGrenade
+    - id: N14ClothingEyesNCRNVGs
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitTemperedBurnTenderSet
+  name: forged-kit-tempered-burntender-name
+  description: forged-kit-tempered-burntender-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content: [ForgedKitTemperedBurnTender]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitTemperedFurnaceSurgeon
+  name: "Tempered Furnace Surgeon"
+  description: "Set the tools down only when the shooting starts. Contains 1 surgical belt stocked with surgical tools, an N14 scanner and ethanol, 1 sterile mask, 1 9mm pistol, 1 box of 9mm ammunition, 1 sawed-off shotgun, 1 box of 12-gauge shells, 3 burn mesh stacks, 3 suture stacks, 1 CPR training book, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationClothingBeltSurgicalFilled
+    - id: ClothingMaskSterile
+    - id: N14WeaponPistol9mm
+    - id: MagazineBox9mm
+    - id: N14WeaponShotgunSawedOff
+    - id: MagazineBox12gauge
+    - id: RegenerativeMesh
+    - id: RegenerativeMesh
+    - id: RegenerativeMesh
+    - id: MedicatedSuture
+    - id: MedicatedSuture
+    - id: MedicatedSuture
+    - id: ReclamationTrainingManualCPR
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitTemperedFurnaceSurgeonSet
+  name: forged-kit-tempered-furnacesurgeon-name
+  description: forged-kit-tempered-furnacesurgeon-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content: [ForgedKitTemperedFurnaceSurgeon]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitTemperedCombatMedic
+  name: "Tempered Combat Medic"
+  description: "Reach the wounded under fire and leave nobody useful behind. Contains 1 10mm pistol, 1 10mm SMG, 1 spare 10mm SMG magazine, 1 box of 10mm ammunition, 2 N14 combat medkits, 2 stimpaks, 1 gauze stack, 1 burn ointment stack, 1 N14 health scanner, 3 burn mesh stacks, 3 suture stacks, 1 CPR training book, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponPistol10mm
+    - id: N14WeaponSMG10mm
+    - id: N14MagazineSMG10mm
+    - id: MagazineBox10mm
+    - id: N14MedkitCombatFilled
+    - id: N14MedkitCombatFilled
+    - id: N14Stimpak
+    - id: N14Stimpak
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: N14HandheldHealthAnalyzer
+    - id: RegenerativeMesh
+    - id: RegenerativeMesh
+    - id: RegenerativeMesh
+    - id: MedicatedSuture
+    - id: MedicatedSuture
+    - id: MedicatedSuture
+    - id: ReclamationTrainingManualCPR
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitTemperedCombatMedicSet
+  name: forged-kit-tempered-combatmedic-name
+  description: forged-kit-tempered-combatmedic-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content: [ForgedKitTemperedCombatMedic]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitForgedFlamebearer
+  name: "Forged Flamebearer"
+  description: "Carry the furnace in your blade and settle the survivors with heavy lead. Contains 1 Shishkebab, 1 hunting revolver, 1 box of .45-70 ammunition, 2 loaded .45-70 speedloaders, 1 burn ointment stack, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponKebab
+    - id: N14WeaponRevolver45-70Hunter
+    - id: MagazineBox45-70
+    - id: SpeedLoader45-70
+    - id: SpeedLoader45-70
+    - id: N14Ointment10
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitForgedFlamebearerSet
+  name: forged-kit-forged-flamebearer-name
+  description: forged-kit-forged-flamebearer-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitForgedFlamebearer]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitForgedFurnaceBreacher
+  name: "Forged Furnace Breacher"
+  description: "Turn defended rooms into ash and broken barricades. Contains 1 7.62mm marksman carbine, 2 spare 7.62mm rifle magazines, 1 box of 7.62mm ammunition, 2 Molotovs, 1 lighter, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponRifle762Marksman
+    - id: Magazine762Rifle
+    - id: Magazine762Rifle
+    - id: MagazineBox762
+    - id: ForgedKitMolotov
+    - id: ForgedKitMolotov
+    - id: CheapLighter
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitForgedFurnaceBreacherSet
+  name: forged-kit-forged-furnacebreacher-name
+  description: forged-kit-forged-furnacebreacher-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitForgedFurnaceBreacher]
+
+- type: entity
+  parent: KitBase
+  id: ForgedKitForgedAshstorm
+  name: "Forged Ashstorm"
+  description: "Sweep their cover with rifle fire, then let Embercleaver finish the work. Contains 1 R91 assault rifle, 2 spare 5.56mm rifle magazines, 1 box of 5.56mm ammunition, 1 Embercleaver machete, 1 gauze stack, 1 burn ointment stack, 1 raider bandolier."
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponRifle556R91
+    - id: Magazine556Rifle
+    - id: Magazine556Rifle
+    - id: MagazineBox556
+    - id: ForgedEmbercleaver
+    - id: N14CleanGauze10
+    - id: N14Ointment10
+    - id: ForgedBandolier
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: ForgedKitForgedAshstormSet
+  name: forged-kit-forged-ashstorm-name
+  description: forged-kit-forged-ashstorm-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [ForgedKitForgedAshstorm]
+
+- type: entity
+  parent: BaseLoadoutKit
+  id: ForgedUnbrandedKitSelector
+  name: Unbranded kit selection
+  description: Choose one of three rank kits. Every choice includes exactly one raider bandolier.
+  categories: []
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets: [ForgedKitUnbrandedBurnTenderSet, ForgedKitUnbrandedBrandBreakerSet, ForgedKitUnbrandedFurnaceBreacherSet]
+
+- type: entity
+  parent: BaseLoadoutKit
+  id: ForgedBrandedKitSelector
+  name: Branded kit selection
+  description: Choose one of three rank kits. Every choice includes exactly one raider bandolier.
+  categories: []
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets: [ForgedKitBrandedBrandBreakerSet, ForgedKitBrandedScrapMaulerSet, ForgedKitBrandedCloseQuartersSet]
+
+- type: entity
+  parent: BaseLoadoutKit
+  id: ForgedTemperedKitSelector
+  name: Tempered kit selection
+  description: Choose one of three rank kits. Every choice includes exactly one raider bandolier.
+  categories: []
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets: [ForgedKitTemperedBurnTenderSet, ForgedKitTemperedFurnaceSurgeonSet, ForgedKitTemperedCombatMedicSet]
+
+- type: entity
+  parent: BaseLoadoutKit
+  id: ForgedForgedKitSelector
+  name: Forged kit selection
+  description: Choose one of three rank kits. Every choice includes exactly one raider bandolier.
+  categories: []
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets: [ForgedKitForgedFlamebearerSet, ForgedKitForgedFurnaceBreacherSet, ForgedKitForgedAshstormSet]

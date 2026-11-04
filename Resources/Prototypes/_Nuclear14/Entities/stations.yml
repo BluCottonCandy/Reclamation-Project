@@ -16,6 +16,7 @@
     - type: RaiderFactionJobs
       jobs:
         Forgemaster: 1
+        ForgedSmithy: 1
         ForgedVeteran: 2
         ForgedEnforcer: 2
         ForgedBranded: 2

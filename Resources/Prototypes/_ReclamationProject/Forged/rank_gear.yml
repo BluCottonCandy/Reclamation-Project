@@ -1,0 +1,117 @@
+- type: entity
+  parent: ClothingMaskGasAtmos
+  id: ForgedGasMask
+  name: Forged Gas Mask
+  description: A flame-resistant atmospheric gas mask used by the Forged.
+
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: ForgedCombatBoots
+  name: Forged Combat Boots
+  description: Sturdy combat boots worn by the Forged's Branded and Tempered.
+
+- type: entity
+  parent: N14ClothingHandsGlovesBlackLeather
+  id: ForgedLeatherGloves
+  name: Forged Leather Gloves
+  description: Black leather gloves worn smooth by work around the forge.
+
+- type: entity
+  parent: N14ClothingOuterCombatArmor
+  id: ForgedBrandedCombatArmor
+  name: Branded combat armor
+  description: Ash-gray combat armor over soot-black straps, marked with the Forged's anvil and the scars of hard service.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_tempered.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_tempered.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_tempered.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.70
+        Piercing: 0.75
+        Heat: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+
+- type: entity
+  parent: ForgedKeeperFurnaceArmor
+  id: ForgedSmithyPowerArmor
+  name: Smithy's furnace armor
+  description: Unpowered furnace armor in soot-black steel and worn copper. The Smithy's reinforced plates need no fusion core and have no separate integrity pool.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_smithy_t45.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_smithy_t45.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_smithy_t45.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
+    walkModifier: 1
+    sprintModifier: 1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.20
+        Slash: 0.20
+        Piercing: 0.20
+        Heat: 0.20
+        Cold: 0.20
+        Shock: 1
+        Caustic: 1
+        Radiation: 0.20
+        Poison: 1
+  - type: StaminaDamageResistance
+    coefficient: 0.20
+  - type: ExplosionResistance
+    damageCoefficient: 0.20
+
+
+- type: entity
+  parent: ForgedTenderSuit
+  id: ForgedTemperedFirefighterArmor
+  name: Tempered reinforced firefighter suit
+  description: A reinforced, fire-resistant suit in muted combat-armor green and charcoal, worn by the Forged's Tempered.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_branded_firefighter.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_branded_firefighter.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_branded_firefighter.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.90
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.70
+        Piercing: 0.55
+        Heat: 0.25
+        Radiation: 0.90
+  - type: StaminaDamageResistance
+    coefficient: 0.75
+  - type: ToggleableClothing
+    clothingPrototype: ForgedTemperedFirefighterHood
+
+- type: entity
+  parent: N14ClothingHeadHatHelmetFirefighterHelmet
+  id: ForgedTemperedFirefighterHood
+  name: Tempered fire-resistant hood
+  description: The matching pull-up hood of a Tempered's reinforced firefighter suit.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Head/forged_tempered_hood.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Head/forged_tempered_hood.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Head/forged_tempered_hood.rsi

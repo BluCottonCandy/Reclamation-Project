@@ -45,7 +45,10 @@ public sealed partial class GunSystem
             return;
         }
 
-        shots = (int) (solution.Volume / component.FireCost);
+        var ammoVolume = component.RequiredReagent is { } reagent
+            ? solution.GetReagentQuantity(new(reagent, null))
+            : solution.Volume;
+        shots = (int) (ammoVolume / component.FireCost);
         maxShots = (int) (solution.MaxVolume / component.FireCost);
 
         component.Shots = shots;
@@ -62,7 +65,18 @@ public sealed partial class GunSystem
         if (!_solutionContainer.TryGetSolution(uid, component.SolutionId, out var solution, out _))
             return (ent, shootable);
 
-        var newSolution = _solutionContainer.SplitSolution(solution.Value, component.FireCost);
+        Solution newSolution;
+        if (component.RequiredReagent is { } reagent)
+        {
+            var cost = FixedPoint2.New(component.FireCost);
+            if (!_solutionContainer.RemoveReagent(solution.Value, reagent, cost))
+                return (ent, shootable);
+            newSolution = new Solution(reagent, cost);
+        }
+        else
+        {
+            newSolution = _solutionContainer.SplitSolution(solution.Value, component.FireCost);
+        }
 
         if (newSolution.Volume <= FixedPoint2.Zero)
             return (ent, shootable);

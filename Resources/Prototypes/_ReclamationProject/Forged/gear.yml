@@ -1,48 +1,30 @@
 - type: startingGear
   id: ForgemasterGear
   equipment:
+    belt: ForgedBandolier
+    mask: ForgedGasMask
     ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
     back: N14ClothingBackpackSatchelExplorer
     id: ForgemasterID
     outerClothing: ForgedKeeperFurnaceArmor
+    suitstorage: N14Flamer
   storage:
     back:
     - ForgedBrandingIron
     - ForgedCaptiveBrandingIron
     - N14BoxCardboardMREBoxCFilled
+    - N14FlamerFuel
+    - N14EnrichedFlamerFuel
   inhand:
-  - ForgedWeaponFlamer
-  - N14SledgeHammer
-
-- type: entity
-  parent: N14IDCard
-  id: ForgemasterID
-  name: scrap gear
-  description: A worn scrap gear stamped with Forged identification marks.
-  components:
-  - type: Sprite
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    layers:
-    - state: icon
-  - type: Item
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    heldPrefix: gear
-  - type: Clothing
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    equippedPrefix: gear
-  - type: IdCard
-    nameLocId: forged-gear-id-name
-    fullNameLocId: forged-gear-id-full-name
-  - type: PresetIdCard
-    job: Forgemaster
-  - type: Access
-    tags: [Forged, ForgedCommand]
+  - N14Incinerator
 
 - type: startingGear
-  id: ForgedEnforcerGear
+  id: ForgedFighterGearBase
+  abstract: true
   equipment:
+    mask: ForgedGasMask
     ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
@@ -52,37 +34,15 @@
   storage:
     back:
     - MagazineBox12gauge
+    - N14MagazineShotgun12
   inhand:
   - N14WeaponShotgunAuto
   - N14Crowbar
 
-- type: entity
-  parent: N14IDCard
-  id: ForgedEnforcerID
-  name: scrap gear
-  description: A worn scrap gear stamped with Forged identification marks.
-  components:
-  - type: Sprite
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    layers:
-    - state: icon
-  - type: Item
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    heldPrefix: gear
-  - type: Clothing
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    equippedPrefix: gear
-  - type: IdCard
-    nameLocId: forged-gear-id-name
-    fullNameLocId: forged-gear-id-full-name
-  - type: PresetIdCard
-    job: ForgedEnforcer
-  - type: Access
-    tags: [Forged]
-
 - type: startingGear
   id: ForgedFurnaceTenderGear
   equipment:
+    mask: ForgedGasMask
     ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
@@ -97,34 +57,11 @@
     - MagazineBox9mm
     - WelderIndustrial
 
-- type: entity
-  parent: N14IDCard
-  id: ForgedFurnaceTenderID
-  name: scrap gear
-  description: A worn scrap gear stamped with Forged identification marks.
-  components:
-  - type: Sprite
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    layers:
-    - state: icon
-  - type: Item
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    heldPrefix: gear
-  - type: Clothing
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    equippedPrefix: gear
-  - type: IdCard
-    nameLocId: forged-gear-id-name
-    fullNameLocId: forged-gear-id-full-name
-  - type: PresetIdCard
-    job: ForgedFurnaceTender
-  - type: Access
-    tags: [Forged]
-
 - type: startingGear
   id: ForgedRaiderGear
   equipment:
-    pocket2: ForgedRaiderWeaponSelector
+    mask: ForgedGasMask
+    pocket2: ForgedUnbrandedKitSelector
     ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
@@ -132,33 +69,11 @@
     id: ForgedRaiderID
     outerClothing: N14ClothingOuterRaiderBadlands
 
-- type: entity
-  parent: N14IDCard
-  id: ForgedRaiderID
-  name: scrap gear
-  description: A worn scrap gear stamped with Forged identification marks.
-  components:
-  - type: Sprite
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    layers:
-    - state: icon
-  - type: Item
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    heldPrefix: gear
-  - type: Clothing
-    sprite: _ReclamationProject/Objects/Misc/forged_gear.rsi
-    equippedPrefix: gear
-  - type: IdCard
-    nameLocId: forged-gear-id-name
-    fullNameLocId: forged-gear-id-full-name
-  - type: PresetIdCard
-    job: ForgedRaider
-  - type: Access
-    tags: [Forged]
-
 - type: startingGear
   id: ForgedWorkerGear
   equipment:
+    id: ForgedWorkerID
+    mask: ForgedGasMask
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRags
   inhand:
@@ -224,11 +139,11 @@
   parent: BaseLoadoutKit
   id: ForgedRaiderWeaponSelector
   name: Forged raider weapon selection
-  description: Choose Pepper em up or Leg Breaker.
+  description: Choose an Unbranded specialty kit. Each kit includes one raider bandolier.
   categories: []
   components:
   - type: UndecidedLoadoutBackpack
-    possibleSets: [ForgedRaiderShotgunSet, ForgedRaiderMeleeSet]
+    possibleSets: [ForgedKitUnbrandedBurnTenderSet, ForgedKitUnbrandedBrandBreakerSet, ForgedKitUnbrandedFurnaceBreacherSet]
 
 - type: UndecidedLoadoutBackpackSet
   id: ForgedRaiderShotgunSet
@@ -249,20 +164,50 @@
   content: [N14SledgeHammer, N14Psycho, N14Ointment10, N14CleanGauze10, DrinkWhiskeyBottleFull]
 
 - type: startingGear
-  parent: ForgedEnforcerGear
+  parent: ForgedFighterGearBase
   id: ForgedVeteranGear
+  equipment:
+    pocket2: ForgedForgedKitSelector
+    id: ForgedVeteranID
+  inhand: []
+  storage:
+    back:
+    - MagazineBox12gauge
+    - N14MagazineShotgun12
 
 - type: startingGear
   parent: ForgedRaiderGear
   id: ForgedBrandedGear
 
+  equipment:
+    pocket2: ForgedBrandedKitSelector
+    id: ForgedBrandedID
+    outerClothing: ForgedBrandedCombatArmor
+    shoes: ForgedCombatBoots
+    gloves: ForgedLeatherGloves
+
 - type: startingGear
   parent: ForgedFurnaceTenderGear
   id: ForgedSmithyGear
 
+  equipment:
+    belt: ForgedBandolier
+    id: ForgedSmithyID
+    outerClothing: ForgedSmithyPowerArmor
+  inhand:
+  - N14Cryolator
+  storage:
+    back:
+    - N14WeaponPistol9mm
+    - MagazineBox9mm
+    - WelderIndustrial
+    - N14CryoCell
+
 - type: startingGear
   parent: ForgemasterGear
   id: ForgedAdminForgemasterGear
+  equipment:
+    id: ForgedAdminForgemasterID
 
 - type: entity
   parent: BaseItem
@@ -301,3 +246,17 @@
     state: unbrander
   - type: ForgedBrandingIron
     unbrand: true
+
+- type: startingGear
+  parent: ForgedFighterGearBase
+  id: ForgedEnforcerGear
+  equipment:
+    pocket2: ForgedTemperedKitSelector
+    outerClothing: ForgedTemperedFirefighterArmor
+    shoes: ForgedCombatBoots
+    gloves: ForgedLeatherGloves
+  inhand: []
+  storage:
+    back:
+    - MagazineBox12gauge
+    - N14MagazineShotgun12

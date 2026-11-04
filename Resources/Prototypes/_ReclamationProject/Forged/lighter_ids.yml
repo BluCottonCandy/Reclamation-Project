@@ -1,0 +1,225 @@
+# Working rank lighters retain the existing ID, radio-chat and access components.
+
+- type: entity
+  parent: [N14IDCard, CheapLighter]
+  id: ForgedWorkerID
+  name: Captive Worker cheap lighter
+  description: A cheap lighter marked with the rank of Captive Worker. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-cheap-id-name
+    fullNameLocId: forged-lighter-cheap-id-full-name
+  - type: PresetIdCard
+    job: ForgedWorker
+  - type: Access
+    tags: []
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+
+- type: entity
+  parent: [N14IDCard, CheapLighter]
+  id: ForgedRaiderID
+  name: Unbranded cheap lighter
+  description: A cheap lighter marked with the rank of Unbranded. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-cheap-id-name
+    fullNameLocId: forged-lighter-cheap-id-full-name
+  - type: PresetIdCard
+    job: ForgedRaider
+  - type: Access
+    tags: [Forged]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+
+- type: entity
+  parent: [N14IDCard, Lighter]
+  id: ForgedBrandedID
+  name: Branded basic lighter
+  description: A basic lighter marked with the rank of Branded. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-basic-id-name
+    fullNameLocId: forged-lighter-basic-id-full-name
+  - type: PresetIdCard
+    job: ForgedBranded
+  - type: Access
+    tags: [Forged]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+
+- type: entity
+  parent: [N14IDCard, FlippoLighter]
+  id: ForgedEnforcerID
+  name: Tempered weathered metal lighter
+  description: A weathered metal lighter marked with the rank of Tempered. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+    color: "#A09A90"
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-weathered-id-name
+    fullNameLocId: forged-lighter-weathered-id-full-name
+  - type: PresetIdCard
+    job: ForgedEnforcer
+  - type: Access
+    tags: [Forged]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+  - type: SolutionContainerManager
+    solutions:
+      Welder:
+        maxVol: 10
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 10
+
+- type: entity
+  parent: [N14IDCard, FlippoLighter]
+  id: ForgedVeteranID
+  name: Forged Flippo lighter
+  description: A Flippo lighter marked with the rank of Forged. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-flippo-id-name
+    fullNameLocId: forged-lighter-flippo-id-full-name
+  - type: PresetIdCard
+    job: ForgedVeteran
+  - type: Access
+    tags: [Forged]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+
+- type: entity
+  parent: [N14IDCard, FlippoEngravedLighter]
+  id: ForgemasterID
+  name: Forge Keeper gold engraved lighter
+  description: A gold engraved lighter marked with the rank of Forge Keeper. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-gold-id-name
+    fullNameLocId: forged-lighter-gold-id-full-name
+  - type: PresetIdCard
+    job: Forgemaster
+  - type: Access
+    tags: [Forged, ForgedCommand]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+
+- type: entity
+  parent: [N14IDCard, FlippoEngravedLighter]
+  id: ForgedSmithyID
+  name: Smithy gold engraved lighter
+  description: A gold engraved lighter marked with the rank of Smithy. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-gold-id-name
+    fullNameLocId: forged-lighter-gold-id-full-name
+  - type: PresetIdCard
+    job: ForgedSmithy
+  - type: Access
+    tags: [Forged, ForgedCommand]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+
+- type: entity
+  parent: [N14IDCard, FlippoEngravedLighter]
+  id: ForgedAdminForgemasterID
+  name: Forgemaster gold engraved lighter
+  description: A gold engraved lighter marked with the rank of Forgemaster. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-gold-id-name
+    fullNameLocId: forged-lighter-gold-id-full-name
+  - type: PresetIdCard
+    job: ForgedAdminForgemaster
+  - type: Access
+    tags: [Forged, ForgedCommand]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]
+
+- type: entity
+  parent: [N14IDCard, Lighter]
+  id: ForgedFurnaceTenderID
+  name: Furnace Tender basic lighter
+  description: A basic lighter marked with the rank of Furnace Tender. It serves as identification as well as a working lighter.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/lighters.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Tools/lighters.rsi
+    slots: [idcard]
+    clothingVisuals:
+      idcard: []
+  - type: IdCard
+    nameLocId: forged-lighter-basic-id-name
+    fullNameLocId: forged-lighter-basic-id-full-name
+  - type: PresetIdCard
+    job: ForgedFurnaceTender
+  - type: Access
+    tags: [Forged]
+  - type: Tag
+    tags: [Lighter, DoorBumpOpener]

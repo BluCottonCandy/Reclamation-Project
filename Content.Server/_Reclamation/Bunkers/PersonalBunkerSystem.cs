@@ -1,3 +1,4 @@
+using Content.Shared.Store.Components;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -237,7 +238,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
                 {
                     var path = SafeFile(filename);
                     if (!File.Exists(path)) throw new IOException("Invalid bunker save.");
-                    using var reader = File.OpenText(path);
+                    using var reader = new StringReader(BunkerSnapshotReferences.Clean(File.ReadAllText(path)));
                     if (!_loader.TryLoadGrid(reader, filename, out var loadedMap, out var loadedGrid,
                         new DeserializationOptions { InitializeMaps = true })) throw new IOException("Bunker grid could not be loaded.");
                     map = loadedMap.Value.Owner;
@@ -266,6 +267,9 @@ public sealed class PersonalBunkerSystem : EntitySystem
                 foreach (var item in belongings)
                 {
                     if (!Exists(item)) continue;
+                    // Stores loaded from an interior have a new map identity on every visit.
+                    if (TryComp<StoreComponent>(item, out var store))
+                        store.StartingMap = map;
                     _displays.Decommission(item);
                     if (!Exists(item)) continue;
                     // Stored furniture can contain cooldown timestamps from a different server uptime.
@@ -384,9 +388,17 @@ public sealed class PersonalBunkerSystem : EntitySystem
     private List<EntityUid> GetRoomBelongings(EntityUid grid)
     {
         var belongings = new List<EntityUid>();
-        var query = EntityQueryEnumerator<TransformComponent>();
-        while (query.MoveNext(out var uid, out _))
-            if (IsRoomBelonging(uid, grid)) belongings.Add(uid);
+        var pending = new Stack<(EntityUid Uid, int Depth)>();
+        pending.Push((grid, 0));
+        while (pending.TryPop(out var next))
+        {
+            if (next.Depth > 128 || !Exists(next.Uid) || IsLivingEntity(next.Uid))
+                continue;
+            belongings.Add(next.Uid);
+            var children = Transform(next.Uid).ChildEnumerator;
+            while (children.MoveNext(out var child))
+                pending.Push((child, next.Depth + 1));
+        }
         return belongings;
     }
 
@@ -423,11 +435,16 @@ public sealed class PersonalBunkerSystem : EntitySystem
         finally { QueueDel(marker); }
     }
 
-    private bool Occupied(Room room)
+    private bool Occupied(Room room) => HasOccupant<ActorComponent>(room.Map)
+        || HasOccupant<GhostComponent>(room.Map)
+        || HasOccupant<MobStateComponent>(room.Map)
+        || HasOccupant<MindContainerComponent>(room.Map);
+
+    private bool HasOccupant<T>(EntityUid map) where T : Component
     {
-        var query = EntityQueryEnumerator<TransformComponent>();
-        while (query.MoveNext(out var uid, out var transform))
-            if (transform.MapUid == room.Map && IsLivingEntity(uid)) return true;
+        var query = EntityQueryEnumerator<T, TransformComponent>();
+        while (query.MoveNext(out _, out _, out var transform))
+            if (transform.MapUid == map) return true;
         return false;
     }
     private bool IsLivingEntity(EntityUid uid) => HasComp<GhostComponent>(uid) || HasComp<MobStateComponent>(uid) || HasComp<MindContainerComponent>(uid) || HasComp<ActorComponent>(uid);
@@ -491,7 +508,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
                     { MissingEntityBehaviour = MissingEntityBehaviour.Ignore, ExpectPreInit = false }))
                     throw new IOException("Bunker serialization failed.");
                 _savingGrid = null;
-                var yaml = writer.ToString();
+                var yaml = BunkerSnapshotReferences.Clean(writer.ToString());
                 var filename = room.Key + "_" + Guid.NewGuid().ToString("N") + ".yml";
                 var path = SafeFile(filename);
                 File.WriteAllText(path, yaml, Encoding.UTF8);

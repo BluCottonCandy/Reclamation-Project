@@ -1,0 +1,8 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Bunker saves no longer restore stale audio, shop-map, chat-device, or open-interface references. Existing room saves are repaired as they load, preserving their contents and stored records.
+- type: Fix
+  message: Projectiles supplied without a map are placed at their firing origin before launch, preventing invalid-map errors from NPC gunfire.
+- type: Fix
+  message: Bunker contents and occupancy checks no longer scan every object in the world, reducing work when rooms load, save, or unload.

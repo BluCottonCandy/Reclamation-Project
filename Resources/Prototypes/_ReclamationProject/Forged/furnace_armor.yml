@@ -30,9 +30,9 @@
     distanceWalking: 2
     distanceSprinting: 3
   - type: Sprite
-    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_furnace.rsi
   - type: Clothing
-    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
+    sprite: _ReclamationProject/Clothing/OuterClothing/forged_furnace.rsi
     equipDelay: 6
     unequipDelay: 6
     equipSound:

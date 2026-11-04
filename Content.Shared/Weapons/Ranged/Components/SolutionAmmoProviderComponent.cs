@@ -20,6 +20,13 @@ public sealed partial class SolutionAmmoProviderComponent : Component
     public float FireCost = 5;
 
     /// <summary>
+    /// If set, only this reagent counts as ammunition and is consumed when firing.
+    /// Other solution weapons retain their existing mixed-liquid behavior.
+    /// </summary>
+    [DataField]
+    public string? RequiredReagent;
+
+    /// <summary>
     /// The amount of shots currently available.
     /// used for network predictions.
     /// </summary>

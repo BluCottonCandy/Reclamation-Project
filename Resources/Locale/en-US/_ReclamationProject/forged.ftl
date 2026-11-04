@@ -17,8 +17,8 @@ forged-shotgun-name = Pepper em up
 forged-shotgun-description = Fill em full of lead! Contains a makeshift shotgun, a beer, Jet, gauze, and burn ointment.
 forged-melee-name = Leg Breaker
 forged-melee-description = Break those bones! Contains a sledgehammer, Psycho, burn ointment, gauze, and whiskey.
-forged-gear-id-name = scrap gear
-forged-gear-id-full-name = {$fullName}'s scrap gear
+forged-gear-id-name = scrap gear{$jobSuffix}
+forged-gear-id-full-name = {$fullName}'s scrap gear{$jobSuffix}
 forged-brand-start = You begin pressing the branding iron against the left shoulder. Keep still for 20 seconds.
 forged-brand-complete = The brand is complete. It is saved permanently to this character.
 forged-unbrand-complete = The character and their saved profile are now unbranded.
@@ -33,7 +33,7 @@ job-description-forgedveteran = A senior warrior trusted with Furnace Armor and 
 job-name-forgedbranded = Branded
 job-description-forgedbranded = You passed the trial and bear the permanent Forged brand on your chest.
 job-name-forgedsmithy = Smithy
-job-description-forgedsmithy = An admin-controlled role for assisting the forge in character.
+job-description-forgedsmithy = A whitelisted smith trusted to assist the forge in character.
 job-name-forgedadminforgemaster = Forgemaster
 job-description-forgedadminforgemaster = The highest admin-controlled Forged rank.
 
@@ -50,3 +50,22 @@ forged-brand-no-chest = There is no chest to brand.
 
 forged-brand-examine-covered = [color=orange]a forged anvil is covered by a captives chain-link on their chest[/color]
 marking-ForgedCaptiveChestBrand = Captive chain-link covering a Forged anvil (chest)
+
+job-supervisors-forgedsmithy = the fires of the forge and no one else
+
+job-supervisors-forgekeeper = the Smithy
+
+forged-lighter-cheap-id-name = cheap lighter{$jobSuffix}
+forged-lighter-cheap-id-full-name = {$fullName}'s cheap lighter{$jobSuffix}
+
+forged-lighter-basic-id-name = basic lighter{$jobSuffix}
+forged-lighter-basic-id-full-name = {$fullName}'s basic lighter{$jobSuffix}
+
+forged-lighter-weathered-id-name = weathered metal lighter{$jobSuffix}
+forged-lighter-weathered-id-full-name = {$fullName}'s weathered metal lighter{$jobSuffix}
+
+forged-lighter-flippo-id-name = Flippo lighter{$jobSuffix}
+forged-lighter-flippo-id-full-name = {$fullName}'s Flippo lighter{$jobSuffix}
+
+forged-lighter-gold-id-name = gold engraved lighter{$jobSuffix}
+forged-lighter-gold-id-full-name = {$fullName}'s gold engraved lighter{$jobSuffix}

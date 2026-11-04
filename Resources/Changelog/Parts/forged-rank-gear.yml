@@ -1,0 +1,34 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Branded receive distinct ash-gray combat armor; Tempered receive reinforced combat-green firefighter suits with matching pull-up hoods.
+- type: Tweak
+  message: Tempered suits have no walking penalty and a 10% running penalty, with 35% blunt, 30% slash, 45% piercing, 75% heat, 10% radiation and 25% stamina protection. Branded combat armor provides 25% blunt, 30% slash, 25% piercing, 25% heat and 35% explosion protection.
+- type: Tweak
+  message: Smithy furnace armor is unpowered, has no separate integrity pool or movement penalty, and provides 80% protection against blunt, slash, piercing, heat, cold, radiation, stamina damage and explosions, with no poison, shock or caustic protection.
+- type: Tweak
+  message: Forged ranks start with Forged Gas Masks. Branded and Tempered receive Forged Combat Boots and Forged Leather Gloves. Forge Keepers receive an Incinerator and flamer.
+- type: Fix
+  message: Smithy is a selectable whitelist-only Forged role and starts branded; Forgemaster remains admin-only.
+- type: Fix
+  message: Forged rank IDs now display the wearer's proper rank, including separate Branded, Forged, Smithy and Forgemaster IDs.
+- type: Tweak
+  message: Forged and Forge Keeper furnace armor has new soot-black steel and copper sprites.
+- type: Add
+  message: Unbranded, Branded, Tempered and Forged each choose one of three specialized rank kits, with one bandolier per kit. Smithy and Forge Keeper spawn wearing a bandolier; Captive Workers retain their axe.
+- type: Add
+  message: Tempered medical kits include a scanner, CPR book, 30 burn mesh and 30 sutures; Combat Medics receive two N14 combat medkits. Forged heavy kits include Shishkebab and hunting-revolver equipment, marksman carbines, or an R91 and the unique Embercleaver machete.
+- type: Tweak
+  message: Smithy starting instructions now state that the role answers only to the fires of the forge.
+- type: Tweak
+  message: Forge Keeper starting instructions now identify Smithy as their direct superior.
+- type: Tweak
+  message: Tempered Burn Tender kits include an American-180 with matching .22 ammunition and spare drum, three smoke grenades, and night vision goggles.
+- type: Tweak
+  message: Forged Furnace Breacher kits provide a marksman carbine, ammunition and two spare magazines. All Forged starting guns have compatible spare ammunition, including fuel for Forge Keeper weapons and a spare Smithy cryo cell.
+- type: Tweak
+  message: Flamer and Incinerator magazines are refillable fuel canisters consuming 1 welding fuel per shot, with 100 shots per full canister. Forged and Tempered also start with shotgun ammunition and a spare 12-gauge drum.
+- type: Tweak
+  message: Forged roles now use working rank-marked lighters as identification, from cheap recruit and worker lighters through metal Flippos to gold engraved Smithy and Forge Keeper lighters. Existing access permissions are preserved; Captive Workers receive no faction access.
+- type: Fix
+  message: Rank lighter IDs show their proper lighter sprites and toggle with Activate Item instead of attempting to equip.

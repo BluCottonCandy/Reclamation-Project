@@ -3,7 +3,7 @@
   description: department-Forged-description
   color: "#D4783B"
   uiCategory: MinorFaction
-  roles: [Forgemaster, ForgedVeteran, ForgedEnforcer, ForgedBranded, ForgedRaider, ForgedWorker]
+  roles: [Forgemaster, ForgedVeteran, ForgedEnforcer, ForgedBranded, ForgedRaider, ForgedWorker, ForgedSmithy, ForgedAdminForgemaster]
 
 - type: accessLevel
   id: Forged
@@ -30,7 +30,7 @@
   displayWeight: 500
   showBorder: true
   icon: JobIconEighties
-  supervisors: job-supervisors-forged
+  supervisors: job-supervisors-forgekeeper
   access: [Forged, ForgedCommand]
 
 - type: playTimeTracker
@@ -227,14 +227,17 @@
   description: job-description-forgedsmithy
   playTimeTracker: ForgedSmithy
   startingGear: ForgedSmithyGear
-  setPreference: false
+  setPreference: true
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: false
   alwaysUseSpawner: true
   canBeAntag: false
   weight: 60
   displayWeight: 600
   showBorder: true
   icon: JobIconEighties
-  supervisors: job-supervisors-forged
+  supervisors: job-supervisors-forgedsmithy
   access: [Forged, ForgedCommand]
 
 - type: playTimeTracker

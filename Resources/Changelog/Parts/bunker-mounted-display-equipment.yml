@@ -1,0 +1,8 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Weapons saved on bunker plaques and armor saved on mannequins remain permanently decorative after reloading, including older saves. Carried equipment and usable toolboxes retain their existing exemptions.
+- type: Tweak
+  message: Ammunition boxes, magazines and IDs left in saved bunkers become named decorative items. Ammo displays retain their filled appearance but cannot store or supply ammunition.
+- type: Tweak
+  message: Saved bunker super and ultra stim liquids become ordinary stim liquid without changing their volume or container names. Mail parcels are removed; mail machines remain.

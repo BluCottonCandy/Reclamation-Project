@@ -257,18 +257,14 @@ public sealed class PersonalBunkerSystem : EntitySystem
                     }
                     Spawn("ReclamationPersonalBunkerExit", new EntityCoordinates(grid, new Vector2(.5f, -2.5f)));
                 }
-                // Saved runtime entities may already be map-initialized. Enforce display rules after every load too.
-                var displays = EntityQueryEnumerator<BunkerDisplayWeaponComponent, TransformComponent>();
-                while (displays.MoveNext(out var display, out _, out var transform))
-                    if (transform.GridUid == grid) _displays.Decommission(display);
-                // Also migrate armor in older room saves that predate decorative armor.
-                var armor = EntityQueryEnumerator<TransformComponent>();
-                while (armor.MoveNext(out var item, out var transform))
+                // Loading can restore prototype components without raising MapInit again.
+                // Include mounted/equipped items and older saves without display markers.
+                var belongings = GetRoomBelongings(grid);
+                foreach (var item in belongings)
                 {
-                    if (transform.GridUid != grid)
-                        continue;
-                    _displays.DecommissionArmor(item);
-                    _displays.RestoreToolbox(item);
+                    if (!Exists(item)) continue;
+                    _displays.Decommission(item);
+                    if (!Exists(item)) continue;
                     // Stored furniture can contain cooldown timestamps from a different server uptime.
                     // Reset its interaction delays, including legacy saves, so shelves open immediately.
                     if (HasComp<StorageComponent>(item) && TryComp<UseDelayComponent>(item, out var delay))
@@ -382,6 +378,15 @@ public sealed class PersonalBunkerSystem : EntitySystem
         return false;
     }
 
+    private List<EntityUid> GetRoomBelongings(EntityUid grid)
+    {
+        var belongings = new List<EntityUid>();
+        var query = EntityQueryEnumerator<TransformComponent>();
+        while (query.MoveNext(out var uid, out _))
+            if (IsRoomBelonging(uid, grid)) belongings.Add(uid);
+        return belongings;
+    }
+
     private bool IsActiveAdminGhost(EntityUid uid)
     {
         return HasComp<GhostComponent>(uid)
@@ -470,14 +475,12 @@ public sealed class PersonalBunkerSystem : EntitySystem
             var manifest = ReadManifest();
             foreach (var room in roomsToSave)
             {
-                var belongings = new List<EntityUid>();
-                var query = EntityQueryEnumerator<TransformComponent>();
-                while (query.MoveNext(out var uid, out _))
-                    if (IsRoomBelonging(uid, room.Grid)) belongings.Add(uid);
+                var belongings = GetRoomBelongings(room.Grid);
                 // Autosaving an occupied room must never change weapons being used inside it.
                 // Only abandoned room belongings become decorations after the last occupant leaves.
                 if (!Occupied(room))
-                    foreach (var uid in belongings) _displays.Decommission(uid);
+                    foreach (var uid in belongings)
+                        if (Exists(uid)) _displays.Decommission(uid);
                 EntityManager.CullRemovedComponents();
                 _savingGrid = room.Grid;
                 using var writer = new StringWriter();

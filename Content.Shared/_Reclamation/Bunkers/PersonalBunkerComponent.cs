@@ -24,3 +24,12 @@ public sealed class PersonalBunkerChoiceMessage(bool room) : BoundUserInterfaceM
 {
     public bool Room = room;
 }
+
+/// <summary>Retains decorative identity and prevents prototype defaults restoring utility.</summary>
+[RegisterComponent]
+public sealed partial class BunkerDisplayItemComponent : Component
+{
+    [DataField] public string OriginalName = string.Empty;
+    [DataField] public bool Ammo;
+    [DataField] public bool Id;
+}

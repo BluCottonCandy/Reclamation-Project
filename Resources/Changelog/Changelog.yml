@@ -13685,3 +13685,13 @@ Entries:
   id: 6589
   time: '2026-11-04T20:48:35.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/118
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Empty bunkers unload even if saving fails, preventing endless save
+        retries. The last successful save remains available, but unsaved changes
+        may be lost.
+  id: 6590
+  time: '2026-11-04T21:11:16.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/119

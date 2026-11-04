@@ -1,6 +1,4 @@
 author: BluCottonCandy
 changes:
-- type: Remove
-  message: Disabled automatic random mail deliveries, including vault mail and humanitarian aid mail. Existing parcels can still be opened and mail machines remain in place.
 - type: Fix
   message: Empty bunkers now unload even if saving fails, preventing an endless save retry loop. The last successful save is kept, but unsaved changes may be lost.

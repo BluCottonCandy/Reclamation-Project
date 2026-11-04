@@ -125,6 +125,8 @@ jobs:
                       entries = listing.get('data', [])
                       if entries:
                           print('Directory entry fields:', list(entries[0].get('attributes', entries[0])))
+                  except ValueError:
+                      print('Directory API', route.split('?')[0], 'returned non-JSON content')
                   except urllib.error.HTTPError as probe_error:
                       print('Directory API', route.split('?')[0], 'HTTP', probe_error.code)
           except urllib.error.HTTPError as error:

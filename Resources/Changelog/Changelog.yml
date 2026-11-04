@@ -13598,3 +13598,12 @@ Entries:
   id: 6585
   time: '2026-11-04T10:50:38.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/114
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Active admin ghosts can stay inside personal bunkers for inspection
+        while ordinary ghosts are still removed from unattended rooms.
+  id: 6586
+  time: '2026-11-04T10:50:54.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/115

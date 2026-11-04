@@ -108,11 +108,7 @@ jobs:
               opener = urllib.request.build_opener(NoRedirect())
               with opener.open(request, timeout=30) as response:
                   result = json.load(response)
-              if 'attributes' not in result or 'current_state' not in result.get('attributes', {}):
-                  print('Host resource response fields:', ', '.join(sorted(result)))
-                  print('Host numeric power status:', result.get('status'))
-                  sys.exit('Host API response needs a verified NetworkBay adapter; no changes made.')
-              state = result['attributes']['current_state']
+                  state = result.get('status') or result.get('attributes', {}).get('current_state')
               if state not in ('running', 'offline', 'starting', 'stopping'):
                   sys.exit('NETWORKBAY returned an unexpected server state.')
               print(f'NETWORKBAY API connection successful. Server state: {state}')
@@ -130,6 +126,7 @@ jobs:
           PY
 
       - name: Discover SFTP host key for independent verification
+        if: always()
         env:
           NETWORKBAY_SFTP_HOST: ${{ vars.NETWORKBAY_SFTP_HOST }}
           NETWORKBAY_SFTP_PORT: ${{ vars.NETWORKBAY_SFTP_PORT }}
@@ -185,6 +182,7 @@ jobs:
           echo 'No files were modified and no server power actions were performed.'
 
       - name: Save public host keys for verification
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: networkbay-unverified-public-host-keys

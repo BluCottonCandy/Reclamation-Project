@@ -13652,3 +13652,23 @@ Entries:
   id: 6587
   time: '2026-11-04T12:19:01.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/116
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Bunker plaque weapons and mannequin armor remain decorative after
+        reloads, including older saves.
+    - type: Tweak
+      message: >-
+        Saved ammunition boxes, magazines and IDs become named decorative items.
+        Ammo displays keep their filled appearance but cannot hold or supply
+        ammunition.
+    - type: Tweak
+      message: >-
+        Saved super and ultra stim liquids become normal stim liquid at the same
+        volume.
+    - type: Tweak
+      message: Saved bunker mail and parcels are deleted; mail machines remain.
+  id: 6588
+  time: '2026-11-04T13:47:54.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/117

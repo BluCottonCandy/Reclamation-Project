@@ -13735,3 +13735,18 @@ Entries:
   id: 6593
   time: '2026-11-05T00:47:08.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/122
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Herbal pain reliever can be crafted in G → Medical using xander root,
+        broc flower and wild agave. It slowly metabolizes to suppress Chronic
+        Pain's wavering vision and discomfort.
+    - type: Add
+      message: >-
+        Having 20 units or more of herbal pain reliever in your system causes
+        vomiting. Instructions and overdose warning are included in the medical
+        guidebook.
+  id: 6594
+  time: '2026-11-05T10:22:56.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/123

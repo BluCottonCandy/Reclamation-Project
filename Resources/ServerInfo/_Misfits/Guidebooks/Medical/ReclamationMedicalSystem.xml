@@ -37,6 +37,14 @@ After a full disable, the damaged limb can never recover above 15 permanent heal
 
 Open the surgical incision, then use the existing [bold]Set and mend fracture[/bold] procedure with a bone setter. It mends the fracture and repairs tissue to 15/15, even if its remaining capacity was zero. It also works on a fully disabled limb without a fracture. A zero-capacity attached limb can be salvaged to 15/15 with bone-setting surgery. Repeating bone setting cannot raise the 15-point cap.
 
+## Herbal relief for old injuries
+
+The [bold]Chronic Pain[/bold] trait represents old injuries and can cause wavering, drunken-looking vision and discomfort. [bold]Herbal pain reliever[/bold] suppresses these symptoms while it is being metabolized.
+
+Craft it in [bold]G menu → Medical[/bold] using one xander root, one broc flower, and one wild agave leaf. Each pouch contains one dose. It metabolizes slowly, lasting about three minutes and twenty seconds with normal metabolism. Symptoms can return after it wears off. Like other medicines, it requires functioning chemical metabolism.
+
+[bold]Having 20 units or more in your system at once causes vomiting.[/bold] Each pouch contains 10 units; avoid stacking doses before the previous dose has worn off.
+
 ## Med-X: temporary limb function at a permanent cost
 
 While Med-X is present and your body can metabolize chemicals, attached arms, hands, legs, and feet receive 15 temporary health points and cannot be disabled by damage or fractures. Even exhausting that temporary health does not disable the attached limb until Med-X wears off. It does not replace missing limbs or prevent amputation.

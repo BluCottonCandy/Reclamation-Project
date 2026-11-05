@@ -1,0 +1,18 @@
+- type: reagent
+  id: ReclamationSoothingPowder
+  name: reagent-name-reclamation-soothing-powder
+  desc: reagent-desc-reclamation-soothing-powder
+  group: Medicine
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: bitter
+  color: "#A2AF79"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.05
+      effects:
+      - !type:SuppressChronicPainReagent
+        SuppressionTime: 3
+      - !type:ChemVomit
+        conditions:
+        - !type:ReagentThreshold
+          min: 20

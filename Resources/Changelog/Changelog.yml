@@ -13695,3 +13695,12 @@ Entries:
   id: 6590
   time: '2026-11-04T21:11:16.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/119
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Knives can scrape spraypaint off items. Use a knife on a painted item to
+        restore its original appearance after a short action.
+  id: 6591
+  time: '2026-11-05T00:46:36.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/120

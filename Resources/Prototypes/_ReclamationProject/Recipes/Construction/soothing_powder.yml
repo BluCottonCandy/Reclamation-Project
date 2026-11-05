@@ -1,0 +1,33 @@
+- type: construction
+  id: ReclamationSoothingPowder
+  name: herbal pain reliever
+  description: A slow-metabolizing herbal remedy for the wavering vision and discomfort caused by old injuries.
+  graph: ReclamationSoothingPowder
+  startNode: start
+  targetNode: powder
+  category: construction-category-medical
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpowder
+  objectType: Item
+
+- type: constructionGraph
+  id: ReclamationSoothingPowder
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: powder
+      steps:
+      - material: XanderRoot
+        amount: 1
+        doAfter: 3
+      - material: BrocFlower
+        amount: 1
+        doAfter: 3
+      - material: AgaveLeaf
+        amount: 1
+        doAfter: 4
+  - node: powder
+    entity: ReclamationSoothingPowder

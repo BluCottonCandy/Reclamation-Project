@@ -1,0 +1,20 @@
+- type: entity
+  parent: N14HealingPowder
+  id: ReclamationSoothingPowder
+  name: herbal pain reliever
+  description: A bitter herbal pain reliever made from xander root, broc flower and wild agave. Slowly metabolizes to temporarily relieve chronic pain and the wavering vision caused by old injuries. Taking too much causes vomiting.
+  components:
+  - type: Sprite
+    layers:
+    - state: healingpowder
+      color: "#A2AF79"
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: ReclamationSoothingPowder
+          Quantity: 10
+  - type: Construction
+    graph: ReclamationSoothingPowder
+    node: powder

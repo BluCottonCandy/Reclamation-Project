@@ -13750,3 +13750,17 @@ Entries:
   id: 6594
   time: '2026-11-05T10:22:56.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/123
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Forged suits now have rank-based explosion resistance: Unbranded 0%,
+        Branded 10%, Tempered 20%, Forged 30%, Forge Keeper 40%, Smithy 50%, and
+        admin Forgemaster 60%.
+    - type: Tweak
+      message: >-
+        Incinerator blasts deal up to 8 heat instead of 32, retain 24 direct-hit
+        heat, and fire once every two seconds.
+  id: 6595
+  time: '2026-11-05T10:23:51.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/124

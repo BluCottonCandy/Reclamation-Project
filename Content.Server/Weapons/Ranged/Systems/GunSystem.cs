@@ -356,6 +356,11 @@ public sealed partial class GunSystem : SharedGunSystem
 
         void CreateAndFireProjectiles(EntityUid ammoEnt, AmmoComponent ammoComp)
         {
+            // Raw ammunition can be supplied from nullspace (e.g. NPC ammo providers).
+            // Give it the validated firing origin before ShootProjectile converts it to map coordinates.
+            if (Transform(ammoEnt).MapID == MapId.Nullspace)
+                _xform.SetCoordinates(ammoEnt, fromEnt);
+
             if (TryComp<ProjectileSpreadComponent>(ammoEnt, out var ammoSpreadComp))
             {
                 var spreadEvent = new GunGetAmmoSpreadEvent(ammoSpreadComp.Spread);

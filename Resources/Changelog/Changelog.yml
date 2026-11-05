@@ -13718,3 +13718,20 @@ Entries:
   id: 6592
   time: '2026-11-05T00:46:46.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/121
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Bunker saves repair stale audio, shop-map, chat-device and interface
+        references without discarding stored contents or records.
+    - type: Fix
+      message: >-
+        Bunker contents and occupancy checks avoid scanning every object in the
+        world.
+    - type: Fix
+      message: >-
+        Mapless projectiles are placed at their firing origin before launch,
+        preventing invalid-map gunfire errors.
+  id: 6593
+  time: '2026-11-05T00:47:08.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/122

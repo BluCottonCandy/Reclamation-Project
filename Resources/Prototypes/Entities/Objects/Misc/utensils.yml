@@ -143,6 +143,11 @@
   name: plastic knife
   description: That's not a knife. This is a knife.
   components:
+  - type: PaintRemover
+    sound:
+      path: /Audio/Effects/metal_scrape1.ogg
+      params:
+        volume: -6
   - type: Sprite
     state: plastic_knife
   - type: Utensil

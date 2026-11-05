@@ -3,6 +3,11 @@
   id: N14BaseKnife
   abstract: true
   components:
+  - type: PaintRemover
+    sound:
+      path: /Audio/Effects/metal_scrape1.ogg
+      params:
+        volume: -6
   - type: Tag
     tags:
     - Knife

@@ -123,7 +123,7 @@
   id: IncineratorExplosion
   damagePerIntensity:
     types:
-      Heat: 16
+      Heat: 4
   lightColor: Orange
   texturePath: /Textures/Effects/fire.rsi
   fireStates: 6

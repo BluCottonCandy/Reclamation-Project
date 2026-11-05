@@ -52,6 +52,8 @@
         Heat: 0.20
         Caustic: 0.70
         Radiation: 0.60
+  - type: ExplosionResistance
+    damageCoefficient: 0.70
   # Heat armor supplies the fire reduction; avoid multiplying a hidden second reduction.
   - type: FireProtection
     reduction: 0
@@ -103,6 +105,8 @@
         Heat: 0.20
         Caustic: 0.70
         Radiation: 0.60
+  - type: ExplosionResistance
+    damageCoefficient: 0.60
   - type: ToggleableClothing
     clothingPrototypes:
       head: ForgedKeeperFurnaceHelmet

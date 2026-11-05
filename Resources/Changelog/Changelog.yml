@@ -13704,3 +13704,17 @@ Entries:
   id: 6591
   time: '2026-11-05T00:46:36.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/120
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Armor examine details no longer list zero-value protections, including
+        Smithy armor's shock, poison and caustic entries. Actual protections are
+        unchanged.
+    - type: Fix
+      message: >-
+        Added a whitelist-only Smithy slot and dedicated spawn inside the Forged
+        base on Wendover.
+  id: 6592
+  time: '2026-11-05T00:46:46.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/121

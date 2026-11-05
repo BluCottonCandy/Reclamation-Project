@@ -36,7 +36,7 @@
         Piercing: 0.75
         Heat: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.65
+    damageCoefficient: 0.90
 
 - type: entity
   parent: ForgedKeeperFurnaceArmor
@@ -72,7 +72,7 @@
   - type: StaminaDamageResistance
     coefficient: 0.20
   - type: ExplosionResistance
-    damageCoefficient: 0.20
+    damageCoefficient: 0.50
 
 
 - type: entity
@@ -100,6 +100,8 @@
         Radiation: 0.90
   - type: StaminaDamageResistance
     coefficient: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
   - type: ToggleableClothing
     clothingPrototype: ForgedTemperedFirefighterHood
 
@@ -115,3 +117,19 @@
     sprite: _ReclamationProject/Clothing/Head/forged_tempered_hood.rsi
   - type: Item
     sprite: _ReclamationProject/Clothing/Head/forged_tempered_hood.rsi
+
+- type: entity
+  parent: N14ClothingOuterRaiderBadlands
+  id: ForgedUnbrandedArmor
+  name: Unbranded raider armor
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 1
+
+- type: entity
+  parent: ForgedKeeperFurnaceArmor
+  id: ForgedAdminForgemasterArmor
+  name: Forgemaster's furnace armor
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 0.40

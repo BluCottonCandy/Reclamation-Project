@@ -103,7 +103,7 @@
     angleIncrease: 1
     angleDecay: 3
     projectileSpeed: 10
-    fireRate: 1
+    fireRate: 0.5
     soundGunshot:
       path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
     selectedMode: FullAuto

@@ -67,7 +67,7 @@
     shoes: N14ClothingShoesRags
     back: N14ClothingBackpackSatchelExplorer
     id: ForgedRaiderID
-    outerClothing: N14ClothingOuterRaiderBadlands
+    outerClothing: ForgedUnbrandedArmor
 
 - type: startingGear
   id: ForgedWorkerGear
@@ -208,6 +208,7 @@
   id: ForgedAdminForgemasterGear
   equipment:
     id: ForgedAdminForgemasterID
+    outerClothing: ForgedAdminForgemasterArmor
 
 - type: entity
   parent: BaseItem

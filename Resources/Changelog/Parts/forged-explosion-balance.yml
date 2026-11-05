@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Forged suits now follow rank-based explosion resistance, from none for Unbranded to 10% for Branded, 20% for Tempered, 30% for Forged, 40% for Forge Keeper, 50% for Smithy and 60% for the admin Forgemaster.
+- type: Tweak
+  message: Incinerator blasts now deal up to 8 heat damage instead of 32, with 24 direct-hit heat damage retained. Its firing rate is halved to one shot every two seconds.

@@ -37,7 +37,8 @@
         whitelist:
           tags:
             - N14FlamerFuel
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: Gun
@@ -94,7 +95,8 @@
         whitelist:
           tags:
             - N14EnrichedFlamerFuel
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: Gun

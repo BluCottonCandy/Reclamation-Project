@@ -13,6 +13,7 @@
     tracker: MinutemenPrivate
     min: 48000
   startingGear: MinutemenHeavyTrooperGear
+  alwaysUseSpawner: true # Use the dedicated base marker for round start and late join.
   icon: JobIconNcrSpec
 
 - type: playTimeTracker

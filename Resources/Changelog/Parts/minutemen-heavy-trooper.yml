@@ -1,7 +1,7 @@
 author: BluCottonCandy
 changes:
 - type: Add
-  message: Added two Minutemen Heavy Trooper slots, a combat specialist role between Private and Corporal unlocked after 800 minutes as a Minutemen Private, with unique salvaged plate armor, matching riot helmet and armored boots, and a two-handed vertibird rotor blade.
+  message: Added two Minutemen Heavy Trooper slots, a combat specialist role between Private and Corporal unlocked after 800 minutes as a Minutemen Private, available for late join at the Minutemen base, with unique salvaged plate armor, matching riot helmet and armored boots, and a two-handed vertibird rotor blade.
 - type: Add
   message: Heavy Trooper armor provides 50% blunt, slash, piercing, and heat protection, 60% explosion resistance, and 15% movement slowdown. Its chest-mounted combat knife disappears from the armor when drawn and returns when sheathed; Alt-click your equipped armor slot to draw it; Shift-click still examines it.
 - type: Add

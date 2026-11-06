@@ -1,0 +1,12 @@
+- type: entity
+  id: ActionAgilityFastHands
+  name: Fast Hands
+  description: Swap magazines once, then instantly refill carried spare magazines using compatible ammo. Magazines inside guns are excluded. Internal-magazine guns reload directly at twice normal loading speed. Two-minute cooldown.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi
+      state: base
+    useDelay: 120
+    event: !type:AgilityFastHandsActionEvent

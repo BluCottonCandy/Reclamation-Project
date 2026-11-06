@@ -27,8 +27,18 @@ public sealed class SpecialAgilitySystem : EntitySystem
         args.Multipliers *= GetActionDelayMultiplier(args.User, special);
     }
 
+    public float GetStaminaCostMultiplier(EntityUid uid)
+    {
+        var points = Math.Clamp(_special.GetEffective(uid, SpecialStat.Agility) - 5, 0, 5);
+        return 1f - points * 0.04f;
+    }
+
     private float GetActionDelayMultiplier(EntityUid uid, SpecialComponent special)
     {
+        var points = Math.Clamp(_special.GetEffective(uid, SpecialStat.Agility) - 5, 0, 5);
+        if (points > 0)
+            return 1f / (1f + points * 0.04f);
+
         var tuning = _special.GetTuning();
         var modifier = _special.GetCurvedEffectModifier(
             uid,

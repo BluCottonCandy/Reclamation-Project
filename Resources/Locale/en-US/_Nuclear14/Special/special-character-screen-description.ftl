@@ -4,7 +4,7 @@ special-character-creation-description-perception = Improves ranged weapon handl
 special-character-creation-description-endurance = Improves health, resistance to toxins, stamina recovery, and food and water efficiency.
 special-character-creation-description-charisma = Gives more loadout points.
 special-character-creation-description-intelligence = Improves crafting and medical abilities.
-special-character-creation-description-agility = Speeds up timed actions (do-after progress bars).
+special-character-creation-description-agility = Speeds up timed actions and melee attacks, and reduces melee stamina costs. At 10, grants Fast Hands and dual one-handed melee attacks.
 special-character-creation-description-luck = Improves critical hits and lucky scavenging.
 
 # Title of Special labels in character creation screen

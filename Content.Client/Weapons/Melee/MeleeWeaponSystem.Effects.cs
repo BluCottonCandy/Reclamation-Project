@@ -44,6 +44,7 @@ public sealed partial class MeleeWeaponSystem
         }
 
         var spriteRotation = Angle.Zero;
+        var closeAtCenter = false;
         if (arcComponent.Animation != WeaponArcAnimation.None
             && TryComp(weapon, out MeleeWeaponComponent? meleeWeaponComponent))
         {
@@ -53,7 +54,15 @@ public sealed partial class MeleeWeaponSystem
 
             spriteRotation = meleeWeaponComponent.WideAnimationRotation;
 
-            if (meleeWeaponComponent.SwingLeft)
+            var swingLeft = meleeWeaponComponent.SwingLeft;
+            if (animation == meleeWeaponComponent.WideAnimation.Id &&
+                TryGetWeapon(user, out var active, out var activeWeapon) &&
+                TryGetOffhandMeleeWeapon(user, active, out var offhand, out _))
+            {
+                closeAtCenter = true;
+                swingLeft = weapon == offhand ? !activeWeapon.SwingLeft : activeWeapon.SwingLeft;
+            }
+            if (swingLeft)
                 angle *= -1;
         }
         sprite.Rotation = localPos.ToWorldAngle();
@@ -67,7 +76,7 @@ public sealed partial class MeleeWeaponSystem
             case WeaponArcAnimation.Slash:
                 track = EnsureComp<TrackUserComponent>(animationUid);
                 track.User = user;
-                _animation.Play(animationUid, GetSlashAnimation(sprite.Rotation, angle, spriteRotation, arcComponent.DurationMultiplier), SlashAnimationKey);
+                _animation.Play(animationUid, BuildSlashAnimation(sprite.Rotation, angle, spriteRotation, arcComponent.DurationMultiplier, closeAtCenter), SlashAnimationKey);
                 if (arcComponent.Fadeout)
                     _animation.Play(animationUid, GetFadeAnimation(sprite, 0.065f * arcComponent.DurationMultiplier, 0.115f * arcComponent.DurationMultiplier), FadeAnimationKey);
                 break;
@@ -90,12 +99,15 @@ public sealed partial class MeleeWeaponSystem
     }
 
     private static Animation GetSlashAnimation(Angle aimRotation, Angle arc, Angle spriteRotation, float durationMultiplier = 1f)
+        => BuildSlashAnimation(aimRotation, arc, spriteRotation, durationMultiplier, false);
+
+    private static Animation BuildSlashAnimation(Angle aimRotation, Angle arc, Angle spriteRotation, float durationMultiplier = 1f, bool closeAtCenter = false)
     {
         var slashStart = 0.03f * durationMultiplier;
         var slashEnd = 0.065f * durationMultiplier;
         var length = slashEnd + 0.05f * durationMultiplier;
         var startRotation = aimRotation + arc / 2;
-        var endRotation = aimRotation - arc / 2;
+        var endRotation = closeAtCenter ? aimRotation : aimRotation - arc / 2;
         var startRotationOffset = startRotation.RotateVec(new Vector2(0f, -1f));
         var endRotationOffset = endRotation.RotateVec(new Vector2(0f, -1f));
         startRotation += spriteRotation;
@@ -134,7 +146,7 @@ public sealed partial class MeleeWeaponSystem
         // Sweeps wider than a semicircle otherwise interpolate along the rear chord,
         // and Angle.Lerp takes the shorter, backwards route. Split at the aimed
         // midpoint so both the weapon rotation and its orbit sweep across the front.
-        if (Math.Abs(arc.Degrees) > 180)
+        if (!closeAtCenter && Math.Abs(arc.Degrees) > 180)
         {
             var rotationTrack = (AnimationTrackComponentProperty) animation.AnimationTracks[0];
             var offsetTrack = (AnimationTrackComponentProperty) animation.AnimationTracks[1];

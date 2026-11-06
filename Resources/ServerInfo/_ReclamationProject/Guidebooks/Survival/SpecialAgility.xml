@@ -1,9 +1,17 @@
 <Document>
-# Agility: Quickstep
+# Agility: Fast Hands
 
-Agility changes the speed of timed actions shown by do-after progress bars, rather than walking or sprinting. Agility 5 is neutral. The original speed curve is preserved: [bold]1: -5%; 2: -3.5%; 3: -2.25%; 4: -1%; 5: 0%; 6: +1%; 7: +2.25%; 8: +3.75%; 9: +5.5%; 10: +7.5%[/bold]. A 10-second action at Agility 10 takes about 9.30 seconds. Explicitly fixed-duration actions are unaffected. Active chem Agility boosts also improve timed-action speed instead of movement.
+Agility improves timed actions instead of walking or sprinting. Agility 5 is neutral. Timed-action speed follows this curve: [bold]1: -5%; 2: -3.5%; 3: -2.25%; 4: -1%; 5: 0%; 6: +1%; 7: +2.25%; 8: +3.75%; 9: +5.5%; 10: +7.5%[/bold]. Fixed-duration actions are unaffected.
 
-At [bold]10 effective Agility[/bold], you gain [bold]Quickstep[/bold]. Activate it to dash up to [bold]five tiles[/bold] in the direction you are moving, or forward if you are standing still. This is longer than the ordinary 3.5-tile melee dash.
+Each point above 5 also gives [bold]4% faster melee attacks[/bold] and [bold]4% lower melee stamina costs[/bold], reaching 20% at 10. Each weapon keeps its own damage, range and cooldown.
 
-Quickstep costs [bold]no stamina[/bold] and has a [bold]30-second cooldown from activation[/bold]. It uses physical dash movement: obstacles can stop you, and you cannot use it while immobilized or already being thrown. It grants no attack, healing or invulnerability. Temporarily lowering Agility does not reset its cooldown.
+At [bold]10 effective Agility[/bold], dual melee is [bold]always active[/bold]: attack with two held one-handed melee weapons together without activating Fast Hands. This also works while Fast Hands is on cooldown. Wide swings pay stamina for each weapon and pause when you lack enough stamina. Guns, weapons requiring two hands, and unarmed attacks do not qualify.
+
+You also gain [bold]Fast Hands[/bold], with a [bold]two-minute cooldown[/bold]. For magazine-fed guns, activation first swaps your held gun to the fullest compatible carried spare magazine, at most once. It will not replace a fuller loaded magazine with a less-filled spare. The old magazine is returned to your backpack or other available storage.
+
+After that single swap, [bold]all carried spare magazines refill instantly[/bold] using compatible spare ammunition you are carrying. This includes the magazine just removed from the gun. [bold]Magazines inside any gun are never refilled[/bold], including guns stored in your backpack. The magazine just inserted into your held gun is therefore left as it was. The ability does not keep swapping magazines afterward.
+
+For [bold]guns with internal magazines or cylinders[/bold], such as hunting rifles, shotguns and revolvers, Fast Hands instead reloads the held gun directly through progress bars at [bold]twice normal loading speed[/bold]. This mode is limited to one internal reload and uses real carried ammunition. Dropping the gun cancels loading; rounds already loaded are retained.
+
+Fast Hands never creates ammunition or increases gun fire rate. Losing and regaining Agility does not reset the cooldown. Dual melee remains passive and does not depend on using Fast Hands.
 </Document>

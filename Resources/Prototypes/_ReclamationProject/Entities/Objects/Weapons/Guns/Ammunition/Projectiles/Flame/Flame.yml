@@ -26,7 +26,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 30
+        Heat: 20
     impactEffect: BulletFlamerImpactEffect
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
@@ -106,7 +106,7 @@
     impactEffect: BulletIncineratorImpactEffect
     damage:
       types:
-        Heat: 24
+        Heat: 12
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
   - type: PointLight
@@ -118,7 +118,7 @@
     fireStacks: 0.25
   - type: ExplodeOnTrigger
   - type: Explosive
-    # Maximum blast damage: 2 intensity * 4 heat = 8, before protection.
+    # Maximum blast damage: 2 intensity * 2 heat = 4, before protection.
     explosionType: IncineratorExplosion
     maxIntensity: 2
     intensitySlope: 1

@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Game holotapes are much rarer in junk piles. Each successful search now has one 5% chance to find a single game, rather than seven independent 5% rolls that could award several games.

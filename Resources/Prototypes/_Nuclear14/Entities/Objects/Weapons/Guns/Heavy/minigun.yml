@@ -114,10 +114,10 @@
     angleIncrease: 5 # # - nerfed spread vs pre-buff (was 2)
     angleDecay: 12
     fireRate: 15 # #Burger - prior proposed ROF (was 6)
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: HeldSpeedModifier
   - type: StaticPrice
     price: 800
 

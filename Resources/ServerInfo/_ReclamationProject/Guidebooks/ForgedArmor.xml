@@ -1,0 +1,27 @@
+<Document>
+# Forged Armor
+
+Forged armor is specialized against burning fuel, not energy weapons. A laser still deals ordinary heat damage and bypasses the outfit's flame-only protection. Do not rely on a furnace suit to win a firefight against laser users.
+
+## Furnace suits
+
+The Forged and Forge Keeper furnace suits provide 95% flame-only reduction against flamer and incinerator projectile heat, burning, and floor fire. This is a combined-outfit limit: a mask or helmet cannot raise that flame-only reduction above 95%. Ordinary damage protection can still affect the remaining damage. You are highly resistant, not invulnerable.
+
+Incinerator explosions have separate, strong protection. Other explosions use the suit's ordinary explosion resistance.
+
+The Forged suit has 35% blunt, slash and piercing protection, 30% radiation protection, 20% caustic protection and 20% explosion resistance. It slows walking and running by 15%.
+
+The Forge Keeper suit has 45% blunt, slash and piercing protection, 30% radiation protection, 20% caustic protection and 30% explosion resistance. It slows walking and running by 20%.
+
+Matching player furnace helmets have reduced conventional protection. The suits and helmets give no ordinary heat armor; the standard gloves and boots can still provide a little heat protection. The Forged gas mask protects against atmospheric hazards and flames, rather than lasers. Conventional armor pieces still combine when worn.
+
+## Tempered
+
+The Tempered reinforced firefighter suit provides 90% flame-only reduction, capped at 90% across the outfit. It has separate incinerator-blast resistance and keeps its existing non-heat armor ratings and 10% running slowdown. Its suit and hood do not provide ordinary laser-heat protection.
+
+Armor protection details list Fire separately from Heat. Fire covers burning fuel and marked flame projectiles; Heat covers ordinary heat damage, including lasers.
+
+## Limits
+
+These defenses do not prevent every injury, remove fire, extinguish burning fuel, or make dangerous environments safe to breathe. Laser fire and other attacks remain a threat.
+</Document>

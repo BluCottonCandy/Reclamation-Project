@@ -57,7 +57,8 @@
         whitelist:
           tags:
             - N14Cartridge762Rifle
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: MagazineVisuals

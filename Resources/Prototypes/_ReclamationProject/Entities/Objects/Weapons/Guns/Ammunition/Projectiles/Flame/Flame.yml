@@ -22,6 +22,7 @@
         - BulletImpassable
   - type: Ammo
     muzzleFlash: FlamerMuzzleFlashEffect
+  - type: FlameProjectile
   - type: Projectile
     damage:
       types:
@@ -37,7 +38,7 @@
   - type: IgniteOnCollide
     fireStacks: 0.25
   - type: TimedDespawn
-    lifetime: 1
+    lifetime: 0.5
 
 - type: entity
   id: FlamerMuzzleFlashEffect
@@ -100,6 +101,7 @@
         - BulletImpassable
   - type: Ammo
     muzzleFlash: IncineratorMuzzleFlashEffect
+  - type: FlameProjectile
   - type: Projectile
     impactEffect: BulletIncineratorImpactEffect
     damage:

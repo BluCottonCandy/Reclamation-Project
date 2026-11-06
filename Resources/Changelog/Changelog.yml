@@ -13764,3 +13764,42 @@ Entries:
   id: 6595
   time: '2026-11-05T10:23:51.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/124
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Heavy weapon and greatshield movement penalties now apply only while
+        held, rather than while stowed on your suit or back. Backpacks retain
+        their worn slowdown.
+  id: 6596
+  time: '2026-11-06T04:46:11.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/125
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Forged and Forge Keeper furnace outfits now specialize in capped 95%
+        flame protection, with Tempered at 90%, while remaining vulnerable to
+        lasers. Incinerator blasts have dedicated resistance.
+    - type: Tweak
+      message: >-
+        Player furnace suits and helmets have lower conventional protection.
+        Forged and Forge Keeper suit slowdown is now 15% and 20%; Smithy's
+        special armor ratings are retained.
+    - type: Fix
+      message: >-
+        Flame projectiles use fire protection, and stacked fire protection can
+        no longer turn burning into healing.
+    - type: Tweak
+      message: Armor protection details now list Fire separately from Heat.
+    - type: Tweak
+      message: >-
+        Flamers and incinerators have half their previous projectile range;
+        incinerator projectiles also travel at half speed.
+    - type: Fix
+      message: >-
+        Flamer and incinerator movement penalties apply only while held, rather
+        than while stowed.
+  id: 6597
+  time: '2026-11-06T04:46:20.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/126

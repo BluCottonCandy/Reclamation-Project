@@ -153,7 +153,8 @@
       collection: N14RifleR91Gunshot
   - type: Wieldable
     wieldedSpeedModifier: 0.8
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: ItemSlots

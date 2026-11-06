@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Heavy weapon and greatshield movement penalties now apply only while held, rather than while stowed on your suit or back. Backpacks retain their worn slowdown.

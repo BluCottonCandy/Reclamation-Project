@@ -1,7 +1,11 @@
 <Document>
-## Weapons & Ammo
+## Weapons &amp; Ammo
 
 Weapons in Reclamation Project range from improvised pistols to military-grade energy guns and heavy weapons. Ammunition matters just as much as the weapon itself - learn what your gear uses before you head into a fight.
+
+## Carrying heavy weapons
+
+Weapon movement penalties apply while the weapon is held. Stowing a weapon in your suit-storage or back slot removes its held-weight penalty. Drawing it again restores that penalty. Backpacks still apply their own movement penalties when worn, and wielding penalties still apply while wielding a weapon.
 
 ## Weapon Families
 

@@ -1129,10 +1129,10 @@
   - type: WieldDelay # Misfits-change
     baseDelay: 2.5
     preventFiring: true
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: HeldSpeedModifier
   - type: FollowDistance
     backStrength: 6
   - type: StaticPrice
@@ -1211,10 +1211,10 @@
   - type: WieldDelay # Misfits-change
     baseDelay: 2.5
     preventFiring: true
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: HeldSpeedModifier
   - type: FollowDistance
     backStrength: 6
   - type: StaticPrice
@@ -1490,10 +1490,10 @@
     minAngle: -24
     maxAngle: -70
   - type: MultiHandedItem
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
-  - type: HeldSpeedModifier
   - type: Gun
     fireRate: 0.5
     minAngle: 24

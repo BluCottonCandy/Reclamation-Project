@@ -54,7 +54,8 @@
         whitelist:
           tags:
             - N14Cartridge308Rifle
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: MagazineVisuals
@@ -123,7 +124,8 @@
         whitelist:
           tags:
             - N14Cartridge762Rifle
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: MagazineVisuals
@@ -192,7 +194,8 @@
         whitelist:
           tags:
             - N14Cartridge762Rifle
-  - type: ClothingSpeedModifier # Corvax-Add
+  - type: HeldSpeedModifier # Corvax-Add
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: MagazineVisuals
@@ -261,7 +264,8 @@
         whitelist:
           tags:
             - N14Cartridge556Rifle
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.90
     sprintModifier: 0.90
   - type: MagazineVisuals
@@ -294,7 +298,8 @@
     sprite: _Nuclear14/Objects/Weapons/Guns/LMGs/bren.rsi
   - type: Wieldable
     wieldedSpeedModifier: 0.8
-  - type: ClothingSpeedModifier # Corvax-Add
+  - type: HeldSpeedModifier # Corvax-Add
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: GunRequiresWield
@@ -363,7 +368,8 @@
     sprite: _Nuclear14/Objects/Weapons/Guns/LMGs/m60.rsi
   - type: Wieldable
     wieldedSpeedModifier: 0.8
-  - type: ClothingSpeedModifier # Misfit-Add
+  - type: HeldSpeedModifier # Misfit-Add
+    mirrorClothingModifier: false
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: GunRequiresWield

@@ -12,7 +12,7 @@
   - type: Item
     size: Ginormous
   - type: MultiHandedItem
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.5
     sprintModifier: 0.5
-  - type: HeldSpeedModifier

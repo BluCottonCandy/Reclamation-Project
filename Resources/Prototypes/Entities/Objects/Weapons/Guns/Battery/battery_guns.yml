@@ -453,10 +453,10 @@
     - type: Item
       size: Ginormous
     - type: MultiHandedItem
-    - type: ClothingSpeedModifier
+    - type: HeldSpeedModifier
+      mirrorClothingModifier: false
       walkModifier: 0.6
       sprintModifier: 0.6
-    - type: HeldSpeedModifier
     - type: Sprite
       sprite: Objects/Weapons/Guns/Battery/particle_decelerator.rsi
       layers:

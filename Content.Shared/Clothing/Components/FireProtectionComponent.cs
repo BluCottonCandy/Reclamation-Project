@@ -14,4 +14,8 @@ public sealed partial class FireProtectionComponent : Component
     /// </summary>
     [DataField(required: true)]
     public float Reduction;
+
+    /// <summary>Caps the combined fire reduction of the outfit. Other clothing cannot bypass this limit.</summary>
+    [DataField]
+    public float MaximumReduction = 1f;
 }

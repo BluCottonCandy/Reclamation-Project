@@ -3,7 +3,7 @@
   parent: ClothingOuterHardsuitBase
   id: ForgedFurnaceArmor
   name: Forged Furnace Armor
-  description: A furnace-blackened suit of salvaged armor assembled by the Forged. Stripped-down servos and heavy flame-resistant plating make it slow but dependable. It needs neither power-armor training nor a fusion core. Its lining resists flames rather than laser fire.
+  description: A furnace-blackened suit of salvaged armor assembled by the Forged. Stripped-down servos and heavy flame-resistant plating make it slow but dependable. It needs neither power-armor training nor a fusion core. Its lining provides strong flame resistance, with modest protection from laser heat.
   categories: []
   components:
   - type: N14PowerArmor
@@ -49,7 +49,7 @@
         Blunt: 0.65
         Slash: 0.65
         Piercing: 0.65
-        Heat: 1
+        Heat: 0.85
         Caustic: 0.80
         Radiation: 0.70
   - type: ExplosionResistance
@@ -99,7 +99,7 @@
   parent: ForgedFurnaceArmor
   id: ForgedKeeperFurnaceArmor
   name: Forge Keeper's Furnace Armor
-  description: Reinforced furnace-blackened armor reserved for the Forge Keeper. Its heavy plates provide protection without a separate integrity pool, fusion core, or training requirement. Its lining resists flames rather than laser fire.
+  description: Reinforced furnace-blackened armor reserved for the Forge Keeper. Its heavy plates provide protection without a separate integrity pool, fusion core, or training requirement. Its lining provides strong flame resistance, with modest protection from laser heat.
   components:
   - type: ClothingSpeedModifier
     walkModifier: 0.80
@@ -110,7 +110,7 @@
         Blunt: 0.55
         Slash: 0.55
         Piercing: 0.55
-        Heat: 1
+        Heat: 0.85
         Caustic: 0.80
         Radiation: 0.70
   - type: ExplosionResistance

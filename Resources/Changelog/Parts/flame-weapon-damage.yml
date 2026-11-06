@@ -1,0 +1,8 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Reduced flamer direct-hit damage from 30 to 20 and firing speed from 8 to 4 shots per second, for 80 direct damage per second.
+- type: Tweak
+  message: Reduced incinerator direct-hit damage from 24 to 12 and maximum blast damage from 8 to 4, preserving its existing blast spread and fire effects.
+- type: Tweak
+  message: Added 15% ordinary heat protection to Tempered, Forged, and Forge Keeper suits, including inherited Forgemaster armor. Existing higher heat ratings and captive worker equipment are unchanged.

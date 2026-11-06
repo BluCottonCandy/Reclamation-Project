@@ -16,7 +16,7 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 public sealed class ForgedFlameProtectionTest
 {
     [Test]
-    public async System.Threading.Tasks.Task FlamesAreResistedButLasersAreNot()
+    public async System.Threading.Tasks.Task FlamesAreResistedAndLasersUseModestHeatArmor()
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -51,7 +51,7 @@ public sealed class ForgedFlameProtectionTest
             var suit = Equip(entry.Suit, "outerClothing");
             var armor = entities.GetComponent<ArmorComponent>(suit);
             check(Math.Abs(armor.Modifiers.Coefficients["Piercing"] - entry.Pierce) < .001f, entry.Suit + " piercing rating");
-            check(armor.Modifiers.Coefficients["Heat"] == 1f, entry.Suit + " must not supply ordinary heat armor");
+            check(Math.Abs(armor.Modifiers.Coefficients["Heat"] - .85f) < .001f, entry.Suit + " supplies 15% ordinary heat armor");
             var message = new Robust.Shared.Utility.FormattedMessage();
             var examine = new ArmorExamineEvent(message);
             entities.EventBus.RaiseLocalEvent(suit, ref examine);
@@ -106,7 +106,7 @@ public sealed class ForgedFlameProtectionTest
             entities.EventBus.RaiseLocalEvent(laser, ref laserHit);
             check(laserHit.Damage.DamageDict["Heat"] == 20, "Fire protection altered laser impact");
             var laserApplied = damage.TryChangeDamage(user, laserHit.Damage, doPartDamage: false);
-            check(laserApplied != null && laserApplied.DamageDict["Heat"].Float() >= 17.9f, entry.Suit + " must remain vulnerable to lasers");
+            check(laserApplied != null && Math.Abs(laserApplied.DamageDict["Heat"].Float() - (entry.Heavy ? 15.34f : 17f)) < .02f, entry.Suit + " laser damage uses modest heat armor and existing accessories");
             entities.DeleteEntity(laser);
 
             var ordinary = new GetExplosionResistanceEvent("Default");
@@ -120,7 +120,7 @@ public sealed class ForgedFlameProtectionTest
             entities.QueueDeleteEntity(user);
         }
         var aerProfile = IoCManager.Resolve<Robust.Shared.Prototypes.IPrototypeManager>().Index<Content.Shared.Weapons.Ranged.HitscanPrototype>("N14AER9AutoLaser");
-        foreach (var comparison in new[] { (Suit: "ForgedFurnaceArmor", Expected: 20f), (Suit: "ForgedBrandedCombatArmor", Expected: 15f) })
+        foreach (var comparison in new[] { (Suit: "ForgedFurnaceArmor", Expected: 17f), (Suit: "ForgedKeeperFurnaceArmor", Expected: 17f), (Suit: "ForgedTemperedFirefighterArmor", Expected: 17f), (Suit: "ForgedUnbrandedArmor", Expected: 16f), (Suit: "ForgedBrandedCombatArmor", Expected: 15f) })
         {
             var target = entities.SpawnEntity("MobHuman", coordinates);
             var suit = entities.SpawnEntity(comparison.Suit, coordinates);

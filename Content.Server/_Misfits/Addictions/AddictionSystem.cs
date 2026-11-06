@@ -322,6 +322,10 @@ public sealed class AddictionSystem : SharedAddictionSystem
         if (session == null)
             return;
 
+        var symptom = locKey == "addiction-drug-first" ? "SymptomWithdrawal" : "SymptomWithdrawalRelief";
+        if (session.AttachedEntity is { } body && EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TrySpeak(body, symptom))
+            return;
+
         var text = Loc.GetString(locKey, ("drug", drugName));
         _chat.ChatMessageToOne(
             ChatChannel.Local,
@@ -336,7 +340,8 @@ public sealed class AddictionSystem : SharedAddictionSystem
     {
         // Private withdrawal flavour text — only the addicted player sees it.
         var msg = GetRandomPopup();
-        if (msg != null && TryGetSession(uid, out var session) && session != null)
+        if (msg != null && TryGetSession(uid, out var session) && session != null &&
+            !EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(uid, msg))
             _chat.ChatMessageToOne(ChatChannel.Local, msg, msg, EntityUid.Invalid, false, session.Channel);
     }
 

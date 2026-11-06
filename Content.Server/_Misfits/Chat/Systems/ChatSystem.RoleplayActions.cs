@@ -25,6 +25,10 @@ public sealed partial class ChatSystem
         if (string.IsNullOrWhiteSpace(message))
             return;
 
+        if (session.AttachedEntity is { } body &&
+            EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(body, message))
+            return;
+
         var wrappedMessage = BuildDoWrappedMessage(message);
 
         _chatManager.ChatMessageToOne(

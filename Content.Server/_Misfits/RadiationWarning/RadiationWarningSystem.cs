@@ -177,6 +177,9 @@ public sealed class RadiationWarningSystem : EntitySystem
 
         // Send as nameless local-chat message — identical channel to subtle prayer messages.
         // EntityUid.Invalid means no speech bubble and no entity name is prepended.
+        if (EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(uid, text))
+            return;
+
         _chatManager.ChatMessageToOne(
             ChatChannel.Local,
             text,

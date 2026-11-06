@@ -23,12 +23,18 @@ namespace Content.Server.Popups
             if (message == null)
                 return;
 
+            if (recipient.AttachedEntity is { } body && EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(body, message))
+                return;
+
             RaiseNetworkEvent(new PopupCursorEvent(message, type), recipient);
         }
 
         public override void PopupCursor(string? message, EntityUid recipient, PopupType type = PopupType.Small)
         {
             if (message == null)
+                return;
+
+            if (EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(recipient, message))
                 return;
 
             if (TryComp(recipient, out ActorComponent? actor))
@@ -58,12 +64,18 @@ namespace Content.Server.Popups
             if (message == null)
                 return;
 
+            if (recipient.AttachedEntity is { } body && EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(body, message))
+                return;
+
             RaiseNetworkEvent(new PopupCoordinatesEvent(message, type, GetNetCoordinates(coordinates)), recipient);
         }
 
         public override void PopupCoordinates(string? message, EntityCoordinates coordinates, EntityUid recipient, PopupType type = PopupType.Small)
         {
             if (message == null)
+                return;
+
+            if (EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(recipient, message))
                 return;
 
             if (TryComp(recipient, out ActorComponent? actor))
@@ -82,6 +94,9 @@ namespace Content.Server.Popups
         public override void PopupEntity(string? message, EntityUid uid, EntityUid recipient, PopupType type = PopupType.Small)
         {
             if (message == null)
+                return;
+
+            if (uid == recipient && EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(recipient, message))
                 return;
 
             if (TryComp(recipient, out ActorComponent? actor))
@@ -104,6 +119,9 @@ namespace Content.Server.Popups
         public override void PopupEntity(string? message, EntityUid uid, ICommonSession recipient, PopupType type = PopupType.Small)
         {
             if (message == null)
+                return;
+
+            if (recipient.AttachedEntity == uid && EntityManager.System<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>().TryReplaceNotification(uid, message))
                 return;
 
             RaiseNetworkEvent(new PopupEntityEvent(message, type, GetNetEntity(uid)), recipient);

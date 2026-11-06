@@ -56,6 +56,10 @@ public sealed partial class AmbientDrugFlavorText : EntityEffect
         var chatManager = IoCManager.Resolve<IChatManager>();
         var text = Loc.GetString(random.Pick(MessageKeys));
 
+        if (args.EntityManager.EntitySysManager.GetEntitySystem<Content.Server._ReclamationProject.Symptoms.SymptomSpeechSystem>()
+            .TryReplaceNotification(args.TargetEntity, text))
+            return;
+
         chatManager.ChatMessageToOne(
             ChatChannel.Local,
             text,

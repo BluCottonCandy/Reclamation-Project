@@ -1,0 +1,4 @@
+- type: guideEntry
+  id: ReclamationSymptomSpeech
+  name: guide-entry-symptom-speech
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Survival/SymptomSpeech.xml"

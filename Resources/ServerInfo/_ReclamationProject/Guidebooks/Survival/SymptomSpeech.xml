@@ -1,0 +1,31 @@
+<Document>
+# Symptoms and involuntary speech
+
+Your character may automatically speak about how they feel instead of receiving a private bodily symptom message. These are ordinary local speech messages: nearby players can hear the words and see your speech bubble.
+
+## One line every two minutes
+
+[bold]All effects share one two-minute cooldown per character.[/bold] Being drunk, high and low on blood at the same time still produces at most one automatic symptom line every two minutes. This is a maximum frequency, not a guarantee of a line when the timer ends; an active symptom must trigger it.
+
+## Blood loss
+
+Low blood can make your character say "I feel faint...", "I feel dizzy...", "I need a lie down..." or a similar first-person line.
+
+## Alcohol
+
+Drunken characters may say "Hic...", "woo...", "Whoops..." or "heh... fuzzy...". Dizziness from blood loss or an old injury alone does not count as drunkenness for these lines.
+
+## Chems
+
+Drug highs from Jet, Med-X and other chems can produce remarks such as "pretty colors...", "I'm just so happy..." or "The sky is so purple...". Other medicines use more neutral remarks about feeling their effects.
+
+## Other symptoms
+
+Nausea, pain, hunger, thirst, radiation sickness, withdrawal and other supported bodily warnings use short, natural first-person lines. Your character speaks as "I" or "my", rather than reading a "You feel..." notification out loud.
+
+## Who can hear it?
+
+Speech uses your normal voice, language, local hearing range and speech effects. It is not automatically transmitted over a radio. Normal speech restrictions still apply: muted, gagged or incapacitated characters cannot bypass them. Their original private notification remains available when speech is impossible.
+
+Speaking does not treat the cause. Blood loss, drug effects and other symptoms still need their usual care.
+</Document>

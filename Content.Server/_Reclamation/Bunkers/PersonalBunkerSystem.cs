@@ -196,13 +196,11 @@ public sealed class PersonalBunkerSystem : EntitySystem
         var empty = _rooms.Values.Where(r => r.EmptySince is {} since && _time.CurTime - since >= TimeSpan.FromSeconds(10)).ToArray();
         if (empty.Length > 0)
         {
-            // Attempt once, then retire vacant rooms even if saving failed. Keeping them here
-            // would retry the same failing transaction every two seconds and stall the server.
-            // The previous manifest remains the recovery point when new progress cannot be saved.
-            SaveAll();
+            // The last occupant's exit already attempted the save. Unload without saving
+            // again, including after a failed exit save, so cleanup cannot retry or stall it.
             foreach (var room in empty)
             {
-                // Recheck after saving. Never delete an occupied room or its bodies.
+                // Recheck before unloading. Never delete an occupied room or its bodies.
                 if (Occupied(room)) continue;
                 _rooms.Remove(room.Key);
                 QueueDel(room.Map);
@@ -335,7 +333,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
         }
         MoveWithDraggedItem(user, Transform(hatch).Coordinates);
         if (Transform(user).MapUid == room.Map) return false;
-        if (!Occupied(room)) SaveAll();
+        if (!Occupied(room)) SaveRooms(new[] { room });
         return true;
     }
 
@@ -487,7 +485,11 @@ public sealed class PersonalBunkerSystem : EntitySystem
     /// <summary>Publish all active rooms in one manifest transaction, avoiding cross-room snapshot duplication.</summary>
     public bool SaveAll(bool includeOccupied = false)
     {
-        var roomsToSave = _rooms.Values.Where(room => includeOccupied || !Occupied(room)).ToArray();
+        return SaveRooms(_rooms.Values.Where(room => includeOccupied || !Occupied(room)).ToArray());
+    }
+
+    private bool SaveRooms(Room[] roomsToSave)
+    {
         if (roomsToSave.Length == 0) return true;
         try
         {

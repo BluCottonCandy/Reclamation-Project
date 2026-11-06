@@ -1,0 +1,52 @@
+- type: hitscan
+  id: MinutemenHeavyLaserMusketBeam
+  maxLength: 30
+  damage:
+    types:
+      Heat: 20
+  muzzleFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: muzzle_beam_heavy
+  travelFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: beam_heavy
+  impactFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: impact_beam_heavy
+
+- type: entity
+  parent: MinutemenWeaponLaserMusket
+  id: MinutemenWeaponHeavyLaserMusket
+  name: heavy laser musket
+  description: A reinforced, long-barreled laser musket built for Minutemen heavy combat specialists. Wield it in both hands and crank it to strengthen the next shot.
+  components:
+  - type: GunRequiresWield
+  - type: Scope
+    requireWielding: true
+    actionsOnlyWhenWielded: true
+    scopedMovementMultiplier: 0.1
+    zoomLevels:
+    - name: 5x
+      zoom: 1.2
+      offset: 17
+      allowMovement: true
+      doAfter: 0.3
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/heavy_laser_musket_icon.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/heavy_laser_musket.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Battery/heavy_laser_musket.rsi
+  - type: Gun
+    minAngle: 6
+    maxAngle: 10
+  - type: GunWieldBonus
+    minAngle: -5
+    maxAngle: -9
+  - type: GunDamageBonus
+    hitscanProtoOverride: MinutemenHeavyLaserMusketBeam
+  - type: CrankCharge
+    maxCharges: 1
+    crankDelay: 3
+    crankCostFraction: 1
+    bonusByCharge: [55]

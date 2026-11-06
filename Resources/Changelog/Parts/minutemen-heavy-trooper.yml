@@ -1,0 +1,20 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Added two Minutemen Heavy Trooper slots, a combat specialist role between Private and Corporal unlocked after 800 minutes as a Minutemen Private, available for late join at the Minutemen base, with unique salvaged plate armor, matching riot helmet and armored boots, and a two-handed vertibird rotor blade.
+- type: Add
+  message: Heavy Trooper armor provides 50% blunt, slash, piercing, and heat protection, 60% explosion resistance, and 15% movement slowdown. Its chest-mounted combat knife disappears from the armor when drawn and returns when sheathed; Alt-click your equipped armor slot to draw it; Shift-click still examines it.
+- type: Add
+  message: The salvaged vertibird blade deals 95 slash damage and knocks enemies back like a super sledge, with a slower visible swing and a larger, correctly oriented sprite when stowed on the back.
+- type: Fix
+  message: Melee swing animations wider than 180 degrees now sweep toward the aimed direction instead of appearing behind the attacker.
+- type: Add
+  message: Heavy Troopers start with blackened bladed gauntlets based on the Priestess of Mars gauntlets.
+- type: Add
+  message: Heavy Troopers receive a hand-cranked heavy laser musket, spare cells, a night-vision ranger mask, and a Minutemen duster.
+- type: Tweak
+  message: The heavy laser musket can fire uncranked for 20 heat damage, or after one crank for 75 heat damage, and has a scope usable while wielded.
+- type: Tweak
+  message: Updated the laser muskets and crank laser shotgun with worn wooden stocks and receivers and dark salvaged metal. The standard laser musket has a compact side crank, inset coil, and sturdy wooden fore-end, retaining its original behavior and no scope.
+- type: Fix
+  message: Laser muskets point away from the wearer while carried and no longer draw through the body when viewed from behind.

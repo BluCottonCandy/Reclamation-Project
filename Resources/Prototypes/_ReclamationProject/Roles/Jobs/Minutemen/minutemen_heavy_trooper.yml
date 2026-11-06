@@ -1,0 +1,56 @@
+- type: job
+  id: MinutemenHeavyTrooper
+  setPreference: true
+  canBeAntag: false
+  showBorderBelow: true
+  jobWhitelistBypassesRoleTimers: false
+  name: job-name-minutemen-heavy-trooper
+  description: job-description-minutemen-heavy-trooper
+  weight: 75
+  displayWeight: 75
+  playTimeTracker: MinutemenHeavyTrooper
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species: [Human, Courser, Ghoul]
+  - !type:CharacterPlaytimeRequirement
+    tracker: MinutemenPrivate
+    min: 48000
+  startingGear: MinutemenHeavyTrooperGear
+  alwaysUseSpawner: true # Use the dedicated base marker for round start and late join.
+  icon: JobIconNcrSpec
+  access:
+  - Minutemen
+  supervisors: job-supervisors-minutemen-officers
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - Minutemen
+      - Wastelander
+
+- type: playTimeTracker
+  id: MinutemenHeavyTrooper
+
+- type: startingGear
+  id: MinutemenHeavyTrooperGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: MinutemenClothingUniformEnlisted
+    gloves: MinutemenHeavyTrooperGauntlets
+    shoes: MinutemenHeavyTrooperBoots
+    ears: MinutemenClothingHeadset
+    back: N14ClothingBackpackMilitary
+    head: MinutemenHeavyTrooperHelmet
+    mask: ClothingMaskGasRanger
+    neck: MinutemenClothingNeckDuster
+    outerClothing: MinutemenHeavyTrooperArmor
+    id: MinutemenIDDogtagsHeavyTrooper
+    suitstorage: MinutemenRotorBlade
+  inhand:
+  - MinutemenWeaponHeavyLaserMusket
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed

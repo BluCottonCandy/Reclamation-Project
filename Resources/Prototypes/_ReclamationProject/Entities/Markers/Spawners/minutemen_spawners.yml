@@ -118,3 +118,11 @@
     layers:
       - state: green
       - state: lt
+
+- type: entity
+  parent: MinutemenSpawnPointPrivate
+  id: MinutemenSpawnPointHeavyTrooper
+  name: Minutemen Heavy Trooper
+  components:
+  - type: SpawnPoint
+    job_id: MinutemenHeavyTrooper

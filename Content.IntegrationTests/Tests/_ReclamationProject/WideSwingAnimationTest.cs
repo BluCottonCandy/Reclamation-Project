@@ -43,4 +43,33 @@ public sealed class WideSwingAnimationTest
         foreach (var track in animation.AnimationTracks)
             Assert.That(((AnimationTrackProperty) track).KeyFrames.Count, Is.EqualTo(3));
     }
+
+    [TestCase(1f)]
+    [TestCase(3f)]
+    public void PairedSwingsCloseAtAimFromOppositeSides(float durationMultiplier)
+    {
+        var build = typeof(MeleeWeaponSystem).GetMethod("BuildSlashAnimation", BindingFlags.NonPublic | BindingFlags.Static)!;
+        foreach (var degrees in new[] { 0, 90, 180, 270 })
+        foreach (var sweep in new[] { 60, 200 })
+        {
+            var aim = Angle.FromDegrees(degrees);
+            var forward = aim.RotateVec(new Vector2(0, -1));
+            var side = aim.RotateVec(Vector2.UnitX);
+            var left = (Animation) build.Invoke(null, new object[] { aim, Angle.FromDegrees(sweep), Angle.Zero, durationMultiplier, true })!;
+            var right = (Animation) build.Invoke(null, new object[] { aim, Angle.FromDegrees(-sweep), Angle.Zero, durationMultiplier, true })!;
+            var leftOffsets = (AnimationTrackProperty) left.AnimationTracks[1];
+            var rightOffsets = (AnimationTrackProperty) right.AnimationTracks[1];
+            Assert.That(Vector2.Dot((Vector2) leftOffsets.KeyFrames[0].Value, side) *
+                Vector2.Dot((Vector2) rightOffsets.KeyFrames[0].Value, side), Is.LessThan(0));
+            foreach (var animation in new[] { left, right })
+            {
+                var offsets = (AnimationTrackProperty) animation.AnimationTracks[1];
+                var rotations = (AnimationTrackProperty) animation.AnimationTracks[0];
+                Assert.That(offsets.KeyFrames.Count, Is.EqualTo(3));
+                Assert.That(Vector2.Distance((Vector2) offsets.KeyFrames[^1].Value, forward), Is.LessThan(.0001));
+                Assert.That(Math.Abs(Angle.ShortestDistance(aim, (Angle) rotations.KeyFrames[^1].Value).Theta), Is.LessThan(.0001));
+                Assert.That(animation.Length.TotalSeconds, Is.EqualTo(.115 * durationMultiplier).Within(.0001));
+            }
+        }
+    }
 }

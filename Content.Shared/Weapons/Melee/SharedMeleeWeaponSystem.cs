@@ -1,3 +1,6 @@
+using Content.Shared._Misfits.Special;
+using Content.Shared._Misfits.SpecialStats;
+using Content.Shared.Item;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
@@ -62,6 +65,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private   readonly ContestsSystem          _contests        = default!;
     // #Misfits Add - grab intent system reference for grab-type light attack interception
     [Dependency] private   readonly GrabIntentSystem          _grabIntent      = default!;
+
+    [Dependency] private readonly SharedSpecialSystem _special = default!;
+    [Dependency] private readonly SpecialAgilitySystem _agility = default!;
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
     protected const float WideArcTolerance = 0.05f;
@@ -144,8 +150,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (user == null)
             return;
 
-        if (!TryGetWeapon(user.Value, out var weaponUid, out var weapon) ||
-            weaponUid != GetEntity(msg.Weapon))
+        var weaponUid = GetEntity(msg.Weapon);
+        if (!TryComp<MeleeWeaponComponent>(weaponUid, out var weapon) ||
+            !(TryGetWeapon(user.Value, out var active, out _) && active == weaponUid ||
+              TryComp<HandsComponent>(user, out var hands) &&
+                hands.Hands.Values.Any(hand => hand.HeldEntity == weaponUid)))
         {
             return;
         }
@@ -162,13 +171,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not {} user)
             return;
 
-        if (!TryGetWeapon(user, out var weaponUid, out var weapon) ||
-            weaponUid != GetEntity(msg.Weapon))
+        if (!TryGetWeapon(user, out var weaponUid, out var weapon) || weaponUid != GetEntity(msg.Weapon))
         {
             return;
         }
 
-        AttemptAttack(user, weaponUid, weapon, msg, args.SenderSession);
+        AttemptPairedAttack(user, weaponUid, weapon, msg, args.SenderSession);
     }
 
     private void OnHeavyAttack(HeavyAttackEvent msg, EntitySessionEventArgs args)
@@ -176,14 +184,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not {} user)
             return;
 
-        if (!TryGetWeapon(user, out var weaponUid, out var weapon) ||
-            weaponUid != GetEntity(msg.Weapon) ||
+        if (!TryGetWeapon(user, out var weaponUid, out var weapon) || weaponUid != GetEntity(msg.Weapon) ||
             !weapon.CanWideSwing) // Goobstation Change
         {
             return;
         }
 
-        AttemptAttack(user, weaponUid, weapon, msg, args.SenderSession);
+        AttemptPairedAttack(user, weaponUid, weapon, msg, args.SenderSession);
     }
 
     private void OnDisarmAttack(DisarmAttackEvent msg, EntitySessionEventArgs args)
@@ -250,6 +257,113 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(user, ref ev);
 
         return ev.ResistanceBypass;
+    }
+
+    /// <summary>
+    /// One input attempts both hands on client and server. Dual melee is passive;
+    /// Fast Hands action state and cooldown never participate in this decision.
+    /// </summary>
+    public bool AttemptPairedAttack(EntityUid user, EntityUid active, MeleeWeaponComponent weapon,
+        AttackEvent attack, ICommonSession? session = null)
+    {
+        if (!TryGetWeapon(user, out var selected, out _) || selected != active)
+            return false;
+
+        var pair = TryGetOffhandMeleeWeapon(user, active, out var offhand, out var other);
+        // Preserve grab escalation as one interaction instead of an offhand attack.
+        if (attack is LightAttackEvent light && TryComp<PullerComponent>(user, out var puller) &&
+            puller.Pulling is { } pulled && pulled == GetEntity(light.Target))
+            pair = false;
+
+        bool Attempt(EntityUid uid, MeleeWeaponComponent component, AttackEvent input)
+        {
+            // Attacking is the client's input latch, not an authoritative damage gate.
+            // Like ordinary attacks, validate repeat inputs by cooldown and stamina.
+            if (component.NextAttack > Timing.CurTime ||
+                input is LightAttackEvent && component.DisableClick ||
+                input is HeavyAttackEvent && (component.DisableHeavy || !component.CanWideSwing) ||
+                !Blocker.CanAttack(user, weapon: (uid, component)))
+                return false;
+            if (input is HeavyAttackEvent && !CanPayHeavyStamina(user, component))
+            {
+                // Replicate the failed attempt's cooldown too. Otherwise a stamina
+                // correction can make prediction retry a rejected swing every tick.
+                AdvanceAttackCooldown(user, uid, component, true);
+                return false;
+            }
+            return AttemptAttack(user, uid, component, input, session);
+        }
+
+        AttackEvent ForHand(EntityUid uid, MeleeWeaponComponent component)
+        {
+            if (attack is LightAttackEvent click)
+                return new LightAttackEvent(click.Target, GetNetEntity(uid), click.Coordinates) { LastRealTick = attack.LastRealTick };
+            if (attack is not HeavyAttackEvent wide || !TryComp<TransformComponent>(user, out var transform))
+                return attack;
+            if (!TryGetEntity(wide.Coordinates.NetEntity, out var coordinateEntity) ||
+                !HasComp<TransformComponent>(coordinateEntity.Value))
+                return attack;
+            var aim = TransformSystem.ToMapCoordinates(GetCoordinates(wide.Coordinates));
+            var position = TransformSystem.GetWorldPosition(transform);
+            var direction = (aim.Position - position).ToWorldAngle();
+            var range = GetMeleeReach(user, component) * component.HeavyRangeModifier;
+            var candidates = GetEntityList(wide.Entities).Where(target =>
+                ArcRaySuccessful(target, position, direction, component.Angle, range, transform.MapID,
+                    user, session, wide.LastRealTick)).Take(component.MaxTargets).ToList();
+            return new HeavyAttackEvent(GetNetEntity(uid), GetNetEntityList(candidates), wide.Coordinates)
+                { LastRealTick = wide.LastRealTick };
+        }
+
+        var attacked = Attempt(active, weapon, pair ? ForHand(active, weapon) : attack);
+        if (!pair || other == null ||
+            !TryGetOffhandMeleeWeapon(user, active, out var stillHeld, out _) || stillHeld != offhand)
+            return attacked;
+
+        if (attack is not (LightAttackEvent or HeavyAttackEvent))
+            return attacked;
+        return Attempt(offhand, other, ForHand(offhand, other)) || attacked;
+    }
+
+    public bool TryGetOffhandMeleeWeapon(EntityUid user, EntityUid active,
+        out EntityUid offhand, [NotNullWhen(true)] out MeleeWeaponComponent? weapon)
+    {
+        offhand = default;
+        weapon = null;
+        if (_special.GetEffective(user, SpecialStat.Agility) < 10 ||
+            HasComp<MechPilotComponent>(user) || HasComp<MechComponent>(user) ||
+            !TryComp<HandsComponent>(user, out var hands) || hands.ActiveHandEntity != active ||
+            !IsOneHandedMelee(active))
+            return false;
+        foreach (var name in hands.SortedHands)
+        {
+            var held = hands.Hands[name].HeldEntity;
+            if (held == null || held == active || !IsOneHandedMelee(held.Value) ||
+                !TryComp<MeleeWeaponComponent>(held, out var melee))
+                continue;
+            offhand = held.Value;
+            weapon = melee;
+            return true;
+        }
+        return false;
+    }
+
+    private bool IsOneHandedMelee(EntityUid uid) => HasComp<ItemComponent>(uid) &&
+        TryComp<MeleeWeaponComponent>(uid, out var weapon) && !weapon.MustBeEquippedToUse &&
+        !HasComp<GunComponent>(uid) && !HasComp<MultiHandedItemComponent>(uid) &&
+        !HasComp<MeleeRequiresWieldComponent>(uid) && !HasComp<VirtualItemComponent>(uid);
+
+    public bool CanPayHeavyStamina(EntityUid user, MeleeWeaponComponent weapon) =>
+        !TryComp<StaminaComponent>(user, out var stamina) ||
+        stamina.CritThreshold - stamina.StaminaDamage >
+            weapon.HeavyStaminaCost * _agility.GetStaminaCostMultiplier(user);
+
+    private void AdvanceAttackCooldown(EntityUid user, EntityUid uid, MeleeWeaponComponent weapon, bool wide)
+    {
+        var seconds = GetAttackRate(uid, user, weapon) * (wide ? weapon.HeavyRateModifier : 1f);
+        if (!float.IsFinite(seconds) || seconds < 0.01f)
+            seconds = 0.01f;
+        weapon.NextAttack = Timing.CurTime + TimeSpan.FromSeconds(seconds);
+        DirtyField(uid, weapon, nameof(MeleeWeaponComponent.NextAttack));
     }
 
     public bool TryGetWeapon(EntityUid entity, out EntityUid weaponUid, [NotNullWhen(true)] out MeleeWeaponComponent? melee)
@@ -380,8 +494,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (!CombatMode.IsInCombatMode(user))
             return false;
 
-        var fireRateSwingModifier = 1f;
-
         EntityUid? target = null;
         switch (attack)
         {
@@ -401,7 +513,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
                 break;
             case HeavyAttackEvent:
-                fireRateSwingModifier = weapon.HeavyRateModifier;
                 break;
             case DisarmAttackEvent disarm:
                 if (disarm.Target != null && !TryGetEntity(disarm.Target, out target))
@@ -419,21 +530,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 break;
         }
 
-        // Windup time checked elsewhere.
-        var fireRate = TimeSpan.FromSeconds(GetAttackRate(weaponUid, user, weapon) * fireRateSwingModifier);
-        var swings = 0;
-
-        // TODO: If we get autoattacks then probably need a shotcounter like guns so we can do timing properly.
-        if (weapon.NextAttack < curTime)
-            weapon.NextAttack = curTime;
-
-        while (weapon.NextAttack <= curTime)
-        {
-            weapon.NextAttack += fireRate;
-            swings++;
-        }
-
-        DirtyField(weaponUid, weapon, nameof(MeleeWeaponComponent.NextAttack));
+        // One input produces one strike, never a catch-up batch after exhaustion or lag.
+        AdvanceAttackCooldown(user, weaponUid, weapon, attack is HeavyAttackEvent);
+        const int swings = 1;
 
         // Do this AFTER attack so it doesn't spam every tick
         var ev = new AttemptMeleeEvent
@@ -656,13 +755,14 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         if (TryComp<StaminaComponent>(user, out var stamina))
         {
-            if (stamina.CritThreshold - stamina.StaminaDamage <= component.HeavyStaminaCost)
+            var staminaCost = component.HeavyStaminaCost * _agility.GetStaminaCostMultiplier(user);
+            if (stamina.CritThreshold - stamina.StaminaDamage <= staminaCost)
             {
                 PopupSystem.PopupClient(Loc.GetString("melee-heavy-no-stamina"), meleeUid, user);
                 return false;
             }
 
-            _stamina.TakeStaminaDamage(user, component.HeavyStaminaCost, stamina, visual: false);
+            _stamina.TakeStaminaDamage(user, staminaCost, stamina, visual: false);
         }
 
         var userPos = TransformSystem.GetWorldPosition(userXform);

@@ -1,0 +1,16 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Agility above 5 now grants 4% faster melee attacks and 4% lower melee stamina costs per point, up to 20%. Timed-action bonuses remain unchanged.
+- type: Add
+  message: At Agility 10, passively attack with two one-handed melee weapons together independently of Fast Hands, each with its own normal damage, range and cooldown.
+- type: Fix
+  message: Dual melee now uses one paired attack input so both weapons work before Fast Hands is activated and while it is on cooldown.
+- type: Fix
+  message: Holding wide swing no longer produces rejected dual-melee attacks from stale input flags; exhausted characters stop attempting wide swings until enough stamina returns.
+- type: Fix
+  message: Exhausted wide swings now respect the normal attack cooldown, preventing rapid retry bursts or accumulated swings when stamina returns.
+- type: Tweak
+  message: Dual melee wide-swing sprites sweep inward from opposite directions, meeting in front of you like scissors.
+- type: Tweak
+  message: Fast Hands replaces Quickstep at Agility 10. Swap the held gun magazine once, then instantly refill carried spare magazines using spare ammo, excluding magazines inside guns. Internal-magazine guns reload directly at twice normal loading speed. Two-minute cooldown.

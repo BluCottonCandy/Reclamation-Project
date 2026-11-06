@@ -69,9 +69,25 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
         var entity = entityNull.Value;
 
+        // Release every held melee weapon, even if Agility fell below 10 mid-swing.
+        if ((_inputSystem.CmdStates.GetState(EngineKeyFunctions.Use) != BoundKeyState.Down &&
+             _inputSystem.CmdStates.GetState(EngineKeyFunctions.UseSecondary) != BoundKeyState.Down ||
+             !CombatMode.IsInCombatMode(entity) || !Blocker.CanAttack(entity)) &&
+            TryComp<HandsComponent>(entity, out var heldHands))
+        {
+            foreach (var hand in heldHands.Hands.Values)
+                if (hand.HeldEntity is { } held && TryComp<MeleeWeaponComponent>(held, out var heldWeapon) && heldWeapon.Attacking)
+                    RaisePredictiveEvent(new StopAttackEvent(GetNetEntity(held)));
+        }
+
         if (!TryGetWeapon(entity, out var weaponUid, out var weapon))
             return;
 
+        UpdateHeldWeapon(entity, weaponUid, weapon);
+    }
+
+    private void UpdateHeldWeapon(EntityUid entity, EntityUid weaponUid, MeleeWeaponComponent weapon)
+    {
         if (!CombatMode.IsInCombatMode(entity) || !Blocker.CanAttack(entity))
         {
             weapon.Attacking = false;
@@ -106,10 +122,21 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             }
         }
 
-        if (weapon.Attacking || weapon.NextAttack > Timing.CurTime || (!useDown && !altDown))
+        var wideInput = bayonetStab ? useDown || altDown :
+            !weapon.DisableHeavy && !(weapon.AltDisarm && weaponUid == entity) &&
+            (!weapon.SwapKeys ? altDown : useDown);
+        var primaryReady = (weapon.AutoAttack || !weapon.Attacking) && weapon.NextAttack <= Timing.CurTime &&
+            (!wideInput || CanPayHeavyStamina(entity, weapon));
+        var offhandReady = false;
+        if (TryGetOffhandMeleeWeapon(entity, weaponUid, out var offhand, out var other))
         {
-            return;
+            if ((other.AutoAttack || !useDown && !altDown) && other.Attacking)
+                RaisePredictiveEvent(new StopAttackEvent(GetNetEntity(offhand)));
+            offhandReady = (other.AutoAttack || !other.Attacking) && other.NextAttack <= Timing.CurTime &&
+                (wideInput ? !other.DisableHeavy && other.CanWideSwing && CanPayHeavyStamina(entity, other) : !other.DisableClick);
         }
+        if ((!primaryReady && !offhandReady) || (!useDown && !altDown))
+            return;
 
         // TODO using targeted actions while combat mode is enabled should NOT trigger attacks.
 
@@ -171,9 +198,12 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             (bayonetStab ? useDown || altDown : !weapon.SwapKeys ? useDown : altDown))
         {
             var attackerPos = TransformSystem.GetMapCoordinates(entity);
+            var range = weapon.Range;
+            if (TryGetOffhandMeleeWeapon(entity, weaponUid, out _, out var pairedWeapon))
+                range = Math.Max(range, pairedWeapon.Range);
 
             if (mousePos.MapId != attackerPos.MapId ||
-                (attackerPos.Position - mousePos.Position).Length() > weapon.Range)
+                (attackerPos.Position - mousePos.Position).Length() > range)
             {
                 if (!bayonetStab && weapon.HeavyOnLightMiss)
                     ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
@@ -286,8 +316,13 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
         // This should really be improved. GetEntitiesInArc uses pos instead of bounding boxes.
         // Server will validate it with InRangeUnobstructed.
-        var entities = GetNetEntityList(ArcRayCast(userPos, direction.ToWorldAngle(), component.Angle, distance, userXform.MapID, user).ToList());
-        RaisePredictiveEvent(new HeavyAttackEvent(GetNetEntity(meleeUid), entities.GetRange(0, Math.Min(component.MaxTargets, entities.Count)), GetNetCoordinates(coordinates))
+        var targets = ArcRayCast(userPos, direction.ToWorldAngle(), component.Angle, distance, userXform.MapID, user)
+            .Take(component.MaxTargets).ToHashSet();
+        if (TryGetOffhandMeleeWeapon(user, meleeUid, out _, out var other))
+            targets.UnionWith(ArcRayCast(userPos, direction.ToWorldAngle(), other.Angle,
+                GetMeleeReach(user, other) * other.HeavyRangeModifier, userXform.MapID, user).Take(other.MaxTargets));
+        var entities = GetNetEntityList(targets.ToList());
+        RaisePredictiveEvent(new HeavyAttackEvent(GetNetEntity(meleeUid), entities, GetNetCoordinates(coordinates))
         {
             LastRealTick = _lagComp.GetLastRealTick(),
         });

@@ -13764,3 +13764,13 @@ Entries:
   id: 6595
   time: '2026-11-05T10:23:51.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/124
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Heavy weapon and greatshield movement penalties now apply only while
+        held, rather than while stowed on your suit or back. Backpacks retain
+        their worn slowdown.
+  id: 6596
+  time: '2026-11-06T04:46:11.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/125

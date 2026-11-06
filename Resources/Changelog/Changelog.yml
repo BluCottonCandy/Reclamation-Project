@@ -13847,3 +13847,22 @@ Entries:
   id: 6598
   time: '2026-11-06T11:06:36.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/127
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Reduced flamer direct-hit damage from 30 to 20 and firing speed from 8
+        to 4 shots per second, for 80 direct DPS before armor and burning.
+    - type: Tweak
+      message: >-
+        Reduced incinerator direct-hit damage from 24 to 12 and maximum blast
+        damage from 8 to 4, retaining its existing blast spread and fire
+        effects.
+    - type: Tweak
+      message: >-
+        Added 15% ordinary heat protection to Tempered, Forged, and Forge Keeper
+        suits and inherited Forgemaster armor. Existing higher heat ratings,
+        helmets, shared masks, and captive worker equipment remain unchanged.
+  id: 6599
+  time: '2026-11-06T11:06:47.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/128

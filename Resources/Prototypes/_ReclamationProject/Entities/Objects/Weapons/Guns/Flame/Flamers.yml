@@ -104,7 +104,7 @@
     maxAngle: 30
     angleIncrease: 1
     angleDecay: 3
-    projectileSpeed: 10
+    projectileSpeed: 5
     fireRate: 0.5
     soundGunshot:
       path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg

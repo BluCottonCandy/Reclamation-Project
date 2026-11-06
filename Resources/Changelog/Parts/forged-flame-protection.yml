@@ -1,0 +1,14 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Forged furnace outfits now specialize in flame protection instead of laser resistance. Forged and Forge Keeper suits provide capped 95% flame-only reduction; Tempered provides 90%. They also have dedicated incinerator-blast resistance.
+- type: Tweak
+  message: Player furnace suits and matching helmets lose 10 percentage points of conventional protection. Forged suit slowdown is reduced to 15%, and Forge Keeper slowdown to 20%. The admin Smithy's special armor ratings are retained.
+- type: Fix
+  message: Marked flame projectiles now use existing fire protection, while lasers remain unaffected. Stacked fire protection is capped safely and cannot turn fire damage into healing.
+- type: Tweak
+  message: Armor protection details now show fire resistance separately from ordinary heat resistance.
+- type: Tweak
+  message: Flamers and incinerators have half their previous projectile range. Incinerator projectiles also travel at half speed.
+- type: Fix
+  message: Flamers and incinerators apply their 10% movement penalty while held, rather than while stowed on a suit or back.

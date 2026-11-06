@@ -1,0 +1,4 @@
+- type: guideEntry
+  id: ReclamationForgedArmor
+  name: guide-entry-forged-armor
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/ForgedArmor.xml"

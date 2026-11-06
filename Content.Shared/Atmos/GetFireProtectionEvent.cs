@@ -17,6 +17,7 @@ public sealed class GetFireProtectionEvent : EntityEventArgs, IInventoryRelayEve
     /// If this is 0 then it's ignored
     /// </summary>
     public float Multiplier;
+    private float _minimumMultiplier;
 
     public GetFireProtectionEvent()
     {
@@ -26,8 +27,10 @@ public sealed class GetFireProtectionEvent : EntityEventArgs, IInventoryRelayEve
     /// <summary>
     /// Reduce fire damage taken by a percentage.
     /// </summary>
-    public void Reduce(float by)
+    public void Reduce(float by, float maximumReduction = 1f)
     {
-        Multiplier -= by;
+        _minimumMultiplier = Math.Max(_minimumMultiplier, Math.Clamp(1f - maximumReduction, 0f, 1f));
+        // Stacked protection must never turn burning into healing.
+        Multiplier = Math.Clamp(Multiplier - by, _minimumMultiplier, 1f);
     }
 }

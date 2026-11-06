@@ -89,7 +89,7 @@
   parent: ForgedTenderSuit
   id: ForgedTemperedFirefighterArmor
   name: Tempered reinforced firefighter suit
-  description: A reinforced, fire-resistant suit in muted combat-armor green and charcoal, worn by the Forged's Tempered. Its lining resists flames rather than laser fire.
+  description: A reinforced, fire-resistant suit in muted combat-armor green and charcoal, worn by the Forged's Tempered. Its lining provides strong flame resistance, with modest protection from laser heat.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/OuterClothing/forged_branded_firefighter.rsi
@@ -106,7 +106,7 @@
         Blunt: 0.65
         Slash: 0.70
         Piercing: 0.55
-        Heat: 1
+        Heat: 0.85
         Radiation: 0.90
   - type: StaminaDamageResistance
     coefficient: 0.75

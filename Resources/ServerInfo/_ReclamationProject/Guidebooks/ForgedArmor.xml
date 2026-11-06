@@ -13,11 +13,11 @@ The Forged suit has 35% blunt, slash and piercing protection, 30% radiation prot
 
 The Forge Keeper suit has 45% blunt, slash and piercing protection, 30% radiation protection, 20% caustic protection and 30% explosion resistance. It slows walking and running by 20%.
 
-Matching player furnace helmets have reduced conventional protection. The suits and helmets give no ordinary heat armor; the standard gloves and boots can still provide a little heat protection. The Forged gas mask protects against atmospheric hazards and flames, rather than lasers. Conventional armor pieces still combine when worn.
+Matching player furnace helmets have reduced conventional protection. The suits give 15% ordinary heat protection. Their matching helmets add no ordinary heat armor; the standard gloves and boots retain their existing heat protection. The Forged gas mask protects against atmospheric hazards and flames, rather than lasers. Conventional armor pieces still combine when worn.
 
 ## Tempered
 
-The Tempered reinforced firefighter suit provides 90% flame-only reduction, capped at 90% across the outfit. It has separate incinerator-blast resistance and keeps its existing non-heat armor ratings and 10% running slowdown. Its suit and hood do not provide ordinary laser-heat protection.
+The Tempered reinforced firefighter suit provides 90% flame-only reduction, capped at 90% across the outfit. It has separate incinerator-blast resistance and keeps its existing non-heat armor ratings and 10% running slowdown. Its suit provides 15% ordinary heat protection; its hood adds no ordinary heat protection.
 
 Armor protection details list Fire separately from Heat. Fire covers burning fuel and marked flame projectiles; Heat covers ordinary heat damage, including lasers.
 

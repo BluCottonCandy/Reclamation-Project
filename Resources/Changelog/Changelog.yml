@@ -13866,3 +13866,42 @@ Entries:
   id: 6599
   time: '2026-11-06T11:06:47.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/128
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Agility above 5 grants 4% faster melee attacks and 4% lower melee
+        stamina costs per point, up to 20%. Timed-action bonuses remain
+        unchanged.
+    - type: Add
+      message: >-
+        At Agility 10, passively attack with two one-handed melee weapons
+        together, independently of Fast Hands.
+    - type: Tweak
+      message: >-
+        Dual melee wide-swing sprites sweep inward from opposite sides like
+        scissors.
+    - type: Fix
+      message: >-
+        Dual melee works before Fast Hands is activated and while it is on
+        cooldown.
+    - type: Fix
+      message: >-
+        Exhausted wide swings respect normal attack cooldowns and no longer
+        build up rapid retries or recovery bursts.
+    - type: Tweak
+      message: >-
+        Fast Hands replaces Quickstep at Agility 10. It swaps the held gun
+        magazine once, then instantly refills carried spare magazines from
+        compatible ammo. Magazines inside guns are excluded.
+    - type: Add
+      message: >-
+        Fast Hands reloads internal-magazine guns and revolvers directly at
+        twice normal loading speed, using carried ammo and progress bars.
+    - type: Add
+      message: >-
+        Updated the Agility guidebook and character-creation description for the
+        new bonuses and abilities.
+  id: 6600
+  time: '2026-11-06T14:26:28.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/129

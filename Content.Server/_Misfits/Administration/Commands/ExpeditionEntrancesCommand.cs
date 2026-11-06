@@ -1,5 +1,5 @@
 using Content.Server.Administration;
-using Content.Shared._Misfits.Expeditions;
+using Content.Server._ReclamationProject.Expeditions;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.GameObjects;
@@ -30,13 +30,10 @@ public sealed class ExpeditionEntrancesCommand : IConsoleCommand
 
         var transformSystem = _entManager.System<SharedTransformSystem>();
         var entrances = new List<(EntityUid Uid, string Prototype, MapCoordinates Coordinates)>();
-        var query = _entManager.AllEntityQueryEnumerator<N14ExpeditionBoardComponent, TransformComponent>();
+        var query = _entManager.AllEntityQueryEnumerator<FactoryDepartureComponent, TransformComponent>();
 
-        while (query.MoveNext(out var uid, out var board, out var transform))
+        while (query.MoveNext(out var uid, out _, out var transform))
         {
-            if (!board.DirectLaunch)
-                continue;
-
             var prototype = _entManager.GetComponent<MetaDataComponent>(uid).EntityPrototype?.ID ?? "<runtime>";
             entrances.Add((uid, prototype, transformSystem.GetMapCoordinates(uid, transform)));
         }

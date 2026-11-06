@@ -18,7 +18,7 @@ using Content.Shared.Mobs.Systems; // #Misfits Add - MobStateSystem
 using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
 using Content.Shared._Misfits.MaterialExtractor;
-using Content.Shared._Misfits.Expeditions;
+using Content.Server._ReclamationProject.Expeditions;
 using Content.Shared._Misfits.TreeOfLife;
 using Content.Shared._Misfits.Deathclaw;
 using Content.Shared._Misfits.TribalHunt;
@@ -918,15 +918,12 @@ public sealed class WastelandMapSystem : EntitySystem
 
     private void AppendExpeditionEntranceBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
     {
-        // DirectLaunch is the authoritative marker: if an entrance is actually
-        // usable, every faction tacmap must show it. Do not depend on a second
-        // optional landmark component drifting from the functional prototype.
-        var query = EntityQueryEnumerator<N14ExpeditionBoardComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var entrance, out var xform))
+        // Authored entrances, including migrated legacy prototypes, launch through
+        // FactoryDeparture. Track that functional component instead of the retired
+        // procedural board or an optional map-only landmark.
+        var query = EntityQueryEnumerator<FactoryDepartureComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var xform))
         {
-            if (!entrance.DirectLaunch)
-                continue;
-
             var coordinates = _transform.GetMapCoordinates(uid, xform);
             if (coordinates.MapId != mapId || !bounds.Contains(coordinates.Position))
                 continue;

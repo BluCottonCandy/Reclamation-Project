@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Heavy Troopers and other characters with oversized equipment no longer shrink in the character customization preview.

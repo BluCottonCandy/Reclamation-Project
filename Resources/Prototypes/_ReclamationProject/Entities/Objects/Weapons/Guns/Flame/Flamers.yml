@@ -37,7 +37,8 @@
         whitelist:
           tags:
             - N14FlamerFuel
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: Gun
@@ -94,7 +95,8 @@
         whitelist:
           tags:
             - N14EnrichedFlamerFuel
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: Gun
@@ -102,7 +104,7 @@
     maxAngle: 30
     angleIncrease: 1
     angleDecay: 3
-    projectileSpeed: 10
+    projectileSpeed: 5
     fireRate: 0.5
     soundGunshot:
       path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg

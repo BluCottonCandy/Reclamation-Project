@@ -2,7 +2,15 @@
   parent: ClothingMaskGasAtmos
   id: ForgedGasMask
   name: Forged Gas Mask
-  description: A flame-resistant atmospheric gas mask used by the Forged.
+  description: An atmospheric gas mask used by the Forged. Its flame-resistant shell provides no laser protection.
+
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 1
+  - type: FireProtection
+    reduction: 0.05
 
 - type: entity
   parent: N14ClothingBootsCombat
@@ -73,13 +81,15 @@
     coefficient: 0.20
   - type: ExplosionResistance
     damageCoefficient: 0.50
-
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ForgedSmithyFurnaceHelmet
 
 - type: entity
   parent: ForgedTenderSuit
   id: ForgedTemperedFirefighterArmor
   name: Tempered reinforced firefighter suit
-  description: A reinforced, fire-resistant suit in muted combat-armor green and charcoal, worn by the Forged's Tempered.
+  description: A reinforced, fire-resistant suit in muted combat-armor green and charcoal, worn by the Forged's Tempered. Its lining resists flames rather than laser fire.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/OuterClothing/forged_branded_firefighter.rsi
@@ -96,14 +106,19 @@
         Blunt: 0.65
         Slash: 0.70
         Piercing: 0.55
-        Heat: 0.25
+        Heat: 1
         Radiation: 0.90
   - type: StaminaDamageResistance
     coefficient: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.80
+    modifiers:
+      IncineratorExplosion: 0.10
   - type: ToggleableClothing
     clothingPrototype: ForgedTemperedFirefighterHood
+  - type: FireProtection
+    reduction: 0.90
+    maximumReduction: 0.90
 
 - type: entity
   parent: N14ClothingHeadHatHelmetFirefighterHelmet
@@ -117,6 +132,10 @@
     sprite: _ReclamationProject/Clothing/Head/forged_tempered_hood.rsi
   - type: Item
     sprite: _ReclamationProject/Clothing/Head/forged_tempered_hood.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 1
 
 - type: entity
   parent: N14ClothingOuterRaiderBadlands
@@ -133,3 +152,18 @@
   components:
   - type: ExplosionResistance
     damageCoefficient: 0.40
+- type: entity
+  parent: ForgedKeeperFurnaceHelmet
+  id: ForgedSmithyFurnaceHelmet
+  name: Smithy's furnace helmet
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.20
+        Radiation: 0.595
+  - type: ExplosionResistance
+    damageCoefficient: 0.845

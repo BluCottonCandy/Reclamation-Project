@@ -13803,3 +13803,47 @@ Entries:
   id: 6597
   time: '2026-11-06T04:46:20.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/126
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added two Minutemen Heavy Trooper slots, a combat specialist role above
+        Private and below Corporal, requiring 800 minutes as a Minutemen
+        Private, with a dedicated Wendover spawn and specialist rank pin.
+    - type: Add
+      message: >-
+        Heavy Troopers receive unique salvaged plate armor, a matching riot
+        helmet and boots, black bladed gauntlets, a Minutemen duster, and a
+        night-vision ranger mask.
+    - type: Add
+      message: >-
+        Heavy Trooper armor provides 50% blunt, slash, piercing and heat
+        protection, 60% explosion resistance, and 15% movement slowdown. Its
+        chest knife can be drawn with Alt-click and visibly disappears until
+        sheathed; Shift-click still examines the armor.
+    - type: Add
+      message: >-
+        Added a two-handed salvaged vertibird blade dealing 95 slash with
+        super-sledge knockback, a slower swing, and an enlarged, correctly
+        oriented back-slot sprite.
+    - type: Add
+      message: >-
+        Added a scoped heavy laser musket and spare cells. It requires wielding,
+        deals 20 heat uncranked, and deals 75 heat after one three-second crank.
+    - type: Tweak
+      message: >-
+        Reworked the standard laser musket, crank laser shotgun, and heavy laser
+        musket sprites with worn wood, dark salvaged metal, and readable
+        silhouettes. The standard musket retains its original firing behavior
+        and has no scope.
+    - type: Fix
+      message: >-
+        Laser muskets now point away from their wearer while carried and no
+        longer draw through the body from behind.
+    - type: Fix
+      message: >-
+        Wide melee swing animations now follow the aimed direction instead of
+        sweeping behind the attacker.
+  id: 6598
+  time: '2026-11-06T11:06:36.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/127

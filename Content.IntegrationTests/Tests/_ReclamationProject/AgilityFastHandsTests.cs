@@ -23,6 +23,7 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 
 using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
@@ -200,7 +201,7 @@ public sealed class AgilityFastHandsTests
                 SetCount(storedMagazine, 0);
                 Check(storage.Insert(backpack, storedGun, out _, user: user), "another gun carried in backpack");
                 var activate = new AgilityFastHandsActionEvent { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref activate);
+                em.EventBus.RaiseLocalEvent(user, activate);
                 var now = IoCManager.Resolve<IGameTiming>().CurTime;
                 Check(activate.Handled && ability.NextUseAt == now + TimeSpan.FromMinutes(2) && !ability.Reloading,
                     "bulk refill finishes instantly with a two-minute cooldown");
@@ -214,7 +215,7 @@ public sealed class AgilityFastHandsTests
                     "bulk refill conserves ammunition without draining the loaded magazine");
                 Check(fast.GetCarriedItems(user).Contains(loaded), "ejected magazine remains carried after stowing");
                 var repeat = new AgilityFastHandsActionEvent { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref repeat);
+                em.EventBus.RaiseLocalEvent(user, repeat);
                 Check(!repeat.Handled && guns.GetMagazineEntity(gun) == spare,
                     "cooldown prevents repeated swaps");
                 fast.Update(0);
@@ -224,7 +225,7 @@ public sealed class AgilityFastHandsTests
                 SetCount(box, 50);
                 ability.NextUseAt = TimeSpan.Zero;
                 var secondBulk = new AgilityFastHandsActionEvent { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref secondBulk);
+                em.EventBus.RaiseLocalEvent(user, secondBulk);
                 var nowLoaded = guns.GetMagazineEntity(gun) ?? throw new Exception("No loaded magazine after second test");
                 Check(secondBulk.Handled && fast.GetCarriedItems(user).Where(item =>
                         em.HasComponent<BallisticAmmoProviderComponent>(item) &&
@@ -241,7 +242,7 @@ public sealed class AgilityFastHandsTests
                     Check(bar.Args.Delay == guns.GetFastHandsReloadDelay(source) && bar.Args.Delay > TimeSpan.Zero,
                         "internal loading progress uses half normal ammo-loading delay");
                     var completed = new FastHandsReloadDoAfterEvent { DoAfter = bar };
-                    em.EventBus.RaiseLocalEvent(user, ref completed);
+                    em.EventBus.RaiseLocalEvent(user, completed);
                     return completed;
                 }
                 // Internal magazines use the same timed one-round insertion, without a swap.
@@ -254,7 +255,7 @@ public sealed class AgilityFastHandsTests
                 Check(storage.Insert(backpack, rifleAmmo, out _, user: user), "rifle ammunition carried");
                 ability.NextUseAt = TimeSpan.Zero;
                 var rifleReload = new AgilityFastHandsActionEvent { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref rifleReload);
+                em.EventBus.RaiseLocalEvent(user, rifleReload);
                 Check(rifleReload.Handled && ability.ReloadTarget == rifle && Count(rifle) == 0,
                     "internal gun reload begins without instant ammunition");
                 for (var round = 0; round < 3; round++)
@@ -264,7 +265,7 @@ public sealed class AgilityFastHandsTests
                 ability.NextUseAt = TimeSpan.Zero;
                 SetCount(rifleAmmo, 20);
                 var boundedReload = new AgilityFastHandsActionEvent { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref boundedReload);
+                em.EventBus.RaiseLocalEvent(user, boundedReload);
                 var budget = ability.RoundsRemaining;
                 Check(boundedReload.Handled && budget == guns.GetFastHandsAmmo(rifle).Capacity - Count(rifle),
                     "internal reload is bounded by one initial magazine deficit");
@@ -289,7 +290,7 @@ public sealed class AgilityFastHandsTests
                 Check(hands.TryPickup(user, revolverAmmo, handComp.SortedHands[1]), "revolver spare ammo carried");
                 ability.NextUseAt = TimeSpan.Zero;
                 var cylinderReload = new AgilityFastHandsActionEvent { Performer = user };
-                em.EventBus.RaiseLocalEvent(user, ref cylinderReload);
+                em.EventBus.RaiseLocalEvent(user, cylinderReload);
                 Check(cylinderReload.Handled && ability.ReloadTarget == revolver,
                     "spent revolver cylinder is a valid internal reload target");
                 for (var round = 0; round < 3; round++)

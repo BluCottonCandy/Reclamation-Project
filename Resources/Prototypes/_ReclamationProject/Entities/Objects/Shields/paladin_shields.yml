@@ -88,10 +88,10 @@
     damage:
       types:
         Blunt: 70
-  - type: ClothingSpeedModifier
+  - type: HeldSpeedModifier
+    mirrorClothingModifier: false
     walkModifier: 0.75
     sprintModifier: 0.75
-  - type: HeldSpeedModifier
 
 - type: entity
   id: ReclamationActionShieldCharge

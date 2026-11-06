@@ -37,3 +37,10 @@ job-supervisors-minutemen-commonwealth = the people of the Commonwealth
 ## Door access (shown on IDs)
 id-card-access-level-minutemen = Minutemen
 id-card-access-level-minutemen-nco = Minutemen NCO
+
+job-name-minutemen-heavy-trooper = Minutemen Heavy Trooper
+job-description-minutemen-heavy-trooper = A heavily armored combat specialist. Support the riflemen with salvaged steel and a massive rotor blade. Follow your Corporals, Sergeants, and officers; this is not a squad command role.
+minutemen-heavy-knife-slot = Chest knife sheath
+minutemen-heavy-draw-knife = Draw combat knife
+minutemen-heavy-sheathe-knife = Sheathe combat knife
+guide-entry-minutemen-heavy-trooper = Minutemen Heavy Trooper

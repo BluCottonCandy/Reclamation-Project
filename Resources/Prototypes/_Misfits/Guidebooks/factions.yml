@@ -7,6 +7,7 @@
   name: guide-entry-factions
   text: "/ServerInfo/_Misfits/Guidebooks/Factions/factions.xml"
   children:
+  - MinutemenHeavyTrooperGuide
   - N14BrotherhoodOfSteel
   - N14Townsfolk
   - N14Wastelanders

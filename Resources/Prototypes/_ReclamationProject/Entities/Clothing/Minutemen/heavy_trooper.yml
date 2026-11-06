@@ -1,0 +1,169 @@
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: MinutemenHeavyTrooperArmor
+  name: Minutemen heavy trooper armor
+  description: Battered steel plates, chainmail, and leather assembled for the Minutemen's heavy combat specialists. A chest-mounted sheath keeps a combat knife within reach.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/OuterClothing/minutemen_heavy.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/OuterClothing/minutemen_heavy.rsi
+  - type: Item
+    size: Huge
+    sprite: _ReclamationProject/Clothing/OuterClothing/minutemen_heavy.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.50
+        Slash: 0.50
+        Piercing: 0.50
+        Heat: 0.50
+  - type: ExplosionResistance
+    damageCoefficient: 0.40
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
+  - type: HideLayerClothing
+    force: true
+    slots: [Chest, LArm, RArm, LHand, RHand, LLeg, RLeg]
+  - type: SuitKnifeSheath
+  - type: ItemSlots
+    slots:
+      chest_knife:
+        name: minutemen-heavy-knife-slot
+        startingItem: N14CombatKnife
+        whitelist:
+          tags: [CombatKnife]
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        ejectVerbText: minutemen-heavy-draw-knife
+        insertVerbText: minutemen-heavy-sheathe-knife
+  - type: ContainerContainer
+    containers:
+      chest_knife: !type:ContainerSlot
+  - type: Appearance
+  - type: ItemMapper
+    containerWhitelist: [chest_knife]
+    mapLayers:
+      knife:
+        whitelist:
+          tags: [CombatKnife]
+
+- type: entity
+  parent: ClothingHeadBase
+  id: MinutemenHeavyTrooperHelmet
+  name: Minutemen heavy trooper helmet
+  description: A compact armored riot helmet with a dark visor and vented combat face mask, marked with the Minutemen emblem.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Head/minutemen_heavy.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Head/minutemen_heavy.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Head/minutemen_heavy.rsi
+  - type: HideLayerClothing
+    force: true
+    slots:
+    - Head
+    - Face
+    - Eyes
+    - Hair
+    - FacialHair
+    - Snout
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: BaseSword
+  id: MinutemenRotorBlade
+  name: salvaged vertibird blade
+  description: An old vertibird rotor sharpened into a massive two-handed blade. Faded yellow warning stripes still mark the tip.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Melee/rotor_blade.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: _ReclamationProject/Objects/Weapons/Melee/rotor_blade.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Melee/rotor_blade.rsi
+    quickEquip: false
+    slots: [Back, suitStorage]
+    clothingVisuals:
+      back:
+      - sprite: _ReclamationProject/Objects/Weapons/Melee/rotor_blade.rsi
+        state: equipped-BACKPACK
+        scale: -1.2,1.2
+        rotation: 180
+      suitstorage:
+      - sprite: _ReclamationProject/Objects/Weapons/Melee/rotor_blade.rsi
+        state: equipped-SUITSTORAGE
+        scale: -1.2,1.2
+        rotation: 180
+  - type: MultiHandedItem
+  # Retain the claymore swing profile, with a heavy rotor edge and super-sledge knockback.
+  - type: MeleeWeapon
+    wideAnimation: MinutemenRotorArc
+    wideAnimationRotation: -135
+    attackRate: 1.53
+    range: 1.85
+    damage:
+      types:
+        Slash: 95
+    bluntStaminaDamageFactor: 25.0
+    heavyRateModifier: 2
+    heavyRangeModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyStaminaCost: 15
+    maxTargets: 10
+    angle: 200
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DamageOtherOnHit
+    staminaCost: 18
+  - type: MeleeThrowOnHit
+    speed: 10
+    lifetime: 0.025
+  - type: ThrowingAngle
+    angle: 225
+
+- type: entity
+  parent: MinutemenClothingShoesBoots
+  id: MinutemenHeavyTrooperBoots
+  name: Minutemen heavy trooper boots
+  description: Steel-plated greaves over worn leather combat boots, built to match the heavy trooper's salvaged plate armor.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Shoes/minutemen_heavy.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Shoes/minutemen_heavy.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Shoes/minutemen_heavy.rsi
+  - type: HideLayerClothing
+    force: true
+    slots: [LFoot, RFoot]
+
+# Reuses the Priestess gauntlets and their original credited artwork.
+# Apply the same charcoal tint to dropped and equipped views.
+- type: entity
+  parent: N14PriestessOfMarsGloves
+  id: MinutemenHeavyTrooperGauntlets
+  name: Minutemen heavy trooper gauntlets
+  description: Blackened steel gauntlets with bladed knuckles, issued to the Minutemen's heavy combat specialists.
+  components:
+  - type: Sprite
+    color: "#505050"
+  - type: Clothing
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+        color: "#505050"
+
+- type: entity
+  parent: WeaponArcSlash
+  id: MinutemenRotorArc
+  categories: [HideSpawnMenu]
+  components:
+  - type: WeaponArcVisuals
+    durationMultiplier: 3

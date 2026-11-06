@@ -128,3 +128,13 @@
   thresholds:
     - min: 0
       entity: ClothingNeckPinMinutemenGeneral
+
+# Heavy Trooper is a combat specialist, not an NCO.
+- type: ncrRankPinProgression
+  id: MinutemenHeavyTrooperPins
+  jobs: [MinutemenHeavyTrooper]
+  tracker: MinutemenHeavyTrooper
+  departmentTracker: false
+  thresholds:
+  - min: 0
+    entity: ClothingNeckPinMinutemenSpecialist

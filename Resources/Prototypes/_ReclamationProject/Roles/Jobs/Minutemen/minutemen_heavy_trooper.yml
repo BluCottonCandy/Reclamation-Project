@@ -1,0 +1,42 @@
+- type: job
+  parent: MinutemenPrivate
+  id: MinutemenHeavyTrooper
+  name: job-name-minutemen-heavy-trooper
+  description: job-description-minutemen-heavy-trooper
+  weight: 75
+  displayWeight: 75
+  playTimeTracker: MinutemenHeavyTrooper
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species: [Human, Courser, Ghoul]
+  - !type:CharacterPlaytimeRequirement
+    tracker: MinutemenPrivate
+    min: 18000
+  startingGear: MinutemenHeavyTrooperGear
+  icon: JobIconNcrSpec
+
+- type: playTimeTracker
+  id: MinutemenHeavyTrooper
+
+- type: startingGear
+  id: MinutemenHeavyTrooperGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: MinutemenClothingUniformEnlisted
+    gloves: MinutemenHeavyTrooperGauntlets
+    shoes: MinutemenHeavyTrooperBoots
+    ears: MinutemenClothingHeadset
+    back: N14ClothingBackpackMilitary
+    head: MinutemenHeavyTrooperHelmet
+    mask: ClothingMaskGasRanger
+    neck: MinutemenClothingNeckDuster
+    outerClothing: MinutemenHeavyTrooperArmor
+    id: MinutemenIDDogtagsHeavyTrooper
+    suitstorage: MinutemenRotorBlade
+  inhand:
+  - MinutemenWeaponHeavyLaserMusket
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MicrofusionCellRed
+    - N14MicrofusionCellRed

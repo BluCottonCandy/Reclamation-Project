@@ -13,6 +13,10 @@ public sealed partial class WeaponArcVisualsComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite), DataField("fadeOut")]
     public bool Fadeout = true;
+
+    /// <summary>Scales visual timing without changing attack rate or hit detection.</summary>
+    [DataField]
+    public float DurationMultiplier = 1f;
 }
 
 public enum WeaponArcAnimation : byte

@@ -66,3 +66,11 @@
   components:
   - type: PresetIdCard
     job: MinutemenGeneral
+
+- type: entity
+  parent: MinutemenIDDogtags
+  id: MinutemenIDDogtagsHeavyTrooper
+  suffix: Heavy Trooper
+  components:
+  - type: PresetIdCard
+    job: MinutemenHeavyTrooper

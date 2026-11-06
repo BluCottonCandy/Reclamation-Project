@@ -43,4 +43,3 @@ job-description-minutemen-heavy-trooper = A heavily armored combat specialist. S
 minutemen-heavy-knife-slot = Chest knife sheath
 minutemen-heavy-draw-knife = Draw combat knife
 minutemen-heavy-sheathe-knife = Sheathe combat knife
-guide-entry-minutemen-heavy-trooper = Minutemen Heavy Trooper

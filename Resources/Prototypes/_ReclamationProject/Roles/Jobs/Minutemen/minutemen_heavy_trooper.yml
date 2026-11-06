@@ -11,7 +11,7 @@
     species: [Human, Courser, Ghoul]
   - !type:CharacterPlaytimeRequirement
     tracker: MinutemenPrivate
-    min: 18000
+    min: 48000
   startingGear: MinutemenHeavyTrooperGear
   icon: JobIconNcrSpec
 

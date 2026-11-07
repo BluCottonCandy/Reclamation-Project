@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Mute characters no longer repeatedly receive "You can't speak right now" warnings from automatic symptom speech checks. Intentional speech attempts retain their normal feedback.

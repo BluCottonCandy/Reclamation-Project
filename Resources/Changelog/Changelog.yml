@@ -14003,3 +14003,16 @@ Entries:
   id: 6607
   time: '2026-11-07T12:28:56.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/136
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Reject malformed network data before it can force excessive string or
+        byte-array allocations and crash the server.
+    - type: Fix
+      message: >-
+        Correct fragmented Unicode reads while retaining the previous
+        network-stream cleanup and crash protections.
+  id: 6608
+  time: '2026-11-07T12:31:18.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/137

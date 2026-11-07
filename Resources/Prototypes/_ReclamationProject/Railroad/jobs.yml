@@ -54,10 +54,16 @@
   playTimeTracker: RailroadSafehouse1Worker
   jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Intern
-    additionalTrackers: [RailroadSafehouse2Intern]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Intern
+      additionalTrackers: [RailroadSafehouse2Intern]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 18000 # 300 minutes across this faction.
   startingGear: RailroadSafehouse1WorkerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -83,10 +89,16 @@
   description: job-description-railroadsafehouse1agent
   playTimeTracker: RailroadSafehouse1Agent
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Runner
-    additionalTrackers: [RailroadSafehouse2Runner]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Runner
+      additionalTrackers: [RailroadSafehouse2Runner]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 90000 # 1500 minutes across this faction.
   startingGear: RailroadSafehouse1AgentGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -114,10 +126,16 @@
   playTimeTracker: RailroadSafehouse1Runner
   jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Worker
-    additionalTrackers: [RailroadSafehouse2Worker]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Worker
+      additionalTrackers: [RailroadSafehouse2Worker]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 36000 # 600 minutes across this faction.
   startingGear: RailroadSafehouse1RunnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1]
@@ -143,10 +161,16 @@
   description: job-description-railroadsafehouse1conductor
   playTimeTracker: RailroadSafehouse1Conductor
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Agent
-    additionalTrackers: [RailroadSafehouse2Agent]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Agent
+      additionalTrackers: [RailroadSafehouse2Agent]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 90000 # 1500 minutes across this faction.
   startingGear: RailroadSafehouse1ConductorGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
@@ -176,10 +200,16 @@
   description: job-description-railroadsafehouse1safehouseowner
   playTimeTracker: RailroadSafehouse1SafehouseOwner
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Conductor
-    additionalTrackers: [RailroadSafehouse2Conductor]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Conductor
+      additionalTrackers: [RailroadSafehouse2Conductor]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 90000 # 1500 minutes across this faction.
   startingGear: RailroadSafehouse1SafehouseOwnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse1, RailroadSafehouse1Command]
@@ -232,10 +262,16 @@
   playTimeTracker: RailroadSafehouse2Worker
   jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Intern
-    additionalTrackers: [RailroadSafehouse2Intern]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Intern
+      additionalTrackers: [RailroadSafehouse2Intern]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 18000 # 300 minutes across this faction.
   startingGear: RailroadSafehouse2WorkerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -261,10 +297,16 @@
   description: job-description-railroadsafehouse2agent
   playTimeTracker: RailroadSafehouse2Agent
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Runner
-    additionalTrackers: [RailroadSafehouse2Runner]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Runner
+      additionalTrackers: [RailroadSafehouse2Runner]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 90000 # 1500 minutes across this faction.
   startingGear: RailroadSafehouse2AgentGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -292,10 +334,16 @@
   playTimeTracker: RailroadSafehouse2Runner
   jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Worker
-    additionalTrackers: [RailroadSafehouse2Worker]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Worker
+      additionalTrackers: [RailroadSafehouse2Worker]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 36000 # 600 minutes across this faction.
   startingGear: RailroadSafehouse2RunnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2]
@@ -321,10 +369,16 @@
   description: job-description-railroadsafehouse2conductor
   playTimeTracker: RailroadSafehouse2Conductor
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Agent
-    additionalTrackers: [RailroadSafehouse2Agent]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Agent
+      additionalTrackers: [RailroadSafehouse2Agent]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 90000 # 1500 minutes across this faction.
   startingGear: RailroadSafehouse2ConductorGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]
@@ -354,10 +408,16 @@
   description: job-description-railroadsafehouse2safehouseowner
   playTimeTracker: RailroadSafehouse2SafehouseOwner
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: RailroadSafehouse1Conductor
-    additionalTrackers: [RailroadSafehouse2Conductor]
-    min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: RailroadSafehouse1Conductor
+      additionalTrackers: [RailroadSafehouse2Conductor]
+      min: 18000 # 5 combined hours in the preceding rank across both safehouses.
+    - !type:CharacterDepartmentTimeRequirement
+      department: RailroadSafehouse1
+      additionalDepartments: [RailroadSafehouse2, Railroad]
+      min: 90000 # 1500 minutes across this faction.
   startingGear: RailroadSafehouse2SafehouseOwnerGear
   alwaysUseSpawner: true
   access: [Railroad, RailroadSafehouse2, RailroadSafehouse2Command]

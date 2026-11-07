@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Ranked Forged, Minutemen, Brotherhood, Railroad, Institute, and Triggermen roles can unlock through their existing previous-role requirement OR total service in that faction. Lower ranks use cumulative progression time; senior and leadership alternatives require 1,500 faction minutes (25 hours).
+- type: Tweak
+  message: Brotherhood Lancer time counts toward Brotherhood unlocks, and Railroad time counts across both safehouses and central roles. Job whitelists and other restrictions remain required.

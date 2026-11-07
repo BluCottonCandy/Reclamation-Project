@@ -15,9 +15,14 @@
   description: job-description-institute-director
   playTimeTracker: InstituteDirector
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: InstituteDivisionHead
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: InstituteDivisionHead
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Institute
+      min: 90000 # 1500 minutes across this faction.
   startingGear: InstituteDirectorGear
   alwaysUseSpawner: true
   access: [Institute, InstituteCommand, InstituteSecurity]
@@ -80,9 +85,14 @@
   description: job-description-institute-divisionhead
   playTimeTracker: InstituteDivisionHead
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: InstituteScientist
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: InstituteScientist
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Institute
+      min: 90000 # 1500 minutes across this faction.
   startingGear: InstituteDivisionHeadGear
   alwaysUseSpawner: true
   access: [Institute, InstituteCommand, InstituteSecurity]
@@ -166,9 +176,14 @@
   requireAdminNotify: true
   # #Reclamation Project - only the Courser race (Gen 3 synth) can be a Courser
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: InstituteSecurity
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: InstituteSecurity
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Institute
+      min: 90000 # 1500 minutes across this faction.
   - !type:CharacterSpeciesRequirement
     species:
     - Courser

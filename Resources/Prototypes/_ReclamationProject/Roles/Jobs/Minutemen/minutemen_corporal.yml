@@ -17,9 +17,14 @@
       - Human
       - Courser
       - Ghoul
-    - !type:CharacterPlaytimeRequirement
-      tracker: MinutemenPrivate
-      min: 18000 # 5 hours in the preceding role.
+    - !type:CharacterLogicOrRequirement
+      requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: MinutemenPrivate
+        min: 18000 # 5 hours in the preceding role.
+      - !type:CharacterDepartmentTimeRequirement
+        department: Minutemen
+        min: 36000 # 600 minutes across this faction.
   startingGear: MinutemenCorporalKitGear
   alwaysUseSpawner: true # #Reclamation Project - spawn at the Minutemen spawn points, late join too
   access:

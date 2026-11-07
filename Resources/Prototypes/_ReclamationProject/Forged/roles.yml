@@ -19,9 +19,14 @@
   description: job-description-forgemaster
   playTimeTracker: Forgemaster
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: ForgedVeteran
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: ForgedVeteran
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Forged
+      min: 90000 # 1500 minutes across this faction.
   startingGear: ForgemasterGear
   setPreference: true
   alwaysUseSpawner: true
@@ -55,9 +60,14 @@
   description: job-description-forgedveteran
   playTimeTracker: ForgedVeteran
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: ForgedEnforcer
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: ForgedEnforcer
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Forged
+      min: 54000 # 900 minutes across this faction.
   startingGear: ForgedVeteranGear
   setPreference: true
   alwaysUseSpawner: true
@@ -91,9 +101,14 @@
   description: job-description-forgedenforcer
   playTimeTracker: ForgedEnforcer
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: ForgedBranded
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: ForgedBranded
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Forged
+      min: 36000 # 600 minutes across this faction.
   startingGear: ForgedEnforcerGear
   setPreference: true
   alwaysUseSpawner: true
@@ -127,9 +142,14 @@
   description: job-description-forgedbranded
   playTimeTracker: ForgedBranded
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: ForgedRaider
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: ForgedRaider
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Forged
+      min: 18000 # 300 minutes across this faction.
   startingGear: ForgedBrandedGear
   setPreference: true
   alwaysUseSpawner: true

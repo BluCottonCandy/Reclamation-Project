@@ -58,7 +58,7 @@ public sealed class FactionFiveHourTimerTests
     [TestCase("RailroadSafehouse1SafehouseOwner", "RailroadSafehouse2Conductor")]
     [TestCase("RailroadSafehouse2SafehouseOwner", "RailroadSafehouse1Conductor")]
     [TestCase("RailroadSafehouse2SafehouseOwner", "RailroadSafehouse2Conductor")]
-    public async Task OnlyThePrecedingRoleUnlocksPromotion(string id, string tracker)
+    public async Task PreviousRoleStillUnlocksPromotion(string id, string tracker)
     {
         await using var pair = await PoolManager.GetServerClient();
         await pair.Server.WaitAssertion(() =>
@@ -72,13 +72,15 @@ public sealed class FactionFiveHourTimerTests
             try
             {
                 var job = prototypes.Index<JobPrototype>(id);
-                Assert.That(job.JobWhitelistBypassesRoleTimers, Is.True);
+                Assert.That(job.JobWhitelistBypassesRoleTimers, Is.False);
                 var times = prototypes.EnumeratePrototypes<PlayTimeTrackerPrototype>()
-                    .ToDictionary(t => t.ID, _ => TimeSpan.FromHours(1000));
+                    .ToDictionary(t => t.ID, _ => TimeSpan.Zero);
+                times[PlayTimeTrackingShared.TrackerOverall] = TimeSpan.FromHours(1000);
                 var timers = job.Requirements!.Where(r => r is CharacterPlaytimeRequirement or CharacterLogicOrRequirement).ToArray();
                 Assert.That(timers, Has.Length.EqualTo(1));
                 Assert.That(job.Requirements.OfType<CharacterDepartmentTimeRequirement>(), Is.Empty);
-                var timer = timers.Single();
+                var alternatives = (CharacterLogicOrRequirement) timers.Single();
+                var timer = alternatives.Requirements.First();
                 var children = timer is CharacterLogicOrRequirement choice
                     ? choice.Requirements.Cast<CharacterPlaytimeRequirement>().ToArray()
                     : new[] { (CharacterPlaytimeRequirement) timer };
@@ -92,8 +94,8 @@ public sealed class FactionFiveHourTimerTests
                 bool Eligible(bool approved = false) => em.System<CharacterRequirementsSystem>().CheckRequirementsValid(job.Requirements,
                     job, HumanoidCharacterProfile.DefaultWithSpecies(), times, true, job,
                     em, prototypes, config, sponsor, out _, jobWhitelisted: approved);
-                Assert.That(Eligible(), Is.False, "Even enormous time in every other role cannot skip the preceding rank.");
-                Assert.That(Eligible(true), Is.True, "Job whitelist approval bypasses the playtime requirement.");
+                Assert.That(Eligible(), Is.False, "Server-wide playtime alone cannot unlock a faction promotion.");
+                Assert.That(Eligible(true), Is.False, "Whitelist approval alone does not waive the time requirement.");
                 times[tracker] = TimeSpan.FromHours(5) - TimeSpan.FromSeconds(1);
                 Assert.That(Eligible(), Is.False, "One second below the preceding-role threshold remains locked.");
                 times[tracker] += TimeSpan.FromSeconds(1);

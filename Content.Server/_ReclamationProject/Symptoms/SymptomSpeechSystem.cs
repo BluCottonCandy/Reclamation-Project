@@ -10,6 +10,7 @@ using Content.Shared.Chat;
 using Content.Shared.Ghost;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Speech;
+using Content.Shared.Speech.Muting;
 using Robust.Server.GameObjects;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
@@ -62,7 +63,10 @@ public sealed class SymptomSpeechSystem : EntitySystem
     public bool CanSpeakSymptoms(EntityUid user) =>
         TryComp<ActorComponent>(user, out var actor) && actor.PlayerSession.AttachedEntity == user &&
         actor.PlayerSession.Status == SessionStatus.InGame && !HasComp<GhostComponent>(user) &&
-        TryComp<SpeechComponent>(user, out var speech) && speech.Enabled && _mob.IsAlive(user) && _blocker.CanSpeak(user);
+        TryComp<SpeechComponent>(user, out var speech) && speech.Enabled && _mob.IsAlive(user) &&
+        // CanSpeak raises a real SpeakAttemptEvent, whose mute handler displays a popup.
+        // Background symptom polling must not ask mute characters to attempt speech.
+        !HasComp<MutedComponent>(user) && _blocker.CanSpeak(user);
 
     public bool TrySpeak(EntityUid user, string symptom)
     {

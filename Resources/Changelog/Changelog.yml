@@ -13905,3 +13905,26 @@ Entries:
   id: 6600
   time: '2026-11-06T14:26:28.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/129
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Supported bodily symptom warnings now use first-person local speech
+        audible to nearby players, limited to one line every two minutes across
+        all active effects.
+    - type: Add
+      message: >-
+        Blood loss can cause faint or dizzy remarks, drunkenness can cause
+        hiccups or tipsy remarks, and drug highs can cause happy or colorful
+        remarks.
+    - type: Tweak
+      message: >-
+        Automatic symptom speech respects normal speech restrictions and
+        preserves private notifications when speech is impossible.
+    - type: Add
+      message: >-
+        The Survival guidebook explains involuntary speech, with directions from
+        the Survival and medicine overview pages.
+  id: 6601
+  time: '2026-11-07T03:11:48.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/130

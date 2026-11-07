@@ -12,7 +12,7 @@ Insert the Vault Carnage (Video game) holotape, then type vault carnage to play 
 Use 1-4 to select pistol, shotgun, missile launcher, or dual pistols. The pistol has unlimited ammunition. Other guns hold at most 10 shells, 5 missiles, or 50 dual-pistol rounds total, including reserves. Dual pistols use two rounds per click. Press R to reload, or let an empty magazine reload automatically while reserves remain. Reload animations briefly lower the weapons; reloading never creates extra ammunition. Escape closes the game and returns to the prompt. Progress is never saved; every launch starts a fresh game.
 
 Eject its game holotape before dismantling a computer. Dismantling or breaking a computer returns its construction materials. Breaking it also drops any inserted game holotape intact. A newly built computer starts a separate notebook.
-Game holotapes can also be found by successfully searching junk piles. Each of the seven games has its own independent 5% chance per successful search, in addition to the normal loot. Simply reopening a depleted pile does not reroll its contents.
+Game holotapes can also be found by successfully searching junk piles. Each successful search has one 5% chance to find a single random game holotape, in addition to the normal loot. All seven games are equally likely, and the game roll cannot award more than one tape per search. A Junker Finder extra search gets its own roll. Simply reopening a depleted pile does not reroll its contents.
 
 ## Holotape arcade library
 

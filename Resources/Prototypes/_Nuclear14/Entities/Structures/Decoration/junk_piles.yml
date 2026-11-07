@@ -10,21 +10,32 @@
   - type: JunkPileSearchable
     searchDuration: 0.2
     cooldownSeconds: 3600
+    # One weighted roll: 7 game weights + 133 empty = 5% for any game, at most one.
     bonusContents:
     - id: ReclamationHolotapeRedMenace
-      prob: 0.05
+      prob: 1
+      orGroup: gameHolotape
     - id: ReclamationHolotapeClassicRedMenace
-      prob: 0.05
+      prob: 1
+      orGroup: gameHolotape
     - id: ReclamationHolotapeAtomicDefense
-      prob: 0.05
+      prob: 1
+      orGroup: gameHolotape
     - id: ReclamationHolotapeZetanSiege
-      prob: 0.05
+      prob: 1
+      orGroup: gameHolotape
     - id: ReclamationHolotapeVaultRunner
-      prob: 0.05
+      prob: 1
+      orGroup: gameHolotape
     - id: ReclamationHolotapeWastelandQuest
-      prob: 0.05
+      prob: 1
+      orGroup: gameHolotape
     - id: ReclamationHolotapeRobotRevolt
-      prob: 0.05
+      prob: 1
+      orGroup: gameHolotape
+    - id: N14EmptySlot
+      prob: 133
+      orGroup: gameHolotape
   - type: LuckJunkBonus
   - type: Sprite
     sprite: _Nuclear14/Structures/Decoration/crafting_junk.rsi

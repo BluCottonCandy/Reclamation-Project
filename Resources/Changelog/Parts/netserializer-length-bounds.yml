@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Reject malformed network data before it can force excessive string or byte-array allocations and crash the server.
+- type: Fix
+  message: Correct fragmented Unicode reads while retaining the previous network-stream cleanup and crash protections.

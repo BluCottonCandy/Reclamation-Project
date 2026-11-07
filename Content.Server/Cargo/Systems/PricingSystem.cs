@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Supplies;
 ﻿using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Cargo.Components;
@@ -222,6 +223,8 @@ public sealed class PricingSystem : EntitySystem
     /// </remarks>
     public double GetPrice(EntityUid uid, bool includeContents = true)
     {
+        // Ammo and other price handlers may add value after a handled price event.
+        if (HasComp<FactionSupplyPurchaseComponent>(uid)) return 0;
         var ev = new PriceCalculationEvent();
         RaiseLocalEvent(uid, ref ev);
 

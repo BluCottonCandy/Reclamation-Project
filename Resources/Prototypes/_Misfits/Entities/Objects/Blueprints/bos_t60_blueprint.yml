@@ -5,6 +5,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSWeaponsT60
+  categories: [HideSpawnMenu]
   name: BoS Power Armor Armaments Schematics
   description: Pre-war military manufacturing plans for the small arms issued alongside T-60 power armor — the heavy assault rifle, the T-60 sidearm, and the oversized magazines both were built around.
   components:

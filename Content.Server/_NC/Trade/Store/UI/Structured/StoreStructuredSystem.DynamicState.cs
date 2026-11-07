@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Supplies;
 using Content.Server._Misfits.Trade; // #Misfits Add — NcContractRosterComponent
 using Content.Shared._Misfits.Trade; // #Misfits Add — NcTierProgressComponent, TierRosterEntry
 using Content.Shared._NC.Trade;
@@ -14,8 +15,10 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         if (!_ui.IsUiOpen(uid, StoreUiKey.Key, user))
             return;
 
+        var supplyVendor = HasComp<FactionSupplyVendorComponent>(uid);
+        var supplies = EntityManager.System<FactionSupplySystem>();
         EntityUid? crateUid = null;
-        if (_logic.TryGetPulledClosedCrate(user, out var pulledCrate))
+        if (supplyVendor ? supplies.TryGetPulledCrate(user, out var pulledCrate) : _logic.TryGetPulledClosedCrate(user, out pulledCrate))
             crateUid = pulledCrate;
 
         UpdateStoreWatch(uid, user, crateUid);
@@ -46,7 +49,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 }
         }
 
-        var needCrateScan = crateUid != null && (hasSellTab || hasContractsTab);
+        var needCrateScan = !supplyVendor && crateUid != null && (hasSellTab || hasContractsTab);
 
         NcInventorySnapshot? userSnap = null;
         NcInventorySnapshot? crateSnap = null;
@@ -82,7 +85,9 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             {
                 if (string.IsNullOrWhiteSpace(cur))
                     continue;
-                buf.BalancesByCurrency[cur] = userSnap.StackTypeCounts.TryGetValue(cur, out var b) ? b : 0;
+                buf.BalancesByCurrency[cur] = FactionSupplySystem.IsCurrency(cur)
+                    ? EntityManager.System<FactionSupplySystem>().Balance(cur)
+                    : userSnap.StackTypeCounts.TryGetValue(cur, out var b) ? b : 0;
             }
         }
 
@@ -104,6 +109,21 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             }
         }
 
+        if (supplyVendor)
+        {
+            foreach (var listing in comp.Listings)
+            {
+                if (listing.Mode != StoreMode.Sell || !FactionSupplySystem.IsCrateProduct(listing.ProductEntity)) continue;
+                var offered = supplies.GetRedeemableCrate(user, uid, listing.ProductEntity);
+                buf.OwnedById[listing.Id] = offered != null ? 1 : 0;
+                if (crateUid != null && offered == crateUid)
+                {
+                    buf.CrateUnitsById[listing.Id] = 1;
+                    foreach (var cur in comp.CurrencyWhitelist)
+                        if (FactionSupplySystem.IsCurrency(cur)) buf.CrateTotals[cur] = Math.Min(supplies.GetCrateReward(crateUid.Value), FactionSupplySystem.Capacity - supplies.Balance(cur));
+                }
+            }
+        }
         if (hasSellTab && needCrateScan && crateUid is { } crate)
         {
             var plan = _logic.ComputeMassSellPlanFromCachedItems(comp, crate, _deepCrateItemsScratch, user);

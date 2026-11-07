@@ -55,7 +55,3 @@
     - id: MisfitsClothingBeltMedievalSmithBelt # smith's belt
     - id: MisfitsClothingBeltMedievalCrossedBaldricCrimson # crimson crossed baldric
     # blueprints (4)
-    - id: MisfitsBlueprintMedievalCrimson # Crimson Armory Blueprint
-    - id: MisfitsBlueprintMedievalAzure # Azure Armory Blueprint
-    - id: MisfitsBlueprintMedievalKnight # Knight's Harness Blueprint
-    - id: MisfitsBlueprintMedievalBelts # Leatherworker's Belt Blueprint

@@ -1,0 +1,54 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Faction supply vendors share a round-local faction budget, starting at 50 and earning 3 points per minute up to 200. Equipment costs 10 to 200 points, ammo boxes cost 10, and standard magazines cost 2. Larger ammo belts and magazines are priced by capacity.
+- type: Add
+  message: Each authored expedition vault contains one sealed supply crate, selected as red (2%, 100 points), blue (30%, 50 points), or ordinary (68%, 20 points), redeemable while held or dragged at any faction supply vendor. Crates require both hands to carry. Carrying or dragging a crate slows you by 30%; crates cannot be stored in bags or crates and are deleted by bunker saves.
+- type: Add
+  message: Faction-issued purchases cannot be sold, including contained equipment and split stacks. Faction vendors have distinct colors and emblems using existing art.
+- type: Add
+  message: Faction supply vendors include their own starting gear and kit equipment. Rank equipment is restricted to your current rank and lower ranks, while common supplies and the same grenade selection remain available across factions.
+- type: Add
+  message: Supply catalogs offer faction radios and encryption keys for 10 points, medical supplies and food at low prices, and revised weapon/armor prices. Power armor costs 100 and laser gatlings cost 200; plasma weapons, LMGs and heavy assault rifles cost 100. Plasma cutters are not offered.
+- type: Fix
+  message: Supply crates stay permanently sealed without intercepting pickup clicks to toggle their locks.
+- type: Tweak
+  message: Town supply vendors are exclusive to Town roles and cap every purchase price at 50 points. Faction catalogs include starting equipment and kits, with revised laser and AK-112 prices, smoke grenades at 20 points, and ceramic flasks under Medical and food.
+- type: Tweak
+  message: Outside Town, laser RCWs cost 75; AER-15s, AER-14 prototypes, Wattz 2000/3000 rifles, plasma weapons and AK-112s cost 100.
+- type: Fix
+  message: Supply crates can be redeemed while dragged beside a faction vendor, using Sell or the pulled-crate sale button. Each crate pays out its own value once and cannot be sold from a distance or by another player.
+- type: Fix
+  message: Selling a dragged supply crate releases the dragging hand before removing the crate, preventing an invisible hand blocker from interfering with shop interactions.
+- type: Fix
+  message: Faction supply shops can be opened while holding an ordinary item in either hand.
+- type: Tweak
+  message: Ordinary unarmored clothing costs 10 supply points; filled belts and exclusive special equipment use their own prices.
+- type: Tweak
+  message: Empty belts and webbing cost 10 points, while filled belts cost 50. Ordinary armor below standard combat protection costs 10, combat-grade armor 25, stronger armor 50, and power armor 100. Exclusive combat and vision equipment issued to a single job costs at least 100; Town remains capped at 50.
+- type: Tweak
+  message: Combat knives and standard laser pistols cost 10 supply points.
+- type: Tweak
+  message: Institute command MOD suits, Courser coats and Courser MOD suits cost 100 points; Institute laser pistols cost 25, automatic laser rifles 75, and AER9 laser rifles 50.
+- type: Tweak
+  message: Minutemen supply vendors include the current Heavy Trooper armor tiers, helmets, weapons and medical kit equipment, including the medic helmet with night vision and a thermal pulse.
+- type: Tweak
+  message: Body bags, CPR manuals, handcuffs, crowbars and tools cost 10 supply points before Railroad import pricing.
+- type: Add
+  message: Railroad supply vendors offer non-Institute equipment from other factions at double the cheapest source price, capped at 200 points. Other factions' leader-exclusive equipment is excluded, and duplicate listings keep the cheaper option.
+- type: Tweak
+  message: Forged Furnace Armor costs 100 points and Forge Keeper furnace armor 200. Reinforced furnace suits are removed from supply shops. Night-vision goggles and Shishkebabs cost 75, flamer and incinerator fuel canisters 75 each, flamers and incinerators 100 each, and laborer axes 10.
+- type: Fix
+  message: Branding irons are available only to Forge Keepers, Smithies and admin Forgemasters through the Forged supply vendor.
+- type: Add
+  message: Every faction medical catalog offers healing powder, filled Rad-X canisters and Bitterdrink for 10 points, and RadAway for 20. These medicines keep the same prices in Railroad shops.
+- type: Tweak
+  message: Super stimpaks, combat medical kits, Heavy Trooper gauntlets and assault carbines cost 50 points, including in Railroad shops.
+- type: Tweak
+  message: Makeshift weapons are removed from faction supply shops. Railroad vendors stock only their own headset and encryption key.
+- type: Remove
+  message: Physical blueprints are retired. New spawns and old saved inventories are cleaned automatically; bunker saves and loads remove them from every nested container, including bags, furniture and carried inventories.
+- type: Add
+  message: Each active faction base now has a supply vendor in a visible, accessible location on Wendover and its interiors. Old blueprint crates are converted to ordinary crates while preserving unrelated contents.
+- type: Fix
+  message: Fixed faction bank terminals interrupting map startup in local debug builds.

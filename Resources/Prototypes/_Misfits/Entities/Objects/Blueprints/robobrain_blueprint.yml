@@ -15,6 +15,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintRobobrainBoard
+  categories: [HideSpawnMenu]
   name: Robobrain Assembly Manual
   description: >
     A classified Pre-War military field manual for the RB-2851 Robobrain chassis.

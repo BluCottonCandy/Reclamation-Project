@@ -1,0 +1,73 @@
+- type: entity
+  parent: BaseItem
+  id: ReclamationSupplyCrate
+  name: supply crate
+  description: a crate full of various things any faction could or would need
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Crates/aluminiumcrate.rsi
+    layers:
+    - state: base
+    - state: closed
+    - state: lock
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+    handsNeeded: 2
+  - type: Physics
+    bodyType: Dynamic
+  - type: Pullable
+  - type: HeldSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+    applyWhenPulled: true
+  - type: FactionSupplyCrate
+    reward: 20
+  - type: CargoSellBlacklist
+  - type: Lock
+    locked: true
+    lockOnClick: false
+    unlockOnClick: false
+    breakOnEmag: false
+  # Intentionally no storage/container or deconstruction component: permanently sealed and empty.
+
+- type: entity
+  parent: ReclamationSupplyCrate
+  id: ReclamationSupplyCrateBlue
+  name: blue supply crate
+  components:
+  - type: Sprite
+    color: "#6199ff"
+  - type: FactionSupplyCrate
+    reward: 50
+
+- type: entity
+  parent: ReclamationSupplyCrate
+  id: ReclamationSupplyCrateRed
+  name: red supply crate
+  components:
+  - type: Sprite
+    color: "#ed655c"
+  - type: FactionSupplyCrate
+    reward: 100
+
+- type: entity
+  parent: MarkerBase
+  id: ReclamationSupplyCrateSpawner
+  name: expedition supply crate
+  suffix: One crate per vault
+  components:
+  - type: EntityTableSpawner
+    offset: 0
+    deleteSpawnerAfterSpawn: true
+    table: !type:GroupSelector
+      children:
+      - !type:EntSelector
+        id: ReclamationSupplyCrateRed
+        weight: 2
+      - !type:EntSelector
+        id: ReclamationSupplyCrateBlue
+        weight: 30
+      - !type:EntSelector
+        id: ReclamationSupplyCrate
+        weight: 68

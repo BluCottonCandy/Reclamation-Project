@@ -1,7 +1,8 @@
+using Content.Server._ReclamationProject.Supplies;
 using System.Linq;
 using Content.Server.Popups;
 using Content.Server.Storage.Components;
-using Content.Shared._Misfits.Trade; // #Misfits Add — tier progression events
+using Content.Shared._Misfits.Trade; // #Misfits Add â€” tier progression events
 using Content.Shared._NC.Trade;
 using Content.Shared.Access.Components;
 using Content.Shared.Stacks;
@@ -249,11 +250,11 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 if (storeComp.CurrentUser is not { } staleUser)
                     continue;
 
-                // Already tracked — the normal health check will handle it
+                // Already tracked â€” the normal health check will handle it
                 if (_openStoreUids.Contains(storeUid))
                     continue;
 
-                // CurrentUser is set but store is NOT tracked — check if BUI is actually open
+                // CurrentUser is set but store is NOT tracked â€” check if BUI is actually open
                 if (!_ui.IsUiOpen(storeUid, StoreUiKey.Key, staleUser))
                 {
                     StoreSawmill.Warning($"Stale sweep: clearing orphaned CurrentUser {ToPrettyString(staleUser)} on {ToPrettyString(storeUid)}");
@@ -300,6 +301,11 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 store.CurrentUser = null;
                 _popups.PopupEntity(Loc.GetString("nc-store-no-access"), uid, userUid);
             }
+            else if (HasComp<FactionSupplyVendorComponent>(uid))
+            {
+                // Shared budgets can change through time or another terminal.
+                UpdateDynamicState(uid, store, userUid);
+            }
         }
     }
 
@@ -328,7 +334,9 @@ public sealed partial class StoreStructuredSystem : EntitySystem
     private bool EnsureCrateWatchUpToDate(EntityUid storeUid, EntityUid user)
     {
         EntityUid? crateUid = null;
-        if (_logic.TryGetPulledClosedCrate(user, out var pulledCrate))
+        if (HasComp<FactionSupplyVendorComponent>(storeUid)
+                ? EntityManager.System<FactionSupplySystem>().TryGetPulledCrate(user, out var pulledCrate)
+                : _logic.TryGetPulledClosedCrate(user, out pulledCrate))
             crateUid = pulledCrate;
         if (_watchByStore.TryGetValue(storeUid, out var prev))
         {
@@ -479,7 +487,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
 
         SendCatalog(uid, comp, user);
 
-        // #Misfits Add — notify tier system on vendor open (awards Road Kill badge on first visit)
+        // #Misfits Add â€” notify tier system on vendor open (awards Road Kill badge on first visit)
         // broadcast: true is required so the broadcast-subscribed ContractTierSystem handler fires
         if (comp.ContractPresets.Count > 0)
             RaiseLocalEvent(user, new MisfitsContractFirstAccessEvent(uid, user, comp.ContractTierProfile), broadcast: true);
@@ -500,6 +508,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             if (string.IsNullOrWhiteSpace(l.Id) || string.IsNullOrWhiteSpace(l.ProductEntity))
                 continue;
 
+            if (l.Mode == StoreMode.Buy && !EntityManager.System<FactionSupplySystem>().CanPurchase(store, user, l.ProductEntity)) continue;
             var cat = l.Categories.Count > 0 ? l.Categories[0] : Loc.GetString("nc-store-category-fallback");
 
             if (!TryPickUiCurrencyAndPrice(comp, l, user, out var cur, out var price))
@@ -610,7 +619,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             !_xform.InRange(sX.Coordinates, uX.Coordinates, AutoCloseDistance))
             return;
 
-        // #Misfits Add — capture difficulty before the contract is consumed on claim
+        // #Misfits Add â€” capture difficulty before the contract is consumed on claim
         string? contractDifficulty = null;
         if (comp.Contracts.TryGetValue(msg.ContractId, out var contractBeforeClaim))
             contractDifficulty = contractBeforeClaim.Difficulty;
@@ -620,7 +629,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg"), user);
             _popups.PopupEntity(Loc.GetString("nc-store-contract-completed"), uid, user);
 
-            // #Misfits Add — notify tier system of completed contract
+            // #Misfits Add â€” notify tier system of completed contract
             // broadcast: true is required so the broadcast-subscribed ContractTierSystem handler fires
             if (contractDifficulty != null)
                 RaiseLocalEvent(user, new MisfitsContractClaimedEvent(uid, user, msg.ContractId, contractDifficulty, comp.ContractTierProfile), broadcast: true);
@@ -629,7 +638,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             return;
         }
 
-        // #Misfits Fix — claim failed: still send the full dynamic state so the
+        // #Misfits Fix â€” claim failed: still send the full dynamic state so the
         // client sees up-to-date progress (previously only server data was refreshed)
         UpdateDynamicState(uid, comp, user);
     }
@@ -684,6 +693,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
 
     private int ApplyUiCharismaPrice(NcStoreListingDef listing, EntityUid user, int price)
     {
+        if (listing.Cost.Keys.Any(FactionSupplySystem.IsCurrency)) return price;
         return listing.Mode switch
         {
             StoreMode.Buy => _logic.ApplyCharismaBuyPrice(user, price),
@@ -894,7 +904,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             return true;
         }
 
-        // #Misfits Fix — ContractClientData is a class without Equals override, so
+        // #Misfits Fix â€” ContractClientData is a class without Equals override, so
         // EqualityComparer<T>.Default used reference equality which ALWAYS failed for
         // newly-created objects from MapContractToClient, making EqualsLast always return
         // false, flooding the client with redundant state updates and causing the UI to

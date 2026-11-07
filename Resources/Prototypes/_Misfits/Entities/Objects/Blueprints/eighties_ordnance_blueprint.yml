@@ -1,6 +1,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: MisfitsBlueprintEightiesOrdnance
+  categories: [HideSpawnMenu]
   name: Eighties ordnance schematic
   description: A stained collection of demolition sketches for improvised baseball and Nuka-Cola grenades.
   components:
@@ -13,6 +14,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesWeaponsT1
+  categories: [HideSpawnMenu]
   name: Eighties Scrap Arsenal
   description: Schematics for crude raider firearms and pipe weapons. Tier 1 weapons.
   components:
@@ -29,6 +31,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesWeaponsT2
+  categories: [HideSpawnMenu]
   name: Eighties Sidearm Schematics
   description: Schematics for the Eighties's common pistols. Tier 2 weapons.
   components:
@@ -41,6 +44,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesWeaponsT3
+  categories: [HideSpawnMenu]
   name: Eighties SMG Schematics
   description: Schematics for reliable Eighties submachine guns. Tier 3 weapons.
   components:
@@ -52,6 +56,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesWeaponsT4
+  categories: [HideSpawnMenu]
   name: Eighties Veteran Arsenal
   description: Advanced schematics for the Eighties' veteran firearms. Tier 4 weapons.
   components:
@@ -67,6 +72,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesWeaponsT5
+  categories: [HideSpawnMenu]
   name: Eighties Heavy Arsenal
   description: Schematics for the Eighties' most expensive and destructive weapons. Tier 5 weapons.
   components:
@@ -82,6 +88,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesArmorT1
+  categories: [HideSpawnMenu]
   name: Eighties Roadsign Armor Guide
   description: Instructions for assembling the Eighties' basic roadsign armor and helmets. Tier 1 armor.
   components:
@@ -99,6 +106,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesArmorT2
+  categories: [HideSpawnMenu]
   name: Eighties Scavenged Armor Guide
   description: Instructions for reinforcing roadsign armor with scavenged materials. Tier 2 armor.
   components:
@@ -110,6 +118,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesArmorT3
+  categories: [HideSpawnMenu]
   name: Eighties Elite Armor Guide
   description: Advanced instructions for assembling elite Eighties armor. Tier 3 armor.
   components:
@@ -121,6 +130,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesArmorT4
+  categories: [HideSpawnMenu]
   name: Eighties Boss Armor Guide
   description: The most advanced armor construction known to the Eighties. Tier 4 armor.
   components:
@@ -132,6 +142,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesAmmoT1
+  categories: [HideSpawnMenu]
   name: Eighties Small-Caliber Ammunition
   description: Instructions for producing the common ammunition used by Eighties sidearms. Tier 1 ammo.
   components:
@@ -148,6 +159,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesAmmoT2
+  categories: [HideSpawnMenu]
   name: Eighties Military Ammunition
   description: Instructions for producing shotgun shells, rifle rounds, and SMG magazines. Tier 2 ammo.
   components:
@@ -163,6 +175,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesAmmoT3
+  categories: [HideSpawnMenu]
   name: Eighties Heavy Ammunition
   description: Instructions for producing heavy rifle and magnum ammunition. Tier 3 ammo.
   components:
@@ -175,6 +188,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEightiesAmmoT4
+  categories: [HideSpawnMenu]
   name: Eighties Master Munitions
   description: Instructions for producing anti-materiel, drum-fed, and explosive ammunition. Tier 4 ammo.
   components:

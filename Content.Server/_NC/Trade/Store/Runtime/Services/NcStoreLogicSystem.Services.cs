@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Supplies;
 using Content.Shared._NC.Trade;
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Special.Components;
@@ -90,6 +91,34 @@ public sealed partial class NcStoreLogicSystem
             if (amount <= 0)
                 return 0;
             var spawnedTotal = 0;
+            if (FactionSupplySystem.IsCurrency(currency))
+            {
+                var supplies = _sys._ents.System<FactionSupplySystem>();
+                var remaining = amount;
+                while (remaining > 0)
+                {
+                    try
+                    {
+                        var uid = _sys._ents.SpawnEntity(productEntity, _sys._ents.GetComponent<TransformComponent>(user).Coordinates);
+                        var units = 1;
+                        if (_sys._ents.TryGetComponent(uid, out StackComponent? stack))
+                        {
+                            units = Math.Min(remaining, _sys._stacks.GetMaxCount(stack));
+                            _sys._stacks.SetCount(uid, units, stack);
+                        }
+                        supplies.MarkPurchase(uid);
+                        _sys.QueuePickupToHandsOrCrateNextTick(user, uid);
+                        spawnedTotal += units;
+                        remaining -= units;
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.GetSawmill("ncstore-logic").Error($"Faction supply delivery failed: {e}");
+                        break;
+                    }
+                }
+                return spawnedTotal;
+            }
             if (productProto.TryGetComponent(_stackComponentName, out StackComponent? stackComp))
             {
                 var remainingToSpawn = amount;

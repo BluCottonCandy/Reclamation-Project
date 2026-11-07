@@ -11,6 +11,24 @@ Lower-rank alternatives preserve the cumulative time needed to reach that rank: 
 
 Brotherhood chapter and Lancer service count together. Railroad service counts across both safehouses and its central roles. Existing faction-total requirements for other roles are unchanged.
 
+## Faction supply vendors
+
+Supply vendors are placed in the faction bases on Wendover and its interiors. Click a supply vendor to open its shop, even while holding an ordinary item. Supply vendors use a shared balance for their faction. Each faction starts with 50 points and gains 3 supply points per minute during the round, up to 200 stored points. Adding more vendors does not increase income. Balances reset each round.
+
+Ammunition boxes cost 10 points and standard magazines cost 2. Magazines or belts larger than a matching ammunition box cost proportionally more. Empty belts and webbing cost 10 points; filled belts cost 50. Ordinary armor below combat grade costs 10 points, combat-grade armor 25, stronger armor 50, and power armor 100. Combat grade is measured against standard combat armor using average blunt, slash, piercing, and heat protection. Exclusive combat and vision equipment issued to one job normally costs at least 100 points, with explicitly priced exceptions. Town remains capped at 50. Institute laser pistols cost 25 points, automatic laser rifles 75, and AER9 laser rifles 50. Combat knives and standard laser pistols cost 10 points. Super stimpaks, combat medical kits, Heavy Trooper gauntlets and assault carbines cost 50 points in every shop that offers them, including Railroad. Makeshift weapons are not sold. Equipment prices depend on its type and strength, up to 200 points for the strongest gear. Town vendors are restricted to Town roles and charge no more than 50 points per item. Factions without a separate equipment catalog offer the shared Town equipment alongside their starting gear and kit supplies. Rank equipment is available only to its rank and higher ranks; ordinary supplies remain available to everyone with vendor access. Issued equipment cannot be sold, including items inside issued containers and stacks split from issued supplies.
+
+Body bags, CPR manuals, handcuffs, crowbars and tools cost 10 points in ordinary faction catalogs. Minutemen vendors carry the current Heavy Trooper equipment with its usual rank restrictions.
+
+Railroad imports non-Institute equipment from the other factions, excluding equipment exclusive to their leaders and other factions' headsets and encryption keys. Its own headset and encryption key remain available. Imports cost twice the cheapest source price, up to 200 points; this also applies to common supplies. Repeated listings are combined at the cheaper price, while different functional variants remain separate. Railroad's own rank-restricted equipment keeps its rank restrictions; imported equipment does not require holding a rank in another faction.
+
+All faction medical catalogs sell healing powder, filled Rad-X canisters and Bitterdrink for 10 points, and RadAway for 20. These fixed medicine prices also apply to Railroad. Forged branding irons are restricted to Forge Keeper and higher Forged ranks.
+
+Physical blueprints are no longer available. Existing items are removed when loaded, including saved inventories, and bunker save/load cleanup reaches nested bags, furniture and carried belongings.
+
+Expedition vault rooms can contain a sealed supply crate. Each authored factory or cave vault spawns exactly one crate: a rare red crate worth 100 points, a blue crate worth 50, or an ordinary crate worth 20. It requires both hands to carry. Carrying or dragging it slows movement by 30%. It cannot be opened or stored in a backpack or another crate.
+
+Equip your ID rather than holding it, then hold a supply crate in both hands or drag it beside the vendor and use Sell at any faction supply vendor to contribute the crate's 20, 50, or 100 points to that vendor's faction, up to the 200-point cap. At a full balance, the vendor keeps the crate in your hands. A crate left inside a bunker is deleted when the room saves, so take it to a supply vendor instead. Any normal vendor access restrictions still apply.
+
 ## Brotherhood of Steel
 See this chapter for current faction alignments.
 

@@ -1,0 +1,3422 @@
+# Shared faction budgets. Rank equipment requires the corresponding job rank or higher.
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyBrotherhoodVendor
+  name: brotherhood supply vendor
+  description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
+    or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
+    equipment cannot be sold. Rank equipment is restricted to your rank and below.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#8490a0'
+    - sprite: Corvax/Interface/Misc/job_icons.rsi
+      state: bosMPaladin
+      scale: 1.5,1.5
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      BoSWestElderCommander: 120
+      BoSHeadKnight: 100
+      BoSMidPaladinCommander: 110
+      BoSWestScribe: 90
+      BoSHonorGuard: 112
+      BoSInitiate: 10
+      BoSKnight: 40
+      BoSLancerKnight: 45
+      BoSOffDuty: 10
+      BoSPaladin: 50
+      BoSScribe: 30
+      BoSMidKnight: 70
+      BoSMidPaladin: 80
+      BoSMidScribe: 60
+      BoSMidSerf: 0
+      BoSMidSquire: 20
+    equipmentRanks:
+      N14ClothingUniformJumpskirtBOSBlack: 10
+      N14ClothingBackpackMilitary: 10
+      N14ClothingBootsLeatherFilled: 10
+      N14ClothingOuterBrotherhoodElderCoat: 120
+      N14ClothingHandsGlovesCombat: 30
+      N14MicrofusionCell: 50
+      N14WeaponLaserRifleAuto: 120
+      N14WeaponRifleBozarGRA: 120
+      N14WeaponLaserPistol: 10
+      N14WeaponPistol12mm: 40
+      N14WeaponLaserRifle: 50
+      N14WeaponPistolT60: 50
+      N14WeaponRifle556HeavyAssault: 50
+      N14WeaponShotgunAuto: 50
+      N14PowerCellSmall: 10
+      N14ClothingBeltBoSWebbing: 30
+      N14ClothingHeadKnightBeret: 100
+      MisfitsBoSHeadKnightArmor: 100
+      N14WeaponRifle556Carbine: 70
+      N14WeaponShotgunNeosteadBoS: 100
+      ClothingBeltBoSWebbing: 40
+      N14ClothingHeadHatBrotherhoodHelmetPaladin: 100
+      N14ClothingUniformBosRecon: 50
+      N14ClothingPaladinBeret: 110
+      N14ClothingOuterCombatArmorBOS: 50
+      MisfitsClothingBeltPaladinWebbing: 50
+      N14ClothingBackpackSatchelMilitary: 30
+      N14ClothingScribeBeret: 90
+      N14ClothingOuterMidwestBoSCoat: 30
+      ClothingHandsGlovesColorYellow: 30
+      N14ClothingBeltUtilityFilled: 30
+      N14ClothingBeltMedicalFilled: 30
+      N14HandheldHealthAnalyzer: 30
+      N14WeaponLaserPistolRecharger: 90
+      N14ClothingOuterBrotherhoodMidwestMedicalScribeRobes: 30
+      MisfitsMilitaryDetonator: 30
+      ClothingHandsGlovesChemist: 30
+      ClothingMaskSterile: 30
+      N14ClothingOuterBrotherhoodMidwestFieldScribeCoat: 30
+      N14ClothingEyesGlassesWelding: 20
+      ClothingBeltMilitary: 10
+      N14ClothingOuterMBoSInitiateArmor: 10
+      N14ClothingHeadHatCapkhighBoS: 40
+      MisfitsBoSKnightArmor: 40
+      N14WeaponRifle556CarbineOld: 40
+      N14WeaponLaserRifleCrude: 40
+      N14MicrofusionCellRed: 40
+      N14ClothingHeadHatBrotherhoodHelmetMK2: 40
+      N14Binoculars: 40
+      N14ClothingHeadHatBrotherhoodBeret: 45
+      N14ClothingOuterJacketBomber: 45
+      N14ClothingEyesGlassesPilot: 45
+      Welder: 45
+      N14ClothingUniformJumpsuitBOSBlack: 10
+      N14ClothingHeadHatBrotherhoodFieldCap: 10
+      N14WeaponLaserRifleRecharger: 30
+      N14ClothingOuterCombatArmorSeniorBOS: 70
+      N14ClothingOuterMidwestReconArmor: 70
+      N14ClothingHeadHatBrotherhoodMidwestHelmetRecon: 70
+      N14WeaponRevolver44Magnum: 70
+      N14ClothingHeadHatBrotherhoodHelmetKnight: 70
+      N14ClothingUniformJumpsuitSettlerRags: 0
+      N14ClothingShoesRaider: 0
+      N14ClothingHandsGlovesCloth: 0
+      NCClothingCollarBoSSerf: 0
+      MisfitsClothingBackpackSquire: 20
+      N14ClothingHeadHatBanganeBoS: 20
+      MisfitsBoSSquireArmor: 20
+      N14CombatKnife: 20
+      N14WeaponSMG10mm: 20
+      MisfitsClothingBeltSquireWebbingBlack: 20
+    requireFactionJob: false
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Brotherhood'
+    buyPresets:
+    - ReclamationSupplyBrotherhoodBuy
+    sellPresets:
+    - ReclamationSupplyBrotherhoodSell
+  - type: AccessReader
+    access:
+    - - BOS
+- type: storeCategoryStructured
+  id: ReclamationSupplyBrotherhoodWeapons
+  name: Weapons
+  entries:
+  - proto: N14CombatKnife
+    price: 10
+  - proto: N14WeaponLaserGatling
+    price: 200
+  - proto: N14WeaponLaserPistol
+    price: 10
+  - proto: N14WeaponLaserPistolRecharger
+    price: 100
+  - proto: N14WeaponLaserRCW
+    price: 75
+  - proto: N14WeaponLaserRifle
+    price: 25
+  - proto: N14WeaponLaserRifleAER12
+    price: 25
+  - proto: N14WeaponLaserRifleAER15
+    price: 100
+  - proto: N14WeaponLaserRifleAuto
+    price: 100
+  - proto: N14WeaponLaserRifleCrude
+    price: 25
+  - proto: N14WeaponLaserRiflePrototypeAER14
+    price: 100
+  - proto: N14WeaponLaserRifleRecharger
+    price: 25
+  - proto: N14WeaponLaserRifleWattz2000
+    price: 100
+  - proto: N14WeaponLaserRifleWattz3000
+    price: 100
+  - proto: N14WeaponPistol10mm
+    price: 10
+  - proto: N14WeaponPistol12mm
+    price: 50
+  - proto: N14WeaponPistol9mmChinese
+    price: 10
+  - proto: N14WeaponPistolM1911
+    price: 10
+  - proto: N14WeaponPistolT60
+    price: 50
+  - proto: N14WeaponPlasmaCaster
+    price: 100
+  - proto: N14WeaponPlasmaMultiplas
+    price: 100
+  - proto: N14WeaponPlasmaPistol
+    price: 100
+  - proto: N14WeaponPlasmaRifle
+    price: 100
+  - proto: N14WeaponPlasmaRifleAuto
+    price: 100
+  - proto: N14WeaponPlasmaRifleUrban
+    price: 100
+  - proto: N14WeaponRevolver44Magnum
+    price: 50
+  - proto: N14WeaponRifle10mmM1Carbine
+    price: 25
+  - proto: N14WeaponRifle556Carbine
+    price: 50
+  - proto: N14WeaponRifle556CarbineOld
+    price: 25
+  - proto: N14WeaponRifle556HeavyAssault
+    price: 100
+  - proto: N14WeaponRifle762M14
+    price: 50
+  - proto: N14WeaponRifleAk112
+    price: 100
+  - proto: N14WeaponRifleBozarGRA
+    price: 100
+  - proto: N14WeaponSMG10mm
+    price: 50
+  - proto: N14WeaponShotgunAuto
+    price: 50
+  - proto: N14WeaponShotgunNeosteadBoS
+    price: 100
+  - proto: N14WeaponShotgunSawedOff
+    price: 10
+  - proto: N14WeaponShotgunTrench
+    price: 25
+  - proto: Welder
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyBrotherhoodArmor
+  name: Armor
+  entries:
+  - proto: ClothingBeltBoSWebbing
+    price: 10
+  - proto: ClothingBeltMilitary
+    price: 10
+  - proto: ClothingHandsGlovesChemist
+    price: 10
+  - proto: ClothingHandsGlovesColorYellow
+    price: 10
+  - proto: ClothingMaskSterile
+    price: 10
+  - proto: MisfitsBoSHeadKnightArmor
+    price: 100
+  - proto: MisfitsBoSKnightArmor
+    price: 100
+  - proto: MisfitsBoSSquireArmor
+    price: 100
+  - proto: MisfitsClothingBackpackSquire
+    price: 100
+  - proto: MisfitsClothingBeltPaladinWebbing
+    price: 10
+  - proto: MisfitsClothingBeltSquireWebbingBlack
+    price: 10
+  - proto: MisfitsClothingHeadsetWastelandScrap
+    price: 10
+  - proto: N14Binoculars
+    price: 10
+  - proto: N14ClothingBackpackMilitary
+    price: 10
+  - proto: N14ClothingBackpackSatchelMilitary
+    price: 10
+  - proto: N14ClothingBeltBoSWebbing
+    price: 10
+  - proto: N14ClothingBeltMedicalFilled
+    price: 50
+  - proto: N14ClothingBeltUtilityFilled
+    price: 50
+  - proto: N14ClothingBootsLeatherFilled
+    price: 10
+  - proto: N14ClothingEyesGlassesPilot
+    price: 10
+  - proto: N14ClothingEyesGlassesWelding
+    price: 10
+  - proto: N14ClothingHandsGlovesCloth
+    price: 10
+  - proto: N14ClothingHandsGlovesCombat
+    price: 10
+  - proto: N14ClothingHeadHatBanganeBoS
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodBeret
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodFieldCap
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodHelmet
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodHelmetCaptain
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodHelmetKnight
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodHelmetMK2
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodHelmetPaladin
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodMidwestHelmet
+    price: 10
+  - proto: N14ClothingHeadHatBrotherhoodMidwestHelmetRecon
+    price: 100
+  - proto: N14ClothingHeadHatBrotherhoodMidwestHelmetVeteran
+    price: 10
+  - proto: N14ClothingHeadHatCapkhighBoS
+    price: 10
+  - proto: N14ClothingHeadKnightBeret
+    price: 10
+  - proto: N14ClothingHeadsetBrotherhoodOfSteel
+    price: 10
+  - proto: N14ClothingHeadsetBrotherhoodOfSteelScribe
+    price: 10
+  - proto: N14ClothingOuterBosScribe
+    price: 10
+  - proto: N14ClothingOuterBrotherhoodElderCoat
+    price: 100
+  - proto: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat
+    price: 10
+  - proto: N14ClothingOuterBrotherhoodMidwestMedicalScribeRobes
+    price: 10
+  - proto: N14ClothingOuterCombatArmorBOS
+    price: 25
+  - proto: N14ClothingOuterCombatArmorSeniorBOS
+    price: 100
+  - proto: N14ClothingOuterJacketBomber
+    price: 100
+  - proto: N14ClothingOuterMBoSInitiateArmor
+    price: 10
+  - proto: N14ClothingOuterMBoSKnightArmor
+    price: 25
+  - proto: N14ClothingOuterMBoSSeniorKArmor
+    price: 50
+  - proto: N14ClothingOuterMBoSSquireArmor
+    price: 10
+  - proto: N14ClothingOuterMidwestArmor
+    price: 25
+  - proto: N14ClothingOuterMidwestArmorMK2
+    price: 50
+  - proto: N14ClothingOuterMidwestBoSCoat
+    price: 10
+  - proto: N14ClothingOuterMidwestReconArmor
+    price: 100
+  - proto: N14ClothingOuterPowerArmorT45
+    price: 100
+  - proto: N14ClothingOuterWBoSInitiateArmor
+    price: 10
+  - proto: N14ClothingOuterWBoSKnightArmor
+    price: 25
+  - proto: N14ClothingOuterWBoSSeniorKArmor
+    price: 50
+  - proto: N14ClothingOuterWBoSSquireArmor
+    price: 10
+  - proto: N14ClothingPaladinBeret
+    price: 10
+  - proto: N14ClothingScribeBeret
+    price: 10
+  - proto: N14ClothingShoesRaider
+    price: 10
+  - proto: N14ClothingUniformBosRecon
+    price: 10
+  - proto: N14ClothingUniformJumpskirtBOSBlack
+    price: 10
+  - proto: N14ClothingUniformJumpsuitBOSBlack
+    price: 10
+  - proto: N14ClothingUniformJumpsuitSettlerRags
+    price: 10
+  - proto: NCClothingCollarBoSSerf
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyBrotherhoodAmmunition
+  name: Ammunition
+  entries:
+  - proto: LMGMagazine556Rifle
+    price: 2
+  - proto: LongMagazine556Rifle
+    price: 2
+  - proto: Magazine545Rifle
+    price: 2
+  - proto: Magazine556Rifle
+    price: 2
+  - proto: Magazine556Rifle30
+    price: 2
+  - proto: Magazine762AmmoShort
+    price: 2
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox545
+    price: 10
+  - proto: N14AmmoBox10mm
+    price: 10
+  - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox44Magnum
+    price: 10
+  - proto: N14AmmoBox45
+    price: 10
+  - proto: N14AmmoBox762
+    price: 10
+  - proto: N14AmmoBox9mm
+    price: 10
+  - proto: N14MagazineHeavy556Rifle
+    price: 11
+  - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol44
+    price: 2
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 2
+  - proto: N14MagazineSMG10mm
+    price: 2
+  - proto: N14MagazineShotgun12
+    price: 2
+  - proto: N14SpeedLoader44Magnum
+    price: 2
+- type: storeCategoryStructured
+  id: ReclamationSupplyBrotherhoodMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14BoxCardboardMREBoxKFilled
+    price: 10
+  - proto: N14CleanGauze10
+    price: 10
+    amount: 10
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14MedkitCombatFilled
+    price: 50
+  - proto: N14Ointment10
+    price: 10
+    amount: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+  - proto: N14Stimpak
+    price: 10
+  - proto: N14SuperStimpak
+    price: 50
+- type: storeCategoryStructured
+  id: ReclamationSupplyBrotherhoodOthergear
+  name: Other gear
+  entries:
+  - proto: EmpGrenade
+    price: 50
+  - proto: EncryptionKeyBrotherhoodOfSteelUR
+    price: 10
+  - proto: ForgedKitMolotov
+    price: 50
+  - proto: GrenadeIncendiary
+    price: 50
+  - proto: GrenadeShrapnel
+    price: 50
+  - proto: MisfitsGrenadeFragDefensive
+    price: 50
+  - proto: MisfitsGrenadeImpact
+    price: 50
+  - proto: MisfitsGrenadePlasma
+    price: 50
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 50
+  - proto: MisfitsMilitaryDetonator
+    price: 50
+  - proto: N14ElectronChargePack
+    price: 10
+  - proto: N14FusionCore
+    price: 100
+  - proto: N14HandheldHealthAnalyzer
+    price: 50
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PlasmaShell
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
+  - proto: N14VertibirdGunBelt
+    price: 100
+  - proto: SmokeGrenade
+    price: 20
+  - proto: TearGasGrenade
+    price: 50
+- type: storePresetStructured
+  id: ReclamationSupplyBrotherhoodBuy
+  currency: 'Supply points: Brotherhood'
+  categories:
+  - ReclamationSupplyBrotherhoodWeapons
+  - ReclamationSupplyBrotherhoodArmor
+  - ReclamationSupplyBrotherhoodAmmunition
+  - ReclamationSupplyBrotherhoodMedicalandfood
+  - ReclamationSupplyBrotherhoodOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyBrotherhoodCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyBrotherhoodSell
+  currency: 'Supply points: Brotherhood'
+  categories:
+  - ReclamationSupplyBrotherhoodCrates
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyTownVendor
+  name: town supply vendor
+  description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
+    or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
+    equipment cannot be sold. Rank equipment is restricted to your rank and below.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#b28b5c'
+    - sprite: Corvax/Interface/Misc/job_icons.rsi
+      state: townMayor
+      scale: 1.5,1.5
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      TownShopkeeperHelper: 45
+      TownDeputy: 70
+      TownDoctor: 60
+      TownMayor: 100
+      TownMechanic: 40
+      TownSheriff: 80
+      TownShopkeeper: 50
+      Townsperson: 0
+    equipmentRanks:
+      N14ClothingUniformJumpsuitMerchant: 45
+      N14ClothingBackpackHiking: 45
+      N14ClothingShoesBlack: 0
+      N14ClothingUniformJumpsuitTownGuard: 70
+      N14ClothingBackpackSatchelMilitary: 70
+      N14ClothingBootsLeatherFilled: 70
+      ClothingBeltRevolverfilled: 70
+      N14ClothingHeadHatTownGuard: 70
+      N14WeaponShotgunBlowback: 70
+      N14WeaponSMG9mmCanadian: 70
+      N14ClothingOuterTownGuardRiot: 70
+      N14ClothingHeadTownGuardBrodieVisor: 70
+      N14ClothingOuterTownGuardCoat: 70
+      N14ClothingHeadTownGuardBrodieCover: 70
+      N14ClothingHeadTownGuardBrodie: 70
+      N14WeaponSniper45-70BrushGun: 70
+      N14WeaponRevolver45-70Hunter: 70
+      N14WeaponRifle762Fal: 70
+      N14WeaponPistolWebley: 70
+      N14ClothingNeckTownGuardCloak: 70
+      N14ClothingOuterTownGuardLight: 70
+      N14ClothingNeckTownGuardMantle: 70
+      N14WeaponRevolver44Magnum: 70
+      Handcuffs: 70
+      N14CombatKnife: 70
+      N14Binoculars: 70
+      N14ClothingUniformJumpsuitWastelandDoc: 60
+      N14ClothingBackpackExplorer: 0
+      N14ClothingHandsGlovesNitrile: 60
+      N14ClothingOuterCoatLab: 60
+      N14HandheldHealthAnalyzer: 60
+      N14ClothingUniformJumpsuitCheckered: 100
+      N14ClothingShoesBrown: 100
+      RadioHandheld: 100
+      N14ClothingUniformJumpsuitMechanic: 40
+      N14ClothingBeltUtilityFilled: 40
+      ClothingHandsGlovesColorYellow: 40
+      N14ClothingEyesGlassesWelding: 40
+      N14ClothingUniformJumpsuitTownGuardLight: 80
+      ClothingBeltRevolverWildWhisper: 80
+      N14ClothingUniformJumpsuitSettlerRags: 0
+    requireFactionJob: true
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Town'
+    buyPresets:
+    - ReclamationSupplyTownBuy
+    sellPresets:
+    - ReclamationSupplyTownSell
+- type: storeCategoryStructured
+  id: ReclamationSupplyTownWeapons
+  name: Weapons
+  entries:
+  - proto: Handcuffs
+    price: 10
+  - proto: N14CombatKnife
+    price: 10
+  - proto: N14Hatchet
+    price: 25
+  - proto: N14Machete
+    price: 25
+  - proto: N14SledgeHammer
+    price: 50
+  - proto: N14WeaponDesertEagle44
+    price: 50
+  - proto: N14WeaponPistol10mm
+    price: 10
+  - proto: N14WeaponPistol12mm
+    price: 10
+  - proto: N14WeaponPistol22lr
+    price: 10
+  - proto: N14WeaponPistol45Colt
+    price: 25
+  - proto: N14WeaponPistol9mm
+    price: 10
+  - proto: N14WeaponPistol9mmChinese
+    price: 10
+  - proto: N14WeaponPistolM1911
+    price: 10
+  - proto: N14WeaponPistolWebley
+    price: 50
+  - proto: N14WeaponRevolver357Detective
+    price: 10
+  - proto: N14WeaponRevolver44Magnum
+    price: 50
+  - proto: N14WeaponRevolver45-70Hunter
+    price: 50
+  - proto: N14WeaponRevolver9mm
+    price: 10
+  - proto: N14WeaponRifle10mmM1Carbine
+    price: 25
+  - proto: N14WeaponRifle308Battle
+    price: 25
+  - proto: N14WeaponRifle556Carbine
+    price: 50
+  - proto: N14WeaponRifle556R91
+    price: 50
+  - proto: N14WeaponRifle556Service
+    price: 25
+  - proto: N14WeaponRifle762Canadian
+    price: 50
+  - proto: N14WeaponRifle762Fal
+    price: 50
+  - proto: N14WeaponRifle762M14
+    price: 50
+  - proto: N14WeaponRifle762Rangemaster
+    price: 50
+  - proto: N14WeaponRifleAk112
+    price: 50
+  - proto: N14WeaponRifleM1Garand
+    price: 25
+  - proto: N14WeaponSMG10mm
+    price: 50
+  - proto: N14WeaponSMG10mmChinese
+    price: 25
+  - proto: N14WeaponSMG12mm
+    price: 50
+  - proto: N14WeaponSMG12mmAdvancedCanadian
+    price: 50
+  - proto: N14WeaponSMG45
+    price: 50
+  - proto: N14WeaponSMG9mm
+    price: 25
+  - proto: N14WeaponSMG9mmCanadian
+    price: 50
+  - proto: N14WeaponSMGPPSh41
+    price: 50
+  - proto: N14WeaponShotgun
+    price: 10
+  - proto: N14WeaponShotgunAuto
+    price: 50
+  - proto: N14WeaponShotgunBlowback
+    price: 50
+  - proto: N14WeaponShotgunCanadian
+    price: 50
+  - proto: N14WeaponShotgunCaravan
+    price: 25
+  - proto: N14WeaponShotgunDoubleBarrel
+    price: 10
+  - proto: N14WeaponShotgunSawedOff
+    price: 10
+  - proto: N14WeaponShotgunTrench
+    price: 25
+  - proto: N14WeaponSniper308LeverRifle
+    price: 25
+  - proto: N14WeaponSniper308Ross
+    price: 25
+  - proto: N14WeaponSniper44LeverCarbine
+    price: 25
+  - proto: N14WeaponSniper44LeverShortCarbine
+    price: 25
+  - proto: N14WeaponSniper45-70BrushGun
+    price: 50
+  - proto: N14WeaponSniperCowboyRepeater
+    price: 10
+  - proto: N14WeaponSniperHunting
+    price: 10
+  - proto: N14WeaponSniperPaciencia
+    price: 25
+- type: storeCategoryStructured
+  id: ReclamationSupplyTownArmor
+  name: Armor
+  entries:
+  - proto: ClothingBeltRevolverWildWhisper
+    price: 50
+  - proto: ClothingBeltRevolverfilled
+    price: 50
+  - proto: ClothingHandsGlovesColorYellow
+    price: 10
+  - proto: MisfitsClothingHeadsetTown
+    price: 10
+  - proto: N14Binoculars
+    price: 10
+  - proto: N14ClothingBackpackExplorer
+    price: 10
+  - proto: N14ClothingBackpackHiking
+    price: 10
+  - proto: N14ClothingBackpackSatchelMilitary
+    price: 10
+  - proto: N14ClothingBeltUtilityFilled
+    price: 50
+  - proto: N14ClothingBootsLeatherFilled
+    price: 10
+  - proto: N14ClothingEyesGlassesWelding
+    price: 10
+  - proto: N14ClothingHandsGlovesNitrile
+    price: 10
+  - proto: N14ClothingHeadHatHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatSpecHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatTownGuard
+    price: 10
+  - proto: N14ClothingHeadHatVaultBlueprintHelmetMetal
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodie
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieCover
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieVisor
+    price: 10
+  - proto: N14ClothingNeckTownGuardCloak
+    price: 10
+  - proto: N14ClothingNeckTownGuardMantle
+    price: 10
+  - proto: N14ClothingOuterChitinArmor
+    price: 10
+  - proto: N14ClothingOuterCoatLab
+    price: 50
+  - proto: N14ClothingOuterCombatArmorRCMP
+    price: 50
+  - proto: N14ClothingOuterLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterLightLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterPoliceCombat
+    price: 10
+  - proto: N14ClothingOuterPoliceVest
+    price: 10
+  - proto: N14ClothingOuterReinforcedLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterSheriffVest
+    price: 10
+  - proto: N14ClothingOuterTownGuardCoat
+    price: 10
+  - proto: N14ClothingOuterTownGuardLight
+    price: 10
+  - proto: N14ClothingOuterTownGuardRiot
+    price: 10
+  - proto: N14ClothingOuterVestLeather
+    price: 10
+  - proto: N14ClothingOuterVestRCMP
+    price: 10
+  - proto: N14ClothingShoesBlack
+    price: 10
+  - proto: N14ClothingShoesBrown
+    price: 10
+  - proto: N14ClothingUniformJumpsuitCheckered
+    price: 10
+  - proto: N14ClothingUniformJumpsuitMechanic
+    price: 10
+  - proto: N14ClothingUniformJumpsuitMerchant
+    price: 10
+  - proto: N14ClothingUniformJumpsuitSettlerRags
+    price: 10
+  - proto: N14ClothingUniformJumpsuitTownGuard
+    price: 10
+  - proto: N14ClothingUniformJumpsuitTownGuardLight
+    price: 10
+  - proto: N14ClothingUniformJumpsuitWastelandDoc
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyTownAmmunition
+  name: Ammunition
+  entries:
+  - proto: ClipMagazine308Rifle
+    price: 2
+  - proto: LongMagazine556Rifle
+    price: 2
+  - proto: Magazine545Rifle
+    price: 2
+  - proto: Magazine556Rifle
+    price: 2
+  - proto: Magazine762AmmoShort
+    price: 2
+  - proto: Magazine762Rifle
+    price: 2
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45-70
+    price: 10
+  - proto: MagazineBox545
+    price: 10
+  - proto: N14AmmoBox10mm
+    price: 10
+  - proto: N14AmmoBox127
+    price: 10
+  - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox22lr
+    price: 10
+  - proto: N14AmmoBox308
+    price: 10
+  - proto: N14AmmoBox357
+    price: 10
+  - proto: N14AmmoBox44Magnum
+    price: 10
+  - proto: N14AmmoBox45
+    price: 10
+  - proto: N14AmmoBox45-70
+    price: 10
+  - proto: N14AmmoBox556
+    price: 10
+  - proto: N14AmmoBox762
+    price: 10
+  - proto: N14AmmoBox9mm
+    price: 10
+  - proto: N14MagazinePistol10mm
+    price: 2
+  - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 2
+  - proto: N14MagazineSMG10mm
+    price: 2
+  - proto: N14MagazineSMG12mm
+    price: 2
+  - proto: N14MagazineSMG9mm
+    price: 2
+  - proto: N14MagazineSMG9mmDrum
+    price: 2
+  - proto: N14SpeedLoader357
+    price: 2
+  - proto: SpeedLoader44
+    price: 2
+  - proto: SpeedLoader45-70
+    price: 2
+- type: storeCategoryStructured
+  id: ReclamationSupplyTownMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14CleanGauze10
+    price: 10
+    amount: 10
+  - proto: N14FoodTinC1
+    price: 10
+  - proto: N14FoodTinC2
+    price: 10
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14JunkCeramicFlask
+    price: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyTownOthergear
+  name: Other gear
+  entries:
+  - proto: EmpGrenade
+    price: 50
+  - proto: EncryptionKeyTownUR
+    price: 10
+  - proto: ForgedKitMolotov
+    price: 50
+  - proto: GrenadeIncendiary
+    price: 50
+  - proto: GrenadeShrapnel
+    price: 50
+  - proto: MisfitsGrenadeFragDefensive
+    price: 50
+  - proto: MisfitsGrenadeImpact
+    price: 50
+  - proto: MisfitsGrenadePlasma
+    price: 50
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 50
+  - proto: N14HandheldHealthAnalyzer
+    price: 50
+  - proto: RadioHandheld
+    price: 50
+  - proto: SmokeGrenade
+    price: 20
+  - proto: TearGasGrenade
+    price: 50
+- type: storePresetStructured
+  id: ReclamationSupplyTownBuy
+  currency: 'Supply points: Town'
+  categories:
+  - ReclamationSupplyTownWeapons
+  - ReclamationSupplyTownArmor
+  - ReclamationSupplyTownAmmunition
+  - ReclamationSupplyTownMedicalandfood
+  - ReclamationSupplyTownOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyTownCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyTownSell
+  currency: 'Supply points: Town'
+  categories:
+  - ReclamationSupplyTownCrates
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyMinutemenVendor
+  name: minutemen supply vendor
+  description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
+    or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
+    equipment cannot be sold. Rank equipment is restricted to your rank and below.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#6386af'
+    - sprite: Corvax/Interface/Misc/job_icons.rsi
+      state: ncrSoldier
+      scale: 1.5,1.5
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      MinutemenCaptain: 110
+      MinutemenColonel: 130
+      MinutemenCommander: 120
+      MinutemenCorporal: 80
+      MinutemenGeneral: 140
+      MinutemenLieutenant: 100
+      MinutemenPrivate: 70
+      MinutemenRecruit: 60
+      MinutemenSergeant: 90
+      MinutemenHeavyTrooper: 75
+    equipmentRanks:
+      MinutemenClothingHeadHatOfficer: 100
+      MinutemenClothingUniformOfficer: 100
+      MinutemenClothingOuterVestOfficer: 100
+      MinutemenClothingHandsGloves: 60
+      MinutemenClothingShoesBoots: 60
+      N14ClothingBackpackMilitary: 60
+      MinutemenWeaponLaserMusket: 60
+      BodyBagFolded: 80
+      MinutemenWeaponLaserShotgun: 110
+      ClothingBeltMilitary: 60
+      N14Binoculars: 60
+      N14MicrofusionCellRed: 60
+      MinutemenClothingHeadHatCowboy: 60
+      MinutemenClothingUniformEnlisted: 60
+      MinutemenClothingOuterVestEnlisted: 60
+      Handcuffs: 70
+      N14ClothingBeltMedicalFilled: 75
+      ClothingHandsGlovesLatex: 80
+      ClothingMaskSterile: 80
+      N14CombatKnife: 70
+      ReclamationTrainingManualCPR: 75
+      N14WeaponPistol12mm: 70
+      ReclamationClothingBeltSurgicalFilled: 80
+      DefibrillatorCompact: 80
+      N14PowerCellSmall: 60
+      N14Flashlight: 60
+      ReclamationMinutemenGeneralPowerArmor: 140
+      N14WeaponLaserGatling: 140
+      ReclamationMinutemenGeneralPistol: 140
+      MinutemenOfficerCutlass: 90
+      N14FusionCore: 140
+      N14WeaponShotgunTrench: 90
+      N14Wirecutter: 90
+      N14WeaponRevolver45-70Hunter: 90
+      N14Crowbar: 90
+      WeaponFlareGun: 90
+      MinutemenClothingHeadHatTricorn: 90
+      MinutemenClothingUniformNCO: 90
+      MinutemenClothingOuterVestNCO: 90
+      N14WeaponShotgunBlowback: 75
+      ReclamationPaladinGreatshield: 75
+      ReclamationPaladinShield: 75
+      MinutemenRotorBlade: 75
+      N14HandheldHealthAnalyzer: 75
+      N14WeaponSMG12mmAdvanced: 75
+      MinutemenHeavyTrooperArmor: 75
+      MinutemenTrooperCutlass: 75
+      MinutemenHeavyTrooperHelmet: 75
+      MinutemenMedicalTrooperHelmet: 75
+      MinutemenLightTrooperArmor: 75
+      N14WeaponRevolver44Magnum: 75
+      MinutemenMediumTrooperArmor: 75
+      N14Psycho: 75
+      MinutemenHeavyTrooperGauntlets: 75
+      MinutemenHeavyTrooperBoots: 75
+      MinutemenTrooperGasMask: 75
+      MinutemenWeaponHeavyLaserMusket: 75
+    requireFactionJob: false
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Minutemen'
+    buyPresets:
+    - ReclamationSupplyMinutemenBuy
+    sellPresets:
+    - ReclamationSupplyMinutemenSell
+  - type: AccessReader
+    access:
+    - - Minutemen
+- type: storeCategoryStructured
+  id: ReclamationSupplyMinutemenWeapons
+  name: Weapons
+  entries:
+  - proto: Handcuffs
+    price: 10
+  - proto: MinutemenOfficerCutlass
+    price: 100
+  - proto: MinutemenRotorBlade
+    price: 200
+  - proto: MinutemenTrooperCutlass
+    price: 100
+  - proto: MinutemenWeaponHeavyLaserMusket
+    price: 100
+  - proto: MinutemenWeaponLaserMusket
+    price: 50
+  - proto: MinutemenWeaponLaserShotgun
+    price: 100
+  - proto: N14CombatKnife
+    price: 10
+  - proto: N14Crowbar
+    price: 10
+  - proto: N14Flashlight
+    price: 50
+  - proto: N14Hatchet
+    price: 25
+  - proto: N14Machete
+    price: 25
+  - proto: N14SledgeHammer
+    price: 50
+  - proto: N14WeaponDesertEagle44
+    price: 50
+  - proto: N14WeaponLaserGatling
+    price: 200
+  - proto: N14WeaponPistol10mm
+    price: 10
+  - proto: N14WeaponPistol12mm
+    price: 50
+  - proto: N14WeaponPistol22lr
+    price: 10
+  - proto: N14WeaponPistol45Colt
+    price: 25
+  - proto: N14WeaponPistol9mm
+    price: 10
+  - proto: N14WeaponPistol9mmChinese
+    price: 10
+  - proto: N14WeaponPistolM1911
+    price: 10
+  - proto: N14WeaponPistolWebley
+    price: 25
+  - proto: N14WeaponRevolver357Detective
+    price: 10
+  - proto: N14WeaponRevolver44Magnum
+    price: 50
+  - proto: N14WeaponRevolver45-70Hunter
+    price: 50
+  - proto: N14WeaponRevolver9mm
+    price: 10
+  - proto: N14WeaponRifle10mmM1Carbine
+    price: 25
+  - proto: N14WeaponRifle308Battle
+    price: 25
+  - proto: N14WeaponRifle556Carbine
+    price: 50
+  - proto: N14WeaponRifle556R91
+    price: 50
+  - proto: N14WeaponRifle556Service
+    price: 25
+  - proto: N14WeaponRifle762Canadian
+    price: 50
+  - proto: N14WeaponRifle762M14
+    price: 50
+  - proto: N14WeaponRifle762Rangemaster
+    price: 50
+  - proto: N14WeaponRifleAk112
+    price: 100
+  - proto: N14WeaponRifleM1Garand
+    price: 25
+  - proto: N14WeaponSMG10mm
+    price: 50
+  - proto: N14WeaponSMG10mmChinese
+    price: 25
+  - proto: N14WeaponSMG12mm
+    price: 50
+  - proto: N14WeaponSMG12mmAdvanced
+    price: 100
+  - proto: N14WeaponSMG12mmAdvancedCanadian
+    price: 100
+  - proto: N14WeaponSMG45
+    price: 50
+  - proto: N14WeaponSMG9mm
+    price: 25
+  - proto: N14WeaponSMG9mmCanadian
+    price: 50
+  - proto: N14WeaponSMGPPSh41
+    price: 100
+  - proto: N14WeaponShotgun
+    price: 10
+  - proto: N14WeaponShotgunAuto
+    price: 50
+  - proto: N14WeaponShotgunBlowback
+    price: 50
+  - proto: N14WeaponShotgunCanadian
+    price: 100
+  - proto: N14WeaponShotgunCaravan
+    price: 25
+  - proto: N14WeaponShotgunDoubleBarrel
+    price: 10
+  - proto: N14WeaponShotgunSawedOff
+    price: 10
+  - proto: N14WeaponShotgunTrench
+    price: 50
+  - proto: N14WeaponSniper308LeverRifle
+    price: 25
+  - proto: N14WeaponSniper308Ross
+    price: 25
+  - proto: N14WeaponSniper44LeverCarbine
+    price: 25
+  - proto: N14WeaponSniper44LeverShortCarbine
+    price: 25
+  - proto: N14WeaponSniper45-70BrushGun
+    price: 50
+  - proto: N14WeaponSniperCowboyRepeater
+    price: 10
+  - proto: N14WeaponSniperHunting
+    price: 10
+  - proto: N14WeaponSniperPaciencia
+    price: 25
+  - proto: N14Wirecutter
+    price: 10
+  - proto: ReclamationMinutemenGeneralPistol
+    price: 100
+  - proto: ReclamationPaladinGreatshield
+    price: 100
+  - proto: ReclamationPaladinShield
+    price: 100
+  - proto: WeaponFlareGun
+    price: 50
+- type: storeCategoryStructured
+  id: ReclamationSupplyMinutemenArmor
+  name: Armor
+  entries:
+  - proto: ClothingBeltMilitary
+    price: 10
+  - proto: ClothingHandsGlovesLatex
+    price: 10
+  - proto: ClothingMaskSterile
+    price: 10
+  - proto: MinutemenClothingHandsGloves
+    price: 10
+  - proto: MinutemenClothingHeadHatCowboy
+    price: 10
+  - proto: MinutemenClothingHeadHatOfficer
+    price: 10
+  - proto: MinutemenClothingHeadHatTricorn
+    price: 10
+  - proto: MinutemenClothingHeadset
+    price: 10
+  - proto: MinutemenClothingNeckDuster
+    price: 10
+  - proto: MinutemenClothingOuterVestEnlisted
+    price: 25
+  - proto: MinutemenClothingOuterVestNCO
+    price: 100
+  - proto: MinutemenClothingOuterVestOfficer
+    price: 50
+  - proto: MinutemenClothingShoesBoots
+    price: 10
+  - proto: MinutemenClothingUniformEnlisted
+    price: 10
+  - proto: MinutemenClothingUniformNCO
+    price: 10
+  - proto: MinutemenClothingUniformOfficer
+    price: 10
+  - proto: MinutemenHeavyTrooperArmor
+    price: 100
+  - proto: MinutemenHeavyTrooperBoots
+    price: 10
+  - proto: MinutemenHeavyTrooperGauntlets
+    price: 50
+  - proto: MinutemenHeavyTrooperHelmet
+    price: 100
+  - proto: MinutemenLightTrooperArmor
+    price: 100
+  - proto: MinutemenMedicalTrooperHelmet
+    price: 100
+  - proto: MinutemenMediumTrooperArmor
+    price: 100
+  - proto: MinutemenTrooperGasMask
+    price: 100
+  - proto: N14Binoculars
+    price: 10
+  - proto: N14ClothingBackpackMilitary
+    price: 10
+  - proto: N14ClothingBeltMedicalFilled
+    price: 50
+  - proto: N14ClothingHeadHatHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatSpecHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatTownGuard
+    price: 10
+  - proto: N14ClothingHeadHatVaultBlueprintHelmetMetal
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodie
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieCover
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieVisor
+    price: 10
+  - proto: N14ClothingOuterChitinArmor
+    price: 10
+  - proto: N14ClothingOuterCombatArmorRCMP
+    price: 50
+  - proto: N14ClothingOuterLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterLightLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterPoliceCombat
+    price: 10
+  - proto: N14ClothingOuterPoliceVest
+    price: 10
+  - proto: N14ClothingOuterReinforcedLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterSheriffVest
+    price: 10
+  - proto: N14ClothingOuterTownGuardLight
+    price: 10
+  - proto: N14ClothingOuterTownGuardRiot
+    price: 10
+  - proto: N14ClothingOuterVestLeather
+    price: 10
+  - proto: N14ClothingOuterVestRCMP
+    price: 10
+  - proto: ReclamationClothingBeltSurgicalFilled
+    price: 50
+  - proto: ReclamationMinutemenGeneralPowerArmor
+    price: 100
+- type: storeCategoryStructured
+  id: ReclamationSupplyMinutemenAmmunition
+  name: Ammunition
+  entries:
+  - proto: ClipMagazine308Rifle
+    price: 2
+  - proto: LongMagazine556Rifle
+    price: 2
+  - proto: Magazine545Rifle
+    price: 2
+  - proto: Magazine556Rifle
+    price: 2
+  - proto: Magazine762AmmoShort
+    price: 2
+  - proto: Magazine762Rifle
+    price: 2
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12
+    price: 10
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45-70
+    price: 10
+  - proto: MagazineBox545
+    price: 10
+  - proto: N14AmmoBox10mm
+    price: 10
+  - proto: N14AmmoBox127
+    price: 10
+  - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox22lr
+    price: 10
+  - proto: N14AmmoBox308
+    price: 10
+  - proto: N14AmmoBox357
+    price: 10
+  - proto: N14AmmoBox44Magnum
+    price: 10
+  - proto: N14AmmoBox45
+    price: 10
+  - proto: N14AmmoBox45-70
+    price: 10
+  - proto: N14AmmoBox556
+    price: 10
+  - proto: N14AmmoBox762
+    price: 10
+  - proto: N14AmmoBox9mm
+    price: 10
+  - proto: N14MagazinePistol10mm
+    price: 2
+  - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 2
+  - proto: N14MagazineSMG10mm
+    price: 2
+  - proto: N14MagazineSMG12mm
+    price: 2
+  - proto: N14MagazineSMG9mm
+    price: 2
+  - proto: N14MagazineSMG9mmDrum
+    price: 2
+  - proto: N14SpeedLoader357
+    price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 2
+  - proto: ShellShotgunFlare
+    price: 2
+  - proto: SpeedLoader44
+    price: 2
+  - proto: SpeedLoader45-70
+    price: 2
+- type: storeCategoryStructured
+  id: ReclamationSupplyMinutemenMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: Bloodpack
+    price: 10
+    amount: 10
+  - proto: MisfitsMedkitCombatFilled
+    price: 50
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14BoxCardboardMREBoxCFilled
+    price: 10
+  - proto: N14CleanGauze10
+    price: 10
+    amount: 10
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+  - proto: N14Stimpak
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyMinutemenOthergear
+  name: Other gear
+  entries:
+  - proto: BodyBagFolded
+    price: 10
+  - proto: DefibrillatorCompact
+    price: 50
+  - proto: EmpGrenade
+    price: 50
+  - proto: EncryptionKeyMinutemenUR
+    price: 10
+  - proto: ForgedKitMolotov
+    price: 50
+  - proto: GrenadeIncendiary
+    price: 50
+  - proto: GrenadeShrapnel
+    price: 50
+  - proto: MisfitsGrenadeFragDefensive
+    price: 50
+  - proto: MisfitsGrenadeImpact
+    price: 50
+  - proto: MisfitsGrenadePlasma
+    price: 50
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 50
+  - proto: N14FusionCore
+    price: 50
+  - proto: N14HandheldHealthAnalyzer
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
+  - proto: N14Psycho
+    price: 50
+  - proto: ReclamationTrainingManualCPR
+    price: 10
+  - proto: SmokeGrenade
+    price: 20
+  - proto: TearGasGrenade
+    price: 50
+- type: storePresetStructured
+  id: ReclamationSupplyMinutemenBuy
+  currency: 'Supply points: Minutemen'
+  categories:
+  - ReclamationSupplyMinutemenWeapons
+  - ReclamationSupplyMinutemenArmor
+  - ReclamationSupplyMinutemenAmmunition
+  - ReclamationSupplyMinutemenMedicalandfood
+  - ReclamationSupplyMinutemenOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyMinutemenCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyMinutemenSell
+  currency: 'Supply points: Minutemen'
+  categories:
+  - ReclamationSupplyMinutemenCrates
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyForgedVendor
+  name: forged supply vendor
+  description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
+    or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
+    equipment cannot be sold. Rank equipment is restricted to your rank and below.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#a35b32'
+    - sprite: Corvax/Interface/Misc/job_icons.rsi
+      state: eighties
+      scale: 1.5,1.5
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      Forgemaster: 50
+      ForgedVeteran: 40
+      ForgedEnforcer: 30
+      ForgedBranded: 20
+      ForgedRaider: 10
+      ForgedWorker: 0
+      ForgedSmithy: 60
+      ForgedAdminForgemaster: 70
+      ForgedFurnaceTender: 0
+    equipmentRanks:
+      ForgedBandolier: 10
+      ForgedGasMask: 0
+      N14ClothingUniformJumpsuitRags: 0
+      N14ClothingShoesRags: 0
+      N14ClothingBackpackSatchelExplorer: 0
+      ForgedKeeperFurnaceArmor: 50
+      N14Flamer: 50
+      N14Incinerator: 50
+      ForgedBrandingIron: 50
+      ForgedCaptiveBrandingIron: 50
+      ForgedFurnaceArmor: 40
+      N14WeaponKebab: 40
+      CheapLighter: 10
+      ForgedEmbercleaver: 40
+      N14WeaponRifle556R91: 40
+      N14WeaponRevolver45-70Hunter: 40
+      N14WeaponRifle762Marksman: 40
+      ForgedCombatBoots: 20
+      ForgedTemperedFirefighterArmor: 30
+      N14HandheldHealthAnalyzer: 30
+      ReclamationTrainingManualCPR: 30
+      N14ClothingEyesNCRNVGs: 30
+      ClothingMaskSterile: 30
+      ReclamationClothingBeltSurgicalFilled: 30
+      N14WeaponPistol10mm: 30
+      N14WeaponSMG10mm: 30
+      N14WeaponPistol9mm: 0
+      N14WeaponShotgunSawedOff: 30
+      N14WeaponSMGAmerican180: 30
+      ForgedLeatherGloves: 20
+      N14CombatKnife: 20
+      ThrowingKnife: 20
+      N14Crowbar: 10
+      N14SledgeHammer: 10
+      N14MeleeHandsSpikedBrassKnuckle: 20
+      N14TribalBigClubDecorated: 20
+      N14Psycho: 10
+      ForgedBrandedCombatArmor: 20
+      ForgedUnbrandedArmor: 10
+      ForgedWorkerAutoAxe: 0
+      ForgedSmithyPowerArmor: 60
+      N14ClothingEyesGlassesWelding: 0
+      N14Cryolator: 60
+      WelderIndustrial: 0
+      N14CryoCell: 60
+      ForgedAdminForgemasterArmor: 70
+      N14ClothingBeltUtilityFilled: 0
+    requireFactionJob: false
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Forged'
+    buyPresets:
+    - ReclamationSupplyForgedBuy
+    sellPresets:
+    - ReclamationSupplyForgedSell
+  - type: AccessReader
+    access:
+    - - Forged
+- type: storeCategoryStructured
+  id: ReclamationSupplyForgedWeapons
+  name: Weapons
+  entries:
+  - proto: CheapLighter
+    price: 50
+  - proto: ForgedEmbercleaver
+    price: 100
+  - proto: ForgedWorkerAutoAxe
+    price: 10
+  - proto: N14CombatKnife
+    price: 10
+  - proto: N14Crowbar
+    price: 10
+  - proto: N14Cryolator
+    price: 100
+  - proto: N14Flamer
+    price: 100
+  - proto: N14Hatchet
+    price: 25
+  - proto: N14Incinerator
+    price: 100
+  - proto: N14Machete
+    price: 25
+  - proto: N14SledgeHammer
+    price: 50
+  - proto: N14TribalBigClubDecorated
+    price: 100
+  - proto: N14WeaponDesertEagle44
+    price: 50
+  - proto: N14WeaponKebab
+    price: 75
+  - proto: N14WeaponPistol10mm
+    price: 50
+  - proto: N14WeaponPistol12mm
+    price: 10
+  - proto: N14WeaponPistol22lr
+    price: 10
+  - proto: N14WeaponPistol45Colt
+    price: 25
+  - proto: N14WeaponPistol9mm
+    price: 50
+  - proto: N14WeaponPistol9mmChinese
+    price: 10
+  - proto: N14WeaponPistolM1911
+    price: 10
+  - proto: N14WeaponPistolWebley
+    price: 25
+  - proto: N14WeaponRevolver357Detective
+    price: 10
+  - proto: N14WeaponRevolver44Magnum
+    price: 50
+  - proto: N14WeaponRevolver45-70Hunter
+    price: 50
+  - proto: N14WeaponRevolver9mm
+    price: 10
+  - proto: N14WeaponRifle10mmM1Carbine
+    price: 25
+  - proto: N14WeaponRifle308Battle
+    price: 25
+  - proto: N14WeaponRifle556Carbine
+    price: 50
+  - proto: N14WeaponRifle556R91
+    price: 50
+  - proto: N14WeaponRifle556Service
+    price: 25
+  - proto: N14WeaponRifle762Canadian
+    price: 50
+  - proto: N14WeaponRifle762M14
+    price: 50
+  - proto: N14WeaponRifle762Marksman
+    price: 100
+  - proto: N14WeaponRifle762Rangemaster
+    price: 50
+  - proto: N14WeaponRifleAk112
+    price: 100
+  - proto: N14WeaponRifleM1Garand
+    price: 25
+  - proto: N14WeaponSMG10mm
+    price: 50
+  - proto: N14WeaponSMG10mmChinese
+    price: 25
+  - proto: N14WeaponSMG12mm
+    price: 50
+  - proto: N14WeaponSMG12mmAdvancedCanadian
+    price: 100
+  - proto: N14WeaponSMG45
+    price: 50
+  - proto: N14WeaponSMG9mm
+    price: 25
+  - proto: N14WeaponSMG9mmCanadian
+    price: 50
+  - proto: N14WeaponSMGAmerican180
+    price: 100
+  - proto: N14WeaponSMGPPSh41
+    price: 100
+  - proto: N14WeaponShotgun
+    price: 10
+  - proto: N14WeaponShotgunAuto
+    price: 50
+  - proto: N14WeaponShotgunCanadian
+    price: 100
+  - proto: N14WeaponShotgunCaravan
+    price: 25
+  - proto: N14WeaponShotgunDoubleBarrel
+    price: 10
+  - proto: N14WeaponShotgunSawedOff
+    price: 50
+  - proto: N14WeaponShotgunTrench
+    price: 25
+  - proto: N14WeaponSniper308LeverRifle
+    price: 25
+  - proto: N14WeaponSniper308Ross
+    price: 25
+  - proto: N14WeaponSniper44LeverCarbine
+    price: 25
+  - proto: N14WeaponSniper44LeverShortCarbine
+    price: 25
+  - proto: N14WeaponSniper45-70BrushGun
+    price: 50
+  - proto: N14WeaponSniperCowboyRepeater
+    price: 10
+  - proto: N14WeaponSniperHunting
+    price: 10
+  - proto: N14WeaponSniperPaciencia
+    price: 25
+  - proto: ThrowingKnife
+    price: 10
+  - proto: WelderIndustrial
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyForgedArmor
+  name: Armor
+  entries:
+  - proto: ClothingMaskSterile
+    price: 10
+  - proto: ForgedAdminForgemasterArmor
+    price: 100
+  - proto: ForgedBandolier
+    price: 10
+  - proto: ForgedBrandedCombatArmor
+    price: 100
+  - proto: ForgedCombatBoots
+    price: 10
+  - proto: ForgedFurnaceArmor
+    price: 100
+  - proto: ForgedGasMask
+    price: 10
+  - proto: ForgedHeadset
+    price: 10
+  - proto: ForgedKeeperFurnaceArmor
+    price: 200
+  - proto: ForgedLeatherGloves
+    price: 10
+  - proto: ForgedSmithyPowerArmor
+    price: 100
+  - proto: ForgedTemperedFirefighterArmor
+    price: 100
+  - proto: ForgedUnbrandedArmor
+    price: 100
+  - proto: N14ClothingBackpackSatchelExplorer
+    price: 10
+  - proto: N14ClothingBeltUtilityFilled
+    price: 50
+  - proto: N14ClothingEyesGlassesWelding
+    price: 10
+  - proto: N14ClothingEyesNCRNVGs
+    price: 75
+  - proto: N14ClothingHeadHatHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatSpecHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatTownGuard
+    price: 10
+  - proto: N14ClothingHeadHatVaultBlueprintHelmetMetal
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodie
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieCover
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieVisor
+    price: 10
+  - proto: N14ClothingOuterChitinArmor
+    price: 10
+  - proto: N14ClothingOuterCombatArmorRCMP
+    price: 50
+  - proto: N14ClothingOuterLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterLightLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterPoliceCombat
+    price: 10
+  - proto: N14ClothingOuterPoliceVest
+    price: 10
+  - proto: N14ClothingOuterReinforcedLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterSheriffVest
+    price: 10
+  - proto: N14ClothingOuterTownGuardLight
+    price: 10
+  - proto: N14ClothingOuterTownGuardRiot
+    price: 10
+  - proto: N14ClothingOuterVestLeather
+    price: 10
+  - proto: N14ClothingOuterVestRCMP
+    price: 10
+  - proto: N14ClothingShoesRags
+    price: 10
+  - proto: N14ClothingUniformJumpsuitRags
+    price: 10
+  - proto: N14MeleeHandsSpikedBrassKnuckle
+    price: 10
+  - proto: ReclamationClothingBeltSurgicalFilled
+    price: 50
+- type: storeCategoryStructured
+  id: ReclamationSupplyForgedAmmunition
+  name: Ammunition
+  entries:
+  - proto: ClipMagazine308Rifle
+    price: 2
+  - proto: LongMagazine556Rifle
+    price: 2
+  - proto: Magazine545Rifle
+    price: 2
+  - proto: Magazine556Rifle
+    price: 2
+  - proto: Magazine762AmmoShort
+    price: 2
+  - proto: Magazine762Rifle
+    price: 2
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox45-70
+    price: 10
+  - proto: MagazineBox545
+    price: 10
+  - proto: MagazineBox556
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox9mm
+    price: 10
+  - proto: N14AmmoBox10mm
+    price: 10
+  - proto: N14AmmoBox127
+    price: 10
+  - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox22lr
+    price: 10
+  - proto: N14AmmoBox308
+    price: 10
+  - proto: N14AmmoBox357
+    price: 10
+  - proto: N14AmmoBox44Magnum
+    price: 10
+  - proto: N14AmmoBox45
+    price: 10
+  - proto: N14AmmoBox45-70
+    price: 10
+  - proto: N14AmmoBox556
+    price: 10
+  - proto: N14AmmoBox762
+    price: 10
+  - proto: N14AmmoBox9mm
+    price: 10
+  - proto: N14EnrichedFlamerFuel
+    price: 75
+  - proto: N14FlamerFuel
+    price: 75
+  - proto: N14MagazineAmerican180Drum
+    price: 24
+  - proto: N14MagazinePistol10mm
+    price: 2
+  - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 2
+  - proto: N14MagazineSMG10mm
+    price: 2
+  - proto: N14MagazineSMG12mm
+    price: 2
+  - proto: N14MagazineSMG9mm
+    price: 2
+  - proto: N14MagazineSMG9mmDrum
+    price: 2
+  - proto: N14MagazineShotgun12
+    price: 2
+  - proto: N14SpeedLoader357
+    price: 2
+  - proto: SpeedLoader45-70
+    price: 2
+- type: storeCategoryStructured
+  id: ReclamationSupplyForgedMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: MedicatedSuture
+    price: 10
+    amount: 10
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14BoxCardboardMREBoxCFilled
+    price: 10
+  - proto: N14CleanGauze10
+    price: 10
+    amount: 10
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14MedkitCombatFilled
+    price: 50
+  - proto: N14MedkitFilled
+    price: 10
+  - proto: N14Ointment10
+    price: 10
+    amount: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+  - proto: N14Stimpak
+    price: 10
+  - proto: RegenerativeMesh
+    price: 10
+    amount: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyForgedOthergear
+  name: Other gear
+  entries:
+  - proto: EmpGrenade
+    price: 50
+  - proto: EncryptionKeyForged
+    price: 10
+  - proto: ForgedBrandingIron
+    price: 50
+  - proto: ForgedCaptiveBrandingIron
+    price: 50
+  - proto: ForgedKitMolotov
+    price: 50
+  - proto: GrenadeIncendiary
+    price: 50
+  - proto: GrenadeShrapnel
+    price: 50
+  - proto: MisfitsGrenadeFragDefensive
+    price: 50
+  - proto: MisfitsGrenadeImpact
+    price: 50
+  - proto: MisfitsGrenadePlasma
+    price: 50
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 50
+  - proto: N14CryoCell
+    price: 50
+  - proto: N14HandheldHealthAnalyzer
+    price: 50
+  - proto: N14Psycho
+    price: 50
+  - proto: ReclamationTrainingManualCPR
+    price: 10
+  - proto: SmokeGrenade
+    price: 20
+  - proto: TearGasGrenade
+    price: 50
+- type: storePresetStructured
+  id: ReclamationSupplyForgedBuy
+  currency: 'Supply points: Forged'
+  categories:
+  - ReclamationSupplyForgedWeapons
+  - ReclamationSupplyForgedArmor
+  - ReclamationSupplyForgedAmmunition
+  - ReclamationSupplyForgedMedicalandfood
+  - ReclamationSupplyForgedOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyForgedCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyForgedSell
+  currency: 'Supply points: Forged'
+  categories:
+  - ReclamationSupplyForgedCrates
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyRailroadVendor
+  name: railroad supply vendor
+  description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
+    or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
+    equipment cannot be sold. Rank equipment is restricted to your rank and below. Imported non-Institute gear costs
+    double its cheapest source price, up to 200 points; leader-exclusive imports and foreign headsets/keys are unavailable. Fixed-price supplies are exempt from the import markup.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#708f71'
+    - sprite: Interface/Misc/job_icons.rsi
+      state: Librarian
+      scale: 1.5,1.5
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      RailroadSafehouse1Intern: 20
+      RailroadSafehouse1Worker: 30
+      RailroadSafehouse1Agent: 50
+      RailroadSafehouse1Runner: 50
+      RailroadSafehouse1Conductor: 70
+      RailroadSafehouse1SafehouseOwner: 80
+      RailroadSafehouse2Intern: 20
+      RailroadSafehouse2Worker: 30
+      RailroadSafehouse2Agent: 50
+      RailroadSafehouse2Runner: 50
+      RailroadSafehouse2Conductor: 70
+      RailroadSafehouse2SafehouseOwner: 80
+      RailroadAlphaLeader: 100
+      RailroadInspector: 90
+    equipmentRanks:
+      N14CombatKnife: 20
+      N14WeaponPistol10mm: 20
+      RailroadFlannel: 20
+      RailroadBackpack: 20
+      RailroadCombatBoots: 20
+      RailroadGrayBeanie: 20
+      RailroadFingerlessGloves: 20
+      RailroadCombatArmor: 20
+      BodyBagFolded: 30
+      ReclamationClothingBeltSurgicalFilled: 30
+      ReclamationTrainingManualCPR: 30
+      N14WeaponShotgunDoubleBarrel: 30
+      DefibrillatorCompact: 30
+      N14ClothingBeltMedicalFilled: 30
+      ClothingHandsGlovesLatex: 30
+      ClothingMaskSterile: 30
+      N14WeaponSMG10mmSuppressed: 50
+      N14Multitool: 50
+      N14ClothingBeltUtilityFilled: 50
+      RemoteSignaller: 50
+      N14Flashlight: 50
+      RailroadVest: 50
+      RailroadBalaclava: 50
+      RailroadGlasses: 50
+      RailroadAgentCombatArmor: 50
+      RailroadAgentSilencedPistol: 50
+      N14WeaponSMG10mm: 50
+      N14WeaponLaserRifle: 70
+      N14WeaponSMGGreaseGun: 70
+      N14WeaponShotgunAuto: 70
+      N14MicrofusionCellRed: 70
+      RailroadCombatArmorMk2: 70
+      N14WeaponSMG12mm: 80
+      N14WeaponLaserRifleAER12: 100
+      N14WeaponLMGBren: 100
+      RailroadArmoredTrenchcoat: 90
+      N14WeaponSMG9mminfiltrator: 90
+    requireFactionJob: false
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Railroad'
+    buyPresets:
+    - ReclamationSupplyRailroadBuy
+    sellPresets:
+    - ReclamationSupplyRailroadSell
+  - type: AccessReader
+    access:
+    - - Railroad
+- type: storeCategoryStructured
+  id: ReclamationSupplyRailroadWeapons
+  name: Weapons
+  entries:
+  - proto: CheapLighter
+    price: 100
+  - proto: ForgedEmbercleaver
+    price: 200
+  - proto: ForgedWorkerAutoAxe
+    price: 20
+  - proto: Handcuffs
+    price: 20
+  - proto: MinutemenOfficerCutlass
+    price: 200
+  - proto: MinutemenRotorBlade
+    price: 200
+  - proto: MinutemenTrooperCutlass
+    price: 200
+  - proto: MinutemenWeaponHeavyLaserMusket
+    price: 200
+  - proto: MinutemenWeaponLaserMusket
+    price: 100
+  - proto: N14BaseBallBat
+    price: 20
+  - proto: N14CombatKnife
+    price: 20
+  - proto: N14Crowbar
+    price: 20
+  - proto: N14Flashlight
+    price: 100
+  - proto: N14Hatchet
+    price: 50
+  - proto: N14Machete
+    price: 50
+  - proto: N14Multitool
+    price: 10
+  - proto: N14SledgeHammer
+    price: 100
+  - proto: N14TribalBigClubDecorated
+    price: 200
+  - proto: N14WeaponDesertEagle44
+    price: 100
+  - proto: N14WeaponKebab
+    price: 150
+  - proto: N14WeaponLMGBren
+    price: 100
+  - proto: N14WeaponLaserGatling
+    price: 200
+  - proto: N14WeaponLaserPistol
+    price: 20
+  - proto: N14WeaponLaserRCW
+    price: 150
+  - proto: N14WeaponLaserRifle
+    price: 50
+  - proto: N14WeaponLaserRifleAER12
+    price: 50
+  - proto: N14WeaponLaserRifleAER15
+    price: 200
+  - proto: N14WeaponLaserRifleAuto
+    price: 200
+  - proto: N14WeaponLaserRifleCrude
+    price: 50
+  - proto: N14WeaponLaserRiflePrototypeAER14
+    price: 200
+  - proto: N14WeaponLaserRifleRecharger
+    price: 50
+  - proto: N14WeaponLaserRifleWattz2000
+    price: 200
+  - proto: N14WeaponLaserRifleWattz3000
+    price: 200
+  - proto: N14WeaponPistol10mm
+    price: 20
+  - proto: N14WeaponPistol12mm
+    price: 20
+  - proto: N14WeaponPistol22lr
+    price: 20
+  - proto: N14WeaponPistol45Colt
+    price: 50
+  - proto: N14WeaponPistol9mm
+    price: 20
+  - proto: N14WeaponPistol9mmChinese
+    price: 20
+  - proto: N14WeaponPistolM1911
+    price: 20
+  - proto: N14WeaponPistolT60
+    price: 100
+  - proto: N14WeaponPistolWebley
+    price: 50
+  - proto: N14WeaponPlasmaCaster
+    price: 200
+  - proto: N14WeaponPlasmaMultiplas
+    price: 200
+  - proto: N14WeaponPlasmaPistol
+    price: 200
+  - proto: N14WeaponPlasmaRifle
+    price: 200
+  - proto: N14WeaponPlasmaRifleAuto
+    price: 200
+  - proto: N14WeaponPlasmaRifleUrban
+    price: 200
+  - proto: N14WeaponRevolver357Detective
+    price: 20
+  - proto: N14WeaponRevolver44Magnum
+    price: 100
+  - proto: N14WeaponRevolver45-70Hunter
+    price: 100
+  - proto: N14WeaponRevolver9mm
+    price: 20
+  - proto: N14WeaponRifle10mmM1Carbine
+    price: 50
+  - proto: N14WeaponRifle308Battle
+    price: 50
+  - proto: N14WeaponRifle556Carbine
+    price: 50
+  - proto: N14WeaponRifle556CarbineOld
+    price: 50
+  - proto: N14WeaponRifle556HeavyAssault
+    price: 200
+  - proto: N14WeaponRifle556R91
+    price: 100
+  - proto: N14WeaponRifle556Service
+    price: 50
+  - proto: N14WeaponRifle762Canadian
+    price: 100
+  - proto: N14WeaponRifle762Fal
+    price: 100
+  - proto: N14WeaponRifle762M14
+    price: 100
+  - proto: N14WeaponRifle762Marksman
+    price: 200
+  - proto: N14WeaponRifle762Rangemaster
+    price: 100
+  - proto: N14WeaponRifleAk112
+    price: 100
+  - proto: N14WeaponRifleBozarGRA
+    price: 200
+  - proto: N14WeaponRifleM1Garand
+    price: 50
+  - proto: N14WeaponSMG10mm
+    price: 100
+  - proto: N14WeaponSMG10mmChinese
+    price: 50
+  - proto: N14WeaponSMG10mmSuppressed
+    price: 50
+  - proto: N14WeaponSMG12mm
+    price: 100
+  - proto: N14WeaponSMG12mmAdvanced
+    price: 200
+  - proto: N14WeaponSMG12mmAdvancedCanadian
+    price: 100
+  - proto: N14WeaponSMG45
+    price: 100
+  - proto: N14WeaponSMG9mm
+    price: 50
+  - proto: N14WeaponSMG9mmCanadian
+    price: 100
+  - proto: N14WeaponSMG9mminfiltrator
+    price: 100
+  - proto: N14WeaponSMGAmerican180
+    price: 200
+  - proto: N14WeaponSMGGreaseGun
+    price: 50
+  - proto: N14WeaponSMGPPSh41
+    price: 100
+  - proto: N14WeaponShotgun
+    price: 20
+  - proto: N14WeaponShotgunAuto
+    price: 100
+  - proto: N14WeaponShotgunBlowback
+    price: 100
+  - proto: N14WeaponShotgunCanadian
+    price: 100
+  - proto: N14WeaponShotgunCaravan
+    price: 50
+  - proto: N14WeaponShotgunDoubleBarrel
+    price: 20
+  - proto: N14WeaponShotgunSawedOff
+    price: 20
+  - proto: N14WeaponShotgunTrench
+    price: 50
+  - proto: N14WeaponSniper308LeverRifle
+    price: 50
+  - proto: N14WeaponSniper308Ross
+    price: 50
+  - proto: N14WeaponSniper44LeverCarbine
+    price: 50
+  - proto: N14WeaponSniper44LeverShortCarbine
+    price: 50
+  - proto: N14WeaponSniper45-70BrushGun
+    price: 100
+  - proto: N14WeaponSniperCowboyRepeater
+    price: 20
+  - proto: N14WeaponSniperHunting
+    price: 20
+  - proto: N14WeaponSniperPaciencia
+    price: 50
+  - proto: N14Wirecutter
+    price: 20
+  - proto: RailroadAgentSilencedPistol
+    price: 50
+  - proto: ReclamationPaladinGreatshield
+    price: 200
+  - proto: ReclamationPaladinShield
+    price: 200
+  - proto: ThrowingKnife
+    price: 20
+  - proto: TriggermenRazorFlatcap
+    price: 100
+  - proto: WeaponFlareGun
+    price: 100
+  - proto: Welder
+    price: 20
+  - proto: WelderIndustrial
+    price: 20
+- type: storeCategoryStructured
+  id: ReclamationSupplyRailroadArmor
+  name: Armor
+  entries:
+  - proto: ClothingBeltBoSWebbing
+    price: 20
+  - proto: ClothingBeltMilitary
+    price: 20
+  - proto: ClothingBeltRevolverfilled
+    price: 100
+  - proto: ClothingHandsGlovesChemist
+    price: 20
+  - proto: ClothingHandsGlovesColorYellow
+    price: 20
+  - proto: ClothingHandsGlovesLatex
+    price: 20
+  - proto: ClothingMaskSterile
+    price: 20
+  - proto: ForgedBandolier
+    price: 20
+  - proto: ForgedBrandedCombatArmor
+    price: 200
+  - proto: ForgedCombatBoots
+    price: 20
+  - proto: ForgedFurnaceArmor
+    price: 200
+  - proto: ForgedGasMask
+    price: 20
+  - proto: ForgedLeatherGloves
+    price: 20
+  - proto: ForgedTemperedFirefighterArmor
+    price: 200
+  - proto: ForgedUnbrandedArmor
+    price: 200
+  - proto: MinutemenClothingHandsGloves
+    price: 20
+  - proto: MinutemenClothingHeadHatCowboy
+    price: 20
+  - proto: MinutemenClothingHeadHatTricorn
+    price: 20
+  - proto: MinutemenClothingNeckDuster
+    price: 20
+  - proto: MinutemenClothingOuterVestEnlisted
+    price: 50
+  - proto: MinutemenClothingOuterVestNCO
+    price: 200
+  - proto: MinutemenClothingShoesBoots
+    price: 20
+  - proto: MinutemenClothingUniformEnlisted
+    price: 20
+  - proto: MinutemenClothingUniformNCO
+    price: 20
+  - proto: MinutemenHeavyTrooperArmor
+    price: 200
+  - proto: MinutemenHeavyTrooperBoots
+    price: 20
+  - proto: MinutemenHeavyTrooperGauntlets
+    price: 50
+  - proto: MinutemenHeavyTrooperHelmet
+    price: 200
+  - proto: MinutemenLightTrooperArmor
+    price: 200
+  - proto: MinutemenMedicalTrooperHelmet
+    price: 200
+  - proto: MinutemenMediumTrooperArmor
+    price: 200
+  - proto: MinutemenTrooperGasMask
+    price: 200
+  - proto: MisfitsBoSKnightArmor
+    price: 200
+  - proto: MisfitsBoSSquireArmor
+    price: 200
+  - proto: MisfitsClothingBackpackSquire
+    price: 200
+  - proto: MisfitsClothingBeltPaladinWebbing
+    price: 20
+  - proto: MisfitsClothingBeltSquireWebbingBlack
+    price: 20
+  - proto: N14Binoculars
+    price: 20
+  - proto: N14ClothingBackpackExplorer
+    price: 20
+  - proto: N14ClothingBackpackHiking
+    price: 20
+  - proto: N14ClothingBackpackMilitary
+    price: 20
+  - proto: N14ClothingBackpackSatchelExplorer
+    price: 20
+  - proto: N14ClothingBackpackSatchelMilitary
+    price: 20
+  - proto: N14ClothingBeltBoSWebbing
+    price: 20
+  - proto: N14ClothingBeltMedicalFilled
+    price: 100
+  - proto: N14ClothingBeltUtilityFilled
+    price: 100
+  - proto: N14ClothingBootsLeatherFilled
+    price: 20
+  - proto: N14ClothingEyesGlassesPilot
+    price: 20
+  - proto: N14ClothingEyesGlassesWelding
+    price: 20
+  - proto: N14ClothingEyesNCRNVGs
+    price: 150
+  - proto: N14ClothingHandsGlovesBlackLeather
+    price: 20
+  - proto: N14ClothingHandsGlovesCloth
+    price: 20
+  - proto: N14ClothingHandsGlovesCombat
+    price: 20
+  - proto: N14ClothingHandsGlovesNitrile
+    price: 20
+  - proto: N14ClothingHeadHatBanganeBoS
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodBeret
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodFieldCap
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodHelmet
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodHelmetCaptain
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodHelmetKnight
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodHelmetMK2
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodHelmetPaladin
+    price: 20
+  - proto: N14ClothingHeadHatBrotherhoodMidwestHelmetRecon
+    price: 200
+  - proto: N14ClothingHeadHatBrotherhoodMidwestHelmetVeteran
+    price: 20
+  - proto: N14ClothingHeadHatCapkhighBoS
+    price: 20
+  - proto: N14ClothingHeadHatHelmetRCMP
+    price: 20
+  - proto: N14ClothingHeadHatSpecHelmetRCMP
+    price: 20
+  - proto: N14ClothingHeadHatTownGuard
+    price: 20
+  - proto: N14ClothingHeadHatVaultBlueprintHelmetMetal
+    price: 20
+  - proto: N14ClothingHeadTownGuardBrodie
+    price: 20
+  - proto: N14ClothingHeadTownGuardBrodieVisor
+    price: 20
+  - proto: N14ClothingNeckTownGuardCloak
+    price: 20
+  - proto: N14ClothingNeckTownGuardMantle
+    price: 20
+  - proto: N14ClothingOuterBosScribe
+    price: 20
+  - proto: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat
+    price: 20
+  - proto: N14ClothingOuterBrotherhoodMidwestMedicalScribeRobes
+    price: 20
+  - proto: N14ClothingOuterChitinArmor
+    price: 20
+  - proto: N14ClothingOuterCoatLab
+    price: 100
+  - proto: N14ClothingOuterCombatArmorBOS
+    price: 50
+  - proto: N14ClothingOuterCombatArmorRCMP
+    price: 100
+  - proto: N14ClothingOuterCombatArmorSeniorBOS
+    price: 200
+  - proto: N14ClothingOuterJacketBomber
+    price: 200
+  - proto: N14ClothingOuterLeatherArmor
+    price: 20
+  - proto: N14ClothingOuterLightLeatherArmor
+    price: 20
+  - proto: N14ClothingOuterMBoSInitiateArmor
+    price: 20
+  - proto: N14ClothingOuterMBoSKnightArmor
+    price: 50
+  - proto: N14ClothingOuterMBoSSeniorKArmor
+    price: 100
+  - proto: N14ClothingOuterMBoSSquireArmor
+    price: 20
+  - proto: N14ClothingOuterMidwestArmorMK2
+    price: 100
+  - proto: N14ClothingOuterMidwestBoSCoat
+    price: 20
+  - proto: N14ClothingOuterMidwestReconArmor
+    price: 200
+  - proto: N14ClothingOuterPoliceCombat
+    price: 20
+  - proto: N14ClothingOuterPoliceVest
+    price: 20
+  - proto: N14ClothingOuterPowerArmorT45
+    price: 200
+  - proto: N14ClothingOuterReinforcedLeatherArmor
+    price: 20
+  - proto: N14ClothingOuterSheriffVest
+    price: 20
+  - proto: N14ClothingOuterTownGuardCoat
+    price: 20
+  - proto: N14ClothingOuterTownGuardLight
+    price: 20
+  - proto: N14ClothingOuterTownGuardRiot
+    price: 20
+  - proto: N14ClothingOuterVestLeather
+    price: 20
+  - proto: N14ClothingOuterVestRCMP
+    price: 20
+  - proto: N14ClothingShoesBlack
+    price: 20
+  - proto: N14ClothingShoesRags
+    price: 20
+  - proto: N14ClothingShoesRaider
+    price: 20
+  - proto: N14ClothingUniformBosRecon
+    price: 20
+  - proto: N14ClothingUniformJumpskirtBOSBlack
+    price: 20
+  - proto: N14ClothingUniformJumpsuitBOSBlack
+    price: 20
+  - proto: N14ClothingUniformJumpsuitMechanic
+    price: 20
+  - proto: N14ClothingUniformJumpsuitMerchant
+    price: 20
+  - proto: N14ClothingUniformJumpsuitPreWarManager
+    price: 20
+  - proto: N14ClothingUniformJumpsuitRags
+    price: 20
+  - proto: N14ClothingUniformJumpsuitSettlerRags
+    price: 20
+  - proto: N14ClothingUniformJumpsuitTownGuard
+    price: 20
+  - proto: N14ClothingUniformJumpsuitWastelandDoc
+    price: 20
+  - proto: N14MeleeHandsSpikedBrassKnuckle
+    price: 20
+  - proto: NCClothingCollarBoSSerf
+    price: 20
+  - proto: RailroadAgentCombatArmor
+    price: 50
+  - proto: RailroadArmoredTrenchcoat
+    price: 50
+  - proto: RailroadBackpack
+    price: 10
+  - proto: RailroadBalaclava
+    price: 10
+  - proto: RailroadCombatArmor
+    price: 25
+  - proto: RailroadCombatArmorMk2
+    price: 50
+  - proto: RailroadCombatBoots
+    price: 10
+  - proto: RailroadFingerlessGloves
+    price: 10
+  - proto: RailroadFlannel
+    price: 10
+  - proto: RailroadGlasses
+    price: 10
+  - proto: RailroadGrayBeanie
+    price: 10
+  - proto: RailroadRangerDuster
+    price: 10
+  - proto: RailroadScrapHeadset
+    price: 10
+  - proto: RailroadVest
+    price: 25
+  - proto: ReclamationClothingBeltSurgicalFilled
+    price: 100
+  - proto: TriggermenArmoredVest
+    price: 100
+  - proto: TriggermenBrassKnuckles
+    price: 20
+  - proto: TriggermenOvercoat
+    price: 20
+- type: storeCategoryStructured
+  id: ReclamationSupplyRailroadAmmunition
+  name: Ammunition
+  entries:
+  - proto: ClipMagazine308Rifle
+    price: 4
+  - proto: LMGMagazine556Rifle
+    price: 4
+  - proto: LongMagazine556Rifle
+    price: 4
+  - proto: Magazine308Rifle
+    price: 4
+  - proto: Magazine308RifleLong
+    price: 2
+  - proto: Magazine45SubMachineGun
+    price: 4
+  - proto: Magazine545Rifle
+    price: 4
+  - proto: Magazine556Rifle
+    price: 4
+  - proto: Magazine556Rifle30
+    price: 4
+  - proto: Magazine762AmmoShort
+    price: 4
+  - proto: Magazine762Rifle
+    price: 4
+  - proto: MagazineBox12gauge
+    price: 20
+  - proto: MagazineBox545
+    price: 20
+  - proto: N14AmmoBox10mm
+    price: 20
+  - proto: N14AmmoBox127
+    price: 20
+  - proto: N14AmmoBox22lr
+    price: 20
+  - proto: N14AmmoBox308
+    price: 20
+  - proto: N14AmmoBox357
+    price: 20
+  - proto: N14AmmoBox44Magnum
+    price: 20
+  - proto: N14AmmoBox45
+    price: 20
+  - proto: N14AmmoBox45-70
+    price: 20
+  - proto: N14AmmoBox556
+    price: 20
+  - proto: N14AmmoBox762
+    price: 20
+  - proto: N14AmmoBox9mm
+    price: 20
+  - proto: N14EnrichedFlamerFuel
+    price: 150
+  - proto: N14FlamerFuel
+    price: 150
+  - proto: N14MagazineAmerican180Drum
+    price: 48
+  - proto: N14MagazineHeavy556Rifle
+    price: 22
+  - proto: N14MagazinePistol10mm
+    price: 4
+  - proto: N14MagazinePistol12mm
+    price: 4
+  - proto: N14MagazinePistol44
+    price: 4
+  - proto: N14MagazinePistol45
+    price: 4
+  - proto: N14MagazinePistol9mm
+    price: 4
+  - proto: N14MagazineSMG10mm
+    price: 4
+  - proto: N14MagazineSMG12mm
+    price: 4
+  - proto: N14MagazineSMG9mm
+    price: 4
+  - proto: N14MagazineSMG9mmDrum
+    price: 4
+  - proto: N14MagazineShotgun12
+    price: 4
+  - proto: N14SpeedLoader357
+    price: 4
+  - proto: N14SpeedLoader44Magnum
+    price: 4
+  - proto: N14TopMagazineSMG12mm
+    price: 4
+  - proto: ShellShotgunFlare
+    price: 4
+  - proto: SpeedLoader45-70
+    price: 4
+- type: storeCategoryStructured
+  id: ReclamationSupplyRailroadMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: Bloodpack
+    price: 20
+    amount: 10
+  - proto: MedicatedSuture
+    price: 20
+    amount: 10
+  - proto: MisfitsMedkitCombatFilled
+    price: 50
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14BoxCardboardMREBoxCFilled
+    price: 20
+  - proto: N14BoxCardboardMREBoxKFilled
+    price: 20
+  - proto: N14CleanGauze10
+    price: 20
+    amount: 10
+  - proto: N14FoodTinC1
+    price: 20
+  - proto: N14FoodTinC2
+    price: 20
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14JunkCeramicFlask
+    price: 20
+  - proto: N14MedkitFilled
+    price: 20
+  - proto: N14Ointment10
+    price: 20
+    amount: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+  - proto: N14Stimpak
+    price: 20
+  - proto: N14SuperStimpak
+    price: 50
+  - proto: RegenerativeMesh
+    price: 20
+    amount: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyRailroadOthergear
+  name: Other gear
+  entries:
+  - proto: BodyBagFolded
+    price: 20
+  - proto: DefibrillatorCompact
+    price: 100
+  - proto: EmpGrenade
+    price: 100
+  - proto: EncryptionKeyRailroad
+    price: 10
+  - proto: ForgedKitMolotov
+    price: 100
+  - proto: GrenadeIncendiary
+    price: 100
+  - proto: GrenadeShrapnel
+    price: 100
+  - proto: MisfitsGrenadeFragDefensive
+    price: 100
+  - proto: MisfitsGrenadeImpact
+    price: 100
+  - proto: MisfitsGrenadePlasma
+    price: 100
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 100
+  - proto: MisfitsMilitaryDetonator
+    price: 100
+  - proto: N14ElectronChargePack
+    price: 20
+  - proto: N14FusionCore
+    price: 100
+  - proto: N14HandheldHealthAnalyzer
+    price: 100
+  - proto: N14MicrofusionCell
+    price: 100
+  - proto: N14MicrofusionCellRed
+    price: 100
+  - proto: N14PlasmaCartridge
+    price: 100
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 100
+  - proto: N14PlasmaShell
+    price: 100
+  - proto: N14PowerCellSmall
+    price: 100
+  - proto: N14Psycho
+    price: 100
+  - proto: N14VertibirdGunBelt
+    price: 200
+  - proto: RadioHandheld
+    price: 100
+  - proto: ReclamationTrainingManualCPR
+    price: 20
+  - proto: RemoteSignaller
+    price: 50
+  - proto: SmokeGrenade
+    price: 40
+  - proto: TearGasGrenade
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyRailroadBuy
+  currency: 'Supply points: Railroad'
+  categories:
+  - ReclamationSupplyRailroadWeapons
+  - ReclamationSupplyRailroadArmor
+  - ReclamationSupplyRailroadAmmunition
+  - ReclamationSupplyRailroadMedicalandfood
+  - ReclamationSupplyRailroadOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyRailroadCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyRailroadSell
+  currency: 'Supply points: Railroad'
+  categories:
+  - ReclamationSupplyRailroadCrates
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyInstituteVendor
+  name: institute supply vendor
+  description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
+    or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
+    equipment cannot be sold. Rank equipment is restricted to your rank and below.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#b0c0c3'
+    - sprite: Interface/Misc/job_icons.rsi
+      state: Scientist
+      scale: 1.5,1.5
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      InstituteDirector: 100
+      InstituteDivisionHead: 90
+      InstituteScientist: 70
+      InstituteCourser: 80
+      InstituteSecurity: 60
+    equipmentRanks:
+      InstituteWeaponLaserPistol: 60
+      InstituteCommandUniform: 90
+      InstituteDirectorCoat: 100
+      InstituteScientistBeret: 70
+      N14ClothingBootsCombatMK2Filled: 100
+      InstituteCommandMODSuit: 90
+      InstituteScientistLabcoat: 70
+      InstituteScientistShoes: 70
+      InstituteScientistUniform: 70
+      InstituteResearchMODSuit: 70
+      InstituteCourserLeatherUniform: 80
+      InstituteCourserHelmet: 80
+      InstituteCourserBoots: 80
+      InstituteCourserMask: 80
+      InstituteCourserGloves: 80
+      InstituteCourserArmor: 80
+      ReclamationClothingModsuitInstitute: 80
+      ReclamationWeaponInstituteAER12: 80
+      InstituteAcidifierImplanter: 80
+      N14MicrofusionCellRed: 60
+      InstituteSecurityUniform: 60
+      InstituteSecurityHelmet: 60
+      InstituteSecurityBoots: 60
+      InstituteSecurityMask: 60
+      InstituteSecurityGloves: 60
+      InstituteSecurityArmorVest: 60
+      InstituteSecurityMODSuit: 60
+      ReclamationWeaponInstituteAER9: 60
+    requireFactionJob: false
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Institute'
+    buyPresets:
+    - ReclamationSupplyInstituteBuy
+    sellPresets:
+    - ReclamationSupplyInstituteSell
+  - type: AccessReader
+    access:
+    - - Institute
+- type: storeCategoryStructured
+  id: ReclamationSupplyInstituteWeapons
+  name: Weapons
+  entries:
+  - proto: InstituteWeaponLaserPistol
+    price: 25
+  - proto: N14CombatKnife
+    price: 10
+  - proto: N14Hatchet
+    price: 25
+  - proto: N14Machete
+    price: 25
+  - proto: N14SledgeHammer
+    price: 50
+  - proto: N14WeaponDesertEagle44
+    price: 50
+  - proto: N14WeaponPistol10mm
+    price: 10
+  - proto: N14WeaponPistol12mm
+    price: 10
+  - proto: N14WeaponPistol22lr
+    price: 10
+  - proto: N14WeaponPistol45Colt
+    price: 25
+  - proto: N14WeaponPistol9mm
+    price: 10
+  - proto: N14WeaponPistol9mmChinese
+    price: 10
+  - proto: N14WeaponPistolM1911
+    price: 10
+  - proto: N14WeaponPistolWebley
+    price: 25
+  - proto: N14WeaponRevolver357Detective
+    price: 10
+  - proto: N14WeaponRevolver44Magnum
+    price: 50
+  - proto: N14WeaponRevolver45-70Hunter
+    price: 50
+  - proto: N14WeaponRevolver9mm
+    price: 10
+  - proto: N14WeaponRifle10mmM1Carbine
+    price: 25
+  - proto: N14WeaponRifle308Battle
+    price: 25
+  - proto: N14WeaponRifle556Carbine
+    price: 50
+  - proto: N14WeaponRifle556R91
+    price: 50
+  - proto: N14WeaponRifle556Service
+    price: 25
+  - proto: N14WeaponRifle762Canadian
+    price: 50
+  - proto: N14WeaponRifle762M14
+    price: 50
+  - proto: N14WeaponRifle762Rangemaster
+    price: 50
+  - proto: N14WeaponRifleAk112
+    price: 100
+  - proto: N14WeaponRifleM1Garand
+    price: 25
+  - proto: N14WeaponSMG10mm
+    price: 50
+  - proto: N14WeaponSMG10mmChinese
+    price: 25
+  - proto: N14WeaponSMG12mm
+    price: 50
+  - proto: N14WeaponSMG12mmAdvancedCanadian
+    price: 100
+  - proto: N14WeaponSMG45
+    price: 50
+  - proto: N14WeaponSMG9mm
+    price: 25
+  - proto: N14WeaponSMG9mmCanadian
+    price: 50
+  - proto: N14WeaponSMGPPSh41
+    price: 100
+  - proto: N14WeaponShotgun
+    price: 10
+  - proto: N14WeaponShotgunAuto
+    price: 50
+  - proto: N14WeaponShotgunCanadian
+    price: 100
+  - proto: N14WeaponShotgunCaravan
+    price: 25
+  - proto: N14WeaponShotgunDoubleBarrel
+    price: 10
+  - proto: N14WeaponShotgunSawedOff
+    price: 10
+  - proto: N14WeaponShotgunTrench
+    price: 25
+  - proto: N14WeaponSniper308LeverRifle
+    price: 25
+  - proto: N14WeaponSniper308Ross
+    price: 25
+  - proto: N14WeaponSniper44LeverCarbine
+    price: 25
+  - proto: N14WeaponSniper44LeverShortCarbine
+    price: 25
+  - proto: N14WeaponSniper45-70BrushGun
+    price: 50
+  - proto: N14WeaponSniperCowboyRepeater
+    price: 10
+  - proto: N14WeaponSniperHunting
+    price: 10
+  - proto: N14WeaponSniperPaciencia
+    price: 25
+  - proto: ReclamationWeaponInstituteAER12
+    price: 75
+  - proto: ReclamationWeaponInstituteAER9
+    price: 50
+- type: storeCategoryStructured
+  id: ReclamationSupplyInstituteArmor
+  name: Armor
+  entries:
+  - proto: InstituteChameleonScrapHeadset
+    price: 10
+  - proto: InstituteCommandMODSuit
+    price: 100
+  - proto: InstituteCommandUniform
+    price: 10
+  - proto: InstituteCourserArmor
+    price: 100
+  - proto: InstituteCourserBoots
+    price: 10
+  - proto: InstituteCourserGloves
+    price: 10
+  - proto: InstituteCourserHelmet
+    price: 100
+  - proto: InstituteCourserLeatherUniform
+    price: 10
+  - proto: InstituteCourserMask
+    price: 100
+  - proto: InstituteDirectorCoat
+    price: 100
+  - proto: InstituteResearchMODSuit
+    price: 100
+  - proto: InstituteScientistBeret
+    price: 10
+  - proto: InstituteScientistLabcoat
+    price: 10
+  - proto: InstituteScientistShoes
+    price: 10
+  - proto: InstituteScientistUniform
+    price: 10
+  - proto: InstituteSecurityArmorVest
+    price: 100
+  - proto: InstituteSecurityBoots
+    price: 10
+  - proto: InstituteSecurityGloves
+    price: 10
+  - proto: InstituteSecurityHelmet
+    price: 100
+  - proto: InstituteSecurityMODSuit
+    price: 100
+  - proto: InstituteSecurityMask
+    price: 100
+  - proto: InstituteSecurityUniform
+    price: 10
+  - proto: N14ClothingBootsCombatMK2Filled
+    price: 10
+  - proto: N14ClothingHeadHatHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatSpecHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatTownGuard
+    price: 10
+  - proto: N14ClothingHeadHatVaultBlueprintHelmetMetal
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodie
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieCover
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieVisor
+    price: 10
+  - proto: N14ClothingOuterChitinArmor
+    price: 10
+  - proto: N14ClothingOuterCombatArmorRCMP
+    price: 50
+  - proto: N14ClothingOuterLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterLightLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterPoliceCombat
+    price: 10
+  - proto: N14ClothingOuterPoliceVest
+    price: 10
+  - proto: N14ClothingOuterReinforcedLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterSheriffVest
+    price: 10
+  - proto: N14ClothingOuterTownGuardLight
+    price: 10
+  - proto: N14ClothingOuterTownGuardRiot
+    price: 10
+  - proto: N14ClothingOuterVestLeather
+    price: 10
+  - proto: N14ClothingOuterVestRCMP
+    price: 10
+  - proto: ReclamationClothingModsuitInstitute
+    price: 100
+- type: storeCategoryStructured
+  id: ReclamationSupplyInstituteAmmunition
+  name: Ammunition
+  entries:
+  - proto: ClipMagazine308Rifle
+    price: 2
+  - proto: LongMagazine556Rifle
+    price: 2
+  - proto: Magazine545Rifle
+    price: 2
+  - proto: Magazine556Rifle
+    price: 2
+  - proto: Magazine762AmmoShort
+    price: 2
+  - proto: Magazine762Rifle
+    price: 2
+  - proto: MagazineBox545
+    price: 10
+  - proto: N14AmmoBox10mm
+    price: 10
+  - proto: N14AmmoBox127
+    price: 10
+  - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox22lr
+    price: 10
+  - proto: N14AmmoBox308
+    price: 10
+  - proto: N14AmmoBox357
+    price: 10
+  - proto: N14AmmoBox44Magnum
+    price: 10
+  - proto: N14AmmoBox45
+    price: 10
+  - proto: N14AmmoBox45-70
+    price: 10
+  - proto: N14AmmoBox556
+    price: 10
+  - proto: N14AmmoBox762
+    price: 10
+  - proto: N14AmmoBox9mm
+    price: 10
+  - proto: N14MagazinePistol10mm
+    price: 2
+  - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 2
+  - proto: N14MagazineSMG10mm
+    price: 2
+  - proto: N14MagazineSMG12mm
+    price: 2
+  - proto: N14MagazineSMG9mm
+    price: 2
+  - proto: N14MagazineSMG9mmDrum
+    price: 2
+  - proto: N14SpeedLoader357
+    price: 2
+- type: storeCategoryStructured
+  id: ReclamationSupplyInstituteMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyInstituteOthergear
+  name: Other gear
+  entries:
+  - proto: EmpGrenade
+    price: 50
+  - proto: EncryptionKeyInstitute
+    price: 10
+  - proto: ForgedKitMolotov
+    price: 50
+  - proto: GrenadeIncendiary
+    price: 50
+  - proto: GrenadeShrapnel
+    price: 50
+  - proto: InstituteAcidifierImplanter
+    price: 50
+  - proto: MisfitsGrenadeFragDefensive
+    price: 50
+  - proto: MisfitsGrenadeImpact
+    price: 50
+  - proto: MisfitsGrenadePlasma
+    price: 50
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: SmokeGrenade
+    price: 20
+  - proto: TearGasGrenade
+    price: 50
+- type: storePresetStructured
+  id: ReclamationSupplyInstituteBuy
+  currency: 'Supply points: Institute'
+  categories:
+  - ReclamationSupplyInstituteWeapons
+  - ReclamationSupplyInstituteArmor
+  - ReclamationSupplyInstituteAmmunition
+  - ReclamationSupplyInstituteMedicalandfood
+  - ReclamationSupplyInstituteOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyInstituteCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyInstituteSell
+  currency: 'Supply points: Institute'
+  categories:
+  - ReclamationSupplyInstituteCrates
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyTriggermenVendor
+  name: triggermen supply vendor
+  description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
+    or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
+    equipment cannot be sold. Rank equipment is restricted to your rank and below.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#7d7062'
+    - sprite: EstacaoPirata/Objects/Misc/cards.rsi
+      state: sc_Ace_of_Spades_black
+      scale: 0.375,0.375
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      TriggermenBoss: 60
+      TriggermenSotocapo: 50
+      TriggermenConsigliere: 50
+      TriggermenEnforcer: 40
+      TriggermenSoldato: 30
+      Triggerman: 20
+      TriggermenCommissionMember: 70
+      TriggermenCapoDeiCapi: 80
+    equipmentRanks:
+      TriggermenDonMantle: 60
+      N14ClothingUniformJumpsuitPreWarManager: 20
+      TriggermenRazorFlatcap: 20
+      TriggermenArmoredVest: 20
+      N14ClothingShoesBlack: 20
+      N14ClothingHandsGlovesBlackLeather: 20
+      N14ClothingBackpackSatchelExplorer: 20
+      N14WeaponPistol45Colt: 20
+      N14WeaponLMGAutoRifle: 60
+      N14BaseBallBat: 20
+      TriggermenBrassKnuckles: 20
+      TriggermenOvercoat: 20
+      N14WeaponSMG45: 40
+    requireFactionJob: false
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Triggermen'
+    buyPresets:
+    - ReclamationSupplyTriggermenBuy
+    sellPresets:
+    - ReclamationSupplyTriggermenSell
+  - type: AccessReader
+    access:
+    - - Triggermen
+- type: storeCategoryStructured
+  id: ReclamationSupplyTriggermenWeapons
+  name: Weapons
+  entries:
+  - proto: N14BaseBallBat
+    price: 10
+  - proto: N14CombatKnife
+    price: 10
+  - proto: N14Hatchet
+    price: 25
+  - proto: N14Machete
+    price: 25
+  - proto: N14SledgeHammer
+    price: 50
+  - proto: N14WeaponDesertEagle44
+    price: 50
+  - proto: N14WeaponLMGAutoRifle
+    price: 100
+  - proto: N14WeaponPistol10mm
+    price: 10
+  - proto: N14WeaponPistol12mm
+    price: 10
+  - proto: N14WeaponPistol22lr
+    price: 10
+  - proto: N14WeaponPistol45Colt
+    price: 50
+  - proto: N14WeaponPistol9mm
+    price: 10
+  - proto: N14WeaponPistol9mmChinese
+    price: 10
+  - proto: N14WeaponPistolM1911
+    price: 10
+  - proto: N14WeaponPistolWebley
+    price: 25
+  - proto: N14WeaponRevolver357Detective
+    price: 10
+  - proto: N14WeaponRevolver44Magnum
+    price: 50
+  - proto: N14WeaponRevolver45-70Hunter
+    price: 50
+  - proto: N14WeaponRevolver9mm
+    price: 10
+  - proto: N14WeaponRifle10mmM1Carbine
+    price: 25
+  - proto: N14WeaponRifle308Battle
+    price: 25
+  - proto: N14WeaponRifle556Carbine
+    price: 50
+  - proto: N14WeaponRifle556R91
+    price: 50
+  - proto: N14WeaponRifle556Service
+    price: 25
+  - proto: N14WeaponRifle762Canadian
+    price: 50
+  - proto: N14WeaponRifle762M14
+    price: 50
+  - proto: N14WeaponRifle762Rangemaster
+    price: 50
+  - proto: N14WeaponRifleAk112
+    price: 100
+  - proto: N14WeaponRifleM1Garand
+    price: 25
+  - proto: N14WeaponSMG10mm
+    price: 50
+  - proto: N14WeaponSMG10mmChinese
+    price: 25
+  - proto: N14WeaponSMG12mm
+    price: 50
+  - proto: N14WeaponSMG12mmAdvancedCanadian
+    price: 100
+  - proto: N14WeaponSMG45
+    price: 50
+  - proto: N14WeaponSMG9mm
+    price: 25
+  - proto: N14WeaponSMG9mmCanadian
+    price: 50
+  - proto: N14WeaponSMGPPSh41
+    price: 100
+  - proto: N14WeaponShotgun
+    price: 10
+  - proto: N14WeaponShotgunAuto
+    price: 50
+  - proto: N14WeaponShotgunCanadian
+    price: 100
+  - proto: N14WeaponShotgunCaravan
+    price: 25
+  - proto: N14WeaponShotgunDoubleBarrel
+    price: 10
+  - proto: N14WeaponShotgunSawedOff
+    price: 10
+  - proto: N14WeaponShotgunTrench
+    price: 25
+  - proto: N14WeaponSniper308LeverRifle
+    price: 25
+  - proto: N14WeaponSniper308Ross
+    price: 25
+  - proto: N14WeaponSniper44LeverCarbine
+    price: 25
+  - proto: N14WeaponSniper44LeverShortCarbine
+    price: 25
+  - proto: N14WeaponSniper45-70BrushGun
+    price: 50
+  - proto: N14WeaponSniperCowboyRepeater
+    price: 10
+  - proto: N14WeaponSniperHunting
+    price: 10
+  - proto: N14WeaponSniperPaciencia
+    price: 25
+  - proto: TriggermenRazorFlatcap
+    price: 50
+- type: storeCategoryStructured
+  id: ReclamationSupplyTriggermenArmor
+  name: Armor
+  entries:
+  - proto: N14ClothingBackpackSatchelExplorer
+    price: 10
+  - proto: N14ClothingHandsGlovesBlackLeather
+    price: 10
+  - proto: N14ClothingHeadHatHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatSpecHelmetRCMP
+    price: 10
+  - proto: N14ClothingHeadHatTownGuard
+    price: 10
+  - proto: N14ClothingHeadHatVaultBlueprintHelmetMetal
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodie
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieCover
+    price: 10
+  - proto: N14ClothingHeadTownGuardBrodieVisor
+    price: 10
+  - proto: N14ClothingOuterChitinArmor
+    price: 10
+  - proto: N14ClothingOuterCombatArmorRCMP
+    price: 50
+  - proto: N14ClothingOuterLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterLightLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterPoliceCombat
+    price: 10
+  - proto: N14ClothingOuterPoliceVest
+    price: 10
+  - proto: N14ClothingOuterReinforcedLeatherArmor
+    price: 10
+  - proto: N14ClothingOuterSheriffVest
+    price: 10
+  - proto: N14ClothingOuterTownGuardLight
+    price: 10
+  - proto: N14ClothingOuterTownGuardRiot
+    price: 10
+  - proto: N14ClothingOuterVestLeather
+    price: 10
+  - proto: N14ClothingOuterVestRCMP
+    price: 10
+  - proto: N14ClothingShoesBlack
+    price: 10
+  - proto: N14ClothingUniformJumpsuitPreWarManager
+    price: 10
+  - proto: TriggermenArmoredVest
+    price: 50
+  - proto: TriggermenBrassKnuckles
+    price: 10
+  - proto: TriggermenDonMantle
+    price: 10
+  - proto: TriggermenHeadset
+    price: 10
+  - proto: TriggermenOvercoat
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyTriggermenAmmunition
+  name: Ammunition
+  entries:
+  - proto: ClipMagazine308Rifle
+    price: 2
+  - proto: LongMagazine556Rifle
+    price: 2
+  - proto: Magazine308Rifle
+    price: 2
+  - proto: Magazine45SubMachineGun
+    price: 2
+  - proto: Magazine545Rifle
+    price: 2
+  - proto: Magazine556Rifle
+    price: 2
+  - proto: Magazine762AmmoShort
+    price: 2
+  - proto: Magazine762Rifle
+    price: 2
+  - proto: MagazineBox308
+    price: 10
+  - proto: MagazineBox45
+    price: 10
+  - proto: MagazineBox545
+    price: 10
+  - proto: N14AmmoBox10mm
+    price: 10
+  - proto: N14AmmoBox127
+    price: 10
+  - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox22lr
+    price: 10
+  - proto: N14AmmoBox308
+    price: 10
+  - proto: N14AmmoBox357
+    price: 10
+  - proto: N14AmmoBox44Magnum
+    price: 10
+  - proto: N14AmmoBox45
+    price: 10
+  - proto: N14AmmoBox45-70
+    price: 10
+  - proto: N14AmmoBox556
+    price: 10
+  - proto: N14AmmoBox762
+    price: 10
+  - proto: N14AmmoBox9mm
+    price: 10
+  - proto: N14MagazinePistol10mm
+    price: 2
+  - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 2
+  - proto: N14MagazineSMG10mm
+    price: 2
+  - proto: N14MagazineSMG12mm
+    price: 2
+  - proto: N14MagazineSMG9mm
+    price: 2
+  - proto: N14MagazineSMG9mmDrum
+    price: 2
+  - proto: N14SpeedLoader357
+    price: 2
+- type: storeCategoryStructured
+  id: ReclamationSupplyTriggermenMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyTriggermenOthergear
+  name: Other gear
+  entries:
+  - proto: EmpGrenade
+    price: 50
+  - proto: EncryptionKeyTriggermen
+    price: 10
+  - proto: ForgedKitMolotov
+    price: 50
+  - proto: GrenadeIncendiary
+    price: 50
+  - proto: GrenadeShrapnel
+    price: 50
+  - proto: MisfitsGrenadeFragDefensive
+    price: 50
+  - proto: MisfitsGrenadeImpact
+    price: 50
+  - proto: MisfitsGrenadePlasma
+    price: 50
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 50
+  - proto: SmokeGrenade
+    price: 20
+  - proto: TearGasGrenade
+    price: 50
+- type: storePresetStructured
+  id: ReclamationSupplyTriggermenBuy
+  currency: 'Supply points: Triggermen'
+  categories:
+  - ReclamationSupplyTriggermenWeapons
+  - ReclamationSupplyTriggermenArmor
+  - ReclamationSupplyTriggermenAmmunition
+  - ReclamationSupplyTriggermenMedicalandfood
+  - ReclamationSupplyTriggermenOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyTriggermenCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyTriggermenSell
+  currency: 'Supply points: Triggermen'
+  categories:
+  - ReclamationSupplyTriggermenCrates

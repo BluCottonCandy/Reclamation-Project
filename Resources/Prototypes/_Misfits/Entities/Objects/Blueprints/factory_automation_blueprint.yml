@@ -1,6 +1,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: MisfitsBlueprintFactoryAutomation
+  categories: [HideSpawnMenu]
   name: Vault-Tec automation schematic
   description: >
     A Vault-Tec engineering manual covering the machine boards for the factory automation line.

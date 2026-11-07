@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Supplies;
 using System.Linq;
 using Content.Shared._NC.Trade;
 using Content.Shared.Stacks;
@@ -43,6 +44,7 @@ public sealed partial class NcStoreLogicSystem
 
         foreach (var ent in items)
         {
+            if (_ents.HasComponent<FactionSupplyPurchaseComponent>(ent)) continue;
             if (!_ents.EntityExists(ent))
                 continue;
             if (_ents.TryGetComponent(ent, out StackComponent? st))

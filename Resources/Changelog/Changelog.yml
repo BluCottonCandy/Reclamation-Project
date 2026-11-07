@@ -13994,3 +13994,12 @@ Entries:
   id: 6606
   time: '2026-11-07T12:28:29.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/135
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Mute characters no longer receive repeated cannot-speak warnings from
+        automatic symptom speech checks.
+  id: 6607
+  time: '2026-11-07T12:28:56.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/136

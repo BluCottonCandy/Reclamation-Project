@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Supplies;
 using Content.Shared._NC.Trade;
 
 namespace Content.Server._NC.Trade;
@@ -6,6 +7,14 @@ public sealed partial class NcStoreLogicSystem
 {
     public bool TryMassSellFromContainer(EntityUid machine, NcStoreComponent store, EntityUid user, EntityUid container)
     {
+        if (HasComp<FactionSupplyVendorComponent>(machine))
+        {
+            if (!Exists(container)) return false;
+            foreach (var listing in store.Listings)
+                if (listing.Mode == StoreMode.Sell && FactionSupplySystem.IsCrateProduct(listing.ProductEntity) && MetaData(container).EntityPrototype?.ID == listing.ProductEntity)
+                    return TrySellFromContainer(listing.Id, machine, store, user, container);
+            return false;
+        }
         if (store.Listings.Count == 0)
             return false;
 

@@ -1,3 +1,5 @@
+using Content.Server._ReclamationProject.Supplies;
+using Content.Shared._Misfits.Crafting;
 using Content.Server.Mail.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Chemistry.Components;
@@ -155,6 +157,8 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
 
     public void Decommission(EntityUid uid)
     {
+        if (HasComp<BlueprintComponent>(uid)) { Del(uid); return; }
+        if (HasComp<FactionSupplyCrateComponent>(uid)) { Del(uid); return; }
         // Delete parcels without opening them; the mail teleporter machine is deliberately retained.
         if (HasComp<MailComponent>(uid)) { Del(uid); return; }
         NormalizeStims(uid);

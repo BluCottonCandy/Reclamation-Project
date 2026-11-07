@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 11/07/2026 09:21:40
-  entityCount: 47733
+  entityCount: 47730
 maps:
 - 1
 grids:
@@ -398996,58 +398996,6 @@ entities:
     - type: DeviceNetwork
       receiveFrequency: 1280
       address: 1FCC-7277
-- proto: N14BlueprintNCRAmmoT1
-  entities:
-  - uid: 16989
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 16988
-    - type: EmitSoundOnCollide
-      nextSound: -18170.648496
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
-- proto: N14BlueprintNCRAmmoT2
-  entities:
-  - uid: 16990
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 16988
-    - type: EmitSoundOnCollide
-      nextSound: -18170.648496
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
-- proto: N14BlueprintNCRAmmoT3
-  entities:
-  - uid: 16991
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 16988
-    - type: EmitSoundOnCollide
-      nextSound: -18170.648496
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
-- proto: N14BlueprintNCRAmmoT4
-  entities:
-  - uid: 16992
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 16988
-    - type: EmitSoundOnCollide
-      nextSound: -18170.648496
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
 - proto: N14BoneGel
   entities:
   - uid: 8028
@@ -645350,27 +645298,11 @@ entities:
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
-          ents:
-          - 16991
-          - 16989
-          - 16992
-          - 16990
+          ents: []
           showEnts: False
           occludes: True
     - type: Storage
-      storedItems:
-        16991:
-          position: 0,0
-          _rotation: South
-        16989:
-          position: 2,0
-          _rotation: South
-        16992:
-          position: 4,0
-          _rotation: South
-        16990:
-          position: 6,0
-          _rotation: South
+      storedItems: {}
     - type: MaterialStorage
       materialWhiteList:
       - Lead
@@ -712380,4 +712312,12 @@ entities:
       linearDamping: 0
       canCollide: False
       angularDamping: 0
+- proto: ReclamationSupplyRailroadVendor
+  entities:
+  - uid: 47734
+    components:
+    - type: Transform
+      pos: -169.5,-51.5
+      parent: 2
+      anchored: True
 ...

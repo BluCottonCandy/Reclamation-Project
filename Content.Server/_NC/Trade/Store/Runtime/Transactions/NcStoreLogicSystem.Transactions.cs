@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Supplies;
 using Content.Shared._NC.Trade;
 using Robust.Shared.Prototypes;
 
@@ -16,13 +17,14 @@ public sealed partial class NcStoreLogicSystem
         if (!_protos.TryIndex<EntityPrototype>(listing.ProductEntity, out var proto))
             return false;
 
+        if (!EntityManager.System<FactionSupplySystem>().CanPurchase(machine, user, listing.ProductEntity)) return false;
         _inventory.InvalidateInventoryCache(user);
         var snap = _inventory.BuildInventorySnapshot(user);
 
         if (!TryPickCurrencyForBuy(store, listing, snap, out var currency, out var unitPrice, out var balance))
             return false;
 
-        unitPrice = ApplyCharismaBuyPrice(user, unitPrice);
+        if (!FactionSupplySystem.IsCurrency(currency)) unitPrice = ApplyCharismaBuyPrice(user, unitPrice);
 
         var unitsPerPurchase = Math.Max(1, listing.UnitsPerPurchase);
 
@@ -88,6 +90,14 @@ public sealed partial class NcStoreLogicSystem
     {
         if (store == null)
             return false;
+        if (HasComp<FactionSupplyVendorComponent>(machine))
+        {
+            if (!EntityManager.System<FactionSupplySystem>().CanUseVendor(machine, user)) return false;
+            if (count <= 0 || !store.ListingIndex.TryGetValue(NcStoreComponent.MakeListingKey(StoreMode.Sell, listingId), out var supply)
+                || !FactionSupplySystem.IsCrateProduct(supply.ProductEntity)
+                || !TryPickCurrencyForSell(store, supply, out var currency, out _)) return false;
+            return EntityManager.System<FactionSupplySystem>().RedeemCrate(user, machine, currency, product: supply.ProductEntity);
+        }
         return TrySellScenario(listingId, store, user, user, count, out _);
     }
 
@@ -100,8 +110,14 @@ public sealed partial class NcStoreLogicSystem
         int count = 1
     )
     {
-        if (store == null)
-            return false;
+        if (store == null) return false;
+        if (HasComp<FactionSupplyVendorComponent>(machine))
+        {
+            if (count <= 0 || !store.ListingIndex.TryGetValue(NcStoreComponent.MakeListingKey(StoreMode.Sell, listingId), out var supply)
+                || !FactionSupplySystem.IsCrateProduct(supply.ProductEntity)
+                || !TryPickCurrencyForSell(store, supply, out var currency, out _)) return false;
+            return EntityManager.System<FactionSupplySystem>().RedeemCrate(user, machine, currency, container, supply.ProductEntity);
+        }
         return TrySellScenario(listingId, store, user, container, count, out var sold) &&
             LogSellFromContainer(sold, listingId, store, container, user);
     }

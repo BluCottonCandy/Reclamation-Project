@@ -15,6 +15,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEnclaveArmor
+  categories: [HideSpawnMenu]
   name: Enclave Advanced Armor Schematics
   description: Classified Enclave fabrication plans for X-series advanced power armor and Zulu Squad combat gear. Covers the full power armor rig - shell, servo assemblies, helmet and power systems. Restricted distribution.
   components:
@@ -30,6 +31,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEnclaveWeapons
+  categories: [HideSpawnMenu]
   name: Enclave Energy Armaments Schematics
   description: Enclave ordnance schematics for the plasma and directed-energy arms carried by remnant forces - plasma rifles and sidearms, wattz and AER pattern lasers, and pulse weaponry.
   components:
@@ -54,6 +56,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintEnclaveAmmo
+  categories: [HideSpawnMenu]
   name: Enclave Energy Cell Schematics
   description: Enclave assembly notes for the cells that feed its energy arms - plasma cartridges, microfusion cells and electron charge packs.
   components:

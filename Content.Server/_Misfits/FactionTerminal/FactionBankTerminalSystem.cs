@@ -107,7 +107,6 @@ public sealed class FactionBankTerminalSystem : EntitySystem
 
         // Store key on component so shutdown can look it up without hitting the transform.
         ent.Comp.PlacementKey = key;
-        Dirty(ent);
 
         if (_placements.ContainsKey(key))
             return; // already saved (e.g. same tile re-used)
@@ -184,7 +183,6 @@ public sealed class FactionBankTerminalSystem : EntitySystem
                 if (TryComp<FactionBankTerminalComponent>(spawnedUid, out var atmComp))
                 {
                     atmComp.PlacementKey = key;
-                    Dirty(spawnedUid, atmComp);
                 }
                 _log.Debug($"Respawned ATM '{record.PrototypeId}' at {key}");
             }

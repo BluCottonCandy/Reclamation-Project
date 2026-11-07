@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/24/2026 07:45:02
-  entityCount: 20747
+  entityCount: 20748
 maps:
 - 1
 grids:
@@ -36440,7 +36440,7 @@ entities:
     - type: Transform
       parent: 2
       pos: -1.8215461,46.57679
-- proto: MisfitsCrateAluminiumBlueprintsEnclave
+- proto: N14CrateAluminium
   entities:
   - uid: 16036
     components:
@@ -114002,4 +114002,12 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 1.5,5.5
+- proto: ReclamationSupplyInstituteVendor
+  entities:
+  - uid: 20870
+    components:
+    - type: Transform
+      pos: 19.5,24.5
+      parent: 2
+      anchored: True
 ...

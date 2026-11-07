@@ -7,7 +7,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/28/2026 09:45:14
-  entityCount: 557
+  entityCount: 558
 maps:
 - 1
 grids:
@@ -3340,4 +3340,11 @@ entities:
     - type: Transform
       parent: 1
       pos: 11.5,11.5
+- proto: ReclamationSupplyCrateSpawner
+  entities:
+  - uid: 558
+    components:
+    - type: Transform
+      parent: 1
+      pos: -13.5,12.5
 ...

@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/24/2026 07:44:40
-  entityCount: 294459
+  entityCount: 294460
 maps:
 - 1
 grids:
@@ -1401831,14 +1401831,14 @@ entities:
     - type: Transform
       parent: 1
       pos: -153.07411,103.52866
-- proto: MisfitsCrateAluminiumBlueprints80s
+- proto: N14CrateAluminium
   entities:
   - uid: 203885
     components:
     - type: Transform
       parent: 1
       pos: -75.5,-288.5
-- proto: MisfitsCrateAluminiumBlueprintsBoS
+- proto: N14CrateAluminium
   entities:
   - uid: 78191
     components:
@@ -1401850,14 +1401850,14 @@ entities:
     - type: Transform
       parent: 1
       pos: -76.5,-288.5
-- proto: MisfitsCrateAluminiumBlueprintsEnclave
+- proto: N14CrateAluminium
   entities:
   - uid: 203887
     components:
     - type: Transform
       parent: 1
       pos: -77.5,-288.5
-- proto: MisfitsCrateAluminiumBlueprintsLegion
+- proto: N14CrateAluminium
   entities:
   - uid: 73911
     components:
@@ -1401869,7 +1401869,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -75.5,-289.5
-- proto: MisfitsCrateAluminiumBlueprintsNCR
+- proto: N14CrateAluminium
   entities:
   - uid: 4485
     components:
@@ -1401881,7 +1401881,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -76.5,-289.5
-- proto: MisfitsCrateAluminiumBlueprintsTown
+- proto: N14CrateAluminium
   entities:
   - uid: 1775
     components:
@@ -1401903,7 +1401903,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -122.5,-195.5
-- proto: MisfitsCrateAluminiumBlueprintsTribe
+- proto: N14CrateAluminium
   entities:
   - uid: 203890
     components:
@@ -1401941,7 +1401941,7 @@ entities:
           ent: null
           showEnts: False
           occludes: True
-- proto: MisfitsCrateAluminiumBlueprintsVault
+- proto: N14CrateAluminium
   entities:
   - uid: 203891
     components:
@@ -1421883,50 +1421883,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 20.377207,19.92361
-- proto: N14BlueprintNCRAmmoT1
-  entities:
-  - uid: 161643
-    components:
-    - type: Transform
-      parent: 161642
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
-    - type: Unremoveable
-- proto: N14BlueprintNCRAmmoT2
-  entities:
-  - uid: 161656
-    components:
-    - type: Transform
-      parent: 161642
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
-    - type: Unremoveable
-- proto: N14BlueprintNCRAmmoT3
-  entities:
-  - uid: 161657
-    components:
-    - type: Transform
-      parent: 161642
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
-    - type: Unremoveable
-- proto: N14BlueprintNCRAmmoT4
-  entities:
-  - uid: 161658
-    components:
-    - type: Transform
-      parent: 161642
-    - type: Physics
-      linearDamping: 0
-      canCollide: False
-      angularDamping: 0
-    - type: Unremoveable
 - proto: N14BonesetterRusted
   entities:
   - uid: 261915
@@ -1488552,7 +1488508,7 @@ entities:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
-      pos: -78.5,-125.5
+      pos: -79.5,-124.5
     - type: Fixtures
       fixtures: {}
   - uid: 89413
@@ -1544679,7 +1544635,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: -78.5,-125.5
+      pos: -79.5,-124.5
   - uid: 97211
     components:
     - type: Transform
@@ -2178337,27 +2178293,11 @@ entities:
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
-          ents:
-          - 161643
-          - 161656
-          - 161657
-          - 161658
+          ents: []
           showEnts: False
           occludes: True
     - type: Storage
-      storedItems:
-        161643:
-          position: 0,0
-          _rotation: South
-        161656:
-          position: 2,0
-          _rotation: South
-        161657:
-          position: 4,0
-          _rotation: South
-        161658:
-          position: 6,0
-          _rotation: South
+      storedItems: {}
     - type: MaterialStorage
       materialWhiteList:
       - Lead
@@ -2334915,4 +2334855,44 @@ entities:
     - type: Transform
       pos: -131.5,-219.5
       parent: 1
+- proto: ReclamationSupplyBrotherhoodVendor
+  entities:
+  - uid: 294854
+    components:
+    - type: Transform
+      pos: -69.5,179.5
+      parent: 1
+      anchored: True
+- proto: ReclamationSupplyTownVendor
+  entities:
+  - uid: 294855
+    components:
+    - type: Transform
+      pos: -78.5,-125.5
+      parent: 1
+      anchored: True
+- proto: ReclamationSupplyMinutemenVendor
+  entities:
+  - uid: 294856
+    components:
+    - type: Transform
+      pos: -118.5,-216.5
+      parent: 1
+      anchored: True
+- proto: ReclamationSupplyForgedVendor
+  entities:
+  - uid: 294857
+    components:
+    - type: Transform
+      pos: -164.5,103.5
+      parent: 1
+      anchored: True
+- proto: ReclamationSupplyTriggermenVendor
+  entities:
+  - uid: 294858
+    components:
+    - type: Transform
+      pos: -97.5,10.5
+      parent: 1
+      anchored: True
 ...

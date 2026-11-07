@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Supplies;
 using Content.Shared._NC.Trade;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Stacks;
@@ -23,6 +24,7 @@ public sealed class NcStoreCurrencySystem : EntitySystem
         base.Initialize();
         _handlers.Clear();
         _handlerCache.Clear();
+        _handlers.Add(new FactionSupplyCurrencyHandler(EntityManager.System<FactionSupplySystem>()));
         _handlers.Add(new StackCurrencyHandler(_ents, _hands, _inventory, _protos, _stacks, _xform));
     }
 

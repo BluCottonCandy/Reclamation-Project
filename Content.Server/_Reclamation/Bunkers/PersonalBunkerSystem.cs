@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Supplies;
 using Content.Shared.Store.Components;
 using System.IO;
 using System.Linq;
@@ -65,6 +66,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popups = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly BunkerDisplayWeaponSystem _displays = default!;
+    [Dependency] private readonly FactionBlueprintRemovalSystem _blueprints = default!;
 
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
 
@@ -261,6 +263,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
                 }
                 // Loading can restore prototype components without raising MapInit again.
                 // Include mounted/equipped items and older saves without display markers.
+                _blueprints.PurgeTree(grid);
                 var belongings = GetRoomBelongings(grid);
                 foreach (var item in belongings)
                 {
@@ -497,6 +500,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
             var manifest = ReadManifest();
             foreach (var room in roomsToSave)
             {
+                _blueprints.PurgeTree(room.Grid);
                 var belongings = GetRoomBelongings(room.Grid);
                 // Autosaving an occupied room must never change weapons being used inside it.
                 // Only abandoned room belongings become decorations after the last occupant leaves.

@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Supplies;
 using System.Numerics;
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
@@ -120,6 +121,8 @@ namespace Content.Shared.Stacks
             if (string.IsNullOrEmpty(recipientStack.StackTypeId) || !recipientStack.StackTypeId.Equals(donorStack.StackTypeId))
                 return false;
 
+            // Do not launder faction-issued supplies by merging them into sellable stacks.
+            if (HasComp<FactionSupplyPurchaseComponent>(donor) != HasComp<FactionSupplyPurchaseComponent>(recipient)) return false;
             transferred = Math.Min(donorStack.Count, GetAvailableSpace(recipientStack));
             SetCount(donor, donorStack.Count - transferred, donorStack);
             SetCount(recipient, recipientStack.Count + transferred, recipientStack);
@@ -338,6 +341,7 @@ namespace Content.Shared.Stacks
 
             if (insertStack.StackTypeId != targetStack.StackTypeId)
                 return false;
+            if (HasComp<FactionSupplyPurchaseComponent>(insertEnt) != HasComp<FactionSupplyPurchaseComponent>(targetEnt)) return false;
 
             var available = GetAvailableSpace(targetStack);
 

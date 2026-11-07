@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Supplies;
 using Content.Shared._NC.Trade;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -452,6 +453,7 @@ public void ScanInventoryItems(EntityUid root, List<EntityUid> itemsBuffer)
 
     public bool IsProtectedFromDirectSale(EntityUid root, EntityUid item)
     {
+        if (ContainsFactionSupplies(item)) return true;
         if (!_ents.HasComponent<InventoryComponent>(root))
             return false;
 
@@ -461,6 +463,18 @@ public void ScanInventoryItems(EntityUid root, List<EntityUid> itemsBuffer)
             return false;
 
         return _ents.HasComponent<ClothingComponent>(item);
+    }
+
+    // Do not sell an ordinary bag/crate with issued equipment hidden inside it.
+    private bool ContainsFactionSupplies(EntityUid item, int depth = 0)
+    {
+        if (_ents.HasComponent<FactionSupplyPurchaseComponent>(item)) return true;
+        if (!_ents.TryGetComponent(item, out ContainerManagerComponent? manager)) return false;
+        if (depth >= 32) return true;
+        foreach (var container in manager.Containers.Values)
+        foreach (var child in container.ContainedEntities)
+            if (ContainsFactionSupplies(child, depth + 1)) return true;
+        return false;
     }
 
     private bool IsDirectChildOf(EntityUid root, EntityUid item) =>

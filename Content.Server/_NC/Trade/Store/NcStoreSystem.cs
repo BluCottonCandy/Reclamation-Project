@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Supplies;
 using System.Numerics;
 using Content.Server.Popups;
 using Content.Server.Storage.Components;
@@ -38,6 +39,7 @@ public sealed class NcStoreSystem : EntitySystem
 
     public bool CanUseStore(EntityUid store, NcStoreComponent comp, EntityUid user)
     {
+        if (!EntityManager.System<FactionSupplySystem>().CanUseVendor(store, user)) return false;
         if (!Exists(user))
             return false;
 
@@ -121,6 +123,12 @@ public sealed class NcStoreSystem : EntitySystem
         return true;
     }
 
+    private bool TryGetPulledSaleCrate(EntityUid machine, EntityUid actor, out EntityUid crate, out string failMessage)
+    {
+        if (!HasComp<FactionSupplyVendorComponent>(machine)) return TryGetPulledClosedCrate(actor, out crate, out failMessage);
+        failMessage = Loc.GetString("reclamation-supply-hold-crate");
+        return EntityManager.System<FactionSupplySystem>().TryGetPulledCrate(actor, out crate);
+    }
     private bool TryGetPulledClosedCrate(EntityUid actor, out EntityUid crate, out string failMessage)
     {
         crate = default;
@@ -214,9 +222,28 @@ public sealed class NcStoreSystem : EntitySystem
 
         bool ok;
 
-        if (fromCrate)
+        if (HasComp<FactionSupplyVendorComponent>(uid))
         {
-            if (!TryGetPulledClosedCrate(actor, out var crate, out var crateFail))
+            var supplies = EntityManager.System<FactionSupplySystem>();
+            var currency = listing.Cost.Keys.FirstOrDefault(FactionSupplySystem.IsCurrency);
+            if (currency != null && supplies.Balance(currency) >= FactionSupplySystem.Capacity)
+            {
+                PopupFail(actor, Loc.GetString("reclamation-supply-budget-full"));
+                return;
+            }
+            if (fromCrate)
+                ok = supplies.TryGetPulledCrate(actor, out var pulled) && _logic.TrySellFromContainer(listing.Id, uid, comp, actor, pulled);
+            else
+                ok = _logic.TrySell(listing.Id, uid, comp, actor, 1);
+            if (!ok)
+            {
+                PopupFail(actor, Loc.GetString("reclamation-supply-hold-crate"));
+                return;
+            }
+        }
+        else if (fromCrate)
+        {
+            if (!TryGetPulledSaleCrate(uid, actor, out var crate, out var crateFail))
             {
                 PopupFail(actor, crateFail);
                 return;
@@ -259,7 +286,7 @@ public sealed class NcStoreSystem : EntitySystem
             return;
         }
 
-        if (!TryGetPulledClosedCrate(actor, out var crate, out var crateFail))
+        if (!TryGetPulledSaleCrate(uid, actor, out var crate, out var crateFail))
         {
             PopupFail(actor, crateFail);
             return;

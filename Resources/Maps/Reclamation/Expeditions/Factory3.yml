@@ -7,7 +7,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/27/2026 12:15:34
-  entityCount: 770
+  entityCount: 771
 maps:
 - 1
 grids:
@@ -5143,4 +5143,11 @@ entities:
     - type: Physics
       linearDamping: 0
       angularDamping: 0
+- proto: ReclamationSupplyCrateSpawner
+  entities:
+  - uid: 771
+    components:
+    - type: Transform
+      parent: 1
+      pos: -8.5,14.5
 ...

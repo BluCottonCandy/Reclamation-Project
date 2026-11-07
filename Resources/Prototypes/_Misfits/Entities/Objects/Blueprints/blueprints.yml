@@ -32,6 +32,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRWeaponsT1
+  categories: [HideSpawnMenu]
   name: NCR Basic Arms Schematic
   description: Standard NCR quartermaster requisition form for basic sidearms and hunting rifles. Tier 1 weapons.
   components:
@@ -54,6 +55,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRWeaponsT2
+  categories: [HideSpawnMenu]
   name: NCR Military Arms Schematic
   description: NCR military-issue weapon schematics for standard infantry equipment. Tier 2 weapons.
   components:
@@ -82,6 +84,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRWeaponsT3
+  categories: [HideSpawnMenu]
   name: NCR Ranger Arms Schematic
   description: Restricted NCR Ranger equipment schematics. Contains veteran-grade weapon designs. Tier 3 weapons.
   components:
@@ -101,6 +104,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRWeaponsT4
+  categories: [HideSpawnMenu]
   name: NCR Elite Ordnance Schematic
   description: Top-secret NCR heavy weapons designs. Restricted to elite units only. Tier 4 weapons.
   components:
@@ -117,6 +121,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRWeaponsT5
+  categories: [HideSpawnMenu]
   name: NCR Anti-Materiel Ordnance Schema
   description: '"Costs so much scrap metal to make these dang things." Classified anti-materiel rifle schematics, cleared only at the highest NCR command level. Tier 5 weapons.'
   components:
@@ -128,6 +133,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRArmorT1
+  categories: [HideSpawnMenu]
   name: NCR Basic Armor Pattern
   description: NCR standard-issue vest patterns for new recruits. Tier 1 armor.
   components:
@@ -145,6 +151,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRArmorT2
+  categories: [HideSpawnMenu]
   name: NCR Infantry Armor Pattern
   description: NCR reinforced armor patterns for frontline troops. Tier 2 armor.
   components:
@@ -166,6 +173,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRArmorT3
+  categories: [HideSpawnMenu]
   name: NCR Combat Armor Schematic
   description: NCR combat armor manufacturing plans. Ranger-grade protection. Tier 3 armor.
   components:
@@ -190,6 +198,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRArmorT4
+  categories: [HideSpawnMenu]
   name: NCR Elite Armor Blueprint
   description: Classified NCR power armor and elite ranger armor designs. Tier 4 armor.
   components:
@@ -206,6 +215,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRAmmoT1
+  categories: [HideSpawnMenu]
   name: NCR Basic Ammunition Manual
   description: NCR ammunition loading manual for common calibers. Tier 1 ammo.
   components:
@@ -222,6 +232,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRAmmoT2
+  categories: [HideSpawnMenu]
   name: NCR Military Ammunition Manual
   description: NCR military-grade ammunition reloading schematics. Tier 2 ammo.
   components:
@@ -240,6 +251,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRAmmoT3
+  categories: [HideSpawnMenu]
   name: NCR Advanced Ammunition Specs
   description: NCR specifications for high-caliber and specialized ammunition. Tier 3 ammo.
   components:
@@ -271,6 +283,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintNCRAmmoT4
+  categories: [HideSpawnMenu]
   name: NCR Heavy Ordnance Manual
   description: NCR classified heavy ammunition manufacturing procedures. Tier 4 ammo.
   components:
@@ -294,6 +307,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionWeaponsT1
+  categories: [HideSpawnMenu]
   name: Legion Slave Armaments
   description: Crude weapon schematics scratched onto vellum. Basic tribal arms for recruits and slaves. Tier 1 weapons.
   components:
@@ -310,6 +324,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionWeaponsT2
+  categories: [HideSpawnMenu]
   name: Legion Legionnaire Arsenal
   description: War plans for standard legionnaire equipment. Forged weapons for the glory of Caesar. Tier 2 weapons.
   components:
@@ -339,6 +354,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionWeaponsT3
+  categories: [HideSpawnMenu]
   name: Legion Veteran's War Schematics
   description: Battle-tested weapon designs passed down through Legion veterans. Tier 3 weapons.
   components:
@@ -357,6 +373,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionWeaponsT4
+  categories: [HideSpawnMenu]
   name: Legion Legate's War Plans
   description: The personal weapon designs of a Legion Legate. Only the mightiest warriors may wield these. Tier 4 weapons.
   components:
@@ -374,6 +391,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionWeaponsT5
+  categories: [HideSpawnMenu]
   name: Legion Scorcher Schematics
   description: Technical diagrams torn from a pre-war military depot. The Legion's most feared weapon — a military flamethrower reverse-engineered by Legion armorsmiths at great cost. Tier 5 weapons.
   components:
@@ -385,6 +403,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionArmorT1
+  categories: [HideSpawnMenu]
   name: Legion Recruit Wrappings
   description: Instructions for binding Legion recruit armor from scavenged materials. Tier 1 armor.
   components:
@@ -398,6 +417,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionArmorT2
+  categories: [HideSpawnMenu]
   name: Legion Legionnaire Armor Pattern
   description: Armor patterns for standard legionnaires approved by the Centurion. Tier 2 armor.
   components:
@@ -413,6 +433,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionArmorT3
+  categories: [HideSpawnMenu]
   name: Legion Veteran Armor Blueprint
   description: Veteran legionnaire armor designs incorporating salvaged military equipment. Tier 3 armor.
   components:
@@ -432,6 +453,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionArmorT4
+  categories: [HideSpawnMenu]
   name: Legion Centurion Armor Masterwork
   description: The prized armor designs of Legion Centurions, forged from conquered power armor pieces. Tier 4 armor.
   components:
@@ -446,6 +468,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionAmmoT1
+  categories: [HideSpawnMenu]
   name: Legion Powder Measures
   description: Simple ammunition loading instructions for tribal weapons. Tier 1 ammo.
   components:
@@ -462,6 +485,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionAmmoT2
+  categories: [HideSpawnMenu]
   name: Legion Munitions Guide
   description: Legion combat ammunition specifications for frontline troops. Tier 2 ammo.
   components:
@@ -479,6 +503,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionAmmoT3
+  categories: [HideSpawnMenu]
   name: Legion War Munitions
   description: Heavy ammunition manufacturing for veteran legionnaires. Tier 3 ammo.
   components:
@@ -505,6 +530,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintLegionAmmoT4
+  categories: [HideSpawnMenu]
   name: Legion Siege Munitions
   description: Explosive ordnance schematics captured from NCR supply lines. Tier 4 ammo.
   components:
@@ -526,6 +552,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSWeaponsT1
+  categories: [HideSpawnMenu]
   name: BoS Initiate Energy Manual
   description: Brotherhood training manual for basic energy weapon assembly. Tier 1 weapons.
   components:
@@ -542,6 +569,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSWeaponsT2
+  categories: [HideSpawnMenu]
   name: BoS Knight Energy Schematics
   description: Brotherhood Knight-level energy weapon manufacturing specifications. Tier 2 weapons.
   components:
@@ -561,6 +589,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSWeaponsT3
+  categories: [HideSpawnMenu]
   name: BoS Paladin Arsenal Plans
   description: Advanced Brotherhood weapons schematics from the Paladin armory. Tier 3 weapons.
   components:
@@ -576,6 +605,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSWeaponsT4
+  categories: [HideSpawnMenu]
   name: BoS Elder's Vault Blueprints
   description: Pre-war military prototypes recovered from bunker archives. The Brotherhood's most guarded secrets. Tier 4 weapons.
   components:
@@ -591,6 +621,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSWeaponsT5
+  categories: [HideSpawnMenu]
   name: BoS Sentinel Heavy Ordnance Plans
   description: Classified heavy weapons schematics held only by Brotherhood Sentinels. Contains designs for the deadliest energy weapons in the arsenal. Tier 5 weapons.
   components:
@@ -605,6 +636,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSArmorT1
+  categories: [HideSpawnMenu]
   name: BoS Initiate Armor Pattern
   description: Brotherhood standard armor assembly instructions for new initiates. Tier 1 armor.
   components:
@@ -617,6 +649,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSArmorT2
+  categories: [HideSpawnMenu]
   name: BoS Squire Armor Blueprint
   description: Brotherhood armorer's manual for Squire-grade equipment. Tier 2 armor.
   components:
@@ -632,6 +665,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSArmorT3
+  categories: [HideSpawnMenu]
   name: BoS Knight Armor Schematic
   description: Full combat armor assembly plans from the Brotherhood Knight ranks. Tier 3 armor.
   components:
@@ -651,6 +685,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSArmorT4
+  categories: [HideSpawnMenu]
   name: BoS Paladin Power Armor Plans
   description: Brotherhood of Steel power armor assembly plans. The pinnacle of pre-war military technology. Tier 4 armor.
   components:
@@ -664,6 +699,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSAmmoT1
+  categories: [HideSpawnMenu]
   name: BoS Energy Cell Manual
   description: Brotherhood guide to assembling basic energy weapon cells — microfusion and electron charge packs. Tier 1 ammo.
   components:
@@ -681,6 +717,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSAmmoT2
+  categories: [HideSpawnMenu]
   name: BoS Plasma Cell Specs
   description: Brotherhood specifications for plasma weapon ammunition. Tier 2 ammo.
   components:
@@ -697,6 +734,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSAmmoT3
+  categories: [HideSpawnMenu]
   name: BoS Plasma Cartridge Blueprint
   description: Advanced plasma ammunition manufacturing plans from the Scribe archives. Tier 3 ammo.
   components:
@@ -719,6 +757,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSAmmoT4
+  categories: [HideSpawnMenu]
   name: BoS Fusion Core Schematic
   description: Pre-war fusion core assembly plans. Brotherhood's most advanced ammunition technology. Tier 4 ammo.
   components:
@@ -746,6 +785,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownWeaponsT1
+  categories: [HideSpawnMenu]
   name: Wasteland Trader's Catalog
   description: A worn catalog from a caravan trader listing common wasteland weapons. Tier 1 weapons.
   components:
@@ -770,6 +810,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownWeaponsT2
+  categories: [HideSpawnMenu]
   name: Militia Arms Manual
   description: A town militia equipment manual with common military-surplus weapon designs. Tier 2 weapons.
   components:
@@ -799,6 +840,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownWeaponsT3
+  categories: [HideSpawnMenu]
   name: Gun Runner's Prospectus
   description: A Gun Runner weapons catalog with advanced civilian-market armaments. Tier 3 weapons.
   components:
@@ -821,6 +863,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownWeaponsT4
+  categories: [HideSpawnMenu]
   name: RCMP Catalog of Arms
   description: A rare pre-war RCMP catalog of firearm blueprints. Tier 4 weapons.
   components:
@@ -835,6 +878,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownArmorT1
+  categories: [HideSpawnMenu]
   name: Wasteland Tailoring Guide
   description: A simple guide to crafting basic protective wear from wasteland materials. Tier 1 armor.
   components:
@@ -849,6 +893,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownArmorT2
+  categories: [HideSpawnMenu]
   name: Town Guard Armor Pattern
   description: Armor patterns used by town guard and sheriff's deputies. Tier 2 armor.
   components:
@@ -865,6 +910,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownArmorT3
+  categories: [HideSpawnMenu]
   name: Pre-War Security Manual
   description: Pre-war security company armor specifications found in a ruined office. Tier 3 armor.
   components:
@@ -882,6 +928,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownArmorT4
+  categories: [HideSpawnMenu]
   name: Military Surplus Armor Plans
   description: Salvaged pre-war military armor blueprints. The best a town can get. Tier 4 armor.
   components:
@@ -895,6 +942,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownAmmoT1
+  categories: [HideSpawnMenu]
   name: Reloader's Handbook Vol. 1
   description: A basic ammunition reloading handbook for common pistol calibers. Tier 1 ammo.
   components:
@@ -914,6 +962,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownAmmoT2
+  categories: [HideSpawnMenu]
   name: Reloader's Handbook Vol. 2
   description: Intermediate ammunition loading specs for rifle and shotgun calibers. Tier 2 ammo.
   components:
@@ -933,6 +982,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownAmmoT3
+  categories: [HideSpawnMenu]
   name: Reloader's Handbook Vol. 3
   description: Advanced ammunition loading specs for high-caliber rounds. Tier 3 ammo.
   components:
@@ -948,6 +998,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTownAmmoT4
+  categories: [HideSpawnMenu]
   name: Gunsmith's Master Reference
   description: A rare gunsmith's reference containing specs for the heaviest ammunition. Tier 4 ammo.
   components:
@@ -966,6 +1017,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultWeaponsT1
+  categories: [HideSpawnMenu]
   name: Vault-Tec Security Manual
   description: Standard Vault-Tec security equipment handbook. Tier 1 weapons.
   components:
@@ -982,6 +1034,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultWeaponsT2
+  categories: [HideSpawnMenu]
   name: Vault-Tec Advanced Security Protocols
   description: Vault-Tec classified security protocols with advanced weapon specifications. Tier 2 weapons.
   components:
@@ -998,6 +1051,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultWeaponsT3
+  categories: [HideSpawnMenu]
   name: Vault-Tec R&D Energy Weapons File
   description: Vault-Tec Research & Development energy weapon prototypes. Tier 3 weapons.
   components:
@@ -1010,6 +1064,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultWeaponsT4
+  categories: [HideSpawnMenu]
   name: Vault-Tec Experimental Weapons Archive
   description: Top-secret Vault-Tec experimental weapons research. Never meant to leave the vault. Tier 4 weapons.
   components:
@@ -1025,6 +1080,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultArmorT1
+  categories: [HideSpawnMenu]
   name: Vault-Tec Utility Suit Manual
   description: Standard Vault-Tec jumpsuit reinforcement guide. Tier 1 armor.
   components:
@@ -1037,6 +1093,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultArmorT2
+  categories: [HideSpawnMenu]
   name: Vault-Tec Security Armor Specs
   description: Vault-Tec security department armor specifications. Tier 2 armor.
   components:
@@ -1050,6 +1107,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultArmorT3
+  categories: [HideSpawnMenu]
   name: Vault-Tec Combat Armor Blueprint
   description: Pre-war combat armor assembly stored in the Vault's armory database. Tier 3 armor.
   components:
@@ -1063,6 +1121,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultArmorT4
+  categories: [HideSpawnMenu]
   name: Vault-Tec Experimental Armor Project
   description: Vault-Tec experimental armor prototypes from the science division. Tier 4 armor.
   components:
@@ -1082,6 +1141,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultAmmoT1
+  categories: [HideSpawnMenu]
   name: Vault-Tec Ammunition Guide
   description: Standard Vault-Tec ammunition manufacturing procedures. Tier 1 ammo.
   components:
@@ -1101,6 +1161,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultAmmoT2
+  categories: [HideSpawnMenu]
   name: Vault-Tec Energy Cell Manual
   description: Vault-Tec guide to assembling energy weapon power cells. Tier 2 ammo.
   components:
@@ -1112,6 +1173,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultAmmoT3
+  categories: [HideSpawnMenu]
   name: Vault-Tec Plasma Cell Specs
   description: Vault-Tec specifications for plasma weapon ammunition. Tier 3 ammo.
   components:
@@ -1123,6 +1185,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintVaultAmmoT4
+  categories: [HideSpawnMenu]
   name: Vault-Tec Plasma Cartridge Archive
   description: Experimental plasma ammunition designs from the Vault-Tec science archives. Tier 4 ammo.
   components:
@@ -1140,6 +1203,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeWeaponsT1
+  categories: [HideSpawnMenu]
   name: Tribal Hunting Teachings
   description: Knowledge passed down from tribal elders on crafting basic hunting tools. Tier 1 weapons.
   components:
@@ -1161,6 +1225,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeWeaponsT2
+  categories: [HideSpawnMenu]
   name: Tribal Warrior's Craft
   description: Warrior traditions for forging tribal combat weapons from natural materials. Tier 2 weapons.
   components:
@@ -1181,6 +1246,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeWeaponsT3
+  categories: [HideSpawnMenu]
   name: Tribal Elder's War Knowledge
   description: Ancient tribal war knowledge for crafting the mightiest weapons. Tier 3 weapons.
   components:
@@ -1196,6 +1262,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeWeaponsT4
+  categories: [HideSpawnMenu]
   name: Tribal Shaman's Sacred Texts
   description: The most sacred weapon-crafting knowledge of the tribe, guarded by shamans. Tier 4 weapons.
   components:
@@ -1211,6 +1278,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeArmorT1
+  categories: [HideSpawnMenu]
   name: Tribal Hide Tanning Guide
   description: Tribal knowledge of hide tanning and basic armor construction. Tier 1 armor.
   components:
@@ -1222,6 +1290,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeArmorT2
+  categories: [HideSpawnMenu]
   name: Tribal Warrior's Armor Craft
   description: Warrior traditions for crafting battle-ready tribal armor. Tier 2 armor.
   components:
@@ -1246,6 +1315,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeArmorT3
+  categories: [HideSpawnMenu]
   name: Tribal Champion's Armor
   description: The armor of tribal champions, reinforced with salvaged pre-war materials. Tier 3 armor.
   components:
@@ -1258,6 +1328,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeArmorT4
+  categories: [HideSpawnMenu]
   name: Tribal Elder's Sacred Armor
   description: The most revered armor designs of the tribal elders, combining ancient wisdom with scavenged technology. Tier 4 armor.
   components:
@@ -1271,6 +1342,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeAmmoT1
+  categories: [HideSpawnMenu]
   name: Tribal Bullet Making
   description: Simple instructions for casting bullets from scavenged lead. Tier 1 ammo.
   components:
@@ -1289,6 +1361,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeAmmoT2
+  categories: [HideSpawnMenu]
   name: Tribal Shot Making
   description: Knowledge of making shotgun shells and larger caliber ammunition. Tier 2 ammo.
   components:
@@ -1303,6 +1376,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeAmmoT3
+  categories: [HideSpawnMenu]
   name: Tribal Heavy Rounds
   description: Tribal knowledge of crafting heavy ammunition for their biggest weapons. Tier 3 ammo.
   components:
@@ -1317,6 +1391,7 @@
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeAmmoT4
+  categories: [HideSpawnMenu]
   name: Tribal Master Munitions
   description: The most advanced ammunition crafting known to the tribe. Tier 4 ammo.
   components:

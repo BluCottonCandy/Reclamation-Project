@@ -13975,3 +13975,22 @@ Entries:
   id: 6605
   time: '2026-11-07T03:13:53.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/134
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Ranked Forged, Minutemen, Brotherhood, Railroad, Institute, and
+        Triggermen jobs can unlock through their existing role requirement OR
+        total service in their faction.
+    - type: Tweak
+      message: >-
+        Lower-rank shortcuts use cumulative progression time. Senior and
+        leadership alternatives require 1,500 faction minutes (25 hours);
+        whitelists remain required.
+    - type: Tweak
+      message: >-
+        Brotherhood Lancer service and Railroad service across both safehouses
+        and central roles count toward their faction's unlocks.
+  id: 6606
+  time: '2026-11-07T12:28:29.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/135

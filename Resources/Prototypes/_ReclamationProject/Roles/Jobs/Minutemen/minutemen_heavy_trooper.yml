@@ -36,18 +36,16 @@
   id: MinutemenHeavyTrooperGear
   equipment:
     belt: ClothingBeltMilitary
+    pocket1: MinutemenHeavyTrooperKitSelector
     wallet: N14Wallet
     jumpsuit: MinutemenClothingUniformEnlisted
     gloves: MinutemenHeavyTrooperGauntlets
     shoes: MinutemenHeavyTrooperBoots
     ears: MinutemenClothingHeadset
     back: N14ClothingBackpackMilitary
-    head: MinutemenHeavyTrooperHelmet
-    mask: ClothingMaskGasRanger
+    mask: MinutemenTrooperGasMask
     neck: MinutemenClothingNeckDuster
-    outerClothing: MinutemenHeavyTrooperArmor
     id: MinutemenIDDogtagsHeavyTrooper
-    suitstorage: MinutemenRotorBlade
   inhand:
   - MinutemenWeaponHeavyLaserMusket
   storage:

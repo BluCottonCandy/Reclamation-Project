@@ -5,9 +5,15 @@ Strength increases melee damage. At [bold]10 effective Strength[/bold], you also
 
 Activate Juggernaut for [bold]15 seconds[/bold] of [bold]25% more melee and structural damage[/bold]. Structural damage receives the same 25% increase, not a second stacked increase. Both unarmed attacks and melee weapons benefit; shooting and thrown-weapon damage do not.
 
+Your body shakes while Juggernaut is active, with the same visible trembling as Med-X.
+
 Every successful melee hit against a living enemy knocks them down briefly and pushes them away. Wide swings can affect multiple enemies.
 
 [bold]When the ability ends, you are stunned for four seconds.[/bold] Plan an escape or have someone cover you before exhaustion hits. Juggernaut does not protect you from damage or death.
 
 The cooldown is [bold]three minutes from activation[/bold]. Dropping below Strength 10 removes the action until you qualify again, but does not reset its cooldown.
+
+At [bold]10 Strength[/bold], movement penalties from worn and held equipment are ignored, including armor, backpacks, shields, and held weapons. Equipment speed bonuses still apply. This does not remove injury or other non-equipment slowdowns.
+
+At [bold]10 Strength[/bold], you also gain the extra backpack slot normally provided by power armor. Power armor and Strength use the same slot, so they do not stack into a third one. If Strength drops below 10 without suitable power armor equipped, the extra backpack is safely unequipped.
 </Document>

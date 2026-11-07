@@ -1,0 +1,26 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Heavy Troopers choose Heavy Shield, Medical Specialist, or Riot Specialist kits instead of starting with their armor and blade equipped.
+- type: Add
+  message: Added medium and light trooper armor with lighter protection and reduced movement penalties.
+- type: Tweak
+  message: Paladin greatshields require 8 Strength to swing; greatshields and salvaged vertibird blades can be carried one-handed at 9 Strength.
+- type: Tweak
+  message: Characters with 10 Strength ignore movement penalties from worn and held equipment.
+- type: Add
+  message: Strength 10 grants the existing extra backpack slot without requiring power armor; losing eligibility safely unequips the extra backpack.
+- type: Tweak
+  message: "Helmets are issued through kits: Medical Specialist gets a dedicated thermal-pulse helmet, while Heavy Shield and Riot Specialist get night-vision helmets. Heavy Troopers no longer start wearing a helmet."
+- type: Add
+  message: Medical Specialist equips light armor, an advanced 12.7mm SMG, a magnum revolver, a stocked medical belt, an N14 scanner, and two filled combat medkits with ammunition and an MRE.
+- type: Add
+  message: Riot Specialist equips medium armor, a paladin shield, a trooper cutlass, a blowback shotgun, ammunition, stimpaks, grenades, and an MRE. Heavy Shield includes the greatshield, vertibird blade, heavy armor, Psycho, stimpaks, an MRE, and a Strength requirement notice.
+- type: Fix
+  message: Medical Specialist carries the correct top-mounted 12.7mm magazines for its advanced SMG.
+- type: Tweak
+  message: The salvaged vertibird blade is held upright when carried one-handed, while retaining its existing two-handed pose.
+- type: Tweak
+  message: Strength 10 Juggernaut visibly shakes the user like Med-X throughout its active duration.
+- type: Tweak
+  message: Medical Specialist includes a CPR training manual, and Riot Specialist carries two boxes of shotgun shells.

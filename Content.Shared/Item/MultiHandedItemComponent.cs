@@ -1,4 +1,4 @@
-﻿using Robust.Shared.GameStates;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Item;
 
@@ -11,4 +11,7 @@ public sealed partial class MultiHandedItemComponent : Component
 {
     [DataField("handsNeeded"), ViewVariables(VVAccess.ReadWrite)]
     public int HandsNeeded = 2;
+
+    [DataField]
+    public int? MinimumStrengthForOneHand;
 }

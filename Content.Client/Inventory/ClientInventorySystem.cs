@@ -1,3 +1,5 @@
+using Content.Shared._Misfits.Special.Components;
+using Robust.Shared.GameStates;
 using Content.Client.Clothing;
 using Content.Client.Examine;
 using Content.Client.Verbs.UI;
@@ -36,6 +38,7 @@ namespace Content.Client.Inventory
         {
             UpdatesOutsidePrediction = true;
             base.Initialize();
+            SubscribeLocalEvent<SpecialComponent, AfterAutoHandleStateEvent>(OnSpecialState);
 
             SubscribeLocalEvent<InventorySlotsComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
             SubscribeLocalEvent<InventorySlotsComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
@@ -85,6 +88,8 @@ namespace Content.Client.Inventory
             {
                 if (!definition.HideOnDepsMissing || definition.DependsOn != args.Slot)
                     continue;
+                if (AreSlotDepsMet(args.Equipee, definition))
+                    continue;
                 if (!component.SlotData.TryGetValue(definition.Name, out var slotData))
                     continue;
                 component.SlotData.Remove(definition.Name);
@@ -124,22 +129,29 @@ namespace Content.Client.Inventory
         ///     Returns true if the given slot's <see cref="SlotDefinition.DependsOn"/> and
         ///     <see cref="SlotDefinition.DependsOnComponents"/> conditions are currently satisfied.
         /// </summary>
-        private bool AreSlotDepsMet(EntityUid uid, SlotDefinition definition)
+        private void OnSpecialState(EntityUid uid, SpecialComponent component, ref AfterAutoHandleStateEvent args)
         {
-            if (definition.DependsOn == null)
-                return true;
+            RefreshStrengthBackpackSlot(uid);
+        }
 
-            if (!TryGetSlotEntity(uid, definition.DependsOn, out var depEntity) || depEntity == null)
-                return false;
-
-            if (definition.DependsOnComponents == null)
-                return true;
-
-            foreach (var (_, entry) in definition.DependsOnComponents)
-                if (!HasComp(depEntity.Value, entry.Component.GetType()))
-                    return false;
-
-            return true;
+        protected override void RefreshStrengthBackpackSlot(EntityUid uid, bool ignoreStrength = false)
+        {
+            base.RefreshStrengthBackpackSlot(uid, ignoreStrength);
+            if (uid != _playerManager.LocalEntity || !TryComp<InventorySlotsComponent>(uid, out var component) ||
+                !TryGetSlot(uid, "back2", out var definition))
+                return;
+            if (!AreSlotDepsMet(uid, definition, ignoreStrength))
+            {
+                if (component.SlotData.Remove(definition.Name, out var removed))
+                    OnSlotRemoved?.Invoke(removed);
+                return;
+            }
+            if (component.SlotData.ContainsKey(definition.Name) ||
+                !TryGetSlotContainer(uid, definition.Name, out var container, out _))
+                return;
+            var data = new SlotData(definition, container);
+            component.SlotData[definition.Name] = data;
+            OnSlotAdded?.Invoke(data);
         }
 
         private void OnShutdown(EntityUid uid, InventoryComponent component, ComponentShutdown args)

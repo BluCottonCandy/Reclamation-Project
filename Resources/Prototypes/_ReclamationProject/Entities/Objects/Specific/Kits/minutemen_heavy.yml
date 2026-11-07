@@ -1,0 +1,124 @@
+- type: entity
+  parent: KitBase
+  id: MinutemenKitHeavyShield
+  name: Heavy Shield
+  description: 'You are the blade and shield of the Minutemen. Make sure your squad comes back alive. Requires at least 8
+    Strength to use this kit''s shield and blade; wielding both together requires 9 Strength. Contains: a paladin greatshield,
+    a salvaged vertibird blade, Psycho, two stimpaks, an MRE box, and heavy trooper armor. Also includes a night-vision trooper
+    helmet.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationPaladinGreatshield
+    - id: MinutemenRotorBlade
+    - id: N14Psycho
+    - id: N14Stimpak
+    - id: N14Stimpak
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: MinutemenHeavyTrooperArmor
+    - id: MinutemenHeavyTrooperHelmet
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetHeavyShield
+  name: minutemen-heavy-kit-heavyshield-name
+  description: minutemen-heavy-kit-heavyshield-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - MinutemenKitHeavyShield
+- type: entity
+  parent: KitBase
+  id: MinutemenKitMedicalSpecialist
+  name: Medical Specialist
+  description: 'You aren''t the strongest, but you are sure smart! Help keep your squad alive! Contains: light trooper armor,
+    a loaded advanced 12.7mm SMG, a loaded magnum revolver, a stocked medical belt, an N14 health scanner, a CPR training manual, two filled combat
+    medkits, an MRE box, boxes of 12.7mm and .44 magnum ammunition, two spare top-mounted 12.7mm SMG magazines, and two .44
+    magnum speedloaders. Also includes a medical specialist thermal-pulse helmet.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: MinutemenLightTrooperArmor
+    - id: N14WeaponSMG12mmAdvanced
+    - id: N14WeaponRevolver44Magnum
+    - id: N14ClothingBeltMedicalFilled
+    - id: N14HandheldHealthAnalyzer
+    - id: ReclamationTrainingManualCPR
+    - id: MisfitsMedkitCombatFilled
+    - id: MisfitsMedkitCombatFilled
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: MagazineBox12
+    - id: N14TopMagazineSMG12mm
+    - id: N14TopMagazineSMG12mm
+    - id: MagazineBox44
+    - id: SpeedLoader44
+    - id: SpeedLoader44
+    - id: MinutemenMedicalTrooperHelmet
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetMedicalSpecialist
+  name: minutemen-heavy-kit-medicalspecialist-name
+  description: minutemen-heavy-kit-medicalspecialist-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - MinutemenKitMedicalSpecialist
+- type: entity
+  parent: KitBase
+  id: MinutemenKitRiotSpecialist
+  name: Riot Specialist
+  description: 'You know how to handle large groups. Push them back! Contains: a paladin shield, a Minutemen trooper cutlass,
+    a loaded blowback shotgun, two boxes of 12-gauge shells, medium trooper armor, two stimpaks, a smoke grenade, a tear gas grenade,
+    and an MRE box. Also includes a night-vision trooper helmet.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationPaladinShield
+    - id: MinutemenTrooperCutlass
+    - id: N14WeaponShotgunBlowback
+    - id: MagazineBox12gauge
+    - id: MagazineBox12gauge
+    - id: MinutemenMediumTrooperArmor
+    - id: N14Stimpak
+    - id: N14Stimpak
+    - id: SmokeGrenade
+    - id: TearGasGrenade
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: MinutemenHeavyTrooperHelmet
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+- type: UndecidedLoadoutBackpackSet
+  id: MinutemenKitSetRiotSpecialist
+  name: minutemen-heavy-kit-riotspecialist-name
+  description: minutemen-heavy-kit-riotspecialist-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - MinutemenKitRiotSpecialist
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: MinutemenHeavyTrooperKitSelector
+  name: Minutemen heavy trooper kit selection box
+  description: Choose Heavy Shield, Medical Specialist, or Riot Specialist.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - MinutemenKitSetHeavyShield
+    - MinutemenKitSetMedicalSpecialist
+    - MinutemenKitSetRiotSpecialist
+- type: entity
+  parent: MinutemenOfficerCutlass
+  id: MinutemenTrooperCutlass
+  name: Minutemen trooper cutlass
+  description: A dependable cutlass carried by Minutemen shield troopers for close-quarters fighting.

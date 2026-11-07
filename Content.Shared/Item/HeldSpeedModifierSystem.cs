@@ -55,6 +55,13 @@ public sealed class HeldSpeedModifierSystem : EntitySystem
     /// </summary>
     private void ApplyStrengthSlowdown(EntityUid user, EntityUid held, ref float walkMod, ref float sprintMod)
     {
+        if (_special.HasRequirement(user, SpecialStat.Strength, 10))
+        {
+            walkMod = MathF.Max(1f, walkMod);
+            sprintMod = MathF.Max(1f, sprintMod);
+            return;
+        }
+
         if (!TryComp<StrengthIgnoreClothingSlowdownComponent>(held, out var ignore) ||
             !TryComp<SpecialComponent>(user, out var special))
         {

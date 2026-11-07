@@ -19,6 +19,7 @@ public partial class InventorySystem : EntitySystem
 
     private void InitializeSlots()
     {
+        InitializeStrengthBackpackSlot();
         SubscribeLocalEvent<InventoryComponent, ComponentInit>(OnInit);
         SubscribeNetworkEvent<OpenSlotStorageNetworkMessage>(OnOpenSlotStorage);
 

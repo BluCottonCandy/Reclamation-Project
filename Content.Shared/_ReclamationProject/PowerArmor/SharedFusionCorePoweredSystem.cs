@@ -40,6 +40,11 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
                 sprint /= boost.SprintModifier;
         }
 
+        if (_special.HasRequirement(wearer, SpecialStat.Strength, 10))
+        {
+            walk = MathF.Max(1f, walk);
+            sprint = MathF.Max(1f, sprint);
+        }
         args.Args.ModifySpeed(walk, sprint);
     }
 

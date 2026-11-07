@@ -81,13 +81,22 @@ public sealed class ClothingSpeedModifierSystem : EntitySystem
     /// </summary>
     private void ApplyStrengthSlowdown(EntityUid clothing, ref float walkModifier, ref float sprintModifier)
     {
-        if (!TryComp<StrengthIgnoreClothingSlowdownComponent>(clothing, out var ignore) ||
-            !_container.TryGetContainingContainer((clothing, null, null), out var container))
+        if (!_container.TryGetContainingContainer((clothing, null, null), out var container))
         {
             return;
         }
 
         var wearer = container.Owner;
+        if (_special.HasRequirement(wearer, SpecialStat.Strength, 10))
+        {
+            walkModifier = MathF.Max(1f, walkModifier);
+            sprintModifier = MathF.Max(1f, sprintModifier);
+            return;
+        }
+
+        if (!TryComp<StrengthIgnoreClothingSlowdownComponent>(clothing, out var ignore))
+            return;
+
         if (!TryComp<SpecialComponent>(wearer, out var special))
             return;
 

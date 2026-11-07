@@ -37,7 +37,7 @@
   description: 'You aren''t the strongest, but you are sure smart! Help keep your squad alive! Contains: light trooper armor,
     a loaded advanced 12.7mm SMG, a loaded magnum revolver, a stocked medical belt, an N14 health scanner, a CPR training manual, two filled combat
     medkits, an MRE box, boxes of 12.7mm and .44 magnum ammunition, two spare top-mounted 12.7mm SMG magazines, and two .44
-    magnum speedloaders. Also includes a medical specialist thermal-pulse helmet.'
+    magnum speedloaders. Also includes a medical specialist helmet with night vision and a thermal pulse.'
   components:
   - type: Sprite
     state: rifleman

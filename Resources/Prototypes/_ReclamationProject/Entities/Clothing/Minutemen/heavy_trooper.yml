@@ -89,8 +89,10 @@
   parent: MinutemenTrooperHelmetBase
   id: MinutemenMedicalTrooperHelmet
   name: Minutemen medical specialist thermal helmet
-  description: An armored Minutemen medic's helmet fitted with a short-burst thermal scanner for finding casualties and threats.
+  description: An armored Minutemen medic's helmet with integrated night vision and a short-burst thermal scanner for finding casualties and threats.
   components:
+  - type: NightVision
+    isEquipment: true
   - type: ThermalVision
     isEquipment: true
     pulseTime: 2

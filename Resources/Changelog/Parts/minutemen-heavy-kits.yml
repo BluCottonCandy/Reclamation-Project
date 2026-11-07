@@ -24,3 +24,5 @@ changes:
   message: Strength 10 Juggernaut visibly shakes the user like Med-X throughout its active duration.
 - type: Tweak
   message: Medical Specialist includes a CPR training manual, and Riot Specialist carries two boxes of shotgun shells.
+- type: Add
+  message: The Medical Specialist helmet includes night vision alongside its existing short thermal pulse.

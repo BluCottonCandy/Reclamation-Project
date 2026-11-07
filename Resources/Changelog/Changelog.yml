@@ -14057,3 +14057,12 @@ Entries:
   id: 6609
   time: '2026-11-07T13:43:15.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/138
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Updated the Wendover vault level with BluCottonCandy's latest in-game
+        map edits, including the opened vault entrance.
+  id: 6610
+  time: '2026-11-07T13:43:28.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/139

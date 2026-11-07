@@ -14016,3 +14016,44 @@ Entries:
   id: 6608
   time: '2026-11-07T12:31:18.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/137
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Minutemen Heavy Troopers have two permanent roundstart/latejoin slots
+        and a base spawn on Reclamation Wendover.
+    - type: Add
+      message: >-
+        Heavy Troopers start with a military carrier and choose Heavy Shield,
+        Medical Specialist, or Riot Specialist kits.
+    - type: Add
+      message: >-
+        Added medium and light trooper armor, kit-issued night-vision helmets,
+        and a helmet with night vision and a thermal pulse for Medical
+        Specialist.
+    - type: Add
+      message: >-
+        Medical Specialist includes a CPR manual, stocked medical belt, N14
+        scanner, and two combat medkits; Riot Specialist includes two boxes of
+        shotgun shells.
+    - type: Tweak
+      message: >-
+        The salvaged vertibird blade and paladin greatshield require Strength 8
+        to swing and can be held one-handed at Strength 9.
+    - type: Tweak
+      message: The salvaged vertibird blade is held upright when carried one-handed.
+    - type: Tweak
+      message: >-
+        Strength 10 ignores equipment slowdowns and grants the extra backpack
+        slot normally provided by power armor.
+    - type: Tweak
+      message: >-
+        Juggernaut visibly shakes its user like Med-X while active, without
+        changing swing speed.
+    - type: Add
+      message: >-
+        Medical Specialist helmets provide night vision alongside the existing
+        short thermal pulse.
+  id: 6609
+  time: '2026-11-07T13:43:15.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/138

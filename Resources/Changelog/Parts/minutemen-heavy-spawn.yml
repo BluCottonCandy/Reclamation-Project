@@ -4,3 +4,5 @@ changes:
   message: Minutemen Heavy Troopers now have two job slots and a base spawn on Reclamation Wendover.
 - type: Add
   message: Minutemen Heavy Troopers now start wearing a military carrier.
+- type: Tweak
+  message: The salvaged vertibird blade requires at least 8 Strength to swing, shown in purple when examined.

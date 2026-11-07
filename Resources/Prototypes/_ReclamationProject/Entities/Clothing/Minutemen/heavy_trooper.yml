@@ -101,6 +101,8 @@
         state: equipped-SUITSTORAGE
         scale: -1.2,1.2
         rotation: 180
+  - type: MeleeStrengthRequirement
+    minimum: 8
   - type: MultiHandedItem
   # Retain the claymore swing profile, with a heavy rotor edge and super-sledge knockback.
   - type: MeleeWeapon

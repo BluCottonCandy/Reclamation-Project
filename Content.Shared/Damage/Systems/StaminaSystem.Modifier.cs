@@ -26,6 +26,23 @@ public sealed partial class StaminaSystem
         stamina.CritThreshold /= comp.Modifier;
     }
 
+    /// <summary>Sets a stamina pool size and immediately refreshes exhaustion and its alert.</summary>
+    public void SetCritThreshold(EntityUid uid, float threshold, StaminaComponent? stamina = null)
+    {
+        if (threshold <= 0f || !Resolve(uid, ref stamina, false))
+            return;
+
+        stamina.CritThreshold = threshold;
+        if (stamina.StaminaDamage >= threshold)
+            EnterStamCrit(uid, stamina);
+        else if (stamina.Critical)
+            ExitStamCrit(uid, stamina);
+
+        SetStaminaAlert(uid, stamina);
+        _movementSpeed.RefreshMovementSpeedModifiers(uid);
+        Dirty(uid, stamina);
+    }
+
     /// <summary>
     /// Change the stamina modifier for an entity.
     /// If it has <see cref="StaminaComponent"/> it will also be updated.

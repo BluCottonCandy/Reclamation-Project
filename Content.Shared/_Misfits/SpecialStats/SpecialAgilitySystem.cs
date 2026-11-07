@@ -1,4 +1,7 @@
 using Content.Shared._Misfits.Special;
+using Content.Shared._ReclamationProject.Endurance;
+using Content.Shared.Item;
+using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared._Misfits.Special.Components;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
@@ -10,6 +13,7 @@ namespace Content.Shared._Misfits.SpecialStats;
 /// </summary>
 public sealed class SpecialAgilitySystem : EntitySystem
 {
+    [Dependency] private readonly EnduranceEnragedPredictionSystem _enraged = default!;
     [Dependency] private readonly SharedSpecialSystem _special = default!;
 
     public override void Initialize()
@@ -25,6 +29,8 @@ public sealed class SpecialAgilitySystem : EntitySystem
             return;
 
         args.Multipliers *= GetActionDelayMultiplier(args.User, special);
+        if (HasComp<ItemComponent>(uid) && !HasComp<GunComponent>(uid))
+            args.Multipliers *= _enraged.GetMeleeDelayMultiplier(args.User, component.AttackRate);
     }
 
     public float GetStaminaCostMultiplier(EntityUid uid)

@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Authored factory and cave expedition entrances now appear on Pip-Boy and tactical maps again. The expedition entrance diagnostic also recognizes them.

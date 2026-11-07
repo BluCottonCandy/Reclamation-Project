@@ -13964,3 +13964,14 @@ Entries:
   id: 6604
   time: '2026-11-07T03:13:43.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/133
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Personal bunkers no longer save twice when you leave: empty-room
+        unloading does not trigger another save.
+    - type: Fix
+      message: Leaving one bunker no longer re-saves other empty bunkers.
+  id: 6605
+  time: '2026-11-07T03:13:53.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/134

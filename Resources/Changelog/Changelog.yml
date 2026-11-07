@@ -13928,3 +13928,12 @@ Entries:
   id: 6601
   time: '2026-11-07T03:11:48.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/130
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Heavy Troopers and other characters with oversized equipment no longer
+        shrink in the character customization preview.
+  id: 6602
+  time: '2026-11-07T03:13:19.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/131

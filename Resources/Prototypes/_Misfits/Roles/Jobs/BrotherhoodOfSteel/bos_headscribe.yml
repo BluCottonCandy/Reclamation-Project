@@ -14,9 +14,15 @@
       species:
       - Human
       - Courser
-    - !type:CharacterPlaytimeRequirement
-      tracker: BoSMidScribe
-      min: 18000 # 5 hours in the preceding role.
+    - !type:CharacterLogicOrRequirement
+      requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: BoSMidScribe
+        min: 18000 # 5 hours in the preceding role.
+      - !type:CharacterDepartmentTimeRequirement
+        department: BrotherhoodOfSteel
+        additionalDepartments: [BrotherhoodOfSteelLancers]
+        min: 90000 # 1500 minutes across this faction.
   startingGear: BoSWestScribeGear
   alwaysUseSpawner: true
   icon: "JobIconBosMScriptor"

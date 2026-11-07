@@ -12,9 +12,14 @@
   requirements:
   - !type:CharacterSpeciesRequirement
     species: [Human, Courser, Ghoul]
-  - !type:CharacterPlaytimeRequirement
-    tracker: MinutemenPrivate
-    min: 48000
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: MinutemenPrivate
+      min: 48000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Minutemen
+      min: 90000 # 1500 minutes across this faction.
   startingGear: MinutemenHeavyTrooperGear
   alwaysUseSpawner: true # Use the dedicated base marker for round start and late join.
   icon: JobIconNcrSpec

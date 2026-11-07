@@ -11,12 +11,17 @@
   requirements:
   - !type:CharacterLogicOrRequirement
     requirements:
-    - !type:CharacterPlaytimeRequirement
-      tracker: TriggermenConsigliere
-      min: 18000 # Five hours in either preceding rank.
-    - !type:CharacterPlaytimeRequirement
-      tracker: TriggermenSotocapo
-      min: 18000 # Five hours in either preceding rank.
+    - !type:CharacterLogicOrRequirement
+      requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: TriggermenConsigliere
+        min: 18000 # Five hours in either preceding rank.
+      - !type:CharacterPlaytimeRequirement
+        tracker: TriggermenSotocapo
+        min: 18000 # Five hours in either preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Triggermen
+      min: 90000 # 1500 minutes across this faction.
   startingGear: TriggermenBossGear
   alwaysUseSpawner: true
   access: [Triggermen, TriggermenBoss]
@@ -42,9 +47,14 @@
   description: job-description-triggermensotocapo
   playTimeTracker: TriggermenSotocapo
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: TriggermenEnforcer
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: TriggermenEnforcer
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Triggermen
+      min: 90000 # 1500 minutes across this faction.
   startingGear: TriggermenSotocapoGear
   alwaysUseSpawner: true
   access: [Triggermen]
@@ -70,9 +80,14 @@
   description: job-description-triggermenconsigliere
   playTimeTracker: TriggermenConsigliere
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: TriggermenEnforcer
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: TriggermenEnforcer
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Triggermen
+      min: 90000 # 1500 minutes across this faction.
   startingGear: TriggermenConsigliereGear
   alwaysUseSpawner: true
   access: [Triggermen]
@@ -98,9 +113,14 @@
   description: job-description-triggermenenforcer
   playTimeTracker: TriggermenEnforcer
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: TriggermenSoldato
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: TriggermenSoldato
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Triggermen
+      min: 36000 # 600 minutes across this faction.
   startingGear: TriggermenEnforcerGear
   alwaysUseSpawner: true
   access: [Triggermen]
@@ -125,9 +145,14 @@
   description: job-description-triggermensoldato
   playTimeTracker: TriggermenSoldato
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: Triggerman
-    min: 18000 # Five hours in the preceding rank.
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: Triggerman
+      min: 18000 # Five hours in the preceding rank.
+    - !type:CharacterDepartmentTimeRequirement
+      department: Triggermen
+      min: 18000 # 300 minutes across this faction.
   startingGear: TriggermenSoldatoGear
   alwaysUseSpawner: true
   access: [Triggermen]

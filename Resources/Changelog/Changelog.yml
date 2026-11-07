@@ -14066,3 +14066,17 @@ Entries:
   id: 6610
   time: '2026-11-07T13:43:28.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/139
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Enraged now lasts 15 seconds, grants stun and knockdown immunity, and
+        refills a temporary 200-stamina pool. Normal stamina capacity returns
+        when it ends.
+    - type: Tweak
+      message: >-
+        While Enraged, slow melee weapons such as super sledges and salvaged
+        vertibird blades swing 50% faster.
+  id: 6611
+  time: '2026-11-07T13:43:41.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/140

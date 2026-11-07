@@ -13951,3 +13951,16 @@ Entries:
   id: 6603
   time: '2026-11-07T03:13:32.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/132
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Authored factory and cave expedition entrances appear on Pip-Boy and
+        tactical maps again.
+    - type: Fix
+      message: The expedition entrance diagnostic recognizes the authored entrances.
+    - type: Tweak
+      message: The Survival guidebook explains where expedition map markers appear.
+  id: 6604
+  time: '2026-11-07T03:13:43.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/133

@@ -35,6 +35,7 @@
 - type: startingGear
   id: MinutemenHeavyTrooperGear
   equipment:
+    belt: ClothingBeltMilitary
     wallet: N14Wallet
     jumpsuit: MinutemenClothingUniformEnlisted
     gloves: MinutemenHeavyTrooperGauntlets

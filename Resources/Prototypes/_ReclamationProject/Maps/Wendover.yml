@@ -49,6 +49,7 @@
           MinutemenLieutenant: [1, 1]
           MinutemenSergeant: [2, 2]
           MinutemenCorporal: [3, 3]
+          MinutemenHeavyTrooper: [2, 2]
           MinutemenPrivate: [4, 4]
           MinutemenRecruit: [6, 6]
           ForgedSmithy: [1, 1]

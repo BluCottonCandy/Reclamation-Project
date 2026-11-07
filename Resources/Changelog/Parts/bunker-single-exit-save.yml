@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Personal bunkers save when the last occupant leaves, without saving again when the empty room unloads. Leaving one bunker no longer re-saves other empty rooms.

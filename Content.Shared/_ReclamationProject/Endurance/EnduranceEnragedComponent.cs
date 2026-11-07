@@ -15,6 +15,9 @@ public sealed partial class EnduranceEnragedComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan ReadyAt;
 
+    // Restored by the server when the temporary stamina pool ends.
+    public float? PreviousStaminaThreshold;
+
     // Only the server resolves direct state changes on expiry.
     public MobState? ForcedState;
 }

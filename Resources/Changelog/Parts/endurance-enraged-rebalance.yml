@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Enraged now lasts 15 seconds, grants stun and knockdown immunity, and refills a temporary 200-stamina pool. Normal stamina capacity returns when it ends.
+- type: Tweak
+  message: While Enraged, slow melee weapons such as super sledges and salvaged vertibird blades swing 50% faster.

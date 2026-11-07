@@ -1,4 +1,7 @@
 using Content.Shared.Movement.Systems;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
+using Content.Shared.StatusEffect;
 using Content.Shared._ReclamationProject.Endurance;
 using Content.Server.Nutrition;
 using Content.Shared.Chemistry;
@@ -17,6 +20,8 @@ namespace Content.Server._ReclamationProject.Endurance;
 /// <summary>Endurance 10 delays incapacitation, without healing or discarding accumulated damage.</summary>
 public sealed class EnduranceEnragedSystem : EntitySystem
 {
+    [Dependency] private readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly StatusEffectsSystem _status = default!;
     [Dependency] private readonly SharedSpecialSystem _special = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MobThresholdSystem _thresholds = default!;
@@ -50,9 +55,18 @@ public sealed class EnduranceEnragedSystem : EntitySystem
 
             rage ??= EnsureComp<EnduranceEnragedComponent>(uid);
             rage.Active = true;
-            rage.EndsAt = now + TimeSpan.FromSeconds(10);
+            rage.EndsAt = now + TimeSpan.FromSeconds(15);
             rage.ReadyAt = now + TimeSpan.FromMinutes(5);
             rage.ForcedState = null;
+            if (TryComp<StaminaComponent>(uid, out var stamina))
+            {
+                rage.PreviousStaminaThreshold = stamina.CritThreshold;
+                stamina.Critical = false;
+                stamina.StaminaDamage = 0f;
+                _stamina.SetCritThreshold(uid, 200f, stamina);
+            }
+            _status.TryRemoveStatusEffect(uid, "Stun");
+            _status.TryRemoveStatusEffect(uid, "KnockedDown");
             Dirty(uid, rage);
             _movement.RefreshMovementSpeedModifiers(uid);
             _popup.PopupEntity(Loc.GetString("endurance-enraged-start"), uid, uid);
@@ -63,6 +77,16 @@ public sealed class EnduranceEnragedSystem : EntitySystem
         if (!args.FromUpdate && (rage.ForcedState == null || args.NewState == MobState.Dead || rage.ForcedState == MobState.SoftCritical))
             rage.ForcedState = args.NewState;
         args.Cancelled = true;
+    }
+
+    private void RestoreStamina(EntityUid uid, EnduranceEnragedComponent rage)
+    {
+        if (rage.PreviousStaminaThreshold is not { } threshold)
+            return;
+
+        rage.PreviousStaminaThreshold = null;
+        if (!TerminatingOrDeleted(uid))
+            _stamina.SetCritThreshold(uid, threshold);
     }
 
     private bool IsEnraged(EntityUid uid)
@@ -130,6 +154,7 @@ public sealed class EnduranceEnragedSystem : EntitySystem
                 continue;
 
             rage.Active = false;
+            RestoreStamina(uid, rage);
             Dirty(uid, rage);
             _movement.RefreshMovementSpeedModifiers(uid);
             _popup.PopupEntity(Loc.GetString("endurance-enraged-end"), uid, uid);

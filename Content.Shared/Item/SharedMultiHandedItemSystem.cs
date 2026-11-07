@@ -1,4 +1,5 @@
 using Content.Shared.Hands;
+using Content.Shared._Misfits.Special;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
@@ -8,6 +9,7 @@ namespace Content.Shared.Item;
 
 public abstract class SharedMultiHandedItemSystem : EntitySystem
 {
+    [Dependency] private readonly SharedSpecialSystem _special = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -24,16 +26,22 @@ public abstract class SharedMultiHandedItemSystem : EntitySystem
     protected abstract void OnEquipped(EntityUid uid, MultiHandedItemComponent component, GotEquippedHandEvent args);
     protected abstract void OnUnequipped(EntityUid uid, MultiHandedItemComponent component, GotUnequippedHandEvent args);
 
+    public int GetHandsNeeded(EntityUid user, MultiHandedItemComponent component)
+    {
+        return component.MinimumStrengthForOneHand is { } minimum &&
+            _special.HasRequirement(user, SpecialStat.Strength, minimum) ? 1 : component.HandsNeeded;
+    }
+
     private void OnAttemptPickup(EntityUid uid, MultiHandedItemComponent component, GettingPickedUpAttemptEvent args)
     {
-        if (TryComp<HandsComponent>(args.User, out var hands) && hands.CountFreeHands() >= component.HandsNeeded)
+        if (TryComp<HandsComponent>(args.User, out var hands) && hands.CountFreeHands() >= GetHandsNeeded(args.User, component))
             return;
 
         args.Cancel();
         if (_timing.IsFirstTimePredicted)
         {
             _popup.PopupCursor(Loc.GetString("multi-handed-item-pick-up-fail",
-                ("number", component.HandsNeeded - 1), ("item", uid)), args.User);
+                ("number", GetHandsNeeded(args.User, component) - 1), ("item", uid)), args.User);
         }
     }
 

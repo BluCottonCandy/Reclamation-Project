@@ -72,8 +72,11 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
+  - type: MeleeStrengthRequirement
+    minimum: 8
   - type: MultiHandedItem
     handsNeeded: 2
+    minimumStrengthForOneHand: 9
   - type: PowerArmorIntegrity
     maxIntegrity: 500
   - type: PaladinShield

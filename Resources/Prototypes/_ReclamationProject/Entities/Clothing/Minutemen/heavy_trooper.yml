@@ -52,9 +52,10 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: MinutemenHeavyTrooperHelmet
+  id: MinutemenTrooperHelmetBase
+  abstract: true
   name: Minutemen heavy trooper helmet
-  description: A compact armored riot helmet with a dark visor and vented combat face mask, marked with the Minutemen emblem.
+  description: A compact armored riot helmet marked with the Minutemen emblem.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Head/minutemen_heavy.rsi
@@ -73,6 +74,29 @@
     - Snout
     - HeadTop
     - HeadSide
+
+
+- type: entity
+  parent: MinutemenTrooperHelmetBase
+  id: MinutemenHeavyTrooperHelmet
+  name: Minutemen trooper night-vision helmet
+  description: An armored Minutemen helmet with an integrated night-vision visor.
+  components:
+  - type: NightVision
+    isEquipment: true
+
+- type: entity
+  parent: MinutemenTrooperHelmetBase
+  id: MinutemenMedicalTrooperHelmet
+  name: Minutemen medical specialist thermal helmet
+  description: An armored Minutemen medic's helmet with integrated night vision and a short-burst thermal scanner for finding casualties and threats.
+  components:
+  - type: NightVision
+    isEquipment: true
+  - type: ThermalVision
+    isEquipment: true
+    pulseTime: 2
+    toggleAction: PulseThermalVision
 
 - type: entity
   parent: BaseSword
@@ -101,7 +125,12 @@
         state: equipped-SUITSTORAGE
         scale: -1.2,1.2
         rotation: 180
+  - type: MeleeStrengthRequirement
+    minimum: 8
+  - type: OneHandedUprightItem
+    sprite: _ReclamationProject/Objects/Weapons/Melee/rotor_blade.rsi
   - type: MultiHandedItem
+    minimumStrengthForOneHand: 9
   # Retain the claymore swing profile, with a heavy rotor edge and super-sledge knockback.
   - type: MeleeWeapon
     wideAnimation: MinutemenRotorArc
@@ -167,3 +196,64 @@
   components:
   - type: WeaponArcVisuals
     durationMultiplier: 3
+
+- type: entity
+  parent: MinutemenHeavyTrooperArmor
+  id: MinutemenMediumTrooperArmor
+  name: Minutemen medium trooper armor
+  description: A lighter arrangement of salvaged plates and chainmail for Minutemen riot specialists. A chest-mounted sheath keeps a combat knife within reach.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
+        Heat: 0.60
+  - type: ExplosionResistance
+    damageCoefficient: 0.50
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+
+- type: entity
+  parent: MinutemenMediumTrooperArmor
+  id: MinutemenLightTrooperArmor
+  name: Minutemen light trooper armor
+  description: A stripped-down salvaged plate suit for mobile Minutemen defenders. A chest-mounted sheath keeps a combat knife within reach.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.65
+  - type: ExplosionResistance
+    damageCoefficient: 0.55
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+
+# Keep the existing ranger appearance and combat protection without night vision.
+- type: entity
+  parent: ClothingMaskGas
+  id: MinutemenTrooperGasMask
+  name: Minutemen trooper gas mask
+  description: A reinforced combat gas mask issued to Minutemen specialists.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/Gasmask/rangergasmask.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/Gasmask/rangergasmask.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95

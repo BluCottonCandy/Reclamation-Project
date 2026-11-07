@@ -5,6 +5,7 @@ using Content.Shared._Misfits.SpecialStats;
 using Content.Shared._ReclamationProject.Strength;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
+using Content.Shared.Jittering;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
@@ -29,6 +30,7 @@ public sealed class StrengthJuggernautSystem : EntitySystem
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
 
     public override void Initialize()
     {
@@ -80,6 +82,8 @@ public sealed class StrengthJuggernautSystem : EntitySystem
             !_blocker.CanInteract(ent, null) || ent.Comp.NextUseAt > now || _ability.IsActive(ent))
             return;
 
+        // Match Med-X's default visual jitter for the active ability, without applying the chem.
+        _jitter.DoJitter(ent, Duration, refresh: true);
         ent.Comp.EndsAt = now + Duration;
         ent.Comp.NextUseAt = now + Cooldown;
         _actions.SetCooldown(ent.Comp.Action, now, ent.Comp.NextUseAt);

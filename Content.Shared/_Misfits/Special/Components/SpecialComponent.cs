@@ -6,7 +6,7 @@ namespace Content.Shared._Misfits.Special.Components;
 /// Runtime SPECIAL values for a character.
 /// Base values come from the character profile; temporary modifiers are updated through SharedSpecialSystem.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class SpecialComponent : Component
 {
     // Base values are persistent character stats. Use SharedSpecialSystem to

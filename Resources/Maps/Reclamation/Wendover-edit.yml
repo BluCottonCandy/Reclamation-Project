@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/24/2026 07:44:40
-  entityCount: 294458
+  entityCount: 294459
 maps:
 - 1
 grids:
@@ -2334907,5 +2334907,12 @@ entities:
     components:
     - type: Transform
       pos: -16.5,-121.5
+      parent: 1
+- proto: MinutemenSpawnPointHeavyTrooper
+  entities:
+  - uid: 294853
+    components:
+    - type: Transform
+      pos: -131.5,-219.5
       parent: 1
 ...

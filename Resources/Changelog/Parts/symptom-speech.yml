@@ -1,0 +1,8 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Bodily symptom warnings now use first-person local speech that nearby players can hear instead of private notifications, with a shared two-minute cooldown across all effects.
+- type: Add
+  message: Low blood causes occasional faint or dizzy speech. Drunken characters occasionally hiccup or make tipsy remarks, while drug highs can produce happy or colorful remarks.
+- type: Tweak
+  message: Automatic symptom speech respects normal speech restrictions and retains the private notification when a character cannot speak. The survival guidebook explains the feature.

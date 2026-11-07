@@ -1,0 +1,359 @@
+- type: symptomSpeech
+  id: SymptomBloodLoss
+  cooldown: 60
+  cooldownVariation: 15
+  sourceMessages:
+  - bloodstream-component-selfaware-looks-pale
+  speechMessages:
+  - symptom-speech-bloodloss-1
+  - symptom-speech-bloodloss-2
+  - symptom-speech-bloodloss-3
+  - symptom-speech-bloodloss-4
+  - symptom-speech-bloodloss-5
+
+- type: symptomSpeech
+  id: SymptomDrunk
+  cooldown: 30
+  cooldownVariation: 15
+  speechMessages:
+  - symptom-speech-drunk-1
+  - symptom-speech-drunk-2
+  - symptom-speech-drunk-3
+  - symptom-speech-drunk-4
+
+- type: symptomSpeech
+  id: SymptomDrugHigh
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - drug-ambience-Berserker-mixture-1
+  - drug-ambience-Berserker-mixture-2
+  - drug-ambience-buffjet-1
+  - drug-ambience-buffjet-2
+  - drug-ambience-buffout-1
+  - drug-ambience-buffout-2
+  - drug-ambience-bufftats-1
+  - drug-ambience-bufftats-2
+  - drug-ambience-cateye-1
+  - drug-ambience-cateye-2
+  - drug-ambience-damage-modifying-mixture-1
+  - drug-ambience-damage-modifying-mixture-2
+  - drug-ambience-damage-resist-mixture-1
+  - drug-ambience-damage-resist-mixture-2
+  - drug-ambience-daytripper-1
+  - drug-ambience-daytripper-2
+  - drug-ambience-hydra-1
+  - drug-ambience-hydra-2
+  - drug-ambience-hydra-3
+  - drug-ambience-mentats-1
+  - drug-ambience-mentats-2
+  - drug-ambience-mentats-berry-1
+  - drug-ambience-mentats-berry-2
+  - drug-ambience-mentats-grape-1
+  - drug-ambience-mentats-grape-2
+  - drug-ambience-mentats-orange-1
+  - drug-ambience-mentats-orange-2
+  - drug-ambience-mourning-poultice-1
+  - drug-ambience-mourning-poultice-2
+  - drug-ambience-movespeed-mixture-1
+  - drug-ambience-movespeed-mixture-2
+  - drug-ambience-robust-movespeed-mixture-1
+  - drug-ambience-robust-movespeed-mixture-2
+  speechMessages:
+  - symptom-speech-drughigh-1
+  - symptom-speech-drughigh-2
+  - symptom-speech-drughigh-3
+  - symptom-speech-drughigh-4
+  - symptom-speech-drughigh-5
+  - symptom-speech-drughigh-6
+
+- type: symptomSpeech
+  id: SymptomMedicine
+  cooldown: 60
+  cooldownVariation: 15
+  sourceMessages:
+  - drug-ambience-antidote-1
+  - drug-ambience-antidote-2
+  - drug-ambience-antidote-mixture-1
+  - drug-ambience-antidote-mixture-2
+  - drug-ambience-bitterdrink-1
+  - drug-ambience-bitterdrink-2
+  - drug-ambience-cleansing-powder-1
+  - drug-ambience-cleansing-powder-2
+  - drug-ambience-dirty-stimpak-1
+  - drug-ambience-dirty-stimpak-2
+  - drug-ambience-fixer-1
+  - drug-ambience-fixer-2
+  - drug-ambience-healing-mixture-1
+  - drug-ambience-healing-mixture-2
+  - drug-ambience-healing-poultice-1
+  - drug-ambience-healing-poultice-2
+  - drug-ambience-healing-powder-1
+  - drug-ambience-healing-powder-2
+  - drug-ambience-healing-powder-3
+  - drug-ambience-radaway-1
+  - drug-ambience-radaway-2
+  - drug-ambience-radaway-diluted-1
+  - drug-ambience-radaway-diluted-2
+  - drug-ambience-radx-1
+  - drug-ambience-radx-2
+  - drug-ambience-robust-healing-mixture-1
+  - drug-ambience-robust-healing-mixture-2
+  - drug-ambience-smelling-salts-1
+  - drug-ambience-smelling-salts-2
+  - drug-ambience-trauma-powder-1
+  - drug-ambience-trauma-powder-2
+  - drug-ambience-ultra-robust-healing-mixture-1
+  - drug-ambience-ultra-robust-healing-mixture-2
+  speechMessages:
+  - symptom-speech-medicine-1
+  - symptom-speech-medicine-2
+  - symptom-speech-medicine-3
+
+- type: symptomSpeech
+  id: SymptomNausea
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - disease-ghoul-rot-popup-itch
+  - disease-rad-flu-popup-nausea
+  - generic-reagent-effect-nauseous
+  - generic-reagent-effect-sick
+  - genetics-instability-warning-sick
+  - institute-relay-passenger-sick
+  - institute-relay-sick
+  speechMessages:
+  - symptom-speech-nausea-1
+  - symptom-speech-nausea-2
+  - symptom-speech-nausea-3
+
+- type: symptomSpeech
+  id: SymptomThirst
+  cooldown: 60
+  cooldownVariation: 15
+  sourceMessages:
+  - generic-reagent-effect-thirsty
+  - need-flavor-thirst-thirsty-1
+  - need-flavor-thirst-thirsty-2
+  - need-flavor-thirst-thirsty-3
+  - need-flavor-thirst-thirsty-4
+  speechMessages:
+  - symptom-speech-thirst-1
+  - symptom-speech-thirst-2
+  - symptom-speech-thirst-3
+
+- type: symptomSpeech
+  id: SymptomParched
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - generic-reagent-effect-parched
+  - need-flavor-thirst-dead-1
+  - need-flavor-thirst-dead-2
+  - need-flavor-thirst-dead-3
+  - need-flavor-thirst-dead-4
+  - need-flavor-thirst-parched-1
+  - need-flavor-thirst-parched-2
+  - need-flavor-thirst-parched-3
+  - need-flavor-thirst-parched-4
+  speechMessages:
+  - symptom-speech-parched-1
+  - symptom-speech-parched-2
+  - symptom-speech-parched-3
+
+- type: symptomSpeech
+  id: SymptomHunger
+  cooldown: 60
+  cooldownVariation: 15
+  sourceMessages:
+  - need-flavor-hunger-peckish-1
+  - need-flavor-hunger-peckish-2
+  - need-flavor-hunger-peckish-3
+  - need-flavor-hunger-peckish-4
+  speechMessages:
+  - symptom-speech-hunger-1
+  - symptom-speech-hunger-2
+  - symptom-speech-hunger-3
+
+- type: symptomSpeech
+  id: SymptomStarving
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - need-flavor-hunger-dead-1
+  - need-flavor-hunger-dead-2
+  - need-flavor-hunger-dead-3
+  - need-flavor-hunger-dead-4
+  - need-flavor-hunger-starving-1
+  - need-flavor-hunger-starving-2
+  - need-flavor-hunger-starving-3
+  - need-flavor-hunger-starving-4
+  speechMessages:
+  - symptom-speech-starving-1
+  - symptom-speech-starving-2
+  - symptom-speech-starving-3
+
+- type: symptomSpeech
+  id: SymptomWeakness
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - MutationAdrenalineRush-comedown-popup
+  - entity-effect-popup-tiredness
+  - need-flavor-near-death
+  speechMessages:
+  - symptom-speech-weakness-1
+  - symptom-speech-weakness-2
+  - symptom-speech-weakness-3
+
+- type: symptomSpeech
+  id: SymptomRadiationMild
+  cooldown: 60
+  cooldownVariation: 15
+  sourceMessages:
+  - rad-warning-tier0-a
+  - rad-warning-tier0-b
+  - rad-warning-tier0-c
+  speechMessages:
+  - symptom-speech-radiationmild-1
+  - symptom-speech-radiationmild-2
+  - symptom-speech-radiationmild-3
+
+- type: symptomSpeech
+  id: SymptomRadiationSick
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - rad-warning-tier1-a
+  - rad-warning-tier1-b
+  - rad-warning-tier1-c
+  speechMessages:
+  - symptom-speech-radiationsick-1
+  - symptom-speech-radiationsick-2
+  - symptom-speech-radiationsick-3
+
+- type: symptomSpeech
+  id: SymptomRadiationSevere
+  cooldown: 30
+  cooldownVariation: 15
+  sourceMessages:
+  - rad-warning-tier2-a
+  - rad-warning-tier2-b
+  - rad-warning-tier2-c
+  - rad-warning-tier3-a
+  - rad-warning-tier3-b
+  - rad-warning-tier3-c
+  speechMessages:
+  - symptom-speech-radiationsevere-1
+  - symptom-speech-radiationsevere-2
+  - symptom-speech-radiationsevere-3
+
+- type: symptomSpeech
+  id: SymptomWithdrawal
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - addiction-effect-1
+  - addiction-effect-10
+  - addiction-effect-2
+  - addiction-effect-3
+  - addiction-effect-4
+  - addiction-effect-5
+  - addiction-effect-6
+  - addiction-effect-7
+  - addiction-effect-8
+  - addiction-effect-9
+  speechMessages:
+  - symptom-speech-withdrawal-1
+  - symptom-speech-withdrawal-2
+  - symptom-speech-withdrawal-3
+
+- type: symptomSpeech
+  id: SymptomWithdrawalRelief
+  cooldown: 60
+  cooldownVariation: 15
+  speechMessages:
+  - symptom-speech-withdrawalrelief-1
+  - symptom-speech-withdrawalrelief-2
+
+- type: symptomSpeech
+  id: SymptomPain
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - bloodstream-component-wounds-cauterized
+  - generic-reagent-effect-burning-insides
+  - generic-reagent-effect-slicing-insides
+  - trauma-internal-pain
+  speechMessages:
+  - symptom-speech-pain-1
+  - symptom-speech-pain-2
+  - symptom-speech-pain-3
+
+- type: symptomSpeech
+  id: SymptomChestPain
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - ephedrine-effect-tight-pain
+  speechMessages:
+  - symptom-speech-chestpain-1
+  - symptom-speech-chestpain-2
+
+- type: symptomSpeech
+  id: SymptomEyePain
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - generic-reagent-effect-burning-eyes
+  - generic-reagent-effect-burning-eyes-a-bit
+  - generic-reagent-effect-tearing-up
+  - norepinephricacid-effect-eye-pain
+  speechMessages:
+  - symptom-speech-eyepain-1
+  - symptom-speech-eyepain-2
+
+- type: symptomSpeech
+  id: SymptomFever
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - MutationFierySweat-mutated
+  - disease-mole-rat-popup-fever
+  - disease-wasteland-fever-popup-hot
+  speechMessages:
+  - symptom-speech-fever-1
+  - symptom-speech-fever-2
+  - symptom-speech-fever-3
+
+- type: symptomSpeech
+  id: SymptomItch
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - disease-brahmin-pox-popup-spots
+  - disease-swamp-itch-popup-scratch
+  speechMessages:
+  - symptom-speech-itch-1
+  - symptom-speech-itch-2
+
+- type: symptomSpeech
+  id: SymptomCough
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - disease-spore-sickness-popup-cough
+  speechMessages:
+  - symptom-speech-cough-1
+  - symptom-speech-cough-2
+
+- type: symptomSpeech
+  id: SymptomChills
+  cooldown: 45
+  cooldownVariation: 15
+  sourceMessages:
+  - disease-new-plague-popup-chills
+  - genetics-instability-warning-cold
+  speechMessages:
+  - symptom-speech-chills-1
+  - symptom-speech-chills-2

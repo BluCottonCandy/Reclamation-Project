@@ -13937,3 +13937,17 @@ Entries:
   id: 6602
   time: '2026-11-07T03:13:19.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/131
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Video-game holotapes are much rarer in junk piles: each successful
+        search has one 5% chance to award a single game, replacing seven
+        independent 5% rolls.
+    - type: Tweak
+      message: >-
+        Updated the Bunker PCs guidebook to explain the overall game-drop chance
+        and one-game limit.
+  id: 6603
+  time: '2026-11-07T03:13:32.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/132

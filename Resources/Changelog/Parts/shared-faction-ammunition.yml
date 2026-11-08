@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: All seven faction supply vendors now offer the same ammunition, magazines, energy cells, plasma cartridges and fuel canisters. Ammunition has no equipment-rank restriction; faction access rules, Town discounts and Railroad import pricing remain in place.
+- type: Tweak
+  message: Magazines holding more than 10 rounds cost at least 10 supply points. Magazines and belts holding more than 50 rounds cost more than an ammunition box, with capacity-based pricing. Railroad import pricing and the Town price cap still apply.

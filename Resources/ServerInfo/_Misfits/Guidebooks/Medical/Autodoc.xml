@@ -11,7 +11,7 @@ The Autodoc Mk.XIV is a programmable surgical machine capable of executing compl
 
 ## Setup
 
-Use a multitool to link the Autodoc to a nearby operating table. Once a patient is sleeping on the linked table, the Autodoc is ready to operate.
+Use a multitool to link the Autodoc to a nearby operating table. Once a patient is sleeping on the linked table, the Autodoc is ready to operate. You can also lie on the table yourself and start a program while awake to operate on yourself; with the safety on, it only skips the sleep check when the patient is the one who started the program.
 
 Place any items a program requires in the Autodoc's storage trays before starting. The machine cannot retrieve items from the floor.
 

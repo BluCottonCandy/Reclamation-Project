@@ -67,6 +67,7 @@ public enum WastelandMapTacticalFeedKind : byte
     Followers,
     Tribe, // #Misfits Add - Willower pendant tactical feed
     Bwonsamdi, // private map-wide feed of critical and dead player souls
+    Institute, // #Reclamation Project - every Institute faction member, ID or not (undercover Coursers included)
 }
 
 [Serializable, NetSerializable]

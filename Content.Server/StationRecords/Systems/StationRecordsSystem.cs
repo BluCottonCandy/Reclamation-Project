@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Forensics;
 using Content.Server.GameTicking;
+using Content.Shared.Humanoid.Prototypes; // #Reclamation Project
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
@@ -65,7 +66,9 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
 
-        string specie = profile.Species;
+        // #Reclamation Project - disguised species (Coursers) go on record as their cover species
+        string specie = _prototypeManager.TryIndex<SpeciesPrototype>(profile.Species, out var speciesProto)
+            && speciesProto.DisplaySpecies is { } shown ? shown.Id : profile.Species;
         if (!string.IsNullOrEmpty(profile.Customspeciename))
             specie = profile.Customspeciename;
 

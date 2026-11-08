@@ -5,7 +5,7 @@
   setPreference: true
   whitelisted: true # job whitelist: jobwhitelistadd <player> MinutemenGeneral
   hideWithoutJobWhitelist: true
-  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
+  jobWhitelistBypassesRoleTimers: true # #Reclamation Project - faction head: a job-whitelisted player can take it without the hours.
   requireAdminNotify: true
   weight: 140
   displayWeight: 140

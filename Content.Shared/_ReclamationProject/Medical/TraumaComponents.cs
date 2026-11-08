@@ -40,6 +40,11 @@ public sealed partial class TraumaOrganComponent : Component
     [DataField, AutoNetworkedField] public float MaximumHealth = 100f;
     [DataField] public bool FailureRecorded;
     public bool Detaching;
+    /// <summary>
+    /// #Reclamation Project - Maximum health that Institute nanites rebuilt after a failure.
+    /// Medical scans still subtract it, so the scar reads exactly like a human's while the part keeps full health.
+    /// </summary>
+    [DataField] public float HiddenScarLoss;
 
     public float CurrentHealth => Math.Clamp(MaximumHealth - Damage, 0f, MaximumHealth);
     public float DamagePercent => MaximumHealth <= 0f ? 100f : Math.Clamp(Damage / MaximumHealth * 100f, 0f, 100f);
@@ -54,6 +59,11 @@ public sealed partial class TraumaLimbComponent : Component
     [DataField, AutoNetworkedField] public float OriginalFailureThreshold;
     [DataField] public float AppliedMaximumHealth = 100f;
     [DataField] public bool FailureRecorded;
+    /// <summary>
+    /// #Reclamation Project - Maximum health that Institute nanites rebuilt after a failure.
+    /// Medical scans still subtract it, so the scar reads exactly like a human's while the part keeps full health.
+    /// </summary>
+    [DataField] public float HiddenScarLoss;
 }
 
 [ByRefEvent]

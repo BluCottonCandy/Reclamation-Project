@@ -291,7 +291,8 @@ public abstract class SharedAutodocSystem : EntitySystem
     /// </summary>
     public bool StartSurgery(Entity<AutodocComponent> ent, EntityUid patient, EntityUid part, EntProtoId surgery)
     {
-        if (ent.Comp.RequireSleeping && IsAwake(patient))
+        // #Reclamation Project - someone who started the program on themselves can stay awake for it.
+        if (ent.Comp.RequireSleeping && IsAwake(patient) && !IsSelfOperation(ent, patient))
             throw new AutodocError("patient-unsedated");
 
         if (_surgery.GetSingleton(surgery) is not {} singleton)
@@ -309,6 +310,12 @@ public abstract class SharedAutodocSystem : EntitySystem
         Comp<ActiveAutodocComponent>(ent).CurrentSurgery = (patient, part, surgery);
         return true;
     }
+
+    /// <summary>
+    /// #Reclamation Project - true when the patient started the running program themselves.
+    /// </summary>
+    public bool IsSelfOperation(EntityUid autodoc, EntityUid patient)
+        => TryComp<ActiveAutodocComponent>(autodoc, out var active) && active.StartedBy == patient;
 
     public bool IsAwake(EntityUid uid)
     {
@@ -404,6 +411,7 @@ public abstract class SharedAutodocSystem : EntitySystem
 
         var active = EnsureComp<ActiveAutodocComponent>(ent);
         active.CurrentProgram = index;
+        active.StartedBy = user; // #Reclamation Project - self-operation check
         active.NextUpdate = Timing.CurTime + ent.Comp.UpdateDelay;
         Dirty(ent.Owner, active);
 

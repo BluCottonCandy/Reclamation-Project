@@ -8,6 +8,7 @@ using Content.Shared.Storage.EntitySystems;
 using Content.Server.Flash.Components;
 using Content.Shared._Misfits.Traits;
 using Content.Shared._ReclamationProject.Institute.Augment;
+using Content.Shared._ReclamationProject.Institute.Nanites;
 using Content.Shared.Damage.Components;
 using Content.Shared.Mobs;
 using Content.Shared._Misfits.Carrying;
@@ -91,9 +92,11 @@ public sealed class InstituteRelayTest
                 && entities.GetComponent<MetaDataComponent>(suit.Value).EntityPrototype?.ID == "InstituteCommandMODSuit", "Director has no command MOD suit");
             Assert.That(entities.HasComponent<CanFiremanCarryComponent>(director.Value), "Director can't fireman carry");
             Assert.That(entities.HasComponent<TraumaRegenerationComponent>(director.Value), "Director lacks trauma regeneration");
-            var regen = entities.GetComponent<PassiveDamageComponent>(director.Value);
-            Assert.That(regen.AllowedStates, Does.Contain(MobState.Critical), "Director's regen doesn't work in crit");
-            Assert.That(regen.Damage.DamageDict["Blunt"].Float(), Is.EqualTo(-0.5f).Within(0.001f), "Director's regen isn't 0.5 per second");
+            // #Reclamation Project - the Director's old PassiveDamage regen was replaced by nanites
+            Assert.That(entities.HasComponent<NaniteRepairComponent>(director.Value), "Director lacks nanite repair");
+            Assert.That(entities.HasComponent<SyntheticSustenanceComponent>(director.Value), "Director lacks synthetic sustenance");
+            Assert.That(entities.HasComponent<InnateFireProtectionComponent>(director.Value), "Director lacks innate fire protection");
+            Assert.That(entities.HasComponent<SteadyCrawlComponent>(director.Value), "Director lacks steady crawl");
 
             // Augments: 15% less damage on top of armour, Adamantium Skeleton, flash-immune eyes.
             Assert.That(entities.GetComponent<InstituteAugmentComponent>(director.Value).DamageMultiplier, Is.EqualTo(0.85f).Within(0.001f));

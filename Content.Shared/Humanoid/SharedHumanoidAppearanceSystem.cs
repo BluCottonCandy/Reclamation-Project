@@ -124,8 +124,9 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     private void OnExamined(EntityUid uid, HumanoidAppearanceComponent component, ExaminedEvent args)
     {
         var identity = Identity.Entity(uid, EntityManager);
-        var species = GetSpeciesRepresentation(component.Species, component.CustomSpecieName).ToLower();
-        var age = GetAgeRepresentation(component.Species, component.Age);
+        var shownSpecies = GetDisplaySpecies(component.Species); // #Reclamation Project - disguised species show as their cover
+        var species = GetSpeciesRepresentation(shownSpecies, component.CustomSpecieName).ToLower();
+        var age = GetAgeRepresentation(shownSpecies, component.Age);
         if (HasComp<ShadowkinComponent>(uid))
         {
             var color = component.EyeColor.Name();
@@ -618,6 +619,16 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
         if (sync)
             Dirty(uid, humanoid);
+    }
+
+    /// <summary>
+    /// #Reclamation Project - the species other players should see (<see cref="SpeciesPrototype.DisplaySpecies"/>).
+    /// </summary>
+    public string GetDisplaySpecies(string speciesId)
+    {
+        return _proto.TryIndex<SpeciesPrototype>(speciesId, out var species) && species.DisplaySpecies is { } shown
+            ? shown.Id
+            : speciesId;
     }
 
     /// <summary>

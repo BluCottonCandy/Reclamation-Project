@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 11/07/2026 09:21:40
-  entityCount: 47730
+  entityCount: 47746
 maps:
 - 1
 grids:
@@ -130,20 +130,17 @@ entities:
 - proto: ""
   entities:
   - uid: 1
-    mapInit: true
     components:
     - type: MetaData
       name: Wendover [-1]
     - type: Transform
     - type: Map
-      mapInitialized: True
     - type: GridTree
     - type: Broadphase
     - type: OccluderTree
     - type: ChunkContainer
       chunkEntities: []
   - uid: 2
-    mapInit: true
     components:
     - type: MetaData
       name: Wendover - Rise
@@ -11545,6 +11542,7 @@ entities:
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
+      inherent: True
       enabled: True
     - type: DecalGrid
       chunkCollection:
@@ -394927,32 +394925,27 @@ entities:
 - proto: MisfitsSpawnerEnclaveProtectron
   entities:
   - uid: 16615
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -56.5,63.5
   - uid: 16616
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -67.5,44.5
   - uid: 16617
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -68.5,54.5
   - uid: 16618
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -65.612305,69.42785
       anchored: False
   - uid: 16619
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -394961,7 +394954,6 @@ entities:
 - proto: MisfitsSpawnerEnclaveSentryBot
   entities:
   - uid: 16620
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -413081,38 +413073,6 @@ entities:
       pos: -61.5,-26.5
 - proto: N14ClosetGunCabinet
   entities:
-  - uid: 3
-    mapInit: true
-    components:
-    - type: Transform
-      parent: 2
-      pos: 32.5,41.5
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            vertices:
-            - -0.25,-0.48
-            - 0.25,-0.48
-            - 0.25,0.48
-            - -0.25,0.48
-            radius: 0.01
-          restitution: 0
-          hard: True
-          friction: 0.4
-          density: 75
-          mask:
-          - Impassable
-          - TableLayer
-          - LowImpassable
-          layer:
-          - BulletImpassable
-          - Opaque
-    - type: EntityStorage
-      removedMasks: 20
-      open: True
-    - type: PlaceableSurface
-      isPlaceable: True
   - uid: 305
     mapInit: true
     components:
@@ -521331,162 +521291,137 @@ entities:
 - proto: N14SpawnMobAssaultron
   entities:
   - uid: 27184
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
       pos: -87.5,47.5
   - uid: 27185
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -94.5,63.5
   - uid: 27186
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -85.5,60.5
   - uid: 27187
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -87.5,48.5
   - uid: 27188
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -32.5,69.5
   - uid: 27189
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -25.5,71.5
   - uid: 27190
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -87.5,57.5
   - uid: 27191
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -87.5,51.5
   - uid: 27192
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -88.5,60.5
   - uid: 27193
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -76.78126,62.545555
       anchored: False
   - uid: 27194
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -78.44795,63.644188
       anchored: False
   - uid: 27195
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -74.65181,64.47156
       anchored: False
   - uid: 27196
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -71.776375,64.52581
       anchored: False
   - uid: 27197
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -64.01986,62.72972
       anchored: False
   - uid: 27198
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -65.87533,65.151596
       anchored: False
   - uid: 27199
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -70.5,55.5
   - uid: 27200
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -68.5,51.5
   - uid: 27201
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -68.5,49.5
   - uid: 27202
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -64.5,52.5
   - uid: 27203
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -63.5,57.5
   - uid: 27204
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -63.5,46.5
   - uid: 27205
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -70.44638,44.533516
       anchored: False
   - uid: 27206
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -58.711548,63.55739
       anchored: False
   - uid: 27207
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -66.47222,71.53813
       anchored: False
   - uid: 27208
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521494,14 +521429,12 @@ entities:
 - proto: N14SpawnMobBighorner
   entities:
   - uid: 27209
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -2.5,-3.5
   - uid: 27210
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521511,14 +521444,12 @@ entities:
 - proto: N14SpawnMobBloatfly
   entities:
   - uid: 27211
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -73.5,-52.5
   - uid: 27212
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521526,7 +521457,6 @@ entities:
 - proto: N14SpawnMobBrahmin
   entities:
   - uid: 27213
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521534,7 +521464,6 @@ entities:
       pos: 1.8886888,-3.1372855
       anchored: False
   - uid: 27214
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521544,14 +521473,12 @@ entities:
 - proto: N14SpawnMobChicken
   entities:
   - uid: 27215
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: 2.5,-4.5
   - uid: 27216
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521560,13 +521487,11 @@ entities:
 - proto: N14SpawnMobDeathclawMetal
   entities:
   - uid: 27217
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -184.5,4.5
   - uid: 27218
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521574,43 +521499,36 @@ entities:
 - proto: N14SpawnMobFeralGhoulReaver
   entities:
   - uid: 27219
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -46.5,-47.5
   - uid: 27220
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -47.5,-32.5
   - uid: 27221
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -47.5,-29.5
   - uid: 27222
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -47.5,-35.5
   - uid: 27223
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -46.5,-30.5
   - uid: 27224
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -48.5,-30.5
   - uid: 27225
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521619,13 +521537,11 @@ entities:
 - proto: N14SpawnMobFeralGhoulRotter
   entities:
   - uid: 27226
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -124.5,-36.5
   - uid: 27227
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521633,7 +521549,6 @@ entities:
 - proto: N14SpawnMobGecko
   entities:
   - uid: 27228
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521642,7 +521557,6 @@ entities:
 - proto: N14SpawnMobGeckoGolden
   entities:
   - uid: 27229
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521651,7 +521565,6 @@ entities:
 - proto: N14SpawnMobGiantAnt
   entities:
   - uid: 27230
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521659,13 +521572,11 @@ entities:
 - proto: N14SpawnMobGiantFireAnt
   entities:
   - uid: 27231
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -37.5,-45.5
   - uid: 27232
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521673,103 +521584,87 @@ entities:
 - proto: N14SpawnMobMrHandyGutsy
   entities:
   - uid: 27233
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -42.5,70.5
   - uid: 27234
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -38.5,70.5
   - uid: 27235
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
       pos: -24.5,70.5
   - uid: 27236
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -39.5,57.5
   - uid: 27237
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -41.5,57.5
   - uid: 27238
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -87.5,72.5
   - uid: 27239
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -94.5,68.5
   - uid: 27240
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -66.23685,61.206284
       anchored: False
   - uid: 27241
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -69.33236,62.788315
       anchored: False
   - uid: 27242
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -67.222984,64.1555
       anchored: False
   - uid: 27243
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -66.10013,57.163727
       anchored: False
   - uid: 27244
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -66.547905,54.05416
       anchored: False
   - uid: 27245
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -66.5,47.5
   - uid: 27246
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -70.5,49.5
   - uid: 27247
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -64.5,72.5
   - uid: 27248
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521778,7 +521673,6 @@ entities:
 - proto: N14SpawnMobMrHandySaw
   entities:
   - uid: 27249
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521786,7 +521680,6 @@ entities:
 - proto: N14SpawnMobNightstalkerCub
   entities:
   - uid: 27250
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521795,13 +521688,11 @@ entities:
 - proto: N14SpawnMobProtectron
   entities:
   - uid: 27251
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -30.5,67.5
   - uid: 27252
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521810,21 +521701,18 @@ entities:
 - proto: N14SpawnMobProtectronBuilder
   entities:
   - uid: 27253
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -26.5,64.5
   - uid: 27254
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -47.5,70.5
   - uid: 27255
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521833,7 +521721,6 @@ entities:
 - proto: N14SpawnMobProtectronFire
   entities:
   - uid: 27256
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521842,7 +521729,6 @@ entities:
 - proto: N14SpawnMobProtectronPoliceHostile
   entities:
   - uid: 27257
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521851,19 +521737,16 @@ entities:
 - proto: N14SpawnMobRadroach
   entities:
   - uid: 27258
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -89.5,2.5
   - uid: 27259
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -88.5,1.5
   - uid: 27260
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521871,7 +521754,6 @@ entities:
 - proto: N14SpawnMobRadstag
   entities:
   - uid: 27261
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521879,7 +521761,6 @@ entities:
       pos: -1.080061,-4.091073
       anchored: False
   - uid: 27262
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521888,7 +521769,6 @@ entities:
 - proto: N14SpawnMobRaiderBoss
   entities:
   - uid: 27263
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521896,67 +521776,56 @@ entities:
 - proto: N14SpawnMobRaiderPsycho
   entities:
   - uid: 27264
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -180.5,-14.5
   - uid: 27265
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -190.5,-8.5
   - uid: 27266
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -214.5,-4.5
   - uid: 27267
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -209.5,-23.5
   - uid: 27268
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -208.5,-20.5
   - uid: 27269
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -191.5,-14.5
   - uid: 27270
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -196.5,-13.5
   - uid: 27271
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -218.5,-13.5
   - uid: 27272
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -210.5,-13.5
   - uid: 27273
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -214.5,-13.5
   - uid: 27274
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521964,31 +521833,26 @@ entities:
 - proto: N14SpawnMobRaiderPsychoHunter
   entities:
   - uid: 27275
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -178.5,-10.5
   - uid: 27276
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -188.5,-1.5
   - uid: 27277
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -192.5,-1.5
   - uid: 27278
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -223.5,-11.5
   - uid: 27279
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -521996,51 +521860,43 @@ entities:
 - proto: N14SpawnMobRaiderPsychoRanged
   entities:
   - uid: 27280
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -213.5,-9.5
   - uid: 27281
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -212.5,-8.5
   - uid: 27282
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -180.5,-9.5
   - uid: 27283
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -211.5,-9.5
   - uid: 27284
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -212.5,-18.5
   - uid: 27285
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -188.5,-12.5
   - uid: 27286
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -222.5,-15.5
   - uid: 27287
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -522048,31 +521904,26 @@ entities:
 - proto: N14SpawnMobRaiderPsychoSkrimisher
   entities:
   - uid: 27288
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -174.5,-13.5
   - uid: 27289
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -181.5,-15.5
   - uid: 27290
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -212.5,-13.5
   - uid: 27291
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -215.5,-26.5
   - uid: 27292
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -522080,25 +521931,21 @@ entities:
 - proto: N14SpawnMobRobobrain
   entities:
   - uid: 27293
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -27.5,47.5
   - uid: 27294
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -37.5,49.5
   - uid: 27295
-    mapInit: true
     components:
     - type: Transform
       parent: 2
       pos: -40.5,65.5
   - uid: 27296
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -642946,29 +642793,6 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: -121.5,-49.5
-    - type: Actions
-      actions:
-      - 44016
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44016
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44016
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
 - proto: N14WeaponTurretRaider
   entities:
   - uid: 44017
@@ -642977,111 +642801,23 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: -176.5,-17.5
-    - type: Actions
-      actions:
-      - 44018
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44018
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44018
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44019
     components:
     - type: Transform
       parent: 2
       pos: -188.5,-21.5
-    - type: Actions
-      actions:
-      - 44020
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44020
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44020
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44021
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -187.5,-2.5
-    - type: Actions
-      actions:
-      - 44022
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44022
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44022
-    - type: Gun
-      nextFire: -18170.648496
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44023
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
       pos: -193.5,-2.5
-    - type: Actions
-      actions:
-      - 44024
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44024
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44024
-    - type: Gun
-      nextFire: -18170.648496
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
 - proto: N14WeaponTurretRobot
   entities:
   - uid: 44025
@@ -643089,245 +642825,48 @@ entities:
     - type: Transform
       parent: 2
       pos: -42.5,72.5
-    - type: Actions
-      actions:
-      - 44026
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44026
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44026
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44027
     components:
     - type: Transform
       parent: 2
       pos: -86.5,68.5
-    - type: Actions
-      actions:
-      - 44028
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44028
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44028
-    - type: Gun
-      nextFire: -18170.648496
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44029
     components:
     - type: Transform
       parent: 2
       pos: -43.5,66.5
-    - type: Actions
-      actions:
-      - 44030
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44030
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44030
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44031
     components:
     - type: Transform
       parent: 2
       pos: -40.5,50.5
-    - type: Actions
-      actions:
-      - 44032
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44032
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44032
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44033
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -35.5,68.5
-    - type: Actions
-      actions:
-      - 44034
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44034
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44034
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44035
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -82.5,65.5
-    - type: Actions
-      actions:
-      - 44036
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44036
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44036
-    - type: Gun
-      nextFire: -18170.648496
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44037
     components:
     - type: Transform
       parent: 2
       pos: -72.5,63.5
-    - type: Actions
-      actions:
-      - 44038
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44038
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44038
-    - type: Gun
-      nextFire: -18170.648496
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44039
     components:
     - type: Transform
       parent: 2
       pos: -54.5,60.5
-    - type: Actions
-      actions:
-      - 44040
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44040
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44040
-    - type: Gun
-      nextFire: -18170.648496
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44041
     components:
     - type: Transform
       parent: 2
       pos: -66.5,72.5
-    - type: Actions
-      actions:
-      - 44042
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44042
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44042
-    - type: Gun
-      nextFire: -18170.648496
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
 - proto: N14WeaponTurretVaultSecureArea
   entities:
   - uid: 44043
@@ -643336,206 +642875,41 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: -9.5,-6.5
-    - type: Actions
-      actions:
-      - 44044
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44044
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44044
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44045
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -13.5,-6.5
-    - type: Actions
-      actions:
-      - 44046
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44046
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44046
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44047
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: 34.5,44.5
-    - type: Actions
-      actions:
-      - 44048
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44048
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44048
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
-    - type: InputMover
-    - type: ActiveNPC
   - uid: 44049
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: 27.5,0.5
-    - type: Actions
-      actions:
-      - 44050
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44050
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44050
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44051
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: 30.5,0.5
-    - type: Actions
-      actions:
-      - 44052
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44052
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44052
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
   - uid: 44053
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: 22.5,37.5
-    - type: Actions
-      actions:
-      - 44054
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44054
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44054
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
-    - type: InputMover
-    - type: ActiveNPC
   - uid: 44055
     components:
     - type: Transform
       parent: 2
       pos: -8.5,10.5
-    - type: Actions
-      actions:
-      - 44056
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 44056
-          showEnts: False
-          occludes: True
-    - type: CombatMode
-      combatToggleActionEntity: 44056
-    - type: Gun
-      nextFire: -18170.648496
-    - type: HTN
-      checkServices: False
-    - type: BallisticAmmoProvider
-      unspawnedCount: 500
-    - type: ActionsContainer
 - proto: N14Welder
   entities:
   - uid: 8074
@@ -703548,7 +702922,6 @@ entities:
 - proto: SpawnMobPossumMorty
   entities:
   - uid: 47133
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -712320,4 +711693,95 @@ entities:
       pos: -169.5,-51.5
       parent: 2
       anchored: True
+- proto: ReclamationMobMirelurkQueen
+  entities:
+  - uid: 47735
+    components:
+    - type: Transform
+      parent: 2
+      pos: -2.5,19.5
+- proto: N14MobMirelurk
+  entities:
+  - uid: 47736
+    components:
+    - type: Transform
+      parent: 2
+      pos: -5.5,20.5
+  - uid: 47737
+    components:
+    - type: Transform
+      parent: 2
+      pos: 3.5,18.5
+  - uid: 47738
+    components:
+    - type: Transform
+      parent: 2
+      pos: 10.5,19.5
+  - uid: 47739
+    components:
+    - type: Transform
+      parent: 2
+      pos: 15.5,16.5
+  - uid: 47740
+    components:
+    - type: Transform
+      parent: 2
+      pos: 25.5,17.5
+  - uid: 47741
+    components:
+    - type: Transform
+      parent: 2
+      pos: 29.5,11.5
+  - uid: 47742
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,-3.5
+  - uid: 47743
+    components:
+    - type: Transform
+      parent: 2
+      pos: 35.5,5.5
+- proto: N14SpawnMobFeralGhoul
+  entities:
+  - uid: 47744
+    components:
+    - type: Transform
+      parent: 2
+      pos: 24.5,32.5
+  - uid: 47745
+    components:
+    - type: Transform
+      parent: 2
+      pos: 32.5,32.5
+  - uid: 47746
+    components:
+    - type: Transform
+      parent: 2
+      pos: 24.5,39.5
+  - uid: 47747
+    components:
+    - type: Transform
+      parent: 2
+      pos: 33.5,24.5
+  - uid: 47748
+    components:
+    - type: Transform
+      parent: 2
+      pos: 53.5,23.5
+  - uid: 47749
+    components:
+    - type: Transform
+      parent: 2
+      pos: 51.5,14.5
+  - uid: 47750
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,8.5
+  - uid: 47751
+    components:
+    - type: Transform
+      parent: 2
+      pos: 32.5,6.5
 ...

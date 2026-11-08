@@ -1,0 +1,8 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: The Wendover vault now contains fresh ghouls and mirelurks, with a mirelurk queen patrolling the hallway below cargo.
+- type: Remove
+  message: Removed the remaining overseer office gun cabinet. The vault retains broken genetics and cargo computers, with no ID-printing computer or toxin-stocked safe.
+- type: Fix
+  message: Restored gravity and round-start enemy spawning across the entire Wendover underground layer after the previous live-map export retained initialized runtime state. Existing floor tiles are preserved.

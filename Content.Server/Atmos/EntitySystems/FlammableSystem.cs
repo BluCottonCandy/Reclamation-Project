@@ -487,7 +487,7 @@ namespace Content.Server.Atmos.EntitySystems
                         if (_inventoryQuery.TryComp(uid, out var inv))
                             _inventory.RelayEvent((uid, inv), ref ev);
 
-                        multiplier = ev.Multiplier;
+                        multiplier = Math.Max(0f, ev.Multiplier); // #Reclamation Project - stacked protection must not turn fire into healing
                     }
 
                     _damageableSystem.TryChangeDamage(uid, flammable.Damage * flammable.FireStacks * multiplier, interruptsDoAfters: false);

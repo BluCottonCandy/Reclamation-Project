@@ -10,12 +10,14 @@ using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
+using Content.Shared.Weapons.Melee;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -43,10 +45,22 @@ public sealed class CourserSpeciesTest
             Assert.That(species.SpriteSet, Is.EqualTo("MobHumanSprites"), "Courser doesn't use human sprites");
             Assert.That(species.WhitelistRequired, Is.True, "Courser race isn't whitelisted");
 
-            // C-27 health: crit 200, dead 400.
+            // Tougher than a C-27: crit 250, dead 400, stamina 250.
             var thresholds = entities.System<MobThresholdSystem>();
-            Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Critical, out var crit) && crit == 200, "crit isn't 200");
+            Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Critical, out var crit) && crit == 250, "crit isn't 250");
             Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Dead, out var dead) && dead == 400, "dead isn't 400");
+            Assert.That(entities.GetComponent<StaminaComponent>(courser).CritThreshold, Is.EqualTo(250f), "stamina isn't 250");
+
+            // Synthetic muscle: punches hit 25% harder (Blunt 10 -> 12.5).
+            var punch = entities.System<SharedMeleeWeaponSystem>().GetDamage(courser, courser);
+            Assert.That(punch.GetTotal().Float(), Is.EqualTo(12.5f).Within(0.01f), "Courser punch isn't +25%");
+            // ...and so do held melee weapons.
+            var melee = entities.System<SharedMeleeWeaponSystem>();
+            var human = entities.SpawnEntity("MobHuman", map.GridCoords);
+            var knife = entities.SpawnEntity("CombatKnife", map.GridCoords);
+            var courserKnife = melee.GetDamage(knife, courser).GetTotal().Float();
+            var humanKnife = melee.GetDamage(knife, human).GetTotal().Float();
+            Assert.That(courserKnife, Is.EqualTo(humanKnife * 1.25f).Within(0.01f), "Courser knife isn't +25%");
 
             // Radiation does nothing.
             var damageable = entities.System<DamageableSystem>();

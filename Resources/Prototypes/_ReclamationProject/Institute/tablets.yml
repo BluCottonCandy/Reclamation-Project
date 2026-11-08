@@ -13,6 +13,12 @@
     sprite: _ReclamationProject/Institute/IDCard.rsi
   - type: Item
     sprite: _ReclamationProject/Institute/IDCard.rsi
+  # #Reclamation Project - IdCardInstitute switches the tablet map to the Institute feed
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - IdCardInstitute
 
 - type: entity
   abstract: true
@@ -36,6 +42,24 @@
       startingItem: InstitutePenlight
   - type: PdaBorderColor
     borderColor: "#e5e5e5"
+  # #Reclamation Project - chameleon: can be disguised as any Pip-Boy, PDA or ID and still works as an Institute tablet
+  - type: ChameleonClothing
+    slot: [idcard]
+    default: InstituteScientistTablet
+  - type: UserInterface
+    interfaces:
+      enum.PdaUiKey.Key:
+        type: PdaBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+      enum.RingerUiKey.Key:
+        type: RingerBoundUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+      enum.HealthAnalyzerUiKey.Key:
+        type: HealthAnalyzerBoundUserInterface
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: InstituteTabletBase

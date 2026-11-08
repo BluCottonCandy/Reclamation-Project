@@ -61,6 +61,7 @@
         - IdCardLegion # #Misfits Change
         - IdCardEnclave # #Misfits Change
         - IdCardWastelander # #Misfits Add - allows wastelander dogtags to be inserted
+        - IdCardInstitute # #Reclamation Project - Institute tablet map feed
   # #Misfits Add - Pip-Boy can read holotapes when they are used on it.
   # Opens the holotape's own UI (not the Pip-Boy's) since the PDA already has its own UserInterface.
   - type: HolotapeReader
@@ -77,6 +78,7 @@
   - type: Tag
     tags:
     - MisfitsPipBoy
+    - WhitelistChameleon # #Reclamation Project - Pip-Boys can be picked as chameleon disguises (Institute tablet)
   - type: CartridgeLoader
     preinstalled:
       - CrewManifestCartridge

@@ -1,0 +1,4 @@
+# Institute ID cards. A Pip-Boy/tablet holding one opens the Institute map feed,
+# which shows every Institute faction member (undercover Coursers included).
+- type: Tag
+  id: IdCardInstitute

@@ -703995,7 +703995,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -16.5,10.5
   - uid: 47184
-    mapInit: true
     components:
     - type: Transform
       parent: 2
@@ -704008,9 +704007,8 @@ entities:
       canTeleportToOtherMaps: True
       arrivalSound: !type:SoundPathSpecifier
         path: /Audio/Effects/teleport_arrival.ogg
-    - type: LinkedEntity
-      linkedEntities:
-      - invalid
+    - type: PortalAutoLink
+      linkKey: kerta_Vault_ToVault
     missingComponents:
     - Damageable
     - Destructible

@@ -43,6 +43,14 @@ Once you have tools, interact with your patient to begin. You will be prompted t
 
 <hr/>
 
+## Repairing damaged tissue and bones
+
+After opening the incision with a scalpel, retractor and hemostat, return to the body part's procedure list. Choose [bold]Repair damaged tissue[/bold] and use a hemostat to repair chest, arm, hand, leg or foot damage, then close the incision. Tissue repair remains listed when the part is healthy; its step is already complete until damage needs treatment.
+
+For a fractured or fully disabled limb, choose [bold]Set and mend fracture[/bold] and use the bone setter. This can salvage even a limb at 0/0 health, but its permanent maximum remains limited to 15. Tissue repair does not restore lost permanent health capacity or replace a missing limb.
+
+<hr/>
+
 ## Ghetto Surgery
 
 When proper surgical tools are unavailable, improvised alternatives can substitute in a pinch. Examine the item to see how effective it is as a surgical substitute.

@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Surgery can repair damaged chest tissue. Tissue repair remains available in the procedure list for arms, hands, legs and feet as injuries change. Use a hemostat after opening the incision; broken or fully disabled bones still require a bone setter.

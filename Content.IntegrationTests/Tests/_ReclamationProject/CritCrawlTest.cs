@@ -21,7 +21,7 @@ public sealed class CritCrawlTest
     [TestCase("MobCourser", null, true)]
     [TestCase("MobHuman", "InstituteDirector", true)]
     [TestCase("MobCourser", "InstituteCourser", true)]
-    public async Task CrawlSpeedInCrit(string mob, string? jobId, bool steady)
+    public async Task CrawlSpeedInCrit(string mob, string jobId, bool steady)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
         var map = await pair.CreateTestMap();

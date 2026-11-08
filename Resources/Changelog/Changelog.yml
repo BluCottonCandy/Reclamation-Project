@@ -14089,3 +14089,17 @@ Entries:
   id: 6612
   time: '2026-11-08T10:58:37.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/145
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Automatic symptom speech is now optional through the Outspoken perk in
+        the Speech category, granting +1 trait point. Characters without the
+        perk retain private symptom notifications.
+    - type: Tweak
+      message: >-
+        Outspoken retains the shared two-minute speech cooldown and respects
+        mute, gag and incapacitation restrictions.
+  id: 6613
+  time: '2026-11-08T11:01:09.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/146

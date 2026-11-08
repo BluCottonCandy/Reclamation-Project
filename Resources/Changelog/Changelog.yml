@@ -14080,3 +14080,12 @@ Entries:
   id: 6611
   time: '2026-11-07T13:43:41.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/140
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        The second pin slot is now Neck 2 and accepts any neck-slot item,
+        including pins, scarves, cloaks and neck-worn coats.
+  id: 6612
+  time: '2026-11-08T10:58:37.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/145

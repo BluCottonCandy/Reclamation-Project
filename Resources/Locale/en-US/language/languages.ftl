@@ -78,10 +78,10 @@ language-Chittin-description =
     A language consisting of clicks, buzzes, and some variety of harsh insect sounds.
     Most of what makes up their speech comes from their antennae, making it a near-impossible language for those without to learn.
 
-language-Latin-name = Latin
+language-Latin-name = Italian
 language-Latin-description =
-    An ancient language of old Earth kept alive by scholars, traditionalists, and the Legion.
-    Its clipped, formal phrasing carries an archaic weight even when casually spoken.
+    An old-world language kept alive through family, tradition, and the Triggermen.
+    Its familiar cadence offers a private bond among those who understand it.
 
 # Animal Languages
 

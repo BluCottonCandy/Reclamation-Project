@@ -262,12 +262,12 @@
     soundOnUse:
       path: /Audio/Items/Handling/book_pickup.ogg
 
-# legion latin language book, to be used by cent to teach in-round recruits latin
+# Italian language manual; retains its legacy prototype ID.
 - type: entity
-  name: "Legion Latin Language Manual"
+  name: "Italian Language Manual"
   id: TrainingManualLegionLatin
   parent: BaseItem
-  description: "A comprehensive guide to the Latin language, used by Caesar's Legion to teach recruits the ancient tongue."
+  description: "A well-worn guide to the Italian language, passed between families and associates."
   components:
   - type: Sprite
     sprite: Objects/Misc/books.rsi

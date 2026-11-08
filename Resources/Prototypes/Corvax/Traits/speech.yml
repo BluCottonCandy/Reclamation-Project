@@ -6,7 +6,7 @@
     - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
-        - CaesarLegion
+        - Triggermen
   functions:
     - !type:TraitModifyLanguages
       languagesSpoken:

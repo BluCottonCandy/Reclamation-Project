@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: The former Latin language is now Italian, retaining saved language selections and manuals. All Triggermen roles speak and understand it by default.
+- type: Tweak
+  message: Triggermen now receive a restrained Italian mob-style accent unless they select another accent. Italian Accent remains available to other characters in the Speech perks, with exaggerated catchphrases and vowel suffixes removed.

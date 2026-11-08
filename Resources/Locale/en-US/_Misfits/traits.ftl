@@ -164,7 +164,7 @@ trait-description-N14RussianAccent =
 
 trait-name-N14ItalianAccent = Italian Accent
 trait-description-N14ItalianAccent =
-    Mamma mia! Somewhere between the old country and the wasteland, your family never lost the flavor.
+    You speak with a measured Italian accent and restrained old-world mob slang.
 
 trait-name-N14VaultDwellerAccent = Vault Dweller Vernacular
 trait-description-N14VaultDwellerAccent =

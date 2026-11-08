@@ -14126,3 +14126,35 @@ Entries:
   id: 6615
   time: '2026-11-08T16:55:00.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/148
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Added the Thunder .50 pistol, a single-shot armour-piercing hand cannon
+        that breaks your arm if your Strength is under 7.
+    - type: Add
+      message: >-
+        Coursers and the Institute Director have nanites that repair them after
+        10 seconds without taking damage, including broken bones and failed
+        limbs and organs.
+    - type: Add
+      message: >-
+        Coursers no longer breathe, show as human when examined, and their scars
+        look human on medical scans.
+    - type: Tweak
+      message: Coursers are tougher (crit 250, was 450) and deal 25% more melee damage
+    - type: Add
+      message: >-
+        The Institute tablet map shows every Institute member, and the tablet
+        can be disguised with chameleon.
+    - type: Add
+      message: >-
+        You can operate on yourself with the Autodoc while awake if you start
+        the program yourself.
+    - type: Add
+      message: >-
+        Stasis beds work as operating tables and keep patients alive through
+        organ removal while powered.
+  id: 6616
+  time: '2026-11-08T20:51:15.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/149

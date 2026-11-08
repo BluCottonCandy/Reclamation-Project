@@ -159,6 +159,49 @@ public sealed partial class TraumaSystem
         finally { _authorizedStructuralHealingParts.Remove(part); }
     }
 
+    /// <summary>
+    /// #Reclamation Project - Institute nanites rebuild maximum health a failed organ or limb lost,
+    /// up to <paramref name="amount"/> points at a time. The failure itself stays on record.
+    /// Returns false once there's nothing left to restore.
+    /// </summary>
+    public bool RestoreLostCapacity(EntityUid uid, float amount)
+    {
+        var restored = false;
+        if (TryComp<TraumaOrganComponent>(uid, out var organ) && organ.MaximumHealth < 100f)
+        {
+            var before = organ.MaximumHealth;
+            organ.MaximumHealth = Math.Min(100f, organ.MaximumHealth + amount);
+            organ.HiddenScarLoss += organ.MaximumHealth - before; // the scar stays visible on scans
+            SetOrganDamage(uid, organ.Damage); // re-checks whether the organ works again
+            restored = true;
+        }
+
+        if (TryComp<TraumaLimbComponent>(uid, out var limb) && limb.MaximumHealth < 100f &&
+            TryComp<BodyPartComponent>(uid, out var part))
+        {
+            InitializeLimbHealth(uid, part);
+            var before = limb.MaximumHealth;
+            limb.MaximumHealth = Math.Min(100f, limb.MaximumHealth + amount);
+            limb.HiddenScarLoss += limb.MaximumHealth - before; // the scar stays visible on scans
+            var effectiveMaximum = limb.MaximumHealth + limb.TemporaryHealth;
+            // Scale from the original threshold rather than the last applied one, so a limb that
+            // was worn down to nothing comes back accurately.
+            if (limb.OriginalFailureThreshold > 0f &&
+                part.IntegrityThresholds.TryGetValue(TargetIntegrity.CriticallyWounded, out var current))
+            {
+                var factor = limb.OriginalFailureThreshold * effectiveMaximum / 100f / Math.Max(.00001f, current);
+                foreach (var key in part.IntegrityThresholds.Keys.ToArray()) part.IntegrityThresholds[key] *= factor;
+                Dirty(uid, part);
+                _body.CheckBodyPart((uid, part), _body.GetTargetBodyPart(part), false);
+            }
+            limb.AppliedMaximumHealth = effectiveMaximum;
+            Dirty(uid, limb);
+            restored = true;
+        }
+
+        return restored;
+    }
+
     public float GetLimbHealth(EntityUid uid, TraumaLimbComponent health)
     {
         if (health.MaximumHealth + health.TemporaryHealth <= 0f || !TryComp<DamageableComponent>(uid, out var damage)) return 0f;

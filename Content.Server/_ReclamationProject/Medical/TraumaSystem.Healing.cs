@@ -29,6 +29,20 @@ public sealed partial class TraumaSystem
         if (injuryDamage.Empty) args.Cancelled = true;
     }
 
+    // #Reclamation Project - lets other repair (Institute nanites) heal limb damage the same way natural recovery does
+    public void HealPart(EntityUid part, DamageSpecifier heal)
+    {
+        _authorizedStructuralHealingParts.Add(part);
+        try
+        {
+            _damage.TryChangeDamage(part, heal, ignoreResistances: true, interruptsDoAfters: false, canSever: false);
+        }
+        finally
+        {
+            _authorizedStructuralHealingParts.Remove(part);
+        }
+    }
+
     public float RecoveryPerMinute(EntityUid uid)
     {
         var rate = HasComp<TraumaRegenerationComponent>(uid) ? 3f : 1f;

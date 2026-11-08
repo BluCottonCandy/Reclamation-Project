@@ -822,6 +822,29 @@ public sealed class WastelandMapSystem : EntitySystem
             case WastelandMapTacticalFeedKind.Bwonsamdi:
                 AppendBwonsamdiSoulBlips(buffer, mapId, bounds);
                 break;
+            // #Reclamation Project - Institute tracks its people, not ID cards, so undercover Coursers show too
+            case WastelandMapTacticalFeedKind.Institute:
+                AppendFactionMemberBlips(buffer, mapId, bounds, "Institute");
+                break;
+        }
+    }
+
+    // #Reclamation Project - a blip for every living humanoid in an NPC faction, wherever their ID is.
+    private void AppendFactionMemberBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds, string faction)
+    {
+        var query = EntityQueryEnumerator<NpcFactionMemberComponent, HumanoidAppearanceComponent, MobStateComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var member, out _, out var mobState, out var xform))
+        {
+            if (mobState.CurrentState == MobState.Dead || !_npcFaction.IsMember((uid, member), faction))
+                continue;
+
+            var mapCoordinates = _transform.GetMapCoordinates(uid, xform);
+            if (mapCoordinates.MapId != mapId || !bounds.Contains(mapCoordinates.Position))
+                continue;
+
+            var label = TryGetJobTitle(uid) is { } job ? $"{Name(uid)} ({job})" : Name(uid);
+            buffer.Add(new WastelandMapTrackedBlip(mapCoordinates.Position.X, mapCoordinates.Position.Y, label,
+                WastelandMapTrackedBlipKind.Unknown));
         }
     }
 

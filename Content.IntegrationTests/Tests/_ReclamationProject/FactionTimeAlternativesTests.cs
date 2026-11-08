@@ -14,6 +14,9 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture, NonParallelizable]
 public sealed class FactionTimeAlternativesTests
 {
+    // #Reclamation Project - jobs where a job whitelist deliberately skips the hours (the faction heads and the Courser).
+    public static readonly HashSet<string> WhitelistSkipsTimers = new() { "InstituteCourser", "InstituteDirector", "MinutemenGeneral" };
+
     [TestCase("ForgedBranded", 300, "Forged")]
     [TestCase("ForgedEnforcer", 600, "Forged")]
     [TestCase("ForgedVeteran", 900, "Forged")]
@@ -78,7 +81,7 @@ public sealed class FactionTimeAlternativesTests
         var choice = job.Requirements!.OfType<CharacterLogicOrRequirement>().Single();
         var alternative = choice.Requirements.OfType<CharacterDepartmentTimeRequirement>().Single();
         Check(alternative.Department == department && alternative.Min == TimeSpan.FromMinutes(minutes), "wrong faction threshold");
-        Check(!job.JobWhitelistBypassesRoleTimers, "whitelist must not waive timers");
+        Check(!job.JobWhitelistBypassesRoleTimers || WhitelistSkipsTimers.Contains(id), "whitelist must not waive timers");
         var times = new Dictionary<string, TimeSpan>();
         times[PlayTimeTrackingShared.TrackerOverall] = TimeSpan.FromHours(10000);
         times["Wastelander"] = TimeSpan.FromHours(10000);

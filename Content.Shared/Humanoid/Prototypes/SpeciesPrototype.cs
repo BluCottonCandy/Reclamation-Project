@@ -21,6 +21,13 @@ public sealed partial class SpeciesPrototype : IPrototype
     public string Name { get; private set; } = default!;
 
     /// <summary>
+    /// #Reclamation Project - species other players see on examine, health analyzers and records
+    /// (a disguised species such as the Courser shows as Human). Null shows this species.
+    /// </summary>
+    [DataField]
+    public ProtoId<SpeciesPrototype>? DisplaySpecies { get; private set; }
+
+    /// <summary>
     ///     Descriptor. Unused...? This is intended
     ///     for an eventual integration into IdentitySystem
     ///     (i.e., young human person, young lizard person, etc.)

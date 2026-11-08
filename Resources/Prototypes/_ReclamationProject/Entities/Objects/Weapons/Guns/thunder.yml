@@ -1,0 +1,59 @@
+# #Reclamation Project Add - Thunder .50 single-shot pistol. Breaks the firing arm below 7 Strength.
+
+- type: entity
+  name: Thunder .50 pistol
+  parent: BaseItem
+  id: RPWeaponPistolThunder50
+  description: A brutal single-shot hand cannon chambered in .50 anti-materiel. Punches clean through armour, but the recoil will snap the arm of anyone without serious strength (7+).
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/thunder.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Guns/thunder.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/thunder.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    # Very accurate: near-zero spread.
+    minAngle: 0
+    maxAngle: 1
+    angleIncrease: 0
+    angleDecay: 10
+    fireRate: 0.8
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: N14AntiMaterielGunshot
+  - type: BallisticAmmoProvider
+    capacity: 1
+    proto: N14Cartridge50
+    whitelist:
+      tags:
+      - N14Cartridge50
+      - N14Cartridge50HEIAP
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+  - type: RecoilArmBreak
+    minStrength: 7
+    exempt:
+      components:
+      - CourserSynth
+  - type: Appearance
+  - type: AmmoCounter
+  - type: StaticPrice
+    price: 250
+  - type: FollowDistance
+    backStrength: 6

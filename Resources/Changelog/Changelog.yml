@@ -14103,3 +14103,17 @@ Entries:
   id: 6613
   time: '2026-11-08T11:01:09.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/146
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Triggermen now know Italian by default. Existing Latin language
+        selections and manuals are now labeled Italian.
+    - type: Tweak
+      message: >-
+        Triggermen receive a restrained Italian accent unless another accent is
+        selected. Italian Accent remains available to everyone, with exaggerated
+        catchphrases and vowel endings removed.
+  id: 6614
+  time: '2026-11-08T11:02:24.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/147

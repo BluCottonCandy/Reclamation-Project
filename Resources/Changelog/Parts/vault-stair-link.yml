@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Restored two-way travel between the Wendover vault entrance stairs and the vault-layer stairs.

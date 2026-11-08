@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Automatic symptom speech is now opt-in through the Outspoken perk in the Speech category, granting +1 trait point. Characters without it retain private symptom notifications. The shared two-minute speech cooldown and normal mute, gag and incapacitation restrictions remain in place.

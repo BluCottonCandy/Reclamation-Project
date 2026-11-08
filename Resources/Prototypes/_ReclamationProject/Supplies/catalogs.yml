@@ -40,7 +40,6 @@
       N14ClothingBootsLeatherFilled: 10
       N14ClothingOuterBrotherhoodElderCoat: 120
       N14ClothingHandsGlovesCombat: 30
-      N14MicrofusionCell: 50
       N14WeaponLaserRifleAuto: 120
       N14WeaponRifleBozarGRA: 120
       N14WeaponLaserPistol: 10
@@ -49,7 +48,6 @@
       N14WeaponPistolT60: 50
       N14WeaponRifle556HeavyAssault: 50
       N14WeaponShotgunAuto: 50
-      N14PowerCellSmall: 10
       N14ClothingBeltBoSWebbing: 30
       N14ClothingHeadKnightBeret: 100
       MisfitsBoSHeadKnightArmor: 100
@@ -81,7 +79,6 @@
       MisfitsBoSKnightArmor: 40
       N14WeaponRifle556CarbineOld: 40
       N14WeaponLaserRifleCrude: 40
-      N14MicrofusionCellRed: 40
       N14ClothingHeadHatBrotherhoodHelmetMK2: 40
       N14Binoculars: 40
       N14ClothingHeadHatBrotherhoodBeret: 45
@@ -339,36 +336,88 @@
   id: ReclamationSupplyBrotherhoodAmmunition
   name: Ammunition
   entries:
+  - proto: ClipMagazine308Rifle
+    price: 2
   - proto: LMGMagazine556Rifle
-    price: 2
+    price: 11
   - proto: LongMagazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine308Rifle
+    price: 10
+  - proto: Magazine308RifleLong
+    price: 10
+  - proto: Magazine45SubMachineGun
+    price: 10
   - proto: Magazine545Rifle
-    price: 2
+    price: 10
   - proto: Magazine556Rifle
-    price: 2
+    price: 10
   - proto: Magazine556Rifle30
-    price: 2
+    price: 10
   - proto: Magazine762AmmoShort
-    price: 2
+    price: 10
+  - proto: Magazine762Rifle
+    price: 10
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12
+    price: 10
   - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox308
+    price: 10
+  - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45
+    price: 10
+  - proto: MagazineBox45-70
     price: 10
   - proto: MagazineBox545
     price: 10
+  - proto: MagazineBox556
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox9mm
+    price: 10
   - proto: N14AmmoBox10mm
     price: 10
+  - proto: N14AmmoBox127
+    price: 10
   - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox22lr
+    price: 10
+  - proto: N14AmmoBox308
+    price: 10
+  - proto: N14AmmoBox357
     price: 10
   - proto: N14AmmoBox44Magnum
     price: 10
   - proto: N14AmmoBox45
     price: 10
+  - proto: N14AmmoBox45-70
+    price: 10
+  - proto: N14AmmoBox556
+    price: 10
   - proto: N14AmmoBox762
     price: 10
   - proto: N14AmmoBox9mm
     price: 10
+  - proto: N14CryoCell
+    price: 50
+  - proto: N14EnrichedFlamerFuel
+    price: 75
+  - proto: N14FlamerFuel
+    price: 75
+  - proto: N14MagazineAmerican180Drum
+    price: 24
   - proto: N14MagazineHeavy556Rifle
     price: 11
+  - proto: N14MagazinePistol10mm
+    price: 10
   - proto: N14MagazinePistol12mm
     price: 2
   - proto: N14MagazinePistol44
@@ -376,12 +425,38 @@
   - proto: N14MagazinePistol45
     price: 2
   - proto: N14MagazinePistol9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG10mm
-    price: 2
+    price: 10
+  - proto: N14MagazineSMG12mm
+    price: 10
+  - proto: N14MagazineSMG9mm
+    price: 10
+  - proto: N14MagazineSMG9mmDrum
+    price: 11
   - proto: N14MagazineShotgun12
     price: 2
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
+  - proto: N14SpeedLoader357
+    price: 2
   - proto: N14SpeedLoader44Magnum
+    price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 10
+  - proto: ShellShotgunFlare
+    price: 2
+  - proto: SpeedLoader44
+    price: 2
+  - proto: SpeedLoader45-70
     price: 2
 - type: storeCategoryStructured
   id: ReclamationSupplyBrotherhoodMedicalandfood
@@ -439,17 +514,7 @@
     price: 100
   - proto: N14HandheldHealthAnalyzer
     price: 50
-  - proto: N14MicrofusionCell
-    price: 50
-  - proto: N14MicrofusionCellRed
-    price: 50
-  - proto: N14PlasmaCartridge
-    price: 50
-  - proto: N14PlasmaCartridgeMultiplas
-    price: 50
   - proto: N14PlasmaShell
-    price: 50
-  - proto: N14PowerCellSmall
     price: 50
   - proto: N14VertibirdGunBelt
     price: 100
@@ -766,25 +831,49 @@
   entries:
   - proto: ClipMagazine308Rifle
     price: 2
+  - proto: LMGMagazine556Rifle
+    price: 11
   - proto: LongMagazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine308Rifle
+    price: 10
+  - proto: Magazine308RifleLong
+    price: 10
+  - proto: Magazine45SubMachineGun
+    price: 10
   - proto: Magazine545Rifle
-    price: 2
+    price: 10
   - proto: Magazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine556Rifle30
+    price: 10
   - proto: Magazine762AmmoShort
-    price: 2
+    price: 10
   - proto: Magazine762Rifle
-    price: 2
+    price: 10
   - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12
     price: 10
   - proto: MagazineBox12gauge
     price: 10
+  - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox308
+    price: 10
   - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45
     price: 10
   - proto: MagazineBox45-70
     price: 10
   - proto: MagazineBox545
+    price: 10
+  - proto: MagazineBox556
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox9mm
     price: 10
   - proto: N14AmmoBox10mm
     price: 10
@@ -810,23 +899,53 @@
     price: 10
   - proto: N14AmmoBox9mm
     price: 10
+  - proto: N14CryoCell
+    price: 50
+  - proto: N14EnrichedFlamerFuel
+    price: 50
+  - proto: N14FlamerFuel
+    price: 50
+  - proto: N14MagazineAmerican180Drum
+    price: 24
+  - proto: N14MagazineHeavy556Rifle
+    price: 11
   - proto: N14MagazinePistol10mm
-    price: 2
+    price: 10
   - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol44
     price: 2
   - proto: N14MagazinePistol45
     price: 2
   - proto: N14MagazinePistol9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG10mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG12mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mmDrum
+    price: 11
+  - proto: N14MagazineShotgun12
     price: 2
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
   - proto: N14SpeedLoader357
+    price: 2
+  - proto: N14SpeedLoader44Magnum
+    price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 10
+  - proto: ShellShotgunFlare
     price: 2
   - proto: SpeedLoader44
     price: 2
@@ -948,7 +1067,6 @@
       MinutemenWeaponLaserShotgun: 110
       ClothingBeltMilitary: 60
       N14Binoculars: 60
-      N14MicrofusionCellRed: 60
       MinutemenClothingHeadHatCowboy: 60
       MinutemenClothingUniformEnlisted: 60
       MinutemenClothingOuterVestEnlisted: 60
@@ -961,7 +1079,6 @@
       N14WeaponPistol12mm: 70
       ReclamationClothingBeltSurgicalFilled: 80
       DefibrillatorCompact: 80
-      N14PowerCellSmall: 60
       N14Flashlight: 60
       ReclamationMinutemenGeneralPowerArmor: 140
       N14WeaponLaserGatling: 140
@@ -1249,27 +1366,49 @@
   entries:
   - proto: ClipMagazine308Rifle
     price: 2
+  - proto: LMGMagazine556Rifle
+    price: 11
   - proto: LongMagazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine308Rifle
+    price: 10
+  - proto: Magazine308RifleLong
+    price: 10
+  - proto: Magazine45SubMachineGun
+    price: 10
   - proto: Magazine545Rifle
-    price: 2
+    price: 10
   - proto: Magazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine556Rifle30
+    price: 10
   - proto: Magazine762AmmoShort
-    price: 2
+    price: 10
   - proto: Magazine762Rifle
-    price: 2
+    price: 10
   - proto: MagazineBox10mm
     price: 10
   - proto: MagazineBox12
     price: 10
   - proto: MagazineBox12gauge
     price: 10
+  - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox308
+    price: 10
   - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45
     price: 10
   - proto: MagazineBox45-70
     price: 10
   - proto: MagazineBox545
+    price: 10
+  - proto: MagazineBox556
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox9mm
     price: 10
   - proto: N14AmmoBox10mm
     price: 10
@@ -1295,26 +1434,52 @@
     price: 10
   - proto: N14AmmoBox9mm
     price: 10
+  - proto: N14CryoCell
+    price: 50
+  - proto: N14EnrichedFlamerFuel
+    price: 75
+  - proto: N14FlamerFuel
+    price: 75
+  - proto: N14MagazineAmerican180Drum
+    price: 24
+  - proto: N14MagazineHeavy556Rifle
+    price: 11
   - proto: N14MagazinePistol10mm
-    price: 2
+    price: 10
   - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol44
     price: 2
   - proto: N14MagazinePistol45
     price: 2
   - proto: N14MagazinePistol9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG10mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG12mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mmDrum
+    price: 11
+  - proto: N14MagazineShotgun12
     price: 2
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
   - proto: N14SpeedLoader357
     price: 2
-  - proto: N14TopMagazineSMG12mm
+  - proto: N14SpeedLoader44Magnum
     price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 10
   - proto: ShellShotgunFlare
     price: 2
   - proto: SpeedLoader44
@@ -1374,10 +1539,6 @@
   - proto: N14FusionCore
     price: 50
   - proto: N14HandheldHealthAnalyzer
-    price: 50
-  - proto: N14MicrofusionCellRed
-    price: 50
-  - proto: N14PowerCellSmall
     price: 50
   - proto: N14Psycho
     price: 50
@@ -1484,7 +1645,6 @@
       N14ClothingEyesGlassesWelding: 0
       N14Cryolator: 60
       WelderIndustrial: 0
-      N14CryoCell: 60
       ForgedAdminForgemasterArmor: 70
       N14ClothingBeltUtilityFilled: 0
     requireFactionJob: false
@@ -1718,21 +1878,39 @@
   entries:
   - proto: ClipMagazine308Rifle
     price: 2
+  - proto: LMGMagazine556Rifle
+    price: 11
   - proto: LongMagazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine308Rifle
+    price: 10
+  - proto: Magazine308RifleLong
+    price: 10
+  - proto: Magazine45SubMachineGun
+    price: 10
   - proto: Magazine545Rifle
-    price: 2
+    price: 10
   - proto: Magazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine556Rifle30
+    price: 10
   - proto: Magazine762AmmoShort
-    price: 2
+    price: 10
   - proto: Magazine762Rifle
-    price: 2
+    price: 10
   - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12
     price: 10
   - proto: MagazineBox12gauge
     price: 10
   - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox308
+    price: 10
+  - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45
     price: 10
   - proto: MagazineBox45-70
     price: 10
@@ -1768,31 +1946,55 @@
     price: 10
   - proto: N14AmmoBox9mm
     price: 10
+  - proto: N14CryoCell
+    price: 50
   - proto: N14EnrichedFlamerFuel
     price: 75
   - proto: N14FlamerFuel
     price: 75
   - proto: N14MagazineAmerican180Drum
     price: 24
+  - proto: N14MagazineHeavy556Rifle
+    price: 11
   - proto: N14MagazinePistol10mm
-    price: 2
+    price: 10
   - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol44
     price: 2
   - proto: N14MagazinePistol45
     price: 2
   - proto: N14MagazinePistol9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG10mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG12mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mmDrum
-    price: 2
+    price: 11
   - proto: N14MagazineShotgun12
     price: 2
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
   - proto: N14SpeedLoader357
+    price: 2
+  - proto: N14SpeedLoader44Magnum
+    price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 10
+  - proto: ShellShotgunFlare
+    price: 2
+  - proto: SpeedLoader44
     price: 2
   - proto: SpeedLoader45-70
     price: 2
@@ -1854,8 +2056,6 @@
     price: 50
   - proto: MisfitsGrenadeWhitePhosphorus
     price: 50
-  - proto: N14CryoCell
-    price: 50
   - proto: N14HandheldHealthAnalyzer
     price: 50
   - proto: N14Psycho
@@ -1897,7 +2097,8 @@
   description: Faction requisitions. Shared supply points start at 50 and accrue at 3 per minute, up to 200. Hold
     or drag a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending on its type. Issued
     equipment cannot be sold. Rank equipment is restricted to your rank and below. Imported non-Institute gear costs
-    double its cheapest source price, up to 200 points; leader-exclusive imports and foreign headsets/keys are unavailable. Fixed-price supplies are exempt from the import markup.
+    double its cheapest source price, up to 200 points; leader-exclusive imports and foreign headsets/keys are unavailable.
+    Fixed-price supplies are exempt from the import markup.
   components:
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/ammo.rsi
@@ -1955,7 +2156,6 @@
       N14WeaponLaserRifle: 70
       N14WeaponSMGGreaseGun: 70
       N14WeaponShotgunAuto: 70
-      N14MicrofusionCellRed: 70
       RailroadCombatArmorMk2: 70
       N14WeaponSMG12mm: 80
       N14WeaponLaserRifleAER12: 100
@@ -2466,32 +2666,54 @@
   - proto: ClipMagazine308Rifle
     price: 4
   - proto: LMGMagazine556Rifle
-    price: 4
+    price: 22
   - proto: LongMagazine556Rifle
-    price: 4
+    price: 20
   - proto: Magazine308Rifle
-    price: 4
+    price: 20
   - proto: Magazine308RifleLong
-    price: 2
+    price: 20
   - proto: Magazine45SubMachineGun
-    price: 4
+    price: 20
   - proto: Magazine545Rifle
-    price: 4
+    price: 20
   - proto: Magazine556Rifle
-    price: 4
+    price: 20
   - proto: Magazine556Rifle30
-    price: 4
+    price: 20
   - proto: Magazine762AmmoShort
-    price: 4
+    price: 20
   - proto: Magazine762Rifle
-    price: 4
+    price: 20
+  - proto: MagazineBox10mm
+    price: 20
+  - proto: MagazineBox12
+    price: 20
   - proto: MagazineBox12gauge
     price: 20
+  - proto: MagazineBox22
+    price: 20
+  - proto: MagazineBox308
+    price: 20
+  - proto: MagazineBox44
+    price: 20
+  - proto: MagazineBox45
+    price: 20
+  - proto: MagazineBox45-70
+    price: 20
   - proto: MagazineBox545
+    price: 20
+  - proto: MagazineBox556
+    price: 20
+  - proto: MagazineBox762
+    price: 20
+  - proto: MagazineBox9mm
     price: 20
   - proto: N14AmmoBox10mm
     price: 20
   - proto: N14AmmoBox127
+    price: 20
+  - proto: N14AmmoBox12gauge
     price: 20
   - proto: N14AmmoBox22lr
     price: 20
@@ -2511,6 +2733,8 @@
     price: 20
   - proto: N14AmmoBox9mm
     price: 20
+  - proto: N14CryoCell
+    price: 100
   - proto: N14EnrichedFlamerFuel
     price: 150
   - proto: N14FlamerFuel
@@ -2520,7 +2744,7 @@
   - proto: N14MagazineHeavy556Rifle
     price: 22
   - proto: N14MagazinePistol10mm
-    price: 4
+    price: 20
   - proto: N14MagazinePistol12mm
     price: 4
   - proto: N14MagazinePistol44
@@ -2528,24 +2752,36 @@
   - proto: N14MagazinePistol45
     price: 4
   - proto: N14MagazinePistol9mm
-    price: 4
+    price: 20
   - proto: N14MagazineSMG10mm
-    price: 4
+    price: 20
   - proto: N14MagazineSMG12mm
-    price: 4
+    price: 20
   - proto: N14MagazineSMG9mm
-    price: 4
+    price: 20
   - proto: N14MagazineSMG9mmDrum
-    price: 4
+    price: 22
   - proto: N14MagazineShotgun12
     price: 4
+  - proto: N14MicrofusionCell
+    price: 100
+  - proto: N14MicrofusionCellRed
+    price: 100
+  - proto: N14PlasmaCartridge
+    price: 100
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 100
+  - proto: N14PowerCellSmall
+    price: 100
   - proto: N14SpeedLoader357
     price: 4
   - proto: N14SpeedLoader44Magnum
     price: 4
   - proto: N14TopMagazineSMG12mm
-    price: 4
+    price: 20
   - proto: ShellShotgunFlare
+    price: 4
+  - proto: SpeedLoader44
     price: 4
   - proto: SpeedLoader45-70
     price: 4
@@ -2628,17 +2864,7 @@
     price: 100
   - proto: N14HandheldHealthAnalyzer
     price: 100
-  - proto: N14MicrofusionCell
-    price: 100
-  - proto: N14MicrofusionCellRed
-    price: 100
-  - proto: N14PlasmaCartridge
-    price: 100
-  - proto: N14PlasmaCartridgeMultiplas
-    price: 100
   - proto: N14PlasmaShell
-    price: 100
-  - proto: N14PowerCellSmall
     price: 100
   - proto: N14Psycho
     price: 100
@@ -2722,7 +2948,6 @@
       ReclamationClothingModsuitInstitute: 80
       ReclamationWeaponInstituteAER12: 80
       InstituteAcidifierImplanter: 80
-      N14MicrofusionCellRed: 60
       InstituteSecurityUniform: 60
       InstituteSecurityHelmet: 60
       InstituteSecurityBoots: 60
@@ -2948,17 +3173,49 @@
   entries:
   - proto: ClipMagazine308Rifle
     price: 2
+  - proto: LMGMagazine556Rifle
+    price: 11
   - proto: LongMagazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine308Rifle
+    price: 10
+  - proto: Magazine308RifleLong
+    price: 10
+  - proto: Magazine45SubMachineGun
+    price: 10
   - proto: Magazine545Rifle
-    price: 2
+    price: 10
   - proto: Magazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine556Rifle30
+    price: 10
   - proto: Magazine762AmmoShort
-    price: 2
+    price: 10
   - proto: Magazine762Rifle
-    price: 2
+    price: 10
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12
+    price: 10
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox308
+    price: 10
+  - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45
+    price: 10
+  - proto: MagazineBox45-70
+    price: 10
   - proto: MagazineBox545
+    price: 10
+  - proto: MagazineBox556
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox9mm
     price: 10
   - proto: N14AmmoBox10mm
     price: 10
@@ -2984,23 +3241,57 @@
     price: 10
   - proto: N14AmmoBox9mm
     price: 10
+  - proto: N14CryoCell
+    price: 50
+  - proto: N14EnrichedFlamerFuel
+    price: 75
+  - proto: N14FlamerFuel
+    price: 75
+  - proto: N14MagazineAmerican180Drum
+    price: 24
+  - proto: N14MagazineHeavy556Rifle
+    price: 11
   - proto: N14MagazinePistol10mm
-    price: 2
+    price: 10
   - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol44
     price: 2
   - proto: N14MagazinePistol45
     price: 2
   - proto: N14MagazinePistol9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG10mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG12mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mmDrum
+    price: 11
+  - proto: N14MagazineShotgun12
     price: 2
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
   - proto: N14SpeedLoader357
+    price: 2
+  - proto: N14SpeedLoader44Magnum
+    price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 10
+  - proto: ShellShotgunFlare
+    price: 2
+  - proto: SpeedLoader44
+    price: 2
+  - proto: SpeedLoader45-70
     price: 2
 - type: storeCategoryStructured
   id: ReclamationSupplyInstituteMedicalandfood
@@ -3037,8 +3328,6 @@
   - proto: MisfitsGrenadePlasma
     price: 50
   - proto: MisfitsGrenadeWhitePhosphorus
-    price: 50
-  - proto: N14MicrofusionCellRed
     price: 50
   - proto: SmokeGrenade
     price: 20
@@ -3296,25 +3585,49 @@
   entries:
   - proto: ClipMagazine308Rifle
     price: 2
+  - proto: LMGMagazine556Rifle
+    price: 11
   - proto: LongMagazine556Rifle
-    price: 2
+    price: 10
   - proto: Magazine308Rifle
-    price: 2
+    price: 10
+  - proto: Magazine308RifleLong
+    price: 10
   - proto: Magazine45SubMachineGun
-    price: 2
+    price: 10
   - proto: Magazine545Rifle
-    price: 2
+    price: 10
   - proto: Magazine556Rifle
-    price: 2
+    price: 10
+  - proto: Magazine556Rifle30
+    price: 10
   - proto: Magazine762AmmoShort
-    price: 2
+    price: 10
   - proto: Magazine762Rifle
-    price: 2
+    price: 10
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12
+    price: 10
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox22
+    price: 10
   - proto: MagazineBox308
+    price: 10
+  - proto: MagazineBox44
     price: 10
   - proto: MagazineBox45
     price: 10
+  - proto: MagazineBox45-70
+    price: 10
   - proto: MagazineBox545
+    price: 10
+  - proto: MagazineBox556
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox9mm
     price: 10
   - proto: N14AmmoBox10mm
     price: 10
@@ -3340,23 +3653,57 @@
     price: 10
   - proto: N14AmmoBox9mm
     price: 10
+  - proto: N14CryoCell
+    price: 50
+  - proto: N14EnrichedFlamerFuel
+    price: 75
+  - proto: N14FlamerFuel
+    price: 75
+  - proto: N14MagazineAmerican180Drum
+    price: 24
+  - proto: N14MagazineHeavy556Rifle
+    price: 11
   - proto: N14MagazinePistol10mm
-    price: 2
+    price: 10
   - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol44
     price: 2
   - proto: N14MagazinePistol45
     price: 2
   - proto: N14MagazinePistol9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG10mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG12mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mm
-    price: 2
+    price: 10
   - proto: N14MagazineSMG9mmDrum
+    price: 11
+  - proto: N14MagazineShotgun12
     price: 2
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
   - proto: N14SpeedLoader357
+    price: 2
+  - proto: N14SpeedLoader44Magnum
+    price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 10
+  - proto: ShellShotgunFlare
+    price: 2
+  - proto: SpeedLoader44
+    price: 2
+  - proto: SpeedLoader45-70
     price: 2
 - type: storeCategoryStructured
   id: ReclamationSupplyTriggermenMedicalandfood

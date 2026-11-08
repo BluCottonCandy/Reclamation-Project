@@ -14117,3 +14117,12 @@ Entries:
   id: 6614
   time: '2026-11-08T11:02:24.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/147
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Restored two-way travel between the Wendover vault entrance and
+        vault-layer stairs.
+  id: 6615
+  time: '2026-11-08T16:55:00.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/148

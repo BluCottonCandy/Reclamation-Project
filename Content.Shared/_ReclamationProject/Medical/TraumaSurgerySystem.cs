@@ -39,6 +39,9 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
         SubscribeLocalEvent<TraumaBodyComponent, GetBodyStandingSupportEvent>(OnStandingSupport);
     }
 
+    public static bool SupportsTissueRepair(BodyPartType type)
+        => type is BodyPartType.Torso or BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot;
+
     public bool NeedsRepair(EntityUid body, EntityUid part, TraumaKind kind)
     {
         if (!HasComp<TraumaBodyComponent>(body) || !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body != body)
@@ -53,7 +56,7 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
                 TryComp<DamageableComponent>(part, out var tissue) &&
                 tissue.TotalDamage.Float() >= health.MaximumHealth * health.OriginalFailureThreshold / 100f;
         if (kind == TraumaKind.LimbDamage)
-            return bodyPart.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot &&
+            return SupportsTissueRepair(bodyPart.PartType) &&
                 TryComp<DamageableComponent>(part, out var damage) && damage.TotalDamage > 0;
         if (kind == TraumaKind.InternalBleeding)
             return bodyPart.PartType == BodyPartType.Torso && Comp<TraumaBodyComponent>(body).InternalBleeding > 0;
@@ -63,6 +66,15 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
 
     private void OnValid(EntityUid uid, TraumaRepairComponent comp, ref SurgeryValidEvent args)
     {
+        // Keep tissue repair in the procedure list even when damage changes after
+        // opening surgery. Completion checks decide whether treatment is needed.
+        if (comp.Kind == TraumaKind.LimbDamage)
+        {
+            if (!HasComp<TraumaBodyComponent>(args.Body) ||
+                !TryComp<BodyPartComponent>(args.Part, out var part) || part.Body != args.Body ||
+                !SupportsTissueRepair(part.PartType)) args.Cancelled = true;
+            return;
+        }
         if (!NeedsRepair(args.Body, args.Part, comp.Kind)) args.Cancelled = true;
     }
 

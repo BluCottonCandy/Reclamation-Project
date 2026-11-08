@@ -212,7 +212,7 @@ public sealed partial class TraumaSystem : EntitySystem
         var treatment = new Content.Shared.Chemistry.MedicalTreatmentAttemptEvent();
         RaiseLocalEvent(uid, ref treatment);
         if (treatment.Cancelled) return;
-        if (kind == TraumaKind.LimbDamage && bodyPart.PartType is BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot)
+        if (kind == TraumaKind.LimbDamage && TraumaSurgerySystem.SupportsTissueRepair(bodyPart.PartType))
         {
             if (TryComp<DamageableComponent>(part, out var damage))
                 _damage.SetAllDamage(part, damage, Content.Shared.FixedPoint.FixedPoint2.Zero);

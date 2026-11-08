@@ -61,7 +61,7 @@ public sealed class SymptomSpeechSystem : EntitySystem
     }
 
     public bool CanSpeakSymptoms(EntityUid user) =>
-        TryComp<ActorComponent>(user, out var actor) && actor.PlayerSession.AttachedEntity == user &&
+        HasComp<OutspokenComponent>(user) && TryComp<ActorComponent>(user, out var actor) && actor.PlayerSession.AttachedEntity == user &&
         actor.PlayerSession.Status == SessionStatus.InGame && !HasComp<GhostComponent>(user) &&
         TryComp<SpeechComponent>(user, out var speech) && speech.Enabled && _mob.IsAlive(user) &&
         // CanSpeak raises a real SpeakAttemptEvent, whose mute handler displays a popup.
@@ -97,8 +97,8 @@ public sealed class SymptomSpeechSystem : EntitySystem
             return;
         _nextScan = _timing.CurTime + TimeSpan.FromSeconds(5);
         // One slow scan of players, never a per-tick scan of all bloodstreams or NPCs.
-        var players = EntityQueryEnumerator<ActorComponent>();
-        while (players.MoveNext(out var uid, out _))
+        var players = EntityQueryEnumerator<OutspokenComponent, ActorComponent>();
+        while (players.MoveNext(out var uid, out _, out _))
         {
             if (Paused(uid) || !CanSpeakSymptoms(uid))
                 continue;

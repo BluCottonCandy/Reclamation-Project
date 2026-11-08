@@ -1,0 +1,8 @@
+- type: trait
+  id: ReclamationOutspoken
+  category: Speech
+  points: 1
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: Outspoken

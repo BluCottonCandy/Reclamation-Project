@@ -14270,3 +14270,12 @@ Entries:
   id: 6622
   time: '2026-11-09T11:19:10.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/155
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Corrected worn Institute clothing, armor and helmet sprites using
+        updated artwork by skaothi.
+  id: 6623
+  time: '2026-11-09T11:39:35.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/156

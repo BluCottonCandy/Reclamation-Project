@@ -14260,3 +14260,13 @@ Entries:
   id: 6621
   time: '2026-11-09T11:18:59.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/154
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Masks worn over the face now block inhalation and bloodstream transfer
+        from chemical smoke mixtures without needing active internals. Lowered
+        or removed masks leave you exposed.
+  id: 6622
+  time: '2026-11-09T11:19:10.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/155

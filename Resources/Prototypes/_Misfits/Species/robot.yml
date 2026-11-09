@@ -67,6 +67,7 @@
   jobWhitelistUnlock: SyntheticProtectron # #Misfits Change
   restrictedJobs: # #Misfits Change
   - SyntheticProtectron
+  - DiamondCityTakahashi # #Reclamation Project - Diamond City noodle-stand Protectron
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticProtectron
@@ -91,6 +92,7 @@
   jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
   restrictedJobs: # #Misfits Add
   - SyntheticProtectron
+  - DiamondCityTakahashi # #Reclamation Project - Diamond City noodle-stand Protectron
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticProtectronPolice
@@ -115,6 +117,7 @@
   jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
   restrictedJobs: # #Misfits Add
   - SyntheticProtectron
+  - DiamondCityTakahashi # #Reclamation Project - Diamond City noodle-stand Protectron
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticProtectronBuilder
@@ -139,6 +142,7 @@
   jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
   restrictedJobs: # #Misfits Add
   - SyntheticProtectron
+  - DiamondCityTakahashi # #Reclamation Project - Diamond City noodle-stand Protectron
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticProtectronFire

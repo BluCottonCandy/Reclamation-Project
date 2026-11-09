@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using Content.Client.PDA;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Inventory;
+using Content.Shared.PDA;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -66,6 +68,16 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
             && proto.TryGetComponent(out SpriteComponent? otherSprite, _factory))
         {
             sprite.CopyFrom(otherSprite);
+
+            // #Reclamation Project - PDA and Pip-Boy sprites leave their base layer blank in YAML and
+            // PdaSystem fills it in from PdaComponent.State when the item spawns. A copied disguise never
+            // gets that, so it would turn invisible. Fill the base picture in from the disguise's PDA state.
+            if (proto.TryGetComponent(out PdaComponent? pda, _factory)
+                && pda.State != null
+                && sprite.LayerMapTryGet(PdaSystem.PdaVisualLayers.Base, out _))
+            {
+                sprite.LayerSetState(PdaSystem.PdaVisualLayers.Base, pda.State);
+            }
         }
     }
 

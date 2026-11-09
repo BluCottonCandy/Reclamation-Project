@@ -1154,10 +1154,7 @@
       shader: unshaded
   - type: ItemToggle
     onUse: false
-    soundActivate:
-      path: /Audio/Weapons/spinon.ogg
-      params:
-        volume: 1
+    # #Reclamation Project - no spin-up sound when revving the barrels (the spin loop and spin-down stay)
     soundDeactivate:
       path: /Audio/Weapons/spinoff.ogg
       params:

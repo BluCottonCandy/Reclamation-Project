@@ -322,8 +322,9 @@
   - type: SyntheticSustenance
   - type: InnateFireProtection
   - type: SteadyCrawl
-  # Synthetic muscle: +25% damage on every melee hit (fists and held weapons).
+  # Synthetic muscle: +65% damage on every melee hit (fists and held weapons) and on thrown weapons.
   - type: SyntheticStrength
+    multiplier: 1.65
 
 - type: entity
   save: false

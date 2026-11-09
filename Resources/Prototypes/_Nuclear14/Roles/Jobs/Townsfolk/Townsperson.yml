@@ -12,6 +12,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
       - GhoulGlowing
     #- !type:CharacterOverallTimeRequirement # TEMP REMOVED

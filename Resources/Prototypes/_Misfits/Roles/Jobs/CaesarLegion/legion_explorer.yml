@@ -15,6 +15,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
     # #Misfits Change: Explorer is now open to Female characters.
   startingGear: CaesarLegionExplorerGear
   alwaysUseSpawner: true

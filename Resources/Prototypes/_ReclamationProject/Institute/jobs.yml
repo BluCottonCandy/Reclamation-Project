@@ -3,7 +3,7 @@
   description: department-Institute-description
   color: "#e8e8e8"
   uiCategory: MajorFaction
-  roles: [InstituteDirector, InstituteDivisionHead, InstituteScientist, InstituteCourser, InstituteSecurity]
+  roles: [InstituteDirector, InstituteDivisionHead, InstituteScientist, InstituteCourser, InstituteSecurity, InstituteSynth] # #Reclamation Project - InstituteSynth (Gen 3 Synths)
 
 - type: job
   id: InstituteDirector

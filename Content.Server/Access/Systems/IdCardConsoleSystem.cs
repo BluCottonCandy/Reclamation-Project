@@ -64,7 +64,11 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
 
         IdCardConsoleBoundUserInterfaceState newState;
         // this could be prettier
-        if (component.TargetIdSlot.Item is not { Valid: true } targetId)
+        // #Reclamation Project - a saved bunker turns IDs into decorations by stripping IdCard/Access,
+        // and one left in this slot crashed the whole room load. Treat it as "no card inserted".
+        if (component.TargetIdSlot.Item is not { Valid: true } targetId
+            || !TryComp<IdCardComponent>(targetId, out var targetIdComponent)
+            || !TryComp<AccessComponent>(targetId, out var targetAccessComponent))
         {
             newState = new IdCardConsoleBoundUserInterfaceState(
                 component.PrivilegedIdSlot.HasItem,
@@ -80,9 +84,6 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         }
         else
         {
-            var targetIdComponent = EntityManager.GetComponent<IdCardComponent>(targetId);
-            var targetAccessComponent = EntityManager.GetComponent<AccessComponent>(targetId);
-
             var jobProto = new ProtoId<AccessLevelPrototype>(string.Empty);
             if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
                 && keyStorage.Key is {} key
@@ -123,6 +124,10 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             return;
 
         if (component.TargetIdSlot.Item is not { Valid: true } targetId || !PrivilegedIdIsAuthorized(uid, component))
+            return;
+
+        // #Reclamation Project - decorative (decommissioned) IDs can't be written to.
+        if (!HasComp<IdCardComponent>(targetId) || !HasComp<AccessComponent>(targetId))
             return;
 
         _idCard.TryChangeFullName(targetId, newFullName, player: player);

@@ -67,6 +67,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
     #- !type:CharacterOverallTimeRequirement # TEMP REMOVED
     #  min: 0
   startingGear: BoSInitiateGear

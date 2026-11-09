@@ -17,6 +17,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h Enclave)
       department: Enclave

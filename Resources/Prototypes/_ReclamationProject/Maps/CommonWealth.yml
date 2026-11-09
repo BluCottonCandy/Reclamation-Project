@@ -35,17 +35,7 @@
           InstituteScientist: [ 4, 4 ]
           InstituteCourser: [ 2, 2 ]
           InstituteSecurity: [ 4, 4 ]
+          InstituteSynth: [ 3, 3 ] # #Reclamation Project - Gen 3 Synths
           # #Reclamation Project - Minutemen General (faction leader, job-whitelist only). No Minutemen spawn points
           # are mapped here yet, so they use the station fallback like the Institute.
           MinutemenGeneral: [ 1, 1 ]
-          # #Reclamation Project - Diamond City jobs. Diamond City is not mapped yet, so they use the station
-          # fallback spawn until the DiamondCitySpawnPoint* markers are placed.
-          DiamondCityMayor: [ 1, 1 ]
-          DiamondCitySecurityChief: [ 1, 1 ]
-          DiamondCitySecuritySergeant: [ 1, 1 ]
-          DiamondCitySecurityGuard: [ 3, 3 ]
-          DiamondCitySecurityRecruit: [ 3, 3 ]
-          DiamondCityMedic: [ 2, 2 ]
-          DiamondCityShopkeeper: [ 2, 2 ]
-          DiamondCityTakahashi: [ 1, 1 ]
-          DiamondCityTownsfolk: [ -1, -1 ]

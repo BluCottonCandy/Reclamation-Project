@@ -16,6 +16,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T4 faction timelock (12h NCR)
       department: NCR

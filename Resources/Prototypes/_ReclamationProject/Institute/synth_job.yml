@@ -1,0 +1,75 @@
+# #Reclamation Project - Institute Synth: the Institute job for Gen 3 Synths. Being job-whitelisted for it also
+# unlocks the Gen 3 Synth race in the character editor (jobwhitelistadd <player> InstituteSynth).
+
+- type: job
+  id: InstituteSynth
+  setPreference: true
+  weight: 65
+  displayWeight: 65
+  canBeAntag: false
+  name: job-name-institute-synth
+  description: job-description-institute-synth
+  playTimeTracker: InstituteSynth
+  startingGear: InstituteSynthGear
+  alwaysUseSpawner: true
+  access: [Institute]
+  icon: JobIconScientist
+  supervisors: job-supervisors-institute
+  whitelisted: true
+  hideWithoutJobWhitelist: false
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Gen3Synth
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Institute]
+  # #Reclamation Project - Institute relay brain implant
+  - !type:AddInstituteRelayOrganSpecial
+    implant: InstituteRelayImplant
+  # The Gen 3 Synth race already carries its own perks, so no augment special here (it would override them).
+
+- type: playTimeTracker
+  id: InstituteSynth
+
+- type: startingGear
+  id: InstituteSynthGear
+  equipment:
+    pocket1: InstituteWeaponLaserPistol
+    wallet: N14Wallet
+    id: InstituteSynthTablet
+    jumpsuit: InstituteScientistUniform
+    shoes: InstituteScientistShoes
+
+- type: entity
+  parent: InstituteIDCardBase
+  id: InstituteSynthIDCard
+  name: Institute Synth ID card
+  description: An Institute personnel identification card.
+  components:
+  - type: PresetIdCard
+    job: InstituteSynth
+
+- type: entity
+  parent: InstituteTabletBase
+  id: InstituteSynthTablet
+  suffix: Institute Synth
+  components:
+  - type: Pda
+    id: InstituteSynthIDCard
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: InstituteSynthSpawnPoint
+  name: Institute Synth
+  description: Institute job spawn marker.
+  components:
+  - type: SpawnPoint
+    job_id: InstituteSynth
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher

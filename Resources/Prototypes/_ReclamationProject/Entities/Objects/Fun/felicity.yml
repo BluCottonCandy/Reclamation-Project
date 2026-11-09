@@ -1,0 +1,9 @@
+- type: entity
+  parent: PlushieOlive
+  id: PlushieFelicity
+  name: Felicity
+  description: "it's Felicity!"
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Fun/felicity.rsi
+    state: icon

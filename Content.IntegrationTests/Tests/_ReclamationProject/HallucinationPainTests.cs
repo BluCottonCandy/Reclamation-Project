@@ -46,6 +46,8 @@ public sealed class HallucinationPainTests
    Check(mob.IsCritical(body),"Virtual damage failed to cause actual critical state");
   }
   void Recover(EntityUid body){em.GetComponent<HallucinationPainComponent>(body).CollapseUntil=TimeSpan.Zero;painSystem.Update(0);}
+  var minds=em.System<SharedMindSystem>();
+  var mind=minds.CreateMind(null);
   try
   {
    var user=Patient();damage.TryChangeDamage(user,new DamageSpecifier {DamageDict=new(){["Blunt"]=20}},ignoreResistances:true,doPartDamage:false);
@@ -63,11 +65,12 @@ public sealed class HallucinationPainTests
    var special=em.EnsureComponent<SpecialComponent>(user);special.BaseEndurance=10;
    Collapse(user,Guid.NewGuid());
    Check(em.GetComponent<MobStateActionsComponent>(user).GrantedActions.Count==0,"Fake crit granted critical actions");
+   minds.TransferTo(mind.Owner,user);
    var critActions=em.System<CritMobActionsSystem>();
    for(var attempt=0;attempt<100;attempt++)
    {
     Check(!critActions.CanUseCriticalActions(user),"Fake crit allowed critical actions");
-    var ghostAttempt=new GhostAttemptHandleEvent(new MindComponent {OwnedEntity=user},true);
+    var ghostAttempt=new GhostAttemptHandleEvent(mind.Comp,true);
     em.EventBus.RaiseEvent(EventSource.Local,ghostAttempt);
     Check(ghostAttempt.Handled&&!ghostAttempt.Result,"Ghost command bypassed fake-crit protection");
     em.EventBus.RaiseLocalEvent(user,new CritSuccumbEvent());
@@ -91,6 +94,6 @@ public sealed class HallucinationPainTests
    var immune=Patient();em.EnsureComponent<EnduranceEnragedComponent>(immune).Active=true;var other=Guid.NewGuid();Check(painSystem.Begin(immune,other)&&!painSystem.Hit(immune,other,false),"Active Enraged immunity was bypassed");
 
   }
-  finally{em.DeleteEntity(map);}
+  finally{minds.TransferTo(mind.Owner,null,createGhost:false);em.DeleteEntity(mind.Owner);em.DeleteEntity(map);}
     }
 }

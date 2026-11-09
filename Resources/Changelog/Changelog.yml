@@ -14241,3 +14241,13 @@ Entries:
   id: 6619
   time: '2026-11-09T11:18:33.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/152
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Replaced all four Forge Keeper ID lighters in the medium factory
+        expedition with ordinary engraved lighters, removing their unintended
+        faction access.
+  id: 6620
+  time: '2026-11-09T11:18:45.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/153

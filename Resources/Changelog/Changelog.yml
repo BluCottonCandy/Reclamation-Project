@@ -14335,3 +14335,17 @@ Entries:
   id: 6626
   time: '2026-11-09T15:29:49.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/159
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Gen 3 Synth race: an Institute synth that passes as human, can take any
+        human job, always counts as Institute and repairs itself slowly with
+        nanites. Whitelisted; unlocked by the new Institute Synth job.
+    - type: Add
+      message: Institute Synth job for Gen 3 Synths.
+    - type: Fix
+      message: Personal bunkers with an ID left in an access terminal now open again.
+  id: 6627
+  time: '2026-11-09T19:53:12.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/160

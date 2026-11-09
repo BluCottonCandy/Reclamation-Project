@@ -14177,3 +14177,67 @@ Entries:
   id: 6618
   time: '2026-11-09T11:18:13.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/151
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Drug highs always cause one private encounter, either weather or 1-3
+        imagined molerats, ghouls, raiders, super mutants, deathclaws or robots
+        of the same type. They approach through walls, reuse enemy voices and
+        attack visuals and may cause reversible perceived damage without wounds
+        or bleeding. Each encounter is either harmless, vanishing on contact, or
+        damaging, repeatedly attacking until you hit the enemies or reach
+        critical. All vanish within 20 seconds.
+    - type: Add
+      message: >-
+        Added Unstable, a Mental drawback granting 3 trait points. Every 5-20
+        minutes it has an 80% chance to cause one private hallucination
+        encounter, even without chems.
+    - type: Add
+      message: >-
+        Each dose of a high-inducing chem has a 5% chance to cause Unstable
+        until respawn or the next round, without changing saved traits or
+        granting points.
+    - type: Add
+      message: >-
+        While high or Unstable, hungry characters always see imaginary cooked
+        food nearby and thirsty characters see water or Nuka-Cola. Food and
+        drink each have an independent ten-minute cooldown and vanish when you
+        try to pick them up. They are separate from enemy encounters.
+    - type: Add
+      message: >-
+        Hallucinated enemies, food and drinks highlight under the mouse and
+        support normal Shift-click inspection with their usual descriptions.
+    - type: Add
+      message: >-
+        Damaging hallucination attacks visibly reduce your displayed health and
+        can briefly send you into critical before clearing their perceived
+        damage and letting you stand back up, if real injuries allow. Clearing
+        all imagined enemies also removes their perceived damage. Real wounds
+        are never healed, and hallucinations cause no bleeding or permanent
+        organ or limb injury.
+    - type: Fix
+      message: >-
+        Kept real critical damage correctly recognized when it occurs during a
+        temporary collapse.
+    - type: Add
+      message: >-
+        Enemy encounters have an equal chance to be harmless (zero damage,
+        vanish when they hit you) or damaging (keep attacking until hit or you
+        reach critical). Both retain the twenty-second limit. Food and drink
+        remain separate effects.
+    - type: Fix
+      message: >-
+        Hallucination critical states no longer grant Give Up, Last Words or
+        other critical-state actions, preventing temporary collapses from
+        causing real death through those actions. Genuine critical-state actions
+        remain available normally.
+    - type: Add
+      message: >-
+        Hallucination encounters can instead produce twenty seconds of private
+        weather, reusing existing weather visuals and sounds without
+        announcements, radiation, temperature changes or changes to the real
+        weather. Food and drink effects remain independent.
+  id: 6619
+  time: '2026-11-09T11:18:33.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/152

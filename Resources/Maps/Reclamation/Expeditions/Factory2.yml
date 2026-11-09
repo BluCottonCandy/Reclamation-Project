@@ -1306,47 +1306,31 @@ entities:
       accumulator: 0.72424835
     - type: Fixtures
       fixtures: {}
-- proto: ForgemasterID
+- proto: FlippoEngravedLighter
   entities:
   - uid: 166
     components:
     - type: Transform
       parent: 1
       pos: -8.421285,10.596359
-    - type: PipBoyNetwork
-      sosAlerts: []
-      groups: {}
-      contacts: {}
   - uid: 167
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -8.594895,10.585508
-    - type: PipBoyNetwork
-      sosAlerts: []
-      groups: {}
-      contacts: {}
   - uid: 168
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -8.7034025,10.390196
-    - type: PipBoyNetwork
-      sosAlerts: []
-      groups: {}
-      contacts: {}
   - uid: 169
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -8.367031,10.379345
-    - type: PipBoyNetwork
-      sosAlerts: []
-      groups: {}
-      contacts: {}
 - proto: GeigerCounter
   entities:
   - uid: 171

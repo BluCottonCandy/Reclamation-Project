@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Replaced all four Forge Keeper ID lighters in the medium factory expedition with ordinary engraved lighters, removing their unintended faction access.

@@ -14168,3 +14168,12 @@ Entries:
   id: 6617
   time: '2026-11-09T11:04:11.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/150
+- author: Davisrocket
+  changes:
+    - type: Add
+      message: >-
+        Added Enclave Balance Patches and Updates from Misfits. ASRS, Gear,
+        Turret, Hatch, and AI stuff Updated.
+  id: 6618
+  time: '2026-11-09T11:18:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/151

@@ -19,6 +19,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Add - sagely elders are senior tribal members
       department: Tribe

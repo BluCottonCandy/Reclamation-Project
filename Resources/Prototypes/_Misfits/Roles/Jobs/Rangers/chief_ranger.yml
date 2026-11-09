@@ -28,6 +28,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
   special:
   - !type:AddComponentSpecial

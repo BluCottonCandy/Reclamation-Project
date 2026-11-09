@@ -13,6 +13,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
   #- !type:CharacterDepartmentTimeRequirement # TEMP REMOVED
   #  department: Vault
   #  min: 36000 # 10 hours

@@ -18,6 +18,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # #Misfits Add - admin-only leadership timelock
       department: Enclave

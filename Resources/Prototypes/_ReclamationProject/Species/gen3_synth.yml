@@ -1,0 +1,108 @@
+# #Reclamation Project - Gen 3 Synth: an ordinary Institute Gen 3 synth race (whitelist). Looks, sounds and handles
+# like a human (human sprites, voice, size, speed, food, medicine, surgery) and shows as Human to others.
+# A weaker Courser: same synthetic body and quirks, but less health, a slower nanite repair, +30% strength and
+# none of the Courser combat perks. Can take any job a human can, and always counts as Institute.
+# Unlocked by the InstituteSynth job whitelist: jobwhitelistadd <player> InstituteSynth
+
+- type: species
+  id: Gen3Synth
+  name: species-name-gen3-synth
+  displaySpecies: Human # others see a human on examine, health analyzers and records
+  roundStart: true
+  whitelistRequired: true
+  jobWhitelistUnlock: InstituteSynth # whitelisted for the Institute Synth job = can pick the race
+  prototype: MobGen3Synth
+  sprites: MobHumanSprites
+  defaultSkinTone: "#c0967f"
+  markingLimits: MobHumanMarkingLimits
+  dollPrototype: MobGen3SynthDummy
+  skinColoration: HumanToned
+  minHeight: 0.937
+  maxHeight: 1.249
+  minWidth: 0.825
+  maxWidth: 1.05
+
+- type: entity
+  save: false
+  parent: MobHuman
+  id: MobGen3Synth
+  name: Urist McHands
+  components:
+  - type: HumanoidAppearance
+    species: Gen3Synth
+  # Same synthetic body as a Courser: human-looking parts that give themselves away once removed.
+  - type: Body
+    prototype: Courser
+    requiredLegs: 2
+  # Institute synth: always Institute whatever the job (so it shows on the Institute tablet map) and never breathes.
+  - type: CourserSynth
+  - type: NpcFactionMember
+    factions:
+    - Institute
+  # --- Toughness (Courser: crit 250 / dead 400, stamina 250) ---
+  - type: Damageable
+    damageModifierSet: CourserSynthetic # radiation immune
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      300: Dead
+    allowRevives: true
+  - type: Stamina
+    critThreshold: 175
+  - type: StepTriggerImmune
+    whitelist:
+      types:
+      - Shard
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 10
+  # --- Synthetic body ---
+  # Never needs to breathe: saturation can't drop low enough to suffocate, and no gasping.
+  - type: Respirator
+    suffocationThreshold: -1000
+    damage:
+      types:
+        Asphyxiation: 0
+  # Bleeds (so nobody can tell) but losing it never hurts.
+  - type: Bloodstream
+    bloodlossDamage:
+      types:
+        Bloodloss: 0
+    bloodlossHealDamage:
+      types:
+        Bloodloss: 0
+  # --- Gen 3 perks (every job) ---
+  - type: InstituteAugment
+    damageMultiplier: 0.85 # 15% less damage (Courser: 30%)
+  - type: TraumaRegeneration
+  # Slower nanites than a Courser: 0.5 HP/s per damage type after 10 s unhurt (Brute + Burn = 1 HP/s),
+  # bones mended in 20 s. Eats but never needs to. Half-resistant to fire. Crawls in crit at normal speed.
+  - type: NaniteRepair
+    healPerSecond: 0.5
+    bloodPerSecond: 2.5
+    organPerSecond: 0.5
+    capacityPerSecond: 0.5
+    bonePerSecond: 5
+  - type: SyntheticSustenance
+  - type: InnateFireProtection
+    reduction: 0.5
+  - type: SteadyCrawl
+  # Synthetic muscle: +30% on every melee hit (fists and held weapons) and on thrown weapons.
+  - type: SyntheticStrength
+    multiplier: 1.3
+
+- type: entity
+  save: false
+  parent: MobHumanDummy
+  id: MobGen3SynthDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Gen3Synth

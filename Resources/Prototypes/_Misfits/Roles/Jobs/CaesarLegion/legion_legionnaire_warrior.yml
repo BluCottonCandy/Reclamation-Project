@@ -15,6 +15,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
     - !type:CharacterSexRequirement
       sex: Male
     - !type:CharacterGenderRequirement

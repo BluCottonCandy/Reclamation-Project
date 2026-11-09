@@ -37,6 +37,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitModifyUnarmed
       damage:
@@ -196,6 +197,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
         - Ghoul
         - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Bad Reflexes
         - SuperMutant
@@ -225,6 +227,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
         - Ghoul
         - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Lightning Hands
         - SuperMutant 
@@ -245,6 +248,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitReplaceComponent
       components:
@@ -270,6 +274,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddComponent
       components:
@@ -486,6 +491,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddArmor
       damageModifierSets:
@@ -517,6 +523,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddArmor
       damageModifierSets:
@@ -545,6 +552,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddArmor
       damageModifierSets:

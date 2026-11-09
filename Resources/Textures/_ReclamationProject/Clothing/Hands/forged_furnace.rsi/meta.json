@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Icon created by adom03 for Nuclear 14. Worn and held glove overlays taken from tgstation at commit https://github.com/tgstation/tgstation/commit/54ecdcc05bcaf335489938b1253a2a733ba12271. Matching oxidized-metal coloring adapted for Reclamation Project from skaothi furnace armor palette; matching design reference generated with OpenAI image generation.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-HAND",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ]
+}

@@ -14251,3 +14251,12 @@ Entries:
   id: 6620
   time: '2026-11-09T11:18:45.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/153
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        All outerwear now supports the normal weapon suit-storage slot,
+        including coats and costumes.
+  id: 6621
+  time: '2026-11-09T11:18:59.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/154

@@ -14300,3 +14300,38 @@ Entries:
   id: 6625
   time: '2026-11-09T12:17:36.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/157
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Diamond City jobs: Mayor, Security (Recruit, Guard, Sergeant, Chief),
+        Medic, Shopkeeper, Townsfolk and Takahashi.
+    - type: Add
+      message: >-
+        Takahashi, Diamond City's noodle-stand Protectron. He can only say
+        "Nan-ni shimasho-ka?" and can make noodle cups for 2 caps.
+    - type: Add
+      message: Noodle cups, cookable in a microwave from razorgrain flour and water.
+    - type: Tweak
+      message: The town radio channel is now called Diamond City.
+    - type: Fix
+      message: >-
+        Adding new recipes no longer changes which dish the microwave picks when
+        two recipes match equally.
+    - type: Tweak
+      message: >-
+        Coursers now deal 65% more melee damage  and their thrown weapons hit
+        65% harder too.
+    - type: Fix
+      message: >-
+        The Institute tablet no longer turns invisible when disguised as a
+        Pip-Boy or PDA.
+    - type: Tweak
+      message: >-
+        The Institute tablet's disguise list now only has Commonwealth IDs,
+        Pip-Boys and PDAs, including wastelander dogtags.
+    - type: Tweak
+      message: The laser Gatling gun no longer plays a spin-up sound when revved.
+  id: 6626
+  time: '2026-11-09T15:29:49.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/159

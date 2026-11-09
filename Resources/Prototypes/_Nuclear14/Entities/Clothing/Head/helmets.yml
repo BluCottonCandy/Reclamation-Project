@@ -270,11 +270,48 @@
   - type: Clothing
     sprite: _Nuclear14/Clothing/Head/FalloutHelmets/brotherhoodhelmetmk2.rsi
 
-# Enclave
+#MARK: Enclave
+# --- Enclave Security Helmet (White)---
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMetal
+  id: N14ClothingHeadHatEnclaveSecurityHelmet
+  name: Enclave Security Helmet
+  description: A white security helmet worn by Enclave guards.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_security_helmet.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_security_helmet.rsi
+
+# --- Enclave Pilot Helmet ---
+#- type: entity
+#  parent: N14ClothingHeadHatBaseHelmetMK2
+#  id: N14ClothingHeadHatEnclavePilotHelmet
+#  name: U.S. Army Vertibird Pilot Helmet
+#  description: A combat helmet worn by U.S. Army Vertibird Pilots.
+#  components:
+#  - type: Sprite
+#    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_pilot_helmet.rsi
+#  - type: Clothing
+#    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_pilot_helmet.rsi
+
+# --- Enclave Scout Helmet ---
+#- type: entity
+#  parent: N14ClothingHeadHatBaseHelmetMK2
+#  id: N14ClothingHeadHatEnclaveScoutHelmet
+#  name: U.S. Army Covert Scout Helmet
+#  description: A combat helmet worn by U.S. Army Scouts.
+#  components:
+#  - type: Sprite
+#    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_scout_helmet.rsi
+#  - type: Clothing
+#    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_scout_helmet.rsi
+
+# --- Enclave Combat Helmet (Grey)---
 - type: entity
   parent: N14ClothingHeadHatBaseHelmetMK2
   id: N14ClothingHeadHatEnclaveHelmet
-  name: U.S. Army helmet
+  name: U.S. Army Combat Helmet Grey
   description: A combat helmet worn by U.S. Army soldiers.
   components:
   - type: Sprite
@@ -282,10 +319,47 @@
   - type: Clothing
     sprite: _Nuclear14/Clothing/Head/FalloutHelmets/enclavehelmet.rsi
 
+# --- Enclave Combat Helmet MK2 (Black)---
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMK2
+  id: N14ClothingHeadHatEnclaveCombatHelmet
+  name: U.S. Army Combat Helmet Black
+  description: A pre-war U.S. Army issue combat helmet. Protects against most battlefield threats.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_combat_helmet.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_combat_helmet.rsi
+
+# --- Enclave Marine Helmet ---
+#- type: entity
+#  parent: N14ClothingHeadHatBaseHelmetmarine
+#  id: N14ClothingHeadHatEnclaveMarineHelmet
+#  name: U.S. Army Marine Helmet
+#  description: A marine combat helmet worn by U.S. Army soldiers.
+#  components:
+#  - type: Sprite
+#    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_marine_helmet.rsi
+#  - type: Clothing
+#    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_marine_helmet.rsi
+
+# --- Enclave Combat Advanced Helmet (End Medium Set) ---
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetmarine
+  id: N14ClothingHeadHatEnclaveHelmetAdvanced
+  name: U.S. Army Advanced Combat Helmet
+  description: An advanced combat helmet worn by elite U.S. Army soldiers.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/enclavehelmetadvanced.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/enclavehelmetadvanced.rsi
+
+# --- Enclave Combat Helmet (Hooded)---
 - type: entity
   parent: N14ClothingHeadHatBaseHelmetMK2
   id: N14ClothingHeadHatEnclaveHelmetHood
-  name: U.S. Army hooded helmet
+  name: U.S. Army Hooded Combat Helmet
   description: A combat helmet worn by U.S. Army soldiers. This one has a hood covering it.
   components:
   - type: Sprite
@@ -293,16 +367,17 @@
   - type: Clothing
     sprite: _Nuclear14/Clothing/Head/FalloutHelmets/enclavehelmethood.rsi
 
+# --- Zulu Squad Combat Helmet (Heavy Set)---
 - type: entity
   parent: N14ClothingHeadHatBaseHelmetmarine
-  id: N14ClothingHeadHatEnclaveHelmetMarine
-  name: U.S. Army marine helmet
-  description: A marine helmet worn by elite U.S. Army soldiers.
+  id: N14ClothingHeadHatEnclaveZuluCombatHelmet
+  name: Zulu U.S. Army Combat Helmet
+  description: A combat helmet worn by U.S. Army Zulu Squad operators. Painted with Zulu Squad markings.
   components:
   - type: Sprite
-    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/enclavehelmetmarine.rsi
+    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_zulu_combat_helmet.rsi
   - type: Clothing
-    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/enclavehelmetmarine.rsi
+    sprite: _Misfits/Clothing/Head/FalloutHelmets/enclave_zulu_combat_helmet.rsi
 
 #MARK: NCR
 - type: entity

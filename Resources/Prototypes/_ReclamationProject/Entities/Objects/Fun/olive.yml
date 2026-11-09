@@ -1,0 +1,25 @@
+- type: entity
+  parent: BasePlushie
+  id: PlushieOlive
+  name: olive
+  description: |-
+    Your friendly neighborhood shopkeeper.
+    Smells like ash?
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Fun/olive.rsi
+    state: icon
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Human/womanlaugh.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Voice/Human/womanlaugh.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Human/female_sigh.ogg
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Voice/Human/femalescream_2.ogg
+      params:
+        volume: -6

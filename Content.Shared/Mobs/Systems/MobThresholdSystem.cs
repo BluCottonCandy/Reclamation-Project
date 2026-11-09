@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._ReclamationProject.Hallucinations;
 using System.Linq;
 using Content.Shared.Alert;
 using Content.Shared._ReclamationProject.Medical;
@@ -373,9 +374,18 @@ public sealed class MobThresholdSystem : EntitySystem
         MobThresholdsComponent? thresholds = null,
         EntityUid? origin = null)
     {
-        if (!Resolve(target, ref mobState, ref thresholds) ||
-            mobState.CurrentState == newState)
+        if (!Resolve(target, ref mobState, ref thresholds))
+            return;
+
+        if (mobState.CurrentState == newState)
         {
+            // A temporary state change can precede real damage reaching this threshold.
+            // Keep the cached threshold in sync so a later state refresh cannot revive it.
+            if (thresholds.CurrentThresholdState != newState)
+            {
+                thresholds.CurrentThresholdState = newState;
+                Dirty(target, thresholds);
+            }
             return;
         }
 
@@ -400,6 +410,16 @@ public sealed class MobThresholdSystem : EntitySystem
         }
 
         _mobStateSystem.UpdateMobState(target, mobState, origin);
+    }
+
+    /// <summary>Perceived health includes hallucination pain without adding wounds, bleeding or organ damage.</summary>
+    public FixedPoint2 GetDisplayedDamage(EntityUid target, FixedPoint2 realDamage)
+    {
+        if (!TryComp<HallucinationPainComponent>(target, out var pain)) return realDamage;
+        var perceived = realDamage + FixedPoint2.New(Math.Clamp(pain.Amount, 0f, 1000f));
+        if (pain.Collapsing && TryGetThresholdForState(target, MobState.Critical, out var critical))
+            perceived = FixedPoint2.Max(perceived, critical.Value);
+        return perceived;
     }
 
     private void UpdateAlerts(EntityUid target, MobState currentMobState, MobThresholdsComponent? threshold = null,
@@ -427,11 +447,12 @@ public sealed class MobThresholdSystem : EntitySystem
         if (alertPrototype.SupportsSeverity)
         {
             var severity = _alerts.GetMinSeverity(currentAlert);
+            var displayedDamage = GetDisplayedDamage(target, damageable.TotalDamage);
             if (TryGetNextState(target, currentMobState, out var nextState, threshold) &&
-                TryGetPercentageForState(target, nextState.Value, damageable.TotalDamage, out var percentage))
+                TryGetPercentageForState(target, nextState.Value, displayedDamage, out var percentage))
             {
                 percentage = FixedPoint2.Clamp(GetHealthAlertPercentage(target, currentMobState,
-                    damageable.TotalDamage, percentage.Value), 0, 1);
+                    displayedDamage, percentage.Value), 0, 1);
 
                 severity = (short) MathF.Round(
                     MathHelper.Lerp(

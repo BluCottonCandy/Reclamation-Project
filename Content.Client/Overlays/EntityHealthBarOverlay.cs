@@ -127,16 +127,17 @@ public sealed class EntityHealthBarOverlay : Overlay
     /// </summary>
     private (float ratio, bool inCrit)? CalcProgress(EntityUid uid, MobStateComponent component, DamageableComponent dmg, MobThresholdsComponent thresholds)
     {
+        var displayedDamage = _mobThresholdSystem.GetDisplayedDamage(uid, dmg.TotalDamage);
         if (_mobStateSystem.IsAlive(uid, component))
         {
-            if (dmg.HealthBarThreshold != null && dmg.TotalDamage < dmg.HealthBarThreshold)
+            if (dmg.HealthBarThreshold != null && displayedDamage < dmg.HealthBarThreshold)
                 return null;
 
             if (!_mobThresholdSystem.TryGetThresholdForState(uid, MobState.Critical, out var threshold, thresholds) &&
                 !_mobThresholdSystem.TryGetThresholdForState(uid, MobState.Dead, out threshold, thresholds))
                 return (1, false);
 
-            var ratio = 1 - ((FixedPoint2) (dmg.TotalDamage / threshold)).Float();
+            var ratio = 1 - ((FixedPoint2) (displayedDamage / threshold)).Float();
             return (ratio, false);
         }
 
@@ -148,7 +149,7 @@ public sealed class EntityHealthBarOverlay : Overlay
                 return (1, true);
             }
 
-            var ratio = 1 - ((dmg.TotalDamage - critThreshold) / (deadThreshold - critThreshold)).Value.Float();
+            var ratio = 1 - ((displayedDamage - critThreshold) / (deadThreshold - critThreshold)).Value.Float();
 
             return (ratio, true);
         }

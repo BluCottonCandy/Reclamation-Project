@@ -1,0 +1,986 @@
+# Private visual shells reuse existing enemy and gear artwork, voices and combat definitions.
+- type: entity
+  id: ReclamationPhantomGhoul
+  name: Feral Ghoul
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map:
+      - enum.DamageStateVisualLayers.Base
+      state: alive
+      sprite: _Nuclear14/Mobs/Ghouls/ghoul-feral.rsi
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobGhoulFeral
+    aggroVoice:
+      collection: N14GhoulAggro
+      params:
+        volume: -12
+        maxDistance: 10
+    idleVoice:
+      collection: N14GhoulIdle
+      params:
+        volume: -15
+        maxDistance: 5
+    minVoiceDelay: 10
+    maxVoiceDelay: 60
+- type: entity
+  id: ReclamationPhantomMutant
+  name: Super Mutant Brute
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 1.5, 1.5
+    drawdepth: Mobs
+    layers:
+    - map:
+      - enum.DamageStateVisualLayers.Base
+      state: melee
+      sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobSuperMutantMelee
+    aggroVoice:
+      collection: N14SuperMutantAlert
+      params:
+        volume: -3
+        maxDistance: 10
+    idleVoice:
+      collection: N14SuperMutantIdle
+      params:
+        volume: -6
+        maxDistance: 7
+    minVoiceDelay: 15
+    maxVoiceDelay: 60
+- type: entity
+  id: ReclamationPhantomDeathclaw
+  name: deathclaw
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map:
+      - enum.DamageStateVisualLayers.Base
+      state: deathclaw
+      sprite: _Nuclear14/Mobs/Animals/deathclaw.rsi
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobDeathclaw
+    aggroVoice:
+      collection: N14DeathclawAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    idleVoice:
+      collection: N14DeathclawIdle
+      params:
+        volume: -8
+        maxDistance: 5
+    minVoiceDelay: 10
+    maxVoiceDelay: 30
+- type: entity
+  id: ReclamationPhantomRaider
+  name: Psycho Raider
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: full
+      color: '#bd9274'
+    - sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/wastelanderrags.rsi
+      state: equipped-INNERCLOTHING
+    - sprite: _Nuclear14/Clothing/Shoes/FalloutShoes/raider.rsi
+      state: equipped-FEET
+    - sprite: _Nuclear14/Clothing/Hands/Gloves/clothgloves.rsi
+      state: equipped-HAND
+    - sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutraiderbadlands.rsi
+      state: equipped-OUTERCLOTHING
+    - sprite: _Nuclear14/Clothing/Eyes/weldgoggles.rsi
+      state: equipped-EYES
+    - sprite: _Nuclear14/Clothing/Mask/brownbalaclava.rsi
+      state: equipped-MASK
+    - sprite: _Nuclear14/Objects/Weapons/Melee/kitchen_knife.rsi
+      state: inhand-right
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRaiderPsycho
+    idleVoice:
+      collection: ReclamationRaiderVoice
+      params:
+        volume: -6
+        maxDistance: 12
+    minVoiceDelay: 10
+    maxVoiceDelay: 10
+- type: entity
+  id: ReclamationPhantomRaiderRanged
+  name: Psycho Raider
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: full
+      color: '#bd9274'
+    - sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/wastelanderrags.rsi
+      state: equipped-INNERCLOTHING
+    - sprite: _Nuclear14/Clothing/Shoes/FalloutShoes/raider.rsi
+      state: equipped-FEET
+    - sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutlightmetal.rsi
+      state: equipped-OUTERCLOTHING
+    - sprite: _Nuclear14/Clothing/Mask/Bandanas/brownscarf.rsi
+      state: equipped-MASK
+    - sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/10mmPIPE.rsi
+      state: inhand-right
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRaiderPsychoRanged
+    idleVoice:
+      collection: ReclamationRaiderVoice
+      params:
+        volume: -6
+        maxDistance: 12
+    minVoiceDelay: 10
+    maxVoiceDelay: 10
+- type: entity
+  id: ReclamationPhantomBullet
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    state: ball
+    scale: 0.5, 0.5
+- type: entity
+  id: ReclamationPhantomMolerat
+  name: molerat
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map:
+      - enum.DamageStateVisualLayers.Base
+      state: molerat
+      sprite: _Nuclear14/Mobs/Animals/molerat.rsi
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobMolerat
+    aggroVoice:
+      collection: N14MoleratAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    idleVoice:
+      collection: N14MoleratIdle
+      params:
+        volume: -10
+        maxDistance: 5
+    minVoiceDelay: 10
+    maxVoiceDelay: 60
+- type: entity
+  id: ReclamationPhantomGhoulReaver
+  name: Feral Ghoul Reaver
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map:
+      - enum.DamageStateVisualLayers.Base
+      state: alive
+      sprite: _Nuclear14/Mobs/Ghouls/ghoul-reaver.rsi
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobGhoulFeralReaver
+    aggroVoice:
+      collection: N14GhoulAggro
+      params:
+        volume: -12
+        maxDistance: 10
+    idleVoice:
+      collection: N14GhoulIdle
+      params:
+        volume: -15
+        maxDistance: 5
+    minVoiceDelay: 10
+    maxVoiceDelay: 60
+- type: entity
+  id: ReclamationPhantomGhoulRotter
+  name: Feral Ghoul Rotter
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map:
+      - enum.DamageStateVisualLayers.Base
+      state: alive
+      sprite: _Nuclear14/Mobs/Ghouls/ghoul-rotter.rsi
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobGhoulFeralRotter
+    aggroVoice:
+      collection: N14GhoulAggro
+      params:
+        volume: -12
+        maxDistance: 10
+    idleVoice:
+      collection: N14GhoulIdle
+      params:
+        volume: -15
+        maxDistance: 5
+    minVoiceDelay: 10
+    maxVoiceDelay: 60
+- type: entity
+  id: ReclamationPhantomAssaultronHostile
+  name: Assaultron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/assaultron.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotAssaultronHostile
+    aggroVoice:
+      collection: N14AssaultronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14AssaultronIdle
+      params:
+        volume: -6
+        maxDistance: 7
+    minVoiceDelay: 10
+    maxVoiceDelay: 35
+- type: entity
+  id: ReclamationPhantomProtectronHostile
+  name: Protectron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/protectron.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotProtectronHostile
+    aggroVoice:
+      collection: N14ProtectronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+- type: entity
+  id: ReclamationPhantomProtectronBuilderHostile
+  name: Protectron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/protectron-builder.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotProtectronBuilderHostile
+    aggroVoice:
+      collection: N14ProtectronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+- type: entity
+  id: ReclamationPhantomProtectronFireHostile
+  name: Protectron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/protectron-fire.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotProtectronFireHostile
+    aggroVoice:
+      collection: N14ProtectronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+- type: entity
+  id: ReclamationPhantomProtectronPoliceHostile
+  name: Protectron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/protectron-police.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotProtectronPoliceHostile
+    aggroVoice:
+      collection: N14ProtectronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomSecuritronHostile
+  name: Securitron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/securitron-gray.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotSecuritronHostile
+    aggroVoice:
+      collection: N14SecuritronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14SecuritronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomSecuritronBlueHostile
+  name: Securitron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/securitron-blue.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotSecuritronBlueHostile
+    aggroVoice:
+      collection: N14SecuritronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14SecuritronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomSecuritronBrownHostile
+  name: Securitron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/securitron-brown.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotSecuritronBrownHostile
+    aggroVoice:
+      collection: N14SecuritronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14SecuritronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomSecuritronRedHostile
+  name: Securitron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/securitron-red.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotSecuritronRedHostile
+    aggroVoice:
+      collection: N14SecuritronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14SecuritronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomSecuritronYellowHostile
+  name: Securitron
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/securitron-yellow.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotSecuritronYellowHostile
+    aggroVoice:
+      collection: N14SecuritronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14SecuritronIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomMrHandyClaw
+  name: Mr Handy
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotMrHandyClaw
+    aggroVoice:
+      collection: N14HandyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    idleVoice:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+- type: entity
+  id: ReclamationPhantomMrHandySaw
+  name: robot
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/mrhandysaw.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotMrHandySaw
+    aggroVoice:
+      collection: N14HandyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    idleVoice:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+- type: entity
+  id: ReclamationPhantomMrHandyGun
+  name: Mr Handy
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/mrhandygun.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotMrHandyGun
+    aggroVoice:
+      collection: N14HandyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    idleVoice:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomMrHandyGutsy
+  name: Mr Gutsy
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotMrHandyGutsy
+    aggroVoice:
+      collection: N14GutsyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    idleVoice:
+      collection: N14GutsyIdle
+      params:
+        volume: -7
+        maxDistance: 6
+    minVoiceDelay: 12
+    maxVoiceDelay: 45
+    projectile: ReclamationPhantomPlasma
+- type: entity
+  id: ReclamationPhantomRobobrain
+  name: Robobrain
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/robobrain.rsi
+    layers:
+    - state: icon
+      map:
+      - movement
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotRobobrain
+    aggroVoice:
+      collection: N14ProtectronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    minVoiceDelay: 10
+    maxVoiceDelay: 60
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomEyebot
+  name: Eyebot
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/eyebot.rsi
+    layers:
+    - state: icon
+    - state: shadow_eyebot
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotEyebot
+    aggroVoice:
+      collection: N14EyebotAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14EyebotIdle
+      params:
+        volume: -6
+        maxDistance: 6
+    minVoiceDelay: 10
+    maxVoiceDelay: 35
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomSentryBot
+  name: Sentry Bot
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/sentrybot.rsi
+    scale: 2.0, 2.0
+    layers:
+    - state: icon
+      map:
+      - movement
+    - sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laser_gatling.rsi
+      state: inhand-right
+      offset: 0.0, 0.1
+      scale: 0.72, 0.72
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotSentryBot
+    aggroVoice:
+      collection: N14SentryAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14SentryIdle
+      params:
+        volume: -6
+        maxDistance: 7
+    minVoiceDelay: 12
+    maxVoiceDelay: 40
+    projectile: ReclamationPhantomLaser
+- type: entity
+  id: ReclamationPhantomSentryBotBallistic
+  name: Sentry Bot
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Robots/sentrybot.rsi
+    scale: 2.0, 2.0
+    layers:
+    - state: icon
+      map:
+      - movement
+    - sprite: _Nuclear14/Objects/Weapons/Guns/Heavy/minigun.rsi
+      state: inhand-right
+      offset: 0.0, 0.1
+      scale: 0.55, 0.55
+    - state: icon
+      map:
+      - enum.BorgVisualLayers.Light
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map:
+      - light
+      visible: false
+  - type: AnimationPlayer
+  - type: HallucinationEnemy
+    source: N14MobRobotSentryBotBallistic
+    aggroVoice:
+      collection: N14SentryAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    idleVoice:
+      collection: N14SentryIdle
+      params:
+        volume: -6
+        maxDistance: 7
+    minVoiceDelay: 12
+    maxVoiceDelay: 40
+- type: entity
+  id: ReclamationPhantomLaser
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser_greyscale
+      shader: unshaded
+      color: red
+- type: entity
+  id: ReclamationPhantomPlasma
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Projectiles/plasma.rsi
+    layers:
+    - state: plasma
+      shader: unshaded

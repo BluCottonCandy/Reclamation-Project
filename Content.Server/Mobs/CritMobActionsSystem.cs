@@ -1,4 +1,5 @@
 ﻿using Content.Server.Administration;
+using Content.Shared._ReclamationProject.Hallucinations;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Speech.Muting;
@@ -35,9 +36,12 @@ public sealed class CritMobActionsSystem : EntitySystem
         SubscribeLocalEvent<MobStateActionsComponent, CritLastWordsEvent>(OnLastWords);
     }
 
+    public bool CanUseCriticalActions(EntityUid user) => _mobState.IsCritical(user) &&
+        !(TryComp<HallucinationPainComponent>(user, out var pain) && pain.Collapsing);
+
     private void OnSuccumb(EntityUid uid, MobStateActionsComponent component, CritSuccumbEvent args)
     {
-        if (!TryComp<ActorComponent>(uid, out var actor) || !_mobState.IsCritical(uid))
+        if (!TryComp<ActorComponent>(uid, out var actor) || !CanUseCriticalActions(uid))
             return;
 
         _host.ExecuteCommand(actor.PlayerSession, "ghost");
@@ -46,7 +50,7 @@ public sealed class CritMobActionsSystem : EntitySystem
 
     private void OnFakeDeath(EntityUid uid, MobStateActionsComponent component, CritFakeDeathEvent args)
     {
-        if (!_mobState.IsCritical(uid))
+        if (!CanUseCriticalActions(uid))
             return;
 
         if (HasComp<MutedComponent>(uid))
@@ -60,7 +64,7 @@ public sealed class CritMobActionsSystem : EntitySystem
 
     private void OnLastWords(EntityUid uid, MobStateActionsComponent component, CritLastWordsEvent args)
     {
-        if (!TryComp<ActorComponent>(uid, out var actor))
+        if (!CanUseCriticalActions(uid) || !TryComp<ActorComponent>(uid, out var actor))
             return;
 
         _quickDialog.OpenDialog(actor.PlayerSession, Loc.GetString("action-name-crit-last-words"), "",
@@ -68,7 +72,7 @@ public sealed class CritMobActionsSystem : EntitySystem
             {
                 // Intentionally does not check for muteness
                 if (actor.PlayerSession.AttachedEntity != uid
-                    || !_mobState.IsCritical(uid))
+                    || !CanUseCriticalActions(uid))
                     return;
 
                 if (lastWords.Length > MaxLastWordsLength)

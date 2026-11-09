@@ -41,6 +41,9 @@ public sealed class EnduranceEnragedSystem : EntitySystem
 
     private void OnStateAttempt(EntityUid uid, SpecialComponent comp, ref BeforeMobStateChangedEvent args)
     {
+        // A reversible hallucination collapse is not a genuine injury and must not spend Enraged.
+        if (TryComp<Content.Shared._ReclamationProject.Hallucinations.HallucinationPainComponent>(uid, out var pain) && pain.InducingCollapse)
+            return;
         if (args.Cancelled || args.OldState != MobState.Alive ||
             args.NewState is not (MobState.SoftCritical or MobState.Critical or MobState.Dead))
             return;

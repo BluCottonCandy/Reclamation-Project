@@ -14158,3 +14158,13 @@ Entries:
   id: 6616
   time: '2026-11-08T20:51:15.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/149
+- author: Davisrocket
+  changes:
+    - type: Add
+      message: >-
+        Recipes for Buffout, Wonderglue, Turpentine, Bloatfly Acid, Scorpion
+        Tail, Fire Ant Nectar. Sprites for growing cave fungus, and irradiated
+        fungus. Mutable Cave Fungus. 
+  id: 6617
+  time: '2026-11-09T11:04:11.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/150

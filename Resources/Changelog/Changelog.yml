@@ -14290,3 +14290,13 @@ Entries:
   id: 6624
   time: '2026-11-09T12:08:44.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/158
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added Olive and Felicity dolls, with artwork by ghostdarktype, to
+        plushie loadouts. They giggle when used, sigh when thrown, and quietly
+        scream on melee hits.
+  id: 6625
+  time: '2026-11-09T12:17:36.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/157

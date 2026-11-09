@@ -10,6 +10,9 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
+using Content.Shared.Inventory;
+using Content.Shared.IdentityManagement.Components;
+using Content.Shared.Clothing.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Smoking;
 using Robust.Server.GameObjects;
@@ -45,6 +48,8 @@ public sealed class SmokeSystem : EntitySystem
     [Dependency] private readonly SharedBroadphaseSystem _broadphase = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
+
+    [Dependency] private readonly InventorySystem _inventory = default!;
 
     private EntityQuery<SmokeComponent> _smokeQuery;
     private EntityQuery<SmokeAffectedComponent> _smokeAffectedQuery;
@@ -257,6 +262,17 @@ public sealed class SmokeSystem : EntitySystem
         UpdateVisuals((smokeUid, component));
     }
 
+    /// <summary>Covering the mask slot blocks chemical inhalation; lowered masks leave the face exposed.</summary>
+    public bool IsInhalationBlocked(EntityUid user)
+    {
+        if (_internals.AreInternalsWorking(user) || HasComp<Content.Server.Body.Components.RespiratorImmuneComponent>(user))
+            return true;
+        if (!_inventory.TryGetSlotEntity(user, "mask", out var mask)) return false;
+        if (TryComp<MaskComponent>(mask, out var toggleable)) return !toggleable.IsToggled;
+        // Fixed face coverings inherit IdentityBlocker; cigarettes and pipes can use this slot too.
+        return HasComp<IdentityBlockerComponent>(mask);
+    }
+
     private void ReactWithEntity(EntityUid entity, EntityUid smokeUid, Solution solution, SmokeComponent? component = null)
     {
         if (!Resolve(smokeUid, ref component))
@@ -268,8 +284,7 @@ public sealed class SmokeSystem : EntitySystem
         if (!_solutionContainerSystem.ResolveSolution(entity, bloodstream.ChemicalSolutionName, ref bloodstream.ChemicalSolution, out var chemSolution) || chemSolution.AvailableVolume <= 0)
             return;
 
-        var blockIngestion = _internals.AreInternalsWorking(entity)
-            || HasComp<Content.Server.Body.Components.RespiratorImmuneComponent>(entity); // #Reclamation Project - things that don't breathe can't inhale smoke
+        var blockIngestion = IsInhalationBlocked(entity);
 
         var cloneSolution = solution.Clone();
         var availableTransfer = FixedPoint2.Min(cloneSolution.Volume, component.TransferRate);

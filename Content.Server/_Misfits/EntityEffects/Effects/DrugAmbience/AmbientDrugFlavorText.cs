@@ -40,6 +40,9 @@ public sealed partial class AmbientDrugFlavorText : EntityEffect
         if (session is null)
             return;
 
+        args.EntityManager.System<Content.Server._ReclamationProject.Hallucinations.DrugHighSystem>()
+            .Refresh(args.TargetEntity, MessageKeys);
+
         var timing = IoCManager.Resolve<IGameTiming>();
         var cooldowns = args.EntityManager.EnsureComponent<DrugAmbienceCooldownComponent>(args.TargetEntity);
         var cooldownId = string.IsNullOrWhiteSpace(CooldownId)

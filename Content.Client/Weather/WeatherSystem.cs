@@ -9,6 +9,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using AudioComponent = Robust.Shared.Audio.Components.AudioComponent;
 
 namespace Content.Client.Weather;
@@ -19,6 +20,72 @@ public sealed class WeatherSystem : SharedWeatherSystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    private EntityUid? _hallucinationSource;
+    private EntityUid? _hallucinationOwner;
+    private TimeSpan _hallucinationEnd;
+    private TimeSpan _hallucinationStart;
+
+    /// <summary>Separate client-only source; never replace or mutate the real map's weather.</summary>
+    public bool StartHallucination(EntityUid owner, WeatherPrototype prototype, TimeSpan duration)
+    {
+        StopHallucination();
+        if (Transform(owner).MapUid is not { } map || duration <= TimeSpan.Zero) return false;
+        _hallucinationSource = Spawn(null, new EntityCoordinates(map, Vector2.Zero));
+        _hallucinationOwner = owner;
+        _hallucinationStart = Timing.CurTime;
+        _hallucinationEnd = Timing.CurTime + duration;
+        StartWeather(_hallucinationSource.Value, EnsureComp<WeatherComponent>(_hallucinationSource.Value), prototype, _hallucinationEnd);
+        return true;
+    }
+
+    public void StopHallucination()
+    {
+        if (_hallucinationSource is { } source && !Deleted(source))
+        {
+            if (TryComp<WeatherComponent>(source, out var weather))
+                foreach (var id in weather.Weather.Keys.ToArray()) EndWeather(source, weather, id);
+            Del(source);
+        }
+        _hallucinationSource = null;
+        _hallucinationOwner = null;
+    }
+
+    public bool TryGetHallucinationWeather(MapId map, out WeatherPrototype prototype, out float alpha)
+    {
+        prototype = default!;
+        alpha = 0f;
+        if (_hallucinationSource is not { } source || Deleted(source) || Timing.CurTime >= _hallucinationEnd ||
+            _playerManager.LocalEntity != _hallucinationOwner || Transform(source).MapID != map ||
+            !TryComp<WeatherComponent>(source, out var component)) return false;
+        foreach (var id in component.Weather.Keys)
+        {
+            if (!ProtoMan.TryIndex(id, out var found)) continue;
+            prototype = found;
+            alpha = HallucinationAlpha();
+            return true;
+        }
+        return false;
+    }
+
+    private float HallucinationAlpha() => Math.Clamp((float)(Timing.CurTime - _hallucinationStart).TotalSeconds / 2f, 0f, 1f) *
+        Math.Clamp((float)(_hallucinationEnd - Timing.CurTime).TotalSeconds / 2f, 0f, 1f);
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        if (_hallucinationSource is not { } source) return;
+        if (Deleted(source) || _playerManager.LocalEntity != _hallucinationOwner ||
+            _hallucinationOwner is not { } owner || Deleted(owner) ||
+            Transform(owner).MapID != Transform(source).MapID || Timing.CurTime >= _hallucinationEnd)
+            StopHallucination();
+    }
+
+    public override void Shutdown()
+    {
+        StopHallucination();
+        base.Shutdown();
+    }
 
     public override void Initialize()
     {
@@ -124,7 +191,7 @@ public sealed class WeatherSystem : SharedWeatherSystem
             }
         }
 
-        var alpha = GetPercent(weather, uid);
+        var alpha = uid == _hallucinationSource ? HallucinationAlpha() : GetPercent(weather, uid);
         alpha *= SharedAudioSystem.VolumeToGain(weatherProto.Sound.Params.Volume);
         _audio.SetGain(weather.Stream, alpha, comp);
         comp.Occlusion = occlusion;

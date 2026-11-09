@@ -1,0 +1,8 @@
+- type: trait
+  id: Unstable
+  category: Mental
+  points: 3
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: Unstable

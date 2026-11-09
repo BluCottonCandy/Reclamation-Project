@@ -51,16 +51,22 @@ public sealed class CourserSpeciesTest
             Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Dead, out var dead) && dead == 400, "dead isn't 400");
             Assert.That(entities.GetComponent<StaminaComponent>(courser).CritThreshold, Is.EqualTo(250f), "stamina isn't 250");
 
-            // Synthetic muscle: punches hit 25% harder (Blunt 10 -> 12.5).
+            // Synthetic muscle: punches hit 65% harder (Blunt 10 -> 16.5).
             var punch = entities.System<SharedMeleeWeaponSystem>().GetDamage(courser, courser);
-            Assert.That(punch.GetTotal().Float(), Is.EqualTo(12.5f).Within(0.01f), "Courser punch isn't +25%");
+            Assert.That(punch.GetTotal().Float(), Is.EqualTo(16.5f).Within(0.01f), "Courser punch isn't +65%");
             // ...and so do held melee weapons.
             var melee = entities.System<SharedMeleeWeaponSystem>();
             var human = entities.SpawnEntity("MobHuman", map.GridCoords);
             var knife = entities.SpawnEntity("CombatKnife", map.GridCoords);
             var courserKnife = melee.GetDamage(knife, courser).GetTotal().Float();
             var humanKnife = melee.GetDamage(knife, human).GetTotal().Float();
-            Assert.That(courserKnife, Is.EqualTo(humanKnife * 1.25f).Within(0.01f), "Courser knife isn't +25%");
+            Assert.That(courserKnife, Is.EqualTo(humanKnife * 1.65f).Within(0.01f), "Courser knife isn't +65%");
+            // ...and thrown weapons.
+            var thrown = entities.System<Content.Shared.Damage.Systems.SharedDamageOtherOnHitSystem>();
+            var courserThrow = thrown.GetDamage(knife, user: courser).GetTotal().Float();
+            var humanThrow = thrown.GetDamage(knife, user: human).GetTotal().Float();
+            Assert.That(humanThrow, Is.GreaterThan(0f), "the test knife has no thrown damage");
+            Assert.That(courserThrow, Is.EqualTo(humanThrow * 1.65f).Within(0.01f), "Courser throw isn't +65%");
 
             // Radiation does nothing.
             var damageable = entities.System<DamageableSystem>();

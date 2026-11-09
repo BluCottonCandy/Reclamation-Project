@@ -1,0 +1,75 @@
+# #Reclamation Project - Diamond City ID badges, one per job.
+# Each job needs its own ID item: on low-pop (extended-access) rounds PresetIdCardSystem re-applies
+# every card's preset job at round start, so a shared ID would reset everyone to one job's title.
+
+- type: entity
+  parent: N14IDBadgeTownMayor
+  id: DiamondCityIDMayor
+  name: Diamond City mayor badge
+  description: The badge of Diamond City's mayor. The people of the Great Green Jewel are counting on you.
+  components:
+  - type: PresetIdCard
+    job: DiamondCityMayor
+
+- type: entity
+  parent: N14IDBadgeTownSheriff
+  id: DiamondCityIDSecurityChief
+  name: Diamond City security chief badge
+  description: The tin star of the man or woman in charge of Diamond City Security.
+  components:
+  - type: PresetIdCard
+    job: DiamondCitySecurityChief
+
+- type: entity
+  parent: N14IDBadgeTownDeputy
+  id: DiamondCityIDSecuritySergeant
+  name: Diamond City security sergeant badge
+  description: A Diamond City Security badge with a sergeant's stripe scratched into it.
+  components:
+  - type: PresetIdCard
+    job: DiamondCitySecuritySergeant
+
+- type: entity
+  parent: N14IDBadgeTownDeputy
+  id: DiamondCityIDSecurityGuard
+  name: Diamond City security badge
+  description: A Diamond City Security badge. Keep the peace inside the walls.
+  components:
+  - type: PresetIdCard
+    job: DiamondCitySecurityGuard
+
+- type: entity
+  parent: N14IDBadgeTownDeputy
+  id: DiamondCityIDSecurityRecruit
+  name: Diamond City security recruit badge
+  description: A Diamond City Security badge, still shiny. Listen to your sergeant.
+  components:
+  - type: PresetIdCard
+    job: DiamondCitySecurityRecruit
+
+- type: entity
+  parent: N14IDDoctorTown
+  id: DiamondCityIDMedic
+  name: Diamond City medic ID
+  description: Marks the holder as one of Diamond City's medics.
+  components:
+  - type: PresetIdCard
+    job: DiamondCityMedic
+
+- type: entity
+  parent: N14IDShopkeeperTown
+  id: DiamondCityIDShopkeeper
+  name: Diamond City shopkeeper ID
+  description: A trader's licence from Diamond City. Without shops there is no market.
+  components:
+  - type: PresetIdCard
+    job: DiamondCityShopkeeper
+
+- type: entity
+  parent: N14IDPassportTownsfolk
+  id: DiamondCityIDTownsfolk
+  name: Diamond City passport
+  description: Proof that you live inside the walls of Diamond City.
+  components:
+  - type: PresetIdCard
+    job: DiamondCityTownsfolk

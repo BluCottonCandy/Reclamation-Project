@@ -11,14 +11,13 @@ namespace Content.Shared.Kitchen
 
         public void Initialize()
         {
-            Recipes = new List<FoodRecipePrototype>();
-            foreach (var item in _prototypeManager.EnumeratePrototypes<FoodRecipePrototype>())
-            {
-                if (!item.SecretRecipe)
-                    Recipes.Add(item);
-            }
-
-            Recipes.Sort(new RecipeComparer());
+            // #Reclamation Project - stable order: most ingredients first, then by ID. List.Sort is unstable,
+            // so adding any recipe used to reshuffle equally-matched recipes (e.g. carp burger vs cheeseburger).
+            Recipes = _prototypeManager.EnumeratePrototypes<FoodRecipePrototype>()
+                .Where(item => !item.SecretRecipe)
+                .OrderByDescending(item => item.IngredientCount())
+                .ThenBy(item => item.ID, StringComparer.Ordinal)
+                .ToList();
         }
         /// <summary>
         /// Check if a prototype ids appears in any of the recipes that exist.

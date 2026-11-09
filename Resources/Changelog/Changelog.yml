@@ -14279,3 +14279,14 @@ Entries:
   id: 6623
   time: '2026-11-09T11:39:35.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/156
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Forged and Forge Keeper furnace armor now uses new sprites by skaothi.
+    - type: Tweak
+      message: >-
+        Added matching oxidized-metal helmets and gloves to Forged and Forge
+        Keeper furnace armor.
+  id: 6624
+  time: '2026-11-09T12:08:44.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/158

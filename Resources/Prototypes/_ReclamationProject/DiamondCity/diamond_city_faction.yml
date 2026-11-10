@@ -1,0 +1,52 @@
+# #Reclamation Project - Diamond City: department (job-menu tab), door access and radio key.
+# Diamond City is the Commonwealth's hub town. It is not mapped yet, so its jobs use the
+# station fallback spawn until the DiamondCitySpawnPoint* markers are placed on the map.
+
+- type: department
+  id: DiamondCity
+  description: department-DiamondCity-description
+  color: "#c9a227"
+  uiCategory: MajorFaction
+  roles:
+  - DiamondCityMayor
+  - DiamondCitySecurityChief
+  - DiamondCitySecuritySergeant
+  - DiamondCitySecurityGuard
+  - DiamondCitySecurityRecruit
+  - DiamondCityMedic
+  - DiamondCityShopkeeper
+  - DiamondCityTakahashi
+  - DiamondCityTownsfolk
+
+# Every Diamond City job gets DiamondCity (town doors). Security also gets DiamondCitySecurity
+# (the security office and cells). The Mayor gets everything.
+- type: accessLevel
+  id: DiamondCity
+  name: id-card-access-level-diamond-city
+
+- type: accessLevel
+  id: DiamondCitySecurity
+  name: id-card-access-level-diamond-city-security
+
+- type: accessLevel
+  id: DiamondCityMayor
+  name: id-card-access-level-diamond-city-mayor
+
+# Uses the existing Townsfolk radio channel, which the Activated Synth "steal all four keys"
+# objective already counts as the Diamond City key.
+- type: entity
+  parent: EncryptionKeyTown
+  id: EncryptionKeyDiamondCity
+  name: Diamond City encryption key
+  description: An encryption key for Diamond City's town radio.
+
+- type: entity
+  parent: MisfitsClothingHeadsetTown
+  id: DiamondCityClothingHeadset
+  name: Diamond City headset
+  description: A headset tuned to Diamond City's town radio.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyDiamondCity

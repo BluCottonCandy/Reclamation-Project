@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Institute.Uplink; // #Reclamation Project
 using Content.Shared.Roles;
 
 namespace Content.Server.Roles;
@@ -18,6 +19,7 @@ public sealed class RoleSystem : SharedRoleSystem
         SubscribeAntagEvents<TraitorRoleComponent>();
         SubscribeAntagEvents<ZombieRoleComponent>();
         SubscribeAntagEvents<ThiefRoleComponent>();
+        SubscribeAntagEvents<InstituteAgentRoleComponent>(); // #Reclamation Project - Institute agents
     }
 
     public string? MindGetBriefing(EntityUid? mindId)

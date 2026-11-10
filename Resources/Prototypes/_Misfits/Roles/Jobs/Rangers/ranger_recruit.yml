@@ -29,6 +29,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
 
 - type: startingGear

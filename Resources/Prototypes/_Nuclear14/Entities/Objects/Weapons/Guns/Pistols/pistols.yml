@@ -23,6 +23,7 @@
     - suitStorage
     - Belt
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     minAngle: 1
     maxAngle: 7
     angleIncrease: 0.5
@@ -95,6 +96,7 @@
     - suitStorage
     - Belt
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     minAngle: 1
     maxAngle: 7
     angleIncrease: 0.5

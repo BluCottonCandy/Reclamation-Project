@@ -1,0 +1,496 @@
+# #Reclamation Project - Diamond City jobs.
+# Built fresh from the old Nuclear 14 Townsfolk jobs (which stay untouched).
+# Security is a rank ladder: Recruit -> Guard -> Sergeant -> Chief. Each rank needs hours in
+# the rank below OR enough total Diamond City time. Pins: diamond_city_rank_pins.yml.
+
+# ---------------------------------------------------------------- Mayor
+
+- type: job
+  id: DiamondCityMayor
+  setPreference: true
+  weight: 100
+  displayWeight: 100
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-diamond-city-mayor
+  description: job-description-diamond-city-mayor
+  playTimeTracker: DiamondCityMayor
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+    - !type:CharacterDepartmentTimeRequirement
+      department: DiamondCity
+      min: 54000 # 15 hours in Diamond City
+  startingGear: DiamondCityMayorGear
+  icon: "JobIconTownMayor"
+  supervisors: job-supervisors-diamond-city-people
+  access:
+  - DiamondCity
+  - DiamondCitySecurity
+  - DiamondCityMayor
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: startingGear
+  id: DiamondCityMayorGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitCheckered
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackExplorer
+    shoes: N14ClothingShoesBrown
+    id: DiamondCityIDMayor
+    pocket1: RadioHandheld
+    wallet: N14WalletLottaCash
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: DiamondCityMayor
+
+# ---------------------------------------------------------------- Security
+
+- type: job
+  id: DiamondCitySecurityChief
+  setPreference: true
+  weight: 95
+  displayWeight: 95
+  canBeAntag: false
+  name: job-name-diamond-city-security-chief
+  description: job-description-diamond-city-security-chief
+  playTimeTracker: DiamondCitySecurityChief
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+    - !type:CharacterLogicOrRequirement
+      requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: DiamondCitySecuritySergeant
+        min: 36000 # 10 hours as Sergeant
+      - !type:CharacterDepartmentTimeRequirement
+        department: DiamondCity
+        min: 180000 # 50 hours in Diamond City
+  startingGear: DiamondCitySecurityChiefGear
+  icon: "JobIconTownSheriff"
+  supervisors: job-supervisors-diamond-city-mayor
+  access:
+  - DiamondCity
+  - DiamondCitySecurity
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: job
+  id: DiamondCitySecuritySergeant
+  setPreference: true
+  weight: 90
+  displayWeight: 90
+  canBeAntag: false
+  name: job-name-diamond-city-security-sergeant
+  description: job-description-diamond-city-security-sergeant
+  playTimeTracker: DiamondCitySecuritySergeant
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+    - !type:CharacterLogicOrRequirement
+      requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: DiamondCitySecurityGuard
+        min: 18000 # 5 hours as Guard
+      - !type:CharacterDepartmentTimeRequirement
+        department: DiamondCity
+        min: 90000 # 25 hours in Diamond City
+  startingGear: DiamondCitySecuritySergeantGear
+  icon: "JobIconTownDeputy"
+  supervisors: job-supervisors-diamond-city-security-chief
+  access:
+  - DiamondCity
+  - DiamondCitySecurity
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: job
+  id: DiamondCitySecurityGuard
+  setPreference: true
+  weight: 85
+  displayWeight: 85
+  canBeAntag: false
+  name: job-name-diamond-city-security-guard
+  description: job-description-diamond-city-security-guard
+  playTimeTracker: DiamondCitySecurityGuard
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+    - !type:CharacterLogicOrRequirement
+      requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: DiamondCitySecurityRecruit
+        min: 18000 # 5 hours as Recruit
+      - !type:CharacterDepartmentTimeRequirement
+        department: DiamondCity
+        min: 36000 # 10 hours in Diamond City
+  startingGear: DiamondCitySecurityGuardGear
+  icon: "JobIconTownDeputy"
+  supervisors: job-supervisors-diamond-city-security-sergeants
+  access:
+  - DiamondCity
+  - DiamondCitySecurity
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: job
+  id: DiamondCitySecurityRecruit
+  setPreference: true
+  weight: 80
+  displayWeight: 80
+  showBorderBelow: true
+  canBeAntag: false
+  name: job-name-diamond-city-security-recruit
+  description: job-description-diamond-city-security-recruit
+  playTimeTracker: DiamondCitySecurityRecruit
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+  startingGear: DiamondCitySecurityRecruitGear
+  icon: "JobIconTownDeputy"
+  supervisors: job-supervisors-diamond-city-security-sergeants
+  access:
+  - DiamondCity
+  - DiamondCitySecurity
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+# Security gear: better armor at each rank (highest-stat gear goes to the highest rank).
+# Recruit: no armor vest. Guard: light guard armor. Sergeant + Chief: riot guard armor.
+- type: startingGear
+  id: DiamondCitySecurityRecruitGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatLightBaseballHelmet
+    jumpsuit: N14ClothingUniformJumpsuitTownGuardLight
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackSatchelMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    id: DiamondCityIDSecurityRecruit
+    pocket1: TownGuardKits
+    pocket2: Handcuffs
+  inhand:
+  - BaseBallBat
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: startingGear
+  id: DiamondCitySecurityGuardGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatBaseballHelmet
+    jumpsuit: N14ClothingUniformJumpsuitTownGuard
+    outerClothing: N14ClothingOuterTownGuardLight
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackSatchelMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    id: DiamondCityIDSecurityGuard
+    belt: ClothingBeltRevolverfilled
+    pocket1: TownGuardKits
+    pocket2: Handcuffs
+  inhand:
+  - BaseBallBat
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - MagazineBox44
+
+- type: startingGear
+  id: DiamondCitySecuritySergeantGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatBaseballHelmet
+    jumpsuit: N14ClothingUniformJumpsuitTownGuard
+    outerClothing: N14ClothingOuterTownGuardRiot
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackSatchelMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    id: DiamondCityIDSecuritySergeant
+    belt: ClothingBeltRevolverfilled
+    pocket1: TownGuardKits
+    pocket2: Handcuffs
+  inhand:
+  - BaseBallBat
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - MagazineBox44
+    - N14Binoculars
+
+- type: startingGear
+  id: DiamondCitySecurityChiefGear
+  equipment:
+    wallet: N14Wallet
+    head: N14ClothingHeadHatBaseballHelmet
+    jumpsuit: N14ClothingUniformJumpsuitTownGuard
+    outerClothing: N14ClothingOuterTownGuardRiot
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackSatchelMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    id: DiamondCityIDSecurityChief
+    belt: ClothingBeltRevolverWildWhisper
+    pocket1: TownGuardKits
+    pocket2: Handcuffs
+  inhand:
+  - BaseBallBat
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - MagazineBox44
+    - N14Binoculars
+
+- type: playTimeTracker
+  id: DiamondCitySecurityChief
+
+- type: playTimeTracker
+  id: DiamondCitySecuritySergeant
+
+- type: playTimeTracker
+  id: DiamondCitySecurityGuard
+
+- type: playTimeTracker
+  id: DiamondCitySecurityRecruit
+
+# ---------------------------------------------------------------- Medic (kept simple: one job)
+
+- type: job
+  id: DiamondCityMedic
+  setPreference: true
+  weight: 70
+  displayWeight: 70
+  canBeAntag: false
+  name: job-name-diamond-city-medic
+  description: job-description-diamond-city-medic
+  playTimeTracker: DiamondCityMedic
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+  startingGear: DiamondCityMedicGear
+  icon: "JobIconTownMedic"
+  supervisors: job-supervisors-diamond-city-mayor
+  access:
+  - DiamondCity
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+      - type: CPRTraining
+
+- type: startingGear
+  id: DiamondCityMedicGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitWastelandDoc
+    outerClothing: N14ClothingOuterCoatLab
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackExplorer
+    shoes: N14ClothingShoesBlack
+    gloves: N14ClothingHandsGlovesNitrile
+    id: DiamondCityIDMedic
+    pocket2: N14HandheldHealthAnalyzer
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14MedkitFilled
+
+- type: playTimeTracker
+  id: DiamondCityMedic
+
+# ---------------------------------------------------------------- Shopkeeper
+
+- type: job
+  id: DiamondCityShopkeeper
+  setPreference: true
+  weight: 65
+  displayWeight: 65
+  canBeAntag: false
+  name: job-name-diamond-city-shopkeeper
+  description: job-description-diamond-city-shopkeeper
+  playTimeTracker: DiamondCityShopkeeper
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+  startingGear: DiamondCityShopkeeperGear
+  icon: "JobIconTownShopKeeper"
+  supervisors: job-supervisors-diamond-city-mayor
+  access:
+  - DiamondCity
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+      - type: ProfessionalChef
+
+- type: startingGear
+  id: DiamondCityShopkeeperGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitMerchant
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackHiking
+    shoes: N14ClothingShoesBlack
+    id: DiamondCityIDShopkeeper
+    wallet: N14WalletCash
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: DiamondCityShopkeeper
+
+# ---------------------------------------------------------------- Takahashi
+
+# Diamond City's noodle-stand Protectron. Anyone can take it, whatever character they picked:
+# jobEntity always spawns them as a Protectron, keeping their character's name (the cap wallet
+# is saved under that name). The job is also in the Protectron species' restrictedJobs
+# (_Misfits/Species/robot.yml) so Protectron characters can pick it too.
+# He can only ever say "Nan-ni shimasho-ka?" and has a "Make Noodle Cup" power that costs 2 caps.
+# jobEntity skips starting gear, so the noodle box comes from NoodleCupMaker.startingItem and
+# the door access sits on his body (an entity's own Access counts for doors).
+- type: job
+  id: DiamondCityTakahashi
+  setPreference: true
+  weight: 60
+  displayWeight: 60
+  canBeAntag: false
+  name: job-name-diamond-city-takahashi
+  description: job-description-diamond-city-takahashi
+  playTimeTracker: DiamondCityTakahashi
+  icon: JobIconBorg
+  supervisors: job-supervisors-diamond-city-mayor
+  overwatchCategory: OverwatchRobotics
+  jobEntity: N14PlayerSyntheticProtectron
+  spawnLoadout: false
+  applyTraits: false # robot accent traits would garble his one line
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - Wastelander
+          - Townsfolk
+      - type: ReplacementAccent
+        accent: takahashi
+      - type: NoodleCupMaker
+        startingItem: RPBoxTakahashiNoodles
+      - type: Access
+        tags:
+        - DiamondCity
+
+- type: playTimeTracker
+  id: DiamondCityTakahashi
+
+# ---------------------------------------------------------------- Townsfolk
+
+- type: job
+  id: DiamondCityTownsfolk
+  setPreference: true
+  weight: 50
+  displayWeight: 50
+  canBeAntag: true
+  name: job-name-diamond-city-townsfolk
+  description: job-description-diamond-city-townsfolk
+  playTimeTracker: DiamondCityTownsfolk
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Courser
+      - Ghoul
+      - GhoulGlowing
+  startingGear: DiamondCityTownsfolkGear
+  icon: "JobIconTownPerson"
+  supervisors: job-supervisors-diamond-city-mayor
+  access:
+  - DiamondCity
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Townsfolk
+
+- type: startingGear
+  id: DiamondCityTownsfolkGear
+  equipment:
+    wallet: N14Wallet
+    jumpsuit: N14ClothingUniformJumpsuitSettlerRags
+    ears: DiamondCityClothingHeadset
+    back: N14ClothingBackpackExplorer
+    shoes: N14ClothingShoesBlack
+    id: DiamondCityIDTownsfolk
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: DiamondCityTownsfolk

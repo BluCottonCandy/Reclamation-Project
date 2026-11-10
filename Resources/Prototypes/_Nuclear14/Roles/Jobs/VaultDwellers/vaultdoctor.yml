@@ -11,6 +11,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
   #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
   #  tracker: VaultDweller
   #  min: 18000 # 5 hours

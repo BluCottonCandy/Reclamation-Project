@@ -1,0 +1,120 @@
+# #Reclamation Project - Diamond City Security rank pins.
+# Each rank has its own pin (same pin art as the Minutemen). NCRRankPinSpawnSystem puts the earned
+# pin in the player's hand at spawn; Guards and Sergeants earn a senior pin after 20 hours.
+#
+# Tracker quick-reference (playtime_addrole <user> <tracker> <seconds>):
+#   DiamondCitySecurityRecruit, DiamondCitySecurityGuard,
+#   DiamondCitySecuritySergeant, DiamondCitySecurityChief
+
+- type: entity
+  parent: ClothingNeckPinMinutemenRecruit
+  id: ClothingNeckPinDiamondCityRecruit
+  name: Diamond City Security recruit pin
+  description: A Diamond City Security badge pin showing the wearer's rank.
+  components:
+  - type: RankTitle
+    rankTitle: Recruit
+
+- type: entity
+  parent: ClothingNeckPinDiamondCityRecruit
+  id: ClothingNeckPinDiamondCityGuard
+  name: Diamond City Security guard pin
+  components:
+  - type: RankTitle
+    rankTitle: Guard
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: private
+
+- type: entity
+  parent: ClothingNeckPinDiamondCityRecruit
+  id: ClothingNeckPinDiamondCitySeniorGuard
+  name: Diamond City Security senior guard pin
+  components:
+  - type: RankTitle
+    rankTitle: Senior Guard
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: private1st
+
+- type: entity
+  parent: ClothingNeckPinDiamondCityRecruit
+  id: ClothingNeckPinDiamondCitySergeant
+  name: Diamond City Security sergeant pin
+  components:
+  - type: RankTitle
+    rankTitle: Sergeant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeant
+
+- type: entity
+  parent: ClothingNeckPinDiamondCityRecruit
+  id: ClothingNeckPinDiamondCitySeniorSergeant
+  name: Diamond City Security senior sergeant pin
+  components:
+  - type: RankTitle
+    rankTitle: Senior Sergeant
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeant1st
+
+- type: entity
+  parent: ClothingNeckPinDiamondCityRecruit
+  id: ClothingNeckPinDiamondCityChief
+  name: Diamond City Security chief pin
+  components:
+  - type: RankTitle
+    rankTitle: Chief
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: captain
+
+- type: ncrRankPinProgression
+  id: DiamondCitySecurityRecruitPins
+  jobs:
+    - DiamondCitySecurityRecruit
+  tracker: DiamondCitySecurityRecruit
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinDiamondCityRecruit
+
+- type: ncrRankPinProgression
+  id: DiamondCitySecurityGuardPins
+  jobs:
+    - DiamondCitySecurityGuard
+  tracker: DiamondCitySecurityGuard
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinDiamondCityGuard
+    - min: 72000   # 20 hours
+      entity: ClothingNeckPinDiamondCitySeniorGuard
+
+- type: ncrRankPinProgression
+  id: DiamondCitySecuritySergeantPins
+  jobs:
+    - DiamondCitySecuritySergeant
+  tracker: DiamondCitySecuritySergeant
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinDiamondCitySergeant
+    - min: 72000   # 20 hours
+      entity: ClothingNeckPinDiamondCitySeniorSergeant
+
+- type: ncrRankPinProgression
+  id: DiamondCitySecurityChiefPins
+  jobs:
+    - DiamondCitySecurityChief
+  tracker: DiamondCitySecurityChief
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinDiamondCityChief

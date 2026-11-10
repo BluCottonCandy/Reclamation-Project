@@ -23,6 +23,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -89,6 +90,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -153,6 +155,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -217,6 +220,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
     - GhoulGlowing
   - !type:CharacterDepartmentTimeRequirement
@@ -281,6 +285,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
     - GhoulGlowing
   - !type:CharacterPlaytimeRequirement

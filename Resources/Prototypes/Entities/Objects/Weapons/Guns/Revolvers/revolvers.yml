@@ -23,6 +23,7 @@
     - Belt
   - type: AmmoCounter
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     selectedMode: SemiAuto
     fireRate: 1.5
     availableModes:

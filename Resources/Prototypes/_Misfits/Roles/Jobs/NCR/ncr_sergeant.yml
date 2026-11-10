@@ -15,6 +15,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement # T5 faction timelock (16h NCR)
       department: NCR

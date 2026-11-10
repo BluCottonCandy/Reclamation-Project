@@ -1,0 +1,68 @@
+# #Reclamation Project - Diamond City: Takahashi, the noodle-stand Protectron.
+
+# Every message he says becomes his one line.
+- type: accent
+  id: takahashi
+  fullReplacements:
+  - accent-words-takahashi-1
+
+# "Make Noodle Cup" power: costs 2 caps (wallet first, then caps in hand).
+# Handled by NoodleCupMakerSystem.
+- type: entity
+  id: ActionTakahashiMakeNoodleCup
+  name: Make Noodle Cup
+  description: Spend 2 caps to make a fresh noodle cup. Takes caps from your cap wallet first, then from caps in your hand.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 5
+    icon:
+      sprite: Objects/Consumable/Food/snacks.rsi
+      state: ramen
+    event: !type:MakeNoodleCupActionEvent
+
+# A ready-to-eat noodle cup. Parented to the old cup ramen so it keeps its sprite and trash,
+# but filled with real food instead of dry noodles.
+- type: entity
+  parent: DrinkRamen
+  id: RPFoodNoodleCup
+  name: noodle cup
+  description: Hot noodles in a paper cup, fresh from Diamond City's noodle stand.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - cheapnoodles
+    - salty
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 50
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+        - ReagentId: Soysauce
+          Quantity: 5
+        - ReagentId: Water
+          Quantity: 10
+
+# Takahashi's starting stock.
+- type: entity
+  parent: BoxCardboard
+  id: RPBoxTakahashiNoodles
+  name: noodle stand box
+  description: Takahashi's stock of noodle cups.
+  components:
+  - type: StorageFill
+    contents:
+    - id: RPFoodNoodleCup
+      amount: 4
+
+# Anyone can cook noodle cups (Takahashi included): razorgrain flour and water in a microwave.
+- type: microwaveMealRecipe
+  id: RPRecipeNoodleCup
+  name: noodle cup recipe
+  result: RPFoodNoodleCup
+  time: 10
+  reagents:
+    ExtractRazorgrainFlour: 10
+    Water: 10

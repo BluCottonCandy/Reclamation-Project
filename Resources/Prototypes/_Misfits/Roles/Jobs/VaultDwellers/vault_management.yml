@@ -17,6 +17,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   startingGear: VaultManagementGear
   alwaysUseSpawner: true
   icon: "JobIconVaultOverseer" # Reuse overseer icon for now

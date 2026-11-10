@@ -1110,6 +1110,7 @@
       MinutemenHeavyTrooperGauntlets: 75
       MinutemenHeavyTrooperBoots: 75
       MinutemenTrooperGasMask: 75
+      MinutemenGasMaskNightVision: 90
       MinutemenWeaponHeavyLaserMusket: 75
     requireFactionJob: false
   - type: NcStore
@@ -1296,6 +1297,10 @@
     price: 10
   - proto: MinutemenClothingUniformOfficer
     price: 10
+  - proto: MinutemenGasMask
+    price: 25
+  - proto: MinutemenGasMaskNightVision
+    price: 75
   - proto: MinutemenHeavyTrooperArmor
     price: 100
   - proto: MinutemenHeavyTrooperBoots

@@ -20,9 +20,11 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class FusionCorePowerArmorTest
 {
-    private const float PoweredSpeed = 0.2f * 4.5f;      // unchanged power armour speed
-    private const float DeadSpeed = 0.2f * 0.2f;         // 4%
-    private const float StrongDeadSpeed = 0.2f * 0.25f;  // 5% at Strength 8+
+    private const float PoweredSpeed = 0.70f;          // powered, Strength 1-7
+    private const float StrongPoweredSpeed = 0.75f;    // powered, Strength 8-9
+    private const float MightyPoweredSpeed = 0.80f;    // powered, Strength 10
+    private const float DeadSpeed = 0.2f * 0.2f;       // 4%
+    private const float StrongDeadSpeed = 0.2f * 0.25f; // 5% at Strength 8+
 
     private static (EntityUid Wearer, EntityUid Systems) SpawnWearer(IEntityManager entities, TestMapData map)
     {
@@ -76,6 +78,16 @@ public sealed class FusionCorePowerArmorTest
             EntityUid strongSystems;
             (strong, strongSystems) = SpawnWearer(entities, map);
             entities.EnsureComponent<SpecialComponent>(strong).BaseStrength = 8;
+
+            // Powered speed: 70%, or 75% at Strength 8.
+            var movement = entities.System<MovementSpeedModifierSystem>();
+            movement.RefreshMovementSpeedModifiers(wearer);
+            movement.RefreshMovementSpeedModifiers(strong);
+            Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(wearer).WalkSpeedModifier,
+                Is.EqualTo(PoweredSpeed).Within(0.005f), "powered suit isn't 70% speed");
+            Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(strong).WalkSpeedModifier,
+                Is.EqualTo(StrongPoweredSpeed).Within(0.005f), "Strength 8 powered suit isn't 75% speed");
+
             KillCore(entities, strongSystems);
             entities.System<MovementSpeedModifierSystem>().RefreshMovementSpeedModifiers(strong);
 
@@ -92,6 +104,77 @@ public sealed class FusionCorePowerArmorTest
             Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(strong).WalkSpeedModifier,
                 Is.EqualTo(StrongDeadSpeed).Within(0.005f), "Strength 8 dead core isn't 5% speed");
 
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// #Reclamation Project - Strength 10 ignores normal clothing slowdown, but never power armour's.
+    /// </summary>
+    [Test]
+    public async Task StrengthTenDoesNotCancelPowerArmourSlowdown()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var server = pair.Server;
+        var entities = server.ResolveDependency<IEntityManager>();
+        var movement = entities.System<MovementSpeedModifierSystem>();
+
+        EntityUid wearer = default;
+        EntityUid systems = default;
+
+        await server.WaitAssertion(() =>
+        {
+            (wearer, systems) = SpawnWearer(entities, map);
+            entities.EnsureComponent<SpecialComponent>(wearer).BaseStrength = 10;
+            movement.RefreshMovementSpeedModifiers(wearer);
+        });
+
+        await server.WaitRunTicks(5);
+
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(wearer).WalkSpeedModifier,
+                Is.EqualTo(MightyPoweredSpeed).Within(0.005f), "Strength 10 powered suit isn't 80% speed");
+
+            // Switched off: still the Strength 8+ crawl, not full speed.
+            entities.EventBus.RaiseLocalEvent(systems, new FusionCorePowerToggleEvent { Performer = wearer });
+            movement.RefreshMovementSpeedModifiers(wearer);
+        });
+
+        await server.WaitRunTicks(5);
+
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(entities.GetComponent<FusionCorePoweredComponent>(systems).Powered, Is.False);
+            Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(wearer).WalkSpeedModifier,
+                Is.EqualTo(StrongDeadSpeed).Within(0.005f), "Strength 10 still cancels the switched-off slowdown");
+        });
+
+        // Carrying an unworn suit: 50% normally, 65% at Strength 10.
+        EntityUid weak = default;
+        EntityUid strong = default;
+        await server.WaitAssertion(() =>
+        {
+            var hands = entities.System<SharedHandsSystem>();
+            weak = entities.SpawnEntity("MobHuman", map.GridCoords);
+            strong = entities.SpawnEntity("MobHuman", map.GridCoords);
+            entities.EnsureComponent<SpecialComponent>(strong).BaseStrength = 10;
+            Assert.That(hands.TryPickupAnyHand(weak, entities.SpawnEntity("N14ClothingOuterPowerArmorT51", map.GridCoords)), Is.True);
+            Assert.That(hands.TryPickupAnyHand(strong, entities.SpawnEntity("N14ClothingOuterPowerArmorT51", map.GridCoords)), Is.True);
+            movement.RefreshMovementSpeedModifiers(weak);
+            movement.RefreshMovementSpeedModifiers(strong);
+        });
+
+        await server.WaitRunTicks(5);
+
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(weak).WalkSpeedModifier,
+                Is.EqualTo(0.5f).Within(0.005f), "carrying a suit isn't 50% speed");
+            Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(strong).WalkSpeedModifier,
+                Is.EqualTo(0.65f).Within(0.005f), "Strength 10 carrying a suit isn't 65% speed");
         });
 
         await pair.CleanReturnAsync();

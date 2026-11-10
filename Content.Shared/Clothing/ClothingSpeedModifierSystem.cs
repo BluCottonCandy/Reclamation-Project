@@ -1,4 +1,6 @@
+using Content.Shared._Misfits.PowerArmor; // #Reclamation Project
 using Content.Shared._Misfits.Special;
+using Content.Shared._ReclamationProject.PowerArmor; // #Reclamation Project
 using Content.Shared._Misfits.Special.Components;
 using Content.Shared._Misfits.SpecialStats;
 using Content.Shared._Misfits.SpecialStats.Components;
@@ -87,6 +89,12 @@ public sealed class ClothingSpeedModifierSystem : EntitySystem
         }
 
         var wearer = container.Owner;
+
+        // #Reclamation Project - power armour weight is carried by its servos, not the wearer's muscles.
+        // Strength never cancels the suit's or the power systems' speed modifiers.
+        if (HasComp<N14PowerArmorComponent>(clothing) || HasComp<FusionCorePoweredComponent>(clothing))
+            return;
+
         if (_special.HasRequirement(wearer, SpecialStat.Strength, 10))
         {
             walkModifier = MathF.Max(1f, walkModifier);

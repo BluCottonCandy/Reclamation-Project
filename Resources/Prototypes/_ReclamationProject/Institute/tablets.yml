@@ -42,6 +42,8 @@
       startingItem: InstitutePenlight
   - type: PdaBorderColor
     borderColor: "#e5e5e5"
+  # #Reclamation Project - only opens for whoever typed the owner's uplink PIN; dropping it locks it
+  - type: InstituteTabletLock
   # #Reclamation Project - chameleon: can be disguised as Commonwealth Pip-Boys, PDAs and IDs and still works as an Institute tablet.
   # Only the looks and name change, not access. The list is fixed (restrictTargets) so space-station IDs don't show up.
   - type: ChameleonClothing

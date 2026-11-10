@@ -24,7 +24,7 @@
     angleIncrease: 4
     angleDecay: 12
     fireRate: 4.1
-    projectileSpeed: 40
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (was 40)
     soundGunshot:
       collection: N14PistolSpyGunshot
     selectedMode: Fullauto
@@ -106,7 +106,7 @@
     angleIncrease: 4
     angleDecay: 12
     fireRate: 4.5
-    projectileSpeed: 40
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (was 40)
     soundGunshot:
       collection: N14RifleR91Gunshot
     selectedMode: Fullauto
@@ -159,7 +159,7 @@
     angleIncrease: 4
     angleDecay: 12
     fireRate: 4.5
-    projectileSpeed: 35
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (was 35)
     soundGunshot:
       collection: N14RifleR91Gunshot
     selectedMode: Fullauto

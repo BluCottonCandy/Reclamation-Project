@@ -9,6 +9,7 @@
   - type: Item
     size: Ginormous
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     fireRate: 20
     selectedMode: FullAuto
     availableModes:

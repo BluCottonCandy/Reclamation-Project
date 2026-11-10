@@ -24,6 +24,7 @@
     - suitStorage
     - Belt
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     # Very accurate: near-zero spread.
     minAngle: 0
     maxAngle: 1

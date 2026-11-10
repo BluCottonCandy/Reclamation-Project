@@ -29,6 +29,7 @@
     sprite: _Misfits/Objects/Weapons/Guns/Pistols/gausspistol.rsi
   - type: AmmoCounter
   - type: Gun
+    projectileSpeed: 70 # #Reclamation Project - bullet speed (default was 35)
     fireRate: 2.0
     selectedMode: FullAuto
     availableModes:

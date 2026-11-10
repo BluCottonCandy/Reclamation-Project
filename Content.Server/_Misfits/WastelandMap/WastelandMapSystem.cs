@@ -19,6 +19,8 @@ using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
 using Content.Shared._Misfits.MaterialExtractor;
 using Content.Server._ReclamationProject.Expeditions;
+using Content.Server._ReclamationProject.Institute.Uplink; // #Reclamation Project - Institute agents on the tablet map
+using Content.Shared._Reclamation.ActivatedSynth; // #Reclamation Project
 using Content.Shared._Misfits.TreeOfLife;
 using Content.Shared._Misfits.Deathclaw;
 using Content.Shared._Misfits.TribalHunt;
@@ -824,9 +826,47 @@ public sealed class WastelandMapSystem : EntitySystem
                 break;
             // #Reclamation Project - Institute tracks its people, not ID cards, so undercover Coursers show too
             case WastelandMapTacticalFeedKind.Institute:
-                AppendFactionMemberBlips(buffer, mapId, bounds, "Institute");
+                AppendInstituteBlips(buffer, mapId, bounds);
                 break;
         }
+    }
+
+    // #Reclamation Project - the Institute sees all of its people and all of its synths:
+    // Institute faction members, Institute agents (reinforcements too), Gen 3 synths and Coursers in any job,
+    // activated sleeper synths, and Gen 1 synth NPCs (grenade synths included).
+    private static readonly HashSet<string> InstituteSynthSpecies = new() { "Gen3Synth", "Courser" };
+
+    private void AppendInstituteBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
+    {
+        var seen = new HashSet<EntityUid>();
+        var query = EntityQueryEnumerator<MobStateComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var mobState, out var xform))
+        {
+            if (mobState.CurrentState == MobState.Dead || !IsInstituteTracked(uid) || !seen.Add(uid))
+                continue;
+
+            var mapCoordinates = _transform.GetMapCoordinates(uid, xform);
+            if (mapCoordinates.MapId != mapId || !bounds.Contains(mapCoordinates.Position))
+                continue;
+
+            var label = TryGetJobTitle(uid) is { } job ? $"{Name(uid)} ({job})" : Name(uid);
+            buffer.Add(new WastelandMapTrackedBlip(mapCoordinates.Position.X, mapCoordinates.Position.Y, label,
+                WastelandMapTrackedBlipKind.Unknown));
+        }
+    }
+
+    private bool IsInstituteTracked(EntityUid uid)
+    {
+        if (TryComp<NpcFactionMemberComponent>(uid, out var faction) &&
+            (_npcFaction.IsMember((uid, faction), "Institute") || _npcFaction.IsMember((uid, faction), "InstituteSynth")))
+            return true;
+
+        if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid) && InstituteSynthSpecies.Contains(humanoid.Species))
+            return true;
+
+        return TryComp<MindContainerComponent>(uid, out var container) &&
+               container.Mind is { } mind &&
+               (HasComp<InstituteMemberComponent>(mind) || HasComp<ActivatedSynthComponent>(mind));
     }
 
     // #Reclamation Project - a blip for every living humanoid in an NPC faction, wherever their ID is.

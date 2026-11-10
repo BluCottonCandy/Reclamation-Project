@@ -1,0 +1,33 @@
+# #Reclamation Project - Minutemen gas masks. Sprites by LordCheezit.
+# Plain mask: every enlisted Minuteman. NVG mask: Sergeant and up.
+
+- type: entity
+  parent: ClothingMaskGas
+  id: MinutemenGasMask
+  name: Minutemen gas mask
+  description: A dark rubber gas mask with blue-tinted lenses, issued to every Minuteman.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask.rsi
+  # Drops the hamster tag: this sprite has no hamster version.
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+# Night vision only. No thermal vision.
+- type: entity
+  parent: MinutemenGasMask
+  id: MinutemenGasMaskNightVision
+  name: Minutemen night vision gas mask
+  description: A Minutemen gas mask fitted with glowing night vision lenses. Issued to sergeants and officers.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask_nvg.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask_nvg.rsi
+  - type: NightVision
+    isEquipment: true

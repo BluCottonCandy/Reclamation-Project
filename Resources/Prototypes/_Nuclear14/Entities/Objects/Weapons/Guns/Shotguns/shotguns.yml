@@ -19,6 +19,7 @@
     - suitStorage
   - type: AmmoCounter
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     fireRate: 2
     selectedMode: SemiAuto
     availableModes:

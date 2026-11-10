@@ -30,6 +30,9 @@
   - !type:AddInstituteRelayOrganSpecial
     implant: InstituteRelayImplant
   # The Gen 3 Synth race already carries its own perks, so no augment special here (it would override them).
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 40
 
 - type: playTimeTracker
   id: InstituteSynth

@@ -27,7 +27,7 @@
   alwaysUseSpawner: true
   access: [Institute, InstituteCommand, InstituteSecurity]
   icon: JobIconScientist
-  supervisors: job-supervisors-institute
+  supervisors: job-supervisors-institute-director
   whitelisted: true
   hideWithoutJobWhitelist: true
   jobWhitelistBypassesRoleTimers: true # #Reclamation Project - faction head: a job-whitelisted player can take it without the hours.
@@ -58,6 +58,9 @@
     - type: SyntheticSustenance
     - type: InnateFireProtection
     - type: SteadyCrawl
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 120
 
 - type: playTimeTracker
   id: InstituteDirector
@@ -105,6 +108,9 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 120
 
 - type: playTimeTracker
   id: InstituteDivisionHead
@@ -139,6 +145,9 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 40
 
 - type: playTimeTracker
   id: InstituteScientist
@@ -200,6 +209,9 @@
     - type: SyntheticSustenance
     - type: InnateFireProtection
     - type: SteadyCrawl
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 80
 
 - type: playTimeTracker
   id: InstituteCourser
@@ -234,6 +246,9 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 40
 
 - type: playTimeTracker
   id: InstituteSecurity

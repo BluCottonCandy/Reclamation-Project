@@ -17,6 +17,7 @@
     - suitStorage
   - type: AmmoCounter
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     minAngle: 2
     maxAngle: 16
     fireRate: 8

@@ -23,6 +23,7 @@
     wieldedSpeedModifier: 0.8
   - type: GunRequiresWield
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     fireRate: 0.75
     selectedMode: SemiAuto
     availableModes:

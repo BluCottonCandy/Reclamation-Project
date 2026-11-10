@@ -1,8 +1,10 @@
 department-Institute = The Institute
 department-Institute-description = Institute research, leadership, and security.
 job-supervisors-institute = the Institute Director and Division Heads
+# #Reclamation Project - the Director reports to no one
+job-supervisors-institute-director = no one but yourself. You are the Institute's final authority
 job-name-institute-director = Institute Director
-job-description-institute-director = Serve the Institute as a director.
+job-description-institute-director = Lead the Institute. You answer to no one: set its goals, command the Division Heads, and decide what the Institute does with the Commonwealth.
 job-name-institute-divisionhead = Institute Division Head
 job-description-institute-divisionhead = Serve the Institute as a division head.
 job-name-institute-scientist = Institute Scientist

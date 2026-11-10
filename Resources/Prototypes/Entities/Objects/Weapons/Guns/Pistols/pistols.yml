@@ -26,6 +26,7 @@
     - suitStorage
     - Belt
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     fireRate: 6
     selectedMode: SemiAuto
     availableModes:

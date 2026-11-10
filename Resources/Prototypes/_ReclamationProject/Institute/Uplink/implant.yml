@@ -1,0 +1,48 @@
+# #Reclamation Project - the Institute uplink implant every Institute job spawns with.
+# The shop opens only after the owner types their PIN (shown in the character menu).
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: InstituteUplinkImplant
+  name: Institute uplink implant
+  description: A tiny Institute chip that links its owner to the Institute's requisition network.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SubdermalImplant
+    implantAction: ActionOpenInstituteUplink
+    whitelist:
+      components:
+      - Hands
+  - type: InstituteUplink
+  - type: Store
+    name: store-preset-name-institute-uplink
+    categories:
+    - InstituteNetwork
+    - InstituteWeapons
+    - InstituteArmor
+    - InstituteInfiltration
+    - InstituteImplants
+    - InstituteSupplies
+    - InstituteCommand
+    - InstituteReinforcements
+    - DiscountedItems
+    currencyWhitelist:
+    - ResearchPoint
+    balance:
+      ResearchPoint: 0
+  # The store window itself is registered from code (InstituteUplinkSystem.OnUplinkInit).
+  - type: UserInterface
+
+- type: entity
+  id: ActionOpenInstituteUplink
+  name: Institute uplink
+  description: Opens the Institute uplink. Asks for your PIN the first time.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: _ReclamationProject/Institute/uplink_terminal.rsi
+      state: icon
+    event: !type:OpenInstituteUplinkEvent

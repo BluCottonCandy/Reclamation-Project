@@ -95,7 +95,7 @@
   icon: JobIconLegionSlave
   supervisors: job-supervisors-caesar-legion-slave
   canBeAntag: false
-  setPreference: true
+  setPreference: false
   overrideConsoleVisibility: true
   whitelisted: true # #Misfits Change
   hideWithoutWhitelist: true # #Misfits Change
@@ -416,7 +416,7 @@
   - FotADoctor
   - FotA
   canBeAntag: false
-  setPreference: true
+  setPreference: false
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true

@@ -1,0 +1,51 @@
+- type: entity
+  id: PackShamanMedicalBelt
+  parent: PackPunkBelt
+  name: Pack shaman medical belt
+  description: A scavenged punk belt fitted with medical pouches for surgical instruments,
+    medicines and chemical bottles.
+  components:
+  - type: Storage
+    whitelist:
+      tags:
+      - Wrench
+      - Bottle
+      - Spray
+      - Brutepack
+      - Bloodpack
+      - Gauze
+      - Ointment
+      - CigPack
+      - PillCanister
+      - Radio
+      - DiscreteHealthAnalyzer
+      - N14Bandage
+      - N14TribalMedicine
+      - Abraxo
+      - Document
+      components:
+      - SurgeryTool
+      - Hypospray
+      - Injector
+      - Pill
+      - HandLabeler
+    maxItemSize: Normal
+    grid:
+    - 0,0,7,5
+- type: entity
+  id: PackShamanMedicalBeltFilled
+  parent: PackShamanMedicalBelt
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: ToxinChemistryBottle
+      amount: 2
+    - id: Hemostat
+    - id: ReclamationFractureMender
+    - id: SawElectric
+    - id: Drill
+    - id: Cautery
+    - id: Retractor
+    - id: Scalpel
+    - id: BoneGel

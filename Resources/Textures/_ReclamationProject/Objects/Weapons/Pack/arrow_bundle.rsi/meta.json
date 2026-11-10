@@ -1,0 +1,17 @@
+﻿{
+    "license":  "CC0-1.0",
+    "copyright":  "AI-generated arrow bundle artwork; native sprite integration for Reclamation-Project.",
+    "states":  [
+                   {
+                       "name":  "arrows"
+                   },
+                   {
+                       "name":  "cord"
+                   }
+               ],
+    "version":  1,
+    "size":  {
+                 "y":  32,
+                 "x":  32
+             }
+}

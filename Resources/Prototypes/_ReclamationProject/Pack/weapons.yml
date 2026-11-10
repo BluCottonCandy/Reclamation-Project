@@ -1,0 +1,250 @@
+- type: entity
+  id: PackHuntingBow
+  parent: BowImprovised
+  name: Pack hunting bow
+  description: A weathered hunting bow bound in leather and teeth. The Pack marks
+    every successful hunt in its limbs. Automatically draws arrows from a worn arrow
+    quiver.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/bow.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/bow.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/bow.rsi
+    clothingVisuals:
+      back:
+      - sprite: _ReclamationProject/Objects/Weapons/Pack/bow.rsi
+        state: equipped-BACKPACK
+      suitstorage:
+      - sprite: _ReclamationProject/Objects/Weapons/Pack/bow.rsi
+        state: equipped-BACKPACK
+  - type: PackCompoundBow
+- type: entity
+  id: PackFangMachete
+  parent: N14TribalMachete
+  name: Pack fang machete
+  description: A chipped, venom-stained machete wrapped in battered leather. A tooth
+    tied to its grip marks it as a weapon of the Pack.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/machete.rsi
+    state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/machete.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/machete.rsi
+  - type: MeleeWeapon
+    attackRate: 0.6666
+    damage:
+      types:
+        Slash: 45
+        Poison: 5
+    heavyRateModifier: 1.2
+- type: entity
+  id: PackArrowQuiver
+  parent: ClothingBeltQuiver
+  name: Pack hunting quiver
+  description: A battered leather quiver bound with teeth and scrap. Its toggleable
+    magnet gathers nearby loose arrows while worn on your belt. Activate it to show
+    the green magnet indicator; deactivate it to switch the indicator off.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/quiver.rsi
+    layers:
+    - state: icon
+    - map:
+      - enum.StorageContainerVisualLayers.Fill
+      visible: false
+    - state: magnet-on
+      map:
+      - magnet
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/quiver.rsi
+  - type: ItemToggle
+    onActivate: false
+    predictable: false
+    activated: true
+  - type: ComponentToggler
+    components:
+    - type: MagnetPickup
+      range: 1.5
+      slotFlags: BELT
+      whitelist:
+        tags:
+        - Arrow
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleVisuals.Toggled:
+        magnet:
+          'True':
+            state: magnet-on
+          'False':
+            state: magnet-off
+- type: entity
+  id: PackCompoundBow
+  parent: BaseItem
+  name: Pack compound bow
+  description: A heavy compound hunting bow with reinforced limbs and three arrow
+    positions. Fires one arrow at a time. Automatically draws arrows from a worn arrow
+    quiver.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/compound_bow.rsi
+    layers:
+    - state: unwielded
+      map:
+      - base
+    - state: unwielded-arrow
+      map:
+      - arrow
+      visible: false
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Pack/compound_bow.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/compound_bow.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+    clothingVisuals:
+      back:
+      - sprite: _ReclamationProject/Objects/Weapons/Pack/compound_bow.rsi
+        state: equipped-BACKPACK
+      suitstorage:
+      - sprite: _ReclamationProject/Objects/Weapons/Pack/compound_bow.rsi
+        state: equipped-BACKPACK
+  - type: Wieldable
+    wieldedSpeedModifier: 0.9
+    wieldSound:
+      path: /Audio/Items/bow_pull.ogg
+  - type: GunRequiresWield
+  - type: GunAgilityRequirement
+    minimum: 7
+  - type: Gun
+    minAngle: 0
+    maxAngle: 5
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: BulletMiss
+    soundEmpty: null
+  - type: BallisticAmmoProvider
+    capacity: 3
+    proto: PackHuntingArrow
+    unspawnedCount: 0
+    whitelist:
+      tags:
+      - Arrow
+    soundInsert:
+      path: /Audio/Weapons/Guns/Misc/arrow_nock.ogg
+    soundRack: null
+  - type: Appearance
+  - type: AmmoCounter
+  - type: GenericVisualizer
+    visuals:
+      enum.WieldableVisuals.Wielded:
+        base:
+          'True':
+            state: wielded
+          'False':
+            state: unwielded
+        arrow:
+          'True':
+            state: wielded-arrow
+          'False':
+            state: unwielded-arrow
+  - type: PackCompoundBow
+  - type: ItemMapper
+    spriteLayers:
+    - arrow
+    mapLayers:
+      arrow:
+        whitelist:
+          tags:
+          - Arrow
+- type: entity
+  id: PackGreatFang
+  parent: BaseSword
+  name: Pack greatfang
+  description: A long two-handed blade wrapped in red leather and marked with the
+    teeth of the Pack. Requires two hands, or 9 Strength to carry one-handed.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/greatfang.rsi
+    state: icon
+  - type: Item
+    size: Huge
+    sprite: _ReclamationProject/Objects/Weapons/Pack/greatfang.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/greatfang.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MultiHandedItem
+    handsNeeded: 2
+    minimumStrengthForOneHand: 9
+  - type: MeleeStrengthRequirement
+    minimum: 7
+  - type: MeleeWeapon
+    attackRate: 0.6666
+    range: 1.85
+    damage:
+      types:
+        Slash: 80
+        Poison: 10
+    heavyRateModifier: 1.2
+    heavyDamageBaseModifier: 1.25
+    heavyStaminaCost: 15
+    maxTargets: 3
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DamageOtherOnHit
+    staminaCost: 12
+  - type: OneHandedUprightItem
+    sprite: _ReclamationProject/Objects/Weapons/Pack/greatfang.rsi
+    scale: 0.85
+  - type: Wieldable
+- type: entity
+  id: PackAlphaDeathclawGauntlet
+  parent: N14ClothingHandsDeathclawGauntlet
+  name: Pack deathclaw gauntlet
+  description: A deathclaw hand bound to a reinforced bracer, made for the Alpha of
+    the Pack.
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 45
+        Blunt: 5
+        Poison: 5
+- type: entity
+  id: PackAlphaAssaultRifle
+  parent: N14WeaponRifle556R91
+  name: Packleader assault rifle
+  description: "A scarred R-91 wrapped in dark red leather and marked with ivory claws.\
+    \ A trophy of the Pack\xE2\u20AC\u2122s Alpha. Uses 5.56mm ammunition."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/alpha_rifle.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/alpha_rifle.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/alpha_rifle.rsi
+- type: entity
+  parent: N14WastelandTribalSpear
+  id: PackFangSpear
+  name: Pack fang spear
+  description: A weathered hunting spear with a broad fang-like point and red leather
+    bindings.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/spear.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/spear.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/spear.rsi

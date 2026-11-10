@@ -1,0 +1,65 @@
+- type: entity
+  parent: N14DoorMetalBarTall
+  id: PackDoorCell
+  name: Pack kennel door
+  suffix: Pack, Locked
+  components:
+  - type: AccessReader
+    access: [["Pack"]]
+  - type: Wires
+    layoutId: AirlockService
+  - type: Door
+    canPry: false
+
+- type: entity
+  parent: N14DoorMetalRedTall
+  id: PackDoorMetal
+  name: Pack door
+  suffix: Pack, Locked
+  components:
+  - type: AccessReader
+    access: [["Pack"]]
+  - type: Wires
+    layoutId: AirlockService
+  - type: Door
+    canPry: false
+
+- type: entity
+  parent: N14DoorWoodWhiteTall
+  id: PackDoorWood
+  name: Pack door
+  suffix: Pack, Locked
+  components:
+  - type: AccessReader
+    access: [["Pack"]]
+  - type: Wires
+    layoutId: AirlockService
+  - type: Door
+    canPry: false
+
+- type: entity
+  parent: N14DoorMetalRedTall
+  id: PackDoorMetalCommand
+  name: Pack leadership door
+  suffix: Pack, Locked
+  components:
+  - type: AccessReader
+    access: [["PackCommand"]]
+  - type: Wires
+    layoutId: AirlockService
+  - type: Door
+    canPry: false
+
+- type: entity
+  parent: N14DoorWoodWhiteTall
+  id: PackDoorWoodCommand
+  name: Pack leadership door
+  suffix: Pack, Locked
+  components:
+  - type: AccessReader
+    access: [["PackCommand"]]
+  - type: Wires
+    layoutId: AirlockService
+  - type: Door
+    canPry: false
+

@@ -1,0 +1,434 @@
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyPackVendor
+  name: Pack supply vendor
+  description: A battered requisitions machine painted in the Pack's colours. Shared
+    supply points start at 50 and accrue at 3 per minute, up to 200. Hold or drag
+    a supply crate beside the vendor and redeem it for 20, 50 or 100 points depending
+    on its type. Issued equipment cannot be sold. Rank equipment is restricted to
+    your rank and below.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#A56E78'
+    - sprite: Corvax/Interface/Misc/job_icons.rsi
+      state: tribal
+      scale: 1.5,1.5
+      offset: 0,0.18
+  - type: FactionSupplyVendor
+    jobRanks:
+      PackCub: 0
+      PackYoungling: 10
+      PackHunter: 20
+      PackBeastTamer: 30
+      PackShaman: 30
+      PackBeastmaster: 40
+      PackBeta: 50
+      PackAlpha: 60
+    equipmentRanks:
+      PackPunkTanktop: 0
+      PackPunkArmorGreen: 0
+      PackPunkBoots: 0
+      ClothingMaskFox: 0
+      PackPunkBelt: 0
+      N14ClothingBackpackSatchelExplorer: 0
+      PackHeadset: 0
+      N14Stimpak: 0
+      N14Bandage: 0
+      N14BoxCardboardMREBoxCFilled: 0
+      PackPunkArmorOrange: 0
+      ClothingMaskJackal: 0
+      PackPunkArmorHeavy: 40
+      ClothingMaskBear: 0
+      PackBetaRavenCloak: 50
+      PackArrowQuiver: 0
+      PackGreatFang: 50
+      ToxinChemistryBottle: 50
+      Bola: 0
+      Handcuffs: 0
+      PackAlphaPaintedArmor: 60
+      PackAlphaPaintedHelmet: 60
+      PackAlphaDeathclawGauntlet: 60
+      Magazine556Rifle: 60
+      MagazineBox556: 60
+      PackShamanCoat: 30
+      PackShamanMedicalBeltFilled: 30
+      PackPunkCroptop: 0
+      PackPunkSleeveless: 0
+      PackPunkCroptopShorts: 0
+      PackPunkTanktopShorts: 0
+      PackPunkArmorRed: 0
+      PackPunkArmorRandomized: 0
+      PackPunkBomber: 0
+      PackPunkGoggles: 0
+      PackPunkHalfMask: 0
+      ClothingMaskRat: 0
+      ClothingMaskRaven: 0
+      ClothingMaskBat: 0
+      PackHuntingBow: 0
+      PackHuntingArrow: 0
+      PackArrowBundle: 0
+      PackFangSpear: 0
+      N14Binoculars: 0
+      N14CombatKnife: 0
+      PackFangMachete: 10
+      PackBonecrusherClub: 10
+      N14Psycho: 10
+      SmokeGrenade: 10
+      PackLongfangRifle: 20
+      PackAmmoBox308: 20
+      N14WeaponPistol9mm: 20
+      N14MagazinePistol9mm: 20
+      ReclamationPaladinShield: 30
+      PackJavelinQuiver: 30
+      PackHuntingJavelin: 30
+      PackRedfangRevolver: 40
+      PackGunslingerBelt: 40
+      SpeedLoader44: 40
+      PackAmmoBox44: 40
+      PackThunderjawShotgun: 40
+      PackAmmoBox12Gauge: 40
+      EncryptionKeyPack: 0
+      PackCompoundBow: 50
+      PackAlphaAssaultRifle: 60
+    requireFactionJob: true
+  - type: NcStore
+    currencyWhitelist:
+    - 'Supply points: Pack'
+    buyPresets:
+    - ReclamationSupplyPackBuy
+    sellPresets:
+    - ReclamationSupplyPackSell
+  - type: AccessReader
+    access:
+    - - Pack
+- type: storeCategoryStructured
+  id: ReclamationSupplyPackWeapons
+  name: Weapons
+  entries:
+  - proto: N14CombatKnife
+    price: 10
+  - proto: N14WeaponPistol9mm
+    price: 50
+  - proto: PackAlphaDeathclawGauntlet
+    price: 100
+  - proto: PackBonecrusherClub
+    price: 50
+  - proto: PackFangMachete
+    price: 50
+  - proto: PackFangSpear
+    price: 50
+  - proto: PackGreatFang
+    price: 100
+  - proto: PackHuntingBow
+    price: 50
+  - proto: PackLongfangRifle
+    price: 50
+  - proto: PackRedfangRevolver
+    price: 50
+  - proto: PackThunderjawShotgun
+    price: 50
+  - proto: PackCompoundBow
+    price: 100
+  - proto: PackAlphaAssaultRifle
+    price: 100
+- type: storeCategoryStructured
+  id: ReclamationSupplyPackArmor
+  name: Armor
+  entries:
+  - proto: PackAlphaPaintedArmor
+    price: 100
+  - proto: PackAlphaPaintedHelmet
+    price: 100
+  - proto: PackBetaRavenCloak
+    price: 100
+  - proto: PackPunkArmorGreen
+    price: 25
+  - proto: PackPunkArmorHeavy
+    price: 50
+  - proto: PackPunkArmorOrange
+    price: 25
+  - proto: PackPunkArmorRandomized
+    price: 25
+  - proto: PackPunkArmorRed
+    price: 25
+  - proto: PackShamanCoat
+    price: 50
+- type: storeCategoryStructured
+  id: ReclamationSupplyPackAmmunition
+  name: Ammunition
+  entries:
+  - proto: ClipMagazine308Rifle
+    price: 2
+  - proto: LMGMagazine556Rifle
+    price: 11
+  - proto: LongMagazine556Rifle
+    price: 10
+  - proto: Magazine308Rifle
+    price: 10
+  - proto: Magazine308RifleLong
+    price: 10
+  - proto: Magazine45SubMachineGun
+    price: 10
+  - proto: Magazine545Rifle
+    price: 10
+  - proto: Magazine556Rifle
+    price: 10
+  - proto: Magazine556Rifle30
+    price: 10
+  - proto: Magazine762AmmoShort
+    price: 10
+  - proto: Magazine762Rifle
+    price: 10
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12
+    price: 10
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox308
+    price: 10
+  - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45
+    price: 10
+  - proto: MagazineBox45-70
+    price: 10
+  - proto: MagazineBox545
+    price: 10
+  - proto: MagazineBox556
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox9mm
+    price: 10
+  - proto: N14AmmoBox10mm
+    price: 10
+  - proto: N14AmmoBox127
+    price: 10
+  - proto: N14AmmoBox12gauge
+    price: 10
+  - proto: N14AmmoBox22lr
+    price: 10
+  - proto: N14AmmoBox308
+    price: 10
+  - proto: N14AmmoBox357
+    price: 10
+  - proto: N14AmmoBox44Magnum
+    price: 10
+  - proto: N14AmmoBox45
+    price: 10
+  - proto: N14AmmoBox45-70
+    price: 10
+  - proto: N14AmmoBox556
+    price: 10
+  - proto: N14AmmoBox762
+    price: 10
+  - proto: N14AmmoBox9mm
+    price: 10
+  - proto: N14CryoCell
+    price: 50
+  - proto: N14EnrichedFlamerFuel
+    price: 75
+  - proto: N14FlamerFuel
+    price: 75
+  - proto: N14MagazineAmerican180Drum
+    price: 24
+  - proto: N14MagazineHeavy556Rifle
+    price: 11
+  - proto: N14MagazinePistol10mm
+    price: 10
+  - proto: N14MagazinePistol12mm
+    price: 2
+  - proto: N14MagazinePistol44
+    price: 2
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 10
+  - proto: N14MagazineSMG10mm
+    price: 10
+  - proto: N14MagazineSMG12mm
+    price: 10
+  - proto: N14MagazineSMG9mm
+    price: 10
+  - proto: N14MagazineSMG9mmDrum
+    price: 11
+  - proto: N14MagazineShotgun12
+    price: 2
+  - proto: N14MicrofusionCell
+    price: 50
+  - proto: N14MicrofusionCellRed
+    price: 50
+  - proto: N14PlasmaCartridge
+    price: 50
+  - proto: N14PlasmaCartridgeMultiplas
+    price: 50
+  - proto: N14PowerCellSmall
+    price: 50
+  - proto: N14SpeedLoader357
+    price: 2
+  - proto: N14SpeedLoader44Magnum
+    price: 2
+  - proto: N14TopMagazineSMG12mm
+    price: 10
+  - proto: PackAmmoBox12Gauge
+    price: 10
+  - proto: PackAmmoBox308
+    price: 10
+  - proto: PackAmmoBox44
+    price: 10
+  - proto: PackArrowBundle
+    price: 10
+  - proto: PackArrowQuiver
+    price: 10
+  - proto: PackHuntingArrow
+    price: 10
+  - proto: ShellShotgunFlare
+    price: 2
+  - proto: SpeedLoader44
+    price: 10
+  - proto: SpeedLoader45-70
+    price: 2
+- type: storeCategoryStructured
+  id: ReclamationSupplyPackMedicalandfood
+  name: Medical and food
+  entries:
+  - proto: N14Bandage
+    price: 10
+  - proto: N14BoxCardboardMREBoxCFilled
+    price: 10
+  - proto: N14Psycho
+    price: 50
+  - proto: N14Stimpak
+    price: 10
+  - proto: PackShamanMedicalBeltFilled
+    price: 50
+  - proto: ToxinChemistryBottle
+    price: 10
+  - proto: MedicatedSuture
+    price: 10
+    amount: 10
+  - proto: N14Bitterdrink
+    price: 10
+  - proto: N14CleanGauze10
+    price: 10
+    amount: 10
+  - proto: N14HealingPowder
+    price: 10
+  - proto: N14MedkitCombatFilled
+    price: 50
+  - proto: N14MedkitFilled
+    price: 10
+  - proto: N14Ointment10
+    price: 10
+    amount: 10
+  - proto: N14RadAwayBloodbag
+    price: 20
+  - proto: N14RadXCanisterFilled
+    price: 10
+  - proto: RegenerativeMesh
+    price: 10
+    amount: 10
+- type: storeCategoryStructured
+  id: ReclamationSupplyPackOthergear
+  name: Other gear
+  entries:
+  - proto: Bola
+    price: 10
+  - proto: ClothingMaskBat
+    price: 10
+  - proto: ClothingMaskBear
+    price: 10
+  - proto: ClothingMaskFox
+    price: 10
+  - proto: ClothingMaskJackal
+    price: 10
+  - proto: ClothingMaskRat
+    price: 10
+  - proto: ClothingMaskRaven
+    price: 10
+  - proto: Handcuffs
+    price: 10
+  - proto: N14Binoculars
+    price: 10
+  - proto: N14ClothingBackpackSatchelExplorer
+    price: 10
+  - proto: EncryptionKeyPack
+    price: 10
+  - proto: PackGunslingerBelt
+    price: 10
+  - proto: PackHeadset
+    price: 10
+  - proto: PackHuntingJavelin
+    price: 10
+  - proto: PackJavelinQuiver
+    price: 10
+  - proto: PackPunkBelt
+    price: 10
+  - proto: PackPunkBomber
+    price: 10
+  - proto: PackPunkBoots
+    price: 10
+  - proto: PackPunkCroptop
+    price: 10
+  - proto: PackPunkCroptopShorts
+    price: 10
+  - proto: PackPunkGoggles
+    price: 10
+  - proto: PackPunkHalfMask
+    price: 10
+  - proto: PackPunkSleeveless
+    price: 10
+  - proto: PackPunkTanktop
+    price: 10
+  - proto: PackPunkTanktopShorts
+    price: 10
+  - proto: ReclamationPaladinShield
+    price: 100
+  - proto: SmokeGrenade
+    price: 20
+  - proto: EmpGrenade
+    price: 50
+  - proto: GrenadeIncendiary
+    price: 50
+  - proto: GrenadeShrapnel
+    price: 50
+  - proto: MisfitsGrenadeFragDefensive
+    price: 50
+  - proto: MisfitsGrenadeImpact
+    price: 50
+  - proto: MisfitsGrenadePlasma
+    price: 50
+  - proto: MisfitsGrenadeWhitePhosphorus
+    price: 50
+  - proto: TearGasGrenade
+    price: 50
+- type: storePresetStructured
+  id: ReclamationSupplyPackBuy
+  currency: 'Supply points: Pack'
+  categories:
+  - ReclamationSupplyPackWeapons
+  - ReclamationSupplyPackArmor
+  - ReclamationSupplyPackAmmunition
+  - ReclamationSupplyPackMedicalandfood
+  - ReclamationSupplyPackOthergear
+- type: storeCategoryStructured
+  id: ReclamationSupplyPackCrates
+  name: Supply crates
+  entries:
+  - proto: ReclamationSupplyCrate
+    price: 20
+  - proto: ReclamationSupplyCrateBlue
+    price: 50
+  - proto: ReclamationSupplyCrateRed
+    price: 100
+- type: storePresetStructured
+  id: ReclamationSupplyPackSell
+  currency: 'Supply points: Pack'
+  categories:
+  - ReclamationSupplyPackCrates

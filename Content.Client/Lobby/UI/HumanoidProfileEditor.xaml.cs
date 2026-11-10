@@ -3816,6 +3816,9 @@ namespace Content.Client.Lobby.UI
             _loadouts.Clear();
             foreach (var loadout in _prototypeManager.EnumeratePrototypes<LoadoutPrototype>())
             {
+                if (!_characterRequirementsSystem.IsLoadoutAllowedForJob(highJob, loadout))
+                    continue;
+
                 // #Cythisiax Added - Patreon-supporter loadouts are shown in their own tab instead
                 if (loadout.SupporterTier != SupporterTier.None)
                     continue;
@@ -4163,6 +4166,9 @@ namespace Content.Client.Lobby.UI
 
             foreach (var loadout in _prototypeManager.EnumeratePrototypes<LoadoutPrototype>())
             {
+                if (!_characterRequirementsSystem.IsLoadoutAllowedForJob(highJob, loadout))
+                    continue;
+
                 // Only supporter-gated loadouts belong here, and only up to the player's tier
                 if (loadout.SupporterTier == SupporterTier.None || loadout.SupporterTier > tier)
                     continue;

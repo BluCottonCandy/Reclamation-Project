@@ -2,6 +2,8 @@
   id: N14LoadoutEyes
   items:
     - type: loadout
+      id: LoadoutPackClothingEyesPunkGoggles
+    - type: loadout
       id: N14ClothingEyesGlassesWelding
     - type: loadout
       id: N14ClothingEyesSunGlasses

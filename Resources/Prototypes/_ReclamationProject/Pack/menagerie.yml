@@ -1,0 +1,87 @@
+- type: npcFaction
+  id: PackMenagerie
+  friendly:
+  - AnimalFriend
+  - Birb
+  - Cat
+  - Deathclaw
+  - Dragon
+  - Mouse
+  - Pack
+  - PackMenagerie
+  - Passive
+  - PetsNT
+  - Pibble
+  - SimpleNeutral
+  - WastelandAnimal
+  - WastelandInsect
+  hostile:
+  - BrotherhoodOfSteel
+  - BrotherhoodOfSteelSecureArea
+  - CaesarLegion
+  - CaravanCompany
+  - CaravanCompanySecureArea
+  - Eighties
+  - Enclave
+  - Feral
+  - Followers
+  - GeometerOfBlood
+  - GladiabotBlue
+  - GladiabotFFA
+  - GladiabotGreen
+  - GladiabotRed
+  - GladiabotYellow
+  - GlimmerMonster
+  - HostileRobot
+  - Institute
+  - InstituteSynth
+  - Mailman
+  - Minutemen
+  - NCR
+  - NCRSecureArea
+  - NanoTrasen
+  - PlayerRaider
+  - PlayerRobot
+  - PlayerSentryBot
+  - PlayerSuperMutant
+  - PsionicInterloper
+  - Raider
+  - Rangers
+  - Revolutionary
+  - SimpleHostile
+  - SuperMutant
+  - Syndicate
+  - Townsfolk
+  - TownsfolkSecureArea
+  - Tribal
+  - TribalSecureArea
+  - Vault
+  - VaultSecureArea
+  - Wastelander
+  - Xeno
+  - Zetan
+  - Zombie
+- type: entity
+  parent: N14MobDeathclaw
+  id: PackMenagerieDeathclaw
+  suffix: Pack menagerie, untamed
+  components:
+  - type: NpcFactionMember
+    factions:
+    - PackMenagerie
+- type: entity
+  parent: N14MobNightstalker
+  id: PackMenagerieNightstalker
+  suffix: Pack menagerie, untamed
+  components:
+  - type: NpcFactionMember
+    factions:
+    - PackMenagerie
+- type: entity
+  parent: N14MobMolerat
+  id: PackMenagerieMolerat
+  suffix: Pack menagerie, untamed
+  components:
+  - type: NpcFactionMember
+    factions:
+    - PackMenagerie

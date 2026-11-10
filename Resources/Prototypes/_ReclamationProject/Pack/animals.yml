@@ -1,0 +1,111 @@
+- type: npcFaction
+  id: Pack
+  friendly:
+  - Pack
+  hostile:
+  - AnimalFriend
+  - Birb
+  - BrotherhoodOfSteel
+  - BrotherhoodOfSteelSecureArea
+  - CaesarLegion
+  - CaravanCompany
+  - CaravanCompanySecureArea
+  - Cat
+  - Deathclaw
+  - Dragon
+  - Eighties
+  - Enclave
+  - Feral
+  - Followers
+  - GeometerOfBlood
+  - GladiabotBlue
+  - GladiabotFFA
+  - GladiabotGreen
+  - GladiabotRed
+  - GladiabotYellow
+  - GlimmerMonster
+  - HostileRobot
+  - Institute
+  - InstituteSynth
+  - Mailman
+  - Minutemen
+  - Mouse
+  - NCR
+  - NCRSecureArea
+  - NanoTrasen
+  - Passive
+  - PetsNT
+  - Pibble
+  - PlayerRaider
+  - PlayerRobot
+  - PlayerSentryBot
+  - PlayerSuperMutant
+  - PsionicInterloper
+  - Raider
+  - Rangers
+  - Revolutionary
+  - SimpleHostile
+  - SimpleNeutral
+  - SuperMutant
+  - Syndicate
+  - Townsfolk
+  - TownsfolkSecureArea
+  - Tribal
+  - TribalSecureArea
+  - Vault
+  - VaultSecureArea
+  - WastelandAnimal
+  - WastelandInsect
+  - Wastelander
+  - Xeno
+  - Zetan
+  - Zombie
+- type: entity
+  parent: N14MobPetDogLegion
+  id: PackHound
+  name: Pack hound
+  description: A scarred, well-fed kennel hound that recognizes only the Pack as its
+    own.
+  components:
+  - type: PackAnimal
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: LanguageKnowledge
+    speaks:
+    - N14Dog
+    understands:
+    - N14Dog
+    - English
+- type: entity
+  parent: MarkerBase
+  id: SpawnPackHound
+  name: Pack hound spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Animals/dogwolf.rsi
+      state: wolf
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - PackHound
+- type: entity
+  parent: N14MobBrahdoLight
+  id: PackBrahdo
+  name: Pack brahdo
+  description: A hardy mount kept in the Pack's menagerie.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: PackAnimal
+- type: entity
+  parent: MarkerBase
+  id: SpawnPackBrahdo
+  name: Pack brahdo spawner
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - PackBrahdo

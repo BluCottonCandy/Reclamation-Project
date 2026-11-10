@@ -1,0 +1,41 @@
+- type: entity
+  id: ActionPackTameAnimal
+  name: Tame animal
+  description: Tame one eligible molerat, mirelurk or nightstalker as a revivable companion.
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: EntityTargetAction
+    useDelay: 1
+    range: 2
+    canTargetSelf: false
+    icon:
+      sprite: _Nuclear14/Mobs/Animals/dogwolf.rsi
+      state: wolf
+    event: !type:PackTameActionEvent
+- type: entity
+  id: ActionPackTameDeathclaw
+  parent: ActionPackTameAnimal
+  name: Tame deathclaw
+  description: Only the Alpha can tame a eligible deathclaw as a revivable companion.
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: _Nuclear14/Mobs/Animals/deathclaw.rsi
+      state: deathclaw
+- type: entity
+  id: ActionPackStartHunt
+  parent: ActionTribalStartMinorHunt
+  name: Start Pack hunt
+  description: Call the Pack together for a hunt.
+- type: entity
+  id: ActionPackHuntTracker
+  parent: ActionTribalToggleHuntGui
+  name: Pack hunt tracker
+  description: Track the current hunt and join your fellow hunters.
+
+- type: entity
+  id: ActionPackTamePair
+  parent: ActionPackTameAnimal
+  name: Tame animal
+  description: Tame up to two eligible molerats, mirelurks or nightstalkers as revivable companions.

@@ -292,6 +292,12 @@ namespace Content.Server.NPC.Systems
             if (!TryComp<NpcFactionMemberComponent>(user, out var userFaction))
                 return false;
 
+            // The Pack's Charisma exemption belongs to their animals, not unrelated neutral NPCs.
+            if (HasComp<Content.Shared._ReclamationProject.Pack.PackMemberComponent>(user) &&
+                !HasComp<Content.Shared._ReclamationProject.Pack.PackAnimalComponent>(target) &&
+                _special.GetEffective(user, SpecialStat.Charisma) < _special.GetTuning().CharismaNeutralFollowerMinimum)
+                return false;
+
             if (TryComp<RecruitedFollowerComponent>(target, out var recruited) &&
                 recruited.Commander != user)
             {
@@ -353,6 +359,10 @@ namespace Content.Server.NPC.Systems
             var pet = ent.Owner;
             var commander = ent.Comp.Commander;
             RemCompDeferred<FollowerAutoRecruitComponent>(ent);
+
+            if (TryComp<Content.Shared._ReclamationProject.Pack.PackMemberComponent>(commander, out var pack) &&
+                GetFollowerCountForCommander(commander) >= GetNeutralFollowerCapacity(commander))
+                return;
 
             if (!TryComp<HTNComponent>(pet, out var htn))
                 return;
@@ -564,7 +574,7 @@ namespace Content.Server.NPC.Systems
             Dirty(commander, component);
         }
 
-        private int GetFollowerCountForCommander(EntityUid commander)
+        public int GetFollowerCountForCommander(EntityUid commander)
         {
             var count = 0;
             var query = EntityQueryEnumerator<RecruitedFollowerComponent>();
@@ -577,7 +587,7 @@ namespace Content.Server.NPC.Systems
             return count;
         }
 
-        private int GetNeutralFollowerCapacity(EntityUid commander, FollowerCommanderComponent? component = null)
+        public int GetNeutralFollowerCapacity(EntityUid commander, FollowerCommanderComponent? component = null)
         {
             var charismaCapacity = GetCharismaFollowerCapacity(_special.GetEffective(commander, SpecialStat.Charisma), _special.GetTuning());
             var innateCapacity = Resolve(commander, ref component, false) ? component.InnateFollowerCapacity : 0;

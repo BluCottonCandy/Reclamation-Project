@@ -1,0 +1,59 @@
+<Document>
+# The Pack
+
+The Pack are animal-themed raiders who prize strength, survival and a successful hunt. Colorful punk clothing, animal masks and personal trophies show their place in the group. Pack members are expected to listen to their higher ranks, follow their orders and work together as a group.
+
+Slavery and keeping dangerous beasts are central to their way of life, putting them at odds with the Minutemen and Railroad. Their animals are companions and weapons, not disposable supplies: keep them alive and respect the limits of your rank.
+
+## Ranks
+
+The player ranks progress through [bold]Cub, Youngling, Hunter, Beast Tamer and Beastmaster[/bold]. The [bold]Shaman[/bold] is a medical specialist alongside the Beast Tamer, tending the Pack and its animals. [bold]Beta and Alpha[/bold] are whitelist-only administrative roles above the player ranks.
+
+## Warhounds and followers
+
+[bold]Cubs and Younglings[/bold] start with one warhound already following them and may have [bold]one animal follower[/bold] before Charisma bonuses. They do not have a taming action.
+
+[bold]Hunters and higher ranks, including Shamans[/bold], start with two following warhounds and may have [bold]four animal followers[/bold] before Charisma bonuses. This total includes hounds, tamed animals and any additional warhound chosen through Pets in loadouts.
+
+Pack hounds and tamed companions do [bold]not require Charisma[/bold] to follow a Pack member. Use their follower controls to issue orders. The normal Charisma bonus adds one follower slot at 8 Charisma, two at 9 and three at 10, on top of your rank's base capacity. These extra slots do not increase your taming allowance. Open a route for your animals rather than expecting them to destroy the camp to reach you.
+
+## Taming
+
+Use [bold]Tame animal[/bold] on a living, untamed creature within [bold]two tiles[/bold], with an unobstructed route to it. You need room within your follower limit. Suitable targets include hostile wild animals and the untamed animals kept in the Pack's pens.
+
+- [bold]Hunter, Beast Tamer, Shaman and Beastmaster:[/bold] one tamed molerat, mirelurk or nightstalker. Irradiated mirelurks and nightstalker cubs are also eligible.
+- [bold]Beta:[/bold] up to two of those animals; deathclaws are excluded.
+- [bold]Alpha:[/bold] the unique [bold]Tame deathclaw[/bold] action, allowing one deathclaw companion.
+
+An already-tamed companion, a player-controlled animal or a special hunt creature cannot be tamed again. A dead tamed animal still occupies its taming allowance while it exists; killing it does not free another tame.
+
+Successful taming turns the creature into a following, pettable companion that can enter critical condition and be revived after death. It keeps damage it already suffered: taming is not a free heal. Tamed animals have a bloodstream and animal metabolism, allowing them to process medicines and other chemicals. Treat their injuries and bring them back safely.
+
+## Hunting Cry
+
+Every Pack rank has [bold]Hunting Cry[/bold]. It gives the caller and nearby Pack players a temporary movement boost, accompanied by a shouted hunting call and a yellow ring. It also boosts nearby Pack warhounds, mounts and tamed companions. It does not buff untamed wild animals or players from other factions.
+
+The base effect is [bold]30% faster movement for 10 seconds within six tiles[/bold], with a [bold]45-second cooldown[/bold]. The caller's Charisma modifies its strength, duration and range. Nearby Pack players receive the effect when the cry is used and keep it for its duration after moving away. Repeated cries refresh the effect rather than adding their speed bonuses together.
+
+## Pack hunts
+
+Every rank can use [bold]Start Pack hunt[/bold] to call a group hunt, and [bold]Pack hunt tracker[/bold] to view the current hunt and join it. The tracker provides the gathering information, current stage and objectives. Only one hunt can be active at a time; the start action has a two-minute cooldown.
+
+Gather with the other hunters and follow the tracker's objectives. Hunt creatures are targets for the hunt and cannot be converted into tamed companions.
+
+## Fighting and specialist equipment
+
+Pack members [bold]bite when unarmed[/bold], dealing piercing damage with a small amount of poison. Traits that replace or enhance ordinary punches are incompatible with this bite.
+
+The [bold]compound bow[/bold] requires [bold]7 Agility[/bold] and holds three arrows, firing one per shot. The [bold]greatfang[/bold] requires [bold]7 Strength[/bold] to swing and can be carried one-handed at [bold]9 Strength[/bold]. You can still use Z to wield it in two hands. Its normal damage stays the same in either grip, and power attacks gain their usual bonus.
+
+The Pack's supplied hunting arrows have poisoned tips, adding poison damage to their normal piercing damage.
+
+All bows automatically draw loose arrows from your worn arrow quiver. An empty bow nocks its first arrow when you try to shoot, and each successful shot loads the next available arrow. This uses the actual stored arrows and stops when the quiver is empty.
+
+The Pack arrow quiver starts with its pickup magnet enabled. While worn on your belt, it collects nearby loose arrows. Use its single toggle to switch the magnet off or on; the indicator shows its current state.
+
+## Pack supplies
+
+The Pack supply vendor shares a round-long budget across the faction. It starts with 50 points, earns 3 per minute and caps at 200. Redeem supply crates for extra points. Members can requisition gear for their rank and lower ranks; issued equipment cannot be sold.
+</Document>

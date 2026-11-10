@@ -1,0 +1,242 @@
+- type: startingGear
+  id: PackCubGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackPunkArmorGreen
+    shoes: PackPunkBoots
+    mask: ClothingMaskFox
+    belt: PackPunkBelt
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackCubID
+    pocket2: PackCubLoadoutKits
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+- type: entity
+  parent: N14IDCard
+  id: PackCubID
+  name: Pack Cub pendant
+  description: A hollow bullet pendant engraved with its owner's place in the Pack.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: raider
+  - type: PresetIdCard
+    job: PackCub
+- type: startingGear
+  id: PackYounglingGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackPunkArmorGreen
+    shoes: PackPunkBoots
+    mask: ClothingMaskFox
+    belt: PackPunkBelt
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackYounglingID
+    pocket2: PackYounglingLoadoutKits
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+- type: entity
+  parent: N14IDCard
+  id: PackYounglingID
+  name: Pack Youngling pendant
+  description: A hollow bullet pendant engraved with its owner's place in the Pack.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: raider
+  - type: PresetIdCard
+    job: PackYoungling
+- type: startingGear
+  id: PackHunterGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackPunkArmorOrange
+    shoes: PackPunkBoots
+    mask: ClothingMaskJackal
+    belt: PackPunkBelt
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackHunterID
+    pocket2: PackHunterLoadoutKits
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+- type: entity
+  parent: N14IDCard
+  id: PackHunterID
+  name: Pack Hunter pendant
+  description: A worn bonesaw pendant identifying a proven hunter of the Pack.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: sawbone
+  - type: PresetIdCard
+    job: PackHunter
+- type: startingGear
+  id: PackBeastTamerGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackPunkArmorOrange
+    shoes: PackPunkBoots
+    mask: ClothingMaskJackal
+    belt: PackPunkBelt
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackBeastTamerID
+    pocket2: PackBeastTamerLoadoutKits
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+- type: entity
+  parent: N14IDCard
+  id: PackBeastTamerID
+  name: Pack Beast Tamer pendant
+  description: A worn bonesaw pendant identifying a keeper of the Pack's beasts.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: sawbone
+  - type: PresetIdCard
+    job: PackBeastTamer
+- type: startingGear
+  id: PackBeastmasterGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackPunkArmorHeavy
+    shoes: PackPunkBoots
+    mask: ClothingMaskBear
+    belt: PackPunkBelt
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackBeastmasterID
+    pocket2: PackBeastmasterLoadoutKits
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+- type: entity
+  parent: N14IDCard
+  id: PackBeastmasterID
+  name: Pack Beastmaster pendant
+  description: An empty shotgun shell pendant marking the Beastmaster's place in the
+    Pack.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: enforcer
+  - type: PresetIdCard
+    job: PackBeastmaster
+- type: startingGear
+  id: PackBetaGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackBetaRavenCloak
+    shoes: PackPunkBoots
+    mask: ClothingMaskBear
+    belt: PackArrowQuiver
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackBetaID
+    suitstorage: PackGreatFang
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+    - ToxinChemistryBottle
+    - Bola
+    - Bola
+    - Handcuffs
+    - Handcuffs
+  inhand:
+  - PackCompoundBow
+- type: entity
+  parent: N14IDCard
+  id: PackBetaID
+  name: Pack Beta pendant
+  description: An empty shotgun shell pendant marking the Beta's place in the Pack.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: enforcer
+  - type: PresetIdCard
+    job: PackBeta
+- type: startingGear
+  id: PackAlphaGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackAlphaPaintedArmor
+    shoes: PackPunkBoots
+    belt: PackPunkBelt
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackAlphaID
+    head: PackAlphaPaintedHelmet
+    gloves: PackAlphaDeathclawGauntlet
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+    - Magazine556Rifle
+    - Magazine556Rifle
+    - MagazineBox556
+    - Bola
+    - Bola
+    - Handcuffs
+    - Handcuffs
+  inhand:
+  - PackAlphaAssaultRifle
+- type: entity
+  parent: N14IDCard
+  id: PackAlphaID
+  name: Pack Alpha pendant
+  description: A cluster of engraved rifle rounds marking the Alpha of the Pack.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: boss
+  - type: PresetIdCard
+    job: PackAlpha
+- type: startingGear
+  id: PackShamanGear
+  equipment:
+    jumpsuit: PackPunkTanktop
+    outerClothing: PackShamanCoat
+    shoes: PackPunkBoots
+    mask: ClothingMaskJackal
+    belt: PackShamanMedicalBeltFilled
+    back: N14ClothingBackpackSatchelExplorer
+    ears: PackHeadset
+    id: PackShamanID
+    pocket2: PackShamanLoadoutKits
+  storage:
+    back:
+    - N14Stimpak
+    - N14Bandage
+    - N14BoxCardboardMREBoxCFilled
+- type: entity
+  parent: N14IDCard
+  id: PackShamanID
+  name: Pack Shaman pendant
+  description: A bonesaw pendant worn by the healer who keeps the Pack and its beasts
+    alive.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: sawbone
+  - type: PresetIdCard
+    job: PackShaman

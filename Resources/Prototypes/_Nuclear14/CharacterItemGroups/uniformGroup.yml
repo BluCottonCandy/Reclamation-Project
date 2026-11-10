@@ -2,6 +2,16 @@
   id: N14LoadoutUniform
   items:
     - type: loadout
+      id: LoadoutPackClothingUniformRandomPunkCroptop
+    - type: loadout
+      id: LoadoutPackClothingUniformRandomPunkTanktop
+    - type: loadout
+      id: LoadoutPackClothingUniformRandomArmlessNoSkirt
+    - type: loadout
+      id: LoadoutPackClothingUniformRandomPunkCroptopShorts
+    - type: loadout
+      id: LoadoutPackClothingUniformRandomPunkTanktopShorts
+    - type: loadout
       id: ReclamationLoadoutChaplainClothingUniformJumpsuitChaplain
     - type: loadout
       id: ReclamationLoadoutChaplainClothingUniformJumpskirtChaplain

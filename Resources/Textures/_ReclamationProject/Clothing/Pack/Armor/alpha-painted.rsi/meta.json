@@ -1,0 +1,18 @@
+﻿{
+    "version":  1,
+    "license":  "CC-BY-NC-SA-3.0",
+    "copyright":  "Taken from Big-Iron (https://github.com/Cythisiax/Big-Iron/), a SS13 Fallout fork. Modified for SS14. Pack adaptation with AI-generated paint and patch artwork; original credits retained.",
+    "size":  {
+                 "x":  32,
+                 "y":  32
+             },
+    "states":  [
+                   {
+                       "name":  "icon"
+                   },
+                   {
+                       "name":  "equipped-OUTERCLOTHING",
+                       "directions":  4
+                   }
+               ]
+}

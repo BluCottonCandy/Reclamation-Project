@@ -396,8 +396,12 @@ public sealed partial class CharacterItemGroupRequirement : CharacterRequirement
         var group = prototypeManager.Index(Group);
 
         // Get the count of items in the group that are in the profile
-        var items = group.Items.Select(item => item.TryGetValue(profile, prototypeManager, out _) ? item.ID : null)
-            .Where(id => id != null)
+        var requirements = entityManager.System<CharacterRequirementsSystem>();
+        var items = group.Items
+            .Where(item => item.TryGetValue(profile, prototypeManager, out _) &&
+                (item.Type != "loadout" || requirements.IsLoadoutAllowedForJob(job,
+                    prototypeManager.Index<LoadoutPrototype>(item.ID))))
+            .Select(item => item.ID)
             .ToList();
         var count = items.Count;
 

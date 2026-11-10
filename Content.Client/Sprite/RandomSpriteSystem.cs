@@ -1,6 +1,7 @@
 using Content.Client.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Sprite;
+using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Reflection;
@@ -11,6 +12,7 @@ public sealed class RandomSpriteSystem : SharedRandomSpriteSystem
 {
     [Dependency] private readonly IReflectionManager _reflection = default!;
     [Dependency] private readonly ClientClothingSystem _clothing = default!;
+    [Dependency] private readonly SharedItemSystem _items = default!;
 
     public override void Initialize()
     {
@@ -54,6 +56,10 @@ public sealed class RandomSpriteSystem : SharedRandomSpriteSystem
                 _clothing.SetLayerState(clothing, slotPair.Key, keyColorPair.Key, keyColorPair.Value.State);
             }
         }
+
+        // Color state can arrive after the item was equipped. Refresh the wearer now
+        // instead of leaving the prototype's untinted layers until the next equip.
+        _items.VisualsChanged(uid);
     }
 
     private void UpdateSpriteComponentAppearance(EntityUid uid, RandomSpriteComponent component, SpriteComponent? sprite = null)

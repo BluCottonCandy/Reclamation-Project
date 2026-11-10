@@ -386,6 +386,7 @@
 - type: npcFaction
   id: WastelandAnimal
   hostile:
+  - Pack
   - Institute
   - InstituteSynth
   - Wastelander
@@ -415,6 +416,7 @@
 - type: npcFaction
   id: WastelandInsect
   hostile:
+  - Pack
   - Institute
   - InstituteSynth
   - Wastelander

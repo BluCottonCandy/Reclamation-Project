@@ -1,0 +1,928 @@
+- type: department
+  id: Pack
+  description: department-Pack-description
+  color: "#D8B648"
+  uiCategory: MinorFaction
+  roles: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+
+- type: accessLevel
+  id: Pack
+  name: access-pack
+
+- type: accessLevel
+  id: PackCommand
+  name: access-pack-command
+
+- type: job
+  id: PackCub
+  name: job-name-pack-cub
+  description: job-description-pack-cub
+  playTimeTracker: PackCub
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackCubGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 10
+  displayWeight: 100
+  showBorder: true
+  icon: JobIconTribal
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 1
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 1
+      spawnHound: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackCub
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackCub
+  name: Pack Cub spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackCub
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackCub
+  name: Pack Cub
+  suffix: Cub
+  components:
+  - type: Loadout
+    prototypes: [PackCubGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackYoungling
+  name: job-name-pack-youngling
+  description: job-description-pack-youngling
+  playTimeTracker: PackYoungling
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackYounglingGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 20
+  displayWeight: 200
+  showBorder: true
+  icon: JobIconTribal
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackCub
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 18000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 1
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 1
+      spawnHound: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackYoungling
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackYoungling
+  name: Pack Youngling spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackYoungling
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackYoungling
+  name: Pack Youngling
+  suffix: Youngling
+  components:
+  - type: Loadout
+    prototypes: [PackYounglingGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackHunter
+  name: job-name-pack-hunter
+  description: job-description-pack-hunter
+  playTimeTracker: PackHunter
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackHunterGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 30
+  displayWeight: 300
+  showBorder: true
+  icon: JobIconTribalFarmer
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackYoungling
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 36000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 4
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 4
+      spawnHound: true
+      canTame: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackHunter
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackHunter
+  name: Pack Hunter spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackHunter
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackHunter
+  name: Pack Hunter
+  suffix: Hunter
+  components:
+  - type: Loadout
+    prototypes: [PackHunterGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackBeastTamer
+  name: job-name-pack-beasttamer
+  description: job-description-pack-beasttamer
+  playTimeTracker: PackBeastTamer
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackBeastTamerGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 40
+  displayWeight: 400
+  showBorder: true
+  icon: JobIconTribalMedic
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackHunter
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 54000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 4
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 4
+      spawnHound: true
+      canTame: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackBeastTamer
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackBeastTamer
+  name: Pack Beast Tamer spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackBeastTamer
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackBeastTamer
+  name: Pack Beast Tamer
+  suffix: Beast Tamer
+  components:
+  - type: Loadout
+    prototypes: [PackBeastTamerGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackShaman
+  name: job-name-pack-shaman
+  description: job-description-pack-shaman
+  playTimeTracker: PackShaman
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackShamanCoat]
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackShamanGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 41
+  displayWeight: 410
+  showBorder: true
+  icon: JobIconTribalMedic
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackHunter
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 54000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 4
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 4
+      spawnHound: true
+      canTame: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackShaman
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackShaman
+  name: Pack Shaman spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackShaman
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackShaman
+  name: Pack Shaman
+  suffix: Shaman
+  components:
+  - type: Loadout
+    prototypes: [PackShamanGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackBeastmaster
+  name: job-name-pack-beastmaster
+  description: job-description-pack-beastmaster
+  playTimeTracker: PackBeastmaster
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed, LoadoutPackPunkArmorHeavy]
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackBeastmasterGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 50
+  displayWeight: 500
+  showBorder: true
+  icon: JobIconTribalLeader
+  supervisors: job-supervisors-pack
+  access: [Pack, PackCommand]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackBeastTamer
+      min: 18000
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackShaman
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 90000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 4
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 4
+      spawnHound: true
+      canTame: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackBeastmaster
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackBeastmaster
+  name: Pack Beastmaster spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackBeastmaster
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackBeastmaster
+  name: Pack Beastmaster
+  suffix: Beastmaster
+  components:
+  - type: Loadout
+    prototypes: [PackBeastmasterGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackBeta
+  name: job-name-pack-beta
+  description: job-description-pack-beta
+  playTimeTracker: PackBeta
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackBetaRavenCloak]
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackBetaGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 60
+  displayWeight: 600
+  showBorder: true
+  icon: JobIconTribalLeader
+  supervisors: job-supervisors-pack
+  access: [Pack, PackCommand]
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: false
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 4
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 4
+      spawnHound: true
+      canTame: true
+      tameLimit: 2
+      startingArrows: 17
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackBeta
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackBeta
+  name: Pack Beta spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackBeta
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackBeta
+  name: Pack Beta
+  suffix: Beta
+  components:
+  - type: Loadout
+    prototypes: [PackBetaGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackAlpha
+  name: job-name-pack-alpha
+  description: job-description-pack-alpha
+  playTimeTracker: PackAlpha
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
+    Outer: [LoadoutPackAlphaDeathclawArmor]
+    Head: [LoadoutPackAlphaDeathclawHelmet]
+    Hands: []
+    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+  startingGear: PackAlphaGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 70
+  displayWeight: 700
+  showBorder: true
+  icon: JobIconTribalLeader
+  supervisors: job-supervisors-pack-alpha
+  access: [Pack, PackCommand]
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: false
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 4
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: PackMember
+      followerLimit: 4
+      spawnHound: true
+      canTameDeathclaw: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackAlpha
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackAlpha
+  name: Pack Alpha spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackAlpha
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackAlpha
+  name: Pack Alpha
+  suffix: Alpha
+  components:
+  - type: Loadout
+    prototypes: [PackAlphaGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]

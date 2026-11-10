@@ -1,5 +1,6 @@
 - type: loadout
   id: MisfitsLoadoutFollowerResponderDuster
+  hidden: true
   category: Roles
   cost: 3
   exclusive: true

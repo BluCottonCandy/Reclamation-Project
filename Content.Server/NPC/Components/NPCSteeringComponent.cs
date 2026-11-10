@@ -14,6 +14,9 @@ namespace Content.Server.NPC.Components;
 [RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class NPCSteeringComponent : Component
 {
+    /// <summary>Per-movement permissions retained when this route is recalculated.</summary>
+    public PathFlags? PathFlagsOverride;
+
     #region Context Steering
 
     /// <summary>

@@ -1,0 +1,142 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Added the Pack, a beast-keeping raider faction, with Cub, Youngling, Hunter,
+    Beast Tamer, Shaman and Beastmaster player roles, and whitelist-only Beta and
+    Alpha admin roles.
+- type: Tweak
+  message: Repurposed the former raider camp for the Pack, removing its added deathclaws,
+    razorclaw and old faction-specific equipment. Pack spawns, faction radio keys,
+    doors and kennel hounds are included.
+- type: Add
+  message: Pack roles have exclusive themed clothing and animal-mask loadouts, rank-specific
+    pendants, and their own radio channel. The Shaman is a one-slot medical specialist
+    alongside Beast Tamer.
+- type: Tweak
+  message: Pack punk armor provides at least 35% blunt, slash and piercing protection.
+    Beastmaster and Beta receive heavy punk armor with 45% protection to those damage
+    types and 10% poison protection. Punk boots use combat MK II functionality.
+- type: Add
+  message: Pack bows, quivers and poisoned machetes have distinctive sprites.
+- type: Add
+  message: Pack members bite when unarmed, with piercing and poison damage and animal
+    bite effects. Traits that replace unarmed damage are unavailable to Pack roles.
+- type: Add
+  message: Every Pack rank can start and track a hunt and use Hunting Cry with Pack-themed
+    lines.
+- type: Add
+  message: Cubs and Younglings start with one following warhound and one base follower
+    slot. Hunter and higher ranks start with two warhounds and four base follower
+    slots. Normal Charisma bonuses add to those slots; Pack animals follow without
+    a Charisma requirement.
+- type: Add
+  message: Hunters, Beast Tamers, Shamans and Beastmasters can tame one hostile molerat,
+    mirelurk or nightstalker; Beta can tame two. Alpha alone can tame a deathclaw.
+    Tamed animals use the warhound follow/order AI and can be revived.
+- type: Add
+  message: Hunter and higher Pack ranks can select a Pack warhound under Pets for
+    six pet points, subject to their follower cap.
+- type: Add
+  message: Beta starts with a compound bow that holds three arrows and fires one per
+    shot, requiring 7 Agility. Loaded-arrow visuals use the normal bow layering. Both
+    bows have stowed back sprites.
+- type: Add
+  message: Betaâ€™s two-handed greatfang requires 7 Strength to swing and can be carried
+    one-handed at 9 Strength. Z switches between one- and two-handed grips. Normal
+    damage is unchanged by grip; power attacks deal 25% more damage in either grip.
+- type: Add
+  message: Alpha starts with deathclaw hide armor, a deathclaw helmet and a Pack deathclaw
+    gauntlet dealing slash, blunt and poison damage. Its custom Packleader R-91 rifle
+    retains the standard assault rifleâ€™s stats and comes with matching ammunition
+    and spare magazines.
+- type: Add
+  message: Pack hunting quivers start with their arrow magnet activated. The single
+    toggle and status indicator show its state. Starting bow ammunition appears at
+    the playerâ€™s feet for collection.
+- type: Fix
+  message: Randomized punk clothing refreshes its worn colors without needing to be
+    removed and re-equipped. Pack clothing restrictions also cover saved loadout choices.
+- type: Tweak
+  message: Retired faction jobs and their exclusive loadouts no longer appear in character
+    setup or latejoin.
+- type: Add
+  message: Tamed Pack animals can be petted, with a friendly message and hearts.
+- type: Add
+  message: Shaman starts with a punk medical belt containing two toxin bottles and
+    a full surgical tool set. Alpha no longer starts with a toxin bottle.
+- type: Add
+  message: Pack ranks now receive progressively broader equipment-kit choices, from
+    Stalker for Cubs to all six kits for Beastmasters. Stalkers carry a distinctive
+    Pack fang spear.
+- type: Tweak
+  message: The Alpha wears colorful spray-painted deathclaw hide, and the Shaman wears
+    a patched punk medical coat.
+- type: Tweak
+  message: The Alpha's painted hide armor provides 60% protection in its existing
+    resistance types. The Beta wears a reinforced raven cloak with 55% blunt, slash,
+    piercing and heat protection.
+- type: Tweak
+  message: The Pack Alpha's cloak and skull helmet have matching, worn teal-and-crimson
+    markings.
+- type: Tweak
+  message: Pack equipment kits supply distinctly named weapons and carriers with matching
+    bone-and-red designs. Ammunition retains its normal sprites, and all original
+    combat and storage behavior is unchanged.
+- type: Fix
+  message: The Pack compound bow uses the normal bow's loaded-arrow layering, removing
+    the misplaced extra held-arrow sprite.
+- type: Fix
+  message: The Pack javelin quiver now shows stored javelins on its icon and hides
+    them when emptied.
+- type: Tweak
+  message: The Pack Shaman coat protects against 35% blunt, slash, piercing, poison
+    and heat damage, and 10% explosion damage.
+- type: Add
+  message: The Pack menagerie has two tameable deathclaws, three nightstalkers, four
+    molerats and four additional kennel hounds. Untamed pen animals are neutral to
+    Pack members and animals, but attack outsiders.
+- type: Tweak
+  message: Molerats, nightstalkers and deathclaws occupy separate Pack pens. Removed
+    loose tools, wire bundles and tables from the deathclaw pen while retaining installed
+    wiring.
+- type: Add
+  message: Added a Pack faction guide covering ranks, animal followers, taming, Hunting
+    Cry, hunts and signature equipment mechanics.
+- type: Tweak
+  message: Hunting Cry also boosts Pack hounds and tamed companions. Tamed animals
+    have bloodstreams and medicine-capable animal metabolism. Normal Charisma follower
+    bonuses add to Pack rank capacity without increasing taming allowances.
+- type: Add
+  message: All Pack equipment kits include two bolas and two sets of handcuffs. Alpha
+    and Beta receive the same restraints in their starting backpacks. Standard bolas
+    now occupy the same small inventory footprint as handcuffs.
+- type: Tweak
+  message: Pack Alpha and Beta now spawn inside the former Centurion quarters.
+- type: Tweak
+  message: Pack kits now have distinct hunter, melee, defender, gunslinger and breacher
+    roles, with medical supplies and food in each. Stalker gains reserve arrows and
+    spotting tools; Hunter gains a sidearm; Champion gains a shield; Fire Hand gains
+    loaded speedloaders; Bone Breaker specializes in melee. Pain Bringer retains its
+    Thunderjaw shotgun, now with a twelve-shell internal magazine, extra shells, a
+    melee backup and smoke grenades.
+- type: Tweak
+  message: Champion receives the small Paladin shield. Stalker reserve ammunition
+    is a refillable, two-slot bundle holding ten hunting arrows and using ammunition-box
+    dispensing.
+- type: Tweak
+  message: Both Pack bows automatically nock arrows from a worn arrow quiver before
+    the first shot and after firing, preserving stored arrow types and stopping when
+    supplies run out.
+- type: Tweak
+  message: Pack starting arrows, including kit arrows, reserve bundles and Beta's
+    starting supply, deal an additional 5 poison damage on hit. Their 35 piercing
+    damage is unchanged; ordinary arrows elsewhere are unaffected.
+- type: Add
+  message: The Pack has a rank-restricted faction supply vendor at its base, with
+    shared points, supply crate redemption and its own equipment catalogue.
+- type: Tweak
+  message: All bows now draw real arrows from equipped arrow quivers automatically,
+    and all arrow quivers have toggleable arrow pickup. Arrow types and damage are
+    preserved.
+- type: Tweak
+  message: The Pack Thunderjaw shotgun fires at two shots per second.

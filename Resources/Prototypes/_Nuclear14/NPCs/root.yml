@@ -55,6 +55,7 @@
               targetKey: FollowTarget
               rangeKey: FollowRange
           operator: !type:MoveToOperator
+            allowDestructivePathing: false
             pathfindInPlanning: false
             targetKey: FollowTarget
             rangeKey: FollowCloseRange
@@ -76,6 +77,7 @@
               targetKey: FollowTarget
               rangeKey: FollowRange
           operator: !type:MoveToOperator
+            allowDestructivePathing: false
             pathfindInPlanning: false
             targetKey: FollowTarget
             rangeKey: FollowCloseRange

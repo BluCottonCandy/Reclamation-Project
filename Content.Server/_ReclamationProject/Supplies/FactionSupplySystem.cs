@@ -27,7 +27,7 @@ public sealed class FactionSupplySystem : EntitySystem
     public int GetCrateReward(EntityUid crate) => TryComp<FactionSupplyCrateComponent>(crate, out var supply) ? supply.Reward : 0;
     private bool MatchesCrateProduct(EntityUid crate, string? product) => product == null || MetaData(crate).EntityPrototype?.ID == product;
     public const string CurrencyPrefix = "Supply points: ";
-    public static readonly string[] Factions = { "Brotherhood", "Town", "Minutemen", "Forged", "Railroad", "Institute", "Triggermen" };
+    public static readonly string[] Factions = { "Brotherhood", "Town", "Minutemen", "Forged", "Railroad", "Institute", "Triggermen", "Pack" };
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     private sealed class Budget { public int Points = 50; public long Minute; }

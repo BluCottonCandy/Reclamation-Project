@@ -174,6 +174,7 @@
 
 - type: loadout
   id: N14CeremonialSwordCent
+  hidden: true
   category: Weapons
   cost: 5
   requirements:

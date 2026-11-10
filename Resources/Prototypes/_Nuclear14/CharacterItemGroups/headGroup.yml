@@ -2,6 +2,8 @@
   id: N14LoadoutHead
   items:
     - type: loadout
+      id: LoadoutPackAlphaDeathclawHelmet
+    - type: loadout
       id: N14LoadoutHeadHatBaseball
     - type: loadout
       id: N14LoadoutHeadHatTrucker

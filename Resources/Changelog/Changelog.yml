@@ -14378,3 +14378,20 @@ Entries:
   id: 6628
   time: '2026-11-10T00:25:01.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/161
+- author: aftermath434
+  changes:
+    - type: Fix
+      message: >-
+        Strength 10 no longer lets you walk at full speed in power armour that
+        is switched off or has a dead fusion core.
+    - type: Tweak
+      message: >-
+        Powered power armour speed now depends on Strength: 70%, 75% at Strength
+        8, 80% at Strength 10.
+    - type: Tweak
+      message: >-
+        Strength 10 now carries an unworn power armour suit at 65% speed instead
+        of full speed.
+  id: 6629
+  time: '2026-11-10T03:05:23.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/162

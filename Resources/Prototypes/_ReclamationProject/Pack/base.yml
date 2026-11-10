@@ -62,4 +62,3 @@
     layoutId: AirlockService
   - type: Door
     canPry: false
-

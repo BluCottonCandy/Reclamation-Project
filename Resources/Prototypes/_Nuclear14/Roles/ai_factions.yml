@@ -301,6 +301,7 @@
 - type: npcFaction
   id: Zetan
   hostile:
+  - Pack
   - Wastelander
   - BrotherhoodOfSteel
   - BrotherhoodOfSteelSecureArea
@@ -326,6 +327,7 @@
 - type: npcFaction
   id: Raider
   hostile:
+  - Pack
   - Institute
   - InstituteSynth
   - Wastelander
@@ -356,6 +358,7 @@
 - type: npcFaction
   id: Feral
   hostile:
+  - Pack
   - Institute
   - InstituteSynth
   - Wastelander
@@ -448,6 +451,7 @@
   friendly: # #Misfits Add - player SentryBots are allies of NPC robots
   - PlayerSentryBot
   hostile:
+  - Pack
   - Institute
   - InstituteSynth
   - Wastelander
@@ -479,6 +483,7 @@
 - type: npcFaction
   id: SuperMutant
   hostile:
+  - Pack
   - Institute
   - InstituteSynth
   - Wastelander

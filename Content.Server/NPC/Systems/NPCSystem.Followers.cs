@@ -96,6 +96,11 @@ namespace Content.Server.NPC.Systems
             var query = EntityQueryEnumerator<RecruitedFollowerComponent, HTNComponent>();
             while (query.MoveNext(out var follower, out var recruited, out var htn))
             {
+                if (!CanCommandAnimalFollower(recruited.Commander, follower))
+                {
+                    StopFollowingUser(follower, recruited.Commander, htn, showPopup: false);
+                    continue;
+                }
                 if (recruited.Order == FollowerOrderType.HoldPosition)
                 {
                     recruited.NoPathAccumulator = 0f;
@@ -284,8 +289,34 @@ namespace Content.Server.NPC.Systems
             args.Verbs.Add(follow);
         }
 
+        private readonly Dictionary<string, bool> _deathclawFollowerPrototypes = new();
+
+        /// <summary>Only the Pack Alpha can command a deathclaw, regardless of Charisma.</summary>
+        public bool CanCommandAnimalFollower(EntityUid commander, EntityUid follower)
+        {
+            if (TryComp<Content.Shared._ReclamationProject.Pack.PackMemberComponent>(commander, out var pack) && pack.CanTameDeathclaw)
+                return true;
+            if (MetaData(follower).EntityPrototype is not { } prototype)
+                return true;
+            if (_deathclawFollowerPrototypes.TryGetValue(prototype.ID, out var cachedDeathclaw))
+                return !cachedDeathclaw;
+            var deathclaw = false;
+            foreach (var (id, _) in _prototypeManager.EnumerateAllParents<EntityPrototype>(prototype.ID, includeSelf: true))
+            {
+                if (id != "N14MobDeathclaw")
+                    continue;
+                deathclaw = true;
+                break;
+            }
+            _deathclawFollowerPrototypes[prototype.ID] = deathclaw;
+            return !deathclaw;
+        }
+
         private bool CanRecruitNeutralFollower(EntityUid user, EntityUid target, HTNComponent htn, NpcFactionMemberComponent targetFaction)
         {
+            if (!CanCommandAnimalFollower(user, target))
+                return false;
+
             if (HasComp<Content.Shared._ReclamationProject.Intelligence.OverriddenRobotComponent>(target))
                 return false;
 
@@ -324,6 +355,9 @@ namespace Content.Server.NPC.Systems
 
         private void StartFollowingUser(EntityUid target, EntityUid user, HTNComponent htn)
         {
+            if (!CanCommandAnimalFollower(user, target))
+                return;
+
             if (TryComp<RecruitedFollowerComponent>(target, out var existingRecruited))
             {
                 if (existingRecruited.Commander != user)
@@ -359,6 +393,9 @@ namespace Content.Server.NPC.Systems
             var pet = ent.Owner;
             var commander = ent.Comp.Commander;
             RemCompDeferred<FollowerAutoRecruitComponent>(ent);
+
+            if (!CanCommandAnimalFollower(commander, pet))
+                return;
 
             if (TryComp<Content.Shared._ReclamationProject.Pack.PackMemberComponent>(commander, out var pack) &&
                 GetFollowerCountForCommander(commander) >= GetNeutralFollowerCapacity(commander))
@@ -426,6 +463,9 @@ namespace Content.Server.NPC.Systems
 
         private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
         {
+            if (args.WasModified<EntityPrototype>())
+                _deathclawFollowerPrototypes.Clear();
+
             BuildCompoundFamilies();
         }
 
@@ -517,6 +557,12 @@ namespace Content.Server.NPC.Systems
 
         private void ApplyFollowerOrder(EntityUid target, EntityUid commander, HTNComponent htn, RecruitedFollowerComponent recruited, FollowerOrderType order)
         {
+            if (!CanCommandAnimalFollower(commander, target))
+            {
+                StopFollowingUser(target, commander, htn, showPopup: false);
+                return;
+            }
+
             recruited.Order = order;
             recruited.WasAutoHeld = false;
             SleepNPC(target, htn);

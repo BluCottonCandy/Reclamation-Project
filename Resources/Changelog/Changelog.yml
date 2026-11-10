@@ -14349,3 +14349,32 @@ Entries:
   id: 6627
   time: '2026-11-09T19:53:12.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/160
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Minutemen gas masks at the Minutemen vendor. Anyone can buy the plain
+        one. Sergeants and up can buy one with night vision.
+    - type: Add
+      message: >-
+        White armbands. Craft one from 1 cloth, wear it, or tear it off to use
+        as a bandage.
+    - type: Tweak
+      message: >-
+        Bullets fly faster: 60 instead of 35. Gauss guns fire at 70. Energy
+        weapons are unchanged.
+    - type: Add
+      message: >-
+        Institute members are now Institute agents with a PIN-locked uplink
+        implant and Research Points.
+    - type: Add
+      message: >-
+        The Director and Division Heads hand out objectives that pay Research
+        Points, through the new Institute network.
+    - type: Add
+      message: >-
+        Synth relay grenades and Gen 3 synth / Courser reinforcements for the
+        Institute.
+  id: 6628
+  time: '2026-11-10T00:25:01.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/161

@@ -25,7 +25,7 @@ public sealed partial class NpcFactionSystem
             kind.Passive |= id is "N14MobBrahdo" or "PackBrahdo";
             simpleAnimal |= id == "N14MobBaseSimple";
             petAnimal |= id == "N14MobPetBasic";
-            hostileAnimal |= id == "N14MobBaseHostile";
+            hostileAnimal |= id.StartsWith("N14MobBaseHostile", StringComparison.Ordinal);
         }
         kind.Passive |= simpleAnimal && !hostileAnimal || petAnimal && !kind.Warhound;
         _companionAnimalKinds[prototype.ID] = kind;

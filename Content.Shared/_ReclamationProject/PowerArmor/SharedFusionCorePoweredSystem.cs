@@ -23,14 +23,23 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
 
     private void OnRefreshSpeed(Entity<FusionCorePoweredComponent> ent, ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
-        if (ent.Comp.Powered)
-            return;
-
-        // Cancel the power systems' own speed boost, then slow further. Strong wearers haul it a bit better.
+        // Replace the power systems' own speed boost with a Strength-based speed:
+        // powered 70/75/80%, unpowered a crawl (4%, or 5% at Strength 8+).
         var wearer = Transform(ent).ParentUid;
-        var strong = _special.UsesSpecialStats(wearer)
-            && _special.GetEffective(wearer, SpecialStat.Strength) >= ent.Comp.StrongMinimumStrength;
-        var walk = strong ? ent.Comp.StrongUnpoweredSpeedMultiplier : ent.Comp.UnpoweredSpeedMultiplier;
+        var strength = _special.UsesSpecialStats(wearer) ? _special.GetEffective(wearer, SpecialStat.Strength) : 0;
+        float walk;
+        if (ent.Comp.Powered)
+        {
+            walk = strength >= ent.Comp.MightyMinimumStrength ? ent.Comp.MightyPoweredSpeedMultiplier
+                : strength >= ent.Comp.StrongMinimumStrength ? ent.Comp.StrongPoweredSpeedMultiplier
+                : ent.Comp.PoweredSpeedMultiplier;
+        }
+        else
+        {
+            walk = strength >= ent.Comp.StrongMinimumStrength ? ent.Comp.StrongUnpoweredSpeedMultiplier
+                : ent.Comp.UnpoweredSpeedMultiplier;
+        }
+
         var sprint = walk;
         if (TryComp<ClothingSpeedModifierComponent>(ent, out var boost))
         {
@@ -40,11 +49,6 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
                 sprint /= boost.SprintModifier;
         }
 
-        if (_special.HasRequirement(wearer, SpecialStat.Strength, 10))
-        {
-            walk = MathF.Max(1f, walk);
-            sprint = MathF.Max(1f, sprint);
-        }
         args.Args.ModifySpeed(walk, sprint);
     }
 

@@ -53,7 +53,7 @@ public sealed class PackBowAutoloadSystem : EntitySystem
         }
         else if (TryComp<Content.Shared.Containers.ItemSlots.ItemSlotsComponent>(bow, out var slots))
         {
-            if (!slots.Slots.TryGetValue("projectiles", out var slot) || slot.HasItem)
+            if (!_slots.TryGetSlot(bow, "projectiles", out var slot, slots) || slot.HasItem)
                 return false;
         }
         else

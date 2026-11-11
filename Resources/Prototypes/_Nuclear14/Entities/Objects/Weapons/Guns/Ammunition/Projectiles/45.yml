@@ -4,6 +4,9 @@
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
+  - type: BulletEmbedChance # #Reclamation Project - bullets can stay stuck in a limb
+    chance: 0.2
+    fragment: ReclamationBulletFragmentPistol
   - type: Reflective # #Misfits Change Add: .45 ACP pistol round is sub-5.56mm class; ricochets off power armor.
     reflective:
       - SmallCaliber

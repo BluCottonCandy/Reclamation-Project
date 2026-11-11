@@ -4,6 +4,9 @@
   id: N14Bullet50
   name: bullet (.50 AP anti-materiel)
   components:
+  - type: BulletEmbedChance # #Reclamation Project - bullets can stay stuck in a limb
+    chance: 0.15
+    fragment: ReclamationBulletFragmentRifle
   - type: Projectile
     damage:
       types:

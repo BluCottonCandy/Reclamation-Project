@@ -1,0 +1,17 @@
+# #Reclamation Project - self-med perk for the Pip-Boy bio-monitor.
+# Same as having INT 10: read your own body with no device, and pull bullets/objects out as if using tools.
+# Deep rifle rounds still need a real hemostat.
+- type: trait
+  id: ReclamationFieldMedic
+  category: Physical
+  points: -5
+  requirements:
+  - !type:CharacterSpeciesRequirement # synths already know their own bodies
+    inverted: true
+    species:
+    - Gen3Synth
+    - Courser
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: SelfMedic

@@ -82,6 +82,7 @@ public sealed partial class InstituteUplinkSystem : EntitySystem
         InitializeNetwork();
         InitializeSupport();
         InitializeStock();
+        InitializeBoard();
     }
 
     public override void Update(float frameTime)

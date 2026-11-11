@@ -1,0 +1,92 @@
+# #Reclamation Project - Institute relay pads. Gen 3 synths and Coursers relay onto any deployed pad
+# (with whoever they're dragging or carrying) from the "Relay to pad" action.
+
+- type: nameIdentifierGroup
+  id: InstituteRelayPads
+  prefix: IRP
+  minValue: 0
+  maxValue: 999
+
+- type: entity
+  id: InstituteRelayPad
+  parent: BaseStructure
+  name: Institute relay pad
+  description: A cyan-lit Institute relay pad. Synths relay in on it.
+  components:
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.00"
+        density: 190
+        mask:
+        - MachineMask
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/relay_pad.rsi
+    drawdepth: FloorObjects
+    layers:
+    - state: offline
+    - state: idle
+      shader: unshaded
+  - type: PointLight
+    radius: 1.5
+    energy: 0.8
+    color: "#40E0FF"
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: NameIdentifier
+    group: InstituteRelayPads
+  - type: InstituteRelayPad
+  # Alt-click to fold it back up.
+  - type: DisassembleOnAltVerb
+    prototype: InstituteRelayPadKit
+    doAfter: 3
+
+- type: entity
+  id: InstituteRelayPadKit
+  parent: BaseItem
+  name: folded Institute relay pad
+  description: A folded Institute relay pad. Use it on the floor to set it up. Gen 3 synths and Coursers can relay onto it.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/relay_pad.rsi
+    state: offline
+  - type: Item
+    size: Normal
+  - type: SpawnAfterInteract
+    prototype: InstituteRelayPad
+    doAfter: 3
+    removeOnInteract: true
+
+- type: entity
+  id: ActionInstituteRelayToPad
+  name: Relay to pad
+  description: Relay onto any Institute relay pad, with whoever you're dragging or carrying. Relaying again within 30 seconds makes you sick.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _ReclamationProject/Institute/relay_pad.rsi
+      state: display
+    event: !type:InstituteOpenPadListEvent

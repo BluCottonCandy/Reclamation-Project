@@ -149,6 +149,8 @@ public sealed partial class InstituteUplinkSystem
         if (state.IsDirector)
             state.Stock = StockEntries();
 
+        FillBoardState(state, viewerMind);
+
         if (state.IsCommand)
         {
             foreach (var person in _minds.GetAliveHumans())
@@ -259,39 +261,62 @@ public sealed partial class InstituteUplinkSystem
 
         var targetMind = GetEntity(msg.Target);
         if (!TryComp<InstituteMemberComponent>(targetMind, out var targetMember) ||
-            !TryComp<MindComponent>(targetMind, out var mind) ||
-            !CanManage(viewer, targetMember) ||
-            !ObjectiveProtos.TryGetValue(msg.Kind, out var proto))
+            !CanManage(viewer, targetMember))
             return;
 
-        var reward = Math.Clamp(msg.Reward, 0, MaxReward);
-        EntProtoId? item = null;
+        var by = Comp<MindComponent>(viewerMind).CharacterName ?? Loc.GetString("institute-uplink-unknown");
+        var person = msg.Person is { } p ? GetEntity(p) : (EntityUid?) null;
+        EntProtoId? item = msg.Item == null ? (EntProtoId?) null : new EntProtoId(msg.Item);
+        var obj = CreateOrder(targetMind, msg.Kind, person, item, msg.Title, msg.Text, msg.Reward, by, false, out var error);
+        SendState(args.SenderSession, obj is { } made
+            ? Loc.GetString("institute-network-objective-given", ("title", Name(made)))
+            : error);
+    }
+
+    /// <summary>
+    /// Makes an Institute objective for a member and tells them. Used by command orders and the task board.
+    /// Returns null with an error message when the order isn't valid.
+    /// </summary>
+    private EntityUid? CreateOrder(EntityUid targetMind, InstituteObjectiveKind kind, EntityUid? person, EntProtoId? item,
+        string title, string text, int reward, string by, bool fromBoard, out string error)
+    {
+        error = Loc.GetString("institute-network-objective-failed");
+        if (!TryComp<MindComponent>(targetMind, out var mind) || !ObjectiveProtos.TryGetValue(kind, out var proto))
+            return null;
+
+        reward = Math.Clamp(reward, 0, MaxReward);
+        EntProtoId? stealItem = null;
         _pendingTarget = null;
 
-        switch (msg.Kind)
+        switch (kind)
         {
             case InstituteObjectiveKind.Kill:
             case InstituteObjectiveKind.Protect:
-                if (msg.Person is not { } person || !HasComp<MindComponent>(GetEntity(person)))
+                if (person is not { } target || !HasComp<MindComponent>(target))
                 {
-                    SendState(args.SenderSession, Loc.GetString("institute-network-pick-person"));
-                    return;
+                    error = Loc.GetString("institute-network-pick-person");
+                    return null;
                 }
-                _pendingTarget = GetEntity(person);
+                if (target == targetMind)
+                {
+                    error = Loc.GetString("institute-board-not-yourself");
+                    return null;
+                }
+                _pendingTarget = target;
                 break;
             case InstituteObjectiveKind.Steal:
-                if (msg.Item == null || RuleComp() is not { } rule || !rule.StealTargets.Contains(msg.Item))
+                if (item == null || RuleComp() is not { } rule || !rule.StealTargets.Contains(item.Value))
                 {
-                    SendState(args.SenderSession, Loc.GetString("institute-network-pick-item"));
-                    return;
+                    error = Loc.GetString("institute-network-pick-item");
+                    return null;
                 }
-                item = msg.Item;
+                stealItem = item;
                 break;
             case InstituteObjectiveKind.Custom:
-                if (string.IsNullOrWhiteSpace(msg.Title))
+                if (string.IsNullOrWhiteSpace(title))
                 {
-                    SendState(args.SenderSession, Loc.GetString("institute-network-need-title"));
-                    return;
+                    error = Loc.GetString("institute-network-need-title");
+                    return null;
                 }
                 break;
         }
@@ -299,30 +324,27 @@ public sealed partial class InstituteUplinkSystem
         var objective = _objectives.TryCreateObjective(targetMind, mind, proto);
         _pendingTarget = null;
         if (objective is not { } obj)
-        {
-            SendState(args.SenderSession, Loc.GetString("institute-network-objective-failed"));
-            return;
-        }
+            return null;
 
-        if (item is { } stealItem)
+        if (stealItem is { } steal)
         {
-            Comp<InstituteStealObjectiveComponent>(obj).Item = stealItem;
-            var itemName = _proto.Index(stealItem).Name;
+            Comp<InstituteStealObjectiveComponent>(obj).Item = steal;
+            var itemName = _proto.Index(steal).Name;
             _meta.SetEntityName(obj, Loc.GetString("institute-objective-steal-title", ("item", itemName)));
             _meta.SetEntityDescription(obj, Loc.GetString("institute-objective-steal-desc", ("item", itemName)));
         }
-        else if (msg.Kind == InstituteObjectiveKind.Custom)
+        else if (kind == InstituteObjectiveKind.Custom)
         {
-            _meta.SetEntityName(obj, Trim(msg.Title, MaxTitle));
-            _meta.SetEntityDescription(obj, string.IsNullOrWhiteSpace(msg.Text)
+            _meta.SetEntityName(obj, Trim(title, MaxTitle));
+            _meta.SetEntityDescription(obj, string.IsNullOrWhiteSpace(text)
                 ? Loc.GetString("institute-objective-custom-desc")
-                : Trim(msg.Text, MaxText));
+                : Trim(text, MaxText));
         }
 
-        var by = Comp<MindComponent>(viewerMind).CharacterName ?? Loc.GetString("institute-uplink-unknown");
         var inst = Comp<InstituteObjectiveComponent>(obj);
         inst.Reward = reward;
         inst.Assigner = by;
+        inst.FromBoard = fromBoard;
         _minds.AddObjective(targetMind, mind, obj);
 
         var orders = Loc.GetString("institute-network-new-orders", ("by", by), ("title", Name(obj)), ("reward", reward));
@@ -330,7 +352,7 @@ public sealed partial class InstituteUplinkSystem
         if (mind.OwnedEntity is { } body)
             _popup.PopupEntity(orders, body, body);
 
-        SendState(args.SenderSession, Loc.GetString("institute-network-objective-given", ("title", Name(obj))));
+        return obj;
     }
 
     private static string Trim(string text, int max)

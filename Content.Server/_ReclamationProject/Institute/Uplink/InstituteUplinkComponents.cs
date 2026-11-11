@@ -46,6 +46,30 @@ public sealed partial class InstituteRuleComponent : Component
     /// <summary>Items the Director can pick for a "steal an item" objective.</summary>
     [DataField]
     public List<EntProtoId> StealTargets = new();
+
+    /// <summary>Open tasks any Institute member can accept: a random preset list plus what command posts.</summary>
+    [ViewVariables]
+    public List<InstituteBoardTask> Board = new();
+
+    [ViewVariables]
+    public int NextBoardId = 1;
+
+    [ViewVariables]
+    public bool PresetsMade;
+}
+
+/// <summary>A task on the Institute board, waiting for a member to accept it.</summary>
+public sealed class InstituteBoardTask
+{
+    public int Id;
+    public Content.Shared._ReclamationProject.Institute.Uplink.InstituteObjectiveKind Kind;
+    public EntityUid? Person;
+    public EntProtoId? Item;
+    public string Title = string.Empty;
+    public string Text = string.Empty;
+    public int Reward;
+    public string PostedBy = string.Empty;
+    public bool Preset;
 }
 
 /// <summary>On every objective given out through the Institute network.</summary>
@@ -66,6 +90,10 @@ public sealed partial class InstituteObjectiveComponent : Component
 
     [ViewVariables]
     public string Assigner = string.Empty;
+
+    /// <summary>Accepted from the task board (counts toward the 3-task limit until paid).</summary>
+    [ViewVariables]
+    public bool FromBoard;
 }
 
 /// <summary>Steal objective: have this many of an item prototype on you.</summary>

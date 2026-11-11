@@ -240,6 +240,78 @@ public sealed class InstituteRelaySystem : EntitySystem
         return true;
     }
 
+    // #Reclamation Project - default effects, sounds and passenger penalties for instant (pad) relays.
+    private static readonly InstituteRelayEyeComponent InstantDefaults = new();
+
+    /// <summary>
+    /// Relays <paramref name="user"/> and their grab/carry chain straight to <paramref name="destination"/>,
+    /// with the relay flash and sound at both ends. Passengers get the usual relay sickness.
+    /// Used by the Institute relay pads.
+    /// </summary>
+    public bool TryInstantRelay(EntityUid user, EntityCoordinates destination)
+    {
+        if (HasComp<InstituteRelayRiderComponent>(user))
+            return false;
+
+        if (_container.IsEntityInContainer(user) || _buckle.IsBuckled(user))
+        {
+            _popup.PopupEntity(Loc.GetString("institute-relay-blocked"), user, user);
+            return false;
+        }
+
+        var passengers = GetGrabChain(user);
+        foreach (var body in passengers)
+        {
+            if (TryComp<CarryingComponent>(body, out var carrying))
+                _carrying.DropCarried(body, carrying.Carried);
+            if (TryComp<PullableComponent>(body, out var pullable) && pullable.Puller != null)
+                _pulling.TryStopPull(body, pullable);
+        }
+        if (TryComp<CarryingComponent>(user, out var userCarrying))
+            _carrying.DropCarried(user, userCarrying.Carried);
+
+        var defaults = InstantDefaults;
+        _audio.PlayPvs(defaults.OutSound, Transform(user).Coordinates);
+
+        var everyone = new List<EntityUid> { user };
+        everyone.AddRange(passengers);
+        foreach (var body in everyone)
+        {
+            Spawn(defaults.OutEffect, _transform.GetMapCoordinates(body));
+            _transform.SetCoordinates(body, destination);
+            _transform.AttachToGridOrMap(body);
+            Spawn(defaults.InEffect, _transform.GetMapCoordinates(body));
+        }
+
+        _audio.PlayPvs(defaults.InSound, user);
+
+        foreach (var passenger in passengers)
+        {
+            if (HasComp<MobStateComponent>(passenger))
+                ApplyPassengerPenalty(passenger, defaults);
+        }
+
+        return true;
+    }
+
+    /// <summary>Sickness for relaying again too soon (vomit + burn, or a shock for robots). Institute suits block it.</summary>
+    public void ApplyEarlyPenalty(EntityUid user, DamageSpecifier organic, DamageSpecifier robot)
+    {
+        if (TryShield(user))
+            return;
+
+        if (HasStomach(user))
+        {
+            _popup.PopupEntity(Loc.GetString("institute-relay-sick"), user, user, PopupType.MediumCaution);
+            _vomit.Vomit(user);
+            _damage.TryChangeDamage(user, organic, ignoreResistances: true);
+            return;
+        }
+
+        _popup.PopupEntity(Loc.GetString("institute-relay-overload"), user, user, PopupType.MediumCaution);
+        _damage.TryChangeDamage(user, robot, ignoreResistances: true);
+    }
+
     /// <summary>
     /// Everything the user drags or carries (people, crates, anything pullable), then everything
     /// those drag or carry, and so on.
@@ -441,22 +513,10 @@ public sealed class InstituteRelaySystem : EntitySystem
         return _body.TryGetBodyOrganComponents<StomachComponent>(body, out var stomachs) && stomachs.Count > 0;
     }
 
+    // Vomit needs a stomach, so anything without one (robots) gets shocked instead.
     private void ApplyEarlyPenalty(EntityUid user, InstituteRelayImplantComponent implant)
     {
-        if (TryShield(user))
-            return;
-
-        // Vomit needs a stomach, so anything without one (robots) gets shocked instead.
-        if (HasStomach(user))
-        {
-            _popup.PopupEntity(Loc.GetString("institute-relay-sick"), user, user, PopupType.MediumCaution);
-            _vomit.Vomit(user);
-            _damage.TryChangeDamage(user, implant.OrganicPenalty, ignoreResistances: true);
-            return;
-        }
-
-        _popup.PopupEntity(Loc.GetString("institute-relay-overload"), user, user, PopupType.MediumCaution);
-        _damage.TryChangeDamage(user, implant.RobotPenalty, ignoreResistances: true);
+        ApplyEarlyPenalty(user, implant.OrganicPenalty, implant.RobotPenalty);
     }
 
     private void ApplyPassengerPenalty(EntityUid passenger, InstituteRelayEyeComponent comp)

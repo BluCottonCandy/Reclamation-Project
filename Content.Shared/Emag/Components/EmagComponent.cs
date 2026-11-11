@@ -17,4 +17,8 @@ public sealed partial class EmagComponent : Component
     [DataField("emagImmuneTag"), ViewVariables(VVAccess.ReadWrite)]
     [AutoNetworkedField]
     public ProtoId<TagPrototype> EmagImmuneTag = "EmagImmune";
+
+    // #Reclamation Project - open airlocks that have no power running to them (most wasteland bunker doors).
+    [DataField, AutoNetworkedField]
+    public bool IgnoreDoorPower;
 }

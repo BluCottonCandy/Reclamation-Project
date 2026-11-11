@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Content.Server._ReclamationProject.Institute.Uplink;
 using Content.Server.Explosion.EntitySystems;
@@ -380,6 +381,43 @@ public sealed class InstituteUplinkTest
         await server.WaitAssertion(() =>
             Assert.That(entities.GetComponent<MindComponent>(directorMind).Objectives.Any(o => entities.GetComponent<MetaDataComponent>(o).EntityName == "Self order"),
                 "the Director couldn't give themselves an objective"));
+
+        // --- Task board: presets, command posts, accept up to 3, remove ---
+        await client.WaitPost(() =>
+        {
+            foreach (var name in new[] { "Board A", "Board B", "Board C", "Board D" })
+                Send(new InstituteBoardPostEvent { Kind = InstituteObjectiveKind.Custom, Title = name, Reward = 5 });
+        });
+        await pair.RunTicksSync(10);
+        var boardIds = new Dictionary<string, int>();
+        var leftover = string.Empty;
+        await server.WaitAssertion(() =>
+        {
+            var board = uplinkSys.Board()!;
+            Assert.That(board.Any(t => t.Preset && t.Kind == InstituteObjectiveKind.Survive), "no preset tasks on the board");
+            Assert.That(board.Any(t => t.Preset && t.Kind == InstituteObjectiveKind.Steal), "no preset steal tasks on the board");
+            foreach (var task in board.Where(t => !t.Preset))
+                boardIds[task.Title] = task.Id;
+            Assert.That(boardIds.Keys, Is.EquivalentTo(new[] { "Board A", "Board B", "Board C", "Board D" }), "command couldn't post tasks");
+        });
+        await client.WaitPost(() =>
+        {
+            foreach (var name in new[] { "Board A", "Board B", "Board C", "Board D" })
+                Send(new InstituteBoardAcceptEvent { Id = boardIds[name] });
+        });
+        await pair.RunTicksSync(10);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(uplinkSys.BoardHeld(directorMind), Is.EqualTo(3), "the 3-task limit didn't hold");
+            // Network messages can arrive in any order, so whichever came 4th stays on the board.
+            var left = uplinkSys.Board()!.Where(t => !t.Preset).ToList();
+            Assert.That(left, Has.Count.EqualTo(1), "exactly one posted task should be left after hitting the limit");
+            leftover = left[0].Title;
+        });
+        await client.WaitPost(() => Send(new InstituteBoardRemoveEvent { Id = boardIds[leftover] }));
+        await pair.RunTicksSync(10);
+        await server.WaitAssertion(() =>
+            Assert.That(uplinkSys.Board()!.Any(t => t.Title == leftover), Is.False, "command couldn't remove a task"));
 
         await client.WaitPost(() => Send(new InstituteSetPinEvent { Target = sciNet, Pin = "1234" }));
         await pair.RunTicksSync(10);

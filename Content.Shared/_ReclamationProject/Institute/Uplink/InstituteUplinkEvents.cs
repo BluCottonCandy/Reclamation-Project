@@ -94,6 +94,11 @@ public sealed class InstituteNetworkStateEvent : EntityEventArgs
     public List<InstituteMemberEntry> Members = new();
     public List<InstitutePersonEntry> People = new();
     public List<InstituteItemEntry> StealItems = new();
+    /// <summary>Open tasks on the board, for every member.</summary>
+    public List<InstituteBoardEntry> Board = new();
+    /// <summary>Board tasks this member holds and hasn't been paid for yet.</summary>
+    public int BoardHeld;
+    public int BoardLimit;
     /// <summary>The Director's stock. Only sent to the Director.</summary>
     public List<InstituteStockEntry> Stock = new();
     public string? Status;
@@ -169,4 +174,42 @@ public static class InstituteDirectorStock
     {
         return !proto.Abstract && !proto.HideSpawnMenu && proto.Components.ContainsKey("Item");
     }
+}
+
+/// <summary>A task on the Institute board.</summary>
+[Serializable, NetSerializable]
+public sealed class InstituteBoardEntry
+{
+    public int Id;
+    public string Title = string.Empty;
+    public string Text = string.Empty;
+    public int Reward;
+    public string PostedBy = string.Empty;
+    public bool Preset;
+}
+
+/// <summary>Command only: post a task to the board. Same fields as a direct order.</summary>
+[Serializable, NetSerializable]
+public sealed class InstituteBoardPostEvent : EntityEventArgs
+{
+    public InstituteObjectiveKind Kind;
+    public NetEntity? Person;
+    public string? Item;
+    public string Title = string.Empty;
+    public string Text = string.Empty;
+    public int Reward;
+}
+
+/// <summary>Command only: take a task off the board.</summary>
+[Serializable, NetSerializable]
+public sealed class InstituteBoardRemoveEvent : EntityEventArgs
+{
+    public int Id;
+}
+
+/// <summary>Any member: accept a board task as your own objective.</summary>
+[Serializable, NetSerializable]
+public sealed class InstituteBoardAcceptEvent : EntityEventArgs
+{
+    public int Id;
 }

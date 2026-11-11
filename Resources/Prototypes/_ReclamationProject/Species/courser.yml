@@ -258,6 +258,8 @@
     prototype: Courser
     requiredLegs: 2
   - type: CourserSynth
+  # #Reclamation Project - "Relay to pad" action onto Institute relay pads
+  - type: InstitutePadTraveler
   - type: NpcFactionMember
     factions:
     - Institute

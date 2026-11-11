@@ -8,3 +8,13 @@ institute-relay-ready = Your relay implant has recharged.
 institute-relay-shielded = Your MOD suit shields you from the relay.
 alerts-institute-relay-cooldown-name = Relay recharging
 alerts-institute-relay-cooldown-desc = Your relay implant is still recharging. Relaying again now will make you sick and burn you.
+
+# Relay pads
+institute-pad-window-title = Relay to pad
+institute-pad-pick = Pick a relay pad:
+institute-pad-none = There are no Institute relay pads set up.
+institute-pad-relay = Relay
+institute-pad-where = {$distance} m {$direction}
+institute-pad-other-level = another level
+institute-pad-gone = That pad is gone.
+institute-pad-ready = You can relay to a pad again without getting sick.

@@ -356,3 +356,37 @@
   conditions:
   - !type:BuyerJobCondition
     whitelist: [InstituteDirector, InstituteDivisionHead, InstituteSynth]
+
+# #Reclamation Project - relay pad for Gen 3 synths and Coursers to relay onto
+- type: listing
+  id: InstituteUplinkRelayPad
+  productEntity: InstituteRelayPadKit
+  cost:
+    ResearchPoint: 20
+  categories:
+  - InstituteSupplies
+
+# #Reclamation Project - break-in tools and genetics
+- type: listing
+  id: InstituteUplinkLockpickSet
+  productEntity: ReclamationLockpickSet
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteInfiltration
+
+- type: listing
+  id: InstituteUplinkEmag
+  productEntity: InstituteEmag
+  cost:
+    ResearchPoint: 40
+  categories:
+  - InstituteInfiltration
+
+- type: listing
+  id: InstituteUplinkChameleonMutator
+  productEntity: InstituteGeneticsMutatorChameleon
+  cost:
+    ResearchPoint: 100
+  categories:
+  - InstituteImplants

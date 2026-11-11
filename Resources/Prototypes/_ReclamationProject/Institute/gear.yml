@@ -118,3 +118,24 @@
   - type: PresetIdCard
     job: InstituteSecurity
 
+
+# #Reclamation Project - chameleon skin genetics sold in the Institute uplink (same mutation as the admin mutator).
+- type: entity
+  parent: GeneticsMutatorAdmin
+  id: InstituteGeneticsMutatorChameleon
+  name: chameleon mutator
+  suffix: Institute
+  description: An Institute genome injector. Lets the subject turn their skin transparent at will, though keeping it up strains the body.
+  components:
+  - type: Mutator
+    mutations:
+    - MutationChameleon
+
+# #Reclamation Project - the uplink's emag: opens any powered door (airlock) instantly, even with no power running to it.
+- type: entity
+  parent: Emag
+  id: InstituteEmag
+  suffix: Institute
+  components:
+  - type: Emag
+    ignoreDoorPower: true

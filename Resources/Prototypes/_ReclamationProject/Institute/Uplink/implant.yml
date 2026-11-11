@@ -25,6 +25,7 @@
     - InstituteSupplies
     - InstituteCommand
     - InstituteReinforcements
+    - InstituteDirectorStock
     - DiscountedItems
     currencyWhitelist:
     - ResearchPoint

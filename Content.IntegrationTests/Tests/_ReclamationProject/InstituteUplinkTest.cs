@@ -11,6 +11,7 @@ using Content.Shared._ReclamationProject.Institute.Uplink;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Implants.Components;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Preferences;
@@ -18,6 +19,7 @@ using Content.Shared.Roles.Jobs;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Robust.Server.Console;
+using Robust.Shared.ContentPack;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
@@ -184,6 +186,134 @@ public sealed class InstituteUplinkTest
             Assert.That(attempt.Cancelled, Is.False, "an unlocked tablet still refused to open");
             entities.EventBus.RaiseLocalEvent(tablet, new Content.Shared.Interaction.Events.DroppedEvent(director));
             Assert.That(lockComp.UnlockedFor, Is.Null, "dropping the tablet didn't lock it");
+        });
+
+        // --- Undercover: a Gen 3 synth and a Courser in a non-Institute job still join the network ---
+        EntityUid undercoverMind = default, courserMind = default;
+        await server.WaitAssertion(() =>
+        {
+            var station = entities.System<StationSystem>().GetStations().Single();
+            var spawning = entities.System<StationSpawningSystem>();
+            foreach (var species in new[] { "Gen3Synth", "Courser" })
+            {
+                var profile = HumanoidCharacterProfile.DefaultWithSpecies(species);
+                var body = spawning.SpawnPlayerCharacterOnStation(station, new JobComponent { Prototype = "Wastelander" }, profile)!.Value;
+                Assert.That(uplinkSys.FindImplant(body), Is.Null, $"a {species} Wastelander spawned with an uplink from the job");
+
+                var mind = minds.CreateMind(null, $"Undercover {species}");
+                minds.TransferTo(mind, body);
+                entities.EventBus.RaiseEvent(EventSource.Local, new PlayerSpawnCompleteEvent(body, player, "Wastelander", false, 0, station, profile));
+
+                Assert.That(entities.HasComponent<InstituteMemberComponent>(mind), $"an undercover {species} isn't on the Institute network");
+                var implant = uplinkSys.FindImplant(body);
+                Assert.That(implant, Is.Not.Null, $"an undercover {species} got no uplink");
+                Assert.That(Points(implant!.Value), Is.EqualTo(0), "undercover synths must start with 0 RP");
+                var undercoverPin = entities.GetComponent<InstituteUplinkComponent>(implant.Value).Pin;
+                Assert.That(entities.System<RoleSystem>().MindGetBriefing(mind), Does.Contain(undercoverPin),
+                    $"an undercover {species} can't see their uplink PIN");
+                Assert.That(entities.GetComponent<SubdermalImplantComponent>(implant.Value).Action,
+                    Is.Not.Null, $"an undercover {species} has no uplink button");
+
+                if (species == "Gen3Synth")
+                    undercoverMind = mind;
+                else
+                    courserMind = mind;
+            }
+
+            // A human Wastelander is not affected.
+            var humanProfile = HumanoidCharacterProfile.DefaultWithSpecies("Human");
+            var human = spawning.SpawnPlayerCharacterOnStation(station, new JobComponent { Prototype = "Wastelander" }, humanProfile)!.Value;
+            var humanMind = minds.CreateMind(null, "Plain Wastelander");
+            minds.TransferTo(humanMind, human);
+            entities.EventBus.RaiseEvent(EventSource.Local, new PlayerSpawnCompleteEvent(human, player, "Wastelander", false, 0, station, humanProfile));
+            Assert.That(entities.HasComponent<InstituteMemberComponent>(humanMind), Is.False, "a human Wastelander joined the Institute");
+        });
+
+        // --- No matter how they got the body: admin spawns with no job, and a cut-out implant comes back ---
+        EntityUid spawnedSynth = default, spawnedSynthMind = default, spawnedCourserMind = default;
+        await server.WaitAssertion(() =>
+        {
+            var coords = entities.GetComponent<TransformComponent>(director).Coordinates;
+            spawnedSynth = entities.SpawnEntity("MobGen3Synth", coords);
+            spawnedSynthMind = minds.CreateMind(null, "Spawned Gen 3");
+            minds.TransferTo(spawnedSynthMind, spawnedSynth);
+            var courser = entities.SpawnEntity("MobCourser", coords);
+            spawnedCourserMind = minds.CreateMind(null, "Spawned Courser");
+            minds.TransferTo(spawnedCourserMind, courser);
+        });
+        await pair.RunTicksSync(150);
+        await server.WaitAssertion(() =>
+        {
+            foreach (var mind in new[] { spawnedSynthMind, spawnedCourserMind })
+            {
+                Assert.That(entities.TryGetComponent<InstituteMemberComponent>(mind, out var member),
+                    "an admin-spawned synth isn't on the Institute network");
+                var body = entities.GetComponent<MindComponent>(mind).OwnedEntity!.Value;
+                Assert.That(uplinkSys.FindImplant(body), Is.EqualTo(member!.Implant), "an admin-spawned synth has no uplink");
+                Assert.That(entities.GetComponent<SubdermalImplantComponent>(member.Implant!.Value).Action, Is.Not.Null);
+            }
+
+            // Cut the implant out: a new one is put back.
+            entities.DeleteEntity(uplinkSys.FindImplant(spawnedSynth)!.Value);
+            Assert.That(uplinkSys.FindImplant(spawnedSynth), Is.Null);
+        });
+        await pair.RunTicksSync(150);
+        await server.WaitAssertion(() =>
+        {
+            var implant = uplinkSys.FindImplant(spawnedSynth);
+            Assert.That(implant, Is.Not.Null, "a synth whose uplink was removed didn't get it back");
+            Assert.That(entities.GetComponent<InstituteMemberComponent>(spawnedSynthMind).Implant, Is.EqualTo(implant));
+            Assert.That(entities.System<RoleSystem>().MindGetBriefing(spawnedSynthMind),
+                Does.Contain(entities.GetComponent<InstituteUplinkComponent>(implant!.Value).Pin), "the new PIN isn't in the character menu");
+        });
+
+        var undercoverNet = entities.GetNetEntity(undercoverMind);
+        var courserNet = entities.GetNetEntity(courserMind);
+        await client.WaitPost(() =>
+        {
+            Send(new InstituteAssignObjectiveEvent { Target = undercoverNet, Kind = InstituteObjectiveKind.Custom, Title = "Undercover order", Reward = 20 });
+            Send(new InstituteAssignObjectiveEvent { Target = courserNet, Kind = InstituteObjectiveKind.Custom, Title = "Courser order", Reward = 20 });
+        });
+        await pair.RunTicksSync(10);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(entities.GetComponent<MindComponent>(undercoverMind).Objectives, Has.Count.EqualTo(1),
+                "the Director couldn't give orders to an undercover Gen 3 synth");
+            Assert.That(entities.GetComponent<MindComponent>(courserMind).Objectives, Has.Count.EqualTo(1),
+                "the Director couldn't give orders to an undercover Courser");
+        });
+
+        // --- Director's stock: add, buy from another uplink, saved to disk, remove, bad items refused ---
+        await client.WaitPost(() =>
+        {
+            Send(new InstituteStockEditEvent { Prototype = "Crowbar", Price = 15 });
+            Send(new InstituteStockEditEvent { Prototype = "MobHuman", Price = 15 });
+        });
+        await pair.RunTicksSync(10);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(uplinkSys.DirectorStock.Keys, Is.EquivalentTo(new[] { "Crowbar" }), "stock should hold the crowbar and refuse a mob");
+
+            var store = entities.GetComponent<StoreComponent>(scientistImplant);
+            var listing = store.FullListingsCatalog.SingleOrDefault(l => l.ProductEntity == "Crowbar");
+            Assert.That(listing, Is.Not.Null, "the Director's item isn't in the scientist's uplink");
+            Assert.That(listing!.Categories, Does.Contain(new Robust.Shared.Prototypes.ProtoId<StoreCategoryPrototype>("InstituteDirectorStock")));
+
+            entities.EventBus.RaiseLocalEvent(scientistImplant, new StoreBuyListingMessage(listing.ID) { Actor = scientist });
+            Assert.That(Points(scientistImplant), Is.EqualTo(25), "buying the Director's 15 RP item didn't cost 15");
+            store.Balance["ResearchPoint"] = 40;
+
+            var saved = server.ResolveDependency<IResourceManager>().UserData
+                .ReadAllText(InstituteUplinkSystem.StockPath);
+            Assert.That(saved, Does.Contain("Crowbar"), "the Director's stock wasn't saved to disk");
+        });
+        await client.WaitPost(() => Send(new InstituteStockEditEvent { Prototype = "Crowbar", Remove = true }));
+        await pair.RunTicksSync(10);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(uplinkSys.DirectorStock, Is.Empty);
+            Assert.That(entities.GetComponent<StoreComponent>(scientistImplant).FullListingsCatalog.Any(l => l.ProductEntity == "Crowbar"),
+                Is.False, "the removed item is still in the uplink");
         });
 
         // --- Objectives: custom (force complete), steal (auto), kill (auto) ---

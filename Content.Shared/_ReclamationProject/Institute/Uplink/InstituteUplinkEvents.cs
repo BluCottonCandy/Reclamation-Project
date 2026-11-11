@@ -1,4 +1,5 @@
 using Content.Shared.Actions;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._ReclamationProject.Institute.Uplink;
@@ -93,6 +94,8 @@ public sealed class InstituteNetworkStateEvent : EntityEventArgs
     public List<InstituteMemberEntry> Members = new();
     public List<InstitutePersonEntry> People = new();
     public List<InstituteItemEntry> StealItems = new();
+    /// <summary>The Director's stock. Only sent to the Director.</summary>
+    public List<InstituteStockEntry> Stock = new();
     public string? Status;
 }
 
@@ -136,4 +139,34 @@ public sealed class InstituteObjectiveActionEvent : EntityEventArgs
     public NetEntity Objective;
     /// <summary>True removes the objective, false force-completes it.</summary>
     public bool Remove;
+}
+
+/// <summary>An item the Director put in the uplink's "Director's stock" tab.</summary>
+[Serializable, NetSerializable]
+public sealed class InstituteStockEntry
+{
+    public string Prototype = string.Empty;
+    public string Name = string.Empty;
+    public int Price;
+}
+
+/// <summary>Director only: add an item to the Director's stock (or change its price), or remove it.</summary>
+[Serializable, NetSerializable]
+public sealed class InstituteStockEditEvent : EntityEventArgs
+{
+    public string Prototype = string.Empty;
+    public int Price;
+    public bool Remove;
+}
+
+public static class InstituteDirectorStock
+{
+    public const int MinPrice = 1;
+    public const int MaxPrice = 500;
+
+    /// <summary>Only real items a player could spawn: no abstract, hidden or non-item entities.</summary>
+    public static bool IsStockable(EntityPrototype proto)
+    {
+        return !proto.Abstract && !proto.HideSpawnMenu && proto.Components.ContainsKey("Item");
+    }
 }

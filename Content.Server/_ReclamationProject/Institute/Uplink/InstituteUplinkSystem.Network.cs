@@ -146,6 +146,9 @@ public sealed partial class InstituteUplinkSystem
             state.Members.Add(entry);
         }
 
+        if (state.IsDirector)
+            state.Stock = StockEntries();
+
         if (state.IsCommand)
         {
             foreach (var person in _minds.GetAliveHumans())

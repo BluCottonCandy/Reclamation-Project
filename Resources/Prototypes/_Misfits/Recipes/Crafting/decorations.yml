@@ -1,6 +1,7 @@
 #Misfits Add: Construction prototype for FLAGS!!!
 # Uses cloth as the primary obtainable material
 
+#MARK: Wallmount Flags
 # Flags
 - type: construction
   name: Flag of the United States
@@ -261,7 +262,37 @@
     sprite: Corvax/Structures/Wallmount/flag.rsi
     state: flag_mex
 
+- type: construction
+  name: Flag of the Commonwealth Minutemen
+  id: ReclamationFlagWallMinutemen
+  graph: ReclamationFlagSmallMM
+  startNode: start
+  targetNode: flagMMs
+# category: construction-category-decorations
+  description: The banner of the Commonwealth Minutemen, a collection of militia members focused on defending the Commonwealth at a minute's notice.
+  hide: false
+  icon:
+    sprite: _ReclamationProject/Structures/Wallmounts/minutemen_flag_wall.rsi
+    state: flag_minutemen
+  objectType: Structure
+  placementMode: SnapgridCenter
+
 # Banners aka big flags
+#MARK: Flagpoles
+- type: construction
+  name: Flag of the Commonwealth Minutemen
+  id: ReclamationDecorationFlagMinutemen
+  graph: ReclamationFlagMM
+  startNode: start
+  targetNode: flagMM
+# category: construction-category-decorations
+  description: The banner of the Commonwealth Minutemen, a collection of militia members focused on defending the Commonwealth at a minute's notice. Where this flag is planted, when the Minutemen are called, they will come to aid.
+  hide: false
+  icon:
+    sprite: _ReclamationProject/Structures/Decoration/Flagpoles/minutemen_flagpole.rsi
+    state: minutemenflagpole
+  objectType: Structure
+  placementMode: SnapgridCenter
 
 - type: construction
   name: Flag of the Children of Atom

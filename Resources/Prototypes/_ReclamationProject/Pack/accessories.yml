@@ -1,0 +1,534 @@
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: PackBoneGloves
+  name: Pack bone gloves
+  description: Weathered Pack gear accented with pale tooth ties.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/bone.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/bone.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: PackRavenGloves
+  name: Pack raven gloves
+  description: Weathered Pack gear accented with dark feather stitching.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/raven.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/raven.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: PackCordonGloves
+  name: Pack cordon gloves
+  description: Weathered Pack gear accented with worn caution tape.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/cordon.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/cordon.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: PackAntlerGloves
+  name: Pack antler gloves
+  description: Weathered Pack gear accented with carved antler toggles.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/antler.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/antler.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: PackChainGloves
+  name: Pack chain gloves
+  description: Weathered Pack gear accented with salvaged chain links.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/chain.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Gloves/chain.rsi
+
+- type: entity
+  parent: ClothingMaskBandanaBase
+  id: PackBoneMask
+  name: Pack bone mask
+  description: Weathered Pack gear accented with pale tooth ties.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - Bandana
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Masks/bone.rsi
+    state: icon_mask
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Masks/bone.rsi
+
+- type: entity
+  parent: ClothingMaskBandanaBase
+  id: PackRavenMask
+  name: Pack raven mask
+  description: Weathered Pack gear accented with dark feather stitching.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - Bandana
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Masks/raven.rsi
+    state: icon_mask
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Masks/raven.rsi
+
+- type: entity
+  parent: ClothingMaskBandanaBase
+  id: PackCordonMask
+  name: Pack cordon mask
+  description: Weathered Pack gear accented with worn caution tape.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - Bandana
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Masks/cordon.rsi
+    state: icon_mask
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Masks/cordon.rsi
+
+- type: entity
+  parent: ClothingMaskBandanaBase
+  id: PackAntlerMask
+  name: Pack antler mask
+  description: Weathered Pack gear accented with carved antler toggles.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - Bandana
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Masks/antler.rsi
+    state: icon_mask
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Masks/antler.rsi
+
+- type: entity
+  parent: ClothingMaskBandanaBase
+  id: PackChainMask
+  name: Pack chain mask
+  description: Weathered Pack gear accented with salvaged chain links.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - Bandana
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Masks/chain.rsi
+    state: icon_mask
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Masks/chain.rsi
+
+- type: entity
+  parent: ClothingHeadHatBeret
+  id: PackBoneBeret
+  name: Pack bone beret
+  description: Weathered Pack gear accented with pale tooth ties.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Berets/bone.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Berets/bone.rsi
+
+- type: entity
+  parent: ClothingHeadHatBeret
+  id: PackRavenBeret
+  name: Pack raven beret
+  description: Weathered Pack gear accented with dark feather stitching.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Berets/raven.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Berets/raven.rsi
+
+- type: entity
+  parent: ClothingHeadHatBeret
+  id: PackCordonBeret
+  name: Pack cordon beret
+  description: Weathered Pack gear accented with worn caution tape.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Berets/cordon.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Berets/cordon.rsi
+
+- type: entity
+  parent: ClothingHeadHatBeret
+  id: PackAntlerBeret
+  name: Pack antler beret
+  description: Weathered Pack gear accented with carved antler toggles.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Berets/antler.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Berets/antler.rsi
+
+- type: entity
+  parent: ClothingHeadHatBeret
+  id: PackChainBeret
+  name: Pack chain beret
+  description: Weathered Pack gear accented with salvaged chain links.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Berets/chain.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Berets/chain.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: PackBoneCombatHelmet
+  name: Pack bone combat helmet
+  description: Weathered Pack gear accented with pale tooth ties.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/bone.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/bone.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+
+- type: entity
+  parent: ClothingHeadBase
+  id: PackRavenCombatHelmet
+  name: Pack raven combat helmet
+  description: Weathered Pack gear accented with dark feather stitching.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/raven.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/raven.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+
+- type: entity
+  parent: ClothingHeadBase
+  id: PackCordonCombatHelmet
+  name: Pack cordon combat helmet
+  description: Weathered Pack gear accented with worn caution tape.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/cordon.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/cordon.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+
+- type: entity
+  parent: ClothingHeadBase
+  id: PackAntlerCombatHelmet
+  name: Pack antler combat helmet
+  description: Weathered Pack gear accented with carved antler toggles.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/antler.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/antler.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+
+- type: entity
+  parent: ClothingHeadBase
+  id: PackChainCombatHelmet
+  name: Pack chain combat helmet
+  description: Weathered Pack gear accented with salvaged chain links.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/chain.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Helmets/chain.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+
+- type: entity
+  parent: ClothingEyesBase
+  id: PackBoneGoggles
+  name: Pack bone goggles
+  description: Weathered Pack goggles finished with tooth ties.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/bone.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/bone.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: PackRavenGoggles
+  name: Pack raven goggles
+  description: Weathered Pack goggles finished with dark feather stitching.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/raven.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/raven.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: PackCordonGoggles
+  name: Pack cordon goggles
+  description: Weathered Pack goggles finished with caution tape.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/cordon.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/cordon.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: PackAntlerGoggles
+  name: Pack antler goggles
+  description: Weathered Pack goggles finished with antler toggles.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/antler.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/antler.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: PackChainGoggles
+  name: Pack chain goggles
+  description: Weathered Pack goggles finished with chain links.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/chain.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Goggles/chain.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: PackBoneJumpsuit
+  name: Pack bone hide wraps
+  description: Layered hide wraps with a pale cross-body tie and bandaged shins.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/bone.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/bone.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: PackRavenJumpsuit
+  name: Pack raven split-tail coat
+  description: A dark, split-tail coat with a high collar and feathered shoulder stitching.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/raven.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/raven.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: PackCordonJumpsuit
+  name: Pack cordon salvage coveralls
+  description: A mechanic’s coverall patched with caution tape and reinforced work knees.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/cordon.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/cordon.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: PackAntlerJumpsuit
+  name: Pack antler trail leathers
+  description: Weathered trail leathers with a diagonal harness, antler toggles, and wrapped calves.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/antler.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/antler.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: PackChainJumpsuit
+  name: Pack chain workshop bib
+  description: A patched workshop bib with steel fasteners and a heavy utility belt.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/chain.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Jumpsuits/chain.rsi

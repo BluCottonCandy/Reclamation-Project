@@ -1,9 +1,8 @@
 - type: startingGear
   id: PackCubGear
   equipment:
-    jumpsuit: PackPunkTanktop
-    outerClothing: PackPunkArmorGreen
-    shoes: PackPunkBoots
+    jumpsuit: PackBoneJumpsuit
+    shoes: PackCombatBootsRaven
     mask: ClothingMaskFox
     belt: PackPunkBelt
     back: N14ClothingBackpackSatchelExplorer
@@ -29,9 +28,8 @@
 - type: startingGear
   id: PackYounglingGear
   equipment:
-    jumpsuit: PackPunkTanktop
-    outerClothing: PackPunkArmorGreen
-    shoes: PackPunkBoots
+    jumpsuit: PackRavenJumpsuit
+    shoes: PackCombatBootsRaven
     mask: ClothingMaskFox
     belt: PackPunkBelt
     back: N14ClothingBackpackSatchelExplorer
@@ -57,9 +55,8 @@
 - type: startingGear
   id: PackHunterGear
   equipment:
-    jumpsuit: PackPunkTanktop
-    outerClothing: PackPunkArmorOrange
-    shoes: PackPunkBoots
+    jumpsuit: PackCordonJumpsuit
+    shoes: PackCombatBootsBone
     mask: ClothingMaskJackal
     belt: PackPunkBelt
     back: N14ClothingBackpackSatchelExplorer
@@ -85,9 +82,8 @@
 - type: startingGear
   id: PackBeastTamerGear
   equipment:
-    jumpsuit: PackPunkTanktop
-    outerClothing: PackPunkArmorOrange
-    shoes: PackPunkBoots
+    jumpsuit: PackAntlerJumpsuit
+    shoes: PackCombatBootsBone
     mask: ClothingMaskJackal
     belt: PackPunkBelt
     back: N14ClothingBackpackSatchelExplorer
@@ -113,9 +109,8 @@
 - type: startingGear
   id: PackBeastmasterGear
   equipment:
-    jumpsuit: PackPunkTanktop
-    outerClothing: PackPunkArmorHeavy
-    shoes: PackPunkBoots
+    jumpsuit: PackChainJumpsuit
+    shoes: PackCombatBootsCordon
     mask: ClothingMaskBear
     belt: PackPunkBelt
     back: N14ClothingBackpackSatchelExplorer
@@ -142,9 +137,9 @@
 - type: startingGear
   id: PackBetaGear
   equipment:
-    jumpsuit: PackPunkTanktop
+    jumpsuit: PackRavenJumpsuit
     outerClothing: PackBetaRavenCloak
-    shoes: PackPunkBoots
+    shoes: PackCombatBootsRaven
     mask: ClothingMaskBear
     belt: PackArrowQuiver
     back: N14ClothingBackpackSatchelExplorer
@@ -177,9 +172,9 @@
 - type: startingGear
   id: PackAlphaGear
   equipment:
-    jumpsuit: PackPunkTanktop
+    jumpsuit: PackAntlerJumpsuit
     outerClothing: PackAlphaPaintedArmor
-    shoes: PackPunkBoots
+    shoes: PackCombatBootsAntler
     belt: PackPunkBelt
     back: N14ClothingBackpackSatchelExplorer
     ears: PackHeadset
@@ -214,9 +209,9 @@
 - type: startingGear
   id: PackShamanGear
   equipment:
-    jumpsuit: PackPunkTanktop
+    jumpsuit: PackBoneJumpsuit
     outerClothing: PackShamanCoat
-    shoes: PackPunkBoots
+    shoes: PackCombatBootsChain
     mask: ClothingMaskJackal
     belt: PackShamanMedicalBeltFilled
     back: N14ClothingBackpackSatchelExplorer

@@ -12,6 +12,8 @@ using Content.Shared.Inventory;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Whitelist;
+using Content.Shared.Tag;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Paint;
 
@@ -28,6 +30,9 @@ public sealed class PaintSystem : SharedPaintSystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly OpenableSystem _openable = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly TagSystem _tags = default!;
+
+    private static readonly ProtoId<TagPrototype> PackRepaintable = "PackRepaintable";
 
 
     public override void Initialize()
@@ -102,7 +107,7 @@ public sealed class PaintSystem : SharedPaintSystem
             return;
         }
 
-        if (HasComp<PaintedComponent>(target) || HasComp<RandomSpriteComponent>(target))
+        if (IsPaintBlocked(target))
         {
             _popup.PopupEntity(Loc.GetString("paint-failure-painted", ("target", target)), user, user, PopupType.Medium);
             return;
@@ -132,16 +137,16 @@ public sealed class PaintSystem : SharedPaintSystem
                 foreach (var slot in slotDefinitions)
                 {
                     if (!_inventory.TryGetSlotEntity(target, slot.Name, out var slotEnt)
-                        || HasComp<PaintedComponent>(slotEnt.Value)
+                        || IsPaintBlocked(slotEnt.Value)
                         || _whitelist.IsWhitelistFail(entity.Comp.Whitelist, slotEnt.Value)
                         || _whitelist.IsBlacklistPass(entity.Comp.Blacklist, slotEnt.Value)
-                        || HasComp<RandomSpriteComponent>(slotEnt.Value)
                         || HasComp<HumanoidAppearanceComponent>(slotEnt.Value))
                         continue;
 
                     EnsureComp<PaintedComponent>(slotEnt.Value, out var slotToPaint);
                     EnsureComp<AppearanceComponent>(slotEnt.Value);
                     slotToPaint.Color = entity.Comp.Color;
+                    slotToPaint.Enabled = true;
                     _appearanceSystem.SetData(slotEnt.Value, PaintVisuals.Painted, true);
                     Dirty(slotEnt.Value, slotToPaint);
                 }
@@ -149,6 +154,7 @@ public sealed class PaintSystem : SharedPaintSystem
 
             _popup.PopupEntity(Loc.GetString("paint-success", ("target", target)), user, user, PopupType.Medium);
             _appearanceSystem.SetData(target, PaintVisuals.Painted, true);
+            Dirty(target, Comp<AppearanceComponent>(target));
             Dirty(target, paint);
             return;
         }
@@ -191,6 +197,10 @@ public sealed class PaintSystem : SharedPaintSystem
         _appearanceSystem.SetData(target, PaintVisuals.Painted, true);
         Dirty(target, paint);
     }
+
+    private bool IsPaintBlocked(EntityUid target) =>
+        !_tags.HasTag(target, PackRepaintable)
+        && (HasComp<PaintedComponent>(target) || HasComp<RandomSpriteComponent>(target));
 
     private bool CanPaint(Entity<PaintComponent> reagent, EntityUid target)
     {

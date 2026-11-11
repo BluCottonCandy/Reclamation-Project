@@ -2,6 +2,26 @@
   id: N14LoadoutHead
   items:
     - type: loadout
+      id: LoadoutPackBoneBeret
+    - type: loadout
+      id: LoadoutPackRavenBeret
+    - type: loadout
+      id: LoadoutPackCordonBeret
+    - type: loadout
+      id: LoadoutPackAntlerBeret
+    - type: loadout
+      id: LoadoutPackChainBeret
+    - type: loadout
+      id: LoadoutPackBoneCombatHelmet
+    - type: loadout
+      id: LoadoutPackRavenCombatHelmet
+    - type: loadout
+      id: LoadoutPackCordonCombatHelmet
+    - type: loadout
+      id: LoadoutPackAntlerCombatHelmet
+    - type: loadout
+      id: LoadoutPackChainCombatHelmet
+    - type: loadout
       id: LoadoutPackAlphaDeathclawHelmet
     - type: loadout
       id: N14LoadoutHeadHatBaseball

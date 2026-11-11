@@ -1,185 +1,4 @@
-# Frontier punk clothing is already present in the repository. Original RSI credits are retained.
 # These choices are available exclusively to Pack roles.
-
-- type: loadout
-  id: LoadoutPackClothingUniformRandomPunkCroptop
-  category: Uniform
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutUniform
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkCroptop
-
-- type: loadout
-  id: LoadoutPackClothingUniformRandomPunkTanktop
-  category: Uniform
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutUniform
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkTanktop
-
-- type: loadout
-  id: LoadoutPackClothingUniformRandomArmlessNoSkirt
-  category: Uniform
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutUniform
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkSleeveless
-
-- type: loadout
-  id: LoadoutPackClothingUniformRandomPunkCroptopShorts
-  category: Uniform
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutUniform
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkCroptopShorts
-
-- type: loadout
-  id: LoadoutPackClothingUniformRandomPunkTanktopShorts
-  category: Uniform
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutUniform
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkTanktopShorts
-
-- type: loadout
-  id: LoadoutPackClothingOuterArmorPunkGreen
-  category: Outer
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutOuter
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkArmorGreen
-
-- type: loadout
-  id: LoadoutPackClothingOuterArmorPunkOrange
-  category: Outer
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutOuter
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkArmorOrange
-
-- type: loadout
-  id: LoadoutPackClothingOuterArmorPunkRed
-  category: Outer
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutOuter
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkArmorRed
-
-- type: loadout
-  id: LoadoutPackClothingOuterArmorPunkRandomized
-  category: Outer
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutOuter
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkArmorRandomized
-
-- type: loadout
-  id: LoadoutPackClothingOuterCoatBomberPunkRed
-  category: Outer
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutOuter
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkBomber
-
-- type: loadout
-  id: LoadoutPackClothingShoesBootsPunkRandomized
-  category: Shoes
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutShoes
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkBoots
-
-- type: loadout
-  id: LoadoutPackClothingBeltPunkRandomized
-  category: Items
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkBelt
-
-- type: loadout
-  id: LoadoutPackClothingEyesPunkGoggles
-  category: Eyes
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutEyes
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkGoggles
-
-- type: loadout
-  id: LoadoutPackClothingMaskPunkHalf
-  category: Mask
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutMask
-  - !type:CharacterJobRequirement
-    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkHalfMask
 
 - type: loadout
   id: LoadoutPackClothingMaskRat
@@ -260,20 +79,8 @@
   - ClothingMaskBat
 
 - type: loadout
-  id: LoadoutPackPunkArmorHeavy
-  category: Outer
-  cost: 0
-  exclusive: true
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14LoadoutOuter
-  - !type:CharacterJobRequirement
-    jobs: [PackBeastmaster, PackBeta, PackAlpha]
-  items:
-  - PackPunkArmorHeavy
-
-- type: loadout
   id: LoadoutPackAlphaDeathclawArmor
+  hidden: true
   category: Outer
   cost: 0
   exclusive: true
@@ -287,6 +94,7 @@
 
 - type: loadout
   id: LoadoutPackAlphaDeathclawHelmet
+  hidden: true
   category: Head
   cost: 0
   exclusive: true
@@ -300,6 +108,7 @@
 
 - type: loadout
   id: LoadoutPackShamanCoat
+  hidden: true
   category: Outer
   cost: 0
   exclusive: true
@@ -312,6 +121,7 @@
 
 - type: loadout
   id: LoadoutPackBetaRavenCloak
+  hidden: true
   category: Outer
   cost: 0
   exclusive: true
@@ -321,3 +131,848 @@
   - !type:CharacterJobRequirement
     jobs: [PackBeta]
   items: [PackBetaRavenCloak]
+
+- type: loadout
+  id: LoadoutPackThemedVest2Raven
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest2Raven
+
+- type: loadout
+  id: LoadoutPackThemedVest2Fang
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest2Fang
+
+- type: loadout
+  id: LoadoutPackThemedVest2Cordon
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest2Cordon
+
+- type: loadout
+  id: LoadoutPackThemedVest2Antler
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest2Antler
+
+- type: loadout
+  id: LoadoutPackThemedVest2Chain
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest2Chain
+
+- type: loadout
+  id: LoadoutPackThemedVest3Raven
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest3Raven
+
+- type: loadout
+  id: LoadoutPackThemedVest3Fang
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest3Fang
+
+- type: loadout
+  id: LoadoutPackThemedVest3Cordon
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest3Cordon
+
+- type: loadout
+  id: LoadoutPackThemedVest3Antler
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest3Antler
+
+- type: loadout
+  id: LoadoutPackThemedVest3Chain
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest3Chain
+
+- type: loadout
+  id: LoadoutPackThemedVest4Raven
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest4Raven
+
+- type: loadout
+  id: LoadoutPackThemedVest4Fang
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest4Fang
+
+- type: loadout
+  id: LoadoutPackThemedVest4Cordon
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest4Cordon
+
+- type: loadout
+  id: LoadoutPackThemedVest4Antler
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest4Antler
+
+- type: loadout
+  id: LoadoutPackThemedVest4Chain
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest4Chain
+
+- type: loadout
+  id: LoadoutPackThemedVest5Raven
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest5Raven
+
+- type: loadout
+  id: LoadoutPackThemedVest5Fang
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest5Fang
+
+- type: loadout
+  id: LoadoutPackThemedVest5Cordon
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest5Cordon
+
+- type: loadout
+  id: LoadoutPackThemedVest5Antler
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest5Antler
+
+- type: loadout
+  id: LoadoutPackThemedVest5Chain
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVest5Chain
+
+- type: loadout
+  id: LoadoutPackThemedVestHeavyRaven
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVestHeavyRaven
+
+- type: loadout
+  id: LoadoutPackThemedVestHeavyFang
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVestHeavyFang
+
+- type: loadout
+  id: LoadoutPackThemedVestHeavyCordon
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVestHeavyCordon
+
+- type: loadout
+  id: LoadoutPackThemedVestHeavyAntler
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVestHeavyAntler
+
+- type: loadout
+  id: LoadoutPackThemedVestHeavyChain
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackThemedVestHeavyChain
+
+- type: loadout
+  id: LoadoutPackCloakBone
+  category: Accessories
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCloakBone
+
+- type: loadout
+  id: LoadoutPackCloakRaven
+  category: Accessories
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCloakRaven
+
+- type: loadout
+  id: LoadoutPackCloakCordon
+  category: Accessories
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCloakCordon
+
+- type: loadout
+  id: LoadoutPackCloakAntler
+  category: Accessories
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCloakAntler
+
+- type: loadout
+  id: LoadoutPackCloakChain
+  category: Accessories
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutNeck
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCloakChain
+
+- type: loadout
+  id: LoadoutPackCombatBootsBone
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCombatBootsBone
+
+- type: loadout
+  id: LoadoutPackCombatBootsRaven
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCombatBootsRaven
+
+- type: loadout
+  id: LoadoutPackCombatBootsCordon
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCombatBootsCordon
+
+- type: loadout
+  id: LoadoutPackCombatBootsAntler
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCombatBootsAntler
+
+- type: loadout
+  id: LoadoutPackCombatBootsChain
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCombatBootsChain
+
+- type: loadout
+  id: LoadoutPackBoneGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackBoneGloves
+
+- type: loadout
+  id: LoadoutPackRavenGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackRavenGloves
+
+- type: loadout
+  id: LoadoutPackCordonGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackCordonGloves
+
+- type: loadout
+  id: LoadoutPackAntlerGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackAntlerGloves
+
+- type: loadout
+  id: LoadoutPackChainGloves
+  category: Hands
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHands
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackChainGloves
+
+- type: loadout
+  id: LoadoutPackBoneMask
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackBoneMask
+
+- type: loadout
+  id: LoadoutPackRavenMask
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackRavenMask
+
+- type: loadout
+  id: LoadoutPackCordonMask
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCordonMask
+
+- type: loadout
+  id: LoadoutPackAntlerMask
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackAntlerMask
+
+- type: loadout
+  id: LoadoutPackChainMask
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackChainMask
+
+- type: loadout
+  id: LoadoutPackBoneBeret
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackBoneBeret
+
+- type: loadout
+  id: LoadoutPackRavenBeret
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackRavenBeret
+
+- type: loadout
+  id: LoadoutPackCordonBeret
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackCordonBeret
+
+- type: loadout
+  id: LoadoutPackAntlerBeret
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackAntlerBeret
+
+- type: loadout
+  id: LoadoutPackChainBeret
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackChainBeret
+
+- type: loadout
+  id: LoadoutPackBoneCombatHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackBoneCombatHelmet
+
+- type: loadout
+  id: LoadoutPackRavenCombatHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackRavenCombatHelmet
+
+- type: loadout
+  id: LoadoutPackCordonCombatHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackCordonCombatHelmet
+
+- type: loadout
+  id: LoadoutPackAntlerCombatHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackAntlerCombatHelmet
+
+- type: loadout
+  id: LoadoutPackChainCombatHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta]
+  items:
+  - PackChainCombatHelmet
+
+- type: loadout
+  id: LoadoutPackBoneGoggles
+  category: Eyes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutEyes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackBoneGoggles
+
+- type: loadout
+  id: LoadoutPackRavenGoggles
+  category: Eyes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutEyes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackRavenGoggles
+
+- type: loadout
+  id: LoadoutPackCordonGoggles
+  category: Eyes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutEyes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCordonGoggles
+
+- type: loadout
+  id: LoadoutPackAntlerGoggles
+  category: Eyes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutEyes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackAntlerGoggles
+
+- type: loadout
+  id: LoadoutPackChainGoggles
+  category: Eyes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutEyes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackChainGoggles
+
+- type: loadout
+  id: LoadoutPackBoneJumpsuit
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackBoneJumpsuit
+
+- type: loadout
+  id: LoadoutPackRavenJumpsuit
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackRavenJumpsuit
+
+- type: loadout
+  id: LoadoutPackCordonJumpsuit
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackCordonJumpsuit
+
+- type: loadout
+  id: LoadoutPackAntlerJumpsuit
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackAntlerJumpsuit
+
+- type: loadout
+  id: LoadoutPackChainJumpsuit
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackChainJumpsuit

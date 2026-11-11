@@ -1,0 +1,89 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: PackCloakBone
+  name: Pack bone cloak
+  description: A soot-brown cloak fastened with an old brass buckle and threaded with pale animal teeth.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/bone.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/bone.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/bone.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PackCloakRaven
+  name: Pack raven cloak
+  description: A charcoal cloak with rows of scavenged raven feathers sewn into its shoulder.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/raven.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/raven.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/raven.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PackCloakCordon
+  name: Pack cordon cloak
+  description: A faded slate cloak patched with torn black and yellow police tape.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/cordon.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/cordon.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/cordon.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PackCloakAntler
+  name: Pack antler cloak
+  description: A dark moss cloak held together by hide lashings and a split antler clasp.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/antler.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/antler.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/antler.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PackCloakChain
+  name: Pack chain cloak
+  description: An oxblood cloak weighted with salvaged copper chain and battered tin tags.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/chain.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/chain.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Cloaks/chain.rsi

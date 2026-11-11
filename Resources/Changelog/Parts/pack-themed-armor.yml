@@ -1,0 +1,23 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Pack armor now comes in Raven, Fang, Cordon, Antler and Chain variants across four vest designs and heavy armor.
+- type: Tweak
+  message: Pack outerwear loadouts are limited to the new armor. Pack members choose their armor in loadouts. Shaman, Beta, and Alpha spawn wearing their assigned armor and receive any selected outerwear at their feet.
+- type: Tweak
+  message: Pack heavy armor reduces walking and sprinting speed by 10%.
+- type: Add
+  message: Pack members can select Bone, Raven, Cordon, Antler and Chain cloaks in Accessories or buy them from the Pack vendor.
+- type: Tweak
+  message: Pack members now start with standard combat boots and can choose from five matching themed skins.
+- type: Add
+  message: Added matching Pack gloves, masks, cosmetic berets, and combat helmets. The helmets reduce blunt, slash, and piercing damage by 5%.
+- type: Fix
+  message: Pack combat boots now have distinct front and rear sprites.
+- type: Add
+  message: The Pack has matching goggles and five distinct uniforms in all five themes. Themed clothing replaces the old punk loadout choices.
+- type: Fix
+  message: Pack berets and helmets have theme-specific side profiles, and Pack masks have a shorter front profile.
+
+- type: Fix
+  message: Pack clothing and armor can be spray-painted over their existing colors.

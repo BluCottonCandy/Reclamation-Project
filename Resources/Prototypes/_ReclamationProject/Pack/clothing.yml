@@ -3,26 +3,61 @@
   id: PackPunkCroptop
   name: Pack punk croptop
   description: A brightly patched croptop and battered trousers favored by the Pack.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingUniformRandomPunkTanktop
   id: PackPunkTanktop
   name: Pack punk tanktop
   description: A vividly colored tanktop and patched trousers worn by Pack raiders.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingUniformRandomArmlessNoSkirt
   id: PackPunkSleeveless
   name: Pack sleeveless outfit
   description: A colorful sleeveless outfit reinforced with scavenged scraps.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingUniformRandomPunkCroptopShorts
   id: PackPunkCroptopShorts
   name: Pack punk croptop and shorts
   description: A brightly patched croptop and shorts for stalking prey in the heat.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingUniformRandomPunkTanktopShorts
   id: PackPunkTanktopShorts
   name: Pack punk tanktop and shorts
   description: A loud tanktop and shorts with hand-sewn patches and worn edges.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingOuterArmorPunkGreen
   id: PackPunkArmorGreen
@@ -30,6 +65,10 @@
   description: Scavenged protective plates painted green and strapped over a battered
     vest.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Armor
     modifiers:
       coefficients:
@@ -47,6 +86,10 @@
   description: Scavenged protective plates painted orange and strapped over a battered
     vest.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Armor
     modifiers:
       coefficients:
@@ -64,6 +107,10 @@
   description: Scavenged protective plates painted red and strapped over a battered
     vest.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Armor
     modifiers:
       coefficients:
@@ -80,6 +127,10 @@
   name: Pack painted punk armor
   description: A salvaged armored vest decorated in the Pack's loud, clashing colors.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Armor
     modifiers:
       coefficients:
@@ -96,6 +147,10 @@
   name: Pack red bomber jacket
   description: A ragged red bomber jacket adorned with mismatched patches.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/bomber.rsi
   - type: Clothing
@@ -107,67 +162,48 @@
         Slash: 0.65
         Piercing: 0.65
 - type: entity
-  parent: N14ClothingBootsCombatMK2
+  parent: PackCombatBootsRaven
   id: PackPunkBoots
-  name: Pack punk combat boots
-  description: Combat-grade boots covered in bright paint, studs and improvised fastenings.
   components:
-  - type: Sprite
-    sprite: _NF/Clothing/Shoes/Boots/punk.rsi
-    layers:
-    - state: base_boots_01
-      map:
-      - boots_main
-      scale: 2, 2
-      offset: 0,0.6
-    - state: decor_base_boots_01
-      map:
-      - boots_decor
-      scale: 2, 2
-      offset: 0,0.6
-    - state: mask_null
-      map:
-      - boots_overlay
-      scale: 2, 2
-      offset: 0,0.6
-  - type: Clothing
-    sprite: _NF/Clothing/Shoes/Boots/punk.rsi
-    clothingVisuals:
-      shoes:
-      - state: base_boots_01
-        map:
-        - boots_main
-      - state: mask_null
-        map:
-        - boots_decor
-      - state: mask_null
-        map:
-        - boots_overlay
-  - type: RandomSprite
-    available:
-    - boots_main:
-        base_boots_01: Cyberpunk
-      boots_decor:
-        decor_base_boots_01: Cyberpunk
-        mask_null: ''
-      boots_overlay:
-        decor_base_boots_02: Cyberpunk
-        mask_null: ''
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingBeltPunkRandomized
   id: PackPunkBelt
   name: Pack punk belt
   description: A scavenged belt decorated with bright scraps and rivets.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingEyesPunkGoggles
   id: PackPunkGoggles
   name: Pack punk goggles
   description: Scratched goggles with a brightly decorated frame.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - SecDogWearable
+
 - type: entity
   parent: ClothingMaskPunkHalf
   id: PackPunkHalfMask
   name: Pack punk half-mask
   description: A patched half-mask painted to mark its wearer as one of the Pack.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+
 - type: entity
   parent: ClothingOuterArmorElitePunkRandomized
   id: PackPunkArmorHeavy
@@ -175,6 +211,10 @@
   description: Heavy scavenged plates decorated in the Pack's colors, reserved for
     the Beastmaster and higher ranks.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Armor
     modifiers:
       coefficients:
@@ -193,6 +233,10 @@
   description: Deathclaw hide marked with broad teal panels and a crimson stripe.
     Chipped paint and ivory trim declare the leader of the Pack.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/alpha-painted.rsi
   - type: Clothing
@@ -215,6 +259,10 @@
   description: A charcoal medical coat with crimson patchwork, bone toggles and rough
     seams. Worn by the healer who keeps the Pack alive.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - FollowerLabcoat
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/shaman-coat.rsi
   - type: Clothing
@@ -236,6 +284,10 @@
   description: A thick mantle of iridescent black feathers, reinforced for the Beta
     of the Pack.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
   - type: Armor
     modifiers:
       coefficients:
@@ -250,6 +302,11 @@
   description: A weathered deathclaw skull marked in teal and crimson to match the
     Alpha's cloak.
   components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/alpha-helmet.rsi
   - type: Clothing

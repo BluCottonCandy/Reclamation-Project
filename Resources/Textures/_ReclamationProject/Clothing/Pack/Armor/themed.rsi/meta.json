@@ -1,0 +1,139 @@
+{
+  "states": [
+    {
+      "name": "vest-2",
+      "directions": 4
+    },
+    {
+      "name": "vest-2-raven",
+      "directions": 4
+    },
+    {
+      "name": "vest-2-fang",
+      "directions": 4
+    },
+    {
+      "name": "vest-2-cordon",
+      "directions": 4
+    },
+    {
+      "name": "vest-2-antler",
+      "directions": 4
+    },
+    {
+      "name": "vest-2-chain",
+      "directions": 4
+    },
+    {
+      "name": "vest-3",
+      "directions": 4
+    },
+    {
+      "name": "vest-3-raven",
+      "directions": 4
+    },
+    {
+      "name": "vest-3-fang",
+      "directions": 4
+    },
+    {
+      "name": "vest-3-cordon",
+      "directions": 4
+    },
+    {
+      "name": "vest-3-antler",
+      "directions": 4
+    },
+    {
+      "name": "vest-3-chain",
+      "directions": 4
+    },
+    {
+      "name": "vest-4",
+      "directions": 4
+    },
+    {
+      "name": "vest-4-raven",
+      "directions": 4
+    },
+    {
+      "name": "vest-4-fang",
+      "directions": 4
+    },
+    {
+      "name": "vest-4-cordon",
+      "directions": 4
+    },
+    {
+      "name": "vest-4-antler",
+      "directions": 4
+    },
+    {
+      "name": "vest-4-chain",
+      "directions": 4
+    },
+    {
+      "name": "vest-5",
+      "directions": 4
+    },
+    {
+      "name": "vest-5-raven",
+      "directions": 4
+    },
+    {
+      "name": "vest-5-fang",
+      "directions": 4
+    },
+    {
+      "name": "vest-5-cordon",
+      "directions": 4
+    },
+    {
+      "name": "vest-5-antler",
+      "directions": 4
+    },
+    {
+      "name": "vest-5-chain",
+      "directions": 4
+    },
+    {
+      "name": "heavy",
+      "directions": 4
+    },
+    {
+      "name": "heavy-raven",
+      "directions": 4
+    },
+    {
+      "name": "heavy-fang",
+      "directions": 4
+    },
+    {
+      "name": "heavy-cordon",
+      "directions": 4
+    },
+    {
+      "name": "heavy-antler",
+      "directions": 4
+    },
+    {
+      "name": "heavy-chain",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ],
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "version": 1,
+  "copyright": "Pack armor pixel art for Reclamation Project, based on OpenAI image generation concepts. Held sprites adapted from tgstation art separated into layers by erhardsteinhauer.",
+  "license": "CC-BY-SA-3.0"
+}

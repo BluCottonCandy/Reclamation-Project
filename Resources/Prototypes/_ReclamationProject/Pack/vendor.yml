@@ -28,9 +28,72 @@
       PackBeta: 50
       PackAlpha: 60
     equipmentRanks:
+      PackBoneJumpsuit: 0
+      PackRavenJumpsuit: 0
+      PackCordonJumpsuit: 0
+      PackAntlerJumpsuit: 0
+      PackChainJumpsuit: 0
+      PackBoneGoggles: 0
+      PackRavenGoggles: 0
+      PackCordonGoggles: 0
+      PackAntlerGoggles: 0
+      PackChainGoggles: 0
+      PackBoneGloves: 0
+      PackRavenGloves: 0
+      PackCordonGloves: 0
+      PackAntlerGloves: 0
+      PackChainGloves: 0
+      PackBoneMask: 0
+      PackRavenMask: 0
+      PackCordonMask: 0
+      PackAntlerMask: 0
+      PackChainMask: 0
+      PackBoneBeret: 0
+      PackRavenBeret: 0
+      PackCordonBeret: 0
+      PackAntlerBeret: 0
+      PackChainBeret: 0
+      PackBoneCombatHelmet: 0
+      PackRavenCombatHelmet: 0
+      PackCordonCombatHelmet: 0
+      PackAntlerCombatHelmet: 0
+      PackChainCombatHelmet: 0
+      PackCloakBone: 0
+      PackCloakRaven: 0
+      PackCloakCordon: 0
+      PackCloakAntler: 0
+      PackCloakChain: 0
+      PackThemedVest2Raven: 0
+      PackThemedVest2Fang: 0
+      PackThemedVest2Cordon: 0
+      PackThemedVest2Antler: 0
+      PackThemedVest2Chain: 0
+      PackThemedVest3Raven: 0
+      PackThemedVest3Fang: 0
+      PackThemedVest3Cordon: 0
+      PackThemedVest3Antler: 0
+      PackThemedVest3Chain: 0
+      PackThemedVest4Raven: 0
+      PackThemedVest4Fang: 0
+      PackThemedVest4Cordon: 0
+      PackThemedVest4Antler: 0
+      PackThemedVest4Chain: 0
+      PackThemedVest5Raven: 0
+      PackThemedVest5Fang: 0
+      PackThemedVest5Cordon: 0
+      PackThemedVest5Antler: 0
+      PackThemedVest5Chain: 0
+      PackThemedVestHeavyRaven: 40
+      PackThemedVestHeavyFang: 40
+      PackThemedVestHeavyCordon: 40
+      PackThemedVestHeavyAntler: 40
+      PackThemedVestHeavyChain: 40
       PackPunkTanktop: 0
-      PackPunkArmorGreen: 0
-      PackPunkBoots: 0
+      PackCombatBootsBone: 0
+      PackCombatBootsRaven: 0
+      PackCombatBootsCordon: 0
+      PackCombatBootsAntler: 0
+      PackCombatBootsChain: 0
       ClothingMaskFox: 0
       PackPunkBelt: 0
       N14ClothingBackpackSatchelExplorer: 0
@@ -38,9 +101,7 @@
       N14Stimpak: 0
       N14Bandage: 0
       N14BoxCardboardMREBoxCFilled: 0
-      PackPunkArmorOrange: 0
       ClothingMaskJackal: 0
-      PackPunkArmorHeavy: 40
       ClothingMaskBear: 0
       PackBetaRavenCloak: 50
       PackArrowQuiver: 0
@@ -59,8 +120,6 @@
       PackPunkSleeveless: 0
       PackPunkCroptopShorts: 0
       PackPunkTanktopShorts: 0
-      PackPunkArmorRed: 0
-      PackPunkArmorRandomized: 0
       PackPunkBomber: 0
       PackPunkGoggles: 0
       PackPunkHalfMask: 0
@@ -138,22 +197,72 @@
   id: ReclamationSupplyPackArmor
   name: Armor
   entries:
+  - proto: PackBoneCombatHelmet
+    price: 10
+  - proto: PackRavenCombatHelmet
+    price: 10
+  - proto: PackCordonCombatHelmet
+    price: 10
+  - proto: PackAntlerCombatHelmet
+    price: 10
+  - proto: PackChainCombatHelmet
+    price: 10
   - proto: PackAlphaPaintedArmor
     price: 100
   - proto: PackAlphaPaintedHelmet
     price: 100
   - proto: PackBetaRavenCloak
     price: 100
-  - proto: PackPunkArmorGreen
+  - proto: PackThemedVest2Raven
     price: 25
-  - proto: PackPunkArmorHeavy
+  - proto: PackThemedVest2Fang
+    price: 25
+  - proto: PackThemedVest2Cordon
+    price: 25
+  - proto: PackThemedVest2Antler
+    price: 25
+  - proto: PackThemedVest2Chain
+    price: 25
+  - proto: PackThemedVest3Raven
+    price: 25
+  - proto: PackThemedVest3Fang
+    price: 25
+  - proto: PackThemedVest3Cordon
+    price: 25
+  - proto: PackThemedVest3Antler
+    price: 25
+  - proto: PackThemedVest3Chain
+    price: 25
+  - proto: PackThemedVest4Raven
+    price: 25
+  - proto: PackThemedVest4Fang
+    price: 25
+  - proto: PackThemedVest4Cordon
+    price: 25
+  - proto: PackThemedVest4Antler
+    price: 25
+  - proto: PackThemedVest4Chain
+    price: 25
+  - proto: PackThemedVest5Raven
+    price: 25
+  - proto: PackThemedVest5Fang
+    price: 25
+  - proto: PackThemedVest5Cordon
+    price: 25
+  - proto: PackThemedVest5Antler
+    price: 25
+  - proto: PackThemedVest5Chain
+    price: 25
+  - proto: PackThemedVestHeavyRaven
     price: 50
-  - proto: PackPunkArmorOrange
-    price: 25
-  - proto: PackPunkArmorRandomized
-    price: 25
-  - proto: PackPunkArmorRed
-    price: 25
+  - proto: PackThemedVestHeavyFang
+    price: 50
+  - proto: PackThemedVestHeavyCordon
+    price: 50
+  - proto: PackThemedVestHeavyAntler
+    price: 50
+  - proto: PackThemedVestHeavyChain
+    price: 50
   - proto: PackShamanCoat
     price: 50
 - type: storeCategoryStructured
@@ -338,6 +447,66 @@
   id: ReclamationSupplyPackOthergear
   name: Other gear
   entries:
+  - proto: PackBoneJumpsuit
+    price: 10
+  - proto: PackRavenJumpsuit
+    price: 10
+  - proto: PackCordonJumpsuit
+    price: 10
+  - proto: PackAntlerJumpsuit
+    price: 10
+  - proto: PackChainJumpsuit
+    price: 10
+  - proto: PackBoneGoggles
+    price: 10
+  - proto: PackRavenGoggles
+    price: 10
+  - proto: PackCordonGoggles
+    price: 10
+  - proto: PackAntlerGoggles
+    price: 10
+  - proto: PackChainGoggles
+    price: 10
+  - proto: PackBoneGloves
+    price: 10
+  - proto: PackRavenGloves
+    price: 10
+  - proto: PackCordonGloves
+    price: 10
+  - proto: PackAntlerGloves
+    price: 10
+  - proto: PackChainGloves
+    price: 10
+  - proto: PackBoneMask
+    price: 10
+  - proto: PackRavenMask
+    price: 10
+  - proto: PackCordonMask
+    price: 10
+  - proto: PackAntlerMask
+    price: 10
+  - proto: PackChainMask
+    price: 10
+  - proto: PackBoneBeret
+    price: 10
+  - proto: PackRavenBeret
+    price: 10
+  - proto: PackCordonBeret
+    price: 10
+  - proto: PackAntlerBeret
+    price: 10
+  - proto: PackChainBeret
+    price: 10
+  - proto: PackCloakBone
+    price: 10
+  - proto: PackCloakRaven
+    price: 10
+  - proto: PackCloakCordon
+    price: 10
+  - proto: PackCloakAntler
+    price: 10
+  - proto: PackCloakChain
+    price: 10
   - proto: Bola
     price: 10
   - proto: ClothingMaskBat
@@ -372,7 +541,15 @@
     price: 10
   - proto: PackPunkBomber
     price: 10
-  - proto: PackPunkBoots
+  - proto: PackCombatBootsBone
+    price: 10
+  - proto: PackCombatBootsRaven
+    price: 10
+  - proto: PackCombatBootsCordon
+    price: 10
+  - proto: PackCombatBootsAntler
+    price: 10
+  - proto: PackCombatBootsChain
     price: 10
   - proto: PackPunkCroptop
     price: 10

@@ -2,7 +2,15 @@
   id: N14LoadoutEyes
   items:
     - type: loadout
-      id: LoadoutPackClothingEyesPunkGoggles
+      id: LoadoutPackBoneGoggles
+    - type: loadout
+      id: LoadoutPackRavenGoggles
+    - type: loadout
+      id: LoadoutPackCordonGoggles
+    - type: loadout
+      id: LoadoutPackAntlerGoggles
+    - type: loadout
+      id: LoadoutPackChainGoggles
     - type: loadout
       id: N14ClothingEyesGlassesWelding
     - type: loadout

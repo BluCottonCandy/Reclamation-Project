@@ -14629,3 +14629,19 @@ Entries:
   id: 6631
   time: '2026-11-11T00:41:36.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/165
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Every Gen 3 synth and Courser now has an Institute uplink and shows up
+        in the Institute network, so command can give them orders. This includes
+        undercover synths in normal jobs, ghost roles and admin spawns. New
+        uplinks start at 0 RP, and a cut-out uplink is replaced.
+    - type: Add
+      message: >-
+        The Institute Director can add any item to the uplink at a price they
+        choose, and remove it again. Everyone in the Institute can buy it from
+        the new Director's stock tab, and the list is kept from round to round.
+  id: 6632
+  time: '2026-11-11T01:45:31.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/166

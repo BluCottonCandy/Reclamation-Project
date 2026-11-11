@@ -106,3 +106,17 @@ ghost-role-information-institute-synth-name = Institute Gen 3 synth
 ghost-role-information-institute-synth-description = Relay in to support Institute agents on the surface.
 ghost-role-information-institute-courser-name = Institute Courser
 ghost-role-information-institute-courser-description = Relay in as a Courser to hunt down the Institute's targets.
+
+# Director's stock
+store-category-institute-director-stock = Director's stock
+institute-network-stock-heading = Director's stock (every uplink, saved between rounds)
+institute-network-stock-empty = Nothing in the Director's stock yet.
+institute-network-stock-line = {$item} - {$price} RP
+institute-network-stock-search = Search items by name or ID
+institute-network-stock-no-match = No items match.
+institute-network-stock-price = Price (RP)
+institute-network-stock-add = Add to shop
+institute-network-stock-added = {$item} is now in every uplink for {$price} RP.
+institute-network-stock-removed = {$item} was taken out of the uplink.
+institute-network-stock-bad-price = The price has to be between {$min} and {$max} RP.
+institute-network-stock-bad-item = That item can't be put in the uplink.

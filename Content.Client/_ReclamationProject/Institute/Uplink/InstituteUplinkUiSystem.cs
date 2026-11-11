@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._ReclamationProject.Institute.Uplink;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._ReclamationProject.Institute.Uplink;
 
@@ -12,6 +13,8 @@ namespace Content.Client._ReclamationProject.Institute.Uplink;
 /// </summary>
 public sealed class InstituteUplinkUiSystem : EntitySystem
 {
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+
     private FancyWindow? _pinWindow;
     private FancyWindow? _network;
     private InstituteNetworkStateEvent? _state;
@@ -19,6 +22,11 @@ public sealed class InstituteUplinkUiSystem : EntitySystem
     // Assign form selections survive a refresh.
     private NetEntity? _assignTarget;
     private InstituteObjectiveKind _assignKind = InstituteObjectiveKind.Steal;
+
+    // Director's stock form, kept across refreshes.
+    private string _stockSearch = string.Empty;
+    private string? _stockPick;
+    private string _stockPrice = "20";
 
     public override void Initialize()
     {
@@ -146,6 +154,118 @@ public sealed class InstituteUplinkUiSystem : EntitySystem
             BuildMembers(root, state);
             BuildAssign(root, state);
         }
+
+        if (state.IsDirector)
+            BuildStock(root, state);
+    }
+
+    private void BuildStock(BoxContainer root, InstituteNetworkStateEvent state)
+    {
+        root.AddChild(Heading(Loc.GetString("institute-network-stock-heading")));
+
+        // What is in the shop now.
+        if (state.Stock.Count == 0)
+            root.AddChild(new Label { Text = Loc.GetString("institute-network-stock-empty"), FontColorOverride = Color.Gray });
+
+        foreach (var entry in state.Stock)
+        {
+            var line = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal, SeparationOverride = 4 };
+            line.AddChild(new Label
+            {
+                Text = Loc.GetString("institute-network-stock-line", ("item", entry.Name), ("price", entry.Price)),
+                HorizontalExpand = true,
+                ClipText = true,
+            });
+            var id = entry.Prototype;
+            var remove = new Button { Text = Loc.GetString("institute-network-remove") };
+            remove.OnPressed += _ => RaiseNetworkEvent(new InstituteStockEditEvent { Prototype = id, Remove = true });
+            line.AddChild(remove);
+            root.AddChild(line);
+        }
+
+        // Add an item: search, pick, price.
+        var search = new LineEdit
+        {
+            HorizontalExpand = true,
+            PlaceHolder = Loc.GetString("institute-network-stock-search"),
+            Text = _stockSearch,
+        };
+        root.AddChild(search);
+
+        var results = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Vertical, SeparationOverride = 2 };
+        root.AddChild(results);
+
+        var price = new LineEdit { Text = _stockPrice, MinWidth = 80 };
+        price.OnTextChanged += a => _stockPrice = a.Text;
+        var add = new Button { Text = Loc.GetString("institute-network-stock-add") };
+
+        void UpdateAdd()
+        {
+            add.Disabled = _stockPick == null;
+        }
+
+        void Fill()
+        {
+            results.RemoveAllChildren();
+            var text = _stockSearch.Trim();
+            if (text.Length < 2)
+                return;
+
+            var matches = _proto.EnumeratePrototypes<EntityPrototype>()
+                .Where(InstituteDirectorStock.IsStockable)
+                .Where(p => p.ID.Contains(text, StringComparison.OrdinalIgnoreCase) ||
+                            p.Name.Contains(text, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(p => p.Name, StringComparer.OrdinalIgnoreCase)
+                .Take(25)
+                .ToList();
+
+            if (matches.Count == 0)
+            {
+                results.AddChild(new Label { Text = Loc.GetString("institute-network-stock-no-match"), FontColorOverride = Color.Gray });
+                return;
+            }
+
+            foreach (var proto in matches)
+            {
+                var id = proto.ID;
+                var pick = new Button
+                {
+                    Text = $"{proto.Name} ({id})",
+                    ToggleMode = true,
+                    Pressed = _stockPick == id,
+                    HorizontalExpand = true,
+                    ClipText = true,
+                };
+                pick.OnPressed += _ =>
+                {
+                    _stockPick = id;
+                    Fill();
+                    UpdateAdd();
+                };
+                results.AddChild(pick);
+            }
+        }
+
+        search.OnTextChanged += a =>
+        {
+            _stockSearch = a.Text;
+            Fill();
+        };
+        Fill();
+
+        add.OnPressed += _ =>
+        {
+            if (_stockPick == null || !int.TryParse(_stockPrice, out var value))
+                return;
+            RaiseNetworkEvent(new InstituteStockEditEvent { Prototype = _stockPick, Price = value });
+        };
+        UpdateAdd();
+
+        var row = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal, SeparationOverride = 4 };
+        row.AddChild(new Label { Text = Loc.GetString("institute-network-stock-price"), MinWidth = 110 });
+        row.AddChild(price);
+        row.AddChild(add);
+        root.AddChild(row);
     }
 
     private void BuildSendPoints(BoxContainer root, InstituteNetworkStateEvent state)

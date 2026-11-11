@@ -44,3 +44,9 @@
   id: InstituteReinforcements
   name: store-category-institute-reinforcements
   priority: 7
+
+# Items the Director adds from the network window. Filled from code and saved between rounds.
+- type: storeCategory
+  id: InstituteDirectorStock
+  name: store-category-institute-director-stock
+  priority: 8

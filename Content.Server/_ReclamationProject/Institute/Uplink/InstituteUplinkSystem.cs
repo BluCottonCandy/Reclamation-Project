@@ -9,10 +9,12 @@ using Content.Server.StoreDiscount.Systems;
 using Content.Shared._ReclamationProject.Institute.Uplink;
 using Content.Shared.Chat;
 using Content.Shared.FixedPoint;
+using Content.Shared.Humanoid;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
@@ -62,6 +64,7 @@ public sealed partial class InstituteUplinkSystem : EntitySystem
 
     private EntityUid? _rule;
     private TimeSpan _nextTick;
+    private TimeSpan _nextSynthSweep;
 
     public override void Initialize()
     {
@@ -78,6 +81,7 @@ public sealed partial class InstituteUplinkSystem : EntitySystem
 
         InitializeNetwork();
         InitializeSupport();
+        InitializeStock();
     }
 
     public override void Update(float frameTime)
@@ -89,6 +93,12 @@ public sealed partial class InstituteUplinkSystem : EntitySystem
 
         UpdatePayouts();
         UpdateSupport();
+
+        if (_timing.CurTime >= _nextSynthSweep)
+        {
+            _nextSynthSweep = _timing.CurTime + SynthSweepInterval;
+            EnsureSynthUplinks();
+        }
     }
 
     #region Round and rule
@@ -150,17 +160,69 @@ public sealed partial class InstituteUplinkSystem : EntitySystem
 
         var listings = _store.GetAvailableListings(body, implant, store).ToArray();
         _discounts.InitializeStoreDiscounts(implant, listings, true);
+        RefreshStock(implant, store);
         return implant;
     }
 
     private void OnPlayerSpawned(PlayerSpawnCompleteEvent args)
     {
-        if (FindImplant(args.Mob) is not { } implant ||
-            !_minds.TryGetMind(args.Mob, out var mindId, out var mind) ||
-            args.JobId == null)
+        if (args.JobId == null || !_minds.TryGetMind(args.Mob, out var mindId, out var mind))
             return;
 
+        // #Reclamation Project - Gen 3 synths and Coursers in a non-Institute job (undercover) still belong to
+        // the Institute: they get an empty uplink so command can see them and give them orders.
+        if (FindImplant(args.Mob) is not { } implant)
+        {
+            if (!IsInstituteSynth(args.Mob) || GiveUplink(args.Mob, 0) is not { } undercover)
+                return;
+            implant = undercover;
+        }
+
         RegisterMember(mindId, mind, implant, args.JobId);
+    }
+
+    private static readonly HashSet<string> InstituteSynthSpecies = new() { "Gen3Synth", "Courser" };
+    private static readonly TimeSpan SynthSweepInterval = TimeSpan.FromSeconds(2);
+
+    /// <summary>
+    /// #Reclamation Project - every Gen 3 synth and Courser with a player in it has an uplink and is on the
+    /// Institute network, however they got that body: round start, late join, ghost role, admin spawn, cloning,
+    /// body swap, a species change, or the implant being cut out. Runs every couple of seconds.
+    /// </summary>
+    public void EnsureSynthUplinks()
+    {
+        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, MindContainerComponent>();
+        while (query.MoveNext(out var body, out var humanoid, out var container))
+        {
+            if (!InstituteSynthSpecies.Contains(humanoid.Species) ||
+                container.Mind is not { } mindId ||
+                !TryComp<MindComponent>(mindId, out var mind))
+                continue;
+
+            EnsureSynthUplink(body, mindId, mind);
+        }
+    }
+
+    private void EnsureSynthUplink(EntityUid body, EntityUid mindId, MindComponent mind)
+    {
+        if ((FindImplant(body) ?? GiveUplink(body, 0)) is not { } implant)
+            return;
+
+        if (TryComp<InstituteMemberComponent>(mindId, out var member) && member.Implant == implant)
+            return;
+
+        // Keep the job they already have on the network, else use their real job (none for most ghost roles).
+        var job = member?.Job.Id;
+        if (string.IsNullOrEmpty(job) && _jobs.MindTryGetJob(mindId, out var jobComp, out _))
+            job = jobComp.Prototype?.Id;
+
+        RegisterMember(mindId, mind, implant, job ?? string.Empty);
+    }
+
+    private bool IsInstituteSynth(EntityUid body)
+    {
+        return TryComp<HumanoidAppearanceComponent>(body, out var humanoid) &&
+               InstituteSynthSpecies.Contains(humanoid.Species);
     }
 
     /// <summary>Makes the mind an Institute agent and ties the implant's PIN to it.</summary>
@@ -237,6 +299,10 @@ public sealed partial class InstituteUplinkSystem : EntitySystem
         if (args.Handled)
             return;
         args.Handled = true;
+
+        // A refund rebuilds the store's listings from prototypes, so put the Director's stock back first.
+        if (TryComp<StoreComponent>(ent, out var store))
+            RefreshStock(ent, store);
 
         var user = args.Performer;
         if (ent.Comp.UnlockedFor == user)

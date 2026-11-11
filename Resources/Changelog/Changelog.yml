@@ -14761,3 +14761,10 @@ Entries:
   id: 6643
   time: '2026-11-11T19:07:45.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/178
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Incinerator shots travel twice as far before disappearing.
+  id: 6644
+  time: '2026-11-11T19:08:01.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/176

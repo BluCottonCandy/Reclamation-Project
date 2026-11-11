@@ -14727,3 +14727,12 @@ Entries:
   id: 6639
   time: '2026-11-11T14:32:13.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/172
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Pack members can ask a dismissed warhound to follow again when they have
+        a free follower slot.
+  id: 6640
+  time: '2026-11-11T14:32:29.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/173

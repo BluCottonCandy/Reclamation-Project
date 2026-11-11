@@ -48,8 +48,10 @@ public sealed class HallucinationPainSystem : EntitySystem
 
     public bool Begin(EntityUid user, Guid encounter)
     {
+        var drugHallucinations = !HasComp<DrugHallucinationResistanceComponent>(user) &&
+            (HasComp<DrugHighComponent>(user) || HasComp<SeeingRainbowsComponent>(user));
         if (encounter == Guid.Empty || !_mob.IsAlive(user) ||
-            !(HasComp<UnstableComponent>(user) || HasComp<DrugHighComponent>(user) || HasComp<SeeingRainbowsComponent>(user)))
+            !(HasComp<UnstableComponent>(user) || drugHallucinations))
             return false;
         var pain = EnsureComp<HallucinationPainComponent>(user);
         if (pain.Collapsing || _timing.CurTime < pain.NextBeginAt) return false;

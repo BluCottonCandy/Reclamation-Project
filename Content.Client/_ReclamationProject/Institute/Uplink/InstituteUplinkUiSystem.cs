@@ -148,6 +148,7 @@ public sealed class InstituteUplinkUiSystem : EntitySystem
         root.AddChild(refresh);
 
         BuildSendPoints(root, state);
+        BuildBoard(root, state);
 
         if (state.IsCommand)
         {
@@ -300,6 +301,42 @@ public sealed class InstituteUplinkUiSystem : EntitySystem
         row.AddChild(amount);
         row.AddChild(send);
         root.AddChild(row);
+    }
+
+    private void BuildBoard(BoxContainer root, InstituteNetworkStateEvent state)
+    {
+        root.AddChild(Heading(Loc.GetString("institute-board-heading", ("held", state.BoardHeld), ("limit", state.BoardLimit))));
+        if (state.Board.Count == 0)
+        {
+            root.AddChild(new Label { Text = Loc.GetString("institute-board-empty"), FontColorOverride = Color.Gray });
+            return;
+        }
+
+        foreach (var task in state.Board)
+        {
+            var line = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal, SeparationOverride = 4 };
+            line.AddChild(new Label
+            {
+                Text = Loc.GetString("institute-board-line", ("title", task.Title), ("reward", task.Reward), ("by", task.PostedBy)),
+                HorizontalExpand = true,
+                ClipText = true,
+                ToolTip = string.IsNullOrWhiteSpace(task.Text) ? null : task.Text,
+            });
+
+            var id = task.Id;
+            var accept = new Button { Text = Loc.GetString("institute-board-accept"), Disabled = state.BoardHeld >= state.BoardLimit };
+            accept.OnPressed += _ => RaiseNetworkEvent(new InstituteBoardAcceptEvent { Id = id });
+            line.AddChild(accept);
+
+            if (state.IsCommand)
+            {
+                var remove = new Button { Text = Loc.GetString("institute-network-remove") };
+                remove.OnPressed += _ => RaiseNetworkEvent(new InstituteBoardRemoveEvent { Id = id });
+                line.AddChild(remove);
+            }
+
+            root.AddChild(line);
+        }
     }
 
     private void BuildMembers(BoxContainer root, InstituteNetworkStateEvent state)
@@ -484,7 +521,8 @@ public sealed class InstituteUplinkUiSystem : EntitySystem
         var reward = new LineEdit { Text = "20", MinWidth = 80 };
         root.AddChild(Row(Loc.GetString("institute-network-assign-reward"), reward));
 
-        var give = new Button { Text = Loc.GetString("institute-network-assign-give"), HorizontalAlignment = Control.HAlignment.Left };
+        var buttons = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal, SeparationOverride = 4 };
+        var give = new Button { Text = Loc.GetString("institute-network-assign-give") };
         give.OnPressed += _ =>
         {
             if (_assignTarget is not { } target)
@@ -508,7 +546,27 @@ public sealed class InstituteUplinkUiSystem : EntitySystem
 
             RaiseNetworkEvent(request);
         };
-        root.AddChild(give);
+        buttons.AddChild(give);
+
+        // Same order, but onto the open board for anyone to accept.
+        var post = new Button { Text = Loc.GetString("institute-board-post") };
+        post.OnPressed += _ =>
+        {
+            int.TryParse(reward.Text, out var points);
+            var request = new InstituteBoardPostEvent { Kind = _assignKind, Reward = points };
+            if (person != null && state.People.Count > 0)
+                request.Person = state.People[person.SelectedId].Mind;
+            if (item != null && state.StealItems.Count > 0)
+                request.Item = state.StealItems[item.SelectedId].Prototype;
+            if (title != null)
+                request.Title = title.Text;
+            if (text != null)
+                request.Text = text.Text;
+
+            RaiseNetworkEvent(request);
+        };
+        buttons.AddChild(post);
+        root.AddChild(buttons);
     }
 
     private static Label Heading(string text)

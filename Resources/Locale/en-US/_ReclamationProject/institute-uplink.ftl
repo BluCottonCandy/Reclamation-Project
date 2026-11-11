@@ -120,3 +120,19 @@ institute-network-stock-added = {$item} is now in every uplink for {$price} RP.
 institute-network-stock-removed = {$item} was taken out of the uplink.
 institute-network-stock-bad-price = The price has to be between {$min} and {$max} RP.
 institute-network-stock-bad-item = That item can't be put in the uplink.
+
+# Task board
+institute-board-heading = Task board ({$held}/{$limit} taken)
+institute-board-empty = No open tasks.
+institute-board-line = {$title} | {$reward} RP | from {$by}
+institute-board-accept = Accept
+institute-board-post = Post to board
+institute-board-preset-by = Institute
+institute-board-kill = Kill {$name}
+institute-board-protect = Keep {$name} alive
+institute-board-posted = Posted to the board: {$title}
+institute-board-removed = Taken off the board: {$title}
+institute-board-accepted = Task accepted: {$title}
+institute-board-gone = Someone already took that task.
+institute-board-limit = You already hold {$limit} board tasks. Finish one first.
+institute-board-not-yourself = That task targets you.

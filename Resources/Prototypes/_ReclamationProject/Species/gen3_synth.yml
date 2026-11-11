@@ -36,6 +36,8 @@
     requiredLegs: 2
   # Institute synth: always Institute whatever the job (so it shows on the Institute tablet map) and never breathes.
   - type: CourserSynth
+  # #Reclamation Project - "Relay to pad" action onto Institute relay pads
+  - type: InstitutePadTraveler
   - type: NpcFactionMember
     factions:
     - Institute

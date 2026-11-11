@@ -57,7 +57,7 @@ public sealed class EmagSystem : EntitySystem
             return false;
         }
 
-        var handled = DoEmagEffect(user, target);
+        var handled = DoEmagEffect(user, target, comp.IgnoreDoorPower); // #Reclamation Project - per-emag door power override
         if (!handled)
             return false;
 

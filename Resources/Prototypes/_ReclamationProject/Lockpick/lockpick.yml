@@ -1,0 +1,22 @@
+# #Reclamation Project - lockpick set for locked doors without power (wooden and metal secure doors).
+# Use it on the door to open the pin minigame. Placeholder sprite: a recoloured screwdriver.
+
+- type: entity
+  parent: BaseItem
+  id: ReclamationLockpickSet
+  name: lockpick set
+  description: A hook pick and a tension wrench. Opens locked doors that don't run on power. Each snapped pick is gone for good.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/screwdriver.rsi
+    state: screwdriver-map
+    color: "#9aa3ad"
+  - type: Item
+    size: Small
+    sprite: Objects/Tools/screwdriver.rsi
+  - type: Lockpick
+    picks: 5
+  - type: UserInterface
+    interfaces:
+      enum.LockpickUiKey.Key:
+        type: LockpickBoundUserInterface

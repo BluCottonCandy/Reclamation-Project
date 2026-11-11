@@ -14709,3 +14709,14 @@ Entries:
   id: 6637
   time: '2026-11-11T14:31:13.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/170
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Unstable now grants 5 character points.
+    - type: Add
+      message: >-
+        Clear-Headed costs 5 character points and prevents drug-induced
+        hallucinations. It cannot be selected with Unstable.
+  id: 6638
+  time: '2026-11-11T14:31:51.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/171

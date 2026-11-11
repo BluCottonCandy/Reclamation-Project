@@ -40,23 +40,24 @@ public static class BioMonitorColors
             return;
         }
 
-        Background = Color.FromHex("#EEF3F6");
-        Header = Color.FromHex("#D3E2EA");
-        Border = Color.FromHex("#8DB3C7");
-        Text = Color.FromHex("#24536D");
-        Bright = Color.FromHex("#0D3347");
-        Dim = Color.FromHex("#6A8EA1");
-        Warn = Color.FromHex("#B8650F");
-        Danger = Color.FromHex("#B3302E");
-        Selected = Color.FromHex("#0D3347");
-        FillOk = Color.FromHex("#9FD3EA");
-        FillHurt = Color.FromHex("#EBC07F");
-        FillCrit = Color.FromHex("#E08A84");
-        FillMissing = Color.FromHex("#CBD6DC");
+        // Dark slate with soft cyan text: still Institute blue/white, but no bright white glare.
+        Background = Color.FromHex("#141C24");
+        Header = Color.FromHex("#1E2B36");
+        Border = Color.FromHex("#3A5568");
+        Text = Color.FromHex("#A9C7D8");
+        Bright = Color.FromHex("#DCEAF2");
+        Dim = Color.FromHex("#6E8A9C");
+        Warn = Color.FromHex("#D9A35A");
+        Danger = Color.FromHex("#E07A74");
+        Selected = Color.FromHex("#7FD3F0");
+        FillOk = Color.FromHex("#3D7FA0");
+        FillHurt = Color.FromHex("#8C6A33");
+        FillCrit = Color.FromHex("#8A3E3B");
+        FillMissing = Color.FromHex("#26323C");
     }
 
     public static Color ForHealth(float health) =>
-        health > 75f ? (Institute ? Color.FromHex("#3E95BE") : Text) : health > 40f ? Warn : Danger;
+        health > 75f ? (Institute ? Color.FromHex("#5FB3D6") : Text) : health > 40f ? Warn : Danger;
 }
 
 /// <summary>

@@ -67,7 +67,7 @@
     sprite: /Textures/_Misfits/Objects/Warhorns/ncrbugle.rsi
     size: Normal
   - type: Warhorn
-    sound: /Audio/_Misfits/Items/Warhorn/BugleCharge.ogg
+    sound: /Audio/_ReclamationProject/Items/HailToTheChief.ogg
     range: 45
     volume: 2
   - type: UseDelay

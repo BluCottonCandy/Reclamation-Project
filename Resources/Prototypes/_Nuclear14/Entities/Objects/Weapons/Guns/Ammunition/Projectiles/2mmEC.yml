@@ -4,6 +4,9 @@
   id: N14Bullet2mmEC
   name: bullet (2mmEC)
   components:
+  - type: BulletEmbedChance # #Reclamation Project - bullets can stay stuck in a limb
+    chance: 0.15
+    fragment: ReclamationBulletFragmentRifle
   - type: Projectile
     damage:
       types:

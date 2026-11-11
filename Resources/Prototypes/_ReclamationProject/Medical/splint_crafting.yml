@@ -1,7 +1,7 @@
 - type: construction
   id: ReclamationMedicalSplint
   name: medical splint
-  description: Supports a broken limb for transport. Surgery is still needed to mend it.
+  description: Supports a broken limb so you can get around. Bones heal on their own slowly (about 100 minutes), faster asleep on a medical bed, or right away with surgery.
   graph: ReclamationMedicalSplint
   startNode: start
   targetNode: splint

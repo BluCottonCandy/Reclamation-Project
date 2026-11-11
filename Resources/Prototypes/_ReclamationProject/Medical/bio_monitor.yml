@@ -1,0 +1,92 @@
+# #Reclamation Project - Pip-Boy bio-monitor + bullet embedding
+
+# Action button every player gets. Opens the body health screen for yourself
+# when you wear/hold a Pip-Boy, have INT 10, or hold a med scanner.
+- type: entity
+  id: ActionReclamationBioMonitor
+  name: Bio-monitor
+  description: Open your Pip-Boy health screen. Needs a Pip-Boy worn or in hand, a med scanner in hand, INT 10, the Field Medic perk, or a synth body.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+      state: pda
+    event: !type:OpenBioMonitorActionEvent
+
+# Bullet and shrapnel fragments. When a bullet wins its embed roll (or a blast throws shrapnel) one of these
+# goes INSIDE the body, in a hidden container: nobody can see, click or grab it.
+# The only way out is the Remove button on the bio-monitor.
+- type: entity
+  parent: BaseItem
+  id: ReclamationBulletFragmentBase
+  abstract: true
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Materials/Shards/shrapnel.rsi
+    state: shrapnelsmall
+  - type: EmbedPassiveDamage # small damage per second to that limb until removed
+    damage:
+      types:
+        Piercing: 0.05
+  - type: BulletFragment
+    removalTime: 3
+
+- type: entity
+  parent: ReclamationBulletFragmentBase
+  id: ReclamationBulletFragmentPistol
+  name: bullet fragment
+  description: A flattened pistol slug. It used to be inside somebody.
+  components:
+  - type: Sprite
+    state: shrapnelmedium
+
+- type: entity
+  parent: ReclamationBulletFragmentBase
+  id: ReclamationBulletFragmentPellet
+  name: buckshot pellet
+  description: A small lead ball from a shotgun shell.
+  components:
+  - type: Sprite
+    state: shrapnelsmall
+  - type: EmbedPassiveDamage
+    damage:
+      types:
+        Piercing: 0.03
+  - type: BulletFragment
+    removalTime: 2
+
+- type: entity
+  parent: ReclamationBulletFragmentBase
+  id: ReclamationBulletFragmentRifle
+  name: rifle round
+  description: A rifle bullet that went in deep. Getting it out needs a hemostat.
+  components:
+  - type: Sprite
+    state: shrapnellarge
+  - type: EmbedPassiveDamage
+    damage:
+      types:
+        Piercing: 0.08
+  - type: BulletFragment
+    deep: true
+    removalTime: 4
+
+# Left in bodies by bombs, grenades, rockets and other blasts.
+- type: entity
+  parent: ReclamationBulletFragmentBase
+  id: ReclamationShrapnelFragment
+  name: shrapnel
+  description: A jagged bit of metal from an explosion.
+  components:
+  - type: Sprite
+    state: shrapnelmedium
+  - type: EmbedPassiveDamage
+    damage:
+      types:
+        Piercing: 0.05
+        Slash: 0.02
+  - type: BulletFragment
+    removalTime: 3

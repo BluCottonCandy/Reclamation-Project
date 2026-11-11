@@ -89,6 +89,16 @@ namespace Content.Server.Database
                 .Select(p => (int?) p.Id).SingleOrDefaultAsync();
         }
 
+        public async Task<List<BunkerOwnerRecord>> GetBunkerOwnersAsync()
+        {
+            await using var db = await GetDb();
+            return await (from profile in db.DbContext.Profile.AsNoTracking()
+                join player in db.DbContext.Player.AsNoTracking() on profile.Preference.UserId equals player.UserId into accounts
+                from player in accounts.DefaultIfEmpty()
+                select new BunkerOwnerRecord(profile.Preference.UserId, profile.Id, profile.CharacterName,
+                    player == null ? "Unknown" : player.LastSeenUserName)).ToListAsync();
+        }
+
         public async Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index)
         {
             await using var db = await GetDb();

@@ -18,6 +18,10 @@
                 <cc:CommandButton Name="OpenWhitelistLogsButton" Command="whitelistlogs" Text="{Loc misfits-logs-tab-open-whitelist-logs-btn}" MinWidth="180" />
                 <Label Name="OpenWhitelistLogsDescription" Text="{Loc misfits-logs-tab-open-whitelist-logs-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
             </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="adminbunkers" Text="Bunker" MinWidth="180" />
+                <Label Text="Browse saved bunkers by character name and Ckey" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
         </BoxContainer>
     </ScrollContainer>
 </Control>

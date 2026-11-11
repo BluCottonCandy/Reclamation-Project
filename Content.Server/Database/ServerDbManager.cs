@@ -40,6 +40,7 @@ namespace Content.Server.Database
         Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index);
 
         Task<int?> GetBunkerProfileIdAsync(NetUserId userId, int slot, string name);
+        Task<List<BunkerOwnerRecord>> GetBunkerOwnersAsync();
         Task SaveCharacterSlotAsync(NetUserId userId, ICharacterProfile? profile, int slot);
 
         Task SaveAdminOOCColorAsync(NetUserId userId, Color color);
@@ -577,6 +578,9 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SaveSelectedCharacterIndexAsync(userId, index));
         }
+
+        public Task<List<BunkerOwnerRecord>> GetBunkerOwnersAsync()
+            => RunDbCommand(() => _db.GetBunkerOwnersAsync());
 
         public Task<int?> GetBunkerProfileIdAsync(NetUserId userId, int slot, string name)
         {

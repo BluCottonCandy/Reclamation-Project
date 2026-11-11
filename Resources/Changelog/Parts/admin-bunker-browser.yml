@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Added an admin Bunker browser in the Door Logs tab, listing saved rooms alphabetically by character name with Ckeys, search, refresh, load/visit and return controls. Unloaded bunkers open as inspection copies without overwriting player saves.

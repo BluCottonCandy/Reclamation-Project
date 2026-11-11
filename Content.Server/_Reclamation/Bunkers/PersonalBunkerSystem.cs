@@ -47,7 +47,7 @@ namespace Content.Server._Reclamation.Bunkers;
 /// Character-owned, server-side interiors. Reuses cryostorage, grid serialization and normal containers.
 /// Character ownership uses the existing DB profile row, never a mutable name or current lobby selection.
 /// </summary>
-public sealed class PersonalBunkerSystem : EntitySystem
+public sealed partial class PersonalBunkerSystem : EntitySystem
 {
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IServerPreferencesManager _preferences = default!;
@@ -187,6 +187,7 @@ public sealed class PersonalBunkerSystem : EntitySystem
         }
         if (_time.CurTime < _nextScan || _stopping) return;
         _nextScan = _time.CurTime + TimeSpan.FromSeconds(2);
+        UpdateAdminInspections();
         ProcessForcedExits();
         EvictUnattendedGhosts();
         foreach (var uid in _identities.Keys.Where(uid => !Exists(uid)).ToArray()) _identities.Remove(uid);
@@ -314,6 +315,11 @@ public sealed class PersonalBunkerSystem : EntitySystem
     {
         if (!Transform(user).Coordinates.TryDistance(EntityManager, Transform(ladder).Coordinates, out var distance) || distance > 2) return;
         var grid = Transform(ladder).GridUid;
+        if (IsActiveAdminGhost(user) && _adminOrigins.ContainsKey(user))
+        {
+            ReturnAdminFromBunker(user);
+            return;
+        }
         var room = _rooms.Values.FirstOrDefault(r => r.Grid == grid);
         if (room == null || Transform(user).GridUid != grid) return;
         ReturnToHatch(room, user);
@@ -554,6 +560,8 @@ public sealed class PersonalBunkerSystem : EntitySystem
     {
         SaveAll(includeOccupied: true);
         _rooms.Clear();
+        _adminInspections.Clear();
+        _adminOrigins.Clear();
         _identities.Clear();
         _loads.Clear();
         _queued.Clear();

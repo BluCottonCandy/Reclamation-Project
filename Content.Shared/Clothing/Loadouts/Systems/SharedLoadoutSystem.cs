@@ -137,6 +137,7 @@ public sealed class SharedLoadoutSystem : EntitySystem
                 continue;
 
             remainingPoints -= loadoutProto.Cost;
+            var leaveOnGround = job.GroundLoadoutCategories.Contains(loadoutProto.Category);
 
             // Spawn the loadout items
             var spawned = EntityManager.SpawnEntities(
@@ -157,7 +158,7 @@ public sealed class SharedLoadoutSystem : EntitySystem
                     heirlooms.Add((item, loadout));
 
                 // Equip it
-                if (loadoutProto.AutoEquip && EntityManager.TryGetComponent<ClothingComponent>(item, out var clothingComp)
+                if (!leaveOnGround && loadoutProto.AutoEquip && EntityManager.TryGetComponent<ClothingComponent>(item, out var clothingComp)
                     && _characterRequirements.CanEntityWearItem(uid, item, true)
                     && _inventory.TryGetSlots(uid, out var slotDefinitions))
                 {
@@ -195,7 +196,8 @@ public sealed class SharedLoadoutSystem : EntitySystem
                 }
 
                 // Equip the loadout
-                if (!loadoutProto.AutoEquip || !_inventory.TryEquip(uid, item, slot, true, !string.IsNullOrEmpty(slot), true))
+                if (!leaveOnGround &&
+                    (!loadoutProto.AutoEquip || !_inventory.TryEquip(uid, item, slot, true, !string.IsNullOrEmpty(slot), true)))
                     failedLoadouts.Add(item);
 
                 i++;

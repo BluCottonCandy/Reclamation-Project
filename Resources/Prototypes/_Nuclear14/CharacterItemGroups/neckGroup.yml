@@ -3,6 +3,16 @@
   maxItems: 1
   items:
     - type: loadout
+      id: LoadoutPackCloakBone
+    - type: loadout
+      id: LoadoutPackCloakRaven
+    - type: loadout
+      id: LoadoutPackCloakCordon
+    - type: loadout
+      id: LoadoutPackCloakAntler
+    - type: loadout
+      id: LoadoutPackCloakChain
+    - type: loadout
       id: ReclamationLoadoutChaplainClothingNeckStoleChaplain
     - type: loadout
       id: N14LoadoutNeckCloakLeather

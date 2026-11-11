@@ -2,6 +2,16 @@
   id: N14LoadoutHands
   items:
     - type: loadout
+      id: LoadoutPackBoneGloves
+    - type: loadout
+      id: LoadoutPackRavenGloves
+    - type: loadout
+      id: LoadoutPackCordonGloves
+    - type: loadout
+      id: LoadoutPackAntlerGloves
+    - type: loadout
+      id: LoadoutPackChainGloves
+    - type: loadout
       id: N14LoadoutHandsGlovesCloth
     - type: loadout
       id: N14LoadoutHandsGlovesLeather

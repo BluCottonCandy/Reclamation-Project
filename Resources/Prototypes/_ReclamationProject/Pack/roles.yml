@@ -19,9 +19,11 @@
   description: job-description-pack-cub
   playTimeTracker: PackCub
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackCubGear
   setPreference: true
   alwaysUseSpawner: true
@@ -125,9 +127,11 @@
   description: job-description-pack-youngling
   playTimeTracker: PackYoungling
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackYounglingGear
   setPreference: true
   alwaysUseSpawner: true
@@ -240,9 +244,11 @@
   description: job-description-pack-hunter
   playTimeTracker: PackHunter
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackHunterGear
   setPreference: true
   alwaysUseSpawner: true
@@ -356,9 +362,11 @@
   description: job-description-pack-beasttamer
   playTimeTracker: PackBeastTamer
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed]
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackBeastTamerGear
   setPreference: true
   alwaysUseSpawner: true
@@ -471,10 +479,13 @@
   name: job-name-pack-shaman
   description: job-description-pack-shaman
   playTimeTracker: PackShaman
+  groundLoadoutCategories: [Outer]
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackShamanCoat]
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackShamanGear
   setPreference: true
   alwaysUseSpawner: true
@@ -588,9 +599,11 @@
   description: job-description-pack-beastmaster
   playTimeTracker: PackBeastmaster
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackClothingOuterArmorPunkGreen, LoadoutPackClothingOuterArmorPunkOrange, LoadoutPackClothingOuterArmorPunkRed, LoadoutPackClothingOuterArmorPunkRandomized, LoadoutPackClothingOuterCoatBomberPunkRed, LoadoutPackPunkArmorHeavy]
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain, LoadoutPackThemedVestHeavyRaven, LoadoutPackThemedVestHeavyFang, LoadoutPackThemedVestHeavyCordon, LoadoutPackThemedVestHeavyAntler, LoadoutPackThemedVestHeavyChain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackBeastmasterGear
   setPreference: true
   alwaysUseSpawner: true
@@ -706,10 +719,13 @@
   name: job-name-pack-beta
   description: job-description-pack-beta
   playTimeTracker: PackBeta
+  groundLoadoutCategories: [Outer]
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackBetaRavenCloak]
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain, LoadoutPackThemedVestHeavyRaven, LoadoutPackThemedVestHeavyFang, LoadoutPackThemedVestHeavyCordon, LoadoutPackThemedVestHeavyAntler, LoadoutPackThemedVestHeavyChain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackBetaGear
   setPreference: true
   alwaysUseSpawner: true
@@ -819,12 +835,13 @@
   name: job-name-pack-alpha
   description: job-description-pack-alpha
   playTimeTracker: PackAlpha
+  groundLoadoutCategories: [Outer]
   loadoutCategoryWhitelist:
-    Uniform: [LoadoutPackClothingUniformRandomPunkCroptop, LoadoutPackClothingUniformRandomPunkTanktop, LoadoutPackClothingUniformRandomArmlessNoSkirt, LoadoutPackClothingUniformRandomPunkCroptopShorts, LoadoutPackClothingUniformRandomPunkTanktopShorts]
-    Outer: [LoadoutPackAlphaDeathclawArmor]
-    Head: [LoadoutPackAlphaDeathclawHelmet]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain, LoadoutPackThemedVestHeavyRaven, LoadoutPackThemedVestHeavyFang, LoadoutPackThemedVestHeavyCordon, LoadoutPackThemedVestHeavyAntler, LoadoutPackThemedVestHeavyChain]
+    Head: []
     Hands: []
-    Shoes: [LoadoutPackClothingShoesBootsPunkRandomized]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
   startingGear: PackAlphaGear
   setPreference: true
   alwaysUseSpawner: true

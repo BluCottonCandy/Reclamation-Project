@@ -195,6 +195,10 @@ namespace Content.Shared.Roles
         [DataField]
         public Dictionary<ProtoId<LoadoutCategoryPrototype>, HashSet<ProtoId<LoadoutPrototype>>> LoadoutCategoryWhitelist = new();
 
+        /// <summary>Selected loadouts in these categories stay at the character spawn position.</summary>
+        [DataField]
+        public HashSet<ProtoId<LoadoutCategoryPrototype>> GroundLoadoutCategories = new();
+
         [DataField]
         public bool SpawnLoadout = true;
 

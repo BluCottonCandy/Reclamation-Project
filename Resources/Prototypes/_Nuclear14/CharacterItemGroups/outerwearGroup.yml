@@ -2,19 +2,57 @@
   id: N14LoadoutOuter
   items:
     - type: loadout
+      id: LoadoutPackThemedVest2Raven
+    - type: loadout
+      id: LoadoutPackThemedVest2Fang
+    - type: loadout
+      id: LoadoutPackThemedVest2Cordon
+    - type: loadout
+      id: LoadoutPackThemedVest2Antler
+    - type: loadout
+      id: LoadoutPackThemedVest2Chain
+    - type: loadout
+      id: LoadoutPackThemedVest3Raven
+    - type: loadout
+      id: LoadoutPackThemedVest3Fang
+    - type: loadout
+      id: LoadoutPackThemedVest3Cordon
+    - type: loadout
+      id: LoadoutPackThemedVest3Antler
+    - type: loadout
+      id: LoadoutPackThemedVest3Chain
+    - type: loadout
+      id: LoadoutPackThemedVest4Raven
+    - type: loadout
+      id: LoadoutPackThemedVest4Fang
+    - type: loadout
+      id: LoadoutPackThemedVest4Cordon
+    - type: loadout
+      id: LoadoutPackThemedVest4Antler
+    - type: loadout
+      id: LoadoutPackThemedVest4Chain
+    - type: loadout
+      id: LoadoutPackThemedVest5Raven
+    - type: loadout
+      id: LoadoutPackThemedVest5Fang
+    - type: loadout
+      id: LoadoutPackThemedVest5Cordon
+    - type: loadout
+      id: LoadoutPackThemedVest5Antler
+    - type: loadout
+      id: LoadoutPackThemedVest5Chain
+    - type: loadout
+      id: LoadoutPackThemedVestHeavyRaven
+    - type: loadout
+      id: LoadoutPackThemedVestHeavyFang
+    - type: loadout
+      id: LoadoutPackThemedVestHeavyCordon
+    - type: loadout
+      id: LoadoutPackThemedVestHeavyAntler
+    - type: loadout
+      id: LoadoutPackThemedVestHeavyChain
+    - type: loadout
       id: LoadoutPackAlphaDeathclawArmor
-    - type: loadout
-      id: LoadoutPackPunkArmorHeavy
-    - type: loadout
-      id: LoadoutPackClothingOuterArmorPunkGreen
-    - type: loadout
-      id: LoadoutPackClothingOuterArmorPunkOrange
-    - type: loadout
-      id: LoadoutPackClothingOuterArmorPunkRed
-    - type: loadout
-      id: LoadoutPackClothingOuterArmorPunkRandomized
-    - type: loadout
-      id: LoadoutPackClothingOuterCoatBomberPunkRed
     - type: loadout
       id: ReclamationLoadoutChaplainClothingOuterNunRobe
     - type: loadout

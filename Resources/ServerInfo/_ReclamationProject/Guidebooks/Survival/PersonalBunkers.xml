@@ -9,6 +9,10 @@ Rooms save once when the last occupant leaves. Empty rooms unload after a short 
 
 Dispenser source bottles, inserted beakers, and their remaining chemicals are preserved when your room reloads. Chemistry-set buffers do not trigger reactions when the room reloads; use a suitable reaction container to mix chemicals. Shelves can be opened normally after returning.
 
+## Visiting another bunker
+
+Choose Join Another at a bunker hatch to see occupied bunkers. Select Request access and stay by the hatch while the owner answers. Approval takes you to the room entrance. The ladder returns you to the hatch you used to request the visit.
+
 ## Save failures
 
 If a save fails, an empty room still unloads after its normal grace period rather than repeatedly retrying. Its last successful save is retained, but changes since that save may be lost.

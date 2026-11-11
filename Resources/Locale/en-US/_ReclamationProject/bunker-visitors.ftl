@@ -1,0 +1,15 @@
+bunker-visit-join = Join Another
+bunker-visit-loading = Looking for occupied bunkers…
+bunker-visit-empty = No other bunkers are occupied.
+bunker-visit-back = Back
+bunker-visit-refresh = Refresh
+bunker-visit-request = Request access
+bunker-visit-owner-unavailable = Owner unavailable
+bunker-visit-prompt-title = Bunker access request
+bunker-visit-prompt = { $requester } is requesting access to your bunker.
+bunker-visit-approve = Approve
+bunker-visit-deny = Deny
+bunker-visit-denied = Denied access
+bunker-visit-sent = Access request sent to the bunker owner.
+bunker-visit-pending = A request is pending or was sent recently. Try again shortly.
+bunker-visit-unavailable = This bunker visit is no longer available.

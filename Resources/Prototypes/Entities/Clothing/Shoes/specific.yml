@@ -264,9 +264,6 @@
         offset: "0, -0.04"
   - type: Item
     sprite: Clothing/Shoes/Specific/skates.rsi
-  - type: ClothingSpeedModifier
-    walkModifier: 1.1
-    sprintModifier: 1.1
   - type: Skates
   - type: FootstepModifier
     footstepSoundCollection:

@@ -14702,3 +14702,10 @@ Entries:
   id: 6636
   time: '2026-11-11T14:30:57.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/169
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Roller skates no longer increase walking or sprinting speed.
+  id: 6637
+  time: '2026-11-11T14:31:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/170

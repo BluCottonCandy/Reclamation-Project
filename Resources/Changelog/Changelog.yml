@@ -14736,3 +14736,12 @@ Entries:
   id: 6640
   time: '2026-11-11T14:32:29.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/173
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Use Join Another at a bunker hatch to request access to an occupied
+        bunker. Only the owner can approve your visit.
+  id: 6641
+  time: '2026-11-11T15:02:10.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/175

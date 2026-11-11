@@ -14669,3 +14669,20 @@ Entries:
   id: 6633
   time: '2026-11-11T03:26:04.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/167
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Warhounds and Pack-tamed animals no longer hunt brahdos, cows, brahmin,
+        chickens, rabbits or other passive wildlife and pets.
+    - type: Fix
+      message: >-
+        Feral ghouls, hostile robots, raiders, super mutants and Zetans now
+        recognize the Pack as enemies.
+    - type: Fix
+      message: >-
+        Only the Pack Alpha can recruit or command deathclaw followers; Charisma
+        cannot bypass this restriction.
+  id: 6634
+  time: '2026-11-11T07:40:31.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/164

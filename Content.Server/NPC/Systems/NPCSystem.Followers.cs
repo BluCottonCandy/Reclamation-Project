@@ -323,9 +323,12 @@ namespace Content.Server.NPC.Systems
             if (!TryComp<NpcFactionMemberComponent>(user, out var userFaction))
                 return false;
 
-            // The Pack's Charisma exemption belongs to their animals, not unrelated neutral NPCs.
-            if (HasComp<Content.Shared._ReclamationProject.Pack.PackMemberComponent>(user) &&
-                !HasComp<Content.Shared._ReclamationProject.Pack.PackAnimalComponent>(target) &&
+            var packMember = HasComp<Content.Shared._ReclamationProject.Pack.PackMemberComponent>(user);
+            var packCompanion = packMember &&
+                HasComp<Content.Shared._ReclamationProject.Pack.PackAnimalComponent>(target) &&
+                _npcFaction.ContainsFaction(target, "Pack", targetFaction);
+
+            if (packMember && !packCompanion &&
                 _special.GetEffective(user, SpecialStat.Charisma) < _special.GetTuning().CharismaNeutralFollowerMinimum)
                 return false;
 
@@ -340,8 +343,11 @@ namespace Content.Server.NPC.Systems
             if (followerCount >= followerCapacity)
                 return false;
 
-            if (_npcFaction.IsEntityHostile((target, null), (user, userFaction)) ||
-                _npcFaction.IsEntityHostile((user, null), (target, targetFaction)))
+            // An additional faction or temporary aggro can make the generic hostility
+            // check reject an allied Pack companion after its follow order is cleared.
+            if (!packCompanion &&
+                (_npcFaction.IsEntityHostile((target, null), (user, userFaction)) ||
+                 _npcFaction.IsEntityHostile((user, null), (target, targetFaction))))
             {
                 return false;
             }
@@ -373,6 +379,10 @@ namespace Content.Server.NPC.Systems
                 _popup.PopupEntity(Loc.GetString("npc-order-follow-cap-reached"), target, user, PopupType.Small);
                 return;
             }
+
+            if (!TryComp<NpcFactionMemberComponent>(target, out var targetFaction) ||
+                !CanRecruitNeutralFollower(user, target, htn, targetFaction))
+                return;
 
             _npcFaction.AddFriendlyEntity(target, user);
             _npcFaction.IgnoreEntity(target, user);

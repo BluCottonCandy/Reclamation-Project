@@ -14720,3 +14720,10 @@ Entries:
   id: 6638
   time: '2026-11-11T14:31:51.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/171
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: The NCR bugle has a new sprite and plays Hail to the Chief.
+  id: 6639
+  time: '2026-11-11T14:32:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/172

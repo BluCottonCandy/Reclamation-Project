@@ -14693,3 +14693,12 @@ Entries:
   id: 6635
   time: '2026-11-11T07:41:41.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/168
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Admins can browse and inspect saved personal bunkers from the Door Logs
+        tab.
+  id: 6636
+  time: '2026-11-11T14:30:57.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/169

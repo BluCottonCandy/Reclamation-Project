@@ -14645,3 +14645,27 @@ Entries:
   id: 6632
   time: '2026-11-11T01:45:31.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/166
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Institute relay pads. Buy one folded from the uplink and set it up
+        anywhere; every Gen 3 synth and Courser can relay onto any pad (with
+        whoever they're dragging) from a drop-down list. 30 second cooldown.
+    - type: Add
+      message: >-
+        Lockpicking. Use a lockpick set on a locked door without power to pick
+        its pins: tension, binding pins, false sets on spool pins and ridges on
+        serrated pins. Agility and Perception help.
+    - type: Add
+      message: >-
+        The Institute uplink now sells a lockpick set, an emag that opens bunker
+        doors even without power, and a chameleon skin mutator.
+    - type: Add
+      message: >-
+        Institute task board: preset tasks each round plus tasks command posts.
+        Any Institute member can accept up to 3; command can add and remove
+        tasks.
+  id: 6633
+  time: '2026-11-11T03:26:04.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/167

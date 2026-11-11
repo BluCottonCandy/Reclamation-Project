@@ -14587,3 +14587,45 @@ Entries:
   id: 6630
   time: '2026-11-10T13:31:35.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/163
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Bio-monitor: a Pip-Boy health screen with a clickable body doll, opened
+        from a worn or held Pip-Boy, a med scanner, INT 10, the Field Medic
+        perk, or a Gen 3 synth / Courser body.
+    - type: Add
+      message: Scanning someone with a med scanner now opens the bio-monitor.
+    - type: Add
+      message: >-
+        Bullets can get stuck inside people (pistol 20%, shotgun 25% per pellet,
+        rifle 15%) and explosions can leave shrapnel. They slowly hurt that limb
+        and only come out through the bio-monitor's Remove button.
+    - type: Add
+      message: >-
+        Pulling a stuck item out can cause bleeding unless you are skilled. A
+        hemostat makes it faster and safer, and deep rifle rounds always need
+        one.
+    - type: Add
+      message: >-
+        Field Medic perk (5 points): use the bio-monitor without a device,
+        remove things at tool speed, and do surgery on yourself.
+    - type: Add
+      message: >-
+        Institute staff and synths get a white and blue Institute BioScience
+        version of the screen.
+    - type: Add
+      message: >-
+        The bio-monitor shows radiation, chems in your bloodstream (poisons
+        flagged), pulse, blood, temperature, hunger and thirst.
+    - type: Tweak
+      message: >-
+        Synths can't push out fragments with their nanites, but stuck fragments
+        only do 20% damage to them.
+    - type: Fix
+      message: >-
+        Broken bones show how far they have healed and how long is left. Splints
+        no longer say surgery is required.
+  id: 6631
+  time: '2026-11-11T00:41:36.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/165

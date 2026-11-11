@@ -2,6 +2,8 @@
   id: N14LoadoutShoes
   items:
     - type: loadout
+      id: LoadoutPackClothingShoesBootsPunkRandomized
+    - type: loadout
       id: N14LoadoutShoesBlack
     - type: loadout
       id: N14LoadoutShoesBrown

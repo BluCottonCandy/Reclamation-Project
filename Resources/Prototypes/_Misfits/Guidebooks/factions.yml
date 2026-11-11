@@ -85,6 +85,7 @@
   children:
   - N14FollowersOfTheApocalypse
   - ReclamationForgedArmor
+  - ReclamationPack
 - type: guideEntry
   id: N14ChildrenOfAtom
   name: guide-entry-childrenofatom

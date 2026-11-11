@@ -94,10 +94,9 @@ public sealed class DamageOverlayUiController : UIController
         {
             case MobState.Alive:
             {
-                if (damageable.DamagePerGroup.TryGetValue("Brute", out var bruteDamage))
-                {
-                    _overlay.BruteLevel = FixedPoint2.Min(1f, bruteDamage / critThreshold).Float();
-                }
+                var bruteDamage = damageable.DamagePerGroup.GetValueOrDefault("Brute");
+                var perceivedDamage = _mobThresholdSystem.GetDisplayedDamage(entity, damageable.TotalDamage) - damageable.TotalDamage;
+                _overlay.BruteLevel = FixedPoint2.Min(1f, (bruteDamage + perceivedDamage) / critThreshold).Float();
 
                 if (damageable.DamagePerGroup.TryGetValue("Airloss", out var oxyDamage))
                 {
@@ -116,7 +115,7 @@ public sealed class DamageOverlayUiController : UIController
             case MobState.Critical:
             {
                 if (!_mobThresholdSystem.TryGetDeadPercentage(entity,
-                        FixedPoint2.Max(0.0, damageable.TotalDamage), out var critLevel))
+                        FixedPoint2.Max(0.0, _mobThresholdSystem.GetDisplayedDamage(entity, damageable.TotalDamage)), out var critLevel))
                     return;
                 _overlay.CritLevel = critLevel.Value.Float();
 

@@ -1,0 +1,22 @@
+# #Reclamation Project - white armband: 1 cloth, crafted by hand.
+
+- type: constructionGraph
+  id: ReclamationArmband
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: left
+      steps:
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+    - to: right
+      steps:
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: left
+    entity: ReclamationArmbandLeft
+  - node: right
+    entity: ReclamationArmbandRight

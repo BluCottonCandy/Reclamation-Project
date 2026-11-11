@@ -1,5 +1,6 @@
 - type: loadout
   id: LoadoutLegionPrincipes
+  hidden: true
   category: Roles
   cost: 16
   exclusive: true

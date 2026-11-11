@@ -1,6 +1,6 @@
 - type: job
   id: CaesarLegionPrimeDecanus
-  setPreference: true
+  setPreference: false
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 140
@@ -21,6 +21,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
     - !type:CharacterSexRequirement
       sex: Male
     - !type:CharacterGenderRequirement

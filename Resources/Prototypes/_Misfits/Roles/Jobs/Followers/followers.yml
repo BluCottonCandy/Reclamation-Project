@@ -18,7 +18,7 @@
 # ─── Follower Director ────────────────────────────────────────────────────────────
 - type: job
   id: FollowerDirector
-  setPreference: true
+  setPreference: false
   whitelisted: true
   hideWithoutJobWhitelist: true
   jobWhitelistBypassesRoleTimers: true
@@ -48,6 +48,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -86,7 +87,7 @@
 # ─── Follower Head ────────────────────────────────────────────────────────────
 - type: job
   id: FollowerHead
-  setPreference: true
+  setPreference: false
   jobWhitelistBypassesRoleTimers: true
   weight: 110
   displayWeight: 115
@@ -114,6 +115,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -152,7 +154,7 @@
 # ─── Follower Doctor ─────────────────────────────────────────────────────────
 - type: job
   id: FollowerDoctor
-  setPreference: true
+  setPreference: false
   jobWhitelistBypassesRoleTimers: true
   weight: 105
   displayWeight: 110
@@ -179,6 +181,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -216,7 +219,7 @@
 # --- Follower Guard ----------------------------------------------------------
 - type: job
   id: FollowerGuard
-  setPreference: true
+  setPreference: false
   jobWhitelistBypassesRoleTimers: true
   weight: 103
   displayWeight: 108
@@ -243,6 +246,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
   special:
   - !type:AddComponentSpecial
@@ -286,7 +290,7 @@
 # --- Follower Volunteer ------------------------------------------------------
 - type: job
   id: FollowerVolunteer
-  setPreference: true
+  setPreference: false
   jobWhitelistBypassesRoleTimers: true
   weight: 100
   displayWeight: 105
@@ -308,6 +312,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
     - Ghoul
   special:
   - !type:AddComponentSpecial

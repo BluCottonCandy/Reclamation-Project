@@ -38,6 +38,13 @@ public sealed partial class ActiveAutodocComponent : Component
     [DataField]
     public (EntityUid, EntityUid, EntProtoId)? CurrentSurgery;
 
+    /// <summary>
+    /// #Reclamation Project - who started the program. If that's the patient, they're operating on
+    /// themselves and the "must be asleep" safety doesn't apply.
+    /// </summary>
+    [DataField]
+    public EntityUid? StartedBy;
+
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoPausedField]
     public TimeSpan NextUpdate = TimeSpan.Zero;

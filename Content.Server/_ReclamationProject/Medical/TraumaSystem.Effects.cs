@@ -146,17 +146,21 @@ public sealed partial class TraumaSystem
         {
             if (!IsLimb(component) || !TryComp<TraumaLimbComponent>(part, out var health)) continue;
             var currentHealth = GetLimbHealth(part, health);
-            if (health.MaximumHealth >= 100f && currentHealth >= health.MaximumHealth &&
+            // #Reclamation Project - nanite-rebuilt scars still show, scaled down like a human's.
+            var realMaximum = health.MaximumHealth + health.TemporaryHealth;
+            var shownMaximum = Math.Max(0f, realMaximum - health.HiddenScarLoss);
+            var shownHealth = realMaximum > 0f ? currentHealth * shownMaximum / realMaximum : 0f;
+            if (health.MaximumHealth - health.HiddenScarLoss >= 100f && currentHealth >= health.MaximumHealth &&
                 component.Enabled && !HasComp<FractureComponent>(part)) continue;
-            var status = health.MaximumHealth <= 0f ? "trauma-replacement-required" :
+            var status = health.MaximumHealth - health.HiddenScarLoss <= 0f ? "trauma-replacement-required" :
                 !component.Enabled ? "trauma-limb-disabled" : "trauma-limb-functional";
             var summary = Loc.GetString(status);
             if (health.MaximumHealth > 0f && TryComp<FractureComponent>(part, out var fracture))
                 summary = Loc.GetString(fracture.Splinted ? "trauma-scan-splinted" : "trauma-scan-fractured",
                     ("healing", (int) MathF.Round(fracture.HealingProgress)));
             lines.Add(Loc.GetString("trauma-report-limb", ("part", Name(part)),
-                ("health", ScanHealth(currentHealth)),
-                ("maximum", ScanHealth(health.MaximumHealth + health.TemporaryHealth)),
+                ("health", ScanHealth(shownHealth)),
+                ("maximum", ScanHealth(shownMaximum)),
                 ("status", summary)));
         }
         if (medical.InternalBleeding > 0)
@@ -165,12 +169,15 @@ public sealed partial class TraumaSystem
         foreach (var (organ, component) in attached)
         {
             var health = Comp<TraumaOrganComponent>(organ);
-            if (health.MaximumHealth >= 100f && health.CurrentHealth >= health.MaximumHealth &&
+            // #Reclamation Project - nanite-rebuilt scars still show, scaled down like a human's.
+            var shownMaximum = Math.Max(0f, health.MaximumHealth - health.HiddenScarLoss);
+            var shownHealth = health.MaximumHealth > 0f ? health.CurrentHealth * shownMaximum / health.MaximumHealth : 0f;
+            if (shownMaximum >= 100f && health.CurrentHealth >= health.MaximumHealth &&
                 component.Enabled) continue;
-            var status = health.MaximumHealth <= 0f ? "trauma-replacement-required" :
+            var status = shownMaximum <= 0f ? "trauma-replacement-required" :
                 !component.Enabled || health.CurrentHealth <= 0f ? "trauma-organ-disabled" : "trauma-limb-functional";
             lines.Add(Loc.GetString("trauma-report-organ", ("organ", Name(organ)),
-                ("health", ScanHealth(health.CurrentHealth)), ("maximum", ScanHealth(health.MaximumHealth)),
+                ("health", ScanHealth(shownHealth)), ("maximum", ScanHealth(shownMaximum)),
                 ("status", Loc.GetString(status))));
         }
         foreach (var (kind, count) in medical.OriginalOrgans)

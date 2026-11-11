@@ -5,6 +5,15 @@
   description: A bed that massively slows down the patient's metabolism and prevents bodily decay, allowing more time to administer a proper treatment for stabilization.
   components:
   - type: StasisBed
+  # #Reclamation Project - counts as an operating table, so surgery and a linked Autodoc work on it.
+  # While powered it also keeps the patient alive through organ loss (StasisLifeSupportSystem).
+  - type: OperatingTable
+  - type: DeviceNetwork
+    deviceNetId: Wired
+  - type: DeviceLinkSource
+    range: 2
+    ports:
+    - OperatingTable
   - type: AntiRotOnBuckle
   - type: HealOnBuckle
     damage:

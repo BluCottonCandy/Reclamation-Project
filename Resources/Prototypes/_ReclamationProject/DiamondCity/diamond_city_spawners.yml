@@ -1,0 +1,120 @@
+# #Reclamation Project - Diamond City job spawn points, one per job.
+# Diamond City is not mapped yet. Until these are placed, the jobs use the station fallback spawn.
+# Once they are on the map, add alwaysUseSpawner: true to the jobs so late joiners use them too.
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointMayor
+  name: Diamond City Mayor
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCityMayor
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: mayor
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointSecurityChief
+  name: Diamond City Security Chief
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCitySecurityChief
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: sheriff
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointSecuritySergeant
+  name: Diamond City Security Sergeant
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCitySecuritySergeant
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: deputy
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointSecurityGuard
+  name: Diamond City Security Guard
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCitySecurityGuard
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: deputy
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointSecurityRecruit
+  name: Diamond City Security Recruit
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCitySecurityRecruit
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: deputy
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointMedic
+  name: Diamond City Medic
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCityMedic
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: doctor
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointShopkeeper
+  name: Diamond City Shopkeeper
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCityShopkeeper
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: shopkeeper
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointTownsfolk
+  name: Diamond City Townsfolk
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCityTownsfolk
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: person
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: DiamondCitySpawnPointTakahashi
+  name: Diamond City Takahashi
+  components:
+  - type: SpawnPoint
+    job_id: DiamondCityTakahashi
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/town.rsi
+    layers:
+      - state: green
+      - state: shopkeeper

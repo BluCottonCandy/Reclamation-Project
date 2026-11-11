@@ -72,7 +72,8 @@ public sealed class FactionFiveHourTimerTests
             try
             {
                 var job = prototypes.Index<JobPrototype>(id);
-                Assert.That(job.JobWhitelistBypassesRoleTimers, Is.False);
+                var whitelistSkips = FactionTimeAlternativesTests.WhitelistSkipsTimers.Contains(id); // #Reclamation Project
+                Assert.That(job.JobWhitelistBypassesRoleTimers, Is.EqualTo(whitelistSkips));
                 var times = prototypes.EnumeratePrototypes<PlayTimeTrackerPrototype>()
                     .ToDictionary(t => t.ID, _ => TimeSpan.Zero);
                 times[PlayTimeTrackingShared.TrackerOverall] = TimeSpan.FromHours(1000);
@@ -95,7 +96,9 @@ public sealed class FactionFiveHourTimerTests
                     job, HumanoidCharacterProfile.DefaultWithSpecies(), times, true, job,
                     em, prototypes, config, sponsor, out _, jobWhitelisted: approved);
                 Assert.That(Eligible(), Is.False, "Server-wide playtime alone cannot unlock a faction promotion.");
-                Assert.That(Eligible(true), Is.False, "Whitelist approval alone does not waive the time requirement.");
+                Assert.That(Eligible(true), Is.EqualTo(whitelistSkips), whitelistSkips
+                    ? "Whitelist approval lets a faction head skip the hours."
+                    : "Whitelist approval alone does not waive the time requirement.");
                 times[tracker] = TimeSpan.FromHours(5) - TimeSpan.FromSeconds(1);
                 Assert.That(Eligible(), Is.False, "One second below the preceding-role threshold remains locked.");
                 times[tracker] += TimeSpan.FromSeconds(1);

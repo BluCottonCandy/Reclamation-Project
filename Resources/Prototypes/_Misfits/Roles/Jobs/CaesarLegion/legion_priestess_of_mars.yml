@@ -5,7 +5,7 @@
 
 - type: job
   id: CaesarLegionPriestessOfMars
-  setPreference: true
+  setPreference: false
   hideWithoutJobWhitelist: false  # visible in all menus regardless of whitelist
   overrideConsoleVisibility: true # force display in crew manifest + job picker
   hideIfPlaytimeRequirementsNotMet: false
@@ -27,6 +27,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
     - !type:CharacterSexRequirement
       sex: Female
     - !type:CharacterGenderRequirement

@@ -1,6 +1,6 @@
 - type: job
   id: CaesarLegionLegate
-  setPreference: true # #Misfits Tweak - visible in job selection
+  setPreference: false
   hideWithoutJobWhitelist: true # #Misfits Change - Legate is whitelist-only; hidden from job picker without it
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
@@ -16,6 +16,7 @@
     species:
     - Human
     - Courser
+    - Gen3Synth
   - !type:CharacterSexRequirement
     sex: Male
   - !type:CharacterGenderRequirement

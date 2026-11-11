@@ -35,3 +35,7 @@
           InstituteScientist: [ 4, 4 ]
           InstituteCourser: [ 2, 2 ]
           InstituteSecurity: [ 4, 4 ]
+          InstituteSynth: [ 3, 3 ] # #Reclamation Project - Gen 3 Synths
+          # #Reclamation Project - Minutemen General (faction leader, job-whitelist only). No Minutemen spawn points
+          # are mapped here yet, so they use the station fallback like the Institute.
+          MinutemenGeneral: [ 1, 1 ]

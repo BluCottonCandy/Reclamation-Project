@@ -1,0 +1,323 @@
+# Frontier punk clothing is already present in the repository. Original RSI credits are retained.
+# These choices are available exclusively to Pack roles.
+
+- type: loadout
+  id: LoadoutPackClothingUniformRandomPunkCroptop
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkCroptop
+
+- type: loadout
+  id: LoadoutPackClothingUniformRandomPunkTanktop
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkTanktop
+
+- type: loadout
+  id: LoadoutPackClothingUniformRandomArmlessNoSkirt
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkSleeveless
+
+- type: loadout
+  id: LoadoutPackClothingUniformRandomPunkCroptopShorts
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkCroptopShorts
+
+- type: loadout
+  id: LoadoutPackClothingUniformRandomPunkTanktopShorts
+  category: Uniform
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutUniform
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkTanktopShorts
+
+- type: loadout
+  id: LoadoutPackClothingOuterArmorPunkGreen
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkArmorGreen
+
+- type: loadout
+  id: LoadoutPackClothingOuterArmorPunkOrange
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkArmorOrange
+
+- type: loadout
+  id: LoadoutPackClothingOuterArmorPunkRed
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkArmorRed
+
+- type: loadout
+  id: LoadoutPackClothingOuterArmorPunkRandomized
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkArmorRandomized
+
+- type: loadout
+  id: LoadoutPackClothingOuterCoatBomberPunkRed
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkBomber
+
+- type: loadout
+  id: LoadoutPackClothingShoesBootsPunkRandomized
+  category: Shoes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutShoes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkBoots
+
+- type: loadout
+  id: LoadoutPackClothingBeltPunkRandomized
+  category: Items
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkBelt
+
+- type: loadout
+  id: LoadoutPackClothingEyesPunkGoggles
+  category: Eyes
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutEyes
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkGoggles
+
+- type: loadout
+  id: LoadoutPackClothingMaskPunkHalf
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkHalfMask
+
+- type: loadout
+  id: LoadoutPackClothingMaskRat
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - ClothingMaskRat
+
+- type: loadout
+  id: LoadoutPackClothingMaskFox
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - ClothingMaskFox
+
+- type: loadout
+  id: LoadoutPackClothingMaskBear
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - ClothingMaskBear
+
+- type: loadout
+  id: LoadoutPackClothingMaskRaven
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - ClothingMaskRaven
+
+- type: loadout
+  id: LoadoutPackClothingMaskJackal
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - ClothingMaskJackal
+
+- type: loadout
+  id: LoadoutPackClothingMaskBat
+  category: Mask
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutMask
+  - !type:CharacterJobRequirement
+    jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - ClothingMaskBat
+
+- type: loadout
+  id: LoadoutPackPunkArmorHeavy
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackBeastmaster, PackBeta, PackAlpha]
+  items:
+  - PackPunkArmorHeavy
+
+- type: loadout
+  id: LoadoutPackAlphaDeathclawArmor
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackAlpha]
+  items:
+  - PackAlphaPaintedArmor
+
+- type: loadout
+  id: LoadoutPackAlphaDeathclawHelmet
+  category: Head
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutHead
+  - !type:CharacterJobRequirement
+    jobs: [PackAlpha]
+  items:
+  - PackAlphaPaintedHelmet
+
+- type: loadout
+  id: LoadoutPackShamanCoat
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackShaman]
+  items: [PackShamanCoat]
+
+- type: loadout
+  id: LoadoutPackBetaRavenCloak
+  category: Outer
+  cost: 0
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs: [PackBeta]
+  items: [PackBetaRavenCloak]

@@ -1,0 +1,246 @@
+- type: entity
+  id: PackTamedMolerat
+  parent: N14MobMolerat
+  suffix: Pack, tamed
+  components:
+  - type: PackAnimal
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: Body
+    prototype: N14PetAnimal
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      46: Critical
+      70: Dead
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+  - type: Bloodstream
+- type: entity
+  id: PackTamedMirelurk
+  parent: N14MobMirelurk
+  suffix: Pack, tamed
+  components:
+  - type: PackAnimal
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: Body
+    prototype: N14PetAnimal
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      208: Critical
+      320: Dead
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+  - type: Bloodstream
+- type: entity
+  id: PackTamedRadMirelurk
+  parent: N14MobRadMirelurk
+  suffix: Pack, tamed
+  components:
+  - type: PackAnimal
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: Body
+    prototype: N14PetAnimal
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      208: Critical
+      320: Dead
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+  - type: Bloodstream
+- type: entity
+  id: PackTamedNightstalker
+  parent: N14MobNightstalker
+  suffix: Pack, tamed
+  components:
+  - type: PackAnimal
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: Body
+    prototype: N14PetAnimal
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      130: Critical
+      200: Dead
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+  - type: Bloodstream
+- type: entity
+  id: PackTamedNightstalkerCub
+  parent: N14MobNightstalkerCub
+  suffix: Pack, tamed
+  components:
+  - type: PackAnimal
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: Body
+    prototype: N14PetAnimal
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      98: Critical
+      150: Dead
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+  - type: Bloodstream
+- type: entity
+  id: PackTamedDeathclaw
+  parent: N14MobDeathclaw
+  suffix: Pack, tamed
+  components:
+  - type: PackAnimal
+  - type: NpcFactionMember
+    factions:
+    - Pack
+  - type: Body
+    prototype: N14PetAnimal
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      325: Critical
+      500: Dead
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+  - type: Bloodstream

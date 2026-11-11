@@ -685,3 +685,23 @@
   customDescription: false
   items:
   - Plushie_Scribe
+
+- type: loadout
+  id: LoadoutReclamationPlushieOlive
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieOlive
+
+- type: loadout
+  id: LoadoutReclamationPlushieFelicity
+  category: Plushies
+  cost: 0
+  autoEquip: false
+  customName: false
+  customDescription: false
+  items:
+  - PlushieFelicity

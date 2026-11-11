@@ -18,6 +18,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
    # - !type:CharacterOverallTimeRequirement
    #   min: 3600

@@ -6,6 +6,7 @@
 - type: species
   id: Courser
   name: species-name-courser
+  displaySpecies: Human # others see a human on examine, health analyzers and records
   roundStart: true
   whitelistRequired: true
   jobWhitelistUnlock: InstituteCourser # whitelisted for the Courser job = can pick the race
@@ -257,6 +258,8 @@
     prototype: Courser
     requiredLegs: 2
   - type: CourserSynth
+  # #Reclamation Project - "Relay to pad" action onto Institute relay pads
+  - type: InstitutePadTraveler
   - type: NpcFactionMember
     factions:
     - Institute
@@ -266,11 +269,11 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Critical
+      250: Critical
       400: Dead
     allowRevives: true
   - type: Stamina
-    critThreshold: 120
+    critThreshold: 250
   - type: Reflect
     reflects:
     - SmallCaliber
@@ -315,24 +318,15 @@
   - type: FlashImmunity
   - type: CanFiremanCarry
   - type: TraumaRegeneration
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    - Critical
-    damageCap: 300
-    damage:
-      types:
-        Blunt: -0.50
-        Slash: -0.50
-        Piercing: -0.50
-        Heat: -0.50
-        Cold: -0.50
-        Shock: -0.50
-        Caustic: -0.50
-        Asphyxiation: -0.875
-        Bloodloss: -0.25
-        Poison: -0.25
-        Radiation: -0.25
+  # Nanites: full repair after 10 s without taking damage. Eats but never needs to. Barely burns.
+  # Crawls in crit at normal lying-down speed.
+  - type: NaniteRepair
+  - type: SyntheticSustenance
+  - type: InnateFireProtection
+  - type: SteadyCrawl
+  # Synthetic muscle: +65% damage on every melee hit (fists and held weapons) and on thrown weapons.
+  - type: SyntheticStrength
+    multiplier: 1.65
 
 - type: entity
   save: false

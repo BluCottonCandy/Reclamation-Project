@@ -157,6 +157,41 @@
   id: ForgedSmithyFurnaceHelmet
   name: Smithy's furnace helmet
   components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+    layers:
+    - state: icon
+      sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+    - state: icon-unshaded
+      sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+    - state: light-overlay
+      sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+        sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+      - state: equipped-HELMET-unshaded
+        sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+  - type: ToggleableLightVisuals
+    spriteLayer: light
+    inhandVisuals:
+      left:
+      - state: on-inhand-left
+        sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+      right:
+      - state: on-inhand-right
+        sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+        sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
+  - type: Item
+    sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/t45.rsi
   - type: Armor
     modifiers:
       coefficients:

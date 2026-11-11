@@ -135,9 +135,15 @@ public sealed class SurgerySystem : SharedSurgerySystem
         }
         // N14-Changes-End
 
-        if (user == target && !_config.GetCVar(CCVars.CanOperateOnSelf))
+        // #Reclamation Project - Field Medic perk (and Gen 3 synths / Coursers / INT 10) can operate on themselves.
+        var bioMonitor = EntityManager.System<Content.Server._ReclamationProject.Medical.BioMonitor.BioMonitorSystem>();
+        if (user == target && !_config.GetCVar(CCVars.CanOperateOnSelf) && !bioMonitor.IsSkilled(user))
         {
-            _popup.PopupEntity(Loc.GetString("surgery-error-self-surgery"), user, user);
+            // #Reclamation Project - say how they could do it: the perk, or the bio-monitor for their own bullets.
+            var hint = bioMonitor.HasStuckFragments(user)
+                ? "bio-monitor-self-surgery-hint"
+                : "bio-monitor-self-surgery-perk";
+            _popup.PopupEntity(Loc.GetString(hint), user, user);
             return;
         }
 

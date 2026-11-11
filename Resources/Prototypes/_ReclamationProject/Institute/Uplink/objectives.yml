@@ -1,0 +1,97 @@
+# #Reclamation Project - objectives the Director and Division Heads hand out through the Institute network.
+# Titles, targets and rewards are filled in when the objective is given.
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseInstituteObjective
+  components:
+  - type: Objective
+    issuer: institute
+    difficulty: 1
+    unique: false
+    icon:
+      sprite: Objects/Misc/bureaucracy.rsi
+      state: folder-white
+  - type: InstituteObjective
+
+- type: entity
+  parent: BaseInstituteObjective
+  id: InstituteStealObjective
+  categories: [ HideSpawnMenu ]
+  name: Steal an item
+  components:
+  - type: InstituteStealObjective
+
+- type: entity
+  parent: BaseInstituteObjective
+  id: InstituteKillObjective
+  categories: [ HideSpawnMenu ]
+  name: Kill a target
+  description: The Institute wants this person dead.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+      state: icon
+  - type: TargetObjective
+    title: institute-objective-kill-title
+  - type: KillPersonCondition
+
+# Only true at round end, so the reward is paid when the assigner force-completes it.
+- type: entity
+  parent: BaseInstituteObjective
+  id: InstituteProtectObjective
+  categories: [ HideSpawnMenu ]
+  description: The Institute needs this person alive. Keep them that way.
+  components:
+  - type: InstituteObjective
+    autoPay: false
+  - type: TargetObjective
+    title: institute-objective-protect-title
+  - type: KeepAliveCondition
+
+- type: entity
+  parent: BaseInstituteObjective
+  id: InstituteSurviveObjective
+  categories: [ HideSpawnMenu ]
+  name: Stay alive and undetected
+  description: Survive the round without being caught. The Institute does not exist, as far as the surface knows.
+  components:
+  - type: InstituteObjective
+    autoPay: false
+  - type: SurviveCondition
+
+- type: entity
+  parent: BaseInstituteObjective
+  id: InstituteCustomObjective
+  categories: [ HideSpawnMenu ]
+  name: Orders
+  components:
+  - type: InstituteCustomObjective
+
+# Game rule that lists every Institute agent at round end, and the item list for steal objectives.
+- type: entity
+  parent: BaseGameRule
+  id: InstituteAgents
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstituteRule
+    stealTargets:
+    - EncryptionKeyMinutemen
+    - EncryptionKeyBrotherhoodOfSteel
+    - EncryptionKeyRailroad
+    - EncryptionKeyDiamondCity
+    - EncryptionKeyTown
+    - N14WeaponLaserRifle
+    - N14WeaponGaussRifle
+    - N14WeaponGaussPistol
+    - N14FusionCore
+    - C4
+
+- type: antag
+  id: InstituteAgent
+  name: institute-agent-name
+  antagonist: true
+  setPreference: false
+  objective: institute-agent-objective

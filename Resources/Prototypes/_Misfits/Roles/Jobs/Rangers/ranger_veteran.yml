@@ -34,6 +34,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
     - !type:CharacterAgeRequirement
       min: 36

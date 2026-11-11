@@ -1,6 +1,6 @@
 - type: job
   id: CaesarLegionLegionnaireVeteran
-  setPreference: true
+  setPreference: false
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 60
@@ -19,6 +19,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
     - !type:CharacterSexRequirement
       sex: Male
     - !type:CharacterGenderRequirement

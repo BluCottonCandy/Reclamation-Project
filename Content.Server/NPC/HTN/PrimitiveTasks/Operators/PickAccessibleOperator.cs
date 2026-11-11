@@ -47,7 +47,7 @@ public sealed partial class PickAccessibleOperator : HTNOperator
             owner,
             maxRange,
             cancelToken,
-            flags: _pathfinding.GetFlags(blackboard));
+            flags: _pathfinding.GetFlags(blackboard) & ~(PathFlags.Smashing | PathFlags.Prying));
 
         if (path.Result != PathResult.Path)
         {

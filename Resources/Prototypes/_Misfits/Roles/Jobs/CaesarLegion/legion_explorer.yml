@@ -1,6 +1,6 @@
 - type: job
   id: CaesarLegionExplorer
-  setPreference: true
+  setPreference: false
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 40
@@ -15,6 +15,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
     # #Misfits Change: Explorer is now open to Female characters.
   startingGear: CaesarLegionExplorerGear
   alwaysUseSpawner: true

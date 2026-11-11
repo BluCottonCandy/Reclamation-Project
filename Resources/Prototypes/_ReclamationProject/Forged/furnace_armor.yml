@@ -75,7 +75,7 @@
     replaceCurrentClothing: false
     clothingPrototypes:
       head: ForgedFurnaceHelmet
-      gloves: N14ClothingPAGauntletsDark
+      gloves: ForgedFurnaceGauntlets
       shoes: N14ClothingPABootsDark
 
 - type: entity
@@ -84,6 +84,41 @@
   name: Forged furnace helmet
   description: An enclosed T-45 helmet rebuilt for the Forged's furnace crews and raiding parties.
   components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+    layers:
+    - state: icon
+      sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+    - state: icon-unshaded
+      sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+    - state: light-overlay
+      sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+        sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+      - state: equipped-HELMET-unshaded
+        sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+  - type: ToggleableLightVisuals
+    spriteLayer: light
+    inhandVisuals:
+      left:
+      - state: on-inhand-left
+        sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+      right:
+      - state: on-inhand-right
+        sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+    clothingVisuals:
+      head:
+      - state: on-equipped-HELMET
+        sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Head/forged_furnace.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -118,7 +153,7 @@
   - type: ToggleableClothing
     clothingPrototypes:
       head: ForgedKeeperFurnaceHelmet
-      gloves: N14ClothingPAGauntletsDark
+      gloves: ForgedFurnaceGauntlets
       shoes: N14ClothingPABootsDark
 
 - type: entity
@@ -135,3 +170,21 @@
         Piercing: 0.55
         Heat: 1
         Radiation: 0.695
+
+- type: entity
+  parent: N14ClothingPAGauntletsDark
+  id: ForgedFurnaceGauntlets
+  name: Forged furnace gauntlets
+  description: Weathered metal gauntlets with dark leather joints, built to match Forged furnace armor.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Hands/forged_furnace.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Hands/forged_furnace.rsi
+    equippedState: equipped-HAND
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+        sprite: _ReclamationProject/Clothing/Hands/forged_furnace.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Hands/forged_furnace.rsi

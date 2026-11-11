@@ -13,6 +13,12 @@
     sprite: _ReclamationProject/Institute/IDCard.rsi
   - type: Item
     sprite: _ReclamationProject/Institute/IDCard.rsi
+  # #Reclamation Project - IdCardInstitute switches the tablet map to the Institute feed
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - IdCardInstitute
 
 - type: entity
   abstract: true
@@ -36,6 +42,119 @@
       startingItem: InstitutePenlight
   - type: PdaBorderColor
     borderColor: "#e5e5e5"
+  # #Reclamation Project - only opens for whoever typed the owner's uplink PIN; dropping it locks it
+  - type: InstituteTabletLock
+  # #Reclamation Project - chameleon: can be disguised as Commonwealth Pip-Boys, PDAs and IDs and still works as an Institute tablet.
+  # Only the looks and name change, not access. The list is fixed (restrictTargets) so space-station IDs don't show up.
+  - type: ChameleonClothing
+    slot: [idcard]
+    default: InstituteScientistTablet
+    restrictTargets: true
+    additionalTargets:
+    # Wastelanders
+    - N14ClothingNeckDogtags
+    - N14ClothingNeckDogtagsTrader
+    # Pip-Boys and Vault
+    - N14Pipboy
+    - N14WastelanderPipboy
+    - N14VaultPDA
+    - N14VaultEngineerPDA
+    - N14VaultDoctorPDA
+    - N14VaultSecurityPDA
+    - N14VaultOverseerPDA
+    - N14VaultChefPDA
+    - N14VaultBotanistPDA
+    - N14IDCardVault
+    - N14IDCardVaultDoctor
+    - N14IDCardVaultEngineer
+    - N14IDCardVaultSecurity
+    - N14IDCardVaultOverseer
+    # Minutemen (every rank looks the same)
+    - MinutemenIDDogtags
+    # Brotherhood of Steel
+    - N14IDBrotherhoodOfSteelHolotagInitiate
+    - N14IDBrotherhoodOfSteelHolotagSquire
+    - N14IDBrotherhoodOfSteelHolotagKnight
+    - N14IDBrotherhoodOfSteelHolotagSeniorKnight
+    - N14IDBrotherhoodOfSteelHolotagHeadKnight
+    - N14IDBrotherhoodOfSteelHolotagPaladin
+    - N14IDBrotherhoodOfSteelHolotagSeniorPaladin
+    - N14IDBrotherhoodOfSteelHolotagHeadPaladin
+    - N14IDBrotherhoodOfSteelHolotagScribe
+    - N14IDBrotherhoodOfSteelHolotagSeniorScribe
+    - N14IDBrotherhoodOfSteelHolotagHeadScribe
+    - N14IDBrotherhoodOfSteelHolotagHonorGuard
+    - N14IDBrotherhoodOfSteelHolotagElder
+    # Railroad
+    - RailroadSafehouse1InternID
+    - RailroadSafehouse1WorkerID
+    - RailroadSafehouse1RunnerID
+    - RailroadSafehouse1AgentID
+    - RailroadSafehouse1ConductorID
+    - RailroadSafehouse1SafehouseOwnerID
+    - RailroadSafehouse2InternID
+    - RailroadSafehouse2WorkerID
+    - RailroadSafehouse2RunnerID
+    - RailroadSafehouse2AgentID
+    - RailroadSafehouse2ConductorID
+    - RailroadSafehouse2SafehouseOwnerID
+    - RailroadInspectorID
+    - RailroadAlphaLeaderID
+    # Diamond City and towns
+    - N14IDPassportTownsfolk
+    - N14IDPassport
+    - N14IDBadgeTownDeputy
+    - N14IDBadgeTownSheriff
+    - N14IDBadgeTownMayor
+    - N14IDBartenderTown
+    - N14IDDoctorTown
+    - N14IDPassportTownMechanic
+    - N14IDReporterTown
+    - N14IDShopkeeperTown
+    - N14IDShopkeeperHelperTown
+    - N14IDPassportWasteFarmer
+    - N14IDPassportWasteChaplain
+    # Triggermen
+    - TriggermanID
+    - TriggermenSoldatoID
+    - TriggermenEnforcerID
+    - TriggermenSotocapoID
+    - TriggermenConsigliereID
+    - TriggermenBossID
+    # Forged
+    - ForgedWorkerID
+    - ForgedRaiderID
+    - ForgedBrandedID
+    - ForgedFurnaceTenderID
+    - ForgedEnforcerID
+    - ForgedVeteranID
+    - ForgedSmithyID
+    - ForgemasterID
+    # Institute
+    - InstituteScientistTablet
+    - InstituteSecurityTablet
+    - InstituteCourserTablet
+    - InstituteDivisionHeadTablet
+    - InstituteDirectorTablet
+    - InstituteScientistIDCard
+    - InstituteSecurityIDCard
+    - InstituteCourserIDCard
+    - InstituteDivisionHeadIDCard
+    - InstituteDirectorIDCard
+  - type: UserInterface
+    interfaces:
+      enum.PdaUiKey.Key:
+        type: PdaBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+      enum.RingerUiKey.Key:
+        type: RingerBoundUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+      enum.HealthAnalyzerUiKey.Key:
+        type: HealthAnalyzerBoundUserInterface
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: InstituteTabletBase

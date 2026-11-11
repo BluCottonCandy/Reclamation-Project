@@ -11,7 +11,7 @@
   playTimeTracker: MinutemenHeavyTrooper
   requirements:
   - !type:CharacterSpeciesRequirement
-    species: [Human, Courser, Ghoul]
+    species: [Human, Courser, Gen3Synth, Ghoul]
   - !type:CharacterLogicOrRequirement
     requirements:
     - !type:CharacterPlaytimeRequirement

@@ -1,0 +1,49 @@
+# #Reclamation Project - white cloth armbands. Sprites by LordCheezit.
+# Worn in the bandage slot. Use one on someone to bandage them; that uses up the armband.
+# Hand-crafted from 1 cloth.
+
+- type: entity
+  parent: Clothing
+  id: ReclamationArmbandBase
+  abstract: true
+  components:
+  - type: Item
+    size: Tiny
+  - type: Clothing
+    slots: [ bandage ]
+  - type: Healing
+    damageContainers:
+    - Biological
+    damage:
+      types:
+        Slash: -10
+        Piercing: -15
+    bloodlossModifier: -10
+    healingBeginSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+    healingEndSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+
+- type: entity
+  parent: ReclamationArmbandBase
+  id: ReclamationArmbandLeft
+  name: white armband (left arm)
+  description: A strip of white cloth tied around the left arm. In a pinch, tear it off and use it as a bandage.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Bandage/armband_left.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Bandage/armband_left.rsi
+
+- type: entity
+  parent: ReclamationArmbandBase
+  id: ReclamationArmbandRight
+  name: white armband (right arm)
+  description: A strip of white cloth tied around the right arm. In a pinch, tear it off and use it as a bandage.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Bandage/armband_right.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Bandage/armband_right.rsi

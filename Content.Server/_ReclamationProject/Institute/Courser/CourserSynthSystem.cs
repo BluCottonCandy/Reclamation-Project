@@ -1,4 +1,5 @@
 using Content.Shared._ReclamationProject.Institute.Courser;
+using Content.Server.Body.Components;
 using Content.Server.GameTicking;
 using Content.Shared.NPC.Systems;
 
@@ -7,6 +8,7 @@ namespace Content.Server._ReclamationProject.Institute.Courser;
 /// <summary>
 /// Job specials can replace a spawning character's NPC factions (e.g. a Minutemen job sets only
 /// Minutemen). Coursers get the Institute faction added back once spawning is done.
+/// Coursers also never breathe, so gas and smoke can't get into them.
 /// </summary>
 public sealed class CourserSynthSystem : EntitySystem
 {
@@ -16,7 +18,13 @@ public sealed class CourserSynthSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<CourserSynthComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawned);
+    }
+
+    private void OnMapInit(Entity<CourserSynthComponent> ent, ref MapInitEvent args)
+    {
+        EnsureComp<RespiratorImmuneComponent>(ent);
     }
 
     private void OnPlayerSpawned(PlayerSpawnCompleteEvent args)

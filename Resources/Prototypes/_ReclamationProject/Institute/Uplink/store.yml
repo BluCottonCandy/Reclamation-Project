@@ -1,0 +1,52 @@
+# #Reclamation Project - Institute uplink: currency and shop tabs.
+
+- type: currency
+  id: ResearchPoint
+  displayName: store-currency-display-research-point
+  canWithdraw: false
+
+- type: storeCategory
+  id: InstituteNetwork
+  name: store-category-institute-network
+  priority: 0
+
+- type: storeCategory
+  id: InstituteWeapons
+  name: store-category-institute-weapons
+  priority: 1
+
+- type: storeCategory
+  id: InstituteArmor
+  name: store-category-institute-armor
+  priority: 2
+
+- type: storeCategory
+  id: InstituteInfiltration
+  name: store-category-institute-infiltration
+  priority: 3
+
+- type: storeCategory
+  id: InstituteImplants
+  name: store-category-institute-implants
+  priority: 4
+
+- type: storeCategory
+  id: InstituteSupplies
+  name: store-category-institute-supplies
+  priority: 5
+
+- type: storeCategory
+  id: InstituteCommand
+  name: store-category-institute-command
+  priority: 6
+
+- type: storeCategory
+  id: InstituteReinforcements
+  name: store-category-institute-reinforcements
+  priority: 7
+
+# Items the Director adds from the network window. Filled from code and saved between rounds.
+- type: storeCategory
+  id: InstituteDirectorStock
+  name: store-category-institute-director-stock
+  priority: 8

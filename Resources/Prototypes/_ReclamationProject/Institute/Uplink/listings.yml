@@ -1,0 +1,392 @@
+# #Reclamation Project - Institute uplink shop. Prices approved 2026-11-09.
+# Names and descriptions come from the items themselves.
+
+- type: listing
+  id: InstituteUplinkNetwork
+  name: institute-listing-network-name
+  description: institute-listing-network-desc
+  icon: { sprite: _ReclamationProject/Institute/uplink_terminal.rsi, state: icon }
+  productEvent: !type:OpenInstituteNetworkEvent
+  raiseProductEventOnUser: true
+  cost:
+    ResearchPoint: 0
+  categories:
+  - InstituteNetwork
+
+# --- Weapons ---
+- type: listing
+  id: InstituteUplinkLaserPistol
+  productEntity: InstituteWeaponLaserPistol
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 15
+  cost:
+    ResearchPoint: 25
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkLaserRifle
+  productEntity: ReclamationWeaponInstituteAER12
+  discountCategory: rareDiscounts
+  discountDownTo:
+    ResearchPoint: 40
+  cost:
+    ResearchPoint: 60
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkPowerCellSmall
+  productEntity: N14PowerCellSmall
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkMicrofusionCell
+  productEntity: N14MicrofusionCell
+  cost:
+    ResearchPoint: 8
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkGaussPistol
+  productEntity: N14WeaponGaussPistol
+  discountCategory: rareDiscounts
+  discountDownTo:
+    ResearchPoint: 35
+  cost:
+    ResearchPoint: 50
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkGaussRifle
+  productEntity: N14WeaponGaussRifle
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    ResearchPoint: 70
+  cost:
+    ResearchPoint: 100
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkGaussPistolMag
+  productEntity: N14Magazine2mmECPistol
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkGaussRifleMag
+  productEntity: N14Magazine2mmECRifle
+  cost:
+    ResearchPoint: 15
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkAmmo2mmEC
+  productEntity: N14AmmoBox2mmEC
+  cost:
+    ResearchPoint: 15
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkC4
+  productEntity: C4
+  discountCategory: rareDiscounts
+  discountDownTo:
+    ResearchPoint: 15
+  cost:
+    ResearchPoint: 25
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkBreachingCharge
+  productEntity: BreachingCharge
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 10
+  cost:
+    ResearchPoint: 15
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkSignaller
+  productEntity: RemoteSignaller
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkMultitool
+  productEntity: N14Multitool
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkSynthGrenadeEnforcer
+  productEntity: InstituteSynthGrenadeEnforcer
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkSynthGrenadeRifleman
+  productEntity: InstituteSynthGrenadeRifleman
+  cost:
+    ResearchPoint: 20
+  categories:
+  - InstituteWeapons
+
+# --- Armor ---
+- type: listing
+  id: InstituteUplinkSecurityHelmet
+  productEntity: InstituteSecurityHelmet
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkSecurityMask
+  productEntity: InstituteSecurityMask
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkSecurityGloves
+  productEntity: InstituteSecurityGloves
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkSecurityBoots
+  productEntity: InstituteSecurityBoots
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkCourserHelmet
+  productEntity: InstituteCourserHelmet
+  cost:
+    ResearchPoint: 15
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkCourserCoat
+  productEntity: InstituteCourserArmor
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 20
+  cost:
+    ResearchPoint: 30
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkResearchModsuit
+  productEntity: InstituteResearchMODSuit
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 25
+  cost:
+    ResearchPoint: 35
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkSecurityModsuit
+  productEntity: InstituteSecurityMODSuit
+  discountCategory: rareDiscounts
+  discountDownTo:
+    ResearchPoint: 35
+  cost:
+    ResearchPoint: 50
+  categories:
+  - InstituteArmor
+
+- type: listing
+  id: InstituteUplinkCourserModsuit
+  productEntity: ReclamationClothingModsuitInstitute
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    ResearchPoint: 60
+  cost:
+    ResearchPoint: 80
+  categories:
+  - InstituteArmor
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist: [InstituteDirector, InstituteDivisionHead, InstituteCourser]
+
+# --- Infiltration ---
+- type: listing
+  id: InstituteUplinkDogtags
+  productEntity: InstituteChameleonDogtags
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 5
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteInfiltration
+
+- type: listing
+  id: InstituteUplinkScrapHeadset
+  productEntity: InstituteChameleonScrapHeadset
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 5
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteInfiltration
+
+- type: listing
+  id: InstituteUplinkEncryptionKey
+  productEntity: EncryptionKeyInstitute
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteInfiltration
+
+# --- Implants ---
+- type: listing
+  id: InstituteUplinkAcidifier
+  productEntity: InstituteAcidifierImplanter
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 10
+  cost:
+    ResearchPoint: 20
+  categories:
+  - InstituteImplants
+
+# --- Supplies ---
+- type: listing
+  id: InstituteUplinkStimpak
+  productEntity: N14Stimpak
+  cost:
+    ResearchPoint: 8
+  categories:
+  - InstituteSupplies
+
+- type: listing
+  id: InstituteUplinkSuperStimpak
+  productEntity: N14SuperStimpak
+  discountCategory: usualDiscounts
+  discountDownTo:
+    ResearchPoint: 12
+  cost:
+    ResearchPoint: 20
+  categories:
+  - InstituteSupplies
+
+- type: listing
+  id: InstituteUplinkGauze
+  productEntity: N14CleanGauze10
+  cost:
+    ResearchPoint: 5
+  categories:
+  - InstituteSupplies
+
+- type: listing
+  id: InstituteUplinkPenlight
+  productEntity: InstitutePenlight
+  cost:
+    ResearchPoint: 3
+  categories:
+  - InstituteSupplies
+
+# --- Command ---
+- type: listing
+  id: InstituteUplinkCommandModsuit
+  productEntity: InstituteCommandMODSuit
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    ResearchPoint: 75
+  cost:
+    ResearchPoint: 100
+  categories:
+  - InstituteCommand
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist: [InstituteDirector, InstituteDivisionHead]
+
+# --- Reinforcements ---
+- type: listing
+  id: InstituteUplinkReinforcementSynth
+  productEntity: InstituteReinforcementBeaconSynth
+  cost:
+    ResearchPoint: 60
+  categories:
+  - InstituteReinforcements
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist: [InstituteDirector, InstituteDivisionHead, InstituteSynth]
+
+- type: listing
+  id: InstituteUplinkReinforcementCourser
+  productEntity: InstituteReinforcementBeaconCourser
+  cost:
+    ResearchPoint: 120
+  categories:
+  - InstituteReinforcements
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist: [InstituteDirector, InstituteDivisionHead, InstituteSynth]
+
+# #Reclamation Project - relay pad for Gen 3 synths and Coursers to relay onto
+- type: listing
+  id: InstituteUplinkRelayPad
+  productEntity: InstituteRelayPadKit
+  cost:
+    ResearchPoint: 20
+  categories:
+  - InstituteSupplies
+
+# #Reclamation Project - break-in tools and genetics
+- type: listing
+  id: InstituteUplinkLockpickSet
+  productEntity: ReclamationLockpickSet
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteInfiltration
+
+- type: listing
+  id: InstituteUplinkEmag
+  productEntity: InstituteEmag
+  cost:
+    ResearchPoint: 40
+  categories:
+  - InstituteInfiltration
+
+- type: listing
+  id: InstituteUplinkChameleonMutator
+  productEntity: InstituteGeneticsMutatorChameleon
+  cost:
+    ResearchPoint: 100
+  categories:
+  - InstituteImplants

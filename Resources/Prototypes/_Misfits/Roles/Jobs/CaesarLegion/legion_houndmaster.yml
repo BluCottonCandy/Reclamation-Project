@@ -1,6 +1,6 @@
 - type: job
   id: CaesarLegionHoundmaster
-  setPreference: true
+  setPreference: false
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 120
@@ -16,6 +16,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
   startingGear: CaesarLegionHoundmasterGear
   alwaysUseSpawner: true
   icon: "JobIconlegionerWarrior"

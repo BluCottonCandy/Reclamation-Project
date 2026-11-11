@@ -76,6 +76,10 @@ public sealed partial class StencilOverlay : Overlay
             }
         }
 
+        // Private hallucinations reuse the normal weather renderer and roof masking.
+        if (_weather.TryGetHallucinationWeather(args.MapId, out var hallucinationWeather, out var hallucinationAlpha))
+            DrawWeather(args, hallucinationWeather, hallucinationAlpha, invMatrix);
+
         // NC - Clouds
         if (_entManager.TryGetComponent<NCCloudLayerComponent>(mapUid, out var cloudLayer))
         {

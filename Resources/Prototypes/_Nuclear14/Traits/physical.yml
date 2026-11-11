@@ -4,6 +4,9 @@
   category: Physical
   points: 1
   requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -20,6 +23,9 @@
   category: Physical
   points: -6
   requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
     # Forge-Change-Start
     - !type:CharacterJobRequirement
       inverted: true
@@ -37,6 +43,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitModifyUnarmed
       damage:
@@ -48,6 +55,9 @@
   category: Physical
   points: -6
   requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -196,6 +206,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
         - Ghoul
         - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Bad Reflexes
         - SuperMutant
@@ -225,6 +236,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
         - Ghoul
         - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Lightning Hands
         - SuperMutant 
@@ -245,6 +257,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitReplaceComponent
       components:
@@ -270,6 +283,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddComponent
       components:
@@ -486,6 +500,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddArmor
       damageModifierSets:
@@ -517,6 +532,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddArmor
       damageModifierSets:
@@ -545,6 +561,7 @@
       species:
         - Human
         - Courser
+        - Gen3Synth
   functions:
     - !type:TraitAddArmor
       damageModifierSets:

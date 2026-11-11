@@ -1,4 +1,5 @@
 #small flags
+#MARK: Wallmount Flags
 
 - type: constructionGraph
   id: MisfitsFlagUS
@@ -400,7 +401,67 @@
               amount: 2
             - !type:DeleteEntity
 
+- type: constructionGraph
+  id: ReclamationFlagSmallMM
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagMMs
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagMMs
+      entity: ReclamationFlagWallMinutemen
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
 # Banners aka big flags
+#MARK: Flagpoles
+
+- type: constructionGraph
+  id: ReclamationFlagMM
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagMM
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 3
+            - material: Cloth
+              amount: 5
+              doAfter: 3
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+
+    - node: flagMM
+      entity: ReclamationDecorationFlagMinutemen
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 5
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 5
+            - !type:DeleteEntity 
 
 - type: constructionGraph
   id: MisfitsFlagCoA

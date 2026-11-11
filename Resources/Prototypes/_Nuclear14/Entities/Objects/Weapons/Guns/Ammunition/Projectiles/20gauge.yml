@@ -4,6 +4,9 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBullet
   components:
+  - type: BulletEmbedChance # #Reclamation Project - bullets can stay stuck in a limb
+    chance: 0.25
+    fragment: ReclamationBulletFragmentPellet
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     state: buckshot

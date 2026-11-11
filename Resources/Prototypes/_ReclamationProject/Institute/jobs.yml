@@ -3,7 +3,7 @@
   description: department-Institute-description
   color: "#e8e8e8"
   uiCategory: MajorFaction
-  roles: [InstituteDirector, InstituteDivisionHead, InstituteScientist, InstituteCourser, InstituteSecurity]
+  roles: [InstituteDirector, InstituteDivisionHead, InstituteScientist, InstituteCourser, InstituteSecurity, InstituteSynth] # #Reclamation Project - InstituteSynth (Gen 3 Synths)
 
 - type: job
   id: InstituteDirector
@@ -27,10 +27,10 @@
   alwaysUseSpawner: true
   access: [Institute, InstituteCommand, InstituteSecurity]
   icon: JobIconScientist
-  supervisors: job-supervisors-institute
+  supervisors: job-supervisors-institute-director
   whitelisted: true
   hideWithoutJobWhitelist: true
-  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
+  jobWhitelistBypassesRoleTimers: true # #Reclamation Project - faction head: a job-whitelisted player can take it without the hours.
   requireAdminNotify: true
   special:
   - !type:AddComponentSpecial
@@ -48,29 +48,19 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
-  # #Reclamation Project - Director: fireman carry + Unnatural Regeneration at 2.5x the N14UnnaturalReg trait (0.5 HP/s per type)
+  # #Reclamation Project - Director: fireman carry + nanites (full repair after 10 s unhurt), never hungry,
+  # blood loss is harmless, 95% fire resistance, crawls in crit at normal lying-down speed
   - !type:AddComponentSpecial
     components:
     - type: CanFiremanCarry
     - type: TraumaRegeneration
-    - type: PassiveDamage
-      allowedStates:
-      - Alive
-      - Critical
-      damageCap: 300
-      damage:
-        types:
-          Blunt: -0.50
-          Slash: -0.50
-          Piercing: -0.50
-          Heat: -0.50
-          Cold: -0.50
-          Shock: -0.50
-          Caustic: -0.50
-          Asphyxiation: -0.875
-          Bloodloss: -0.25
-          Poison: -0.25
-          Radiation: -0.25
+    - type: NaniteRepair
+    - type: SyntheticSustenance
+    - type: InnateFireProtection
+    - type: SteadyCrawl
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 120
 
 - type: playTimeTracker
   id: InstituteDirector
@@ -118,6 +108,9 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 120
 
 - type: playTimeTracker
   id: InstituteDivisionHead
@@ -152,6 +145,9 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 40
 
 - type: playTimeTracker
   id: InstituteScientist
@@ -172,7 +168,7 @@
   supervisors: job-supervisors-institute
   whitelisted: true
   hideWithoutJobWhitelist: false
-  jobWhitelistBypassesRoleTimers: false # Whitelisting does not waive rank progression.
+  jobWhitelistBypassesRoleTimers: true # #Reclamation Project - a Courser whitelist skips the hour requirement
   requireAdminNotify: true
   # #Reclamation Project - only the Courser race (Gen 3 synth) can be a Courser
   requirements:
@@ -203,29 +199,19 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
-  # #Reclamation Project - Courser: fireman carry + Unnatural Regeneration at 2.5x the N14UnnaturalReg trait (0.5 HP/s per type)
+  # #Reclamation Project - Courser: fireman carry + nanites (full repair after 10 s unhurt), never hungry,
+  # blood loss is harmless, 95% fire resistance, crawls in crit at normal lying-down speed
   - !type:AddComponentSpecial
     components:
     - type: CanFiremanCarry
     - type: TraumaRegeneration
-    - type: PassiveDamage
-      allowedStates:
-      - Alive
-      - Critical
-      damageCap: 300
-      damage:
-        types:
-          Blunt: -0.50
-          Slash: -0.50
-          Piercing: -0.50
-          Heat: -0.50
-          Cold: -0.50
-          Shock: -0.50
-          Caustic: -0.50
-          Asphyxiation: -0.875
-          Bloodloss: -0.25
-          Poison: -0.25
-          Radiation: -0.25
+    - type: NaniteRepair
+    - type: SyntheticSustenance
+    - type: InnateFireProtection
+    - type: SteadyCrawl
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 80
 
 - type: playTimeTracker
   id: InstituteCourser
@@ -260,6 +246,9 @@
     - type: GibModifier
       ungibbable: true
     - type: FlashImmunity
+  # #Reclamation Project - Institute uplink implant with starting Research Points
+  - !type:AddInstituteUplinkSpecial
+    balance: 40
 
 - type: playTimeTracker
   id: InstituteSecurity

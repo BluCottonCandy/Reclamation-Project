@@ -212,6 +212,11 @@ public sealed class WarcrySystem : EntitySystem
 
     private bool CanActivate(EntityUid uid, WarcryComponent component)
     {
+        // Pack cries also encourage their hounds and tamed companions.
+        if (component.TargetDepartment == "Pack" &&
+            HasComp<Content.Shared._ReclamationProject.Pack.PackAnimalComponent>(uid))
+            return true;
+
         if (!_mind.TryGetMind(uid, out var mindId, out _))
             return false;
 
@@ -231,6 +236,11 @@ public sealed class WarcrySystem : EntitySystem
 
         if (!HasComp<MovementSpeedModifierComponent>(uid))
             return false;
+
+        // Pack cries also encourage their hounds and tamed companions.
+        if (component.TargetDepartment == "Pack" &&
+            HasComp<Content.Shared._ReclamationProject.Pack.PackAnimalComponent>(uid))
+            return true;
 
         if (!_mind.TryGetMind(uid, out var mindId, out _))
             return false;

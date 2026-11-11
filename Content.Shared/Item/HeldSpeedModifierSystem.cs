@@ -1,3 +1,4 @@
+using Content.Shared._Misfits.PowerArmor; // #Reclamation Project
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Special.Components;
 using Content.Shared._Misfits.SpecialStats;
@@ -15,6 +16,12 @@ public sealed class HeldSpeedModifierSystem : EntitySystem
 {
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly SharedSpecialSystem _special = default!;
+
+    /// <summary>
+    /// #Reclamation Project - speed while a Strength 10 character carries an unworn power armour suit.
+    /// Everyone else carries it at the suit's own held modifier (50%).
+    /// </summary>
+    private const float StrongPowerArmorCarryModifier = 0.65f;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -55,6 +62,18 @@ public sealed class HeldSpeedModifierSystem : EntitySystem
     /// </summary>
     private void ApplyStrengthSlowdown(EntityUid user, EntityUid held, ref float walkMod, ref float sprintMod)
     {
+        // #Reclamation Project - Strength 10 lightens a carried power armour suit, but never to full speed.
+        if (HasComp<N14PowerArmorComponent>(held))
+        {
+            if (_special.HasRequirement(user, SpecialStat.Strength, 10))
+            {
+                walkMod = MathF.Max(StrongPowerArmorCarryModifier, walkMod);
+                sprintMod = MathF.Max(StrongPowerArmorCarryModifier, sprintMod);
+            }
+
+            return;
+        }
+
         if (_special.HasRequirement(user, SpecialStat.Strength, 10))
         {
             walkMod = MathF.Max(1f, walkMod);

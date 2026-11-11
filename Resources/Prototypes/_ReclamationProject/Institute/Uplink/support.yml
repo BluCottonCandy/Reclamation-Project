@@ -1,0 +1,68 @@
+# #Reclamation Project - synth grenades and bought reinforcements.
+
+# Throw it: 3 Gen 1 synths relay in. They relay out after 10 minutes, or as soon as they die.
+- type: entity
+  parent: GrenadeBase
+  id: InstituteSynthGrenadeEnforcer
+  name: synth relay grenade (enforcers)
+  description: An Institute relay beacon. When it goes off, three Generation One synth enforcers relay in to fight for the Institute for ten minutes.
+  components:
+  - type: Sprite
+    color: "#4fd2e0"
+  - type: InstituteSynthDrop
+    synth: ReclamationMobGenOneSynthBaton
+
+- type: entity
+  parent: InstituteSynthGrenadeEnforcer
+  id: InstituteSynthGrenadeRifleman
+  name: synth relay grenade (riflemen)
+  description: An Institute relay beacon. When it goes off, three Generation One synth riflemen relay in to fight for the Institute for ten minutes.
+  components:
+  - type: Sprite
+    color: "#7a7cff"
+  - type: InstituteSynthDrop
+    synth: ReclamationMobGenOneSynthLaser
+
+# A ghost takes the role and relays in where the beacon is. Refunded if nobody takes it in 2 minutes.
+- type: entity
+  id: InstituteReinforcementBeaconBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _ReclamationProject/Institute/relay_teleport.rsi
+    state: relay_in
+    drawdepth: Effects
+    shader: unshaded
+  - type: GhostRole
+    rules: ghost-role-information-institute-reinforcement-rules
+
+- type: entity
+  parent: InstituteReinforcementBeaconBase
+  id: InstituteReinforcementBeaconSynth
+  name: Gen 3 synth reinforcement
+  description: An Institute relay signal, waiting for a Gen 3 synth to answer it.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-institute-synth-name
+    description: ghost-role-information-institute-synth-description
+  - type: InstituteReinforcementBeacon
+    job: InstituteSynth
+    species: Gen3Synth
+    refund: 60
+
+- type: entity
+  parent: InstituteReinforcementBeaconBase
+  id: InstituteReinforcementBeaconCourser
+  name: Courser reinforcement
+  description: An Institute relay signal, waiting for a Courser to answer it.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-institute-courser-name
+    description: ghost-role-information-institute-courser-description
+  - type: InstituteReinforcementBeacon
+    job: InstituteCourser
+    species: Courser
+    refund: 120

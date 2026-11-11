@@ -22,6 +22,7 @@
     minAngle: -20
     maxAngle: -20
   - type: Gun
+    projectileSpeed: 60 # #Reclamation Project - bullet speed (default was 35)
     minAngle: 24
     maxAngle: 45
     angleIncrease: 4

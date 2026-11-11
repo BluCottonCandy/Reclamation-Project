@@ -1,0 +1,419 @@
+# Private visual shells only; no usable food, liquid, item or inventory components.
+[
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood0",
+    "name": "bacon burger",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/burger.rsi",
+        "state": "bacon"
+      }
+    ],
+    "description": "The perfect combination of all things American."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood1",
+    "name": "cheese burger",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/burger.rsi",
+        "state": "cheese"
+      }
+    ],
+    "description": "This. This is what you've been missing all your life."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood2",
+    "name": "chicken sandwich",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/burger.rsi",
+        "state": "chicken"
+      }
+    ],
+    "description": "Deliciously portable."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood3",
+    "name": "plain burger",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/burger.rsi",
+        "state": "plain"
+      }
+    ],
+    "description": "A simple, plain burger. For the wasteland, this is pretty good eating."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood4",
+    "name": "boiled chicken egg",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "_Nuclear14/Objects/Misc/mob_drops.rsi",
+        "state": "egg"
+      }
+    ],
+    "description": "A delicious hardboiled egg."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood5",
+    "name": "stew",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/bowl.rsi",
+        "layers": [
+          {
+            "state": "bowl"
+          },
+          {
+            "state": "stew"
+          }
+        ]
+      }
+    ],
+    "description": "A nice and warm stew. Healthy and strong."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood6",
+    "name": "vegetable soup",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/bowl.rsi",
+        "layers": [
+          {
+            "state": "bowl"
+          },
+          {
+            "state": "vegetable"
+          }
+        ]
+      }
+    ],
+    "description": "A hearty, healthy meal beloved by foragers and farmers."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood7",
+    "name": "chicken taco",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/taco.rsi",
+        "state": "chickentaco"
+      }
+    ],
+    "description": "A flaky chicken taco, now with cheese!"
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood8",
+    "name": "bread",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/bread.rsi",
+        "layers": [
+          {
+            "state": "plain"
+          }
+        ]
+      }
+    ],
+    "description": "Some plain old earthen bread."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood9",
+    "name": "food",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/bread.rsi",
+        "state": "baguette"
+      }
+    ],
+    "description": "Bon app\u00e9tit!"
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood10",
+    "name": "buttered toast",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/bread.rsi",
+        "state": "buttered-toast"
+      }
+    ],
+    "description": "Crunchy and warm, seeped with hard-to-come-by butter."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood11",
+    "name": "slice of cheese cake",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/cake.rsi",
+        "state": "cheese-slice"
+      }
+    ],
+    "description": "Slice of pure cheestisfaction."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood12",
+    "name": "plain donut",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/donut.rsi",
+        "state": "plain"
+      }
+    ],
+    "description": "Goes great with robust coffee."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood13",
+    "name": "berry muffin",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/misc.rsi",
+        "state": "muffin-berry"
+      }
+    ],
+    "description": "A delicious and spongy little cake, with berries."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood14",
+    "name": "meat pie",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/pie.rsi",
+        "layers": [
+          {
+            "state": "tin"
+          },
+          {
+            "state": "meat"
+          }
+        ]
+      }
+    ],
+    "description": "Tastes like the wastes."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood15",
+    "name": "slice of meat pizza",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/pizza.rsi",
+        "layers": [
+          {
+            "state": "meat-slice"
+          }
+        ]
+      }
+    ],
+    "description": "A nutritious slice of meatpizza. Meatzza."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood16",
+    "name": "slice of mushroom pizza",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/pizza.rsi",
+        "layers": [
+          {
+            "state": "mushroom-slice"
+          }
+        ]
+      }
+    ],
+    "description": "Chewy and oddly sweet."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomFood17",
+    "name": "slice of mutfruit pie",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "sprite": "Objects/Consumable/Food/Baked/pie.rsi",
+        "layers": [
+          {
+            "state": "plain-slice"
+          },
+          {
+            "state": "alpha-slice-filling",
+            "color": "purple"
+          }
+        ]
+      }
+    ],
+    "description": "A slice of pie. Tasty!"
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomDrink0",
+    "name": "water bottle",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "layers": [
+          {
+            "state": "icon",
+            "map": [
+              "enum.OpenableVisuals.Layer"
+            ]
+          },
+          {
+            "state": "icon-1",
+            "map": [
+              "enum.SolutionContainerLayers.Fill"
+            ],
+            "visible": true
+          }
+        ],
+        "drawdepth": "Items",
+        "noRot": true,
+        "state": "icon",
+        "sprite": "Objects/Consumable/Drinks/waterbottle.rsi"
+      }
+    ],
+    "description": "Simple clean water of unknown origin. You think that maybe you don't want to know it."
+  },
+  {
+    "type": "entity",
+    "id": "ReclamationPhantomDrink1",
+    "name": "Nuka-Cola",
+    "categories": [
+      "HideSpawnMenu"
+    ],
+    "components": [
+      {
+        "type": "Sprite",
+        "drawdepth": "Items",
+        "noRot": true,
+        "state": "cola",
+        "sprite": "_Nuclear14/Objects/Consumable/Drinks/nuka_cola_new.rsi"
+      }
+    ],
+    "description": "The leading cola since 2044."
+  }
+]

@@ -268,17 +268,6 @@
     sprintModifier: 0.95
 
 - type: entity
-  parent: N14ClothingOuterCombatArmorMK2
-  id: N14ClothingOuterEnclaveArmor
-  name: U.S. Army armor
-  description: A suit of armor used by U.S. Army soldiers.
-  components:
-  - type: Sprite
-    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutenclavearmor.rsi
-  - type: Clothing
-    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutenclavearmor.rsi
-
-- type: entity
   parent: N14FalloutArmorBase
   id: N14ClothingOuterVaultSecVest
   name: vault security vest
@@ -299,11 +288,13 @@
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
+#MARK: Enclave
+# --- Enclave Armor (Light Armor (Reflect))---
 - type: entity
   parent: N14FalloutArmorBase
   id: N14ClothingOuterEnclavePeacekeeper
-  name: U.S. Army peacekeeper vest
-  description: A bulletproof vest used by U.S. Army 'peacekeepers'. Pfft. Yeah, right.
+  name: U.S. Army Peacekeeper Vest
+  description: A bulletproof vest used by U.S. Army 'Peacekeepers'. Pfft. Yeah, right.
   components:
   - type: Sprite
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutpeacekeeper.rsi
@@ -312,13 +303,235 @@
   - type: Armor
     modifiers:
       coefficients:
-        Piercing: 0.6 # Forge-Change
+        Blunt: 0.85 # Forge-Change
+        Slash: 0.85 # Forge-Change
+        Piercing: 0.65 # Forge-Change
         Heat: 0.65 # Forge-Change
-        Blunt: 0.8 # Forge-Change
-        Slash: 0.8 # Forge-Change
     priceMultiplier: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.75 # Forge-Change
+  - type: Reflect
+    reflectProb: 0.05
+    spread: 150
+
+# --- Enclave Pilot Armor (Light Armor (Reflect))---
+#- type: entity
+#  parent: N14FalloutArmorBase
+#  id: N14ClothingOuterEnclavePilotArmor
+#  name: U.S. Army Vertibird Pilot Armor
+#  description: A light suit of armor used by U.S. Army Vertibird Pilots.
+#  components:
+#  - type: Sprite
+#    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_pilot_armor.rsi
+#  - type: Clothing
+#    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_pilot_armor.rsi
+#  - type: Armor
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.85 # Forge-Change
+#        Slash: 0.85 # Forge-Change
+#        Piercing: 0.6 # Forge-Change
+#        Heat: 0.6 # Forge-Change
+#    priceMultiplier: 0.5
+#  - type: ExplosionResistance
+#    damageCoefficient: 0.75 # Forge-Change
+#  - type: Reflect
+#    reflectProb: 0.05
+#    spread: 150
+
+# --- Enclave Covert Scout Armor (Light Armor (Reflect))---
+#- type: entity
+#  parent: N14FalloutArmorBase
+#  id: N14ClothingOuterEnclaveScoutArmor
+#  name: U.S. Army Covert Scout Armor
+#  description: An advanced light armor used by the U.S. Army.
+#  components:
+#  - type: Sprite
+#    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_scout_armor.rsi
+#  - type: Clothing
+#    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_scout_armor.rsi
+#  - type: Armor
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.85 # Forge-Change
+#        Slash: 0.85 # Forge-Change
+#        Piercing: 0.6 # Forge-Change
+#        Heat: 0.6 # Forge-Change
+#    priceMultiplier: 0.5
+#  - type: ExplosionResistance
+#    damageCoefficient: 0.75 # Forge-Change
+#  - type: Reflect
+#    reflectProb: 0.05
+#    spread: 150
+#  - type: ClothingSpeedModifier
+#    walkModifier: 1.05 # Forge-Change
+#    sprintModifier: 1.05 # Forge-Change
+
+# --- Enclave Combat Armor (Medium Armor (Standard)) ---
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterEnclaveCombatArmor
+  name: U.S. Army Combat Armor
+  description: A suit of armor used by U.S. Army soldiers.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutenclavearmor.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutenclavearmor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.7
+        Heat: 0.7
+    priceMultiplier: 0.3
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+
+# --- Enclave MK2 Combat Armor (Medium Armor) ---
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterEnclaveCombatArmorMK2
+  name: U.S. Army Combat Armor MK2
+  description: A pre-war U.S. Army issue Mk2 combat armor. Heavier plating and a tighter weave than the standard suit.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_mk2_combat_armor.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_mk2_combat_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.60
+        Heat: 0.65
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+
+# --- Enclave Marine Armor (Medium Armor + Light Armor)
+#- type: entity
+#  parent: N14FalloutArmorBase
+#  id: N14ClothingOuterEnclaveMarineArmor
+#  name: U.S. Army Marine Armor
+#  description: A U.S. Army Marine Armor. Better coverage the standard suit.
+#  components:
+#  - type: Sprite
+#    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_marine_armor.rsi
+#  - type: Clothing
+#    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_marine_armor.rsi
+#  - type: Armor
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.7
+#        Slash: 0.7
+#        Piercing: 0.60
+#        Heat: 0.65
+#    priceMultiplier: 0.5
+#  - type: ExplosionResistance
+#    damageCoefficient: 0.75
+#  - type: Reflect
+#    reflectProb: 0.05
+#    spread: 150
+
+# --- Enclave Advanced Combat Armor (Medium Armor)---
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterEnclaveAdvancedCombatArmor
+  name: U.S. Army Advanced Combat Armor
+  description: An updated suit of U.S. Army Combat Armor with advanced reinforced plating.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_advanced_combat_armor.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_advanced_combat_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.6
+        Heat: 0.6
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+
+# --- Zulu Squad Grunt Combat Armor (Heavy Armor (Slowdown))---
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterEnclaveZuluGruntCombatArmor
+  name: Zulu U.S. Army Grunt Combat Armor
+  description: A combat armor worn by U.S. Army Zulu Squad grunts. The Zulu Squad's entry-level trooper kit.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_zulu_grunt_armor.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_zulu_grunt_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: ClothingSpeedModifier # Forge-Add
+    walkModifier: 0.95
+    sprintModifier: 0.95
+
+# --- Zulu Squad Combat Armor MK2 (Heavy Armor) ---
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterEnclaveZuluCombatArmorMK2
+  name: Zulu U.S. Army Combat Armor MK2
+  description: A MK2 Combat Armor worn by U.S. Army Zulu Squad operators. Painted with Zulu Squad markings.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_zulu_combat_armor.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_zulu_combat_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.6
+        Heat: 0.65
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: ClothingSpeedModifier # Forge-Add
+    walkModifier: 0.95
+    sprintModifier: 0.95
+
+# --- Zulu Squad Advanced Combat Armor (Heavy Armor) ---
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterEnclaveZuluAdvancedCombatArmor
+  name: Zulu U.S. Army Advanced Combat Armor
+  description: An advanced combat armor worn by U.S. Army Zulu Squad operators. Painted with Zulu Squad markings.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_zulu_advanced_combat_armor.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/enclave_zulu_advanced_combat_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.55
+        Heat: 0.55
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: ClothingSpeedModifier # Forge-Add
+    walkModifier: 0.95
+    sprintModifier: 0.95
 
 #MARK: Tribal
 - type: entity

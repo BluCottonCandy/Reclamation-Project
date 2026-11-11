@@ -2,6 +2,20 @@
   id: N14LoadoutMask
   items:
     - type: loadout
+      id: LoadoutPackClothingMaskPunkHalf
+    - type: loadout
+      id: LoadoutPackClothingMaskRat
+    - type: loadout
+      id: LoadoutPackClothingMaskFox
+    - type: loadout
+      id: LoadoutPackClothingMaskBear
+    - type: loadout
+      id: LoadoutPackClothingMaskRaven
+    - type: loadout
+      id: LoadoutPackClothingMaskJackal
+    - type: loadout
+      id: LoadoutPackClothingMaskBat
+    - type: loadout
       id: ClothingMaskBat
     - type: loadout
       id: ClothingMaskBear

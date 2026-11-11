@@ -46,6 +46,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transformSystem = default!;
     [Dependency] private readonly ItemToggleSystem _toggle = default!;
     [Dependency] private readonly SharedSpecialSystem _special = default!;
+    [Dependency] private readonly Content.Server._ReclamationProject.Medical.BioMonitor.BioMonitorSystem _bioMonitor = default!; // #Reclamation Project
 
     public override void Initialize()
     {
@@ -132,6 +133,14 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
         if (!uid.Comp.Silent)
             _audio.PlayPvs(uid.Comp.ScanningEndSound, uid);
+
+        // #Reclamation Project - scanning anyone with a body opens the new bio-monitor screen instead.
+        if (HasComp<Content.Shared.Body.Components.BodyComponent>(args.Target.Value))
+        {
+            _bioMonitor.Open(args.User, args.Target.Value, Content.Shared._ReclamationProject.Medical.BioMonitor.BioMonitorSource.Scanner);
+            args.Handled = true;
+            return;
+        }
 
         OpenUserInterface(args.User, uid);
         BeginAnalyzingEntity(uid, args.Target.Value);

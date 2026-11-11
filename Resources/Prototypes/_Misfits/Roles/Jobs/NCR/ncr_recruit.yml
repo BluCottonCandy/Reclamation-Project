@@ -16,6 +16,7 @@
       species:
       - Human
       - Courser
+      - Gen3Synth
       - Ghoul
   startingGear: NCRCadetGear
   icon: "JobIconNcrCadet" # Corvax-Change

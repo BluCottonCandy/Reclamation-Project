@@ -1,0 +1,27 @@
+# #Reclamation Project - hand-craft a white armband from 1 cloth.
+
+- type: construction
+  id: ReclamationArmbandLeft
+  name: white armband (left arm)
+  description: Wear it on your arm, or use it as a bandage.
+  graph: ReclamationArmband
+  startNode: start
+  targetNode: left
+  category: construction-category-clothing
+  objectType: Item
+  icon:
+    sprite: _ReclamationProject/Clothing/Bandage/armband_left.rsi
+    state: icon
+
+- type: construction
+  id: ReclamationArmbandRight
+  name: white armband (right arm)
+  description: Wear it on your arm, or use it as a bandage.
+  graph: ReclamationArmband
+  startNode: start
+  targetNode: right
+  category: construction-category-clothing
+  objectType: Item
+  icon:
+    sprite: _ReclamationProject/Clothing/Bandage/armband_right.rsi
+    state: icon

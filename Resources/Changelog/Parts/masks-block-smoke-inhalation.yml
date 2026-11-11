@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Masks worn over the face now block inhalation and bloodstream transfer from chemical smoke mixtures without needing active internals. Lowered or removed masks leave you exposed.

@@ -14745,3 +14745,12 @@ Entries:
   id: 6641
   time: '2026-11-11T15:02:10.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/175
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        NetworkBay updates now log the installation check that failed before
+        rolling back.
+  id: 6642
+  time: '2026-11-11T15:37:15.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/177

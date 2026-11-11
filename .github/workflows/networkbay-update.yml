@@ -402,49 +402,71 @@ jobs:
                                 'Do not manually cancel during file installation. If interrupted, '
                                 'keep the server offline until the installation or recovery is completed.\n')
               changed = False
+              check = "Confirm the server is offline"
               try:
                   wait_for('offline', 180)
                   # The server is stopped: refresh paths to avoid stale live-directory information.
+                  check = 'Read live directory after shutdown'
                   original = listing('/')
                   for name in ('server_config.toml', 'data', 'logs'):
+                      check = f'Validate protected path {name!r}'
                       if name not in original or original[name].get('is_symlink'):
                           raise StageError('Protected live paths are missing or unsafe.')
                   config = original['server_config.toml']
                   for name in names:
+                      check = f'Validate live path {name!r}'
                       if original.get(name, {}).get('is_symlink'):
                           raise StageError('Live game path became a symbolic link.')
                       if name in original:
                           # Mark before sending: a network timeout can follow a successful rename.
                           changed = True
+                          check = f'Move old path {name!r} to rollback folder'
                           move(name, backup + '/' + name)
                   for name in names:
                       changed = True
+                      check = f'Move staged path {name!r} into place'
                       move(folder + '/' + name, name)
+                  check = 'Read installed directory'
                   installed = listing('/')
                   for name, size in expected.items():
-                      if '/' not in name and installed.get(name, {}).get('size') != size:
-                          raise StageError('Installed file size does not match staged package.')
+                      if '/' in name:
+                          continue
+                      check = f'Verify installed file size for {name!r}'
+                      if name not in installed:
+                          raise StageError('Installed file is missing.')
+                      actual = installed[name].get('size')
+                      if actual != size:
+                          observed = actual if type(actual) is int else 'unavailable'
+                          raise StageError(f'Expected {size} bytes; observed {observed}.')
                   for field in ('size', 'modified_at'):
+                      check = f'Verify server_config.toml {field}'
                       if installed['server_config.toml'].get(field) != config.get(field):
                           raise StageError('Live configuration metadata changed unexpectedly.')
+                  check = 'Set and verify Robust.Server executable permissions'
                   api('/files/chmod', 'POST', {
                       'root': '/', 'files': [{'file': 'Robust.Server', 'mode': '755'}]
                   })
                   print('Installation verified. Starting NETWORKBAY.', flush=True)
+                  check = 'Request server startup'
                   power('start')
+                  check = 'Wait for server to report running'
                   wait_for('running', 180)
                   # Confirm it stays running rather than merely observing the startup transition.
+                  check = 'Verify server stays running for 30 seconds'
                   for _ in range(6):
                       time.sleep(5)
                       if state() != 'running':
                           raise StageError('The new server did not stay running after startup.')
                   print('Deployment passed: server stayed running for 30 seconds.', flush=True)
                   if summary:
+                      check = 'Write deployment summary'
                       with open(summary, 'a', encoding='utf-8') as out:
                           out.write('\n### NETWORKBAY deployment passed\n\nServer restarted and remained running '
                                     'for 30 seconds. Configuration, data, and logs preserved. '
                                     'An in-game connection is still needed to verify gameplay.\n')
-              except Exception:
+              except Exception as error:
+                  detail = str(error) if isinstance(error, StageError) else type(error).__name__
+                  print(f'Deployment failed at: {check}. {detail}', flush=True)
                   print('Deployment failed. Attempting recovery of the previous game files.', flush=True)
                   try:
                       if changed:

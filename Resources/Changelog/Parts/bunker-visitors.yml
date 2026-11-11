@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Use Join Another at a bunker hatch to request access to an occupied bunker. Only the owner can approve your visit.

@@ -79,6 +79,9 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         public readonly EntityUid Map = map;
         public readonly EntityUid Grid = grid;
         public EntityUid Hatch = hatch;
+        public EntityUid Owner;
+        public string OwnerName = string.Empty;
+        public TimeSpan NextVisitRequest;
         public TimeSpan? EmptySince;
     }
 
@@ -92,6 +95,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     private TimeSpan _nextScan;
     private bool _stopping;
     private const int MaxRooms = 32;
+    private static readonly Vector2 BunkerEntryOffset = new(.5f, -1.5f);
 
     public override void Initialize()
     {
@@ -104,6 +108,8 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         SubscribeLocalEvent<PersonalBunkerEntranceComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<PersonalBunkerEntranceComponent, ContainerIsInsertingAttemptEvent>(OnInsert);
         SubscribeLocalEvent<PersonalBunkerEntranceComponent, PersonalBunkerChoiceMessage>(OnChoice);
+        SubscribeLocalEvent<PersonalBunkerEntranceComponent, ListBunkerVisitorsMessage>(OnListVisits);
+        SubscribeLocalEvent<PersonalBunkerEntranceComponent, RequestBunkerVisitMessage>(OnRequestVisit);
         SubscribeLocalEvent<PersonalBunkerExitComponent, ActivateInWorldEvent>(OnExit);
         SubscribeLocalEvent<PersonalBunkerExitComponent, InteractHandEvent>(OnExitHand);
         SubscribeLocalEvent<RoundEndedEvent>(OnRoundEnd);
@@ -189,6 +195,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         _nextScan = _time.CurTime + TimeSpan.FromSeconds(2);
         UpdateAdminInspections();
         ProcessForcedExits();
+        UpdateVisitRequests();
         EvictUnattendedGhosts();
         foreach (var uid in _identities.Keys.Where(uid => !Exists(uid)).ToArray()) _identities.Remove(uid);
         foreach (var room in _rooms.Values)
@@ -289,8 +296,11 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
                 _rooms.Add(key, room);
             }
             room.Hatch = hatch;
+            _visitorHatches.Remove(user);
+            room.Owner = user;
+            room.OwnerName = Name(user);
             room.EmptySince = null;
-            MoveWithDraggedItem(user, new EntityCoordinates(room.Grid, new Vector2(.5f, -1.5f)));
+            MoveWithDraggedItem(user, new EntityCoordinates(room.Grid, BunkerEntryOffset));
         }
         catch (Exception e)
         {
@@ -335,6 +345,8 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     private bool ReturnToHatch(Room room, EntityUid user)
     {
         var hatch = room.Hatch;
+        if (_visitorHatches.TryGetValue(user, out var origin) && origin.Map == room.Map && Exists(origin.Hatch))
+            hatch = origin.Hatch;
         if (!Exists(hatch))
         {
             var query = EntityQueryEnumerator<PersonalBunkerEntranceComponent>();
@@ -342,6 +354,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         }
         MoveWithDraggedItem(user, Transform(hatch).Coordinates);
         if (Transform(user).MapUid == room.Map) return false;
+        _visitorHatches.Remove(user);
         if (!Occupied(room)) SaveRooms(new[] { room });
         return true;
     }
@@ -382,12 +395,13 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         }
     }
 
-    private bool HasAwakePlayer(Room room)
+    private bool HasActivePlayer(Room room, bool requireAwake)
     {
         var players = EntityQueryEnumerator<ActorComponent, TransformComponent>();
         while (players.MoveNext(out var uid, out var actor, out var transform))
             if (transform.MapUid == room.Map && actor.PlayerSession.Status == SessionStatus.InGame
-                && !HasComp<GhostComponent>(uid) && _mobState.IsAlive(uid) && !HasComp<SleepingComponent>(uid))
+                && !HasComp<GhostComponent>(uid) && _mobState.IsAlive(uid)
+                && (!requireAwake || !HasComp<SleepingComponent>(uid)))
                 return true;
         return false;
     }
@@ -421,7 +435,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     {
         foreach (var room in _rooms.Values.ToArray())
         {
-            if (HasAwakePlayer(room)) continue;
+            if (HasActivePlayer(room, requireAwake: true)) continue;
             var ghosts = new List<EntityUid>();
             var query = EntityQueryEnumerator<GhostComponent, TransformComponent>();
             while (query.MoveNext(out var ghost, out _, out var transform))
@@ -559,6 +573,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     private void OnCleanup(Content.Shared.GameTicking.RoundRestartCleanupEvent args)
     {
         SaveAll(includeOccupied: true);
+        ClearVisits();
         _rooms.Clear();
         _adminInspections.Clear();
         _adminOrigins.Clear();

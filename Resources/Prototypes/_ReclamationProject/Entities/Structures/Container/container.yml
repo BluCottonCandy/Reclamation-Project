@@ -84,3 +84,5 @@
         - MidImpassable
         - LowImpassable
   - type: Pullable
+  - type: Weldable
+  - type: ResistLocker

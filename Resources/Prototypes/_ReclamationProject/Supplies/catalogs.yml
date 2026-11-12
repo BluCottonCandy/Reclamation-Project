@@ -1612,6 +1612,7 @@
       N14ClothingShoesRags: 0
       N14ClothingBackpackSatchelExplorer: 0
       ForgedKeeperFurnaceArmor: 50
+      ForgedFurnaceBozar: 50
       N14Flamer: 50
       N14Incinerator: 50
       ForgedBrandingIron: 50
@@ -1667,6 +1668,8 @@
   id: ReclamationSupplyForgedWeapons
   name: Weapons
   entries:
+  - proto: ForgedFurnaceBozar
+    price: 100
   - proto: CheapLighter
     price: 50
   - proto: ForgedEmbercleaver

@@ -18,8 +18,6 @@
       - state: base
       - state: o4
       - map: ["enum.StorageFillLayers.Fill"]
-      - state: closed
-        map: ["enum.StorageVisualLayers.Door"]
       - state: welded
         visible: false
         map: ["enum.WeldableLayers.BaseWelded"]

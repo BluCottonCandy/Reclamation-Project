@@ -14895,3 +14895,10 @@ Entries:
   id: 6651
   time: '2026-11-12T12:56:15.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/185
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: All faction supply vendors sell a full blood pack stack for 10 points.
+  id: 6652
+  time: '2026-11-12T12:56:30.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/186

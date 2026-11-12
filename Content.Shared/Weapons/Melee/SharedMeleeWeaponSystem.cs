@@ -47,6 +47,7 @@ namespace Content.Shared.Weapons.Melee;
 
 public abstract class SharedMeleeWeaponSystem : EntitySystem
 {
+    [Dependency] private readonly SharedMultiHandedItemSystem _multiHandedItems = default!;
     [Dependency] protected readonly ISharedAdminLogManager   AdminLogger     = default!;
     [Dependency] protected readonly ActionBlockerSystem      Blocker         = default!;
     [Dependency] protected readonly SharedCombatModeSystem   CombatMode      = default!;
@@ -332,12 +333,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (_special.GetEffective(user, SpecialStat.Agility) < 10 ||
             HasComp<MechPilotComponent>(user) || HasComp<MechComponent>(user) ||
             !TryComp<HandsComponent>(user, out var hands) || hands.ActiveHandEntity != active ||
-            !IsOneHandedMelee(active))
+            !IsOneHandedMelee(user, active))
             return false;
         foreach (var name in hands.SortedHands)
         {
             var held = hands.Hands[name].HeldEntity;
-            if (held == null || held == active || !IsOneHandedMelee(held.Value) ||
+            if (held == null || held == active || !IsOneHandedMelee(user, held.Value) ||
                 !TryComp<MeleeWeaponComponent>(held, out var melee))
                 continue;
             offhand = held.Value;
@@ -347,10 +348,21 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         return false;
     }
 
-    private bool IsOneHandedMelee(EntityUid uid) => HasComp<ItemComponent>(uid) &&
-        TryComp<MeleeWeaponComponent>(uid, out var weapon) && !weapon.MustBeEquippedToUse &&
-        !HasComp<GunComponent>(uid) && !HasComp<MultiHandedItemComponent>(uid) &&
-        !HasComp<MeleeRequiresWieldComponent>(uid) && !HasComp<VirtualItemComponent>(uid);
+    private bool IsOneHandedMelee(EntityUid user, EntityUid uid)
+    {
+        if (!HasComp<ItemComponent>(uid) ||
+            !TryComp<MeleeWeaponComponent>(uid, out var weapon) || weapon.MustBeEquippedToUse ||
+            HasComp<GunComponent>(uid) || HasComp<MeleeRequiresWieldComponent>(uid) ||
+            HasComp<VirtualItemComponent>(uid))
+            return false;
+
+        if (weapon.DualMeleeMinimumStrength is { } strength &&
+            !_special.HasRequirement(user, SpecialStat.Strength, strength))
+            return false;
+
+        return !TryComp<MultiHandedItemComponent>(uid, out var twoHanded) ||
+               (weapon.DualMeleeMinimumStrength != null && _multiHandedItems.GetHandsNeeded(user, twoHanded) == 1);
+    }
 
     public bool CanPayHeavyStamina(EntityUid user, MeleeWeaponComponent weapon) =>
         !TryComp<StaminaComponent>(user, out var stamina) ||

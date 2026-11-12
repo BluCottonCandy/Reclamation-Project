@@ -415,6 +415,8 @@
   id: ReclamationSupplyPackMedicalandfood
   name: Medical and food
   entries:
+  - proto: Bloodpack
+    price: 10
   - proto: N14Bandage
     price: 10
   - proto: N14BoxCardboardMREBoxCFilled

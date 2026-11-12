@@ -1,3 +1,4 @@
+using Content.Shared.Damage;
 // #Misfits Add - Core disease tick/spread/cure system.
 // Handles disease progression, stage-based effects, airborne/contact transmission,
 // equipment protection, natural immunity, and cure condition checking.
@@ -262,6 +263,9 @@ public sealed class DiseaseSystem : EntitySystem
     /// </summary>
     public bool TryInfect(EntityUid target, ProtoId<DiseasePrototype> diseaseId, float spreadChance = 0.5f)
     {
+        if (IsImmuneToRadFlu(target, diseaseId))
+            return false;
+
         if (!TryComp<DiseaseCarrierComponent>(target, out var carrier))
             return false;
 
@@ -292,6 +296,9 @@ public sealed class DiseaseSystem : EntitySystem
     /// </summary>
     public void AddDisease(EntityUid target, ProtoId<DiseasePrototype> diseaseId)
     {
+        if (IsImmuneToRadFlu(target, diseaseId))
+            return;
+
         var carrier = EnsureComp<DiseaseCarrierComponent>(target);
 
         if (carrier.Diseases.ContainsKey(diseaseId))
@@ -302,6 +309,10 @@ public sealed class DiseaseSystem : EntitySystem
         EnsureComp<DiseasedComponent>(target);
         Dirty(target, carrier);
     }
+
+    private bool IsImmuneToRadFlu(EntityUid target, ProtoId<DiseasePrototype> diseaseId) =>
+        diseaseId.Id == "RadFlu" && TryComp<DamageableComponent>(target, out var damageable)
+        && damageable.RadiationDamageTypeIDs.Count == 0;
 
     /// <summary>
     /// Handle sneeze/cough: play emote, then attempt airborne spread if configured.

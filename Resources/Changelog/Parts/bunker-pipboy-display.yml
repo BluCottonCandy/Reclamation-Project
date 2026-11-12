@@ -1,0 +1,10 @@
+author: BluCottonCandy
+changes:
+- type: Remove
+  message: Removed the map app from bunker computers.
+- type: Tweak
+  message: Pip-Boys left in a saved bunker become decommissioned displays.
+- type: Tweak
+  message: Wild and tamed wasteland animals are immune to ambient radiation and Rad Flu.
+- type: Fix
+  message: Wild and tamed animals seek accessible food and drink before reaching starvation or severe dehydration.

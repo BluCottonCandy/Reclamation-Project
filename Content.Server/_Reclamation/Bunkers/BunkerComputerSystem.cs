@@ -5,12 +5,10 @@ using System.Text.Json;
 using Content.Server.Access.Systems;
 using Content.Server._Misfits.Holotape;
 using Content.Server._Misfits.PipBoy;
-using Content.Server._Misfits.WastelandMap;
 using Content.Server.UserInterface;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared._Misfits.Holotape;
 using Content.Shared._Misfits.PipBoy;
-using Content.Shared._Misfits.WastelandMap;
 using Content.Shared.Access.Components;
 using Content.Shared.DeltaV.NanoChat;
 using Content.Shared.DeltaV.CartridgeLoader.Cartridges;
@@ -18,7 +16,6 @@ using Content.Shared.GameTicking;
 using Content.Shared.StatusIcon;
 using Robust.Server.GameObjects;
 using Robust.Shared.ContentPack;
-using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -26,7 +23,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server._Reclamation.Bunkers;
 
-/// <summary>Computer desktop adapter reusing Pip-Boy locks, group history, NanoChat, and wasteland maps.</summary>
+/// <summary>Computer desktop adapter reusing Pip-Boy locks, group history, and NanoChat.</summary>
 public sealed class BunkerComputerSystem : EntitySystem
 {
     [Dependency] private readonly UserInterfaceSystem _ui=default!;
@@ -36,9 +33,6 @@ public sealed class BunkerComputerSystem : EntitySystem
     [Dependency] private readonly IGameTiming _time=default!;
     [Dependency] private readonly IResourceManager _resources=default!;
     [Dependency] private readonly IPrototypeManager _prototypes=default!;
-    [Dependency] private readonly PersonalBunkerSystem _bunkers=default!;
-    [Dependency] private readonly SharedTransformSystem _transform=default!;
-    [Dependency] private readonly WastelandMapSystem _maps=default!;
     [Dependency] private readonly HolotapeSystem _holotapes=default!;
     public sealed class SavedProfile
     {
@@ -153,9 +147,6 @@ public sealed class BunkerComputerSystem : EntitySystem
         foreach(var item in _profiles.Values.Where(p=>p.Number!=profile.Number))state.Directory.Add(new PipBoyDirectoryEntry(item.Number,item.Name));
         state.SelectedChat=_selected.GetValueOrDefault((uid,actor));
         if(state.SelectedChat!=0)state.DirectMessages=_nano.GetMessagesForRecipient(profile.Card,state.SelectedChat)?.TakeLast(200).ToList()??new();
-        var coordinates=_bunkers.GetExteriorCoordinates(uid);
-        var outside=_transform.ToMapCoordinates(coordinates);
-        state.Map=_maps.BuildState(new WastelandMapComponent(),outside.MapId);
         return state;
     }
     private void Push(EntityUid uid,EntityUid actor,bool force=false)

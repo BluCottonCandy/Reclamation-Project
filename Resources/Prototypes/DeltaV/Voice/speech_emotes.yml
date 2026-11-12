@@ -81,6 +81,8 @@
   category: Vocal
   icon: Interface/Emotes/bark.png
   whitelist:
+    components:
+    - PackMember
     tags:
     - VulpEmotes
     - HarpyEmotes
@@ -97,6 +99,8 @@
   category: Vocal
   icon: Interface/Emotes/snarl.png
   whitelist:
+    components:
+    - PackMember
     tags:
     - VulpEmotes
     - HarpyEmotes
@@ -113,6 +117,8 @@
   category: Vocal
   icon: Interface/Emotes/whine.png
   whitelist:
+    components:
+    - PackMember
     tags:
     - VulpEmotes
     - HarpyEmotes
@@ -129,6 +135,8 @@
   category: Vocal
   icon: Interface/Emotes/howl.png
   whitelist:
+    components:
+    - PackMember
     tags:
     - VulpEmotes
     - HarpyEmotes

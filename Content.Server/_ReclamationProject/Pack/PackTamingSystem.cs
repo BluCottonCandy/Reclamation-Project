@@ -1,3 +1,6 @@
+using Content.Server.Body.Components;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Robust.Shared.Prototypes;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.Systems;
@@ -15,6 +18,7 @@ namespace Content.Server._ReclamationProject.Pack;
 
 public sealed class PackTamingSystem : EntitySystem
 {
+    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
@@ -46,12 +50,42 @@ public sealed class PackTamingSystem : EntitySystem
 
     private void OnStartup(Entity<PackMemberComponent> ent, ref ComponentStartup args)
     {
+        if (HasComp<BodyComponent>(ent.Owner))
+            GiveAnimalStomach(ent.Owner);
+
         if (ent.Comp.CanTame)
             _actions.AddAction(ent, ref ent.Comp.TameAction, "ActionPackTameAnimal");
         foreach (var animal in ent.Comp.StartingAnimals)
             SpawnFollower(ent, animal);
         for (var i = 0; i < ent.Comp.StartingArrows; i++)
             Spawn("PackHuntingArrow", Transform(ent).Coordinates);
+    }
+
+    private void GiveAnimalStomach(EntityUid member)
+    {
+        if (!_body.TryGetBodyOrganComponents<StomachComponent>(member, out var stomachs))
+            return;
+
+        foreach (var (_, organ) in stomachs)
+        {
+            var stomach = organ.Owner;
+            if (MetaData(stomach).EntityPrototype?.ID == "OrganAnimalStomach")
+                continue;
+
+            var part = Transform(stomach).ParentUid;
+            if (!_body.RemoveOrgan(stomach, organ))
+                continue;
+
+            var replacement = Spawn("OrganAnimalStomach", Transform(member).Coordinates);
+            if (_body.InsertOrgan(part, replacement, "stomach"))
+            {
+                QueueDel(stomach);
+                continue;
+            }
+
+            QueueDel(replacement);
+            _body.InsertOrgan(part, stomach, "stomach");
+        }
     }
 
     public bool TrySpawnHound(Entity<PackMemberComponent> owner)

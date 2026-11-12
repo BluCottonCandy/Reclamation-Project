@@ -3,7 +3,7 @@
   parent: PackPunkBelt
   name: Pack shaman medical belt
   description: A scavenged punk belt fitted with medical pouches for surgical instruments,
-    medicines and chemical bottles.
+    medicines, chemical bottles and a health scanner.
   components:
   - type: Storage
     whitelist:
@@ -39,6 +39,7 @@
   components:
   - type: StorageFill
     contents:
+    - id: N14HandheldHealthAnalyzer
     - id: ToxinChemistryBottle
       amount: 2
     - id: Hemostat

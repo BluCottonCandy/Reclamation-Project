@@ -83,3 +83,4 @@
         layer:
         - MidImpassable
         - LowImpassable
+  - type: Pullable

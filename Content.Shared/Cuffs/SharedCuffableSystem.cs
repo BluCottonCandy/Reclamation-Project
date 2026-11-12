@@ -586,6 +586,7 @@ namespace Content.Shared.Cuffs
             if (!Resolve(target, ref cuffable))
                 return;
 
+            const float uncuffRange = 1f;
             var isOwner = user == target;
 
             if (cuffsToRemove == null)
@@ -616,7 +617,7 @@ namespace Content.Shared.Cuffs
                 return;
             }
 
-            if (!isOwner && !_interaction.InRangeUnobstructed(user, target))
+            if (!isOwner && !_interaction.InRangeUnobstructed(user, target, uncuffRange))
             {
                 _popup.PopupClient(Loc.GetString("cuffable-component-cannot-remove-cuffs-too-far-message"), user, user);
                 return;
@@ -642,7 +643,7 @@ namespace Content.Shared.Cuffs
                 BreakOnDamage = true,
                 NeedHand = true,
                 RequireCanInteract = false, // Trust in UncuffAttemptEvent
-                DistanceThreshold = 0.3f
+                DistanceThreshold = uncuffRange
             };
 
             if (!_doAfter.TryStartDoAfter(doAfterEventArgs))

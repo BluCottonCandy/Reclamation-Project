@@ -14911,3 +14911,16 @@ Entries:
   id: 6653
   time: '2026-11-12T13:17:33.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/187
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Pack members start with animal stomachs that can digest raw meat and
+        organs and drink blood.
+    - type: Fix
+      message: Raw mirelurk claws no longer contain irradiated proteins.
+    - type: Add
+      message: Pack Shamans start with an N14 health scanner in their medical belt.
+  id: 6654
+  time: '2026-11-12T13:17:51.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/188

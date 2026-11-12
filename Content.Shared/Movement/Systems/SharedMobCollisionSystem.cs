@@ -83,6 +83,9 @@ public abstract class SharedMobCollisionSystem : EntitySystem
         _pushingCap = (1f / CfgManager.GetCVar(CVars.NetTickrate)) * CfgManager.GetCVar(CCVars.MovementPushingCap);
     }
 
+    protected virtual bool DeferContactTransform => false;
+    protected virtual void OnCollisionBufferChanged(EntityUid uid, bool colliding) { }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -94,30 +97,35 @@ public abstract class SharedMobCollisionSystem : EntitySystem
             if (!comp.Colliding)
                 continue;
 
-            comp.BufferAccumulator -= frameTime;
-            DirtyField(uid, comp, nameof(MobCollisionComponent.BufferAccumulator));
-            var direction = comp.Direction;
+            UpdateCollisionBuffer(uid, comp, frameTime);
+        }
+    }
 
-            if (comp.BufferAccumulator <= 0f)
+    protected void UpdateCollisionBuffer(EntityUid uid, MobCollisionComponent comp, float frameTime)
+    {
+        comp.BufferAccumulator -= frameTime;
+        DirtyField(uid, comp, nameof(MobCollisionComponent.BufferAccumulator));
+        var direction = comp.Direction;
+
+        if (comp.BufferAccumulator <= 0f)
+        {
+            SetColliding((uid, comp), false, 1f);
+        }
+        // Apply the mob collision; if it's too low ignore it (e.g. if mob friction would overcome it).
+        // This is so we don't spam velocity changes every tick. It's not that expensive for physics but
+        // avoids the networking side.
+        else if (direction != Vector2.Zero && PhysicsQuery.TryComp(uid, out var physics))
+        {
+            DebugTools.Assert(direction.LengthSquared() >= _minimumPushSquared);
+
+            if (direction.Length() > _pushingCap)
             {
-                SetColliding((uid, comp), false, 1f);
+                direction = direction.Normalized() * _pushingCap;
             }
-            // Apply the mob collision; if it's too low ignore it (e.g. if mob friction would overcome it).
-            // This is so we don't spam velocity changes every tick. It's not that expensive for physics but
-            // avoids the networking side.
-            else if (direction != Vector2.Zero && PhysicsQuery.TryComp(uid, out var physics))
-            {
-                DebugTools.Assert(direction.LengthSquared() >= _minimumPushSquared);
 
-                if (direction.Length() > _pushingCap)
-                {
-                    direction = direction.Normalized() * _pushingCap;
-                }
-
-                Physics.ApplyLinearImpulse(uid, direction * physics.Mass, body: physics);
-                comp.Direction = Vector2.Zero;
-                DirtyField(uid, comp, nameof(MobCollisionComponent.Direction));
-            }
+            Physics.ApplyLinearImpulse(uid, direction * physics.Mass, body: physics);
+            comp.Direction = Vector2.Zero;
+            DirtyField(uid, comp, nameof(MobCollisionComponent.Direction));
         }
     }
 
@@ -144,6 +152,7 @@ public abstract class SharedMobCollisionSystem : EntitySystem
         if (entity.Comp.Colliding != value)
         {
             entity.Comp.Colliding = value;
+            OnCollisionBufferChanged(entity.Owner, value);
             DirtyField(entity.Owner, entity.Comp, nameof(MobCollisionComponent.Colliding));
         }
 
@@ -232,8 +241,13 @@ public abstract class SharedMobCollisionSystem : EntitySystem
         if (ev.Cancelled)
             return false;
 
-        var (worldPos, worldRot) = _xformSystem.GetWorldPositionRotation(xform);
-        var ourTransform = new Transform(worldPos, worldRot);
+        var ourTransform = default(Transform);
+        var haveTransform = !DeferContactTransform;
+        if (haveTransform)
+        {
+            var (worldPos, worldRot) = _xformSystem.GetWorldPositionRotation(xform);
+            ourTransform = new Transform(worldPos, worldRot);
+        }
         var contacts = Physics.GetContacts(entity.Owner);
         var direction = Vector2.Zero;
         var contactCount = 0;
@@ -276,6 +290,13 @@ public abstract class SharedMobCollisionSystem : EntitySystem
 
             if (targetEv.Cancelled)
                 continue;
+
+            if (!haveTransform)
+            {
+                var (worldPos, worldRot) = _xformSystem.GetWorldPositionRotation(xform);
+                ourTransform = new Transform(worldPos, worldRot);
+                haveTransform = true;
+            }
 
             // TODO: More robust overlap detection.
             var otherTransform = Physics.GetPhysicsTransform(other);

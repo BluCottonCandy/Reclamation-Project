@@ -59,9 +59,18 @@ public sealed class PullingSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _xformSys = default!;
     [Dependency] private readonly ThrownItemSystem _thrownItem = default!;
 
+    private readonly HashSet<EntityUid> _pendingPullers = new();
+    private readonly List<EntityUid> _pullerSnapshot = new();
+
     public override void Initialize()
     {
         base.Initialize();
+
+        if (_net.IsServer)
+        {
+            SubscribeLocalEvent<PullerComponent, ComponentStartup>(OnPullerStartup);
+            SubscribeLocalEvent<PullerComponent, ComponentShutdown>(OnPullerShutdown);
+        }
 
         UpdatesAfter.Add(typeof(SharedPhysicsSystem));
         UpdatesOutsidePrediction = true;
@@ -112,74 +121,96 @@ public sealed class PullingSystem : EntitySystem
         if (_net.IsClient) // Client cannot predict this
             return;
 
-        var query = EntityQueryEnumerator<PullerComponent, PhysicsComponent, TransformComponent>();
-        while (query.MoveNext(out var puller, out var pullerComp, out var pullerPhysics, out var pullerXForm))
+        _pullerSnapshot.AddRange(_pendingPullers);
+        foreach (var uid in _pullerSnapshot)
         {
-            // If not pulling, reset the pushing cooldowns and exit
-            if (pullerComp.Pulling is not { } pulled || !TryComp<PullableComponent>(pulled, out var pulledComp))
-            {
-                pullerComp.PushingTowards = null;
-                pullerComp.NextPushTargetChange = TimeSpan.Zero;
-                continue;
-            }
-
-            pulledComp.BeingActivelyPushed = false; // Temporarily set to false; if the checks below pass, it will be set to true again
-
-            // If pulling but the pullee is invalid or is on a different map, stop pulling
-            var pulledXForm = Transform(pulled);
-            if (!TryComp<PhysicsComponent>(pulled, out var pulledPhysics)
-                || pulledPhysics.BodyType == BodyType.Static
-                || pulledXForm.MapUid != pullerXForm.MapUid)
-            {
-                StopPulling(pulled, pulledComp);
-                continue;
-            }
-
-            if (pullerComp.PushingTowards is null)
+            if (!TryComp(uid, out PullerComponent? puller) || MetaData(uid).EntityPaused
+                || !TryComp(uid, out PhysicsComponent? physics) || !TryComp(uid, out TransformComponent? transform))
                 continue;
 
-            if (TryComp(pulled, out ConveyedComponent? conveyed) && conveyed.Conveying)
-            {
-                pullerComp.PushingTowards = null;
-                continue;
-            }
-
-            // If pushing but the target position is invalid, or the push action has expired or finished, stop pushing
-            if (pullerComp.NextPushStop < _timing.CurTime
-                || !(pullerComp.PushingTowards.Value.ToMap(EntityManager, _xformSys) is var pushCoordinates)
-                || pushCoordinates.MapId != pulledXForm.MapID)
-            {
-                pullerComp.PushingTowards = null;
-                pullerComp.NextPushTargetChange = TimeSpan.Zero;
-                continue;
-            }
-
-            // Actual force calculation. All the Vector2's below are in map coordinates.
-            var desiredDeltaPos = pushCoordinates.Position - Transform(pulled).Coordinates.ToMapPos(EntityManager, _xformSys);
-            if (desiredDeltaPos.LengthSquared() < 0.1f)
-            {
-                pullerComp.PushingTowards = null;
-                continue;
-            }
-
-            var velocityAndDirectionAngle = new Angle(pulledPhysics.LinearVelocity) - new Angle(desiredDeltaPos);
-            var currentRelativeSpeed = pulledPhysics.LinearVelocity.Length() * (float) Math.Cos(velocityAndDirectionAngle.Theta);
-            var desiredAcceleration = MathF.Max(0f, pullerComp.MaxPushSpeed - currentRelativeSpeed);
-
-            var desiredImpulse = pulledPhysics.Mass * desiredDeltaPos;
-            var maxSourceImpulse = MathF.Min(pullerComp.PushAcceleration, desiredAcceleration) * pullerPhysics.Mass;
-            var actualImpulse = desiredImpulse.LengthSquared() > maxSourceImpulse * maxSourceImpulse ? desiredDeltaPos.Normalized() * maxSourceImpulse : desiredImpulse;
-
-            // Ideally we'd want to apply forces instead of impulses, however...
-            // We cannot use ApplyForce here because it will be cleared on the next physics substep which will render it ultimately useless
-            // The alternative is to run this function on every physics substep, but that is way too expensive for such a minor system
-            _physics.ApplyLinearImpulse(pulled, actualImpulse);
-            if (_gravity.IsWeightless(puller, pullerPhysics, pullerXForm))
-                _physics.ApplyLinearImpulse(puller, -actualImpulse);
-
-            pulledComp.BeingActivelyPushed = true;
+            UpdatePuller(uid, puller, physics, transform);
         }
-        query.Dispose();
+        _pullerSnapshot.Clear();
+    }
+
+    private void OnPullerStartup(EntityUid uid, PullerComponent comp, ComponentStartup args)
+    {
+        if (comp.Pulling != null || comp.PushingTowards != null || comp.NextPushTargetChange != TimeSpan.Zero)
+            _pendingPullers.Add(uid);
+    }
+
+    private void OnPullerShutdown(EntityUid uid, PullerComponent comp, ComponentShutdown args)
+    {
+        _pendingPullers.Remove(uid);
+    }
+
+    private void UpdatePuller(EntityUid puller, PullerComponent pullerComp, PhysicsComponent pullerPhysics, TransformComponent pullerXForm)
+    {
+        // If not pulling, reset the pushing cooldowns and exit
+        if (pullerComp.Pulling is not { } pulled || !TryComp<PullableComponent>(pulled, out var pulledComp))
+        {
+            pullerComp.PushingTowards = null;
+            pullerComp.NextPushTargetChange = TimeSpan.Zero;
+            if (pullerComp.Pulling == null)
+                _pendingPullers.Remove(puller);
+            return;
+        }
+
+        pulledComp.BeingActivelyPushed = false; // Temporarily set to false; if the checks below pass, it will be set to true again
+
+        // If pulling but the pullee is invalid or is on a different map, stop pulling
+        var pulledXForm = Transform(pulled);
+        if (!TryComp<PhysicsComponent>(pulled, out var pulledPhysics)
+            || pulledPhysics.BodyType == BodyType.Static
+            || pulledXForm.MapUid != pullerXForm.MapUid)
+        {
+            StopPulling(pulled, pulledComp);
+            return;
+        }
+
+        if (pullerComp.PushingTowards is null)
+            return;
+
+        if (TryComp(pulled, out ConveyedComponent? conveyed) && conveyed.Conveying)
+        {
+            pullerComp.PushingTowards = null;
+            return;
+        }
+
+        // If pushing but the target position is invalid, or the push action has expired or finished, stop pushing
+        if (pullerComp.NextPushStop < _timing.CurTime
+            || !(pullerComp.PushingTowards.Value.ToMap(EntityManager, _xformSys) is var pushCoordinates)
+            || pushCoordinates.MapId != pulledXForm.MapID)
+        {
+            pullerComp.PushingTowards = null;
+            pullerComp.NextPushTargetChange = TimeSpan.Zero;
+            return;
+        }
+
+        // Actual force calculation. All the Vector2's below are in map coordinates.
+        var desiredDeltaPos = pushCoordinates.Position - Transform(pulled).Coordinates.ToMapPos(EntityManager, _xformSys);
+        if (desiredDeltaPos.LengthSquared() < 0.1f)
+        {
+            pullerComp.PushingTowards = null;
+            return;
+        }
+
+        var velocityAndDirectionAngle = new Angle(pulledPhysics.LinearVelocity) - new Angle(desiredDeltaPos);
+        var currentRelativeSpeed = pulledPhysics.LinearVelocity.Length() * (float) Math.Cos(velocityAndDirectionAngle.Theta);
+        var desiredAcceleration = MathF.Max(0f, pullerComp.MaxPushSpeed - currentRelativeSpeed);
+
+        var desiredImpulse = pulledPhysics.Mass * desiredDeltaPos;
+        var maxSourceImpulse = MathF.Min(pullerComp.PushAcceleration, desiredAcceleration) * pullerPhysics.Mass;
+        var actualImpulse = desiredImpulse.LengthSquared() > maxSourceImpulse * maxSourceImpulse ? desiredDeltaPos.Normalized() * maxSourceImpulse : desiredImpulse;
+
+        // Ideally we'd want to apply forces instead of impulses, however...
+        // We cannot use ApplyForce here because it will be cleared on the next physics substep which will render it ultimately useless
+        // The alternative is to run this function on every physics substep, but that is way too expensive for such a minor system
+        _physics.ApplyLinearImpulse(pulled, actualImpulse);
+        if (_gravity.IsWeightless(puller, pullerPhysics, pullerXForm))
+            _physics.ApplyLinearImpulse(puller, -actualImpulse);
+
+        pulledComp.BeingActivelyPushed = true;
     }
 
     private void OnPullerMoveInput(EntityUid uid, PullerComponent component, ref MoveInputEvent args)
@@ -603,6 +634,8 @@ public sealed class PullingSystem : EntitySystem
         pullableComp.PullJointId = $"pull-joint-{GetNetEntity(pullableUid)}";
 
         pullerComp.Pulling = pullableUid;
+        if (_net.IsServer)
+            _pendingPullers.Add(pullerUid);
         pullableComp.Puller = pullerUid;
 
         // joint state handling will manage its own state

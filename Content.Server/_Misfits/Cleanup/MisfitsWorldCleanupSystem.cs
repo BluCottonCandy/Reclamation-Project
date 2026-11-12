@@ -53,8 +53,8 @@ public sealed class MisfitsWorldCleanupSystem : EntitySystem
         var toStop = new List<EntityUid>();
         var toDelete = new List<EntityUid>();
 
-        var parts = EntityQueryEnumerator<BodyPartComponent, GibletCleanupComponent>();
-        while (parts.MoveNext(out var uid, out var part, out var cleanup))
+        var parts = EntityQueryEnumerator<GibletCleanupComponent, BodyPartComponent>();
+        while (parts.MoveNext(out var uid, out var cleanup, out var part))
         {
             // Attached to a body (e.g. a surgeon recovered it) — stop cleanup so the limb never despawns.
             if (part.Body != null)
@@ -69,8 +69,8 @@ public sealed class MisfitsWorldCleanupSystem : EntitySystem
                 toDelete.Add(uid);
         }
 
-        var organs = EntityQueryEnumerator<OrganComponent, GibletCleanupComponent>();
-        while (organs.MoveNext(out var uid, out var organ, out var cleanup))
+        var organs = EntityQueryEnumerator<GibletCleanupComponent, OrganComponent>();
+        while (organs.MoveNext(out var uid, out var cleanup, out var organ))
         {
             if (organ.Body != null)
             {

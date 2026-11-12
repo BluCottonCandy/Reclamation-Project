@@ -1,4 +1,7 @@
 using System.Numerics;
+using Content.Server.Body.Components;
+using Content.Shared.Body.Organ;
+using Robust.Shared.Containers;
 using System.Runtime.CompilerServices;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
@@ -18,6 +21,8 @@ namespace Content.Server.Physics.Controllers
     {
         [Dependency] private readonly ThrusterSystem _thruster = default!;
         [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
+
+        [Dependency] private readonly SharedContainerSystem _containers = default!;
 
         private Dictionary<EntityUid, (ShuttleComponent, List<(EntityUid, PilotComponent, InputMoverComponent, TransformComponent)>)> _shuttlePilots = new();
 
@@ -65,6 +70,12 @@ namespace Content.Server.Physics.Controllers
 
             while (inputQueryEnumerator.MoveNext(out var uid, out var mover))
             {
+                if (!mover.CanMove && !mover.ToParent && mover.WishDir == Vector2.Zero
+                    && HasComp<BrainComponent>(uid) && HasComp<OrganComponent>(uid)
+                    && !HasComp<ActorComponent>(uid) && !RelayTargetQuery.HasComponent(uid)
+                    && _containers.IsEntityInContainer(uid))
+                    continue;
+
                 var physicsUid = uid;
 
                 if (RelayQuery.HasComponent(uid))

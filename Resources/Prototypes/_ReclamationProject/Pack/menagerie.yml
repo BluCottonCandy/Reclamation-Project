@@ -84,6 +84,9 @@
   id: PackMenagerieMolerat
   suffix: Pack menagerie, untamed
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: Scent
   - type: NpcFactionMember
     factions:

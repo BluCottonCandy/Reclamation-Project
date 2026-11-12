@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Pack animals with slower base movement now meet standard player walking and sprinting speeds.

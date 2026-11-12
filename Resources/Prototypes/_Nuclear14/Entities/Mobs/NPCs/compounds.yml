@@ -4,6 +4,11 @@
   - tasks:
     - !type:HTNCompoundTask
       task: MeleeCombatCompound
+  - preconditions:
+      - !type:WastelandAnimalPrecondition
+    tasks:
+      - !type:HTNCompoundTask
+        task: FoodCompound
   - tasks:
     - !type:HTNCompoundTask
       task: FollowCompound

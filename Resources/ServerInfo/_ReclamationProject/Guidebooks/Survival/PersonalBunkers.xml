@@ -19,7 +19,7 @@ If a save fails, an empty room still unloads after its normal grace period rathe
 
 ## Display weapons and armor
 
-Ammo boxes and magazines left in the saved room become decorative: they still look filled but cannot hold or supply ammunition. IDs become decorative and lose access, identification and messaging functionality.
+Ammo boxes and magazines left in the saved room become decorative: they still look filled but cannot hold or supply ammunition. IDs become decorative and lose access, identification and messaging functionality. Pip-Boys left in the room become decommissioned displays with no working apps, light, or other functions.
 
 Super and ultra stim liquids left in the room become normal stim liquid when saved, keeping the same volume and container names. Mail and parcels are deleted on save. The mail machine stays.
 

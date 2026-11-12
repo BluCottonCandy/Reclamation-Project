@@ -14799,3 +14799,20 @@ Entries:
   id: 6647
   time: '2026-11-12T10:03:49.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/181
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Removed the round-start air rebuild stall while keeping breathable air
+        in the vault and enclave.
+    - type: Tweak
+      message: >-
+        Reduced idle server work from movement, climbing, pushing, pulling,
+        body-part cleanup, digestion and metabolism.
+    - type: Fix
+      message: >-
+        The round countdown now ends the round at zero and starts the next round
+        after the configured delay.
+  id: 6648
+  time: '2026-11-12T10:45:26.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/182

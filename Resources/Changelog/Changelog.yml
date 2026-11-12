@@ -14792,3 +14792,10 @@ Entries:
   id: 6646
   time: '2026-11-12T03:44:55.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/180
+- author: Davisrocket
+  changes:
+    - type: Add
+      message: Ammo Canister with functionality
+  id: 6647
+  time: '2026-11-12T10:03:49.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/181

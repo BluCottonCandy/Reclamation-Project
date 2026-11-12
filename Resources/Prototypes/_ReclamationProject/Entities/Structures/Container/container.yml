@@ -23,7 +23,6 @@
         map: ["enum.WeldableLayers.BaseWelded"]
       - state: locked
         map: ["enum.LockVisualLayers.Lock"]
-        shader: unshaded
   - type: StorageFillVisualizer
     maxFillLevels: 5
     fillBaseName: ammo
@@ -70,3 +69,17 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable

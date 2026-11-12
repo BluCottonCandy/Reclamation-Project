@@ -27,8 +27,6 @@
       - state: locked
         map: ["enum.LockVisualLayers.Lock"]
         shader: unshaded
-      - state: open
-        map: ["openLayer"]
   - type: StorageFillVisualizer
     maxFillLevels: 5
     fillBaseName: ammo

@@ -11,29 +11,40 @@ The player ranks progress through [bold]Cub, Youngling, Hunter, Beast Tamer and 
 
 Every Pack rank can bark, growl, snarl, whine and howl from the Emotes menu.
 
-## Warhounds and followers
+## Animal companions
 
-Only the Alpha can have a deathclaw follow them. Other ranks and characters cannot recruit or command deathclaws, even with high Charisma.
+Your rank sets your maximum simultaneous followers. Starting companions fill those slots.
 
-Warhounds and tamed companions leave brahdos, livestock, pets and passive wildlife alone. Hostile creatures and enemies remain valid targets.
+- [bold]Cub[/bold] — 1 follower. Starts with a molerat.
+- [bold]Youngling[/bold] — 1 follower. Starts with a warhound.
+- [bold]Hunter[/bold] — 2 followers. Starts with two warhounds.
+- [bold]Beast Tamer[/bold] — 3 followers. Starts with two warhounds and a mirelurk.
+- [bold]Shaman[/bold] — 1 follower. Starts with a nightstalker.
+- [bold]Beastmaster[/bold] — 2 followers. Starts with a yao guai and a ghoulrilla.
+- [bold]Beta[/bold] — 1 follower. Starts with a deathclaw.
+- [bold]Alpha[/bold] — 1 follower. Starts with the Ghoulrilla King.
 
-[bold]Cubs and Younglings[/bold] start with one warhound already following them and may have [bold]one animal follower[/bold] before Charisma bonuses. They do not have a taming action.
+Charisma does not add follower slots for Pack members. Only Beta and Alpha can command deathclaws, and only Alpha can command the Ghoulrilla King.
 
-[bold]Hunters and higher ranks, including Shamans[/bold], start with two following warhounds and may have [bold]four animal followers[/bold] before Charisma bonuses. This total includes hounds, tamed animals and any additional warhound chosen through Pets in loadouts.
+Right-click yourself and choose [bold]Release animal[/bold] to free a companion’s follower slot from anywhere. The Pack vendor sells carriers with replacement companions. Warhounds and tamed companions leave livestock, pets and passive wildlife alone. Open a route for your animals to follow you.
 
-Pack hounds and tamed companions do [bold]not require Charisma[/bold] to follow a Pack member. Use their follower controls to issue orders. The normal Charisma bonus adds one follower slot at 8 Charisma, two at 9 and three at 10, on top of your rank's base capacity. These extra slots do not increase your taming allowance. Open a route for your animals rather than expecting them to destroy the camp to reach you.
+## Companion armor and attacks
+
+Buy Pack animal armor from the Pack vendor for 10 points. It resists blunt, slash and piercing damage. Molerats get 10%, wolves 25%, nightstalkers, yao guai and ghoulrillas 35%, deathclaws 45%, and the Ghoulrilla King 50%. Mirelurks keep their reflection and cannot wear the harness.
+
+Warhounds can lunge up to five tiles with no windup. A hit briefly slows the target, and the lunge has a 20-second cooldown. Molerats have an armor-piercing bite with a one-minute cooldown. Adult nightstalkers can inject venom on a bite. Ghoulrillas and the Ghoulrilla King knock enemies back with their punches.
+
+Pack companions suffer half the usual movement slowdown from wounds and can move through one another.
 
 ## Taming
 
-Use [bold]Tame animal[/bold] on a living, untamed creature within [bold]two tiles[/bold], with an unobstructed route to it. You need room within your follower limit. Suitable targets include hostile wild animals and the untamed animals kept in the Pack's pens.
+Only the [bold]Beast Tamer[/bold] can use [bold]Tame animal[/bold]. Target an eligible living animal within [bold]two tiles[/bold] with an unobstructed route. The action has a ten-minute cooldown.
 
-- [bold]Hunter, Beast Tamer, Shaman and Beastmaster:[/bold] one tamed molerat, mirelurk or nightstalker. Irradiated mirelurks and nightstalker cubs are also eligible.
-- [bold]Beta:[/bold] up to two of those animals; deathclaws are excluded.
-- [bold]Alpha:[/bold] the unique [bold]Tame deathclaw[/bold] action, allowing one deathclaw companion.
+Taming makes the animal friendly to the Pack and leaves it where it is. Taming has no ownership limit. Use follower commands separately if you have a free follower slot. Tamed animals retain their existing damage and can be revived.
 
-An already-tamed companion, a player-controlled animal or a special hunt creature cannot be tamed again. A dead tamed animal still occupies its taming allowance while it exists; killing it does not free another tame.
+## Scent tracking
 
-Successful taming turns the creature into a following, pettable companion that can enter critical condition and be revived after death. It keeps damage it already suffered: taming is not a free heal. Tamed animals have a bloodstream and animal metabolism, allowing them to process medicines and other chemicals. Treat their injuries and bring them back safely.
+All Pack ranks can use Track Scent on a character or Pack animal. You can also sample objects that picked up a scent when touched or worn. An object carries the most recent scent it picked up. Matching scents produce markers nearby.
 
 ## Hunting Cry
 

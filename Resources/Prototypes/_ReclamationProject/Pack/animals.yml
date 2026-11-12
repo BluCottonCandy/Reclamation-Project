@@ -67,7 +67,35 @@
   description: A scarred, well-fed kennel hound that recognizes only the Pack as its
     own.
   components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      290: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      50: 0.8
+      100: 0.6
+
+  - type: Scent
   - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.75, Slash: 0.75, Piercing: 0.75 }
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
+  - type: MirelurkQueenCharge
+    singleTarget: true
+    cooldown: 20
+    windup: 0
+    range: 5
+    impactSlowdown: 0.05
+    impactDamage:
+      types:
+        Blunt: 10
   - type: NpcFactionMember
     factions:
     - Pack
@@ -100,6 +128,7 @@
   - type: NpcFactionMember
     factions:
     - Pack
+  - type: Scent
   - type: PackAnimal
 - type: entity
   parent: MarkerBase
@@ -109,3 +138,167 @@
   - type: ConditionalSpawner
     prototypes:
     - PackBrahdo
+
+- type: entity
+  id: PackYaoGuai
+  parent: N14MobYaoguai
+  name: Pack yao guai
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 9
+        Slash: 26
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.8
+      300: 0.6
+
+  - type: Scent
+  - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.65, Slash: 0.65, Piercing: 0.65 }
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
+  - type: NpcFactionMember
+    factions: [Pack]
+  - type: Body
+    prototype: N14PetAnimal
+  - type: Bloodstream
+  - type: MobState
+    allowedStates: [Alive, Critical, Dead]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      600: Critical
+      800: Dead
+    allowRevives: true
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+- type: entity
+  id: PackGhoulrilla
+  parent: MobGorilla
+  name: Pack ghoulrilla
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      sprite: _ReclamationProject/Mobs/Pack/ghoulrilla.rsi
+      state: crawling
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.32
+        density: 200
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      112: 0.8
+      225: 0.6
+
+  - type: Scent
+  - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.65, Slash: 0.65, Piercing: 0.65 }
+    knockback: true
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 35
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
+  - type: NpcFactionMember
+    factions: [Pack]
+  - type: Body
+    prototype: N14PetAnimal
+  - type: Bloodstream
+  - type: MobState
+    allowedStates: [Alive, Critical, Dead]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Critical
+      450: Dead
+    allowRevives: true
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool false
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts
+- type: entity
+  id: PackGhoulrillaKing
+  parent: PackGhoulrilla
+  name: Pack Ghoulrilla King
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    scale: 1.25, 1.25
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      sprite: _ReclamationProject/Mobs/Pack/ghoulrilla_king.rsi
+      state: crawling
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      200: 0.8
+      400: 0.6
+
+  - type: Scent
+  - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.5, Slash: 0.5, Piercing: 0.5 }
+    knockback: true
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 45
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
+  - type: NpcFactionMember
+    factions: [Pack]
+  - type: Body
+    prototype: N14PetAnimal
+  - type: Bloodstream
+  - type: MobState
+    allowedStates: [Alive, Critical, Dead]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      800: Critical
+      1070: Dead
+    allowRevives: true
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool false
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSpawn: EffectHearts

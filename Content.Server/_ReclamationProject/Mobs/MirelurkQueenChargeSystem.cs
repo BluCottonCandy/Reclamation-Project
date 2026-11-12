@@ -1,3 +1,6 @@
+using Content.Server.NPC.HTN;
+using Content.Server.NPC;
+using Content.Shared.Stunnable;
 using System.Numerics;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -42,6 +45,8 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
     [Dependency] private readonly MeleeWeaponSystem _melee = default!;
     [Dependency] private readonly NpcFactionSystem _factions = default!;
 
+    [Dependency] private readonly SharedStunSystem _stun = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -53,7 +58,7 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
 
     private void OnDamageChanged(Entity<MirelurkQueenChargeComponent> queen, ref DamageChangedEvent args)
     {
-        if (queen.Comp.Enraged || !_mobState.IsAlive(queen) ||
+        if (queen.Comp.SingleTarget || queen.Comp.Enraged || !_mobState.IsAlive(queen) ||
             !TryComp<DamageableComponent>(queen, out var damage) || damage.TotalDamage < queen.Comp.EnrageDamageThreshold)
             return;
 
@@ -114,17 +119,31 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
             }
 
             if (!HasComp<ActiveNPCComponent>(uid) || HasComp<ActorComponent>(uid) ||
-                !TryComp<NPCMeleeCombatComponent>(uid, out var combat))
+                _timing.CurTime < comp.NextCharge)
                 continue;
 
-            TryCharge((uid, comp), combat.Target);
+            if (TryComp<NPCMeleeCombatComponent>(uid, out var combat) && TryCharge((uid, comp), combat.Target))
+                continue;
+
+            if (!comp.SingleTarget || !TryComp<HTNComponent>(uid, out var htn))
+                continue;
+
+            if (htn.Blackboard.TryGetValue<EntityUid>(NPCBlackboard.CurrentOrderedTarget, out var ordered, EntityManager) &&
+                TryCharge((uid, comp), ordered))
+                continue;
+
+            if (htn.Blackboard.TryGetValue<EntityUid>("Target", out var target, EntityManager))
+                TryCharge((uid, comp), target);
         }
     }
 
     public bool TryCharge(Entity<MirelurkQueenChargeComponent> queen, EntityUid target)
     {
         var comp = queen.Comp;
-        if (comp.WindingUp || comp.Dashing || _timing.CurTime < comp.NextCharge || !_mobState.IsAlive(queen) || !_mobState.IsAlive(target) ||
+        if (comp.WindingUp || comp.Dashing || _timing.CurTime < comp.NextCharge ||
+            target == EntityUid.Invalid || TerminatingOrDeleted(target) ||
+            !_mobState.IsAlive(queen) || !_mobState.IsAlive(target) ||
+            (comp.SingleTarget && _factions.IsEntityFriendly(queen.Owner, target)) ||
             HasComp<MeleeChargeComponent>(queen) || HasComp<ThrownItemComponent>(queen) ||
             !TryComp<TransformComponent>(queen, out var queenXform) ||
             !TryComp<TransformComponent>(target, out var targetXform) || !HasComp<PhysicsComponent>(queen))
@@ -147,8 +166,9 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
         comp.TargetPosition = end;
         comp.ImpactApplied = false;
         comp.StopPending = false;
-        // The existing dash marker blocks movement during the tell as well as the dash.
-        EnsureComp<MeleeChargeComponent>(queen);
+        // An immediate lunge lets PerformDash attach its own movement marker.
+        if (!comp.SingleTarget)
+            EnsureComp<MeleeChargeComponent>(queen);
         _physics.SetLinearVelocity(queen, Vector2.Zero);
         if (TryComp<MeleeWeaponComponent>(queen, out var weapon) && weapon.NextAttack < comp.WindupEnd)
         {
@@ -157,7 +177,7 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
         }
         if (TryComp<MeleeChargeAudioComponent>(queen, out var audio))
             _audio.PlayPvs(audio.ActivationSound, queen);
-        if (comp.Enraged)
+        if (comp.Enraged || comp.Windup <= 0)
             FinishWindup(queen);
         return true;
     }
@@ -221,6 +241,18 @@ public sealed class MirelurkQueenChargeSystem : EntitySystem
         // impact of this charge counts; walls stop it without inflicting stamina damage.
         queen.Comp.ImpactApplied = true;
         queen.Comp.StopPending = true;
+        if (queen.Comp.SingleTarget)
+        {
+            if (_mobState.IsAlive(target) && !_factions.IsEntityFriendly(queen.Owner, target))
+            {
+                if (queen.Comp.ImpactDamage is { } damage)
+                    _damage.TryChangeDamage(target, damage, origin: queen.Owner);
+                var speed = 1f - queen.Comp.ImpactSlowdown;
+                _stun.TrySlowdown(target, TimeSpan.FromSeconds(10), true, speed, speed);
+            }
+            return;
+        }
+
         if (!_mobState.IsAlive(target) || !HasComp<StaminaComponent>(target) ||
             _factions.IsEntityFriendly(queen.Owner, target) || !TryComp<MeleeWeaponComponent>(queen, out var weapon))
             return;

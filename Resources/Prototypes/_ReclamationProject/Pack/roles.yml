@@ -62,9 +62,9 @@
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 1
-      spawnHound: true
+      startingAnimals: [PackTamedMolerat]
     - type: Warcry
       action: ActionPackWarcry
       targetDepartment: Pack
@@ -179,9 +179,9 @@
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 1
-      spawnHound: true
+      startingAnimals: [PackHound]
     - type: Warcry
       action: ActionPackWarcry
       targetDepartment: Pack
@@ -291,15 +291,14 @@
       heavyStaminaCost: 0
       maxTargets: 1
     - type: FollowerCommander
-      innateFollowerCapacity: 4
+      innateFollowerCapacity: 2
     - type: TribalHuntParticipant
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 4
-      spawnHound: true
-      canTame: true
+      startingAnimals: [PackHound, PackHound]
     - type: Warcry
       action: ActionPackWarcry
       targetDepartment: Pack
@@ -409,14 +408,14 @@
       heavyStaminaCost: 0
       maxTargets: 1
     - type: FollowerCommander
-      innateFollowerCapacity: 4
+      innateFollowerCapacity: 3
     - type: TribalHuntParticipant
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 4
-      spawnHound: true
+      startingAnimals: [PackHound, PackHound, PackTamedMirelurk]
       canTame: true
     - type: Warcry
       action: ActionPackWarcry
@@ -528,15 +527,14 @@
       heavyStaminaCost: 0
       maxTargets: 1
     - type: FollowerCommander
-      innateFollowerCapacity: 4
+      innateFollowerCapacity: 1
     - type: TribalHuntParticipant
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 4
-      spawnHound: true
-      canTame: true
+      startingAnimals: [PackTamedNightstalker]
     - type: Warcry
       action: ActionPackWarcry
       targetDepartment: Pack
@@ -649,15 +647,14 @@
       heavyStaminaCost: 0
       maxTargets: 1
     - type: FollowerCommander
-      innateFollowerCapacity: 4
+      innateFollowerCapacity: 2
     - type: TribalHuntParticipant
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 4
-      spawnHound: true
-      canTame: true
+      startingAnimals: [PackYaoGuai, PackGhoulrilla]
     - type: Warcry
       action: ActionPackWarcry
       targetDepartment: Pack
@@ -763,16 +760,15 @@
       heavyStaminaCost: 0
       maxTargets: 1
     - type: FollowerCommander
-      innateFollowerCapacity: 4
+      innateFollowerCapacity: 1
     - type: TribalHuntParticipant
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 4
-      spawnHound: true
-      canTame: true
-      tameLimit: 2
+      canCommandDeathclaw: true
+      startingAnimals: [PackTamedDeathclaw]
       startingArrows: 17
     - type: Warcry
       action: ActionPackWarcry
@@ -879,15 +875,15 @@
       heavyStaminaCost: 0
       maxTargets: 1
     - type: FollowerCommander
-      innateFollowerCapacity: 4
+      innateFollowerCapacity: 1
     - type: TribalHuntParticipant
       targetDepartment: Pack
       startMinorHuntAction: ActionPackStartHunt
       openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
     - type: PackMember
-      followerLimit: 4
-      spawnHound: true
-      canTameDeathclaw: true
+      canCommandKing: true
+      startingAnimals: [PackGhoulrillaKing]
     - type: Warcry
       action: ActionPackWarcry
       targetDepartment: Pack

@@ -1,0 +1,72 @@
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierMolerat
+  name: Pack molerat carrier
+  description: Contains one trained Pack molerat.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackTamedMolerat
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierWolf
+  name: Pack wolf carrier
+  description: Contains one trained Pack wolf.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackHound
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierMirelurk
+  name: Pack mirelurk carrier
+  description: Contains one trained Pack mirelurk.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackTamedMirelurk
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierNightstalker
+  name: Pack nightstalker carrier
+  description: Contains one trained Pack nightstalker.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackTamedNightstalker
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierYaoGuai
+  name: Pack yao guai carrier
+  description: Contains one trained Pack yao guai.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackYaoGuai
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierGhoulrilla
+  name: Pack ghoulrilla carrier
+  description: Contains one trained Pack ghoulrilla.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackGhoulrilla
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierDeathclaw
+  name: Pack deathclaw carrier
+  description: Contains one trained Pack deathclaw.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackTamedDeathclaw
+- type: entity
+  parent: PetCarrier
+  id: PackCarrierKing
+  name: Pack Ghoulrilla King carrier
+  description: Contains one trained Pack Ghoulrilla King.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PackGhoulrillaKing

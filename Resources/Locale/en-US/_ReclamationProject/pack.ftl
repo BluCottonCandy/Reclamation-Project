@@ -44,7 +44,7 @@ pack-compound-full = It cannot hold any more arrows.
 pack-tame-already-owned = You have reached your taming limit. Look after your companions.
 pack-tame-invalid = You cannot tame that creature.
 pack-tame-full = You cannot command any more followers.
-pack-tame-success = The creature accepts you as its handler.
+pack-tame-success = The creature is now friendly to the Pack.
 
 trait-name-PackWarhoundCompanion = Pack Warhound
 trait-description-PackWarhoundCompanion = A trained Pack warhound starts by your side and follows without Charisma. Counts toward your follower limit. Available to Hunters and higher ranks.
@@ -69,3 +69,9 @@ pack-kit-bonebreaker-description = Close-range fighter. Contains: a Pack fang ma
 
 pack-kit-painbringer-name = Pack Pain Bringer
 pack-kit-painbringer-description = Heavy breacher. Contains: a Pack Thunderjaw shotgun with a twelve-shell internal magazine, two Pack shotgun shell boxes, a Pack fang machete and two smoke grenades, two stimpaks, bandages, an MRE box, two bolas and two sets of handcuffs.
+
+pack-animal-armor-slot = Animal armor
+
+pack-release-animal = Release animal
+pack-release-animal-entry = { $animal } ({ $number })
+pack-animal-released = You released { $animal }. Its follower slot is now free.

@@ -1,0 +1,30 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Pack ranks start with different animal companions, and Charisma no longer grants Pack members extra follower slots.
+- type: Tweak
+  message: Only Beast Tamers can tame animals. Taming makes the animal friendly to the Pack, and followers must be ordered separately.
+- type: Add
+  message: Pack members can track scents and requisition replacement animal carriers and spray paint from their vendor.
+- type: Add
+  message: The Pack vendor sells companion armor for 10 points. Wolves can charge and slow enemies, molerats have an armor-piercing bite, and ghoulrillas can knock enemies back.
+- type: Tweak
+  message: Pack companions no longer block each other and suffer less slowdown from wounds.
+- type: Tweak
+  message: Ghoulrillas punch for 35 blunt damage, and the Ghoulrilla King punches for 45.
+- type: Fix
+  message: Pack companions and menagerie animals now have scents that Pack members can track.
+- type: Add
+  message: Track Scent can pick up scents from objects people have touched.
+- type: Add
+  message: Pack members can release a missing companion from their own right-click menu and free its follower slot.
+- type: Tweak
+  message: Pack yao guai, nightstalkers, mirelurks, and molerats deal more damage with normal attacks.
+- type: Tweak
+  message: Pack warhounds go critical at 200 damage, yao guai at 600, and the Ghoulrilla King at 800.
+- type: Fix
+  message: Pack warhounds can lunge up to five tiles when they acquire an enemy in range.
+- type: Add
+  message: Pack ghoulrillas and the Ghoulrilla King have distinct new sprites. The King appears 25% larger.
+- type: Fix
+  message: Pack ghoulrillas fit through one-tile passages.

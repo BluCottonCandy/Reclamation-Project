@@ -1,5 +1,5 @@
 #Container New
-#Welding incompatible, C# is needed to make a call to allow a lock and welding to simulatanously exist
+#Welding incompatible, C# is needed to make a call to allow a lock and welding to simulatanously exist, would be a nice future functionality to add
 #The storage fill visualizer is not fully functional and has some bugs regarding how it displays
 - type: entity
   id: ReclamationAmmoContainer

@@ -24,6 +24,7 @@ namespace Content.Server.Forensics
         public override void Initialize()
         {
             SubscribeLocalEvent<FingerprintComponent, ContactInteractionEvent>(OnInteract);
+            SubscribeLocalEvent<ScentComponent, ContactInteractionEvent>(OnScentContact);
             SubscribeLocalEvent<ScentComponent, DidEquipEvent>(OnEquip);
             SubscribeLocalEvent<FiberComponent, MapInitEvent>(OnFiberInit);
             SubscribeLocalEvent<FingerprintComponent, MapInitEvent>(OnFingerprintInit);
@@ -44,6 +45,12 @@ namespace Content.Server.Forensics
                 return;       // like if a system deleted the ent
 
             ApplyEvidence(uid, args.Other);
+        }
+
+        private void OnScentContact(EntityUid uid, ScentComponent component, ContactInteractionEvent args)
+        {
+            if (!args.Handled && !TerminatingOrDeleted(args.Other))
+                ApplyScent(uid, args.Other);
         }
 
         private void OnEquip(EntityUid uid, ScentComponent component, DidEquipEvent args)
@@ -267,9 +274,14 @@ namespace Content.Server.Forensics
             if (HasComp<ScentComponent>(target))
                 return;
 
+            if (!TryComp<ScentComponent>(user, out var scent) || string.IsNullOrEmpty(scent.Scent))
+                return;
+
             var component = EnsureComp<ForensicsComponent>(target);
-            if (TryComp<ScentComponent>(user, out var scent))
-                component.Scent = scent.Scent;
+            if (component.Scent == scent.Scent)
+                return;
+
+            component.Scent = scent.Scent;
 
             Dirty(target, component);
         }

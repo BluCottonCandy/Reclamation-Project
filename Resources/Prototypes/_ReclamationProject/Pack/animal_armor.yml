@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseItem
+  id: PackAnimalArmor
+  name: Pack animal armor
+  description: Bright scrap plates laced to a leather harness. Attach it to a Pack companion. Protection varies by species.
+  components:
+  - type: PackAnimalArmor
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/security.rsi
+    layers:
+    - state: icon
+      color: "#dc71bb"

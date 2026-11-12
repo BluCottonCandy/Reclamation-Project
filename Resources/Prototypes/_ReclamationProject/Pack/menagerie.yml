@@ -66,6 +66,7 @@
   id: PackMenagerieDeathclaw
   suffix: Pack menagerie, untamed
   components:
+  - type: Scent
   - type: NpcFactionMember
     factions:
     - PackMenagerie
@@ -74,6 +75,7 @@
   id: PackMenagerieNightstalker
   suffix: Pack menagerie, untamed
   components:
+  - type: Scent
   - type: NpcFactionMember
     factions:
     - PackMenagerie
@@ -82,6 +84,7 @@
   id: PackMenagerieMolerat
   suffix: Pack menagerie, untamed
   components:
+  - type: Scent
   - type: NpcFactionMember
     factions:
     - PackMenagerie

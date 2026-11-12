@@ -3,7 +3,28 @@
   parent: N14MobMolerat
   suffix: Pack, tamed
   components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 6
+        Slash: 7
+        Piercing: 7
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      17: 0.8
+      35: 0.6
+
+  - type: Scent
   - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.9, Slash: 0.9, Piercing: 0.9 }
+    powerBite: true
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
   - type: NpcFactionMember
     factions:
     - Pack
@@ -44,6 +65,16 @@
   parent: N14MobMirelurk
   suffix: Pack, tamed
   components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 5
+        Piercing: 20
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      80: 0.8
+      160: 0.6
+  - type: Scent
   - type: PackAnimal
   - type: NpcFactionMember
     factions:
@@ -85,6 +116,16 @@
   parent: N14MobRadMirelurk
   suffix: Pack, tamed
   components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 5
+        Piercing: 20
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      80: 0.8
+      160: 0.6
+  - type: Scent
   - type: PackAnimal
   - type: NpcFactionMember
     factions:
@@ -126,7 +167,25 @@
   parent: N14MobNightstalker
   suffix: Pack, tamed
   components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 12
+        Piercing: 13
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      50: 0.8
+      100: 0.6
+  - type: Scent
   - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.65, Slash: 0.65, Piercing: 0.65 }
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
   - type: NpcFactionMember
     factions:
     - Pack
@@ -167,7 +226,25 @@
   parent: N14MobNightstalkerCub
   suffix: Pack, tamed
   components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 7
+        Piercing: 8
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      37: 0.8
+      75: 0.6
+  - type: Scent
   - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.65, Slash: 0.65, Piercing: 0.65 }
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
   - type: NpcFactionMember
     factions:
     - Pack
@@ -208,7 +285,20 @@
   parent: N14MobDeathclaw
   suffix: Pack, tamed
   components:
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      125: 0.8
+      250: 0.6
+  - type: Scent
   - type: PackAnimal
+    armorModifiers:
+      coefficients: { Blunt: 0.55, Slash: 0.55, Piercing: 0.55 }
+  - type: ItemSlots
+    slots:
+      pack-armor:
+        name: pack-animal-armor-slot
+        whitelist:
+          components: [PackAnimalArmor]
   - type: NpcFactionMember
     factions:
     - Pack

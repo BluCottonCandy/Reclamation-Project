@@ -28,6 +28,14 @@
       PackBeta: 50
       PackAlpha: 60
     equipmentRanks:
+      PackCarrierMolerat: 0
+      PackCarrierWolf: 10
+      PackCarrierMirelurk: 30
+      PackCarrierNightstalker: 30
+      PackCarrierYaoGuai: 40
+      PackCarrierGhoulrilla: 40
+      PackCarrierDeathclaw: 50
+      PackCarrierKing: 60
       PackBoneJumpsuit: 0
       PackRavenJumpsuit: 0
       PackCordonJumpsuit: 0
@@ -447,6 +455,24 @@
   id: ReclamationSupplyPackOthergear
   name: Other gear
   entries:
+  - proto: PackAnimalArmor
+    price: 10
+  - proto: SprayPaintBlue
+    price: 1
+  - proto: SprayPaintRed
+    price: 1
+  - proto: SprayPaintGreen
+    price: 1
+  - proto: SprayPaintBlack
+    price: 1
+  - proto: SprayPaintOrange
+    price: 1
+  - proto: SprayPaintPurple
+    price: 1
+  - proto: SprayPaintWhite
+    price: 1
+  - proto: SprayPaintDesertTan
+    price: 1
   - proto: PackBoneJumpsuit
     price: 10
   - proto: PackRavenJumpsuit
@@ -594,6 +620,7 @@
   - ReclamationSupplyPackAmmunition
   - ReclamationSupplyPackMedicalandfood
   - ReclamationSupplyPackOthergear
+  - ReclamationSupplyPackCompanions
 - type: storeCategoryStructured
   id: ReclamationSupplyPackCrates
   name: Supply crates
@@ -609,3 +636,24 @@
   currency: 'Supply points: Pack'
   categories:
   - ReclamationSupplyPackCrates
+
+- type: storeCategoryStructured
+  id: ReclamationSupplyPackCompanions
+  name: Animal carriers
+  entries:
+  - proto: PackCarrierMolerat
+    price: 10
+  - proto: PackCarrierWolf
+    price: 25
+  - proto: PackCarrierMirelurk
+    price: 50
+  - proto: PackCarrierNightstalker
+    price: 75
+  - proto: PackCarrierYaoGuai
+    price: 100
+  - proto: PackCarrierGhoulrilla
+    price: 150
+  - proto: PackCarrierDeathclaw
+    price: 200
+  - proto: PackCarrierKing
+    price: 200

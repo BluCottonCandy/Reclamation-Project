@@ -1,4 +1,7 @@
+using System.Linq;
 using Content.Shared.ActionBlocker;
+
+using Robust.Shared.Network;
 using Content.Shared.Body.Systems;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Climbing.Components;
@@ -42,6 +45,9 @@ public sealed partial class ClimbSystem : VirtualController
     [Dependency] private readonly SharedStunSystem _stunSystem = default!;
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
 
+    [Dependency] private readonly INetManager _profileNet = default!;
+    private readonly HashSet<EntityUid> _activeTransitions = new();
+
     private const string ClimbingFixtureName = "climb";
     private const int ClimbingCollisionGroup = (int) (CollisionGroup.TableLayer | CollisionGroup.LowImpassable);
 
@@ -52,6 +58,12 @@ public sealed partial class ClimbSystem : VirtualController
     public override void Initialize()
     {
         base.Initialize();
+
+        if (_profileNet.IsServer)
+        {
+            SubscribeLocalEvent<ClimbingComponent, ComponentStartup>(OnClimbingStartup);
+            SubscribeLocalEvent<ClimbingComponent, ComponentShutdown>(OnClimbingShutdown);
+        }
 
         _fixturesQuery = GetEntityQuery<FixturesComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
@@ -73,30 +85,64 @@ public sealed partial class ClimbSystem : VirtualController
     {
         base.UpdateBeforeSolve(prediction, frameTime);
 
-        var query = EntityQueryEnumerator<ClimbingComponent>();
         var curTime = _timing.CurTime;
-
-        // Move anything still climb in the specified direction.
-        while (query.MoveNext(out var uid, out var comp))
+        if (_profileNet.IsServer)
         {
-            if (comp.NextTransition == null)
-                continue;
-
-            if (comp.NextTransition < curTime)
+            foreach (var uid in _activeTransitions.ToArray())
             {
-                FinishTransition(uid, comp);
-                continue;
-            }
+                if (!TryComp(uid, out ClimbingComponent? comp) || comp.NextTransition == null)
+                {
+                    _activeTransitions.Remove(uid);
+                    continue;
+                }
 
-            var xform = _xformQuery.GetComponent(uid);
-            _xformSystem.SetLocalPosition(uid, xform.LocalPosition + comp.Direction * frameTime, xform);
+                if (!MetaData(uid).EntityPaused)
+                {
+                    AdvanceClimb(uid, comp, curTime, frameTime);
+                }
+            }
         }
+        else
+        {
+            var query = EntityQueryEnumerator<ClimbingComponent>();
+            while (query.MoveNext(out var uid, out var comp))
+            {
+                if (comp.NextTransition == null)
+                    continue;
+                AdvanceClimb(uid, comp, curTime, frameTime);
+            }
+        }
+
+    }
+
+    private void OnClimbingStartup(EntityUid uid, ClimbingComponent comp, ComponentStartup args)
+    {
+        if (comp.NextTransition != null)
+            _activeTransitions.Add(uid);
+    }
+
+    private void OnClimbingShutdown(EntityUid uid, ClimbingComponent comp, ComponentShutdown args)
+    {
+        _activeTransitions.Remove(uid);
+    }
+
+    private void AdvanceClimb(EntityUid uid, ClimbingComponent comp, TimeSpan curTime, float frameTime)
+    {
+        if (comp.NextTransition < curTime)
+        {
+            FinishTransition(uid, comp);
+            return;
+        }
+
+        var xform = _xformQuery.GetComponent(uid);
+        _xformSystem.SetLocalPosition(uid, xform.LocalPosition + comp.Direction * frameTime, xform);
     }
 
     private void FinishTransition(EntityUid uid, ClimbingComponent comp)
     {
         // TODO: Validate climb here
         comp.NextTransition = null;
+        _activeTransitions.Remove(uid);
         _actionBlockerSystem.UpdateCanMove(uid);
         Dirty(uid, comp);
 
@@ -281,12 +327,15 @@ public sealed partial class ClimbSystem : VirtualController
         if (localDirection.LengthSquared() < 0.01f)
         {
             climbing.NextTransition = null;
+            _activeTransitions.Remove(uid);
         }
         // VirtualController over to the thing.
         else
         {
             var climbDuration = TimeSpan.FromSeconds(distance / climbing.TransitionRate);
             climbing.NextTransition = _timing.CurTime + climbDuration;
+            if (_profileNet.IsServer)
+                _activeTransitions.Add(uid);
 
             climbing.Direction = localDirection.Normalized() * climbing.TransitionRate;
             _actionBlockerSystem.UpdateCanMove(uid);
@@ -427,6 +476,7 @@ public sealed partial class ClimbSystem : VirtualController
         _fixtureSystem.DestroyFixture(uid, ClimbingFixtureName, manager: fixtures);
         climbing.IsClimbing = false;
         climbing.NextTransition = null;
+        _activeTransitions.Remove(uid);
         var ev = new EndClimbEvent();
         RaiseLocalEvent(uid, ref ev);
         Dirty(uid, climbing);

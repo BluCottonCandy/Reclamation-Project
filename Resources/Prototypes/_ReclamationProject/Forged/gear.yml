@@ -17,8 +17,10 @@
     - N14BoxCardboardMREBoxCFilled
     - N14FlamerFuel
     - N14EnrichedFlamerFuel
+    - LMGMagazine556Rifle
+    - MagazineBox556
   inhand:
-  - N14Incinerator
+  - ForgedFurnaceBozar
 
 - type: startingGear
   id: ForgedFighterGearBase
@@ -209,6 +211,8 @@
   equipment:
     id: ForgedAdminForgemasterID
     outerClothing: ForgedAdminForgemasterArmor
+  inhand:
+  - N14Incinerator
 
 - type: entity
   parent: BaseItem

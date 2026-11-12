@@ -49,7 +49,7 @@
   parent: KitBase
   id: ForgedKitUnbrandedBurnTender
   name: "Unbranded Burn Tender"
-  description: "Patch up the next recruit before the forge claims them. Contains 1 gauze stack, 1 burn ointment stack, 1 stimpak, 1 makeshift 9mm pistol, 1 box of 9mm ammunition, 1 raider bandolier."
+  description: "Patch up the next recruit before the forge claims them. Contains 1 gauze stack, 1 burn ointment stack, 1 stimpak, 1 9mm pistol, 1 box of 9mm ammunition, 1 raider bandolier."
   components:
   - type: Sprite
     state: medic
@@ -58,7 +58,7 @@
     - id: N14CleanGauze10
     - id: N14Ointment10
     - id: N14Stimpak
-    - id: N14WeaponPistol9mmMakeshift
+    - id: N14WeaponPistol9mm
     - id: MagazineBox9mm
     - id: ForgedBandolier
     sound:
@@ -105,13 +105,13 @@
   parent: KitBase
   id: ForgedKitUnbrandedFurnaceBreacher
   name: "Unbranded Furnace Breacher"
-  description: "Your first breach begins with buckshot and a burning bottle. Contains 1 makeshift shotgun, 1 box of 12-gauge shells, 1 Molotov, 1 lighter, 1 raider bandolier."
+  description: "Your first breach begins with buckshot and a burning bottle. Contains 1 pump-action shotgun, 1 box of 12-gauge shells, 1 Molotov, 1 lighter, 1 raider bandolier."
   components:
   - type: Sprite
     state: rifleman
   - type: SpawnItemsOnUse
     items:
-    - id: N14WeaponShotgunMakeshift
+    - id: N14WeaponShotgun
     - id: MagazineBox12gauge
     - id: ForgedKitMolotov
     - id: CheapLighter
@@ -188,13 +188,13 @@
   parent: KitBase
   id: ForgedKitBrandedCloseQuarters
   name: "Branded Close Quarters"
-  description: "Close the distance before they have time to fear the flames. Contains 1 makeshift shotgun, 1 box of 12-gauge shells, 1 combat knife, 1 Molotov, 1 lighter, 1 raider bandolier."
+  description: "Close the distance before they have time to fear the flames. Contains 1 pump-action shotgun, 1 box of 12-gauge shells, 1 combat knife, 1 Molotov, 1 lighter, 1 raider bandolier."
   components:
   - type: Sprite
     state: rifleman
   - type: SpawnItemsOnUse
     items:
-    - id: N14WeaponShotgunMakeshift
+    - id: N14WeaponShotgun
     - id: MagazineBox12gauge
     - id: N14CombatKnife
     - id: ForgedKitMolotov

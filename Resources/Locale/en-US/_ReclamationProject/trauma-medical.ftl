@@ -14,7 +14,7 @@ trauma-internal-pain = You feel a deep, worsening pain inside your body.
 trauma-breathless = You struggle to catch your breath.
 trauma-deep-injury = You feel something tear deep inside you!
 trauma-fracture = You feel a sharp crack in your { $part }!
-trauma-splint-applied = The broken limb is supported. It will heal on its own, slowly (about 100 minutes). Rest on a medical bed or get surgery to mend it faster.
+trauma-splint-applied = The splint treatment is complete.
 
 surgery-popup-procedure-ReclamationSurgeryRepairFracture-step-ReclamationSurgeryStepRepairFracture = { $user } begins to set and mend fracture on { $target }.
 surgery-popup-procedure-ReclamationSurgeryRepairInternalBleeding-step-ReclamationSurgeryStepRepairInternalBleeding = { $user } begins to repair internal bleeding on { $target }.
@@ -40,3 +40,8 @@ trauma-scan-splinted = Disabled; splinted, { $healing }% healed
 trauma-filter-failure = Chem metabolism stopped · +{ $rate } poison/sec
 
 guide-entry-reclamation-medical-system = Organ and Limb Health
+
+trauma-splint-apply-verb = Apply splint
+trauma-splint-no-fracture = There is no disabled leg or fracture to splint.
+trauma-splint-cannot-start = You cannot start applying the splint.
+trauma-splint-treatment-blocked = The splint could not mend the injury.

@@ -128,13 +128,13 @@ public sealed partial class TraumaSystem
         }
     }
 
-    private void RestoreDisabledLimb(EntityUid part)
+    private void RestoreDisabledLimb(EntityUid part, float targetHealth = 15f, bool preserveCapacity = false)
     {
         if (!TryComp<TraumaLimbComponent>(part, out var health) ||
             health.OriginalFailureThreshold <= 0f || !TryComp<DamageableComponent>(part, out var damage)) return;
         // Bone setting can salvage even zero-capacity limbs, but only to the
         // scarred fifteen-point limit. Ordinary healing cannot raise this cap.
-        health.MaximumHealth = 15f;
+        health.MaximumHealth = preserveCapacity ? Math.Max(health.MaximumHealth, targetHealth) : targetHealth;
         if (TryComp<BodyPartComponent>(part, out var limb))
         {
             var effectiveMaximum = health.MaximumHealth + health.TemporaryHealth;
@@ -144,7 +144,7 @@ public sealed partial class TraumaSystem
             Dirty(part, limb);
         }
         Dirty(part, health);
-        var target = Math.Min(15f, health.MaximumHealth);
+        var target = Math.Min(targetHealth, health.MaximumHealth);
         var targetDamage = FixedPoint2.New((health.MaximumHealth - target) * health.OriginalFailureThreshold / 100f);
         var total = damage.TotalDamage;
         if (total <= targetDamage) return;

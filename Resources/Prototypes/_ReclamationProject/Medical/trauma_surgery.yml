@@ -224,7 +224,7 @@
   parent: BaseItem
   id: ReclamationMedicalSplint
   name: medical splint
-  description: Supports a broken limb so you can get around (broken legs walk at 85% speed instead of 70%). The bone heals on its own, but slowly, about 100 minutes; sleeping on a medical bed is faster, and surgery mends it right away.
+  description: Restores one disabled leg to 10% health or mends one fracture.
   components:
   - type: Sprite
     sprite: Objects/Specific/Medical/medical.rsi
@@ -232,6 +232,9 @@
   - type: Item
     size: Small
   - type: TraumaSplint
+  - type: Construction
+    graph: ReclamationMedicalSplint
+    node: splint
 
 - type: entity
   parent: SurgeryBase

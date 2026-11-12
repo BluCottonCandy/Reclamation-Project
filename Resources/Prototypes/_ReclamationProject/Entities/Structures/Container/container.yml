@@ -24,7 +24,7 @@
       - state: locked
         map: ["enum.LockVisualLayers.Lock"]
   - type: StorageFillVisualizer
-    maxFillLevels: 5
+    maxFillLevels: 6
     fillBaseName: ammo
   - type: Anchorable
   - type: Appearance

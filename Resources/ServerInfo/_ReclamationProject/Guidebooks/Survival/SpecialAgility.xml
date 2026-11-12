@@ -5,7 +5,7 @@ Agility improves timed actions instead of walking or sprinting. Agility 5 is neu
 
 Each point above 5 also gives [bold]4% faster melee attacks[/bold] and [bold]4% lower melee stamina costs[/bold], reaching 20% at 10. Each weapon keeps its own damage, range and cooldown.
 
-At [bold]10 effective Agility[/bold], dual melee is [bold]always active[/bold]: attack with two held one-handed melee weapons together without activating Fast Hands. This also works while Fast Hands is on cooldown. Wide swings pay stamina for each weapon and pause when you lack enough stamina. Guns, weapons requiring two hands, and unarmed attacks do not qualify.
+At [bold]10 effective Agility[/bold], dual melee is [bold]always active[/bold]: attack with two held one-handed melee weapons together without activating Fast Hands. This also works while Fast Hands is on cooldown. Wide swings pay stamina for each weapon and pause when you lack enough stamina. With [bold]9 effective Strength[/bold], a Super Sledge or Pack greatfang can join a dual swing in its one-handed grip. At 9 Strength the Super Sledge also deals its full wielded damage in a one-handed grip. Guns and unarmed attacks do not qualify.
 
 You also gain [bold]Fast Hands[/bold], with a [bold]two-minute cooldown[/bold]. For magazine-fed guns, activation first swaps your held gun to the fullest compatible carried spare magazine, at most once. It will not replace a fuller loaded magazine with a less-filled spare. The old magazine is returned to your backpack or other available storage.
 

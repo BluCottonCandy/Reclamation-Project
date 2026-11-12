@@ -191,6 +191,7 @@
   - type: MeleeStrengthRequirement
     minimum: 7
   - type: MeleeWeapon
+    dualMeleeMinimumStrength: 9
     attackRate: 0.6666
     range: 1.85
     damage:

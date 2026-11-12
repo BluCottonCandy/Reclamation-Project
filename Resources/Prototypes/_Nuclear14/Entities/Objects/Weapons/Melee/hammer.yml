@@ -47,11 +47,13 @@
     sprite: _Nuclear14/Objects/Weapons/Melee/supersledge.rsi
     state: icon
   - type: MeleeWeapon
+    dualMeleeMinimumStrength: 9
     damage:
       types:
         Blunt: 15
   - type: Wieldable
   - type: IncreaseDamageOnWield
+    minimumStrengthForUnwieldedDamage: 9
     damage:
       types:
         Blunt: 75

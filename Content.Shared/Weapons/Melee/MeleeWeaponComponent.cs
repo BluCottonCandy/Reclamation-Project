@@ -221,6 +221,10 @@ public sealed partial class MeleeWeaponComponent : Component
     [DataField, AutoNetworkedField]
     public bool MustBeEquippedToUse = false;
 
+    /// <summary>Strength needed to use this heavy weapon in an Agility dual-melee attack.</summary>
+    [DataField]
+    public int? DualMeleeMinimumStrength;
+
     // Goobstation
     [DataField, AutoNetworkedField]
     public bool CanWideSwing = true;

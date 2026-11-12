@@ -1,4 +1,6 @@
 #Container New
+#Welding incompatible, C# is needed to make a call to allow a lock and welding to simulatanously exist
+#The storage fill visualizer is not fully functional and has some bugs regarding how it displays
 - type: entity
   id: ReclamationAmmoContainer
   name: Ammo Cannister
@@ -18,9 +20,6 @@
       - state: base
       - state: ammo-0
       - map: ["enum.StorageFillLayers.Fill"]
-      - state: welded
-        visible: false
-        map: ["enum.WeldableLayers.BaseWelded"]
       - state: locked
         map: ["enum.LockVisualLayers.Lock"]
   - type: StorageFillVisualizer
@@ -51,10 +50,6 @@
             max: 1
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: EntityStorage
-    capacity: 0
-    openOnActivate: false
-    showContents: false
   - type: Storage
     grid:
     - 0,0,5,3
@@ -88,4 +83,3 @@
         - MidImpassable
         - LowImpassable
   - type: Pullable
-  - type: Weldable

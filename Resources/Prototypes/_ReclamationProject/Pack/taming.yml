@@ -3,6 +3,9 @@
   parent: N14MobMolerat
   suffix: Pack, tamed
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: MeleeWeapon
     damage:
       types:
@@ -65,6 +68,9 @@
   parent: N14MobMirelurk
   suffix: Pack, tamed
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: MeleeWeapon
     damage:
       types:
@@ -116,6 +122,9 @@
   parent: N14MobRadMirelurk
   suffix: Pack, tamed
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: MeleeWeapon
     damage:
       types:
@@ -226,6 +235,9 @@
   parent: N14MobNightstalkerCub
   suffix: Pack, tamed
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 5
   - type: MeleeWeapon
     damage:
       types:

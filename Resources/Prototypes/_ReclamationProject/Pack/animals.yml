@@ -144,6 +144,9 @@
   parent: N14MobYaoguai
   name: Pack yao guai
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: MeleeWeapon
     damage:
       types:
@@ -189,6 +192,9 @@
   parent: MobGorilla
   name: Pack ghoulrilla
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -253,6 +259,9 @@
   parent: PackGhoulrilla
   name: Pack Ghoulrilla King
   components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: Sprite
     drawdepth: Mobs
     scale: 1.25, 1.25

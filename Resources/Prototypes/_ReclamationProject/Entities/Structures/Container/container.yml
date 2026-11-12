@@ -51,6 +51,10 @@
             max: 1
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: EntityStorage
+    capacity: 0
+    openOnActivate: false
+    showContents: false
   - type: Storage
     grid:
     - 0,0,5,3
@@ -85,4 +89,3 @@
         - LowImpassable
   - type: Pullable
   - type: Weldable
-  - type: ResistLocker

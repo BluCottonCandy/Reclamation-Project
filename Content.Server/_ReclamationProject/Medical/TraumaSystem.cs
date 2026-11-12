@@ -205,7 +205,7 @@ public sealed partial class TraumaSystem : EntitySystem
             _standing.Down(uid);
     }
 
-    public void Repair(EntityUid uid, EntityUid part, TraumaKind kind, bool surgical = false)
+    public void Repair(EntityUid uid, EntityUid part, TraumaKind kind, bool surgical = false, bool splint = false)
     {
         if (!TryComp<TraumaBodyComponent>(uid, out var medical) ||
             !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body != uid) return;
@@ -221,6 +221,8 @@ public sealed partial class TraumaSystem : EntitySystem
         else if (kind == TraumaKind.Fracture)
         {
             if (surgical) RestoreDisabledLimb(part);
+            else if (splint && CanSplintDisabledLeg(part, bodyPart))
+                RestoreDisabledLimb(part, targetHealth: 10f, preserveCapacity: true);
             RemComp<FractureComponent>(part);
             var enabled = new BodyPartEnableChangedEvent(true);
             RaiseLocalEvent(part, ref enabled);

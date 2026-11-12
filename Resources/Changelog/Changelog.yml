@@ -14902,3 +14902,12 @@ Entries:
   id: 6652
   time: '2026-11-12T12:56:30.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/186
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        The medical splint recipe now produces a splint. Applying one restores a
+        disabled leg to 10% health or mends a fracture.
+  id: 6653
+  time: '2026-11-12T13:17:33.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/187

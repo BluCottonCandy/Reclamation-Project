@@ -14888,3 +14888,10 @@ Entries:
   id: 6650
   time: '2026-11-12T12:19:06.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/184
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: You can remove another player's handcuffs from up to one tile away.
+  id: 6651
+  time: '2026-11-12T12:56:15.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/185

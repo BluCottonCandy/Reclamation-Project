@@ -17,16 +17,19 @@
       "name": "locked"
     },
     {
-      "name": "o1"
+      "name": "ammo-0"
     },
     {
-      "name": "o2"
+      "name": "ammo-1"
     },
     {
-      "name": "o3"
+      "name": "ammo-2"
     },
     {
-      "name": "o4"
+      "name": "ammo-3"
+    },
+    {
+      "name": "ammo-4"
     },
     {
       "name": "unlocked"

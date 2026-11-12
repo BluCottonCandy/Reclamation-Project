@@ -16,7 +16,7 @@
     sprite: _ReclamationProject/Structures/Container/ammocan.rsi
     layers:
       - state: base
-      - state: o4
+      - state: ammo-0
       - map: ["enum.StorageFillLayers.Fill"]
       - state: welded
         visible: false

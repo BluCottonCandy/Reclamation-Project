@@ -3,8 +3,8 @@
 #The storage fill visualizer is not fully functional and has some bugs regarding how it displays
 - type: entity
   id: ReclamationAmmoContainer
-  name: Ammo Cannister
-  description: A pre-war cannister used to store bulk ammunition. 
+  name: Ammo Canister
+  description: A pre-war canister used to store bulk ammunition. 
   placement:
     mode: SnapgridCenter
   components:

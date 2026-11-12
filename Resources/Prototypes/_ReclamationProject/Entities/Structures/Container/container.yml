@@ -18,7 +18,6 @@
       - state: base
       - state: o4
       - map: ["enum.StorageFillLayers.Fill"]
-      - state: base
       - state: closed
         map: ["enum.StorageVisualLayers.Door"]
       - state: welded
@@ -30,6 +29,7 @@
   - type: StorageFillVisualizer
     maxFillLevels: 5
     fillBaseName: ammo
+  - type: Anchorable
   - type: Appearance
   - type: InteractionOutline
   - type: Clickable

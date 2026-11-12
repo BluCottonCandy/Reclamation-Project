@@ -462,6 +462,8 @@
   id: ReclamationSupplyBrotherhoodMedicalandfood
   name: Medical and food
   entries:
+  - proto: Bloodpack
+    price: 10
   - proto: N14Bitterdrink
     price: 10
   - proto: N14BoxCardboardMREBoxKFilled
@@ -955,6 +957,8 @@
   id: ReclamationSupplyTownMedicalandfood
   name: Medical and food
   entries:
+  - proto: Bloodpack
+    price: 10
   - proto: N14Bitterdrink
     price: 10
   - proto: N14CleanGauze10
@@ -2010,6 +2014,8 @@
   id: ReclamationSupplyForgedMedicalandfood
   name: Medical and food
   entries:
+  - proto: Bloodpack
+    price: 10
   - proto: MedicatedSuture
     price: 10
     amount: 10
@@ -2798,7 +2804,7 @@
   name: Medical and food
   entries:
   - proto: Bloodpack
-    price: 20
+    price: 10
     amount: 10
   - proto: MedicatedSuture
     price: 20
@@ -3305,6 +3311,8 @@
   id: ReclamationSupplyInstituteMedicalandfood
   name: Medical and food
   entries:
+  - proto: Bloodpack
+    price: 10
   - proto: N14Bitterdrink
     price: 10
   - proto: N14HealingPowder
@@ -3717,6 +3725,8 @@
   id: ReclamationSupplyTriggermenMedicalandfood
   name: Medical and food
   entries:
+  - proto: Bloodpack
+    price: 10
   - proto: N14Bitterdrink
     price: 10
   - proto: N14HealingPowder

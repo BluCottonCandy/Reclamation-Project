@@ -14785,3 +14785,10 @@ Entries:
   id: 6645
   time: '2026-11-12T03:37:00.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/179
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: All Pack ranks can now bark, growl, snarl, whine and howl.
+  id: 6646
+  time: '2026-11-12T03:44:55.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/180

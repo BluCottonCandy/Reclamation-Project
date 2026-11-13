@@ -107,7 +107,6 @@ public sealed class ServerUpdateManager
         {
             if (_deployment.Ticket != ticket)
                 throw new InvalidOperationException("Another deployment is already pending.");
-            _deployment.Renew(_gameTiming.RealTime);
             return;
         }
         var lease = new RoundEndDeploymentLease(ticket, _gameTiming.RealTime);

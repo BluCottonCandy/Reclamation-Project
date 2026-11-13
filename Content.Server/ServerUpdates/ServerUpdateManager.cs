@@ -36,6 +36,7 @@ public sealed class ServerUpdateManager
     private RoundEndDeploymentLease? _deployment;
     private TimeSpan _deploymentEarliestShutdown;
     private bool _deploymentShutdown;
+    private TimeSpan _deploymentHoldUntil;
     private static readonly ResPath DeploymentStatePath = new("/reclamation-update.json");
 
     [ViewVariables]
@@ -59,7 +60,8 @@ public sealed class ServerUpdateManager
     {
         if (_deployment != null)
         {
-            if (!_deployment.IsActive(_gameTiming.RealTime))
+            if (!_deployment.IsActive(_gameTiming.RealTime) ||
+                (_deploymentShutdown && _gameTiming.RealTime >= _deploymentHoldUntil))
                 CancelDeployment(_deployment.Ticket);
             else if (!_deploymentShutdown && _gameTiming.RealTime >= _deploymentEarliestShutdown &&
                      _entities.System<GameTicker>().RunLevel != GameRunLevel.InRound)
@@ -169,13 +171,14 @@ public sealed class ServerUpdateManager
             return false;
         }
         _deploymentShutdown = true;
+        _deploymentHoldUntil = _gameTiming.RealTime + TimeSpan.FromMinutes(3);
         _chatManager.DispatchServerAnnouncement("Updating Server. Please reconnect shortly.");
         var reason = JsonSerializer.Serialize(new { reason = "Updating Server", redial = true });
         foreach (var session in _playerManager.Sessions.ToArray())
             session.Channel.Disconnect(reason);
         // Hold at the round boundary. The workflow performs an intentional panel stop,
         // rather than letting Pterodactyl interpret a process exit as a crash and restart it.
-        // If the workflow disappears, the lease expires and releases this hold.
+        // Release the hold after three minutes if the panel stop never arrives.
         return true;
     }
 

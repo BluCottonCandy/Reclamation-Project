@@ -3,12 +3,12 @@ using System.Linq;
 
 namespace Content.Server.ServerUpdates;
 
-/// <summary>A deployment may stop the server only while its workflow is still checking in.</summary>
+/// <summary>A single deployment request expires if its round boundary takes too long.</summary>
 public sealed class RoundEndDeploymentLease
 {
-    public static readonly TimeSpan Lifetime = TimeSpan.FromMinutes(3);
+    public static readonly TimeSpan Lifetime = TimeSpan.FromHours(5) + TimeSpan.FromMinutes(3);
     public string Ticket { get; }
-    public TimeSpan ExpiresAt { get; private set; }
+    public TimeSpan ExpiresAt { get; }
 
     public RoundEndDeploymentLease(string ticket, TimeSpan now)
     {
@@ -19,11 +19,4 @@ public sealed class RoundEndDeploymentLease
     }
 
     public bool IsActive(TimeSpan now) => now < ExpiresAt;
-
-    public void Renew(TimeSpan now)
-    {
-        if (!IsActive(now))
-            throw new InvalidOperationException("Deployment request expired; start a new workflow run.");
-        ExpiresAt = now + Lifetime;
-    }
 }

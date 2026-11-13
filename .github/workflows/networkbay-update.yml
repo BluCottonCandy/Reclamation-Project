@@ -289,7 +289,6 @@ jobs:
               ticket = secrets.token_hex(16)
               deadline = time.monotonic() + wait_limit
               acknowledgement_deadline = time.monotonic() + 60
-              next_heartbeat = 0
               acknowledged = False
               stop_requested = False
               shutdown_deadline = None
@@ -300,6 +299,7 @@ jobs:
                       'file': '/data/reclamation-update.json'
                   }))
               try:
+                  api('/command', 'POST', {'command': f'reclamation_update_queue_once {ticket}'})
                   while time.monotonic() < deadline:
                       receipt = read_receipt()
                       power_state = state()
@@ -337,13 +337,10 @@ jobs:
                       now = time.monotonic()
                       if not acknowledged and now >= acknowledgement_deadline:
                           raise StageError('Server did not acknowledge the round-end command. Install the support code once while offline; do not force-stop a live round.')
-                      if now >= next_heartbeat:
-                          api('/command', 'POST', {'command': f'reclamation_update_queue {ticket}'})
-                          next_heartbeat = now + 30
-                      time.sleep(5)
+                      time.sleep(15 if acknowledged else 5)
                   raise StageError('No round boundary reached within five hours; deployment cancelled without stopping the round.')
               except BaseException:
-                  # Cancellation clears only our ticket. Abrupt runner termination is covered by the 3-minute lease.
+                  # Cancellation clears only our ticket. Abrupt runner termination is covered by the bounded request lifetime.
                   try:
                       if state() == 'running':
                           api('/command', 'POST', {'command': f'reclamation_update_cancel {ticket}'})

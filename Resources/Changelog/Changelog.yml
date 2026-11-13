@@ -14946,3 +14946,16 @@ Entries:
   id: 6656
   time: '2026-11-12T15:06:45.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/190
+- author: shr1mpeater and Davisrocket
+  changes:
+    - type: Add
+      message: >-
+        Added 2 Compact Gas Masks for Minutemen (One with NVG), in vendor
+        (sprites by shr1mpeater)
+    - type: Add
+      message: >-
+        Added 2 Compact Gas Masks for Trieste, One Helmet for Trieste (sprites
+        by shr1mpeater)
+  id: 6657
+  time: '2026-11-13T16:07:12.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/191

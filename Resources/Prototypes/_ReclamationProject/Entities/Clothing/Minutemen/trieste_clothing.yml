@@ -1,0 +1,44 @@
+# #Reclamation Project - Trieste specific faction clothing.
+
+#Marine Helmet Parent from N14
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetmarine
+  id: TriesteClothingHeadHatMarineHelmet
+  name: Trieste Company Pathfinder Marine Helmet
+  description: A surprisingly advanced combat helmet with a Trieste Company orange stripe down the middle. Sometimes these helmets even sport cards, bullets, various things strapped into it
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Head/trieste_marine_helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Head/trieste_marine_helmet.rsi
+
+- type: entity
+  parent: ClothingMaskGas
+  id: TriesteGasMask
+  name: Trieste Company Pathfinder Mask MK1
+  description: A modified Ranger Riot Mask that has been disconnected from the inbuilt helmet for use with external headgear. Often significantly lighter, and sporting a bright cyan set of lenses.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mask/trieste_gasmask.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mask/trieste_gasmask.rsi
+  # Drops the hamster tag: this sprite has no hamster version.
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+# Night vision only. No thermal vision.
+- type: entity
+  parent: TriesteGasMask
+  id: TriesteGasMaskNightVision
+  name: Trieste Company Pathfinder Mask MK2
+  description: A modified Ranger Riot Mask that has been disconnected from the inbuilt helmet for use with external headgear. Often significantly lighter, and sporting a bright cyan set of lenses. This one sports a small cable leading over the ear, and behind the head to a small inbuilt battery pack for Night Vision.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mask/trieste_gasmask_nvg.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mask/trieste_gasmask_nvg.rsi
+  - type: NightVision
+    isEquipment: true

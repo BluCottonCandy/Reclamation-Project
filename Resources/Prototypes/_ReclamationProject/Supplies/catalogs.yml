@@ -1303,8 +1303,12 @@
     price: 10
   - proto: MinutemenGasMask
     price: 25
+  - proto: MinutemenGasMaskCompact
+    price: 30
   - proto: MinutemenGasMaskNightVision
     price: 75
+  - proto: MinutemenGasMaskNightVisionCompact
+    price: 80
   - proto: MinutemenHeavyTrooperArmor
     price: 100
   - proto: MinutemenHeavyTrooperBoots

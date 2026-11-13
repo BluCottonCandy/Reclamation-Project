@@ -45,7 +45,12 @@ Open **Actions â†’ NetworkBay Update â†’ Run workflow**, select **main
   server can be updated immediately. Successful deployment starts the server.
 
 There is no automatic deployment on pushes or PR merges. Only verify, stage and deploy
-from main. The existing server-side round-end update commands are reused.
+from main. Deploy is manual only. With the server running, it sends one queue command
+and checks the receipt without sending repeated console commands. The request
+expires after five hours and three minutes. If the panel never stops the
+server after it reaches the round boundary, the game releases the hold after
+three minutes. Install the supporting server build once while offline before
+using live round-end deployment.
 
 Packages exclude `server_config.toml`, player data, logs and other root database
 or configuration files. Current Wendover map files and the bundled client are

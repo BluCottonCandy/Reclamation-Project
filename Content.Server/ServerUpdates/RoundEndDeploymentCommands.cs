@@ -8,9 +8,9 @@ namespace Content.Server.ServerUpdates;
 public sealed class QueueRoundEndDeploymentCommand : IConsoleCommand
 {
     [Dependency] private readonly ServerUpdateManager _updates = default!;
-    public string Command => "reclamation_update_queue";
-    public string Description => "Queue or renew an server deployment without ending the current round.";
-    public string Help => "reclamation_update_queue <32-character hexadecimal ticket>";
+    public string Command => "reclamation_update_queue_once";
+    public string Description => "Queue a server deployment without ending the current round.";
+    public string Help => "reclamation_update_queue_once <32-character hexadecimal ticket>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {

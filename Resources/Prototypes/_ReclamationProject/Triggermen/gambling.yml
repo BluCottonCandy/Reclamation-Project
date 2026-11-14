@@ -1,0 +1,63 @@
+- type: entity
+  parent: BaseStructure
+  id: TriggermenGamblingMachine
+  name: Triggermen slot machine
+  description: Hold caps and use the machine to play. The Don, Commission Members, and Capo dei Capi can fund the machine and collect the house balance.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/lucky38.rsi
+    state: cabinet
+  - type: GamblingMachine
+  - type: ActivatableUI
+    key: enum.SlotsKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SlotsKey.Key:
+        type: SlotsBoundUserInterface
+
+- type: entity
+  parent: N14CurrencyCap100
+  id: TriggermenDonStartingCaps
+  suffix: 1000
+  components:
+  - type: Stack
+    count: 1000
+
+- type: entity
+  parent: BaseStructure
+  id: TriggermenBlackjackTable
+  name: Lucky 38 blackjack table
+  description: A staffed blackjack table. Hold caps to play. Ties return your bet.
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/blackjack_table.rsi
+    layers:
+    - state: dealer
+    - state: table
+  - type: GamblingMachine
+    blackjack: true
+  - type: ActivatableUI
+    key: enum.BlackjackKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.BlackjackKey.Key:
+        type: BlackjackBoundUserInterface
+
+- type: entity
+  parent: BaseStructure
+  id: TriggermenPoolTable
+  name: Lucky 38 pool table
+  description: A felt table for solo practice or a game with another player.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/pool_table.rsi
+    state: table
+  - type: PoolTable
+  - type: ActivatableUI
+    key: enum.PoolKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.PoolKey.Key:
+        type: PoolBoundUserInterface

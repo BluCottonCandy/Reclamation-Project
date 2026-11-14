@@ -1,0 +1,22 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Added a Triggermen slot machine with a house balance that the Don and both Triggermen admin ranks can collect.
+- type: Add
+  message: Slot reels spin with a 10% jackpot chance and a 50-cap bet limit. The Don starts with 1,000 caps.
+- type: Tweak
+  message: Lucky 38 slots have eight reel symbols and five payouts, listed in the machine’s paytable.
+
+- type: Tweak
+  message: The Lucky 38 slot machine has a custom cabinet sprite.
+- type: Add
+  message: Added a staffed blackjack table with a house balance and hit-or-stand play.
+
+- type: Tweak
+  message: Blackjack now has a dedicated card table window and a larger staffed table sprite.
+- type: Tweak
+  message: Blackjack displays your current hand total below your cards.
+- type: Tweak
+  message: Blackjack shows the dealer total and returns the wager on ties.
+- type: Add
+  message: Added a playable Lucky 38 pool table for solo practice and two-player games.

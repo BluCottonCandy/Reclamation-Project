@@ -1,0 +1,5 @@
+- type: entity
+  parent: N14ClothingUniformNCRRecon
+  id: OperatorsFieldJumpsuit
+  name: Operator Field Jumpsuit
+  description: A practical field uniform issued to Operators crews.

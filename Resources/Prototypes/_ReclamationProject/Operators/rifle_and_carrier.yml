@@ -1,0 +1,105 @@
+- type: entity
+  name: Quiet Ledger
+  parent: N14WeaponRifleBase
+  id: OperatorsQuietLedger
+  description: A scoped, suppressed 7.62mm rifle rebuilt for the Operators and fed by a detachable ledger magazine.
+  components:
+  - type: Scope
+    requireWielding: true
+    actionsOnlyWhenWielded: true
+    scopedMovementMultiplier: 0.1
+    zoomLevels:
+    - name: 5x
+      zoom: 1.2
+      offset: 17
+      allowMovement: true
+      doAfter: 0.3
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/ratslayer.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/ratslayer.rsi
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/ratslayer.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: OperatorsLedgerMagazine
+        whitelist:
+          tags: [OperatorsLedgerMagazine]
+      gun_chamber:
+        name: Chamber
+        whitelist:
+          tags: [N14Cartridge762Rifle]
+  - type: GunRequiresWield
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -104
+  - type: Gun
+    projectileSpeed: 60
+    minAngle: 24
+    maxAngle: 105
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 2.2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: N14PistolSpyGunshot
+      params:
+        volume: -6
+        maxDistance: 12
+  - type: StaticPrice
+    price: 500
+
+- type: Tag
+  id: OperatorsLedgerMagazine
+
+- type: entity
+  parent: BaseMagazine762Rifle
+  id: OperatorsLedgerMagazine
+  name: Quiet Ledger magazine (7.62mm)
+  description: A detachable 25-round magazine for the Operators' Quiet Ledger rifle.
+  components:
+  - type: Tag
+    tags: [OperatorsLedgerMagazine]
+  - type: BallisticAmmoProvider
+    capacity: 25
+
+- type: entity
+  parent: ClothingBeltAssault
+  id: OperatorsAssaultCarrier
+  name: Operator field carrier
+  description: An assault belt with adjustable pouches for medicine, ammunition, and other small gear.
+  components:
+  - type: Storage
+    whitelist: null
+    maxItemSize: Small
+
+- type: entity
+  parent: N14WeaponRifle308SniperRifle
+  id: OperatorsSpectreSniper
+  name: Spectre .308 sniper rifle
+  description: A matte-black scoped rifle fitted with a suppressor for Operator marksmen.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Operators/spectre_sniper.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Operators/spectre_sniper.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Operators/spectre_sniper.rsi
+  - type: Gun
+    soundGunshot:
+      collection: N14PistolSpyGunshot
+      params:
+        volume: -6
+        maxDistance: 12

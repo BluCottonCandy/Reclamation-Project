@@ -1,4 +1,4 @@
-// #Misfits Change - Persistent currency system
+﻿// #Misfits Change - Persistent currency system
 using System.IO;
 using System.Text.Json;
 using Content.Server.Chat.Managers;
@@ -458,6 +458,39 @@ public sealed class PersistentCurrencySystem : EntitySystem
                 PrewarMoney = comp.PrewarMoney,
             }, actor.PlayerSession.Channel);
         }
+    }
+
+    public bool TryAdjustContractBottlecaps(EntityUid user, int delta)
+    {
+        if (!TryComp<PersistentCurrencyComponent>(user, out var wallet) || !wallet.Loaded ||
+            wallet.UserId == null || wallet.CharacterName == null)
+            return false;
+
+        var balance = (long) wallet.Bottlecaps + delta;
+        if (balance < 0 || balance > int.MaxValue)
+            return false;
+
+        UpdateBottlecaps(user, wallet, (int) balance);
+        return true;
+    }
+
+    public bool HasBottlecaps(EntityUid user, int amount)
+        => TryComp<PersistentCurrencyComponent>(user, out var wallet) && wallet.Loaded && wallet.Bottlecaps >= amount;
+
+    private void UpdateBottlecaps(EntityUid user, PersistentCurrencyComponent wallet, int balance)
+    {
+        wallet.Bottlecaps = balance;
+        Dirty(user, wallet);
+        SaveCurrency(wallet.UserId!, wallet.CharacterName!, wallet);
+
+        if (TryComp<ActorComponent>(user, out var actor))
+            RaiseNetworkEvent(new CurrencyWalletStateMessage
+            {
+                Bottlecaps = wallet.Bottlecaps,
+                NcrDollars = wallet.NcrDollars,
+                LegionDenarii = wallet.LegionDenarii,
+                PrewarMoney = wallet.PrewarMoney,
+            }, actor.PlayerSession.Channel);
     }
 
     private void SaveCurrency(string userId, string characterName, PersistentCurrencyComponent comp)

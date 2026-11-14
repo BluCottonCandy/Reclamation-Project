@@ -1,0 +1,12 @@
+- type: entity
+  id: ActionOperatorSmoke
+  name: Emergency Smoke Grenade
+  description: Pop an emergency smoke grenade at your feet to cover your retreat. Recharges in three minutes.
+  categories: [HideSpawnMenu]
+  components:
+  - type: InstantAction
+    useDelay: 180
+    icon:
+      sprite: _Misfits/Objects/Weapons/Throwable/smoke_grenade.rsi
+      state: icon
+    event: !type:OperatorSmokeActionEvent

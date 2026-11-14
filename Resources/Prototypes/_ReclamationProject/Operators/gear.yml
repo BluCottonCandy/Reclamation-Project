@@ -1,0 +1,179 @@
+- type: startingGear
+  id: OperatorsSpiritGear
+  equipment:
+    head: OperatorsCombatHelmetMK2
+    belt: OperatorsAssaultCarrier
+    neck: M14ClothingNeckLegionTreasurer
+    eyes: ClothingEyesNightVisionGoggles
+    gloves: N14ClothingHandsGlovesCombat
+    shoes: OperatorsKnifeBoots
+    mask: OperatorsBlackBalaclava
+    id: OperatorsSpiritLedgerToken
+    jumpsuit: OperatorsFieldJumpsuit
+    back: N14ClothingBackpackSatchelExplorer
+    outerClothing: OperatorsSpiritStealthSuit
+    suitstorage: OperatorsSpiritSpear
+    pocket1: OperatorsHushPistol
+  storage:
+    back:
+    - N14MagazinePistol9mm
+    - N14MagazinePistol9mm
+    - MagazineBox9mm
+    - N14ClothingMaskBreather
+    - Magazine68Rifle
+    - Magazine68Rifle
+    - MagazineBox68
+    - MagazineBox68
+
+- type: startingGear
+  id: OperatorsGhostGear
+  equipment:
+    head: OperatorsCombatHelmetMK2
+    belt: OperatorsAssaultCarrier
+    eyes: ClothingEyesNightVisionGoggles
+    gloves: N14ClothingHandsGlovesCombat
+    shoes: OperatorsKnifeBoots
+    mask: OperatorsBlackBalaclava
+    id: OperatorsGhostLedgerToken
+    jumpsuit: OperatorsFieldJumpsuit
+    back: N14ClothingBackpackSatchelExplorer
+    outerClothing: OperatorsPoliceVest
+    suitstorage: OperatorsInfiltratorSmg
+    pocket1: N14WeaponPistol22lr
+  storage:
+    back:
+    - N14MagazinePistol22lr
+    - N14MagazinePistol22lr
+    - MagazineBox22
+    - N14ClothingMaskBreather
+    - N14MagazineSMG9mm
+    - MagazineBox9mm
+
+- type: startingGear
+  id: OperatorsSpectreGear
+  equipment:
+    head: OperatorsCombatHelmetMK2
+    belt: OperatorsAssaultCarrier
+    neck: M14ClothingNeckLegionTreasurer
+    eyes: ClothingEyesNightVisionGoggles
+    gloves: N14ClothingHandsGlovesCombat
+    shoes: OperatorsKnifeBoots
+    mask: OperatorsBlackBalaclava
+    id: OperatorsSpectreLedgerToken
+    jumpsuit: OperatorsFieldJumpsuit
+    back: N14ClothingBackpackSatchelExplorer
+    outerClothing: OperatorsInfiltratorCoat
+    suitstorage: OperatorsSpectreSniper
+    pocket1: OperatorsHushPistol
+  storage:
+    back:
+    - N14MagazinePistol9mm
+    - N14MagazinePistol9mm
+    - MagazineBox9mm
+    - N14ClothingMaskBreather
+    - Magazine308RifleSniper
+    - MagazineOver308RifleSniper
+    - MagazineBox308
+    - MagazineBoxOver308
+
+- type: startingGear
+  id: OperatorsShadeGear
+  equipment:
+    head: OperatorsCombatHelmetMK2
+    belt: OperatorsSurgicalBelt
+    eyes: ClothingEyesNightVisionGoggles
+    gloves: N14ClothingHandsGlovesCombat
+    shoes: OperatorsKnifeBoots
+    mask: OperatorsBlackBalaclava
+    id: OperatorsShadeLedgerToken
+    jumpsuit: OperatorsFieldJumpsuit
+    back: N14ClothingBackpackSatchelExplorer
+    outerClothing: OperatorsShadeArmor
+    suitstorage: OperatorsQuietLedger
+    pocket1: OperatorsHushPistol
+  storage:
+    back:
+    - N14MagazinePistol9mm
+    - N14MagazinePistol9mm
+    - MagazineBox9mm
+    - N14ClothingMaskBreather
+    - OperatorsLedgerMagazine
+    - OperatorsLedgerMagazine
+    - MagazineBox762
+
+- type: startingGear
+  id: OperatorsPhantomGear
+  equipment:
+    head: OperatorsCombatHelmetMK2
+    belt: OperatorsAssaultCarrier
+    eyes: ClothingEyesNightVisionGoggles
+    gloves: N14ClothingHandsGlovesCombat
+    shoes: OperatorsKnifeBoots
+    mask: OperatorsBlackBalaclava
+    id: OperatorsPhantomLedgerToken
+    jumpsuit: OperatorsFieldJumpsuit
+    back: N14ClothingBackpackSatchelExplorer
+    outerClothing: OperatorsLightArmor
+    suitstorage: N14WeaponSMG10mmSuppressed
+    pocket1: N14WeaponPistol22lr
+  storage:
+    back:
+    - N14MagazinePistol22lr
+    - N14MagazinePistol22lr
+    - MagazineBox22
+    - N14ClothingMaskBreather
+    - N14MagazineSMG10mm
+    - MagazineBox10mm
+
+- type: startingGear
+  id: OperatorsWraithGear
+  equipment:
+    head: OperatorsCombatHelmetMK2
+    belt: OperatorsAssaultCarrier
+    neck: M14ClothingNeckLegionTreasurer
+    eyes: ClothingEyesNightVisionGoggles
+    gloves: N14ClothingHandsGlovesCombat
+    shoes: OperatorsKnifeBoots
+    mask: OperatorsBlackBalaclava
+    id: OperatorsWraithLedgerToken
+    jumpsuit: OperatorsFieldJumpsuit
+    back: N14ClothingBackpackSatchelExplorer
+    outerClothing: OperatorsWraithStealthSuit
+    suitstorage: OperatorsWraithSpear
+    pocket1: OperatorsHushPistol
+  storage:
+    back:
+    - N14MagazinePistol9mm
+    - N14MagazinePistol9mm
+    - MagazineBox9mm
+    - N14ClothingMaskBreather
+    - Magazine68Rifle
+    - Magazine68Rifle
+    - MagazineBox68
+    - MagazineBox68
+
+- type: startingGear
+  id: OperatorsRevenantGear
+  equipment:
+    head: OperatorsCombatHelmetMK2
+    belt: OperatorsAssaultCarrier
+    eyes: ClothingEyesNightVisionGoggles
+    gloves: N14ClothingHandsGlovesCombat
+    shoes: OperatorsKnifeBoots
+    mask: OperatorsBlackBalaclava
+    id: OperatorsRevenantLedgerToken
+    jumpsuit: OperatorsFieldJumpsuit
+    back: N14ClothingBackpackSatchelExplorer
+    outerClothing: OperatorsRevenantArmor
+    suitstorage: OperatorsQuietLedger
+    pocket1: OperatorsHushPistol
+  storage:
+    back:
+    - N14MagazinePistol9mm
+    - N14MagazinePistol9mm
+    - MagazineBox9mm
+    - N14ClothingMaskBreather
+    - OperatorsLedgerMagazine
+    - OperatorsLedgerMagazine
+    - MagazineBox762
+

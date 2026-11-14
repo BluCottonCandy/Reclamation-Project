@@ -1,0 +1,263 @@
+- type: department
+  id: Operators
+  description: department-operators-description
+  color: "#804657"
+  uiCategory: MinorFaction
+  roles: [OperatorsSpirit, OperatorsGhost, OperatorsSpectre, OperatorsShade, OperatorsPhantom, OperatorsWraith, OperatorsRevenant]
+
+- type: job
+  id: OperatorsSpirit
+  name: job-name-operators-spirit
+  description: job-description-operators-spirit
+  playTimeTracker: OperatorsSpirit
+  startingGear: OperatorsSpiritGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  icon: JobIconOperators
+  supervisors: operators-supervisors
+  access: [Operators]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: OperatorTracker
+    - type: OperatorContractIssuer
+    - type: OperatorSmoke
+    - type: OperatorTraps
+    - type: TraitSpeedModifier
+      sprintModifier: 1.05
+      walkModifier: 1.05
+      requiredTriggeredSpeedModifier: 1.05
+
+- type: playTimeTracker
+  id: OperatorsSpirit
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointOperatorsSpirit
+  name: Operator Spirit spawn
+  components:
+  - type: SpawnPoint
+    job_id: OperatorsSpirit
+
+- type: job
+  id: OperatorsGhost
+  name: job-name-operators-ghost
+  description: job-description-operators-ghost
+  playTimeTracker: OperatorsGhost
+  startingGear: OperatorsGhostGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  icon: JobIconOperators
+  supervisors: operators-supervisors
+  access: [Operators]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: OperatorTracker
+    - type: OperatorContractIssuer
+    - type: OperatorSmoke
+    - type: OperatorTraps
+    - type: TraitSpeedModifier
+      sprintModifier: 1.05
+      walkModifier: 1.05
+      requiredTriggeredSpeedModifier: 1.05
+
+- type: playTimeTracker
+  id: OperatorsGhost
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointOperatorsGhost
+  name: Operator Ghost spawn
+  components:
+  - type: SpawnPoint
+    job_id: OperatorsGhost
+
+- type: job
+  id: OperatorsSpectre
+  name: job-name-operators-spectre
+  description: job-description-operators-spectre
+  playTimeTracker: OperatorsSpectre
+  startingGear: OperatorsSpectreGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  icon: JobIconOperators
+  supervisors: operators-supervisors
+  access: [Operators]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: OperatorTracker
+    - type: OperatorContractIssuer
+    - type: OperatorSmoke
+    - type: OperatorTraps
+    - type: TraitSpeedModifier
+      sprintModifier: 1.05
+      walkModifier: 1.05
+      requiredTriggeredSpeedModifier: 1.05
+
+- type: playTimeTracker
+  id: OperatorsSpectre
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointOperatorsSpectre
+  name: Operator Spectre spawn
+  components:
+  - type: SpawnPoint
+    job_id: OperatorsSpectre
+
+- type: job
+  id: OperatorsShade
+  name: job-name-operators-shade
+  description: job-description-operators-shade
+  playTimeTracker: OperatorsShade
+  startingGear: OperatorsShadeGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  icon: JobIconOperators
+  supervisors: operators-supervisors
+  access: [Operators]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: OperatorTracker
+    - type: OperatorContractIssuer
+    - type: OperatorSmoke
+    - type: OperatorTraps
+    - type: TraitSpeedModifier
+      sprintModifier: 1.05
+      walkModifier: 1.05
+      requiredTriggeredSpeedModifier: 1.05
+
+- type: playTimeTracker
+  id: OperatorsShade
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointOperatorsShade
+  name: Operator Shade spawn
+  components:
+  - type: SpawnPoint
+    job_id: OperatorsShade
+
+- type: job
+  id: OperatorsPhantom
+  name: job-name-operators-phantom
+  description: job-description-operators-phantom
+  playTimeTracker: OperatorsPhantom
+  startingGear: OperatorsPhantomGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  icon: JobIconOperators
+  supervisors: operators-supervisors
+  access: [Operators]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: OperatorTracker
+    - type: OperatorContractIssuer
+    - type: OperatorSmoke
+    - type: OperatorTraps
+    - type: TraitSpeedModifier
+      sprintModifier: 1.05
+      walkModifier: 1.05
+      requiredTriggeredSpeedModifier: 1.05
+
+- type: playTimeTracker
+  id: OperatorsPhantom
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointOperatorsPhantom
+  name: Operator Phantom spawn
+  components:
+  - type: SpawnPoint
+    job_id: OperatorsPhantom
+
+- type: job
+  id: OperatorsWraith
+  name: job-name-operators-wraith
+  description: job-description-operators-wraith
+  playTimeTracker: OperatorsWraith
+  startingGear: OperatorsWraithGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  icon: JobIconOperators
+  supervisors: operators-supervisors
+  access: [Operators, OperatorsCommand]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: OperatorTracker
+    - type: OperatorContractIssuer
+    - type: OperatorSmoke
+    - type: OperatorTraps
+    - type: TraitSpeedModifier
+      sprintModifier: 1.05
+      walkModifier: 1.05
+      requiredTriggeredSpeedModifier: 1.05
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+
+- type: playTimeTracker
+  id: OperatorsWraith
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointOperatorsWraith
+  name: Operator Wraith spawn
+  components:
+  - type: SpawnPoint
+    job_id: OperatorsWraith
+
+- type: job
+  id: OperatorsRevenant
+  name: job-name-operators-revenant
+  description: job-description-operators-revenant
+  playTimeTracker: OperatorsRevenant
+  startingGear: OperatorsRevenantGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  icon: JobIconOperators
+  supervisors: operators-supervisors
+  access: [Operators, OperatorsCommand]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: OperatorTracker
+    - type: OperatorContractIssuer
+    - type: OperatorSmoke
+    - type: OperatorTraps
+    - type: TraitSpeedModifier
+      sprintModifier: 1.05
+      walkModifier: 1.05
+      requiredTriggeredSpeedModifier: 1.05
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+
+- type: playTimeTracker
+  id: OperatorsRevenant
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointOperatorsRevenant
+  name: Operator Revenant spawn
+  components:
+  - type: SpawnPoint
+    job_id: OperatorsRevenant
+
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconOperators
+  icon:
+    sprite: /Textures/_ReclamationProject/Objects/Operators/dogtags.rsi
+    state: icon

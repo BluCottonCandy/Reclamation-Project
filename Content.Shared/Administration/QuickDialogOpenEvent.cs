@@ -144,4 +144,5 @@ public enum QuickDialogEntryType
     /// Maximum of 2,000 characters string.
     /// </summary>
     LongText,
+    ReadOnlyText,
 }

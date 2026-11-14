@@ -1,0 +1,61 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Added Operator ranks, stealth equipment, and faction armor.
+- type: Add
+  message: Operators start with ledger token IDs and black balaclavas that allow eating and drinking.
+- type: Add
+  message: Operator Shades start with distinct extraction armor.
+- type: Tweak
+  message: All Operator ranks wear the Operator Field Jumpsuit.
+- type: Add
+  message: Operators receive night vision goggles, combat gloves, and Mk II boots. Wraith, Spirit, and Spectre receive Treasurer’s Mantles, and Wraith and Spirit receive Chinese stealth suits.
+- type: Tweak
+  message: Operator Ghosts start with police vests, Spectres with black infiltrator coats, and Phantoms with black light recon armor.
+- type: Fix
+  message: The Ratslayer and Quiet Ledger use black slung sprites and a separate one-handed carry pose.
+- type: Add
+  message: Operators receive a scoped 7.62mm Quiet Ledger rifle with detachable 25-round magazines on rifle loadouts.
+- type: Add
+  message: Operators get the Moving Asset speed bonus automatically and can track recent footsteps from a scent sample.
+- type: Add
+  message: All Operator ranks can deploy an emergency smoke grenade on a three-minute cooldown.
+- type: Add
+  message: All Operator ranks carry a breather mask.
+- type: Add
+  message: All Operator ranks start with an Operator field helmet.
+- type: Tweak
+  message: Rebalanced Operator armor and helmets, issued black armored coats to Shade and Revenant, and equipped Shade with a stocked black surgical belt.
+- type: Add
+  message: All Operator ranks can throw broken glass and build single-shot 12-gauge traps.
+- type: Add
+  message: Operators can place low-yield concussion mines. Their shotgun traps trigger up to two tiles ahead.
+- type: Add
+  message: Ghost and Phantom carry .22 LR pistols. Other ranks carry suppressed 9mm Hush pistols.
+
+- type: Fix
+  message: Cloaked characters no longer display the combat-mode exclamation mark.
+- type: Fix
+  message: The Quiet Ledger now fires with a quieter, suppressed report.
+- type: Tweak
+  message: Spirit starts with the suppressed 9mm Infiltrator. The Spectre coat and Phantom recon armor increase movement speed by 15% and 10%, respectively.
+- type: Tweak
+  message: Ghost carries a 9mm Infiltrator, Phantom carries a suppressed 10mm SMG, and Spectre carries a suppressed .308 sniper rifle with standard and overpressure ammunition.
+- type: Tweak
+  message: Operators receive boot knives and rank briefings. Ghost’s Infiltrator fires at seven rounds per second, and Spirit and Wraith receive custom M7 Spear rifles.
+- type: Tweak
+  message: Operator shotgun traps can be destroyed and drop their usual salvage when broken.
+- type: Fix
+  message: Operator tracking can show multiple sampled trails and detects scented characters without a connected player.
+- type: Add
+  message: Operators can issue gold contracts that clients review and pay from their character bank. Operator dog tags serve as IDs. Contracts carry the issuer’s signature and the syndicate seal.
+- type: Fix
+  message: Contract reviews display the job and price in the dialog. Payments transfer directly between character banks.
+- type: Fix
+  message: Contracts hold payment until the client confirms completion and show the job and price on inspection.
+
+- type: Tweak
+  message: Operator contracts show different sprites when written, accepted, and fully paid.
+
+- type: Tweak
+  message: Operator dog tags now appear as job icons in loadouts, latejoin, and the roster.

@@ -5,6 +5,7 @@ using Content.Client.NPC.HTN;
 using Content.Shared.CombatMode;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
+using Content.Shared.Stealth.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._Misfits.StatusIcon;
@@ -39,7 +40,7 @@ public sealed class ShowAggroIconSystem : EntitySystem
 
     private void OnGetCombatModeStatusIcons(EntityUid uid, CombatModeComponent comp, ref GetStatusIconsEvent ev)
     {
-        if (!comp.IsInCombatMode)
+        if (!comp.IsInCombatMode || (TryComp<StealthComponent>(uid, out var stealth) && stealth.Enabled))
             return;
 
         // Misfits Tweak - Only show the combat mode exclamation mark for players, not NPCs

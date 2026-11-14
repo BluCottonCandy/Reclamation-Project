@@ -354,6 +354,9 @@
   category: Physical
   points: -2
   requirements:
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments: [Operators]
     - !type:CharacterTraitRequirement
       inverted: true
       traits:

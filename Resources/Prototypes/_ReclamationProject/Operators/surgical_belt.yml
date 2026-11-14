@@ -1,0 +1,12 @@
+- type: entity
+  parent: ReclamationClothingBeltSurgicalFilled
+  id: OperatorsSurgicalBelt
+  name: Operator surgical belt
+  description: A black surgical belt stocked for field surgery.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Operators/surgical_belt.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Operators/surgical_belt.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Operators/surgical_belt.rsi

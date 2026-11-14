@@ -1,0 +1,22 @@
+<Document>
+# The Operators
+
+The Operators are a profit-driven crime syndicate. They prize valuable technology, quiet entry and clean exits. Competition for technology puts them at odds with the Brotherhood and Railroad.
+
+Player ranks progress through Spirit, Ghost, Spectre, Shade and Phantom. Wraith and Revenant are whitelist-only admin ranks.
+
+Shade is the extraction medic. Operators use dog tags.
+
+## Tracking
+
+Right-click an object with a scent and choose [bold]Track footsteps[/bold]. After sampling it, you can see nearby footsteps from the past minute. Sample more objects to follow additional trails. Right-click yourself and choose [bold]Stop tracking footsteps[/bold] to end the search.
+
+Operators move 5% faster by default and cannot select Moving Asset.
+
+## Emergency smoke
+
+All Operator ranks can use [bold]Emergency Smoke Grenade[/bold] to release smoke at their feet. It has a three-minute cooldown.
+## Contracts
+
+Use [bold]Create Contract[/bold] to enter the price and job. The document bears the issuer’s signature and The Operators seal. Hand the gold contract to the client. They can press Z with it in hand to review the terms and submit payment from their character bank. The contract holds the caps until the same client uses it again and confirms the job is complete. Inspect the contract to see the job and price.
+</Document>

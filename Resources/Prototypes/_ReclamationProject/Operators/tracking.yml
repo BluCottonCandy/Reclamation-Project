@@ -1,0 +1,14 @@
+- type: entity
+  id: OperatorTrailFootprint
+  categories: [HideSpawnMenu]
+  components:
+  - type: TimedDespawn
+    lifetime: 1
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: Effects/crayondecals.rsi
+    state: footprint
+    color: "#d69bb5"
+  - type: Tag
+    tags: [HideContextMenu]

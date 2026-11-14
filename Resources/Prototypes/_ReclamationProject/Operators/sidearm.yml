@@ -1,0 +1,22 @@
+- type: entity
+  parent: N14WeaponPistol9mm
+  id: OperatorsHushPistol
+  name: Hush
+  description: A suppressed automatic 9mm sidearm issued to Operators for work that calls for discretion.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/thespy.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Pistols/thespy.rsi
+  - type: Gun
+    fireRate: 6
+    soundGunshot:
+      collection: N14PistolSpyGunshot
+    selectedMode: Fullauto
+    availableModes:
+    - Fullauto
+  - type: StaticPrice
+    price: 75

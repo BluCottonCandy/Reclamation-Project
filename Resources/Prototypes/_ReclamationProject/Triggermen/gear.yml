@@ -7,9 +7,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.65
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
         Heat: 0.80
 
 - type: entity
@@ -41,6 +41,12 @@
   name: razor-brim black fedora
   description: A black fedora reinforced with sharpened metal around its brim. A vicious throw sends the steel edge slicing through anyone in its path.
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
   - type: DamageExaminable
   - type: MeleeWeapon
     wideAnimationRotation: 90
@@ -69,3 +75,81 @@
   - type: Item
     shape:
     - 0,0,0,1
+
+- type: entity
+  parent: Magazine45SubMachineGun
+  id: TriggermenMagazine45Drum
+  name: .45 Auto SMG drum magazine
+  description: A refillable drum that holds 50 rounds of .45 Auto.
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 50
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/22lr/smgmag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+
+- type: entity
+  parent: N14WeaponSMG45
+  id: TriggermenSMG45
+  suffix: Triggermen
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: TriggermenMagazine45Drum
+        insertSound: /Audio/_Nuclear14/Weapons/Effects/Reload/SMGs/smg_magin.ogg
+        ejectSound: /Audio/_Nuclear14/Weapons/Effects/Reload/SMGs/smg_magout.ogg
+        whitelist:
+          tags: [Magazine45SubMachineGun]
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol45
+        priority: 1
+        whitelist:
+          tags: [N14CartridgePistol45]
+
+- type: entity
+  parent: N14BaseBallBat
+  id: TriggermenWireBat
+  name: barbed-wire baseball bat
+  description: A wooden bat with loops of barbed wire wound around the barrel.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/triggermen_wire_bat.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/triggermen_wire_bat.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/triggermen_wire_bat.rsi
+    slots: [back, suitStorage]
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 20
+        Slash: 10
+        Piercing: 5
+
+- type: entity
+  parent: N14WeaponPistol45Colt
+  id: TriggermenHeavyColt
+  name: Triggermen heavy Colt
+  description: A syndicate Colt rechambered for 12.7mm pistol ammunition.
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazinePistol12mm
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags: [N14MagazinePistol12mm]
+      gun_chamber:
+        name: Chamber
+        startingItem: N14CartridgePistol127
+        priority: 1
+        whitelist:
+          tags: [N14CartridgePistol127]

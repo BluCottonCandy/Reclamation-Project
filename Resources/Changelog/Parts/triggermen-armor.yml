@@ -1,0 +1,12 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Triggermen vests provide 40% blunt, slash, and piercing protection. Their razor-brim fedoras add 5% protection against those damage types.
+- type: Add
+  message: Issued Triggermen .45 SMGs start with a loaded 50-round drum and two spares. The drums are also available from the faction vendor.
+- type: Tweak
+  message: Issued Triggermen baseball bats are wrapped in barbed wire and deal additional slash and piercing damage.
+- type: Tweak
+  message: The Triggermen barbed-wire bat can be slung in suit storage.
+- type: Tweak
+  message: Triggermen start with a 12.7mm heavy Colt, spare magazines, and matching ammunition.

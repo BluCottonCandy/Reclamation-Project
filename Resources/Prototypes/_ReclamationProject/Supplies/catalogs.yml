@@ -3412,7 +3412,7 @@
       N14ClothingShoesBlack: 20
       N14ClothingHandsGlovesBlackLeather: 20
       N14ClothingBackpackSatchelExplorer: 20
-      N14WeaponPistol45Colt: 20
+      TriggermenHeavyColt: 20
       N14WeaponLMGAutoRifle: 60
       N14BaseBallBat: 20
       TriggermenBrassKnuckles: 20
@@ -3453,7 +3453,7 @@
     price: 10
   - proto: N14WeaponPistol22lr
     price: 10
-  - proto: N14WeaponPistol45Colt
+  - proto: TriggermenHeavyColt
     price: 50
   - proto: N14WeaponPistol9mm
     price: 10
@@ -3638,6 +3638,8 @@
   - proto: MagazineBox44
     price: 10
   - proto: MagazineBox45
+    price: 10
+  - proto: TriggermenMagazine45Drum
     price: 10
   - proto: MagazineBox45-70
     price: 10

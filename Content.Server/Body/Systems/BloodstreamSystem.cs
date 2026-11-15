@@ -168,11 +168,15 @@ public sealed class BloodstreamSystem : EntitySystem
             }
             else if (!isDead)
             {
-                // If they're healthy, we'll try and heal some bloodloss instead.
-                _damageableSystem.TryChangeDamage(
-                    uid,
-                    bloodstream.BloodlossHealDamage * bloodPercentage,
-                    ignoreResistances: true, interruptsDoAfters: false);
+                // Full blood volume does not imply old bloodloss damage has healed.
+                // Skip only when neither the health pool nor routed limbs need this recovery.
+                if (!_damageableSystem.CanSkipPassiveHealing(uid, bloodstream.BloodlossHealDamage))
+                {
+                    _damageableSystem.TryChangeDamage(
+                        uid,
+                        bloodstream.BloodlossHealDamage * bloodPercentage,
+                        ignoreResistances: true, interruptsDoAfters: false);
+                }
 
                 // Remove the drunk effect when healthy. Should only remove the amount of drunk and stutter added by low blood level
                 _drunkSystem.TryRemoveDrunkenessTime(uid, bloodstream.StatusTime.TotalSeconds);

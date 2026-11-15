@@ -24,6 +24,33 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 public sealed class BioMonitorTests
 {
     [Test]
+    public async Task ScanShowsWholeBodyDamageByType()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
+            var monitor = em.System<BioMonitorSystem>();
+            Assert.That(monitor.BuildState(patient, patient, BioMonitorSource.Scanner).BodyDamage, Is.Empty);
+
+            var damage = new DamageSpecifier();
+            damage.DamageDict["Bloodloss"] = 12;
+            damage.DamageDict["Poison"] = 5;
+            em.System<DamageableSystem>().TryChangeDamage(patient, damage, true);
+
+            var state = monitor.BuildState(patient, patient, BioMonitorSource.Scanner);
+            Assert.That(state.BodyDamage["Bloodloss"], Is.EqualTo(12f).Within(0.01f), "Bloodloss isn't on any limb, but the scan shows it.");
+            Assert.That(state.BodyDamage["Poison"], Is.EqualTo(5f).Within(0.01f));
+            Assert.That(state.BodyDamage.ContainsKey("Blunt"), Is.False, "Only damage the patient actually has.");
+            Assert.That(state.TotalDamage, Is.EqualTo(17f).Within(0.01f));
+            em.DeleteEntity(patient);
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
     public async Task EmbedChancesMatchDesign()
     {
         await using var pair = await PoolManager.GetServerClient();

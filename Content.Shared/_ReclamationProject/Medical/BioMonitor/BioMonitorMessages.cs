@@ -97,6 +97,9 @@ public sealed class BioMonitorStateMessage : EntityEventArgs
     public List<BioMonitorChem> Chemicals = new();
     /// <summary>Poison damage on the body right now.</summary>
     public float PoisonDamage;
+    /// <summary>Whole-body damage by type (only types above zero), like a health analyzer shows.</summary>
+    public Dictionary<string, float> BodyDamage = new();
+    public float TotalDamage;
     public List<BioMonitorPartState> Parts = new();
 }
 

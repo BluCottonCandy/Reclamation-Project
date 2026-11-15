@@ -13,3 +13,6 @@
 
 - type: Tag
   id: PackRepaintable
+
+- type: Tag
+  id: TrankDart

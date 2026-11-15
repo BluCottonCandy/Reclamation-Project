@@ -285,6 +285,24 @@ public sealed partial class TraumaSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString("trauma-internal-pain"), uid, uid);
     }
 
+    /// <summary>
+    /// How much one blood pack slows internal bleeding (units per second). A pack keeps a patient alive
+    /// until surgery and can stop a light bleed on its own; heavy bleeds still need the surgery.
+    /// </summary>
+    public const float BloodPackInternalBleedReduction = 0.25f;
+
+    /// <summary>Slows internal bleeding (blood packs). Returns true if this stopped it completely.</summary>
+    public bool ReduceInternalBleeding(EntityUid uid, float amount)
+    {
+        if (amount <= 0 || !TryComp<TraumaBodyComponent>(uid, out var comp) || comp.InternalBleeding <= 0) return false;
+        comp.InternalBleeding = Math.Max(0, comp.InternalBleeding - amount);
+        Dirty(uid, comp);
+        return comp.InternalBleeding <= 0;
+    }
+
+    public bool HasInternalBleeding(EntityUid uid)
+        => TryComp<TraumaBodyComponent>(uid, out var comp) && comp.InternalBleeding > 0;
+
     private void OnRejuvenate(EntityUid uid, TraumaBodyComponent comp, RejuvenateEvent args)
     {
         _rejuvenating = true;

@@ -26,6 +26,34 @@ public sealed class InternalBleedingHitTests
         Assert.That(TraumaSystem.BleedingChance(0, 0, 20), Is.GreaterThan(TraumaSystem.BleedingChance(20, 0, 0)));
     }
 
+    [Test]
+    public async Task BloodPacksSlowInternalBleedingAndCanStopALightBleed()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var em = pair.Server.ResolveDependency<IEntityManager>();
+            var patient = em.SpawnTraumaPatient(map.GridCoords);
+            var trauma = em.System<TraumaSystem>();
+            var medical = em.GetComponent<TraumaBodyComponent>(patient);
+
+            Assert.That(trauma.HasInternalBleeding(patient), Is.False);
+            Assert.That(trauma.ReduceInternalBleeding(patient, TraumaSystem.BloodPackInternalBleedReduction), Is.False,
+                "Nothing to stop.");
+
+            trauma.AddInternalBleeding(patient, 0.4f);
+            Assert.That(trauma.HasInternalBleeding(patient), Is.True);
+            Assert.That(trauma.ReduceInternalBleeding(patient, TraumaSystem.BloodPackInternalBleedReduction), Is.False);
+            Assert.That(medical.InternalBleeding, Is.EqualTo(0.15f).Within(0.001f), "One pack slows it.");
+            Assert.That(trauma.ReduceInternalBleeding(patient, TraumaSystem.BloodPackInternalBleedReduction), Is.True,
+                "A second pack stops a light bleed.");
+            Assert.That(medical.InternalBleeding, Is.Zero);
+            em.DeleteEntity(patient);
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [TestCase("CombatKnife")]
     [TestCase("N14WastelandTribalSpear")]
     [TestCase("N14SuperSledgeHammer")]

@@ -1,0 +1,132 @@
+# #Reclamation Project Add - trank pistol. Fires one refillable 20u chem dart, sold in the Institute uplink.
+# Works like a bow: the dart is the projectile itself, so it sticks in the target, injects its whole
+# solution at once and can be pulled out, refilled and fired again.
+
+- type: entity
+  name: trank pistol
+  parent: BaseItem
+  id: RPWeaponPistolTrank
+  description: A long, quiet dart pistol. Load one trank dart into the tray at the back and the tray shuts. Whatever is in the dart goes into the target the moment it hits.
+  components:
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Pistols/trank_pistol.rsi
+    layers:
+    - state: base
+    - state: dart
+      map: [ dart ]
+      visible: false
+  # dart is inserted -> ItemMapper shows the `dart` layer, which shuts the tray over the empty base
+  - type: Appearance
+  - type: ItemMapper
+    spriteLayers:
+    - dart
+    mapLayers:
+      dart:
+        whitelist:
+          tags:
+          - TrankDart
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Pistols/trank_pistol.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Pistols/trank_pistol.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    projectileSpeed: 40
+    minAngle: 0
+    maxAngle: 2
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ReclamationProject/Weapons/Guns/TrankPistol/trank_pistol_fire.ogg
+  - type: ItemSlots
+    slots:
+      trank_dart:
+        name: Dart
+        startingItem: RPTrankDart
+        insertSound: /Audio/_Nuclear14/Weapons/Effects/Reload/Pistols/pistol_magin.ogg
+        ejectSound: /Audio/_Nuclear14/Weapons/Effects/Reload/Pistols/pistol_magout.ogg
+        whitelist:
+          tags:
+          - TrankDart
+  - type: ContainerContainer
+    containers:
+      trank_dart: !type:ContainerSlot
+  - type: ContainerAmmoProvider
+    container: trank_dart
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  name: trank dart
+  parent: BaseItem
+  id: RPTrankDart
+  description: A refillable dart that holds 20u. Fill it with a syringe or pour into it like a beaker. It sticks in whoever it hits and injects everything at once, through armour.
+  components:
+  - type: Item
+    size: Tiny
+    sprite: Objects/Fun/Darts/dart_yellow.rsi
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Guns/Ammunition/trank_dart.rsi
+    state: icon
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.2
+        density: 5
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+    embedOnThrow: false
+  - type: ThrowingAngle
+    angle: 0
+  - type: Ammo
+    muzzleFlash: null
+  - type: Tag
+    tags:
+    - TrankDart
+  - type: Projectile
+    deleteOnCollide: false
+    onlyCollideWhenShot: true
+    damage:
+      types:
+        Piercing: 2
+  - type: SolutionContainerManager
+    solutions:
+      dart:
+        maxVol: 20
+  - type: RefillableSolution
+    solution: dart
+  - type: InjectableSolution
+    solution: dart
+  - type: DrawableSolution
+    solution: dart
+  - type: ExaminableSolution
+    solution: dart
+  - type: SolutionTransfer
+    maxTransferAmount: 20
+  - type: SolutionInjectOnEmbed
+    transferAmount: 20
+    solution: dart
+  - type: StaticPrice
+    price: 15

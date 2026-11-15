@@ -10,3 +10,9 @@
 
 - type: Tag
   id: N14SuperCooledCryoCell
+
+- type: Tag
+  id: PackRepaintable
+
+- type: Tag
+  id: TrankDart

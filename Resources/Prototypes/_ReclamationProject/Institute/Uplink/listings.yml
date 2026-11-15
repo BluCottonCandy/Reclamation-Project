@@ -74,6 +74,24 @@
   categories:
   - InstituteWeapons
 
+# #Reclamation Project Add - trank pistol (comes with one empty dart) and spare darts.
+- type: listing
+  id: InstituteUplinkTrankPistol
+  productEntity: RPWeaponPistolTrank
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Guns/Pistols/trank_pistol.rsi, state: icon }
+  cost:
+    ResearchPoint: 50
+  categories:
+  - InstituteWeapons
+
+- type: listing
+  id: InstituteUplinkTrankDart
+  productEntity: RPTrankDart
+  cost:
+    ResearchPoint: 10
+  categories:
+  - InstituteWeapons
+
 - type: listing
   id: InstituteUplinkGaussPistolMag
   productEntity: N14Magazine2mmECPistol

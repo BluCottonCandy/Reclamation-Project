@@ -1,0 +1,9 @@
+- type: trait
+  id: PackWarhoundCompanion
+  category: PetsMedium
+  points: -6
+  requirements:
+  - !type:CharacterJobRequirement
+    jobs: [PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+  functions:
+  - !type:TraitPackWarhound

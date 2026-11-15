@@ -1,0 +1,585 @@
+- type: entity
+  parent: ClothingOuterVestWebMercenary
+  id: PackThemedVestBase
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+
+- type: entity
+  parent: ClothingOuterArmorBulletproof
+  id: PackThemedHeavyBase
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Poison: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest2Raven
+  name: Pack raven vest 2
+  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-2
+      color: '#88869F'
+    - state: vest-2-raven
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-2
+        color: '#88869F'
+      - state: vest-2-raven
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest2Fang
+  name: Pack fang vest 2
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-2
+      color: '#8F7767'
+    - state: vest-2-fang
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-2
+        color: '#8F7767'
+      - state: vest-2-fang
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest2Cordon
+  name: Pack cordon vest 2
+  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-2
+      color: '#768392'
+    - state: vest-2-cordon
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-2
+        color: '#768392'
+      - state: vest-2-cordon
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest2Antler
+  name: Pack antler vest 2
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-2
+      color: '#758263'
+    - state: vest-2-antler
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-2
+        color: '#758263'
+      - state: vest-2-antler
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest2Chain
+  name: Pack chain vest 2
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-2
+      color: '#917383'
+    - state: vest-2-chain
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-2
+        color: '#917383'
+      - state: vest-2-chain
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest3Raven
+  name: Pack raven vest 3
+  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-3
+      color: '#88869F'
+    - state: vest-3-raven
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-3
+        color: '#88869F'
+      - state: vest-3-raven
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest3Fang
+  name: Pack fang vest 3
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-3
+      color: '#8F7767'
+    - state: vest-3-fang
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-3
+        color: '#8F7767'
+      - state: vest-3-fang
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest3Cordon
+  name: Pack cordon vest 3
+  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-3
+      color: '#768392'
+    - state: vest-3-cordon
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-3
+        color: '#768392'
+      - state: vest-3-cordon
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest3Antler
+  name: Pack antler vest 3
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-3
+      color: '#758263'
+    - state: vest-3-antler
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-3
+        color: '#758263'
+      - state: vest-3-antler
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest3Chain
+  name: Pack chain vest 3
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-3
+      color: '#917383'
+    - state: vest-3-chain
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-3
+        color: '#917383'
+      - state: vest-3-chain
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest4Raven
+  name: Pack raven vest 4
+  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-4
+      color: '#88869F'
+    - state: vest-4-raven
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-4
+        color: '#88869F'
+      - state: vest-4-raven
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest4Fang
+  name: Pack fang vest 4
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-4
+      color: '#8F7767'
+    - state: vest-4-fang
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-4
+        color: '#8F7767'
+      - state: vest-4-fang
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest4Cordon
+  name: Pack cordon vest 4
+  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-4
+      color: '#768392'
+    - state: vest-4-cordon
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-4
+        color: '#768392'
+      - state: vest-4-cordon
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest4Antler
+  name: Pack antler vest 4
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-4
+      color: '#758263'
+    - state: vest-4-antler
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-4
+        color: '#758263'
+      - state: vest-4-antler
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest4Chain
+  name: Pack chain vest 4
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-4
+      color: '#917383'
+    - state: vest-4-chain
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-4
+        color: '#917383'
+      - state: vest-4-chain
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest5Raven
+  name: Pack raven vest 5
+  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-5
+      color: '#88869F'
+    - state: vest-5-raven
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-5
+        color: '#88869F'
+      - state: vest-5-raven
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest5Fang
+  name: Pack fang vest 5
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-5
+      color: '#8F7767'
+    - state: vest-5-fang
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-5
+        color: '#8F7767'
+      - state: vest-5-fang
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest5Cordon
+  name: Pack cordon vest 5
+  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-5
+      color: '#768392'
+    - state: vest-5-cordon
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-5
+        color: '#768392'
+      - state: vest-5-cordon
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest5Antler
+  name: Pack antler vest 5
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-5
+      color: '#758263'
+    - state: vest-5-antler
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-5
+        color: '#758263'
+      - state: vest-5-antler
+
+- type: entity
+  parent: PackThemedVestBase
+  id: PackThemedVest5Chain
+  name: Pack chain vest 5
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: vest-5
+      color: '#917383'
+    - state: vest-5-chain
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: vest-5
+        color: '#917383'
+      - state: vest-5-chain
+
+- type: entity
+  parent: PackThemedHeavyBase
+  id: PackThemedVestHeavyRaven
+  name: Pack raven heavy armor
+  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: heavy
+      color: '#88869F'
+    - state: heavy-raven
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: heavy
+        color: '#88869F'
+      - state: heavy-raven
+
+- type: entity
+  parent: PackThemedHeavyBase
+  id: PackThemedVestHeavyFang
+  name: Pack fang heavy armor
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: heavy
+      color: '#8F7767'
+    - state: heavy-fang
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: heavy
+        color: '#8F7767'
+      - state: heavy-fang
+
+- type: entity
+  parent: PackThemedHeavyBase
+  id: PackThemedVestHeavyCordon
+  name: Pack cordon heavy armor
+  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: heavy
+      color: '#768392'
+    - state: heavy-cordon
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: heavy
+        color: '#768392'
+      - state: heavy-cordon
+
+- type: entity
+  parent: PackThemedHeavyBase
+  id: PackThemedVestHeavyAntler
+  name: Pack antler heavy armor
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: heavy
+      color: '#758263'
+    - state: heavy-antler
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: heavy
+        color: '#758263'
+      - state: heavy-antler
+
+- type: entity
+  parent: PackThemedHeavyBase
+  id: PackThemedVestHeavyChain
+  name: Pack chain heavy armor
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    layers:
+    - state: heavy
+      color: '#917383'
+    - state: heavy-chain
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: heavy
+        color: '#917383'
+      - state: heavy-chain

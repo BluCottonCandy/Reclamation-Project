@@ -18,6 +18,17 @@
     tags:
     - WhitelistChameleon
 
+- type: entity
+  parent: MinutemenGasMask
+  id: MinutemenGasMaskCompact
+  name: Minuteman Compact Gasmask
+  description: A compact version of the heavier rubber combat gasmasks fielded to the Minutemen. Several post-war modifications besides the lenses have made this headgear considerably lighter in comparison.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask_compact.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask_compact.rsi
+
 # Night vision only. No thermal vision.
 - type: entity
   parent: MinutemenGasMask
@@ -31,3 +42,14 @@
     sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask_nvg.rsi
   - type: NightVision
     isEquipment: true
+
+- type: entity
+  parent: MinutemenGasMaskNightVision
+  id: MinutemenGasMaskNightVisionCompact
+  name: Minuteman Compact NVG Gasmask
+  description: A compact version of the heavier rubber combat gasmasks fielded to the Minutemen. Several post-war modifications besides the lenses have made this headgear considerably lighter in comparison. This one sports a small cable leading over the ear, and behind the head to a small inbuilt battery pack for Night Vision.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask_nvg_compact.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Mask/minutemen_gasmask_nvg_compact.rsi

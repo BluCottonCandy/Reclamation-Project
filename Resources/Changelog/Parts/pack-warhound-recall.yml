@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Pack members can ask their dismissed warhounds to follow again when they have a free follower slot.

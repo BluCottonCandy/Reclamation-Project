@@ -2,6 +2,7 @@ using System.Linq;
 using System.Text;
 using Content.Shared._NC.Sponsor; // Forge-Change
 using Content.Shared.Inventory;
+using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -42,12 +43,25 @@ public sealed class CharacterRequirementsSystem : EntitySystem
         return !valid ? requirement.Inverted : !requirement.Inverted;
     }
 
+    public bool IsLoadoutAllowedForJob(JobPrototype? job, LoadoutPrototype loadout)
+    {
+        return !loadout.Hidden && (job == null ||
+            !job.LoadoutCategoryWhitelist.TryGetValue(loadout.Category, out var allowed) ||
+            allowed.Contains(loadout.ID));
+    }
+
     public bool CheckRequirementsValid(List<CharacterRequirement> requirements, JobPrototype job,
         HumanoidCharacterProfile profile, Dictionary<string, TimeSpan> playTimes, bool whitelisted, IPrototype prototype,
         IEntityManager entityManager, IPrototypeManager prototypeManager, IConfigurationManager configManager,
         ISharedSponsorManager sponsorManager, out List<string> reasons, int depth = 0, bool jobWhitelisted = false) // Forge-Change
     {
         reasons = new List<string>();
+        if (prototype is LoadoutPrototype loadout && !IsLoadoutAllowedForJob(job, loadout))
+        {
+            reasons.Add(Loc.GetString("loadout-category-job-restricted"));
+            return false;
+        }
+
         var valid = true;
 
         foreach (var requirement in requirements)

@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Manually queued server updates still wait for the round to end, with a single queue request.

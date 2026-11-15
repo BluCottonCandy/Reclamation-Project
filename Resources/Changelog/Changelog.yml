@@ -14349,3 +14349,613 @@ Entries:
   id: 6627
   time: '2026-11-09T19:53:12.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/160
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Minutemen gas masks at the Minutemen vendor. Anyone can buy the plain
+        one. Sergeants and up can buy one with night vision.
+    - type: Add
+      message: >-
+        White armbands. Craft one from 1 cloth, wear it, or tear it off to use
+        as a bandage.
+    - type: Tweak
+      message: >-
+        Bullets fly faster: 60 instead of 35. Gauss guns fire at 70. Energy
+        weapons are unchanged.
+    - type: Add
+      message: >-
+        Institute members are now Institute agents with a PIN-locked uplink
+        implant and Research Points.
+    - type: Add
+      message: >-
+        The Director and Division Heads hand out objectives that pay Research
+        Points, through the new Institute network.
+    - type: Add
+      message: >-
+        Synth relay grenades and Gen 3 synth / Courser reinforcements for the
+        Institute.
+  id: 6628
+  time: '2026-11-10T00:25:01.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/161
+- author: aftermath434
+  changes:
+    - type: Fix
+      message: >-
+        Strength 10 no longer lets you walk at full speed in power armour that
+        is switched off or has a dead fusion core.
+    - type: Tweak
+      message: >-
+        Powered power armour speed now depends on Strength: 70%, 75% at Strength
+        8, 80% at Strength 10.
+    - type: Tweak
+      message: >-
+        Strength 10 now carries an unworn power armour suit at 65% speed instead
+        of full speed.
+  id: 6629
+  time: '2026-11-10T03:05:23.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/162
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added the Pack, a beast-keeping raider faction, with Cub, Youngling,
+        Hunter, Beast Tamer, Shaman and Beastmaster player roles, and
+        whitelist-only Beta and Alpha admin roles.
+    - type: Tweak
+      message: >-
+        Repurposed the former raider camp for the Pack, removing its added
+        deathclaws, razorclaw and old faction-specific equipment. Pack spawns,
+        faction radio keys, doors and kennel hounds are included.
+    - type: Add
+      message: >-
+        Pack roles have exclusive themed clothing and animal-mask loadouts,
+        rank-specific pendants, and their own radio channel. The Shaman is a
+        one-slot medical specialist alongside Beast Tamer.
+    - type: Tweak
+      message: >-
+        Pack punk armor provides at least 35% blunt, slash and piercing
+        protection. Beastmaster and Beta receive heavy punk armor with 45%
+        protection to those damage types and 10% poison protection. Punk boots
+        use combat MK II functionality.
+    - type: Add
+      message: Pack bows, quivers and poisoned machetes have distinctive sprites.
+    - type: Add
+      message: >-
+        Pack members bite when unarmed, with piercing and poison damage and
+        animal bite effects. Traits that replace unarmed damage are unavailable
+        to Pack roles.
+    - type: Add
+      message: >-
+        Every Pack rank can start and track a hunt and use Hunting Cry with
+        Pack-themed lines.
+    - type: Add
+      message: >-
+        Cubs and Younglings start with one following warhound and one base
+        follower slot. Hunter and higher ranks start with two warhounds and four
+        base follower slots. Normal Charisma bonuses add to those slots; Pack
+        animals follow without a Charisma requirement.
+    - type: Add
+      message: >-
+        Hunters, Beast Tamers, Shamans and Beastmasters can tame one hostile
+        molerat, mirelurk or nightstalker; Beta can tame two. Alpha alone can
+        tame a deathclaw. Tamed animals use the warhound follow/order AI and can
+        be revived.
+    - type: Add
+      message: >-
+        Hunter and higher Pack ranks can select a Pack warhound under Pets for
+        six pet points, subject to their follower cap.
+    - type: Add
+      message: >-
+        Beta starts with a compound bow that holds three arrows and fires one
+        per shot, requiring 7 Agility. Loaded-arrow visuals use the normal bow
+        layering. Both bows have stowed back sprites.
+    - type: Add
+      message: >-
+        Betaâ€™s two-handed greatfang requires 7 Strength to swing and can be
+        carried one-handed at 9 Strength. Z switches between one- and two-handed
+        grips. Normal damage is unchanged by grip; power attacks deal 25% more
+        damage in either grip.
+    - type: Add
+      message: >-
+        Alpha starts with deathclaw hide armor, a deathclaw helmet and a Pack
+        deathclaw gauntlet dealing slash, blunt and poison damage. Its custom
+        Packleader R-91 rifle retains the standard assault rifleâ€™s stats and
+        comes with matching ammunition and spare magazines.
+    - type: Add
+      message: >-
+        Pack hunting quivers start with their arrow magnet activated. The single
+        toggle and status indicator show its state. Starting bow ammunition
+        appears at the playerâ€™s feet for collection.
+    - type: Fix
+      message: >-
+        Randomized punk clothing refreshes its worn colors without needing to be
+        removed and re-equipped. Pack clothing restrictions also cover saved
+        loadout choices.
+    - type: Tweak
+      message: >-
+        Retired faction jobs and their exclusive loadouts no longer appear in
+        character setup or latejoin.
+    - type: Add
+      message: Tamed Pack animals can be petted, with a friendly message and hearts.
+    - type: Add
+      message: >-
+        Shaman starts with a punk medical belt containing two toxin bottles and
+        a full surgical tool set. Alpha no longer starts with a toxin bottle.
+    - type: Add
+      message: >-
+        Pack ranks now receive progressively broader equipment-kit choices, from
+        Stalker for Cubs to all six kits for Beastmasters. Stalkers carry a
+        distinctive Pack fang spear.
+    - type: Tweak
+      message: >-
+        The Alpha wears colorful spray-painted deathclaw hide, and the Shaman
+        wears a patched punk medical coat.
+    - type: Tweak
+      message: >-
+        The Alpha's painted hide armor provides 60% protection in its existing
+        resistance types. The Beta wears a reinforced raven cloak with 55%
+        blunt, slash, piercing and heat protection.
+    - type: Tweak
+      message: >-
+        The Pack Alpha's cloak and skull helmet have matching, worn
+        teal-and-crimson markings.
+    - type: Tweak
+      message: >-
+        Pack equipment kits supply distinctly named weapons and carriers with
+        matching bone-and-red designs. Ammunition retains its normal sprites,
+        and all original combat and storage behavior is unchanged.
+    - type: Fix
+      message: >-
+        The Pack compound bow uses the normal bow's loaded-arrow layering,
+        removing the misplaced extra held-arrow sprite.
+    - type: Fix
+      message: >-
+        The Pack javelin quiver now shows stored javelins on its icon and hides
+        them when emptied.
+    - type: Tweak
+      message: >-
+        The Pack Shaman coat protects against 35% blunt, slash, piercing, poison
+        and heat damage, and 10% explosion damage.
+    - type: Add
+      message: >-
+        The Pack menagerie has two tameable deathclaws, three nightstalkers,
+        four molerats and four additional kennel hounds. Untamed pen animals are
+        neutral to Pack members and animals, but attack outsiders.
+    - type: Tweak
+      message: >-
+        Molerats, nightstalkers and deathclaws occupy separate Pack pens.
+        Removed loose tools, wire bundles and tables from the deathclaw pen
+        while retaining installed wiring.
+    - type: Add
+      message: >-
+        Added a Pack faction guide covering ranks, animal followers, taming,
+        Hunting Cry, hunts and signature equipment mechanics.
+    - type: Tweak
+      message: >-
+        Hunting Cry also boosts Pack hounds and tamed companions. Tamed animals
+        have bloodstreams and medicine-capable animal metabolism. Normal
+        Charisma follower bonuses add to Pack rank capacity without increasing
+        taming allowances.
+    - type: Add
+      message: >-
+        All Pack equipment kits include two bolas and two sets of handcuffs.
+        Alpha and Beta receive the same restraints in their starting backpacks.
+        Standard bolas now occupy the same small inventory footprint as
+        handcuffs.
+    - type: Tweak
+      message: Pack Alpha and Beta now spawn inside the former Centurion quarters.
+    - type: Tweak
+      message: >-
+        Pack kits now have distinct hunter, melee, defender, gunslinger and
+        breacher roles, with medical supplies and food in each. Stalker gains
+        reserve arrows and spotting tools; Hunter gains a sidearm; Champion
+        gains a shield; Fire Hand gains loaded speedloaders; Bone Breaker
+        specializes in melee. Pain Bringer retains its Thunderjaw shotgun, now
+        with a twelve-shell internal magazine, extra shells, a melee backup and
+        smoke grenades.
+    - type: Tweak
+      message: >-
+        Champion receives the small Paladin shield. Stalker reserve ammunition
+        is a refillable, two-slot bundle holding ten hunting arrows and using
+        ammunition-box dispensing.
+    - type: Tweak
+      message: >-
+        Both Pack bows automatically nock arrows from a worn arrow quiver before
+        the first shot and after firing, preserving stored arrow types and
+        stopping when supplies run out.
+    - type: Tweak
+      message: >-
+        Pack starting arrows, including kit arrows, reserve bundles and Beta's
+        starting supply, deal an additional 5 poison damage on hit. Their 35
+        piercing damage is unchanged; ordinary arrows elsewhere are unaffected.
+    - type: Add
+      message: >-
+        The Pack has a rank-restricted faction supply vendor at its base, with
+        shared points, supply crate redemption and its own equipment catalogue.
+    - type: Tweak
+      message: >-
+        All bows now draw real arrows from equipped arrow quivers automatically,
+        and all arrow quivers have toggleable arrow pickup. Arrow types and
+        damage are preserved.
+    - type: Tweak
+      message: The Pack Thunderjaw shotgun fires at two shots per second.
+    - type: Fix
+      message: >-
+        Idle animal wandering and following no longer choose paths that require
+        smashing obstacles or forcing doors open; combat behavior is retained.
+  id: 6630
+  time: '2026-11-10T13:31:35.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/163
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Bio-monitor: a Pip-Boy health screen with a clickable body doll, opened
+        from a worn or held Pip-Boy, a med scanner, INT 10, the Field Medic
+        perk, or a Gen 3 synth / Courser body.
+    - type: Add
+      message: Scanning someone with a med scanner now opens the bio-monitor.
+    - type: Add
+      message: >-
+        Bullets can get stuck inside people (pistol 20%, shotgun 25% per pellet,
+        rifle 15%) and explosions can leave shrapnel. They slowly hurt that limb
+        and only come out through the bio-monitor's Remove button.
+    - type: Add
+      message: >-
+        Pulling a stuck item out can cause bleeding unless you are skilled. A
+        hemostat makes it faster and safer, and deep rifle rounds always need
+        one.
+    - type: Add
+      message: >-
+        Field Medic perk (5 points): use the bio-monitor without a device,
+        remove things at tool speed, and do surgery on yourself.
+    - type: Add
+      message: >-
+        Institute staff and synths get a white and blue Institute BioScience
+        version of the screen.
+    - type: Add
+      message: >-
+        The bio-monitor shows radiation, chems in your bloodstream (poisons
+        flagged), pulse, blood, temperature, hunger and thirst.
+    - type: Tweak
+      message: >-
+        Synths can't push out fragments with their nanites, but stuck fragments
+        only do 20% damage to them.
+    - type: Fix
+      message: >-
+        Broken bones show how far they have healed and how long is left. Splints
+        no longer say surgery is required.
+  id: 6631
+  time: '2026-11-11T00:41:36.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/165
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Every Gen 3 synth and Courser now has an Institute uplink and shows up
+        in the Institute network, so command can give them orders. This includes
+        undercover synths in normal jobs, ghost roles and admin spawns. New
+        uplinks start at 0 RP, and a cut-out uplink is replaced.
+    - type: Add
+      message: >-
+        The Institute Director can add any item to the uplink at a price they
+        choose, and remove it again. Everyone in the Institute can buy it from
+        the new Director's stock tab, and the list is kept from round to round.
+  id: 6632
+  time: '2026-11-11T01:45:31.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/166
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Institute relay pads. Buy one folded from the uplink and set it up
+        anywhere; every Gen 3 synth and Courser can relay onto any pad (with
+        whoever they're dragging) from a drop-down list. 30 second cooldown.
+    - type: Add
+      message: >-
+        Lockpicking. Use a lockpick set on a locked door without power to pick
+        its pins: tension, binding pins, false sets on spool pins and ridges on
+        serrated pins. Agility and Perception help.
+    - type: Add
+      message: >-
+        The Institute uplink now sells a lockpick set, an emag that opens bunker
+        doors even without power, and a chameleon skin mutator.
+    - type: Add
+      message: >-
+        Institute task board: preset tasks each round plus tasks command posts.
+        Any Institute member can accept up to 3; command can add and remove
+        tasks.
+  id: 6633
+  time: '2026-11-11T03:26:04.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/167
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Warhounds and Pack-tamed animals no longer hunt brahdos, cows, brahmin,
+        chickens, rabbits or other passive wildlife and pets.
+    - type: Fix
+      message: >-
+        Feral ghouls, hostile robots, raiders, super mutants and Zetans now
+        recognize the Pack as enemies.
+    - type: Fix
+      message: >-
+        Only the Pack Alpha can recruit or command deathclaw followers; Charisma
+        cannot bypass this restriction.
+  id: 6634
+  time: '2026-11-11T07:40:31.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/164
+- author: LordCheezit and Davisrocket
+  changes:
+    - type: Add
+      message: Minutemen flag by LordCheezit, fully craft-able
+  id: 6635
+  time: '2026-11-11T07:41:41.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/168
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Admins can browse and inspect saved personal bunkers from the Door Logs
+        tab.
+  id: 6636
+  time: '2026-11-11T14:30:57.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/169
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Roller skates no longer increase walking or sprinting speed.
+  id: 6637
+  time: '2026-11-11T14:31:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/170
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Unstable now grants 5 character points.
+    - type: Add
+      message: >-
+        Clear-Headed costs 5 character points and prevents drug-induced
+        hallucinations. It cannot be selected with Unstable.
+  id: 6638
+  time: '2026-11-11T14:31:51.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/171
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: The NCR bugle has a new sprite and plays Hail to the Chief.
+  id: 6639
+  time: '2026-11-11T14:32:13.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/172
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Pack members can ask a dismissed warhound to follow again when they have
+        a free follower slot.
+  id: 6640
+  time: '2026-11-11T14:32:29.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/173
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Use Join Another at a bunker hatch to request access to an occupied
+        bunker. Only the owner can approve your visit.
+  id: 6641
+  time: '2026-11-11T15:02:10.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/175
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        NetworkBay updates now log the installation check that failed before
+        rolling back.
+  id: 6642
+  time: '2026-11-11T15:37:15.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/177
+- author: aftermath434
+  changes:
+    - type: Tweak
+      message: 'BioMonitor Color fixing  '
+  id: 6643
+  time: '2026-11-11T19:07:45.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/178
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Incinerator shots travel twice as far before disappearing.
+  id: 6644
+  time: '2026-11-11T19:08:01.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/176
+- author: BluCottonCandy
+  changes:
+    - type: Remove
+      message: Removed the map app from bunker computers.
+    - type: Tweak
+      message: Pip-Boys left in a saved bunker become decommissioned displays.
+    - type: Tweak
+      message: >-
+        Wild and tamed wasteland animals are immune to ambient radiation and Rad
+        Flu.
+    - type: Fix
+      message: >-
+        Wild and tamed animals seek reachable food and drink before their needs
+        become severe.
+  id: 6645
+  time: '2026-11-12T03:37:00.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/179
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: All Pack ranks can now bark, growl, snarl, whine and howl.
+  id: 6646
+  time: '2026-11-12T03:44:55.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/180
+- author: Davisrocket
+  changes:
+    - type: Add
+      message: Ammo Canister with functionality
+  id: 6647
+  time: '2026-11-12T10:03:49.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/181
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Removed the round-start air rebuild stall while keeping breathable air
+        in the vault and enclave.
+    - type: Tweak
+      message: >-
+        Reduced idle server work from movement, climbing, pushing, pulling,
+        body-part cleanup, digestion and metabolism.
+    - type: Fix
+      message: >-
+        The round countdown now ends the round at zero and starts the next round
+        after the configured delay.
+  id: 6648
+  time: '2026-11-12T10:45:26.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/182
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Pack ranks start with different animal companions, and Charisma no
+        longer grants Pack members extra follower slots.
+    - type: Tweak
+      message: >-
+        Only Beast Tamers can tame animals. Taming makes the animal friendly to
+        the Pack, and followers must be ordered separately.
+    - type: Add
+      message: >-
+        Pack members can track scents and requisition replacement animal
+        carriers and spray paint from their vendor.
+    - type: Add
+      message: >-
+        The Pack vendor sells companion armor for 10 points. Wolves can charge
+        and slow enemies, molerats have an armor-piercing bite, and ghoulrillas
+        can knock enemies back.
+    - type: Tweak
+      message: >-
+        Pack companions no longer block each other and suffer less slowdown from
+        wounds.
+    - type: Tweak
+      message: >-
+        Ghoulrillas punch for 35 blunt damage, and the Ghoulrilla King punches
+        for 45.
+    - type: Fix
+      message: >-
+        Pack companions and menagerie animals now have scents that Pack members
+        can track.
+    - type: Add
+      message: Track Scent can pick up scents from objects people have touched.
+    - type: Add
+      message: >-
+        Pack members can release a missing companion from their own right-click
+        menu and free its follower slot.
+    - type: Tweak
+      message: >-
+        Pack yao guai, nightstalkers, mirelurks, and molerats deal more damage
+        with normal attacks.
+    - type: Tweak
+      message: >-
+        Pack warhounds go critical at 200 damage, yao guai at 600, and the
+        Ghoulrilla King at 800.
+    - type: Fix
+      message: >-
+        Pack warhounds can lunge up to five tiles when they acquire an enemy in
+        range.
+    - type: Add
+      message: >-
+        Pack ghoulrillas and the Ghoulrilla King have distinct new sprites. The
+        King appears 25% larger.
+    - type: Fix
+      message: Pack ghoulrillas fit through one-tile passages.
+  id: 6649
+  time: '2026-11-12T11:51:40.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/183
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Forged kits now issue standard 9mm pistols and pump-action shotguns in
+        place of makeshift guns.
+    - type: Tweak
+      message: >-
+        The Forge Keeper starts with the Furnace Repeater in place of the
+        incinerator. It fires at 3.5 shots per second and is available from the
+        Forged vendor.
+  id: 6650
+  time: '2026-11-12T12:19:06.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/184
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: You can remove another player's handcuffs from up to one tile away.
+  id: 6651
+  time: '2026-11-12T12:56:15.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/185
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: All faction supply vendors sell a full blood pack stack for 10 points.
+  id: 6652
+  time: '2026-11-12T12:56:30.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/186
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        The medical splint recipe now produces a splint. Applying one restores a
+        disabled leg to 10% health or mends a fracture.
+  id: 6653
+  time: '2026-11-12T13:17:33.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/187
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Pack members start with animal stomachs that can digest raw meat and
+        organs and drink blood.
+    - type: Fix
+      message: Raw mirelurk claws no longer contain irradiated proteins.
+    - type: Add
+      message: Pack Shamans start with an N14 health scanner in their medical belt.
+  id: 6654
+  time: '2026-11-12T13:17:51.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/188
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Characters with 10 Agility and at least 9 Strength can dual-swing the
+        Super Sledge and Pack Greatfang.
+    - type: Tweak
+      message: >-
+        The Super Sledge deals its full wielded damage in one hand at 9 Strength
+        or higher.
+  id: 6655
+  time: '2026-11-12T13:22:55.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/189
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Pack animals with slower base movement now meet standard player walking
+        and sprinting speeds.
+  id: 6656
+  time: '2026-11-12T15:06:45.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/190
+- author: shr1mpeater and Davisrocket
+  changes:
+    - type: Add
+      message: >-
+        Added 2 Compact Gas Masks for Minutemen (One with NVG), in vendor
+        (sprites by shr1mpeater)
+    - type: Add
+      message: >-
+        Added 2 Compact Gas Masks for Trieste, One Helmet for Trieste (sprites
+        by shr1mpeater)
+  id: 6657
+  time: '2026-11-13T16:07:12.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/191

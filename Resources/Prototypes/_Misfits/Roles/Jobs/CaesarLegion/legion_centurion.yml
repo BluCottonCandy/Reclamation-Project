@@ -1,6 +1,6 @@
 - type: job
   id: CaesarLegionCenturion
-  setPreference: true
+  setPreference: false
   hideWithoutJobWhitelist: false # #Misfits Tweak - visible in all menus
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change

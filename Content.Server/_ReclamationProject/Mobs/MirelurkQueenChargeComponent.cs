@@ -9,6 +9,8 @@ namespace Content.Server._ReclamationProject.Mobs;
 public sealed partial class MirelurkQueenChargeComponent : Component
 {
     [DataField] public bool Enraged;
+    [DataField] public bool SingleTarget;
+    [DataField] public float ImpactSlowdown;
     [DataField] public float EnrageDamageThreshold = 500f;
     [DataField] public float Cooldown = 4f;
     [DataField] public float Windup = 1f;

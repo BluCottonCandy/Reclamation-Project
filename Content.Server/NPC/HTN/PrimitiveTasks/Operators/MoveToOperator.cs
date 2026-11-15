@@ -61,6 +61,16 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
     [DataField("stopOnLineOfSight")]
     public bool StopOnLineOfSight;
 
+    /// <summary>Idle movement must not destroy obstacles or force doors open.</summary>
+    [DataField("allowDestructivePathing")]
+    public bool AllowDestructivePathing = true;
+
+    private PathFlags GetMovementFlags(NPCBlackboard blackboard)
+    {
+        var flags = _pathfind.GetFlags(blackboard);
+        return AllowDestructivePathing ? flags : flags & ~(PathFlags.Smashing | PathFlags.Prying);
+    }
+
     private const string MovementCancelToken = "MovementCancelToken";
 
     public override void Initialize(IEntitySystemManager sysManager)
@@ -116,7 +126,7 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
                 targetCoordinates,
             range,
             cancelToken,
-            _pathfind.GetFlags(blackboard));
+            GetMovementFlags(blackboard));
 
         if (path.Result != PathResult.Path)
         {
@@ -151,7 +161,7 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
             return;
 
         // Re-use the path we may have if applicable.
-        var comp = _steering.Register(uid, targetCoordinates);
+        var comp = _steering.Register(uid, targetCoordinates, flags: AllowDestructivePathing ? null : GetMovementFlags(blackboard));
         comp.ArriveOnLineOfSight = StopOnLineOfSight;
 
         if (blackboard.TryGetValue<float>(RangeKey, out var range, _entManager))

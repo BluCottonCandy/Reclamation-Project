@@ -1,0 +1,941 @@
+- type: department
+  id: Pack
+  description: department-Pack-description
+  color: "#D8B648"
+  uiCategory: MinorFaction
+  roles: [PackCub, PackYoungling, PackHunter, PackBeastTamer, PackShaman, PackBeastmaster, PackBeta, PackAlpha]
+
+- type: accessLevel
+  id: Pack
+  name: access-pack
+
+- type: accessLevel
+  id: PackCommand
+  name: access-pack-command
+
+- type: job
+  id: PackCub
+  name: job-name-pack-cub
+  description: job-description-pack-cub
+  playTimeTracker: PackCub
+  loadoutCategoryWhitelist:
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackCubGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 10
+  displayWeight: 100
+  showBorder: true
+  icon: JobIconTribal
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 1
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      startingAnimals: [PackTamedMolerat]
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackCub
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackCub
+  name: Pack Cub spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackCub
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackCub
+  name: Pack Cub
+  suffix: Cub
+  components:
+  - type: Loadout
+    prototypes: [PackCubGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackYoungling
+  name: job-name-pack-youngling
+  description: job-description-pack-youngling
+  playTimeTracker: PackYoungling
+  loadoutCategoryWhitelist:
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackYounglingGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 20
+  displayWeight: 200
+  showBorder: true
+  icon: JobIconTribal
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackCub
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 18000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 1
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      startingAnimals: [PackHound]
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackYoungling
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackYoungling
+  name: Pack Youngling spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackYoungling
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackYoungling
+  name: Pack Youngling
+  suffix: Youngling
+  components:
+  - type: Loadout
+    prototypes: [PackYounglingGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackHunter
+  name: job-name-pack-hunter
+  description: job-description-pack-hunter
+  playTimeTracker: PackHunter
+  loadoutCategoryWhitelist:
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackHunterGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 30
+  displayWeight: 300
+  showBorder: true
+  icon: JobIconTribalFarmer
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackYoungling
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 36000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 2
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      startingAnimals: [PackHound, PackHound]
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackHunter
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackHunter
+  name: Pack Hunter spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackHunter
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackHunter
+  name: Pack Hunter
+  suffix: Hunter
+  components:
+  - type: Loadout
+    prototypes: [PackHunterGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackBeastTamer
+  name: job-name-pack-beasttamer
+  description: job-description-pack-beasttamer
+  playTimeTracker: PackBeastTamer
+  loadoutCategoryWhitelist:
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackBeastTamerGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 40
+  displayWeight: 400
+  showBorder: true
+  icon: JobIconTribalMedic
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackHunter
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 54000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 3
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      startingAnimals: [PackHound, PackHound, PackTamedMirelurk]
+      canTame: true
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackBeastTamer
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackBeastTamer
+  name: Pack Beast Tamer spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackBeastTamer
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackBeastTamer
+  name: Pack Beast Tamer
+  suffix: Beast Tamer
+  components:
+  - type: Loadout
+    prototypes: [PackBeastTamerGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackShaman
+  name: job-name-pack-shaman
+  description: job-description-pack-shaman
+  playTimeTracker: PackShaman
+  groundLoadoutCategories: [Outer]
+  loadoutCategoryWhitelist:
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackShamanGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 41
+  displayWeight: 410
+  showBorder: true
+  icon: JobIconTribalMedic
+  supervisors: job-supervisors-pack
+  access: [Pack]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackHunter
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 54000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 1
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      startingAnimals: [PackTamedNightstalker]
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackShaman
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackShaman
+  name: Pack Shaman spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackShaman
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackShaman
+  name: Pack Shaman
+  suffix: Shaman
+  components:
+  - type: Loadout
+    prototypes: [PackShamanGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackBeastmaster
+  name: job-name-pack-beastmaster
+  description: job-description-pack-beastmaster
+  playTimeTracker: PackBeastmaster
+  loadoutCategoryWhitelist:
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain, LoadoutPackThemedVestHeavyRaven, LoadoutPackThemedVestHeavyFang, LoadoutPackThemedVestHeavyCordon, LoadoutPackThemedVestHeavyAntler, LoadoutPackThemedVestHeavyChain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackBeastmasterGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 50
+  displayWeight: 500
+  showBorder: true
+  icon: JobIconTribalLeader
+  supervisors: job-supervisors-pack
+  access: [Pack, PackCommand]
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackBeastTamer
+      min: 18000
+    - !type:CharacterPlaytimeRequirement
+      tracker: PackShaman
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: Pack
+      min: 90000
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 2
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      startingAnimals: [PackYaoGuai, PackGhoulrilla]
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackBeastmaster
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackBeastmaster
+  name: Pack Beastmaster spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackBeastmaster
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackBeastmaster
+  name: Pack Beastmaster
+  suffix: Beastmaster
+  components:
+  - type: Loadout
+    prototypes: [PackBeastmasterGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackBeta
+  name: job-name-pack-beta
+  description: job-description-pack-beta
+  playTimeTracker: PackBeta
+  groundLoadoutCategories: [Outer]
+  loadoutCategoryWhitelist:
+    Head: [LoadoutPackBoneBeret, LoadoutPackRavenBeret, LoadoutPackCordonBeret, LoadoutPackAntlerBeret, LoadoutPackChainBeret, LoadoutPackBoneCombatHelmet, LoadoutPackRavenCombatHelmet, LoadoutPackCordonCombatHelmet, LoadoutPackAntlerCombatHelmet, LoadoutPackChainCombatHelmet]
+    Hands: [LoadoutPackBoneGloves, LoadoutPackRavenGloves, LoadoutPackCordonGloves, LoadoutPackAntlerGloves, LoadoutPackChainGloves]
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain, LoadoutPackThemedVestHeavyRaven, LoadoutPackThemedVestHeavyFang, LoadoutPackThemedVestHeavyCordon, LoadoutPackThemedVestHeavyAntler, LoadoutPackThemedVestHeavyChain]
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackBetaGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 60
+  displayWeight: 600
+  showBorder: true
+  icon: JobIconTribalLeader
+  supervisors: job-supervisors-pack
+  access: [Pack, PackCommand]
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: false
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 1
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      canCommandDeathclaw: true
+      startingAnimals: [PackTamedDeathclaw]
+      startingArrows: 17
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackBeta
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackBeta
+  name: Pack Beta spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackBeta
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackBeta
+  name: Pack Beta
+  suffix: Beta
+  components:
+  - type: Loadout
+    prototypes: [PackBetaGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]
+
+- type: job
+  id: PackAlpha
+  name: job-name-pack-alpha
+  description: job-description-pack-alpha
+  playTimeTracker: PackAlpha
+  groundLoadoutCategories: [Outer]
+  loadoutCategoryWhitelist:
+    Uniform: [LoadoutPackBoneJumpsuit, LoadoutPackRavenJumpsuit, LoadoutPackCordonJumpsuit, LoadoutPackAntlerJumpsuit, LoadoutPackChainJumpsuit]
+    Outer: [LoadoutPackThemedVest2Raven, LoadoutPackThemedVest2Fang, LoadoutPackThemedVest2Cordon, LoadoutPackThemedVest2Antler, LoadoutPackThemedVest2Chain, LoadoutPackThemedVest3Raven, LoadoutPackThemedVest3Fang, LoadoutPackThemedVest3Cordon, LoadoutPackThemedVest3Antler, LoadoutPackThemedVest3Chain, LoadoutPackThemedVest4Raven, LoadoutPackThemedVest4Fang, LoadoutPackThemedVest4Cordon, LoadoutPackThemedVest4Antler, LoadoutPackThemedVest4Chain, LoadoutPackThemedVest5Raven, LoadoutPackThemedVest5Fang, LoadoutPackThemedVest5Cordon, LoadoutPackThemedVest5Antler, LoadoutPackThemedVest5Chain, LoadoutPackThemedVestHeavyRaven, LoadoutPackThemedVestHeavyFang, LoadoutPackThemedVestHeavyCordon, LoadoutPackThemedVestHeavyAntler, LoadoutPackThemedVestHeavyChain]
+    Head: []
+    Hands: []
+    Shoes: [LoadoutPackCombatBootsBone, LoadoutPackCombatBootsRaven, LoadoutPackCombatBootsCordon, LoadoutPackCombatBootsAntler, LoadoutPackCombatBootsChain]
+  startingGear: PackAlphaGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  weight: 70
+  displayWeight: 700
+  showBorder: true
+  icon: JobIconTribalLeader
+  supervisors: job-supervisors-pack-alpha
+  access: [Pack, PackCommand]
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  jobWhitelistBypassesRoleTimers: false
+  requireAdminNotify: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Pack]
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      animation: WeaponArcBite
+      wideAnimation: WeaponArcBite
+      angle: 30
+      attackRate: 1
+      damage:
+        types:
+          Piercing: 5
+          Poison: 1
+      heavyRateModifier: 1
+      heavyDamageBaseModifier: 1
+      heavyPartDamageMultiplier: 1
+      heavyStaminaCost: 0
+      maxTargets: 1
+    - type: FollowerCommander
+      innateFollowerCapacity: 1
+    - type: TribalHuntParticipant
+      targetDepartment: Pack
+      startMinorHuntAction: ActionPackStartHunt
+      openTrackerAction: ActionPackHuntTracker
+    - type: ScentTracker
+    - type: PackMember
+      canCommandKing: true
+      startingAnimals: [PackGhoulrillaKing]
+    - type: Warcry
+      action: ActionPackWarcry
+      targetDepartment: Pack
+      range: 6
+      speedBonus: 0.30
+      duration: 10
+      overlayColor: "#D8B648"
+      speechVerb: PackWarcrySpeech
+      warcryMessage: warcry-message-pack
+      warcryMessageCount: 6
+      buffPopup: warcry-popup-buffed-pack
+
+- type: playTimeTracker
+  id: PackAlpha
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: SpawnPointPackAlpha
+  name: Pack Alpha spawn
+  components:
+  - type: SpawnPoint
+    job_id: PackAlpha
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPackAlpha
+  name: Pack Alpha
+  suffix: Alpha
+  components:
+  - type: Loadout
+    prototypes: [PackAlphaGear]
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    angle: 30
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 5
+        Poison: 1
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
+  - type: NpcFactionMember
+    factions: [Pack]

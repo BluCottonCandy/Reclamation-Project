@@ -1,0 +1,30 @@
+#Reclamation Project
+#MARK:Minutemen
+#Wallmounts (Small Flags)
+- type: entity
+  parent: N14SignBase
+  id: ReclamationFlagWallMinutemen
+  name: Flag of the Commonwealth Minutemen
+  suffix: Minutemen
+  description: The banner of the Commonwealth Minutemen, a collection of militia members focused on defending the Commonwealth at a minute's notice.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/Wallmounts/minutemen_flag_wall.rsi
+    state: flag_minutemen
+  - type: Construction
+    graph: ReclamationFlagSmallMM
+    node: flagMMs
+
+#Flagpoles (Large Flags)
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: ReclamationDecorationFlagMinutemen
+  name: Flag of the Commonwealth Minutemen
+  description: The banner of the Commonwealth Minutemen, a collection of militia members focused on defending the Commonwealth at a minute's notice. Where this flag is planted, when the Minutemen are called, they will come to aid.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/Decoration/Flagpoles/minutemen_flagpole.rsi
+    state: minutemenflagpole
+  - type: Construction
+    graph: ReclamationFlagMM
+    node: flagMM

@@ -1,9 +1,9 @@
 using System.Linq;
 using Content.Shared._ReclamationProject.Medical;
-using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
+using Content.Shared.Verbs;
 
 namespace Content.Server._ReclamationProject.Medical;
 
@@ -14,34 +14,76 @@ public sealed partial class TraumaSystem
     private void InitializeSplints()
     {
         SubscribeLocalEvent<TraumaSplintComponent, AfterInteractEvent>(OnSplintInteract);
+        SubscribeLocalEvent<TraumaBodyComponent, GetVerbsEvent<Verb>>(AddSplintVerb);
         SubscribeLocalEvent<TraumaSplintComponent, TraumaSplintDoAfterEvent>(OnSplintFinished);
     }
 
     private void OnSplintInteract(EntityUid uid, TraumaSplintComponent comp, AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { } target ||
-            !TryComp<BodyComponent>(target, out var body) || body.RootContainer.ContainedEntity is not { } root) return;
-        var broken = _body.GetBodyPartChildren(root).FirstOrDefault(p =>
-            TryComp<FractureComponent>(p.Id, out var fracture) && !fracture.Splinted);
-        if (broken == default) return;
+            !HasComp<TraumaBodyComponent>(target))
+            return;
+
         args.Handled = true;
-        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(8),
-            new TraumaSplintDoAfterEvent(), uid, broken.Id, uid)
+        TryApplySplint(uid, args.User, target);
+    }
+
+    private void AddSplintVerb(EntityUid patient, TraumaBodyComponent component, GetVerbsEvent<Verb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || args.Using is not { } splint ||
+            !HasComp<TraumaSplintComponent>(splint))
+            return;
+
+        args.Verbs.Add(new Verb
         {
-            NeedHand = true, BreakOnMove = true, BreakOnDamage = true, BreakOnHandChange = true,
+            Text = Loc.GetString("trauma-splint-apply-verb"),
+            Act = () => TryApplySplint(splint, args.User, patient),
         });
     }
 
+    private void TryApplySplint(EntityUid splint, EntityUid user, EntityUid patient)
+    {
+        var parts = _body.GetBodyChildren(patient);
+        var broken = parts.FirstOrDefault(part => CanSplintDisabledLeg(part.Item1, part.Item2));
+        if (broken == default)
+            broken = parts.FirstOrDefault(part => HasComp<FractureComponent>(part.Item1));
+        if (broken == default)
+        {
+            _popup.PopupEntity(Loc.GetString("trauma-splint-no-fracture"), patient, user);
+            return;
+        }
+
+        if (!_doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(8),
+            new TraumaSplintDoAfterEvent { Part = GetNetEntity(broken.Item1) }, splint, patient, splint)
+        {
+            NeedHand = true, BreakOnMove = true, BreakOnDamage = true, BreakOnHandChange = true,
+        }))
+            _popup.PopupEntity(Loc.GetString("trauma-splint-cannot-start"), patient, user);
+    }
+
+    private bool CanSplintDisabledLeg(EntityUid part, BodyPartComponent bodyPart)
+        => bodyPart.PartType == BodyPartType.Leg &&
+           TryComp<TraumaLimbComponent>(part, out var health) &&
+           health.OriginalFailureThreshold > 0f &&
+           GetLimbHealth(part, health) <= 0f;
+
     private void OnSplintFinished(EntityUid uid, TraumaSplintComponent comp, TraumaSplintDoAfterEvent args)
     {
-        if (args.Cancelled || args.Handled || args.Target is not { } part ||
-            !TryComp<FractureComponent>(part, out var fracture) || fracture.Splinted ||
-            !TryComp<BodyPartComponent>(part, out var bodyPart) || bodyPart.Body is not { } body) return;
-        fracture.Splinted = true;
-        Dirty(part, fracture);
-        _movement.RefreshMovementSpeedModifiers(body);
+        if (args.Cancelled || args.Handled || args.Target is not { } patient ||
+            !TryGetEntity(args.Part, out var part) ||
+            !TryComp<BodyPartComponent>(part.Value, out var bodyPart) || bodyPart.Body != patient ||
+            (!HasComp<FractureComponent>(part.Value) && !CanSplintDisabledLeg(part.Value, bodyPart)))
+            return;
+
+        Repair(patient, part.Value, TraumaKind.Fracture, splint: true);
+        if (HasComp<FractureComponent>(part.Value) || CanSplintDisabledLeg(part.Value, bodyPart))
+        {
+            _popup.PopupEntity(Loc.GetString("trauma-splint-treatment-blocked"), patient, args.User);
+            return;
+        }
+
         args.Handled = true;
-        _popup.PopupEntity(Loc.GetString("trauma-splint-applied"), body, args.User);
+        _popup.PopupEntity(Loc.GetString("trauma-splint-applied"), patient, args.User);
         QueueDel(uid);
     }
 }

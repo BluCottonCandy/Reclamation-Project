@@ -27,6 +27,10 @@ public sealed class OneHandedUprightItemSystem : EntitySystem
 
     private void OnVisuals(EntityUid uid, OneHandedUprightItemComponent comp, GetInhandVisualsEvent args)
     {
+        if (TryComp<Content.Shared.Wieldable.Components.WieldableComponent>(uid, out var wieldable) &&
+            (wieldable.Wielded || TryComp<ItemComponent>(uid, out var item) && item.HeldPrefix == wieldable.WieldedInhandPrefix))
+            return;
+
         if (!TryComp<MultiHandedItemComponent>(uid, out var multi) || _multiHanded.GetHandsNeeded(args.User, multi) != 1)
             return;
 

@@ -1,0 +1,82 @@
+<Document>
+# The Pack
+
+The Pack are animal-themed raiders who prize strength, survival and a successful hunt. Colorful punk clothing, animal masks and personal trophies show their place in the group. Pack members are expected to listen to their higher ranks, follow their orders and work together as a group.
+
+Slavery and keeping dangerous beasts are central to their way of life, putting them at odds with the Minutemen and Railroad. Their animals are companions and weapons, not disposable supplies: keep them alive and respect the limits of your rank.
+
+## Ranks
+
+The player ranks progress through [bold]Cub, Youngling, Hunter, Beast Tamer and Beastmaster[/bold]. The [bold]Shaman[/bold] is a medical specialist alongside the Beast Tamer, tending the Pack and its animals. [bold]Beta and Alpha[/bold] are whitelist-only administrative roles above the player ranks.
+
+Every Pack rank can bark, growl, snarl, whine and howl from the Emotes menu.
+
+## Diet
+
+Pack members start with an animal stomach that can digest raw meat and organs and get hydration from drinking blood.
+
+## Animal companions
+
+Your rank sets your maximum simultaneous followers. Starting companions fill those slots.
+
+- [bold]Cub[/bold] — 1 follower. Starts with a molerat.
+- [bold]Youngling[/bold] — 1 follower. Starts with a warhound.
+- [bold]Hunter[/bold] — 2 followers. Starts with two warhounds.
+- [bold]Beast Tamer[/bold] — 3 followers. Starts with two warhounds and a mirelurk.
+- [bold]Shaman[/bold] — 1 follower. Starts with a nightstalker.
+- [bold]Beastmaster[/bold] — 2 followers. Starts with a yao guai and a ghoulrilla.
+- [bold]Beta[/bold] — 1 follower. Starts with a deathclaw.
+- [bold]Alpha[/bold] — 1 follower. Starts with the Ghoulrilla King.
+
+Charisma does not add follower slots for Pack members. Only Beta and Alpha can command deathclaws, and only Alpha can command the Ghoulrilla King.
+
+Right-click yourself and choose [bold]Release animal[/bold] to free a companion’s follower slot from anywhere. The Pack vendor sells carriers with replacement companions. Warhounds and tamed companions leave livestock, pets and passive wildlife alone. Open a route for your animals to follow you.
+
+Pack animals have at least the standard player base walking and sprinting speeds. Some companions are faster.
+
+## Companion armor and attacks
+
+Buy Pack animal armor from the Pack vendor for 10 points. It resists blunt, slash and piercing damage. Molerats get 10%, wolves 25%, nightstalkers, yao guai and ghoulrillas 35%, deathclaws 45%, and the Ghoulrilla King 50%. Mirelurks keep their reflection and cannot wear the harness.
+
+Warhounds can lunge up to five tiles with no windup. A hit briefly slows the target, and the lunge has a 20-second cooldown. Molerats have an armor-piercing bite with a one-minute cooldown. Adult nightstalkers can inject venom on a bite. Ghoulrillas and the Ghoulrilla King knock enemies back with their punches.
+
+Pack companions suffer half the usual movement slowdown from wounds and can move through one another.
+
+## Taming
+
+Only the [bold]Beast Tamer[/bold] can use [bold]Tame animal[/bold]. Target an eligible living animal within [bold]two tiles[/bold] with an unobstructed route. The action has a ten-minute cooldown.
+
+Taming makes the animal friendly to the Pack and leaves it where it is. Taming has no ownership limit. Use follower commands separately if you have a free follower slot. Tamed animals retain their existing damage and can be revived.
+
+## Scent tracking
+
+All Pack ranks can use Track Scent on a character or Pack animal. You can also sample objects that picked up a scent when touched or worn. An object carries the most recent scent it picked up. Matching scents produce markers nearby.
+
+## Hunting Cry
+
+Every Pack rank has [bold]Hunting Cry[/bold]. It gives the caller and nearby Pack players a temporary movement boost, accompanied by a shouted hunting call and a yellow ring. It also boosts nearby Pack warhounds, mounts and tamed companions. It does not buff untamed wild animals or players from other factions.
+
+The base effect is [bold]30% faster movement for 10 seconds within six tiles[/bold], with a [bold]45-second cooldown[/bold]. The caller's Charisma modifies its strength, duration and range. Nearby Pack players receive the effect when the cry is used and keep it for its duration after moving away. Repeated cries refresh the effect rather than adding their speed bonuses together.
+
+## Pack hunts
+
+Every rank can use [bold]Start Pack hunt[/bold] to call a group hunt, and [bold]Pack hunt tracker[/bold] to view the current hunt and join it. The tracker provides the gathering information, current stage and objectives. Only one hunt can be active at a time; the start action has a two-minute cooldown.
+
+Gather with the other hunters and follow the tracker's objectives. Hunt creatures are targets for the hunt and cannot be converted into tamed companions.
+
+## Fighting and specialist equipment
+
+Pack members [bold]bite when unarmed[/bold], dealing piercing damage with a small amount of poison. Traits that replace or enhance ordinary punches are incompatible with this bite.
+
+The [bold]compound bow[/bold] requires [bold]7 Agility[/bold] and holds three arrows, firing one per shot. The [bold]greatfang[/bold] requires [bold]7 Strength[/bold] to swing and can be carried one-handed at [bold]9 Strength[/bold]. You can still use Z to wield it in two hands. Its normal damage stays the same in either grip, and power attacks gain their usual bonus.
+
+The Pack's supplied hunting arrows have poisoned tips, adding poison damage to their normal piercing damage.
+
+All bows automatically draw loose arrows from your worn arrow quiver. An empty bow nocks its first arrow when you try to shoot, and each successful shot loads the next available arrow. This uses the actual stored arrows and stops when the quiver is empty.
+
+The Pack arrow quiver starts with its pickup magnet enabled. While worn on your belt, it collects nearby loose arrows. Use its single toggle to switch the magnet off or on; the indicator shows its current state.
+
+## Pack supplies
+
+The Pack supply vendor shares a round-long budget across the faction. It starts with 50 points, earns 3 per minute and caps at 200. Redeem supply crates for extra points. Members can requisition gear for their rank and lower ranks; issued equipment cannot be sold.
+</Document>

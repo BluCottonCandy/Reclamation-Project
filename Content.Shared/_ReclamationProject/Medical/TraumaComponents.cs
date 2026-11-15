@@ -102,4 +102,9 @@ public record struct TraumaRepairEvent(EntityUid Part, TraumaKind Kind);
 public record struct NutritionAbsorptionEvent(float Amount);
 
 [Serializable, NetSerializable]
-public sealed partial class TraumaSplintDoAfterEvent : SimpleDoAfterEvent;
+public sealed partial class TraumaSplintDoAfterEvent : SimpleDoAfterEvent
+{
+    public NetEntity Part;
+
+    public override DoAfterEvent Clone() => new TraumaSplintDoAfterEvent { Part = Part };
+}

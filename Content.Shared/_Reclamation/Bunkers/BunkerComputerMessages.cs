@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Content.Shared._Misfits.PipBoy;
-using Content.Shared._Misfits.WastelandMap;
 using Content.Shared.DeltaV.CartridgeLoader.Cartridges;
 using Robust.Shared.Serialization;
 namespace Content.Shared._Reclamation.Bunkers;
@@ -28,7 +27,6 @@ public sealed class ComputerDesktopState
     public List<PipBoyDirectoryEntry> Directory=new();
     public List<NanoChatMessage> DirectMessages=new();
     public uint SelectedChat;
-    public WastelandMapBoundUserInterfaceState? Map;
 }
 [Serializable,NetSerializable]
 public sealed class ComputerDesktopUpdate(ComputerDesktopState state) : BoundUserInterfaceMessage

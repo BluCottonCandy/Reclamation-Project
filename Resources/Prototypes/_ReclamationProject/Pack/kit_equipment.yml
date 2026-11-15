@@ -1,0 +1,210 @@
+- type: entity
+  parent: ArrowRegular
+  id: PackHuntingArrow
+  name: Pack hunting arrow
+  description: A poison-tipped hunting arrow with a dark shaft and brightly marked
+    fletching.
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35
+        Poison: 5
+- type: entity
+  parent: N14TribalBigClubDecorated
+  id: PackBonecrusherClub
+  name: Pack bonecrusher club
+  description: A heavy decorated club wrapped in red leather and marked with the teeth
+    of the Pack.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-bonecrusherclub.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-bonecrusherclub.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-bonecrusherclub.rsi
+- type: entity
+  parent: ClothingBeltQuiverSpear
+  id: PackJavelinQuiver
+  name: Pack javelin quiver
+  description: A weathered spear carrier painted with the Pack's hunting marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-javelinquiver.rsi
+    layers:
+    - state: javelins
+      map:
+      - javelins
+      visible: false
+    - state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-javelinquiver.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-javelinquiver.rsi
+  - type: Appearance
+  - type: ItemMapper
+    spriteLayers:
+    - javelins
+    mapLayers:
+      javelins:
+        whitelist:
+          tags:
+          - Spear
+- type: entity
+  parent: N14WastelandTribalJavelin
+  id: PackHuntingJavelin
+  name: Pack hunting javelin
+  description: A light hunting spear with painted bindings and a worn bone-colored
+    point.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-huntingjavelin.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-huntingjavelin.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-huntingjavelin.rsi
+- type: entity
+  parent: N14WeaponRevolver44TribalUpgraded
+  id: PackRedfangRevolver
+  name: Pack Redfang revolver
+  description: A battered .44 revolver with red bindings and a fang-marked grip.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-redfangrevolver.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-redfangrevolver.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-redfangrevolver.rsi
+- type: entity
+  parent: ClothingBeltRevolver
+  id: PackGunslingerBelt
+  name: Pack gunslinger belt
+  description: A scarred revolver belt with bright stitching and bone-colored studs.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-gunslingerbelt.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-gunslingerbelt.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-gunslingerbelt.rsi
+- type: entity
+  parent: N14WeaponSniper308Tribal
+  id: PackLongfangRifle
+  name: Pack Longfang rifle
+  description: A weathered .308 hunting rifle decorated with red wraps and ivory hunting
+    marks.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-longfangrifle.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-longfangrifle.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-longfangrifle.rsi
+- type: entity
+  parent: N14WeaponSniper556Tribal
+  id: PackBonebreakerRifle
+  name: Pack Bonebreaker rifle
+  description: A scavenged 5.56 rifle with painted furniture and rough leather bindings.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-bonebreakerrifle.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-bonebreakerrifle.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-bonebreakerrifle.rsi
+- type: entity
+  parent: N14WeaponShotgunBoomstick
+  id: PackThunderjawShotgun
+  name: Pack Thunderjaw shotgun
+  description: A Pack shotgun with a reinforced wooden grip, painted jaws and a twelve-shell
+    internal magazine. Uses 12 gauge shells.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-thunderjawshotgun.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-thunderjawshotgun.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Pack/kit-thunderjawshotgun.rsi
+  - type: Gun
+    fireRate: 2
+  - type: BallisticAmmoProvider
+    capacity: 12
+- type: entity
+  parent: MagazineBox44
+  id: PackAmmoBox44
+  name: Pack .44 ammunition box
+  description: A battered .44 ammunition box painted with Pack hunting marks.
+- type: entity
+  parent: MagazineBox308
+  id: PackAmmoBox308
+  name: Pack .308 ammunition box
+  description: A battered .308 ammunition box painted with Pack hunting marks.
+- type: entity
+  parent: MagazineBox556
+  id: PackAmmoBox556
+  name: Pack 5.56 ammunition box
+  description: A battered 5.56 ammunition box painted with Pack hunting marks.
+- type: entity
+  parent: MagazineBox12gauge
+  id: PackAmmoBox12Gauge
+  name: Pack shotgun shell box
+  description: A battered shotgun shell box painted with Pack hunting marks.
+- type: entity
+  parent: BaseItem
+  id: PackArrowBundle
+  name: Pack arrow bundle
+  description: Ten poison-tipped hunting arrows bound together with cord. Take arrows
+    out like an ammunition box, or add loose arrows to refill it.
+  components:
+  - type: Item
+    size: Small
+    storedRotation: 90
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Pack/arrow_bundle.rsi
+    layers:
+    - state: cord
+    - state: arrows
+      map:
+      - arrows
+  - type: BallisticAmmoProvider
+    capacity: 10
+    proto: PackHuntingArrow
+    mayTransfer: true
+    whitelist:
+      tags:
+      - Arrow
+    soundRack: null
+    soundInsert:
+      path: /Audio/Weapons/Guns/Misc/arrow_nock.ogg
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container {}
+  - type: PackCompoundBow
+  - type: Appearance
+  - type: AmmoCounter
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.AmmoCount:
+        arrows:
+          '0':
+            visible: false
+          '1':
+            visible: true
+          '2':
+            visible: true
+          '3':
+            visible: true
+          '4':
+            visible: true
+          '5':
+            visible: true
+          '6':
+            visible: true
+          '7':
+            visible: true
+          '8':
+            visible: true
+          '9':
+            visible: true
+          '10':
+            visible: true

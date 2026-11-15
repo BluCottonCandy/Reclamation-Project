@@ -180,7 +180,8 @@ public sealed class DrugHallucinationSystem : EntitySystem
             _map = transform.MapID;
         }
         var now = _timing.CurTime;
-        var high = HasComp<SeeingRainbowsComponent>(user) || HasComp<DrugHighComponent>(user);
+        var high = !HasComp<DrugHallucinationResistanceComponent>(user) &&
+            (HasComp<SeeingRainbowsComponent>(user) || HasComp<DrugHighComponent>(user));
         var unstable = HasComp<UnstableComponent>(user);
         if (high && !_wasHigh)
         {

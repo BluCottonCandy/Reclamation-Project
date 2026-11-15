@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Animals and other wandering NPCs no longer break walls, fences or force doors open simply to reach an idle spot. Combat aggression is unchanged.

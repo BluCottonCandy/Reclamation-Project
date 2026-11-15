@@ -1,8 +1,25 @@
 - type: trait
   id: Unstable
   category: Mental
-  points: 3
+  points: 5
+  requirements:
+  - !type:CharacterTraitRequirement
+    inverted: true
+    traits: [ClearHeaded]
   functions:
   - !type:TraitAddComponent
     components:
     - type: Unstable
+
+- type: trait
+  id: ClearHeaded
+  category: Mental
+  points: -5
+  requirements:
+  - !type:CharacterTraitRequirement
+    inverted: true
+    traits: [Unstable]
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: DrugHallucinationResistance

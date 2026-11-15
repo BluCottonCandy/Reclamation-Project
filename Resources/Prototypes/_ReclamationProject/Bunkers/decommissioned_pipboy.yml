@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseItem
+  id: ReclamationDecommissionedPipBoy
+  name: decommissioned Pip-Boy
+  description: An inert Pip-Boy shell kept for display.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+    state: pda
+    scale: 0.75, 0.75
+  - type: Item
+    size: Small

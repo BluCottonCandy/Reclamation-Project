@@ -1,7 +1,7 @@
 # #Misfits Change /Add/: Legion Auxilia job.
 - type: job
   id: CaesarLegionTempleGuard
-  setPreference: true
+  setPreference: false
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 30

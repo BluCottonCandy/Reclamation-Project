@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Unstable now grants 5 character points.
+- type: Add
+  message: Clear-Headed costs 5 character points and prevents drug-induced hallucinations and drug-induced Unstable. Clear-Headed and Unstable are mutually exclusive.

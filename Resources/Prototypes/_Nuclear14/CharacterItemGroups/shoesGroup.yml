@@ -2,6 +2,16 @@
   id: N14LoadoutShoes
   items:
     - type: loadout
+      id: LoadoutPackCombatBootsBone
+    - type: loadout
+      id: LoadoutPackCombatBootsRaven
+    - type: loadout
+      id: LoadoutPackCombatBootsCordon
+    - type: loadout
+      id: LoadoutPackCombatBootsAntler
+    - type: loadout
+      id: LoadoutPackCombatBootsChain
+    - type: loadout
       id: N14LoadoutShoesBlack
     - type: loadout
       id: N14LoadoutShoesBrown

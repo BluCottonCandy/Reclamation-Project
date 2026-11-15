@@ -889,6 +889,7 @@
 
 - type: loadout
   id: MisfitsLoadoutHeadEightiesHelmetBlue
+  hidden: true
   category: Head
   cost: 1
   exclusive: true
@@ -907,6 +908,7 @@
 
 - type: loadout
   id: MisfitsLoadoutHeadEightiesHelmetWhite
+  hidden: true
   category: Head
   cost: 1
   exclusive: true
@@ -925,6 +927,7 @@
 
 - type: loadout
   id: MisfitsLoadoutHeadEightiesHelmetRed
+  hidden: true
   category: Head
   cost: 1
   exclusive: true
@@ -943,6 +946,7 @@
 
 - type: loadout
   id: MisfitsLoadoutHeadEightiesHelmetBlack
+  hidden: true
   category: Head
   cost: 1
   exclusive: true
@@ -961,6 +965,7 @@
 
 - type: loadout
   id: MisfitsLoadoutHeadEightiesHelmetYellow
+  hidden: true
   category: Head
   cost: 1
   exclusive: true
@@ -979,6 +984,7 @@
 
 - type: loadout
   id: MisfitsLoadoutHeadEightiesHelmetOlive
+  hidden: true
   category: Head
   cost: 1
   exclusive: true
@@ -997,6 +1003,7 @@
 
 - type: loadout
   id: MisfitsLoadoutHeadEightiesHelmetBeige
+  hidden: true
   category: Head
   cost: 1
   exclusive: true
@@ -1017,6 +1024,7 @@
 
 - type: loadout
   id: MisfitsLoadoutUniform80sPants
+  hidden: true
   category: Uniform
   cost: 0
   exclusive: true
@@ -1035,6 +1043,7 @@
 
 - type: loadout
   id: MisfitsLoadoutOuterCoatJacketBiker
+  hidden: true
   category: Outer
   cost: 0
   exclusive: true

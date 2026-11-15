@@ -571,6 +571,7 @@
 
 - type: loadout
   id: N14LoadoutOuterCoatFollowersArmoredCheap
+  hidden: true
   category: Outer
   cost: 1
   requirements:

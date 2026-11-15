@@ -1,0 +1,298 @@
+- type: entity
+  name: Pack Stalker
+  parent: KitBase
+  id: PackKitStalker
+  description: 'Quiet hunter. Contains: a Pack hunting bow, magnetic arrow quiver,
+    seventeen loose Pack hunting arrows, a refillable bundle of ten reserve arrows,
+    a Pack fang spear, binoculars and a combat knife, two stimpaks, bandages, an MRE
+    box, two bolas and two sets of handcuffs.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: PackHuntingBow
+    - id: PackArrowQuiver
+    - id: PackHuntingArrow
+      amount: 17
+    - id: PackArrowBundle
+    - id: PackFangSpear
+    - id: N14Binoculars
+    - id: N14CombatKnife
+    - &id001
+      id: N14Stimpak
+      amount: 2
+    - &id002
+      id: N14Bandage
+    - &id003
+      id: N14BoxCardboardMREBoxCFilled
+    - &id004
+      id: Bola
+      amount: 2
+    - &id005
+      id: Handcuffs
+      amount: 2
+- type: UndecidedLoadoutBackpackSet
+  id: PackStalkerSet
+  name: pack-kit-stalker-name
+  description: pack-kit-stalker-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - PackKitStalker
+- type: entity
+  name: Pack Champion
+  parent: KitBase
+  id: PackKitChampion
+  description: 'Frontline defender. Contains: a Paladin shield, Pack bonecrusher club,
+    Pack javelin quiver and four Pack hunting javelins, two stimpaks, bandages, an
+    MRE box, two bolas and two sets of handcuffs.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: ReclamationPaladinShield
+    - id: PackBonecrusherClub
+    - id: PackJavelinQuiver
+    - id: PackHuntingJavelin
+      amount: 4
+    - *id001
+    - *id002
+    - *id003
+    - *id004
+    - *id005
+- type: UndecidedLoadoutBackpackSet
+  id: PackChampionSet
+  name: pack-kit-champion-name
+  description: pack-kit-champion-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - PackKitChampion
+- type: entity
+  name: Pack Fire Hand
+  parent: KitBase
+  id: PackKitFirehand
+  description: 'Mobile gunslinger. Contains: two Pack Redfang revolvers, a Pack gunslinger
+    belt, four loaded .44 speedloaders and a Pack .44 ammunition box, two stimpaks,
+    bandages, an MRE box, two bolas and two sets of handcuffs.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: PackRedfangRevolver
+      amount: 2
+    - id: PackGunslingerBelt
+    - id: SpeedLoader44
+      amount: 4
+    - id: PackAmmoBox44
+    - *id001
+    - *id002
+    - *id003
+    - *id004
+    - *id005
+- type: UndecidedLoadoutBackpackSet
+  id: PackFirehandSet
+  name: pack-kit-firehand-name
+  description: pack-kit-firehand-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - PackKitFirehand
+- type: entity
+  name: Pack Hunter
+  parent: KitBase
+  id: PackKitHunter
+  description: 'Ranged hunter. Contains: a Pack Longfang rifle, two Pack .308 ammunition
+    boxes, a 9mm pistol, two spare pistol magazines and binoculars, two stimpaks,
+    bandages, an MRE box, two bolas and two sets of handcuffs.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: PackLongfangRifle
+    - id: PackAmmoBox308
+      amount: 2
+    - id: N14WeaponPistol9mm
+    - id: N14MagazinePistol9mm
+      amount: 2
+    - id: N14Binoculars
+    - *id001
+    - *id002
+    - *id003
+    - *id004
+    - *id005
+- type: UndecidedLoadoutBackpackSet
+  id: PackHunterSet
+  name: pack-kit-hunter-name
+  description: pack-kit-hunter-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - PackKitHunter
+- type: entity
+  name: Pack Bone Breaker
+  parent: KitBase
+  id: PackKitBonebreaker
+  description: 'Close-range fighter. Contains: a Pack fang machete, Pack bonecrusher
+    club, Psycho and a smoke grenade, two stimpaks, bandages, an MRE box, two bolas
+    and two sets of handcuffs.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: PackFangMachete
+    - id: PackBonecrusherClub
+    - id: N14Psycho
+    - id: SmokeGrenade
+    - *id001
+    - *id002
+    - *id003
+    - *id004
+    - *id005
+- type: UndecidedLoadoutBackpackSet
+  id: PackBonebreakerSet
+  name: pack-kit-bonebreaker-name
+  description: pack-kit-bonebreaker-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - PackKitBonebreaker
+- type: entity
+  name: Pack Pain Bringer
+  parent: KitBase
+  id: PackKitPainbringer
+  description: 'Heavy breacher. Contains: a Pack Thunderjaw shotgun with a twelve-shell
+    internal magazine, two Pack shotgun shell boxes, a Pack fang machete and two smoke
+    grenades, two stimpaks, bandages, an MRE box, two bolas and two sets of handcuffs.'
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+    - id: PackThunderjawShotgun
+    - id: PackAmmoBox12Gauge
+      amount: 2
+    - id: PackFangMachete
+    - id: SmokeGrenade
+      amount: 2
+    - *id001
+    - *id002
+    - *id003
+    - *id004
+    - *id005
+- type: UndecidedLoadoutBackpackSet
+  id: PackPainbringerSet
+  name: pack-kit-painbringer-name
+  description: pack-kit-painbringer-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - PackKitPainbringer
+- type: entity
+  id: PackCubLoadoutKits
+  name: Pack Cub equipment kit
+  parent: BaseLoadoutKit
+  description: Choose your tools for the hunt.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PackStalkerSet
+- type: entity
+  id: PackYounglingLoadoutKits
+  name: Pack Youngling equipment kit
+  parent: BaseLoadoutKit
+  description: Choose your tools for the hunt.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PackStalkerSet
+    - PackBonebreakerSet
+- type: entity
+  id: PackHunterLoadoutKits
+  name: Pack Hunter equipment kit
+  parent: BaseLoadoutKit
+  description: Choose your tools for the hunt.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PackStalkerSet
+    - PackBonebreakerSet
+    - PackHunterSet
+- type: entity
+  id: PackBeastTamerLoadoutKits
+  name: Pack BeastTamer equipment kit
+  parent: BaseLoadoutKit
+  description: Choose your tools for the hunt.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PackStalkerSet
+    - PackBonebreakerSet
+    - PackHunterSet
+- type: entity
+  id: PackShamanLoadoutKits
+  name: Pack Shaman equipment kit
+  parent: BaseLoadoutKit
+  description: Choose your tools for the hunt.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PackStalkerSet
+    - PackBonebreakerSet
+    - PackHunterSet
+    - PackChampionSet
+- type: entity
+  id: PackBeastmasterLoadoutKits
+  name: Pack Beastmaster equipment kit
+  parent: BaseLoadoutKit
+  description: Choose your tools for the hunt.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PackStalkerSet
+    - PackBonebreakerSet
+    - PackHunterSet
+    - PackChampionSet
+    - PackFirehandSet
+    - PackPainbringerSet

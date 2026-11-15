@@ -73,6 +73,11 @@ namespace Content.Server.RoundEnd
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
+            SubscribeLocalEvent<GameRunLevelChangedEvent>(args =>
+            {
+                if (args.New == GameRunLevel.InRound && _gameTicker.CurrentPreset?.ID == "N14")
+                    SetAutoCallTime();
+            });
             SetAutoCallTime();
         }
 
@@ -406,6 +411,18 @@ namespace Content.Server.RoundEnd
 
         public override void Update(float frameTime)
         {
+            if (_gameTicker.CurrentPreset?.ID == "N14")
+            {
+                var minutes = _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
+                if (_gameTicker.RunLevel == GameRunLevel.InRound && minutes > 0
+                    && _gameTiming.CurTime >= AutoCallStartTime + TimeSpan.FromMinutes(minutes))
+                {
+                    EndRound();
+                }
+
+                return;
+            }
+
             // Check if we should auto-call.
             int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
                                         : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);

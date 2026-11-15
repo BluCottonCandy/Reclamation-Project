@@ -47,7 +47,8 @@ public abstract class SharedMultiHandedItemSystem : EntitySystem
 
     private void OnVirtualItemDeleted(EntityUid uid, MultiHandedItemComponent component, VirtualItemDeletedEvent args)
     {
-        if (args.BlockingEntity != uid)
+        // A strong carrier can release a voluntary wield grip without dropping the item.
+        if (args.BlockingEntity != uid || GetHandsNeeded(args.User, component) <= 1)
             return;
 
         _hands.TryDrop(args.User, uid);

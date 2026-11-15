@@ -1,3 +1,4 @@
+using Content.Shared._Misfits.Special;
 using System.Linq;
 using Content.Shared._Misfits.Wielding;
 using Content.Shared.Examine;
@@ -28,6 +29,7 @@ namespace Content.Shared.Wieldable;
 
 public sealed class WieldableSystem : EntitySystem
 {
+    [Dependency] private readonly SharedSpecialSystem _special = default!;
     [Dependency] private readonly SharedVirtualItemSystem _virtualItemSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedItemSystem _itemSystem = default!;
@@ -396,7 +398,9 @@ public sealed class WieldableSystem : EntitySystem
         if (!TryComp<WieldableComponent>(uid, out var wield))
             return;
 
-        if (!wield.Wielded)
+        if (!wield.Wielded &&
+            (component.MinimumStrengthForUnwieldedDamage is not { } strength ||
+             !_special.HasRequirement(args.User, SpecialStat.Strength, strength)))
             return;
 
         args.Damage += component.BonusDamage;

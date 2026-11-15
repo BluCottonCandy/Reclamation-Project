@@ -1,0 +1,4 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Removing another player’s handcuffs now works from up to one tile away.

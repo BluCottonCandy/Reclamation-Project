@@ -1,0 +1,14 @@
+- type: entity
+  parent: N14WeaponRifleBozarGRA
+  id: ForgedFurnaceBozar
+  name: Furnace Repeater
+  description: A Bozar clad in furnace-blackened steel with scorched copper fittings, issued to the Forge Keeper.
+  components:
+  - type: Gun
+    fireRate: 3.5
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/furnace_bozar.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/furnace_bozar.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/furnace_bozar.rsi

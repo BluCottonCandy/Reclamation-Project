@@ -1,0 +1,8 @@
+author: BluCottonCandy
+changes:
+- type: Fix
+  message: Warhounds and Pack-tamed animals no longer hunt brahdos, brahmin, cows, chickens, rabbits or other passive wildlife and pets. They still fight hostile targets.
+- type: Fix
+  message: Feral ghouls, hostile robots, raiders, super mutants and Zetans now recognize the Pack as enemies.
+- type: Fix
+  message: Only the Pack Alpha can recruit or command deathclaw followers; Charisma cannot bypass this restriction.

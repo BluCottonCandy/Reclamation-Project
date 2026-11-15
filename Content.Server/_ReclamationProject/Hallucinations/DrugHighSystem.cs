@@ -59,7 +59,8 @@ public sealed class DrugHighSystem : EntitySystem
             return false;
         tracker.Doses++;
         // Apply to this body only. Never alter character trait selections or award trait points.
-        if (!HasComp<UnstableComponent>(user) && _random.Prob(0.05f))
+        if (!HasComp<DrugHallucinationResistanceComponent>(user) &&
+            !HasComp<UnstableComponent>(user) && _random.Prob(0.05f))
             EnsureComp<UnstableComponent>(user);
         return true;
     }

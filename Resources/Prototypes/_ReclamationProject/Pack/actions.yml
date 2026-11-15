@@ -1,0 +1,25 @@
+- type: entity
+  id: ActionPackTameAnimal
+  name: Tame animal
+  description: Calm an eligible molerat, mirelurk or nightstalker so it tolerates the Pack.
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: EntityTargetAction
+    useDelay: 600
+    range: 2
+    canTargetSelf: false
+    icon:
+      sprite: _Nuclear14/Mobs/Animals/dogwolf.rsi
+      state: wolf
+    event: !type:PackTameActionEvent
+- type: entity
+  id: ActionPackStartHunt
+  parent: ActionTribalStartMinorHunt
+  name: Start Pack hunt
+  description: Call the Pack together for a hunt.
+- type: entity
+  id: ActionPackHuntTracker
+  parent: ActionTribalToggleHuntGui
+  name: Pack hunt tracker
+  description: Track the current hunt and join your fellow hunters.

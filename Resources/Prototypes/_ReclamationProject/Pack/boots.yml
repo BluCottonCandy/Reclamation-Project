@@ -1,0 +1,79 @@
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: PackCombatBootsBone
+  name: Pack bone combat boots
+  description: Standard combat boots finished with weathered brown leather and pale tooth ties.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Boots/bone.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Boots/bone.rsi
+
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: PackCombatBootsRaven
+  name: Pack raven combat boots
+  description: Standard combat boots finished with charcoal leather and dark feather stitching.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Boots/raven.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Boots/raven.rsi
+
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: PackCombatBootsCordon
+  name: Pack cordon combat boots
+  description: Standard combat boots finished with slate leather and torn yellow police tape.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Boots/cordon.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Boots/cordon.rsi
+
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: PackCombatBootsAntler
+  name: Pack antler combat boots
+  description: Standard combat boots finished with moss-dark leather and antler toggles.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Boots/antler.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Boots/antler.rsi
+
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: PackCombatBootsChain
+  name: Pack chain combat boots
+  description: Standard combat boots finished with oxblood leather and salvaged copper fittings.
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - ClothMade
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Pack/Boots/chain.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Pack/Boots/chain.rsi

@@ -32,6 +32,7 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private readonly SharedContainerSystem _containers = default!;
     private static readonly string[] Disabled =
     {
         "Gun", "BallisticAmmoProvider", "ChamberMagazineAmmoProvider", "MagazineAmmoProvider",
@@ -155,12 +156,37 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
         finally { solution.CanReact = canReact; }
     }
 
+    private void DecommissionPipBoy(EntityUid uid)
+    {
+        var display = SpawnNextToOrDrop("ReclamationDecommissionedPipBoy", uid);
+        _containers.TryGetContainingContainer(uid, out var outerContainer);
+
+        // Return removable items to the room before deleting the device and its built-in programs.
+        foreach (var slot in new[] { "PDA-id", "PDA-pen", "PDA-pai", "Cartridge-Slot" })
+        {
+            if (!_containers.TryGetContainer(uid, slot, out var container))
+                continue;
+
+            foreach (var item in container.ContainedEntities.ToArray())
+                _containers.RemoveEntity(uid, item, force: true);
+        }
+
+        Del(uid);
+        if (outerContainer != null)
+            _containers.Insert(display, outerContainer);
+    }
+
     public void Decommission(EntityUid uid)
     {
         if (HasComp<BlueprintComponent>(uid)) { Del(uid); return; }
         if (HasComp<FactionSupplyCrateComponent>(uid)) { Del(uid); return; }
         // Delete parcels without opening them; the mail teleporter machine is deliberately retained.
         if (HasComp<MailComponent>(uid)) { Del(uid); return; }
+        if (_tags.HasTag(uid, "MisfitsPipBoy"))
+        {
+            DecommissionPipBoy(uid);
+            return;
+        }
         NormalizeStims(uid);
         DecommissionItem(uid);
         // A toolbox is working storage, even though it can also be swung as a weapon.

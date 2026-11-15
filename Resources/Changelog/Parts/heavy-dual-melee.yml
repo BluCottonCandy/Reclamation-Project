@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Add
+  message: Characters with 10 Agility and at least 9 Strength can dual-swing the Super Sledge and Pack greatfang.
+- type: Tweak
+  message: The Super Sledge deals its full wielded damage in one hand at 9 Strength or higher.

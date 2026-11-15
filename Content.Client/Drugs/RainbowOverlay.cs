@@ -1,4 +1,5 @@
 using Content.Shared.Drugs;
+using Content.Shared._ReclamationProject.Hallucinations;
 using Content.Shared.StatusEffect;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -64,7 +65,8 @@ public sealed class RainbowOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (!_entityManager.TryGetComponent(_playerManager.LocalEntity, out EyeComponent? eyeComp))
+        if (_entityManager.HasComponent<DrugHallucinationResistanceComponent>(_playerManager.LocalEntity) ||
+            !_entityManager.TryGetComponent(_playerManager.LocalEntity, out EyeComponent? eyeComp))
             return false;
 
         if (args.Viewport.Eye != eyeComp.Eye)

@@ -8,7 +8,7 @@
 # ──────────────────────────────────────────────
 - type: job
   id: EightiesTheBlock
-  setPreference: true
+  setPreference: false
   weight: 60
   name: job-name-eighties-the-block
   description: job-description-eighties-the-block
@@ -75,7 +75,7 @@
 # ──────────────────────────────────────────────
 - type: job
   id: EightiesCylinders
-  setPreference: true
+  setPreference: false
   weight: 50
   showBorder: true
   name: job-name-eighties-cylinders
@@ -141,7 +141,7 @@
 # ──────────────────────────────────────────────
 - type: job
   id: EightiesPistons
-  setPreference: true
+  setPreference: false
   weight: 40
   name: job-name-eighties-pistons
   description: job-description-eighties-pistons
@@ -206,7 +206,7 @@
 # ──────────────────────────────────────────────
 - type: job
   id: EightiesOilers
-  setPreference: true
+  setPreference: false
   weight: 30
   name: job-name-eighties-oilers
   description: job-description-eighties-oilers
@@ -271,7 +271,7 @@
 # ──────────────────────────────────────────────
 - type: job
   id: EightiesRoadRash
-  setPreference: true
+  setPreference: false
   weight: 20
   name: job-name-eighties-road-rash
   description: job-description-eighties-road-rash

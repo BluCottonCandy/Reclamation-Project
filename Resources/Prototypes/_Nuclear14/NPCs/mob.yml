@@ -7,6 +7,11 @@
     - tasks:
         - !type:HTNCompoundTask
           task: N14MeleeCombatCompound
+    - preconditions:
+        - !type:WastelandAnimalPrecondition
+      tasks:
+        - !type:HTNCompoundTask
+          task: FoodCompound
 # Same as the base version, but without idle walking around & about
 
 - type: htnCompound
@@ -15,6 +20,11 @@
     - tasks:
         - !type:HTNCompoundTask
           task: N14MeleeCombatCompound
+    - preconditions:
+        - !type:WastelandAnimalPrecondition
+      tasks:
+        - !type:HTNCompoundTask
+          task: FoodCompound
     - tasks:
         - !type:HTNPrimitiveTask
           preconditions:
@@ -36,6 +46,11 @@
 - type: htnCompound
   id: N14PassiveHostileCompound
   branches:
+    - preconditions:
+        - !type:WastelandAnimalPrecondition
+      tasks:
+        - !type:HTNCompoundTask
+          task: FoodCompound
     - tasks:
         - !type:HTNPrimitiveTask
           preconditions:
@@ -60,6 +75,11 @@
     - tasks:
         - !type:HTNCompoundTask
           task: N14OrderedMeleeCombatCompound
+    - preconditions:
+        - !type:WastelandAnimalPrecondition
+      tasks:
+        - !type:HTNCompoundTask
+          task: FoodCompound
     - tasks:
         - !type:HTNCompoundTask
           task: OrderedFollowCompound

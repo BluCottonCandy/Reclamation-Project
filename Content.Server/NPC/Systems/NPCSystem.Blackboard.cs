@@ -11,6 +11,10 @@ public sealed partial class NPCSystem
             return;
         }
 
+        if (key == NPCBlackboard.FollowTarget && value is Robust.Shared.Map.EntityCoordinates coordinates &&
+            !CanCommandAnimalFollower(coordinates.EntityId, uid))
+            return;
+
         var blackboard = component.Blackboard;
         blackboard.SetValue(key, value);
     }

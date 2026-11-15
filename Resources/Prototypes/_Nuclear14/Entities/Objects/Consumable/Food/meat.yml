@@ -417,17 +417,19 @@
 
 - type: entity
   name: raw mirelurk claw
-  parent: N14FoodMeatRadRaw
+  parent: N14FoodMeatBase
   id: N14FoodMeatMirelurkClaw
   description: Exotic mirelurk claw.
   components:
+  - type: Tag
+    tags: [Raw]
   - type: Sprite
     state: mirelurkclaw
   - type: SolutionContainerManager
     solutions:
       food:
         reagents:
-        - ReagentId: N14UncookedAnimalProteinsRad
+        - ReagentId: UncookedAnimalProteins
           Quantity: 5
   - type: Construction
     graph: MeatMirelurkClaw

@@ -245,6 +245,7 @@
 
 - type: loadout
   id: MisfitsLoadoutLegionBackpackCapeRed
+  hidden: true
   category: Backpacks
   cost: 0
   exclusive: true
@@ -271,6 +272,7 @@
 
 - type: loadout
   id: MisfitsLoadoutLegionBackpackCapeBlack
+  hidden: true
   category: Backpacks
   cost: 0
   exclusive: true

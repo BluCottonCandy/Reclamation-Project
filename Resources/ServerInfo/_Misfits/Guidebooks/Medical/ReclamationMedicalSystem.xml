@@ -21,7 +21,7 @@ Lung injuries reduce stamina capacity. Kidney injuries reduce stamina recovery a
 
 ## Treatment
 
-Use the existing surgery procedures to repair organ tissue, limb tissue, fractures, and internal bleeding. A splint supports an injured limb but does not repair the fracture or erase permanent wear. Some ordinary tools support improvised surgery; proper surgical tools remain suitable. The surgery, body-part manipulation, and organ manipulation pages explain the procedures.
+Use the existing surgery procedures to repair organ tissue, limb tissue, fractures, and internal bleeding. A medical splint restores one disabled leg to 10% health. If there is no disabled leg, it mends one fracture. Hold the splint, right-click the patient, and choose [bold]Apply splint[/bold]. Permanent limb wear still needs separate treatment. Craft splints from two wood planks and two cloth in the Medical crafting menu. Some ordinary tools support improvised surgery; proper surgical tools remain suitable. The surgery, body-part manipulation, and organ manipulation pages explain the procedures.
 
 ## Failed or missing liver and kidneys
 

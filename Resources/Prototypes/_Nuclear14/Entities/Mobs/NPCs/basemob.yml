@@ -71,6 +71,7 @@
     bloodMaxVolume: 50
     bloodReagent: WastelandBlood
   - type: Damageable
+    radiationDamageTypes: []
     damageContainer: Biological
     damageModifierSet: WastelandAnimal
   - type: Puller
@@ -306,6 +307,7 @@
   parent: N14MobBaseHostile
   components:
   - type: Damageable
+    radiationDamageTypes: [Radiation]
     damageContainer: MisfitsNPCBiological # Misfits Change
   - type: NoSlip
   - type: NpcFactionMember
@@ -336,6 +338,7 @@
   description: A mean looking ghoul.
   components:
   - type: Damageable
+    radiationDamageTypes: [Radiation]
     damageContainer: MisfitsNPCBiological  # Misfits Change - no hunger/thirst damage for feral ghouls
     damageModifierSet: GhoulNPC
   # - type: NoSlip
@@ -410,6 +413,7 @@
     - id: N14FoodMeatSupermutant
       prob: 0.5
   - type: Damageable
+    radiationDamageTypes: [Radiation]
     damageContainer: MisfitsNPCBiological  # Misfits Change
     damageModifierSet: N14SuperMutant
   - type: NpcFactionMember
@@ -533,6 +537,8 @@
   id: N14TameableMobBase
   parent: SimpleMobBase
   components:
+  - type: Damageable
+    radiationDamageTypes: []
 #  - type: NPCTamingOnTouchBehaviour
 #    follow: true
 #    persistent: true

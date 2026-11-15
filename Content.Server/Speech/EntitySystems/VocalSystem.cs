@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Pack;
 using Content.Server.Actions;
 using Content.Server.Chat.Systems;
 using Content.Server.Speech.Components;
@@ -77,6 +78,13 @@ public sealed class VocalSystem : EntitySystem
 
         // just play regular sound based on emote proto
         args.Handled = _chat.TryPlayEmoteSound(uid, component.EmoteSounds, args.Emote);
+
+        if (!args.Handled && HasComp<PackMemberComponent>(uid)
+            && args.Emote.ID is "Bark" or "Growl" or "Snarl" or "Whine" or "Howl"
+            && _proto.TryIndex<EmoteSoundsPrototype>("MaleVulpkanin", out var packSounds))
+        {
+            args.Handled = _chat.TryPlayEmoteSound(uid, packSounds, args.Emote);
+        }
     }
 
     private void OnScreamAction(EntityUid uid, VocalComponent component, ScreamActionEvent args)

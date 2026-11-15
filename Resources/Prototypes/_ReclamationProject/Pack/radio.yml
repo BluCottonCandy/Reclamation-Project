@@ -1,0 +1,44 @@
+- type: radioChannel
+  id: Pack
+  name: chat-radio-pack
+  keycode: 'k'
+  frequency: 1521
+  color: "#D8B648"
+  longRange: true
+
+- type: entity
+  parent: EncryptionKeyEighties
+  id: EncryptionKeyPack
+  name: Pack encryption key
+  description: A radio encryption key for the Pack's private channel.
+  components:
+  - type: EncryptionKey
+    channels: [Pack]
+    defaultChannel: Pack
+
+- type: entity
+  parent: N14ClothingHeadsetLegion
+  id: PackHeadset
+  name: Pack headset
+  description: A battered headset for keeping the Pack together.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyPack
+
+- type: entity
+  parent: Intercom
+  id: PackIntercom
+  name: Pack intercom
+  components:
+  - type: ContainerFill
+    containers:
+      board:
+      - IntercomElectronics
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyPack
+  - type: EncryptionKeyHolder
+    keysUnlocked: false

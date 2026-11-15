@@ -125,3 +125,6 @@ public sealed record PlayerRecord(
 public sealed record RoundRecord(int Id, DateTimeOffset? StartDate, ServerRecord Server);
 
 public sealed record ServerRecord(int Id, string Name);
+
+/// <summary>Only ownership metadata needed to label saved bunkers; no character preferences or private profile text.</summary>
+public sealed record BunkerOwnerRecord(Guid UserId, int ProfileId, string CharacterName, string Ckey);

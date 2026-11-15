@@ -195,11 +195,12 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
     /// <summary>
     /// Adds the AI to the steering system to move towards a specific target
     /// </summary>
-    public NPCSteeringComponent Register(EntityUid uid, EntityCoordinates coordinates, NPCSteeringComponent? component = null)
+    public NPCSteeringComponent Register(EntityUid uid, EntityCoordinates coordinates, NPCSteeringComponent? component = null, PathFlags? flags = null)
     {
+        var movementFlags = flags ?? _pathfindingSystem.GetFlags(uid);
         if (Resolve(uid, ref component, false))
         {
-            if (component.Coordinates.Equals(coordinates))
+            if (component.Coordinates.Equals(coordinates) && component.Flags == movementFlags && component.PathFlagsOverride == flags)
                 return component;
 
             component.PathfindToken?.Cancel();
@@ -209,9 +210,11 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         else
         {
             component = AddComp<NPCSteeringComponent>(uid);
-            component.Flags = _pathfindingSystem.GetFlags(uid);
+
         }
 
+        component.Flags = movementFlags;
+        component.PathFlagsOverride = flags;
         ResetStuck(component, Transform(uid).Coordinates);
         component.Coordinates = coordinates;
         return component;
@@ -513,7 +516,7 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         // truly immobile *after* pathfinding completes, not queue-wait time.
         ResetStuck(steering, xform.Coordinates);
 
-        var flags = _pathfindingSystem.GetFlags(uid);
+        var flags = steering.PathFlagsOverride ?? _pathfindingSystem.GetFlags(uid);
 
         var result = await _pathfindingSystem.GetPathSafe(
             uid,

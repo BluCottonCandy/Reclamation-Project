@@ -119,6 +119,7 @@
 #
 - type: loadout
   id: LoadoutLegionCloakBlack
+  hidden: true
   category: Roles
   cost: 0
   exclusive: true
@@ -149,6 +150,7 @@
 
 - type: loadout
   id: LoadoutNeckCloakLegionWhite
+  hidden: true
   category: Roles
   cost: 0
   exclusive: true
@@ -179,6 +181,7 @@
 
 - type: loadout
   id: LoadoutNeckCloakLegionRed
+  hidden: true
   category: Roles
   cost: 0
   exclusive: true
@@ -209,6 +212,7 @@
 
 - type: loadout
   id: LoadoutLegionPrimeHeavyArmor
+  hidden: true
   category: Outer
   cost: 14 # EVERY. SINGLE. POINT.
   exclusive: true
@@ -224,6 +228,7 @@
 
 - type: loadout
   id: LoadoutLegionExplorerVeteranArmor
+  hidden: true
   category: Outer
   cost: 6
   exclusive: true
@@ -239,6 +244,7 @@
 
 - type: loadout
   id: LoadoutLegionExplorerVeteranHelmet
+  hidden: true
   category: Head
   cost: 6
   exclusive: true
@@ -254,6 +260,7 @@
 
 - type: loadout
   id: LoadoutNeckLegionForgemaster
+  hidden: true
   category: Roles
   cost: 0
   exclusive: true
@@ -267,6 +274,7 @@
 
 - type: loadout
   id: LoadoutNeckLegionMedicus
+  hidden: true
   category: Roles
   cost: 0
   exclusive: true
@@ -281,6 +289,7 @@
 
 - type: loadout
   id: LoadoutNeckLegionTreasurer
+  hidden: true
   category: Roles
   cost: 0
   exclusive: true
@@ -295,6 +304,7 @@
 
 - type: loadout
   id: LoadoutUniformJumpsuitLegionnaireOther
+  hidden: true
   category: Roles
   cost: 0
   exclusive: true

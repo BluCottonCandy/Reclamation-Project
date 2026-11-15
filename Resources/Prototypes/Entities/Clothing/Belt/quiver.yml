@@ -2,14 +2,29 @@
   parent: ClothingBeltStorageBase
   id: ClothingBeltQuiver
   name: quiver
-  description: Can hold up to 15 arrows, and fits snug around your waist.
+  description: A belt quiver that supplies arrows to bows automatically. Its toggleable magnet gathers nearby arrows.
   components:
+  - type: BowQuiver
   - type: Sprite
     sprite: Clothing/Belt/quiver.rsi
     layers:
     - state: icon
     - map: [ "enum.StorageContainerVisualLayers.Fill" ]
       visible: false
+    - sprite: _ReclamationProject/Objects/Weapons/Pack/quiver.rsi
+      state: magnet-on
+      map: [magnet]
+  - type: ItemToggle
+    onActivate: false
+    predictable: false
+    activated: true
+  - type: ComponentToggler
+    components:
+    - type: MagnetPickup
+      range: 1.5
+      slotFlags: BELT
+      whitelist:
+        tags: [Arrow]
   - type: Clothing
   - type: Storage
     grid:
@@ -23,6 +38,12 @@
   - type: StorageContainerVisuals
     maxFillLevels: 3
     fillBaseName: fill-
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleVisuals.Toggled:
+        magnet:
+          True: {state: magnet-on}
+          False: {state: magnet-off}
   - type: Construction
     graph: Quiver
     node: Quiver

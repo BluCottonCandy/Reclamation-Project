@@ -27,6 +27,11 @@ namespace Content.Server.Body.Systems
         [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
         [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
 
+        private readonly PriorityQueue<(EntityUid Uid, long Ticket), TimeSpan> _pending = new();
+        private readonly Dictionary<EntityUid, long> _tickets = new();
+        private readonly List<(EntityUid Uid, long Ticket)> _due = new();
+        private long _nextTicket;
+
         private EntityQuery<OrganComponent> _organQuery;
         private EntityQuery<SolutionContainerManagerComponent> _solutionQuery;
 
@@ -39,6 +44,8 @@ namespace Content.Server.Body.Systems
         {
             base.Initialize();
 
+            SubscribeLocalEvent<MetabolizerComponent, ComponentStartup>(OnMetabolizerStartup);
+            SubscribeLocalEvent<MetabolizerComponent, ComponentShutdown>(OnMetabolizerShutdown);
             _organQuery = GetEntityQuery<OrganComponent>();
             _solutionQuery = GetEntityQuery<SolutionContainerManagerComponent>();
 
@@ -51,11 +58,13 @@ namespace Content.Server.Body.Systems
         private void OnMapInit(Entity<MetabolizerComponent> ent, ref MapInitEvent args)
         {
             ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.UpdateInterval * (1+_random.NextFloat());
+            Schedule(ent, ent.Comp);
         }
 
         private void OnUnpaused(Entity<MetabolizerComponent> ent, ref EntityUnpausedEvent args)
         {
             ent.Comp.NextUpdate += args.PausedTime;
+            Schedule(ent, ent.Comp);
         }
 
         private void OnMetabolizerInit(Entity<MetabolizerComponent> entity, ref ComponentInit args)
@@ -89,17 +98,52 @@ namespace Content.Server.Body.Systems
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
+            ProcessScheduled();
+        }
 
-            var query = EntityQueryEnumerator<MetabolizerComponent>();
-            while (query.MoveNext(out var uid, out var metab))
+        private void OnMetabolizerStartup(EntityUid uid, MetabolizerComponent comp, ComponentStartup args)
+        {
+            Schedule(uid, comp);
+        }
+
+        private void OnMetabolizerShutdown(EntityUid uid, MetabolizerComponent comp, ComponentShutdown args)
+        {
+            _tickets.Remove(uid);
+        }
+
+        private void Schedule(EntityUid uid, MetabolizerComponent comp)
+        {
+            var ticket = ++_nextTicket;
+            _tickets[uid] = ticket;
+            _pending.Enqueue((uid, ticket), comp.NextUpdate);
+        }
+
+        private void ProcessScheduled()
+        {
+            // Drain first so an overdue metabolizer still runs at most once this tick.
+            var now = _gameTiming.CurTime;
+            while (_pending.TryPeek(out var item, out var next) && next <= now)
             {
-                // Only update as frequently as it should
-                if (_gameTiming.CurTime < metab.NextUpdate)
+                _pending.Dequeue();
+                _due.Add(item);
+            }
+
+            foreach (var (uid, ticket) in _due)
+            {
+                if (!_tickets.TryGetValue(uid, out var current) || current != ticket
+                    || !TryComp(uid, out MetabolizerComponent? comp))
                     continue;
 
-                metab.NextUpdate += metab.UpdateInterval;
-                TryMetabolize((uid, metab));
+                _tickets.Remove(uid);
+                if (MetaData(uid).EntityPaused || TerminatingOrDeleted(uid))
+                    continue;
+
+                comp.NextUpdate += comp.UpdateInterval;
+                Schedule(uid, comp);
+                TryMetabolize((uid, comp));
             }
+
+            _due.Clear();
         }
 
         private void TryMetabolize(Entity<MetabolizerComponent, OrganComponent?, SolutionContainerManagerComponent?> ent)
@@ -139,6 +183,7 @@ namespace Content.Server.Body.Systems
             {
                 return;
             }
+
 
             // Reuse the treatment gate used by Enraged. Check before processing
             // effects or removing reagents so blocked chemicals remain unprocessed.

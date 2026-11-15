@@ -1,0 +1,13 @@
+- type: entity
+  parent: ActionLegionWarcry
+  id: ActionPackWarcry
+  name: action-name-pack-warcry
+  description: action-desc-pack-warcry
+
+- type: speechVerb
+  id: PackWarcrySpeech
+  name: chat-speech-verb-name-pack-warcry
+  speechVerbStrings:
+  - chat-speech-verb-pack-warcry
+  bold: true
+  fontSize: 18

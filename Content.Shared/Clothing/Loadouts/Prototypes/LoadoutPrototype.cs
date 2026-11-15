@@ -31,6 +31,10 @@ public sealed partial class LoadoutPrototype : IPrototype
     [DataField]
     public bool Exclusive;
 
+    /// <summary>Retains the prototype for saved references while disabling it as a loadout choice.</summary>
+    [DataField]
+    public bool Hidden;
+
     /// <summary>When false, send the item to normal loadout bag storage instead of equipping it.</summary>
     [DataField]
     public bool AutoEquip = true;

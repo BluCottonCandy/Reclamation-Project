@@ -2,16 +2,14 @@ using System;
 using System.Linq;
 using System.Numerics;
 using Content.Client.PDA;
-using Content.Client._Misfits.WastelandMap;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.StatusIcon;
-using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Maths;
+using Robust.Shared.Utility;
 using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Client._Misfits.Holotape;
 
@@ -35,8 +33,6 @@ public sealed partial class HolotapeWindow
     private readonly ScrollContainer _desktopScroll=new(){VerticalExpand=true,HorizontalExpand=true,HScrollEnabled=false};
     private readonly BoxContainer _desktopMessages=new(){Orientation=BoxContainer.LayoutOrientation.Vertical,HorizontalExpand=true,SeparationOverride=6};
     private int _desktopScrollFrames;
-    private MapViewerControl? _desktopMap;
-    private string? _desktopMapTexture;
 
     private void InitializeDesktop()
     {
@@ -70,7 +66,6 @@ public sealed partial class HolotapeWindow
         else if(!_desktopStarted){_desktopStarted=true;_desktopApp="home";}
         RefreshDesktopApps();
         if(!state.Locked && _desktopApp is "public" or "messenger")RenderChat(_desktopApp=="public");
-        if(!state.Locked && _desktopApp=="map")UpdateDesktopMap();
         RefreshDesktopLayout();
     }
     public void RefreshDesktopLayout()
@@ -106,7 +101,7 @@ public sealed partial class HolotapeWindow
         {
             OpenDesktopApp("command");_commandInput.Text=_gameProgram??"";RunTerminalCommand();
         });
-        App("Map","map",()=>OpenDesktopApp("map"));App("Messenger","messenger",()=>OpenDesktopApp("messenger"));
+        App("Messenger","messenger",()=>OpenDesktopApp("messenger"));
         App("Public Chat","public",()=>OpenDesktopApp("public"));App("Settings","settings",()=>OpenDesktopApp("settings"));
         App("Lock Screen","lock",()=>
         {
@@ -128,23 +123,8 @@ public sealed partial class HolotapeWindow
             case "messenger":RenderChat(false);break;
             case "profile":RenderProfile(_desktopState?.Own.Number??0);break;
             case "settings":RenderSettings();break;
-            case "map":
-                _desktopMap=new MapViewerControl{HorizontalExpand=true,VerticalExpand=true,MinHeight=260,ShowPlayerPosition=false};
-                _desktopMapTexture=null;_desktopBody.AddChild(_desktopMap);UpdateDesktopMap();break;
         }
         RefreshDesktopLayout();
-    }
-    private void UpdateDesktopMap()
-    {
-        if(_desktopMap==null||_desktopState?.Map is not {} map)return;
-        if(_desktopMapTexture!=map.MapTexturePath)
-        {
-            var resources=IoCManager.Resolve<IResourceCache>();
-            if(resources.TryGetResource<TextureResource>(new ResPath("/Textures")/new ResPath(map.MapTexturePath),out var texture))
-                _desktopMap.SetTexture(texture.Texture,new Box2(map.BoundsLeft,map.BoundsBottom,map.BoundsRight,map.BoundsTop));
-            _desktopMapTexture=map.MapTexturePath;
-        }
-        _desktopMap.SetTrackedBlips(map.TrackedBlips);
     }
     private void RenderSettings()
     {

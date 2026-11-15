@@ -1,0 +1,6 @@
+author: BluCottonCandy
+changes:
+- type: Tweak
+  message: Forged kits now issue standard 9mm pistols and pump-action shotguns in place of makeshift guns.
+- type: Tweak
+  message: The Forge Keeper starts with the Furnace Repeater in place of the incinerator. It fires at 3.5 shots per second and is available from the Forged vendor.

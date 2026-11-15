@@ -47,6 +47,9 @@ public sealed partial class NpcFactionSystem : EntitySystem
 
     private void OnProtoReload(PrototypesReloadedEventArgs obj)
     {
+        if (obj.WasModified<EntityPrototype>())
+            _companionAnimalKinds.Clear();
+
         if (obj.WasModified<NpcFactionPrototype>())
             RefreshFactions();
     }
@@ -205,7 +208,7 @@ public sealed partial class NpcFactionSystem : EntitySystem
         var faction = (ent.Owner, ent.Comp2);
         return hostiles
             .Union(GetHostiles(faction))
-            .Where(target => !IsIgnored(faction, target));
+            .Where(target => !IsIgnored(faction, target) && !IsCompanionProtectedAnimal(ent.Owner, target));
     }
 
     public IEnumerable<EntityUid> GetNearbyFriendlies(Entity<NpcFactionMemberComponent?> ent, float range)
@@ -245,6 +248,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
     /// </remarks>
     public bool IsEntityFriendly(Entity<NpcFactionMemberComponent?> ent, Entity<NpcFactionMemberComponent?> other)
     {
+        if (IsCompanionProtectedAnimal(ent.Owner, other.Owner))
+            return true;
         if (TryOverrideRelationship(ent.Owner, other.Owner, out var friendly))
             return friendly;
         if (!Resolve(ent, ref ent.Comp, false) || !Resolve(other, ref other.Comp, false))
@@ -260,6 +265,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
 
     public bool IsEntityHostile(Entity<NpcFactionMemberComponent?, FactionExceptionComponent?> ent, Entity<NpcFactionMemberComponent?> other)
     {
+        if (IsCompanionProtectedAnimal(ent.Owner, other.Owner))
+            return false;
         if (TryOverrideRelationship(ent.Owner, other.Owner, out var friendly))
             return !friendly;
         if (!Resolve(ent, ref ent.Comp1, false) || !Resolve(other, ref other.Comp, false))

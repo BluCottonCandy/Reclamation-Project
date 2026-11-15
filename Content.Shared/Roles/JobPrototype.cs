@@ -1,4 +1,5 @@
 using Content.Shared.Access;
+using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared._Misfits.Overwatch;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Dataset;
@@ -189,6 +190,14 @@ namespace Content.Shared.Roles
         /// </summary>
         [DataField]
         public bool JobWhitelistBypassesRoleTimers; // #Misfits Change
+
+        /// <summary>Restricts selected loadout categories for this job; unlisted categories remain available.</summary>
+        [DataField]
+        public Dictionary<ProtoId<LoadoutCategoryPrototype>, HashSet<ProtoId<LoadoutPrototype>>> LoadoutCategoryWhitelist = new();
+
+        /// <summary>Selected loadouts in these categories stay at the character spawn position.</summary>
+        [DataField]
+        public HashSet<ProtoId<LoadoutCategoryPrototype>> GroundLoadoutCategories = new();
 
         [DataField]
         public bool SpawnLoadout = true;

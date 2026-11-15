@@ -1,4 +1,4 @@
 [submodule "RobustToolbox"]
 	path = RobustToolbox
 	url = https://github.com/BluCottonCandy/RobustToolbox.git
-	branch = fix/reclamation-netserializer-bounds
+	branch = update/reclamation-engine-296

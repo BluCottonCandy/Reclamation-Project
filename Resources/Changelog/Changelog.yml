@@ -14966,3 +14966,12 @@ Entries:
   id: 6658
   time: '2026-11-15T11:12:52.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/198
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Added the trank pistol to the Institute uplink (50 RP, comes with one
+        dart). It fires a refillable 20u dart that sticks in the target
+  id: 6659
+  time: '2026-11-15T11:13:10.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/196

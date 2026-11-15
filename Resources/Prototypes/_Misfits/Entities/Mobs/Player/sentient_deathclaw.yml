@@ -6,6 +6,8 @@
   parent: N14MobDeathclaw
   description: An unusually intelligent deathclaw, watchful and capable of speech.
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: HumanoidAppearance
     species: Deathclaw
   - type: LanguageKnowledge
@@ -184,6 +186,8 @@
   parent: N14MobDeathclaw
   description: A deathclaw of unnatural size and strength, bound to the loa of death and marked with strange, restless designs.
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: Sprite
     drawdepth: Mobs
     layers:

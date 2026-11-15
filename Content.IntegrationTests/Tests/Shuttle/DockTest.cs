@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
 using Content.Server.Shuttles.Systems;
 using Content.Tests;
@@ -31,7 +30,7 @@ public sealed class DockTest : ContentUnitTest
         var map = await pair.CreateTestMap();
 
         var entManager = server.ResolveDependency<IEntityManager>();
-        var mapManager = server.ResolveDependency<SharedMapSystem>();
+        var mapManager = server.System<SharedMapSystem>();
         var dockingSystem = entManager.System<DockingSystem>();
         var mapSystem = entManager.System<SharedMapSystem>();
         var xformSystem = entManager.System<SharedTransformSystem>();
@@ -96,7 +95,7 @@ public sealed class DockTest : ContentUnitTest
         var otherMap = await pair.CreateTestMap();
 
         var entManager = server.ResolveDependency<IEntityManager>();
-        var mapManager = server.ResolveDependency<SharedMapSystem>();
+        var mapManager = server.System<SharedMapSystem>();
         var dockingSystem = entManager.System<DockingSystem>();
         var mapSystem = entManager.System<SharedMapSystem>();
         MapGridComponent mapGrid = default!;
@@ -108,9 +107,9 @@ public sealed class DockTest : ContentUnitTest
         {
             mapGrid = entManager.AddComponent<MapGridComponent>(map.MapUid);
             entManager.DeleteEntity(map.Grid);
-            mapManager.DeleteMap(otherMap.MapId);
-            Assert.That(entManager.System<MapLoaderSystem>().TryLoadMapWithId(otherMap.MapId, new ResPath("/Maps/Shuttles/emergency.yml"), out _, out var loadedGrids));
-            shuttle = loadedGrids!.First().Owner;
+            entManager.DeleteEntity(otherMap.Grid);
+            Assert.That(entManager.System<MapLoaderSystem>().TryLoadGrid(otherMap.MapId, new ResPath("/Maps/Shuttles/emergency.yml"), out var loadedGrid));
+            shuttle = loadedGrid!.Value.Owner;
 
             var dockingConfig = dockingSystem.GetDockingConfig(shuttle, map.MapUid);
             Assert.That(dockingConfig, Is.EqualTo(null));

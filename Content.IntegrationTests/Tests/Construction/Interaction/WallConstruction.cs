@@ -1,4 +1,5 @@
 using Content.IntegrationTests.Tests.Interaction;
+using Content.Shared._Misfits.Special.Components;
 
 namespace Content.IntegrationTests.Tests.Construction.Interaction;
 
@@ -7,6 +8,14 @@ public sealed class WallConstruction : InteractionTest
     public const string Girder = "Girder";
     public const string WallSolid = "WallSolid";
     public const string Wall = "Wall";
+
+    [SetUp]
+    public async Task SetUpConstructionStats()
+    {
+        // Reclamation requires SPECIAL intelligence to construct and deconstruct structures.
+        await Server.WaitPost(() => SEntMan.EnsureComponent<SpecialComponent>(SPlayer));
+        await RunTicks(5);
+    }
 
     [Test]
     public async Task ConstructWall()

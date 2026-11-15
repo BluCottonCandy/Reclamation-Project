@@ -102,7 +102,7 @@ namespace Content.Server.Rotatable
             var entity = EntityManager.SpawnEntity(component.MirrorEntity, oldTransform.Coordinates);
             var newTransform = EntityManager.GetComponent<TransformComponent>(entity);
             newTransform.LocalRotation = oldTransform.LocalRotation;
-            newTransform.Anchored = false;
+            EntityManager.System<SharedTransformSystem>().Unanchor(entity, newTransform);
             EntityManager.DeleteEntity(uid);
         }
     }

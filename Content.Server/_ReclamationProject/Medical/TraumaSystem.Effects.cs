@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using Robust.Shared.Random;
+using Robust.Shared.Collections;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared._ReclamationProject.Medical;
@@ -59,32 +60,44 @@ public sealed partial class TraumaSystem
     {
         // Newly transplanted organs and limbs join the same injury model.
         foreach (var (part, component) in _body.GetBodyChildren(uid)) InitializeLimbHealth(part, component);
+        // Local summaries keep reentrant Refresh calls independent. Count each organ once
+        // instead of allocating and filtering a separate array for each of the six kinds.
+        const int summarySize = (int) TraumaKind.Stomach + 1;
+        Span<int> counts = stackalloc int[summarySize];
+        Span<double> totals = stackalloc double[summarySize];
+        counts.Clear();
+        totals.Clear();
+        var filters = new ValueList<Entity<TraumaOrganComponent>>();
         foreach (var (organ, component) in _body.GetBodyOrgans(uid))
-            if (KindForSlot(component.SlotId) is { } kind && !HasComp<TraumaOrganComponent>(organ))
-            {
-                var added = EnsureComp<TraumaOrganComponent>(organ);
-                added.Kind = kind;
-                Dirty(organ, added);
-            }
-        var organs = _body.GetBodyOrgans(uid).Where(o => HasComp<TraumaOrganComponent>(o.Id)).ToArray();
-        float Damage(TraumaKind kind)
         {
-            var matches = organs.Where(o => Comp<TraumaOrganComponent>(o.Id).Kind == kind).ToArray();
-            var original = medical.OriginalOrgans.GetValueOrDefault(kind, matches.Length);
-            var count = Math.Max(original, matches.Length);
+            if (!TryComp<TraumaOrganComponent>(organ, out var injury))
+            {
+                if (KindForSlot(component.SlotId) is not { } kind)
+                    continue;
+
+                injury = EnsureComp<TraumaOrganComponent>(organ);
+                injury.Kind = kind;
+                Dirty(organ, injury);
+            }
+
+            var index = (int) injury.Kind;
+            if ((uint) index >= summarySize)
+                continue;
+
+            counts[index]++;
             // A worn heart remains weaker after repair: lost permanent capacity
             // must still lower the body's critical threshold.
-            float OrganDamage(EntityUid organ)
-            {
-                var health = Comp<TraumaOrganComponent>(organ);
-                return kind == TraumaKind.Heart ? 100f - health.CurrentHealth : health.DamagePercent;
-            }
-            return count == 0 ? 0 : (matches.Sum(o => OrganDamage(o.Id)) +
-                Math.Max(0, original - matches.Length) * 100f) / count;
+            totals[index] += injury.Kind == TraumaKind.Heart
+                ? 100f - injury.CurrentHealth : injury.DamagePercent;
+            if (injury.Kind is TraumaKind.Liver or TraumaKind.Kidneys)
+                filters.Add((organ, injury));
         }
-        var lungs = Damage(TraumaKind.Lungs); var heart = Damage(TraumaKind.Heart);
-        var liver = Damage(TraumaKind.Liver); var kidneys = Damage(TraumaKind.Kidneys);
-        var eyes = Damage(TraumaKind.Eyes); var stomach = Damage(TraumaKind.Stomach);
+        var lungs = OrganDamageAverage(TraumaKind.Lungs, medical, counts, totals);
+        var heart = OrganDamageAverage(TraumaKind.Heart, medical, counts, totals);
+        var liver = OrganDamageAverage(TraumaKind.Liver, medical, counts, totals);
+        var kidneys = OrganDamageAverage(TraumaKind.Kidneys, medical, counts, totals);
+        var eyes = OrganDamageAverage(TraumaKind.Eyes, medical, counts, totals);
+        var stomach = OrganDamageAverage(TraumaKind.Stomach, medical, counts, totals);
         var changed = medical.LungDamage != lungs || medical.HeartDamage != heart || medical.LiverDamage != liver ||
             medical.KidneyDamage != kidneys || medical.EyeDamage != eyes || medical.StomachDamage != stomach;
         var eyeChanged = medical.EyeDamage != eyes;
@@ -113,10 +126,8 @@ public sealed partial class TraumaSystem
                 critical.Value * (heartFactor / medical.AppliedHeart)), MobState.Critical);
             medical.AppliedHeart = heartFactor;
         }
-        foreach (var (organ, _) in organs)
+        foreach (var (organ, injury) in filters)
         {
-            var injury = Comp<TraumaOrganComponent>(organ);
-            if (injury.Kind is not (TraumaKind.Liver or TraumaKind.Kidneys)) continue;
             var intervalFactor = 1f / Math.Max(.1f, 1f - .9f * injury.DamagePercent / 100f);
             if (intervalFactor == injury.AppliedMetabolism) continue;
             var metabolic = new ApplyMetabolicMultiplierEvent(organ, intervalFactor / injury.AppliedMetabolism, true);
@@ -129,6 +140,15 @@ public sealed partial class TraumaSystem
             _blur.UpdateBlurMagnitude(uid);
             _blind.UpdateIsBlind(uid);
         }
+    }
+
+    private static float OrganDamageAverage(TraumaKind kind, TraumaBodyComponent medical,
+        ReadOnlySpan<int> counts, ReadOnlySpan<double> totals)
+    {
+        var attached = counts[(int) kind];
+        var original = medical.OriginalOrgans.GetValueOrDefault(kind, attached);
+        var count = Math.Max(original, attached);
+        return count == 0 ? 0 : ((float) totals[(int) kind] + Math.Max(0, original - attached) * 100f) / count;
     }
 
     private static string ScanHealth(float value)

@@ -28,6 +28,7 @@ public sealed class BioMonitorWindow : DefaultWindow
 
     private readonly Label _overall = Text("");
     private readonly BioMonitorBar _overallBar = new();
+    private readonly BoxContainer _bodyDamage = VBox();
     private readonly Label _blood = Text("");
     private readonly BioMonitorBar _bloodBar = new();
     private readonly Label _rads = Text("");
@@ -115,6 +116,7 @@ public sealed class BioMonitorWindow : DefaultWindow
         var vitals = VBox(2);
         vitals.AddChild(Row(Text(Loc.GetString("bio-monitor-overall")), _overall));
         vitals.AddChild(_overallBar);
+        vitals.AddChild(_bodyDamage);
         vitals.AddChild(Row(Text(Loc.GetString("bio-monitor-blood")), _blood));
         vitals.AddChild(_bloodBar);
         vitals.AddChild(Row(Text(Loc.GetString("bio-monitor-rads")), _rads));
@@ -197,7 +199,9 @@ public sealed class BioMonitorWindow : DefaultWindow
             _pending.Remove(item);
         _parts = state.Parts.ToDictionary(p => (TargetBodyPart) p.Part, p => p);
         _doll.SetParts(_parts);
-        _doll.Bleeding = state.BleedRate > 0f;
+        // Internal bleeding counts as bleeding too: blood is still draining.
+        var bleeding = state.BleedRate > 0f || state.InternalBleeding;
+        _doll.Bleeding = bleeding;
 
         var source = Loc.GetString(state.InstituteStyle ? "bio-monitor-source-institute" : state.Source switch
         {
@@ -215,7 +219,13 @@ public sealed class BioMonitorWindow : DefaultWindow
         _overallBar.Value = state.Overall;
         _overallBar.Color = BioMonitorColors.ForHealth(state.Overall);
 
-        var bleeding = state.BleedRate > 0f;
+        // Whole-body damage by type, biggest first. Includes damage no limb shows (bloodloss, poison, suffocation).
+        _bodyDamage.RemoveAllChildren();
+        _bodyDamage.AddChild(Row(Text(Loc.GetString("bio-monitor-damage-total")),
+            Text($"{state.TotalDamage:0.#}", 15, state.TotalDamage > 0f ? BioMonitorColors.Warn : BioMonitorColors.Text)));
+        foreach (var (type, amount) in state.BodyDamage.OrderByDescending(d => d.Value))
+            _bodyDamage.AddChild(Row(Text($"  {type}", 13, BioMonitorColors.Dim), Text($"{amount:0.#}", 13, BioMonitorColors.Dim)));
+
         _blood.Text = bleeding ? $"{state.Blood:0}% {Loc.GetString("bio-monitor-bleeding")}" : $"{state.Blood:0}%";
         _blood.FontColorOverride = bleeding ? BioMonitorColors.Danger : BioMonitorColors.Text;
         _bloodBar.Value = state.Blood;
@@ -262,7 +272,16 @@ public sealed class BioMonitorWindow : DefaultWindow
         if (state.SyntheticPatient)
             _condition.AddChild(Text(Loc.GetString("bio-monitor-synthetic"), 14, BioMonitorColors.Dim));
         if (state.InternalBleeding)
+        {
             _condition.AddChild(Text(Loc.GetString("bio-monitor-internal-bleeding"), 15, BioMonitorColors.Danger));
+            _condition.AddChild(Text(Loc.GetString("bio-monitor-internal-bleeding-help"), 13, BioMonitorColors.Dim));
+        }
+        // Below 90% blood the body keeps taking blood-loss damage even after the bleeding stops.
+        if (!state.Dead && state.Blood < 90f)
+        {
+            _condition.AddChild(Text(Loc.GetString("bio-monitor-low-blood"), 15, BioMonitorColors.Warn));
+            _condition.AddChild(Text(Loc.GetString("bio-monitor-low-blood-help"), 13, BioMonitorColors.Dim));
+        }
         if (state.PoisonDamage > 0f)
             _condition.AddChild(Row(Text(Loc.GetString("bio-monitor-poisoned")), Text($"{state.PoisonDamage:0}", 15, BioMonitorColors.Danger)));
 

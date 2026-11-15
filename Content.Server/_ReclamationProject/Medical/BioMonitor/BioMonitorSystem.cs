@@ -387,6 +387,11 @@ public sealed partial class BioMonitorSystem : EntitySystem
             msg.Radiation = damageable.Damage.DamageDict.GetValueOrDefault("Radiation").Float();
             msg.Suffocation = damageable.Damage.DamageDict.GetValueOrDefault("Asphyxiation").Float();
             msg.PoisonDamage = damageable.Damage.DamageDict.GetValueOrDefault("Poison").Float();
+
+            msg.TotalDamage = damageable.TotalDamage.Float();
+            foreach (var (type, amount) in damageable.Damage.DamageDict)
+                if (amount > 0)
+                    msg.BodyDamage[type] = amount.Float();
         }
 
         if (msg.Dead)

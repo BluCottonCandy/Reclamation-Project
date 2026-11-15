@@ -14975,3 +14975,14 @@ Entries:
   id: 6659
   time: '2026-11-15T11:13:10.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/196
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Reduced bunker save work on the game thread and avoided unnecessary
+        save-data parsing.
+    - type: Fix
+      message: Cleaned up incomplete bunker maps after failed room initialization.
+  id: 6660
+  time: '2026-11-15T12:04:31.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/199

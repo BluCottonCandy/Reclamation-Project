@@ -5,6 +5,8 @@
   name: Raider
   suffix: AI
   components:
+    - type: NpcNutrition
+      needsFood: false
     - type: Damageable    # Misfits Add - Override from BaseMobSpeciesOrganic to prevent hunger/thirst damage
       damageContainer: MisfitsNPCBiological
     - type: NpcFactionMember

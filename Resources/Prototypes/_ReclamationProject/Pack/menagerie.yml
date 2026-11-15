@@ -66,6 +66,8 @@
   id: PackMenagerieDeathclaw
   suffix: Pack menagerie, untamed
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: Scent
   - type: NpcFactionMember
     factions:
@@ -75,6 +77,8 @@
   id: PackMenagerieNightstalker
   suffix: Pack menagerie, untamed
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: Scent
   - type: NpcFactionMember
     factions:
@@ -84,6 +88,8 @@
   id: PackMenagerieMolerat
   suffix: Pack menagerie, untamed
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: MovementSpeedModifier
     baseWalkSpeed: 3
     baseSprintSpeed: 5

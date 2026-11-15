@@ -580,7 +580,13 @@ public sealed class HolopadSystem : SharedHolopadSystem
             var query = AllEntityQuery<HolopadComponent, TelephoneComponent, TransformComponent>();
             while (query.MoveNext(out var uid, out var holopad, out var telephone, out var xform))
             {
-                UpdateUIState((uid, holopad), telephone);
+                // Contact lists scan every holopad; only rebuild them while someone has the menu open.
+                // OnUIOpen still supplies a fresh list when opening an idle holopad.
+                var uiKey = HasComp<StationAiCoreComponent>(uid)
+                    ? HolopadUiKey.AiActionWindow
+                    : HolopadUiKey.InteractionWindow;
+                if (_userInterfaceSystem.IsUiOpen(uid, uiKey))
+                    UpdateUIState((uid, holopad), telephone);
 
                 if (holopad.User != null &&
                     !HasComp<IgnoreUIRangeComponent>(holopad.User) &&

@@ -14,6 +14,7 @@ using Robust.Shared.Utility;
 
 // Shitmed Change
 using Content.Shared.Body.Systems;
+using Content.Shared.Body.Components;
 using Content.Shared._Shitmed.Targeting;
 using Robust.Shared.Random;
 
@@ -116,6 +117,46 @@ namespace Content.Shared.Damage
                 _appearance.SetData(uid, DamageVisualizerKeys.DamageUpdateGroups, data, appearance);
             }
             RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin, canSever ?? true)); // Shitmed Change
+        }
+
+        /// <summary>
+        /// Avoids empty natural-recovery calls, including the events and allocations they trigger.
+        /// Only use for passive recovery, not active treatments with additional effects.
+        /// Mixed damage/healing must still run, even if its total is zero or negative.
+        /// </summary>
+        public bool CanSkipPassiveHealing(EntityUid uid, DamageSpecifier healing,
+            DamageableComponent? damageable = null, bool doPartDamage = true)
+        {
+            if (healing.AnyPositive() || !_damageableQuery.Resolve(uid, ref damageable, false)
+                || HasMatchingDamage(damageable, healing))
+                return false;
+
+            // The health pool can be full while individual limbs are still injured.
+            // Match the body-part routing used by TryChangeDamage before skipping it.
+            if (doPartDamage && HasComp<BodyComponent>(uid) && HasComp<TargetingComponent>(uid))
+            {
+                foreach (var part in _body.GetBodyChildren(uid))
+                {
+                    if (_damageableQuery.TryComp(part.Id, out var partDamage)
+                        && HasMatchingDamage(partDamage, healing))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool HasMatchingDamage(DamageableComponent damageable, DamageSpecifier healing)
+        {
+            foreach (var (type, amount) in healing.DamageDict)
+            {
+                // Zero-valued entries can still enforce a configured damage cap.
+                if (amount <= FixedPoint2.Zero && damageable.Damage.DamageDict.TryGetValue(type, out var damage)
+                    && damage > FixedPoint2.Zero)
+                    return true;
+            }
+
+            return false;
         }
         //TODO: due for a massssssive refactor
         /// <summary>

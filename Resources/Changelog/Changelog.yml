@@ -14959,3 +14959,10 @@ Entries:
   id: 6657
   time: '2026-11-13T16:07:12.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/191
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: Reduced background processing from unused holopad menus.
+  id: 6658
+  time: '2026-11-15T11:12:52.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/198

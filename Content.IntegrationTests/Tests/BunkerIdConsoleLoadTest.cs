@@ -18,8 +18,9 @@ namespace Content.IntegrationTests.Tests;
 [TestFixture]
 public sealed class BunkerIdConsoleLoadTest
 {
-    [Test]
-    public async Task TerminalWithDecorativeIdLoads()
+    [TestCase(false)]
+    [TestCase(true)]
+    public async Task TerminalWithDecorativeIdLoads(bool backgroundSave)
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
@@ -46,7 +47,27 @@ public sealed class BunkerIdConsoleLoadTest
             Assert.That(entMan.HasComponent<IdCardComponent>(card), Is.False, "card should now be decorative");
 
             using var writer = new StringWriter();
-            Assert.That(loader.TrySaveGrid(grid.Owner, writer), "grid should save");
+            if (backgroundSave)
+            {
+                var folder = Path.Combine(Path.GetTempPath(), "bunker-roundtrip-" + Guid.NewGuid().ToString("N"));
+                try
+                {
+                    var (snapshot, category) = loader.SerializeEntitiesRecursive([grid.Owner],
+                        new SerializationOptions { Category = FileCategory.Grid, ExpectPreInit = false });
+                    Assert.That(category, Is.EqualTo(FileCategory.Grid));
+                    var saves = new BunkerSaveQueue();
+                    var key = new string('a', 64);
+                    saves.Enqueue(key, snapshot);
+                    foreach (var result in saves.Flush(folder)) Assert.That(result.Error, Is.Null);
+                    writer.Write(File.ReadAllText(BunkerSaveQueue.SafeFile(folder, BunkerSaveQueue.ReadManifest(folder)[key])));
+                }
+                finally
+                {
+                    if (Directory.Exists(folder)) Directory.Delete(folder, true);
+                }
+            }
+            else
+                Assert.That(loader.TrySaveGrid(grid.Owner, writer), "grid should save");
 
             using var reader = new StringReader(writer.ToString());
             Entity<MapComponent>? loadedMap = null;

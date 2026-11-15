@@ -5,7 +5,6 @@ using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Atmos.EntitySystems;
@@ -83,6 +82,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         public string OwnerName = string.Empty;
         public TimeSpan NextVisitRequest;
         public TimeSpan? EmptySince;
+        public bool SaveQueued;
     }
 
     private readonly Dictionary<EntityUid, Identity> _identities = new();
@@ -91,6 +91,8 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     private readonly HashSet<EntityUid> _queued = new();
     private readonly HashSet<EntityUid> _cryoBypass = new();
     private readonly HashSet<EntityUid> _forcedExits = new();
+    private readonly Queue<Room> _saveRequests = new();
+    private readonly BunkerSaveQueue _saves = new();
     private EntityUid? _savingGrid;
     private TimeSpan _nextScan;
     private bool _stopping;
@@ -185,35 +187,45 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-        // At most one room is loaded per update, with duplicate requests coalesced.
-        if (_loads.TryDequeue(out var request))
+        if (_stopping) return;
+        if (_saves.HasWork) ReportSave(_saves.Update(Folder));
+        // Capture at most one vacant room per tick, outside the exit/teleport event.
+        // Do not stack a normal room load or unload on the same tick as a capture.
+        var roomWork = CaptureQueuedSave();
+        if (!roomWork && _loads.TryDequeue(out var request))
         {
             _queued.Remove(request.User);
             if (CanUse(request.Hatch, request.User)) Enter(request.Hatch, request.User);
+            roomWork = true;
         }
-        if (_time.CurTime < _nextScan || _stopping) return;
+        if (_time.CurTime < _nextScan) return;
         _nextScan = _time.CurTime + TimeSpan.FromSeconds(2);
         UpdateAdminInspections();
         ProcessForcedExits();
         UpdateVisitRequests();
         EvictUnattendedGhosts();
         foreach (var uid in _identities.Keys.Where(uid => !Exists(uid)).ToArray()) _identities.Remove(uid);
+        // Scan each occupant component once for all rooms, rather than once per room.
+        var occupiedMaps = OccupiedMaps();
         foreach (var room in _rooms.Values)
         {
-            if (Occupied(room)) room.EmptySince = null;
+            if (occupiedMaps.Contains(room.Map)) room.EmptySince = null;
             else room.EmptySince ??= _time.CurTime;
         }
         var empty = _rooms.Values.Where(r => r.EmptySince is {} since && _time.CurTime - since >= TimeSpan.FromSeconds(10)).ToArray();
         if (empty.Length > 0)
         {
-            // The last occupant's exit already attempted the save. Unload without saving
-            // again, including after a failed exit save, so cleanup cannot retry or stall it.
+            // Never unload while a snapshot/publication is pending. A failed save is still
+            // attempted only once: preserve the previous manifest and do not restart retries.
             foreach (var room in empty)
             {
+                if (roomWork) break;
+                if (room.SaveQueued || _saves.Contains(room.Key)) continue;
                 // Recheck before unloading. Never delete an occupied room or its bodies.
                 if (Occupied(room)) continue;
                 _rooms.Remove(room.Key);
                 QueueDel(room.Map);
+                roomWork = true;
             }
         }
     }
@@ -234,6 +246,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
             return;
         }
         var key = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(identity.Account + ":" + profile))).ToLowerInvariant();
+        EntityUid? loadingMap = null;
         try
         {
             if (!_rooms.TryGetValue(key, out var room))
@@ -250,11 +263,13 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
                     if (!_loader.TryLoadGrid(reader, filename, out var loadedMap, out var loadedGrid,
                         new DeserializationOptions { InitializeMaps = true })) throw new IOException("Bunker grid could not be loaded.");
                     map = loadedMap.Value.Owner;
+                    loadingMap = map;
                     grid = loadedGrid.Value.Owner;
                 }
                 else
                 {
                     map = _maps.CreateMap(out var mapId);
+                    loadingMap = map;
                     var created = _maps.CreateGridEntity(mapId);
                     grid = created.Owner;
                     var roof = EnsureComp<RoofComponent>(grid);
@@ -294,6 +309,8 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
                 _gravity.EnableGravity(grid);
                 room = new Room(key, map, grid, hatch);
                 _rooms.Add(key, room);
+                // From here the registered room owns the map, including if teleporting fails.
+                loadingMap = null;
             }
             room.Hatch = hatch;
             _visitorHatches.Remove(user);
@@ -304,6 +321,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         }
         catch (Exception e)
         {
+            if (loadingMap is { } incompleteMap && Exists(incompleteMap)) QueueDel(incompleteMap);
             Log.Error($"Could not open bunker {key}: {e}");
             Notice(user, "Your room could not be loaded. Your previous save has been preserved.");
         }
@@ -355,7 +373,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         MoveWithDraggedItem(user, Transform(hatch).Coordinates);
         if (Transform(user).MapUid == room.Map) return false;
         _visitorHatches.Remove(user);
-        if (!Occupied(room)) SaveRooms(new[] { room });
+        if (!Occupied(room)) QueueSave(room);
         return true;
     }
 
@@ -461,6 +479,24 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         || HasOccupant<MobStateComponent>(room.Map)
         || HasOccupant<MindContainerComponent>(room.Map);
 
+    private HashSet<EntityUid> OccupiedMaps()
+    {
+        var maps = new HashSet<EntityUid>();
+        if (_rooms.Count == 0) return maps;
+        AddOccupantMaps<ActorComponent>(maps);
+        AddOccupantMaps<GhostComponent>(maps);
+        AddOccupantMaps<MobStateComponent>(maps);
+        AddOccupantMaps<MindContainerComponent>(maps);
+        return maps;
+    }
+
+    private void AddOccupantMaps<T>(HashSet<EntityUid> maps) where T : Component
+    {
+        var query = EntityQueryEnumerator<T, TransformComponent>();
+        while (query.MoveNext(out _, out _, out var transform))
+            if (transform.MapUid is { } map) maps.Add(map);
+    }
+
     private bool HasOccupant<T>(EntityUid map) where T : Component
     {
         var query = EntityQueryEnumerator<T, TransformComponent>();
@@ -491,78 +527,8 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     }
 
     private string Folder => Path.Combine(_resources.UserData.RootDir ?? throw new IOException("Server storage unavailable."), "reclamation_bunkers");
-    private string SafeFile(string filename)
-    {
-        if (filename.Length != 101 || filename[64] != '_' || !filename.EndsWith(".yml", StringComparison.Ordinal)
-            || filename.Take(64).Concat(filename.Skip(65).Take(32)).Any(c => !Uri.IsHexDigit(c)))
-            throw new IOException("Invalid bunker snapshot filename.");
-        return Path.Combine(Folder, filename);
-    }
-    private Dictionary<string, string> ReadManifest()
-    {
-        var path = Path.Combine(Folder, "manifest.json");
-        return File.Exists(path) ? JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(path))
-            ?? throw new IOException("Invalid bunker manifest.") : new();
-    }
-
-    /// <summary>Publish all active rooms in one manifest transaction, avoiding cross-room snapshot duplication.</summary>
-    public bool SaveAll(bool includeOccupied = false)
-    {
-        return SaveRooms(_rooms.Values.Where(room => includeOccupied || !Occupied(room)).ToArray());
-    }
-
-    private bool SaveRooms(Room[] roomsToSave)
-    {
-        if (roomsToSave.Length == 0) return true;
-        try
-        {
-            Directory.CreateDirectory(Folder);
-            var manifest = ReadManifest();
-            foreach (var room in roomsToSave)
-            {
-                _blueprints.PurgeTree(room.Grid);
-                var belongings = GetRoomBelongings(room.Grid);
-                // Autosaving an occupied room must never change weapons being used inside it.
-                // Only abandoned room belongings become decorations after the last occupant leaves.
-                if (!Occupied(room))
-                    foreach (var uid in belongings)
-                        if (Exists(uid)) _displays.Decommission(uid);
-                EntityManager.CullRemovedComponents();
-                _savingGrid = room.Grid;
-                using var writer = new StringWriter();
-                if (!_loader.TrySaveGrid(room.Grid, writer, new SerializationOptions
-                    { MissingEntityBehaviour = MissingEntityBehaviour.Ignore, ExpectPreInit = false }))
-                    throw new IOException("Bunker serialization failed.");
-                _savingGrid = null;
-                var yaml = BunkerSnapshotReferences.Clean(writer.ToString());
-                var filename = room.Key + "_" + Guid.NewGuid().ToString("N") + ".yml";
-                var path = SafeFile(filename);
-                File.WriteAllText(path, yaml, Encoding.UTF8);
-                manifest[room.Key] = filename;
-            }
-            var target = Path.Combine(Folder, "manifest.json");
-            var temporary = Path.Combine(Folder, "manifest.tmp");
-            File.WriteAllText(temporary, JsonSerializer.Serialize(manifest), Encoding.UTF8);
-            if (File.Exists(target)) File.Copy(target, Path.Combine(Folder, "manifest.previous.json"), true);
-            File.Move(temporary, target, true);
-            // Keep the current and previous generation; remove only our own validated snapshots.
-            var retained = manifest.Values.ToHashSet();
-            var backup = Path.Combine(Folder, "manifest.previous.json");
-            if (File.Exists(backup)) retained.UnionWith(JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(backup))!.Values);
-            foreach (var file in Directory.EnumerateFiles(Folder, "*.yml"))
-            {
-                var name = Path.GetFileName(file);
-                if (!retained.Contains(name) && SafeFile(name) == file) File.Delete(file);
-            }
-            return true;
-        }
-        catch (Exception e)
-        {
-            Log.Error($"Bunker save failed; prior manifest is preserved. Vacant rooms will unload without retrying; unsaved progress may be lost: {e}");
-            return false;
-        }
-        finally { _savingGrid = null; }
-    }
+    private string SafeFile(string filename) => BunkerSaveQueue.SafeFile(Folder, filename);
+    private Dictionary<string, string> ReadManifest() => BunkerSaveQueue.ReadManifest(Folder);
     public void SaveBeforeShutdown()
     {
         SaveAll(includeOccupied: true);
@@ -581,6 +547,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         _loads.Clear();
         _queued.Clear();
         _forcedExits.Clear();
+        _saveRequests.Clear();
         _stopping = false;
     }
 }

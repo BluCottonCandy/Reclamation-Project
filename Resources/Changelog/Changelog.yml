@@ -14993,3 +14993,10 @@ Entries:
   id: 6661
   time: '2026-11-15T13:59:14.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/202
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: Head tissue damage can now be repaired through surgery.
+  id: 6662
+  time: '2026-11-16T12:45:23.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/203

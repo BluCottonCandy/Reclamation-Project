@@ -40,7 +40,7 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
     }
 
     public static bool SupportsTissueRepair(BodyPartType type)
-        => type is BodyPartType.Torso or BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot;
+        => type is BodyPartType.Head or BodyPartType.Torso or BodyPartType.Arm or BodyPartType.Hand or BodyPartType.Leg or BodyPartType.Foot;
 
     public bool NeedsRepair(EntityUid body, EntityUid part, TraumaKind kind)
     {

@@ -5,6 +5,8 @@
   categories: [ HideSpawnMenu ]
   description: Why are you even reading this?
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: NpcFactionMember
     factions:
       - SimpleNeutral

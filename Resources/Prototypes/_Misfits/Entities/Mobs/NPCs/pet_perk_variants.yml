@@ -442,6 +442,8 @@
   categories: [ HideSpawnMenu ]
   description: A massive irradiated crab, somehow your companion.
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: NpcFactionMember
     factions:
     - SimpleNeutral
@@ -473,6 +475,8 @@
   categories: [ HideSpawnMenu ]
   description: A horrific FEV abomination, somehow your companion.
   components:
+  - type: NpcNutrition
+    needsFood: true
   - type: NpcFactionMember
     factions:
     - SimpleNeutral

@@ -45,6 +45,7 @@ public sealed class HealingSystem : EntitySystem
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
     [Dependency] private readonly SharedSpecialSystem _special = default!;
+    [Dependency] private readonly Content.Server._ReclamationProject.Medical.TraumaSystem _trauma = default!; // #Reclamation Project
 
     public override void Initialize()
     {
@@ -95,6 +96,12 @@ public sealed class HealingSystem : EntitySystem
         // Restores missing blood
         if (healing.ModifyBloodLevel != 0)
             _bloodstreamSystem.TryModifyBloodLevel(entity.Owner, healing.ModifyBloodLevel * intelMultiplier);
+
+        // #Reclamation Project - blood packs also slow internal bleeding, so a medic can keep someone alive until surgery.
+        if (healing.ModifyBloodLevel > 0 &&
+            _trauma.ReduceInternalBleeding(entity.Owner,
+                Content.Server._ReclamationProject.Medical.TraumaSystem.BloodPackInternalBleedReduction * intelMultiplier))
+            _popupSystem.PopupEntity(Loc.GetString("trauma-blood-pack-stopped-internal"), entity, args.User);
 
         var healed = _damageable.TryChangeDamage(entity.Owner, healing.Damage * intelMultiplier, true, origin: args.User, canSever: false); // Shitmed Change
 
@@ -216,7 +223,8 @@ public sealed class HealingSystem : EntitySystem
             component.ModifyBloodLevel > 0 // Special case if healing item can restore lost blood...
                 && TryComp<BloodstreamComponent>(target, out var bloodstream)
                 && _solutionContainerSystem.ResolveSolution(target, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution)
-                && bloodSolution.Volume < bloodSolution.MaxVolume; // ...and there is lost blood to restore.
+                && bloodSolution.Volume < bloodSolution.MaxVolume // ...and there is lost blood to restore.
+            || component.ModifyBloodLevel > 0 && _trauma.HasInternalBleeding(target); // #Reclamation Project - or internal bleeding to slow
 
         if (!anythingToDo)
         {

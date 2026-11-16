@@ -2,7 +2,8 @@ trauma-report-heading = Structural injury scan:
 trauma-report-healthy = No fractures or internal injuries detected.
 trauma-report-fracture = { $part }: bone healing { $healing }% (100% = mended).
 trauma-report-splinted = { $part }: splinted; bone healing { $healing }%.
-trauma-report-bleeding = Internal bleeding: { $rate } units of blood per second. Surgery can stop the bleeding.
+trauma-report-bleeding = Internal bleeding: { $rate } units of blood per second. "Repair internal bleeding" surgery on the chest stops it; blood packs slow it.
+trauma-blood-pack-stopped-internal = The internal bleeding has stopped.
 trauma-report-organ = { $organ }: { $health }/{ $maximum } · { $status }
 trauma-organ-lungs = Lungs
 trauma-organ-heart = Heart

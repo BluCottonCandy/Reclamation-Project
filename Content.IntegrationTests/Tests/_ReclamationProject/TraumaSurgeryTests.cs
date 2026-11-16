@@ -18,16 +18,17 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture, NonParallelizable]
 public sealed class TraumaSurgeryTests
 {
-    [TestCase(TraumaKind.LimbDamage)]
-    [TestCase(TraumaKind.Fracture)]
-    [TestCase(TraumaKind.InternalBleeding)]
-    [TestCase(TraumaKind.Lungs)]
-    [TestCase(TraumaKind.Heart)]
-    [TestCase(TraumaKind.Liver)]
-    [TestCase(TraumaKind.Kidneys)]
-    [TestCase(TraumaKind.Eyes)]
-    [TestCase(TraumaKind.Stomach)]
-    public async Task InjuryCanBeRepairedThroughRealToolDoAfters(TraumaKind kind)
+    [TestCase(TraumaKind.LimbDamage, BodyPartType.Arm)]
+    [TestCase(TraumaKind.LimbDamage, BodyPartType.Head)]
+    [TestCase(TraumaKind.Fracture, BodyPartType.Arm)]
+    [TestCase(TraumaKind.InternalBleeding, BodyPartType.Torso)]
+    [TestCase(TraumaKind.Lungs, BodyPartType.Torso)]
+    [TestCase(TraumaKind.Heart, BodyPartType.Torso)]
+    [TestCase(TraumaKind.Liver, BodyPartType.Torso)]
+    [TestCase(TraumaKind.Kidneys, BodyPartType.Torso)]
+    [TestCase(TraumaKind.Eyes, BodyPartType.Head)]
+    [TestCase(TraumaKind.Stomach, BodyPartType.Torso)]
+    public async Task InjuryCanBeRepairedThroughRealToolDoAfters(TraumaKind kind, BodyPartType partType)
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -48,17 +49,18 @@ public sealed class TraumaSurgeryTests
             patient = em.SpawnTraumaPatient(origin);
             doctor = em.SpawnTraumaPatient(origin.Offset(new Vector2(1.3f, 0)));
             var body = em.System<SharedBodySystem>();
-            part = body.GetBodyChildrenOfType(patient,
-                kind is TraumaKind.Fracture or TraumaKind.LimbDamage ? BodyPartType.Arm : kind == TraumaKind.Eyes ? BodyPartType.Head : BodyPartType.Torso).First().Id;
+            part = body.GetBodyChildrenOfType(patient, partType).First().Id;
             var trauma = em.System<TraumaSystem>();
             if (kind == TraumaKind.LimbDamage)
             {
-                Assert.That(trauma.GetReport(patient), Does.Not.Contain("% to failure"),
-                    "Healthy limbs should not clutter the scan with failure percentages.");
+                var partName = em.GetComponent<MetaDataComponent>(part).EntityName;
+                Assert.That(trauma.GetReport(patient), Does.Not.Contain(partName),
+                    "Healthy parts should not clutter the injury scan.");
                 em.System<DamageableSystem>().SetAllDamage(part, em.GetComponent<DamageableComponent>(part), 3);
                 Assert.That(em.GetComponent<BodyPartComponent>(part).Enabled, Is.True,
                     "Early tissue repair must be available before limb failure.");
-                Assert.That(trauma.GetReport(patient), Does.Contain("% to failure"));
+                if (partType == BodyPartType.Arm)
+                    Assert.That(trauma.GetReport(patient), Does.Contain(partName));
             }
             else if (kind == TraumaKind.Fracture) trauma.Fracture(part);
             else if (kind == TraumaKind.InternalBleeding) trauma.AddInternalBleeding(patient, .5f);

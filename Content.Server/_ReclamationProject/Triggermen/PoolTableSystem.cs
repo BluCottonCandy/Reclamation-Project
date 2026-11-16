@@ -13,17 +13,25 @@ public sealed partial class PoolTableComponent : Component
     public int Turn;
     public bool Moving;
     public bool Finished;
-    public bool Pocketed;
+    public bool PocketedSolids;
+    public bool PocketedStripes;
     public bool Scratch;
+    public bool BallInHand;
     public bool? FirstPlayerSolids;
     public bool LegalEight;
+    public int FirstHit = -1;
+    public int FirstPocketed = -1;
     public float Elapsed;
+    public float BroadcastElapsed;
+    public string Result = "";
 }
 
 public sealed class PoolTableSystem : EntitySystem
 {
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    private const float Step = 0.01f;
     private static readonly Vector2[] Pockets = [new(0,0), new(240,0), new(480,0), new(0,240), new(240,240), new(480,240)];
+    private static readonly int[] RackOrder = [1, 9, 2, 10, 8, 3, 11, 4, 12, 5, 6, 13, 7, 14, 15];
 
     public override void Initialize()
     {
@@ -31,6 +39,12 @@ public sealed class PoolTableSystem : EntitySystem
         {
             subs.Event<PoolMove>(OnMove);
             subs.Event<BoundUIClosedEvent>(OnClose);
+            subs.Event<BoundUIOpenedEvent>((uid, table, _) =>
+            {
+                if (table.Players.Count == 0)
+                    Reset(table);
+                Publish(uid, table);
+            });
         });
     }
 
@@ -39,36 +53,61 @@ public sealed class PoolTableSystem : EntitySystem
         if (!table.Players.Remove(args.Actor))
             return;
 
-        table.Turn = 0;
-        table.FirstPlayerSolids = null;
-        if (table.Players.Count == 0)
-            Reset(table);
+        // A departing player's shot must not continue under somebody else's turn.
+        Reset(table);
         Publish(uid, table);
     }
 
     private void OnMove(EntityUid uid, PoolTableComponent table, PoolMove args)
     {
-        if (args.Join)
+        if (args.Action == PoolAction.Join)
         {
-            if (table.Players.Count == 0 || (table.Finished && table.Players.Contains(args.Actor)))
-                Reset(table);
-            if (table.Players.Count < 2 && !table.Players.Contains(args.Actor))
-                table.Players.Add(args.Actor);
+            if (table.Moving || table.Players.Count == 2 || table.Players.Contains(args.Actor))
+                return;
+            table.Players.Add(args.Actor);
+            Reset(table);
+            Publish(uid, table);
+            return;
+        }
+
+        if (args.Action == PoolAction.Rack)
+        {
+            if (table.Moving || !table.Players.Contains(args.Actor) || (table.Players.Count == 2 && !table.Finished))
+                return;
+            Reset(table);
             Publish(uid, table);
             return;
         }
 
         if (table.Moving || table.Finished || table.Players.Count == 0 ||
-            table.Players[table.Turn] != args.Actor || args.Power is < 1 or > 100 ||
+            table.Players[table.Turn] != args.Actor ||
             !float.IsFinite(args.Point.X) || !float.IsFinite(args.Point.Y))
             return;
 
+        if (args.Action == PoolAction.PlaceCue)
+        {
+            if (!table.BallInHand || !CanPlaceCue(table, args.Point))
+                return;
+            table.Balls[0] = args.Point;
+            table.BallInHand = false;
+            table.Result = "";
+            Publish(uid, table);
+            return;
+        }
+        if (args.Action != PoolAction.Shoot || table.BallInHand || args.Power is < 1 or > 100)
+            return;
         var direction = Vector2.Clamp(args.Point, Vector2.Zero, new Vector2(480,240)) - table.Balls[0];
         if (direction.LengthSquared() < 1)
             return;
 
-        table.Pocketed = table.Scratch = false;
-        table.Velocity[0] = Vector2.Normalize(direction) * (40 + args.Power * 4);
+        table.PocketedSolids = table.PocketedStripes = table.Scratch = false;
+        table.FirstHit = table.FirstPocketed = -1;
+        table.LegalEight = table.Players.Count < 2
+            ? GroupCleared(table, true) && GroupCleared(table, false)
+            : table.FirstPlayerSolids is {} solids && GroupCleared(table, solids == (table.Turn == 0));
+        table.Elapsed = table.BroadcastElapsed = 0;
+        table.Result = "";
+        table.Velocity[0] = Vector2.Normalize(direction) * (40 + args.Power * 6);
         table.Moving = true;
         Publish(uid, table);
     }
@@ -76,16 +115,18 @@ public sealed class PoolTableSystem : EntitySystem
     private static void Reset(PoolTableComponent table)
     {
         table.Turn = 0;
-        table.Moving = table.Finished = false;
+        table.Moving = table.Finished = table.Scratch = table.BallInHand = false;
+        table.PocketedSolids = table.PocketedStripes = table.LegalEight = false;
+        table.FirstHit = table.FirstPocketed = -1;
         table.FirstPlayerSolids = null;
-        table.Elapsed = 0;
+        table.Elapsed = table.BroadcastElapsed = 0;
+        table.Result = "";
         Array.Clear(table.Velocity);
         table.Balls[0] = new(115,120);
-        var index = 1;
+        var index = 0;
         for (var row = 0; row < 5; row++)
         for (var col = 0; col <= row; col++)
-            table.Balls[index++] = new(335 + row * 11, 120 + (col - row * 0.5f) * 13);
-        (table.Balls[8], table.Balls[5]) = (table.Balls[5], table.Balls[8]);
+            table.Balls[RackOrder[index++]] = new(335 + row * 11, 120 + (col - row * 0.5f) * 13);
     }
 
     public override void Update(float frameTime)
@@ -96,30 +137,71 @@ public sealed class PoolTableSystem : EntitySystem
             if (!table.Moving)
                 continue;
 
-            table.Elapsed += frameTime;
-            if (table.Elapsed < 0.05f)
-                continue;
-
-            table.Elapsed = 0;
-            for (var step = 0; step < 5; step++)
-                Advance(table);
-
-            if (table.Velocity.All(v => v == Vector2.Zero))
+            // Preserve fractional simulation time; bound catch-up after a server stall.
+            table.Elapsed += Math.Clamp(frameTime, 0, 0.25f);
+            table.BroadcastElapsed += frameTime;
+            while (table.Elapsed + 0.000001f >= Step && table.Moving)
             {
-                table.Moving = false;
-                if (table.Scratch)
-                {
-                    table.Balls[0] = new(115,120);
-                    for (var i = 0; i < 12 && table.Balls.Skip(1).Any(ball =>
-                             Vector2.DistanceSquared(ball, table.Balls[0]) < 144); i++)
-                        table.Balls[0].Y += 8;
-                }
-                if (table.Balls[8].X >= 0 && table.Players.Count == 2 && (!table.Pocketed || table.Scratch))
-                    table.Turn = 1 - table.Turn;
+                table.Elapsed = Math.Max(0, table.Elapsed - Step);
+                Advance(table);
+                if (table.Velocity.All(v => v == Vector2.Zero))
+                    FinishShot(table);
             }
-            Publish(uid, table);
+            if (!table.Moving || table.BroadcastElapsed >= 0.05f)
+            {
+                table.BroadcastElapsed %= 0.05f;
+                Publish(uid, table);
+            }
         }
     }
+
+    private void FinishShot(PoolTableComponent table)
+    {
+        table.Moving = false;
+        table.Elapsed = 0;
+        var wrongFirst = table.FirstHit < 0 || (table.LegalEight
+            ? table.FirstHit != 8
+            : table.FirstHit == 8 || (table.Players.Count == 2 && table.FirstPlayerSolids is {} firstSolids &&
+                (table.FirstHit < 8) != (firstSolids == (table.Turn == 0))));
+        var foul = table.Scratch || wrongFirst;
+        if (table.Balls[8].X < 0)
+        {
+            table.Finished = true;
+            var won = table.LegalEight && !foul;
+            table.Result = table.Players.Count == 2
+                ? $"{Name(table.Players[won ? table.Turn : 1 - table.Turn])} wins! Rack to play again."
+                : won ? "Table cleared! Rack to play again." : "Eight ball foul. Rack to try again.";
+            return;
+        }
+        if (!foul && table.Players.Count == 2 && table.FirstPocketed > 0)
+            table.FirstPlayerSolids ??= (table.FirstPocketed < 8) == (table.Turn == 0);
+        var scored = table.FirstPlayerSolids is {} solids
+            ? (solids == (table.Turn == 0) ? table.PocketedSolids : table.PocketedStripes)
+            : table.PocketedSolids || table.PocketedStripes;
+        if (table.Players.Count == 2 && (foul || !scored))
+            table.Turn = 1 - table.Turn;
+        if (!foul)
+            return;
+        table.BallInHand = true;
+        table.Result = table.Scratch ? "Scratch. " : "Foul: hit your own group first. ";
+        if (table.Balls[0].X >= 0)
+            return;
+        // Show a safe provisional spot until the next player places the cue ball.
+        for (var x = 24; x < 480; x += 24)
+        for (var y = 24; y < 240; y += 24)
+        {
+            var point = new Vector2(x, y);
+            if (!CanPlaceCue(table, point))
+                continue;
+            table.Balls[0] = point;
+            return;
+        }
+    }
+
+    private static bool CanPlaceCue(PoolTableComponent table, Vector2 point)
+        => point.X is >= 14 and <= 466 && point.Y is >= 14 and <= 226 &&
+           table.Balls.Skip(1).All(ball => ball.X < 0 || Vector2.DistanceSquared(ball, point) >= 169) &&
+           Pockets.All(pocket => Vector2.DistanceSquared(pocket, point) >= 225);
 
     private static void Advance(PoolTableComponent table)
     {
@@ -128,37 +210,29 @@ public sealed class PoolTableSystem : EntitySystem
             var p = table.Balls[i];
             if (p.X < 0)
                 continue;
-            var v = table.Velocity[i] * 0.987f;
-            p += v * 0.01f;
-            if (Pockets.Any(pocket => Vector2.DistanceSquared(p, pocket) < 160))
+            var v = table.Velocity[i] * 0.992f;
+            p += v * Step;
+            if (Pockets.Any(pocket => Vector2.DistanceSquared(p, pocket) < 196))
             {
                 table.Balls[i] = new(-1,-1);
                 table.Velocity[i] = Vector2.Zero;
                 table.Scratch |= i == 0;
-                if (i == 8)
+                if (i is not (0 or 8))
                 {
-                    table.LegalEight = table.Players.Count < 2
-                        ? table.Balls.Skip(1).All(ball => ball.X < 0)
-                        : table.FirstPlayerSolids is {} solids &&
-                          GroupCleared(table, solids == (table.Turn == 0));
-                }
-                else if (i != 0)
-                {
-                    if (table.Players.Count == 2)
-                        table.FirstPlayerSolids ??= (i < 8) == (table.Turn == 0);
-
-                    table.Pocketed |= table.FirstPlayerSolids is not {} firstSolids ||
-                        (i < 8) == (firstSolids == (table.Turn == 0));
+                    if (table.FirstPocketed < 0)
+                        table.FirstPocketed = i;
+                    table.PocketedSolids |= i < 8;
+                    table.PocketedStripes |= i > 8;
                 }
                 continue;
             }
 
             if ((p.X < 6 && v.X < 0) || (p.X > 474 && v.X > 0))
-                v.X *= -0.8f;
+                v.X *= -0.88f;
             if ((p.Y < 6 && v.Y < 0) || (p.Y > 234 && v.Y > 0))
-                v.Y *= -0.8f;
+                v.Y *= -0.88f;
             table.Balls[i] = Vector2.Clamp(p, new(6,6), new(474,234));
-            table.Velocity[i] = v.LengthSquared() > 9 ? v : Vector2.Zero;
+            table.Velocity[i] = v.LengthSquared() > 16 ? v : Vector2.Zero;
         }
 
         for (var i = 0; i < 16; i++)
@@ -168,15 +242,17 @@ public sealed class PoolTableSystem : EntitySystem
                 continue;
             var delta = table.Balls[j] - table.Balls[i];
             var length = delta.Length();
-            if (length >= 12 || length < 0.01f)
+            if (length >= 12)
                 continue;
-            var normal = delta / length;
+            var normal = length < 0.001f ? Vector2.UnitX : delta / length;
             var correction = normal * ((12 - length) / 2);
             table.Balls[i] -= correction;
             table.Balls[j] += correction;
             var speed = Vector2.Dot(table.Velocity[i] - table.Velocity[j], normal);
             if (speed <= 0)
                 continue;
+            if (i == 0 && table.FirstHit < 0)
+                table.FirstHit = j;
             table.Velocity[i] -= normal * speed;
             table.Velocity[j] += normal * speed;
         }
@@ -188,19 +264,15 @@ public sealed class PoolTableSystem : EntitySystem
     private void Publish(EntityUid uid, PoolTableComponent table)
     {
         var status = table.Players.Count == 0 ? "Join to start solo practice." :
-            table.Moving ? "Balls are rolling…" : $"Turn: {Name(table.Players[table.Turn])}";
+            table.Moving ? "Balls are rolling..." : $"Turn: {Name(table.Players[table.Turn])}";
         if (!table.Moving && table.Players.Count == 2 && table.FirstPlayerSolids is {} firstSolids)
             status += firstSolids == (table.Turn == 0) ? " (solids)" : " (stripes)";
-        if (!table.Moving && table.Players.Count > 0 && table.Balls[8].X < 0)
-        {
-            table.Finished = true;
-            var won = table.LegalEight && !table.Scratch;
-            status = table.Players.Count == 2
-                ? $"{Name(table.Players[won ? table.Turn : 1 - table.Turn])} wins! Join / rack to play again."
-                : won ? "Table cleared! Join / rack to play again."
-                    : "Eight ball foul. Join / rack to play again.";
-        }
-
-        _ui.SetUiState(uid, PoolKey.Key, new PoolState((Vector2[]) table.Balls.Clone(), status));
+        if (table.BallInHand)
+            status = table.Result + status + " â€” ball in hand.";
+        if (table.Finished)
+            status = table.Result;
+        _ui.SetUiState(uid, PoolKey.Key, new PoolState((Vector2[]) table.Balls.Clone(), status,
+            table.Players.Select(player => GetNetEntity(player)).ToArray(), table.Turn,
+            table.Moving, table.Finished, table.BallInHand));
     }
 }

@@ -22,8 +22,12 @@ public sealed partial class GamblingMachineComponent : Component
     [DataField] public bool Blackjack;
     public EntityUid? BlackjackPlayer;
     public int BlackjackBet;
+    public bool RouletteSpinning;
     public List<int> PlayerCards = [];
     public List<int> DealerCards = [];
+    // Shared by the player and dealer for this hand. Card IDs include the suit,
+    // so each physical card can only be dealt once before the next shuffle.
+    public Queue<int> BlackjackDeck = new();
 }
 
 public sealed class GamblingMachineSystem : EntitySystem
@@ -89,8 +93,16 @@ public sealed class GamblingMachineSystem : EntitySystem
             machine.Bank += bet;
             machine.BlackjackBet = bet;
             machine.BlackjackPlayer = user;
-            machine.PlayerCards = [DrawCard(), DrawCard()];
-            machine.DealerCards = [DrawCard(), DrawCard()];
+            var deck = Enumerable.Range(0, 52).ToArray();
+            _random.Shuffle(deck.AsSpan());
+            machine.BlackjackDeck = new Queue<int>(deck);
+            machine.PlayerCards.Clear();
+            machine.DealerCards.Clear();
+            for (var i = 0; i < 2; i++)
+            {
+                machine.PlayerCards.Add(DrawCard(machine));
+                machine.DealerCards.Add(DrawCard(machine));
+            }
             if (Total(machine.PlayerCards) == 21)
                 FinishBlackjack(uid, machine, true);
             else
@@ -102,7 +114,7 @@ public sealed class GamblingMachineSystem : EntitySystem
             return;
 
         if (!args.Hold)
-            machine.PlayerCards.Add(DrawCard());
+            machine.PlayerCards.Add(DrawCard(machine));
 
         var total = Total(machine.PlayerCards);
         if (args.Hold || total >= 21)
@@ -111,7 +123,7 @@ public sealed class GamblingMachineSystem : EntitySystem
             ShowBlackjack(uid, machine, true, "");
     }
 
-    private int DrawCard() => _random.Next(52);
+    private static int DrawCard(GamblingMachineComponent machine) => machine.BlackjackDeck.Dequeue();
 
     private void FinishBlackjack(EntityUid uid, GamblingMachineComponent machine, bool stand)
     {
@@ -120,7 +132,7 @@ public sealed class GamblingMachineSystem : EntitySystem
 
         machine.BlackjackPlayer = null;
         while (stand && Total(machine.DealerCards) < 17)
-            machine.DealerCards.Add(DrawCard());
+            machine.DealerCards.Add(DrawCard(machine));
 
         var player = Total(machine.PlayerCards);
         var dealer = Total(machine.DealerCards);
@@ -205,25 +217,15 @@ public sealed class GamblingMachineSystem : EntitySystem
 
     private void PlaySpinSounds(EntityUid uid, int payout, bool jackpot)
     {
-        var click = new SoundPathSpecifier("/Audio/_RMC/Machines/click.ogg");
-        for (var tick = 0; tick < 10; tick++)
-            PlayAfter(tick * 140, click);
-
-        if (payout > 0)
+        var parameters = AudioParams.Default.WithVolume(-5f).WithMaxDistance(8f);
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/_ReclamationProject/Casino/slots_spin.ogg"), uid, parameters);
+        // One finished reel recording and one result cue, rather than ten timers.
+        var result = jackpot ? "slots_jackpot" : payout > 0 ? "slots_win" : "slots_lose";
+        Timer.Spawn(TimeSpan.FromMilliseconds(1450), () =>
         {
-            PlayAfter(1400, new SoundPathSpecifier(jackpot
-                ? "/Audio/Machines/vending_jingle.ogg"
-                : "/Audio/Machines/ding.ogg"));
-        }
-
-        void PlayAfter(int milliseconds, SoundSpecifier sound)
-        {
-            Timer.Spawn(TimeSpan.FromMilliseconds(milliseconds), () =>
-            {
-                if (!TerminatingOrDeleted(uid))
-                    _audio.PlayPvs(sound, uid);
-            });
-        }
+            if (!TerminatingOrDeleted(uid))
+                _audio.PlayPvs(new SoundPathSpecifier($"/Audio/_ReclamationProject/Casino/{result}.ogg"), uid, parameters);
+        });
     }
 
     private bool CanManageHouse(EntityUid user)
@@ -236,13 +238,13 @@ public sealed class GamblingMachineSystem : EntitySystem
         if (!args.CanInteract || !args.CanAccess || !CanManageHouse(user))
             return;
 
-        if (machine.Bank > 0)
+        if (machine.Bank > 0 && !machine.RouletteSpinning)
             args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString("triggermen-slots-withdraw", ("amount", machine.Bank)),
                 Act = () =>
                 {
-                    if (!CanManageHouse(user) || TerminatingOrDeleted(uid) || machine.Bank <= 0 || machine.BlackjackPlayer != null)
+                    if (!CanManageHouse(user) || TerminatingOrDeleted(uid) || machine.Bank <= 0 || machine.BlackjackPlayer != null || machine.RouletteSpinning)
                         return;
 
                     var amount = machine.Bank;

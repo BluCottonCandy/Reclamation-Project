@@ -12,20 +12,20 @@
     gloves: N14ClothingHandsGlovesBlackLeather
     back: N14ClothingBackpackSatchelExplorer
     id: TriggermenBossID
-    belt: N14WeaponPistol45Colt
+    belt: TriggermenHeavyColt
   storage:
     back:
     - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
-    - N14MagazinePistol45
-    - N14MagazinePistol45
-    - MagazineBox45
+    - N14MagazinePistol12mm
+    - N14MagazinePistol12mm
+    - N14AmmoBox127
     - Magazine308Rifle
     - Magazine308Rifle
     - MagazineBox308
   inhand:
   - N14WeaponLMGAutoRifle
-  - N14BaseBallBat
+  - TriggermenWireBat
 
 - type: startingGear
   parent: TriggermenLeadershipGear
@@ -47,19 +47,20 @@
     gloves: N14ClothingHandsGlovesBlackLeather
     back: N14ClothingBackpackSatchelExplorer
     id: TriggermenEnforcerID
-    belt: N14WeaponPistol45Colt
+    belt: TriggermenHeavyColt
   storage:
     back:
     - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
-    - N14MagazinePistol45
-    - N14MagazinePistol45
+    - N14MagazinePistol12mm
+    - N14MagazinePistol12mm
+    - N14AmmoBox127
+    - TriggermenMagazine45Drum
+    - TriggermenMagazine45Drum
     - MagazineBox45
-    - Magazine45SubMachineGun
-    - Magazine45SubMachineGun
   inhand:
-  - N14WeaponSMG45
-  - N14BaseBallBat
+  - TriggermenSMG45
+  - TriggermenWireBat
 
 - type: startingGear
   id: TriggermanGear
@@ -74,16 +75,16 @@
     gloves: N14ClothingHandsGlovesBlackLeather
     back: N14ClothingBackpackSatchelExplorer
     id: TriggermanID
-    belt: N14WeaponPistol45Colt
+    belt: TriggermenHeavyColt
   storage:
     back:
     - TriggermenBrassKnuckles
     - N14BoxPlasticFilledWastelander
-    - N14MagazinePistol45
-    - N14MagazinePistol45
-    - MagazineBox45
+    - N14MagazinePistol12mm
+    - N14MagazinePistol12mm
+    - N14AmmoBox127
   inhand:
-  - N14BaseBallBat
+  - TriggermenWireBat
 
 - type: startingGear
   parent: TriggermenEnforcerGear

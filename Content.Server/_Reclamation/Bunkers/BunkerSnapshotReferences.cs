@@ -1,5 +1,8 @@
 using System.IO;
 using System.Linq;
+using Robust.Shared.Serialization.Markdown.Mapping;
+using Robust.Shared.Serialization.Markdown.Sequence;
+using Robust.Shared.Serialization.Markdown.Value;
 using YamlDotNet.RepresentationModel;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
@@ -9,6 +12,47 @@ namespace Content.Server._Reclamation.Bunkers;
 /// <summary>Do not persist runtime links to players, stations, maps or audio streams outside a room.</summary>
 internal static class BunkerSnapshotReferences
 {
+    /// <summary>Clean an owned snapshot before emitting YAML, avoiding a full parse/write round trip.</summary>
+    public static void Clean(MappingDataNode snapshot)
+    {
+        if (!snapshot.TryGet("entities", out var groupsNode) || groupsNode is not SequenceDataNode groups)
+            return;
+        foreach (var group in groups.Sequence.OfType<MappingDataNode>())
+        {
+            if (!group.TryGet("entities", out var entitiesNode) || entitiesNode is not SequenceDataNode entities)
+                continue;
+            foreach (var entity in entities.Sequence.OfType<MappingDataNode>())
+            {
+                if (!entity.TryGet("components", out var componentsNode) || componentsNode is not SequenceDataNode components)
+                    continue;
+                foreach (var component in components.Sequence.OfType<MappingDataNode>())
+                {
+                    if (!component.TryGet("type", out var typeNode) || typeNode is not ValueDataNode type)
+                        continue;
+                    switch (type.Value)
+                    {
+                        case "Jukebox":
+                            component.Remove("audioStream");
+                            break;
+                        case "Store":
+                            component.Remove("startingMap");
+                            if (component.TryGet("boughtEntities", out var boughtNode) && boughtNode is SequenceDataNode bought)
+                                for (var i = bought.Count - 1; i >= 0; i--)
+                                    if (bought[i] is ValueDataNode { Value: "invalid" }) bought.RemoveAt(i);
+                            break;
+                        case "NanoChatCartridge":
+                            component.Remove("station");
+                            component.Remove("card");
+                            break;
+                        case "UserInterface":
+                            component.Remove("actors");
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
     public static string Clean(string snapshot)
     {
         var yaml = new YamlStream();

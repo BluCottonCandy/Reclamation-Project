@@ -15000,3 +15000,10 @@ Entries:
   id: 6662
   time: '2026-11-16T12:45:23.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/203
+- author: LordCheezit and Davisrocket
+  changes:
+    - type: Add
+      message: Added Trieste Flags (sprite by LordCheezit)
+  id: 6663
+  time: '2026-11-17T16:24:45.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/204

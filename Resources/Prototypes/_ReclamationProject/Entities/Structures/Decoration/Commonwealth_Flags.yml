@@ -28,3 +28,33 @@
   - type: Construction
     graph: ReclamationFlagMM
     node: flagMM
+
+#MARK:Trieste
+#Wallmounts (Small Flags)
+- type: entity
+  parent: N14SignBase
+  id: ReclamationFlagWallTrieste
+  name: Flag of the Trieste Company
+  suffix: Trieste
+  description: The banner of the Trieste Company. Seafaring entrepreneurs known for their vast knowledge and skill in trade and repair.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/Wallmounts/trieste_flag_wall.rsi
+    state: flag_trieste
+  - type: Construction
+    graph: ReclamationFlagSmallTC
+    node: flagTCs
+
+#Flagpoles (Large Flags)
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: ReclamationDecorationFlagTrieste
+  name: Flag of the Trieste Company
+  description: The banner of the Trieste Company, a collection of tradesmen and repairmen, they seek out odd jobs and gear in order to survive and help others in the Commonwealth.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/Decoration/Flagpoles/trieste_flagpole.rsi
+    state: triesteflagpole
+  - type: Construction
+    graph: ReclamationFlagTC
+    node: flagTC

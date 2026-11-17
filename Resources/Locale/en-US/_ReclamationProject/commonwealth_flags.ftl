@@ -1,4 +1,8 @@
 ent-ReclamationFlagWallMinutemen = Flag of the Commonwealth Minutemen
-    .desc = The banner of the Children of Atom cult. They believe that radiation is a gift that will help its followers ascend, as it transforms the land and the life within it.
+    .desc = The banner of the Commonwealth Minutemen. They believe banding together can save them from the dangers of the Commonwealth.
 ent-ReclamationDecorationFlagMinutemen = Flag of the Commonwealth Minutemen
     .desc = The banner of the Commonwealth Minutemen, a collection of militia members focused on defending the Commonwealth at a minute's notice. Where this flag is planted, when the Minutemen are called, they will come to aid.
+ent-ReclamationFlagWallTrieste = Flag of the Trieste Company
+    .desc = The banner of the Trieste Company. Seafaring entrepreneurs known for their vast knowledge and skill in trade and repair.
+ent-ReclamationDecorationFlagTrieste = Flag of the Trieste Company
+    .desc = The banner of the Trieste Company, a collection of tradesmen and repairmen, they seek out odd jobs and gear in order to survive and help others in the Commonwealth.

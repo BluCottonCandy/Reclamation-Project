@@ -426,6 +426,31 @@
               amount: 2
             - !type:DeleteEntity
 
+- type: constructionGraph
+  id: ReclamationFlagSmallTC
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagTCs
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagTCs
+      entity: ReclamationFlagWallTrieste
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
 # Banners aka big flags
 #MARK: Flagpoles
 
@@ -449,6 +474,40 @@
 
     - node: flagMM
       entity: ReclamationDecorationFlagMinutemen
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 5
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 5
+            - !type:DeleteEntity 
+
+- type: constructionGraph
+  id: ReclamationFlagTC
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagTC
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 3
+            - material: Cloth
+              amount: 5
+              doAfter: 3
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+
+    - node: flagTC
+      entity: ReclamationDecorationFlagTrieste
       edges:
         - to: start
           steps:

@@ -15014,3 +15014,18 @@ Entries:
   id: 6664
   time: '2026-11-18T13:50:16.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/205
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Pack armor has dedicated bow and quiver slots.
+    - type: Tweak
+      message: >-
+        Rebalanced Pack, Forged, and Minutemen armor and extended the officer’s
+        storage pouch to all Minutemen vests and specialist suits.
+    - type: Fix
+      message: >-
+        Pack ghoulrillas and their king can heal and stand back up after being
+        knocked into crit.
+  id: 6665
+  time: '2026-11-18T13:50:57.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/206

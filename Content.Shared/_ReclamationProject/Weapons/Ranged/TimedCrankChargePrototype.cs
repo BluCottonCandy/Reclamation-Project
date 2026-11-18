@@ -8,6 +8,6 @@ public sealed partial class TimedCrankChargePrototype : IPrototype
 {
     [IdDataField] public string ID { get; private set; } = default!;
     [DataField(required: true)] public TimeSpan CrankDelay;
-    [DataField(required: true)] public float FireRate;
+    [DataField(required: true)] public float FireRateMultiplier;
     [DataField(required: true)] public TimeSpan HoldTime;
 }

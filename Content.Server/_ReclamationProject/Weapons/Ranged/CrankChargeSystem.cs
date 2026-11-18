@@ -38,7 +38,7 @@ public sealed partial class CrankChargeSystem : SharedCrankChargeSystem
         var query = EntityQueryEnumerator<CrankChargeComponent>();
         while (query.MoveNext(out var uid, out var crank))
         {
-            if (crank.ChargeHoldTime is not {} holdTime || crank.Charges <= 0)
+            if (crank.TimedCharge is not {} tuning || crank.Charges <= 0)
             {
                 // Old saves can contain a deadline for a gun that now holds its charge.
                 crank.NextChargeLoss = null;
@@ -46,7 +46,7 @@ public sealed partial class CrankChargeSystem : SharedCrankChargeSystem
             }
 
             // Older saved weapons can already have paid charges but no deadline.
-            var nextLoss = crank.NextChargeLoss ??= now + holdTime;
+            var nextLoss = crank.NextChargeLoss ??= now + tuning.HoldTime;
             if (now < nextLoss || DoAfter.GetStatus(crank.ActiveCrank) == DoAfterStatus.Running)
                 continue;
 

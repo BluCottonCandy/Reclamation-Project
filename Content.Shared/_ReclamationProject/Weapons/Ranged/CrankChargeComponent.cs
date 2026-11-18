@@ -39,7 +39,7 @@ public sealed partial class CrankChargeComponent : Component
     public TimeSpan CrankDelay = TimeSpan.FromSeconds(1.8);
 
     /// <summary>Set on component initialization for guns with an exact timed-crank prototype match.</summary>
-    public TimeSpan? ChargeHoldTime;
+    public TimedCrankChargePrototype? TimedCharge;
 
     [DataField(serverOnly: true, customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan? NextChargeLoss;

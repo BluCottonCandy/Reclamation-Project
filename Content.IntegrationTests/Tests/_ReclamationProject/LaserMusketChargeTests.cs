@@ -37,7 +37,6 @@ public sealed class LaserMusketChargeTests
             gun = entities.SpawnEntity(prototype, map.GridCoords);
             var hands = entities.System<SharedHandsSystem>();
             var gunComponent = entities.GetComponent<GunComponent>(gun);
-            Assert.That(gunComponent.FireRate, Is.EqualTo(shotsPerSecond));
             Assert.That(gunComponent.FireRateModified, Is.EqualTo(shotsPerSecond));
             Assert.That(hands.TryPickup(user, gun), Is.True);
             var cell = entities.System<ItemSlotsSystem>().GetItemOrNull(gun, "gun_magazine")!.Value;

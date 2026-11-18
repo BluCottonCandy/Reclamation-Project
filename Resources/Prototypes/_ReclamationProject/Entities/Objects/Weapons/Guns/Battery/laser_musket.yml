@@ -7,7 +7,7 @@
 - type: timedCrankCharge
   id: MinutemenWeaponLaserMusket
   crankDelay: 0.8333333
-  fireRate: 2
+  fireRateMultiplier: 2
   holdTime: 8
 
 - type: hitscan

@@ -1,3 +1,4 @@
+using Content.Server._ReclamationProject.Pack;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
@@ -54,6 +55,7 @@ public sealed class FoodSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly OpenableSystem _openable = default!;
+    [Dependency] private readonly PackDigestionSystem _packDigestion = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly ReactiveSystem _reaction = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -130,7 +132,7 @@ public sealed class FoodSystem : EntitySystem
             return (false, false);
 
         // Check for special digestibles
-        if (!IsDigestibleBy(food, foodComp, stomachs))
+        if (!IsDigestibleBy(target, food, foodComp, stomachs))
             return (false, false);
 
         if (!TryGetRequiredUtensils(user, foodComp, out _))
@@ -315,7 +317,15 @@ public sealed class FoodSystem : EntitySystem
             return;
         }
 
-        _reaction.DoEntityReaction(args.Target.Value, solution, ReactionMethod.Ingestion);
+        // A Pack member digests the native ingredients of raw meat before ingestion effects run.
+        var ingestion = solution;
+        if (_packDigestion.TryGetRawMeatRecipe(args.Target.Value, entity, out var recipe))
+        {
+            _packDigestion.DigestRawMeat(split, recipe);
+            ingestion = split;
+        }
+
+        _reaction.DoEntityReaction(args.Target.Value, ingestion, ReactionMethod.Ingestion);
         if (_stomach.TryTransferSolution(stomachToUse.Owner, split, stomachToUse))
         {
             var swallowed = new FoodSwallowedEvent(args.Target.Value, split);
@@ -438,7 +448,7 @@ public sealed class FoodSystem : EntitySystem
             return;
 
         // only give moths eat verb for clothes since it would just fail otherwise
-        if (!IsDigestibleBy(entity, entity.Comp, stomachs))
+        if (!IsDigestibleBy(ev.User, entity, entity.Comp, stomachs))
             return;
 
         var user = ev.User;
@@ -467,15 +477,18 @@ public sealed class FoodSystem : EntitySystem
         if (!_body.TryGetBodyOrganComponents<StomachComponent>(uid, out var stomachs))
             return false;
 
-        return IsDigestibleBy(food, foodComp, stomachs);
+        return IsDigestibleBy(uid, food, foodComp, stomachs);
     }
 
     /// <summary>
     ///     Returns true if <paramref name="stomachs"/> has a <see cref="StomachComponent.SpecialDigestible"/> that whitelists
     ///     this <paramref name="food"/> (or if they even have enough stomachs in the first place).
     /// </summary>
-    private bool IsDigestibleBy(EntityUid food, FoodComponent component, List<(StomachComponent, OrganComponent)> stomachs)
+    private bool IsDigestibleBy(EntityUid eater, EntityUid food, FoodComponent component, List<(StomachComponent, OrganComponent)> stomachs)
     {
+        if (stomachs.Count > 0 && _packDigestion.TryGetRawMeatRecipe(eater, (food, component), out _))
+            return true;
+
         var digestible = true;
 
         // Does the mob have enough stomachs?

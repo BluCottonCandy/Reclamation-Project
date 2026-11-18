@@ -40,10 +40,7 @@ public sealed class PackBowAutoloadSystem : EntitySystem
 
     public bool TryLoadNext(EntityUid user, EntityUid bow, bool onlyWhenEmpty = false)
     {
-        if (!IsBow(bow) ||
-            !_inventory.TryGetSlotEntity(user, "belt", out var quiver) ||
-            !HasComp<BowQuiverComponent>(quiver) ||
-            !TryComp<StorageComponent>(quiver, out var storage))
+        if (!IsBow(bow))
             return false;
 
         if (TryComp<BallisticAmmoProviderComponent>(bow, out var ballistic))
@@ -59,6 +56,20 @@ public sealed class PackBowAutoloadSystem : EntitySystem
         else
             return false;
 
+        return TryLoadFrom(PackArmorHarnessComponent.QuiverSlot) || TryLoadFrom("belt");
+
+        bool TryLoadFrom(string slotName)
+        {
+            if (!_inventory.TryGetSlotEntity(user, slotName, out var quiver) ||
+                !HasComp<BowQuiverComponent>(quiver) || !TryComp<StorageComponent>(quiver, out var storage))
+                return false;
+
+            return TryLoadArrow(bow, user, storage, ballistic);
+        }
+    }
+
+    private bool TryLoadArrow(EntityUid bow, EntityUid user, StorageComponent storage, BallisticAmmoProviderComponent? ballistic)
+    {
         foreach (var arrow in storage.Container.ContainedEntities)
         {
             if (!_tags.HasTag(arrow, "Arrow") || !TryComp<AmmoComponent>(arrow, out var ammo))

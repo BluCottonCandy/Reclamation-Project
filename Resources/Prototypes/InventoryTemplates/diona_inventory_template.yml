@@ -1,6 +1,7 @@
 ﻿#human but no shoes
 - type: inventoryTemplate
   id: diona
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
     - name: jumpsuit
       slotTexture: uniform

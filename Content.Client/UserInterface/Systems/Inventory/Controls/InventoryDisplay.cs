@@ -61,9 +61,10 @@ public sealed class InventoryDisplay : LayoutContainer
 
     public void RemoveButton(string slotName)
     {
-        if (!_buttons.Remove(slotName))
+        if (!_buttons.Remove(slotName, out var removed))
             return;
-        //recalculate the size of the control when a slot is removed
+        removed.Item1.Dispose();
+        // Recalculate the size of the control when a slot is removed.
         Columns = 0;
         Rows = 0;
         foreach (var (_, (_, buttonOffset)) in _buttons)
@@ -74,6 +75,10 @@ public sealed class InventoryDisplay : LayoutContainer
 
     public void ClearButtons()
     {
-        Children.Clear();
+        foreach (var (button, _) in _buttons.Values)
+            button.Dispose();
+        _buttons.Clear();
+        Columns = Rows = 0;
+        UpdateSizeData(Vector2i.Zero);
     }
 }

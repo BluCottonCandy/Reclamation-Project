@@ -16,14 +16,14 @@
   parent: falloutNCRmilitarypolicevest
   id: MinutemenClothingOuterVestOfficer
   name: Minutemen officer's vest
-  description: A reinforced vest issued to Minutemen officers. Extra plating sits where it counts.
+  description: A reinforced vest issued to Minutemen officers. Extra plating sits where it counts. The front pouch keeps small supplies within reach.
   components:
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.65
-        Slash: 0.65
-        Piercing: 0.65
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
         Heat: 0.70
   - type: ExplosionResistance
     damageCoefficient: 0.75
@@ -55,10 +55,18 @@
   description: A black flannel shirt and jeans. Practical work clothes for the sergeants who keep the Minutemen in line.
 
 - type: entity
-  parent: N14ClothingOuterVestRCMP
+  parent: [N14ClothingOuterVestRCMP, MinutemenVestPouch]
   id: MinutemenClothingOuterVestNCO
   name: Minutemen sergeant's vest
-  description: A bulletproof vest issued to Minutemen non-commissioned officers.
+  description: A bulletproof vest issued to Minutemen non-commissioned officers. The front pouch keeps small supplies within reach.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.75
 
 - type: entity
   parent: ClothingHeadHatPirateTricord
@@ -75,10 +83,10 @@
   description: A black flannel shirt with tan khaki pants. Standard dress for Minutemen in the ranks.
 
 - type: entity
-  parent: ClothingOuterArmorBasic
+  parent: [ClothingOuterArmorBasic, MinutemenVestPouch]
   id: MinutemenClothingOuterVestEnlisted
   name: Minutemen armor vest
-  description: A standard armored vest handed out to Minutemen recruits and riflemen.
+  description: A standard armored vest handed out to Minutemen recruits and riflemen. The front pouch keeps small supplies within reach.
 
 - type: entity
   parent: ClothingHeadHatCowboyBlack

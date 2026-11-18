@@ -1,5 +1,6 @@
 - type: inventoryTemplate
   id: digitigrade
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
     - name: jumpsuit
       slotTexture: uniform

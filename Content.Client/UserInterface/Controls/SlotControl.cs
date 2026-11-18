@@ -225,7 +225,7 @@ namespace Content.Client.UserInterface.Controls
             HoverSpriteView.SetEntity(null);
         }
 
-        public void SetEntity(EntityUid? ent)
+        public virtual void SetEntity(EntityUid? ent)
         {
             SpriteView.SetEntity(ent);
             UpdateButtonTexture();

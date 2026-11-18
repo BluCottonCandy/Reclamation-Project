@@ -1,5 +1,6 @@
 - type: inventoryTemplate
   id: anytaur
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
     - name: jumpsuit
       slotTexture: uniform

@@ -1,0 +1,38 @@
+- type: inventoryTemplate
+  id: PackArmorHarnessSlots
+  slots:
+  - name: pack_bow
+    slotFlags: BACK
+    slotGroup: SecondHotbar
+    slotTexture: back
+    fullTextureName: template_small
+    aboveSlot: back
+    emptySlotIcon: PackHuntingBow
+    slotTooltip: pack-armor-bow-slot
+    uiWindowPos: 5,0
+    strippingWindowPos: 0,7
+    displayName: Bow sling
+    dependsOn: outerClothing
+    hideOnDepsMissing: true
+    dependsOnComponents:
+    - type: PackArmorHarness
+    whitelist:
+      components: [PackCompoundBow, Gun]
+      requireAll: true
+  - name: pack_quiver
+    slotFlags: BELT
+    slotGroup: SecondHotbar
+    slotTexture: belt
+    fullTextureName: template_small
+    aboveSlot: belt
+    emptySlotIcon: PackArrowQuiver
+    slotTooltip: pack-armor-quiver-slot
+    uiWindowPos: 5,1
+    strippingWindowPos: 1,7
+    displayName: Quiver loop
+    dependsOn: outerClothing
+    hideOnDepsMissing: true
+    dependsOnComponents:
+    - type: PackArmorHarness
+    whitelist:
+      components: [BowQuiver]

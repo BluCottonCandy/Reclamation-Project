@@ -1,5 +1,6 @@
 - type: inventoryTemplate
   id: lamia
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
     - name: jumpsuit
       slotTexture: uniform

@@ -1,5 +1,6 @@
 ﻿- type: inventoryTemplate
   id: arachnid
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
     - name: shoes
       slotTexture: shoes

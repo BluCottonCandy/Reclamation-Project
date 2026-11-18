@@ -192,6 +192,16 @@
   parent: MobGorilla
   name: Pack ghoulrilla
   components:
+  - type: Respirator
+    ignoreSuffocationInCrit: true
+  - type: PassiveDamage
+    allowedStates: [Alive, Critical]
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
   - type: MovementSpeedModifier
     baseWalkSpeed: 3
     baseSprintSpeed: 5

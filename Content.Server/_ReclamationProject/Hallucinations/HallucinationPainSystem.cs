@@ -50,7 +50,7 @@ public sealed class HallucinationPainSystem : EntitySystem
     {
         var drugHallucinations = !HasComp<DrugHallucinationResistanceComponent>(user) &&
             (HasComp<DrugHighComponent>(user) || HasComp<SeeingRainbowsComponent>(user));
-        if (encounter == Guid.Empty || !_mob.IsAlive(user) ||
+        if (encounter == Guid.Empty || HasComp<HallucinationSuppressionComponent>(user) || !_mob.IsAlive(user) ||
             !(HasComp<UnstableComponent>(user) || drugHallucinations))
             return false;
         var pain = EnsureComp<HallucinationPainComponent>(user);
@@ -110,6 +110,32 @@ public sealed class HallucinationPainSystem : EntitySystem
             args.State = MobState.Critical;
     }
 
+    public void ClearPerceivedDamage(EntityUid user, HallucinationPainComponent pain)
+    {
+        if (!pain.Collapsing)
+        {
+            if (pain.Encounter != Guid.Empty)
+                Finish(user, pain.Encounter);
+            return;
+        }
+
+        pain.Collapsing = false;
+        pain.Amount = 0;
+        pain.Encounter = Guid.Empty;
+        Dirty(user, pain);
+        if (_mob.IsDead(user))
+            return;
+
+        _thresholds.VerifyThresholds(user);
+        EntityManager.System<MobStateActionsSystem>().RefreshActions(user);
+        // Genuine critical injuries can develop during a perceived collapse.
+        if (TryComp<DamageableComponent>(user, out var actual) &&
+            _thresholds.TryGetThresholdForState(user, MobState.Critical, out var realCritical) &&
+            actual.TotalDamage >= realCritical.Value)
+            return;
+        _mob.UpdateMobState(user);
+    }
+
     public override void Update(float frameTime)
     {
         var query = EntityQueryEnumerator<HallucinationPainComponent>();
@@ -118,23 +144,7 @@ public sealed class HallucinationPainSystem : EntitySystem
             if (Paused(user)) continue;
             if (pain.Collapsing && _timing.CurTime >= pain.CollapseUntil)
             {
-                pain.Collapsing = false;
-                pain.Amount = 0;
-                pain.Encounter = Guid.Empty;
-                Dirty(user, pain);
-                // Re-evaluate current real damage and other state rules; never force Alive or revive death.
-                if (!_mob.IsDead(user))
-                {
-                    _thresholds.VerifyThresholds(user);
-                    EntityManager.System<MobStateActionsSystem>().RefreshActions(user);
-                    // A real injury may have reached crit while the mob was already in fake crit.
-                    // In that case the threshold system can early-return without replacing its cached state.
-                    if (TryComp<DamageableComponent>(user, out var actual) &&
-                        _thresholds.TryGetThresholdForState(user, MobState.Critical, out var realCritical) &&
-                        actual.TotalDamage >= realCritical.Value)
-                        continue;
-                    _mob.UpdateMobState(user);
-                }
+                ClearPerceivedDamage(user, pain);
             }
             if (pain.Encounter != Guid.Empty && _timing.CurTime >= pain.Expires) Finish(user, pain.Encounter);
         }

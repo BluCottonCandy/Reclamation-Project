@@ -1,0 +1,17 @@
+- type: entity
+  parent: ReclamationSoothingPowder
+  id: ReclamationStillmindPowder
+  name: stillmind powder
+  description: A hide packet tied with three knots, one for each plant ground inside. Trail healers teach their young to loosen a knot for every voice the wind carries. The bitter powder quiets false sights and sounds, then brings the stomach up three times.
+  components:
+  - type: StillmindPacket
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: ReclamationStillmindPowder
+          Quantity: 5
+  - type: Construction
+    graph: ReclamationStillmindPowder
+    node: powder

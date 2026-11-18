@@ -557,17 +557,14 @@ namespace Content.Shared.Chemistry.Components
         {
             // First remove the blacklisted prototypes
             List<ReagentQuantity> excluded = new();
-            foreach (var id in excludedPrototypes)
+            for (var i = Contents.Count - 1; i >= 0; i--)
             {
-                foreach (var tuple in Contents)
-                {
-                    if (tuple.Reagent.Prototype != id)
-                        continue;
+                var reagent = Contents[i];
+                if (Array.IndexOf(excludedPrototypes, reagent.Reagent.Prototype.Id) < 0)
+                    continue;
 
-                    excluded.Add(tuple);
-                    RemoveReagent(tuple);
-                    break;
-                }
+                excluded.Add(reagent);
+                RemoveReagent(reagent);
             }
 
             // Then split the solution

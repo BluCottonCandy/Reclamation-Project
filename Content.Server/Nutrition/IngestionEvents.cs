@@ -1,3 +1,5 @@
+using Content.Shared.Chemistry.Components;
+
 namespace Content.Server.Nutrition;
 
 /// <summary>
@@ -34,3 +36,7 @@ public sealed class BeforeFullySlicedEvent : CancellableEntityEventArgs
     /// </summary>
     public EntityUid User;
 }
+
+/// <summary>Raised on a food item after a bite reaches the consumer's stomach.</summary>
+[ByRefEvent]
+public readonly record struct FoodSwallowedEvent(EntityUid Consumer, Solution Dose);

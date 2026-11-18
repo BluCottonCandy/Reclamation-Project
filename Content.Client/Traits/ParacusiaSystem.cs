@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._ReclamationProject.Hallucinations;
 using Content.Shared.Traits.Assorted.Systems;
 using Robust.Shared.Random;
 using Robust.Client.Player;
@@ -52,12 +53,19 @@ public sealed class ParacusiaSystem : SharedParacusiaSystem
         if (!TryComp<ParacusiaComponent>(uid, out var paracusia))
             return;
 
+        if (HasComp<HallucinationSuppressionComponent>(uid))
+        {
+            if (paracusia.Stream != null)
+                paracusia.Stream = _audio.Stop(paracusia.Stream);
+            return;
+        }
+
         if (_timing.CurTime <= paracusia.NextIncidentTime)
             return;
 
         // Set the new time.
         var timeInterval = _random.NextFloat(paracusia.MinTimeBetweenIncidents, paracusia.MaxTimeBetweenIncidents);
-        paracusia.NextIncidentTime += TimeSpan.FromSeconds(timeInterval);
+        paracusia.NextIncidentTime = _timing.CurTime + TimeSpan.FromSeconds(timeInterval);
 
         // Offset position where the sound is played
         var randomOffset =

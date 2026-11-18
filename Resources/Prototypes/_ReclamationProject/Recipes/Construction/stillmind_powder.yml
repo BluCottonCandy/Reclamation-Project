@@ -1,0 +1,36 @@
+- type: construction
+  id: ReclamationStillmindPowder
+  name: stillmind powder
+  description: Grind a dose of trail medicine that briefly quiets hallucinations. Requires Intelligence 8.
+  graph: ReclamationStillmindPowder
+  startNode: start
+  targetNode: powder
+  category: construction-category-medical
+  conditions:
+  - !type:MinimumIntelligence
+    minimum: 8
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpowder
+  objectType: Item
+
+- type: constructionGraph
+  id: ReclamationStillmindPowder
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: powder
+      steps:
+      - material: XanderRoot
+        amount: 1
+        doAfter: 3
+      - material: BrocFlower
+        amount: 1
+        doAfter: 3
+      - material: PricklyPear
+        amount: 1
+        doAfter: 4
+  - node: powder
+    entity: ReclamationStillmindPowder

@@ -33,7 +33,7 @@ namespace Content.Server.Medical
         /// <summary>
         /// Make an entity vomit, if they have a stomach.
         /// </summary>
-        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f)
+        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f, string[]? preserveReagents = null)
         {
             // Main requirement: You have a stomach
             var stomachList = _body.GetBodyOrganComponents<StomachComponent>(uid);
@@ -61,9 +61,10 @@ namespace Content.Server.Medical
             {
                 if (_solutionContainer.ResolveSolution(stomach.Comp.Owner, StomachSystem.DefaultSolutionName, ref stomach.Comp.Solution, out var sol))
                 {
-                    solution.AddSolution(sol, _proto);
-                    sol.RemoveAllSolution();
-                    _solutionContainer.UpdateChemicals(stomach.Comp.Solution.Value);
+                    var ejected = preserveReagents == null
+                        ? _solutionContainer.SplitSolution(stomach.Comp.Solution.Value, sol.Volume)
+                        : _solutionContainer.SplitSolutionWithout(stomach.Comp.Solution.Value, sol.Volume, preserveReagents);
+                    solution.AddSolution(ejected, _proto);
                 }
             }
             // Adds a tiny amount of the chem stream from earlier along with vomit
@@ -76,7 +77,9 @@ namespace Content.Server.Medical
                 // Takes 10% of the chemicals removed from the chem stream
                 if (_solutionContainer.ResolveSolution(uid, bloodStream.ChemicalSolutionName, ref bloodStream.ChemicalSolution))
                 {
-                    var vomitChemstreamAmount = _solutionContainer.SplitSolution(bloodStream.ChemicalSolution.Value, vomitAmount);
+                    var vomitChemstreamAmount = preserveReagents == null
+                        ? _solutionContainer.SplitSolution(bloodStream.ChemicalSolution.Value, vomitAmount)
+                        : _solutionContainer.SplitSolutionWithout(bloodStream.ChemicalSolution.Value, vomitAmount, preserveReagents);
                     vomitChemstreamAmount.ScaleSolution(chemMultiplier);
                     solution.AddSolution(vomitChemstreamAmount, _proto);
 

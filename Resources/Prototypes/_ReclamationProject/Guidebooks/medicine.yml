@@ -2,6 +2,13 @@
   id: ReclamationMedicineField
   name: guide-entry-reclamation-medicine-field
   text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Field.xml"
+  children:
+  - ReclamationStillmindMedicine
+
+- type: guideEntry
+  id: ReclamationStillmindMedicine
+  name: guide-entry-stillmind-powder
+  text: "/ServerInfo/_ReclamationProject/Guidebooks/Medicine/Stillmind.xml"
 
 - type: guideEntry
   id: ReclamationMedicineCore

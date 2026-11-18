@@ -316,7 +316,11 @@ public sealed class FoodSystem : EntitySystem
         }
 
         _reaction.DoEntityReaction(args.Target.Value, solution, ReactionMethod.Ingestion);
-        _stomach.TryTransferSolution(stomachToUse.Owner, split, stomachToUse);
+        if (_stomach.TryTransferSolution(stomachToUse.Owner, split, stomachToUse))
+        {
+            var swallowed = new FoodSwallowedEvent(args.Target.Value, split);
+            RaiseLocalEvent(entity.Owner, ref swallowed);
+        }
 
         var flavors = args.FlavorMessage;
 

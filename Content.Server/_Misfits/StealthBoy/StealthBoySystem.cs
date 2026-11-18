@@ -11,6 +11,7 @@
 using Content.Shared._Misfits.Addictions;
 using Content.Shared._Misfits.Hallucinations;
 using Content.Shared._Misfits.StealthBoy;
+using Content.Shared._ReclamationProject.Hallucinations;
 using Content.Shared.Popups;
 using Content.Server._Misfits.Hallucinations;
 
@@ -40,7 +41,7 @@ public sealed class StealthBoySystem : SharedStealthBoySystem
 
         // Loud onset popup if the user just tipped into a Paracusia breakdown so
         // they understand why their screen is suddenly screaming at them.
-        if (HasComp<Content.Shared._Misfits.Hallucinations.MisfitsParacusiaComponent>(user))
+        if (!HasComp<HallucinationSuppressionComponent>(user) && HasComp<MisfitsParacusiaComponent>(user))
         {
             _popup.PopupEntity(
                 "The hum of the Stealth Boy MELTS into the voices in your head. EVERYTHING IS WRONG.",
@@ -64,7 +65,7 @@ public sealed class StealthBoySystem : SharedStealthBoySystem
     {
         _hallucinations.RefreshIntensity(user);
 
-        if (newTier <= oldTier)
+        if (newTier <= oldTier || HasComp<HallucinationSuppressionComponent>(user))
             return;
 
         var msg = newTier switch

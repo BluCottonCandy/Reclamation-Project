@@ -1,6 +1,7 @@
 - type: startingGear
   id: PackCubGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackBoneJumpsuit
     shoes: PackCombatBootsRaven
     mask: ClothingMaskFox
@@ -28,6 +29,7 @@
 - type: startingGear
   id: PackYounglingGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackRavenJumpsuit
     shoes: PackCombatBootsRaven
     mask: ClothingMaskFox
@@ -55,6 +57,7 @@
 - type: startingGear
   id: PackHunterGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackCordonJumpsuit
     shoes: PackCombatBootsBone
     mask: ClothingMaskJackal
@@ -82,6 +85,7 @@
 - type: startingGear
   id: PackBeastTamerGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackAntlerJumpsuit
     shoes: PackCombatBootsBone
     mask: ClothingMaskJackal
@@ -109,6 +113,7 @@
 - type: startingGear
   id: PackBeastmasterGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackChainJumpsuit
     shoes: PackCombatBootsCordon
     mask: ClothingMaskBear
@@ -137,6 +142,7 @@
 - type: startingGear
   id: PackBetaGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackRavenJumpsuit
     outerClothing: PackBetaRavenCloak
     shoes: PackCombatBootsRaven
@@ -172,6 +178,7 @@
 - type: startingGear
   id: PackAlphaGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackAntlerJumpsuit
     outerClothing: PackAlphaPaintedArmor
     shoes: PackCombatBootsAntler
@@ -209,6 +216,7 @@
 - type: startingGear
   id: PackShamanGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: PackBoneJumpsuit
     outerClothing: PackShamanCoat
     shoes: PackCombatBootsChain

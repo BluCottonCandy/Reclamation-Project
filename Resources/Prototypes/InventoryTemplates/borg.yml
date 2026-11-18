@@ -1,5 +1,6 @@
 - type: inventoryTemplate
   id: borg
+  extraSlotsFrom: ReclamationWalletSlot
   slots:
   - name: head
     slotTexture: head
@@ -34,6 +35,7 @@
 # taller than tall
 - type: inventoryTemplate
   id: borgDutch
+  extraSlotsFrom: ReclamationWalletSlot
   slots:
   - name: head
     slotTexture: head
@@ -46,6 +48,7 @@
 # #Misfits Change: player-controlled robots - ears slot for headset radio, locked id slot for nav module
 - type: inventoryTemplate
   id: borgRobot
+  extraSlotsFrom: ReclamationWalletSlot
   slots:
   - name: ears
     slotTexture: ears

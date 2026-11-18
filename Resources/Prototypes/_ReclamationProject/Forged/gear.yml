@@ -1,6 +1,7 @@
 - type: startingGear
   id: ForgemasterGear
   equipment:
+    wallet: N14Wallet
     belt: ForgedBandolier
     mask: ForgedGasMask
     ears: ForgedHeadset
@@ -26,6 +27,7 @@
   id: ForgedFighterGearBase
   abstract: true
   equipment:
+    wallet: N14Wallet
     mask: ForgedGasMask
     ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
@@ -44,6 +46,7 @@
 - type: startingGear
   id: ForgedFurnaceTenderGear
   equipment:
+    wallet: N14Wallet
     mask: ForgedGasMask
     ears: ForgedHeadset
     jumpsuit: N14ClothingUniformJumpsuitRags
@@ -62,6 +65,7 @@
 - type: startingGear
   id: ForgedRaiderGear
   equipment:
+    wallet: N14Wallet
     mask: ForgedGasMask
     pocket2: ForgedUnbrandedKitSelector
     ears: ForgedHeadset
@@ -74,6 +78,7 @@
 - type: startingGear
   id: ForgedWorkerGear
   equipment:
+    wallet: N14Wallet
     id: ForgedWorkerID
     mask: ForgedGasMask
     jumpsuit: N14ClothingUniformJumpsuitRags

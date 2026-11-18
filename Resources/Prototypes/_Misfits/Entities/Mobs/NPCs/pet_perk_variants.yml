@@ -788,7 +788,7 @@
 - type: entity
   name: Enclave Eyebot
   id: MisfitsMobPetEyebotEnclave
-  parent: N14MobPetEyebot
+  parent: BaseFactionJobEyebot
   description: A standard pre-war military Eyebot re-chassied in Enclave black, its optical sensor glowing green. A small piece of the old world reclaimed in service to the Enclave.
   components:
   - type: NpcFactionMember

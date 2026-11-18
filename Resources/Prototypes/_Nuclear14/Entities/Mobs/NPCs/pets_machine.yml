@@ -266,10 +266,27 @@
         volume: -5
         maxDistance: 5
 
+# These three player jobs use ghost takeover instead of station spawning.
+- type: startingGear
+  id: FactionEyebotWalletGear
+  equipment:
+    wallet: N14Wallet
+
+- type: entity
+  id: BaseFactionJobEyebot
+  parent: N14MobPetEyebot
+  abstract: true
+  components:
+  - type: Inventory
+    templateId: ReclamationWalletSlot
+  - type: InventorySlots
+  - type: Loadout
+    prototypes: [FactionEyebotWalletGear]
+
 - type: entity
   name: BoS Eyebot
   id: N14MobPetEyebotMBoS
-  parent: N14MobPetEyebot
+  parent: BaseFactionJobEyebot
   description: A military Eyebot in the colours of the Brotherhood of Steel!
   components:
   - type: NpcFactionMember
@@ -310,7 +327,7 @@
 - type: entity
   name: OSI Eyebot
   id: MisfitsMobPetEyebotOSI
-  parent: N14MobPetEyebot
+  parent: BaseFactionJobEyebot
   description: A professionally maintained Eyebot assigned to the NCR Office of Science and Industry. Its laser is kept calibrated for field research.
   components:
   - type: NpcFactionMember

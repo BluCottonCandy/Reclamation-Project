@@ -24,7 +24,6 @@ public sealed partial class BleedingMutationSystem : EntitySystem
 
         blood.BloodRefreshAmount *= ent.Comp.RefreshModifier;
         blood.BleedReductionAmount /= ent.Comp.BleedModifier;
-        Dirty(args.Target, blood);
     }
 
     private void OnRemoved(Entity<BleedingMutationComponent> ent, ref MutationRemovedEvent args)
@@ -34,6 +33,5 @@ public sealed partial class BleedingMutationSystem : EntitySystem
 
         blood.BloodRefreshAmount /= ent.Comp.RefreshModifier;
         blood.BleedReductionAmount *= ent.Comp.BleedModifier;
-        Dirty(args.Target, blood);
     }
 }

@@ -4,12 +4,15 @@
 // Fake local-chat lines are pushed by the server through IChatManager.ChatMessageToOne
 // and rendered by the standard chat pipeline; no client handler needed for them.
 using Content.Shared._Misfits.Hallucinations;
+using Content.Shared._ReclamationProject.Hallucinations;
+using Robust.Client.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Misfits.Hallucinations;
 
 public sealed class HallucinationsClientSystem : EntitySystem
 {
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -24,6 +27,9 @@ public sealed class HallucinationsClientSystem : EntitySystem
 
     private void OnPhantomSpawn(SpawnPhantomHallucinationEvent ev)
     {
+        if (HasComp<HallucinationSuppressionComponent>(_player.LocalEntity))
+            return;
+
         var coords = _entMan.GetCoordinates(ev.Coordinates);
         if (!coords.IsValid(_entMan))
             return;
@@ -39,10 +45,11 @@ public sealed class HallucinationsClientSystem : EntitySystem
         if (_phantoms.Count == 0)
             return;
 
+        var suppressed = HasComp<HallucinationSuppressionComponent>(_player.LocalEntity);
         var now = _timing.CurTime;
         for (var i = _phantoms.Count - 1; i >= 0; i--)
         {
-            if (now < _phantoms[i].Expires)
+            if (!suppressed && now < _phantoms[i].Expires)
                 continue;
             var uid = _phantoms[i].Uid;
             _phantoms.RemoveAt(i);

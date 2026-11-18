@@ -101,6 +101,8 @@ public sealed partial class HallucinationsComponent : Component
     [ViewVariables]
     public EntityUid? BreakdownDistortion;
 
+    public readonly List<EntityUid> ActiveSounds = new();
+
     /// <summary>
     /// Blur magnitude applied to the player while breakdown is active (crit-state
     /// vignette). Pulled into Content.Shared.Eye.Blinding via GetBlurEvent.

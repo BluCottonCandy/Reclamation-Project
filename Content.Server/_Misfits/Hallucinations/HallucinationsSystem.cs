@@ -14,6 +14,9 @@ using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Shared._Misfits.Hallucinations;
 using Content.Shared._Misfits.StealthBoy;
+using Content.Shared._ReclamationProject.Hallucinations;
+using Content.Server._ReclamationProject.Hallucinations;
+using Content.Shared.StatusEffect;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.Eye.Blinding.Components;
@@ -21,6 +24,7 @@ using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Robust.Server.Audio;
+using Robust.Shared.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -65,6 +69,9 @@ public sealed class HallucinationsSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<HallucinationSuppressionComponent, ComponentStartup>(OnTreatmentStarted);
+        SubscribeLocalEvent<HallucinationSuppressionComponent, ComponentShutdown>(OnTreatmentEnded);
+        SubscribeLocalEvent<HallucinationSuppressionComponent, BeforeStatusEffectAddedEvent>(OnStatusAttempt);
         // Hook every IC speech event into the global ring buffer for echo hallucinations.
         SubscribeLocalEvent<EntitySpokeEvent>(OnEntitySpoke);
         // Free per-entity rotation state when the comp goes away so dicts stay bounded.
@@ -75,7 +82,7 @@ public sealed class HallucinationsSystem : EntitySystem
 
     private void OnGetBlur(Entity<HallucinationsComponent> ent, ref GetBlurEvent args)
     {
-        if (ent.Comp.Breakdown)
+        if (ent.Comp.BreakdownDistortion != null)
             args.Blur += ent.Comp.BreakdownBlur;
     }
 
@@ -85,6 +92,7 @@ public sealed class HallucinationsSystem : EntitySystem
         if (ent.Comp.BreakdownDistortion is { } dist && !TerminatingOrDeleted(dist))
             QueueDel(dist);
         ent.Comp.BreakdownDistortion = null;
+        StopHallucinatedSounds(ent.Comp);
         _rotationDecks.Remove(ent.Owner);
         _lastEchoIndex.Remove(ent.Owner);
     }
@@ -140,30 +148,7 @@ public sealed class HallucinationsSystem : EntitySystem
         hall.Intensity = max;
         hall.Breakdown = breakdown;
 
-        // --- Visual breakdown effects: spawn an invisible SingularityDistortion
-        // entity parented to the player for the SingularityToy spacetime warp,
-        // and contribute heavy blur via GetBlurEvent for the crit-state vignette.
-        // Both are dropped once breakdown ends so vision returns to normal.
-        if (breakdown)
-        {
-            if (hall.BreakdownDistortion == null || TerminatingOrDeleted(hall.BreakdownDistortion.Value))
-            {
-                var coords = Transform(uid).Coordinates;
-                var distort = Spawn(hall.BreakdownDistortionProto, coords);
-                _xform.SetParent(distort, uid);
-                hall.BreakdownDistortion = distort;
-            }
-        }
-        else if (hall.BreakdownDistortion != null)
-        {
-            if (!TerminatingOrDeleted(hall.BreakdownDistortion.Value))
-                QueueDel(hall.BreakdownDistortion.Value);
-            hall.BreakdownDistortion = null;
-        }
-
-        // Re-run the standard blur pipeline so our GetBlurEvent contribution is
-        // applied (or removed) whenever breakdown toggles.
-        _blurry.UpdateBlurMagnitude(uid);
+        UpdateBreakdownVisuals(uid, hall, breakdown && !HasComp<HallucinationSuppressionComponent>(uid));
 
         // Pick dataset themes by source. Stealth Boy wins over Paracusia when both are
         // present (its symptoms are more acute and the player should know which is in play).
@@ -187,6 +172,65 @@ public sealed class HallucinationsSystem : EntitySystem
         // Breakdown lets Paracusia + Stealth Boy still do damage since stealth is active.
         if (stealth == null || stealth.CurrentTier < 4)
             hall.BurnoutDamage = null;
+    }
+
+    private static readonly HashSet<string> IntoxicationStatuses = new()
+    {
+        "SeeingRainbows", "Drunk", "SlurredSpeech", "HealingPowderHaze", "HydraTint",
+    };
+
+    private void OnTreatmentStarted(EntityUid uid, HallucinationSuppressionComponent comp, ComponentStartup args)
+    {
+        var statuses = EntityManager.System<StatusEffectsSystem>();
+        foreach (var key in IntoxicationStatuses)
+            statuses.TryRemoveStatusEffect(uid, key);
+        RemComp<DrugHighComponent>(uid);
+        if (TryComp<HallucinationPainComponent>(uid, out var pain))
+            EntityManager.System<HallucinationPainSystem>().ClearPerceivedDamage(uid, pain);
+        if (!TryComp<HallucinationsComponent>(uid, out var hall))
+            return;
+        StopHallucinatedSounds(hall);
+        UpdateBreakdownVisuals(uid, hall, false);
+    }
+
+    private void OnTreatmentEnded(EntityUid uid, HallucinationSuppressionComponent comp, ComponentShutdown args)
+    {
+        if (!TerminatingOrDeleted(uid) && TryComp<HallucinationsComponent>(uid, out var hall) && hall.Breakdown)
+            UpdateBreakdownVisuals(uid, hall, true);
+    }
+
+    private void OnStatusAttempt(EntityUid uid, HallucinationSuppressionComponent comp, ref BeforeStatusEffectAddedEvent args)
+    {
+        if (IntoxicationStatuses.Contains(args.Key))
+            args.Cancelled = true;
+    }
+
+    private void UpdateBreakdownVisuals(EntityUid uid, HallucinationsComponent hall, bool show)
+    {
+        // --- Visual breakdown effects: spawn an invisible SingularityDistortion
+        // entity parented to the player for the SingularityToy spacetime warp,
+        // and contribute heavy blur via GetBlurEvent for the crit-state vignette.
+        // Both are dropped once breakdown ends so vision returns to normal.
+        if (show)
+        {
+            if (hall.BreakdownDistortion == null || TerminatingOrDeleted(hall.BreakdownDistortion.Value))
+            {
+                var coords = Transform(uid).Coordinates;
+                var distort = Spawn(hall.BreakdownDistortionProto, coords);
+                _xform.SetParent(distort, uid);
+                hall.BreakdownDistortion = distort;
+            }
+        }
+        else if (hall.BreakdownDistortion != null)
+        {
+            if (!TerminatingOrDeleted(hall.BreakdownDistortion.Value))
+                QueueDel(hall.BreakdownDistortion.Value);
+            hall.BreakdownDistortion = null;
+        }
+
+        // Re-run the standard blur pipeline so our GetBlurEvent contribution is
+        // applied (or removed) whenever breakdown toggles.
+        _blurry.UpdateBlurMagnitude(uid);
     }
 
     public override void Update(float frameTime)
@@ -218,10 +262,13 @@ public sealed class HallucinationsSystem : EntitySystem
             }
             hall.NextEvent = now + TimeSpan.FromSeconds(_random.NextFloat(min, max));
 
-            if (hall.Breakdown)
-                FireBreakdown(uid, hall);
-            else
-                FireHallucination(uid, hall, tier);
+            if (!HasComp<HallucinationSuppressionComponent>(uid))
+            {
+                if (hall.Breakdown)
+                    FireBreakdown(uid, hall);
+                else
+                    FireHallucination(uid, hall, tier);
+            }
 
             if (tier >= 4 && hall.BurnoutDamage != null)
                 _damageable.TryChangeDamage(uid, hall.BurnoutDamage, ignoreResistances: true, origin: uid);
@@ -262,7 +309,7 @@ public sealed class HallucinationsSystem : EntitySystem
             if (roll < 0.45f)
             {
                 var sound = _random.Prob(0.5f) ? hall.FootstepSound : hall.GunshotSound;
-                _audio.PlayEntity(sound, user, user);
+                PlayHallucinatedSound(user, hall, sound);
                 SendFlavor(user, hall);
                 return;
             }
@@ -275,6 +322,23 @@ public sealed class HallucinationsSystem : EntitySystem
 
         // Default: pure flavor popup.
         SendFlavor(user, hall);
+    }
+
+    private void PlayHallucinatedSound(EntityUid user, HallucinationsComponent hall, SoundSpecifier sound)
+    {
+        hall.ActiveSounds.RemoveAll(soundUid => TerminatingOrDeleted(soundUid));
+        if (_audio.PlayEntity(sound, user, user) is { } stream)
+            hall.ActiveSounds.Add(stream.Entity);
+    }
+
+    private void StopHallucinatedSounds(HallucinationsComponent hall)
+    {
+        foreach (var sound in hall.ActiveSounds)
+        {
+            if (!TerminatingOrDeleted(sound))
+                _audio.Stop(sound);
+        }
+        hall.ActiveSounds.Clear();
     }
 
     private void SendFlavor(EntityUid user, HallucinationsComponent hall)
@@ -298,7 +362,7 @@ public sealed class HallucinationsSystem : EntitySystem
         _chat.ChatMessageToOne(ChatChannel.Emotes, msg, wrapped, user, false, actor.PlayerSession.Channel);
 
         if (hall.WhisperSound != null)
-            _audio.PlayEntity(hall.WhisperSound, user, user);
+            PlayHallucinatedSound(user, hall, hall.WhisperSound);
     }
 
     /// <summary>
@@ -442,7 +506,7 @@ public sealed class HallucinationsSystem : EntitySystem
         var roll = _random.NextFloat();
 
         // Always layer the scream so the breakdown is unmistakable.
-        _audio.PlayEntity(hall.ScreamSound, user, user);
+        PlayHallucinatedSound(user, hall, hall.ScreamSound);
 
         // Roll one of: glitched flavor popup, glitched whisper, glitched fake chat, glitched echo, phantom.
         if (roll < 0.20f && hall.PhantomPrototypes.Count > 0)

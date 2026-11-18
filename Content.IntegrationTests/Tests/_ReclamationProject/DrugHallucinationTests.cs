@@ -46,7 +46,7 @@ public sealed class DrugHallucinationTests
         Check(HallucinationRules.WeatherDuration == TimeSpan.FromSeconds(20), "Private weather must expire after twenty seconds.");
         Check(prototypes.EnumeratePrototypes<Content.Shared.Weather.WeatherPrototype>().Any(w=>w.Sprite!=null), "No existing weather visuals available.");
         var trait = prototypes.Index<TraitPrototype>("Unstable");
-        Check(trait.Points == 3 && trait.Category.Id == "Mental", "Unstable must be a +3 Mental drawback.");
+        Check(trait.Points == 5 && trait.Category.Id == "Mental", "Unstable must be a +5 Mental drawback.");
         foreach (var id in prototypes.EnumeratePrototypes<EntityPrototype>().Where(p => p.ID.StartsWith("ReclamationPhantom", StringComparison.Ordinal)).Select(p => p.ID))
         {
             var prototype = prototypes.Index<EntityPrototype>(id);

@@ -174,14 +174,11 @@
     Medicine:
       metabolismRate: 0.05
       effects:
+      - !type:PurgeActiveChems
       - !type:GenericStatusEffect
-        key: SeeingRainbows
+        key: HallucinationSuppression
+        component: HallucinationSuppression
         time: 30
-        type: Remove
-      # Expensive high-grade psychiatric stabilizer with little routine sedation.
-      # TODO C#: SuppressHallucinationsReagent
-      # suppression: 1.00
-      # duration: 30
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold

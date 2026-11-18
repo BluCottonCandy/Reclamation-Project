@@ -199,8 +199,12 @@ namespace Content.Server.Body.Systems
             _random.Shuffle(_reagentBuffer);
 
             int reagents = 0;
-            foreach (var (reagent, quantity) in _reagentBuffer)
+            foreach (var entryInBuffer in _reagentBuffer)
             {
+                var reagent = entryInBuffer.Reagent;
+                // An earlier reagent can flush or dilute the rest during this same metabolism pass.
+                if (!solution.TryGetReagentQuantity(reagent, out var quantity))
+                    continue;
                 if (!_prototypeManager.TryIndex<ReagentPrototype>(reagent.Prototype, out var proto))
                     continue;
 

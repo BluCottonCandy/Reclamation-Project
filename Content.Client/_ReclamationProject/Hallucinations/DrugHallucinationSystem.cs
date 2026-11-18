@@ -169,6 +169,12 @@ public sealed class DrugHallucinationSystem : EntitySystem
             Reset();
             return;
         }
+        if (HasComp<HallucinationSuppressionComponent>(user))
+        {
+            if (_owner != null || _phantoms.Count > 0 || _temptations.Count > 0 || _shots.Count > 0)
+                Reset();
+            return;
+        }
         if (_owner != user)
         {
             Reset();
@@ -320,6 +326,9 @@ public sealed class DrugHallucinationSystem : EntitySystem
 
     public bool SpawnEncounter(EntityUid user, bool fromHigh, string? forcedPrototype = null, bool? damaging = null)
     {
+        if (HasComp<HallucinationSuppressionComponent>(user))
+            return false;
+
         if (forcedPrototype == null && damaging == null && _random.Prob(0.25f))
             return SpawnWeather(user);
         _weather.StopHallucination();
@@ -382,6 +391,9 @@ public sealed class DrugHallucinationSystem : EntitySystem
 
     public bool SpawnWeather(EntityUid user)
     {
+        if (HasComp<HallucinationSuppressionComponent>(user))
+            return false;
+
         var variants = _prototypes.EnumeratePrototypes<WeatherPrototype>().Where(p => p.Sprite != null).ToArray();
         if (variants.Length == 0) return false;
         ClearEnemies();
@@ -391,6 +403,9 @@ public sealed class DrugHallucinationSystem : EntitySystem
     /// <summary>Only visual shells are spawned: no item, solution, nutrition or pickup components.</summary>
     public bool SpawnTemptations(EntityUid user, HallucinationKind kind)
     {
+        if (HasComp<HallucinationSuppressionComponent>(user))
+            return false;
+
         for (var i = _temptations.Count - 1; i >= 0; i--)
         {
             if (_temptations[i].Kind != kind) continue;

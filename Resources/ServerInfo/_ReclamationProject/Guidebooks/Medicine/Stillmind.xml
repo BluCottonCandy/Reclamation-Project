@@ -1,0 +1,23 @@
+<Document>
+# Stillmind powder and Neurostatic
+
+<Box>
+<GuideEntityEmbed Entity="ReclamationStillmindPowder"/>
+<GuideEntityEmbed Entity="MisfitsPillNeurostatic"/>
+</Box>
+
+## The three knots
+Trail healers tie a hide packet with three knots, one each for flower, root, and fruit. Their saying goes, “When the wind calls your name, count the knots before you answer.”
+
+## Crafting stillmind powder
+Open [bold]G → Medical[/bold] with [bold]Intelligence 8[/bold] or higher. One broc flower, one Xander root, and one wild prickly pear fruit make one packet. Swallow the whole dose.
+
+## What to expect
+Both remedies clear hallucinations, including phantom enemies, phantom injuries, imagined voices and weather, and rainbow vision. They also clear drunken vision, slurred speech, and chemical haze. A continuing condition such as Unstable can cause another episode after protection wears off.
+
+Both flush other active chemicals from the bloodstream, including helpful medicine such as Stimpaks and RadAway. They spare each other. While a remedy is being metabolized, another dose of a different chem can also be flushed.
+
+The field powder gives shorter protection. Swallowing a packet makes the patient vomit [bold]three times[/bold], about three seconds apart. The bouts empty the stomach and cost hunger and thirst. Both remedies survive the purge.
+
+Neurostatic is the longer-acting clinical alternative. It clears the same symptoms without triggering the three bouts.
+</Document>

@@ -1,0 +1,21 @@
+- type: statusEffect
+  id: HallucinationSuppression
+  alwaysAllowed: true
+
+- type: reagent
+  id: ReclamationStillmindPowder
+  name: reagent-name-stillmind-powder
+  desc: reagent-desc-stillmind-powder
+  group: Medicine
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: bitter
+  color: "#A2AF79"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.25
+      effects:
+      - !type:PurgeActiveChems
+      - !type:GenericStatusEffect
+        key: HallucinationSuppression
+        component: HallucinationSuppression
+        time: 8

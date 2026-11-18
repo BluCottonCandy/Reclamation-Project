@@ -68,7 +68,7 @@ public sealed class DrugHighSystem : EntitySystem
     public void Refresh(EntityUid user, IEnumerable<string> messageKeys)
     {
         _highMessages ??= _prototypes.Index<SymptomSpeechPrototype>("SymptomDrugHigh").SourceMessages.ToHashSet();
-        if (!messageKeys.Any(_highMessages.Contains))
+        if (HasComp<HallucinationSuppressionComponent>(user) || !messageKeys.Any(_highMessages.Contains))
             return;
         // Refreshed on metabolism, before the much longer ambient speech cooldown is checked.
         // A short tail bridges metabolism ticks without treating each dose as a new high.

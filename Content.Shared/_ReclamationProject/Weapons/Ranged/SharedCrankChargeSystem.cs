@@ -13,16 +13,19 @@ using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._ReclamationProject.Weapons.Ranged;
 
 public abstract partial class SharedCrankChargeSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] protected SharedDoAfterSystem DoAfter = default!;
+    [Dependency] protected IGameTiming Timing = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private IPrototypeManager _proto = default!;
@@ -34,10 +37,29 @@ public abstract partial class SharedCrankChargeSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<CrankChargeComponent, ComponentInit>(OnCrankInit);
+        SubscribeLocalEvent<CrankChargeComponent, GunRefreshModifiersEvent>(OnGunRefreshModifiers);
         SubscribeLocalEvent<CrankChargeComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
         SubscribeLocalEvent<CrankChargeComponent, CrankChargeDoAfterEvent>(OnCrankDoAfter);
         SubscribeLocalEvent<CrankChargeComponent, GunShotEvent>(OnGunShot);
         SubscribeLocalEvent<CrankChargeComponent, ExaminedEvent>(OnExamined);
+    }
+
+    private void OnCrankInit(Entity<CrankChargeComponent> ent, ref ComponentInit args)
+    {
+        // Weapon variants inherit the gun prototype. Look up exact IDs to keep their original settings.
+        if (MetaData(ent).EntityPrototype is not {} prototype ||
+            !_proto.TryIndex<TimedCrankChargePrototype>(prototype.ID, out var tuning))
+            return;
+
+        ent.Comp.TimedCharge = tuning;
+        ent.Comp.CrankDelay = tuning.CrankDelay;
+    }
+
+    private void OnGunRefreshModifiers(Entity<CrankChargeComponent> ent, ref GunRefreshModifiersEvent args)
+    {
+        if (ent.Comp.TimedCharge is {} tuning)
+            args.FireRate *= tuning.FireRateMultiplier;
     }
 
     /// <summary>
@@ -117,12 +139,21 @@ public abstract partial class SharedCrankChargeSystem : EntitySystem
             BreakOnMove = false,
         };
 
-        if (_doAfter.TryStartDoAfter(doAfter))
-            _audio.PlayPredicted(ent.Comp.CrankSound, ent, user);
+        if (!DoAfter.TryStartDoAfter(doAfter, out var id))
+            return;
+
+        // Instant actions complete inside TryStartDoAfter.
+        if (ent.Comp.TimedCharge != null && DoAfter.GetStatus(id) == DoAfterStatus.Running)
+            ent.Comp.ActiveCrank = id;
+
+        _audio.PlayPredicted(ent.Comp.CrankSound, ent, user);
     }
 
     private void OnCrankDoAfter(Entity<CrankChargeComponent> ent, ref CrankChargeDoAfterEvent args)
     {
+        if (ent.Comp.ActiveCrank == args.DoAfter.Id)
+            ent.Comp.ActiveCrank = null;
+
         if (args.Cancelled || args.Handled)
             return;
 
@@ -135,6 +166,7 @@ public abstract partial class SharedCrankChargeSystem : EntitySystem
             return;
 
         ent.Comp.Charges++;
+        ent.Comp.NextChargeLoss = Timing.CurTime + ent.Comp.TimedCharge?.HoldTime;
         Dirty(ent);
         Popup.PopupEntity(Loc.GetString("crank-charge-popup", ("charges", ent.Comp.Charges), ("max", ent.Comp.MaxCharges)), ent, args.User);
     }
@@ -145,6 +177,7 @@ public abstract partial class SharedCrankChargeSystem : EntitySystem
             return;
 
         ent.Comp.Charges = 0;
+        ent.Comp.NextChargeLoss = null;
         Dirty(ent);
     }
 
@@ -157,6 +190,8 @@ public abstract partial class SharedCrankChargeSystem : EntitySystem
             ("charges", ent.Comp.Charges),
             ("max", ent.Comp.MaxCharges),
             ("damage", GetNextShotDamage(ent))));
+        if (ent.Comp.TimedCharge is {} tuning)
+            args.PushMarkup(Loc.GetString("crank-charge-examine-decay", ("seconds", tuning.HoldTime.TotalSeconds)));
     }
 
     /// <summary>

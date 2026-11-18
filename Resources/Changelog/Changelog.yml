@@ -15029,3 +15029,52 @@ Entries:
   id: 6665
   time: '2026-11-18T13:50:57.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/206
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        141 medieval weapons with real-world names: shields, bows, a crossbow,
+        slings, matchlock guns, fist weapons, throwing weapons, daggers, swords,
+        axes, maces, flails, hammers, polearms, spears, staffs and whips.
+    - type: Add
+      message: >-
+        Blacksmith trait (15 points). Only Blacksmiths can forge metal weapons,
+        musket balls and medieval armour at the forge.
+    - type: Add
+      message: >-
+        17 stone, bone and wood weapons anyone can hand-craft from the
+        construction menu (Weapons tab).
+    - type: Add
+      message: >-
+        Musket balls (90 damage plus a stamina hit) for the arquebus, arquebus
+        with bayonet and tanegashima.
+    - type: Add
+      message: >-
+        The crossbow must be cranked before it takes an arrow and adds +25
+        damage to it.
+    - type: Add
+      message: >-
+        Three slings. The shepherd's sling and fustibalus throw everything in
+        the pouch at once. The Balearic sling also fires any bullets, shells,
+        ammo boxes and magazines in it as real gunshots.
+    - type: Add
+      message: >-
+        Special weapons: lit sword of state, fire lance and thurible set people
+        on fire; electrified mace and ranseur knock down; frosted cavalry sabre
+        slows; flipped silver voulge trips; open navaja causes bleeding; ornate
+        lugged spear shoots bolts of light.
+    - type: Add
+      message: >-
+        Admin test crates: everything, ranged, melee, special, and Y0K's two
+        swords.
+    - type: Tweak
+      message: >-
+        Guns and the crossbow fire one-handed (wield them for accuracy). The
+        katana can be wielded.
+    - type: Tweak
+      message: All arrows now hold 10u of a chem.
+    - type: Tweak
+      message: The forge also takes leather, thread and gunpowder.
+  id: 6666
+  time: '2026-11-18T22:23:41.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/212

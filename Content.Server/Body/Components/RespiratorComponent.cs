@@ -33,6 +33,10 @@ namespace Content.Server.Body.Components
         [DataField]
         public float SuffocationThreshold;
 
+        /// <summary>Suppress respiratory suffocation while this mob is in critical condition.</summary>
+        [DataField]
+        public bool IgnoreSuffocationInCrit;
+
         [DataField]
         public float MaxSaturation = 5.0f;
 

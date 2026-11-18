@@ -36,7 +36,7 @@
             </BoxContainer>
         </BoxContainer>
         <BoxContainer Orientation="Horizontal" Name="Hotbar" HorizontalAlignment="Center">
-            <inventory:ItemSlotButtonContainer
+            <inventory:EquipmentHotbarContainer
                 Name="SecondHotbar"
                 SlotGroup="SecondHotbar"
                 VerticalAlignment="Bottom"
@@ -54,6 +54,7 @@
                 Name="HandContainer"
                 Access="Public"
                 HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
                 HorizontalExpand="False"
                 ColumnLimit="6"/>
             <inventory:ItemStatusPanel

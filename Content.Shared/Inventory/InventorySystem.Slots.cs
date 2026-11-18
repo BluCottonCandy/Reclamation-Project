@@ -63,7 +63,9 @@ public partial class InventorySystem : EntitySystem
         if (!_prototypeManager.TryIndex(component.TemplateId, out InventoryTemplatePrototype? invTemplate))
             return;
 
-        component.Slots = invTemplate.Slots;
+        component.Slots = invTemplate.ExtraSlotsFrom is {} extra
+            ? [.. invTemplate.Slots, .. _prototypeManager.Index(extra).Slots]
+            : invTemplate.Slots;
         component.Containers = new ContainerSlot[component.Slots.Length];
         for (var i = 0; i < component.Containers.Length; i++)
         {

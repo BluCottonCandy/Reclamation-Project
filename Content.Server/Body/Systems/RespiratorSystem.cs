@@ -89,10 +89,10 @@ public sealed class RespiratorSystem : EntitySystem
             if (HasComp<RespiratorImmuneComponent>(uid))
                 continue;
 
-            // #Misfits Add - targeted CVar gate: non-crit entities skip breathing/suffocation
-            // when CVar disabled, but crit/hardcrit entities still suffocate toward death.
-            if (!suffocationEnabled && !_mobState.IsIncapacitated(uid) &&
-                !(TryComp<Content.Shared._ReclamationProject.Medical.TraumaBodyComponent>(uid, out var trauma) && trauma.LungDamage >= 100f))
+            var incapacitated = _mobState.IsIncapacitated(uid);
+            if ((incapacitated && respirator.IgnoreSuffocationInCrit) ||
+                (!incapacitated && !suffocationEnabled &&
+                 !(TryComp<Content.Shared._ReclamationProject.Medical.TraumaBodyComponent>(uid, out var trauma) && trauma.LungDamage >= 100f)))
             {
                 StopSuffocation((uid, respirator));
                 respirator.SuffocationCycles = 0;
@@ -101,7 +101,7 @@ public sealed class RespiratorSystem : EntitySystem
 
             UpdateSaturation(uid, -(float) respirator.UpdateInterval.TotalSeconds, respirator);
 
-            if (!_mobState.IsIncapacitated(uid) && !HasComp<DebrainedComponent>(uid)) // Shitmed: cannot breathe in crit or when no brain.
+            if (!incapacitated && !HasComp<DebrainedComponent>(uid)) // Shitmed: cannot breathe in crit or when no brain.
             {
                 switch (respirator.Status)
                 {

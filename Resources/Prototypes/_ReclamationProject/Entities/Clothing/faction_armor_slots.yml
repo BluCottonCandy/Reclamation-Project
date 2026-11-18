@@ -1,0 +1,21 @@
+- type: entity
+  id: PackBowSling
+  abstract: true
+  components:
+  - type: PackArmorHarness
+
+# Storage layout used by the officer vest's N14ClothingOuterBase parent.
+- type: entity
+  id: MinutemenVestPouch
+  abstract: true
+  components:
+  - type: Storage
+    grid:
+    - 0,0,2,1
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container {}
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface

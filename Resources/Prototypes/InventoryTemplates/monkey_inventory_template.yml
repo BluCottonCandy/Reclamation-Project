@@ -2,6 +2,7 @@
 
 - type: inventoryTemplate
   id: monkey
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
   - name: jumpsuit
     slotTexture: uniform

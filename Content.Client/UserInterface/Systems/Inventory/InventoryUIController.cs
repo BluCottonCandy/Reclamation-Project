@@ -380,6 +380,7 @@ public sealed partial class InventoryUIController : UIController, IOnStateEntere
 
     private void RemoveSlot(SlotData data)
     {
+        _strippingWindow?.InventoryButtons.RemoveButton(data.SlotName);
         if (!_slotGroups.TryGetValue(data.SlotGroup, out var slotGroup))
             return;
 
@@ -414,6 +415,7 @@ public sealed partial class InventoryUIController : UIController, IOnStateEntere
 
         _playerUid = null;
         _playerInventory = null;
+        _strippingWindow?.InventoryButtons.ClearButtons();
         foreach (var slotGroup in _slotGroups.Values)
         {
             slotGroup.ClearButtons();

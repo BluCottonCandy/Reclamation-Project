@@ -21,7 +21,7 @@ public partial class InventorySystem
     protected bool HasStrengthBackpackSlot(EntityUid uid, SlotDefinition slot)
         => slot.Name == "back2" && _backpackSpecial.HasRequirement(uid, SpecialStat.Strength, 10);
 
-    protected bool AreSlotDepsMet(EntityUid uid, SlotDefinition slot, bool ignoreStrength = false)
+    public bool AreSlotDepsMet(EntityUid uid, SlotDefinition slot, bool ignoreStrength = false)
     {
         if (!ignoreStrength && HasStrengthBackpackSlot(uid, slot) || slot.DependsOn == null)
             return true;

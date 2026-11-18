@@ -36,7 +36,7 @@ public abstract class ItemSlotUIContainer<T> : GridContainer, IItemslotUIContain
         return true;
     }
 
-    public void ClearButtons()
+    public virtual void ClearButtons()
     {
         foreach (var button in Buttons.Values)
         {

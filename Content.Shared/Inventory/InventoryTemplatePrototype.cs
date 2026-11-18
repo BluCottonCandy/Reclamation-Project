@@ -10,6 +10,9 @@ public sealed partial class InventoryTemplatePrototype : IPrototype
 {
     [IdDataField] public string ID { get; set; } = string.Empty;
 
+    /// <summary>Optional shared slots appended after this template's own slots.</summary>
+    [DataField] public ProtoId<InventoryTemplatePrototype>? ExtraSlotsFrom { get; private set; }
+
     [DataField("slots")] public SlotDefinition[] Slots { get; private set; } = Array.Empty<SlotDefinition>();
 }
 
@@ -23,6 +26,10 @@ public sealed partial class SlotDefinition
     /// </summary>
     [DataField] public string FullTextureName { get; private set; } = "SlotBackground";
     [DataField("slotFlags")] public SlotFlags SlotFlags { get; private set; } = SlotFlags.PREVENTEQUIP;
+    /// <summary>Place this hotbar button directly above the specified button in the same column.</summary>
+    [DataField] public string? AboveSlot { get; private set; }
+    [DataField] public EntProtoId? EmptySlotIcon { get; private set; }
+    [DataField] public LocId? SlotTooltip { get; private set; }
     [DataField("showInWindow")] public bool ShowInWindow { get; private set; } = true;
     [DataField("slotGroup")] public string SlotGroup { get; private set; } = "Default";
     [DataField("stripTime")] public TimeSpan StripTime { get; private set; } = TimeSpan.FromSeconds(4f);

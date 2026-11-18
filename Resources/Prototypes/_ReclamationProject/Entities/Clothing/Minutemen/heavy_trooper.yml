@@ -1,8 +1,8 @@
 - type: entity
-  parent: ClothingOuterArmorBasic
+  parent: [ClothingOuterArmorBasic, MinutemenVestPouch]
   id: MinutemenHeavyTrooperArmor
   name: Minutemen heavy trooper armor
-  description: Battered steel plates, chainmail, and leather assembled for the Minutemen's heavy combat specialists. A chest-mounted sheath keeps a combat knife within reach.
+  description: Battered steel plates, chainmail, and leather assembled for the Minutemen's heavy combat specialists. A chest-mounted sheath keeps a combat knife within reach. A separate pouch holds small supplies.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/OuterClothing/minutemen_heavy.rsi
@@ -41,6 +41,7 @@
         insertVerbText: minutemen-heavy-sheathe-knife
   - type: ContainerContainer
     containers:
+      storagebase: !type:Container {}
       chest_knife: !type:ContainerSlot
   - type: Appearance
   - type: ItemMapper
@@ -57,6 +58,12 @@
   name: Minutemen heavy trooper helmet
   description: A compact armored riot helmet marked with the Minutemen emblem.
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Head/minutemen_heavy.rsi
   - type: Clothing
@@ -201,7 +208,7 @@
   parent: MinutemenHeavyTrooperArmor
   id: MinutemenMediumTrooperArmor
   name: Minutemen medium trooper armor
-  description: A lighter arrangement of salvaged plates and chainmail for Minutemen riot specialists. A chest-mounted sheath keeps a combat knife within reach.
+  description: A lighter arrangement of salvaged plates and chainmail for Minutemen riot specialists. A chest-mounted sheath keeps a combat knife within reach. A separate pouch holds small supplies.
   components:
   - type: Armor
     modifiers:
@@ -220,7 +227,7 @@
   parent: MinutemenMediumTrooperArmor
   id: MinutemenLightTrooperArmor
   name: Minutemen light trooper armor
-  description: A stripped-down salvaged plate suit for mobile Minutemen defenders. A chest-mounted sheath keeps a combat knife within reach.
+  description: A stripped-down salvaged plate suit for mobile Minutemen defenders. A chest-mounted sheath keeps a combat knife within reach. A separate pouch holds small supplies.
   components:
   - type: Armor
     modifiers:

@@ -2,7 +2,7 @@
 
 namespace Content.Client.UserInterface.Systems.Inventory.Controls;
 
-public sealed class ItemSlotButtonContainer : ItemSlotUIContainer<SlotControl>
+public class ItemSlotButtonContainer : ItemSlotUIContainer<SlotControl>
 {
     private readonly InventoryUIController _inventoryController;
     private string _slotGroup = "";

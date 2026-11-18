@@ -1,5 +1,6 @@
 ﻿- type: inventoryTemplate
   id: ipc
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
     - name: shoes
       slotTexture: shoes

@@ -4,6 +4,7 @@
 # Utility slots (eyes, ears, belt, back, pockets, id, etc.) remain unrestricted.
 - type: inventoryTemplate
   id: supermutant
+  extraSlotsFrom: PackArmorHarnessSlots
   slots:
     - name: shoes
       slotTexture: shoes

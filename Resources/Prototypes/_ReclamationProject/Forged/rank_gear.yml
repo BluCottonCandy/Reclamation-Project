@@ -28,8 +28,10 @@
   parent: N14ClothingOuterCombatArmor
   id: ForgedBrandedCombatArmor
   name: Branded combat armor
-  description: Ash-gray combat armor over soot-black straps, marked with the Forged's anvil and the scars of hard service.
+  description: Flame-lined combat armor over soot-black straps, marked with the Forged's anvil and the scars of hard service.
   components:
+  - type: FireProtection
+    reduction: 0.55
   - type: Sprite
     sprite: _ReclamationProject/Clothing/OuterClothing/forged_tempered.rsi
   - type: Clothing
@@ -39,7 +41,7 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.75
+        Blunt: 0.70
         Slash: 0.70
         Piercing: 0.75
         Heat: 0.75
@@ -104,8 +106,8 @@
     modifiers:
       coefficients:
         Blunt: 0.65
-        Slash: 0.70
-        Piercing: 0.55
+        Slash: 0.65
+        Piercing: 0.70
         Heat: 0.85
         Radiation: 0.90
   - type: StaminaDamageResistance
@@ -141,7 +143,10 @@
   parent: N14ClothingOuterRaiderBadlands
   id: ForgedUnbrandedArmor
   name: Unbranded raider armor
+  description: Scavenged raider plates over a flame-resistant work apron.
   components:
+  - type: FireProtection
+    reduction: 0.35
   - type: ExplosionResistance
     damageCoefficient: 1
 
@@ -150,8 +155,37 @@
   id: ForgedAdminForgemasterArmor
   name: Forgemaster's furnace armor
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.85
+        Caustic: 0.80
+        Radiation: 0.70
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ForgedForgemasterFurnaceHelmet
+      gloves: ForgedFurnaceGauntlets
+      shoes: N14ClothingPABootsDark
   - type: ExplosionResistance
     damageCoefficient: 0.40
+
+- type: entity
+  parent: ForgedKeeperFurnaceHelmet
+  id: ForgedForgemasterFurnaceHelmet
+  categories: [HideSpawnMenu]
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 1
+        Radiation: 0.695
+
 - type: entity
   parent: ForgedKeeperFurnaceHelmet
   id: ForgedSmithyFurnaceHelmet

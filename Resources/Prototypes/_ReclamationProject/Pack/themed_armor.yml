@@ -1,6 +1,22 @@
 - type: entity
-  parent: ClothingOuterVestWebMercenary
+  parent: [ClothingOuterVestWebMercenary, PackBowSling]
   id: PackThemedVestBase
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - PackRepaintable
+    - WhitelistChameleon
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+
+- type: entity
+  parent: [ClothingOuterArmorBulletproof, PackBowSling]
+  id: PackThemedHeavyBase
   abstract: true
   components:
   - type: Tag
@@ -13,22 +29,6 @@
         Blunt: 0.65
         Slash: 0.65
         Piercing: 0.65
-
-- type: entity
-  parent: ClothingOuterArmorBulletproof
-  id: PackThemedHeavyBase
-  abstract: true
-  components:
-  - type: Tag
-    tags:
-    - PackRepaintable
-    - WhitelistChameleon
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.55
-        Slash: 0.55
-        Piercing: 0.55
         Poison: 0.9
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -38,7 +38,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest2Raven
   name: Pack raven vest 2
-  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  description: Scavenged Pack armor decorated with raven feathers and dark thread. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -60,7 +60,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest2Fang
   name: Pack fang vest 2
-  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -82,7 +82,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest2Cordon
   name: Pack cordon vest 2
-  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  description: Scavenged Pack armor decorated with torn black and yellow police tape. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -104,7 +104,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest2Antler
   name: Pack antler vest 2
-  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -126,7 +126,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest2Chain
   name: Pack chain vest 2
-  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -148,7 +148,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest3Raven
   name: Pack raven vest 3
-  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  description: Scavenged Pack armor decorated with raven feathers and dark thread. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -170,7 +170,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest3Fang
   name: Pack fang vest 3
-  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -192,7 +192,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest3Cordon
   name: Pack cordon vest 3
-  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  description: Scavenged Pack armor decorated with torn black and yellow police tape. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -214,7 +214,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest3Antler
   name: Pack antler vest 3
-  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -236,7 +236,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest3Chain
   name: Pack chain vest 3
-  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -258,7 +258,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest4Raven
   name: Pack raven vest 4
-  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  description: Scavenged Pack armor decorated with raven feathers and dark thread. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -280,7 +280,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest4Fang
   name: Pack fang vest 4
-  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -302,7 +302,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest4Cordon
   name: Pack cordon vest 4
-  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  description: Scavenged Pack armor decorated with torn black and yellow police tape. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -324,7 +324,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest4Antler
   name: Pack antler vest 4
-  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -346,7 +346,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest4Chain
   name: Pack chain vest 4
-  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -368,7 +368,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest5Raven
   name: Pack raven vest 5
-  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  description: Scavenged Pack armor decorated with raven feathers and dark thread. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -390,7 +390,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest5Fang
   name: Pack fang vest 5
-  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -412,7 +412,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest5Cordon
   name: Pack cordon vest 5
-  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  description: Scavenged Pack armor decorated with torn black and yellow police tape. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -434,7 +434,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest5Antler
   name: Pack antler vest 5
-  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -456,7 +456,7 @@
   parent: PackThemedVestBase
   id: PackThemedVest5Chain
   name: Pack chain vest 5
-  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -478,7 +478,7 @@
   parent: PackThemedHeavyBase
   id: PackThemedVestHeavyRaven
   name: Pack raven heavy armor
-  description: Scavenged Pack armor decorated with raven feathers and dark thread.
+  description: Scavenged Pack armor decorated with raven feathers and dark thread. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -500,7 +500,7 @@
   parent: PackThemedHeavyBase
   id: PackThemedVestHeavyFang
   name: Pack fang heavy armor
-  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar.
+  description: Scavenged Pack armor decorated with animal teeth bound to a leather collar. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -522,7 +522,7 @@
   parent: PackThemedHeavyBase
   id: PackThemedVestHeavyCordon
   name: Pack cordon heavy armor
-  description: Scavenged Pack armor decorated with torn black and yellow police tape.
+  description: Scavenged Pack armor decorated with torn black and yellow police tape. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -544,7 +544,7 @@
   parent: PackThemedHeavyBase
   id: PackThemedVestHeavyAntler
   name: Pack antler heavy armor
-  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide.
+  description: Scavenged Pack armor decorated with antler shards and scraps of worn hide. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi
@@ -566,7 +566,7 @@
   parent: PackThemedHeavyBase
   id: PackThemedVestHeavyChain
   name: Pack chain heavy armor
-  description: Scavenged Pack armor decorated with copper chain and painted claw marks.
+  description: Scavenged Pack armor decorated with copper chain and painted claw marks. Wear it to use the bow sling and quiver loop above your backpack and belt.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/Pack/Armor/themed.rsi

@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Pack;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Client.Inventory;
@@ -92,7 +93,13 @@ public sealed class ClientClothingSystem : ClothingSystem
 
         // Pins keep their existing neck artwork, but use separate badge layer keys so a
         // neck item can be equipped or removed without replacing the pin's visuals.
-        var visualSlot = args.Slot == "badge" ? "neck" : args.Slot;
+        var visualSlot = args.Slot switch
+        {
+            "badge" => "neck",
+            PackArmorHarnessComponent.BowSlot => "back",
+            PackArmorHarnessComponent.QuiverSlot => "belt",
+            _ => args.Slot,
+        };
 
         // first attempt to get species specific data.
         if (inventory.SpeciesId != null)
@@ -271,7 +278,13 @@ public sealed class ClientClothingSystem : ClothingSystem
             return;
         }
 
-        var displacementData = inventory.Displacements.GetValueOrDefault(slot);
+        var displacementSlot = slot switch
+        {
+            PackArmorHarnessComponent.BowSlot => "back",
+            PackArmorHarnessComponent.QuiverSlot => "belt",
+            _ => slot,
+        };
+        var displacementData = inventory.Displacements.GetValueOrDefault(displacementSlot);
 
         if (clothingComponent.RenderLayer != null)
             slot = clothingComponent.RenderLayer;

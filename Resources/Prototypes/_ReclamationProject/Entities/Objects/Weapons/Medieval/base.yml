@@ -1,0 +1,41 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: RPMedievalBaseWeapon
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Normal
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  abstract: true
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalBaseTwoHanded
+  components:
+  - type: Item
+    size: Large
+  - type: Wieldable
+    wieldedSpeedModifier: 0.9
+
+- type: entity
+  abstract: true
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalBaseShield
+  components:
+  - type: Damageable
+    damageContainer: Shield

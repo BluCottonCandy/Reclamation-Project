@@ -1,0 +1,479 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+# Basic stone, bone and wood weapons anyone can make by hand (construction menu, Weapons tab).
+
+- type: constructionGraph
+  id: RPMedievalWoodenRoundShieldGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 6
+        doAfter: 2
+      - material: Cloth
+        amount: 2
+        doAfter: 2
+  - node: done
+    entity: RPMedievalWoodenRoundShield
+
+- type: construction
+  name: "wooden round shield"
+  id: RPMedievalWoodenRoundShield
+  graph: RPMedievalWoodenRoundShieldGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "Planks pegged together into a simple round shield. Cheap, light, and better than nothing."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_round_shield.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalSlingGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: Cloth
+        amount: 3
+        doAfter: 2
+  - node: done
+    entity: RPMedievalSling
+
+- type: construction
+  name: "shepherd's sling"
+  id: RPMedievalSling
+  graph: RPMedievalSlingGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A leather pouch on two cords. Pack it with a handful of stones, bricks, bottles or grenades, whirl it, and let fly: everything in the pouch goes in one shot. Grenades arm as they leave; bullets just get thrown like stones (the fustibalus fires them)."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/sling.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalBalearicSlingGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: Cloth
+        amount: 4
+        doAfter: 2
+      - material: Leather
+        amount: 2
+        doAfter: 2
+  - node: done
+    entity: RPMedievalBalearicSling
+
+- type: construction
+  name: "Balearic sling"
+  id: RPMedievalBalearicSling
+  graph: RPMedievalBalearicSlingGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A long war sling of braided cord and a deep leather cradle, the kind the Balearic slingers made famous. Its huge pouch takes nearly anything you can lift (bricks, bottles, tools, grenades, bullets, even big gear) and one whirl lets the whole lot go: bullets and shells in it go off like gunshots, everything else is hurled."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/balearic_sling.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalFlintKnifeGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: N14Brick
+        amount: 1
+        doAfter: 2
+      - material: WoodPlank
+        amount: 1
+        doAfter: 2
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalFlintKnife
+
+- type: construction
+  name: "flint knife"
+  id: RPMedievalFlintKnife
+  graph: RPMedievalFlintKnifeGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A knapped stone blade lashed to a handle. The oldest tool there is."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/flint_knife.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalWasterGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+  - node: done
+    entity: RPMedievalWaster
+
+- type: construction
+  name: "wooden waster"
+  id: RPMedievalWaster
+  graph: RPMedievalWasterGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A wooden practice sword. Hurts, but won't cut."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/waster.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalMacuahuitlGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+      - material: N14Brick
+        amount: 3
+        doAfter: 2
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalMacuahuitl
+
+- type: construction
+  name: "macuahuitl"
+  id: RPMedievalMacuahuitl
+  graph: RPMedievalMacuahuitlGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A wooden club edged with sharp stone chips. Crude, and it still takes heads."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/macuahuitl.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalStoneAxeGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: N14Brick
+        amount: 2
+        doAfter: 2
+      - material: WoodPlank
+        amount: 2
+        doAfter: 2
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalStoneAxe
+
+- type: construction
+  name: "stone axe"
+  id: RPMedievalStoneAxe
+  graph: RPMedievalStoneAxeGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A shaped stone head lashed to a wooden haft."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/stone_axe.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalBoneAxeGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: Bones
+        amount: 3
+        doAfter: 2
+      - material: WoodPlank
+        amount: 2
+        doAfter: 2
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalBoneAxe
+
+- type: construction
+  name: "bone axe"
+  id: RPMedievalBoneAxe
+  graph: RPMedievalBoneAxeGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A sharpened slab of bone bound to a handle."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/bone_axe.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalSpikedClubGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+      - material: Steel
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalSpikedClub
+
+- type: construction
+  name: "spiked club"
+  id: RPMedievalSpikedClub
+  graph: RPMedievalSpikedClubGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A club with nails driven through the head."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_club.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalStuddedClubGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+      - material: Steel
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalStuddedClub
+
+- type: construction
+  name: "studded club"
+  id: RPMedievalStuddedClub
+  graph: RPMedievalStuddedClubGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A heavy club bound with iron studs."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/studded_club.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalWoodenClubGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 2
+  - node: done
+    entity: RPMedievalWoodenClub
+
+- type: construction
+  name: "wooden club"
+  id: RPMedievalWoodenClub
+  graph: RPMedievalWoodenClubGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A thick stick, thicker at one end."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_club.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalCudgelGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 2
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalCudgel
+
+- type: construction
+  name: "cudgel"
+  id: RPMedievalCudgel
+  graph: RPMedievalCudgelGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A short weighted club with a wrist loop."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/cudgel.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalStoneSpearGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: N14Brick
+        amount: 1
+        doAfter: 2
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalStoneSpear
+
+- type: construction
+  name: "stone-tipped spear"
+  id: RPMedievalStoneSpear
+  graph: RPMedievalStoneSpearGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A knapped stone point bound to a wooden shaft."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/stone_spear.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalBoneSpearGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: Bones
+        amount: 2
+        doAfter: 2
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+      - material: Cloth
+        amount: 1
+        doAfter: 2
+  - node: done
+    entity: RPMedievalBoneSpear
+
+- type: construction
+  name: "bone-tipped spear"
+  id: RPMedievalBoneSpear
+  graph: RPMedievalBoneSpearGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A sharpened bone point bound to a wooden shaft."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/bone_spear.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalWalkingStaffGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+  - node: done
+    entity: RPMedievalWalkingStaff
+
+- type: construction
+  name: "knobbed walking staff"
+  id: RPMedievalWalkingStaff
+  graph: RPMedievalWalkingStaffGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A sturdy knobbed staff for walking, and for hitting things."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/walking_staff.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalQuarterstaffGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 4
+        doAfter: 2
+  - node: done
+    entity: RPMedievalQuarterstaff
+
+- type: construction
+  name: "quarterstaff"
+  id: RPMedievalQuarterstaff
+  graph: RPMedievalQuarterstaffGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A long hardwood staff. Simple, fast and surprisingly dangerous."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/quarterstaff.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: RPMedievalGnarledStaffGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: done
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 2
+  - node: done
+    entity: RPMedievalGnarledStaff
+
+- type: construction
+  name: "gnarled staff"
+  id: RPMedievalGnarledStaff
+  graph: RPMedievalGnarledStaffGraph
+  startNode: start
+  targetNode: done
+  category: construction-category-weapons
+  description: "A crooked staff cut from a gnarled branch."
+  icon: { sprite: _ReclamationProject/Objects/Weapons/Medieval/gnarled_staff.rsi, state: icon }
+  objectType: Item

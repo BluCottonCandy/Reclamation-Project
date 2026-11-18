@@ -1,0 +1,334 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalSteelSpear
+  name: "steel spear"
+  description: "A leaf-bladed steel spear on an ash shaft."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_spear.rsi
+    scale: 0.65, 0.65
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_spear_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_spear_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    range: 2.0
+    damage:
+      types:
+        Piercing: 14
+        Slash: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 26
+        Slash: 6
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 30
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 225
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalStoneSpear
+  name: "stone-tipped spear"
+  description: "A knapped stone point bound to a wooden shaft."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/stone_spear.rsi
+    scale: 0.812, 0.812
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/stone_spear_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/stone_spear_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    range: 2.0
+    damage:
+      types:
+        Piercing: 10
+        Slash: 3
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 18
+        Slash: 4
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 21
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 225
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalBoneSpear
+  name: "bone-tipped spear"
+  description: "A sharpened bone point bound to a wooden shaft."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bone_spear.rsi
+    scale: 0.743, 0.743
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bone_spear_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bone_spear_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    range: 2.0
+    damage:
+      types:
+        Piercing: 10
+        Slash: 3
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 18
+        Slash: 4
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 21
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 225
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalLuggedSpear
+  name: "ornate lugged spear"
+  description: "An ornate spear with a pre-war capacitor in the shaft. Use it in hand to charge it, then it fires bolts of light."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/lugged_spear.rsi
+    scale: 0.6, 0.6
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/lugged_spear_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/lugged_spear_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    range: 2.0
+    damage:
+      types:
+        Piercing: 15
+        Slash: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 29
+        Slash: 7
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 1.5
+    color: "#5ff0ff"
+  - type: ComponentToggler
+    components:
+    - type: Gun
+      fireRate: 0.75
+      selectedMode: SemiAuto
+      availableModes:
+      - SemiAuto
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+    - type: BasicEntityAmmoProvider
+      proto: RPMedievalLuggedSpearBolt
+      capacity: 3
+      count: 3
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 6
+  - type: MedievalLook
+    onState: "on"
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          "on": { state: "on" }
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalFireLance
+  name: "fire lance"
+  description: "A spear with a bundle of oil-soaked straw tied below the head. Use it in hand to light it. While lit, a heavy swing sets everyone it hits on fire."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/fire_lance.rsi
+    scale: 0.619, 0.619
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/fire_lance_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/fire_lance_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    range: 2.0
+    damage:
+      types:
+        Piercing: 13
+        Slash: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 23
+        Slash: 5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 23
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 225
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Items/Lighters/lighter1.ogg
+    soundDeactivate:
+      path: /Audio/Items/Lighters/lighter_off.ogg
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Piercing: 13
+        Slash: 4
+        Heat: 11
+  - type: ComponentToggler
+    components:
+    - type: IgniteOnMeleeHit
+      fireStacks: 1
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2.5
+    energy: 2
+    color: "#ff9a3c"
+  - type: MedievalLook
+    onState: lit
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          lit: { state: lit }
+  - type: MedievalHeavyAttack
+    igniteStacks: 2
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalJoustingLance
+  name: "jousting lance"
+  description: "A long cavalry lance with a pennant. Unwieldy on foot."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/jousting_lance.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/jousting_lance_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/jousting_lance_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.6
+    range: 2.5
+    damage:
+      types:
+        Piercing: 12
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 40
+  - type: Wieldable
+    wieldedSpeedModifier: 0.85
+  - type: StaticPrice
+    price: 100

@@ -1,0 +1,400 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseShield
+  id: RPMedievalIronRoundShield
+  name: "iron round shield"
+  description: "A round wooden shield faced with an iron boss and rim, the kind steppe riders carried."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_round_shield.rsi
+    state: icon
+  - type: Item
+    size: Huge
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_round_shield_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_round_shield_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 9
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.80
+      flatReductions:
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseShield
+  id: RPMedievalPavise
+  name: "pavise"
+  description: "A tall rectangular shield big enough to hide behind. Crossbowmen planted these to reload in cover."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pavise.rsi
+    state: icon
+  - type: Item
+    size: Huge
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pavise_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pavise_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 12
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.65
+      flatReductions:
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseShield
+  id: RPMedievalWoodenRoundShield
+  name: "wooden round shield"
+  description: "Planks pegged together into a simple round shield. Cheap, light, and better than nothing."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_round_shield.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_round_shield_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_round_shield_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 6
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.95
+      flatReductions:
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseShield
+  id: RPMedievalBuckler
+  name: "buckler"
+  description: "A small fist shield made for turning blades aside rather than soaking blows."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/buckler.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/buckler_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/buckler_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.95
+      flatReductions:
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseShield
+  id: RPMedievalKiteShield
+  name: "kite shield"
+  description: "A long teardrop shield that covers a man from shoulder to knee."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/kite_shield.rsi
+    state: icon
+  - type: Item
+    size: Huge
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/kite_shield_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/kite_shield_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.80
+      flatReductions:
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseShield
+  id: RPMedievalHeaterShield
+  name: "heater shield"
+  description: "The classic knight's shield: flat-topped, pointed at the bottom, painted with a house's colours."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/heater_shield.rsi
+    state: icon
+  - type: Item
+    size: Huge
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/heater_shield_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/heater_shield_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.80
+      flatReductions:
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseShield
+  id: RPMedievalParadeShield
+  name: "silvered parade shield"
+  description: "An ornate shield chased with silver. Built for show, but the steel under the silver is real."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/parade_shield.rsi
+    state: icon
+  - type: Item
+    size: Huge
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/parade_shield_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/parade_shield_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 13
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Blocking
+    passiveBlockModifier:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+    activeBlockModifier:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.65
+      flatReductions:
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: StaticPrice
+    price: 200

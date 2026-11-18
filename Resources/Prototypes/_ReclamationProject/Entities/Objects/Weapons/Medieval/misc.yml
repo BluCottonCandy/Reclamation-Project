@@ -1,0 +1,95 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalShears
+  name: "sheep shears"
+  description: "Big spring shears for wool. Sharp enough to be a weapon."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shears.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shears_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shears_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.1
+    damage:
+      types:
+        Slash: 12
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalThurible
+  name: "thurible"
+  description: "A censer on a chain. Use it in hand to light the coals; swing it lit to scorch people. While lit, a heavy swing showers hot coals: targets catch fire and stagger."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/thurible.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/thurible_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/thurible_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    range: 1.5
+    damage:
+      types:
+        Blunt: 18
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Items/Lighters/lighter1.ogg
+    soundDeactivate:
+      path: /Audio/Items/Lighters/lighter_off.ogg
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Blunt: 18
+        Heat: 11
+  - type: ComponentToggler
+    components:
+    - type: IgniteOnMeleeHit
+      fireStacks: 1
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2.5
+    energy: 2
+    color: "#ff9a3c"
+  - type: MedievalLook
+    onState: lit
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          lit: { state: lit }
+  - type: MedievalHeavyAttack
+    igniteStacks: 1
+    slow: 2
+    slowMultiplier: 0.7
+  - type: StaticPrice
+    price: 200

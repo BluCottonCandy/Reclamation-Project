@@ -26,6 +26,7 @@ using Content.Shared.Materials;
 using Content.Shared.Storage;
 // using Content.Shared._NC.Crafting.Components; // #Misfits Remove: Stalker14 crafting system
 using Content.Shared._Misfits.Crafting; // #Misfits Add: clean blueprint component for workbench crafting
+using Content.Server._ReclamationProject.Medieval; // #Reclamation Project - medieval weapons
 using Content.Shared.Power;
 using Content.Shared.ReagentSpeed;
 using Content.Shared.Research.Components;
@@ -62,6 +63,7 @@ namespace Content.Server.Lathe
         [Dependency] private SharedSolutionContainerSystem _solution = default!;
         [Dependency] private StackSystem _stack = default!;
         [Dependency] private TransformSystem _transform = default!;
+        [Dependency] private BlacksmithLatheSystem _blacksmith = default!; // #Reclamation Project - medieval weapons
 
         /// <summary>
         /// Per-tick cache
@@ -559,6 +561,13 @@ namespace Content.Server.Lathe
 
             if (_proto.TryIndex(args.ID, out LatheRecipePrototype? recipe))
             {
+                // #Reclamation Project - medieval weapons: blacksmith-only recipes need the Blacksmith trait
+                if (!_blacksmith.CanQueue(uid, args.Actor, recipe))
+                {
+                    UpdateUserInterfaceState(uid, component);
+                    return;
+                }
+
                 // Convert raw material entities in storage into the material pool before queuing.
                 // This avoids availability/consumption mismatches from physical material stacks.
                 NormalizeStoredMaterialsToPool(uid, args.Actor);

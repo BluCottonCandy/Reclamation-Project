@@ -1,0 +1,227 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalMilitaryFlail
+  name: "military flail"
+  description: "A threshing flail turned weapon: a hafted bar with a studded iron striker on a chain."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/military_flail.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/military_flail_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/military_flail_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.85
+    damage:
+      types:
+        Blunt: 29
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalIronFlail
+  name: "iron flail"
+  description: "A heavy iron flail. The chain lets the head swing around a raised shield."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_flail.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_flail_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_flail_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.85
+    damage:
+      types:
+        Blunt: 29
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSpikedFlail
+  name: "spiked flail"
+  description: "A short haft, a chain, and a spiked iron ball."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_flail.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_flail_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_flail_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.85
+    damage:
+      types:
+        Blunt: 29
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSteelFlail
+  name: "steel flail"
+  description: "A well-made steel flail with a flanged striker."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_flail.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_flail_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_flail_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.85
+    damage:
+      types:
+        Blunt: 32
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalScourge
+  name: "scourge"
+  description: "A flail with three weighted chains. Brutal on unarmoured flesh."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scourge.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scourge_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scourge_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.85
+    damage:
+      types:
+        Blunt: 35
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSilverChainFlail
+  name: "silver chain flail"
+  description: "A long silvered chain ending in a spiked star."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_chain_flail.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_chain_flail_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_chain_flail_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.85
+    damage:
+      types:
+        Blunt: 32
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalBullwhip
+  name: "bullwhip"
+  description: "A long braided leather whip. Reaches further than any sword."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bullwhip.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bullwhip_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bullwhip_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.2
+    range: 2.25
+    damage:
+      types:
+        Slash: 14
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalChainWhip
+  name: "chain whip"
+  description: "A whip of linked steel segments. It cuts as much as it lashes."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/chain_whip.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/chain_whip_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/chain_whip_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.2
+    range: 2.25
+    damage:
+      types:
+        Slash: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 200

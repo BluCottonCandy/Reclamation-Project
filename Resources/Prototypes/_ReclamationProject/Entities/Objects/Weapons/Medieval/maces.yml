@@ -1,0 +1,466 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSpikedClub
+  name: "spiked club"
+  description: "A club with nails driven through the head."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_club.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_club_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_club_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalStuddedClub
+  name: "studded club"
+  description: "A heavy club bound with iron studs."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/studded_club.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/studded_club_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/studded_club_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalWoodenClub
+  name: "wooden club"
+  description: "A thick stick, thicker at one end."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_club.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_club_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/wooden_club_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalHolyWaterSprinkler
+  name: "holy water sprinkler"
+  description: "A spiked club named for the blood it sprinkles. A militia favourite."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/holy_water_sprinkler.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/holy_water_sprinkler_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/holy_water_sprinkler_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 27
+        Structural: 9
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalCudgel
+  name: "cudgel"
+  description: "A short weighted club with a wrist loop."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cudgel.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cudgel_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cudgel_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalIronWarHammer
+  name: "iron war hammer"
+  description: "A one-handed hammer with a spike behind the head."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_war_hammer.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_war_hammer_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/iron_war_hammer_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 27
+        Structural: 9
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalFlangedMace
+  name: "flanged mace"
+  description: "A mace with steel flanges that bite through armour."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flanged_mace.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flanged_mace_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flanged_mace_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 30
+        Structural: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalMorningStar
+  name: "morning star"
+  description: "A spiked steel ball on a short haft."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/morning_star.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/morning_star_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/morning_star_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 30
+        Structural: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSteelWarHammer
+  name: "steel war hammer"
+  description: "A steel war hammer with a long spike on the back."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_war_hammer.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_war_hammer_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/steel_war_hammer_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 30
+        Structural: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalShestopyor
+  name: "shestopyor"
+  description: "A Russian six-flanged mace, a symbol of command."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shestopyor.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shestopyor_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shestopyor_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 33
+        Structural: 11
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSilverWarHammer
+  name: "silver war hammer"
+  description: "A war hammer with a silvered head."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_war_hammer.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_war_hammer_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_war_hammer_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 30
+        Structural: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalBuzdygan
+  name: "buzdygan"
+  description: "A Polish flanged mace with a long haft."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/buzdygan.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/buzdygan_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/buzdygan_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 30
+        Structural: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalPernach
+  name: "pernach"
+  description: "An eastern flanged mace with a hooked pommel."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pernach.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pernach_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pernach_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 30
+        Structural: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalScepter
+  name: "ceremonial scepter"
+  description: "A jewelled scepter. Mostly for show, but it is solid metal."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scepter.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scepter_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scepter_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 33
+        Structural: 11
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalElectrifiedMace
+  name: "electrified mace"
+  description: "A pre-war riot mace rebuilt with a wasteland battery pack. Use it in hand to switch the charge on; charged hits stun. While charged, a heavy swing knocks everyone it hits to the ground."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/electrified_mace.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/electrified_mace_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/electrified_mace_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 24
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Weapons/egloves.ogg
+    soundDeactivate:
+      path: /Audio/Weapons/egloves.ogg
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Blunt: 20
+        Shock: 6
+    activatedSoundOnHit:
+      path: /Audio/Weapons/egloves.ogg
+  - type: ComponentToggler
+    components:
+    - type: StaminaDamageOnHit
+      damage: 35
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 1.5
+    energy: 1.5
+    color: "#4cff4c"
+  - type: MedievalLook
+    onState: "on"
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          "on": { state: "on" }
+  - type: MedievalHeavyAttack
+    knockdown: 2
+  - type: StaticPrice
+    price: 100

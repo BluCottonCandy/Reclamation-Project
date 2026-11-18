@@ -144,7 +144,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
                     _humanoidSystem.SetScale(jobEntity, new Vector2(profile.Width, profile.Height));
             }
 
-            DoJobSpecials(job, jobEntity);
+            FinishEquippingJob(jobPrototype, jobEntity);
             _identity.QueueIdentityUpdate(jobEntity);
             return jobEntity;
         }
@@ -194,18 +194,21 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
                 EnsureComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
         }
 
-        DoJobSpecials(job, entity.Value);
+        FinishEquippingJob(prototype, entity.Value);
         _identity.QueueIdentityUpdate(entity.Value);
         return entity.Value;
     }
 
-    private void DoJobSpecials(JobComponent? job, EntityUid entity)
+    private void FinishEquippingJob(JobPrototype? prototype, EntityUid entity)
     {
-        if (!_prototypeManager.TryIndex(job?.Prototype ?? string.Empty, out JobPrototype? prototype))
+        if (prototype == null)
             return;
 
         foreach (var jobSpecial in prototype.Special)
             jobSpecial.AfterEquip(entity);
+
+        // Some jobs spawn a custom body and bypass starting gear. Fill only a vacant wallet slot.
+        InventorySystem.SpawnItemInSlot(entity, "wallet", "N14Wallet", silent: true, force: true);
     }
 
     /// <summary>

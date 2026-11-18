@@ -4,10 +4,11 @@
 # field ensures only the matching species can see each job in the lobby.
 # Access is gated via per-job whitelist (admin: jobwhitelistadd <player> SyntheticMrHandy).
 
-# #Misfits Add - Empty gear prototype: triggers EquipIdCard in StationSpawningSystem
-# so the job's access tags are applied to the robot's nav card on spawn.
+# Starting gear also triggers assignment of the job's access to the robot's nav card.
 - type: startingGear
   id: SyntheticGear
+  equipment:
+    wallet: N14Wallet
 
 - type: job
   id: SyntheticMrHandy

@@ -48,6 +48,10 @@
   - type: LayingDown
   - type: BorgHands
     handCount: 2
+  - type: Inventory
+    speciesId: Deathclaw
+    templateId: ReclamationWalletSlot
+  - type: InventorySlots
   - type: ComplexInteraction
   - type: Puller
     needsHands: false

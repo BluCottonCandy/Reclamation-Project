@@ -1,5 +1,6 @@
 - type: inventoryTemplate
   id: bwonsamdi
+  extraSlotsFrom: ReclamationWalletSlot
   slots:
   - name: back
     slotTexture: back

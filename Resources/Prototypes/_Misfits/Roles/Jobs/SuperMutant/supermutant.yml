@@ -499,6 +499,7 @@
 - type: startingGear # Enclave will give the Enlisted mutant their weapons
   id: SuperMutantEnclaveGear
   equipment:
+    wallet: N14Wallet
     outerClothing: MisfitsEnclavePowerArmor
     jumpsuit: ClothingSuperMutantJumpsuit
     ears: N14ClothingHeadsetEnclave

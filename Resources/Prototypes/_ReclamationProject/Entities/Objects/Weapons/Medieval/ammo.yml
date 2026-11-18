@@ -1,0 +1,61 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: Tag
+  id: RPMusketBall
+# Lead musket ball for the arquebuses and the tanegashima. Fired, it hits HARD (90 damage);
+# the guns make up for it with a 6 second reload and smoothbore spread.
+- type: entity
+  parent: BaseItem
+  id: RPMedievalMusketBall
+  name: lead musket ball
+  description: A lead ball wrapped in a paper twist of black powder. Bite, pour, ram, fire.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/musket_ball.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - RPMusketBall
+  - type: CartridgeAmmo
+    proto: RPMedievalMusketBallShot
+    deleteOnSpawn: true
+  - type: StaticPrice
+    price: 6
+
+- type: entity
+  parent: BaseBullet
+  id: RPMedievalMusketBallShot
+  categories: [ HideSpawnMenu ]
+  name: musket ball
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 60
+        Blunt: 30
+        Structural: 20
+  - type: StaminaDamageOnCollide
+    damage: 30
+
+- type: entity
+  parent: BaseBullet
+  id: RPMedievalLuggedSpearBolt
+  categories: [ HideSpawnMenu ]
+  name: bolt of light
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/lugged_spear_bolt.rsi
+    layers:
+    - state: bolt
+      shader: unshaded
+  - type: PointLight
+    radius: 1.5
+    energy: 1.5
+    color: "#fff3b0"
+  - type: Projectile
+    damage:
+      types:
+        Heat: 18
+        Piercing: 12

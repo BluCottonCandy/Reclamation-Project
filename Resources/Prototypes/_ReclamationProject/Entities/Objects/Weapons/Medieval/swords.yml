@@ -1,0 +1,502 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalY0KRapier
+  name: "Y0K's rapier"
+  description: "A slim blacksteel rapier, companion to Y0K's zweihänder. Light in the hand, for the days the big sword feels too heavy. Bent a hundred times, it always springs back true, just like the one who carries it."
+  suffix: Y0K, unique
+  categories: [ HideSpawnMenu ] # spawned through RPMedievalY0KCrate
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/y0_k_rapier.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/y0_k_rapier_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/y0_k_rapier_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.15
+    range: 1.6
+    damage:
+      types:
+        Piercing: 31
+        Slash: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 600
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalRapier
+  name: "rapier"
+  description: "A long, slender thrusting sword for duellists."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rapier.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rapier_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rapier_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.15
+    range: 1.6
+    damage:
+      types:
+        Piercing: 28
+        Slash: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSweptHiltRapier
+  name: "swept-hilt rapier"
+  description: "A rapier with an elaborate swept guard of looping bars."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/swept_hilt_rapier.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/swept_hilt_rapier_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/swept_hilt_rapier_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.15
+    range: 1.6
+    damage:
+      types:
+        Piercing: 31
+        Slash: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalCourtRapier
+  name: "jeweled court rapier"
+  description: "A noble's rapier, hilt set with stones. Still very sharp."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/court_rapier.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/court_rapier_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/court_rapier_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.15
+    range: 1.6
+    damage:
+      types:
+        Piercing: 31
+        Slash: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalCupHiltRapier
+  name: "cup-hilt rapier"
+  description: "A rapier with a solid steel cup guarding the hand."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cup_hilt_rapier.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cup_hilt_rapier_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cup_hilt_rapier_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.15
+    range: 1.6
+    damage:
+      types:
+        Piercing: 28
+        Slash: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalWaster
+  name: "wooden waster"
+  description: "A wooden practice sword. Hurts, but won't cut."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/waster.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/waster_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/waster_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.1
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: StaminaDamageOnHit
+    damage: 10
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalMacuahuitl
+  name: "macuahuitl"
+  description: "A wooden club edged with sharp stone chips. Crude, and it still takes heads."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/macuahuitl.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/macuahuitl_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/macuahuitl_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 21
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalFalchion
+  name: "falchion"
+  description: "A heavy single-edged sword with a broad, cleaver-like tip."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/falchion.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/falchion_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/falchion_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 30
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalFalx
+  name: "falx"
+  description: "A sickle-curved blade with the edge on the inside."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/falx.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/falx_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/falx_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 30
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalKatana
+  name: "katana"
+  description: "A curved, single-edged sword with a long grip. Swing it one-handed, or wield it in both hands for heavier cuts."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/katana.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/katana_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/katana_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 33
+        Piercing: 9
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 13
+        Piercing: 2
+  - type: Wieldable
+    wieldedSpeedModifier: 0.95
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalShashka
+  name: "shashka"
+  description: "A guardless Cossack sabre, quick out of the scabbard."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shashka.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shashka_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shashka_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 30
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalCavalrySabre
+  name: "cavalry sabre"
+  description: "A curved trooper's sabre. This one has a coolant line run up the spine; use it in hand to frost the blade. While frosted, a heavy swing chills targets to half speed for a few seconds."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cavalry_sabre.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cavalry_sabre_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/cavalry_sabre_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 33
+        Piercing: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Effects/spray2.ogg
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Slash: 29
+        Piercing: 4
+        Cold: 13
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 1.5
+    energy: 1
+    color: "#9fdcff"
+  - type: MedievalLook
+    onState: frost
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          frost: { state: frost }
+  - type: MedievalHeavyAttack
+    slow: 4
+    slowMultiplier: 0.5
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalArmingSword
+  name: "heirloom arming sword"
+  description: "A knight's one-handed sword, handed down for generations."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arming_sword.rsi
+    scale: 0.75, 0.75
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arming_sword_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arming_sword_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 33
+        Piercing: 9
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalTachi
+  name: "tachi"
+  description: "An older, deeply curved sword worn edge-down."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tachi.rsi
+    scale: 0.75, 0.75
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tachi_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tachi_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 33
+        Piercing: 9
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSideSword
+  name: "side-sword"
+  description: "A light cut-and-thrust sword, the ancestor of the rapier."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/side_sword.rsi
+    scale: 0.75, 0.75
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/side_sword_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/side_sword_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 30
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100

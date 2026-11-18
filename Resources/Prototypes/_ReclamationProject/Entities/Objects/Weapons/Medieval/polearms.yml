@@ -1,0 +1,507 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalHalberd
+  name: "halberd"
+  description: "An axe blade, a spike and a hook on a long pole. The soldier's tool for everything."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/halberd.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/halberd_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/halberd_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 10
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 30
+        Piercing: 14
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalBecDeFaucon
+  name: "bec de faucon"
+  description: "A polehammer with a falcon's-beak spike."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bec_de_faucon.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bec_de_faucon_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bec_de_faucon_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 10
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 30
+        Piercing: 14
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalBill
+  name: "bill"
+  description: "A farm billhook grown into a polearm: hook, blade and spike."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bill.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bill_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bill_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 9
+        Piercing: 5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 27
+        Piercing: 13
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalLeister
+  name: "leister"
+  description: "A long fishing spear with barbed prongs."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/leister.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/leister_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/leister_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.85
+    range: 2.0
+    damage:
+      types:
+        Piercing: 12
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 32
+        Slash: 10
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalRhomphaia
+  name: "rhomphaia"
+  description: "A Thracian polearm with a long, slightly curved blade."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rhomphaia.rsi
+    scale: 0.634, 0.634
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rhomphaia_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rhomphaia_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 10
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 30
+        Piercing: 14
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalGlaive
+  name: "glaive"
+  description: "A single-edged blade on the end of a pole."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/glaive.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/glaive_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/glaive_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 10
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 30
+        Piercing: 14
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalWarScythe
+  name: "war scythe"
+  description: "A scythe blade straightened and fixed to a long pole."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/war_scythe.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/war_scythe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/war_scythe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 11
+        Piercing: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 33
+        Piercing: 15
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalPartisan
+  name: "partisan"
+  description: "A broad spear head with flared lugs at the base."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/partisan.rsi
+    scale: 0.65, 0.65
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/partisan_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/partisan_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.85
+    range: 2.0
+    damage:
+      types:
+        Piercing: 12
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 32
+        Slash: 10
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalRanseur
+  name: "ranseur"
+  description: "A three-pronged polearm. This one has a capacitor in the haft; use it in hand to charge the prongs. While charged, a heavy swing jolts targets off their feet."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/ranseur.rsi
+    scale: 0.6, 0.6
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/ranseur_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/ranseur_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.85
+    range: 2.0
+    damage:
+      types:
+        Piercing: 13
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 35
+        Slash: 11
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Weapons/egloves.ogg
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Piercing: 13
+        Shock: 11
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 2
+    energy: 1.5
+    color: "#5ff0ff"
+  - type: MedievalLook
+    onState: "on"
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          "on": { state: "on" }
+  - type: MedievalHeavyAttack
+    knockdown: 1
+    slow: 3
+    slowMultiplier: 0.6
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalSilverVoulge
+  name: "silver voulge"
+  description: "A silvered cleaver blade on a pole. Use it in hand to flip it and strike with the blunt back. Flipped, a heavy swing hooks and trips everyone it hits."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_voulge.rsi
+    scale: 0.619, 0.619
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_voulge_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_voulge_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 10
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 30
+        Piercing: 14
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
+    soundDeactivate:
+      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Blunt: 16
+    activatedSoundOnHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: MedievalLook
+    onState: flip
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          flip: { state: flip }
+  - type: MedievalHeavyAttack
+    knockdown: 2
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalScythe
+  name: "scythe"
+  description: "A farmer's scythe. Not made for fighting, but it does."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scythe.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scythe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/scythe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 9
+        Piercing: 5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 27
+        Piercing: 13
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalBlackenedBecDeFaucon
+  name: "blackened bec de faucon"
+  description: "A fire-blackened bec de faucon."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/blackened_bec_de_faucon.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/blackened_bec_de_faucon_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/blackened_bec_de_faucon_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Slash: 12
+        Piercing: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 36
+        Piercing: 17
+  - type: StaticPrice
+    price: 260

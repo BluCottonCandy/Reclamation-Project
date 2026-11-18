@@ -1,0 +1,11 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+# Blacksmith: forge medieval weapons and armour at a forge. Expensive on purpose.
+- type: trait
+  id: ReclamationBlacksmith
+  category: Mental
+  points: -15
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: Blacksmith

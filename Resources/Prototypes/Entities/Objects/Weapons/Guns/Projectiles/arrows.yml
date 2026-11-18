@@ -45,16 +45,16 @@
   - type: SolutionContainerManager
     solutions:
       ammo:
-        maxVol: 2
+        maxVol: 10 # #Reclamation Project - medieval weapons: arrows carry 10u of a chem
   - type: RefillableSolution
     solution: ammo
   - type: InjectableSolution
     solution: ammo
   - type: SolutionInjectOnEmbed
-    transferAmount: 2
+    transferAmount: 10 # #Reclamation Project - medieval weapons
     solution: ammo
   - type: SolutionTransfer
-    maxTransferAmount: 2
+    maxTransferAmount: 10 # #Reclamation Project - medieval weapons
   - type: Appearance
   - type: SolutionContainerVisuals
     maxFillLevels: 1

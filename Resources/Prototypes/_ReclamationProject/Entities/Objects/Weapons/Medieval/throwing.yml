@@ -1,0 +1,247 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalHurlbat
+  name: "hurlbat"
+  description: "An all-metal throwing axe, spiked on every end so something sharp always lands first."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/hurlbat.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/hurlbat_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/hurlbat_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 12
+        Blunt: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 26
+        Piercing: 8
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalThrowingKnifeIron
+  name: "iron throwing knife"
+  description: "A balanced iron knife meant to be thrown, not held."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_iron.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_iron_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_iron_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.2
+    damage:
+      types:
+        Slash: 5
+        Piercing: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 20
+        Slash: 7
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalThrowingKnifeSteel
+  name: "steel throwing knife"
+  description: "A balanced steel knife meant to be thrown, not held."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_steel.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_steel_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_steel_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.2
+    damage:
+      types:
+        Slash: 6
+        Piercing: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 22
+        Slash: 8
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalThrowingKnifeBlued
+  name: "blued-steel throwing knife"
+  description: "A heat-blued throwing knife. The finish keeps rust off and glare down."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_blued.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_blued_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_blued_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.2
+    damage:
+      types:
+        Slash: 7
+        Piercing: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 24
+        Slash: 9
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalThrowingKnifeSilver
+  name: "silver throwing knife"
+  description: "A throwing knife with a silvered blade."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_silver.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_silver_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/throwing_knife_silver_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.2
+    damage:
+      types:
+        Slash: 6
+        Piercing: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 22
+        Slash: 8
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalShuriken
+  name: "shuriken"
+  description: "A four-pointed throwing star. Small, quick, and hard to see coming."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shuriken.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/shuriken_held.rsi
+  - type: MedievalHiRes
+  - type: MeleeWeapon
+    attackRate: 1.2
+    damage:
+      types:
+        Slash: 3
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 12
+        Piercing: 8
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: StaticPrice
+    price: 100

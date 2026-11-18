@@ -766,6 +766,9 @@
       - Ingot
       - Ore
       - Scrap
+      components: # #Reclamation Project - medieval weapons: leather, thread and gunpowder have none of the tags above
+      - Material
+  - type: BlacksmithLathe # #Reclamation Project - medieval weapons: Blacksmith-trait recipes
   - type: Lathe
     idleState: icon
     runningState: icon # change this

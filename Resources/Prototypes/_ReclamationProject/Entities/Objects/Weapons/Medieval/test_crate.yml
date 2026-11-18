@@ -1,0 +1,352 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+# Admin test crate: one of every medieval weapon plus ammo. Nothing spawns it; admins spawn it by hand.
+- type: entity
+  parent: CrateGenericSteel
+  id: RPMedievalWeaponsTestCrate
+  name: medieval weapons test crate
+  suffix: DEBUG
+  description: A crate holding one of every medieval weapon. For testing.
+  components:
+  - type: EntityStorage
+    capacity: 200
+  - type: StorageFill
+    contents:
+    - id: RPMedievalIronRoundShield
+    - id: RPMedievalPavise
+    - id: RPMedievalWoodenRoundShield
+    - id: RPMedievalBuckler
+    - id: RPMedievalKiteShield
+    - id: RPMedievalHeaterShield
+    - id: RPMedievalParadeShield
+    - id: RPMedievalLongbow
+    - id: RPMedievalRecurveBow
+    - id: RPMedievalCrossbow
+    - id: RPMedievalSling
+    - id: RPMedievalBalearicSling
+    - id: RPMedievalFustibalus
+    - id: RPMedievalArquebus
+    - id: RPMedievalArquebusBayonet
+    - id: RPMedievalTanegashima
+    - id: RPMedievalKnuckledusters
+    - id: RPMedievalTekkoKagi
+    - id: RPMedievalPushDagger
+    - id: RPMedievalHurlbat
+    - id: RPMedievalThrowingKnifeIron
+    - id: RPMedievalThrowingKnifeSteel
+    - id: RPMedievalThrowingKnifeBlued
+    - id: RPMedievalThrowingKnifeSilver
+    - id: RPMedievalShuriken
+    - id: RPMedievalMilitaryFlail
+    - id: RPMedievalIronFlail
+    - id: RPMedievalSpikedFlail
+    - id: RPMedievalSteelFlail
+    - id: RPMedievalScourge
+    - id: RPMedievalSilverChainFlail
+    - id: RPMedievalBullwhip
+    - id: RPMedievalChainWhip
+    - id: RPMedievalFlintKnife
+    - id: RPMedievalHuntingKnife
+    - id: RPMedievalBootKnife
+    - id: RPMedievalNavaja
+    - id: RPMedievalStiletto
+    - id: RPMedievalRondelDagger
+    - id: RPMedievalTanto
+    - id: RPMedievalSilverBaselard
+    - id: RPMedievalWoodsmansMachete
+    - id: RPMedievalButchersCleaver
+    - id: RPMedievalSkinningKnife
+    - id: RPMedievalLongsword
+    - id: RPMedievalBastardSword
+    - id: RPMedievalGreatsword
+    - id: RPMedievalZweihander
+    - id: RPMedievalGreatMesser
+    - id: RPMedievalExecutionersSword
+    - id: RPMedievalEstoc
+    - id: RPMedievalBlackenedFlamberge
+    - id: RPMedievalFlamberge
+    - id: RPMedievalClaymore
+    - id: RPMedievalMontante
+    - id: RPMedievalSwordOfState
+    - id: RPMedievalRapier
+    - id: RPMedievalSweptHiltRapier
+    - id: RPMedievalCourtRapier
+    - id: RPMedievalCupHiltRapier
+    - id: RPMedievalWaster
+    - id: RPMedievalMacuahuitl
+    - id: RPMedievalFalchion
+    - id: RPMedievalFalx
+    - id: RPMedievalKatana
+    - id: RPMedievalShashka
+    - id: RPMedievalCavalrySabre
+    - id: RPMedievalArmingSword
+    - id: RPMedievalTachi
+    - id: RPMedievalSideSword
+    - id: RPMedievalPollaxe
+    - id: RPMedievalDoubleBittedGreataxe
+    - id: RPMedievalDaneAxe
+    - id: RPMedievalLabrys
+    - id: RPMedievalLochaberAxe
+    - id: RPMedievalFellingAxe
+    - id: RPMedievalBlackenedDaneAxe
+    - id: RPMedievalStoneAxe
+    - id: RPMedievalBoneAxe
+    - id: RPMedievalHandAxe
+    - id: RPMedievalWoodsmansAxe
+    - id: RPMedievalBeardedAxe
+    - id: RPMedievalBattleAxe
+    - id: RPMedievalBroadAxe
+    - id: RPMedievalBlackenedWarAxe
+    - id: RPMedievalHorsemansPick
+    - id: RPMedievalFrancisca
+    - id: RPMedievalSilverHatchet
+    - id: RPMedievalPoleMace
+    - id: RPMedievalGoedendag
+    - id: RPMedievalBecDeCorbin
+    - id: RPMedievalFlangedGreatMace
+    - id: RPMedievalGreatMaul
+    - id: RPMedievalSmithsMaul
+    - id: RPMedievalKanabo
+    - id: RPMedievalSpikedWarClub
+    - id: RPMedievalSledgehammer
+    - id: RPMedievalSpikedMaul
+    - id: RPMedievalGreatWarhammer
+    - id: RPMedievalSpikedClub
+    - id: RPMedievalStuddedClub
+    - id: RPMedievalWoodenClub
+    - id: RPMedievalHolyWaterSprinkler
+    - id: RPMedievalCudgel
+    - id: RPMedievalIronWarHammer
+    - id: RPMedievalFlangedMace
+    - id: RPMedievalMorningStar
+    - id: RPMedievalSteelWarHammer
+    - id: RPMedievalShestopyor
+    - id: RPMedievalSilverWarHammer
+    - id: RPMedievalBuzdygan
+    - id: RPMedievalPernach
+    - id: RPMedievalScepter
+    - id: RPMedievalElectrifiedMace
+    - id: RPMedievalHalberd
+    - id: RPMedievalBecDeFaucon
+    - id: RPMedievalBill
+    - id: RPMedievalLeister
+    - id: RPMedievalRhomphaia
+    - id: RPMedievalGlaive
+    - id: RPMedievalWarScythe
+    - id: RPMedievalPartisan
+    - id: RPMedievalRanseur
+    - id: RPMedievalSilverVoulge
+    - id: RPMedievalScythe
+    - id: RPMedievalBlackenedBecDeFaucon
+    - id: RPMedievalSteelSpear
+    - id: RPMedievalStoneSpear
+    - id: RPMedievalBoneSpear
+    - id: RPMedievalLuggedSpear
+    - id: RPMedievalFireLance
+    - id: RPMedievalJoustingLance
+    - id: RPMedievalWalkingStaff
+    - id: RPMedievalQuarterstaff
+    - id: RPMedievalSteelShodQuarterstaff
+    - id: RPMedievalHalfPike
+    - id: RPMedievalSilverShodQuarterstaff
+    - id: RPMedievalMonksSpade
+    - id: RPMedievalGnarledStaff
+    - id: RPMedievalShears
+    - id: RPMedievalThurible
+    - id: RPMedievalMusketBall
+      amount: 10
+    - id: ArrowRegular
+      amount: 10
+
+- type: entity
+  parent: CrateGenericSteel
+  id: RPMedievalRangedTestCrate
+  name: medieval ranged weapons crate
+  suffix: DEBUG
+  description: "Bows, the crossbow, the slings, the matchlocks and the throwing weapons, with musket balls and arrows."
+  components:
+  - type: EntityStorage
+    capacity: 40
+  - type: StorageFill
+    contents:
+    - id: RPMedievalLongbow
+    - id: RPMedievalRecurveBow
+    - id: RPMedievalCrossbow
+    - id: RPMedievalSling
+    - id: RPMedievalBalearicSling
+    - id: RPMedievalFustibalus
+    - id: RPMedievalArquebus
+    - id: RPMedievalArquebusBayonet
+    - id: RPMedievalTanegashima
+    - id: RPMedievalHurlbat
+    - id: RPMedievalThrowingKnifeIron
+    - id: RPMedievalThrowingKnifeSteel
+    - id: RPMedievalThrowingKnifeBlued
+    - id: RPMedievalThrowingKnifeSilver
+    - id: RPMedievalShuriken
+    - id: RPMedievalMusketBall
+      amount: 10
+    - id: ArrowRegular
+      amount: 10
+
+- type: entity
+  parent: CrateGenericSteel
+  id: RPMedievalMeleeTestCrate
+  name: medieval melee weapons crate
+  suffix: DEBUG
+  description: "Every ordinary medieval melee weapon and shield."
+  components:
+  - type: EntityStorage
+    capacity: 142
+  - type: StorageFill
+    contents:
+    - id: RPMedievalIronRoundShield
+    - id: RPMedievalPavise
+    - id: RPMedievalWoodenRoundShield
+    - id: RPMedievalBuckler
+    - id: RPMedievalKiteShield
+    - id: RPMedievalHeaterShield
+    - id: RPMedievalParadeShield
+    - id: RPMedievalKnuckledusters
+    - id: RPMedievalTekkoKagi
+    - id: RPMedievalPushDagger
+    - id: RPMedievalMilitaryFlail
+    - id: RPMedievalIronFlail
+    - id: RPMedievalSpikedFlail
+    - id: RPMedievalSteelFlail
+    - id: RPMedievalScourge
+    - id: RPMedievalSilverChainFlail
+    - id: RPMedievalBullwhip
+    - id: RPMedievalChainWhip
+    - id: RPMedievalFlintKnife
+    - id: RPMedievalHuntingKnife
+    - id: RPMedievalBootKnife
+    - id: RPMedievalStiletto
+    - id: RPMedievalRondelDagger
+    - id: RPMedievalTanto
+    - id: RPMedievalSilverBaselard
+    - id: RPMedievalWoodsmansMachete
+    - id: RPMedievalButchersCleaver
+    - id: RPMedievalSkinningKnife
+    - id: RPMedievalLongsword
+    - id: RPMedievalBastardSword
+    - id: RPMedievalGreatsword
+    - id: RPMedievalZweihander
+    - id: RPMedievalGreatMesser
+    - id: RPMedievalExecutionersSword
+    - id: RPMedievalEstoc
+    - id: RPMedievalBlackenedFlamberge
+    - id: RPMedievalFlamberge
+    - id: RPMedievalClaymore
+    - id: RPMedievalMontante
+    - id: RPMedievalRapier
+    - id: RPMedievalSweptHiltRapier
+    - id: RPMedievalCourtRapier
+    - id: RPMedievalCupHiltRapier
+    - id: RPMedievalWaster
+    - id: RPMedievalMacuahuitl
+    - id: RPMedievalFalchion
+    - id: RPMedievalFalx
+    - id: RPMedievalKatana
+    - id: RPMedievalShashka
+    - id: RPMedievalArmingSword
+    - id: RPMedievalTachi
+    - id: RPMedievalSideSword
+    - id: RPMedievalPollaxe
+    - id: RPMedievalDoubleBittedGreataxe
+    - id: RPMedievalDaneAxe
+    - id: RPMedievalLabrys
+    - id: RPMedievalLochaberAxe
+    - id: RPMedievalFellingAxe
+    - id: RPMedievalBlackenedDaneAxe
+    - id: RPMedievalStoneAxe
+    - id: RPMedievalBoneAxe
+    - id: RPMedievalHandAxe
+    - id: RPMedievalWoodsmansAxe
+    - id: RPMedievalBeardedAxe
+    - id: RPMedievalBattleAxe
+    - id: RPMedievalBroadAxe
+    - id: RPMedievalBlackenedWarAxe
+    - id: RPMedievalHorsemansPick
+    - id: RPMedievalFrancisca
+    - id: RPMedievalSilverHatchet
+    - id: RPMedievalPoleMace
+    - id: RPMedievalGoedendag
+    - id: RPMedievalBecDeCorbin
+    - id: RPMedievalFlangedGreatMace
+    - id: RPMedievalGreatMaul
+    - id: RPMedievalSmithsMaul
+    - id: RPMedievalKanabo
+    - id: RPMedievalSpikedWarClub
+    - id: RPMedievalSledgehammer
+    - id: RPMedievalSpikedMaul
+    - id: RPMedievalGreatWarhammer
+    - id: RPMedievalSpikedClub
+    - id: RPMedievalStuddedClub
+    - id: RPMedievalWoodenClub
+    - id: RPMedievalHolyWaterSprinkler
+    - id: RPMedievalCudgel
+    - id: RPMedievalIronWarHammer
+    - id: RPMedievalFlangedMace
+    - id: RPMedievalMorningStar
+    - id: RPMedievalSteelWarHammer
+    - id: RPMedievalShestopyor
+    - id: RPMedievalSilverWarHammer
+    - id: RPMedievalBuzdygan
+    - id: RPMedievalPernach
+    - id: RPMedievalScepter
+    - id: RPMedievalHalberd
+    - id: RPMedievalBecDeFaucon
+    - id: RPMedievalBill
+    - id: RPMedievalLeister
+    - id: RPMedievalRhomphaia
+    - id: RPMedievalGlaive
+    - id: RPMedievalWarScythe
+    - id: RPMedievalPartisan
+    - id: RPMedievalScythe
+    - id: RPMedievalBlackenedBecDeFaucon
+    - id: RPMedievalSteelSpear
+    - id: RPMedievalStoneSpear
+    - id: RPMedievalBoneSpear
+    - id: RPMedievalJoustingLance
+    - id: RPMedievalWalkingStaff
+    - id: RPMedievalQuarterstaff
+    - id: RPMedievalSteelShodQuarterstaff
+    - id: RPMedievalHalfPike
+    - id: RPMedievalSilverShodQuarterstaff
+    - id: RPMedievalMonksSpade
+    - id: RPMedievalGnarledStaff
+    - id: RPMedievalShears
+
+- type: entity
+  parent: CrateGenericSteel
+  id: RPMedievalSpecialTestCrate
+  name: medieval special weapons crate
+  suffix: DEBUG
+  description: "The weapons with modes and special heavy swings: lit, charged, frosted, flipped or opened by using them in hand."
+  components:
+  - type: EntityStorage
+    capacity: 34
+  - type: StorageFill
+    contents:
+    - id: RPMedievalNavaja
+    - id: RPMedievalSwordOfState
+    - id: RPMedievalCavalrySabre
+    - id: RPMedievalElectrifiedMace
+    - id: RPMedievalRanseur
+    - id: RPMedievalSilverVoulge
+    - id: RPMedievalLuggedSpear
+    - id: RPMedievalFireLance
+    - id: RPMedievalThurible
+
+# Y0K's swords are hidden from the spawn menu; this crate is how they get spawned.
+- type: entity
+  parent: CrateGenericSteel
+  id: RPMedievalY0KCrate
+  name: "Y0K's crate"
+  description: "A heavy steel crate stencilled with Y0K's name. Something worth keeping is inside."
+  components:
+  - type: StorageFill
+    contents:
+    - id: RPMedievalY0KZweihander
+    - id: RPMedievalY0KRapier

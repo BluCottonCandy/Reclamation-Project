@@ -1,0 +1,448 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalFlintKnife
+  name: "flint knife"
+  description: "A knapped stone blade lashed to a handle. The oldest tool there is."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flint_knife.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flint_knife_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flint_knife_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.25
+    damage:
+      types:
+        Slash: 10
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 8
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalHuntingKnife
+  name: "hunting knife"
+  description: "A sturdy fixed-blade knife for dressing game."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/hunting_knife.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/hunting_knife_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/hunting_knife_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.25
+    damage:
+      types:
+        Slash: 14
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 12
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalBootKnife
+  name: "boot knife"
+  description: "A slim knife made to hide in a boot."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/boot_knife.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/boot_knife_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/boot_knife_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.25
+    damage:
+      types:
+        Slash: 14
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 12
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalNavaja
+  name: "navaja"
+  description: "A Spanish folding knife with a locking blade. Use it in hand to flick it open or shut. Open, a heavy slash leaves deep, bleeding cuts."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/navaja.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/navaja_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/navaja_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.25
+    damage:
+      types:
+        Blunt: 2
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: Tag
+    tags:
+    - Knife
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
+    soundDeactivate:
+      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Slash: 14
+        Piercing: 8
+    activatedSoundOnHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: MedievalLook
+    onState: open
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          open: { state: open }
+  - type: MedievalHeavyAttack
+    bleed: 4
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalStiletto
+  name: "stiletto"
+  description: "A thin, needle-pointed dagger made to slip between armour plates."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/stiletto.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/stiletto_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/stiletto_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.3
+    damage:
+      types:
+        Piercing: 18
+        Slash: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 14
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalRondelDagger
+  name: "rondel dagger"
+  description: "A stiff thrusting dagger with disc-shaped guards. A knight's last resort."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rondel_dagger.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rondel_dagger_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/rondel_dagger_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.3
+    damage:
+      types:
+        Piercing: 18
+        Slash: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 14
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalTanto
+  name: "tantō"
+  description: "A short, slightly curved single-edged blade."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tanto.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tanto_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tanto_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.25
+    damage:
+      types:
+        Slash: 15
+        Piercing: 9
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 13
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSilverBaselard
+  name: "silver baselard"
+  description: "A long dagger, nearly a short sword, with a silvered blade."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_baselard.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_baselard_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/silver_baselard_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.1
+    damage:
+      types:
+        Slash: 24
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalWoodsmansMachete
+  name: "woodsman's machete"
+  description: "A long, heavy brush blade for clearing undergrowth and anything else in the way."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/woodsmans_machete.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/woodsmans_machete_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/woodsmans_machete_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.1
+    damage:
+      types:
+        Slash: 24
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalButchersCleaver
+  name: "butcher's cleaver"
+  description: "A heavy square cleaver for splitting bone."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/butchers_cleaver.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/butchers_cleaver_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/butchers_cleaver_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 20
+        Blunt: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSkinningKnife
+  name: "skinning knife"
+  description: "A curved knife for separating hide from meat."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/skinning_knife.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/skinning_knife_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/skinning_knife_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.25
+    damage:
+      types:
+        Slash: 14
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 12
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: EmbedPassiveDamage
+  - type: ThrowingAngle
+    angle: 45
+  - type: Tag
+    tags:
+    - Knife
+  - type: StaticPrice
+    price: 100

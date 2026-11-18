@@ -1,0 +1,536 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: BaseBow
+  id: RPMedievalLongbow
+  name: "longbow"
+  description: "A tall yew longbow. It takes a strong back to draw, and it hits hard at range."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/longbow.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/longbow_held.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/longbow_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 6
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 0.7
+    projectileSpeed: 45
+    minAngle: 0
+    maxAngle: 4
+  - type: Wieldable
+    wieldedSpeedModifier: 0.8
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: BaseBow
+  id: RPMedievalRecurveBow
+  name: "composite recurve bow"
+  description: "A short horn-and-sinew bow with reflexed tips, made to be shot from horseback."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/recurve_bow.rsi
+    scale: 0.634, 0.634
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/recurve_bow_held.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/recurve_bow_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 1.2
+    projectileSpeed: 35
+    minAngle: 0
+    maxAngle: 4
+  - type: Wieldable
+    wieldedSpeedModifier: 0.9
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalCrossbow
+  name: "crossbow"
+  description: "A heavy crossbow with a spanning stirrup. Crank the string back first: use it in hand, or set it on the ground and crank it there (E, or right-click > Crank). Then load an arrow. Slow, but it hits much harder than a bow. Fire it one-handed, or wield it for a steadier aim."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/crossbow.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/crossbow_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/crossbow_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 1
+    projectileSpeed: 50
+    minAngle: 0
+    maxAngle: 10
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: BulletMiss
+  - type: Crossbow
+    spanTime: 2.5
+    bonusDamage:
+      types:
+        Piercing: 25
+  - type: Wieldable
+    wieldedSpeedModifier: 0.9
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: -7
+  - type: ItemSlots
+    slots:
+      projectiles:
+        name: Arrow
+        insertSound: /Audio/Weapons/Guns/Misc/arrow_nock.ogg
+        whitelist:
+          tags:
+          - Arrow
+  - type: ContainerContainer
+    containers:
+      projectiles: !type:ContainerSlot
+  - type: ContainerAmmoProvider
+    container: projectiles
+  - type: MedievalLoadedLook
+    container: projectiles
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          loaded: { state: loaded }
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalSling
+  name: "shepherd's sling"
+  description: "A leather pouch on two cords. Pack it with a handful of stones, bricks, bottles or grenades, whirl it, and let fly: everything in the pouch goes in one shot. Grenades arm as they leave; bullets just get thrown like stones (the fustibalus fires them)."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/sling.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/sling_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/sling_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 1
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 0.8
+    projectileSpeed: 14
+    minAngle: 0
+    maxAngle: 6
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/bolathrow.ogg
+    soundEmpty: null
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,1
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: ContainerAmmoProvider
+    container: storagebase
+  - type: Sling
+    maxSize: Normal
+    bonusDamage:
+      types:
+        Blunt: 12
+  - type: MedievalLoadedLook
+    container: storagebase
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          loaded: { state: loaded }
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalBalearicSling
+  name: "Balearic sling"
+  description: "A long war sling of braided cord and a deep leather cradle, the kind the Balearic slingers made famous. Its huge pouch takes nearly anything you can lift (bricks, bottles, tools, grenades, bullets, even big gear) and one whirl lets the whole lot go: bullets and shells in it go off like gunshots, everything else is hurled."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/balearic_sling.rsi
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Small
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/balearic_sling_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/balearic_sling_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 2
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 0.8
+    projectileSpeed: 20
+    minAngle: 0
+    maxAngle: 6
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/bolathrow.ogg
+    soundEmpty: null
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,9,5
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: ContainerAmmoProvider
+    container: storagebase
+  - type: Sling
+    maxSize: Huge
+    bonusDamage:
+      types:
+        Blunt: 15
+    fireCartridges: true
+  - type: MedievalLoadedLook
+    container: storagebase
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          loaded: { state: loaded }
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalFustibalus
+  name: "fustibalus"
+  description: "A staff sling: a long pole with a big leather pouch at the end. It holds a whole handful of rocks, bottles, grenades and the like, and hurls the lot in one swing. Bullets get thrown, not fired."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/fustibalus.rsi
+    scale: 0.684, 0.684
+    layers:
+    - state: icon
+      map: [ base ]
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/fustibalus_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/fustibalus_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 1.0
+    range: 1.75
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 0.8
+    projectileSpeed: 20
+    minAngle: 0
+    maxAngle: 6
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/bolathrow.ogg
+    soundEmpty: null
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,5,2
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: ContainerAmmoProvider
+    container: storagebase
+  - type: Sling
+    maxSize: Normal
+    bonusDamage:
+      types:
+        Blunt: 12
+  - type: MedievalLoadedLook
+    container: storagebase
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MedievalLookVisuals.State:
+        base:
+          icon: { state: icon }
+          loaded: { state: loaded }
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalArquebus
+  name: "matchlock arquebus"
+  description: "An early long gun fired by touching a smouldering match to the powder pan. Loud, slow and deadly. Loads lead musket balls. Fires from the hip, but wield it for a steady aim."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arquebus.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arquebus_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arquebus_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 1
+    minAngle: 0
+    maxAngle: 20
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+  - type: UseDelayOnShoot
+  - type: UseDelay
+    delay: 6
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - RPMusketBall
+    capacity: 1
+    proto: null
+    unspawnedCount: 0
+    cycleable: false
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: -14
+  - type: Wieldable
+    wieldedSpeedModifier: 0.85
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalArquebusBayonet
+  name: "arquebus with bayonet"
+  description: "A matchlock arquebus with a blade fixed under the muzzle, so it doubles as a short spear. Loads lead musket balls. Fires from the hip, but wield it for a steady aim."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arquebus_bayonet.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arquebus_bayonet_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/arquebus_bayonet_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.9
+    range: 1.75
+    damage:
+      types:
+        Piercing: 16
+        Slash: 4
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: Gun
+    fireRate: 1
+    minAngle: 0
+    maxAngle: 20
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+  - type: UseDelayOnShoot
+  - type: UseDelay
+    delay: 6
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - RPMusketBall
+    capacity: 1
+    proto: null
+    unspawnedCount: 0
+    cycleable: false
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: -14
+  - type: Wieldable
+    wieldedSpeedModifier: 0.85
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 12
+        Slash: 4
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseWeapon
+  id: RPMedievalTanegashima
+  name: "tanegashima"
+  description: "A Japanese matchlock rifle (hinawaju), lacquered stock and a brass-bound barrel. Light for a long gun and very accurate for one. Fires from the hip, but wield it for a steady aim. Loads lead musket balls."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tanegashima.rsi
+    scale: 0.619, 0.619
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tanegashima_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/tanegashima_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Blunt: 11
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: Gun
+    fireRate: 1
+    minAngle: 0
+    maxAngle: 20
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+  - type: UseDelayOnShoot
+  - type: UseDelay
+    delay: 6
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - RPMusketBall
+    capacity: 1
+    proto: null
+    unspawnedCount: 0
+    cycleable: false
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: -14
+  - type: Wieldable
+    wieldedSpeedModifier: 0.85
+  - type: StaticPrice
+    price: 200

@@ -1,0 +1,1530 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+# Blacksmith recipes. The forge (N14WorkbenchForge) lists these through BlacksmithLatheComponent,
+# but only a character with the Blacksmith trait can queue them. 100 units = 1 sheet/bar.
+
+- type: latheCategory
+  id: RPBlacksmithWeapons
+  name: lathe-category-rp-blacksmith-weapons
+
+- type: latheCategory
+  id: RPBlacksmithArmor
+  name: lathe-category-rp-blacksmith-armor
+
+- type: latheRecipe
+  id: RPSmithIronRoundShield
+  result: RPMedievalIronRoundShield
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    N14Iron: 1000
+    Wood: 500
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithPavise
+  result: RPMedievalPavise
+  category: RPBlacksmithWeapons
+  completetime: 12
+  materials:
+    Steel: 1800
+    Wood: 800
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithBuckler
+  result: RPMedievalBuckler
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 200
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithKiteShield
+  result: RPMedievalKiteShield
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 500
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithHeaterShield
+  result: RPMedievalHeaterShield
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 500
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithParadeShield
+  result: RPMedievalParadeShield
+  category: RPBlacksmithWeapons
+  completetime: 12
+  materials:
+    Steel: 2700
+    Wood: 800
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithLongbow
+  result: RPMedievalLongbow
+  category: RPBlacksmithWeapons
+  completetime: 3
+  materials:
+    Wood: 1000
+    Cloth: 300
+
+- type: latheRecipe
+  id: RPSmithRecurveBow
+  result: RPMedievalRecurveBow
+  category: RPBlacksmithWeapons
+  completetime: 3
+  materials:
+    Wood: 700
+    Cloth: 300
+
+- type: latheRecipe
+  id: RPSmithCrossbow
+  result: RPMedievalCrossbow
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 600
+
+- type: latheRecipe
+  id: RPSmithFustibalus
+  result: RPMedievalFustibalus
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Wood: 400
+    Leather: 300
+    Steel: 100
+
+- type: latheRecipe
+  id: RPSmithArquebus
+  result: RPMedievalArquebus
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 1500
+    Wood: 600
+
+- type: latheRecipe
+  id: RPSmithArquebusBayonet
+  result: RPMedievalArquebusBayonet
+  category: RPBlacksmithWeapons
+  completetime: 11
+  materials:
+    Steel: 1600
+    Wood: 600
+
+- type: latheRecipe
+  id: RPSmithTanegashima
+  result: RPMedievalTanegashima
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 2250
+    Wood: 600
+
+- type: latheRecipe
+  id: RPSmithKnuckledusters
+  result: RPMedievalKnuckledusters
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithTekkoKagi
+  result: RPMedievalTekkoKagi
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithPushDagger
+  result: RPMedievalPushDagger
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithHurlbat
+  result: RPMedievalHurlbat
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithThrowingKnifeIron
+  result: RPMedievalThrowingKnifeIron
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    N14Iron: 200
+
+- type: latheRecipe
+  id: RPSmithThrowingKnifeSteel
+  result: RPMedievalThrowingKnifeSteel
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 200
+
+- type: latheRecipe
+  id: RPSmithThrowingKnifeBlued
+  result: RPMedievalThrowingKnifeBlued
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+
+- type: latheRecipe
+  id: RPSmithThrowingKnifeSilver
+  result: RPMedievalThrowingKnifeSilver
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 140
+    N14Silver: 80
+
+- type: latheRecipe
+  id: RPSmithShuriken
+  result: RPMedievalShuriken
+  category: RPBlacksmithWeapons
+  completetime: 3
+  materials:
+    Steel: 100
+
+- type: latheRecipe
+  id: RPSmithMilitaryFlail
+  result: RPMedievalMilitaryFlail
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    N14Iron: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithIronFlail
+  result: RPMedievalIronFlail
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    N14Iron: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSpikedFlail
+  result: RPMedievalSpikedFlail
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    N14Iron: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSteelFlail
+  result: RPMedievalSteelFlail
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithScourge
+  result: RPMedievalScourge
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSilverChainFlail
+  result: RPMedievalSilverChainFlail
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 420
+    N14Silver: 240
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBullwhip
+  result: RPMedievalBullwhip
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Leather: 400
+
+- type: latheRecipe
+  id: RPSmithChainWhip
+  result: RPMedievalChainWhip
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithHuntingKnife
+  result: RPMedievalHuntingKnife
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBootKnife
+  result: RPMedievalBootKnife
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithNavaja
+  result: RPMedievalNavaja
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithStiletto
+  result: RPMedievalStiletto
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithRondelDagger
+  result: RPMedievalRondelDagger
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithTanto
+  result: RPMedievalTanto
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 450
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSilverBaselard
+  result: RPMedievalSilverBaselard
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 350
+    N14Silver: 200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithWoodsmansMachete
+  result: RPMedievalWoodsmansMachete
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithButchersCleaver
+  result: RPMedievalButchersCleaver
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSkinningKnife
+  result: RPMedievalSkinningKnife
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithLongsword
+  result: RPMedievalLongsword
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithBastardSword
+  result: RPMedievalBastardSword
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithGreatsword
+  result: RPMedievalGreatsword
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 1400
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithZweihander
+  result: RPMedievalZweihander
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 1400
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithGreatMesser
+  result: RPMedievalGreatMesser
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1500
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithExecutionersSword
+  result: RPMedievalExecutionersSword
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 1400
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithEstoc
+  result: RPMedievalEstoc
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBlackenedFlamberge
+  result: RPMedievalBlackenedFlamberge
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 2100
+    Coal: 300
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithFlamberge
+  result: RPMedievalFlamberge
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 2100
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithClaymore
+  result: RPMedievalClaymore
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 1400
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithMontante
+  result: RPMedievalMontante
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 2100
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithSwordOfState
+  result: RPMedievalSwordOfState
+  category: RPBlacksmithWeapons
+  completetime: 11
+  materials:
+    Steel: 2400
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithRapier
+  result: RPMedievalRapier
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithSweptHiltRapier
+  result: RPMedievalSweptHiltRapier
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithCourtRapier
+  result: RPMedievalCourtRapier
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithCupHiltRapier
+  result: RPMedievalCupHiltRapier
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithFalchion
+  result: RPMedievalFalchion
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithFalx
+  result: RPMedievalFalx
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithKatana
+  result: RPMedievalKatana
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithShashka
+  result: RPMedievalShashka
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithCavalrySabre
+  result: RPMedievalCavalrySabre
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 1050
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithArmingSword
+  result: RPMedievalArmingSword
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithTachi
+  result: RPMedievalTachi
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithSideSword
+  result: RPMedievalSideSword
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithPollaxe
+  result: RPMedievalPollaxe
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    Steel: 1800
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithDoubleBittedGreataxe
+  result: RPMedievalDoubleBittedGreataxe
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    Steel: 1200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithDaneAxe
+  result: RPMedievalDaneAxe
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    Steel: 1200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithLabrys
+  result: RPMedievalLabrys
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    Steel: 1800
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithLochaberAxe
+  result: RPMedievalLochaberAxe
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    N14Iron: 1200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithFellingAxe
+  result: RPMedievalFellingAxe
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    N14Iron: 1200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBlackenedDaneAxe
+  result: RPMedievalBlackenedDaneAxe
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    Steel: 1800
+    Coal: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithHandAxe
+  result: RPMedievalHandAxe
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    N14Iron: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithWoodsmansAxe
+  result: RPMedievalWoodsmansAxe
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBeardedAxe
+  result: RPMedievalBeardedAxe
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBattleAxe
+  result: RPMedievalBattleAxe
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBroadAxe
+  result: RPMedievalBroadAxe
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 750
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBlackenedWarAxe
+  result: RPMedievalBlackenedWarAxe
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 750
+    Coal: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithHorsemansPick
+  result: RPMedievalHorsemansPick
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithFrancisca
+  result: RPMedievalFrancisca
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSilverHatchet
+  result: RPMedievalSilverHatchet
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 350
+    N14Silver: 200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithPoleMace
+  result: RPMedievalPoleMace
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithGoedendag
+  result: RPMedievalGoedendag
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    N14Iron: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBecDeCorbin
+  result: RPMedievalBecDeCorbin
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithFlangedGreatMace
+  result: RPMedievalFlangedGreatMace
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 2100
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithGreatMaul
+  result: RPMedievalGreatMaul
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 2100
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSmithsMaul
+  result: RPMedievalSmithsMaul
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 1400
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithKanabo
+  result: RPMedievalKanabo
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    N14Iron: 1400
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSpikedWarClub
+  result: RPMedievalSpikedWarClub
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    N14Iron: 1400
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSledgehammer
+  result: RPMedievalSledgehammer
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    N14Iron: 1400
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSpikedMaul
+  result: RPMedievalSpikedMaul
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 1400
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithGreatWarhammer
+  result: RPMedievalGreatWarhammer
+  category: RPBlacksmithWeapons
+  completetime: 10
+  materials:
+    Steel: 2100
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithHolyWaterSprinkler
+  result: RPMedievalHolyWaterSprinkler
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    N14Iron: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithIronWarHammer
+  result: RPMedievalIronWarHammer
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    N14Iron: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithFlangedMace
+  result: RPMedievalFlangedMace
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithMorningStar
+  result: RPMedievalMorningStar
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSteelWarHammer
+  result: RPMedievalSteelWarHammer
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithShestopyor
+  result: RPMedievalShestopyor
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSilverWarHammer
+  result: RPMedievalSilverWarHammer
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 420
+    N14Silver: 240
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBuzdygan
+  result: RPMedievalBuzdygan
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithPernach
+  result: RPMedievalPernach
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithScepter
+  result: RPMedievalScepter
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 900
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithElectrifiedMace
+  result: RPMedievalElectrifiedMace
+  category: RPBlacksmithWeapons
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithHalberd
+  result: RPMedievalHalberd
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBecDeFaucon
+  result: RPMedievalBecDeFaucon
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBill
+  result: RPMedievalBill
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    N14Iron: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithLeister
+  result: RPMedievalLeister
+  category: RPBlacksmithWeapons
+  completetime: 7
+  materials:
+    Steel: 800
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithRhomphaia
+  result: RPMedievalRhomphaia
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithGlaive
+  result: RPMedievalGlaive
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithWarScythe
+  result: RPMedievalWarScythe
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithPartisan
+  result: RPMedievalPartisan
+  category: RPBlacksmithWeapons
+  completetime: 7
+  materials:
+    Steel: 800
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithRanseur
+  result: RPMedievalRanseur
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    Steel: 1800
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSilverVoulge
+  result: RPMedievalSilverVoulge
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 700
+    N14Silver: 400
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithScythe
+  result: RPMedievalScythe
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    N14Iron: 1000
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithBlackenedBecDeFaucon
+  result: RPMedievalBlackenedBecDeFaucon
+  category: RPBlacksmithWeapons
+  completetime: 8
+  materials:
+    Steel: 1500
+    Coal: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSteelSpear
+  result: RPMedievalSteelSpear
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithLuggedSpear
+  result: RPMedievalLuggedSpear
+  category: RPBlacksmithWeapons
+  completetime: 9
+  materials:
+    Steel: 1800
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithFireLance
+  result: RPMedievalFireLance
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    N14Iron: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithJoustingLance
+  result: RPMedievalJoustingLance
+  category: RPBlacksmithWeapons
+  completetime: 7
+  materials:
+    Steel: 800
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSteelShodQuarterstaff
+  result: RPMedievalSteelShodQuarterstaff
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 200
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithHalfPike
+  result: RPMedievalHalfPike
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 750
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithSilverShodQuarterstaff
+  result: RPMedievalSilverShodQuarterstaff
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 140
+    N14Silver: 80
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithMonksSpade
+  result: RPMedievalMonksSpade
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 500
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithShears
+  result: RPMedievalShears
+  category: RPBlacksmithWeapons
+  completetime: 4
+  materials:
+    Steel: 300
+    Wood: 100
+
+- type: latheRecipe
+  id: RPSmithThurible
+  result: RPMedievalThurible
+  category: RPBlacksmithWeapons
+  completetime: 5
+  materials:
+    Steel: 600
+    Wood: 100
+    Leather: 100
+
+- type: latheRecipe
+  id: RPSmithMusketBall
+  result: RPMedievalMusketBall
+  category: RPBlacksmithWeapons
+  completetime: 1
+  materials:
+    Lead: 50
+    N14Gunpowder: 50
+
+- type: latheRecipe
+  id: RPSmithMedievalJackOfPlatesCrimson
+  result: MisfitsClothingOuterMedievalJackOfPlatesCrimson
+  category: RPBlacksmithArmor
+  completetime: 12
+  materials:
+    Steel: 3000
+    Leather: 1500
+    Cloth: 4000
+    Thread: 2000
+
+- type: latheRecipe
+  id: RPSmithMedievalCorseletSteel
+  result: MisfitsClothingOuterMedievalCorseletSteel
+  category: RPBlacksmithArmor
+  completetime: 14
+  materials:
+    Steel: 12000
+    Leather: 2000
+    Cloth: 1500
+    Thread: 1000
+
+- type: latheRecipe
+  id: RPSmithMedievalHalfPlateCrimson
+  result: MisfitsClothingOuterMedievalHalfPlateCrimson
+  category: RPBlacksmithArmor
+  completetime: 16
+  materials:
+    Steel: 18000
+    Leather: 3000
+    Cloth: 3000
+    Thread: 1500
+
+- type: latheRecipe
+  id: RPSmithMedievalPlateCuirassCrimson
+  result: MisfitsClothingOuterMedievalPlateCuirassCrimson
+  category: RPBlacksmithArmor
+  completetime: 18
+  materials:
+    Steel: 25000
+    Leather: 3000
+    Cloth: 2000
+    Thread: 1500
+
+- type: latheRecipe
+  id: RPSmithMedievalKettleHatCrimson
+  result: MisfitsClothingHeadMedievalKettleHatCrimson
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 5000
+    Leather: 1000
+    Cloth: 500
+    Thread: 300
+
+- type: latheRecipe
+  id: RPSmithMedievalKettleHatVisoredCrimson
+  result: MisfitsClothingHeadMedievalKettleHatVisoredCrimson
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 5000
+    Leather: 1000
+    Cloth: 500
+    Thread: 300
+
+- type: latheRecipe
+  id: RPSmithMedievalCloseHelmBarred
+  result: MisfitsClothingHeadMedievalCloseHelmBarred
+  category: RPBlacksmithArmor
+  completetime: 10
+  materials:
+    Steel: 9000
+    Leather: 1500
+    Cloth: 800
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalBarbuteCrimson
+  result: MisfitsClothingHeadMedievalBarbuteCrimson
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 5000
+    Leather: 1000
+    Cloth: 500
+    Thread: 300
+
+- type: latheRecipe
+  id: RPSmithMedievalSalletCrimson
+  result: MisfitsClothingHeadMedievalSalletCrimson
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 5000
+    Leather: 1000
+    Cloth: 500
+    Thread: 300
+
+- type: latheRecipe
+  id: RPSmithMedievalSugarloafHelm
+  result: MisfitsClothingHeadMedievalSugarloafHelm
+  category: RPBlacksmithArmor
+  completetime: 10
+  materials:
+    Steel: 9000
+    Leather: 1500
+    Cloth: 800
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalLeatherGloves
+  result: MisfitsClothingHandsMedievalLeatherGloves
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalGauntletsCrimson
+  result: MisfitsClothingHandsMedievalGauntletsCrimson
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 3000
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalRidingBoots
+  result: MisfitsClothingShoesMedievalRidingBoots
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalPlatedBootsCrimson
+  result: MisfitsClothingShoesMedievalPlatedBootsCrimson
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalJackOfPlatesAzure
+  result: MisfitsClothingOuterMedievalJackOfPlatesAzure
+  category: RPBlacksmithArmor
+  completetime: 12
+  materials:
+    Steel: 3000
+    Leather: 1500
+    Cloth: 4000
+    Thread: 2000
+
+- type: latheRecipe
+  id: RPSmithMedievalHalfPlateAzure
+  result: MisfitsClothingOuterMedievalHalfPlateAzure
+  category: RPBlacksmithArmor
+  completetime: 16
+  materials:
+    Steel: 18000
+    Leather: 3000
+    Cloth: 3000
+    Thread: 1500
+
+- type: latheRecipe
+  id: RPSmithMedievalCorseletBrass
+  result: MisfitsClothingOuterMedievalCorseletBrass
+  category: RPBlacksmithArmor
+  completetime: 14
+  materials:
+    Steel: 12000
+    Leather: 2000
+    Cloth: 1500
+    Thread: 1000
+
+- type: latheRecipe
+  id: RPSmithMedievalKettleHatAzure
+  result: MisfitsClothingHeadMedievalKettleHatAzure
+  category: RPBlacksmithArmor
+  completetime: 10
+  materials:
+    Steel: 9000
+    Leather: 1500
+    Cloth: 800
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalKettleHatVisoredAzure
+  result: MisfitsClothingHeadMedievalKettleHatVisoredAzure
+  category: RPBlacksmithArmor
+  completetime: 10
+  materials:
+    Steel: 9000
+    Leather: 1500
+    Cloth: 800
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalCloseHelmBarredAzure
+  result: MisfitsClothingHeadMedievalCloseHelmBarredAzure
+  category: RPBlacksmithArmor
+  completetime: 10
+  materials:
+    Steel: 9000
+    Leather: 1500
+    Cloth: 800
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalBarbuteAzure
+  result: MisfitsClothingHeadMedievalBarbuteAzure
+  category: RPBlacksmithArmor
+  completetime: 10
+  materials:
+    Steel: 9000
+    Leather: 1500
+    Cloth: 800
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalArmetGilded
+  result: MisfitsClothingHeadMedievalArmetGilded
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 5000
+    Leather: 1000
+    Cloth: 500
+    Thread: 300
+
+- type: latheRecipe
+  id: RPSmithMedievalBlackLeatherGloves
+  result: MisfitsClothingHandsMedievalBlackLeatherGloves
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalPlateGauntletsAzure
+  result: MisfitsClothingHandsMedievalPlateGauntletsAzure
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 6000
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalBlackLeatherBoots
+  result: MisfitsClothingShoesMedievalBlackLeatherBoots
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalSabatonsAzure
+  result: MisfitsClothingShoesMedievalSabatonsAzure
+  category: RPBlacksmithArmor
+  completetime: 8
+  materials:
+    Steel: 3000
+    Leather: 2000
+    Thread: 500
+
+- type: latheRecipe
+  id: RPSmithMedievalKnightHarness
+  result: MisfitsClothingOuterMedievalKnightHarness
+  category: RPBlacksmithArmor
+  completetime: 25
+  materials:
+    Steel: 40000
+    Leather: 5000
+    Cloth: 4000
+    Thread: 2500
+
+- type: latheRecipe
+  id: RPSmithMedievalKnightSallet
+  result: MisfitsClothingHeadMedievalKnightSallet
+  category: RPBlacksmithArmor
+  completetime: 12
+  materials:
+    Steel: 15000
+    Leather: 2000
+    Cloth: 1000
+    Thread: 600
+
+- type: latheRecipe
+  id: RPSmithMedievalBaldricPouched
+  result: MisfitsClothingBeltMedievalBaldricPouched
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 3000
+    Thread: 800
+
+- type: latheRecipe
+  id: RPSmithMedievalLeatherBandolier
+  result: MisfitsClothingBeltMedievalLeatherBandolier
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 3000
+    Thread: 800
+
+- type: latheRecipe
+  id: RPSmithMedievalCraftsmanBelt
+  result: MisfitsClothingBeltMedievalCraftsmanBelt
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Steel: 1000
+    Leather: 3000
+    Thread: 800
+
+- type: latheRecipe
+  id: RPSmithMedievalPouchHarnessAzure
+  result: MisfitsClothingBeltMedievalPouchHarnessAzure
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 3000
+    Thread: 800
+
+- type: latheRecipe
+  id: RPSmithMedievalShoulderHarness
+  result: MisfitsClothingBeltMedievalShoulderHarness
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 3000
+    Thread: 800
+
+- type: latheRecipe
+  id: RPSmithMedievalSmithBelt
+  result: MisfitsClothingBeltMedievalSmithBelt
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Steel: 1000
+    Leather: 3000
+    Thread: 800
+
+- type: latheRecipe
+  id: RPSmithMedievalCrossedBaldricCrimson
+  result: MisfitsClothingBeltMedievalCrossedBaldricCrimson
+  category: RPBlacksmithArmor
+  completetime: 6
+  materials:
+    Leather: 3000
+    Thread: 800

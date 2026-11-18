@@ -1,0 +1,403 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalPoleMace
+  name: "pole mace"
+  description: "A flanged mace head on a long pole."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pole_mace.rsi
+    scale: 0.605, 0.605
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pole_mace_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pole_mace_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Blunt: 12
+        Piercing: 4
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 34
+        Piercing: 14
+        Structural: 30
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalGoedendag
+  name: "goedendag"
+  description: "A Flemish peasant club with a spike on top. Its name means 'good day'."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/goedendag.rsi
+    scale: 0.667, 0.667
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/goedendag_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/goedendag_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Blunt: 11
+        Piercing: 4
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 31
+        Piercing: 13
+        Structural: 27
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalBecDeCorbin
+  name: "bec de corbin"
+  description: "A polehammer with a crow's-beak spike, made to punch through plate."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bec_de_corbin.rsi
+    scale: 0.65, 0.65
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bec_de_corbin_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/bec_de_corbin_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.8
+    range: 2.0
+    damage:
+      types:
+        Blunt: 12
+        Piercing: 4
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 34
+        Piercing: 14
+        Structural: 30
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalFlangedGreatMace
+  name: "flanged great mace"
+  description: "A long silvered mace with tall flanges."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flanged_great_mace.rsi
+    scale: 0.722, 0.722
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flanged_great_mace_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/flanged_great_mace_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 51
+        Structural: 55
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalGreatMaul
+  name: "great maul"
+  description: "A massive two-handed hammer, red-banded at the head."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/great_maul.rsi
+    scale: 0.605, 0.605
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/great_maul_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/great_maul_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 51
+        Structural: 55
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalSmithsMaul
+  name: "smith's maul"
+  description: "A huge forge hammer. A smith's tool, and a terrifying weapon."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/smiths_maul.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/smiths_maul_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/smiths_maul_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 14
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 46
+        Structural: 50
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalKanabo
+  name: "kanabō"
+  description: "A long iron-studded club from Japan."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/kanabo.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/kanabo_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/kanabo_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 13
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 41
+        Structural: 45
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalSpikedWarClub
+  name: "spiked war club"
+  description: "A long club ringed with iron spikes."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_war_club.rsi
+    scale: 0.703, 0.703
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_war_club_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_war_club_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 13
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 41
+        Structural: 45
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalSledgehammer
+  name: "sledgehammer"
+  description: "A heavy iron sledge on a long handle."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/sledgehammer.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/sledgehammer_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/sledgehammer_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 13
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 41
+        Structural: 45
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalSpikedMaul
+  name: "spiked maul"
+  description: "A great hammer with spikes on the striking face."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_maul.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_maul_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/spiked_maul_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 14
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 46
+        Structural: 50
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalGreatWarhammer
+  name: "great warhammer"
+  description: "A brass-fitted war hammer with a heavy square head."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/great_warhammer.rsi
+    scale: 0.619, 0.619
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/great_warhammer_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/great_warhammer_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      path: /Audio/Weapons/genhit3.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 51
+        Structural: 55
+  - type: StaticPrice
+    price: 200

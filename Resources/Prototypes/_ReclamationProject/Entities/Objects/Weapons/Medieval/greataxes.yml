@@ -1,0 +1,274 @@
+# #Reclamation Project - medieval weapons (RogueTown sprites provided by Chermaity)
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalPollaxe
+  name: "pollaxe"
+  description: "An axe blade, a hammer back and a spike on a long haft. A knight's favourite."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pollaxe.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pollaxe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/pollaxe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Slash: 13
+        Blunt: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 42
+        Blunt: 11
+        Structural: 44
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalDoubleBittedGreataxe
+  name: "double-bitted greataxe"
+  description: "A greataxe with a blade on both sides of the head."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/double_bitted_greataxe.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/double_bitted_greataxe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/double_bitted_greataxe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Slash: 12
+        Blunt: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 38
+        Blunt: 10
+        Structural: 40
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalDaneAxe
+  name: "Dane axe"
+  description: "A long-hafted Viking axe with a thin, wide blade."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/dane_axe.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/dane_axe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/dane_axe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Slash: 12
+        Blunt: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 38
+        Blunt: 10
+        Structural: 40
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalLabrys
+  name: "labrys"
+  description: "A heavy double-headed axe, very old in design."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/labrys.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/labrys_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/labrys_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Slash: 13
+        Blunt: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 42
+        Blunt: 11
+        Structural: 44
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalLochaberAxe
+  name: "Lochaber axe"
+  description: "A Scottish poleaxe with a long blade and a hook on the back."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/lochaber_axe.rsi
+    scale: 0.619, 0.619
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/lochaber_axe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/lochaber_axe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Slash: 11
+        Blunt: 5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 34
+        Blunt: 9
+        Structural: 36
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalFellingAxe
+  name: "felling axe"
+  description: "A woodcutter's two-handed axe. Made for trees, works on doors."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/felling_axe.rsi
+    scale: 0.634, 0.634
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/felling_axe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/felling_axe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Slash: 11
+        Blunt: 5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 34
+        Blunt: 9
+        Structural: 36
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: RPMedievalBaseTwoHanded
+  id: RPMedievalBlackenedDaneAxe
+  name: "blackened Dane axe"
+  description: "A fire-blackened Dane axe with a wicked bearded blade."
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/blackened_dane_axe.rsi
+    scale: 0.6, 0.6
+    state: icon
+  - type: Item
+    size: Large
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/blackened_dane_axe_held.rsi
+  - type: MedievalHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/Medieval/blackened_dane_axe_held.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 0.75
+    range: 1.75
+    damage:
+      types:
+        Slash: 14
+        Blunt: 7
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 46
+        Blunt: 12
+        Structural: 48
+  - type: StaticPrice
+    price: 260

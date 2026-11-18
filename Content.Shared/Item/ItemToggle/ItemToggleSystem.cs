@@ -1,3 +1,4 @@
+using Content.Shared._ReclamationProject.Medieval; // #Reclamation Project - medieval weapons
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item.ItemToggle.Components;
@@ -246,6 +247,9 @@ public sealed class ItemToggleSystem : EntitySystem
     /// </summary>
     private void TurnOffOnUnwielded(Entity<ItemToggleComponent> ent, ref ItemUnwieldedEvent args)
     {
+        if (HasComp<MedievalLookComponent>(ent)) // #Reclamation Project - medieval weapons toggle only on use, not on wield
+            return;
+
         TryDeactivate((ent, ent.Comp), args.User);
     }
 
@@ -254,6 +258,9 @@ public sealed class ItemToggleSystem : EntitySystem
     /// </summary>
     private void TurnOnOnWielded(Entity<ItemToggleComponent> ent, ref ItemWieldedEvent args)
     {
+        if (HasComp<MedievalLookComponent>(ent)) // #Reclamation Project - medieval weapons toggle only on use, not on wield
+            return;
+
         // FIXME: for some reason both client and server play sound
         TryActivate((ent, ent.Comp));
     }

@@ -1,3 +1,5 @@
+#nullable enable annotations
+
 using System.Linq;
 using Content.Server.Maps;
 using Content.Server.Station.Components;

@@ -292,6 +292,21 @@
   objectType: Structure
   placementMode: SnapgridCenter
 
+- type: construction
+  name: Flag of the Railroad
+  id: ReclamationFlagWallRailroad
+  graph: ReclamationFlagSmallRR
+  startNode: start
+  targetNode: flagRRs
+# category: construction-category-decorations
+  description: The banner of the Railroad. A group of underground smugglers.
+  hide: false
+  icon:
+    sprite: _ReclamationProject/Structures/Wallmounts/railroad_flag_wall.rsi
+    state: flag_railroad
+  objectType: Structure
+  placementMode: SnapgridCenter
+
 # Banners aka big flags
 #MARK: Flagpoles
 - type: construction
@@ -321,6 +336,21 @@
   icon:
     sprite: _ReclamationProject/Structures/Decoration/Flagpoles/trieste_flagpole.rsi
     state: triesteflagpole
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Flag of the Railroad
+  id: ReclamationDecorationFlagRailroad
+  graph: ReclamationFlagRR
+  startNode: start
+  targetNode: flagRR
+# category: construction-category-decorations
+  description: The banner of the Railroad. A group of underground smugglers. Who knows what they are up to in this area.
+  hide: false
+  icon:
+    sprite: _ReclamationProject/Structures/Decoration/Flagpoles/railroad_flagpole.rsi
+    state: railroadflagpole
   objectType: Structure
   placementMode: SnapgridCenter
 

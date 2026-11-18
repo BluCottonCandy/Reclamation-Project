@@ -6,3 +6,7 @@ ent-ReclamationFlagWallTrieste = Flag of the Trieste Company
     .desc = The banner of the Trieste Company. Seafaring entrepreneurs known for their vast knowledge and skill in trade and repair.
 ent-ReclamationDecorationFlagTrieste = Flag of the Trieste Company
     .desc = The banner of the Trieste Company, a collection of tradesmen and repairmen, they seek out odd jobs and gear in order to survive and help others in the Commonwealth.
+ent-ReclamationFlagWallRailroad = Flag of the Railroad
+    .desc = The banner of the Railroad. A group of underground smugglers.
+ent-ReclamationDecorationFlagRailroad = Flag of the Railroad
+    .desc = The banner of the Railroad. A group of underground smugglers. Who knows what they are up to in this area.

@@ -1,13 +1,20 @@
 # #Reclamation Project Add - Minutemen laser musket.
-# Crank it up to 6 times (alt-click, or right-click > Crank) before a shot. Each crank takes
-# 1.8 s and uses half a shot of cell charge. Damage by cranks: 0=20, 1=30, 2=40, 3=50,
-# 4=60, 5=70, 6=120 Heat. The count resets after every shot. See CrankChargeComponent.
+# Six cranks take five seconds and cost half a shot of cell energy each.
+# Damage by crank count (0–6): 22, 32, 42, 52, 62, 72, 122 Heat.
+
+# Keep timed winding and firing settings local to this entity ID. The heavy
+# musket and crank shotgun inherit the entity below.
+- type: timedCrankCharge
+  id: MinutemenWeaponLaserMusket
+  crankDelay: 0.8333333
+  fireRate: 2
+  holdTime: 8
 
 - type: hitscan
   id: MinutemenLaserMusketBeam
   damage:
     types:
-      Heat: 20
+      Heat: 22
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_beam_heavy
@@ -59,7 +66,7 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/_ReclamationProject/Weapons/Guns/LaserMusket/laser_musket_fire.ogg
-  # The beam sets the uncranked damage (20) and the heavy beam look; the cell only supplies charge.
+  # The beam sets the uncranked damage (22) and the heavy beam look; the cell only supplies charge.
   - type: GunDamageBonus
     hitscanProtoOverride: MinutemenLaserMusketBeam
   - type: CrankCharge
@@ -67,7 +74,7 @@
     crankDelay: 1.8
     crankCostFraction: 0.5
     bonusDamageType: Heat
-    # Added to the beam's 20 for 1..6 cranks: 30, 40, 50, 60, 70, 120.
+    # Added to the beam's 22 for 1..6 cranks: 32, 42, 52, 62, 72, 122.
     bonusByCharge: [10, 20, 30, 40, 50, 100]
     crankSound:
       path: /Audio/_ReclamationProject/Weapons/Guns/LaserMusket/laser_musket_crank.ogg

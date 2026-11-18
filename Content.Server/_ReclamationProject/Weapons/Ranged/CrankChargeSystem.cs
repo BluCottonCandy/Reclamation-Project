@@ -1,4 +1,5 @@
 using Content.Shared.Damage;
+using Content.Shared.DoAfter;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Events;
 // #Reclamation Project Add - Server half of crank-charged guns (Minutemen laser musket).
@@ -29,6 +30,36 @@ public sealed partial class CrankChargeSystem : SharedCrankChargeSystem
     }
 
     [Dependency] private readonly SharedContainerSystem _containers = default!;
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        var now = Timing.CurTime;
+        var query = EntityQueryEnumerator<CrankChargeComponent>();
+        while (query.MoveNext(out var uid, out var crank))
+        {
+            if (crank.ChargeHoldTime is not {} holdTime || crank.Charges <= 0)
+            {
+                // Old saves can contain a deadline for a gun that now holds its charge.
+                crank.NextChargeLoss = null;
+                continue;
+            }
+
+            // Older saved weapons can already have paid charges but no deadline.
+            var nextLoss = crank.NextChargeLoss ??= now + holdTime;
+            if (now < nextLoss || DoAfter.GetStatus(crank.ActiveCrank) == DoAfterStatus.Running)
+                continue;
+
+            do
+            {
+                crank.Charges--;
+                nextLoss += TimeSpan.FromSeconds(1);
+            } while (crank.Charges > 0 && nextLoss <= now);
+
+            crank.NextChargeLoss = crank.Charges > 0 ? nextLoss : null;
+            Dirty(uid, crank);
+        }
+    }
 
     private void OnCrankMapInit(EntityUid uid, CrankChargeComponent comp, MapInitEvent args)
         => UpdateEmptyCell(uid, comp);

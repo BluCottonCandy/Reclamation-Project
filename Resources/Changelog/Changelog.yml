@@ -15007,3 +15007,10 @@ Entries:
   id: 6663
   time: '2026-11-17T16:24:45.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/204
+- author: GamerExe and Davisrocket
+  changes:
+    - type: Add
+      message: Railroad Flags (Sprites by GamerExe)
+  id: 6664
+  time: '2026-11-18T13:50:16.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/205

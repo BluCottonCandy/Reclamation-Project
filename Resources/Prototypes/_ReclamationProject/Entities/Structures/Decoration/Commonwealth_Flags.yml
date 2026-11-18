@@ -58,3 +58,33 @@
   - type: Construction
     graph: ReclamationFlagTC
     node: flagTC
+
+#MARK:Railroad
+#Wallmounts (Small Flags)
+- type: entity
+  parent: N14SignBase
+  id: ReclamationFlagWallRailroad
+  name: Flag of the Railroad
+  suffix: Railroad
+  description: The banner of the Railroad. A group of underground smugglers.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/Wallmounts/railroad_flag_wall.rsi
+    state: flag_railroad
+  - type: Construction
+    graph: ReclamationFlagSmallRR
+    node: flagRRs
+
+#Flagpoles (Large Flags)
+- type: entity
+  parent: N14DecorationFlagFlammable
+  id: ReclamationDecorationFlagRailroad
+  name: Flag of the Railroad
+  description: The banner of the Railroad. A group of underground smugglers. Who knows what they are up to in this area.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/Decoration/Flagpoles/railroad_flagpole.rsi
+    state: railroadflagpole
+  - type: Construction
+    graph: ReclamationFlagRR
+    node: flagRR

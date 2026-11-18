@@ -1,7 +1,6 @@
 # #Reclamation Project Add - Minutemen laser musket.
-# Crank it up to 6 times (alt-click, or right-click > Crank) before a shot. Each crank takes
-# 1.8 s and uses half a shot of cell charge. Damage by cranks: 0=20, 1=30, 2=40, 3=50,
-# 4=60, 5=70, 6=120 Heat. The count resets after every shot. See CrankChargeComponent.
+# Six cranks take five seconds and cost half a shot of cell energy each.
+# Damage by crank count (0–6): 20, 30, 40, 50, 60, 70, 120 Heat.
 
 - type: hitscan
   id: MinutemenLaserMusketBeam
@@ -64,7 +63,6 @@
     hitscanProtoOverride: MinutemenLaserMusketBeam
   - type: CrankCharge
     maxCharges: 6
-    crankDelay: 1.8
     crankCostFraction: 0.5
     bonusDamageType: Heat
     # Added to the beam's 20 for 1..6 cranks: 30, 40, 50, 60, 70, 120.

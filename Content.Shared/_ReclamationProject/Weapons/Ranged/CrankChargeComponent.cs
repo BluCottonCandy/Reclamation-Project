@@ -8,14 +8,16 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._ReclamationProject.Weapons.Ranged;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class CrankChargeComponent : Component
 {
     /// <summary>
-    /// How many times the gun has been cranked since its last shot.
+    /// Paid charges still stored for the next shot.
     /// </summary>
     [DataField, AutoNetworkedField]
     public int Charges;
@@ -34,7 +36,13 @@ public sealed partial class CrankChargeComponent : Component
     /// How long one crank takes.
     /// </summary>
     [DataField]
-    public TimeSpan CrankDelay = TimeSpan.FromSeconds(1.8);
+    public TimeSpan CrankDelay = TimeSpan.FromSeconds(5d / 6);
+
+    [DataField(serverOnly: true, customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan? NextChargeLoss;
+
+    [DataField(serverOnly: true)]
+    public DoAfterId? ActiveCrank;
 
     [DataField]
     public SoundSpecifier? CrankSound;

@@ -1,4 +1,5 @@
 using Content.Client.Alerts;
+using Content.Client.UserInterface.Systems.DamageOverlays.Overlays;
 using Content.IntegrationTests.Pair;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
@@ -20,6 +21,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Item.ItemToggle;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Projectiles;
@@ -30,8 +33,10 @@ using System.Linq;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Ranged.Components;
+using Robust.Client.Graphics;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -42,6 +47,98 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class ModularPowerArmorTest
 {
+    [TestCase("ReclamationPowerArmorFrame", false)]
+    [TestCase("N14ClothingOuterPowerArmorT45", true)]
+    public async Task DamageCircleTracksWearer(string suitId, bool reconnect)
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        if (reconnect)
+        {
+            var network = pair.Client.ResolveDependency<IClientNetManager>();
+            await pair.Client.WaitPost(() => network.ClientDisconnect("Testing injury feedback after rejoining"));
+            await pair.ReallyBeIdle(10);
+            await pair.Client.WaitPost(() => network.ClientConnect(null!, 0, null!));
+            await pair.ReallyBeIdle(10);
+        }
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        var client = pair.Client.ResolveDependency<IEntityManager>();
+        var overlays = pair.Client.ResolveDependency<IOverlayManager>();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        EntityUid wearer = default;
+        NetEntity netWearer = default;
+
+        void Hit(EntityUid uid, string type, float amount) =>
+            server.System<DamageableSystem>().TryChangeDamage(uid,
+                new DamageSpecifier { DamageDict = { [type] = amount } }, doPartDamage: false);
+
+        float CheckInjuryCircle()
+        {
+            var uid = client.GetEntity(netWearer);
+            var wounds = client.GetComponent<DamageableComponent>(uid).Damage;
+            var critical = client.System<MobThresholdSystem>().GetThresholdForState(uid, MobState.Critical);
+            var expected = (wounds.DamageDict["Blunt"] + wounds.DamageDict["Heat"]).Float() / critical.Float();
+            var level = overlays.GetOverlay<DamageOverlay>().InjuryLevel;
+            Assert.That(level, Is.EqualTo(expected).Within(.0001f));
+            return level;
+        }
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            wearer = server.SpawnEntity("MobHuman", map.GridCoords);
+            netWearer = server.GetNetEntity(wearer);
+            var suit = server.SpawnEntity(suitId, map.GridCoords);
+            Assert.That(server.System<InventorySystem>().TryEquip(wearer, suit, "outerClothing"));
+            pair.Server.PlayerMan.SetAttachedEntity(session, wearer);
+            if (server.System<ItemSlotsSystem>().GetItemOrNull(suit, PowerArmorPlates.Container(ArmorPlateSlot.Chest)) is {} plate)
+                Hit(plate, "Blunt", 30);
+        });
+        await pair.RunTicksSync(20);
+        await pair.Client.WaitAssertion(() => Assert.That(overlays.GetOverlay<DamageOverlay>().InjuryLevel, Is.Zero));
+
+        var previousLevel = 0f;
+        foreach (var (type, amount) in new[] { ("Blunt", 3f), ("Heat", 30f), ("Blunt", 45f) })
+        {
+            await pair.Server.WaitAssertion(() =>
+            {
+                var body = server.GetComponent<DamageableComponent>(wearer);
+                var before = body.TotalDamage;
+                Hit(wearer, type, amount);
+                Assert.That(body.TotalDamage, Is.GreaterThan(before));
+            });
+            await pair.RunTicksSync(12);
+            await pair.Client.WaitAssertion(() =>
+            {
+                var level = CheckInjuryCircle();
+                Assert.That(level, Is.GreaterThan(previousLevel));
+                previousLevel = level;
+            });
+        }
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(server.System<InventorySystem>().TryUnequip(wearer, "outerClothing", force: true));
+            Hit(wearer, "Asphyxiation", 8f);
+        });
+        await pair.RunTicksSync(5);
+        await pair.Client.WaitAssertion(() =>
+        {
+            Assert.That(CheckInjuryCircle(), Is.Positive);
+            Assert.That(overlays.GetOverlay<DamageOverlay>().OxygenLevel, Is.Positive);
+        });
+        await pair.Server.WaitAssertion(() =>
+            server.System<DamageableSystem>().SetAllDamage(wearer, server.GetComponent<DamageableComponent>(wearer), 0));
+        await pair.RunTicksSync(12);
+        await pair.Client.WaitAssertion(() =>
+        {
+            var overlay = overlays.GetOverlay<DamageOverlay>();
+            Assert.That(overlay.InjuryLevel, Is.Zero);
+            Assert.That(overlay.OxygenLevel, Is.Zero);
+        });
+        await pair.Server.WaitPost(() => pair.Server.PlayerMan.SetAttachedEntity(session, null));
+        await pair.CleanReturnAsync();
+    }
+
     [TestCase("Left", "Right", true)]
     [TestCase("Right", "Left", false)]
     public async Task FrameSupportsMissingLegs(string firstLeg, string secondLeg, bool trained)

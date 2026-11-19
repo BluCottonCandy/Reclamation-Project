@@ -15078,3 +15078,20 @@ Entries:
   id: 6666
   time: '2026-11-18T22:23:41.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/212
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Blacksmith can now be selected when drawbacks bring your available perk
+        points to 15.
+    - type: Add
+      message: >-
+        Personal bunkers have a permanent material locker beside the exit ladder
+        that saves one stack of each crafting material.
+    - type: Tweak
+      message: >-
+        Crafting supplies left elsewhere in a bunker, including workbench and
+        forge material balances, are cleared when the room saves.
+  id: 6667
+  time: '2026-11-19T04:54:34.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/213

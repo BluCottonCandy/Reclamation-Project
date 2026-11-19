@@ -8,4 +8,6 @@ public sealed partial class PowerArmorModelPrototype : IPrototype
     [IdDataField] public string ID { get; private set; } = default!;
     [DataField(required: true)] public int Rating;
     [DataField(required: true)] public string Sprite = default!;
+    /// <summary>Stocked replacement parts issued with a factory-assembled suit.</summary>
+    [DataField] public Dictionary<ArmorPlateSlot, EntProtoId> Parts = new();
 }

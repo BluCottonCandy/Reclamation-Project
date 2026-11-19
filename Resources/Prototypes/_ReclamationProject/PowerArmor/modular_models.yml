@@ -12,6 +12,11 @@
   id: MisfitsClothingOuterPowerArmorBoS509HonorGuard
   rating: 60
   sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509HeadPaladin.rsi
+  parts:
+    Pauldrons: ReclamationHonorGuardPlatePauldrons
+    Chest: ReclamationHonorGuardPlateChest
+    Gloves: ReclamationHonorGuardPlateGloves
+    Helmet: ReclamationHonorGuardPlateHelmet
 
 - type: powerArmorModel
   id: MisfitsClothingOuterPowerArmorRanger
@@ -102,6 +107,11 @@
   id: N14ClothingOuterPowerArmorT51
   rating: 55
   sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51.rsi
+  parts:
+    Pauldrons: ReclamationT51PlatePauldrons
+    Chest: ReclamationT51PlateChest
+    Gloves: ReclamationT51PlateGloves
+    Helmet: ReclamationT51PlateHelmet
 
 - type: powerArmorModel
   id: N14ClothingOuterPowerArmorT51BC

@@ -22,7 +22,6 @@ using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Random;
 using Content.Shared.Hands;
-using Content.Shared.Standing;
 using Robust.Shared.Player;
 using Content.Server.GameTicking;
 
@@ -50,7 +49,6 @@ public sealed partial class TraumaSystem : EntitySystem
     private readonly Dictionary<EntityUid, (DamageSpecifier Damage, float Age)> _pending = new();
     private bool _rejuvenating;
     [Dependency] private readonly TraumaSurgerySystem _traumaSurgery = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
 
     public override void Initialize()
     {
@@ -192,17 +190,14 @@ public sealed partial class TraumaSystem : EntitySystem
 
     private void OnSupportEquipped(EntityUid uid, TraumaBodyComponent comp, DidEquipHandEvent args)
     {
-        if (HasComp<TraumaWalkingSupportComponent>(args.Equipped)) _body.UpdateMovementSpeed(uid);
-        if (HasComp<TraumaWalkingSupportComponent>(args.Equipped) && _traumaSurgery.HasWalkingSupport(uid))
-            _standing.Stand(uid);
+        if (HasComp<TraumaWalkingSupportComponent>(args.Equipped))
+            _traumaSurgery.RefreshWalkingSupport(uid);
     }
 
     private void OnSupportRemoved(EntityUid uid, TraumaBodyComponent comp, DidUnequipHandEvent args)
     {
-        if (HasComp<TraumaWalkingSupportComponent>(args.Unequipped)) _body.UpdateMovementSpeed(uid);
-        if (HasComp<TraumaWalkingSupportComponent>(args.Unequipped) && TryComp<BodyComponent>(uid, out var body) &&
-            body.LegEntities.Count < body.RequiredLegs && !_traumaSurgery.HasWalkingSupport(uid, args.Unequipped))
-            _standing.Down(uid);
+        if (HasComp<TraumaWalkingSupportComponent>(args.Unequipped))
+            _traumaSurgery.RefreshWalkingSupport(uid, args.Unequipped);
     }
 
     public void Repair(EntityUid uid, EntityUid part, TraumaKind kind, bool surgical = false, bool splint = false)

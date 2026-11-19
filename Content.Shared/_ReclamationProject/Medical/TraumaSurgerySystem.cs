@@ -14,6 +14,9 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Inventory;
+using Content.Shared.Standing;
+using Content.Shared._ReclamationProject.PowerArmor;
 using Robust.Shared.Network;
 
 namespace Content.Shared._ReclamationProject.Medical;
@@ -24,6 +27,9 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
 
     public override void Initialize()
     {
@@ -36,7 +42,7 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
         SubscribeLocalEvent<TraumaBodyComponent, GetBlurEvent>(OnBlur);
         SubscribeLocalEvent<TraumaBodyComponent, CanSeeAttemptEvent>(OnSee);
         SubscribeLocalEvent<TraumaBodyComponent, RefreshMovementSpeedModifiersEvent>(OnMovement);
-        SubscribeLocalEvent<TraumaBodyComponent, GetBodyStandingSupportEvent>(OnStandingSupport);
+        SubscribeLocalEvent<BodyComponent, GetBodyStandingSupportEvent>(OnStandingSupport);
     }
 
     public static bool SupportsTissueRepair(BodyPartType type)
@@ -141,7 +147,7 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
 
     private void OnMovement(EntityUid uid, TraumaBodyComponent comp, RefreshMovementSpeedModifiersEvent args)
     {
-        if (HasWalkingSupport(uid))
+        if (GetWalkingSupport(uid) == WalkingSupport.Cane)
         {
             args.ModifySpeed(.5f, .5f);
             return;
@@ -156,16 +162,38 @@ public sealed partial class TraumaSurgerySystem : EntitySystem
         args.ModifySpeed(factor, factor);
     }
 
-    public bool HasWalkingSupport(EntityUid uid, EntityUid? excluding = null)
+    private enum WalkingSupport { None, Cane, Frame }
+
+    private WalkingSupport GetWalkingSupport(EntityUid uid, EntityUid? excluding = null)
     {
-        if (!TryComp<BodyComponent>(uid, out var body) || body.RequiredLegs != 2 || body.LegEntities.Count != 1)
-            return false;
-        // A cane replaces one support point, never a second healthy leg or two missing legs.
-        return _hands.EnumerateHeld(uid).Any(item => item != excluding && HasComp<TraumaWalkingSupportComponent>(item));
+        if (!TryComp<BodyComponent>(uid, out var body) || body.RequiredLegs != 2 || body.LegEntities.Count >= 2)
+            return WalkingSupport.None;
+        if (_inventory.TryGetSlotEntity(uid, "outerClothing", out var suit) &&
+            suit != excluding && HasComp<ModularPowerArmorComponent>(suit))
+            return WalkingSupport.Frame;
+        if (body.LegEntities.Count == 1 && HasComp<TraumaBodyComponent>(uid) &&
+            _hands.EnumerateHeld(uid).Any(item => item != excluding && HasComp<TraumaWalkingSupportComponent>(item)))
+            return WalkingSupport.Cane;
+        return WalkingSupport.None;
     }
 
-    private void OnStandingSupport(EntityUid uid, TraumaBodyComponent comp, ref GetBodyStandingSupportEvent args)
+    private void OnStandingSupport(Entity<BodyComponent> body, ref GetBodyStandingSupportEvent args)
     {
-        if (HasWalkingSupport(uid)) args.AdditionalLegs = 1;
+        if (GetWalkingSupport(body) != WalkingSupport.None)
+            args.AdditionalLegs = body.Comp.RequiredLegs - body.Comp.LegEntities.Count;
+    }
+
+    public void RefreshWalkingSupport(EntityUid wearer, EntityUid? removed = null)
+    {
+        if (!TryComp<BodyComponent>(wearer, out var body) || body.RequiredLegs != 2 || body.LegEntities.Count >= 2)
+            return;
+
+        _body.UpdateMovementSpeed(wearer, body);
+        _movement.RefreshMovementSpeedModifiers(wearer);
+        var supported = GetWalkingSupport(wearer, removed) != WalkingSupport.None;
+        if (removed == null && supported)
+            _standing.Stand(wearer);
+        else if (removed != null && !supported)
+            _standing.Down(wearer);
     }
 }

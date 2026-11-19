@@ -1,0 +1,79 @@
+- type: entity
+  id: ReclamationT51PlatePauldrons
+  parent: ReclamationPlatePauldrons
+  name: T-51 pauldrons
+  components:
+  - type: PowerArmorPlate
+    model: N14ClothingOuterPowerArmorT51
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51.rsi
+
+- type: entity
+  id: ReclamationT51PlateChest
+  parent: ReclamationPlateChest
+  name: T-51 chest and leg assembly
+  components:
+  - type: PowerArmorPlate
+    model: N14ClothingOuterPowerArmorT51
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51.rsi
+
+- type: entity
+  id: ReclamationT51PlateGloves
+  parent: ReclamationPlateGloves
+  name: T-51 glove plating
+  components:
+  - type: PowerArmorPlate
+    model: N14ClothingOuterPowerArmorT51
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51.rsi
+
+- type: entity
+  id: ReclamationT51PlateHelmet
+  parent: ReclamationPlateHelmet
+  name: T-51 helmet
+  components:
+  - type: PowerArmorPlate
+    model: N14ClothingOuterPowerArmorT51
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51.rsi
+
+- type: entity
+  id: ReclamationHonorGuardPlatePauldrons
+  parent: ReclamationPlatePauldrons
+  name: 509th Honor Guard T-51bc pauldrons
+  components:
+  - type: PowerArmorPlate
+    model: MisfitsClothingOuterPowerArmorBoS509HonorGuard
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509HeadPaladin.rsi
+
+- type: entity
+  id: ReclamationHonorGuardPlateChest
+  parent: ReclamationPlateChest
+  name: 509th Honor Guard T-51bc chest and leg assembly
+  components:
+  - type: PowerArmorPlate
+    model: MisfitsClothingOuterPowerArmorBoS509HonorGuard
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509HeadPaladin.rsi
+
+- type: entity
+  id: ReclamationHonorGuardPlateGloves
+  parent: ReclamationPlateGloves
+  name: 509th Honor Guard T-51bc glove plating
+  components:
+  - type: PowerArmorPlate
+    model: MisfitsClothingOuterPowerArmorBoS509HonorGuard
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509HeadPaladin.rsi
+
+- type: entity
+  id: ReclamationHonorGuardPlateHelmet
+  parent: ReclamationPlateHelmet
+  name: 509th Honor Guard T-51bc helmet
+  components:
+  - type: PowerArmorPlate
+    model: MisfitsClothingOuterPowerArmorBoS509HonorGuard
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509HeadPaladin.rsi

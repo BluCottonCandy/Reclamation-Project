@@ -2,6 +2,7 @@ using Content.Client.Alerts;
 using Content.IntegrationTests.Pair;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Traits;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Special.Components;
@@ -9,6 +10,7 @@ using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Armor;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
+using Content.Shared.Body.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -21,6 +23,8 @@ using Content.Shared.Item.ItemToggle;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Projectiles;
+using Content.Shared.Standing;
+using Content.Shared.Traits;
 using Content.Shared.Clothing.Components;
 using System.Linq;
 using Content.Shared.Weapons.Melee;
@@ -38,6 +42,78 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class ModularPowerArmorTest
 {
+    [TestCase("Left", "Right", true)]
+    [TestCase("Right", "Left", false)]
+    public async Task FrameSupportsMissingLegs(string firstLeg, string secondLeg, bool trained)
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        var prototypes = pair.Server.ResolveDependency<IPrototypeManager>();
+        EntityUid wearer = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            wearer = em.SpawnTraumaPatient(map.GridCoords);
+            if (trained)
+                em.EnsureComponent<PowerArmorProficiencyComponent>(wearer);
+            var frame = em.SpawnEntity("ReclamationPowerArmorFrame", map.GridCoords);
+            var inventory = em.System<InventorySystem>();
+            var hands = em.System<SharedHandsSystem>();
+            var standing = em.System<StandingStateSystem>();
+            var speed = em.GetComponent<MovementSpeedModifierComponent>(wearer);
+            var legs = em.GetComponent<BodyComponent>(wearer).LegEntities;
+            void Equip() => Assert.That(inventory.TryEquip(wearer, frame, "outerClothing", silent: true));
+            void Remove() => Assert.That(inventory.TryUnequip(wearer, "outerClothing", silent: true, force: true));
+            void Amputate(string side) => em.System<TraitSystem>().AddTrait(wearer,
+                prototypes.Index<TraitPrototype>("ReclamationAmputated" + side + "Leg"));
+            Equip();
+            var walk = speed.CurrentWalkSpeed;
+            var sprint = speed.CurrentSprintSpeed;
+            var acceleration = speed.Acceleration;
+            Assert.That(walk, Is.Positive);
+            void CheckFrameWalking()
+            {
+                Assert.That(standing.IsDown(wearer), Is.False);
+                Assert.That(speed.CurrentWalkSpeed, Is.EqualTo(walk).Within(.001f));
+                Assert.That(speed.CurrentSprintSpeed, Is.EqualTo(sprint).Within(.001f));
+                Assert.That(speed.Acceleration, Is.EqualTo(acceleration).Within(.001f));
+            }
+            Remove();
+            Amputate(firstLeg);
+            Assert.That(legs, Has.Count.EqualTo(1));
+            Assert.That(standing.IsDown(wearer));
+            var cane = em.SpawnEntity("Cane", map.GridCoords);
+            Assert.That(hands.TryPickupAnyHand(wearer, cane));
+            var caneWalk = speed.CurrentWalkSpeed;
+            Assert.That(standing.IsDown(wearer), Is.False);
+            Equip();
+            CheckFrameWalking();
+            Remove();
+            Assert.That(standing.IsDown(wearer), Is.False);
+            Assert.That(speed.CurrentWalkSpeed, Is.EqualTo(caneWalk).Within(.001f));
+            Equip();
+            Assert.That(hands.TryDrop(wearer, cane));
+            CheckFrameWalking();
+            Amputate(secondLeg);
+            Assert.That(legs, Is.Empty);
+            CheckFrameWalking();
+            Remove();
+            Assert.That(standing.IsDown(wearer));
+            Assert.That(speed.BaseWalkSpeed, Is.Zero);
+            Assert.That(standing.Stand(wearer), Is.False);
+            Assert.That(hands.TryPickupAnyHand(wearer, cane));
+            Assert.That(standing.Stand(wearer), Is.False);
+            Equip();
+            CheckFrameWalking();
+            Assert.That(legs, Is.Empty);
+            Assert.That(standing.Down(wearer, dropHeldItems: false));
+            Assert.That(em.System<SharedLayingDownSystem>().TryStandUp(wearer));
+        });
+        await pair.RunTicksSync(pair.Server.ResolveDependency<IGameTiming>().TickRate * 3);
+        await pair.Server.WaitAssertion(() => Assert.That(em.System<StandingStateSystem>().IsDown(wearer), Is.False));
+        await pair.CleanReturnAsync();
+    }
+
     [Test]
     public async Task StrengthAndOptionalTraining()
     {

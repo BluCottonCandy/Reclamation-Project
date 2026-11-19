@@ -713,8 +713,8 @@ public partial class SharedBodySystem
             sprintSpeed += legModifier.SprintSpeed;
             acceleration += legModifier.Acceleration;
         }
-        // A held walking aid supplies the missing support point. Its speed penalty is applied
-        // as a movement modifier, preserving clothing and other existing speed modifiers.
+        // A cane or a worn frame can supply missing support. Clothing and power
+        // modifiers still apply separately to the resulting base speed.
         var support = new Content.Shared._ReclamationProject.Medical.GetBodyStandingSupportEvent();
         RaiseLocalEvent(bodyId, ref support);
         if (support.AdditionalLegs > 0 && body.LegEntities.Count > 0)
@@ -723,6 +723,13 @@ public partial class SharedBodySystem
             walkSpeed *= supportedRatio;
             sprintSpeed *= supportedRatio;
             acceleration *= supportedRatio;
+        }
+        else if (support.AdditionalLegs > 0)
+        {
+            // No surviving leg to sample. Use the standard leg speeds for the frame's servos.
+            walkSpeed = support.AdditionalLegs * MovementSpeedModifierComponent.DefaultBaseWalkSpeed;
+            sprintSpeed = support.AdditionalLegs * MovementSpeedModifierComponent.DefaultBaseSprintSpeed;
+            acceleration = support.AdditionalLegs * MovementSpeedModifierComponent.DefaultAcceleration;
         }
         walkSpeed /= body.RequiredLegs;
         sprintSpeed /= body.RequiredLegs;

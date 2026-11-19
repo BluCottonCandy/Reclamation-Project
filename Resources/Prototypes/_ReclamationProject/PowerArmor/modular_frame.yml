@@ -2,7 +2,7 @@
   id: ReclamationPowerArmorFrame
   parent: N14ClothingOuterPowerArmorT45
   name: power armor frame
-  description: A fusion-powered chassis with integrated servo gauntlets. Fit pauldrons, a chest and leg assembly, gloves, and a helmet to seal it.
+  description: A fusion-powered chassis with servo gauntlets and leg supports. It can carry the wearer's weight even if both legs are missing. Fit pauldrons, a chest and leg assembly, gloves, and a helmet to seal it.
   components:
   - type: ModularPowerArmor
     startsEmpty: true
@@ -79,7 +79,7 @@
 - type: entity
   parent: ReclamationPowerArmorPlateBase
   id: ReclamationPlateChest
-  name: T-45 chest
+  name: T-45 chest and leg assembly
   components:
   - type: PowerArmorPlate
     slot: Chest

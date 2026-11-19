@@ -7,6 +7,7 @@ using Content.Shared.Armor;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.EntitySystems;
+using Content.Shared._ReclamationProject.Medical;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -34,6 +35,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     [Dependency] private readonly ModularArmorDamageSystem _plateDamage = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly FireProtectionSystem _fireProtection = default!;
+    [Dependency] private readonly TraumaSurgerySystem _walkingSupport = default!;
     private const string Alert = "ModularPowerArmorRating";
 
     public override void Initialize()
@@ -104,11 +106,12 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             ent.Comp.FactoryPartsCreated = true;
             if (!ent.Comp.StartsEmpty && MetaData(ent).EntityPrototype is {} donor)
             {
+                var model = _protos.Index<PowerArmorModelPrototype>(donor.ID);
                 foreach (var slot in PowerArmorPlates.Slots)
                 {
                     var key = PowerArmorPlates.Container(slot);
                     if (_slots.GetItemOrNull(ent, key) != null) continue;
-                    var piece = Spawn("ReclamationPlate" + slot, Transform(ent).Coordinates);
+                    var piece = Spawn(model.Parts.GetValueOrDefault(slot, "ReclamationPlate" + slot), Transform(ent).Coordinates);
                     var plate = Comp<PowerArmorPlateComponent>(piece);
                     plate.Model = donor.ID;
                     ConfigurePlate(piece, plate);
@@ -195,6 +198,8 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     {
         EnsureComp<PowerArmorWornComponent>(args.Wearer).Armor = ent.Owner;
         Recalculate(ent);
+        if (args.Clothing.InSlot == "outerClothing")
+            _walkingSupport.RefreshWalkingSupport(args.Wearer);
         if (!TryComp<ToggleableClothingComponent>(ent, out var kit)) return;
         foreach (var (piece, slot) in kit.ClothingUids)
         {
@@ -207,6 +212,8 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     {
         _alerts.ClearAlert(args.Wearer, Alert);
         RemCompDeferred<PowerArmorWornComponent>(args.Wearer);
+        if (args.Clothing.InSlot == "outerClothing")
+            _walkingSupport.RefreshWalkingSupport(args.Wearer, ent.Owner);
     }
 
     private void OnExamine(Entity<ModularPowerArmorComponent> ent, ref ExaminedEvent ev)

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Shared.Materials;
+using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Storage;
@@ -32,6 +33,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly StackSystem _stackSystem = default!;
 
     public override void Initialize()
@@ -69,6 +71,8 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         if (!_actionBlocker.CanInteract(player, uid))
             return;
 
+        if (component.SingleStackPerMaterial && !_interaction.InRangeUnobstructed(player, uid))
+            return;
         if (!component.CanEjectStoredMaterials || !_prototypeManager.TryIndex<MaterialPrototype>(msg.Material, out var material))
             return;
 

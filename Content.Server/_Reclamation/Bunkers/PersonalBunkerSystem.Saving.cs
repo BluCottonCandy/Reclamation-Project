@@ -1,6 +1,14 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Content.Server.Nutrition.Components;
+using Content.Server.Paper;
+using Content.Server.Storage.Components;
+using Content.Shared.Cargo.Components;
+using Content.Shared.Materials;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Stacks;
+using Content.Shared.Storage;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.Serialization.Markdown.Mapping;
 
@@ -36,11 +44,7 @@ public sealed partial class PersonalBunkerSystem
         try
         {
             _blueprints.PurgeTree(room.Grid);
-            // A final safety save may include occupied rooms. Never decommission equipment
-            // being used inside them; retain the same player/body exclusion as normal saves.
-            if (!Occupied(room))
-                foreach (var uid in GetRoomBelongings(room.Grid))
-                    if (Exists(uid)) _displays.Decommission(uid);
+            PrepareRoomContentsForSave(room.Grid, Occupied(room));
 
             EntityManager.CullRemovedComponents();
             _savingGrid = room.Grid;
@@ -68,6 +72,59 @@ public sealed partial class PersonalBunkerSystem
         {
             _savingGrid = null;
         }
+    }
+
+    internal void PrepareRoomContentsForSave(EntityUid grid, bool occupied)
+    {
+        var locker = EnsureMaterialLocker(grid);
+        var drawer = Comp<StorageComponent>(locker).Container;
+        foreach (var item in drawer.ContainedEntities)
+        {
+            // Workbench storage can merge directly into a stack without inserting a new entity.
+            if (TryComp<StackComponent>(item, out var stack) && _stacks.GetMaxCount(stack) == int.MaxValue && stack.Count > 30)
+                _stacks.SetCount(item, 30, stack);
+        }
+        // The traversal skips bodies and everything they carry, including nested bags.
+        foreach (var uid in GetRoomBelongings(grid))
+        {
+            if (TerminatingOrDeleted(uid) || uid == locker || drawer.Contains(uid))
+                continue;
+
+            if (TryComp<MaterialStorageComponent>(uid, out var storage))
+            {
+                // Clear this machine's own pool, even if it is linked to a silo elsewhere.
+                if (storage.Storage.Count > 0)
+                {
+                    storage.Storage.Clear();
+                    Dirty(uid, storage);
+                    var changed = new MaterialAmountChangedEvent();
+                    RaiseLocalEvent(uid, ref changed);
+                }
+            }
+            else if (IsBunkerCraftingMaterial(uid))
+            {
+                Del(uid);
+                continue;
+            }
+
+            if (!occupied)
+                _displays.Decommission(uid);
+        }
+    }
+
+    private bool IsBunkerCraftingMaterial(EntityUid uid)
+    {
+        TryComp<StackComponent>(uid, out var stack);
+        // Construction supplies that cannot be inserted into a material storage machine.
+        if (stack?.StackTypeId.Id is "Cable" or "CableMV" or "CableHV" or "MetalRod" or
+            "Cotton" or "Pyrotton" or "Bones" or "MaterialGunpowder" or "GoliathHide" or "MeatSheets")
+            return true;
+
+        // Several non-supply items have Material for recycling, including caps, notes and lunchboxes.
+        return HasComp<MaterialComponent>(uid) && !HasComp<CashComponent>(uid) &&
+            !HasComp<PaperComponent>(uid) && !HasComp<FoodComponent>(uid) && !HasComp<DrinkComponent>(uid) &&
+            !HasComp<StorageComponent>(uid) && !HasComp<EntityStorageComponent>(uid) &&
+            stack?.StackTypeId.Id != "PrizeTicket";
     }
 
     private bool ReportSave(BunkerSaveQueue.Result? result)

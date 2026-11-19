@@ -23,6 +23,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly SharedStackSystem _stacks = default!;
     [Dependency] private readonly SharedMaterialSiloSystem _materialSilo = default!;
 
     /// <summary>
@@ -111,7 +112,8 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     {
         var materials = new Dictionary<string, int>();
 
-        if (!Resolve(uid, ref storage, false))
+        if (!Resolve(uid, ref storage, false) ||
+            TryComp<MaterialStorageComponent>(uid, out var pool) && pool.SingleStackPerMaterial)
             return materials;
 
         foreach (var ent in storage.Container.ContainedEntities)
@@ -192,7 +194,10 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
             return false;
 
         var amount = GetMaterialAmount(uid, materialId, component, utilizer);
-        return amount + volume >= 0;
+        var result = (long) amount + volume;
+        if (volume > 0 && component.SingleStackPerMaterial && result > GetSingleStackVolume(materialId))
+            return false;
+        return result is >= 0 and <= int.MaxValue;
     }
 
     /// <summary>
@@ -398,6 +403,20 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (args.Handled || !component.InsertOnInteract)
             return;
         args.Handled = TryInsertMaterialEntity(args.User, args.Used, uid, component);
+    }
+
+    public int GetSingleStackVolume(string materialId)
+    {
+        if (!_prototype.TryIndex<MaterialPrototype>(materialId, out var material) ||
+            material.StackEntity is not {} output || !_prototype.TryIndex(output, out var item) ||
+            !item.TryGetComponent<PhysicalCompositionComponent>(out var composition, _componentFactory) ||
+            !composition.MaterialComposition.TryGetValue(materialId, out var unit) || unit <= 0)
+            return 0;
+
+        item.TryGetComponent<StackComponent>(out var stack, _componentFactory);
+        var limit = _stacks.GetMaxCount(stack);
+        // A stack without a finite maximum would defeat the bunker's storage limit.
+        return (int) Math.Min((long) unit * (limit == int.MaxValue ? 30 : limit), int.MaxValue);
     }
 
     public int GetSheetVolume(MaterialPrototype material)

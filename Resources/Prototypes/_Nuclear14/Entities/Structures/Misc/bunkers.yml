@@ -82,3 +82,41 @@
     damageModifierSet: StructuralMetallicStrong
   - type: Destructible
     thresholds: []
+
+- type: entity
+  parent: BaseStructure
+  id: ReclamationBunkerMaterialLocker
+  name: bunker material locker
+  description: A permanent locker for one stack of each crafting material. Use a material on it to deposit it. Open it to withdraw supplies.
+  components:
+  - type: BunkerMaterialLocker
+  - type: NoPull
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Closets/cabinet.rsi
+    layers:
+    - state: closet
+    - state: closet_door
+  - type: Appearance
+  - type: MaterialStorage
+    singleStackPerMaterial: true
+    insertOnInteract: false
+    dropOnDeconstruct: false
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Storage
+    clickInsert: false
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,11,11
+  - type: FixedItemSizeStorage
+    size: 1,1
+  - type: ActivatableUI
+    key: enum.BunkerMaterialLockerUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.BunkerMaterialLockerUiKey.Key:
+        type: BunkerMaterialLockerBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface

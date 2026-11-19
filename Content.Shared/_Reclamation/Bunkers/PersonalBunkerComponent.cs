@@ -33,3 +33,12 @@ public sealed partial class BunkerDisplayItemComponent : Component
     [DataField] public bool Ammo;
     [DataField] public bool Id;
 }
+
+[RegisterComponent]
+public sealed partial class BunkerMaterialLockerComponent : Component;
+
+[Serializable, NetSerializable]
+public enum BunkerMaterialLockerUiKey : byte { Key }
+
+[Serializable, NetSerializable]
+public sealed class OpenBunkerSupplyDrawerMessage : BoundUserInterfaceMessage;

@@ -102,6 +102,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        InitializeMaterialLocker();
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawn);
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
@@ -286,6 +287,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
                 }
                 // Loading can restore prototype components without raising MapInit again.
                 // Include mounted/equipped items and older saves without display markers.
+                EnsureMaterialLocker(grid);
                 _blueprints.PurgeTree(grid);
                 var belongings = GetRoomBelongings(grid);
                 foreach (var item in belongings)

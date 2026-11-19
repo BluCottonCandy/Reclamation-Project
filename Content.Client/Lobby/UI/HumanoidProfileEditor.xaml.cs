@@ -185,7 +185,6 @@ namespace Content.Client.Lobby.UI
         private DepartmentUICategory _jobUICategory = DepartmentUICategory.NoFaction;
 
         private Dictionary<Button, ConfirmationData> _confirmationData = new();
-        private int _traitCount;
         private readonly HashSet<string> _usableTraitIds = new();
         private readonly Dictionary<string, string> _traitCategoryRoots = new();
         private HashSet<LoadoutPreferenceSelector> _patreonLoadoutPreferences = new(); // #Cythisiax Add - Patreon supporter loadouts
@@ -3306,10 +3305,12 @@ namespace Content.Client.Lobby.UI
 
             // #Cythisiax Edited - pets use their own separate point pool and size caps; only
             // non-pet perks are charged against the standard trait/perk budget and slot count.
-            var points = _cfgManager.GetCVar(CCVars.GameTraitsDefaultPoints);
+            var startingPoints = _cfgManager.GetCVar(CCVars.GameTraitsDefaultPoints);
+            var points = startingPoints;
+            var maxTraits = _cfgManager.GetCVar(CCVars.GameTraitsMax);
+            var traitCount = 0;
             var petPoints = _cfgManager.GetCVar(CCVars.GamePetsDefaultPoints);
             int petSmall = 0, petMedium = 0, petLarge = 0, petTotal = 0;
-            _traitCount = 0;
 
             foreach (var traitId in ownedIds)
             {
@@ -3330,17 +3331,24 @@ namespace Content.Client.Lobby.UI
                 }
 
                 points += trait.Points;
-                _traitCount += 1;
+                traitCount++;
+            }
+
+            _usableTraitIds.Clear();
+            foreach (var (trait, usable) in _traits)
+            {
+                if (usable && (PetTraitHelpers.IsPet(trait) || (traitCount < maxTraits && points + trait.Points >= 0)))
+                    _usableTraitIds.Add(trait.ID);
             }
 
             // Sync the tree node states (perks + pets).
             TalentTree.RefreshStates(ownedSet, _usableTraitIds);
             PetsTalentTree.RefreshStates(ownedSet, _usableTraitIds);
 
+            TraitPointsBar.MaxValue = Math.Max(startingPoints, points);
             TraitPointsBar.Value = points;
             TraitPointsLabel.Text = Loc.GetString("humanoid-profile-editor-traits-header",
-                ("points", points), ("traits", _traitCount),
-                ("maxTraits", _cfgManager.GetCVar(CCVars.GameTraitsMax)));
+                ("points", points), ("traits", traitCount), ("maxTraits", maxTraits));
 
             // #Cythisiax Added - update the separate pets point pool + size cap display.
             var petBudget = _cfgManager.GetCVar(CCVars.GamePetsDefaultPoints);
@@ -3452,11 +3460,6 @@ namespace Content.Client.Lobby.UI
 
             // #Misfits Add - build the talent tree (one menu) and the PETS tree instead of
             // the old per-category sub-tabs.
-            _usableTraitIds.Clear();
-            foreach (var (trait, usable) in _traits)
-                if (usable)
-                    _usableTraitIds.Add(trait.ID);
-
             var branches = new Dictionary<string, List<TreePerk>>();
             var petsBranches = new Dictionary<string, List<TreePerk>>();
 
@@ -3520,10 +3523,6 @@ namespace Content.Client.Lobby.UI
             }
 
             TalentTree.SetTrees(treeBranches);
-            TalentTree.RefreshStates(
-                new HashSet<string>(Profile?.TraitPreferences ?? new HashSet<string>()), _usableTraitIds);
-            PetsTalentTree.RefreshStates(
-                new HashSet<string>(Profile?.TraitPreferences ?? new HashSet<string>()), _usableTraitIds);
 
             UpdateTraitPreferences();
             return;
@@ -3567,14 +3566,11 @@ namespace Content.Client.Lobby.UI
 
         private void OnTalentTreeNodePressed(string traitId, bool owned)
         {
-            if (!_prototypeManager.TryIndex<TraitPrototype>(traitId, out var trait))
+            if (owned && !_usableTraitIds.Contains(traitId))
+            {
+                UpdateTraitPreferences();
                 return;
-
-            var points = owned ? trait.Points : -trait.Points;
-            if (owned && TraitPointsBar.Value + points < 0)
-                owned = false;
-            if (owned && _traitCount >= _cfgManager.GetCVar(CCVars.GameTraitsMax))
-                owned = false;
+            }
 
             Profile = Profile?.WithTraitPreference(traitId, owned);
 

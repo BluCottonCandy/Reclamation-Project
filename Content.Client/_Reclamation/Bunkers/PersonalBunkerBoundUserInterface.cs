@@ -47,6 +47,7 @@ public sealed class PersonalBunkerWindow : FancyWindow
         _menu.AddChild(new Label { Text = "Weapons left behind become decorations when the room is empty." });
         _menu.AddChild(new Label { Text = "Guns lose their ammunition and cannot fire. Melee deals 1 blunt." });
         _menu.AddChild(new Label { Text = "Your equipped and carried belongings are excluded." });
+        _menu.AddChild(new Label { Text = Loc.GetString("bunker-material-locker-hatch") });
         _menu.AddChild(Room);
         _menu.AddChild(Cryo);
         var join = new Button { Text = Loc.GetString("bunker-visit-join") };

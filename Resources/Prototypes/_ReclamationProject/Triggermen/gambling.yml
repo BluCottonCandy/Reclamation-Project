@@ -1,0 +1,162 @@
+- type: entity
+  parent: BaseStructure
+  id: TriggermenGamblingMachine
+  name: Triggermen slot machine
+  description: Hold caps and use the machine to play. The Don, Commission Members, and Capo dei Capi can fund the machine and collect the house balance.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/lucky38.rsi
+    state: cabinet
+  - type: GamblingMachine
+  - type: ActivatableUI
+    key: enum.SlotsKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SlotsKey.Key:
+        type: SlotsBoundUserInterface
+
+- type: entity
+  parent: N14CurrencyCap100
+  id: TriggermenDonStartingCaps
+  suffix: 1000
+  components:
+  - type: Stack
+    count: 1000
+
+- type: entity
+  parent: BaseStructure
+  id: TriggermenBlackjackTable
+  name: Lucky 38 blackjack table
+  description: A green-felt blackjack table with a smartly dressed Urist dealer. Hold caps to play. Ties return your bet.
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/blackjack_table.rsi
+    drawdepth: Objects
+    noRot: true
+    enableOverrideDir: true
+    overrideDir: South
+    offset: 0, 0.5
+    layers:
+    # Use the real human and clothing sprites for the decorative dealer.
+    # The table is drawn last, hiding the dealer's lower body behind the felt.
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: torso_m
+      color: "#d2a480"
+      offset: 0, 0.25
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: head_m
+      color: "#d2a480"
+      offset: 0, 0.25
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: l_arm
+      color: "#d2a480"
+      offset: 0, 0.25
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: r_arm
+      color: "#d2a480"
+      offset: 0, 0.25
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: l_hand
+      color: "#d2a480"
+      offset: 0, 0.25
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: r_hand
+      color: "#d2a480"
+      offset: 0, 0.25
+    - sprite: Mobs/Customization/eyes.rsi
+      state: eyes
+      color: "#52758c"
+      offset: 0, 0.25
+    - sprite: Mobs/Customization/human_hair.rsi
+      state: business
+      color: "#493328"
+      offset: 0, 0.25
+    - sprite: Clothing/Uniforms/Jumpsuit/bartender.rsi
+      state: equipped-INNERCLOTHING
+      offset: 0, 0.25
+    - state: table
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.95,-0.48,0.95,0.50"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: GamblingMachine
+    blackjack: true
+  - type: ActivatableUI
+    key: enum.BlackjackKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.BlackjackKey.Key:
+        type: BlackjackBoundUserInterface
+
+- type: entity
+  parent: BaseStructure
+  id: TriggermenPoolTable
+  name: Lucky 38 pool table
+  description: A six-pocket pool table with polished wooden rails. Practice alone or join a second player. Aim, choose your power, and shoot.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/pool_table.rsi
+    state: table
+    drawdepth: Objects
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-0.60,1.25,0.66"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: PoolTable
+  - type: ActivatableUI
+    key: enum.PoolKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.PoolKey.Key:
+        type: PoolBoundUserInterface
+
+- type: entity
+  parent: BaseStructure
+  id: TriggermenRouletteTable
+  name: Lucky 38 roulette table
+  description: A double-zero roulette wheel and green betting felt. Hold caps to bet. Small stakes, fair spins, and a 5.26% house edge. The Triggermen house can fund the table and collect its balance.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Structures/roulette_table.rsi
+    state: table
+    drawdepth: Objects
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.35,-0.60,1.35,0.66"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: GamblingMachine
+  - type: ReclamationRouletteTable
+  - type: ActivatableUI
+    key: enum.RouletteKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.RouletteKey.Key:
+        type: RouletteBoundUserInterface

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Created for Reclamation Project. Dealer layers reference the original human and clothing RSIs, which retain their own license and attribution.",
+  "size": { "x": 64, "y": 64 },
+  "states": [
+    { "name": "table" }
+  ]
+}

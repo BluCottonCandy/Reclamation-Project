@@ -1,0 +1,4 @@
+- files: ["slots_spin.ogg", "slots_win.ogg", "slots_jackpot.ogg", "slots_lose.ogg", "roulette_spin.ogg"]
+  license: "CC0-1.0"
+  copyright: "Original procedural synthesis created for Reclamation Project; no external samples."
+  source: "https://github.com/BluCottonCandy/Reclamation-Project"

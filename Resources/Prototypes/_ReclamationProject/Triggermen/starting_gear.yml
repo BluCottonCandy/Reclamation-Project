@@ -1,5 +1,6 @@
 - type: startingGear
-  id: TriggermenBossGear
+  id: TriggermenLeadershipGear
+  abstract: true
   equipment:
     ears: TriggermenHeadset
     neck: TriggermenDonMantle
@@ -25,6 +26,13 @@
   inhand:
   - N14WeaponLMGAutoRifle
   - TriggermenWireBat
+
+- type: startingGear
+  parent: TriggermenLeadershipGear
+  id: TriggermenBossGear
+  storage:
+    back:
+    - TriggermenDonStartingCaps
 
 - type: startingGear
   id: TriggermenEnforcerGear
@@ -97,13 +105,13 @@
     id: TriggermenSoldatoID
 
 - type: startingGear
-  parent: TriggermenBossGear
+  parent: TriggermenLeadershipGear
   id: TriggermenCommissionMemberGear
   equipment:
     id: TriggermenCommissionMemberID
 
 - type: startingGear
-  parent: TriggermenBossGear
+  parent: TriggermenLeadershipGear
   id: TriggermenCapoDeiCapiGear
   equipment:
     id: TriggermenCapoDeiCapiID

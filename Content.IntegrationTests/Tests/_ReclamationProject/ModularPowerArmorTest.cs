@@ -12,6 +12,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Explosion;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -19,14 +20,17 @@ using Content.Shared.Inventory;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Projectiles;
 using Content.Shared.Clothing.Components;
 using System.Linq;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Components;
+using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 using SpriteComponent = Robust.Client.GameObjects.SpriteComponent;
 
 namespace Content.IntegrationTests.Tests._ReclamationProject;
@@ -83,32 +87,41 @@ public sealed class ModularPowerArmorTest
     [Test]
     public async Task WornPiecesAndHudReplicate()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true });
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
         var map = await pair.CreateTestMap();
         var server = pair.Server.ResolveDependency<IEntityManager>();
         var client = pair.Client.ResolveDependency<IEntityManager>();
         var protos = pair.Client.ResolveDependency<IPrototypeManager>();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
         NetEntity netWearer = default;
         EntityUid suit = default;
+        EntityUid gloves = default;
+        var gloveSlot = PowerArmorPlates.Container(ArmorPlateSlot.Gloves);
         await pair.Server.WaitAssertion(() =>
         {
             var wearer = server.SpawnEntity("MobHuman", map.GridCoords);
             netWearer = server.GetNetEntity(wearer);
+            pair.Server.PlayerMan.SetAttachedEntity(session, wearer);
             suit = server.SpawnEntity("N14ClothingOuterPowerArmorT45", map.GridCoords);
             Assert.That(server.System<InventorySystem>().TryEquip(wearer, suit, "outerClothing", force: true));
+            gloves = server.System<ItemSlotsSystem>().GetItemOrNull(suit, gloveSlot)!.Value;
         });
 
-        void CheckHud(string ones, bool hasGloves)
+        void CheckHud(int rating, int level, bool hasGloves)
         {
             var wearer = client.GetEntity(netWearer);
             var view = client.SpawnEntity("ReclamationPowerArmorRatingView", MapCoordinates.Nullspace);
             var sprite = client.GetComponent<SpriteComponent>(view);
-            var ev = new UpdateAlertSpriteEvent((view, sprite), protos.Index<AlertPrototype>("ModularPowerArmorRating"));
+            var alert = protos.Index<AlertPrototype>("ModularPowerArmorRating");
+            var state = client.System<AlertsSystem>().GetActiveAlerts(wearer)![alert.AlertKey];
+            Assert.That(state.Severity, Is.EqualTo(level));
+            Assert.That(((SpriteSpecifier.Rsi) alert.GetIcon(state.Severity)).RsiState, Is.EqualTo("condition" + level));
+            var ev = new UpdateAlertSpriteEvent((view, sprite), alert);
             client.EventBus.RaiseLocalEvent(wearer, ref ev);
             Assert.That(sprite.LayerMapTryGet("pa-tens", out var tensIndex), Is.True);
-            Assert.That(sprite[tensIndex].RsiState.Name, Is.EqualTo("4"));
+            Assert.That(sprite[tensIndex].RsiState.Name, Is.EqualTo((rating / 10).ToString()));
             Assert.That(sprite.LayerMapTryGet("pa-ones", out var onesIndex), Is.True);
-            Assert.That(sprite[onesIndex].RsiState.Name, Is.EqualTo(ones));
+            Assert.That(sprite[onesIndex].RsiState.Name, Is.EqualTo((rating % 10).ToString()));
             var worn = client.GetComponent<SpriteComponent>(wearer);
             Assert.That(worn.LayerMapTryGet("pa-frame", out _), Is.True);
             Assert.That(worn.LayerMapTryGet("pa-Gloves", out _), Is.EqualTo(hasGloves));
@@ -116,11 +129,103 @@ public sealed class ModularPowerArmorTest
         }
 
         await pair.RunTicksSync(20);
-        await pair.Client.WaitAssertion(() => CheckHud("5", true));
-        await pair.Server.WaitAssertion(() => Assert.That(server.System<ItemSlotsSystem>().TryEject(
-            suit, PowerArmorPlates.Container(ArmorPlateSlot.Gloves), null, out _)));
+        await pair.Client.WaitAssertion(() => CheckHud(45, 10, true));
+        var hit = new DamageSpecifier();
+        hit.DamageDict["Blunt"] = 30;
+        for (var impact = 1; impact <= 2; impact++)
+        {
+            await pair.Server.WaitPost(() => server.System<DamageableSystem>().TryChangeDamage(gloves, hit, ignoreResistances: true));
+            await pair.RunTicksSync(20);
+            if (impact == 1)
+                await pair.Client.WaitAssertion(() => CheckHud(45, 9, true));
+            else
+                await pair.Client.WaitAssertion(() => CheckHud(42, 8, false));
+        }
+        await pair.Server.WaitAssertion(() =>
+        {
+            server.System<DamageableSystem>().SetAllDamage(gloves, server.GetComponent<DamageableComponent>(gloves), 0);
+            Assert.That(server.System<ItemSlotsSystem>().TryInsert(suit, gloveSlot, gloves, null));
+        });
         await pair.RunTicksSync(20);
-        await pair.Client.WaitAssertion(() => CheckHud("2", false));
+        await pair.Client.WaitAssertion(() => CheckHud(45, 10, true));
+        await pair.Server.WaitAssertion(() =>
+        {
+            foreach (var slot in PowerArmorPlates.Slots)
+                Assert.That(server.System<ItemSlotsSystem>().TryEject(suit, PowerArmorPlates.Container(slot), null, out _));
+        });
+        await pair.RunTicksSync(20);
+        await pair.Client.WaitAssertion(() => CheckHud(20, 0, false));
+        await pair.Server.WaitPost(() => pair.Server.PlayerMan.SetAttachedEntity(session, null));
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task FireCannotHurtASealedWearerOrTheirPlates()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        EntityUid wearer = default, frame = default, groundFire = default;
+        EntityUid[] plates = [];
+        void Shoot(string projectileId, EntityUid target)
+        {
+            var projectile = em.SpawnEntity(projectileId, map.GridCoords);
+            var hit = new ProjectileHitEvent(em.GetComponent<ProjectileComponent>(projectile).Damage, target);
+            em.EventBus.RaiseLocalEvent(projectile, ref hit);
+            em.System<DamageableSystem>().TryChangeDamage(target, hit.Damage, damageSource: projectile);
+            em.DeleteEntity(projectile);
+        }
+        void CheckForBurns()
+        {
+            Assert.That(em.GetComponent<FlammableComponent>(wearer).OnFire, Is.False);
+            Assert.That(em.GetComponent<DamageableComponent>(wearer).Damage.DamageDict["Heat"].Float(), Is.Zero);
+            Assert.That(em.GetComponent<DamageableComponent>(frame).TotalDamage.Float(), Is.Zero);
+            foreach (var plate in plates)
+                Assert.That(em.GetComponent<DamageableComponent>(plate).TotalDamage.Float(), Is.Zero);
+        }
+        await pair.Server.WaitAssertion(() =>
+        {
+            var slots = em.System<ItemSlotsSystem>();
+            wearer = em.SpawnEntity("MobHuman", map.GridCoords);
+            frame = em.SpawnEntity("N14ClothingOuterPowerArmorT45", map.GridCoords);
+            var donor = em.SpawnEntity("N14ClothingOuterPowerArmorT51", map.GridCoords);
+            var mount = PowerArmorPlates.Container(ArmorPlateSlot.Helmet);
+            Assert.That(slots.TryEject(frame, mount, null, out _));
+            Assert.That(slots.TryEject(donor, mount, null, out var mixedHelmet));
+            Assert.That(slots.TryInsert(frame, mount, mixedHelmet!.Value, null));
+            Assert.That(em.System<InventorySystem>().TryEquip(wearer, frame, "outerClothing", force: true));
+            plates = PowerArmorPlates.Slots.Select(slot => slots.GetItemOrNull(frame, PowerArmorPlates.Container(slot))!.Value).ToArray();
+            foreach (var target in plates.Append(frame).Append(wearer))
+                Shoot("BulletFlame", target);
+            Shoot("BulletIncinerator", wearer);
+            Shoot("ProjectileFireball", wearer);
+            var burningAxe = em.SpawnEntity("FireAxeFlaming", map.GridCoords);
+            var contact = new DamageSpecifier();
+            contact.DamageDict["Heat"] = 12;
+            em.System<DamageableSystem>().TryChangeDamage(wearer, contact, damageSource: burningAxe);
+            var heat = new DamageSpecifier();
+            heat.DamageDict["Heat"] = 40;
+            var fireball = new BeforeExplodeEvent(heat, "IncineratorExplosion", []);
+            em.EventBus.RaiseLocalEvent(wearer, ref fireball);
+            Assert.That(fireball.Damage.AnyPositive(), Is.False);
+            em.System<DamageableSystem>().TryChangeDamage(wearer, fireball.Damage, ignoreResistances: true);
+            groundFire = em.SpawnEntity("MisfitsTileFireNapalm", map.GridCoords);
+            CheckForBurns();
+        });
+        await pair.RunTicksSync(pair.Server.ResolveDependency<IGameTiming>().TickRate * 2);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(em.HasComponent<Content.Server._Misfits.Fire.TileFireTouchComponent>(wearer));
+            CheckForBurns();
+            Assert.That(em.GetComponent<FlammableComponent>(wearer).FireStacks, Is.LessThanOrEqualTo(0f));
+            em.DeleteEntity(groundFire);
+            Shoot("BulletLaser", wearer);
+            Assert.That(plates.Any(plate => em.GetComponent<DamageableComponent>(plate).TotalDamage > 0), Is.True);
+            Assert.That(em.System<ItemSlotsSystem>().TryEject(frame, PowerArmorPlates.Container(ArmorPlateSlot.Helmet), null, out _));
+            var before = em.GetComponent<DamageableComponent>(wearer).Damage.DamageDict["Heat"];
+            Shoot("BulletFlame", wearer);
+            Assert.That(em.GetComponent<DamageableComponent>(wearer).Damage.DamageDict["Heat"].Float(), Is.GreaterThan(before.Float()));
+        });
         await pair.CleanReturnAsync();
     }
 
@@ -184,6 +289,7 @@ public sealed class ModularPowerArmorTest
             var open = new GetFireProtectionEvent();
             inv.RelayEvent((wearer, em.GetComponent<InventoryComponent>(wearer)), ref open);
             Assert.That(open.Multiplier, Is.GreaterThan(0));
+            flames.AdjustFireStacks(wearer, 2, flammable);
             flames.Ignite(wearer, frame, flammable, ignoreFireProtection: true);
             Assert.That(flammable.OnFire, Is.True);
             flames.Extinguish(wearer, flammable);

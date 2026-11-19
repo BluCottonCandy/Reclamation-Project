@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Original armor condition indicator created for Reclamation Project.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "condition0"
+    },
+    {
+      "name": "condition1"
+    },
+    {
+      "name": "condition2"
+    },
+    {
+      "name": "condition3"
+    },
+    {
+      "name": "condition4"
+    },
+    {
+      "name": "condition5"
+    },
+    {
+      "name": "condition6"
+    },
+    {
+      "name": "condition7"
+    },
+    {
+      "name": "condition8"
+    },
+    {
+      "name": "condition9"
+    },
+    {
+      "name": "condition10"
+    }
+  ]
+}

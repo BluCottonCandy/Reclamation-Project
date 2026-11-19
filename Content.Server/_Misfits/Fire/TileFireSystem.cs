@@ -9,7 +9,6 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Clothing.EntitySystems;
-using Content.Shared.Inventory;
 using Content.Shared.Maps;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -25,7 +24,7 @@ public sealed class TileFireSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly FireProtectionSystem _fireProtection = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
@@ -35,14 +34,12 @@ public sealed class TileFireSystem : EntitySystem
     private static readonly ProtoId<DamageTypePrototype> HeatDamage = "Heat";
 
     private EntityQuery<FlammableComponent> _flammableQuery;
-    private EntityQuery<InventoryComponent> _inventoryQuery;
     private EntityQuery<SolutionContainerManagerComponent> _solutionManagerQuery;
     private EntityQuery<VaporComponent> _vaporQuery;
 
     public override void Initialize()
     {
         _flammableQuery = GetEntityQuery<FlammableComponent>();
-        _inventoryQuery = GetEntityQuery<InventoryComponent>();
         _solutionManagerQuery = GetEntityQuery<SolutionContainerManagerComponent>();
         _vaporQuery = GetEntityQuery<VaporComponent>();
 
@@ -117,16 +114,11 @@ public sealed class TileFireSystem : EntitySystem
             return;
 
         var damage = fire.Comp.StandingDamage;
+        var protection = _fireProtection.GetProtection(target);
+        if (protection.IsSealed)
+            return;
         if (_flammableQuery.TryComp(target, out var burnable) && !burnable.IgnoreFireProtection)
-        {
-            var ev = new GetFireProtectionEvent();
-            RaiseLocalEvent(target, ref ev);
-
-            if (_inventoryQuery.TryComp(target, out var inventory))
-                _inventory.RelayEvent((target, inventory), ref ev);
-
-            damage *= ev.Multiplier;
-        }
+            damage *= protection.Multiplier;
 
         if (damage <= 0)
             return;

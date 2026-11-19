@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC0-1.0",
-  "copyright": "Original power armor chassis created for Reclamation Project.",
+  "copyright": "Original chassis artwork generated with OpenAI ImageGen for Reclamation Project and adapted to the SS14 sprite grid.",
   "size": {
     "x": 32,
     "y": 32

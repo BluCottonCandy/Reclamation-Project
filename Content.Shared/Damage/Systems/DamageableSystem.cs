@@ -174,7 +174,8 @@ namespace Content.Shared.Damage
         public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
             bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null,
             // Shitmed Change
-            bool? canSever = true, bool? canEvade = false, float? partMultiplier = 1.00f, TargetBodyPart? targetPart = null, bool doPartDamage = true, bool modularArmorApplied = false)
+            bool? canSever = true, bool? canEvade = false, float? partMultiplier = 1.00f, TargetBodyPart? targetPart = null, bool doPartDamage = true, bool modularArmorApplied = false,
+            EntityUid? damageSource = null)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
@@ -187,7 +188,7 @@ namespace Content.Shared.Damage
                 return damage;
             }
 
-            var before = new BeforeDamageChangedEvent(damage, origin, targetPart); // Shitmed Change
+            var before = new BeforeDamageChangedEvent(damage, origin, targetPart, DamageSource: damageSource);
             RaiseLocalEvent(uid.Value, ref before);
 
             if (before.Cancelled)
@@ -379,7 +380,8 @@ namespace Content.Shared.Damage
         DamageSpecifier Damage,
         EntityUid? Origin = null,
         TargetBodyPart? TargetPart = null, // Shitmed Change
-        bool Cancelled = false);
+        bool Cancelled = false,
+        EntityUid? DamageSource = null);
 
     /// <summary>
     ///     Shitmed Change: Raised on parts before damage is done so we can cancel the damage if they evade.

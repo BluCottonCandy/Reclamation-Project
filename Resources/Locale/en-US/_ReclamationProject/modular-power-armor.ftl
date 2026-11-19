@@ -8,5 +8,5 @@ pa-frame-sealed = Armor rating [bold]{$rating}[/bold]. All four pieces are fitte
 pa-frame-open = Armor rating [bold]{$rating}[/bold]. The fire seal is open.
 pa-plate-status = Adds [bold]{$rating}[/bold] armor rating. Integrity [bold]{$hp}/{$max}[/bold].
 pa-plate-breaks = {CAPITALIZE(THE($plate))} breaks loose!
-pa-alert-name = Power armor protection
-pa-alert-desc = Current armor rating from the frame and its fitted pieces. Each missing piece lowers protection.
+pa-alert-name = Power armor condition
+pa-alert-desc = The bar shows remaining plate health. The shield number is your armor rating. A damaged plate protects until it breaks and falls off.

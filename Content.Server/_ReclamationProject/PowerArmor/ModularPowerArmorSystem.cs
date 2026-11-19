@@ -1,4 +1,5 @@
 using Content.Server.Explosion.Components;
+using Content.Server.Atmos.Components;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Alert;
@@ -32,6 +33,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     [Dependency] private readonly IComponentFactory _components = default!;
     [Dependency] private readonly ModularArmorDamageSystem _plateDamage = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
+    [Dependency] private readonly FireProtectionSystem _fireProtection = default!;
     private const string Alert = "ModularPowerArmorRating";
 
     public override void Initialize()
@@ -48,7 +50,23 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorPlateComponent, MapInitEvent>(OnPlateSpawn, before: new[] { typeof(ToggleableClothingSystem) });
         SubscribeLocalEvent<PowerArmorPlateComponent, ExaminedEvent>(OnExaminePlate);
         SubscribeLocalEvent<PowerArmorPlateComponent, DamageChangedEvent>(OnWear);
+        SubscribeLocalEvent<PowerArmorWornComponent, BeforeDamageChangedEvent>(OnWeaponFire);
+        SubscribeLocalEvent<ModularPowerArmorComponent, BeforeDamageChangedEvent>(OnWeaponFire);
+        SubscribeLocalEvent<PowerArmorPlateComponent, BeforeDamageChangedEvent>(OnWeaponFire);
+    }
 
+    // Incendiary rounds and burning melee weapons can deliver fire and physical impact in the same hit.
+    private void OnWeaponFire<T>(Entity<T> target, ref BeforeDamageChangedEvent ev) where T : IComponent
+    {
+        if (ev.DamageSource is not {} source || ev.Damage.DamageDict.GetValueOrDefault("Heat") <= 0)
+            return;
+        if (!(TryComp<IgniteOnCollideComponent>(source, out var projectile) && projectile.FireStacks > 0) &&
+            !(TryComp<IgniteOnMeleeHitComponent>(source, out var melee) && melee.FireStacks > 0))
+            return;
+        if (!_fireProtection.GetProtection(target).IsSealed)
+            return;
+        ev.Damage = new DamageSpecifier(ev.Damage);
+        ev.Damage.DamageDict.Remove("Heat");
     }
 
     private void OnInitialize(Entity<N14PowerArmorComponent> ent, ref ComponentInit args)
@@ -144,18 +162,28 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     // Blasts calculate worn explosion resistance upstream and bypass the ordinary armor relay.
     private void OnBlast(Entity<PowerArmorWornComponent> wearer, ref Content.Shared.Explosion.BeforeExplodeEvent ev)
     {
-        if (!HasComp<ModularPowerArmorComponent>(wearer.Comp.Armor) || !ev.Damage.AnyPositive()) return;
+        if (!TryComp<ModularPowerArmorComponent>(wearer.Comp.Armor, out var frame)) return;
+        // The incinerator's fireball resolves as an explosion before normal fire protection runs.
+        if (frame.Sealed && TryComp<ClothingComponent>(wearer.Comp.Armor, out var clothing) &&
+            clothing.InSlot == "outerClothing" && _protos.Index<Content.Shared.Explosion.ExplosionPrototype>(ev.Id).FireStacks > 0)
+            ev.Damage.DamageDict.Remove("Heat");
+        if (!ev.Damage.AnyPositive()) return;
         if (_plateDamage.ImpactPlate(wearer.Comp.Armor) is {} plate)
             _damage.TryChangeDamage(plate, new DamageSpecifier(ev.Damage), ignoreResistances: true, doPartDamage: false);
     }
 
     private void OnWear(Entity<PowerArmorPlateComponent> ent, ref DamageChangedEvent ev)
     {
-        if (ev.Damageable.TotalDamage < ent.Comp.HitPoints || ent.Comp.HitPoints == 0) return;
+        if (ent.Comp.HitPoints == 0) return;
         var frame = Transform(ent).ParentUid;
         if (!HasComp<ModularPowerArmorComponent>(frame)) return;
         var id = PowerArmorPlates.Container(ent.Comp.Slot);
         if (_slots.GetItemOrNull(frame, id) != ent.Owner) return;
+        if (ev.Damageable.TotalDamage < ent.Comp.HitPoints)
+        {
+            UpdateIntegrityAlert(frame);
+            return;
+        }
         if (_slots.TryEject(frame, id, null, out _))
         {
             _transform.DropNextTo(ent.Owner, frame);
@@ -167,7 +195,6 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     {
         EnsureComp<PowerArmorWornComponent>(args.Wearer).Armor = ent.Owner;
         Recalculate(ent);
-        _alerts.ShowAlert(args.Wearer, Alert);
         if (!TryComp<ToggleableClothingComponent>(ent, out var kit)) return;
         foreach (var (piece, slot) in kit.ClothingUids)
         {
@@ -242,9 +269,33 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         ent.Comp.Rating = rating;
         ent.Comp.Absorption = absorption;
         ent.Comp.Sealed = ent.Comp.Visuals.Count == 4;
+        UpdateIntegrityAlert(ent);
         if (ent.Comp.Sealed && TryComp<ClothingComponent>(ent, out var clothing) && clothing.InSlot == "outerClothing")
-            _fire.Extinguish(Transform(ent).ParentUid);
+            _fire.Extinguish(Transform(ent).ParentUid, force: true);
         Dirty(ent);
+    }
+
+    private void UpdateIntegrityAlert(EntityUid frame)
+    {
+        if (!TryComp<ClothingComponent>(frame, out var clothing) || clothing.InSlot != "outerClothing")
+            return;
+
+        var integrity = 0f;
+        foreach (var slot in PowerArmorPlates.Slots)
+        {
+            var item = _slots.GetItemOrNull(frame, PowerArmorPlates.Container(slot));
+            if (!TryComp<PowerArmorPlateComponent>(item, out var plate) || plate.HitPoints <= 0 ||
+                !TryComp<DamageableComponent>(item, out var damage))
+                continue;
+
+            var remaining = Math.Clamp(1f - damage.TotalDamage.Float() / plate.HitPoints, 0f, 1f);
+            integrity += PowerArmorPlates.Share(slot) * remaining;
+        }
+
+        var max = _alerts.GetMaxSeverity(Alert);
+        // Reserve empty for a bare frame. Even a small hit should visibly interrupt a full gauge.
+        var level = integrity > 0 ? Math.Clamp((int) MathF.Floor(integrity * max + 0.00001f), 1, max) : 0;
+        _alerts.ShowAlert(Transform(frame).ParentUid, Alert, (short) level);
     }
 
     private void UpdateHelmet(Entity<ModularPowerArmorComponent> ent)

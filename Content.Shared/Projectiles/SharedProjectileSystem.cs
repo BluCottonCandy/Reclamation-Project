@@ -118,7 +118,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
             ? _damageableSystem.TryChangeDamage(target,
                 ev.Damage,
                 component.IgnoreResistances,
-                origin: component.Shooter)
+                origin: component.Shooter, damageSource: uid)
             : new DamageSpecifier(ev.Damage)) ?? new DamageSpecifier();
 
         var filter = Filter.Pvs(coordinates, entityMan: EntityManager);

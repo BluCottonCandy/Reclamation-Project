@@ -121,9 +121,31 @@
 - type: alert
   id: ModularPowerArmorRating
   category: PowerArmorIntegrity
+  minSeverity: 0
+  maxSeverity: 10
   icons:
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery10
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition0
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition1
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition2
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition3
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition4
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition5
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition6
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition7
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition8
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition9
+  - sprite: /Textures/_ReclamationProject/Interface/Alerts/power_armor_condition.rsi
+    state: condition10
   alertViewEntity: ReclamationPowerArmorRatingView
   name: pa-alert-name
   description: pa-alert-desc
@@ -137,8 +159,9 @@
     - map: [ "enum.AlertVisualLayers.Base" ]
     - sprite: Interface/Alerts/essence_counter.rsi
       state: "0"
+      offset: 0.375, 0.28125
       map: [ "pa-tens" ]
     - sprite: Interface/Alerts/essence_counter.rsi
       state: "0"
-      offset: 0.125, 0
+      offset: 0.5625, 0.28125
       map: [ "pa-ones" ]

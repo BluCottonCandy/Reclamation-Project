@@ -75,6 +75,7 @@ public sealed partial class PersonalBunkerSystem
                     throw new IOException("Bunker grid could not be loaded.");
                 loadingMap = map.Value.Owner;
                 grid = loadedGrid.Value.Owner;
+                EnsureMaterialLocker(grid);
                 var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
                 air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
                 air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);

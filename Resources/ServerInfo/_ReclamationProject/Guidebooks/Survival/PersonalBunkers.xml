@@ -7,6 +7,12 @@ Your room starts with a small concrete interior, a roof, breathable air, and a l
 
 When the last occupant leaves, the room queues one save. Snapshot capture is staggered, and save-file processing runs in the background. Empty rooms wait for pending saves, then unload after a short grace period without saving a second time. A final safety save still runs at round end or normal server shutdown. There is no repeating autosave while you are inside. Furniture, decorations, and items inside containers are saved. Players, bodies, and everything they are wearing or carrying are excluded. An occupied room stays loaded. If you enter critical condition or go SSD inside, your body and belongings are returned to the entrance hatch. The room saves when empty, just as if you had left through the ladder. Ghosts are returned to the hatch when no living, awake player remains inside, so observers cannot keep an abandoned room loaded.
 
+## Saving crafting materials
+
+The permanent material locker beside your bunker's exit ladder saves one stack of each material. Use a material on the locker to deposit it. Open the locker to withdraw materials, or open its construction supply drawer for items such as cable coils and metal rods. Each material uses its normal stack size. Supplies without a finite stack size are limited to 30 units.
+
+Take any excess with you. When the room saves, loose crafting materials disappear, including supplies in crates, backpacks, workbenches, and lathe material pools. Items you carry out stay with you.
+
 Dispenser source bottles, inserted beakers, and their remaining chemicals are preserved when your room reloads. Chemistry-set buffers do not trigger reactions when the room reloads; use a suitable reaction container to mix chemicals. Shelves can be opened normally after returning.
 
 ## Visiting another bunker

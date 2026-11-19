@@ -174,7 +174,7 @@ namespace Content.Shared.Damage
         public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
             bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null,
             // Shitmed Change
-            bool? canSever = true, bool? canEvade = false, float? partMultiplier = 1.00f, TargetBodyPart? targetPart = null, bool doPartDamage = true)
+            bool? canSever = true, bool? canEvade = false, float? partMultiplier = 1.00f, TargetBodyPart? targetPart = null, bool doPartDamage = true, bool modularArmorApplied = false)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
@@ -213,9 +213,10 @@ namespace Content.Shared.Damage
                         if (_prototypeManager.TryIndex<DamageModifierSetPrototype>(enumerableModifierSet, out var enumerableModifier))
                             damage = DamageSpecifier.ApplyModifierSet(damage, enumerableModifier);
 
-                var ev = new DamageModifyEvent(damage, origin, targetPart); // Shitmed Change
+                var ev = new DamageModifyEvent(damage, origin, targetPart) { ModularArmorApplied = modularArmorApplied }; // Shitmed Change
                 RaiseLocalEvent(uid.Value, ev);
                 damage = ev.Damage;
+                modularArmorApplied = ev.ModularArmorApplied;
 
                 if (damage.Empty)
                 {
@@ -227,7 +228,7 @@ namespace Content.Shared.Damage
             // Shitmed Change Start
             if (doPartDamage)
             {
-                var partDamage = new TryChangePartDamageEvent(damage, origin, targetPart, ignoreResistances, canSever ?? true, canEvade ?? false, partMultiplier ?? 1.00f);
+                var partDamage = new TryChangePartDamageEvent(damage, origin, targetPart, ignoreResistances, canSever ?? true, canEvade ?? false, partMultiplier ?? 1.00f, ModularArmorApplied: modularArmorApplied);
                 RaiseLocalEvent(uid.Value, ref partDamage);
 
                 if (partDamage.Evaded || partDamage.Cancelled)
@@ -393,7 +394,8 @@ namespace Content.Shared.Damage
         bool CanEvade = false,
         float PartMultiplier = 1.00f,
         bool Evaded = false,
-        bool Cancelled = false);
+        bool Cancelled = false,
+        bool ModularArmorApplied = false);
 
     /// <summary>
     ///     Raised on an entity when damage is about to be dealt,
@@ -406,6 +408,8 @@ namespace Content.Shared.Damage
     {
         // Whenever locational damage is a thing, this should just check only that bit of armour.
         public SlotFlags TargetSlots { get; } = ~SlotFlags.POCKET;
+        // Part damage inherits a body hit that has already spent plate durability.
+        public bool ModularArmorApplied;
         public readonly DamageSpecifier OriginalDamage;
         public DamageSpecifier Damage;
         public EntityUid? Origin;

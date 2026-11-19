@@ -142,7 +142,7 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnDamageModify(EntityUid uid, PowerArmorIntegrityComponent comp,
         InventoryRelayedEvent<DamageModifyEvent> args)
     {
-        if (comp.ExternalHandling)
+        if (comp.ExternalHandling || HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
             return;
 
         var curTick = _timing.CurTick;
@@ -246,7 +246,7 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     /// </summary>
     private void OnInteractUsing(EntityUid uid, PowerArmorIntegrityComponent comp, InteractUsingEvent args)
     {
-        if (comp.ExternalHandling)
+        if (comp.ExternalHandling || HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
             return;
 
         if (args.Handled)
@@ -278,7 +278,7 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnEquipped(EntityUid uid, PowerArmorIntegrityComponent comp,
         ref ClothingGotEquippedEvent args)
     {
-        if (comp.ExternalHandling)
+        if (comp.ExternalHandling || HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
             return;
 
         UpdateIntegrityAlert(args.Wearer, uid, comp);
@@ -302,7 +302,7 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnUnequipped(EntityUid uid, PowerArmorIntegrityComponent comp,
         ref ClothingGotUnequippedEvent args)
     {
-        if (comp.ExternalHandling)
+        if (comp.ExternalHandling || HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
             return;
 
         _alerts.ClearAlert(args.Wearer, comp.IntegrityAlert);
@@ -349,7 +349,7 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnArmorDamageChanged(EntityUid uid, PowerArmorIntegrityComponent comp,
         DamageChangedEvent args)
     {
-        if (comp.ExternalHandling)
+        if (comp.ExternalHandling || HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
             return;
 
         if (!TryComp<DamageableComponent>(uid, out var damageable))
@@ -427,7 +427,7 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private void OnExamine(EntityUid uid, PowerArmorIntegrityComponent comp,
         GetVerbsEvent<ExamineVerb> args)
     {
-        if (comp.ExternalHandling)
+        if (comp.ExternalHandling || HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
             return;
 
         if (!args.CanInteract || !args.CanAccess)

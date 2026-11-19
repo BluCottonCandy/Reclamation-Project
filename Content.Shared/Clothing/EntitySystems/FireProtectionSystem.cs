@@ -1,4 +1,5 @@
 using Content.Shared.Armor;
+using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Atmos;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
@@ -18,18 +19,29 @@ public sealed class FireProtectionSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<FireProtectionComponent, InventoryRelayedEvent<GetFireProtectionEvent>>(OnGetProtection);
+        SubscribeLocalEvent<ModularPowerArmorComponent, InventoryRelayedEvent<GetFireProtectionEvent>>(OnGetFrameProtection);
         SubscribeLocalEvent<FlameProjectileComponent, ProjectileHitEvent>(OnFlameHit);
         SubscribeLocalEvent<FireProtectionComponent, ArmorExamineEvent>(OnExamine);
     }
 
     private void OnGetProtection(Entity<FireProtectionComponent> ent, ref InventoryRelayedEvent<GetFireProtectionEvent> args)
     {
+        if (HasComp<ModularPowerArmorComponent>(ent))
+            return;
         args.Args.Reduce(ent.Comp.Reduction, ent.Comp.MaximumReduction);
+    }
+
+    private void OnGetFrameProtection(Entity<ModularPowerArmorComponent> ent, ref InventoryRelayedEvent<GetFireProtectionEvent> args)
+    {
+        if (ent.Comp.Sealed)
+            args.Args.Seal();
     }
 
     private void OnExamine(Entity<FireProtectionComponent> ent, ref ArmorExamineEvent args)
     {
-        var percentage = MathF.Round(Math.Clamp(Math.Min(ent.Comp.Reduction, ent.Comp.MaximumReduction), 0f, 1f) * 100f, 1);
+        var percentage = TryComp<ModularPowerArmorComponent>(ent, out var frame)
+            ? (frame.Sealed ? 100f : 0f)
+            : MathF.Round(Math.Clamp(Math.Min(ent.Comp.Reduction, ent.Comp.MaximumReduction), 0f, 1f) * 100f, 1);
         if (percentage == 0)
             return;
 

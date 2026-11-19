@@ -10,6 +10,7 @@ using Content.Shared.Strip;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -511,6 +512,47 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         if (_actionContainer.EnsureAction(toggleable, ref comp.ActionEntity, out var action, comp.Action))
             _actionsSystem.SetEntityIcon(comp.ActionEntity.Value, toggleable, action);
+    }
+
+    /// <summary>Changes one attachment, preserving deployed equipment in the other slots.</summary>
+    public void SetAttachmentPrototype(Entity<ToggleableClothingComponent> suit, string slot, EntProtoId? desired,
+        EntityUid? equipOn = null)
+    {
+        var kit = suit.Comp;
+        if (desired is {} prototype)
+            kit.ClothingPrototypes[slot] = prototype;
+        else
+            kit.ClothingPrototypes.Remove(slot);
+
+        // The normal map init handler creates the first set of attachments.
+        if (kit.Container == null || kit.ClothingUids.Count == 0)
+            return;
+
+        foreach (var (old, attachedSlot) in kit.ClothingUids)
+        {
+            if (attachedSlot != slot)
+                continue;
+            if (MetaData(old).EntityPrototype?.ID == desired?.Id)
+                return;
+            kit.ClothingUids.Remove(old);
+            if (TryComp<ClothingComponent>(old, out var clothing) && clothing.InSlot == slot)
+                _inventorySystem.TryUnequip(Transform(old).ParentUid, slot, silent: true, force: true);
+            QueueDel(old);
+            break;
+        }
+
+        if (desired is {} id)
+        {
+            var child = Spawn(id, Transform(suit).Coordinates);
+            var attached = EnsureComp<AttachedClothingComponent>(child);
+            attached.AttachedUid = suit;
+            Dirty(child, attached);
+            kit.ClothingUids[child] = slot;
+            _containerSystem.Insert(child, kit.Container);
+            if (equipOn is {} wearer && !_inventorySystem.TryGetSlotEntity(wearer, slot, out _))
+                _inventorySystem.TryEquip(wearer, child, slot, silent: true, force: true);
+        }
+        Dirty(suit);
     }
 
     // Checks status of all attached clothings toggle status

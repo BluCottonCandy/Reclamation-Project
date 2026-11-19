@@ -1,0 +1,144 @@
+- type: entity
+  id: ReclamationPowerArmorFrame
+  parent: N14ClothingOuterPowerArmorT45
+  name: power armor frame
+  description: A fusion-powered chassis with integrated servo gauntlets. Fit pauldrons, a chest and leg assembly, gloves, and a helmet to seal it.
+  components:
+  - type: ModularPowerArmor
+    startsEmpty: true
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/frame.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/frame.rsi
+
+- type: entity
+  id: ReclamationFrameGauntlets
+  parent: N14ClothingPAGauntlets
+  name: frame servo gauntlets
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 10
+        Structural: 0
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+
+- type: entity
+  id: ReclamationFrameBoots
+  parent: N14ClothingPABoots
+  name: frame servo boots
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 1
+        Slash: 1
+        Piercing: 1
+        Heat: 1
+
+- type: entity
+  id: ReclamationPowerArmorPlateBase
+  abstract: true
+  parent: BaseItem
+  description: Click a power armor frame to install it. Use its context menu to remove it. A lit welder repairs a detached piece.
+  components:
+  - type: Damageable
+  - type: Repairable
+    doAfterDelay: 10
+    fixedRepairTime: true
+    fuelCost: 2
+    qualityNeeded: Welding
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsT45ClothingOuterPowerArmorBoS.rsi
+    state: chest-item
+
+- type: Tag
+  id: PowerArmorPlatePauldrons
+
+- type: entity
+  parent: ReclamationPowerArmorPlateBase
+  id: ReclamationPlatePauldrons
+  name: T-45 pauldrons
+  components:
+  - type: PowerArmorPlate
+    slot: Pauldrons
+  - type: Sprite
+    state: pauldrons-item
+  - type: Tag
+    tags: [ PowerArmorPlatePauldrons ]
+
+- type: Tag
+  id: PowerArmorPlateChest
+
+- type: entity
+  parent: ReclamationPowerArmorPlateBase
+  id: ReclamationPlateChest
+  name: T-45 chest
+  components:
+  - type: PowerArmorPlate
+    slot: Chest
+  - type: Sprite
+    state: chest-item
+  - type: Tag
+    tags: [ PowerArmorPlateChest ]
+
+- type: Tag
+  id: PowerArmorPlateGloves
+
+- type: entity
+  parent: ReclamationPowerArmorPlateBase
+  id: ReclamationPlateGloves
+  name: T-45 gloves
+  components:
+  - type: PowerArmorPlate
+    slot: Gloves
+  - type: Sprite
+    state: gloves-item
+  - type: Tag
+    tags: [ PowerArmorPlateGloves ]
+
+- type: Tag
+  id: PowerArmorPlateHelmet
+
+- type: entity
+  parent: ReclamationPowerArmorPlateBase
+  id: ReclamationPlateHelmet
+  name: T-45 helmet
+  components:
+  - type: PowerArmorPlate
+    slot: Helmet
+  - type: Sprite
+    state: helmet-item
+  - type: Tag
+    tags: [ PowerArmorPlateHelmet ]
+
+- type: alert
+  id: ModularPowerArmorRating
+  category: PowerArmorIntegrity
+  icons:
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery10
+  alertViewEntity: ReclamationPowerArmorRatingView
+  name: pa-alert-name
+  description: pa-alert-desc
+
+- type: entity
+  id: ReclamationPowerArmorRatingView
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.AlertVisualLayers.Base" ]
+    - sprite: Interface/Alerts/essence_counter.rsi
+      state: "0"
+      map: [ "pa-tens" ]
+    - sprite: Interface/Alerts/essence_counter.rsi
+      state: "0"
+      offset: 0.125, 0
+      map: [ "pa-ones" ]

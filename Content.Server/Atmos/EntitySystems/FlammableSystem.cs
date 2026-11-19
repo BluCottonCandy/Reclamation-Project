@@ -351,6 +351,17 @@ namespace Content.Server.Atmos.EntitySystems
             if (!Resolve(uid, ref flammable))
                 return;
 
+            if (_inventoryQuery.TryComp(uid, out var wornInventory))
+            {
+                var seal = new GetFireProtectionEvent();
+                _inventory.RelayEvent((uid, wornInventory), ref seal);
+                if (seal.IsSealed)
+                {
+                    Extinguish(uid, flammable);
+                    return;
+                }
+            }
+
             if (flammable.AlwaysCombustible)
             {
                 flammable.FireStacks = Math.Max(flammable.FirestacksOnIgnite, flammable.FireStacks);

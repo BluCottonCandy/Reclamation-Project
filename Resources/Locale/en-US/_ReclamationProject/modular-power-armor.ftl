@@ -1,0 +1,11 @@
+pa-slot-pauldrons = pauldrons
+pa-slot-chest = chest and leg assembly
+pa-slot-gloves = glove plating
+pa-slot-helmet = helmet
+pa-piece-name = {$model} — {$slot}
+pa-frame-sealed = Armor rating [bold]{$rating}[/bold]. All four pieces are fitted. Fire seal active.
+pa-frame-open = Armor rating [bold]{$rating}[/bold]. The fire seal is open.
+pa-plate-status = Adds [bold]{$rating}[/bold] armor rating. Integrity [bold]{$hp}/{$max}[/bold].
+pa-plate-breaks = {CAPITALIZE(THE($plate))} breaks loose!
+pa-alert-name = Power armor protection
+pa-alert-desc = Current armor rating from the frame and its fitted pieces. Each missing piece lowers protection.

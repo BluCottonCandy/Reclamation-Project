@@ -1,4 +1,4 @@
-﻿using Content.Shared.Clothing.Components;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
@@ -42,6 +42,9 @@ public abstract class SharedArmorSystem : EntitySystem
 
     private void OnDamageModify(EntityUid uid, ArmorComponent component, InventoryRelayedEvent<DamageModifyEvent> args)
     {
+        if (args.Args.ModularArmorApplied && HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
+            return;
+
         if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
             return;
 

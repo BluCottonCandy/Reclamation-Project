@@ -15095,3 +15095,20 @@ Entries:
   id: 6667
   time: '2026-11-19T04:54:34.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/213
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: Added Lucky 38 slots, blackjack, pool, and double-zero roulette.
+    - type: Add
+      message: >-
+        Triggermen leadership can manage casino house balances, and the Don
+        starts with 1,000 caps.
+    - type: Tweak
+      message: >-
+        Blackjack uses a shuffled deck and a Urist dealer; pool has new artwork
+        and improved aiming and rules.
+    - type: Tweak
+      message: Added new casino spin, win, jackpot, and loss sounds.
+  id: 6668
+  time: '2026-11-19T05:01:02.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/195

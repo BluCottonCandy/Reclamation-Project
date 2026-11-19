@@ -9,8 +9,7 @@ namespace Content.Shared._ReclamationProject.PowerArmor;
 /// <summary>
 /// Power armour power systems that run on a fusion core. While the core has charge the suit
 /// moves at 70-80% speed by Strength; with an empty or missing core it's cancelled and the wearer slows to a crawl.
-/// The wearer can switch the suit on and off from inside (off saves the core but crawls); only
-/// someone outside the suit can put a core in or take it out.
+/// The wearer can switch the suit on and off and exchange the core while wearing it.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class FusionCorePoweredComponent : Component
@@ -56,7 +55,7 @@ public sealed partial class FusionCorePoweredComponent : Component
     public int MightyMinimumStrength = 10;
 
     /// <summary>
-    /// How long someone else takes to put a core into, or pull one out of, a suit you're wearing.
+    /// Time to install or remove a core while the suit is worn.
     /// </summary>
     [DataField]
     public TimeSpan WearerCoreDelay = TimeSpan.FromSeconds(3);
@@ -86,13 +85,13 @@ public sealed partial class FusionCorePoweredComponent : Component
 public sealed partial class FusionCorePowerToggleEvent : InstantActionEvent;
 
 /// <summary>
-/// Someone else finished pulling the fusion core out of a suit another player is wearing.
+/// Change the core only if the worn suit still contains the core present when work began.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed partial class FusionCoreRemoveDoAfterEvent : SimpleDoAfterEvent;
+public sealed partial class FusionCoreChangeDoAfterEvent : DoAfterEvent
+{
+    [DataField]
+    public NetEntity? PreviousCore;
 
-/// <summary>
-/// Someone else finished putting a fusion core into a suit another player is wearing.
-/// </summary>
-[Serializable, NetSerializable]
-public sealed partial class FusionCoreInstallDoAfterEvent : SimpleDoAfterEvent;
+    public override DoAfterEvent Clone() => new FusionCoreChangeDoAfterEvent { PreviousCore = PreviousCore };
+}

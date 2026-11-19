@@ -1,5 +1,7 @@
 pa-slot-pauldrons = pauldrons
 pa-strength-required = You need at least 3 Strength to wear a power armor frame.
+loadout-name-LoadoutBoSOuterPowerArmorFrame = Power armor frame
+loadout-description-LoadoutBoSOuterPowerArmorFrame = Start with an unplated frame in your outerwear slot. Requires 3 Strength to wear.
 pa-slot-chest = chest and leg assembly
 pa-slot-gloves = glove plating
 pa-slot-helmet = helmet

@@ -1,3 +1,4 @@
+using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._ReclamationProject.PowerArmor;
@@ -19,8 +20,7 @@ namespace Content.Server._ReclamationProject.PowerArmor;
 /// <summary>
 /// Power armour fusion cores. The wearer switches the suit on and off from inside; while on and
 /// charged it drains the core and moves at normal power armour speed, otherwise it crawls.
-/// Cores only go in or out from outside the suit: instantly while nobody wears it, or in 3 seconds
-/// by someone else while it's worn (pulling one out warns the wearer).
+/// Changing a core takes three seconds while worn. Anyone servicing another player's suit warns the wearer.
 /// </summary>
 public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
 {
@@ -42,16 +42,24 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
 
         SubscribeLocalEvent<FusionCorePoweredComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<FusionCorePoweredComponent, FusionCorePowerToggleEvent>(OnPowerToggle);
-        SubscribeLocalEvent<FusionCorePoweredComponent, FusionCoreRemoveDoAfterEvent>(OnRemoveDoAfter);
-        SubscribeLocalEvent<FusionCorePoweredComponent, FusionCoreInstallDoAfterEvent>(OnInstallDoAfter);
+        SubscribeLocalEvent<FusionCorePoweredComponent, FusionCoreChangeDoAfterEvent>(OnCoreChangeDoAfter);
+        SubscribeLocalEvent<BatteryComponent, EmpAttemptEvent>(OnCoreEmpAttempt);
+        SubscribeLocalEvent<FusionCorePoweredComponent, EmpAttemptEvent>((EntityUid uid, FusionCorePoweredComponent comp, EmpAttemptEvent ev) => ev.Cancel());
+        SubscribeLocalEvent<ModularPowerArmorComponent, EmpAttemptEvent>((EntityUid uid, ModularPowerArmorComponent comp, EmpAttemptEvent ev) => ev.Cancel());
 
-        // Another player working on someone's worn suit.
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<AlternativeVerb>>(OnWearerVerbs);
         SubscribeLocalEvent<InventoryComponent, InteractUsingEvent>(OnWearerInteractUsing);
 
-        // The suit itself while nobody wears it (on the floor, in a hand).
         SubscribeLocalEvent<ToggleableClothingComponent, GetVerbsEvent<AlternativeVerb>>(OnSuitVerbs);
         SubscribeLocalEvent<ToggleableClothingComponent, InteractUsingEvent>(OnSuitInteractUsing);
+    }
+
+    private void OnCoreEmpAttempt(EntityUid uid, BatteryComponent battery, EmpAttemptEvent args)
+    {
+        var parent = Transform(uid).ParentUid;
+        if (TryComp<FusionCorePoweredComponent>(parent, out var rig) &&
+            _itemSlots.GetItemOrNull(parent, rig.SlotId) == uid)
+            args.Cancel();
     }
 
     private void OnMapInit(Entity<FusionCorePoweredComponent> ent, ref MapInitEvent args)
@@ -135,17 +143,20 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
 
     #endregion
 
-    #region Someone else working on a worn suit (3 seconds)
+    #region Worn suit (3 seconds)
 
     private void OnWearerVerbs(Entity<InventoryComponent> wearer, ref GetVerbsEvent<AlternativeVerb> args)
     {
+        AddWornCoreVerbs(wearer, args);
+    }
+
+    private void AddWornCoreVerbs(EntityUid target, GetVerbsEvent<AlternativeVerb> args)
+    {
         if (!args.CanAccess || !args.CanInteract || args.Hands == null
-            || args.User == args.Target // can't reach your own core from inside
-            || GetWornPowerSystems(wearer) is not { } systems)
+            || GetWornPowerSystems(target) is not { } systems)
             return;
 
         var user = args.User;
-        var target = wearer.Owner;
 
         if (_itemSlots.GetItemOrNull(systems, systems.Comp.SlotId) != null)
         {
@@ -171,32 +182,29 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
         if (args.Handled || !_tags.HasTag(args.Used, FusionCoreTag) || GetWornPowerSystems(wearer) == null)
             return;
 
-        if (args.User == args.Target)
-        {
-            _popup.PopupEntity(Loc.GetString("fusion-core-cant-reach-own"), args.User, args.User);
-            args.Handled = true;
-            return;
-        }
-
         args.Handled = TryStartInstallInWearer(args.User, wearer, args.Used);
     }
 
     /// <summary>
     /// Starts the 3-second pull of the fusion core out of <paramref name="target"/>'s power armour,
-    /// warning them loudly.
+    /// warning the wearer if another player is doing it.
     /// </summary>
     public bool TryStartRemoveFromWearer(EntityUid user, EntityUid target)
     {
-        if (user == target || GetWornPowerSystems(target) is not { } systems
-            || _itemSlots.GetItemOrNull(systems, systems.Comp.SlotId) == null)
+        if (GetWornPowerSystems(target) is not { } systems
+            || _itemSlots.GetItemOrNull(systems, systems.Comp.SlotId) is not { } previous)
             return false;
 
-        if (!StartWearerDoAfter(user, target, systems, new FusionCoreRemoveDoAfterEvent(), null))
+        if (!StartWearerDoAfter(user, target, systems, previous, null))
             return false;
 
-        _popup.PopupEntity(Loc.GetString("fusion-core-being-removed"), target, target, PopupType.LargeCaution);
-        _popup.PopupEntity(Loc.GetString("fusion-core-start-removing", ("target", Identity.Entity(target, EntityManager))),
-            user, user);
+        if (user == target)
+            _popup.PopupEntity(Loc.GetString("fusion-core-start-removing-own"), user, user);
+        else
+        {
+            _popup.PopupEntity(Loc.GetString("fusion-core-being-removed"), target, target, PopupType.LargeCaution);
+            _popup.PopupEntity(Loc.GetString("fusion-core-start-removing", ("target", Identity.Entity(target, EntityManager))), user, user);
+        }
         return true;
     }
 
@@ -205,21 +213,26 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
     /// </summary>
     public bool TryStartInstallInWearer(EntityUid user, EntityUid target, EntityUid core)
     {
-        if (user == target || !_tags.HasTag(core, FusionCoreTag) || GetWornPowerSystems(target) is not { } systems)
+        if (!_hands.IsHolding(user, core) || !_tags.HasTag(core, FusionCoreTag) || GetWornPowerSystems(target) is not { } systems)
             return false;
 
-        if (!StartWearerDoAfter(user, target, systems, new FusionCoreInstallDoAfterEvent(), core))
+        if (!StartWearerDoAfter(user, target, systems, _itemSlots.GetItemOrNull(systems, systems.Comp.SlotId), core))
             return false;
 
-        _popup.PopupEntity(Loc.GetString("fusion-core-being-installed"), target, target, PopupType.Medium);
-        _popup.PopupEntity(Loc.GetString("fusion-core-start-installing", ("target", Identity.Entity(target, EntityManager))),
-            user, user);
+        if (user == target)
+            _popup.PopupEntity(Loc.GetString("fusion-core-start-installing-own"), user, user);
+        else
+        {
+            _popup.PopupEntity(Loc.GetString("fusion-core-being-installed"), target, target, PopupType.Medium);
+            _popup.PopupEntity(Loc.GetString("fusion-core-start-installing", ("target", Identity.Entity(target, EntityManager))), user, user);
+        }
         return true;
     }
 
     private bool StartWearerDoAfter(EntityUid user, EntityUid target, Entity<FusionCorePoweredComponent> systems,
-        DoAfterEvent ev, EntityUid? used)
+        EntityUid? previous, EntityUid? used)
     {
+        var ev = new FusionCoreChangeDoAfterEvent { PreviousCore = GetNetEntity(previous) };
         var doAfter = new DoAfterArgs(EntityManager, user, systems.Comp.WearerCoreDelay, ev, systems, target: target, used: used)
         {
             BreakOnMove = true,
@@ -232,45 +245,40 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
         return _doAfter.TryStartDoAfter(doAfter);
     }
 
-    private void OnRemoveDoAfter(Entity<FusionCorePoweredComponent> ent, ref FusionCoreRemoveDoAfterEvent args)
+    private void OnCoreChangeDoAfter(Entity<FusionCorePoweredComponent> ent, ref FusionCoreChangeDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled)
+        if (args.Handled || args.Cancelled || args.Target is not { } wearer || GetWornPowerSystems(wearer)?.Owner != ent.Owner
+            || GetNetEntity(_itemSlots.GetItemOrNull(ent, ent.Comp.SlotId)) != args.PreviousCore)
             return;
         args.Handled = true;
 
-        if (EjectCore(ent, args.User) is not { } core)
-            return;
-
-        _hands.PickupOrDrop(args.User, core);
-        if (args.Target is { } target)
-            _popup.PopupEntity(Loc.GetString("fusion-core-removed-from-you"), target, target, PopupType.LargeCaution);
-
-        UpdatePowered(ent);
-    }
-
-    private void OnInstallDoAfter(Entity<FusionCorePoweredComponent> ent, ref FusionCoreInstallDoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled || args.Used is not { } core)
-            return;
-        args.Handled = true;
-
-        var old = EjectCore(ent, args.User);
-        InsertCore(ent, core, args.User);
-        if (old != null)
-            _hands.PickupOrDrop(args.User, old.Value);
-
-        if (args.Target is { } target)
-            _popup.PopupEntity(Loc.GetString("fusion-core-installed-in-you"), target, target, PopupType.Medium);
-
+        if (args.Used is { } replacement)
+        {
+            if (!_hands.IsHolding(args.User, replacement) || !ReplaceCore(ent, replacement, args.User))
+                return;
+            _popup.PopupEntity(Loc.GetString("fusion-core-installed-in-you"), wearer, wearer, PopupType.Medium);
+        }
+        else if (EjectCore(ent, args.User) is { } removed)
+        {
+            _hands.PickupOrDrop(args.User, removed);
+            if (args.User != wearer)
+                _popup.PopupEntity(Loc.GetString("fusion-core-removed-from-you"), wearer, wearer, PopupType.LargeCaution);
+        }
         UpdatePowered(ent);
     }
 
     #endregion
 
-    #region Suit on the floor or in a hand (instant)
+    #region Interacting with the suit
 
     private void OnSuitVerbs(Entity<ToggleableClothingComponent> suit, ref GetVerbsEvent<AlternativeVerb> args)
     {
+        if (Inventory.TryGetSlotEntity(args.User, "outerClothing", out var worn) && worn == suit.Owner)
+        {
+            AddWornCoreVerbs(args.User, args);
+            return;
+        }
+
         if (!args.CanAccess || !args.CanInteract || args.Hands == null
             || GetSuitPowerSystems(suit) is not { } systems
             || IsWorn(suit) || _itemSlots.GetItemOrNull(systems, systems.Comp.SlotId) == null)
@@ -289,7 +297,9 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
         if (args.Handled || !_tags.HasTag(args.Used, FusionCoreTag) || GetSuitPowerSystems(suit) == null)
             return;
 
-        args.Handled = TryInsertCoreIntoSuit(suit, args.Used, args.User);
+        args.Handled = Inventory.TryGetSlotEntity(args.User, "outerClothing", out var worn) && worn == suit.Owner
+            ? TryStartInstallInWearer(args.User, args.User, args.Used)
+            : TryInsertCoreIntoSuit(suit, args.Used, args.User);
     }
 
     /// <summary>
@@ -316,11 +326,7 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
         if (GetSuitPowerSystems(suit) is not { } systems || IsWorn(suit))
             return false;
 
-        var old = EjectCore(systems, user);
-        var inserted = InsertCore(systems, core, user);
-        if (old != null)
-            _hands.PickupOrDrop(user, old.Value);
-
+        var inserted = ReplaceCore(systems, core, user);
         UpdatePowered(systems);
         return inserted;
     }
@@ -335,17 +341,33 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
             return null;
 
         _itemSlots.SetLock(systems, systems.Comp.SlotId, false);
-        _itemSlots.TryEject(systems, systems.Comp.SlotId, user, out var core);
+        var ejected = _itemSlots.TryEject(systems, systems.Comp.SlotId, user, out var core);
         _itemSlots.SetLock(systems, systems.Comp.SlotId, true);
-        return core;
+        return ejected ? core : null;
     }
 
-    private bool InsertCore(Entity<FusionCorePoweredComponent> systems, EntityUid core, EntityUid user)
+    private bool ReplaceCore(Entity<FusionCorePoweredComponent> systems, EntityUid core, EntityUid user)
     {
-        _itemSlots.SetLock(systems, systems.Comp.SlotId, false);
-        var inserted = _itemSlots.TryInsert(systems, systems.Comp.SlotId, core, user);
-        _itemSlots.SetLock(systems, systems.Comp.SlotId, true);
-        return inserted;
+        var id = systems.Comp.SlotId;
+        if (!_itemSlots.TryGetSlot(systems, id, out var slot))
+            return false;
+        _itemSlots.SetLock(systems, id, false);
+        try
+        {
+            if (!_itemSlots.CanInsert(systems, core, user, slot, swap: true))
+                return false;
+            var old = slot.Item;
+            if (old != null && !_itemSlots.TryEject(systems, slot, user, out _))
+                return false;
+            var inserted = _itemSlots.TryInsert(systems, slot, core, user) && slot.Item == core;
+            if (old is { } previous && (inserted || !_itemSlots.TryInsert(systems, slot, previous, user)))
+                _hands.PickupOrDrop(user, previous);
+            return inserted;
+        }
+        finally
+        {
+            _itemSlots.SetLock(systems, id, true);
+        }
     }
 
     /// <summary>
@@ -367,7 +389,7 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
     private bool IsWorn(EntityUid item)
     {
         return _container.TryGetContainingContainer((item, null, null), out var container)
-            && HasComp<InventoryComponent>(container.Owner);
+            && Inventory.TryGetSlotEntity(container.Owner, "outerClothing", out var suit) && suit == item;
     }
 
     #endregion

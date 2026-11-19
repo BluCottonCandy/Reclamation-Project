@@ -3,12 +3,16 @@ using Content.Server._NC.Trade;
 using Content.Server._ReclamationProject.Supplies;
 using Content.Server.Roles;
 using Content.Server.Station.Systems;
+using Content.Shared._Misfits.Special;
 using Content.Shared._NC.Trade;
 using Content.Shared._ReclamationProject.PowerArmor;
+using Content.Shared.Clothing.Loadouts.Prototypes;
+using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
+using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.GameObjects;
@@ -19,6 +23,60 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class ModularArmorRequisitionsTest
 {
+    [Test]
+    public async Task FrameIsAnOptionalFifteenPointKnightAndPaladinOuterwearChoice()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        var prototypes = pair.Server.ResolveDependency<IPrototypeManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            const string choiceId = "LoadoutBoSOuterPowerArmorFrame";
+            var choice = prototypes.Index<LoadoutPrototype>(choiceId);
+            Assert.That(choice.Cost, Is.EqualTo(15));
+            Assert.That(choice.Category.Id, Is.EqualTo("Outer"));
+            var funded = HumanoidCharacterProfile.DefaultWithSpecies().WithSpecial(new SpecialProfile { Charisma = 6 });
+            var selected = funded.WithLoadoutPreference(choiceId, true);
+
+            void Check(string jobId, HumanoidCharacterProfile profile, bool expectFrame)
+            {
+                var job = prototypes.Index<JobPrototype>(jobId);
+                var wearer = em.SpawnEntity("MobHuman", map.GridCoords);
+                em.System<StationSpawningSystem>().EquipStartingGear(wearer, job.StartingGear);
+                var inventory = em.System<InventorySystem>();
+                inventory.TryGetSlotEntity(wearer, "outerClothing", out var issued);
+                var (_, granted) = em.System<SharedLoadoutSystem>().ApplyCharacterLoadout(
+                    wearer, job, profile, [], false, out _);
+                inventory.TryGetSlotEntity(wearer, "outerClothing", out var worn);
+                var frames = granted.Where(item => item.Item2.LoadoutName == choiceId).ToArray();
+                Assert.That(frames.Length, Is.EqualTo(expectFrame ? 1 : 0), jobId);
+                if (expectFrame)
+                {
+                    Assert.That(worn, Is.EqualTo(frames[0].Item1), jobId);
+                    Assert.That(em.GetComponent<MetaDataComponent>(worn!.Value).EntityPrototype!.ID, Is.EqualTo("ReclamationPowerArmorFrame"));
+                    var frame = em.GetComponent<ModularPowerArmorComponent>(worn.Value);
+                    Assert.That(frame.Rating, Is.EqualTo(20));
+                    foreach (var slot in PowerArmorPlates.Slots)
+                        Assert.That(em.System<ItemSlotsSystem>().GetItemOrNull(worn.Value, PowerArmorPlates.Container(slot)), Is.Null);
+                }
+                else
+                    Assert.That(worn, Is.EqualTo(issued), jobId);
+                em.DeleteEntity(wearer);
+            }
+
+            foreach (var rank in new[] { "BoSKnight", "BoSLancerKnight", "BoSMidKnight", "BoSHeadKnight",
+                         "BoSPaladin", "BoSMidPaladin", "BoSMidPaladinCommander" })
+                Check(rank, selected, true);
+            foreach (var rank in new[] { "BoSInitiate", "BoSScribe", "BoSHonorGuard", "BoSWestElderCommander", "Wastelander" })
+                Check(rank, selected, false);
+            Check("BoSKnight", funded, false);
+            Check("BoSPaladin", selected.WithSpecial(new SpecialProfile { Charisma = 5 }), false);
+            Check("BoSKnight", selected.WithLoadoutPreference("N14LoadoutOuterJacketLettermanRed", true), false);
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [Test]
     public async Task HonorGuardStartsInTheFactoryAssembledSuit()
     {

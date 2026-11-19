@@ -10,4 +10,5 @@ fusion-core-start-removing = You start prying out {$target}'s fusion core...
 fusion-core-start-installing = You start fitting a fusion core into {$target}'s power armour...
 fusion-core-removed-from-you = Your fusion core has been pulled out!
 fusion-core-installed-in-you = A fresh fusion core clicks into your power armour.
-fusion-core-cant-reach-own = You can't reach your own fusion core from inside the suit.
+fusion-core-start-removing-own = You start releasing your fusion core.
+fusion-core-start-installing-own = You start fitting the fusion core into your armor.

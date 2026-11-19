@@ -1,16 +1,15 @@
 using Content.Shared.Inventory.Events;
+using Content.Shared._Misfits.Special;
 
 namespace Content.Shared._Misfits.PowerArmor;
 
 /// <summary>
-///     Blocks equipping any item that carries <see cref="N14PowerArmorComponent"/> unless the
-///     character also has <see cref="PowerArmorProficiencyComponent"/> (granted by the
-///     N14PowerArmorTraining character-creation perk).
-///
-///     Runs shared (client + server) so inventory prediction cancels the animation immediately.
+///     Checks the wearer's effective Strength before they put on a servo frame.
 /// </summary>
 public sealed class PowerArmorProficiencySystem : EntitySystem
 {
+    [Dependency] private SharedSpecialSystem _special = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -21,16 +20,12 @@ public sealed class PowerArmorProficiencySystem : EntitySystem
 
     private void OnEquipAttempt(Entity<N14PowerArmorComponent> item, ref BeingEquippedAttemptEvent args)
     {
-        // #Misfits Add - salvaged/stripped variants set RequiresProficiency = false; skip the gate.
-        if (!item.Comp.RequiresProficiency)
-            return;
-
-        // Check whether the character putting on the armor has the proficiency.
-        if (HasComp<PowerArmorProficiencyComponent>(args.EquipTarget))
+        if (!item.Comp.HasServoFrame || args.Slot != "outerClothing" ||
+            _special.HasRequirement(args.EquipTarget, SpecialStat.Strength, 3))
             return;
 
         // Deny the equip and show a localised popup message.
-        args.Reason = "power-armor-proficiency-required";
+        args.Reason = "pa-strength-required";
         args.Cancel();
     }
 }

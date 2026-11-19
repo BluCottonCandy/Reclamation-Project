@@ -81,9 +81,9 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             _attachments.SetAttachmentPrototype((ent, kit), "gloves", "ReclamationFrameGauntlets");
             _attachments.SetAttachmentPrototype((ent, kit), "shoes", "ReclamationFrameBoots");
         }
-        if (!ent.Comp.Initialized)
+        if (!ent.Comp.FactoryPartsCreated)
         {
-            ent.Comp.Initialized = true;
+            ent.Comp.FactoryPartsCreated = true;
             if (!ent.Comp.StartsEmpty && MetaData(ent).EntityPrototype is {} donor)
             {
                 foreach (var slot in PowerArmorPlates.Slots)

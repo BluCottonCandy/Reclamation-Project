@@ -7,7 +7,7 @@
   name: "Brotherhood field manual: power armor operation"
   id: TrainingManualPowerArmorOperation
   parent: BaseItem
-  description: "A hefty Brotherhood of Steel field manual covering the operation and safety procedures for T-series power armor. Mastering this will let you equip and operate any power armor frame."
+  description: "A Brotherhood field manual on moving with a suit's servos. Studying it lets you walk and sprint at your normal speed in powered armor. Wearing a frame requires at least 3 Strength."
   components:
   - type: Sprite
     sprite: Objects/Misc/books.rsi

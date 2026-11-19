@@ -16,6 +16,7 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     [Dependency] private readonly ItemSystem _items = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     private const string FrameSprite = "_ReclamationProject/Clothing/ModularPowerArmor/frame.rsi";
+    private readonly HashSet<EntityUid> _changedFrames = new();
 
     public override void Initialize()
     {
@@ -39,7 +40,24 @@ public sealed class ModularArmorVisualSystem : EntitySystem
 
     private void OnFrameChanged(Entity<ModularPowerArmorComponent> ent, ref AfterAutoHandleStateEvent ev)
     {
-        _items.VisualsChanged(ent);
+        _changedFrames.Add(ent.Owner);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        // The wearer, the suit and its container may all arrive in the same network update.
+        foreach (var uid in _changedFrames)
+        {
+            if (TryComp<ModularPowerArmorComponent>(uid, out var frame))
+                RefreshFrame((uid, frame));
+        }
+        _changedFrames.Clear();
+    }
+
+    private void RefreshFrame(Entity<ModularPowerArmorComponent> ent)
+    {
+        _items.VisualsChanged(ent.Owner);
         if (!TryComp<SpriteComponent>(ent, out var sprite)) return;
         sprite.LayerSetSprite(0, new SpriteSpecifier.Rsi(new ResPath("/Textures/" + FrameSprite), "equipped-OUTERCLOTHING"));
         foreach (var slot in PowerArmorPlates.Slots)

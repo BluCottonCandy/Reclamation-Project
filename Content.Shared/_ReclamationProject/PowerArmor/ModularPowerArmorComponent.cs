@@ -5,18 +5,18 @@ namespace Content.Shared._ReclamationProject.PowerArmor;
 
 public enum ArmorPlateSlot : byte { Pauldrons, Chest, Gloves, Helmet }
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class ModularPowerArmorComponent : Component
 {
     [DataField] public bool StartsEmpty;
-    [DataField] public bool Initialized;
+    [DataField("initialized")] public bool FactoryPartsCreated;
     [DataField, AutoNetworkedField] public int Rating = 20;
     [DataField, AutoNetworkedField] public float Absorption;
     [DataField, AutoNetworkedField] public bool Sealed;
     [DataField, AutoNetworkedField] public Dictionary<ArmorPlateSlot, string> Visuals = new();
 }
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class PowerArmorPlateComponent : Component
 {
     [DataField(required: true)] public ArmorPlateSlot Slot;

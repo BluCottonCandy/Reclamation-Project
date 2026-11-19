@@ -29,7 +29,6 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
-    [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private TagSystem _tags = default!;
@@ -355,26 +354,12 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
     /// </summary>
     private Entity<FusionCorePoweredComponent>? GetWornPowerSystems(EntityUid wearer)
     {
-        if (_inventory.TryGetSlotEntity(wearer, "back", out var back)
+        if (Inventory.TryGetSlotEntity(wearer, "back", out var back)
             && TryComp<FusionCorePoweredComponent>(back, out var deployed))
             return (back.Value, deployed);
 
-        if (_inventory.TryGetSlotEntity(wearer, "outerClothing", out var suit))
+        if (Inventory.TryGetSlotEntity(wearer, "outerClothing", out var suit))
             return GetSuitPowerSystems(suit.Value);
-
-        return null;
-    }
-
-    private Entity<FusionCorePoweredComponent>? GetSuitPowerSystems(EntityUid suit)
-    {
-        if (!TryComp<ToggleableClothingComponent>(suit, out var toggleable))
-            return null;
-
-        foreach (var part in toggleable.ClothingUids.Keys)
-        {
-            if (TryComp<FusionCorePoweredComponent>(part, out var powered))
-                return (part, powered);
-        }
 
         return null;
     }
@@ -383,15 +368,6 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
     {
         return _container.TryGetContainingContainer((item, null, null), out var container)
             && HasComp<InventoryComponent>(container.Owner);
-    }
-
-    private EntityUid? GetWearer(EntityUid piece)
-    {
-        if (!_container.TryGetContainingContainer((piece, null, null), out var container)
-            || !HasComp<InventoryComponent>(container.Owner))
-            return null;
-
-        return container.Owner;
     }
 
     #endregion

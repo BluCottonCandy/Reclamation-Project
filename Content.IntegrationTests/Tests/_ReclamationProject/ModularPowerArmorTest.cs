@@ -3,6 +3,8 @@ using Content.IntegrationTests.Pair;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared._Misfits.PowerArmor;
+using Content.Shared._Misfits.Special;
+using Content.Shared._Misfits.Special.Components;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Armor;
 using Content.Shared.Alert;
@@ -12,8 +14,13 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Item.ItemToggle;
+using Content.Shared.Movement.Components;
+using Content.Shared.Movement.Systems;
+using Content.Shared.Clothing.Components;
+using System.Linq;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Components;
 using Robust.Shared.GameObjects;
@@ -27,6 +34,52 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class ModularPowerArmorTest
 {
+    [Test]
+    public async Task StrengthAndOptionalTraining()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var user = em.SpawnEntity("MobHuman", map.GridCoords);
+            var frame = em.SpawnEntity("ReclamationPowerArmorFrame", map.GridCoords);
+            var special = em.System<SharedSpecialSystem>();
+            var inventory = em.System<InventorySystem>();
+            var stats = em.EnsureComponent<SpecialComponent>(user);
+            var movement = em.System<MovementSpeedModifierSystem>();
+            var speed = em.GetComponent<MovementSpeedModifierComponent>(user);
+            Assert.That(special.TrySetBase(user, SpecialStat.Strength, 2, stats));
+            Assert.That(inventory.TryEquip(user, frame, "outerClothing", silent: true), Is.False);
+            em.EnsureComponent<PowerArmorProficiencyComponent>(user);
+            Assert.That(inventory.TryEquip(user, frame, "outerClothing", silent: true), Is.False);
+            em.RemoveComponent<PowerArmorProficiencyComponent>(user);
+            Assert.That(special.TrySetBase(user, SpecialStat.Strength, 3, stats));
+            movement.RefreshMovementSpeedModifiers(user);
+            var normalWalk = speed.WalkSpeedModifier;
+            var normalSprint = speed.SprintSpeedModifier;
+            Assert.That(inventory.TryEquip(user, frame, "outerClothing", silent: true));
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk * 0.70f).Within(0.005f));
+            var book = em.SpawnEntity("TrainingManualPowerArmorOperation", map.GridCoords);
+            em.EventBus.RaiseLocalEvent(book, new UseInHandEvent(user));
+            Assert.That(em.HasComponent<PowerArmorProficiencyComponent>(user));
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk).Within(0.005f));
+            var rig = em.GetComponent<ToggleableClothingComponent>(frame).ClothingUids.Single(p => p.Value == "back").Key;
+            foreach (var strength in new[] { 3, 7, 8, 9, 10 })
+            {
+                special.TrySetBase(user, SpecialStat.Strength, strength, stats);
+                movement.RefreshMovementSpeedModifiers(user);
+                Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk).Within(0.005f));
+                Assert.That(speed.SprintSpeedModifier, Is.EqualTo(normalSprint).Within(0.005f));
+            }
+            Assert.That(inventory.TryEquip(user, rig, "back", force: true));
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk).Within(0.005f));
+            em.EventBus.RaiseLocalEvent(rig, new FusionCorePowerToggleEvent { Performer = user });
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk * 0.05f).Within(0.005f));
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [Test]
     public async Task WornPiecesAndHudReplicate()
     {
@@ -86,7 +139,6 @@ public sealed class ModularPowerArmorTest
             var damage = em.System<DamageableSystem>();
             frame = em.SpawnEntity("ReclamationPowerArmorFrame", map.GridCoords);
             wearer = em.SpawnEntity("MobHuman", map.GridCoords);
-            em.EnsureComponent<PowerArmorProficiencyComponent>(wearer);
             Assert.That(inv.TryEquip(wearer, frame, "outerClothing", silent: true), Is.True);
             var chassis = em.GetComponent<ModularPowerArmorComponent>(frame);
             Assert.That(chassis.Rating, Is.EqualTo(20));

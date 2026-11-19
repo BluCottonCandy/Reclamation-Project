@@ -1,4 +1,5 @@
 pa-slot-pauldrons = pauldrons
+pa-strength-required = You need at least 3 Strength to wear a power armor frame.
 pa-slot-chest = chest and leg assembly
 pa-slot-gloves = glove plating
 pa-slot-helmet = helmet

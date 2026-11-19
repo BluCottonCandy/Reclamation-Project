@@ -15,11 +15,8 @@ namespace Content.Shared._Misfits.PowerArmor;
 public sealed partial class N14PowerArmorComponent : Component
 {
     /// <summary>
-    ///     When true (default), equipping this armor requires <see cref="PowerArmorProficiencyComponent"/>
-    ///     (granted by the N14PowerArmorTraining trait). Set to false for salvaged/stripped-down
-    ///     variants that any soldier can wear without servo training.
+    ///     Powered frames require at least Strength 3. Salvaged armor opts out using its original serialized field.
     /// </summary>
-    // #Misfits Add - allows salvaged PA variants to bypass the proficiency gate
-    [DataField, AutoNetworkedField]
-    public bool RequiresProficiency = true;
+    [DataField("requiresProficiency"), AutoNetworkedField]
+    public bool HasServoFrame = true;
 }

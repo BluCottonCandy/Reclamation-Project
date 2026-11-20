@@ -9,6 +9,9 @@ public enum ArmorPlateSlot : byte { Pauldrons, Chest, Gloves, Helmet }
 public sealed partial class ModularPowerArmorComponent : Component
 {
     [DataField] public bool StartsEmpty;
+    [DataField] public int ModCapacity = 1;
+    [DataField] public string FrameSprite = "_ReclamationProject/Clothing/ModularPowerArmor/frame.rsi";
+    [DataField, AutoNetworkedField] public bool Overdrive;
     [DataField("initialized")] public bool FactoryPartsCreated;
     [DataField, AutoNetworkedField] public int Rating = 20;
     [DataField, AutoNetworkedField] public float Absorption;
@@ -22,6 +25,9 @@ public sealed partial class PowerArmorPlateComponent : Component
     [DataField(required: true)] public ArmorPlateSlot Slot;
     [DataField, AutoNetworkedField] public EntProtoId Model = "N14ClothingOuterPowerArmorT45";
     [DataField, AutoNetworkedField] public int HitPoints;
+    [DataField] public ArmorModKind? Project;
+    [DataField] public int BuildStep;
+    [DataField] public int BuildVersion;
     [DataField, AutoNetworkedField] public int Rating;
 }
 

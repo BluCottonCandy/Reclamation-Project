@@ -63,7 +63,8 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
         }
         if (rigBoost is { WalkModifier: > 0 }) walk /= rigBoost.WalkModifier;
         if (rigBoost is { SprintModifier: > 0 }) sprint /= rigBoost.SprintModifier;
-        args.ModifySpeed(walk, sprint);
+        var overdrive = power.Powered && TryComp<ModularPowerArmorComponent>(shell, out var frame) && frame.Overdrive ? 1.1f : 1f;
+        args.ModifySpeed(walk * overdrive, sprint * overdrive);
     }
 
     private void OnTrainingChanged<T>(Entity<PowerArmorProficiencyComponent> wearer, ref T ev) where T : EntityEventArgs
@@ -75,7 +76,7 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
     private bool HasDeployedRig(EntityUid wearer) =>
         Inventory.TryGetSlotEntity(wearer, "back", out var back) && HasComp<FusionCorePoweredComponent>(back);
 
-    protected Entity<FusionCorePoweredComponent>? GetSuitPowerSystems(EntityUid suit)
+    public Entity<FusionCorePoweredComponent>? GetSuitPowerSystems(EntityUid suit)
     {
         if (TryComp<ToggleableClothingComponent>(suit, out var kit))
             foreach (var child in kit.ClothingUids.Keys)

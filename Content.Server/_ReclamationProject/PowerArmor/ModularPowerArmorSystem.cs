@@ -36,6 +36,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly FireProtectionSystem _fireProtection = default!;
     [Dependency] private readonly TraumaSurgerySystem _walkingSupport = default!;
+    [Dependency] private readonly PowerArmorModSystem _mods = default!;
     private const string Alert = "ModularPowerArmorRating";
 
     public override void Initialize()
@@ -146,20 +147,29 @@ public sealed class ModularPowerArmorSystem : EntitySystem
 
     private void OnInsertAttempt(Entity<ModularPowerArmorComponent> ent, ref ContainerIsInsertingAttemptEvent ev)
     {
-        if (!ev.Container.ID.StartsWith("plate-")) return;
+        if (!IsPlateSlot(ev.Container.ID)) return;
         if (!TryComp<PowerArmorPlateComponent>(ev.EntityUid, out var plate)
             || PowerArmorPlates.Container(plate.Slot) != ev.Container.ID
-            || Comp<DamageableComponent>(ev.EntityUid).TotalDamage >= plate.HitPoints)
+            || Comp<DamageableComponent>(ev.EntityUid).TotalDamage >= plate.HitPoints
+            || !_mods.AcceptsPlate(ent, ev.EntityUid))
             ev.Cancel();
     }
 
     private void OnInserted(Entity<ModularPowerArmorComponent> ent, ref EntInsertedIntoContainerMessage ev)
     {
-        if (ev.Container.ID.StartsWith("plate-")) Recalculate(ent);
+        if (IsPlateSlot(ev.Container.ID)) Recalculate(ent);
     }
     private void OnRemoved(Entity<ModularPowerArmorComponent> ent, ref EntRemovedFromContainerMessage ev)
     {
-        if (ev.Container.ID.StartsWith("plate-") && !TerminatingOrDeleted(ent)) Recalculate(ent);
+        if (IsPlateSlot(ev.Container.ID) && !TerminatingOrDeleted(ent)) Recalculate(ent);
+    }
+
+    private static bool IsPlateSlot(string id) => id.StartsWith("plate-", StringComparison.Ordinal);
+
+    private static bool TryGetAttachment(ToggleableClothingComponent kit, string slot, out EntProtoId prototype)
+    {
+        IReadOnlyDictionary<string, EntProtoId> attachments = kit.ClothingPrototypes;
+        return attachments.TryGetValue(slot, out prototype);
     }
 
     // Blasts calculate worn explosion resistance upstream and bypass the ordinary armor relay.
@@ -206,10 +216,12 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             if ((slot is "gloves" or "shoes" or "head") && !_inventory.TryGetSlotEntity(args.Wearer, slot, out _))
                 _inventory.TryEquip(args.Wearer, piece, slot, silent: true, force: true);
         }
+        _mods.RefreshWearer(args.Wearer);
     }
 
     private void OnUnequip(Entity<ModularPowerArmorComponent> ent, ref ClothingGotUnequippedEvent args)
     {
+        _mods.ClearWearer(args.Wearer);
         _alerts.ClearAlert(args.Wearer, Alert);
         RemCompDeferred<PowerArmorWornComponent>(args.Wearer);
         if (args.Clothing.InSlot == "outerClothing")
@@ -221,6 +233,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         if (ev.IsInDetailsRange)
             ev.PushMarkup(Loc.GetString(ent.Comp.Sealed ? "pa-frame-sealed" : "pa-frame-open",
                 ("rating", ent.Comp.Rating)));
+        if (ev.IsInDetailsRange) _mods.ExamineFrame(ent, ref ev);
     }
     private void OnExaminePlate(Entity<PowerArmorPlateComponent> ent, ref ExaminedEvent ev)
     {
@@ -228,6 +241,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             ev.PushMarkup(Loc.GetString("pa-plate-status", ("rating", ent.Comp.Rating),
                 ("hp", Math.Max(0, ent.Comp.HitPoints - (int) Math.Ceiling(Comp<DamageableComponent>(ent).TotalDamage.Float()))),
                 ("max", ent.Comp.HitPoints)));
+        if (ev.IsInDetailsRange) _mods.ExaminePlate(ent, ref ev);
     }
 
     private void Recalculate(Entity<ModularPowerArmorComponent> ent)
@@ -248,7 +262,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             var share = PowerArmorPlates.Share(slot);
             var accessorySlot = slot switch { ArmorPlateSlot.Chest => "shoes", ArmorPlateSlot.Gloves => "gloves", _ => null };
             if (accessorySlot != null && donor.TryGetComponent<ToggleableClothingComponent>(out var gear, _components)
-                && gear.ClothingPrototypes.TryGetValue(accessorySlot, out var accessory) &&
+                && TryGetAttachment(gear, accessorySlot, out var accessory) &&
                 _protos.Index(accessory).TryGetComponent<ArmorComponent>(out var extra, _components))
                 accessories.Add(extra);
             rating += plate.Rating;
@@ -272,6 +286,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         Dirty(ent, current);
         Comp<ExplosionResistanceComponent>(ent).DamageCoefficient = blast;
         UpdateHelmet(ent);
+        _mods.FrameChanged(ent);
         UpdateDeflection(ent);
         ent.Comp.Rating = rating;
         ent.Comp.Absorption = absorption;
@@ -312,7 +327,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         if (_slots.GetItemOrNull(ent, PowerArmorPlates.Container(ArmorPlateSlot.Helmet)) is {} piece &&
             _protos.Index(Comp<PowerArmorPlateComponent>(piece).Model)
                 .TryGetComponent<ToggleableClothingComponent>(out var source, _components) &&
-            source.ClothingPrototypes.TryGetValue("head", out var helmet))
+            TryGetAttachment(source, "head", out var helmet))
             desired = helmet;
         EntityUid? wearer = TryComp<ClothingComponent>(ent, out var clothing) && clothing.InSlot == "outerClothing"
             ? Transform(ent).ParentUid : null;

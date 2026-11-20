@@ -15,7 +15,6 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly ItemSystem _items = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
-    private const string FrameSprite = "_ReclamationProject/Clothing/ModularPowerArmor/frame.rsi";
     private readonly HashSet<EntityUid> _changedFrames = new();
 
     public override void Initialize()
@@ -30,7 +29,7 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     {
         if (ev.Slot != "outerClothing") return;
         ev.Layers.Clear();
-        ev.Layers.Add(("pa-frame", new PrototypeLayerData { RsiPath = FrameSprite, State = "equipped-OUTERCLOTHING" }));
+        ev.Layers.Add(("pa-frame", new PrototypeLayerData { RsiPath = ent.Comp.FrameSprite, State = "equipped-OUTERCLOTHING" }));
         foreach (var slot in PowerArmorPlates.Slots)
         {
             if (slot != ArmorPlateSlot.Helmet && ent.Comp.Visuals.TryGetValue(slot, out var path))
@@ -59,7 +58,7 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     {
         _items.VisualsChanged(ent.Owner);
         if (!TryComp<SpriteComponent>(ent, out var sprite)) return;
-        sprite.LayerSetSprite(0, new SpriteSpecifier.Rsi(new ResPath("/Textures/" + FrameSprite), "equipped-OUTERCLOTHING"));
+        sprite.LayerSetSprite(0, new SpriteSpecifier.Rsi(new ResPath("/Textures/" + ent.Comp.FrameSprite), "equipped-OUTERCLOTHING"));
         foreach (var slot in PowerArmorPlates.Slots)
         {
             var key = "pa-item-" + slot;

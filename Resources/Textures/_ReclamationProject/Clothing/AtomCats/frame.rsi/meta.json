@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Original rusted Atom Cats frame artwork generated for Reclamation Project and fitted to the standard power armor chassis.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "icon"
+    }
+  ]
+}

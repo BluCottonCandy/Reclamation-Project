@@ -1,12 +1,59 @@
+using System.Linq;
+using Content.Server.Administration.Managers;
+using Content.Server.Mapping;
+using Content.Shared.CCVar;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration;
+using Robust.Shared.ContentPack;
+using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Utility;
 
 namespace Content.IntegrationTests.Tests.Mapping;
 
 [TestFixture]
 public sealed class MappingTests
 {
+    [Test]
+    public async Task TimedAutosaveCanReopenAPausedMap()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true });
+        var server = pair.Server;
+        var maps = server.System<MapSystem>();
+        var config = server.ResolveDependency<IConfigurationManager>();
+        var autosaveEnabled = config.GetCVar(CCVars.AutosaveEnabled);
+        var files = server.ResolveDependency<IResourceManager>().UserData;
+        const string name = nameof(TimedAutosaveCanReopenAPausedMap);
+        var directory = new ResPath("/Autosaves") / name;
+        MapId mapId = default;
+
+        await server.WaitAssertion(() =>
+        {
+            maps.CreateMap(out mapId, runMapInit: false);
+            var interval = config.GetCVar(CCVars.AutosaveInterval);
+            config.SetCVar(CCVars.AutosaveEnabled, true);
+            config.SetCVar(CCVars.AutosaveInterval, 0f);
+            server.System<MappingSystem>().ToggleAutosave(mapId, name);
+            config.SetCVar(CCVars.AutosaveInterval, interval);
+        });
+
+        await pair.RunTicksSync(5);
+        await server.WaitAssertion(() =>
+        {
+            var filename = files.DirectoryEntries(directory).Single();
+            Assert.That(filename, Does.EndWith("-AUTO.yml"));
+            Assert.That(server.System<MapLoaderSystem>().TryLoadMap(directory / filename, out var map, out _));
+            Assert.That(maps.IsInitialized(map!.Value.Owner), Is.False);
+            server.System<MappingSystem>().ToggleAutosave(mapId);
+            config.SetCVar(CCVars.AutosaveEnabled, autosaveEnabled);
+            maps.DeleteMap(mapId);
+            server.EntMan.DeleteEntity(map.Value.Owner);
+            files.Delete(directory / filename);
+        });
+        await pair.CleanReturnAsync();
+    }
+
     /// <summary>
     /// Checks that the mapping command creates paused & uninitialized maps.
     /// </summary>
@@ -19,6 +66,14 @@ public sealed class MappingTests
         var entMan = server.EntMan;
         var mapSys = server.System<MapSystem>();
 
+        var config = server.ResolveDependency<IConfigurationManager>();
+        var admins = server.ResolveDependency<IAdminManager>();
+        var hostName = config.GetCVar(CCVars.ConsoleLoginHostUser);
+        await server.WaitPost(() =>
+        {
+            config.SetCVar(CCVars.ConsoleLoginHostUser, pair.Player!.Name);
+            admins.ReloadAdmin(pair.Player);
+        });
         await pair.RunTicksSync(5);
         var mapId = 1;
         while (mapSys.MapExists(new(mapId)))
@@ -97,6 +152,12 @@ public sealed class MappingTests
         Assert.That(server.MetaData(ent).EntityPaused, Is.True);
 
         await server.WaitPost(() => entMan.DeleteEntity(map));
+        await server.WaitPost(() =>
+        {
+            server.PlayerMan.SetAttachedEntity(pair.Player!, null);
+            config.SetCVar(CCVars.ConsoleLoginHostUser, hostName);
+            admins.ReloadAdmin(pair.Player!);
+        });
         await pair.CleanReturnAsync();
     }
 }

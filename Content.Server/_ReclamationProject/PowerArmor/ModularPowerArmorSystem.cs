@@ -245,37 +245,56 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         if (ev.IsInDetailsRange) _mods.ExaminePlate(ent, ref ev);
     }
 
-    public void ApplyPaint(EntityUid target, string finish, Color? frameColor = null)
+    private bool FitsGarageStencil(string modelId) =>
+        _protos.TryIndex<PowerArmorModelPrototype>(modelId, out var model) && model.FitsGarageStencils;
+
+    private IEnumerable<Entity<PowerArmorPlateComponent>> GetStencilPlates(EntityUid target)
     {
-        void PaintPlate(Entity<PowerArmorPlateComponent> plate, ModularPowerArmorComponent? frame)
+        if (TryComp<PowerArmorPlateComponent>(target, out var loose))
+        {
+            if (FitsGarageStencil(loose.Model.Id))
+                yield return (target, loose);
+            yield break;
+        }
+        if (!HasComp<ModularPowerArmorComponent>(target))
+            yield break;
+        foreach (var slot in PowerArmorPlates.Slots)
+        {
+            if (_slots.GetItemOrNull(target, PowerArmorPlates.Container(slot)) is {} piece &&
+                TryComp<PowerArmorPlateComponent>(piece, out var plate) && FitsGarageStencil(plate.Model.Id))
+                yield return (piece, plate);
+        }
+    }
+
+    public bool CanApplyStencil(EntityUid target) => GetStencilPlates(target).Any();
+
+    public bool TryApplyStencil(EntityUid target, string finish, Color? frameColor = null)
+    {
+        var frameUid = HasComp<ModularPowerArmorComponent>(target) ? target : Transform(target).ParentUid;
+        var frame = CompOrNull<ModularPowerArmorComponent>(frameUid);
+        var painted = 0;
+        foreach (var plate in GetStencilPlates(target))
         {
             plate.Comp.PaintFinish = finish;
             Dirty(plate);
+            painted++;
             if (frame == null)
-                return;
+                continue;
             frame.Visuals[plate.Comp.Slot] = finish;
             if (plate.Comp.Slot == ArmorPlateSlot.Helmet)
                 frame.PaintedHelmet = true;
         }
 
-        if (TryComp<PowerArmorPlateComponent>(target, out var loose))
+        if (painted == 0)
+            return false;
+        if (frame != null)
         {
-            var parent = Transform(target).ParentUid;
-            var frame = CompOrNull<ModularPowerArmorComponent>(parent);
-            PaintPlate((target, loose), frame);
-            if (frame != null)
-                Dirty(parent, frame);
-            return;
+            if (frameUid == target && frameColor is {} color && painted == frame.Visuals.Count &&
+                MetaData(target).EntityPrototype is {} donor && FitsGarageStencil(donor.ID))
+                frame.FrameColor = color;
+            Dirty(frameUid, frame);
         }
-        var suit = Comp<ModularPowerArmorComponent>(target);
-        if (frameColor is {} color)
-            suit.FrameColor = color;
-        foreach (var slot in PowerArmorPlates.Slots)
-        {
-            if (_slots.GetItemOrNull(target, PowerArmorPlates.Container(slot)) is {} piece)
-                PaintPlate((piece, Comp<PowerArmorPlateComponent>(piece)), suit);
-        }
-        Dirty(target, suit);
+        return true;
     }
 
     private void Recalculate(Entity<ModularPowerArmorComponent> ent)

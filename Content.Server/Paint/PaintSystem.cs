@@ -1,6 +1,5 @@
 using Content.Shared.Popups;
 using Content.Server._ReclamationProject.PowerArmor;
-using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Paint;
 using Content.Shared.Sprite;
 using Content.Shared.DoAfter;
@@ -126,10 +125,9 @@ public sealed class PaintSystem : SharedPaintSystem
 
         if (entity.Comp.ArmorFinish is {} finish)
         {
-            if (!HasComp<PowerArmorPlateComponent>(target) &&
-                !(TryComp<ModularPowerArmorComponent>(target, out var frame) && frame.Visuals.Count > 0))
+            if (!_armor.CanApplyStencil(target))
             {
-                _popup.PopupEntity(Loc.GetString("paint-failure", ("target", target)), user, user);
+                _popup.PopupEntity(Loc.GetString("pa-stencil-incompatible"), user, user);
                 return;
             }
             if (!_solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out var paintSupply) ||
@@ -138,7 +136,7 @@ public sealed class PaintSystem : SharedPaintSystem
                 _popup.PopupEntity(Loc.GetString("paint-empty", ("used", entity)), user, user);
                 return;
             }
-            _armor.ApplyPaint(target, finish);
+            _armor.TryApplyStencil(target, finish);
             _audio.PlayPvs(entity.Comp.Spray, entity);
             _popup.PopupEntity(Loc.GetString("paint-success", ("target", target)), user, user);
             return;

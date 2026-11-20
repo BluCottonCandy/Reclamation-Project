@@ -40,6 +40,7 @@
 
 - type: powerArmorModel
   id: MisfitsT45ClothingOuterPowerArmorBoS
+  fitsGarageStencils: true
   rating: 45
   sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsT45ClothingOuterPowerArmorBoS.rsi
 
@@ -90,16 +91,19 @@
 
 - type: powerArmorModel
   id: N14ClothingOuterPowerArmorRaider
+  fitsGarageStencils: true
   rating: 40
   sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorRaider.rsi
 
 - type: powerArmorModel
   id: N14ClothingOuterPowerArmorT45
+  fitsGarageStencils: true
   rating: 45
   sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsT45ClothingOuterPowerArmorBoS.rsi
 
 - type: powerArmorModel
   id: N14ClothingOuterPowerArmorT45Sierra
+  fitsGarageStencils: true
   rating: 45
   sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT45Sierra.rsi
 

@@ -2,7 +2,7 @@
   parent: SprayPaintWhite
   id: AtomCatsPaintMedic
   name: Blue Cross rescue stencil spray
-  description: Ivory enamel and a cobalt cross stencil for a rescue crew's armor. Uncap and spray an assembled suit or a loose plate.
+  description: Ivory enamel and a cobalt cross for a rescue crew's armor. The stencil fits T-45 and Raider plates, loose or mounted.
   components:
   - type: Paint
     armorFinish: _ReclamationProject/Clothing/AtomCats/medic.rsi
@@ -13,7 +13,7 @@
   parent: SprayPaintGreen
   id: AtomCatsPaintLowrider
   name: Lowrider pinstripe stencil spray
-  description: Bottle-green enamel with curling gold pinstripes. Uncap and spray an assembled suit or a loose plate.
+  description: Bottle-green enamel with curling gold pinstripes. The stencil fits T-45 and Raider plates, loose or mounted.
   components:
   - type: Paint
     armorFinish: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
@@ -24,7 +24,7 @@
   parent: SprayPaintRed
   id: AtomCatsPaintCherry
   name: Cherry Bomb flame stencil spray
-  description: The Cats' cherry-red finish with ivory and orange flames. Uncap and spray an assembled suit or a loose plate.
+  description: The Cats' cherry-red finish with ivory and orange flames. The stencil fits T-45 and Raider plates, loose or mounted.
   components:
   - type: Paint
     armorFinish: _ReclamationProject/Clothing/AtomCats/red.rsi
@@ -35,7 +35,7 @@
   parent: SprayPaintBlue
   id: AtomCatsPaintCobalt
   name: Blue Streak flame stencil spray
-  description: Cobalt enamel and turquoise flames in a battered garage tin. Uncap and spray an assembled suit or a loose plate.
+  description: Cobalt enamel and turquoise flames in a battered garage tin. The stencil fits T-45 and Raider plates, loose or mounted.
   components:
   - type: Paint
     armorFinish: _ReclamationProject/Clothing/AtomCats/blue.rsi
@@ -46,7 +46,7 @@
   parent: BaseItem
   id: AtomCatsStencilCan
   name: Atom Cats bottomless stencil can
-  description: A garage sprayer with four stencil wheels and a paint feed that never runs dry. Use it on a loose plate or a suit and pick a finish.
+  description: A garage sprayer with four stencil wheels and a paint feed that never runs dry. Use it on T-45 or Raider plates, loose or mounted, and pick a finish.
   components:
   - type: Sprite
     sprite: Objects/Fun/spraycans.rsi

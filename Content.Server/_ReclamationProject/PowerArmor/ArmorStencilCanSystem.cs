@@ -75,6 +75,11 @@ public sealed class ArmorStencilCanSystem : EntitySystem
             return;
 
         ev.Handled = true;
+        if (!_armor.CanApplyStencil(surface))
+        {
+            _popup.PopupEntity(Loc.GetString("pa-stencil-incompatible"), ev.User, ev.User);
+            return;
+        }
         if (_ui.IsUiOpen(can.Owner, RadialSelectorUiKey.Key))
             return;
 
@@ -107,7 +112,7 @@ public sealed class ArmorStencilCanSystem : EntitySystem
         _ui.CloseUi(can.Owner, RadialSelectorUiKey.Key, ev.Actor);
         EntProtoId stencil = ev.SelectedItem;
         if (!can.Comp.Stencils.Contains(stencil) || !CanSpray(ev.Actor, can, target.Clicked) ||
-            GetSurface(target.Clicked) != target.Surface ||
+            GetSurface(target.Clicked) != target.Surface || !_armor.CanApplyStencil(target.Surface) ||
             !_prototypes.Index(stencil).TryGetComponent<PaintComponent>(out var paint, _factory))
             return;
 
@@ -125,11 +130,10 @@ public sealed class ArmorStencilCanSystem : EntitySystem
             GetSurface(clicked) is not {} surface || GetNetEntity(surface) != ev.Surface ||
             !can.Comp.Stencils.Contains(ev.Stencil) ||
             !_prototypes.Index(ev.Stencil).TryGetComponent<PaintComponent>(out var paint, _factory) ||
-            paint.ArmorFinish is not {} finish)
+            paint.ArmorFinish is not {} finish || !_armor.TryApplyStencil(surface, finish, paint.Color))
             return;
 
         ev.Handled = true;
-        _armor.ApplyPaint(surface, finish, paint.Color);
         _audio.PlayPvs(paint.Spray, can);
         _popup.PopupEntity(Loc.GetString("paint-success", ("target", surface)), ev.User, ev.User);
     }

@@ -47,6 +47,7 @@
 
 - type: powerArmorModel
   id: AtomCatsT45Red
+  fitsGarageStencils: true
   rating: 40
   sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
 
@@ -82,6 +83,7 @@
 
 - type: powerArmorModel
   id: AtomCatsT45Blue
+  fitsGarageStencils: true
   rating: 40
   sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
 

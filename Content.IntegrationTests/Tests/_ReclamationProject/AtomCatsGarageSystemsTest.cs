@@ -112,6 +112,56 @@ public sealed class AtomCatsGarageSystemsTest
     }
 
     [Test]
+    public async Task GarageStencilsUseThePlateModelAndOnlySpendPaintOnCompatibleArmor()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            EntityUid Spawn(string id) => em.SpawnEntity(id, map.GridCoords);
+            var armor = em.System<ModularPowerArmorSystem>();
+            foreach (var model in new[] { "N14ClothingOuterPowerArmorT45", "MisfitsT45ClothingOuterPowerArmorBoS",
+                         "N14ClothingOuterPowerArmorT45Sierra", "AtomCatsT45Red", "AtomCatsT45Blue", "N14ClothingOuterPowerArmorRaider" })
+                Assert.That(armor.CanApplyStencil(Spawn(model)), Is.True, model);
+
+            var user = Spawn("MobHuman");
+            var can = Spawn("AtomCatsPaintLowrider");
+            var paint = em.GetComponent<PaintComponent>(can);
+            Assert.That(em.System<OpenableSystem>().TryOpen(can, user: user));
+            var solutions = em.System<SharedSolutionContainerSystem>();
+            Assert.That(solutions.TryGetSolution(can, paint.Solution, out _, out var supply));
+            var initial = supply!.Volume;
+            void Spray(EntityUid target) => em.System<PaintSystem>().Paint((can, paint), target, user);
+
+            var slots = em.System<ItemSlotsSystem>();
+            var suit = Spawn("N14ClothingOuterPowerArmorT60");
+            var advancedHelmet = slots.GetItemOrNull(suit, "plate-helmet")!.Value;
+            Assert.That(slots.TryEject(suit, "plate-helmet", null, out _));
+            foreach (var target in new[] { suit, advancedHelmet, Spawn("ReclamationT51PlateHelmet"),
+                         Spawn("MisfitsClothingOuterPowerArmorBoS509HonorGuard"), Spawn("MisfitsEnclavePowerArmor"),
+                         Spawn("AtomCatsPowerArmorFrame"), Spawn("ReclamationPowerArmorFrame") })
+            {
+                Assert.That(armor.CanApplyStencil(target), Is.False);
+                Spray(target);
+                Assert.That(supply.Volume, Is.EqualTo(initial));
+            }
+
+            var raider = Spawn("N14ClothingOuterPowerArmorRaider");
+            var helmet = slots.GetItemOrNull(raider, "plate-helmet")!.Value;
+            Assert.That(slots.TryEject(raider, "plate-helmet", null, out _));
+            Assert.That(slots.TryInsert(suit, "plate-helmet", helmet, null));
+            Spray(suit);
+            Assert.That(supply.Volume, Is.EqualTo(initial - paint.ConsumptionUnit));
+            var frame = em.GetComponent<ModularPowerArmorComponent>(suit);
+            Assert.That(frame.Visuals[ArmorPlateSlot.Helmet], Does.EndWith("/lowrider.rsi"));
+            Assert.That(frame.Visuals.Where(v => v.Key != ArmorPlateSlot.Helmet).All(v => v.Value.EndsWith("T60.rsi")));
+            Assert.That(em.GetComponent<PowerArmorPlateComponent>(advancedHelmet).PaintFinish, Is.Null);
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
     public async Task BottomlessCanRepaintsIndividualPiecesAndWholeSuitsThroughItsPicker()
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
@@ -234,12 +284,34 @@ public sealed class AtomCatsGarageSystemsTest
             await Paint(helmet, i);
             await pair.Server.WaitAssertion(() => Assert.That(Plate(helmet).PaintFinish, Does.EndWith(paths[i])));
         }
-        await Paint(bare, 1);
         await pair.Server.WaitAssertion(() =>
         {
-            Assert.That(Frame(bare).FrameColor, Is.EqualTo(Robust.Shared.Maths.Color.FromHex("#5890f7")));
-            Assert.That(Frame(bare).Visuals, Is.Empty);
-            Assert.That(Frame(bare).Rating, Is.EqualTo(20));
+            var interaction = server.System<SharedInteractionSystem>();
+            var ui = server.System<SharedUserInterfaceSystem>();
+            var t51 = Spawn("N14ClothingOuterPowerArmorT51");
+            foreach (var blocked in new[] { bare, t51, Spawn("ReclamationHonorGuardPlateHelmet") })
+            {
+                Assert.That(interaction.InteractUsing(painter, can, blocked, map.GridCoords));
+                Assert.That(ui.IsUiOpen(can, key, painter), Is.False);
+            }
+            Assert.That(server.System<ItemSlotsSystem>().TryInsert(bare, "plate-gloves", Spawn("ReclamationPlateGloves"), null));
+        });
+        await OpenPicker(bare);
+        await pair.Client.WaitPost(() => client.System<SharedUserInterfaceSystem>().ClientSendUiMessage(
+            client.GetEntity(netCan), key, new RadialSelectorSelectedMessage(finishes[1])));
+        await pair.RunTicksSync(8);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(server.GetComponent<DoAfterComponent>(painter).DoAfters.Values.Any(d => d.Args.Event is SprayArmorStencilEvent));
+            var slots = server.System<ItemSlotsSystem>();
+            Assert.That(slots.TryEject(bare, "plate-gloves", null, out _));
+            Assert.That(slots.TryInsert(bare, "plate-gloves", Spawn("ReclamationT51PlateGloves"), null));
+        });
+        await pair.RunTicksSync(tickRate * 3);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(Frame(bare).Visuals[ArmorPlateSlot.Gloves], Does.EndWith("T51.rsi"));
+            Assert.That(Frame(bare).FrameColor, Is.EqualTo(Robust.Shared.Maths.Color.White));
             Assert.That(Plate(helmet).FittedMod, Is.EqualTo(ArmorModKind.MechanicVisor));
             Assert.That(server.GetComponent<DamageableComponent>(helmet).TotalDamage.Int(), Is.EqualTo(10));
             Assert.That(server.System<SharedHandsSystem>().GetActiveItem(painter), Is.EqualTo(can));

@@ -1,4 +1,5 @@
 pa-slot-pauldrons = pauldrons
+pa-stencil-incompatible = These stencils only fit T-45 and Raider armor plates.
 pa-strength-required = You need at least 3 Strength to wear a power armor frame.
 loadout-name-LoadoutBoSOuterPowerArmorFrame = Power armor frame
 loadout-description-LoadoutBoSOuterPowerArmorFrame = Start with an unplated frame in your outerwear slot. Requires 3 Strength to wear.

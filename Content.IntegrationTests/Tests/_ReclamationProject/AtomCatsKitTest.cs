@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using Content.Client.Weapons.Ranged.Components;
+using Content.IntegrationTests.Pair;
 using Content.Server.Storage.Components;
 using Content.Server.UndecidedLoadout.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -10,6 +13,7 @@ using Content.Shared.Storage;
 using Content.Shared.UndecidedLoadout;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -52,6 +56,8 @@ public sealed class AtomCatsKitTest
                     Assert.That(em.HasComponent<UndecidedLoadoutBackpackComponent>(selector), Is.False);
                     var box = em.EntityQuery<MetaDataComponent>().Single(m => m.EntityPrototype?.ID == boxId).Owner;
                     var items = EntitySpawnCollection.GetSpawns(em.GetComponent<SpawnItemsOnUseComponent>(box).Items);
+                    if (boxId == "AtomCatsKitDealMaker")
+                        Assert.That(items, Does.Not.Contain("AtomCatsGarageStamp"));
                     Assert.That(items.Count(id => id == "N14BoxCardboardMREBoxCFilled"), Is.EqualTo(1), boxId);
                     var extraGauze = boxId is "AtomCatsKitRunner" or "AtomCatsKitFlashMedic" or "AtomCatsKitRoadsideMedic";
                     Assert.That(items.Count(id => id == "N14CleanGauze10"), Is.EqualTo(extraGauze ? 2 : 1), boxId);
@@ -111,6 +117,43 @@ public sealed class AtomCatsKitTest
     }
 
     [Test]
+    public async Task EngravedPistolDisplaysBothSlidePositionsWithItsMagazineInserted()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        var client = pair.Client.ResolveDependency<IEntityManager>();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        EntityUid user = default, pistol = default;
+        NetEntity netPistol = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            user = server.SpawnEntity("MobHuman", map.GridCoords);
+            pair.Server.PlayerMan.SetAttachedEntity(session, user);
+            pistol = server.SpawnEntity("AtomCatsEngravedPistol", map.GridCoords);
+            netPistol = server.GetNetEntity(pistol);
+            Assert.That(server.System<ItemSlotsSystem>().GetItemOrNull(pistol, "gun_magazine"), Is.Not.Null);
+        });
+        foreach (var closed in new[] { true, false, true })
+        {
+            await pair.Server.WaitPost(() => server.System<SharedGunSystem>().SetBoltClosed(pistol,
+                server.GetComponent<ChamberMagazineAmmoProviderComponent>(pistol), closed, user));
+            await pair.RunTicksSync(15);
+            await pair.Client.WaitAssertion(() =>
+            {
+                var sprite = client.GetComponent<Robust.Client.GameObjects.SpriteComponent>(client.GetEntity(netPistol));
+                Assert.That(sprite.LayerMapTryGet(GunVisualLayers.Base, out var slide));
+                var state = closed ? "base" : "bolt-open";
+                Assert.That(sprite[slide].RsiState.Name, Is.EqualTo(state));
+                Assert.That(sprite[slide].ActualRsi!.TryGetState(state, out _));
+                Assert.That(sprite.LayerMapTryGet(GunVisualLayers.Mag, out _), Is.False);
+            });
+        }
+        await pair.Server.WaitPost(() => pair.Server.PlayerMan.SetAttachedEntity(session, null));
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
     public async Task RailroadRifleFiresTheConfiguredSpike()
     {
         await using var pair = await PoolManager.GetServerClient();
@@ -128,6 +171,15 @@ public sealed class AtomCatsKitTest
             Assert.That((float) damage.DamageDict["Piercing"], Is.EqualTo(45));
             Assert.That((float) damage.DamageDict["Blunt"], Is.EqualTo(5));
             Assert.That((float) damage.GetTotal(), Is.EqualTo(50));
+            var transform = em.System<SharedTransformSystem>();
+            var guns = em.System<SharedGunSystem>();
+            // The tip in the spike artwork points along its local positive X axis.
+            foreach (var direction in new[] { Vector2.UnitX, Vector2.UnitY, -Vector2.UnitX, -Vector2.UnitY })
+            {
+                guns.ShootProjectile(spike, direction, Vector2.Zero, weapon);
+                var tip = transform.GetWorldRotation(spike).ToVec();
+                Assert.That(Vector2.Dot(tip, direction), Is.EqualTo(1f).Within(0.0001f));
+            }
         });
         await pair.CleanReturnAsync();
     }

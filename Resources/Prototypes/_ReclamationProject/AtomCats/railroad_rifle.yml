@@ -55,6 +55,7 @@
     layers:
     - state: spike
   - type: Projectile
+    angle: -90
     damage:
       types:
         Piercing: 45

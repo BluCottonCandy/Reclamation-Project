@@ -62,7 +62,7 @@ atom-cats-kit-relief-chief-name = Relief Chief
 atom-cats-kit-relief-chief-description = 7.62mm marksman carbine and 9mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries two stimpaks and a folding stretcher.
 
 atom-cats-kit-deal-maker-name = Deal Maker
-atom-cats-kit-deal-maker-description = 10mm SMG and engraved .45 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries the garage stamp.
+atom-cats-kit-deal-maker-description = 10mm SMG and engraved .45 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze.
 
 atom-cats-kit-old-hand-name = Old Hand
 atom-cats-kit-old-hand-description = .44 lever-action carbine and .44 revolver. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries the Boss's engraved industrial welder.

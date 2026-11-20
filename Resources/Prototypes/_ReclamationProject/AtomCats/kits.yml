@@ -777,7 +777,7 @@
   parent: KitBase
   id: AtomCatsKitDealMaker
   name: Deal Maker kit
-  description: 10mm SMG and engraved .45 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries the garage stamp.
+  description: 10mm SMG and engraved .45 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze.
   components:
   - type: Sprite
     state: rifleman
@@ -793,7 +793,6 @@
     - id: MagazineBox45
     - id: N14BoxCardboardMREBoxCFilled
     - id: N14CleanGauze10
-    - id: AtomCatsGarageStamp
 
 - type: UndecidedLoadoutBackpackSet
   id: AtomCatsKitDealMakerSet

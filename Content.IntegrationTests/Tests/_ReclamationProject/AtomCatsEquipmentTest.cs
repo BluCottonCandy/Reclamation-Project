@@ -18,6 +18,8 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Tools.Components;
+using Content.Shared.Hands;
+using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
@@ -29,6 +31,7 @@ using Content.Shared.Radio.Components;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Storage;
+using Content.Shared.Toggleable;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
@@ -151,6 +154,74 @@ public sealed class AtomCatsEquipmentTest
                 em.DeleteEntity(wearer);
             }
         });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task RockerHeadlampOnlyTogglesTheLampOnItsBlueHelmet()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        var client = pair.Client.ResolveDependency<IEntityManager>();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        EntityUid rocker = default, helmet = default;
+        NetEntity netRocker = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            rocker = server.System<StationSpawningSystem>().SpawnPlayerMob(map.GridCoords,
+                new JobComponent { Prototype = "AtomCatsRocker" }, HumanoidCharacterProfile.DefaultWithSpecies(), null);
+            pair.Server.PlayerMan.SetAttachedEntity(session, rocker);
+            netRocker = server.GetNetEntity(rocker);
+            Assert.That(server.System<InventorySystem>().TryGetSlotEntity(rocker, "head", out var head));
+            helmet = head!.Value;
+            Assert.That(server.GetComponent<MetaDataComponent>(helmet).EntityPrototype!.ID, Is.EqualTo("AtomCatsT45BlueHelmet"));
+        });
+        await pair.RunTicksSync(15);
+
+        async Task CheckHelmet(bool lit)
+        {
+            await pair.Client.WaitAssertion(() =>
+            {
+                var wearer = client.GetEntity(netRocker);
+                Assert.That(client.System<InventorySystem>().TryGetSlotEntity(wearer, "head", out var head));
+                Assert.That(client.GetComponent<Robust.Client.GameObjects.PointLightComponent>(head!.Value).Enabled, Is.EqualTo(lit));
+                var sprite = client.GetComponent<Robust.Client.GameObjects.SpriteComponent>(wearer);
+                Assert.That(sprite.LayerMapTryGet("head-0", out var shell));
+                Assert.That(sprite[shell].ActualRsi?.Path.ToString(), Does.EndWith("/blue-helmet.rsi"));
+                Assert.That(sprite[shell].RsiState.Name, Is.EqualTo("off-equipped-HELMET"));
+                Assert.That(sprite.LayerMapTryGet("head-1", out _), Is.False);
+                Assert.That(sprite.LayerMapTryGet("head-toggle", out var lamp), Is.EqualTo(lit));
+                foreach (var hand in new[] { HandLocation.Left, HandLocation.Right })
+                {
+                    var held = new GetInhandVisualsEvent(wearer, hand);
+                    client.EventBus.RaiseLocalEvent(head.Value, held);
+                    var side = hand.ToString().ToLowerInvariant();
+                    var expected = lit ? new[] { $"off-inhand-{side}", $"on-inhand-{side}-unshaded" } : new[] { $"off-inhand-{side}" };
+                    Assert.That(held.Layers.Select(layer => layer.Item2.State), Is.EqualTo(expected));
+                }
+                if (lit)
+                {
+                    Assert.That(lamp, Is.GreaterThan(shell));
+                    Assert.That(sprite[lamp].ActualRsi, Is.SameAs(sprite[shell].ActualRsi));
+                    Assert.That(sprite[lamp].RsiState.Name, Is.EqualTo("equipped-HELMET-unshaded"));
+                }
+            });
+        }
+
+        await CheckHelmet(false);
+        foreach (var enabled in new[] { true, false })
+        {
+            await pair.Server.WaitAssertion(() =>
+            {
+                var toggle = new ToggleActionEvent { Performer = rocker };
+                server.EventBus.RaiseLocalEvent(helmet, toggle);
+                Assert.That(toggle.Handled);
+            });
+            await pair.RunTicksSync(15);
+            await CheckHelmet(enabled);
+        }
+        await pair.Server.WaitPost(() => pair.Server.PlayerMan.SetAttachedEntity(session, null));
         await pair.CleanReturnAsync();
     }
 

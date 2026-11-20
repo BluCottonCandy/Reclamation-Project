@@ -118,7 +118,7 @@ public sealed partial class BioMonitorSystem : EntitySystem
 
     private static readonly TargetBodyPart[] AllParts =
     {
-        TargetBodyPart.Head, TargetBodyPart.Torso, TargetBodyPart.Groin,
+        TargetBodyPart.Head, TargetBodyPart.Torso,
         TargetBodyPart.LeftArm, TargetBodyPart.LeftHand, TargetBodyPart.RightArm, TargetBodyPart.RightHand,
         TargetBodyPart.LeftLeg, TargetBodyPart.LeftFoot, TargetBodyPart.RightLeg, TargetBodyPart.RightFoot,
     };
@@ -521,6 +521,7 @@ public sealed partial class BioMonitorSystem : EntitySystem
     private void AddStuck(Dictionary<TargetBodyPart, BioMonitorPartState> parts, EntityUid item, TargetBodyPart? part,
         bool deep, float baseTime, bool hasTool, bool skilled, float bleedChance, float bleedAmount)
     {
+        // This also makes fragments from older rounds stored under Groin accessible under Torso.
         if (!parts.TryGetValue(part ?? TargetBodyPart.Torso, out var state))
             state = parts[TargetBodyPart.Torso];
 
@@ -745,10 +746,10 @@ public sealed partial class BioMonitorSystem : EntitySystem
             return false;
 
         comp.Target = target;
-        comp.Part = part;
 
         // Starts the passive damage tick on that limb.
         var ev = new EmbedEvent(shooter, target, part);
+        comp.Part = ev.BodyPart;
         RaiseLocalEvent(fragment, ref ev);
 
         // Synth tissue barely notices a fragment. Their nanites can't push it out, but it does very little harm.

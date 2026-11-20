@@ -76,8 +76,7 @@ public sealed class BioMonitorDoll : Control
     private static readonly (TargetBodyPart Part, Shape Shape, Vector2 Badge)[] Layout =
     {
         (TargetBodyPart.Head, new Circle(110, 30, 22), new Vector2(110, 30)),
-        (TargetBodyPart.Torso, new Box(82, 56, 56, 70), new Vector2(110, 90)),
-        (TargetBodyPart.Groin, new Box(84, 128, 52, 28), new Vector2(110, 142)),
+        (TargetBodyPart.Torso, new Box(82, 56, 56, 100), new Vector2(110, 90)),
         (TargetBodyPart.RightArm, new Box(61, 58, 18, 98), new Vector2(70, 105)),
         (TargetBodyPart.LeftArm, new Box(141, 58, 18, 98), new Vector2(150, 105)),
         (TargetBodyPart.RightHand, new Circle(70, 168, 10), new Vector2(70, 168)),

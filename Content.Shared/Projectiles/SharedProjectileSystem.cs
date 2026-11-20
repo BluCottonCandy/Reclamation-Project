@@ -286,8 +286,8 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
         _audio.PlayPredicted(component.Sound, uid, null);
 
-        component.TargetBodyPart = targetPart;
         var ev = new EmbedEvent(user, target, targetPart);
+        component.TargetBodyPart = ev.BodyPart;
         RaiseLocalEvent(uid, ref ev);
 
         if (component.AutoRemoveDuration != 0)

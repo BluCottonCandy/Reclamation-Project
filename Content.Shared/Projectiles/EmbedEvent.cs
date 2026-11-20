@@ -16,9 +16,9 @@ public readonly record struct EmbedEvent(EntityUid? Shooter, EntityUid Embedded,
     public readonly EntityUid Embedded = Embedded;
 
     /// <summary>
-    ///   Body part that has the embedded entity.
+    ///   Physical part holding the object. A groin hit lands in the torso.
     /// </summary>
-    public readonly TargetBodyPart? BodyPart = BodyPart;
+    public readonly TargetBodyPart? BodyPart = BodyPart == TargetBodyPart.Groin ? TargetBodyPart.Torso : BodyPart;
 }
 
 /// <summary>

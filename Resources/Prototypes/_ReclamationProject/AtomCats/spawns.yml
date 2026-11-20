@@ -1,0 +1,66 @@
+- type: entity
+  parent: SpawnPointJobBase
+  id: AtomCatsSpawnBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/mounties.rsi
+    layers:
+    - state: green
+    - state: skirmisher
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsLookout
+  name: Atom Cats Lookout spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsLookout
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsGreaser
+  name: Atom Cats Greaser spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsGreaser
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsMuscle
+  name: Atom Cats Muscle spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsMuscle
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsRocker
+  name: Atom Cats Rocker spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsRocker
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsHotRod
+  name: Atom Cats Hot Rod spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsHotRod
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsUnderboss
+  name: Atom Cats Underboss spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsUnderboss
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsBoss
+  name: Atom Cats Boss spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsBoss

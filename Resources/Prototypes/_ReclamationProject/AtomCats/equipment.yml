@@ -1,0 +1,75 @@
+- type: entity
+  parent: N14ClothingUniformJumpsuitMechanic
+  id: AtomCatsCoveralls
+  name: Pit Crew coveralls
+  description: Oil has worked its way into the knees of these teal coveralls. A broad brass zipper opens far enough to fish a dropped washer out of the lining.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/jumpsuit.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/jumpsuit.rsi
+
+- type: entity
+  parent: N14ClothingOuterCoatLeatherJacket
+  id: AtomCatsCut
+  name: Whitewall leather cut
+  description: White shearling runs around the collar and both armholes of this sleeveless black leather jacket. The cat on the back was painted by hand.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/jacket.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/jacket.rsi
+
+- type: entity
+  parent: N14ClothingEyesSunGlasses
+  id: AtomCatsShades
+  name: Quarter-Mile shades
+  description: Smoked lenses sit under a black upswept brow. Two silver studs on each hinge catch the light when the wearer turns.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/shades.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/shades.rsi
+
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: AtomCatsBoots
+  name: Curb-Kicker Mk I combat boots
+  description: Scuffed steel toes, oxblood laces, and a buckle that a mechanic can undo with greasy fingers. These are the original Mk I pattern.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/boots.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/boots.rsi
+
+- type: entity
+  parent: N14IDCard
+  id: AtomCatsGaragePass
+  name: Atom Cats garage pass
+  description: A garage pass with a thumbprint of axle grease beside the signature line.
+
+- type: startingGear
+  id: AtomCatsGarageGear
+  abstract: true
+  equipment:
+    jumpsuit: AtomCatsCoveralls
+    eyes: AtomCatsShades
+    shoes: AtomCatsBoots
+    back: N14ClothingBackpackSatchelExplorer
+    id: AtomCatsGaragePass
+  storage:
+    back:
+    - AtomCatsCut
+    - Welder
+
+- type: startingGear
+  parent: AtomCatsGarageGear
+  id: AtomCatsRedGear
+  equipment:
+    outerClothing: AtomCatsT45Red
+
+- type: startingGear
+  parent: AtomCatsGarageGear
+  id: AtomCatsBlueGear
+  equipment:
+    outerClothing: AtomCatsT45Blue

@@ -1,0 +1,65 @@
+- type: entity
+  parent: N14ClothingOuterPowerArmorRaider
+  id: AtomCatsT45Red
+  name: Cherry Bomb T-45 power armor
+  description: Cherry-red salvage plate carries hand-painted tongues of orange and ivory. The welds down the shins are newer than the chassis.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45RedHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: AtomCatsT45RedHelmet
+  name: Cherry Bomb T-45 helmet
+  description: Ivory pinstriping frames the visor of this cherry-red helmet. The lamp housing still bears the dents of its first owner.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/red-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Red
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+
+- type: entity
+  parent: N14ClothingOuterPowerArmorRaider
+  id: AtomCatsT45Blue
+  name: Blue Streak T-45 power armor
+  description: A cobalt T-45 rebuilt from salvaged parts. Turquoise flames curl around its pauldrons and climb the shins to meet the bare steel at the knees.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45BlueHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: AtomCatsT45BlueHelmet
+  name: Blue Streak T-45 helmet
+  description: Blue enamel and a turquoise lick of flame mark the cheek of this rebuilt T-45 helmet. Its helmet lamp works off the original switch.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/blue-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/blue-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Blue
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi

@@ -430,8 +430,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
     private bool TryShoveTarget(EntityUid user, EntityUid target)
     {
-        if (HasComp<Content.Shared._ReclamationProject.PowerArmor.ArmorMagLockComponent>(target) ||
-            !TryComp<PhysicsComponent>(target, out var targetPhysics))
+        if (!TryComp<PhysicsComponent>(target, out var targetPhysics))
             return false;
 
         if ((targetPhysics.BodyType & (BodyType.Dynamic | BodyType.KinematicController)) == 0)

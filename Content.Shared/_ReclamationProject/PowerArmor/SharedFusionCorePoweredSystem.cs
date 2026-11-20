@@ -19,14 +19,6 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<ArmorMagLockComponent, Content.Shared.Weapons.Melee.Components.AttemptMeleeThrowOnHitEvent>(
-            (Entity<ArmorMagLockComponent> ent, ref Content.Shared.Weapons.Melee.Components.AttemptMeleeThrowOnHitEvent ev) =>
-            {
-                if (ent.Owner == ev.Hit)
-                    ev = ev with { Cancelled = true, Handled = true };
-            });
-        SubscribeLocalEvent<ArmorMagLockComponent, Content.Shared.Throwing.ThrowPushbackAttemptEvent>((_, _, ev) => ev.Cancel());
-
 
         SubscribeLocalEvent<FusionCorePoweredComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshSpeed);
         SubscribeLocalEvent<ModularPowerArmorComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnFrameSpeed);

@@ -83,8 +83,10 @@ namespace Content.Shared.Movement.Systems
         // Keep bonuses separately so temporary slowdown immunity is independent of
         // subscriber order and preserves buffs, including when a slowdown is zero.
         public bool IgnoreSlowdowns;
-        public float WalkSpeedModifier => IgnoreSlowdowns ? _walkBonuses : _walkSpeedModifier;
-        public float SprintSpeedModifier => IgnoreSlowdowns ? _sprintBonuses : _sprintSpeedModifier;
+        // Applied after ordinary bonuses, slowdown immunity and the global speed cap.
+        public float FinalMultiplier = 1f;
+        public float WalkSpeedModifier => (IgnoreSlowdowns ? _walkBonuses : _walkSpeedModifier) * FinalMultiplier;
+        public float SprintSpeedModifier => (IgnoreSlowdowns ? _sprintBonuses : _sprintSpeedModifier) * FinalMultiplier;
 
         /// <summary>
         ///    Whether this entity is immune to most movement speed modifiers.

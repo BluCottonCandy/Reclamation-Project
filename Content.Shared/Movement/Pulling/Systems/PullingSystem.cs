@@ -171,7 +171,8 @@ public sealed class PullingSystem : EntitySystem
         if (pullerComp.PushingTowards is null)
             return;
 
-        if (TryComp(pulled, out ConveyedComponent? conveyed) && conveyed.Conveying)
+        if (HasComp<Content.Shared._ReclamationProject.PowerArmor.ArmorMagLockComponent>(pulled) ||
+            TryComp(pulled, out ConveyedComponent? conveyed) && conveyed.Conveying)
         {
             pullerComp.PushingTowards = null;
             return;

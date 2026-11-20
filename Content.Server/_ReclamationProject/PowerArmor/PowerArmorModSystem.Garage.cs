@@ -56,8 +56,8 @@ public sealed partial class PowerArmorModSystem
         switch (mod.Kind)
         {
             case ArmorModKind.MagLock:
-                RemComp<ArmorMagLockComponent>(user);
-                UpdateArmorGait(user);
+                if (RemComp<ArmorMagLockComponent>(user) && !TerminatingOrDeleted(user))
+                    _movement.RefreshMovementSpeedModifiers(user);
                 _actions.SetToggled(mod.ActionEntity, false);
                 break;
             case ArmorModKind.TowRig:
@@ -80,7 +80,7 @@ public sealed partial class PowerArmorModSystem
             EnsureComp<ArmorMagLockComponent>(user);
         else
             RemComp<ArmorMagLockComponent>(user);
-        UpdateArmorGait(user);
+        _movement.RefreshMovementSpeedModifiers(user);
         _actions.SetToggled(mod.ActionEntity, engage);
     }
 
@@ -169,7 +169,6 @@ public sealed partial class PowerArmorModSystem
             ClearTow(user);
             return false;
         }
-        UpdateArmorGait(user);
         _movement.RefreshMovementSpeedModifiers(user);
         Notice(user, "pa-mod-tow-attached");
         return true;
@@ -185,18 +184,7 @@ public sealed partial class PowerArmorModSystem
     private void ClearTow(EntityUid user)
     {
         if (!RemComp<ArmorTowComponent>(user) || TerminatingOrDeleted(user)) return;
-        UpdateArmorGait(user);
         _movement.RefreshMovementSpeedModifiers(user);
-    }
-
-    private void UpdateArmorGait(EntityUid user)
-    {
-        if (TerminatingOrDeleted(user) || !TryComp<Content.Shared.Movement.Components.InputMoverComponent>(user, out var mover))
-            return;
-        var walk = HasComp<ArmorTowComponent>(user) || HasComp<ArmorMagLockComponent>(user);
-        if (mover.ArmorForcesWalk == walk) return;
-        mover.ArmorForcesWalk = walk;
-        Dirty(user, mover);
     }
 
     private bool PulseJunkhound(EntityUid user)

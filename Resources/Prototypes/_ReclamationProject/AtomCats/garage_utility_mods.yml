@@ -29,7 +29,7 @@
   parent: AtomCatsArmorModBase
   id: AtomCatsModMagLock
   name: mag-lock soles
-  description: Lock the boot magnets to resist shoves and knockback at walking speed. Toggle again to release.
+  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 5% slower while engaged.
   components:
   - type: Sprite
     state: maglock
@@ -41,7 +41,7 @@
 - type: entity
   id: ActionAtomCatsMagLock
   name: Toggle mag-lock soles
-  description: Lock the boot magnets to resist shoves and knockback at walking speed. Toggle again to release.
+  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 5% slower while engaged.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
@@ -54,7 +54,7 @@
   parent: AtomCatsArmorModBase
   id: AtomCatsModTowRig
   name: shoulder tow rig
-  description: With a free hand, hitch a nearby crate or downed person. Both hands stay free while towing at walking speed. Target yourself or the load to release it.
+  description: With a free hand, hitch a nearby crate or downed person. Walk or sprint at your usual speed with both hands free. Target yourself or the load to release it.
   components:
   - type: Sprite
     state: towrig
@@ -66,7 +66,7 @@
 - type: entity
   id: ActionAtomCatsTowRig
   name: Hitch or release tow rig
-  description: With a free hand, hitch a nearby crate or downed person. Both hands stay free while towing at walking speed. Target yourself or the load to release it.
+  description: With a free hand, hitch a nearby crate or downed person. Walk or sprint at your usual speed with both hands free. Target yourself or the load to release it.
   categories: [ HideSpawnMenu ]
   components:
   - type: EntityTargetAction

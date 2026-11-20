@@ -37,7 +37,7 @@ public sealed class RepulseSystem : EntitySystem
     {
         var ev = new BeforeRepulseEvent(user);
         RaiseLocalEvent(repulsor, ev);
-        if (ev.Cancelled)
+        if (ev.Cancelled || HasComp<Content.Shared._ReclamationProject.PowerArmor.ArmorMagLockComponent>(user))
             return;
 
         var direction = _transform.GetMapCoordinates(user).Position - _transform.GetMapCoordinates(repulsor).Position;

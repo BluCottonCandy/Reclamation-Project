@@ -1,9 +1,17 @@
 using System.Linq;
 using Content.IntegrationTests.Pair;
+using Content.Server.Administration.Managers;
+using Content.Server.Database;
+using Content.Server.GameTicking.Events;
+using Content.Server.Maps;
+using Content.Server.Players.JobWhitelist;
+using Content.Server.Station.Components;
+using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Access.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Item.ItemToggle;
@@ -20,6 +28,7 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Storage;
 using Content.Shared.Weapons.Melee;
+using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -40,6 +49,8 @@ public sealed class AtomCatsEquipmentTest
             var department = protos.Index<DepartmentPrototype>("AtomCats");
             var ranks = new[] { "Lookout", "Greaser", "Muscle", "Rocker", "HotRod", "Underboss", "Boss" };
             Assert.That(department.Roles.Select(role => role.Id), Is.EquivalentTo(ranks.Select(rank => "AtomCats" + rank)));
+            var station = protos.Index<GameMapPrototype>("ReclamationWendover").Stations["Wendover"];
+            var jobs = station.StationComponentOverrides.Values.Select(entry => entry.Component).OfType<StationJobsComponent>().Single();
 
             var inventory = em.System<InventorySystem>();
             var slots = em.System<ItemSlotsSystem>();
@@ -48,7 +59,12 @@ public sealed class AtomCatsEquipmentTest
             foreach (var rank in ranks)
             {
                 var job = protos.Index<JobPrototype>("AtomCats" + rank);
-                Assert.That(job.SetPreference, Is.EqualTo(rank is not ("Underboss" or "Boss")));
+                var seats = rank is "Lookout" or "Greaser" or "Muscle" ? 3 : 1;
+                var whitelistedRank = rank is "Underboss" or "Boss";
+                Assert.That(jobs.SetupAvailableJobs[job.ID], Is.EqualTo(new int?[] { seats, seats }), rank);
+                Assert.That(job.SetPreference, Is.True, rank);
+                Assert.That(job.Whitelisted, Is.EqualTo(whitelistedRank), rank);
+                Assert.That(job.HideWithoutJobWhitelist, Is.EqualTo(whitelistedRank), rank);
                 var profile = HumanoidCharacterProfile.DefaultWithSpecies();
                 var wearer = spawn.SpawnPlayerMob(map.GridCoords, new JobComponent { Prototype = job.ID },
                     profile, null);
@@ -93,6 +109,62 @@ public sealed class AtomCatsEquipmentTest
                 Assert.That(parts.Select(plate => plate.Rating), Is.EqualTo(new[] { 4, 10, 2, 4 }));
                 Assert.That(parts.Select(plate => plate.HitPoints), Is.EqualTo(new[] { 80, 192, 48, 80 }));
                 em.DeleteEntity(wearer);
+            }
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task WhitelistedPlayersCanJoinOnlyTheirApprovedLeadershipRanks()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var server = pair.Server;
+        var session = server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        var users = server.ResolveDependency<UserDbDataManager>();
+        var admins = server.ResolveDependency<IAdminManager>();
+        var whitelists = server.ResolveDependency<JobWhitelistManager>();
+        var config = server.ResolveDependency<IConfigurationManager>();
+        var events = server.ResolveDependency<IEntityManager>().EventBus;
+        await PoolManager.WaitUntil(server, () => users.IsLoadComplete(session));
+
+        void Check(bool bossAllowed, bool underbossAllowed)
+        {
+            var candidates = new StationJobsGetCandidatesEvent(session.UserId,
+                ["AtomCatsBoss", "AtomCatsUnderboss", "AtomCatsHotRod"]);
+            events.RaiseEvent(EventSource.Local, ref candidates);
+            var expected = new[] { ("AtomCatsBoss", bossAllowed), ("AtomCatsUnderboss", underbossAllowed), ("AtomCatsHotRod", true) };
+            foreach (var (rank, allowed) in expected)
+            {
+                Assert.That(candidates.Jobs.Contains(rank), Is.EqualTo(allowed), $"Round start: {rank}");
+                var lateJoin = new IsJobAllowedEvent(session, rank);
+                events.RaiseEvent(EventSource.Local, ref lateJoin);
+                Assert.That(!lateJoin.Cancelled, Is.EqualTo(allowed), $"Late join: {rank}");
+            }
+        }
+
+        await server.WaitAssertion(() =>
+        {
+            var wasAdmin = admins.IsAdmin(session);
+            var oldWhitelist = config.GetCVar(CCVars.GameRoleWhitelist);
+            try
+            {
+                config.SetCVar(CCVars.GameRoleWhitelist, true);
+                if (wasAdmin)
+                    admins.DeAdmin(session);
+                Assert.That(admins.IsAdmin(session), Is.False);
+                Check(false, false);
+                whitelists.AddWhitelist(session.UserId, "AtomCatsBoss");
+                Check(true, false);
+                whitelists.AddWhitelist(session.UserId, "AtomCatsUnderboss");
+                Check(true, true);
+            }
+            finally
+            {
+                whitelists.RemoveWhitelist(session.UserId, "AtomCatsBoss");
+                whitelists.RemoveWhitelist(session.UserId, "AtomCatsUnderboss");
+                if (wasAdmin)
+                    admins.ReAdmin(session);
+                config.SetCVar(CCVars.GameRoleWhitelist, oldWhitelist);
             }
         });
         await pair.CleanReturnAsync();

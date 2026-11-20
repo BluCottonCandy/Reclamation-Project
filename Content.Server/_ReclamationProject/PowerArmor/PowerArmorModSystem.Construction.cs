@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
@@ -7,7 +6,6 @@ using Content.Shared.Stacks;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Verbs;
-using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -26,7 +24,7 @@ public sealed partial class PowerArmorModSystem
     private static readonly Step[] Recipe =
     [
         new("Anchoring", 0, 2), new("Steel", 10, 3), new("Welding", 0, 4),
-        new("N14Scrap", 20, 4), new("Screwing", 0, 2), new("Gold", 2, 3), new("Cutting", 0, 2)
+        new("N14Scrap", 20, 4), new("Screwing", 0, 2), new("N14Gold", 2, 3), new("Cutting", 0, 2)
     ];
 
     private static string Kit(ArmorModKind kind) => "AtomCatsMod" + kind;
@@ -43,9 +41,7 @@ public sealed partial class PowerArmorModSystem
     private bool CanFitProject(Entity<PowerArmorPlateComponent> plate, ArmorModKind kind)
     {
         var proto = _prototypes.Index<EntityPrototype>(Kit(kind));
-        if (!proto.TryGetComponent<PowerArmorModComponent>(out var mod, _factory) || mod.Slot != plate.Comp.Slot) return false;
-        var fitted = Installed(plate);
-        return fitted.Count < 2 && !fitted.Any(uid => Comp<PowerArmorModComponent>(uid).Kind == kind);
+        return proto.TryGetComponent<PowerArmorModComponent>(out var mod, _factory) && mod.Slot == plate.Comp.Slot;
     }
 
     private void AddBuildVerbs(Entity<PowerArmorPlateComponent> plate, GetVerbsEvent<AlternativeVerb> ev)
@@ -53,11 +49,12 @@ public sealed partial class PowerArmorModSystem
         if (plate.Comp.Project != null || _hands.GetActiveItem(ev.User) is not {} tool ||
             !_tools.HasQuality(tool, Recipe[0].Input) || HasComp<ModularPowerArmorComponent>(Transform(plate).ParentUid)) return;
         var user = ev.User;
+        var label = Installed(plate).Count == 0 ? "pa-mod-build" : "pa-mod-build-replacement";
         foreach (var kind in Enum.GetValues<ArmorModKind>())
         {
             if (!CanFitProject(plate, kind)) continue;
             ev.Verbs.Add(new AlternativeVerb {
-                Text = Loc.GetString("pa-mod-build", ("mod", _prototypes.Index<EntityPrototype>(Kit(kind)).Name)),
+                Text = Loc.GetString(label, ("mod", _prototypes.Index<EntityPrototype>(Kit(kind)).Name)),
                 Act = () => StartStep(plate, kind, user, tool)
             });
         }
@@ -121,15 +118,19 @@ public sealed partial class PowerArmorModSystem
         else if (TryComp<ToolComponent>(used, out var tool)) _tools.PlayToolSound(used, tool, ev.User);
         ev.Handled = true;
         plate.Comp.BuildVersion++;
-        if (++plate.Comp.BuildStep < Recipe.Length)
+        if (plate.Comp.BuildStep < Recipe.Length - 1)
         {
+            plate.Comp.BuildStep++;
             plate.Comp.Project = ev.Kind;
             Notice(ev.User, "pa-mod-step-" + plate.Comp.BuildStep);
             return;
         }
         var module = Spawn(Kit(ev.Kind), Transform(plate).Coordinates);
-        if (_containers.Insert(module, _containers.EnsureContainer<Container>(plate, Sockets)))
-            _popup.PopupEntity(Loc.GetString("pa-mod-installed", ("mod", module), ("plate", plate.Owner)), ev.User, ev.User);
+        if (!InstallMod(ev.User, plate, module))
+        {
+            QueueDel(module);
+            return;
+        }
         plate.Comp.Project = null;
         plate.Comp.BuildStep = 0;
     }

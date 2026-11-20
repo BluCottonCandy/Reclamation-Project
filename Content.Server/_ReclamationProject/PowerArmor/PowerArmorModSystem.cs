@@ -107,15 +107,33 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         if (!_hands.IsHolding(user, mod)) return;
         if (plate.Comp.Project != null) { Notice(user, "pa-mod-busy"); return; }
         if (mod.Comp.Slot != plate.Comp.Slot) { Notice(user, "pa-mod-wrong-plate"); return; }
-        var current = Installed(plate);
-        if (current.Any(uid => Comp<PowerArmorModComponent>(uid).Kind == mod.Comp.Kind))
-        { Notice(user, "pa-mod-duplicate"); return; }
+        InstallMod(user, plate, mod.Owner);
+    }
+
+    private bool InstallMod(EntityUid user, EntityUid plate, EntityUid module)
+    {
+        var sockets = _containers.EnsureContainer<Container>(plate, Sockets);
+        var previous = sockets.ContainedEntities.ToArray();
         var frame = Transform(plate).ParentUid;
-        if (current.Count >= 2 || TryComp<ModularPowerArmorComponent>(frame, out var shell) && Fitted(frame).Count() >= shell.ModCapacity)
-        { Notice(user, "pa-mod-full"); return; }
-        if (!_containers.Insert(mod.Owner, _containers.EnsureContainer<Container>(plate, Sockets))) return;
+        if (TryComp<ModularPowerArmorComponent>(frame, out var shell) &&
+            Fitted(frame).Count() - previous.Length >= shell.ModCapacity)
+        {
+            Notice(user, "pa-mod-full");
+            return false;
+        }
+        if (!_containers.Insert(module, sockets))
+            return false;
+
+        foreach (var old in previous)
+        {
+            if (TryComp<PowerArmorModComponent>(old, out var data) && data.Wearer != null)
+                Deactivate(old, data);
+            Del(old);
+        }
         if (HasComp<ModularPowerArmorComponent>(frame)) FrameChanged(frame);
-        _popup.PopupEntity(Loc.GetString("pa-mod-installed", ("mod", mod.Owner), ("plate", plate.Owner)), user, user);
+        var message = previous.Length == 0 ? "pa-mod-installed" : "pa-mod-replaced";
+        _popup.PopupEntity(Loc.GetString(message, ("mod", module), ("plate", plate)), user, user);
+        return true;
     }
 
     private void OnServiceVerbs(EntityUid plate, PowerArmorPlateComponent comp, GetVerbsEvent<AlternativeVerb> ev)

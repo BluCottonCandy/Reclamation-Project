@@ -318,6 +318,9 @@ public sealed class PullingSystem : EntitySystem
 
     private void OnRefreshMovespeed(EntityUid uid, PullerComponent component, RefreshMovementSpeedModifiersEvent args)
     {
+        if (TryComp<Content.Shared._ReclamationProject.PowerArmor.ArmorTowComponent>(uid, out var tow) && component.Pulling == tow.Target)
+            return;
+
         if (component.Pulling != null &&
             HasComp<CanFiremanCarryComponent>(uid) &&
             HasComp<MobStateComponent>(component.Pulling.Value))

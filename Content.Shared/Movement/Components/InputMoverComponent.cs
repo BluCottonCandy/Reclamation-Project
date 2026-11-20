@@ -81,9 +81,10 @@ namespace Content.Shared.Movement.Components
 
         public const float LerpTime = 1.0f;
 
-        public bool Sprinting => DefaultSprinting
+        public bool ArmorForcesWalk;
+        public bool Sprinting => !ArmorForcesWalk && (DefaultSprinting
             ? (HeldMoveButtons & MoveButtons.Walk) != 0x0
-            : (HeldMoveButtons & MoveButtons.Walk) == 0x0;
+            : (HeldMoveButtons & MoveButtons.Walk) == 0x0);
 
         public bool DefaultSprinting = true;
 
@@ -102,6 +103,6 @@ namespace Content.Shared.Movement.Components
         public Angle TargetRelativeRotation;
         public Angle RelativeRotation;
         public TimeSpan LerpTarget;
-        public bool CanMove, DefaultSprinting;
+        public bool CanMove, DefaultSprinting, ArmorForcesWalk;
     }
 }

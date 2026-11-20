@@ -116,6 +116,7 @@ namespace Content.Shared.Movement.Systems
             entity.Comp.CanMove = state.CanMove;
             entity.Comp.RelativeEntity = EnsureEntity<InputMoverComponent>(state.RelativeEntity, entity.Owner);
             entity.Comp.DefaultSprinting = state.DefaultSprinting;
+            entity.Comp.ArmorForcesWalk = state.ArmorForcesWalk;
 
             // Reset
             entity.Comp.LastInputTick = GameTick.Zero;
@@ -142,7 +143,8 @@ namespace Content.Shared.Movement.Systems
                 HeldMoveButtons = entity.Comp.HeldMoveButtons,
                 RelativeRotation = entity.Comp.RelativeRotation,
                 TargetRelativeRotation = entity.Comp.TargetRelativeRotation,
-                DefaultSprinting = entity.Comp.DefaultSprinting
+                DefaultSprinting = entity.Comp.DefaultSprinting,
+                ArmorForcesWalk = entity.Comp.ArmorForcesWalk
             };
         }
 

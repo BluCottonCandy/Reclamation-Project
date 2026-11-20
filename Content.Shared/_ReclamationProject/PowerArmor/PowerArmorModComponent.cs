@@ -9,7 +9,8 @@ namespace Content.Shared._ReclamationProject.PowerArmor;
 [Serializable, NetSerializable]
 public enum ArmorModKind
 {
-    Overdrive, Jump, Shotgun, Flamer, Deathclaw, Knuckles, Welder, NightVision, MedicalHud, MechanicVisor, AutoInjector
+    Overdrive, Jump, Shotgun, Flamer, Deathclaw, Knuckles, Welder, NightVision, MedicalHud, MechanicVisor, AutoInjector,
+    JumperCables, MagLock, TowRig, Junkhound
 }
 
 /// <summary>A physical module. Its action and tool stay with it when the plate changes hands.</summary>

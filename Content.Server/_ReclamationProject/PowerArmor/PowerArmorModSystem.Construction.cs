@@ -34,7 +34,7 @@ public sealed partial class PowerArmorModSystem
         if (plate.Comp.Project is {} kind)
             ev.PushText(Loc.GetString("pa-mod-progress", ("mod", _prototypes.Index<EntityPrototype>(Kit(kind)).Name),
                 ("step", Loc.GetString("pa-mod-step-" + plate.Comp.BuildStep))));
-        else if (plate.Comp.Slot != ArmorPlateSlot.Pauldrons)
+        else
             ev.PushText(Loc.GetString("pa-mod-wrench-hint"));
     }
 
@@ -62,7 +62,6 @@ public sealed partial class PowerArmorModSystem
 
     private void BuildInteraction(Entity<PowerArmorPlateComponent> plate, InteractUsingEvent ev)
     {
-        if (plate.Comp.Slot == ArmorPlateSlot.Pauldrons) return;
         if (plate.Comp.Project is {} kind)
         {
             ev.Handled = true;

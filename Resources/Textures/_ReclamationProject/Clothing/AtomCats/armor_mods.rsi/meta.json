@@ -119,6 +119,46 @@
     {
       "name": "autoinjector-worn",
       "directions": 4
+    },
+    {
+      "name": "jumpercables"
+    },
+    {
+      "name": "jumpercables-piece"
+    },
+    {
+      "name": "jumpercables-worn",
+      "directions": 4
+    },
+    {
+      "name": "maglock"
+    },
+    {
+      "name": "maglock-piece"
+    },
+    {
+      "name": "maglock-worn",
+      "directions": 4
+    },
+    {
+      "name": "towrig"
+    },
+    {
+      "name": "towrig-piece"
+    },
+    {
+      "name": "towrig-worn",
+      "directions": 4
+    },
+    {
+      "name": "junkhound"
+    },
+    {
+      "name": "junkhound-piece"
+    },
+    {
+      "name": "junkhound-worn",
+      "directions": 4
     }
   ]
 }

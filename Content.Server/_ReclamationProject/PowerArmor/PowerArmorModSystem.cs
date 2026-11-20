@@ -50,6 +50,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorModWearerComponent, DidUnequipEvent>((uid, _, _) => _refresh.Add(uid));
         SubscribeLocalEvent<PowerArmorModWearerComponent, EntityTerminatingEvent>(OnWearerTerminating);
         InitializeAbilities();
+        InitializeGarageMods();
     }
 
     public override void Update(float frameTime)
@@ -264,6 +265,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
 
     private void Deactivate(EntityUid uid, PowerArmorModComponent mod)
     {
+        ReleaseGarageMod(mod);
         RemoveCasualtyDisplay(mod);
         Stow(uid, mod);
         _actions.RemoveAction(mod.ActionEntity);
@@ -277,7 +279,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
 
     private bool InUse(EntityUid frame, EntityUid user, PowerArmorModComponent mod)
     {
-        var slot = mod.Slot switch { ArmorPlateSlot.Gloves => "gloves", ArmorPlateSlot.Helmet => "head", _ => null };
+        var slot = mod.Kind == ArmorModKind.MagLock ? "shoes" : mod.Slot switch { ArmorPlateSlot.Gloves => "gloves", ArmorPlateSlot.Helmet => "head", _ => null };
         return slot == null || _inventory.TryGetSlotEntity(user, slot, out var item) &&
             TryComp<AttachedClothingComponent>(item, out var gear) && gear.AttachedUid == frame;
     }

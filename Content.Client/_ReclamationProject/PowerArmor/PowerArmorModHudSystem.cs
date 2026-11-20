@@ -5,6 +5,7 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
 using Content.Shared.Overlays.Switchable;
 using Robust.Client.UserInterface;
+using Robust.Client.Graphics;
 
 namespace Content.Client._ReclamationProject.PowerArmor;
 
@@ -15,6 +16,9 @@ public sealed class PowerArmorModHudSystem : EntitySystem
     [Dependency] private readonly ShowHealthIconsSystem _icons = default!;
     [Dependency] private readonly Content.Client.Overlays.Switchable.NightVisionSystem _night = default!;
 
+    [Dependency] private readonly IOverlayManager _overlays = default!;
+    private JunkhoundPulseOverlay _junkhound = default!;
+
     private readonly ShowHealthBarsComponent _medicalBars = new() { DamageContainers = new() { "Biological" } };
     private readonly ShowHealthBarsComponent _armorBars = new() { ShowArmorCondition = true };
     private readonly ShowHealthIconsComponent _medicalIcons = new() { DamageContainers = new() { "Biological" } };
@@ -22,6 +26,8 @@ public sealed class PowerArmorModHudSystem : EntitySystem
 
     public override void Initialize()
     {
+        _junkhound = new JunkhoundPulseOverlay();
+        _overlays.AddOverlay(_junkhound);
         SubscribeNetworkEvent<ChooseArmorModEvent>(ev => _ui.GetUIController<VerbMenuUIController>().OpenVerbMenu(ev.Plate));
         SubscribeLocalEvent<PowerArmorModWearerComponent, AfterAutoHandleStateEvent>(OnState);
         SubscribeLocalEvent<PowerArmorModWearerComponent, RefreshEquipmentHudEvent<ShowHealthBarsComponent>>((_, comp, ev) =>
@@ -31,6 +37,13 @@ public sealed class PowerArmorModHudSystem : EntitySystem
         });
         SubscribeLocalEvent<PowerArmorModWearerComponent, RefreshEquipmentHudEvent<ShowHealthIconsComponent>>((_, comp, ev) => Provide(comp.MedicalHud, ev, _medicalIcons));
         SubscribeLocalEvent<PowerArmorModWearerComponent, RefreshEquipmentHudEvent<NightVisionComponent>>((_, comp, ev) => Provide(comp.NightVision, ev, _visor));
+    }
+
+    public override void Shutdown()
+    {
+        _overlays.RemoveOverlay(_junkhound);
+        _junkhound.Dispose();
+        base.Shutdown();
     }
 
     private void OnState(Entity<PowerArmorModWearerComponent> wearer, ref AfterAutoHandleStateEvent ev) => Refresh(wearer);

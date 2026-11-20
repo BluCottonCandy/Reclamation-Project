@@ -62,6 +62,7 @@ public sealed partial class PowerArmorModSystem
 
     private void OnModuleTerminating(Entity<PowerArmorModComponent> ent, ref EntityTerminatingEvent ev)
     {
+        ReleaseGarageMod(ent.Comp);
         RemoveCasualtyDisplay(ent.Comp);
         if (ent.Comp.ToolEntity is {} tool && !TerminatingOrDeleted(tool)) QueueDel(tool);
     }
@@ -79,9 +80,7 @@ public sealed partial class PowerArmorModSystem
     private void OnActivate(EntityUid uid, PowerArmorModComponent comp, ActivateArmorModEvent ev)
     {
         var user = ev.Performer;
-        if (ev.Handled || comp.Wearer != user || !_inventory.TryGetSlotEntity(user, "outerClothing", out var outer)
-            || !HasComp<ModularPowerArmorComponent>(outer) || !Fitted(outer.Value).Contains(uid) || !InUse(outer.Value, user, comp)) return;
-        var frame = outer.Value;
+        if (ev.Handled || !WornModule((uid, comp), user, out var frame)) return;
         if (comp.ToolEntity is {} tool)
         {
             if (!TryComp<PowerArmorWristToolComponent>(tool, out var tether)) return;
@@ -104,6 +103,12 @@ public sealed partial class PowerArmorModSystem
         }
         else switch (comp.Kind)
         {
+            case ArmorModKind.MagLock:
+                ToggleMagLock(user, comp);
+                break;
+            case ArmorModKind.Junkhound:
+                if (!PulseJunkhound(user)) return;
+                break;
             case ArmorModKind.MedicalHud:
                 ToggleCasualtyDisplay(uid, comp, user);
                 break;

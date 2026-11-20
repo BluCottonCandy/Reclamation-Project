@@ -17,6 +17,52 @@ public sealed class FactionTimeAlternativesTests
     // #Reclamation Project - jobs where a job whitelist deliberately skips the hours (the faction heads and the Courser).
     public static readonly HashSet<string> WhitelistSkipsTimers = new() { "InstituteCourser", "InstituteDirector", "MinutemenGeneral" };
 
+    [Test]
+    public async Task AtomCatsCanEarnOrSkipEachPromotion()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        await server.WaitAssertion(() =>
+        {
+            var config = server.ResolveDependency<IConfigurationManager>();
+            var prototypes = server.ResolveDependency<IPrototypeManager>();
+            var sponsor = server.ResolveDependency<ISharedSponsorManager>();
+            var checks = server.System<CharacterRequirementsSystem>();
+            var profile = HumanoidCharacterProfile.DefaultWithSpecies();
+            string[][] tiers = [["Lookout"], ["Greaser"], ["Muscle", "TattooArtist"], ["Rocker"], ["HotRod"], ["Underboss"], ["Boss"]];
+            var original = config.GetCVar(CCVars.GameRoleTimers);
+            config.SetCVar(CCVars.GameRoleTimers, true);
+            try
+            {
+                for (var tier = 0; tier < tiers.Length; tier++)
+                foreach (var rank in tiers[tier])
+                {
+                    var job = prototypes.Index<JobPrototype>("AtomCats" + rank);
+                    var times = new Dictionary<string, TimeSpan> { ["Wastelander"] = TimeSpan.FromDays(100) };
+                    bool Eligible() => checks.CheckRequirementsValid(job.Requirements ?? [], job, profile, times, true,
+                        job, server.EntMan, prototypes, config, sponsor, out _, jobWhitelisted: true);
+                    Assert.That(Eligible(), Is.EqualTo(tier == 0), rank);
+                    for (var prior = 0; prior < tier; prior++)
+                    foreach (var source in tiers[prior])
+                    {
+                        var tracker = "AtomCats" + source;
+                        var threshold = TimeSpan.FromMinutes(300 * (tier - prior));
+                        times[tracker] = threshold - TimeSpan.FromSeconds(1);
+                        Assert.That(Eligible(), Is.False, $"{source} to {rank} before threshold");
+                        times[tracker] = threshold;
+                        Assert.That(Eligible(), Is.True, $"{source} to {rank} at threshold");
+                        times.Remove(tracker);
+                    }
+                }
+            }
+            finally
+            {
+                config.SetCVar(CCVars.GameRoleTimers, original);
+            }
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [TestCase("ForgedBranded", 300, "Forged")]
     [TestCase("ForgedEnforcer", 600, "Forged")]
     [TestCase("ForgedVeteran", 900, "Forged")]

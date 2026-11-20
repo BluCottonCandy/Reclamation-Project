@@ -20,6 +20,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Item;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -47,6 +48,38 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 [TestFixture]
 public sealed class ModularPowerArmorTest
 {
+    [Test]
+    public async Task WendoverArmorMonumentCanInitializeAlongsideAWearableSuit()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        await server.WaitAssertion(() =>
+        {
+            var em = server.EntMan;
+            var maps = server.System<SharedMapSystem>();
+            var map = maps.CreateMap(out var mapId, runMapInit: false);
+            var position = new EntityCoordinates(map, 0, 0);
+            const string model = "N14ClothingOuterPowerArmorT51China";
+
+            // Wendover's monument strips these components when the map is deserialized.
+            var monument = em.CreateEntityUninitialized(model, position);
+            em.RemoveComponent<ClothingComponent>(monument);
+            em.RemoveComponent<ArmorComponent>(monument);
+            em.RemoveComponent<ItemComponent>(monument);
+            em.InitializeAndStartEntity(monument, mapId);
+            var wearable = em.SpawnEntity(model, position);
+
+            maps.InitializeMap(mapId);
+            Assert.That(em.HasComponent<ModularPowerArmorComponent>(monument), Is.False);
+            Assert.That(em.HasComponent<ArmorComponent>(monument), Is.False);
+            var suit = em.GetComponent<ModularPowerArmorComponent>(wearable);
+            Assert.That(suit.Sealed, Is.True);
+            Assert.That(suit.Rating, Is.EqualTo(55));
+            maps.DeleteMap(mapId);
+        });
+        await pair.CleanReturnAsync();
+    }
+
     [TestCase("ReclamationPowerArmorFrame", false)]
     [TestCase("N14ClothingOuterPowerArmorT45", true)]
     public async Task DamageCircleTracksWearer(string suitId, bool reconnect)

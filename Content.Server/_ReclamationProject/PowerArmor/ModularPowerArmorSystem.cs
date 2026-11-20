@@ -77,6 +77,13 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         if (id == null || !_protos.HasIndex<PowerArmorModelPrototype>(id) && !HasComp<ModularPowerArmorComponent>(ent))
             return;
 
+        // Maps can use suit prototypes as scenery and explicitly strip their wearable components.
+        if (!HasComp<ClothingComponent>(ent) || !HasComp<ArmorComponent>(ent))
+        {
+            RemComp<ModularPowerArmorComponent>(ent);
+            return;
+        }
+
         EnsureComp<ModularPowerArmorComponent>(ent);
         var slots = EnsureComp<ItemSlotsComponent>(ent);
         if (TryComp<PowerArmorIntegrityComponent>(ent, out var integrity))
@@ -344,7 +351,8 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         var current = Comp<ArmorComponent>(ent);
         current.Modifiers = modifiers;
         Dirty(ent, current);
-        Comp<ExplosionResistanceComponent>(ent).DamageCoefficient = blast;
+        if (TryComp<ExplosionResistanceComponent>(ent, out var resistance))
+            resistance.DamageCoefficient = blast;
         if (fittingsChanged)
         {
             UpdateHelmet(ent);

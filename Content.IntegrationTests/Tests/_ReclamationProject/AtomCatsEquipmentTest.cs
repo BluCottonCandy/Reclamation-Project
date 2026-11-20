@@ -5,6 +5,7 @@ using Content.Server.Database;
 using Content.Server.GameTicking.Events;
 using Content.Server.Maps;
 using Content.Server.Players.JobWhitelist;
+using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
@@ -52,10 +53,13 @@ public sealed class AtomCatsEquipmentTest
         await pair.Server.WaitAssertion(() =>
         {
             var department = protos.Index<DepartmentPrototype>("AtomCats");
+            Assert.That(department.UICategory, Is.EqualTo(DepartmentUICategory.MinorFaction));
+            Assert.That(department.EditorHidden, Is.False);
             var ranks = new[] { "Lookout", "Greaser", "Muscle", "TattooArtist", "Rocker", "HotRod", "Underboss", "Boss" };
             Assert.That(department.Roles.Select(role => role.Id), Is.EquivalentTo(ranks.Select(rank => "AtomCats" + rank)));
             var station = protos.Index<GameMapPrototype>("ReclamationWendover").Stations["Wendover"];
             var jobs = station.StationComponentOverrides.Values.Select(entry => entry.Component).OfType<StationJobsComponent>().Single();
+            var factory = em.System<StationSystem>().InitializeNewStation(station, [map.Grid.Owner], "Factory");
 
             var inventory = em.System<InventorySystem>();
             var slots = em.System<ItemSlotsSystem>();
@@ -71,8 +75,16 @@ public sealed class AtomCatsEquipmentTest
                 Assert.That(job.Whitelisted, Is.EqualTo(whitelistedRank), rank);
                 Assert.That(job.HideWithoutJobWhitelist, Is.EqualTo(whitelistedRank), rank);
                 var profile = HumanoidCharacterProfile.DefaultWithSpecies();
-                var wearer = spawn.SpawnPlayerMob(map.GridCoords, new JobComponent { Prototype = job.ID },
-                    profile, null);
+                Assert.That(job.AlwaysUseSpawner, Is.True, rank);
+                var marker = em.SpawnEntity("SpawnPoint" + job.ID, map.GridCoords);
+                var point = em.GetComponent<SpawnPointComponent>(marker);
+                Assert.That(point.SpawnType, Is.EqualTo(SpawnPointType.Job));
+                Assert.That(point.Job?.ID, Is.EqualTo(job.ID));
+                var wearer = spawn.SpawnPlayerCharacterOnStation(factory, new JobComponent { Prototype = job.ID },
+                    profile, spawnPointType: SpawnPointType.Job)!.Value;
+                Assert.That(em.GetComponent<TransformComponent>(wearer).Coordinates,
+                    Is.EqualTo(em.GetComponent<TransformComponent>(marker).Coordinates));
+                em.DeleteEntity(marker);
                 EntityUid Worn(string slot)
                 {
                     Assert.That(inventory.TryGetSlotEntity(wearer, slot, out var item), Is.True, $"{rank}: {slot}");
@@ -153,6 +165,7 @@ public sealed class AtomCatsEquipmentTest
                 Assert.That(parts.Select(plate => plate.HitPoints), Is.EqualTo(new[] { 80, 192, 48, 80 }));
                 em.DeleteEntity(wearer);
             }
+            em.DeleteEntity(factory);
         });
         await pair.CleanReturnAsync();
     }

@@ -2,7 +2,6 @@ pa-mod-missing-plate = Install the matching armor piece first.
 pa-mod-mechanic-only = It takes an Atom Cats mechanic to fit an armor mod.
 pa-mod-wrong-plate = This mod needs a different armor piece.
 pa-mod-full = The frame has no free mod mounts.
-pa-mod-free-hand = Empty your active hand to extend the wrist attachment.
 pa-mod-no-jump = The jump servos need a powered frame and room to move.
 pa-mod-installed = You fit { $mod } to { $plate }.
 pa-mod-replaced = You replace the old mod on { $plate } with { $mod }.

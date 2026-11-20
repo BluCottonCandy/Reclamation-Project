@@ -9,6 +9,7 @@ using Content.Shared.Examine;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Actions;
+using Content.Shared.Clothing;
 using Content.Shared.Throwing;
 using Content.Shared.Tools.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -20,6 +21,8 @@ using Content.Shared.Stacks;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Tools.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -78,6 +81,25 @@ public sealed class AtomCatsArmorModsTest
         {
             Assert.That(light.DrawLighting, Is.True);
             Assert.That(client.System<ShowHealthIconsSystem>().DamageContainers, Does.Not.Contain("Biological"));
+        });
+        NetEntity netWearer = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            var shotgun = FitVisor(ArmorModKind.Shotgun);
+            server.EventBus.RaiseLocalEvent(shotgun, new ActivateArmorModEvent { Performer = customer });
+            netWearer = server.GetNetEntity(customer);
+        });
+        await pair.RunTicksSync(20);
+        await pair.Client.WaitAssertion(() =>
+        {
+            var user = client.GetEntity(netWearer);
+            Assert.That(client.System<SharedHandsSystem>().GetActiveItem(user), Is.Null);
+            Assert.That(client.System<SharedGunSystem>().TryGetGun(user, out var gun, out _));
+            Assert.That(client.GetComponent<MetaDataComponent>(gun).EntityPrototype!.ID, Is.EqualTo("AtomCatsWristShotgun"));
+            Assert.That(client.System<InventorySystem>().TryGetSlotEntity(user, "outerClothing", out var outer));
+            var visuals = new GetEquipmentVisualsEvent(user, "outerClothing");
+            client.EventBus.RaiseLocalEvent(outer!.Value, visuals);
+            Assert.That(visuals.Layers.Any(layer => layer.Item2.State == "shotgun-worn"));
         });
         await pair.Server.WaitPost(() => pair.Server.PlayerMan.SetAttachedEntity(session, null));
         await pair.CleanReturnAsync();
@@ -184,8 +206,19 @@ public sealed class AtomCatsArmorModsTest
             var extend = new ActivateArmorModEvent { Performer = outsider };
             em.EventBus.RaiseLocalEvent(module, extend);
             Assert.That(extend.Handled);
-            Assert.That(hands.GetActiveItem(outsider), Is.EqualTo(data.ToolEntity));
-            Assert.That(em.GetComponent<BallisticAmmoProviderComponent>(data.ToolEntity!.Value).Capacity, Is.EqualTo(5));
+            Assert.That(hands.GetActiveItem(outsider), Is.Null);
+            var guns = em.System<SharedGunSystem>();
+            Assert.That(guns.TryGetGun(outsider, out var activeGun, out var shotgun));
+            Assert.That(activeGun, Is.EqualTo(data.ToolEntity));
+            var magazine = em.GetComponent<BallisticAmmoProviderComponent>(data.ToolEntity!.Value);
+            Assert.That(magazine.Capacity, Is.EqualTo(5));
+            guns.AttemptShoot(outsider, activeGun, shotgun!, map.GridCoords.Offset(new System.Numerics.Vector2(3, 0)));
+            Assert.That(magazine.AmmoCount, Is.EqualTo(4));
+            var shell = Spawn("N14ShellShotgun12");
+            Assert.That(hands.TryPickup(outsider, shell));
+            Assert.That(guns.TryGetGun(outsider, out _, out _), Is.False);
+            Assert.That(em.System<SharedInteractionSystem>().InteractUsing(outsider, shell, rusted, map.GridCoords));
+            Assert.That(magazine.AmmoCount, Is.EqualTo(5));
             em.System<DamageableSystem>().TryChangeDamage(plate, new DamageSpecifier { DamageDict = { ["Blunt"] = 1000 } }, ignoreResistances:true);
             Assert.That(slots.GetItemOrNull(rusted, "plate-gloves"), Is.Null);
             Assert.That(data.Wearer, Is.Null);
@@ -235,12 +268,15 @@ public sealed class AtomCatsArmorModsTest
             }
             Select(claw, "Slash", 24);
             var knuckles = Fit("Knuckles", maker);
-            Select(knuckles, "Structural", 50);
+            Assert.That(em.GetComponent<PowerArmorModComponent>(knuckles).ActionEntity, Is.Null);
+            Assert.That(em.System<SharedMeleeWeaponSystem>().TryGetWeapon(wearer, out _, out var reinforced));
+            Assert.That(reinforced!.Damage.DamageDict["Structural"].Int(), Is.EqualTo(50));
+            Assert.That(reinforced.Damage.DamageDict["Blunt"].Int(), Is.EqualTo(30));
             Assert.That(em.EntityExists(claw), Is.False);
             var wrist = Fit("Welder", maker);
             em.EventBus.RaiseLocalEvent(wrist, new ActivateArmorModEvent { Performer = wearer });
-            var tool = hands.GetActiveItem(wearer);
-            Assert.That(tool, Is.Not.Null);
+            Assert.That(hands.GetActiveItem(wearer), Is.Null);
+            Assert.That(em.GetComponent<PowerArmorModWearerComponent>(wearer).ActiveWristTool, Is.Not.Null);
             var replacement = Fit("Flamer", maker);
             Assert.That(hands.GetActiveItem(wearer), Is.Null);
             Assert.That(em.EntityExists(wrist), Is.False);
@@ -313,15 +349,25 @@ public sealed class AtomCatsArmorModsTest
                 case ArmorModKind.Flamer:
                 case ArmorModKind.Welder:
                     Activate();
-                    var tool = hands.GetActiveItem(wearer);
+                    Assert.That(hands.GetActiveItem(wearer), Is.Null);
+                    var tool = hud.ActiveWristTool;
                     Assert.That(tool, Is.EqualTo(mod.ToolEntity).And.Not.Null);
                     if (kind == ArmorModKind.Welder)
                         Assert.That(em.HasComponent<WelderComponent>(tool!.Value));
                     else
                     {
-                        Assert.That(em.System<SharedSolutionContainerSystem>().TryGetSolution(tool!.Value, "chamber", out _, out var fuel));
-                        Assert.That(fuel!.MaxVolume.Int(), Is.EqualTo(50));
-                        Assert.That(fuel.Volume.Int(), Is.EqualTo(50));
+                        var canister = em.System<ItemSlotsSystem>().GetItemOrNull(tool!.Value, "gun_magazine");
+                        Assert.That(canister, Is.Not.Null);
+                        var solutions = em.System<SharedSolutionContainerSystem>();
+                        Assert.That(solutions.TryGetSolution(canister!.Value, "fuel", out _, out var fuel));
+                        Assert.That(fuel!.MaxVolume.Int(), Is.EqualTo(10));
+                        Assert.That(em.System<SharedGunSystem>().TryGetGun(wearer, out var active, out var gun));
+                        em.System<SharedGunSystem>().AttemptShoot(wearer, active, gun!, map.GridCoords.Offset(new System.Numerics.Vector2(2, 0)));
+                        Assert.That(fuel.Volume.Int(), Is.EqualTo(9));
+                        var spare = Spawn("N14FlamerFuel");
+                        em.System<SharedInteractionSystem>().InteractHand(wearer, spare);
+                        Assert.That(fuel.Volume.Int(), Is.EqualTo(10));
+                        Assert.That(hands.GetActiveItem(wearer), Is.Null);
                     }
                     break;
             }
@@ -331,6 +377,44 @@ public sealed class AtomCatsArmorModsTest
             Assert.That(hands.GetActiveItem(wearer), Is.Null);
             if (kind == ArmorModKind.Overdrive)
                 Assert.That(speed.WalkSpeedModifier, Is.EqualTo(baseline).Within(0.001f));
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task MountedIndustrialWelderRepairsWithAnEmptyHand()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        var rate = (int)pair.Server.ResolveDependency<IGameTiming>().TickRate;
+        EntityUid user = default, module = default, target = default, tool = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            EntityUid Spawn(string id) => em.SpawnEntity(id, map.GridCoords);
+            var frame = Spawn("N14ClothingOuterPowerArmorT45");
+            user = Spawn("MobHuman");
+            em.System<NpcFactionSystem>().AddFaction(user, "AtomCats");
+            Assert.That(em.System<InventorySystem>().TryEquip(user, frame, "outerClothing", force: true));
+            module = Spawn("AtomCatsModWelder");
+            Assert.That(em.System<SharedHandsSystem>().TryPickup(user, module));
+            em.EventBus.RaiseLocalEvent(frame, new InteractUsingEvent(user, module, frame, map.GridCoords));
+            em.EventBus.RaiseLocalEvent(module, new ActivateArmorModEvent { Performer = user });
+            tool = em.GetComponent<PowerArmorModWearerComponent>(user).ActiveWristTool!.Value;
+            target = Spawn("ReclamationPlateGloves");
+            em.System<DamageableSystem>().TryChangeDamage(target, new DamageSpecifier { DamageDict = { ["Blunt"] = 10 } }, ignoreResistances: true);
+            em.System<SharedInteractionSystem>().InteractHand(user, target);
+            Assert.That(em.System<SharedHandsSystem>().GetActiveItem(user), Is.Null);
+        });
+        await pair.Server.WaitRunTicks(rate * 11);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(em.GetComponent<DamageableComponent>(target).TotalDamage.Int(), Is.Zero);
+            Assert.That(em.System<SharedToolSystem>().GetWelderFuelAndCapacity(tool).fuel.Int(), Is.EqualTo(250));
+            em.EventBus.RaiseLocalEvent(module, new ActivateArmorModEvent { Performer = user });
+            Assert.That(em.GetComponent<PowerArmorModWearerComponent>(user).ActiveWristTool, Is.Null);
+            em.System<SharedInteractionSystem>().InteractHand(user, target);
+            Assert.That(em.System<SharedHandsSystem>().GetActiveItem(user), Is.EqualTo(target));
         });
         await pair.CleanReturnAsync();
     }

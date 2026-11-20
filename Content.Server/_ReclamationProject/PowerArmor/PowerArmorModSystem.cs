@@ -39,6 +39,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorPlateComponent, InteractUsingEvent>(OnFit, before: beforeRepair);
         SubscribeLocalEvent<PowerArmorPlateComponent, BuildArmorModEvent>(FinishStep);
         SubscribeLocalEvent<ModularPowerArmorComponent, InteractUsingEvent>(OnFitToSuit, before: beforeRepair);
+        SubscribeLocalEvent<AttachedClothingComponent, InteractUsingEvent>(OnServiceGlove, before: beforeRepair);
         SubscribeLocalEvent<PowerArmorPlateComponent, GetVerbsEvent<AlternativeVerb>>(OnServiceVerbs);
         SubscribeLocalEvent<PowerArmorModWearerComponent, DidEquipEvent>((uid, _, _) => _refresh.Add(uid));
         SubscribeLocalEvent<PowerArmorModWearerComponent, DidUnequipEvent>((uid, _, _) => _refresh.Add(uid));
@@ -48,9 +49,6 @@ public sealed partial class PowerArmorModSystem : EntitySystem
 
     public override void Update(float frameTime)
     {
-        foreach (var kit in _looseTools)
-            if (TryComp<PowerArmorModComponent>(kit, out var mod)) Stow(kit, mod);
-        _looseTools.Clear();
         if (_refresh.Count == 0) return;
         var pending = _refresh.ToArray();
         _refresh.Clear();
@@ -85,6 +83,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         if (ev.Handled) return;
         if (!TryComp<PowerArmorModComponent>(ev.Used, out var mod))
         {
+            if (comp.Slot == ArmorPlateSlot.Gloves && ServiceWrist(plate, ev)) return;
             BuildInteraction((plate, comp), ev);
             return;
         }
@@ -94,7 +93,12 @@ public sealed partial class PowerArmorModSystem : EntitySystem
 
     private void OnFitToSuit(EntityUid frame, ModularPowerArmorComponent comp, InteractUsingEvent ev)
     {
-        if (ev.Handled || !TryComp<PowerArmorModComponent>(ev.Used, out var mod)) return;
+        if (ev.Handled) return;
+        if (!TryComp<PowerArmorModComponent>(ev.Used, out var mod))
+        {
+            if (_slots.GetItemOrNull(frame, "plate-gloves") is {} gloves) ServiceWrist(gloves, ev);
+            return;
+        }
         ev.Handled = true;
         if (_slots.GetItemOrNull(frame, PowerArmorPlates.Container(mod.Slot)) is {} plate)
             Fit(ev.User, (plate, Comp<PowerArmorPlateComponent>(plate)), (ev.Used, mod));
@@ -108,6 +112,15 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         if (plate.Comp.Project != null) { Notice(user, "pa-mod-busy"); return; }
         if (mod.Comp.Slot != plate.Comp.Slot) { Notice(user, "pa-mod-wrong-plate"); return; }
         InstallMod(user, plate, mod.Owner);
+    }
+
+    private void OnServiceGlove(EntityUid uid, AttachedClothingComponent attached, InteractUsingEvent ev)
+    {
+        var frame = attached.AttachedUid;
+        if (ev.Handled || !HasComp<ModularPowerArmorComponent>(frame) ||
+            !_inventory.TryGetSlotEntity(ev.User, "gloves", out var gloves) || gloves != uid ||
+            _slots.GetItemOrNull(frame, "plate-gloves") is not {} plate) return;
+        ServiceWrist(plate, ev);
     }
 
     private bool InstallMod(EntityUid user, EntityUid plate, EntityUid module)
@@ -130,6 +143,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
                 Deactivate(old, data);
             Del(old);
         }
+        UpdatePlateMod(plate);
         if (HasComp<ModularPowerArmorComponent>(frame)) FrameChanged(frame);
         var message = previous.Length == 0 ? "pa-mod-installed" : "pa-mod-replaced";
         _popup.PopupEntity(Loc.GetString(message, ("mod", module), ("plate", plate)), user, user);
@@ -150,6 +164,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
                     if (!IsMechanic(user) || !_containers.TryGetContainer(plate, Sockets, out var sockets) || !sockets.Contains(mod)) return;
                     var frame = Transform(plate).ParentUid;
                     if (!_containers.Remove(mod, sockets, destination: Transform(user).Coordinates)) return;
+                    UpdatePlateMod(plate);
                     if (HasComp<ModularPowerArmorComponent>(frame)) FrameChanged(frame);
                     _hands.TryPickupAnyHand(user, mod);
                 }
@@ -159,18 +174,32 @@ public sealed partial class PowerArmorModSystem : EntitySystem
 
     private void Notice(EntityUid user, string key) => _popup.PopupEntity(Loc.GetString(key), user, user);
 
+    private void UpdatePlateMod(EntityUid plate)
+    {
+        var part = Comp<PowerArmorPlateComponent>(plate);
+        var fitted = Installed(plate);
+        var kind = fitted.Count == 0 ? (ArmorModKind?) null : Comp<PowerArmorModComponent>(fitted[0]).Kind;
+        if (part.FittedMod == kind) return;
+        part.FittedMod = kind;
+        Dirty(plate, part);
+    }
+
     public void FrameChanged(EntityUid frame)
     {
         var shell = Comp<ModularPowerArmorComponent>(frame);
         var mods = Fitted(frame).Select(uid => Comp<PowerArmorModComponent>(uid)).ToArray();
+        shell.ModVisuals.Clear();
+        foreach (var mod in mods)
+            shell.ModVisuals[mod.Slot] = mod.Kind;
+        Dirty(frame, shell);
         var overdrive = mods.Any(m => m.Kind == ArmorModKind.Overdrive);
         if (overdrive != shell.Overdrive) { shell.Overdrive = overdrive; Dirty(frame, shell); }
         var parent = Transform(frame).ParentUid;
         EntityUid? wearer = HasComp<InventoryComponent>(parent) && _inventory.TryGetSlotEntity(parent, "outerClothing", out var outer) && outer == frame ? parent : null;
         if (TryComp<ToggleableClothingComponent>(frame, out var kit))
         {
-            var melee = mods.Where(m => m.Kind is ArmorModKind.Knuckles or ArmorModKind.Deathclaw)
-                .OrderByDescending(m => m.SwitchedOn).FirstOrDefault();
+            var melee = mods.FirstOrDefault(m => m.Kind == ArmorModKind.Knuckles ||
+                m.Kind == ArmorModKind.Deathclaw && m.SwitchedOn);
             var gloves = melee?.Kind switch
             {
                 ArmorModKind.Knuckles => "AtomCatsKnuckleGauntlets",

@@ -4,7 +4,7 @@
   id: AtomCatsArmorModBase
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
+    sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi
   - type: Item
     size: Small
 
@@ -15,7 +15,7 @@
   description: Powered walking and sprinting are 10% faster.
   components:
   - type: Sprite
-    state: power_mod
+    state: overdrive
   - type: PowerArmorMod
     kind: Overdrive
     slot: Chest
@@ -27,7 +27,7 @@
   description: Leap up to five tiles forward. The servos need 30 seconds to reset.
   components:
   - type: Sprite
-    state: cell_con
+    state: jump
   - type: PowerArmorMod
     kind: Jump
     slot: Chest
@@ -42,17 +42,17 @@
   - type: InstantAction
     itemIconStyle: NoItem
     useDelay: 30
-    icon: { sprite: Objects/Misc/module.rsi, state: cell_con }
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: jump }
     event: !type:ActivateArmorModEvent
 
 - type: entity
   parent: AtomCatsArmorModBase
   id: AtomCatsModShotgun
   name: wrist shotgun
-  description: Extend a five-shell shotgun into your empty active hand. Load loose 12-gauge shells.
+  description: Switch on the five-shell wrist shotgun and fire in combat mode with an empty active hand. Use loose 12-gauge shells on the frame or gauntlet plate to reload.
   components:
   - type: Sprite
-    state: cpu_security
+    state: shotgun
   - type: PowerArmorMod
     kind: Shotgun
     slot: Gloves
@@ -61,24 +61,24 @@
 
 - type: entity
   id: ActionAtomCatsShotgun
-  name: Extend or retract wrist shotgun
-  description: Extend a five-shell shotgun into your empty active hand. Load loose 12-gauge shells.
+  name: Toggle wrist shotgun
+  description: Switch on the five-shell wrist shotgun and fire in combat mode with an empty active hand. Use loose 12-gauge shells on the frame or gauntlet plate to reload.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     itemIconStyle: NoItem
     useDelay: 0.5
-    icon: { sprite: Objects/Misc/module.rsi, state: cpu_security }
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: shotgun }
     event: !type:ActivateArmorModEvent
 
 - type: entity
   parent: AtomCatsArmorModBase
   id: AtomCatsModFlamer
   name: Pilot Light wrist flamer
-  description: A refillable gauntlet flamer with a 50-unit fuel reservoir.
+  description: Switch on the wrist-mounted N14 Flamer and fire in combat mode with an empty active hand. Its reservoir holds ten shots. Click a welding fuel tank with the flamer on to refill.
   components:
   - type: Sprite
-    state: cell_micro
+    state: flamer
   - type: PowerArmorMod
     kind: Flamer
     slot: Gloves
@@ -87,14 +87,14 @@
 
 - type: entity
   id: ActionAtomCatsFlamer
-  name: Extend or retract Pilot Light
-  description: A refillable gauntlet flamer with a 50-unit fuel reservoir.
+  name: Toggle Pilot Light
+  description: Switch on the wrist-mounted N14 Flamer and fire in combat mode with an empty active hand. Its reservoir holds ten shots. Click a welding fuel tank with the flamer on to refill.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     itemIconStyle: NoItem
     useDelay: 0.5
-    icon: { sprite: Objects/Misc/module.rsi, state: cell_micro }
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: flamer }
     event: !type:ActivateArmorModEvent
 
 - type: entity
@@ -104,7 +104,7 @@
   description: A hooked, deathclaw-pattern striking surface. Empty-hand strikes deal 24 slash and 6 piercing.
   components:
   - type: Sprite
-    state: ash_plating
+    state: deathclaw
   - type: PowerArmorMod
     kind: Deathclaw
     slot: Gloves
@@ -112,14 +112,14 @@
 
 - type: entity
   id: ActionAtomCatsDeathclaw
-  name: Select deathclaw claws
+  name: Extend or retract deathclaw claws
   description: A hooked, deathclaw-pattern striking surface. Empty-hand strikes deal 24 slash and 6 piercing.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     itemIconStyle: NoItem
     useDelay: 0.5
-    icon: { sprite: Objects/Misc/module.rsi, state: ash_plating }
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: deathclaw }
     event: !type:ActivateArmorModEvent
 
 - type: entity
@@ -129,32 +129,19 @@
   description: Reinforced striking plates deal 30 blunt and 50 structural damage with an empty hand.
   components:
   - type: Sprite
-    state: cyborg_upgrade
+    state: knuckles
   - type: PowerArmorMod
     kind: Knuckles
     slot: Gloves
-    action: ActionAtomCatsKnuckles
-
-- type: entity
-  id: ActionAtomCatsKnuckles
-  name: Select reinforced knuckles
-  description: Reinforced striking plates deal 30 blunt and 50 structural damage with an empty hand.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: InstantAction
-    itemIconStyle: NoItem
-    useDelay: 0.5
-    icon: { sprite: Objects/Misc/module.rsi, state: cyborg_upgrade }
-    event: !type:ActivateArmorModEvent
 
 - type: entity
   parent: AtomCatsArmorModBase
   id: AtomCatsModWelder
-  name: wrist welder
-  description: Extend a refillable repair welder into your empty active hand.
+  name: twin-nozzle industrial wrist welder
+  description: Switch on the twin-nozzle industrial welder, then click a welding job with an empty active hand. The welder has an unlimited fuel supply.
   components:
   - type: Sprite
-    state: cpu_engineering
+    state: welder
   - type: PowerArmorMod
     kind: Welder
     slot: Gloves
@@ -163,14 +150,14 @@
 
 - type: entity
   id: ActionAtomCatsWelder
-  name: Extend or retract wrist welder
-  description: Extend a refillable repair welder into your empty active hand.
+  name: Toggle industrial wrist welder
+  description: Switch on the twin-nozzle industrial welder, then click a welding job with an empty active hand. The welder has an unlimited fuel supply.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     itemIconStyle: NoItem
     useDelay: 0.5
-    icon: { sprite: Objects/Misc/module.rsi, state: cpu_engineering }
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: welder }
     event: !type:ActivateArmorModEvent
 
 - type: entity
@@ -180,7 +167,7 @@
   description: Switch on the visor for night vision.
   components:
   - type: Sprite
-    state: cpu_science
+    state: nightvision
   - type: PowerArmorMod
     kind: NightVision
     slot: Helmet
@@ -195,7 +182,7 @@
   - type: InstantAction
     itemIconStyle: NoItem
     useDelay: 0.5
-    icon: { sprite: Objects/Misc/module.rsi, state: cpu_science }
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: nightvision }
     event: !type:ActivateArmorModEvent
 
 - type: entity
@@ -205,7 +192,7 @@
   description: Shows the health bars and medical status of nearby people.
   components:
   - type: Sprite
-    state: cpu_medical
+    state: medicalhud
   - type: PowerArmorMod
     kind: MedicalHud
     slot: Helmet
@@ -217,7 +204,7 @@
   description: Examine a frame or its wearer up close to read each plate’s condition and fusion-core charge.
   components:
   - type: Sprite
-    state: cpuboard_adv
+    state: mechanicvisor
   - type: PowerArmorMod
     kind: MechanicVisor
     slot: Helmet
@@ -269,21 +256,46 @@
       path: /Audio/_Nuclear14/Weapons/Effects/Reload/Shotguns/shotgun_insert.ogg
 
 - type: entity
-  parent: N14WeaponFlamer
+  parent: N14Flamer
   id: AtomCatsWristFlamer
   name: Pilot Light wrist flamer
   categories: [ HideSpawnMenu ]
   components:
-  - type: SolutionContainerManager
-    solutions:
-      chamber:
-        maxVol: 50
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 50
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: AtomCatsWristFlamerFuel
+        locked: true
 
 - type: entity
-  parent: Welder
-  id: AtomCatsWristWelder
-  name: wrist welder
+  parent: N14FlamerFuel
+  id: AtomCatsWristFlamerFuel
+  name: wrist flamer reservoir
+  description: A fixed ten-unit reservoir for the Pilot Light.
   categories: [ HideSpawnMenu ]
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      fuel:
+        maxVol: 10
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 10
+
+- type: entity
+  parent: N14WelderIndustrial
+  id: AtomCatsWristWelder
+  name: twin-nozzle industrial wrist welder
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Welder
+    unlimitedFuel: true
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi
+    layers:
+    - state: welder
+    - state: welder-flame
+      visible: false
+      shader: unshaded
+      map: ["enum.ToggleVisuals.Layer"]

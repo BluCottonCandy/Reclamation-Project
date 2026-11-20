@@ -414,6 +414,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         }
 
         // Use hands clothing if applicable.
+        if (hands?.ActiveHand is { HeldEntity: null } &&
+            TryComp<Content.Shared._ReclamationProject.PowerArmor.PowerArmorModWearerComponent>(entity, out var armor) &&
+            HasComp<Content.Shared.Weapons.Ranged.Components.GunComponent>(armor.ActiveWristTool))
+            return false;
+
         if (_inventory.TryGetSlotEntity(entity, "gloves", out var gloves) &&
             TryComp<MeleeWeaponComponent>(gloves, out var glovesMelee))
         {

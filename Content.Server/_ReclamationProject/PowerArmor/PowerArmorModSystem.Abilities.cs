@@ -5,7 +5,11 @@ using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
-using Content.Shared.Hands;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Tools.Components;
+using Content.Shared.Tag;
+using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Physics;
@@ -22,7 +26,10 @@ public sealed partial class PowerArmorModSystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    private readonly HashSet<EntityUid> _looseTools = new();
+    [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
+    [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private readonly SharedGunSystem _guns = default!;
+    private const string WristMount = "power-armor-wrist";
 
     private void InitializeAbilities()
     {
@@ -32,9 +39,7 @@ public sealed partial class PowerArmorModSystem
         SubscribeLocalEvent<PowerArmorWristToolComponent, ContainerGettingRemovedAttemptEvent>((_, comp, ev) => {
             if (!comp.Moving) ev.Cancel();
         });
-        SubscribeLocalEvent<PowerArmorWristToolComponent, GotUnequippedHandEvent>((_, comp, _) => {
-            if (!comp.Moving) _looseTools.Add(comp.Module);
-        });
+        SubscribeLocalEvent<PowerArmorModWearerComponent, BeforeInteractHandEvent>(OnWristClick);
         SubscribeLocalEvent<PowerArmorWornComponent, ExaminedEvent>((_, worn, ev) => {
             if (ev.IsInDetailsRange && HasComp<ModularPowerArmorComponent>(worn.Armor)) Scan(worn.Armor, ev);
         });
@@ -64,14 +69,20 @@ public sealed partial class PowerArmorModSystem
         if (comp.ToolEntity is {} tool)
         {
             if (!TryComp<PowerArmorWristToolComponent>(tool, out var tether)) return;
-            if (_hands.IsHolding(user, tool)) Stow(uid, comp);
+            var wearer = Comp<PowerArmorModWearerComponent>(user);
+            if (wearer.ActiveWristTool == tool) Stow(uid, comp);
             else
             {
-                if (_hands.GetActiveHand(user) is not { HeldEntity: null })
-                { Notice(user, "pa-mod-free-hand"); return; }
                 tether.Moving = true;
-                try { if (!_hands.TryPickup(user, tool, animate: false)) return; }
+                try { if (!_containers.Insert(tool, _containers.EnsureContainer<ContainerSlot>(user, WristMount))) return; }
                 finally { tether.Moving = false; }
+                if (comp.Kind == ArmorModKind.Welder && !_toggle.TryActivate(tool, user))
+                {
+                    Stow(uid, comp);
+                    return;
+                }
+                wearer.ActiveWristTool = tool;
+                Dirty(user, wearer);
                 _actions.SetToggled(comp.ActionEntity, true);
             }
         }
@@ -94,14 +105,8 @@ public sealed partial class PowerArmorModSystem
                 RefreshWearer(user);
                 break;
             case ArmorModKind.Deathclaw:
-            case ArmorModKind.Knuckles:
-                foreach (var other in Fitted(frame))
-                {
-                    var m = Comp<PowerArmorModComponent>(other);
-                    if (m.Kind is not (ArmorModKind.Knuckles or ArmorModKind.Deathclaw)) continue;
-                    m.SwitchedOn = other == uid;
-                    _actions.SetToggled(m.ActionEntity, m.SwitchedOn);
-                }
+                comp.SwitchedOn = !comp.SwitchedOn;
+                _actions.SetToggled(comp.ActionEntity, comp.SwitchedOn);
                 FrameChanged(frame);
                 break;
             default: return;
@@ -114,10 +119,53 @@ public sealed partial class PowerArmorModSystem
         if (comp.ToolEntity is not {} tool || !TryComp<PowerArmorWristToolComponent>(tool, out var tether)
             || TerminatingOrDeleted(uid) || Transform(tool).ParentUid == uid) return;
         if (comp.Kind == ArmorModKind.Welder) _toggle.TryDeactivate(tool);
+        if (TryComp<GunComponent>(tool, out var gun)) _guns.StopShooting(tool, gun);
+        if (comp.Wearer is {} user && TryComp<PowerArmorModWearerComponent>(user, out var state) &&
+            state.ActiveWristTool == tool)
+        {
+            state.ActiveWristTool = null;
+            Dirty(user, state);
+        }
         tether.Moving = true;
         try { _containers.Insert(tool, _containers.EnsureContainer<ContainerSlot>(uid, Holster)); }
         finally { tether.Moving = false; }
         _actions.SetToggled(comp.ActionEntity, false);
+    }
+
+    private void OnWristClick(EntityUid user, PowerArmorModWearerComponent state, BeforeInteractHandEvent ev)
+    {
+        if (ev.Handled || state.ActiveWristTool is not {} tool || _hands.GetActiveHand(user) is not { HeldEntity: null } ||
+            Transform(tool).ParentUid != user || !_interaction.InRangeAndAccessible(user, ev.Target)) return;
+        if (HasComp<WelderComponent>(tool))
+            ev.Handled = _interaction.InteractUsing(user, tool, ev.Target, Transform(ev.Target).Coordinates);
+        else if (_slots.GetItemOrNull(tool, "gun_magazine") is {} reservoir)
+            ev.Handled = RefuelWristFlamer(ev.Target, reservoir);
+    }
+
+    private bool ServiceWrist(EntityUid plate, InteractUsingEvent ev)
+    {
+        foreach (var uid in Installed(plate))
+        {
+            var mod = Comp<PowerArmorModComponent>(uid);
+            if (mod.ToolEntity is not {} tool) continue;
+            if (mod.Kind == ArmorModKind.Shotgun && _tags.HasTag(ev.Used, "N14ShellShotgun12"))
+                ev.Handled = _interaction.InteractUsing(ev.User, ev.Used, tool, ev.ClickLocation);
+            else if (mod.Kind == ArmorModKind.Flamer && _slots.GetItemOrNull(tool, "gun_magazine") is {} reservoir)
+                ev.Handled = RefuelWristFlamer(ev.Used, reservoir);
+            if (ev.Handled) return true;
+        }
+        return false;
+    }
+
+    private bool RefuelWristFlamer(EntityUid source, EntityUid reservoir)
+    {
+        if (source == reservoir || !_solutions.TryGetDrainableSolution(source, out var from, out var supply) ||
+            !_solutions.TryGetSolution(reservoir, "fuel", out var to, out var tank)) return false;
+        var available = supply.GetTotalPrototypeQuantity("WeldingFuel");
+        if (available <= 0 || tank.AvailableVolume <= 0) return false;
+        _solutions.TryAddReagent(to.Value, "WeldingFuel", available, out var accepted);
+        _solutions.RemoveReagent(from.Value, "WeldingFuel", accepted);
+        return accepted > 0;
     }
 
     public void ExaminePlate(Entity<PowerArmorPlateComponent> plate, ref ExaminedEvent ev)

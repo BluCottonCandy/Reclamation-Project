@@ -34,7 +34,8 @@ public abstract partial class SharedToolSystem
         if (!SolutionContainerSystem.TryGetSolution(entity.Owner, entity.Comp.FuelSolutionName, out var solutionComp, out _))
             return;
 
-        SolutionContainerSystem.RemoveReagent(solutionComp.Value, entity.Comp.FuelReagent, entity.Comp.FuelLitCost);
+        if (!entity.Comp.UnlimitedFuel)
+            SolutionContainerSystem.RemoveReagent(solutionComp.Value, entity.Comp.FuelReagent, entity.Comp.FuelLitCost);
         AdminLogger.Add(LogType.InteractActivate, LogImpact.Low,
             $"{ToPrettyString(user):user} toggled {ToPrettyString(entity.Owner):welder} on");
 
@@ -95,7 +96,7 @@ public abstract partial class SharedToolSystem
 
     private void OnWelderAfterInteract(Entity<WelderComponent> entity, ref AfterInteractEvent args)
     {
-        if (args.Handled)
+        if (args.Handled || entity.Comp.UnlimitedFuel)
             return;
 
         if (args.Target is not { Valid: true } target || !args.CanReach)
@@ -135,6 +136,7 @@ public abstract partial class SharedToolSystem
             ev.Cancel();
         }
 
+        if (entity.Comp.UnlimitedFuel) return;
         var (currentFuel, _) = GetWelderFuelAndCapacity(entity);
 
         if (requiredFuel > currentFuel)
@@ -146,7 +148,7 @@ public abstract partial class SharedToolSystem
 
     private void OnWelderDoAfter(Entity<WelderComponent> ent, ref ToolDoAfterEvent args)
     {
-        if (args.Cancelled)
+        if (args.Cancelled || ent.Comp.UnlimitedFuel)
             return;
 
         if (!SolutionContainerSystem.TryGetSolution(ent.Owner, ent.Comp.FuelSolutionName, out var solution))
@@ -165,6 +167,7 @@ public abstract partial class SharedToolSystem
 
     private void OnActivateAttempt(Entity<WelderComponent> entity, ref ItemToggleActivateAttemptEvent args)
     {
+        if (entity.Comp.UnlimitedFuel) return;
         if (!SolutionContainerSystem.TryGetSolution(entity.Owner, entity.Comp.FuelSolutionName, out _, out var solution))
         {
             args.Cancelled = true;

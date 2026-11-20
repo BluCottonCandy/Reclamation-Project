@@ -14,6 +14,8 @@ public sealed partial class WelderComponent : Component
     [DataField, AutoNetworkedField]
     public bool Enabled;
 
+    [DataField] public bool UnlimitedFuel;
+
     [DataField]
     public float WelderTimer;
 

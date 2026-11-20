@@ -144,7 +144,8 @@ public abstract partial class SharedToolSystem : EntitySystem
             BreakOnMove = true,
             BreakOnWeightlessMove = false,
             NeedHand = tool != user,
-            AttemptFrequency = fuel > 0 ? AttemptFrequency.EveryTick : AttemptFrequency.Never
+            AttemptFrequency = fuel > 0 || TryComp<WelderComponent>(tool, out var welder) && welder.UnlimitedFuel
+                ? AttemptFrequency.EveryTick : AttemptFrequency.Never
         };
 
         _doAfterSystem.TryStartDoAfter(doAfterArgs, out id);

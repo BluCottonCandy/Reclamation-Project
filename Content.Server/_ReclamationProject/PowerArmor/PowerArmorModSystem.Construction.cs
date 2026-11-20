@@ -80,7 +80,7 @@ public sealed partial class PowerArmorModSystem
     {
         if (!IsMechanic(user)) { Notice(user, "pa-mod-mechanic-only"); return false; }
         if (plate.Comp.Project is {} pending && pending != kind || !CanFitProject(plate, kind) ||
-            HasComp<ModularPowerArmorComponent>(Transform(plate).ParentUid) || _hands.GetActiveItem(user) != used ||
+            HasComp<ModularPowerArmorComponent>(Transform(plate).ParentUid) || !HasBuildInput(user, used) ||
             !_interaction.InRangeAndAccessible(user, plate.Owner)) return false;
         var step = Recipe[plate.Comp.BuildStep];
         if (!ValidInput(used, user, step))
@@ -103,10 +103,16 @@ public sealed partial class PowerArmorModSystem
         return !attempt.Cancelled;
     }
 
+    private bool HasBuildInput(EntityUid user, EntityUid used) =>
+        _hands.GetActiveItem(user) == used ||
+        _hands.GetActiveHand(user) is { HeldEntity: null } &&
+        TryComp<PowerArmorModWearerComponent>(user, out var wearer) && wearer.ActiveWristTool == used &&
+        HasComp<WelderComponent>(used);
+
     private void FinishStep(Entity<PowerArmorPlateComponent> plate, ref BuildArmorModEvent ev)
     {
         if (ev.Cancelled || ev.Handled || ev.Version != plate.Comp.BuildVersion || ev.Used is not {} used ||
-            ev.Target != plate.Owner || !IsMechanic(ev.User) || _hands.GetActiveItem(ev.User) != used ||
+            ev.Target != plate.Owner || !IsMechanic(ev.User) || !HasBuildInput(ev.User, used) ||
             HasComp<ModularPowerArmorComponent>(Transform(plate).ParentUid) || !_interaction.InRangeAndAccessible(ev.User, plate.Owner) ||
             plate.Comp.Project is {} pending && pending != ev.Kind || !CanFitProject(plate, ev.Kind)) return;
         var step = Recipe[plate.Comp.BuildStep];

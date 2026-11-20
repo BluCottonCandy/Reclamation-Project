@@ -216,6 +216,17 @@ public abstract partial class SharedGunSystem : EntitySystem
             return true;
         }
 
+        // Powered gauntlets use the ordinary trigger while the active hand is empty.
+        if (hands?.ActiveHand is { HeldEntity: null } &&
+            TryComp<Content.Shared._ReclamationProject.PowerArmor.PowerArmorModWearerComponent>(entity, out var armor) &&
+            armor.ActiveWristTool is {} mounted && TryComp(mounted, out gun) &&
+            Transform(mounted).ParentUid == entity)
+        {
+            gunEntity = mounted;
+            gunComp = gun;
+            return true;
+        }
+
         // Last resort is check if the entity itself is a gun.
         if (TryComp(entity, out gun))
         {

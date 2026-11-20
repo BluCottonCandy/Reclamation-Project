@@ -1,10 +1,12 @@
 using Content.Client.Alerts;
 using Content.Client.Clothing;
 using Content.Client.Items.Systems;
+using Content.Client.Toggleable;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Toggleable;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -15,14 +17,16 @@ public sealed class ModularArmorVisualSystem : EntitySystem
 {
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly ItemSystem _items = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     private readonly HashSet<EntityUid> _changedFrames = new();
     private const string ModSprite = "_ReclamationProject/Clothing/AtomCats/armor_mods.rsi";
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<ModularPowerArmorComponent, GetEquipmentVisualsEvent>(OnWorn, after: new[] { typeof(ClientClothingSystem) });
-        SubscribeLocalEvent<AttachedClothingComponent, GetEquipmentVisualsEvent>(OnHelmetWorn, after: new[] { typeof(ClientClothingSystem) });
+        var afterClothingAndLight = new[] { typeof(ClientClothingSystem), typeof(ToggleableLightVisualsSystem) };
+        SubscribeLocalEvent<ModularPowerArmorComponent, GetEquipmentVisualsEvent>(OnWorn, after: afterClothingAndLight);
+        SubscribeLocalEvent<AttachedClothingComponent, GetEquipmentVisualsEvent>(OnHelmetWorn, after: afterClothingAndLight);
         SubscribeLocalEvent<ModularPowerArmorComponent, AfterAutoHandleStateEvent>(OnFrameChanged);
         SubscribeLocalEvent<PowerArmorPlateComponent, AfterAutoHandleStateEvent>(OnPlateChanged);
         SubscribeLocalEvent<InventoryComponent, UpdateAlertSpriteEvent>(OnAlert);
@@ -49,8 +53,21 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     {
         if (ev.Slot != "head" || !TryComp<ModularPowerArmorComponent>(ent.Comp.AttachedUid, out var frame))
             return;
-        if (frame.PaintedHelmet && frame.Visuals.TryGetValue(ArmorPlateSlot.Helmet, out var finish) && ev.Layers.Count > 0)
-            ev.Layers[0] = (ev.Layers[0].Item1, new PrototypeLayerData { RsiPath = finish, State = "helmet" });
+        if (frame.PaintedHelmet && frame.Visuals.TryGetValue(ArmorPlateSlot.Helmet, out var finish))
+        {
+            // Both stock T-45 light states include the entire helmet. Draw the enamel once and light only the lamp.
+            ev.Layers.Clear();
+            ev.Layers.Add(("head-0", new PrototypeLayerData { RsiPath = finish, State = "helmet" }));
+            if (_appearance.TryGetData<bool>(ent.Owner, ToggleableLightVisuals.Enabled, out var lit) && lit)
+            {
+                ev.Layers.Add(("head-toggle", new PrototypeLayerData
+                {
+                    RsiPath = "_ReclamationProject/Clothing/AtomCats/red-helmet.rsi",
+                    State = "equipped-HELMET-unshaded",
+                    Shader = "unshaded",
+                }));
+            }
+        }
         if (frame.ModVisuals.TryGetValue(ArmorPlateSlot.Helmet, out var visor))
             AddWornMod(ev, visor);
     }

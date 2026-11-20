@@ -6,7 +6,6 @@ using Content.Server.Paint;
 using Content.Shared._Misfits.WastelandMap;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Clothing;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -21,6 +20,7 @@ using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Paint;
 using Content.Shared.RadialSelector;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Toggleable;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio;
@@ -267,18 +267,50 @@ public sealed class AtomCatsGarageSystemsTest
             await Choose(finishes[finish]);
         }
 
-        await Paint(painter, 0);
-        await pair.Server.WaitAssertion(() => Assert.That(Frame(suit).Visuals.Values.All(v => v.EndsWith(paths[0]))));
-        await Paint(wornHelmet, 2);
-        await pair.Client.WaitAssertion(() =>
+        async Task ToggleHeadlamp()
+        {
+            await pair.Server.WaitAssertion(() =>
+            {
+                var toggle = new ToggleActionEvent { Performer = painter };
+                server.EventBus.RaiseLocalEvent(wornHelmet, toggle);
+                Assert.That(toggle.Handled);
+            });
+            await pair.RunTicksSync(15);
+        }
+
+        Task CheckPaintedHelmet(int finish, bool lit) => pair.Client.WaitAssertion(() =>
         {
             var user = client.GetEntity(netPainter);
             Assert.That(client.System<InventorySystem>().TryGetSlotEntity(user, "head", out var head));
-            var visuals = new GetEquipmentVisualsEvent(user, "head");
-            client.EventBus.RaiseLocalEvent(head!.Value, visuals);
-            Assert.That(visuals.Layers.Any(layer => layer.Item2.State == "helmet" && layer.Item2.RsiPath!.EndsWith(paths[2])));
-            Assert.That(visuals.Layers.Any(layer => layer.Item2.State == "mechanicvisor-worn"));
+            Assert.That(client.GetComponent<Robust.Client.GameObjects.PointLightComponent>(head!.Value).Enabled, Is.EqualTo(lit));
+            var sprite = client.GetComponent<Robust.Client.GameObjects.SpriteComponent>(user);
+            Assert.That(sprite.LayerMapTryGet("head-0", out var paint));
+            Assert.That(sprite[paint].ActualRsi?.Path.ToString(), Does.EndWith(paths[finish]));
+            Assert.That(sprite[paint].RsiState.Name, Is.EqualTo("helmet"));
+            Assert.That(sprite.LayerMapTryGet("head-1", out _), Is.False);
+            Assert.That(sprite.LayerMapTryGet("head-toggle", out var lamp), Is.EqualTo(lit));
+            Assert.That(sprite.LayerMapTryGet("pa-mod-MechanicVisor", out var visor));
+            Assert.That(sprite[visor].RsiState.Name, Is.EqualTo("mechanicvisor-worn"));
+            if (lit)
+            {
+                Assert.That(sprite[lamp].RsiState.Name, Is.EqualTo("equipped-HELMET-unshaded"));
+                Assert.That(sprite[lamp].ActualRsi?.Path.ToString(), Does.EndWith("/AtomCats/red-helmet.rsi"));
+                Assert.That(lamp, Is.InRange(paint + 1, visor - 1));
+            }
         });
+
+        await Paint(painter, 0);
+        await pair.Server.WaitAssertion(() => Assert.That(Frame(suit).Visuals.Values.All(v => v.EndsWith(paths[0]))));
+        await CheckPaintedHelmet(0, false);
+        await ToggleHeadlamp();
+        await CheckPaintedHelmet(0, true);
+        foreach (var finish in new[] { 1, 3, 2 })
+        {
+            await Paint(wornHelmet, finish);
+            await CheckPaintedHelmet(finish, true);
+        }
+        await ToggleHeadlamp();
+        await CheckPaintedHelmet(2, false);
         await pair.Server.WaitAssertion(() =>
         {
             Assert.That(Plate(helmet).PaintFinish, Does.EndWith(paths[2]));

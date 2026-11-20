@@ -2412,6 +2412,12 @@
     price: 20
   - proto: WelderIndustrial
     price: 20
+  - proto: N14WeaponRevolver10mm
+    price: 20
+  - proto: N14WeaponRevolver45-70Handcannon
+    price: 100
+  - proto: AtomCatsRailroadRifle
+    price: 200
 - type: storeCategoryStructured
   id: ReclamationSupplyRailroadArmor
   name: Armor
@@ -2700,6 +2706,24 @@
     price: 20
   - proto: TriggermenOvercoat
     price: 20
+  - proto: AtomCatsPowerArmorFrame
+    price: 200
+  - proto: AtomCatsPlatePauldrons
+    price: 100
+  - proto: AtomCatsPlateChest
+    price: 100
+  - proto: AtomCatsPlateGloves
+    price: 100
+  - proto: AtomCatsPlateHelmet
+    price: 100
+  - proto: AtomCatsCoveralls
+    price: 20
+  - proto: AtomCatsCut
+    price: 20
+  - proto: AtomCatsShades
+    price: 20
+  - proto: AtomCatsBoots
+    price: 20
 - type: storeCategoryStructured
   id: ReclamationSupplyRailroadAmmunition
   name: Ammunition
@@ -2826,6 +2850,14 @@
     price: 4
   - proto: SpeedLoader45-70
     price: 4
+  - proto: N14MagazinePistol22lr
+    price: 4
+  - proto: SpeedLoader9
+    price: 4
+  - proto: SpeedLoader10
+    price: 4
+  - proto: AtomCatsSpikeBox
+    price: 20
 - type: storeCategoryStructured
   id: ReclamationSupplyRailroadMedicalandfood
   name: Medical and food
@@ -2921,6 +2953,18 @@
     price: 40
   - proto: TearGasGrenade
     price: 100
+  - proto: WastelandPowerArmor
+    price: 200
+  - proto: AtomCatsStencilCan
+    price: 50
+  - proto: N14WelderIndustrial
+    price: 50
+  - proto: N14FireAxe
+    price: 50
+  - proto: AtomCatsCompactStretcher
+    price: 50
+  - proto: AtomCatsMedicalBandolier
+    price: 20
 - type: storePresetStructured
   id: ReclamationSupplyRailroadBuy
   currency: 'Supply points: Railroad'

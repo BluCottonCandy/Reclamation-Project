@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/24/2026 07:44:40
-  entityCount: 295167
+  entityCount: 295168
 maps:
 - 1
 grids:
@@ -2337615,6 +2337615,14 @@ entities:
     - type: Transform
       pos: -131.5,-219.5
       parent: 1
+- proto: ReclamationSupplyAtomCatsVendor
+  entities:
+  - uid: 296511
+    components:
+    - type: Transform
+      parent: 1
+      pos: 151.5,-26.5
+      anchored: True
 - proto: ReclamationSupplyBrotherhoodVendor
   entities:
   - uid: 294854

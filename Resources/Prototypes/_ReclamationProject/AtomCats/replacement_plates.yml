@@ -1,0 +1,39 @@
+- type: entity
+  parent: ReclamationPlatePauldrons
+  id: AtomCatsPlatePauldrons
+  name: Cherry Bomb T-45 pauldrons
+  components:
+  - type: PowerArmorPlate
+    model: AtomCatsT45Red
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+
+- type: entity
+  parent: ReclamationPlateChest
+  id: AtomCatsPlateChest
+  name: Cherry Bomb T-45 chest and leg assembly
+  components:
+  - type: PowerArmorPlate
+    model: AtomCatsT45Red
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+
+- type: entity
+  parent: ReclamationPlateGloves
+  id: AtomCatsPlateGloves
+  name: Cherry Bomb T-45 glove plating
+  components:
+  - type: PowerArmorPlate
+    model: AtomCatsT45Red
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+
+- type: entity
+  parent: ReclamationPlateHelmet
+  id: AtomCatsPlateHelmet
+  name: Cherry Bomb T-45 helmet plate
+  components:
+  - type: PowerArmorPlate
+    model: AtomCatsT45Red
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi

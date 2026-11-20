@@ -1,0 +1,218 @@
+- type: entity
+  parent: Trademachine
+  id: ReclamationSupplyAtomCatsVendor
+  name: Atom Cats garage supply vendor
+  description: A teal requisitions machine with a Cherry Bomb helmet on its door. The garage shares a 200-point account, starts with 50 points, and earns three per minute. Redeem supply crates here for 20, 50, or 100 points.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/ammo.rsi
+    layers:
+    - state: 'off'
+      color: '#50b8b0'
+    - sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+      state: helmet-item
+      offset: 0,0.18
+  - type: AccessReader
+    access:
+    - - AtomCats
+  - type: FactionSupplyVendor
+    requireFactionJob: true
+    jobRanks:
+      AtomCatsLookout: 10
+      AtomCatsGreaser: 20
+      AtomCatsMuscle: 30
+      AtomCatsTattooArtist: 35
+      AtomCatsRocker: 40
+      AtomCatsHotRod: 50
+      AtomCatsUnderboss: 60
+      AtomCatsBoss: 70
+    equipmentRanks:
+      N14WeaponSMG10mm: 20
+      N14WeaponRevolver10mm: 20
+      N14WeaponPistol10mm: 30
+      N14WeaponShotgun: 30
+      N14WeaponShotgunAuto: 30
+      N14WeaponSMGAmerican180: 35
+      N14WeaponSMG10mmSuppressed: 40
+      N14WeaponRifle762Marksman: 40
+      N14WeaponRevolver45-70Handcannon: 40
+      AtomCatsRailroadRifle: 50
+      N14WeaponSniper44LeverCarbine: 60
+      N14WeaponRevolver44Magnum: 70
+      AtomCatsEngravedPistol: 70
+      N14WelderIndustrial: 20
+      N14FireAxe: 20
+      N14SledgeHammer: 30
+      ClothingHandsGlovesColorYellow: 20
+      AtomCatsCompactStretcher: 35
+      AtomCatsMedicalBandolier: 35
+      N14HandheldHealthAnalyzer: 35
+      ReclamationTrainingManualCPR: 35
+      ReclamationClothingBeltSurgicalFilled: 35
+  - type: NcStore
+    currencyWhitelist: ['Supply points: Atom Cats']
+    buyPresets: [ReclamationSupplyAtomCatsBuy]
+    sellPresets: [ReclamationSupplyAtomCatsSell]
+
+- type: storePresetStructured
+  id: ReclamationSupplyAtomCatsBuy
+  currency: 'Supply points: Atom Cats'
+  categories:
+  - ReclamationSupplyAtomCatsArmor
+  - ReclamationSupplyAtomCatsGarageGear
+  - ReclamationSupplyAtomCatsWeapons
+  - ReclamationSupplyAtomCatsAmmunition
+  - ReclamationSupplyForgedMedicalandfood
+
+- type: storePresetStructured
+  id: ReclamationSupplyAtomCatsSell
+  currency: 'Supply points: Atom Cats'
+  categories: [ReclamationSupplyForgedCrates]
+
+- type: storeCategoryStructured
+  id: ReclamationSupplyAtomCatsWeapons
+  name: Weapons
+  entries:
+  - proto: N14WeaponPistol22lr
+    price: 10
+  - proto: N14WeaponPistol9mm
+    price: 10
+  - proto: N14WeaponRevolver9mm
+    price: 10
+  - proto: N14WeaponSMG9mm
+    price: 25
+  - proto: N14WeaponSMG9mmCanadian
+    price: 50
+  - proto: N14WeaponSMG10mm
+    price: 50
+  - proto: N14WeaponRevolver10mm
+    price: 10
+  - proto: N14WeaponPistol10mm
+    price: 10
+  - proto: N14WeaponShotgun
+    price: 10
+  - proto: N14WeaponShotgunAuto
+    price: 50
+  - proto: N14WeaponSMGAmerican180
+    price: 100
+  - proto: N14WeaponSMG10mmSuppressed
+    price: 75
+  - proto: N14WeaponRifle762Marksman
+    price: 100
+  - proto: N14WeaponRevolver45-70Handcannon
+    price: 50
+  - proto: AtomCatsRailroadRifle
+    price: 100
+  - proto: N14WeaponSniper44LeverCarbine
+    price: 25
+  - proto: N14WeaponRevolver44Magnum
+    price: 50
+  - proto: AtomCatsEngravedPistol
+    price: 50
+
+- type: storeCategoryStructured
+  id: ReclamationSupplyAtomCatsArmor
+  name: Armor and clothing
+  entries:
+  - proto: AtomCatsPowerArmorFrame
+    price: 200
+  - proto: AtomCatsPlatePauldrons
+    price: 50
+  - proto: AtomCatsPlateChest
+    price: 50
+  - proto: AtomCatsPlateGloves
+    price: 50
+  - proto: AtomCatsPlateHelmet
+    price: 50
+  - proto: AtomCatsCoveralls
+    price: 10
+  - proto: AtomCatsCut
+    price: 10
+  - proto: AtomCatsShades
+    price: 10
+  - proto: AtomCatsBoots
+    price: 10
+
+- type: storeCategoryStructured
+  id: ReclamationSupplyAtomCatsAmmunition
+  name: Ammunition
+  entries:
+  - proto: MagazineBox22
+    price: 10
+  - proto: MagazineBox9mm
+    price: 10
+  - proto: MagazineBox10mm
+    price: 10
+  - proto: MagazineBox12gauge
+    price: 10
+  - proto: MagazineBox762
+    price: 10
+  - proto: MagazineBox45-70
+    price: 10
+  - proto: MagazineBox44
+    price: 10
+  - proto: MagazineBox45
+    price: 10
+  - proto: N14MagazinePistol22lr
+    price: 2
+  - proto: N14MagazinePistol9mm
+    price: 10
+  - proto: N14MagazinePistol10mm
+    price: 10
+  - proto: N14MagazinePistol45
+    price: 2
+  - proto: N14MagazineSMG9mm
+    price: 10
+  - proto: N14MagazineSMG10mm
+    price: 10
+  - proto: N14MagazineShotgun12
+    price: 2
+  - proto: N14MagazineAmerican180Drum
+    price: 24
+  - proto: Magazine762Rifle
+    price: 10
+  - proto: SpeedLoader9
+    price: 2
+  - proto: SpeedLoader10
+    price: 2
+  - proto: SpeedLoader44
+    price: 2
+  - proto: SpeedLoader45-70
+    price: 2
+  - proto: AtomCatsSpikeBox
+    price: 10
+
+- type: storeCategoryStructured
+  id: ReclamationSupplyAtomCatsGarageGear
+  name: Garage gear
+  entries:
+  - proto: WastelandPowerArmor
+    price: 150
+  - proto: AtomCatsStencilCan
+    price: 25
+  - proto: AtomCatsHeadset
+    price: 10
+  - proto: N14ClothingBeltUtilityFilled
+    price: 10
+  - proto: N14WelderIndustrial
+    price: 25
+  - proto: N14FireAxe
+    price: 25
+  - proto: N14SledgeHammer
+    price: 50
+  - proto: ClothingHandsGlovesColorYellow
+    price: 10
+  - proto: N14Binoculars
+    price: 10
+  - proto: N14FusionCore
+    price: 50
+  - proto: AtomCatsCompactStretcher
+    price: 25
+  - proto: AtomCatsMedicalBandolier
+    price: 10
+  - proto: N14HandheldHealthAnalyzer
+    price: 50
+  - proto: ReclamationTrainingManualCPR
+    price: 10
+  - proto: ReclamationClothingBeltSurgicalFilled
+    price: 50

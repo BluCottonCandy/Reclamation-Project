@@ -6,6 +6,7 @@ using Content.Server.Station.Systems;
 using Content.Shared._Misfits.Special;
 using Content.Shared._NC.Trade;
 using Content.Shared._ReclamationProject.PowerArmor;
+using Content.Shared._ReclamationProject.Supplies;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Containers.ItemSlots;
@@ -106,6 +107,87 @@ public sealed class ModularArmorRequisitionsTest
                 Assert.That(em.GetComponent<PowerArmorPlateComponent>(item).Model.Id, Is.EqualTo(donor));
                 Assert.That(em.GetComponent<DamageableComponent>(item).TotalDamage.Float(), Is.Zero);
             }
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task AtomCatsBuyUnmodifiedArmorFromTheirSharedGarageBudget()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        var protos = pair.Server.ResolveDependency<IPrototypeManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            const string currency = "Supply points: Atom Cats";
+            const string rrCurrency = "Supply points: Railroad";
+            var machine = em.SpawnEntity("ReclamationSupplyAtomCatsVendor", map.GridCoords);
+            var store = em.GetComponent<NcStoreComponent>(machine);
+            var railroad = em.GetComponent<NcStoreComponent>(em.SpawnEntity("ReclamationSupplyRailroadVendor", map.GridCoords));
+            var supplies = em.System<FactionSupplySystem>();
+            var checkout = em.System<NcStoreLogicSystem>();
+            var slots = em.System<ItemSlotsSystem>();
+            var minds = em.System<SharedMindSystem>();
+            const string frameId = "AtomCatsPowerArmorFrame";
+            EntityUid Buyer(string job)
+            {
+                var user = em.SpawnEntity("MobHuman", map.GridCoords);
+                var mind = minds.CreateMind(null, job);
+                em.System<RoleSystem>().MindAddRole(mind, new JobComponent { Prototype = job }, silent: true);
+                minds.TransferTo(mind, user);
+                return user;
+            }
+            NcStoreListingDef Listing(NcStoreComponent shop, string product) =>
+                shop.Listings.Single(l => l.Mode == StoreMode.Buy && l.ProductEntity == product);
+            EntityUid Issued(string product) => em.EntityQuery<FactionSupplyPurchaseComponent, MetaDataComponent>()
+                .Single(e => e.Item2.EntityPrototype?.ID == product).Item2.Owner;
+
+            var lookout = Buyer("AtomCatsLookout");
+            var outsider = Buyer("Wastelander");
+            var gun = Listing(store, "AtomCatsRailroadRifle");
+            Assert.That(supplies.CanPurchase(machine, lookout, gun.ProductEntity), Is.False);
+            Assert.That(supplies.CanPurchase(machine, Buyer("AtomCatsHotRod"), gun.ProductEntity));
+            Assert.That(checkout.TryBuy(Listing(store, "AtomCatsPlateHelmet").Id, machine, store, outsider), Is.False);
+            foreach (var rank in protos.Index<DepartmentPrototype>("AtomCats").Roles)
+            {
+                var member = Buyer(rank.Id);
+                Assert.That(supplies.CanPurchase(machine, member, frameId), Is.True, rank.Id);
+                Assert.That(supplies.CanPurchase(machine, member, "WastelandPowerArmor"), Is.True, rank.Id);
+            }
+            Assert.That(store.Listings.Where(l => l.Mode == StoreMode.Buy)
+                .Any(l => protos.Index<EntityPrototype>(l.ProductEntity).Components.ContainsKey("PowerArmorMod")), Is.False);
+            Assert.That(store.Listings.Where(l => l.Mode == StoreMode.Sell).Select(l => l.Cost[currency]),
+                Is.EquivalentTo(new[] { 20, 50, 100 }));
+            Assert.That(Listing(store, frameId).Cost[currency], Is.EqualTo(200));
+            Assert.That(Listing(store, "WastelandPowerArmor").Cost[currency], Is.EqualTo(150));
+            Assert.That(Listing(railroad, frameId).Cost[rrCurrency], Is.EqualTo(200));
+            Assert.That(Listing(railroad, "WastelandPowerArmor").Cost[rrCurrency], Is.EqualTo(200));
+
+            supplies.Credit(currency, 200);
+            Assert.That(checkout.TryBuy(Listing(store, "WastelandPowerArmor").Id, machine, store, lookout));
+            Assert.That(supplies.Balance(currency), Is.EqualTo(50));
+            Assert.That(checkout.TryBuy(Listing(store, frameId).Id, machine, store, lookout), Is.False);
+            supplies.Credit(currency, 200);
+            Assert.That(checkout.TryBuy(Listing(store, frameId).Id, machine, store, lookout));
+            var frame = Issued(frameId);
+            var armor = em.GetComponent<ModularPowerArmorComponent>(frame);
+            Assert.That(armor.Rating, Is.EqualTo(20));
+            Assert.That(armor.ModCapacity, Is.EqualTo(2));
+            supplies.Credit(currency, 200);
+            foreach (var slot in PowerArmorPlates.Slots)
+            {
+                var id = "AtomCatsPlate" + slot;
+                Assert.That(Listing(store, id).Cost[currency], Is.EqualTo(50));
+                Assert.That(Listing(railroad, id).Cost[rrCurrency], Is.EqualTo(100));
+                Assert.That(checkout.TryBuy(Listing(store, id).Id, machine, store, lookout));
+                var plate = Issued(id);
+                Assert.That(em.GetComponent<PowerArmorPlateComponent>(plate).FittedMod, Is.Null);
+                Assert.That(slots.TryInsert(frame, PowerArmorPlates.Container(slot), plate, null));
+            }
+            Assert.That(supplies.Balance(currency), Is.Zero);
+            Assert.That(armor.Sealed);
+            Assert.That(armor.Rating, Is.EqualTo(40));
         });
         await pair.CleanReturnAsync();
     }

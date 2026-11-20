@@ -91,6 +91,11 @@
   fitsGarageStencils: true
   rating: 40
   sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+  parts:
+    Pauldrons: AtomCatsPlatePauldrons
+    Chest: AtomCatsPlateChest
+    Gloves: AtomCatsPlateGloves
+    Helmet: AtomCatsPlateHelmet
 
 - type: entity
   parent: AtomCatsPowerArmorFrame

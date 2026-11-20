@@ -108,19 +108,6 @@
   - type: PowerArmorMod
     kind: Deathclaw
     slot: Gloves
-    action: ActionAtomCatsDeathclaw
-
-- type: entity
-  id: ActionAtomCatsDeathclaw
-  name: Extend or retract deathclaw claws
-  description: A hooked, deathclaw-pattern striking surface. Empty-hand strikes deal 24 slash and 6 piercing.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: InstantAction
-    itemIconStyle: NoItem
-    useDelay: 0.5
-    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: deathclaw }
-    event: !type:ActivateArmorModEvent
 
 - type: entity
   parent: AtomCatsArmorModBase
@@ -201,7 +188,7 @@
   parent: AtomCatsArmorModBase
   id: AtomCatsModMechanicVisor
   name: mechanic’s visor
-  description: Examine a frame or its wearer up close to read each plate’s condition and fusion-core charge.
+  description: An orange bar above each power armor wearer shows overall plate condition. Examine the frame or its wearer up close to read individual plates and fusion-core charge.
   components:
   - type: Sprite
     state: mechanicvisor

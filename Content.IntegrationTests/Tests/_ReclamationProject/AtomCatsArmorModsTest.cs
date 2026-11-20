@@ -34,6 +34,74 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 public sealed class AtomCatsArmorModsTest
 {
     [Test]
+    public async Task DiagnosticVisorTracksAnotherWearersPlates()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        var client = pair.Client.ResolveDependency<IEntityManager>();
+        var overlays = pair.Client.ResolveDependency<IOverlayManager>();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        EntityUid viewerSuit = default, target = default, targetSuit = default, chest = default;
+        NetEntity netTarget = default, netUnarmored = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            EntityUid Spawn(string prototype) => server.SpawnEntity(prototype, map.GridCoords);
+            var mechanic = Spawn("MobHuman");
+            target = Spawn("MobHuman");
+            netTarget = server.GetNetEntity(target);
+            netUnarmored = server.GetNetEntity(Spawn("MobHuman"));
+            viewerSuit = Spawn("AtomCatsT45Blue");
+            targetSuit = Spawn("N14ClothingOuterPowerArmorT45");
+            var visor = Spawn("AtomCatsModMechanicVisor");
+            server.System<NpcFactionSystem>().AddFaction(mechanic, "AtomCats");
+            Assert.That(server.System<SharedHandsSystem>().TryPickup(mechanic, visor));
+            server.EventBus.RaiseLocalEvent(viewerSuit, new InteractUsingEvent(mechanic, visor, viewerSuit, map.GridCoords));
+            var inventory = server.System<InventorySystem>();
+            Assert.That(inventory.TryEquip(mechanic, viewerSuit, "outerClothing", force: true));
+            Assert.That(inventory.TryEquip(target, targetSuit, "outerClothing", force: true));
+            chest = server.System<ItemSlotsSystem>().GetItemOrNull(targetSuit, "plate-chest")!.Value;
+            pair.Server.PlayerMan.SetAttachedEntity(session, mechanic);
+        });
+        async Task Check(float? expected)
+        {
+            await pair.RunTicksSync(15);
+            await pair.Client.WaitAssertion(() =>
+            {
+                var overlay = overlays.GetOverlay<EntityHealthBarOverlay>();
+                Assert.That(overlay.DamageContainers, Does.Not.Contain("Biological"));
+                Assert.That(overlay.GetArmorCondition(client.GetEntity(netUnarmored)), Is.Null);
+                var reading = overlay.GetArmorCondition(client.GetEntity(netTarget));
+                if (expected.HasValue)
+                    Assert.That(reading, Is.EqualTo(expected.Value).Within(.0001f));
+                else
+                    Assert.That(reading, Is.Null);
+            });
+        }
+        void Hit(EntityUid uid, string type, int amount) =>
+            server.System<DamageableSystem>().TryChangeDamage(uid, new DamageSpecifier { DamageDict = { [type] = amount } },
+                ignoreResistances: true, doPartDamage: false);
+        await Check(1f);
+        await pair.Server.WaitPost(() => Hit(target, "Poison", 10));
+        await Check(1f);
+        await pair.Server.WaitPost(() => Hit(chest, "Blunt", 120));
+        await Check(.76f);
+        await pair.Server.WaitPost(() => Hit(chest, "Blunt", -120));
+        await Check(1f);
+        await pair.Server.WaitPost(() => Hit(chest, "Blunt", 240));
+        await Check(.52f);
+        await pair.Server.WaitAssertion(() =>
+            Assert.That(server.System<InventorySystem>().TryUnequip(target, "outerClothing", force: true)));
+        await Check(null);
+        await pair.Server.WaitAssertion(() =>
+            Assert.That(server.System<ItemSlotsSystem>().TryEject(viewerSuit, "plate-helmet", null, out _)));
+        await pair.RunTicksSync(15);
+        await pair.Client.WaitAssertion(() => Assert.That(overlays.HasOverlay<EntityHealthBarOverlay>(), Is.False));
+        await pair.Server.WaitPost(() => pair.Server.PlayerMan.SetAttachedEntity(session, null));
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
     public async Task ReplacingTheVisorUpdatesTheWearersHud()
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
@@ -260,13 +328,10 @@ public sealed class AtomCatsArmorModsTest
             var claw = Fit("Deathclaw", maker);
             var helmet = Fit("MedicalHud", maker);
             Assert.That(em.System<InventorySystem>().TryEquip(wearer, frame, "outerClothing", force:true));
-            void Select(EntityUid item, string type, int amount)
-            {
-                em.EventBus.RaiseLocalEvent(item, new ActivateArmorModEvent { Performer = wearer });
-                Assert.That(em.System<SharedMeleeWeaponSystem>().TryGetWeapon(wearer, out _, out var melee));
-                Assert.That(melee!.Damage.DamageDict[type].Int(), Is.EqualTo(amount));
-            }
-            Select(claw, "Slash", 24);
+            Assert.That(em.GetComponent<PowerArmorModComponent>(claw).ActionEntity, Is.Null);
+            Assert.That(em.System<SharedMeleeWeaponSystem>().TryGetWeapon(wearer, out _, out var melee));
+            Assert.That(melee!.Damage.DamageDict["Slash"].Int(), Is.EqualTo(24));
+            Assert.That(melee.Damage.DamageDict["Piercing"].Int(), Is.EqualTo(6));
             var knuckles = Fit("Knuckles", maker);
             Assert.That(em.GetComponent<PowerArmorModComponent>(knuckles).ActionEntity, Is.Null);
             Assert.That(em.System<SharedMeleeWeaponSystem>().TryGetWeapon(wearer, out _, out var reinforced));

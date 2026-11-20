@@ -104,11 +104,6 @@ public sealed partial class PowerArmorModSystem
                 _actions.SetToggled(comp.ActionEntity, comp.SwitchedOn);
                 RefreshWearer(user);
                 break;
-            case ArmorModKind.Deathclaw:
-                comp.SwitchedOn = !comp.SwitchedOn;
-                _actions.SetToggled(comp.ActionEntity, comp.SwitchedOn);
-                FrameChanged(frame);
-                break;
             default: return;
         }
         ev.Handled = true;
@@ -184,8 +179,7 @@ public sealed partial class PowerArmorModSystem
 
     private void Scan(EntityUid frame, ExaminedEvent ev)
     {
-        if (!TryComp<PowerArmorModWearerComponent>(ev.Examiner, out var wearer) ||
-            !wearer.Modules.Any(m => TryComp<PowerArmorModComponent>(m, out var mod) && mod.Kind == ArmorModKind.MechanicVisor)) return;
+        if (!TryComp<PowerArmorModWearerComponent>(ev.Examiner, out var wearer) || !wearer.MechanicVisor) return;
         foreach (var slot in PowerArmorPlates.Slots)
         {
             var name = Loc.GetString("pa-slot-" + slot.ToString().ToLowerInvariant());

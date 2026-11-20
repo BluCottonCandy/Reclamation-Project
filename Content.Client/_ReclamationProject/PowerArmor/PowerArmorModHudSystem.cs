@@ -16,6 +16,7 @@ public sealed class PowerArmorModHudSystem : EntitySystem
     [Dependency] private readonly Content.Client.Overlays.Switchable.NightVisionSystem _night = default!;
 
     private readonly ShowHealthBarsComponent _medicalBars = new() { DamageContainers = new() { "Biological" } };
+    private readonly ShowHealthBarsComponent _armorBars = new() { ShowArmorCondition = true };
     private readonly ShowHealthIconsComponent _medicalIcons = new() { DamageContainers = new() { "Biological" } };
     private readonly NightVisionComponent _visor = new() { IsActive = true };
 
@@ -23,7 +24,11 @@ public sealed class PowerArmorModHudSystem : EntitySystem
     {
         SubscribeNetworkEvent<ChooseArmorModEvent>(ev => _ui.GetUIController<VerbMenuUIController>().OpenVerbMenu(ev.Plate));
         SubscribeLocalEvent<PowerArmorModWearerComponent, AfterAutoHandleStateEvent>(OnState);
-        SubscribeLocalEvent<PowerArmorModWearerComponent, RefreshEquipmentHudEvent<ShowHealthBarsComponent>>((_, comp, ev) => Provide(comp.MedicalHud, ev, _medicalBars));
+        SubscribeLocalEvent<PowerArmorModWearerComponent, RefreshEquipmentHudEvent<ShowHealthBarsComponent>>((_, comp, ev) =>
+        {
+            Provide(comp.MedicalHud, ev, _medicalBars);
+            Provide(comp.MechanicVisor, ev, _armorBars);
+        });
         SubscribeLocalEvent<PowerArmorModWearerComponent, RefreshEquipmentHudEvent<ShowHealthIconsComponent>>((_, comp, ev) => Provide(comp.MedicalHud, ev, _medicalIcons));
         SubscribeLocalEvent<PowerArmorModWearerComponent, RefreshEquipmentHudEvent<NightVisionComponent>>((_, comp, ev) => Provide(comp.NightVision, ev, _visor));
     }

@@ -43,5 +43,6 @@ StatueNCRTotalVictoryMemorialMariaSalzzar: null
 
 AsteroidAltRockMining: RandomRockSpawner
 
-# Reinforced gauntlet knuckles now work passively.
+# Both gauntlet melee mods now work passively.
 ActionAtomCatsKnuckles: null
+ActionAtomCatsDeathclaw: null

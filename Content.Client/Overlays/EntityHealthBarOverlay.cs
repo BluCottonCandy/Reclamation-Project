@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Client.StatusIcon;
 using Content.Client.UserInterface.Systems;
 using Content.Shared.Damage;
@@ -33,6 +34,7 @@ public sealed class EntityHealthBarOverlay : Overlay
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
     public HashSet<string> DamageContainers = new();
+    public bool ShowArmorCondition;
     public ProtoId<HealthIconPrototype>? StatusIcon;
 
     public EntityHealthBarOverlay(IEntityManager entManager, IPrototypeManager prototype)
@@ -72,7 +74,9 @@ public sealed class EntityHealthBarOverlay : Overlay
                 xform.MapID != args.MapId)
                 continue;
 
-            if (damageableComponent.DamageContainerID == null || !DamageContainers.Contains(damageableComponent.DamageContainerID))
+            var armorCondition = GetArmorCondition(uid);
+            var showHealth = damageableComponent.DamageContainerID is {} container && DamageContainers.Contains(container);
+            if (!showHealth && armorCondition == null)
                 continue;
 
             // we use the status icon component bounds if specified otherwise use sprite
@@ -82,8 +86,8 @@ public sealed class EntityHealthBarOverlay : Overlay
             if (!bounds.Translated(worldPos).Intersects(args.WorldAABB))
                 continue;
 
-            // we are all progressing towards death every day
-            if (CalcProgress(uid, mobStateComponent, damageableComponent, mobThresholdsComponent) is not { } deathProgress)
+            var health = showHealth ? CalcProgress(uid, mobStateComponent, damageableComponent, mobThresholdsComponent) : null;
+            if (health == null && armorCondition == null)
                 continue;
 
             var worldPosition = _transform.GetWorldPosition(xform);
@@ -98,28 +102,36 @@ public sealed class EntityHealthBarOverlay : Overlay
             var widthOfMob = bounds.Width * EyeManager.PixelsPerMeter;
 
             var position = new Vector2(-widthOfMob / EyeManager.PixelsPerMeter / 2, yOffset / EyeManager.PixelsPerMeter);
-            var color = GetProgressColor(deathProgress.ratio, deathProgress.inCrit);
+            if (health is {} medical)
+            {
+                DrawBar(handle, position, widthOfMob, medical.ratio, GetProgressColor(medical.ratio, medical.inCrit));
+                position.Y += 4f / EyeManager.PixelsPerMeter;
+            }
 
-            // Hardcoded width of the progress bar because it doesn't match the texture.
-            const float startX = 8f;
-            var endX = widthOfMob - 8f;
-
-            var xProgress = (endX - startX) * deathProgress.ratio + startX;
-
-            var boxBackground = new Box2(new Vector2(startX, 0f) / EyeManager.PixelsPerMeter, new Vector2(endX, 3f) / EyeManager.PixelsPerMeter);
-            boxBackground = boxBackground.Translated(position);
-            handle.DrawRect(boxBackground, Black.WithAlpha(192));
-
-            var boxMain = new Box2(new Vector2(startX, 0f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 3f) / EyeManager.PixelsPerMeter);
-            boxMain = boxMain.Translated(position);
-            handle.DrawRect(boxMain, color);
-
-            var pixelDarken = new Box2(new Vector2(startX, 2f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 3f) / EyeManager.PixelsPerMeter);
-            pixelDarken = pixelDarken.Translated(position);
-            handle.DrawRect(pixelDarken, Black.WithAlpha(128));
+            if (armorCondition is {} armor)
+                DrawBar(handle, position, widthOfMob, armor, Color.DarkOrange);
         }
 
         handle.SetTransform(Matrix3x2.Identity);
+    }
+
+    public float? GetArmorCondition(EntityUid wearer) =>
+        ShowArmorCondition && _entManager.TryGetComponent<WornArmorConditionComponent>(wearer, out var condition)
+            ? condition.Fraction
+            : null;
+
+    private static void DrawBar(DrawingHandleWorld handle, Vector2 position, float width, float fraction, Color color)
+    {
+        const float inset = 8f;
+        const float ppm = EyeManager.PixelsPerMeter;
+        var right = width - inset;
+        var fill = inset + (right - inset) * fraction;
+        Box2 Rect(float end, float bottom) => new Box2(new Vector2(inset, bottom) / ppm, new Vector2(end, 3f) / ppm).Translated(position);
+        handle.DrawRect(Rect(right, 0f), Black.WithAlpha(192));
+        if (fraction <= 0)
+            return;
+        handle.DrawRect(Rect(fill, 0f), color);
+        handle.DrawRect(Rect(fill, 2f), Black.WithAlpha(128));
     }
 
     /// <summary>

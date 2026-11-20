@@ -37,6 +37,8 @@ public sealed class ShowHealthBarsSystem : EquipmentHudSystem<ShowHealthBarsComp
 
         _overlay.DamageContainers.Clear();
 
+        _overlay.ShowArmorCondition = component.Components.Any(comp => comp.ShowArmorCondition);
+
         foreach (var comp in component.Components)
         {
             foreach (var damageContainerId in comp.DamageContainers)
@@ -56,6 +58,7 @@ public sealed class ShowHealthBarsSystem : EquipmentHudSystem<ShowHealthBarsComp
     protected override void DeactivateInternal()
     {
         base.DeactivateInternal();
+        _overlay.ShowArmorCondition = false;
 
         _overlay.DamageContainers.Clear();
         _overlayMan.RemoveOverlay(_overlay);

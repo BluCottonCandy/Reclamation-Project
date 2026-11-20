@@ -223,6 +223,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     {
         _mods.ClearWearer(args.Wearer);
         _alerts.ClearAlert(args.Wearer, Alert);
+        RemComp<WornArmorConditionComponent>(args.Wearer);
         RemCompDeferred<PowerArmorWornComponent>(args.Wearer);
         if (args.Clothing.InSlot == "outerClothing")
             _walkingSupport.RefreshWalkingSupport(args.Wearer, ent.Owner);
@@ -314,10 +315,19 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             integrity += PowerArmorPlates.Share(slot) * remaining;
         }
 
+        var wearer = Transform(frame).ParentUid;
+        var condition = EnsureComp<WornArmorConditionComponent>(wearer);
+        integrity = Math.Clamp(integrity, 0f, 1f);
+        if (condition.Fraction != integrity)
+        {
+            condition.Fraction = integrity;
+            Dirty(wearer, condition);
+        }
+
         var max = _alerts.GetMaxSeverity(Alert);
         // Reserve empty for a bare frame. Even a small hit should visibly interrupt a full gauge.
         var level = integrity > 0 ? Math.Clamp((int) MathF.Floor(integrity * max + 0.00001f), 1, max) : 0;
-        _alerts.ShowAlert(Transform(frame).ParentUid, Alert, (short) level);
+        _alerts.ShowAlert(wearer, Alert, (short) level);
     }
 
     private void UpdateHelmet(Entity<ModularPowerArmorComponent> ent)

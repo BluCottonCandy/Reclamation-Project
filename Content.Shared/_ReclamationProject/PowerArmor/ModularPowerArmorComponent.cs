@@ -20,6 +20,13 @@ public sealed partial class ModularPowerArmorComponent : Component
     [DataField, AutoNetworkedField] public Dictionary<ArmorPlateSlot, ArmorModKind> ModVisuals = new();
 }
 
+/// <summary>Combined condition of the equipped plates, visible to diagnostic visors on other players.</summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class WornArmorConditionComponent : Component
+{
+    [DataField, AutoNetworkedField] public float Fraction;
+}
+
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class PowerArmorPlateComponent : Component
 {

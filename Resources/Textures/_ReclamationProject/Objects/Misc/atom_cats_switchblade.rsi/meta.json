@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Original Atom Cats switchblade artwork generated for Reclamation Project and adapted for 32-pixel game sprites.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "folded"
+    },
+    {
+      "name": "folded-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "folded-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "blade"
+    },
+    {
+      "name": "blade-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "blade-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "comb"
+    },
+    {
+      "name": "comb-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "comb-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-IDCARD",
+      "directions": 4
+    }
+  ]
+}

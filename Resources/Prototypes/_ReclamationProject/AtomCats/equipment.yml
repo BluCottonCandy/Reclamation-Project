@@ -40,19 +40,54 @@
 - type: entity
   parent: N14IDCard
   id: AtomCatsGaragePass
-  name: Atom Cats identification piston
-  description: A salvaged engine piston with a brass plate riveted to the connecting rod. The Cats stamp the owner's name and garage rank into the plate.
+  name: Atom Cats switchblade ID
+  description: A cherry-red garage pass with the Cat's name and rank stamped into the brass. Work the switch in hand to draw the blade, flip out the barber comb, then fold it shut.
   components:
   - type: Sprite
-    sprite: _ReclamationProject/Objects/Misc/atom_cats_piston.rsi
-    state: icon
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_switchblade.rsi
+    layers:
+    - state: folded
+      map: [switchblade]
   - type: Item
-    sprite: _ReclamationProject/Objects/Misc/atom_cats_piston.rsi
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_switchblade.rsi
+    heldPrefix: folded
   - type: Clothing
-    sprite: _ReclamationProject/Objects/Misc/atom_cats_piston.rsi
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_switchblade.rsi
   - type: IdCard
-    nameLocId: atom-cats-piston-name
-    fullNameLocId: atom-cats-piston-full-name
+    nameLocId: atom-cats-switchblade-name
+    fullNameLocId: atom-cats-switchblade-full-name
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AtomCatsSwitchbladeVisuals.Mode:
+        switchblade:
+          folded: { state: folded }
+          blade: { state: blade }
+          comb: { state: comb }
+  - type: UserInterface
+    interfaces:
+      enum.MagicMirrorUiKey.Key:
+        type: MagicMirrorBoundUserInterface
+  - type: ActivatableUI
+    key: enum.MagicMirrorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: true
+    verbText: atom-cats-switchblade-style
+  - type: AtomCatsSwitchblade
+    blade:
+    - type: MeleeWeapon
+      damage:
+        types:
+          Slash: 25
+      soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+    comb:
+    - type: MagicMirror
+      addSlotTime: 20
+      removeSlotTime: 20
+      selectSlotTime: 20
+      changeSlotTime: 20
+      requireConfirm: true
 
 - type: startingGear
   id: AtomCatsGarageGear

@@ -198,8 +198,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         EntityUid? wearer = HasComp<InventoryComponent>(parent) && _inventory.TryGetSlotEntity(parent, "outerClothing", out var outer) && outer == frame ? parent : null;
         if (TryComp<ToggleableClothingComponent>(frame, out var kit))
         {
-            var melee = mods.FirstOrDefault(m => m.Kind == ArmorModKind.Knuckles ||
-                m.Kind == ArmorModKind.Deathclaw && m.SwitchedOn);
+            var melee = mods.FirstOrDefault(m => m.Kind is ArmorModKind.Knuckles or ArmorModKind.Deathclaw);
             var gloves = melee?.Kind switch
             {
                 ArmorModKind.Knuckles => "AtomCatsKnuckleGauntlets",
@@ -225,7 +224,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         foreach (var mod in state.Modules)
             if (TryComp<PowerArmorModComponent>(mod, out var data) && data.Wearer == user) Deactivate(mod, data);
         state.Modules.Clear();
-        SetVisors(user, state, false, false);
+        SetVisors(user, state, false, false, false);
     }
 
     private void Deactivate(EntityUid uid, PowerArmorModComponent mod)
@@ -258,6 +257,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
             if (TryComp<PowerArmorModComponent>(old, out var gone) && gone.Wearer == user) Deactivate(old, gone);
         var night = false;
         var medical = false;
+        var mechanic = false;
         foreach (var uid in active)
         {
             var mod = Comp<PowerArmorModComponent>(uid);
@@ -269,16 +269,18 @@ public sealed partial class PowerArmorModSystem : EntitySystem
             }
             night |= mod.Kind == ArmorModKind.NightVision && mod.SwitchedOn;
             medical |= mod.Kind == ArmorModKind.MedicalHud;
+            mechanic |= mod.Kind == ArmorModKind.MechanicVisor;
         }
         state.Modules = active;
-        SetVisors(user, state, medical, night);
+        SetVisors(user, state, medical, night, mechanic);
     }
 
-    private void SetVisors(EntityUid user, PowerArmorModWearerComponent state, bool medical, bool night)
+    private void SetVisors(EntityUid user, PowerArmorModWearerComponent state, bool medical, bool night, bool mechanic)
     {
-        if (state.MedicalHud == medical && state.NightVision == night) return;
+        if (state.MedicalHud == medical && state.NightVision == night && state.MechanicVisor == mechanic) return;
         state.MedicalHud = medical;
         state.NightVision = night;
+        state.MechanicVisor = mechanic;
         Dirty(user, state);
     }
 }

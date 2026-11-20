@@ -38,6 +38,7 @@ public sealed partial class PowerArmorModWearerComponent : Component
 {
     [DataField] public HashSet<EntityUid> Modules = new();
     [DataField, AutoNetworkedField] public bool MedicalHud;
+    [DataField, AutoNetworkedField] public bool MechanicVisor;
     [DataField, AutoNetworkedField] public bool NightVision;
     [DataField, AutoNetworkedField] public EntityUid? ActiveWristTool;
 }

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Content.Server._ReclamationProject.Medical.BioMonitor;
+using Content.Server.Body.Components;
 using Content.Server.Traits;
 using Content.Shared._ReclamationProject.Medical.BioMonitor;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Explosion;
 using Robust.Shared.Containers;
@@ -13,6 +15,7 @@ using Content.Shared.Projectiles;
 using Content.Shared.Traits;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.IntegrationTests.Tests._ReclamationProject;
 
@@ -82,6 +85,68 @@ public sealed class BioMonitorTests
 
             var perk = prototypes.Index<TraitPrototype>("ReclamationFieldMedic");
             Assert.That(perk.Points, Is.EqualTo(-5), "Field Medic costs 5 points.");
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task GroinHitsAndLegacyEmbedsCanBeRemovedFromTheTorso()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        var tickRate = pair.Server.ResolveDependency<IGameTiming>().TickRate;
+        EntityUid patient = default, rifle = default, star = default;
+        float piercingAtRemoval = 0;
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            patient = em.SpawnTraumaPatient(map.GridCoords);
+            var monitor = em.System<BioMonitorSystem>();
+            var projectiles = em.System<SharedProjectileSystem>();
+            rifle = em.SpawnEntity("ReclamationBulletFragmentRifle", map.GridCoords);
+            star = em.SpawnEntity("ThrowingStar", map.GridCoords);
+            var fragment = em.GetComponent<BulletFragmentComponent>(rifle);
+            var projectile = em.GetComponent<EmbeddableProjectileComponent>(star);
+
+            Assert.That(monitor.EmbedFragment(rifle, patient, TargetBodyPart.Groin), Is.True);
+            projectiles.Embed(star, patient, null, projectile, TargetBodyPart.Groin);
+            Assert.That(fragment.Part, Is.EqualTo(TargetBodyPart.Torso));
+            Assert.That(projectile.TargetBodyPart, Is.EqualTo(TargetBodyPart.Torso));
+            Assert.That(em.GetComponent<EmbedPassiveDamageComponent>(rifle).EmbeddedBodyPart, Is.EqualTo(TargetBodyPart.Torso));
+            Assert.That(em.GetComponent<EmbedPassiveDamageComponent>(star).EmbeddedBodyPart, Is.EqualTo(TargetBodyPart.Torso));
+
+            // Simulate objects embedded before this fix. The monitor must still expose both removal targets.
+            fragment.Part = TargetBodyPart.Groin;
+            projectile.TargetBodyPart = TargetBodyPart.Groin;
+            var state = monitor.BuildState(patient, patient, BioMonitorSource.Scanner);
+            Assert.That(state.Parts.Any(p => p.Part == (ushort) TargetBodyPart.Groin), Is.False);
+            var torso = state.Parts.Single(p => p.Part == (ushort) TargetBodyPart.Torso);
+            Assert.That(torso.Missing, Is.False);
+            Assert.That(torso.Embedded.Select(e => em.GetEntity(e.Item)), Is.EquivalentTo(new[] { rifle, star }));
+        });
+
+        await pair.Server.WaitRunTicks(tickRate * 2);
+        await pair.Server.WaitAssertion(() =>
+        {
+            var monitor = em.System<BioMonitorSystem>();
+            piercingAtRemoval = em.GetComponent<DamageableComponent>(patient).Damage.DamageDict["Piercing"].Float();
+            Assert.That(piercingAtRemoval, Is.Positive);
+            monitor.RemoveFragment((rifle, em.GetComponent<BulletFragmentComponent>(rifle)), null);
+            em.System<SharedProjectileSystem>().RemoveEmbed(star, em.GetComponent<EmbeddableProjectileComponent>(star));
+            Assert.That(em.GetComponent<EmbedPassiveDamageComponent>(rifle).Embedded, Is.Null);
+            Assert.That(em.GetComponent<EmbedPassiveDamageComponent>(star).Embedded, Is.Null);
+            Assert.That(monitor.BuildState(patient, patient, BioMonitorSource.Scanner).Parts.SelectMany(p => p.Embedded), Is.Empty);
+        });
+
+        await pair.Server.WaitRunTicks(tickRate * 7);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(em.GetComponent<DamageableComponent>(patient).Damage.DamageDict["Piercing"].Float(), Is.LessThanOrEqualTo(piercingAtRemoval));
+            Assert.That(em.GetComponent<BloodstreamComponent>(patient).BleedAmount, Is.Zero);
+            em.DeleteEntity(rifle);
+            em.DeleteEntity(star);
+            em.DeleteEntity(patient);
         });
         await pair.CleanReturnAsync();
     }

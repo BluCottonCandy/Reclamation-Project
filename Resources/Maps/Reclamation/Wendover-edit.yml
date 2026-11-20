@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/24/2026 07:44:40
-  entityCount: 295168
+  entityCount: 295169
 maps:
 - 1
 grids:
@@ -2328099,6 +2328099,12 @@ entities:
     - type: Transform
       parent: 1
       pos: -37.5,188.5
+  - uid: 296512
+    components:
+    - type: Transform
+      parent: 1
+      pos: 166.5,-33.5
+      anchored: True
 - proto: TwoWayLever
   entities:
   - uid: 199937

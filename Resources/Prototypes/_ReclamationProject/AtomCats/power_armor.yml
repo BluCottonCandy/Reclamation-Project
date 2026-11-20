@@ -4,6 +4,7 @@
   name: Rustbucket power armor frame
   description: Flakes of old teal paint cling to the rusty rails. The Cats welded a second mod mount beside the original and polished both contacts bright.
   components:
+  - type: RustbucketEngine
   - type: ModularPowerArmor
     startsEmpty: true
     modCapacity: 2
@@ -83,3 +84,14 @@
   id: AtomCatsT45Blue
   rating: 40
   sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
+
+- type: entity
+  id: ActionAtomCatsRevEngine
+  name: Rev the engine
+  description: Open the throttle for a twenty-second engine rev. Moving interrupts it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/frame.rsi, state: icon }
+    event: !type:RevRustbucketEvent

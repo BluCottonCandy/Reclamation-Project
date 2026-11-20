@@ -29,6 +29,9 @@ public sealed partial class PaintComponent : Component
     [DataField, AutoNetworkedField]
     public Color Color = Color.FromHex("#c62121");
 
+    /// <summary>Optional set of modular power armor plate sprites applied by a stencil can.</summary>
+    [DataField] public string? ArmorFinish;
+
     /// Solution on the entity that contains the paint
     [DataField]
     public string Solution = "drink";

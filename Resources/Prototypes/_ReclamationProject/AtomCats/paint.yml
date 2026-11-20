@@ -1,0 +1,43 @@
+- type: entity
+  parent: SprayPaintWhite
+  id: AtomCatsPaintMedic
+  name: Blue Cross rescue stencil spray
+  description: Ivory enamel and a cobalt cross stencil for a rescue crew's armor. Uncap and spray an assembled suit or a loose plate.
+  components:
+  - type: Paint
+    armorFinish: _ReclamationProject/Clothing/AtomCats/medic.rsi
+    whitelist:
+      components: [ModularPowerArmor, PowerArmorPlate]
+
+- type: entity
+  parent: SprayPaintGreen
+  id: AtomCatsPaintLowrider
+  name: Lowrider pinstripe stencil spray
+  description: Bottle-green enamel with curling gold pinstripes. Uncap and spray an assembled suit or a loose plate.
+  components:
+  - type: Paint
+    armorFinish: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
+    whitelist:
+      components: [ModularPowerArmor, PowerArmorPlate]
+
+- type: entity
+  parent: SprayPaintRed
+  id: AtomCatsPaintCherry
+  name: Cherry Bomb flame stencil spray
+  description: The Cats' cherry-red finish with ivory and orange flames. Uncap and spray an assembled suit or a loose plate.
+  components:
+  - type: Paint
+    armorFinish: _ReclamationProject/Clothing/AtomCats/red.rsi
+    whitelist:
+      components: [ModularPowerArmor, PowerArmorPlate]
+
+- type: entity
+  parent: SprayPaintBlue
+  id: AtomCatsPaintCobalt
+  name: Blue Streak flame stencil spray
+  description: Cobalt enamel and turquoise flames in a battered garage tin. Uncap and spray an assembled suit or a loose plate.
+  components:
+  - type: Paint
+    armorFinish: _ReclamationProject/Clothing/AtomCats/blue.rsi
+    whitelist:
+      components: [ModularPowerArmor, PowerArmorPlate]

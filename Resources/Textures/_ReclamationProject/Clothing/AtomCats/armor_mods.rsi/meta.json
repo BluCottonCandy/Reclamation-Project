@@ -109,6 +109,16 @@
     },
     {
       "name": "welder-flame"
+    },
+    {
+      "name": "autoinjector"
+    },
+    {
+      "name": "autoinjector-piece"
+    },
+    {
+      "name": "autoinjector-worn",
+      "directions": 4
     }
   ]
 }

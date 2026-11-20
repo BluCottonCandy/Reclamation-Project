@@ -17,6 +17,7 @@ public sealed partial class ModularPowerArmorComponent : Component
     [DataField, AutoNetworkedField] public float Absorption;
     [DataField, AutoNetworkedField] public bool Sealed;
     [DataField, AutoNetworkedField] public Dictionary<ArmorPlateSlot, string> Visuals = new();
+    [DataField, AutoNetworkedField] public bool PaintedHelmet;
     [DataField, AutoNetworkedField] public Dictionary<ArmorPlateSlot, ArmorModKind> ModVisuals = new();
 }
 
@@ -32,6 +33,7 @@ public sealed partial class PowerArmorPlateComponent : Component
 {
     [DataField(required: true)] public ArmorPlateSlot Slot;
     [DataField, AutoNetworkedField] public EntProtoId Model = "N14ClothingOuterPowerArmorT45";
+    [DataField, AutoNetworkedField] public string? PaintFinish;
     [DataField, AutoNetworkedField] public int HitPoints;
     [DataField] public ArmorModKind? Project;
     [DataField, AutoNetworkedField] public ArmorModKind? FittedMod;

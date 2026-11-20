@@ -1,4 +1,6 @@
 using System.Linq;
+using Content.Server._Misfits.WastelandMap;
+using Content.Shared._Misfits.WastelandMap;
 using Content.Server.Power.Components;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._ReclamationProject.PowerArmor;
@@ -29,12 +31,25 @@ public sealed partial class PowerArmorModSystem
     [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly SharedGunSystem _guns = default!;
+    [Dependency] private readonly WastelandMapSystem _maps = default!;
+    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     private const string WristMount = "power-armor-wrist";
 
     private void InitializeAbilities()
     {
         SubscribeLocalEvent<PowerArmorModComponent, MapInitEvent>(OnModInit);
         SubscribeLocalEvent<PowerArmorModComponent, ActivateArmorModEvent>(OnActivate);
+        SubscribeLocalEvent<ArmorCasualtyDisplayComponent, BoundUIClosedEvent>((_, display, ev) =>
+        {
+            if (Equals(ev.UiKey, WastelandMapUiKey.Key) && TryComp<PowerArmorModComponent>(display.Module, out var mod))
+                _actions.SetToggled(mod.ActionEntity, false);
+        });
+        SubscribeLocalEvent<ArmorCasualtyDisplayComponent, BoundUserInterfaceMessageAttempt>(
+            (Entity<ArmorCasualtyDisplayComponent> ent, ref BoundUserInterfaceMessageAttempt ev) =>
+            {
+                if (!TryComp<PowerArmorModComponent>(ent.Comp.Module, out var mod) || mod.Wearer != ev.Actor)
+                    ev.Cancel();
+            });
         SubscribeLocalEvent<PowerArmorModComponent, EntityTerminatingEvent>(OnModuleTerminating);
         SubscribeLocalEvent<PowerArmorWristToolComponent, ContainerGettingRemovedAttemptEvent>((_, comp, ev) => {
             if (!comp.Moving) ev.Cancel();
@@ -47,6 +62,7 @@ public sealed partial class PowerArmorModSystem
 
     private void OnModuleTerminating(Entity<PowerArmorModComponent> ent, ref EntityTerminatingEvent ev)
     {
+        RemoveCasualtyDisplay(ent.Comp);
         if (ent.Comp.ToolEntity is {} tool && !TerminatingOrDeleted(tool)) QueueDel(tool);
     }
 
@@ -88,6 +104,9 @@ public sealed partial class PowerArmorModSystem
         }
         else switch (comp.Kind)
         {
+            case ArmorModKind.MedicalHud:
+                ToggleCasualtyDisplay(uid, comp, user);
+                break;
             case ArmorModKind.Jump:
                 if (_power.GetSuitPowerSystems(frame) is not { Comp.Powered: true } || !_blocker.CanMove(user))
                 { Notice(user, "pa-mod-no-jump"); return; }
@@ -107,6 +126,39 @@ public sealed partial class PowerArmorModSystem
             default: return;
         }
         ev.Handled = true;
+    }
+
+    private void ToggleCasualtyDisplay(EntityUid module, PowerArmorModComponent mod, EntityUid user)
+    {
+        // A worn display is directly accessible to its wearer while the plate socket remains closed.
+        if (mod.CasualtyDisplay is not {} display || TerminatingOrDeleted(display))
+        {
+            display = Spawn("AtomCatsCasualtyDisplay", Transform(user).Coordinates);
+            Comp<ArmorCasualtyDisplayComponent>(display).Module = module;
+            if (!_containers.Insert(display, _containers.EnsureContainer<Container>(user, "armor-casualty-display")))
+            {
+                QueueDel(display);
+                return;
+            }
+            mod.CasualtyDisplay = display;
+        }
+        if (_ui.IsUiOpen(display, WastelandMapUiKey.Key, user))
+            _ui.CloseUi(display, WastelandMapUiKey.Key, user);
+        else if (_ui.TryOpenUi(display, WastelandMapUiKey.Key, user))
+        {
+            _maps.RefreshUi(display, user);
+            _actions.SetToggled(mod.ActionEntity, true);
+        }
+    }
+
+    private void RemoveCasualtyDisplay(PowerArmorModComponent mod)
+    {
+        if (mod.CasualtyDisplay is {} display && !TerminatingOrDeleted(display))
+        {
+            _ui.CloseUi(display, WastelandMapUiKey.Key);
+            QueueDel(display);
+        }
+        mod.CasualtyDisplay = null;
     }
 
     private void Stow(EntityUid uid, PowerArmorModComponent comp)

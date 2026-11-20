@@ -176,13 +176,52 @@
   parent: AtomCatsArmorModBase
   id: AtomCatsModMedicalHud
   name: medical HUD
-  description: Shows the health bars and medical status of nearby people.
+  description: Shows nearby patients' health bars and medical status. Toggle the casualty map to locate deceased wastelanders through the Followers feed.
   components:
   - type: Sprite
     state: medicalhud
   - type: PowerArmorMod
     kind: MedicalHud
     slot: Helmet
+    action: ActionAtomCatsCasualtyMap
+
+- type: entity
+  id: AtomCatsCasualtyDisplay
+  name: medical HUD casualty display
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ArmorCasualtyDisplay
+  - type: WastelandMap
+    mapTitle: Followers Casualty Registry
+    tacticalFeed: Followers
+    compactHud: true
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+
+- type: entity
+  id: ActionAtomCatsCasualtyMap
+  name: Toggle casualty map
+  description: Open or close the Followers map of deceased wastelanders.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: medicalhud }
+    event: !type:ActivateArmorModEvent
+
+- type: entity
+  parent: AtomCatsArmorModBase
+  id: AtomCatsModAutoInjector
+  name: pit crew emergency stimpak injector
+  description: A chest-mounted injector that feeds a carried stimpak to a critical wearer as soon as their bloodstream is clear of stimpak medicine.
+  components:
+  - type: Sprite
+    state: autoinjector
+  - type: PowerArmorMod
+    kind: AutoInjector
+    slot: Chest
 
 - type: entity
   parent: AtomCatsArmorModBase

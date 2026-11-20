@@ -224,11 +224,13 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         foreach (var mod in state.Modules)
             if (TryComp<PowerArmorModComponent>(mod, out var data) && data.Wearer == user) Deactivate(mod, data);
         state.Modules.Clear();
+        RemComp<ActiveArmorAutoInjectorComponent>(user);
         SetVisors(user, state, false, false, false);
     }
 
     private void Deactivate(EntityUid uid, PowerArmorModComponent mod)
     {
+        RemoveCasualtyDisplay(mod);
         Stow(uid, mod);
         _actions.RemoveAction(mod.ActionEntity);
         mod.Wearer = null;
@@ -258,6 +260,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         var night = false;
         var medical = false;
         var mechanic = false;
+        var injector = false;
         foreach (var uid in active)
         {
             var mod = Comp<PowerArmorModComponent>(uid);
@@ -270,8 +273,13 @@ public sealed partial class PowerArmorModSystem : EntitySystem
             night |= mod.Kind == ArmorModKind.NightVision && mod.SwitchedOn;
             medical |= mod.Kind == ArmorModKind.MedicalHud;
             mechanic |= mod.Kind == ArmorModKind.MechanicVisor;
+            injector |= mod.Kind == ArmorModKind.AutoInjector;
         }
         state.Modules = active;
+        if (injector)
+            EnsureComp<ActiveArmorAutoInjectorComponent>(user);
+        else
+            RemComp<ActiveArmorAutoInjectorComponent>(user);
         SetVisors(user, state, medical, night, mechanic);
     }
 

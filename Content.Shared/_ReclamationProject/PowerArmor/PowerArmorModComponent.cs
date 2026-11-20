@@ -9,7 +9,7 @@ namespace Content.Shared._ReclamationProject.PowerArmor;
 [Serializable, NetSerializable]
 public enum ArmorModKind
 {
-    Overdrive, Jump, Shotgun, Flamer, Deathclaw, Knuckles, Welder, NightVision, MedicalHud, MechanicVisor
+    Overdrive, Jump, Shotgun, Flamer, Deathclaw, Knuckles, Welder, NightVision, MedicalHud, MechanicVisor, AutoInjector
 }
 
 /// <summary>A physical module. Its action and tool stay with it when the plate changes hands.</summary>
@@ -22,6 +22,7 @@ public sealed partial class PowerArmorModComponent : Component
     [DataField] public EntProtoId? Tool;
     [DataField] public EntityUid? ActionEntity;
     [DataField] public EntityUid? ToolEntity;
+    [DataField] public EntityUid? CasualtyDisplay;
     [DataField] public EntityUid? Wearer;
     [DataField] public bool SwitchedOn;
 }
@@ -31,6 +32,12 @@ public sealed partial class PowerArmorWristToolComponent : Component
 {
     [DataField] public EntityUid Module;
     public bool Moving;
+}
+
+[RegisterComponent]
+public sealed partial class ArmorCasualtyDisplayComponent : Component
+{
+    [DataField] public EntityUid Module;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]

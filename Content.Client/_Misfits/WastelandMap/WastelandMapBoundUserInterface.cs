@@ -26,6 +26,9 @@ public sealed class WastelandMapBoundUserInterface : BoundUserInterface
 
     protected override void Open()
     {
+        // A newly replicated HUD can queue an open during both component startup and state handling.
+        if (IsOpened)
+            return;
         base.Open();
         _window = this.CreateWindow<WastelandMapWindow>();
         _window.OnAddAnnotation += annotation => SendMessage(new WastelandMapAddAnnotationMessage(annotation));

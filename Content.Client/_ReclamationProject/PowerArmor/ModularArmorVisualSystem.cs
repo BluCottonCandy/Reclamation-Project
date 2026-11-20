@@ -45,8 +45,11 @@ public sealed class ModularArmorVisualSystem : EntitySystem
 
     private void OnHelmetWorn(Entity<AttachedClothingComponent> ent, ref GetEquipmentVisualsEvent ev)
     {
-        if (ev.Slot == "head" && TryComp<ModularPowerArmorComponent>(ent.Comp.AttachedUid, out var frame) &&
-            frame.ModVisuals.TryGetValue(ArmorPlateSlot.Helmet, out var visor))
+        if (ev.Slot != "head" || !TryComp<ModularPowerArmorComponent>(ent.Comp.AttachedUid, out var frame))
+            return;
+        if (frame.PaintedHelmet && frame.Visuals.TryGetValue(ArmorPlateSlot.Helmet, out var finish) && ev.Layers.Count > 0)
+            ev.Layers[0] = (ev.Layers[0].Item1, new PrototypeLayerData { RsiPath = finish, State = "helmet" });
+        if (frame.ModVisuals.TryGetValue(ArmorPlateSlot.Helmet, out var visor))
             AddWornMod(ev, visor);
     }
 
@@ -106,7 +109,7 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     {
         if (TryComp<SpriteComponent>(ent, out var sprite) && _prototypes.TryIndex<PowerArmorModelPrototype>(ent.Comp.Model.Id, out var model))
         {
-            sprite.LayerSetSprite(0, new SpriteSpecifier.Rsi(new ResPath("/Textures/" + model.Sprite), ent.Comp.Slot.ToString().ToLowerInvariant() + "-item"));
+            sprite.LayerSetSprite(0, new SpriteSpecifier.Rsi(new ResPath("/Textures/" + (ent.Comp.PaintFinish ?? model.Sprite)), ent.Comp.Slot.ToString().ToLowerInvariant() + "-item"));
             DisplayMod(sprite, "pa-fitted-mod", ent.Comp.FittedMod, "piece");
         }
     }

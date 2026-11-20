@@ -245,6 +245,30 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         if (ev.IsInDetailsRange) _mods.ExaminePlate(ent, ref ev);
     }
 
+    public void ApplyPaint(EntityUid target, string finish)
+    {
+        void PaintPlate(Entity<PowerArmorPlateComponent> plate)
+        {
+            plate.Comp.PaintFinish = finish;
+            Dirty(plate);
+        }
+
+        if (TryComp<PowerArmorPlateComponent>(target, out var loose))
+        {
+            PaintPlate((target, loose));
+            if (TryComp<ModularPowerArmorComponent>(Transform(target).ParentUid, out var frame))
+                Recalculate((Transform(target).ParentUid, frame));
+            return;
+        }
+        var suit = Comp<ModularPowerArmorComponent>(target);
+        foreach (var slot in PowerArmorPlates.Slots)
+        {
+            if (_slots.GetItemOrNull(target, PowerArmorPlates.Container(slot)) is {} piece)
+                PaintPlate((piece, Comp<PowerArmorPlateComponent>(piece)));
+        }
+        Recalculate((target, suit));
+    }
+
     private void Recalculate(Entity<ModularPowerArmorComponent> ent)
     {
         var modifiers = new DamageModifierSet();
@@ -255,6 +279,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         var absorption = 0f;
         var accessories = new List<ArmorComponent>();
         ent.Comp.Visuals.Clear();
+        ent.Comp.PaintedHelmet = false;
         foreach (var slot in PowerArmorPlates.Slots)
         {
             var item = _slots.GetItemOrNull(ent, PowerArmorPlates.Container(slot));
@@ -277,7 +302,9 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             absorption += share * (1f - pool.BleedthroughRatio);
             if (donor.TryGetComponent<ExplosionResistanceComponent>(out var resist, _components))
                 blast += share * (resist.DamageCoefficient - 0.8f);
-            ent.Comp.Visuals[slot] = _protos.Index<PowerArmorModelPrototype>(donor.ID).Sprite;
+            ent.Comp.Visuals[slot] = plate.PaintFinish ?? _protos.Index<PowerArmorModelPrototype>(donor.ID).Sprite;
+            if (slot == ArmorPlateSlot.Helmet)
+                ent.Comp.PaintedHelmet = plate.PaintFinish != null;
         }
         foreach (var accessory in accessories)
             foreach (var (type, coefficient) in accessory.Modifiers.Coefficients)

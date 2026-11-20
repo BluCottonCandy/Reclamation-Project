@@ -6,6 +6,7 @@ using Content.Server.Paint;
 using Content.Shared._Misfits.WastelandMap;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Clothing;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -18,6 +19,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Paint;
+using Content.Shared.RadialSelector;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
@@ -105,6 +107,143 @@ public sealed class AtomCatsGarageSystemsTest
             Assert.That(plate.Model.Id, Is.EqualTo("AtomCatsT45Blue"));
             Assert.That(em.GetComponent<DamageableComponent>(helmet).TotalDamage.Int(), Is.EqualTo(10));
             Assert.That(plate.HitPoints, Is.EqualTo(80));
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task BottomlessCanRepaintsIndividualPiecesAndWholeSuitsThroughItsPicker()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.ResolveDependency<IEntityManager>();
+        var client = pair.Client.ResolveDependency<IEntityManager>();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        var tickRate = pair.Server.ResolveDependency<IGameTiming>().TickRate;
+        var key = RadialSelectorUiKey.Key;
+        var finishes = new[] { "AtomCatsPaintCherry", "AtomCatsPaintCobalt", "AtomCatsPaintMedic", "AtomCatsPaintLowrider" };
+        var paths = new[] { "/red.rsi", "/blue.rsi", "/medic.rsi", "/lowrider.rsi" };
+        EntityUid painter = default, can = default, suit = default, helmet = default, wornHelmet = default, bare = default;
+        NetEntity netCan = default, netPainter = default;
+        EntityUid Spawn(string id) => server.SpawnEntity(id, map.GridCoords);
+        PowerArmorPlateComponent Plate(EntityUid uid) => server.GetComponent<PowerArmorPlateComponent>(uid);
+        ModularPowerArmorComponent Frame(EntityUid uid) => server.GetComponent<ModularPowerArmorComponent>(uid);
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            painter = Spawn("MobHuman");
+            netPainter = server.GetNetEntity(painter);
+            pair.Server.PlayerMan.SetAttachedEntity(session, painter);
+            suit = Spawn("N14ClothingOuterPowerArmorT45");
+            bare = Spawn("ReclamationPowerArmorFrame");
+            can = Spawn("AtomCatsStencilCan");
+            netCan = server.GetNetEntity(can);
+            var mechanic = Spawn("MobHuman");
+            var visor = Spawn("AtomCatsModMechanicVisor");
+            server.System<NpcFactionSystem>().AddFaction(mechanic, "AtomCats");
+            var hands = server.System<SharedHandsSystem>();
+            Assert.That(hands.TryPickup(mechanic, visor));
+            server.EventBus.RaiseLocalEvent(suit, new InteractUsingEvent(mechanic, visor, suit, map.GridCoords));
+            helmet = server.System<ItemSlotsSystem>().GetItemOrNull(suit, "plate-helmet")!.Value;
+            server.System<DamageableSystem>().TryChangeDamage(helmet, new DamageSpecifier { DamageDict = { ["Blunt"] = 10 } }, ignoreResistances: true);
+            var inventory = server.System<InventorySystem>();
+            Assert.That(inventory.TryEquip(painter, suit, "outerClothing", force: true));
+            Assert.That(inventory.TryGetSlotEntity(painter, "head", out var head));
+            wornHelmet = head!.Value;
+            Assert.That(hands.TryPickup(painter, can));
+        });
+        await pair.RunTicksSync(15);
+
+        async Task OpenPicker(EntityUid target)
+        {
+            await pair.Server.WaitAssertion(() =>
+            {
+                Assert.That(server.System<SharedInteractionSystem>().InteractUsing(painter, can, target, map.GridCoords));
+                Assert.That(server.System<SharedUserInterfaceSystem>().IsUiOpen(can, key, painter));
+            });
+            await pair.RunTicksSync(12);
+            await pair.Client.WaitAssertion(() =>
+            {
+                var ui = client.System<SharedUserInterfaceSystem>();
+                Assert.That(ui.TryGetUiState<RadialSelectorState>(client.GetEntity(netCan), key, out var state));
+                Assert.That(state!.Entries.Select(e => e.Prototype), Is.EqualTo(finishes));
+                Assert.That(state.Entries.All(e => e.Icon != null));
+            });
+        }
+
+        async Task Choose(string stencil)
+        {
+            await pair.Client.WaitPost(() => client.System<SharedUserInterfaceSystem>().ClientSendUiMessage(
+                client.GetEntity(netCan), key, new RadialSelectorSelectedMessage(stencil)));
+            await pair.RunTicksSync(tickRate * 3);
+        }
+
+        async Task Paint(EntityUid target, int finish)
+        {
+            await OpenPicker(target);
+            await Choose(finishes[finish]);
+        }
+
+        await Paint(painter, 0);
+        await pair.Server.WaitAssertion(() => Assert.That(Frame(suit).Visuals.Values.All(v => v.EndsWith(paths[0]))));
+        await Paint(wornHelmet, 2);
+        await pair.Client.WaitAssertion(() =>
+        {
+            var user = client.GetEntity(netPainter);
+            Assert.That(client.System<InventorySystem>().TryGetSlotEntity(user, "head", out var head));
+            var visuals = new GetEquipmentVisualsEvent(user, "head");
+            client.EventBus.RaiseLocalEvent(head!.Value, visuals);
+            Assert.That(visuals.Layers.Any(layer => layer.Item2.State == "helmet" && layer.Item2.RsiPath!.EndsWith(paths[2])));
+            Assert.That(visuals.Layers.Any(layer => layer.Item2.State == "mechanicvisor-worn"));
+        });
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(Plate(helmet).PaintFinish, Does.EndWith(paths[2]));
+            Assert.That(Frame(suit).Visuals[ArmorPlateSlot.Gloves], Does.EndWith(paths[0]));
+            Assert.That(Frame(suit).ModVisuals[ArmorPlateSlot.Helmet], Is.EqualTo(ArmorModKind.MechanicVisor));
+            Assert.That(Frame(suit).Rating, Is.EqualTo(45));
+        });
+
+        // A removed helmet must not redirect the pending selection to its replacement.
+        await OpenPicker(wornHelmet);
+        await pair.Server.WaitAssertion(() =>
+        {
+            var slots = server.System<ItemSlotsSystem>();
+            Assert.That(slots.TryEject(suit, "plate-helmet", null, out _));
+            Assert.That(slots.TryInsert(suit, "plate-helmet", Spawn("ReclamationPlateHelmet"), null));
+        });
+        await Choose(finishes[1]);
+        await pair.Server.WaitAssertion(() => Assert.That(Frame(suit).PaintedHelmet, Is.False));
+
+        await OpenPicker(helmet);
+        await Choose("AtomCatsCut");
+        await pair.Server.WaitAssertion(() => Assert.That(Plate(helmet).PaintFinish, Does.EndWith(paths[2])));
+        await OpenPicker(helmet);
+        await pair.Client.WaitPost(() => client.System<SharedUserInterfaceSystem>().ClientSendUiMessage(
+            client.GetEntity(netCan), key, new RadialSelectorSelectedMessage(finishes[0])));
+        await pair.RunTicksSync(8);
+        await pair.Server.WaitAssertion(() => Assert.That(server.System<SharedHandsSystem>().TryDrop(painter, can)));
+        await pair.RunTicksSync(tickRate * 3);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(Plate(helmet).PaintFinish, Does.EndWith(paths[2]));
+            Assert.That(server.System<SharedHandsSystem>().TryPickup(painter, can));
+        });
+        for (var i = 0; i < finishes.Length; i++)
+        {
+            await Paint(helmet, i);
+            await pair.Server.WaitAssertion(() => Assert.That(Plate(helmet).PaintFinish, Does.EndWith(paths[i])));
+        }
+        await Paint(bare, 1);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(Frame(bare).FrameColor, Is.EqualTo(Robust.Shared.Maths.Color.FromHex("#5890f7")));
+            Assert.That(Frame(bare).Visuals, Is.Empty);
+            Assert.That(Frame(bare).Rating, Is.EqualTo(20));
+            Assert.That(Plate(helmet).FittedMod, Is.EqualTo(ArmorModKind.MechanicVisor));
+            Assert.That(server.GetComponent<DamageableComponent>(helmet).TotalDamage.Int(), Is.EqualTo(10));
+            Assert.That(server.System<SharedHandsSystem>().GetActiveItem(painter), Is.EqualTo(can));
+            pair.Server.PlayerMan.SetAttachedEntity(session, null);
         });
         await pair.CleanReturnAsync();
     }

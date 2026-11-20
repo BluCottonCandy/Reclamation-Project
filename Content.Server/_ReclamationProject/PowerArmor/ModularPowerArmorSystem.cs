@@ -245,28 +245,37 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         if (ev.IsInDetailsRange) _mods.ExaminePlate(ent, ref ev);
     }
 
-    public void ApplyPaint(EntityUid target, string finish)
+    public void ApplyPaint(EntityUid target, string finish, Color? frameColor = null)
     {
-        void PaintPlate(Entity<PowerArmorPlateComponent> plate)
+        void PaintPlate(Entity<PowerArmorPlateComponent> plate, ModularPowerArmorComponent? frame)
         {
             plate.Comp.PaintFinish = finish;
             Dirty(plate);
+            if (frame == null)
+                return;
+            frame.Visuals[plate.Comp.Slot] = finish;
+            if (plate.Comp.Slot == ArmorPlateSlot.Helmet)
+                frame.PaintedHelmet = true;
         }
 
         if (TryComp<PowerArmorPlateComponent>(target, out var loose))
         {
-            PaintPlate((target, loose));
-            if (TryComp<ModularPowerArmorComponent>(Transform(target).ParentUid, out var frame))
-                Recalculate((Transform(target).ParentUid, frame));
+            var parent = Transform(target).ParentUid;
+            var frame = CompOrNull<ModularPowerArmorComponent>(parent);
+            PaintPlate((target, loose), frame);
+            if (frame != null)
+                Dirty(parent, frame);
             return;
         }
         var suit = Comp<ModularPowerArmorComponent>(target);
+        if (frameColor is {} color)
+            suit.FrameColor = color;
         foreach (var slot in PowerArmorPlates.Slots)
         {
             if (_slots.GetItemOrNull(target, PowerArmorPlates.Container(slot)) is {} piece)
-                PaintPlate((piece, Comp<PowerArmorPlateComponent>(piece)));
+                PaintPlate((piece, Comp<PowerArmorPlateComponent>(piece)), suit);
         }
-        Recalculate((target, suit));
+        Dirty(target, suit);
     }
 
     private void Recalculate(Entity<ModularPowerArmorComponent> ent)

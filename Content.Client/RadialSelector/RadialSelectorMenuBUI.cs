@@ -174,7 +174,7 @@ public sealed class RadialSelectorMenuBUI : BoundUserInterface
     {
         var button = new RadialMenuTextureButton
         {
-            ToolTip = Loc.GetString(name),
+            ToolTip = Loc.TryGetString(name, out var localized) ? localized : name,
             StyleClasses = { "RadialMenuButton" },
             SetSize = ItemSize
         };

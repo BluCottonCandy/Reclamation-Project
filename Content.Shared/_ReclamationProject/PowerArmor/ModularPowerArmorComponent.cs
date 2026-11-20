@@ -11,6 +11,7 @@ public sealed partial class ModularPowerArmorComponent : Component
     [DataField] public bool StartsEmpty;
     [DataField] public int ModCapacity = 1;
     [DataField] public string FrameSprite = "_ReclamationProject/Clothing/ModularPowerArmor/frame.rsi";
+    [DataField, AutoNetworkedField] public Color FrameColor = Color.White;
     [DataField, AutoNetworkedField] public bool Overdrive;
     [DataField("initialized")] public bool FactoryPartsCreated;
     [DataField, AutoNetworkedField] public int Rating = 20;

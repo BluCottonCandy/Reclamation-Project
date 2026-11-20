@@ -69,6 +69,7 @@ public sealed class AtomCatsEquipmentTest
                 var carried = em.GetComponent<StorageComponent>(Worn("back")).Container.ContainedEntities.Select(Prototype).ToArray();
                 Assert.That(carried, Does.Contain("AtomCatsCut"));
                 Assert.That(carried, Does.Contain("Welder"));
+                Assert.That(carried.Count(id => id == "AtomCatsStencilCan"), Is.EqualTo(1), rank);
 
                 var frame = Worn("outerClothing");
                 var model = Prototype(frame);

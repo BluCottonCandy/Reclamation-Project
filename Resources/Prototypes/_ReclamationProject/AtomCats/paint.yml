@@ -41,3 +41,22 @@
     armorFinish: _ReclamationProject/Clothing/AtomCats/blue.rsi
     whitelist:
       components: [ModularPowerArmor, PowerArmorPlate]
+
+- type: entity
+  parent: BaseItem
+  id: AtomCatsStencilCan
+  name: Atom Cats bottomless stencil can
+  description: A garage sprayer with four stencil wheels and a paint feed that never runs dry. Use it on a loose plate or a suit and pick a finish.
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/spraycans.rsi
+    state: rainbow
+  - type: Item
+    size: Small
+    sprite: Objects/Tools/Hydroponics/sprays.rsi
+  - type: ArmorStencilCan
+    stencils: [AtomCatsPaintCherry, AtomCatsPaintCobalt, AtomCatsPaintMedic, AtomCatsPaintLowrider]
+  - type: UserInterface
+    interfaces:
+      enum.RadialSelectorUiKey.Key:
+        type: RadialSelectorMenuBUI

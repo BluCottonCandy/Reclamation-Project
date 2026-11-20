@@ -102,6 +102,7 @@
     back:
     - AtomCatsCut
     - Welder
+    - AtomCatsStencilCan
 
 - type: startingGear
   parent: AtomCatsGarageGear

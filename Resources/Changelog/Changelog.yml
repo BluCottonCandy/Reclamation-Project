@@ -15121,3 +15121,22 @@ Entries:
   id: 6669
   time: '2026-11-19T08:22:30.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/214
+- author: BluCottonCandy
+  changes:
+    - type: Add
+      message: >-
+        Added modular power armor and the Atom Cats faction, workshop upgrades,
+        and Wendover factory.
+    - type: Add
+      message: >-
+        Added Atom Cats rank kits, two Tattoo Artist slots with compact
+        stretchers, and the Hot Rod’s railroad spike rifle.
+    - type: Tweak
+      message: >-
+        Power armor protection, fire sealing, and condition indicators respond
+        to installed plates.
+    - type: Fix
+      message: Fixed Windows map editor autosaves.
+  id: 6670
+  time: '2026-11-20T12:59:11.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/215

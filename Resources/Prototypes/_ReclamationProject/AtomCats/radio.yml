@@ -1,0 +1,29 @@
+- type: radioChannel
+  id: AtomCats
+  name: chat-radio-atom-cats
+  keycode: 'a'
+  frequency: 1522
+  color: "#50B8B0"
+  longRange: true
+
+- type: entity
+  parent: EncryptionKeyEighties
+  id: EncryptionKeyAtomCats
+  name: Atom Cats garage key
+  description: A radio key stamped with a piston and the garage frequency.
+  components:
+  - type: EncryptionKey
+    channels: [AtomCats]
+    defaultChannel: AtomCats
+
+- type: entity
+  parent: MisfitsClothingHeadsetWastelandScrap
+  id: AtomCatsHeadset
+  name: Atom Cats pit crew headset
+  description: A rebuilt pit crew headset with a throat mic for talking over a running engine. Tuned to the Cats' garage and the wasteland band.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyAtomCats
+      - EncryptionKeyWastelandGlobal

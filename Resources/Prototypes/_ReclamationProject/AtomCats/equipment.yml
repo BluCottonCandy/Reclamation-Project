@@ -99,6 +99,7 @@
   abstract: true
   equipment:
     jumpsuit: AtomCatsCoveralls
+    ears: AtomCatsHeadset
     eyes: AtomCatsShades
     shoes: AtomCatsBoots
     back: N14ClothingBackpackSatchelExplorer

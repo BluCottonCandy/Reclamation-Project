@@ -9,7 +9,7 @@ public sealed class ArmorMagLockSystem : EntitySystem
 {
     public override void Initialize()
     {
-        SubscribeLocalEvent<ArmorMagLockComponent, RefreshMovementSpeedModifiersEvent>((_, _, ev) => ev.FinalMultiplier *= 0.95f);
+        SubscribeLocalEvent<ArmorMagLockComponent, RefreshMovementSpeedModifiersEvent>((_, _, ev) => ev.FinalMultiplier *= 0.9f);
         SubscribeLocalEvent<ArmorMagLockComponent, DisarmAttemptEvent>((uid, _, ev) =>
         {
             if (ev.TargetUid == uid)

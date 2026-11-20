@@ -29,7 +29,7 @@
   parent: AtomCatsArmorModBase
   id: AtomCatsModMagLock
   name: mag-lock soles
-  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 5% slower while engaged.
+  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 10% slower while engaged.
   components:
   - type: Sprite
     state: maglock
@@ -41,7 +41,7 @@
 - type: entity
   id: ActionAtomCatsMagLock
   name: Toggle mag-lock soles
-  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 5% slower while engaged.
+  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 10% slower while engaged.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction

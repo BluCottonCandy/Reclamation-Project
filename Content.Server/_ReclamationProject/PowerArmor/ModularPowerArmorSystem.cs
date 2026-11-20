@@ -26,7 +26,6 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly Content.Server.Atmos.EntitySystems.FlammableSystem _fire = default!;
     [Dependency] private readonly ToggleableClothingSystem _attachments = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -189,19 +188,18 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     {
         if (ent.Comp.HitPoints == 0) return;
         var frame = Transform(ent).ParentUid;
-        if (!HasComp<ModularPowerArmorComponent>(frame)) return;
+        if (!TryComp<ModularPowerArmorComponent>(frame, out var chassis)) return;
         var id = PowerArmorPlates.Container(ent.Comp.Slot);
         if (_slots.GetItemOrNull(frame, id) != ent.Owner) return;
-        if (ev.Damageable.TotalDamage < ent.Comp.HitPoints)
+        var broken = ev.Damageable.TotalDamage >= ent.Comp.HitPoints;
+        if (chassis.BrokenSlots.Contains(ent.Comp.Slot) == broken)
         {
             UpdateIntegrityAlert(frame);
             return;
         }
-        if (_slots.TryEject(frame, id, null, out _))
-        {
-            _transform.DropNextTo(ent.Owner, frame);
+        Recalculate((frame, chassis), fittingsChanged: false);
+        if (broken)
             _popup.PopupEntity(Loc.GetString("pa-plate-breaks", ("plate", ent.Owner)), frame);
-        }
     }
 
     private void OnEquip(Entity<ModularPowerArmorComponent> ent, ref ClothingGotEquippedEvent args)
@@ -239,7 +237,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
     private void OnExaminePlate(Entity<PowerArmorPlateComponent> ent, ref ExaminedEvent ev)
     {
         if (ev.IsInDetailsRange)
-            ev.PushMarkup(Loc.GetString("pa-plate-status", ("rating", ent.Comp.Rating),
+            ev.PushMarkup(Loc.GetString("pa-plate-status", ("rating", Comp<DamageableComponent>(ent).TotalDamage >= ent.Comp.HitPoints ? 0 : ent.Comp.Rating),
                 ("hp", Math.Max(0, ent.Comp.HitPoints - (int) Math.Ceiling(Comp<DamageableComponent>(ent).TotalDamage.Float()))),
                 ("max", ent.Comp.HitPoints)));
         if (ev.IsInDetailsRange) _mods.ExaminePlate(ent, ref ev);
@@ -297,7 +295,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         return true;
     }
 
-    private void Recalculate(Entity<ModularPowerArmorComponent> ent)
+    private void Recalculate(Entity<ModularPowerArmorComponent> ent, bool fittingsChanged = true)
     {
         var modifiers = new DamageModifierSet();
         foreach (var key in new[] { "Blunt", "Slash", "Piercing" })
@@ -307,12 +305,21 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         var absorption = 0f;
         var accessories = new List<ArmorComponent>();
         ent.Comp.Visuals.Clear();
+        ent.Comp.BrokenSlots.Clear();
         ent.Comp.PaintedHelmet = false;
         foreach (var slot in PowerArmorPlates.Slots)
         {
             var item = _slots.GetItemOrNull(ent, PowerArmorPlates.Container(slot));
             if (!TryComp<PowerArmorPlateComponent>(item, out var plate)) continue;
             var donor = _protos.Index(plate.Model);
+            ent.Comp.Visuals[slot] = plate.PaintFinish ?? _protos.Index<PowerArmorModelPrototype>(donor.ID).Sprite;
+            if (slot == ArmorPlateSlot.Helmet)
+                ent.Comp.PaintedHelmet = plate.PaintFinish != null;
+            if (Comp<DamageableComponent>(item!.Value).TotalDamage >= plate.HitPoints)
+            {
+                ent.Comp.BrokenSlots.Add(slot);
+                continue;
+            }
             var share = PowerArmorPlates.Share(slot);
             var accessorySlot = slot switch { ArmorPlateSlot.Chest => "shoes", ArmorPlateSlot.Gloves => "gloves", _ => null };
             if (accessorySlot != null && donor.TryGetComponent<ToggleableClothingComponent>(out var gear, _components)
@@ -330,9 +337,6 @@ public sealed class ModularPowerArmorSystem : EntitySystem
             absorption += share * (1f - pool.BleedthroughRatio);
             if (donor.TryGetComponent<ExplosionResistanceComponent>(out var resist, _components))
                 blast += share * (resist.DamageCoefficient - 0.8f);
-            ent.Comp.Visuals[slot] = plate.PaintFinish ?? _protos.Index<PowerArmorModelPrototype>(donor.ID).Sprite;
-            if (slot == ArmorPlateSlot.Helmet)
-                ent.Comp.PaintedHelmet = plate.PaintFinish != null;
         }
         foreach (var accessory in accessories)
             foreach (var (type, coefficient) in accessory.Modifiers.Coefficients)
@@ -341,12 +345,15 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         current.Modifiers = modifiers;
         Dirty(ent, current);
         Comp<ExplosionResistanceComponent>(ent).DamageCoefficient = blast;
-        UpdateHelmet(ent);
-        _mods.FrameChanged(ent);
+        if (fittingsChanged)
+        {
+            UpdateHelmet(ent);
+            _mods.FrameChanged(ent);
+        }
         UpdateDeflection(ent);
         ent.Comp.Rating = rating;
         ent.Comp.Absorption = absorption;
-        ent.Comp.Sealed = ent.Comp.Visuals.Count == 4;
+        ent.Comp.Sealed = ent.Comp.Visuals.Count == PowerArmorPlates.Slots.Length && ent.Comp.BrokenSlots.Count == 0;
         UpdateIntegrityAlert(ent);
         if (ent.Comp.Sealed && TryComp<ClothingComponent>(ent, out var clothing) && clothing.InSlot == "outerClothing")
             _fire.Extinguish(Transform(ent).ParentUid, force: true);
@@ -407,7 +414,7 @@ public sealed class ModularPowerArmorSystem : EntitySystem
         var chances = new Dictionary<ReflectType, float>();
         foreach (var slot in PowerArmorPlates.Slots)
         {
-            if (_slots.GetItemOrNull(ent, PowerArmorPlates.Container(slot)) is not {} piece ||
+            if (ent.Comp.BrokenSlots.Contains(slot) || _slots.GetItemOrNull(ent, PowerArmorPlates.Container(slot)) is not {} piece ||
                 !_protos.Index(Comp<PowerArmorPlateComponent>(piece).Model).TryGetComponent<ReflectComponent>(out var donor, _components))
                 continue;
             var share = PowerArmorPlates.Share(slot);

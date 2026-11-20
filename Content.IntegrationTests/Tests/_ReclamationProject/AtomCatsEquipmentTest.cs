@@ -5,6 +5,9 @@ using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Access.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Eye.Blinding.Components;
+using Content.Shared.Item.ItemToggle;
+using Content.Shared.Tools.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
@@ -85,6 +88,34 @@ public sealed class AtomCatsEquipmentTest
                 Assert.That(parts.Select(plate => plate.HitPoints), Is.EqualTo(new[] { 80, 192, 48, 80 }));
                 em.DeleteEntity(wearer);
             }
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task QuarterMileShadesProtectBareheadedWelders()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            EntityUid Spawn(string id) => em.SpawnEntity(id, map.GridCoords);
+            var user = Spawn("MobHuman");
+            var welder = Spawn("N14WelderIndustrial");
+            var eyes = em.GetComponent<BlindableComponent>(user);
+            var inventory = em.System<InventorySystem>();
+            var shades = Spawn("AtomCatsShades");
+            Assert.That(em.GetComponent<EyeProtectionComponent>(shades).ProtectionTime,
+                Is.EqualTo(em.GetComponent<EyeProtectionComponent>(Spawn("N14ClothingEyesGlassesWelding")).ProtectionTime));
+            Assert.That(em.System<SharedHandsSystem>().TryPickup(user, welder));
+            Assert.That(em.System<ItemToggleSystem>().TryActivate(welder, user));
+            Assert.That(inventory.TryEquip(user, shades, "eyes", force: true));
+            em.EventBus.RaiseLocalEvent(welder, new ToolUseAttemptEvent(user, 1f));
+            Assert.That(eyes.EyeDamage, Is.Zero);
+            Assert.That(inventory.TryUnequip(user, "eyes", force: true));
+            em.EventBus.RaiseLocalEvent(welder, new ToolUseAttemptEvent(user, 1f));
+            Assert.That(eyes.EyeDamage, Is.Positive);
         });
         await pair.CleanReturnAsync();
     }

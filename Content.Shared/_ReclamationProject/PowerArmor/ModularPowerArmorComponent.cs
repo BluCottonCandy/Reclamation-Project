@@ -17,6 +17,7 @@ public sealed partial class ModularPowerArmorComponent : Component
     [DataField, AutoNetworkedField] public int Rating = 20;
     [DataField, AutoNetworkedField] public float Absorption;
     [DataField, AutoNetworkedField] public bool Sealed;
+    [DataField, AutoNetworkedField] public HashSet<ArmorPlateSlot> BrokenSlots = new();
     [DataField, AutoNetworkedField] public Dictionary<ArmorPlateSlot, string> Visuals = new();
     [DataField, AutoNetworkedField] public bool PaintedHelmet;
     [DataField, AutoNetworkedField] public Dictionary<ArmorPlateSlot, ArmorModKind> ModVisuals = new();

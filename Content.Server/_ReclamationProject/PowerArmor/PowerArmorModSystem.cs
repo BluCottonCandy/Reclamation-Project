@@ -1,9 +1,11 @@
 using System.Linq;
+using Content.Server.Repairable;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Actions;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
@@ -12,6 +14,8 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Repairable;
+using Content.Shared.Tools.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
 
@@ -31,6 +35,7 @@ public sealed partial class PowerArmorModSystem : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly FusionCorePoweredSystem _power = default!;
     [Dependency] private readonly NpcFactionSystem _factions = default!;
+    [Dependency] private readonly RepairableSystem _repair = default!;
     private readonly HashSet<EntityUid> _refresh = new();
 
     public override void Initialize()
@@ -96,6 +101,8 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         if (ev.Handled) return;
         if (!TryComp<PowerArmorModComponent>(ev.Used, out var mod))
         {
+            if (HasComp<WelderComponent>(ev.Used) && RepairMountedPlate(frame, ev))
+                return;
             if (_slots.GetItemOrNull(frame, "plate-gloves") is {} gloves) ServiceWrist(gloves, ev);
             return;
         }
@@ -103,6 +110,33 @@ public sealed partial class PowerArmorModSystem : EntitySystem
         if (_slots.GetItemOrNull(frame, PowerArmorPlates.Container(mod.Slot)) is {} plate)
             Fit(ev.User, (plate, Comp<PowerArmorPlateComponent>(plate)), (ev.Used, mod));
         else Notice(ev.User, "pa-mod-missing-plate");
+    }
+
+    private bool RepairMountedPlate(EntityUid frame, InteractUsingEvent ev)
+    {
+        EntityUid? target = null;
+        var highestWear = 0f;
+        foreach (var slot in PowerArmorPlates.Slots)
+        {
+            if (_slots.GetItemOrNull(frame, PowerArmorPlates.Container(slot)) is not {} plate)
+                continue;
+            var max = Comp<PowerArmorPlateComponent>(plate).HitPoints;
+            if (max <= 0)
+                continue;
+            var wear = Comp<DamageableComponent>(plate).TotalDamage.Float() / max;
+            if (wear <= highestWear)
+                continue;
+            highestWear = wear;
+            target = plate;
+        }
+        if (target is not {} piece || !TryComp<RepairableComponent>(piece, out var repairable))
+            return false;
+
+        // A welder used on a wearer is forwarded to their frame. The repair belongs to the physical plate.
+        var repair = new InteractUsingEvent(ev.User, ev.Used, piece, ev.ClickLocation);
+        _repair.Repair(piece, repairable, repair);
+        ev.Handled = repair.Handled;
+        return ev.Handled;
     }
 
     private void Fit(EntityUid user, Entity<PowerArmorPlateComponent> plate, Entity<PowerArmorModComponent> mod)

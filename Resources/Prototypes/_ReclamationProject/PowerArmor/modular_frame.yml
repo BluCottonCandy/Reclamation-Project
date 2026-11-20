@@ -46,7 +46,7 @@
   id: ReclamationPowerArmorPlateBase
   abstract: true
   parent: BaseItem
-  description: Click a power armor frame to install it. Use its context menu to remove it. A lit welder repairs a detached piece.
+  description: Fit this plate to a power armor frame. It stays mounted if it breaks. Use a lit welder on the frame to repair the most damaged plate, or remove a plate to weld it separately.
   components:
   - type: Damageable
   - type: Repairable

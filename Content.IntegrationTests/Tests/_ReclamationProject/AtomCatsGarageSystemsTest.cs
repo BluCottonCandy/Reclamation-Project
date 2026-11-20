@@ -22,6 +22,9 @@ using Content.Shared.Paint;
 using Content.Shared.RadialSelector;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Audio.Components;
+using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.IntegrationTests.Tests._ReclamationProject;
@@ -30,11 +33,13 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 public sealed class AtomCatsGarageSystemsTest
 {
     [Test]
-    public async Task RustbucketRevHasOneTwentySecondProgressBarAndStopsWhenInterrupted()
+    public async Task RustbucketRevsForTwentySecondsThenIdlesUntilItFadesOrIsRestarted()
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
         var em = pair.Server.ResolveDependency<IEntityManager>();
+        var tickRate = pair.Server.ResolveDependency<IGameTiming>().TickRate;
+        var revs = pair.Server.ResolveDependency<IPrototypeManager>().Index<SoundCollectionPrototype>("AtomCatsEngineRevs").PickFiles;
         EntityUid user = default, suit = default;
         await pair.Server.WaitAssertion(() =>
         {
@@ -50,6 +55,8 @@ public sealed class AtomCatsGarageSystemsTest
             var timer = engine.Rev!.Value;
             Assert.That(em.GetComponent<DoAfterComponent>(user).DoAfters[timer.Index].Args.Delay.TotalSeconds, Is.EqualTo(20));
             Assert.That(engine.Audio, Is.Not.Null);
+            Assert.That(revs.Distinct().Count(), Is.EqualTo(3));
+            Assert.That(revs.Select(path => path.ToString()), Does.Contain(em.GetComponent<AudioComponent>(engine.Audio!.Value).FileName));
             em.EventBus.RaiseLocalEvent(suit, new RevRustbucketEvent { Performer = user });
             Assert.That(engine.Rev, Is.EqualTo(timer));
             Assert.That(em.System<InventorySystem>().TryUnequip(user, "outerClothing", force: true));
@@ -63,11 +70,37 @@ public sealed class AtomCatsGarageSystemsTest
             em.EventBus.RaiseLocalEvent(suit, new RevRustbucketEvent { Performer = user });
             Assert.That(em.GetComponent<RustbucketEngineComponent>(suit).Audio, Is.Not.Null);
         });
-        await pair.RunTicksSync(pair.Server.ResolveDependency<IGameTiming>().TickRate * 21);
+        await pair.RunTicksSync(tickRate * 21);
+        EntityUid previousIdle = default;
         await pair.Server.WaitAssertion(() =>
         {
             var engine = em.GetComponent<RustbucketEngineComponent>(suit);
             Assert.That(engine.Rev, Is.Null);
+            previousIdle = engine.Audio!.Value;
+            var idle = em.GetComponent<AudioComponent>(previousIdle);
+            Assert.That(idle.FileName, Does.EndWith("/rustbucket_idle.ogg"));
+            Assert.That(idle.Params.Loop, Is.False);
+            em.EventBus.RaiseLocalEvent(suit, new RevRustbucketEvent { Performer = user });
+            Assert.That(engine.Audio, Is.Not.EqualTo(previousIdle));
+        });
+        await pair.RunTicksSync(3);
+        await pair.Server.WaitAssertion(() =>
+        {
+            Assert.That(em.Deleted(previousIdle));
+            var engine = em.GetComponent<RustbucketEngineComponent>(suit);
+            em.System<SharedDoAfterSystem>().Cancel(engine.Rev);
+        });
+        await pair.RunTicksSync(tickRate);
+        await pair.Server.WaitAssertion(() =>
+        {
+            var engine = em.GetComponent<RustbucketEngineComponent>(suit);
+            Assert.That(engine.Rev, Is.Null);
+            Assert.That(em.GetComponent<AudioComponent>(engine.Audio!.Value).FileName, Does.EndWith("/rustbucket_idle.ogg"));
+        });
+        await pair.RunTicksSync(tickRate * 6);
+        await pair.Server.WaitAssertion(() =>
+        {
+            var engine = em.GetComponent<RustbucketEngineComponent>(suit);
             Assert.That(engine.Audio, Is.Null);
         });
         await pair.CleanReturnAsync();

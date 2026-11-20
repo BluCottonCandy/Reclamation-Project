@@ -24,7 +24,12 @@
   parent: N14ClothingEyesSunGlasses
   id: AtomCatsShades
   name: Quarter-Mile shades
-  description: Smoked lenses keep the glare off the garage floor. Someone scratched a little checkered flag into the inside of one temple.
+  description: The Cats fitted these smoked shades with welding lenses for long afternoons in the garage. Someone scratched a little checkered flag into the inside of one temple.
+  components:
+  - type: EyeProtection
+    protectionTime: 10
+  - type: Tag
+    tags: [WeldingGoggles]
 
 - type: entity
   parent: N14ClothingBootsCombat

@@ -5,6 +5,12 @@
   description: Flakes of old teal paint cling to the rusty rails. The Cats welded a second mod mount beside the original and polished both contacts bright.
   components:
   - type: RustbucketEngine
+    revSound:
+      collection: AtomCatsEngineRevs
+      params: { volume: -3 }
+    idleSound:
+      path: /Audio/_ReclamationProject/AtomCats/rustbucket_idle.ogg
+      params: { volume: -6 }
   - type: ModularPowerArmor
     startsEmpty: true
     modCapacity: 2
@@ -90,10 +96,17 @@
 - type: entity
   id: ActionAtomCatsRevEngine
   name: Rev the engine
-  description: Open the throttle for a twenty-second engine rev. Moving interrupts it.
+  description: Work the throttle for twenty seconds, then let the engine settle into a low idle. Moving releases the throttle early.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     itemIconStyle: NoItem
     icon: { sprite: _ReclamationProject/Clothing/AtomCats/frame.rsi, state: icon }
     event: !type:RevRustbucketEvent
+
+- type: soundCollection
+  id: AtomCatsEngineRevs
+  files:
+  - /Audio/_ReclamationProject/AtomCats/rustbucket_rev_1.ogg
+  - /Audio/_ReclamationProject/AtomCats/rustbucket_rev_2.ogg
+  - /Audio/_ReclamationProject/AtomCats/rustbucket_rev_3.ogg

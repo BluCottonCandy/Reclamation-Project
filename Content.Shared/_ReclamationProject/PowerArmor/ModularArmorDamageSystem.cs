@@ -1,4 +1,5 @@
 using Content.Shared.Armor;
+using Content.Shared.Clothing.Components;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
@@ -51,6 +52,7 @@ public sealed class ModularArmorDamageSystem : EntitySystem
 
     public EntityUid? ImpactPlate(EntityUid suit, TargetBodyPart? target = null)
     {
+        var broken = Comp<ModularPowerArmorComponent>(suit).BrokenSlots;
         var region = target switch
         {
             TargetBodyPart.Head => ArmorPlateSlot.Helmet,
@@ -61,10 +63,18 @@ public sealed class ModularArmorDamageSystem : EntitySystem
             _ => (ArmorPlateSlot?) null
         };
         if (region is {} slot && _slots.GetItemOrNull(suit, PowerArmorPlates.Container(slot)) is {} targeted)
-            return targeted;
+            return broken.Contains(slot) ? null : targeted;
         var available = new List<EntityUid>(4);
         foreach (var part in PowerArmorPlates.Slots)
-            if (_slots.GetItemOrNull(suit, PowerArmorPlates.Container(part)) is {} item) available.Add(item);
+            if (!broken.Contains(part) && _slots.GetItemOrNull(suit, PowerArmorPlates.Container(part)) is {} item)
+                available.Add(item);
         return available.Count > 0 ? _random.Pick(available) : null;
     }
+
+    // The helmet has its own equipped armor and blast resistance in addition to the frame's plate contribution.
+    public bool IsBrokenHelmet(EntityUid item) =>
+        TryComp<AttachedClothingComponent>(item, out var attachment) &&
+        TryComp<ModularPowerArmorComponent>(attachment.AttachedUid, out var frame) &&
+        frame.BrokenSlots.Contains(ArmorPlateSlot.Helmet) &&
+        TryComp<ClothingComponent>(item, out var clothing) && clothing.InSlot == "head";
 }

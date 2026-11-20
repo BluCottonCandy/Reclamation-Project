@@ -3,7 +3,6 @@ using Content.Shared.Actions;
 using Content.Shared.Clothing;
 using Content.Shared.DoAfter;
 using Content.Shared.Inventory;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._ReclamationProject.PowerArmor;
@@ -13,7 +12,6 @@ public sealed class RustbucketEngineSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
-    private static readonly SoundPathSpecifier RevSound = new("/Audio/Weapons/chainsawwield.ogg");
 
     public override void Initialize()
     {
@@ -26,6 +24,7 @@ public sealed class RustbucketEngineSystem : EntitySystem
         SubscribeLocalEvent<RustbucketEngineComponent, RevEngineDoAfterEvent>(OnFinished);
         SubscribeLocalEvent<RustbucketEngineComponent, ClothingGotUnequippedEvent>((_, engine, _) => Stop(engine));
         SubscribeLocalEvent<RustbucketEngineComponent, EntityTerminatingEvent>((_, engine, _) => Stop(engine));
+        SubscribeLocalEvent<RustbucketIdleSoundComponent, EntityTerminatingEvent>(OnIdleEnded);
     }
 
     private void OnRev(Entity<RustbucketEngineComponent> ent, ref RevRustbucketEvent ev)
@@ -42,7 +41,8 @@ public sealed class RustbucketEngineSystem : EntitySystem
         if (!_doAfter.TryStartDoAfter(args, out var id))
             return;
         ent.Comp.Rev = id;
-        ent.Comp.Audio = _audio.PlayPvs(RevSound, ev.Performer, AudioParams.Default.WithLoop(true).WithPitchScale(.72f).WithVolume(-4))?.Entity;
+        _audio.Stop(ent.Comp.Audio);
+        ent.Comp.Audio = _audio.PlayPvs(ent.Comp.RevSound, ev.Performer)?.Entity;
         ev.Handled = true;
     }
 
@@ -53,12 +53,31 @@ public sealed class RustbucketEngineSystem : EntitySystem
         ent.Comp.Rev = null;
         ent.Comp.Audio = _audio.Stop(ent.Comp.Audio);
         ev.Handled = true;
+        if (!TerminatingOrDeleted(ev.User) && _inventory.TryGetSlotEntity(ev.User, "outerClothing", out var worn) &&
+            worn == ent.Owner && _audio.PlayPvs(ent.Comp.IdleSound, ev.User) is {} idle)
+        {
+            ent.Comp.Audio = idle.Entity;
+            EnsureComp<RustbucketIdleSoundComponent>(idle.Entity).Frame = ent.Owner;
+        }
+    }
+
+    private void OnIdleEnded(Entity<RustbucketIdleSoundComponent> sound, ref EntityTerminatingEvent ev)
+    {
+        if (TryComp<RustbucketEngineComponent>(sound.Comp.Frame, out var engine) && engine.Audio == sound.Owner)
+            engine.Audio = null;
     }
 
     private void Stop(RustbucketEngineComponent engine)
     {
-        _doAfter.Cancel(engine.Rev);
+        var rev = engine.Rev;
         engine.Rev = null;
+        _doAfter.Cancel(rev);
         engine.Audio = _audio.Stop(engine.Audio);
     }
+}
+
+[RegisterComponent]
+public sealed partial class RustbucketIdleSoundComponent : Component
+{
+    [DataField] public EntityUid Frame;
 }

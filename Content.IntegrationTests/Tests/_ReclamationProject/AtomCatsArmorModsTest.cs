@@ -288,10 +288,12 @@ public sealed class AtomCatsArmorModsTest
             Assert.That(em.System<SharedInteractionSystem>().InteractUsing(outsider, shell, rusted, map.GridCoords));
             Assert.That(magazine.AmmoCount, Is.EqualTo(5));
             em.System<DamageableSystem>().TryChangeDamage(plate, new DamageSpecifier { DamageDict = { ["Blunt"] = 1000 } }, ignoreResistances:true);
-            Assert.That(slots.GetItemOrNull(rusted, "plate-gloves"), Is.Null);
-            Assert.That(data.Wearer, Is.Null);
+            Assert.That(slots.GetItemOrNull(rusted, "plate-gloves"), Is.EqualTo(plate));
+            Assert.That(data.Wearer, Is.EqualTo(outsider));
             Assert.That(hands.GetActiveItem(outsider), Is.Null);
-            Assert.That(em.GetComponent<TransformComponent>(data.ToolEntity.Value).ParentUid, Is.EqualTo(module));
+            Assert.That(guns.TryGetGun(outsider, out var stillActive, out _));
+            Assert.That(stillActive, Is.EqualTo(data.ToolEntity));
+            Assert.That(mods.Fitted(rusted).Count(), Is.EqualTo(2));
         });
         await pair.CleanReturnAsync();
     }

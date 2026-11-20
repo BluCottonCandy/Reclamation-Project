@@ -1,4 +1,5 @@
 using Content.Shared.Clothing.Components;
+using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
@@ -14,6 +15,7 @@ namespace Content.Shared.Armor;
 public abstract class SharedArmorSystem : EntitySystem
 {
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly ModularArmorDamageSystem _powerArmor = default!;
 
     /// <inheritdoc />
     public override void Initialize()
@@ -28,7 +30,7 @@ public abstract class SharedArmorSystem : EntitySystem
 
     private void OnCoefficientQuery(Entity<ArmorComponent> ent, ref InventoryRelayedEvent<CoefficientQueryEvent> args)
     {
-        if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+        if (_powerArmor.IsBrokenHelmet(ent) || TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
             return;
 
         foreach (var armorCoefficient in ent.Comp.Modifiers.Coefficients)
@@ -45,7 +47,7 @@ public abstract class SharedArmorSystem : EntitySystem
         if (args.Args.ModularArmorApplied && HasComp<Content.Shared._ReclamationProject.PowerArmor.ModularPowerArmorComponent>(uid))
             return;
 
-        if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
+        if (_powerArmor.IsBrokenHelmet(uid) || TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
             return;
 
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, component.Modifiers);

@@ -312,12 +312,12 @@ public sealed class ModularPowerArmorTest
             if (impact == 1)
                 await pair.Client.WaitAssertion(() => CheckHud(45, 9, true));
             else
-                await pair.Client.WaitAssertion(() => CheckHud(42, 8, false));
+                await pair.Client.WaitAssertion(() => CheckHud(42, 8, true));
         }
         await pair.Server.WaitAssertion(() =>
         {
             server.System<DamageableSystem>().SetAllDamage(gloves, server.GetComponent<DamageableComponent>(gloves), 0);
-            Assert.That(server.System<ItemSlotsSystem>().TryInsert(suit, gloveSlot, gloves, null));
+            Assert.That(server.System<ItemSlotsSystem>().GetItemOrNull(suit, gloveSlot), Is.EqualTo(gloves));
         });
         await pair.RunTicksSync(20);
         await pair.Client.WaitAssertion(() => CheckHud(45, 10, true));
@@ -403,7 +403,7 @@ public sealed class ModularPowerArmorTest
     }
 
     [Test]
-    public async Task MixBreakRepairAndReattach()
+    public async Task MixedPlatesStayMountedThroughBreakageAndTenSecondWeld()
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -455,10 +455,14 @@ public sealed class ModularPowerArmorTest
             hit.DamageDict["Blunt"] = 1000;
             damage.TryChangeDamage(helmet, hit, ignoreResistances: true);
             var mount = PowerArmorPlates.Container(ArmorPlateSlot.Helmet);
-            Assert.That(slots.GetItemOrNull(frame, mount), Is.Null);
+            Assert.That(slots.GetItemOrNull(frame, mount), Is.EqualTo(helmet));
+            Assert.That(chassis.Visuals.ContainsKey(ArmorPlateSlot.Helmet));
+            Assert.That(chassis.BrokenSlots, Does.Contain(ArmorPlateSlot.Helmet));
+            Assert.That(inv.TryGetSlotEntity(wearer, "head", out var wornHelmet));
+            Assert.That(em.System<ModularArmorDamageSystem>().IsBrokenHelmet(wornHelmet!.Value));
+            Assert.That(em.System<ModularArmorDamageSystem>().ImpactPlate(frame, Content.Shared._Shitmed.Targeting.TargetBodyPart.Head), Is.Null);
             Assert.That(chassis.Rating, Is.EqualTo(40));
             Assert.That(chassis.Sealed, Is.False);
-            Assert.That(slots.TryInsert(frame, mount, helmet, null), Is.False);
             var open = new GetFireProtectionEvent();
             inv.RelayEvent((wearer, em.GetComponent<InventoryComponent>(wearer)), ref open);
             Assert.That(open.Multiplier, Is.GreaterThan(0));
@@ -466,16 +470,14 @@ public sealed class ModularPowerArmorTest
             flames.Ignite(wearer, frame, flammable, ignoreFireProtection: true);
             Assert.That(flammable.OnFire, Is.True);
             flames.Extinguish(wearer, flammable);
-            Assert.That(em.GetComponent<TransformComponent>(helmet).ParentUid, Is.EqualTo(map.Grid.Owner));
+            Assert.That(em.GetComponent<TransformComponent>(helmet).ParentUid, Is.EqualTo(frame));
             var repairer = em.SpawnEntity("MobHuman", map.GridCoords);
             em.EnsureComponent<GodmodeComponent>(repairer);
             em.EnsureComponent<GodmodeComponent>(wearer);
             var welder = em.SpawnEntity("Welder", map.GridCoords);
             Assert.That(em.System<SharedHandsSystem>().TryPickup(repairer, welder), Is.True);
             Assert.That(em.System<ItemToggleSystem>().TryActivate((welder, null), repairer), Is.True);
-            var repair = new InteractUsingEvent(repairer, welder, helmet, map.GridCoords);
-            em.EventBus.RaiseLocalEvent(helmet, repair);
-            Assert.That(repair.Handled, Is.True);
+            Assert.That(em.System<SharedInteractionSystem>().InteractUsing(repairer, welder, wearer, map.GridCoords));
         });
         var tickRate = server.ResolveDependency<IGameTiming>().TickRate;
         await pair.RunTicksSync(9 * tickRate);
@@ -487,11 +489,10 @@ public sealed class ModularPowerArmorTest
             var mount = PowerArmorPlates.Container(ArmorPlateSlot.Helmet);
             var chassis = em.GetComponent<ModularPowerArmorComponent>(frame);
             Assert.That(em.GetComponent<DamageableComponent>(helmet).TotalDamage.Float(), Is.Zero);
-            Assert.That(em.System<SharedHandsSystem>().TryPickup(wearer, helmet), Is.True);
-            var install = new InteractUsingEvent(wearer, helmet, wearer, map.GridCoords);
-            em.EventBus.RaiseLocalEvent(wearer, install);
-            Assert.That(install.Handled, Is.True);
             Assert.That(slots.GetItemOrNull(frame, mount), Is.EqualTo(helmet));
+            Assert.That(chassis.Rating, Is.EqualTo(45));
+            Assert.That(chassis.BrokenSlots, Is.Empty);
+            Assert.That(em.System<ModularArmorDamageSystem>().ImpactPlate(frame, Content.Shared._Shitmed.Targeting.TargetBodyPart.Head), Is.EqualTo(helmet));
             Assert.That(chassis.Sealed, Is.True);
             Assert.That(slots.TryEject(frame, mount, null, out _), Is.True);
 

@@ -1,0 +1,4 @@
+- files: ["rustbucket_rev_1.ogg", "rustbucket_rev_2.ogg", "rustbucket_rev_3.ogg", "rustbucket_idle.ogg"]
+  license: "CC0-1.0"
+  copyright: "Original engine sounds synthesized for Reclamation Project."
+  source: "https://github.com/BluCottonCandy/Reclamation-Project"

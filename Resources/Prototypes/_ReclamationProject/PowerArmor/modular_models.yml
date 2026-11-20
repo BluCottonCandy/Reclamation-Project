@@ -1,0 +1,173 @@
+- type: powerArmorModel
+  id: MisfitsClothingOuterPowerArmorBoS509Elder
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509Elder.rsi
+
+- type: powerArmorModel
+  id: MisfitsClothingOuterPowerArmorBoS509HeadPaladin
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509HeadPaladin.rsi
+
+- type: powerArmorModel
+  id: MisfitsClothingOuterPowerArmorBoS509HonorGuard
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorBoS509HeadPaladin.rsi
+  parts:
+    Pauldrons: ReclamationHonorGuardPlatePauldrons
+    Chest: ReclamationHonorGuardPlateChest
+    Gloves: ReclamationHonorGuardPlateGloves
+    Helmet: ReclamationHonorGuardPlateHelmet
+
+- type: powerArmorModel
+  id: MisfitsClothingOuterPowerArmorRanger
+  rating: 50
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorRanger.rsi
+
+- type: powerArmorModel
+  id: MisfitsEnclavePowerArmor
+  rating: 45
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsEnclavePowerArmor.rsi
+
+- type: powerArmorModel
+  id: MisfitsNCRHeavyTrooperLeadPowerArmorT51
+  rating: 45
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsNCRHeavyTrooperLeadPowerArmorT51.rsi
+
+- type: powerArmorModel
+  id: MisfitsNCRX01PowerArmor
+  rating: 55
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsNCRX01PowerArmor.rsi
+
+- type: powerArmorModel
+  id: MisfitsT45ClothingOuterPowerArmorBoS
+  fitsGarageStencils: true
+  rating: 45
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsT45ClothingOuterPowerArmorBoS.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorAdvanced1
+  rating: 55
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorAdvanced1.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorAdvanced1NCR
+  rating: 55
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorAdvanced1NCR.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorAdvanced2
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorAdvanced2.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorAdvanced2Hellfire
+  rating: 65
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorAdvanced2Hellfire.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorAdvanced2HellfireMisfit
+  rating: 65
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorAdvanced2HellfireMisfit.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorAdvanced2Tesla
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorAdvanced2Tesla.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorMidwest
+  rating: 45
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorMidwest.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorMidwestCommander
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorMidwestCommander.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorMidwestSilver
+  rating: 50
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorMidwestSilver.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorRaider
+  fitsGarageStencils: true
+  rating: 40
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorRaider.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT45
+  fitsGarageStencils: true
+  rating: 45
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsT45ClothingOuterPowerArmorBoS.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT45Sierra
+  fitsGarageStencils: true
+  rating: 45
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT45Sierra.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT51
+  rating: 55
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51.rsi
+  parts:
+    Pauldrons: ReclamationT51PlatePauldrons
+    Chest: ReclamationT51PlateChest
+    Gloves: ReclamationT51PlateGloves
+    Helmet: ReclamationT51PlateHelmet
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT51BC
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51BC.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT51Canadian
+  rating: 55
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51Canadian.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT51China
+  rating: 55
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT51China.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT60
+  rating: 50
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT60.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT60BOS
+  rating: 50
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT60.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT60NCR
+  rating: 50
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT60NCR.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorT60Tesla
+  rating: 50
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorT60Tesla.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorTribalAPA
+  rating: 55
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorTribalAPA.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorWashT51
+  rating: 45
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorWashT51.rsi
+
+- type: powerArmorModel
+  id: N14ClothingOuterPowerArmorWashT51Elite
+  rating: 60
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/N14ClothingOuterPowerArmorWashT51Elite.rsi
+
+- type: powerArmorModel
+  id: ReclamationMinutemenGeneralPowerArmor
+  rating: 50
+  sprite: _ReclamationProject/Clothing/ModularPowerArmor/MisfitsClothingOuterPowerArmorRanger.rsi

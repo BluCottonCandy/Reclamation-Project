@@ -19,16 +19,15 @@ public sealed class DamageOverlay : Overlay
 
     private readonly ShaderInstance _critShader;
     private readonly ShaderInstance _oxygenShader;
-    private readonly ShaderInstance _bruteShader;
+    private readonly ShaderInstance _injuryShader;
 
     public MobState State = MobState.Alive;
 
     /// <summary>
     /// Handles the red pulsing overlay
     /// </summary>
-    public float BruteLevel = 0f;
-
-    private float _oldBruteLevel = 0f;
+    public float InjuryLevel;
+    private float _oldInjuryLevel;
 
     /// <summary>
     /// Handles the darkening overlay.
@@ -52,7 +51,15 @@ public sealed class DamageOverlay : Overlay
         IoCManager.InjectDependencies(this);
         _oxygenShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _critShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
-        _bruteShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
+        _injuryShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
+    }
+
+    protected override void DisposeBehavior()
+    {
+        _oxygenShader.Dispose();
+        _critShader.Dispose();
+        _injuryShader.Dispose();
+        base.DisposeBehavior();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -66,7 +73,7 @@ public sealed class DamageOverlay : Overlay
         /*
          * Here's the rundown:
          * 1. There's lerping for each level so the transitions are smooth.
-         * 2. There's 3 overlays, 1 for brute damage, 1 for oxygen damage (that also doubles as a crit overlay),
+         * 2. There's 3 overlays, 1 for injury, 1 for oxygen damage (that also doubles as a crit overlay),
          * and a white one during crit that closes in as you progress towards death. When you die it slowly disappears.
          * The crit overlay also occasionally reduces its alpha as a "blink"
          */
@@ -93,14 +100,14 @@ public sealed class DamageOverlay : Overlay
             DeadLevel = 0f;
         }
 
-        if (!MathHelper.CloseTo(_oldBruteLevel, BruteLevel, 0.001f))
+        if (!MathHelper.CloseTo(_oldInjuryLevel, InjuryLevel, 0.001f))
         {
-            var diff = BruteLevel - _oldBruteLevel;
-            _oldBruteLevel += GetDiff(diff, lastFrameTime);
+            var diff = InjuryLevel - _oldInjuryLevel;
+            _oldInjuryLevel += GetDiff(diff, lastFrameTime);
         }
         else
         {
-            _oldBruteLevel = BruteLevel;
+            _oldInjuryLevel = InjuryLevel;
         }
 
         if (!MathHelper.CloseTo(_oldOxygenLevel, OxygenLevel, 0.001f))
@@ -134,39 +141,24 @@ public sealed class DamageOverlay : Overlay
          * innerCircleMaxRadius is what we start at for 0 level for the inner circle
          */
 
-        // Makes debugging easier don't @ me
-        float level = 0f;
-        level = _oldBruteLevel;
-
-        // TODO: Lerping
+        var level = _oldInjuryLevel;
         if (level > 0f && _oldCritLevel <= 0f)
         {
-            var pulseRate = 3f;
-            var adjustedTime = time * pulseRate;
-            float outerMaxLevel = 2.0f * distance;
-            float outerMinLevel = 0.8f * distance;
-            float innerMaxLevel = 0.6f * distance;
-            float innerMinLevel = 0.2f * distance;
+            // Fit the clear circle inside even a widescreen viewport. Minor wounds fade in at the edges.
+            var size = Math.Min(args.ViewportBounds.Width, args.ViewportBounds.Height);
+            var outerRadius = size * MathHelper.Lerp(1f, 0.65f, level);
+            var innerRadius = size * MathHelper.Lerp(0.46f, 0.2f, level);
+            var pulse = MathF.Max(0f, MathF.Sin(time * 3f));
 
-            var outerRadius = outerMaxLevel - level * (outerMaxLevel - outerMinLevel);
-            var innerRadius = innerMaxLevel - level * (innerMaxLevel - innerMinLevel);
-
-            var pulse = MathF.Max(0f, MathF.Sin(adjustedTime));
-
-            _bruteShader.SetParameter("time", pulse);
-            _bruteShader.SetParameter("color", new Vector3(1f, 0f, 0f));
-            _bruteShader.SetParameter("darknessAlphaOuter", 0.8f);
-
-            _bruteShader.SetParameter("outerCircleRadius", outerRadius);
-            _bruteShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * distance);
-            _bruteShader.SetParameter("innerCircleRadius", innerRadius);
-            _bruteShader.SetParameter("innerCircleMaxRadius", innerRadius + 0.02f * distance);
-            handle.UseShader(_bruteShader);
+            _injuryShader.SetParameter("time", pulse);
+            _injuryShader.SetParameter("color", new Vector3(1f, 0f, 0f));
+            _injuryShader.SetParameter("darknessAlphaOuter", MathF.Min(0.8f, 2f * MathF.Sqrt(level)));
+            _injuryShader.SetParameter("outerCircleRadius", outerRadius);
+            _injuryShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * size);
+            _injuryShader.SetParameter("innerCircleRadius", innerRadius);
+            _injuryShader.SetParameter("innerCircleMaxRadius", innerRadius + 0.02f * size);
+            handle.UseShader(_injuryShader);
             handle.DrawRect(viewport, Color.White);
-        }
-        else
-        {
-            _oldBruteLevel = BruteLevel;
         }
 
         level = State != MobState.Critical ? _oldOxygenLevel : 1f;

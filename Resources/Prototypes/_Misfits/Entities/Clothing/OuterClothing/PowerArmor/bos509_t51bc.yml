@@ -2,8 +2,7 @@
 # Reskins of the T-51bc Paladin Commander suit; inherit ALL T-51bc mechanics
 # (Armor, ExplosionResistance, Reflect, PowerArmorIntegrity, WastelandMap HUD,
 # ToggleableClothing with the T-51bc helmet/gauntlets/boots). Only Sprite/Clothing
-# paths are overridden. These are NOT round-start spawn gear — delivered via
-# role-gated loadout picks (see loadouts_bos.yml).
+# paths are overridden. The Honor Guard wears its assembled suit at round start.
 
 # --- 509th BoS Elder T-51bc ---
 - type: entity

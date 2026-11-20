@@ -13,7 +13,7 @@ public sealed partial class ReflectComponent : Component
     /// <summary>
     /// What we reflect.
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("reflects")]
+    [ViewVariables(VVAccess.ReadWrite), DataField("reflects"), AutoNetworkedField]
     public ReflectType Reflects = ReflectType.Energy | ReflectType.NonEnergy;
 
     [DataField("spread"), ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]

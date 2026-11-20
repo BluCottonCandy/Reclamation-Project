@@ -465,10 +465,17 @@ public partial class SharedBodySystem
 
     private void OnStandAttempt(Entity<BodyComponent> ent, ref StandAttemptEvent args)
     {
+        if (!HasLegSupportToStand(ent))
+            args.Cancel();
+    }
+
+    public bool HasLegSupportToStand(Entity<BodyComponent> ent)
+    {
+        if (ent.Comp.LegEntities.Count >= ent.Comp.RequiredLegs)
+            return true;
         var support = new Content.Shared._ReclamationProject.Medical.GetBodyStandingSupportEvent();
         RaiseLocalEvent(ent, ref support);
-        if (ent.Comp.LegEntities.Count + support.AdditionalLegs < ent.Comp.RequiredLegs)
-            args.Cancel();
+        return ent.Comp.LegEntities.Count + support.AdditionalLegs >= ent.Comp.RequiredLegs;
     }
 
     private void OnBeingEquippedAttempt(Entity<BodyComponent> ent, ref IsEquippingAttemptEvent args)

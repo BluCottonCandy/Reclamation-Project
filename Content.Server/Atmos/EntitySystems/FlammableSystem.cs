@@ -14,7 +14,7 @@ using Content.Shared.Atmos.Components;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.Interaction;
-using Content.Shared.Inventory;
+using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
@@ -58,7 +58,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly AlertsSystem _alertsSystem = default!;
         [Dependency] private readonly FixtureSystem _fixture = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly InventorySystem _inventory = default!;
+        [Dependency] private readonly FireProtectionSystem _fireProtection = default!;
         [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly UseDelaySystem _useDelay = default!;
@@ -66,7 +66,6 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly TriggerSystem _trigger = default!;
 
-        private EntityQuery<InventoryComponent> _inventoryQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
         // This should probably be moved to the component, requires a rewrite, all fires tick at the same time
@@ -80,7 +79,6 @@ namespace Content.Server.Atmos.EntitySystems
         {
             UpdatesAfter.Add(typeof(AtmosphereSystem));
 
-            _inventoryQuery = GetEntityQuery<InventoryComponent>();
             _physicsQuery = GetEntityQuery<PhysicsComponent>();
 
             SubscribeLocalEvent<FlammableComponent, MapInitEvent>(OnMapInit);
@@ -321,12 +319,21 @@ namespace Content.Server.Atmos.EntitySystems
                 UpdateAppearance(uid, flammable);
         }
 
-        public void Extinguish(EntityUid uid, FlammableComponent? flammable = null)
+        public void Extinguish(EntityUid uid, FlammableComponent? flammable = null, bool force = false)
         {
             if (!Resolve(uid, ref flammable))
                 return;
 
-            if (!flammable.OnFire || !flammable.CanExtinguish)
+            if (!flammable.OnFire)
+            {
+                if (force && flammable.FireStacks > 0)
+                {
+                    flammable.FireStacks = 0;
+                    UpdateAppearance(uid, flammable);
+                }
+                return;
+            }
+            if (!flammable.CanExtinguish && !force)
                 return;
 
             _adminLogger.Add(LogType.Flammable, $"{ToPrettyString(uid):entity} stopped being on fire damage");
@@ -350,6 +357,12 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (!Resolve(uid, ref flammable))
                 return;
+
+            if (_fireProtection.GetProtection(uid).IsSealed)
+            {
+                Extinguish(uid, flammable, force: true);
+                return;
+            }
 
             if (flammable.AlwaysCombustible)
             {
@@ -471,24 +484,19 @@ namespace Content.Server.Atmos.EntitySystems
                         continue;
                     }
 
+                    var protection = _fireProtection.GetProtection(uid);
+                    if (protection.IsSealed)
+                    {
+                        Extinguish(uid, flammable, force: true);
+                        continue;
+                    }
                     var source = EnsureComp<IgnitionSourceComponent>(uid);
                     _ignitionSourceSystem.SetIgnited((uid, source));
 
                     if (TryComp(uid, out TemperatureComponent? temp))
                         _temperatureSystem.ChangeHeat(uid, 12500 * flammable.FireStacks, false, temp);
 
-                    var multiplier = 1f;
-                    if (!flammable.IgnoreFireProtection)
-                    {
-                        var ev = new GetFireProtectionEvent();
-                        // let the thing on fire handle it
-                        RaiseLocalEvent(uid, ref ev);
-                        // and whatever it's wearing
-                        if (_inventoryQuery.TryComp(uid, out var inv))
-                            _inventory.RelayEvent((uid, inv), ref ev);
-
-                        multiplier = Math.Max(0f, ev.Multiplier); // #Reclamation Project - stacked protection must not turn fire into healing
-                    }
+                    var multiplier = flammable.IgnoreFireProtection ? 1f : protection.Multiplier;
 
                     _damageableSystem.TryChangeDamage(uid, flammable.Damage * flammable.FireStacks * multiplier, interruptsDoAfters: false);
 

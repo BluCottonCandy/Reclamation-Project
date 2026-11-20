@@ -1,0 +1,83 @@
+- type: Tag
+  id: AtomCatsRailroadSpike
+
+- type: entity
+  parent: N14WeaponShotgunBase
+  id: AtomCatsRailroadRifle
+  name: Atom Cats railroad rifle
+  description: A copper cat looks out from the chipped red stock. Four steel spikes fit under the rail. The brass whistle sounds with every shot.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/AtomCats/railroad_rifle.rsi
+  - type: Item
+    sprite: _ReclamationProject/Objects/Weapons/AtomCats/railroad_rifle.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Weapons/AtomCats/railroad_rifle.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    availableModes: [SemiAuto]
+    soundGunshot:
+      path: /Audio/_ReclamationProject/AtomCats/railroad_rifle.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags: [AtomCatsRailroadSpike]
+    capacity: 4
+    proto: AtomCatsRailroadSpike
+
+- type: entity
+  parent: BaseItem
+  id: AtomCatsRailroadSpike
+  name: railroad spike
+  description: A solid iron spike with a square head.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/AtomCats/railroad_rifle.rsi
+    state: spike
+  - type: Tag
+    tags: [AtomCatsRailroadSpike]
+  - type: CartridgeAmmo
+    proto: AtomCatsFlyingSpike
+    deleteOnSpawn: true
+    muzzleFlash: null
+
+- type: entity
+  parent: BaseBullet
+  id: AtomCatsFlyingSpike
+  name: flying railroad spike
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Weapons/AtomCats/railroad_rifle.rsi
+    layers:
+    - state: spike
+  - type: Projectile
+    angle: -90
+    damage:
+      types:
+        Piercing: 45
+        Blunt: 5
+
+- type: entity
+  parent: MagazineBoxLightRifle
+  id: AtomCatsSpikeBox
+  name: box of railroad spikes
+  description: Sixteen iron spikes packed head to tail.
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags: [AtomCatsRailroadSpike]
+    proto: AtomCatsRailroadSpike
+    capacity: 16
+
+- type: entity
+  parent: AtomCatsSpikeBox
+  id: AtomCatsSpikePack
+  name: railroad spike packet
+  description: Four iron spikes, enough to refill a Hot Rod's railroad rifle.
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 4

@@ -17,6 +17,9 @@ public sealed partial class ShowHealthBarsComponent : Component
     [DataField("damageContainers"), AutoNetworkedField]
     public List<string> DamageContainers = new();
 
+    [DataField, AutoNetworkedField]
+    public bool ShowArmorCondition;
+
     [DataField]
     public ProtoId<HealthIconPrototype>? HealthStatusIcon = "HealthIconFine";
 }

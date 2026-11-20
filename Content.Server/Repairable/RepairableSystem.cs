@@ -58,6 +58,8 @@ namespace Content.Server.Repairable
                 return;
 
             float delay = component.DoAfterDelay;
+            if (component.FixedRepairTime && TryComp<Content.Shared.Tools.Components.ToolComponent>(args.Used, out var tool))
+                delay *= tool.SpeedModifier;
 
             // Add a penalty to how long it takes if the user is repairing itself
             if (args.User == args.Target)

@@ -73,13 +73,13 @@ public sealed class MappingSystem : EntitySystem
                 return;
             }
 
-            var saveDir = Path.Combine(_cfg.GetCVar(CCVars.AutosaveDirectory), name);
-            _resMan.UserData.CreateDir(new ResPath(saveDir).ToRootedPath());
+            var saveDir = ResPath.FromRelativeSystemPath(_cfg.GetCVar(CCVars.AutosaveDirectory)).ToRootedPath() / name;
+            _resMan.UserData.CreateDir(saveDir);
 
-            var path = Path.Combine(saveDir, $"{DateTime.Now.ToString("yyyy-M-dd_HH.mm.ss")}-AUTO.yml");
+            var path = saveDir / $"{DateTime.Now:yyyy-M-dd_HH.mm.ss}-AUTO.yml";
             _currentlyAutosaving[map] = (CalculateNextTime(), name);
             Log.Info($"Autosaving map {name} ({map}) to {path}. Next save in {ReadableTimeLeft(map)} seconds.");
-            _map.TrySaveMap(map, new ResPath(path));
+            _map.TrySaveMap(map, path);
         }
     }
 

@@ -409,7 +409,13 @@ public sealed partial class StaminaSystem : EntitySystem
         component.Critical = true;
         component.StaminaDamage = component.CritThreshold;
 
-        _stunSystem.TryParalyze(uid, component.StunTime, true);
+        if (HasComp<Content.Shared._ReclamationProject.PowerArmor.ArmorMagLockComponent>(uid))
+        {
+            // The wearer can still move. Use the clamped stamina value even after an oversized hit.
+            _movementSpeed.RefreshMovementSpeedModifiers(uid);
+        }
+        else
+            _stunSystem.TryParalyze(uid, component.StunTime, true);
         // Give them buffer before being able to be re-stunned
         component.NextUpdate = _timing.CurTime + component.StunTime + StamCritBufferTime;
         EnsureComp<ActiveStaminaComponent>(uid);

@@ -1,0 +1,186 @@
+- type: job
+  id: AtomCatsLookout
+  name: job-name-atom-cats-lookout
+  description: job-description-atom-cats-lookout
+  supervisors: job-supervisors-atom-cats-lookout
+  playTimeTracker: AtomCatsLookout
+  startingGear: AtomCatsLookoutGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 100
+  icon: JobIconTownMechanic
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsLookout
+
+- type: job
+  id: AtomCatsGreaser
+  name: job-name-atom-cats-greaser
+  description: job-description-atom-cats-greaser
+  supervisors: job-supervisors-atom-cats-greaser
+  playTimeTracker: AtomCatsGreaser
+  startingGear: AtomCatsGreaserGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 200
+  icon: JobIconTownMechanic
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsGreaser
+
+- type: job
+  id: AtomCatsMuscle
+  name: job-name-atom-cats-muscle
+  description: job-description-atom-cats-muscle
+  supervisors: job-supervisors-atom-cats-muscle
+  playTimeTracker: AtomCatsMuscle
+  startingGear: AtomCatsMuscleGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 300
+  icon: JobIconTownMechanic
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsMuscle
+
+- type: job
+  id: AtomCatsRocker
+  name: job-name-atom-cats-rocker
+  description: job-description-atom-cats-rocker
+  supervisors: job-supervisors-atom-cats-rocker
+  playTimeTracker: AtomCatsRocker
+  startingGear: AtomCatsRockerGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 400
+  icon: JobIconTownMechanic
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsRocker
+
+- type: job
+  id: AtomCatsHotRod
+  name: job-name-atom-cats-hotrod
+  description: job-description-atom-cats-hotrod
+  supervisors: job-supervisors-atom-cats-hotrod
+  playTimeTracker: AtomCatsHotRod
+  startingGear: AtomCatsHotRodGear
+  setPreference: true
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 500
+  icon: JobIconTownMechanic
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsHotRod
+
+- type: job
+  id: AtomCatsUnderboss
+  name: job-name-atom-cats-underboss
+  description: job-description-atom-cats-underboss
+  supervisors: job-supervisors-atom-cats-underboss
+  playTimeTracker: AtomCatsUnderboss
+  startingGear: AtomCatsUnderbossGear
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  overrideConsoleVisibility: false
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 600
+  icon: JobIconTownMechanic
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsUnderboss
+
+- type: job
+  id: AtomCatsBoss
+  name: job-name-atom-cats-boss
+  description: job-description-atom-cats-boss
+  supervisors: job-supervisors-atom-cats-boss
+  playTimeTracker: AtomCatsBoss
+  startingGear: AtomCatsBossGear
+  whitelisted: true
+  hideWithoutJobWhitelist: true
+  overrideConsoleVisibility: false
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 700
+  icon: JobIconTownMechanic
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsBoss
+
+- type: job
+  id: AtomCatsTattooArtist
+  name: job-name-atom-cats-tattoo-artist
+  description: job-description-atom-cats-tattoo-artist
+  supervisors: job-supervisors-atom-cats-tattoo-artist
+  playTimeTracker: AtomCatsTattooArtist
+  startingGear: AtomCatsTattooArtistGear
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 350
+  icon: JobIconMedicalDoctor
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsTattooArtist

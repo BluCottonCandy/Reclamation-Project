@@ -1,0 +1,878 @@
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitRoadScout
+  name: Road Scout kit
+  description: 9mm SMG and .22 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries binoculars.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG9mm
+    - id: N14WeaponPistol22lr
+    - id: N14MagazineSMG9mm
+      amount: 2
+    - id: N14MagazinePistol22lr
+      amount: 2
+    - id: MagazineBox9mm
+    - id: MagazineBox22
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14Binoculars
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitRoadScoutSet
+  name: atom-cats-kit-road-scout-name
+  description: atom-cats-kit-road-scout-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitRoadScout]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitGateWatch
+  name: Gate Watch kit
+  description: 9mm Sten and 9mm revolver. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries two flares.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG9mmCanadian
+    - id: N14WeaponRevolver9mm
+    - id: N14MagazineSMG9mm
+      amount: 2
+    - id: SpeedLoader9
+      amount: 2
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14Flare
+      amount: 2
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitGateWatchSet
+  name: atom-cats-kit-gate-watch-name
+  description: atom-cats-kit-gate-watch-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitGateWatch]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitRunner
+  name: Runner kit
+  description: 9mm SMG and 9mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a stimpak and a second roll of gauze.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG9mm
+    - id: N14WeaponPistol9mm
+    - id: N14MagazineSMG9mm
+      amount: 2
+    - id: N14MagazinePistol9mm
+      amount: 2
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+      amount: 2
+    - id: N14Stimpak
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitRunnerSet
+  name: atom-cats-kit-runner-name
+  description: atom-cats-kit-runner-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitRunner]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsLookoutKitSelector
+  name: Atom Cats Lookout kit selector
+  description: Choose one of three Lookout kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitRoadScoutSet
+    - AtomCatsKitGateWatchSet
+    - AtomCatsKitRunnerSet
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitBodyworker
+  name: Bodyworker kit
+  description: 10mm SMG and 9mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a fire axe.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: N14WeaponPistol9mm
+    - id: N14MagazineSMG10mm
+      amount: 2
+    - id: N14MagazinePistol9mm
+      amount: 2
+    - id: MagazineBox10mm
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14FireAxe
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitBodyworkerSet
+  name: atom-cats-kit-bodyworker-name
+  description: atom-cats-kit-bodyworker-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitBodyworker]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitPartsPuller
+  name: Parts Puller kit
+  description: 10mm SMG and 10mm revolver. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries an industrial welder.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: N14WeaponRevolver10mm
+    - id: N14MagazineSMG10mm
+      amount: 2
+    - id: SpeedLoader10
+      amount: 2
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14WelderIndustrial
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitPartsPullerSet
+  name: atom-cats-kit-parts-puller-name
+  description: atom-cats-kit-parts-puller-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitPartsPuller]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitElectrician
+  name: Electrician kit
+  description: 10mm SMG and .22 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries insulated gloves and a hard hat with a lamp.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: N14WeaponPistol22lr
+    - id: N14MagazineSMG10mm
+      amount: 2
+    - id: N14MagazinePistol22lr
+      amount: 2
+    - id: MagazineBox10mm
+    - id: MagazineBox22
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: ClothingHandsGlovesColorYellow
+    - id: ClothingHeadHatHardhatYellow
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitElectricianSet
+  name: atom-cats-kit-electrician-name
+  description: atom-cats-kit-electrician-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitElectrician]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsGreaserKitSelector
+  name: Atom Cats Greaser kit selector
+  description: Choose one of three Greaser kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitBodyworkerSet
+    - AtomCatsKitPartsPullerSet
+    - AtomCatsKitElectricianSet
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitEscort
+  name: Escort kit
+  description: Combat shotgun and 9mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunAuto
+    - id: N14WeaponPistol9mm
+    - id: N14MagazineShotgun12
+      amount: 2
+    - id: N14MagazinePistol9mm
+      amount: 2
+    - id: MagazineBox12gauge
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitEscortSet
+  name: atom-cats-kit-escort-name
+  description: atom-cats-kit-escort-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content: [AtomCatsKitEscort]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitWrecker
+  name: Wrecker kit
+  description: Pump shotgun and 10mm revolver. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a sledgehammer.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgun
+    - id: N14WeaponRevolver10mm
+    - id: AtomCatsShellPack
+      amount: 2
+    - id: SpeedLoader10
+      amount: 2
+    - id: MagazineBox12gauge
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14SledgeHammer
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitWreckerSet
+  name: atom-cats-kit-wrecker-name
+  description: atom-cats-kit-wrecker-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitWrecker]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitRecovery
+  name: Recovery kit
+  description: 10mm SMG and 10mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a folding stretcher and a stimpak.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: N14WeaponPistol10mm
+    - id: N14MagazineSMG10mm
+      amount: 2
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: RollerBedSpawnFolded
+    - id: N14Stimpak
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitRecoverySet
+  name: atom-cats-kit-recovery-name
+  description: atom-cats-kit-recovery-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitRecovery]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsMuscleKitSelector
+  name: Atom Cats Muscle kit selector
+  description: Choose one of three Muscle kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitEscortSet
+    - AtomCatsKitWreckerSet
+    - AtomCatsKitRecoverySet
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitFlashMedic
+  name: Flash Medic kit
+  description: American-180 and .22 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a filled medkit, extra gauze, ointment, a scanner, three smoke grenades, and night vision goggles. Includes a medical bandolier, three burn mesh stacks, three suture stacks, and a CPR manual.
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMGAmerican180
+    - id: N14WeaponPistol22lr
+    - id: N14MagazineAmerican180Drum
+      amount: 2
+    - id: N14MagazinePistol22lr
+      amount: 2
+    - id: MagazineBox22
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+      amount: 2
+    - id: AtomCatsMedicalBandolier
+    - id: RegenerativeMesh
+      amount: 3
+    - id: MedicatedSuture
+      amount: 3
+    - id: ReclamationTrainingManualCPR
+    - id: N14MedkitFilled
+    - id: N14Ointment10
+    - id: N14HandheldHealthAnalyzer
+    - id: SmokeGrenade
+      amount: 3
+    - id: N14ClothingEyesNCRNVGs
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitFlashMedicSet
+  name: atom-cats-kit-flash-medic-name
+  description: atom-cats-kit-flash-medic-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content: [AtomCatsKitFlashMedic]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitParlorSurgeon
+  name: Parlor Surgeon kit
+  description: Combat shotgun and 9mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a filled surgical belt with a scanner and ethanol, and a sterile mask. Includes a medical bandolier, three burn mesh stacks, three suture stacks, and a CPR manual.
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunAuto
+    - id: N14WeaponPistol9mm
+    - id: N14MagazineShotgun12
+      amount: 2
+    - id: N14MagazinePistol9mm
+      amount: 2
+    - id: MagazineBox12gauge
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: AtomCatsMedicalBandolier
+    - id: RegenerativeMesh
+      amount: 3
+    - id: MedicatedSuture
+      amount: 3
+    - id: ReclamationTrainingManualCPR
+    - id: ReclamationClothingBeltSurgicalFilled
+    - id: ClothingMaskSterile
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitParlorSurgeonSet
+  name: atom-cats-kit-parlor-surgeon-name
+  description: atom-cats-kit-parlor-surgeon-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content: [AtomCatsKitParlorSurgeon]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitRoadsideMedic
+  name: Roadside Medic kit
+  description: 10mm SMG and 10mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries two combat medkits, two stimpaks, extra gauze, ointment, and a scanner. Includes a medical bandolier, three burn mesh stacks, three suture stacks, and a CPR manual.
+  components:
+  - type: Sprite
+    state: medic
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: N14WeaponPistol10mm
+    - id: N14MagazineSMG10mm
+      amount: 2
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+      amount: 2
+    - id: AtomCatsMedicalBandolier
+    - id: RegenerativeMesh
+      amount: 3
+    - id: MedicatedSuture
+      amount: 3
+    - id: ReclamationTrainingManualCPR
+    - id: N14MedkitCombatFilled
+      amount: 2
+    - id: N14Stimpak
+      amount: 2
+    - id: N14Ointment10
+    - id: N14HandheldHealthAnalyzer
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitRoadsideMedicSet
+  name: atom-cats-kit-roadside-medic-name
+  description: atom-cats-kit-roadside-medic-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: medic
+  content: [AtomCatsKitRoadsideMedic]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsTattooArtistKitSelector
+  name: Atom Cats Tattoo Artist kit selector
+  description: Choose one of three Tattoo Artist kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitFlashMedicSet
+    - AtomCatsKitParlorSurgeonSet
+    - AtomCatsKitRoadsideMedicSet
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitRoadCaptain
+  name: Road Captain kit
+  description: 7.62mm marksman carbine and 10mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries binoculars.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponRifle762Marksman
+    - id: N14WeaponPistol10mm
+    - id: Magazine762Rifle
+      amount: 2
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: MagazineBox762
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14Binoculars
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitRoadCaptainSet
+  name: atom-cats-kit-road-captain-name
+  description: atom-cats-kit-road-captain-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content: [AtomCatsKitRoadCaptain]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitConvoyLead
+  name: Convoy Lead kit
+  description: Combat shotgun and .45-70 Gov't handcannon. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries two road flares.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunAuto
+    - id: N14WeaponRevolver45-70Handcannon
+    - id: N14MagazineShotgun12
+      amount: 2
+    - id: SpeedLoader45-70
+      amount: 2
+    - id: MagazineBox12gauge
+    - id: MagazineBox45-70
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14Flare
+      amount: 2
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitConvoyLeadSet
+  name: atom-cats-kit-convoy-lead-name
+  description: atom-cats-kit-convoy-lead-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content: [AtomCatsKitConvoyLead]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitPartsRunner
+  name: Parts Runner kit
+  description: Suppressed 10mm SMG and 9mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mmSuppressed
+    - id: N14WeaponPistol9mm
+    - id: N14MagazineSMG10mm
+      amount: 2
+    - id: N14MagazinePistol9mm
+      amount: 2
+    - id: MagazineBox10mm
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitPartsRunnerSet
+  name: atom-cats-kit-parts-runner-name
+  description: atom-cats-kit-parts-runner-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitPartsRunner]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsRockerKitSelector
+  name: Atom Cats Rocker kit selector
+  description: Choose one of three Rocker kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitRoadCaptainSet
+    - AtomCatsKitConvoyLeadSet
+    - AtomCatsKitPartsRunnerSet
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitSpikeDriver
+  name: Spike Driver kit
+  description: Railroad spike rifle and 10mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a bonus four-spike packet.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: AtomCatsRailroadRifle
+    - id: N14WeaponPistol10mm
+    - id: AtomCatsSpikePack
+      amount: 3
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: AtomCatsSpikeBox
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitSpikeDriverSet
+  name: atom-cats-kit-spike-driver-name
+  description: atom-cats-kit-spike-driver-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content: [AtomCatsKitSpikeDriver]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitYardBoss
+  name: Yard Boss kit
+  description: Railroad spike rifle and combat shotgun. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries an industrial welder.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: AtomCatsRailroadRifle
+    - id: N14WeaponShotgunAuto
+    - id: AtomCatsSpikePack
+      amount: 2
+    - id: N14MagazineShotgun12
+      amount: 2
+    - id: AtomCatsSpikeBox
+    - id: MagazineBox12gauge
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14WelderIndustrial
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitYardBossSet
+  name: atom-cats-kit-yard-boss-name
+  description: atom-cats-kit-yard-boss-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content: [AtomCatsKitYardBoss]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitShopForeman
+  name: Shop Foreman kit
+  description: Railroad spike rifle and 9mm revolver. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries 10 steel, 20 scrap, and two N14 gold bars for one armor mod.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: AtomCatsRailroadRifle
+    - id: N14WeaponRevolver9mm
+    - id: AtomCatsSpikePack
+      amount: 2
+    - id: SpeedLoader9
+      amount: 2
+    - id: AtomCatsSpikeBox
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: SheetSteel10
+    - id: N14Scrap10
+      amount: 2
+    - id: N14IngotGold1
+      amount: 2
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitShopForemanSet
+  name: atom-cats-kit-shop-foreman-name
+  description: atom-cats-kit-shop-foreman-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content: [AtomCatsKitShopForeman]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsHotRodKitSelector
+  name: Atom Cats Hot Rod kit selector
+  description: Choose one of three Hot Rod kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitSpikeDriverSet
+    - AtomCatsKitYardBossSet
+    - AtomCatsKitShopForemanSet
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitFloorBoss
+  name: Floor Boss kit
+  description: Combat shotgun and 10mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a spare fusion core.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunAuto
+    - id: N14WeaponPistol10mm
+    - id: N14MagazineShotgun12
+      amount: 2
+    - id: N14MagazinePistol10mm
+      amount: 2
+    - id: MagazineBox12gauge
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14FusionCore
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitFloorBossSet
+  name: atom-cats-kit-floor-boss-name
+  description: atom-cats-kit-floor-boss-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content: [AtomCatsKitFloorBoss]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitRoadMarshal
+  name: Road Marshal kit
+  description: .44 lever-action carbine and .45-70 Gov't handcannon. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries binoculars.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSniper44LeverCarbine
+    - id: N14WeaponRevolver45-70Handcannon
+    - id: AtomCatsCarbinePack
+      amount: 2
+    - id: SpeedLoader45-70
+      amount: 2
+    - id: MagazineBox44
+    - id: MagazineBox45-70
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14Binoculars
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitRoadMarshalSet
+  name: atom-cats-kit-road-marshal-name
+  description: atom-cats-kit-road-marshal-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitRoadMarshal]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitReliefChief
+  name: Relief Chief kit
+  description: 7.62mm marksman carbine and 9mm pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries two stimpaks and a folding stretcher.
+  components:
+  - type: Sprite
+    state: marksman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponRifle762Marksman
+    - id: N14WeaponPistol9mm
+    - id: Magazine762Rifle
+      amount: 2
+    - id: N14MagazinePistol9mm
+      amount: 2
+    - id: MagazineBox762
+    - id: MagazineBox9mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14Stimpak
+      amount: 2
+    - id: RollerBedSpawnFolded
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitReliefChiefSet
+  name: atom-cats-kit-relief-chief-name
+  description: atom-cats-kit-relief-chief-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: marksman
+  content: [AtomCatsKitReliefChief]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsUnderbossKitSelector
+  name: Atom Cats Underboss kit selector
+  description: Choose one of three Underboss kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitFloorBossSet
+    - AtomCatsKitRoadMarshalSet
+    - AtomCatsKitReliefChiefSet
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitDealMaker
+  name: Deal Maker kit
+  description: 10mm SMG and engraved .45 pistol. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSMG10mm
+    - id: AtomCatsEngravedPistol
+    - id: N14MagazineSMG10mm
+      amount: 2
+    - id: N14MagazinePistol45
+      amount: 2
+    - id: MagazineBox10mm
+    - id: MagazineBox45
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitDealMakerSet
+  name: atom-cats-kit-deal-maker-name
+  description: atom-cats-kit-deal-maker-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitDealMaker]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitOldHand
+  name: Old Hand kit
+  description: .44 lever-action carbine and .44 revolver. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries the Boss's engraved industrial welder.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponSniper44LeverCarbine
+    - id: N14WeaponRevolver44Magnum
+    - id: AtomCatsCarbinePack
+      amount: 2
+    - id: SpeedLoader44
+      amount: 2
+    - id: MagazineBox44
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: AtomCatsBossWelder
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitOldHandSet
+  name: atom-cats-kit-old-hand-name
+  description: atom-cats-kit-old-hand-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content: [AtomCatsKitOldHand]
+
+- type: entity
+  parent: KitBase
+  id: AtomCatsKitGarageDefender
+  name: Garage Defender kit
+  description: Combat shotgun and 10mm revolver. Includes two reloads per gun, boxed ammo, an MRE, and clean gauze. Also carries a spare fusion core.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: SpawnItemsOnUse
+    items:
+    - id: N14WeaponShotgunAuto
+    - id: N14WeaponRevolver10mm
+    - id: N14MagazineShotgun12
+      amount: 2
+    - id: SpeedLoader10
+      amount: 2
+    - id: MagazineBox12gauge
+    - id: MagazineBox10mm
+    - id: N14BoxCardboardMREBoxCFilled
+    - id: N14CleanGauze10
+    - id: N14FusionCore
+
+- type: UndecidedLoadoutBackpackSet
+  id: AtomCatsKitGarageDefenderSet
+  name: atom-cats-kit-garage-defender-name
+  description: atom-cats-kit-garage-defender-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content: [AtomCatsKitGarageDefender]
+
+- type: entity
+  parent: BaseLoadoutKit
+  categories: []
+  id: AtomCatsBossKitSelector
+  name: Atom Cats Boss kit selector
+  description: Choose one of three Boss kits.
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - AtomCatsKitDealMakerSet
+    - AtomCatsKitOldHandSet
+    - AtomCatsKitGarageDefenderSet

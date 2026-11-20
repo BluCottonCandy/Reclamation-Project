@@ -6,6 +6,7 @@ using Content.Shared.Input;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared.Standing;
 using Content.Shared.Popups;
@@ -23,6 +24,7 @@ public abstract class SharedLayingDownSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
@@ -164,7 +166,7 @@ public abstract class SharedLayingDownSystem : EntitySystem
             || !_mobState.IsAlive(uid)
             || TerminatingOrDeleted(uid)
             || !TryComp<BodyComponent>(uid, out var body)
-            || body.LegEntities.Count < body.RequiredLegs
+            || !_body.HasLegSupportToStand((uid, body))
             || HasComp<DebrainedComponent>(uid))
             return false;
 

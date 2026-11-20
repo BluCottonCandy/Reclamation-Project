@@ -171,7 +171,8 @@ public sealed class PullingSystem : EntitySystem
         if (pullerComp.PushingTowards is null)
             return;
 
-        if (TryComp(pulled, out ConveyedComponent? conveyed) && conveyed.Conveying)
+        if (HasComp<Content.Shared._ReclamationProject.PowerArmor.ArmorMagLockComponent>(pulled) ||
+            TryComp(pulled, out ConveyedComponent? conveyed) && conveyed.Conveying)
         {
             pullerComp.PushingTowards = null;
             return;
@@ -318,6 +319,9 @@ public sealed class PullingSystem : EntitySystem
 
     private void OnRefreshMovespeed(EntityUid uid, PullerComponent component, RefreshMovementSpeedModifiersEvent args)
     {
+        if (TryComp<Content.Shared._ReclamationProject.PowerArmor.ArmorTowComponent>(uid, out var tow) && component.Pulling == tow.Target)
+            return;
+
         if (component.Pulling != null &&
             HasComp<CanFiremanCarryComponent>(uid) &&
             HasComp<MobStateComponent>(component.Pulling.Value))

@@ -1,1 +1,19 @@
-# Brotherhood power armor is obtained in-game rather than through character loadouts.
+- type: loadout
+  id: LoadoutBoSOuterPowerArmorFrame
+  category: Outer
+  cost: 15
+  exclusive: true
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutOuter
+  - !type:CharacterJobRequirement
+    jobs:
+    - BoSKnight
+    - BoSLancerKnight
+    - BoSMidKnight
+    - BoSHeadKnight
+    - BoSPaladin
+    - BoSMidPaladin
+    - BoSMidPaladinCommander
+  items:
+  - ReclamationPowerArmorFrame

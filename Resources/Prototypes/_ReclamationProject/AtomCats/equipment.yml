@@ -1,0 +1,246 @@
+- type: entity
+  parent: N14ClothingUniformJumpsuitMechanic
+  id: AtomCatsCoveralls
+  name: Pit Crew coveralls
+  description: Oil has worked its way into the knees of these teal coveralls. A broad brass zipper opens far enough to fish a dropped washer out of the lining.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/jumpsuit.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/jumpsuit.rsi
+
+- type: entity
+  parent: N14ClothingOuterCoatLeatherJacket
+  id: AtomCatsCut
+  name: Whitewall leather jacket
+  description: This close-fitting black leather jacket has long sleeves and a narrow band of white shearling at the collar and cuffs. A copper-thread cat looks out from between the shoulders.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/jacket.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/jacket.rsi
+
+- type: entity
+  parent: N14ClothingEyesSunGlasses
+  id: AtomCatsShades
+  name: Quarter-Mile shades
+  description: The Cats fitted these smoked shades with welding lenses for long afternoons in the garage. Someone scratched a little checkered flag into the inside of one temple.
+  components:
+  - type: EyeProtection
+    protectionTime: 10
+  - type: Tag
+    tags: [WeldingGoggles]
+
+- type: entity
+  parent: N14ClothingBootsCombat
+  id: AtomCatsBoots
+  name: Curb-Kicker Mk I combat boots
+  description: Scuffed steel toes, oxblood laces, and a buckle that a mechanic can undo with greasy fingers. These are the original Mk I pattern.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/boots.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/boots.rsi
+
+- type: entity
+  parent: N14IDCard
+  id: AtomCatsGaragePass
+  name: Atom Cats switchblade ID
+  description: A cherry-red garage pass with the Cat's name and rank stamped into the brass. Work the switch in hand to draw the blade, flip out the barber comb, then fold it shut.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_switchblade.rsi
+    layers:
+    - state: folded
+      map: [switchblade]
+  - type: Item
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_switchblade.rsi
+    heldPrefix: folded
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_switchblade.rsi
+  - type: IdCard
+    nameLocId: atom-cats-switchblade-name
+    fullNameLocId: atom-cats-switchblade-full-name
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AtomCatsSwitchbladeVisuals.Mode:
+        switchblade:
+          folded: { state: folded }
+          blade: { state: blade }
+          comb: { state: comb }
+  - type: UserInterface
+    interfaces:
+      enum.MagicMirrorUiKey.Key:
+        type: MagicMirrorBoundUserInterface
+  - type: ActivatableUI
+    key: enum.MagicMirrorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: true
+    verbText: atom-cats-switchblade-style
+  - type: AtomCatsSwitchblade
+    blade:
+    - type: MeleeWeapon
+      damage:
+        types:
+          Slash: 25
+      soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+    comb:
+    - type: MagicMirror
+      addSlotTime: 20
+      removeSlotTime: 20
+      selectSlotTime: 20
+      changeSlotTime: 20
+      requireConfirm: true
+
+- type: startingGear
+  id: AtomCatsGarageGear
+  abstract: true
+  equipment:
+    jumpsuit: AtomCatsCoveralls
+    ears: AtomCatsHeadset
+    eyes: AtomCatsShades
+    shoes: AtomCatsBoots
+    back: N14ClothingBackpackSatchelExplorer
+    id: AtomCatsGaragePass
+
+- type: startingGear
+  parent: AtomCatsGarageGear
+  id: AtomCatsStreetGear
+  abstract: true
+  equipment:
+    outerClothing: AtomCatsCut
+    belt: N14ClothingBeltUtilityFilled
+  storage:
+    back: [AtomCatsStencilCan]
+
+- type: startingGear
+  parent: AtomCatsGarageGear
+  id: AtomCatsArmoredGear
+  abstract: true
+  storage:
+    back: [AtomCatsCut, AtomCatsStencilCan]
+
+- type: startingGear
+  parent: AtomCatsArmoredGear
+  id: AtomCatsRedGear
+  equipment:
+    outerClothing: AtomCatsT45Red
+
+- type: startingGear
+  parent: AtomCatsArmoredGear
+  id: AtomCatsBlueGear
+  equipment:
+    outerClothing: AtomCatsT45Blue
+
+- type: startingGear
+  parent: AtomCatsStreetGear
+  id: AtomCatsLookoutGear
+  equipment:
+    pocket2: AtomCatsLookoutKitSelector
+
+- type: startingGear
+  parent: AtomCatsStreetGear
+  id: AtomCatsGreaserGear
+  equipment:
+    pocket2: AtomCatsGreaserKitSelector
+
+- type: startingGear
+  parent: AtomCatsRedGear
+  id: AtomCatsMuscleGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsMuscleKitSelector
+
+- type: startingGear
+  parent: AtomCatsArmoredGear
+  id: AtomCatsTattooArtistGear
+  equipment:
+    outerClothing: AtomCatsT45Medic
+    pocket1: AtomCatsCompactStretcher
+    pocket2: AtomCatsTattooArtistKitSelector
+  storage:
+    back: [AtomCatsCut, AtomCatsStencilCan, N14MagazineTabooTattoos, Welder]
+
+- type: startingGear
+  parent: AtomCatsBlueGear
+  id: AtomCatsRockerGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsRockerKitSelector
+
+- type: startingGear
+  parent: AtomCatsArmoredGear
+  id: AtomCatsHotRodGear
+  equipment:
+    outerClothing: AtomCatsT45Lowrider
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsHotRodKitSelector
+
+- type: startingGear
+  parent: AtomCatsBlueGear
+  id: AtomCatsUnderbossGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsUnderbossKitSelector
+
+- type: startingGear
+  parent: AtomCatsRedGear
+  id: AtomCatsBossGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsBossKitSelector
+
+- type: entity
+  parent: N14WelderIndustrial
+  id: AtomCatsBossWelder
+  name: Old Reliable
+  description: An industrial welder with the names of past garage bosses engraved on its grip.
+
+- type: entity
+  parent: RubberStampApproved
+  id: AtomCatsGarageStamp
+  name: Atom Cats garage stamp
+  description: The handle is a gearshift knob. The face stamps the garage name in teal ink.
+  components:
+  - type: Stamp
+    stampedName: atom-cats-garage-stamp
+    stampedColor: "#50B8B0"
+
+- type: entity
+  parent: RollerBedSpawnFolded
+  id: AtomCatsCompactStretcher
+  name: compact stretcher
+  description: An oilcloth sling on folding steel rails. A Tattoo Artist can carry it in a pocket between calls.
+  components:
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: ClothingBeltNCRBandolier
+  id: AtomCatsMedicalBandolier
+  name: Atom Cats medical bandolier
+  description: A worn leather bandolier with a copper cat stitched into the strap.
+
+- type: entity
+  parent: N14WeaponPistolM1911Custom
+  id: AtomCatsEngravedPistol
+  name: engraved garage .45
+  description: The Boss's custom M1911 bears a pair of pointed cat ears engraved in the slide.
+
+- type: entity
+  parent: MagazineBox44
+  id: AtomCatsCarbinePack
+  name: twelve-round carbine carton
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 12
+
+- type: entity
+  parent: MagazineBox12gauge
+  id: AtomCatsShellPack
+  name: six-shell pump shotgun carton
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 6

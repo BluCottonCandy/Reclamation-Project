@@ -37,7 +37,7 @@ public sealed class ToolSystem : SharedToolSystem
         var query = EntityQueryEnumerator<WelderComponent, SolutionContainerManagerComponent>();
         while (query.MoveNext(out var uid, out var welder, out var solutionContainer))
         {
-            if (!welder.Enabled)
+            if (!welder.Enabled || welder.UnlimitedFuel)
                 continue;
 
             welder.WelderTimer += frameTime;

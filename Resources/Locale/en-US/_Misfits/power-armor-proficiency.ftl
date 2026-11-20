@@ -1,10 +1,5 @@
-## Power Armor Proficiency System
-## Popup shown when a character without the Power Armor Training perk tries to equip power armor.
-
-power-armor-proficiency-required = You lack the training to operate power armor.
-
 ## Power Armor Training Manual
-power-armor-training-learned = You study the manual carefully and internalize the operating procedures. You are now trained in power armor operation.
+power-armor-training-learned = You learn to move with the servos. You can now walk and sprint at your normal speed in powered armor.
 power-armor-training-already-trained = You already know how to operate power armor.
 
 ## EMP feedback

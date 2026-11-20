@@ -165,6 +165,9 @@ namespace Content.Server.Hands.Systems
             if (TryComp<PullerComponent>(args.PullerUid, out var pullerComp) && !pullerComp.NeedsHands)
                 return;
 
+            if (TryComp<Content.Shared._ReclamationProject.PowerArmor.ArmorTowComponent>(uid, out var tow) && tow.Target == args.PulledUid)
+                return;
+
             if (!_virtualItemSystem.TrySpawnVirtualItemInHand(args.PulledUid, uid))
             {
                 DebugTools.Assert("Unable to find available hand when starting pulling??");

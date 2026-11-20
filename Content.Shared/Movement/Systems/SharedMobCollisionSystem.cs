@@ -107,7 +107,8 @@ public abstract class SharedMobCollisionSystem : EntitySystem
         DirtyField(uid, comp, nameof(MobCollisionComponent.BufferAccumulator));
         var direction = comp.Direction;
 
-        if (comp.BufferAccumulator <= 0f)
+        // A crowd push may already be queued when the wearer engages the boot magnets.
+        if (comp.BufferAccumulator <= 0f || HasComp<Content.Shared._ReclamationProject.PowerArmor.ArmorMagLockComponent>(uid))
         {
             SetColliding((uid, comp), false, 1f);
         }

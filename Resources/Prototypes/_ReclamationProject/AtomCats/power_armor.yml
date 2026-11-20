@@ -1,0 +1,220 @@
+- type: entity
+  parent: N14ClothingOuterPowerArmorRaider
+  id: AtomCatsPowerArmorFrame
+  name: Rustbucket power armor frame
+  description: Flakes of old teal paint cling to the rusty rails. The Cats welded a second mod mount beside the original and polished both contacts bright.
+  components:
+  - type: RustbucketEngine
+    revSound:
+      collection: AtomCatsEngineRevs
+      params: { volume: -3 }
+    idleSound:
+      path: /Audio/_ReclamationProject/AtomCats/rustbucket_idle.ogg
+      params: { volume: -6 }
+  - type: ModularPowerArmor
+    startsEmpty: true
+    modCapacity: 2
+    frameSprite: _ReclamationProject/Clothing/AtomCats/frame.rsi
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/frame.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/frame.rsi
+
+- type: entity
+  parent: AtomCatsPowerArmorFrame
+  id: AtomCatsT45Red
+  name: Cherry Bomb T-45 power armor
+  description: Cherry-red salvage plate carries hand-painted tongues of orange and ivory. The welds down the shins are newer than the chassis.
+  components:
+  - type: ModularPowerArmor
+    startsEmpty: false
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45RedHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  abstract: true
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: AtomCatsT45HelmetBase
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: light-overlay
+      visible: false
+      shader: unshaded
+      map: [light]
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: off-inhand-left
+      right:
+      - state: off-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: off-equipped-HELMET
+  - type: ToggleableLightVisuals
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
+    inhandVisuals:
+      left:
+      - state: on-inhand-left-unshaded
+        shader: unshaded
+      right:
+      - state: on-inhand-right-unshaded
+        shader: unshaded
+
+- type: entity
+  parent: AtomCatsT45HelmetBase
+  id: AtomCatsT45RedHelmet
+  name: Cherry Bomb T-45 helmet
+  description: Ivory pinstriping frames the visor of this cherry-red helmet. The lamp housing still bears the dents of its first owner.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/red-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/red-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Red
+  fitsGarageStencils: true
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/red.rsi
+  parts:
+    Pauldrons: AtomCatsPlatePauldrons
+    Chest: AtomCatsPlateChest
+    Gloves: AtomCatsPlateGloves
+    Helmet: AtomCatsPlateHelmet
+
+- type: entity
+  parent: AtomCatsPowerArmorFrame
+  id: AtomCatsT45Blue
+  name: Blue Streak T-45 power armor
+  description: A cobalt T-45 rebuilt from salvaged parts. Turquoise flames curl around its pauldrons and climb the shins to meet the bare steel at the knees.
+  components:
+  - type: ModularPowerArmor
+    startsEmpty: false
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45BlueHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: AtomCatsT45HelmetBase
+  id: AtomCatsT45BlueHelmet
+  name: Blue Streak T-45 helmet
+  description: Blue enamel and a turquoise lick of flame mark the cheek of this rebuilt T-45 helmet. Its helmet lamp works off the original switch.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/blue-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/blue-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Blue
+  fitsGarageStencils: true
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
+
+- type: entity
+  parent: AtomCatsT45Blue
+  id: AtomCatsT45Medic
+  name: Blue Cross rescue T-45 power armor
+  description: Ivory salvage plates carry a cobalt rescue cross across the chest and helmet. The Tattoo Artists keep the enamel bright enough to spot from the far side of the garage.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/medic.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/medic.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45MedicHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: AtomCatsT45HelmetBase
+  id: AtomCatsT45MedicHelmet
+  name: Blue Cross rescue T-45 helmet
+  description: A cobalt cross marks the brow of this ivory rescue helmet.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/medic-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/medic-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Medic
+  fitsGarageStencils: true
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/medic.rsi
+
+- type: entity
+  parent: AtomCatsT45Blue
+  id: AtomCatsT45Lowrider
+  name: Lowrider T-45 power armor
+  description: Bottle-green armor with fine gold pinstripes curling around the shoulders and down the breastplate. The Hot Rod signed the paintwork inside the collar.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45LowriderHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: AtomCatsT45HelmetBase
+  id: AtomCatsT45LowriderHelmet
+  name: Lowrider T-45 helmet
+  description: Hand-laid gold stripes meet above the visor of this bottle-green helmet.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Lowrider
+  fitsGarageStencils: true
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
+
+- type: entity
+  id: ActionAtomCatsRevEngine
+  name: Rev the engine
+  description: Work the throttle for twenty seconds, then let the engine settle into a low idle. Moving releases the throttle early.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/frame.rsi, state: icon }
+    event: !type:RevRustbucketEvent
+
+- type: soundCollection
+  id: AtomCatsEngineRevs
+  files:
+  - /Audio/_ReclamationProject/AtomCats/rustbucket_rev_1.ogg
+  - /Audio/_ReclamationProject/AtomCats/rustbucket_rev_2.ogg
+  - /Audio/_ReclamationProject/AtomCats/rustbucket_rev_3.ogg

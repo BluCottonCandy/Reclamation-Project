@@ -26,6 +26,8 @@ namespace Content.Server.Repairable
         [DataField]
         public int DoAfterDelay = 1;
 
+        [DataField] public bool FixedRepairTime;
+
         /// <summary>
         /// A multiplier that will be applied to the above if an entity is repairing themselves.
         /// </summary>

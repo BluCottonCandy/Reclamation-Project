@@ -138,6 +138,9 @@ public sealed class ThrowingSystem : EntitySystem
         bool playSound = true,
         bool doSpin = true)
     {
+        if (user != uid && HasComp<Content.Shared._ReclamationProject.PowerArmor.ArmorMagLockComponent>(uid))
+            return;
+
         if (baseThrowSpeed <= 0 || direction == Vector2Helpers.Infinity || direction == Vector2Helpers.NaN || direction == Vector2.Zero || friction < 0)
             return;
 

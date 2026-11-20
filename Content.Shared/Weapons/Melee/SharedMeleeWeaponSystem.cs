@@ -414,6 +414,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         }
 
         // Use hands clothing if applicable.
+        if (hands?.ActiveHand is { HeldEntity: null } &&
+            TryComp<Content.Shared._ReclamationProject.PowerArmor.PowerArmorModWearerComponent>(entity, out var armor) &&
+            HasComp<Content.Shared.Weapons.Ranged.Components.GunComponent>(armor.ActiveWristTool))
+            return false;
+
         if (_inventory.TryGetSlotEntity(entity, "gloves", out var gloves) &&
             TryComp<MeleeWeaponComponent>(gloves, out var glovesMelee))
         {
@@ -713,7 +718,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(target.Value, attackedEvent);
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
-        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin:user, ignoreResistances: resistanceBypass, partMultiplier: component.ClickPartDamageMultiplier);
+        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin:user, ignoreResistances: resistanceBypass, partMultiplier: component.ClickPartDamageMultiplier, damageSource: meleeUid);
 
         if (damageResult is {Empty: false})
         {
@@ -902,7 +907,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin: user, partMultiplier: component.HeavyPartDamageMultiplier);
+            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin: user, partMultiplier: component.HeavyPartDamageMultiplier, damageSource: meleeUid);
 
             if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
             {

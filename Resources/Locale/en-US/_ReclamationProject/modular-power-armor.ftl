@@ -1,0 +1,15 @@
+pa-slot-pauldrons = pauldrons
+pa-stencil-incompatible = These stencils only fit T-45 and Raider armor plates.
+pa-strength-required = You need at least 3 Strength to wear a power armor frame.
+loadout-name-LoadoutBoSOuterPowerArmorFrame = Power armor frame
+loadout-description-LoadoutBoSOuterPowerArmorFrame = Start with an unplated frame in your outerwear slot. Requires 3 Strength to wear.
+pa-slot-chest = chest and leg assembly
+pa-slot-gloves = glove plating
+pa-slot-helmet = helmet
+pa-piece-name = {$model} — {$slot}
+pa-frame-sealed = Armor rating [bold]{$rating}[/bold]. All four pieces are fitted. Fire seal active.
+pa-frame-open = Armor rating [bold]{$rating}[/bold]. The fire seal is open.
+pa-plate-status = Adds [bold]{$rating}[/bold] armor rating. Integrity [bold]{$hp}/{$max}[/bold].
+pa-plate-breaks = {CAPITALIZE(THE($plate))} cracks through! It needs welding before it can protect you again.
+pa-alert-name = Power armor condition
+pa-alert-desc = The bar shows remaining plate health. The shield number is your armor rating. Broken plates stay mounted and their mods keep working. Weld each broken plate to restore its protection.

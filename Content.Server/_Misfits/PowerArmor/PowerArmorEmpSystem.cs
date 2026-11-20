@@ -1,6 +1,7 @@
 using Content.Server.Emp;
 using Content.Shared._Misfits.Emp;
 using Content.Shared._Misfits.PowerArmor;
+using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Popups;
@@ -31,7 +32,8 @@ public sealed class PowerArmorEmpSystem : EntitySystem
 
     private void OnEmpPulse(Entity<PowerArmorWornComponent> ent, ref EmpPulseEvent args)
     {
-        if (!_prototypes.TryIndex(ShockDamage, out var shockPrototype))
+        if (HasComp<ModularPowerArmorComponent>(ent.Comp.Armor) ||
+            !_prototypes.TryIndex(ShockDamage, out var shockPrototype))
             return;
 
         // The armor is the immediate source because it conducts the EMP into its wearer.

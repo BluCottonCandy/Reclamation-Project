@@ -1,0 +1,103 @@
+- type: entity
+  parent: AtomCatsArmorModBase
+  id: AtomCatsModJumperCables
+  name: jumper cables
+  description: Connect to a nearby power armor frame or its wearer for three seconds. Give it up to 25% of its core capacity from your own core.
+  components:
+  - type: Sprite
+    state: jumpercables
+  - type: PowerArmorMod
+    kind: JumperCables
+    slot: Gloves
+    action: ActionAtomCatsJumperCables
+
+- type: entity
+  id: ActionAtomCatsJumperCables
+  name: Jump-start a frame
+  description: Connect to a nearby power armor frame or its wearer for three seconds. Give it up to 25% of its core capacity from your own core.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    useDelay: 0.5
+    canTargetSelf: false
+    range: 1.5
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: jumpercables }
+    event: !type:TargetGarageModEvent
+
+- type: entity
+  parent: AtomCatsArmorModBase
+  id: AtomCatsModMagLock
+  name: mag-lock soles
+  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 10% slower while engaged.
+  components:
+  - type: Sprite
+    state: maglock
+  - type: PowerArmorMod
+    kind: MagLock
+    slot: Chest
+    action: ActionAtomCatsMagLock
+
+- type: entity
+  id: ActionAtomCatsMagLock
+  name: Toggle mag-lock soles
+  description: Engage the anchors to block shoves and knockback and stay upright when stamina runs out. Walk and sprint 10% slower while engaged.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    useDelay: 0.5
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: maglock }
+    event: !type:ActivateArmorModEvent
+
+- type: entity
+  parent: AtomCatsArmorModBase
+  id: AtomCatsModTowRig
+  name: shoulder tow rig
+  description: With a free hand, hitch a nearby crate or downed person. Walk or sprint at your usual speed with both hands free. Target yourself or the load to release it.
+  components:
+  - type: Sprite
+    state: towrig
+  - type: PowerArmorMod
+    kind: TowRig
+    slot: Pauldrons
+    action: ActionAtomCatsTowRig
+
+- type: entity
+  id: ActionAtomCatsTowRig
+  name: Hitch or release tow rig
+  description: With a free hand, hitch a nearby crate or downed person. Walk or sprint at your usual speed with both hands free. Target yourself or the load to release it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    useDelay: 0.5
+    canTargetSelf: true
+    range: 1.5
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: towrig }
+    event: !type:TargetGarageModEvent
+
+- type: entity
+  parent: AtomCatsArmorModBase
+  id: AtomCatsModJunkhound
+  name: Junkhound visor
+  description: Pulse to outline loose scrap, metal stacks and power armor plates within six tiles for ten seconds. Ready again ten seconds after each pulse.
+  components:
+  - type: Sprite
+    state: junkhound
+  - type: PowerArmorMod
+    kind: Junkhound
+    slot: Helmet
+    action: ActionAtomCatsJunkhound
+
+- type: entity
+  id: ActionAtomCatsJunkhound
+  name: Pulse Junkhound visor
+  description: Pulse to outline loose scrap, metal stacks and power armor plates within six tiles for ten seconds. Ready again ten seconds after each pulse.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    useDelay: 10
+    icon: { sprite: _ReclamationProject/Clothing/AtomCats/armor_mods.rsi, state: junkhound }
+    event: !type:ActivateArmorModEvent

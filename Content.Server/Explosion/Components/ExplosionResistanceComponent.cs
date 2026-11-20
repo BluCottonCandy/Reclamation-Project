@@ -13,7 +13,7 @@ namespace Content.Server.Explosion.Components;
 ///     significantly reduce the damage, but shouldn't be silly overpowered in regular combat.
 /// </remarks>
 [RegisterComponent]
-[Access(typeof(ExplosionSystem))]
+[Access(typeof(ExplosionSystem), typeof(Content.Server._ReclamationProject.PowerArmor.ModularPowerArmorSystem))]
 public sealed partial class ExplosionResistanceComponent : Component
 {
     /// <summary>

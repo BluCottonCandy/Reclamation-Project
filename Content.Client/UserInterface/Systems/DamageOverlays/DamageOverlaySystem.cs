@@ -3,31 +3,35 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
-using Robust.Client.UserInterface;
-using Robust.Client.UserInterface.Controllers;
 using Robust.Shared.Player;
 
 namespace Content.Client.UserInterface.Systems.DamageOverlays;
 
-[UsedImplicitly]
-public sealed class DamageOverlayUiController : UIController
+public sealed class DamageOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
-    [UISystemDependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
+    [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
     private Overlays.DamageOverlay _overlay = default!;
 
     public override void Initialize()
     {
+        base.Initialize();
         _overlay = new Overlays.DamageOverlay();
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttach);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<MobThresholdChecked>(OnThresholdCheck);
+    }
+
+    public override void Shutdown()
+    {
+        _overlayManager.RemoveOverlay(_overlay);
+        _overlay.Dispose();
+        base.Shutdown();
     }
 
     private void OnPlayerAttach(LocalPlayerAttachedEvent args)
@@ -56,17 +60,17 @@ public sealed class DamageOverlayUiController : UIController
 
     private void OnThresholdCheck(ref MobThresholdChecked args)
     {
-
         if (args.Target != _playerManager.LocalEntity)
             return;
         UpdateOverlays(args.Target, args.MobState, args.Damageable, args.Threshold);
+        _overlayManager.AddOverlay(_overlay);
     }
 
     private void ClearOverlay()
     {
         _overlay.DeadLevel = 0f;
         _overlay.CritLevel = 0f;
-        _overlay.BruteLevel = 0f;
+        _overlay.InjuryLevel = 0f;
         _overlay.OxygenLevel = 0f;
     }
 
@@ -78,13 +82,12 @@ public sealed class DamageOverlayUiController : UIController
             damageable == null && !EntityManager.TryGetComponent(entity, out  damageable))
             return;
 
-        if (!_mobThresholdSystem.TryGetIncapThreshold(entity, out var foundThreshold, thresholds))
-            return; //this entity cannot die or crit!!
-
-        if (!thresholds.ShowOverlays)
+        if (!thresholds.ShowOverlays ||
+            !_mobThresholdSystem.TryGetIncapThreshold(entity, out var foundThreshold, thresholds) ||
+            foundThreshold <= 0)
         {
             ClearOverlay();
-            return; //this entity intentionally has no overlays
+            return;
         }
 
         var critThreshold = foundThreshold.Value;
@@ -93,20 +96,13 @@ public sealed class DamageOverlayUiController : UIController
         switch (mobState.CurrentState)
         {
             case MobState.Alive:
+            case MobState.SoftCritical:
             {
-                var bruteDamage = damageable.DamagePerGroup.GetValueOrDefault("Brute");
-                var perceivedDamage = _mobThresholdSystem.GetDisplayedDamage(entity, damageable.TotalDamage) - damageable.TotalDamage;
-                _overlay.BruteLevel = FixedPoint2.Min(1f, (bruteDamage + perceivedDamage) / critThreshold).Float();
-
-                if (damageable.DamagePerGroup.TryGetValue("Airloss", out var oxyDamage))
-                {
-                    _overlay.OxygenLevel = FixedPoint2.Min(1f, oxyDamage / critThreshold).Float();
-                }
-
-                if (_overlay.BruteLevel < 0.05f) // Don't show damage overlay if they're near enough to max.
-                {
-                    _overlay.BruteLevel = 0;
-                }
+                var airloss = damageable.DamagePerGroup.GetValueOrDefault("Airloss");
+                var injury = _mobThresholdSystem.GetDisplayedDamage(entity, damageable.TotalDamage) - airloss;
+                // Divide in floating point so small wounds that penetrate armor remain visible.
+                _overlay.InjuryLevel = Math.Clamp(injury.Float() / critThreshold.Float(), 0f, 1f);
+                _overlay.OxygenLevel = Math.Clamp(airloss.Float() / critThreshold.Float(), 0f, 1f);
 
                 _overlay.CritLevel = 0;
                 _overlay.DeadLevel = 0;
@@ -119,13 +115,13 @@ public sealed class DamageOverlayUiController : UIController
                     return;
                 _overlay.CritLevel = critLevel.Value.Float();
 
-                _overlay.BruteLevel = 0;
+                _overlay.InjuryLevel = 0;
                 _overlay.DeadLevel = 0;
                 break;
             }
             case MobState.Dead:
             {
-                _overlay.BruteLevel = 0;
+                _overlay.InjuryLevel = 0;
                 _overlay.CritLevel = 0;
                 break;
             }

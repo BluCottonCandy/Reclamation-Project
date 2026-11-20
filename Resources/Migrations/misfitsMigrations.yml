@@ -42,3 +42,7 @@ N14DecorationFlagpoleMBOS: MisfitsDecorationFlagpoleBoSBonneville509
 StatueNCRTotalVictoryMemorialMariaSalzzar: null
 
 AsteroidAltRockMining: RandomRockSpawner
+
+# Both gauntlet melee mods now work passively.
+ActionAtomCatsKnuckles: null
+ActionAtomCatsDeathclaw: null

@@ -1,0 +1,15 @@
+- type: department
+  id: AtomCats
+  description: department-AtomCats-description
+  color: "#50B8B0"
+  uiCategory: MinorFaction
+  roles: [AtomCatsLookout, AtomCatsGreaser, AtomCatsMuscle, AtomCatsTattooArtist, AtomCatsRocker, AtomCatsHotRod, AtomCatsUnderboss, AtomCatsBoss]
+
+- type: npcFaction
+  id: AtomCats
+  friendly: [AtomCats]
+  hostile: [WastelandAnimal, WastelandInsect, Deathclaw, HostileRobot, Feral]
+
+- type: accessLevel
+  id: AtomCats
+  name: access-atom-cats

@@ -1,0 +1,10 @@
+// Draw only the edge around the item's transparent silhouette.
+light_mode unshaded;
+uniform highp float outline_width;
+void fragment() {
+    highp vec2 dx = vec2(TEXTURE_PIXEL_SIZE.x * outline_width, 0.0);
+    highp vec2 dy = vec2(0.0, TEXTURE_PIXEL_SIZE.y * outline_width);
+    highp float edge = max(max(texture2D(TEXTURE, UV + dx).a, texture2D(TEXTURE, UV - dx).a),
+                           max(texture2D(TEXTURE, UV + dy).a, texture2D(TEXTURE, UV - dy).a));
+    COLOR = vec4(0.30, 1.0, 0.73, max(0.0, edge - texture2D(TEXTURE, UV).a));
+}

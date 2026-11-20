@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Original Atom Cats mod artwork generated for Reclamation Project and fitted to four-direction armor sprites.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "overdrive"
+    },
+    {
+      "name": "overdrive-piece"
+    },
+    {
+      "name": "overdrive-worn",
+      "directions": 4
+    },
+    {
+      "name": "jump"
+    },
+    {
+      "name": "jump-piece"
+    },
+    {
+      "name": "jump-worn",
+      "directions": 4
+    },
+    {
+      "name": "shotgun"
+    },
+    {
+      "name": "shotgun-piece"
+    },
+    {
+      "name": "shotgun-worn",
+      "directions": 4
+    },
+    {
+      "name": "flamer"
+    },
+    {
+      "name": "flamer-piece"
+    },
+    {
+      "name": "flamer-worn",
+      "directions": 4
+    },
+    {
+      "name": "deathclaw"
+    },
+    {
+      "name": "deathclaw-piece"
+    },
+    {
+      "name": "deathclaw-worn",
+      "directions": 4
+    },
+    {
+      "name": "knuckles"
+    },
+    {
+      "name": "knuckles-piece"
+    },
+    {
+      "name": "knuckles-worn",
+      "directions": 4
+    },
+    {
+      "name": "nightvision"
+    },
+    {
+      "name": "nightvision-piece"
+    },
+    {
+      "name": "nightvision-worn",
+      "directions": 4
+    },
+    {
+      "name": "medicalhud"
+    },
+    {
+      "name": "medicalhud-piece"
+    },
+    {
+      "name": "medicalhud-worn",
+      "directions": 4
+    },
+    {
+      "name": "mechanicvisor"
+    },
+    {
+      "name": "mechanicvisor-piece"
+    },
+    {
+      "name": "mechanicvisor-worn",
+      "directions": 4
+    },
+    {
+      "name": "welder"
+    },
+    {
+      "name": "welder-piece"
+    },
+    {
+      "name": "welder-worn",
+      "directions": 4
+    },
+    {
+      "name": "welder-flame"
+    },
+    {
+      "name": "autoinjector"
+    },
+    {
+      "name": "autoinjector-piece"
+    },
+    {
+      "name": "autoinjector-worn",
+      "directions": 4
+    },
+    {
+      "name": "jumpercables"
+    },
+    {
+      "name": "jumpercables-piece"
+    },
+    {
+      "name": "jumpercables-worn",
+      "directions": 4
+    },
+    {
+      "name": "maglock"
+    },
+    {
+      "name": "maglock-piece"
+    },
+    {
+      "name": "maglock-worn",
+      "directions": 4
+    },
+    {
+      "name": "towrig"
+    },
+    {
+      "name": "towrig-piece"
+    },
+    {
+      "name": "towrig-worn",
+      "directions": 4
+    },
+    {
+      "name": "junkhound"
+    },
+    {
+      "name": "junkhound-piece"
+    },
+    {
+      "name": "junkhound-worn",
+      "directions": 4
+    }
+  ]
+}

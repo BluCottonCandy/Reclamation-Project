@@ -27,7 +27,7 @@ public sealed class FactionSupplySystem : EntitySystem
     public int GetCrateReward(EntityUid crate) => TryComp<FactionSupplyCrateComponent>(crate, out var supply) ? supply.Reward : 0;
     private bool MatchesCrateProduct(EntityUid crate, string? product) => product == null || MetaData(crate).EntityPrototype?.ID == product;
     public const string CurrencyPrefix = "Supply points: ";
-    public static readonly string[] Factions = { "Brotherhood", "Town", "Minutemen", "Forged", "Railroad", "Institute", "Triggermen", "Pack" };
+    public static readonly string[] Factions = { "Brotherhood", "Town", "Minutemen", "Forged", "Railroad", "Institute", "Triggermen", "Pack", "Atom Cats" };
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     private sealed class Budget { public int Points = 50; public long Minute; }
@@ -77,11 +77,15 @@ public sealed class FactionSupplySystem : EntitySystem
     public bool CanPurchase(EntityUid machine, EntityUid user, string product)
     {
         if (!CanUseVendor(machine, user)) return false;
-        if (!TryComp<FactionSupplyVendorComponent>(machine, out var vendor)
-            || !vendor.EquipmentRanks.TryGetValue(product, out var required)) return true;
-        return TryComp<MindContainerComponent>(user, out var mind)
-            && EntityManager.System<SharedJobSystem>().MindTryGetJob(mind.Mind, out _, out var job)
-            && vendor.JobRanks.TryGetValue(job.ID, out var rank) && rank >= required;
+        if (!TryComp<FactionSupplyVendorComponent>(machine, out var vendor)) return true;
+        var jobRestriction = vendor.RestrictedStock.Find(group => group.Products.Contains(product));
+        var hasMinimumRank = vendor.EquipmentRanks.TryGetValue(product, out var required);
+        if (!hasMinimumRank && jobRestriction == null) return true;
+        if (!TryComp<MindContainerComponent>(user, out var mind) ||
+            !EntityManager.System<SharedJobSystem>().MindTryGetJob(mind.Mind, out _, out var job))
+            return false;
+        return (jobRestriction == null || jobRestriction.Jobs.Contains(job.ID)) &&
+            (!hasMinimumRank || vendor.JobRanks.TryGetValue(job.ID, out var rank) && rank >= required);
     }
     public int Balance(string currency) => IsCurrency(currency) ? Account(currency).Points : 0;
     public bool TrySpend(string currency, int amount)

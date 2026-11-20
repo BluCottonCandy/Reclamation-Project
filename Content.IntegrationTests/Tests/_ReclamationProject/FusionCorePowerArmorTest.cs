@@ -1,11 +1,16 @@
 using System.Linq;
 using Content.Server._ReclamationProject.PowerArmor;
+using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._Misfits.Special.Components;
 using Content.Shared._ReclamationProject.PowerArmor;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Damage;
+using Content.Shared.Emp;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -226,10 +231,9 @@ public sealed class FusionCorePowerArmorTest
             entities.EventBus.RaiseLocalEvent(systems, new FusionCorePowerToggleEvent { Performer = wearer });
             Assert.That(entities.GetComponent<FusionCorePoweredComponent>(systems).Powered, Is.True);
 
-            // The wearer can't reach their own core from inside.
+            // The wearer can service the core, but cannot install one held by another player.
             var selfVerbs = entities.System<SharedVerbSystem>().GetLocalVerbs(wearer, wearer, typeof(AlternativeVerb));
-            Assert.That(selfVerbs.Any(v => v.Text == loc.GetString("fusion-core-verb-remove")), Is.False, "wearer can pull their own core");
-            Assert.That(fusion.TryStartRemoveFromWearer(wearer, wearer), Is.False);
+            Assert.That(selfVerbs.Any(v => v.Text == loc.GetString("fusion-core-verb-remove")), Is.True);
 
             // Kill the core; a helper fits a fresh one from outside (3 seconds).
             KillCore(entities, systems);
@@ -237,7 +241,7 @@ public sealed class FusionCorePowerArmorTest
             helper = entities.SpawnEntity("MobHuman", map.GridCoords);
             fresh = entities.SpawnEntity("N14FusionCore", map.GridCoords);
             Assert.That(hands.TryPickupAnyHand(helper, fresh), Is.True);
-            Assert.That(fusion.TryStartInstallInWearer(wearer, wearer, fresh), Is.False, "wearer installed into own suit");
+            Assert.That(fusion.TryStartInstallInWearer(wearer, wearer, fresh), Is.False, "wearer installed a core from the helper's hand");
             Assert.That(fusion.TryStartInstallInWearer(helper, wearer, fresh), Is.True);
         });
 
@@ -302,6 +306,149 @@ public sealed class FusionCorePowerArmorTest
             Assert.That(entities.GetComponent<FusionCorePoweredComponent>(systems).Powered, Is.False);
         });
 
+        await pair.CleanReturnAsync();
+    }
+
+    [TestCase(false)]
+    [TestCase(true)]
+    public async Task WearerCanRemoveInstallAndSwapOwnCore(bool deployRig)
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var server = pair.Server;
+        var em = server.ResolveDependency<IEntityManager>();
+        var loc = server.ResolveDependency<ILocalizationManager>();
+        var tickRate = (int) server.ResolveDependency<IGameTiming>().TickRate;
+        var inventory = em.System<InventorySystem>();
+        var hands = em.System<SharedHandsSystem>();
+        var slots = em.System<ItemSlotsSystem>();
+        EntityUid wearer = default, frame = default, rig = default, original = default, replacement = default;
+
+        await server.WaitAssertion(() =>
+        {
+            wearer = em.SpawnEntity("MobHuman", map.GridCoords);
+            frame = em.SpawnEntity("ReclamationPowerArmorFrame", map.GridCoords);
+            Assert.That(inventory.TryEquip(wearer, frame, "outerClothing", force: true));
+            rig = em.GetComponent<ToggleableClothingComponent>(frame).ClothingUids.Single(p => p.Value == "back").Key;
+            if (deployRig)
+                Assert.That(inventory.TryEquip(wearer, rig, "back", force: true));
+            original = slots.GetItemOrNull(rig, "fusion_core")!.Value;
+            var target = deployRig ? wearer : frame;
+            var verbs = em.System<SharedVerbSystem>().GetLocalVerbs(target, wearer, typeof(AlternativeVerb));
+            verbs.Single(v => v.Text == loc.GetString("fusion-core-verb-remove")).Act!();
+        });
+        await server.WaitRunTicks(tickRate * 2);
+        await server.WaitAssertion(() => Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.EqualTo(original)));
+        await server.WaitRunTicks(tickRate + 2);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.Null);
+            Assert.That(hands.IsHolding(wearer, original));
+            Assert.That(em.GetComponent<FusionCorePoweredComponent>(rig).Powered, Is.False);
+            var target = deployRig ? frame : wearer;
+            var use = new InteractUsingEvent(wearer, original, target, map.GridCoords);
+            em.EventBus.RaiseLocalEvent(target, use);
+            Assert.That(use.Handled);
+        });
+        await server.WaitRunTicks(tickRate * 3 + 2);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.EqualTo(original));
+            Assert.That(em.GetComponent<FusionCorePoweredComponent>(rig).Powered);
+            replacement = em.SpawnEntity("N14FusionCore", map.GridCoords);
+            Assert.That(hands.TryPickupAnyHand(wearer, replacement));
+            var verbs = em.System<SharedVerbSystem>().GetLocalVerbs(frame, wearer, typeof(AlternativeVerb));
+            verbs.Single(v => v.Text == loc.GetString("fusion-core-verb-install")).Act!();
+        });
+        await server.WaitRunTicks(tickRate * 3 + 2);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.EqualTo(replacement));
+            Assert.That(hands.IsHolding(wearer, original));
+            Assert.That(inventory.TryGetSlotEntity(wearer, "outerClothing", out var worn) && worn == frame);
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [TestCase("ReclamationPowerArmorFrame", false)]
+    [TestCase("N14ClothingOuterPowerArmorT45", true)]
+    public async Task EmpSpareCoreDrainsWhileInstalledCoreAndWearerAreProtected(string frameId, bool deployRig)
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.ResolveDependency<IEntityManager>();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var wearer = em.SpawnEntity("MobHuman", map.GridCoords);
+            var frame = em.SpawnEntity(frameId, map.GridCoords);
+            var rig = em.GetComponent<ToggleableClothingComponent>(frame).ClothingUids.Single(p => p.Value == "back").Key;
+            var inventory = em.System<InventorySystem>();
+            Assert.That(inventory.TryEquip(wearer, frame, "outerClothing", force: true));
+            if (deployRig)
+                Assert.That(inventory.TryEquip(wearer, rig, "back", force: true));
+            var slots = em.System<ItemSlotsSystem>();
+            var core = slots.GetItemOrNull(rig, "fusion_core")!.Value;
+            var plates = PowerArmorPlates.Slots.Select(slot => slots.GetItemOrNull(frame, PowerArmorPlates.Container(slot)))
+                .OfType<EntityUid>().ToArray();
+            var installed = em.GetComponent<BatteryComponent>(core);
+            var charge = installed.CurrentCharge;
+            var spare = em.SpawnEntity("N14FusionCore", map.GridCoords);
+            var body = em.GetComponent<DamageableComponent>(wearer);
+            var injury = body.TotalDamage;
+            var emp = em.System<EmpSystem>();
+            emp.EmpPulse(map.MapCoords, 5, 10000, 10);
+            // Check a directed pulse too, even when the rig or core is nested in equipment.
+            emp.TryEmpEffects(core, 10000, 10);
+            Assert.That(em.GetComponent<BatteryComponent>(spare).CurrentCharge, Is.Zero);
+            Assert.That(em.HasComponent<EmpDisabledComponent>(spare));
+            Assert.That(body.TotalDamage, Is.EqualTo(injury));
+            foreach (var plate in plates)
+                Assert.That(em.GetComponent<DamageableComponent>(plate).TotalDamage.Float(), Is.Zero);
+            Assert.That(installed.CurrentCharge, Is.EqualTo(charge));
+            foreach (var item in new[] { frame, rig, core })
+                Assert.That(em.HasComponent<EmpDisabledComponent>(item), Is.False);
+            em.System<FusionCorePoweredSystem>().UpdatePowered((rig, em.GetComponent<FusionCorePoweredComponent>(rig)));
+            Assert.That(em.GetComponent<FusionCorePoweredComponent>(rig).Powered);
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task PendingRemovalCannotTakeAnotherCoreOrFollowAnUnequippedFrame()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var server = pair.Server;
+        var em = server.ResolveDependency<IEntityManager>();
+        var tickRate = (int) server.ResolveDependency<IGameTiming>().TickRate;
+        var inventory = em.System<InventorySystem>();
+        var hands = em.System<SharedHandsSystem>();
+        var slots = em.System<ItemSlotsSystem>();
+        var fusion = em.System<FusionCorePoweredSystem>();
+        EntityUid wearer = default, rig = default, helper = default, replacement = default;
+        await server.WaitAssertion(() =>
+        {
+            wearer = em.SpawnEntity("MobHuman", map.GridCoords);
+            helper = em.SpawnEntity("MobHuman", map.GridCoords);
+            var frame = em.SpawnEntity("ReclamationPowerArmorFrame", map.GridCoords);
+            Assert.That(inventory.TryEquip(wearer, frame, "outerClothing", force: true));
+            rig = em.GetComponent<ToggleableClothingComponent>(frame).ClothingUids.Single(p => p.Value == "back").Key;
+            replacement = em.SpawnEntity("N14FusionCore", map.GridCoords);
+            Assert.That(hands.TryPickupAnyHand(wearer, replacement));
+            Assert.That(fusion.TryStartInstallInWearer(wearer, wearer, replacement));
+        });
+        await server.WaitRunTicks(tickRate);
+        await server.WaitAssertion(() => Assert.That(fusion.TryStartRemoveFromWearer(helper, wearer)));
+        await server.WaitRunTicks(tickRate * 3 + 2);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.EqualTo(replacement));
+            Assert.That(hands.IsHolding(helper, replacement), Is.False);
+            Assert.That(fusion.TryStartRemoveFromWearer(wearer, wearer));
+            Assert.That(inventory.TryUnequip(wearer, "outerClothing", force: true));
+        });
+        await server.WaitRunTicks(tickRate * 3 + 2);
+        await server.WaitAssertion(() => Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.EqualTo(replacement)));
         await pair.CleanReturnAsync();
     }
 

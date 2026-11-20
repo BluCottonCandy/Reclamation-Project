@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": " Modular sections derived from: _Nuclear14\\Clothing\\OuterClothing\\PowerArmor\\hellfire.rsi — Made by baohe (discord) (CC-BY-NC-SA-3.0); _Nuclear14\\Clothing\\Head\\PowerArmorHelmets\\hellfire.rsi — Made by baohe (discord) (CC-BY-NC-SA-3.0); _Nuclear14\\Clothing\\Hands\\PowerGauntlets\\dark.rsi — Created by adom03 for Nuclear 14 (CC-BY-NC-SA-3.0)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "chest",
+      "directions": 4
+    },
+    {
+      "name": "chest-item"
+    },
+    {
+      "name": "pauldrons",
+      "directions": 4
+    },
+    {
+      "name": "pauldrons-item"
+    },
+    {
+      "name": "helmet",
+      "directions": 4
+    },
+    {
+      "name": "helmet-item"
+    },
+    {
+      "name": "gloves",
+      "directions": 4
+    },
+    {
+      "name": "gloves-item"
+    }
+  ]
+}

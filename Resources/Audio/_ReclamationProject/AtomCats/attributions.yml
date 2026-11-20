@@ -2,3 +2,8 @@
   license: "CC0-1.0"
   copyright: "Original engine sounds synthesized for Reclamation Project."
   source: "https://github.com/BluCottonCandy/Reclamation-Project"
+
+- files: ["railroad_rifle.ogg"]
+  license: "CC0-1.0"
+  copyright: "Original mechanical impact and steam whistle synthesized for Reclamation Project."
+  source: "https://github.com/BluCottonCandy/Reclamation-Project"

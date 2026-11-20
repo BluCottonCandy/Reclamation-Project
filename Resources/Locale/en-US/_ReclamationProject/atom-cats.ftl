@@ -32,3 +32,8 @@ job-supervisors-atom-cats-underboss = the Boss
 job-name-atom-cats-boss = Boss
 job-description-atom-cats-boss = Speak for the Atom Cats and steer the faction's in-character business.
 job-supervisors-atom-cats-boss = your own judgment
+
+job-name-atom-cats-tattoo-artist = Tattoo Artist
+job-description-atom-cats-tattoo-artist = Keep a book of flash designs at the garage, tend to injured Cats, and patch up customers who come in from the road.
+job-supervisors-atom-cats-tattoo-artist = the Rocker
+atom-cats-garage-stamp = Atom Cats Garage

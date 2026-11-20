@@ -64,3 +64,11 @@
   components:
   - type: SpawnPoint
     job_id: AtomCatsBoss
+
+- type: entity
+  parent: AtomCatsSpawnBase
+  id: SpawnPointAtomCatsTattooArtist
+  name: Atom Cats Tattoo Artist spawn
+  components:
+  - type: SpawnPoint
+    job_id: AtomCatsTattooArtist

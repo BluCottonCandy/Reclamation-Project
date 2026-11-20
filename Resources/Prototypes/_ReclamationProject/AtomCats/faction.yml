@@ -3,7 +3,7 @@
   description: department-AtomCats-description
   color: "#50B8B0"
   uiCategory: MinorFaction
-  roles: [AtomCatsLookout, AtomCatsGreaser, AtomCatsMuscle, AtomCatsRocker, AtomCatsHotRod, AtomCatsUnderboss, AtomCatsBoss]
+  roles: [AtomCatsLookout, AtomCatsGreaser, AtomCatsMuscle, AtomCatsTattooArtist, AtomCatsRocker, AtomCatsHotRod, AtomCatsUnderboss, AtomCatsBoss]
 
 - type: npcFaction
   id: AtomCats

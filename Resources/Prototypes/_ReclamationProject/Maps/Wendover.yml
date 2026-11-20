@@ -54,6 +54,7 @@
           MinutemenRecruit: [6, 6]
           AtomCatsLookout: [3, 3]
           AtomCatsGreaser: [3, 3]
+          AtomCatsTattooArtist: [2, 2]
           AtomCatsMuscle: [3, 3]
           AtomCatsRocker: [1, 1]
           AtomCatsHotRod: [1, 1]

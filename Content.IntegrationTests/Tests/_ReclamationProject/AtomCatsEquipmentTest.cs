@@ -8,6 +8,8 @@ using Content.Server.Players.JobWhitelist;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
+using Content.Server.UndecidedLoadout.Components;
+using Content.Shared.Foldable;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Access.Components;
@@ -38,7 +40,7 @@ namespace Content.IntegrationTests.Tests._ReclamationProject;
 public sealed class AtomCatsEquipmentTest
 {
     [Test]
-    public async Task AllSevenRanksSpawnDressedWithARepairKitAndAssembledArmor()
+    public async Task AllEightJobsReceiveTheirRankGearAndKits()
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -47,7 +49,7 @@ public sealed class AtomCatsEquipmentTest
         await pair.Server.WaitAssertion(() =>
         {
             var department = protos.Index<DepartmentPrototype>("AtomCats");
-            var ranks = new[] { "Lookout", "Greaser", "Muscle", "Rocker", "HotRod", "Underboss", "Boss" };
+            var ranks = new[] { "Lookout", "Greaser", "Muscle", "TattooArtist", "Rocker", "HotRod", "Underboss", "Boss" };
             Assert.That(department.Roles.Select(role => role.Id), Is.EquivalentTo(ranks.Select(rank => "AtomCats" + rank)));
             var station = protos.Index<GameMapPrototype>("ReclamationWendover").Stations["Wendover"];
             var jobs = station.StationComponentOverrides.Values.Select(entry => entry.Component).OfType<StationJobsComponent>().Single();
@@ -59,7 +61,7 @@ public sealed class AtomCatsEquipmentTest
             foreach (var rank in ranks)
             {
                 var job = protos.Index<JobPrototype>("AtomCats" + rank);
-                var seats = rank is "Lookout" or "Greaser" or "Muscle" ? 3 : 1;
+                var seats = rank switch { "Lookout" or "Greaser" or "Muscle" => 3, "TattooArtist" => 2, _ => 1 };
                 var whitelistedRank = rank is "Underboss" or "Boss";
                 Assert.That(jobs.SetupAvailableJobs[job.ID], Is.EqualTo(new int?[] { seats, seats }), rank);
                 Assert.That(job.SetPreference, Is.True, rank);
@@ -92,11 +94,40 @@ public sealed class AtomCatsEquipmentTest
                 Assert.That(em.GetComponent<MetaDataComponent>(pass).EntityName, Does.Contain("switchblade ID"));
                 Assert.That(em.GetComponent<AccessComponent>(pass).Tags.Any(tag => tag.Id == "AtomCats"));
                 var carried = em.GetComponent<StorageComponent>(Worn("back")).Container.ContainedEntities.Select(Prototype).ToArray();
-                Assert.That(carried, Does.Contain("AtomCatsCut"));
-                Assert.That(carried, Does.Contain("Welder"));
                 Assert.That(carried.Count(id => id == "AtomCatsStencilCan"), Is.EqualTo(1), rank);
+                var selector = Worn("pocket2");
+                Assert.That(Prototype(selector), Is.EqualTo($"AtomCats{rank}KitSelector"));
+                var choices = em.GetComponent<UndecidedLoadoutBackpackComponent>(selector);
+                Assert.That(choices.PossibleSets.Distinct().Count(), Is.EqualTo(3));
+                Assert.That(choices.MaxSelectedSets, Is.EqualTo(1));
+                if (rank == "TattooArtist")
+                {
+                    Assert.That(job.Supervisors, Is.EqualTo("job-supervisors-atom-cats-tattoo-artist"));
+                    Assert.That(inventory.TryGetSlotEntity(wearer, "belt", out _), Is.False);
+                    var stretcher = Worn("pocket1");
+                    Assert.That(Prototype(stretcher), Is.EqualTo("AtomCatsCompactStretcher"));
+                    Assert.That(em.GetComponent<ItemComponent>(stretcher).Size.Id, Is.EqualTo("Small"));
+                    Assert.That(em.GetComponent<FoldableComponent>(stretcher).IsFolded);
+                    Assert.That(carried, Does.Contain("N14MagazineTabooTattoos"));
+                }
+                else
+                {
+                    var belt = Worn("belt");
+                    Assert.That(Prototype(belt), Is.EqualTo("N14ClothingBeltUtilityFilled"));
+                    Assert.That(em.GetComponent<StorageComponent>(belt).Container.ContainedEntities.Select(Prototype),
+                        Is.EquivalentTo(new[] { "N14Crowbar", "N14Wrench", "N14Screwdriver", "N14Wirecutter", "N14Welder", "N14Multitool" }));
+                }
 
                 var frame = Worn("outerClothing");
+                if (rank is "Lookout" or "Greaser")
+                {
+                    Assert.That(Prototype(frame), Is.EqualTo("AtomCatsCut"));
+                    Assert.That(carried, Does.Not.Contain("AtomCatsCut"));
+                    Assert.That(inventory.TryGetSlotEntity(wearer, "head", out _), Is.False);
+                    em.DeleteEntity(wearer);
+                    continue;
+                }
+                Assert.That(carried, Does.Contain("AtomCatsCut"));
                 var model = Prototype(frame);
                 Assert.That(model, Is.AnyOf("AtomCatsT45Red", "AtomCatsT45Blue"));
                 Assert.That(Prototype(Worn("head")), Is.EqualTo(model + "Helmet"));

@@ -104,20 +104,141 @@
     shoes: AtomCatsBoots
     back: N14ClothingBackpackSatchelExplorer
     id: AtomCatsGaragePass
-  storage:
-    back:
-    - AtomCatsCut
-    - Welder
-    - AtomCatsStencilCan
 
 - type: startingGear
   parent: AtomCatsGarageGear
+  id: AtomCatsStreetGear
+  abstract: true
+  equipment:
+    outerClothing: AtomCatsCut
+    belt: N14ClothingBeltUtilityFilled
+  storage:
+    back: [AtomCatsStencilCan]
+
+- type: startingGear
+  parent: AtomCatsGarageGear
+  id: AtomCatsArmoredGear
+  abstract: true
+  storage:
+    back: [AtomCatsCut, AtomCatsStencilCan]
+
+- type: startingGear
+  parent: AtomCatsArmoredGear
   id: AtomCatsRedGear
   equipment:
     outerClothing: AtomCatsT45Red
 
 - type: startingGear
-  parent: AtomCatsGarageGear
+  parent: AtomCatsArmoredGear
   id: AtomCatsBlueGear
   equipment:
     outerClothing: AtomCatsT45Blue
+
+- type: startingGear
+  parent: AtomCatsStreetGear
+  id: AtomCatsLookoutGear
+  equipment:
+    pocket2: AtomCatsLookoutKitSelector
+
+- type: startingGear
+  parent: AtomCatsStreetGear
+  id: AtomCatsGreaserGear
+  equipment:
+    pocket2: AtomCatsGreaserKitSelector
+
+- type: startingGear
+  parent: AtomCatsRedGear
+  id: AtomCatsMuscleGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsMuscleKitSelector
+
+- type: startingGear
+  parent: AtomCatsBlueGear
+  id: AtomCatsTattooArtistGear
+  equipment:
+    pocket1: AtomCatsCompactStretcher
+    pocket2: AtomCatsTattooArtistKitSelector
+  storage:
+    back: [AtomCatsCut, AtomCatsStencilCan, N14MagazineTabooTattoos, Welder]
+
+- type: startingGear
+  parent: AtomCatsBlueGear
+  id: AtomCatsRockerGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsRockerKitSelector
+
+- type: startingGear
+  parent: AtomCatsRedGear
+  id: AtomCatsHotRodGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsHotRodKitSelector
+
+- type: startingGear
+  parent: AtomCatsBlueGear
+  id: AtomCatsUnderbossGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsUnderbossKitSelector
+
+- type: startingGear
+  parent: AtomCatsRedGear
+  id: AtomCatsBossGear
+  equipment:
+    belt: N14ClothingBeltUtilityFilled
+    pocket2: AtomCatsBossKitSelector
+
+- type: entity
+  parent: N14WelderIndustrial
+  id: AtomCatsBossWelder
+  name: Old Reliable
+  description: An industrial welder with the names of past garage bosses engraved on its grip.
+
+- type: entity
+  parent: RubberStampApproved
+  id: AtomCatsGarageStamp
+  name: Atom Cats garage stamp
+  description: The handle is a gearshift knob. The face stamps the garage name in teal ink.
+  components:
+  - type: Stamp
+    stampedName: atom-cats-garage-stamp
+    stampedColor: "#50B8B0"
+
+- type: entity
+  parent: RollerBedSpawnFolded
+  id: AtomCatsCompactStretcher
+  name: compact stretcher
+  description: An oilcloth sling on folding steel rails. A Tattoo Artist can carry it in a pocket between calls.
+  components:
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: ClothingBeltNCRBandolier
+  id: AtomCatsMedicalBandolier
+  name: Atom Cats medical bandolier
+  description: A worn leather bandolier with a copper cat stitched into the strap.
+
+- type: entity
+  parent: N14WeaponPistolM1911Custom
+  id: AtomCatsEngravedPistol
+  name: engraved garage .45
+  description: The Boss's custom M1911 bears a pair of pointed cat ears engraved in the slide.
+
+- type: entity
+  parent: MagazineBox44
+  id: AtomCatsCarbinePack
+  name: twelve-round carbine carton
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 12
+
+- type: entity
+  parent: MagazineBox12gauge
+  id: AtomCatsShellPack
+  name: six-shell pump shotgun carton
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 6

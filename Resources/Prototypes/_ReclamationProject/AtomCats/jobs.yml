@@ -4,7 +4,7 @@
   description: job-description-atom-cats-lookout
   supervisors: job-supervisors-atom-cats-lookout
   playTimeTracker: AtomCatsLookout
-  startingGear: AtomCatsRedGear
+  startingGear: AtomCatsLookoutGear
   setPreference: true
   alwaysUseSpawner: true
   canBeAntag: false
@@ -27,7 +27,7 @@
   description: job-description-atom-cats-greaser
   supervisors: job-supervisors-atom-cats-greaser
   playTimeTracker: AtomCatsGreaser
-  startingGear: AtomCatsBlueGear
+  startingGear: AtomCatsGreaserGear
   setPreference: true
   alwaysUseSpawner: true
   canBeAntag: false
@@ -50,7 +50,7 @@
   description: job-description-atom-cats-muscle
   supervisors: job-supervisors-atom-cats-muscle
   playTimeTracker: AtomCatsMuscle
-  startingGear: AtomCatsRedGear
+  startingGear: AtomCatsMuscleGear
   setPreference: true
   alwaysUseSpawner: true
   canBeAntag: false
@@ -73,7 +73,7 @@
   description: job-description-atom-cats-rocker
   supervisors: job-supervisors-atom-cats-rocker
   playTimeTracker: AtomCatsRocker
-  startingGear: AtomCatsBlueGear
+  startingGear: AtomCatsRockerGear
   setPreference: true
   alwaysUseSpawner: true
   canBeAntag: false
@@ -96,7 +96,7 @@
   description: job-description-atom-cats-hotrod
   supervisors: job-supervisors-atom-cats-hotrod
   playTimeTracker: AtomCatsHotRod
-  startingGear: AtomCatsRedGear
+  startingGear: AtomCatsHotRodGear
   setPreference: true
   alwaysUseSpawner: true
   canBeAntag: false
@@ -119,7 +119,7 @@
   description: job-description-atom-cats-underboss
   supervisors: job-supervisors-atom-cats-underboss
   playTimeTracker: AtomCatsUnderboss
-  startingGear: AtomCatsBlueGear
+  startingGear: AtomCatsUnderbossGear
   whitelisted: true
   hideWithoutJobWhitelist: true
   overrideConsoleVisibility: false
@@ -144,7 +144,7 @@
   description: job-description-atom-cats-boss
   supervisors: job-supervisors-atom-cats-boss
   playTimeTracker: AtomCatsBoss
-  startingGear: AtomCatsRedGear
+  startingGear: AtomCatsBossGear
   whitelisted: true
   hideWithoutJobWhitelist: true
   overrideConsoleVisibility: false
@@ -162,3 +162,25 @@
 
 - type: playTimeTracker
   id: AtomCatsBoss
+
+- type: job
+  id: AtomCatsTattooArtist
+  name: job-name-atom-cats-tattoo-artist
+  description: job-description-atom-cats-tattoo-artist
+  supervisors: job-supervisors-atom-cats-tattoo-artist
+  playTimeTracker: AtomCatsTattooArtist
+  startingGear: AtomCatsTattooArtistGear
+  alwaysUseSpawner: true
+  canBeAntag: false
+  displayWeight: 350
+  icon: JobIconMedicalDoctor
+  access: [AtomCats]
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions: [Wastelander, AtomCats]
+    - type: PowerArmorProficiency
+
+- type: playTimeTracker
+  id: AtomCatsTattooArtist

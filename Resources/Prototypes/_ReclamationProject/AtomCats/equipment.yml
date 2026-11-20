@@ -154,9 +154,10 @@
     pocket2: AtomCatsMuscleKitSelector
 
 - type: startingGear
-  parent: AtomCatsBlueGear
+  parent: AtomCatsArmoredGear
   id: AtomCatsTattooArtistGear
   equipment:
+    outerClothing: AtomCatsT45Medic
     pocket1: AtomCatsCompactStretcher
     pocket2: AtomCatsTattooArtistKitSelector
   storage:
@@ -170,9 +171,10 @@
     pocket2: AtomCatsRockerKitSelector
 
 - type: startingGear
-  parent: AtomCatsRedGear
+  parent: AtomCatsArmoredGear
   id: AtomCatsHotRodGear
   equipment:
+    outerClothing: AtomCatsT45Lowrider
     belt: N14ClothingBeltUtilityFilled
     pocket2: AtomCatsHotRodKitSelector
 

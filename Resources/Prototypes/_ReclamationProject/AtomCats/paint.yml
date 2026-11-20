@@ -43,10 +43,46 @@
       components: [ModularPowerArmor, PowerArmorPlate]
 
 - type: entity
+  parent: SprayPaintOrange
+  id: AtomCatsPaintChecker
+  name: Checker Cab stencil spray
+  description: Taxi-yellow enamel and a black-and-ivory checker band run across the plates. The stencil fits T-45 and Raider plates, loose or mounted.
+  components:
+  - type: Paint
+    color: "#DEA92C"
+    armorFinish: _ReclamationProject/Clothing/AtomCats/checker.rsi
+    whitelist:
+      components: [ModularPowerArmor, PowerArmorPlate]
+
+- type: entity
+  parent: SprayPaintPurple
+  id: AtomCatsPaintVoltage
+  name: Violet Voltage stencil spray
+  description: A crooked yellow lightning bolt cuts across deep plum enamel. The stencil fits T-45 and Raider plates, loose or mounted.
+  components:
+  - type: Paint
+    color: "#854087"
+    armorFinish: _ReclamationProject/Clothing/AtomCats/voltage.rsi
+    whitelist:
+      components: [ModularPowerArmor, PowerArmorPlate]
+
+- type: entity
+  parent: SprayPaintGreen
+  id: AtomCatsPaintSunliner
+  name: Sunliner stencil spray
+  description: Cream, coral, and orange racing stripes sweep across turquoise enamel. The stencil fits T-45 and Raider plates, loose or mounted.
+  components:
+  - type: Paint
+    color: "#399C96"
+    armorFinish: _ReclamationProject/Clothing/AtomCats/sunliner.rsi
+    whitelist:
+      components: [ModularPowerArmor, PowerArmorPlate]
+
+- type: entity
   parent: BaseItem
   id: AtomCatsStencilCan
   name: Atom Cats bottomless stencil can
-  description: A garage sprayer with four stencil wheels and a paint feed that never runs dry. Use it on T-45 or Raider plates, loose or mounted, and pick a finish.
+  description: A garage sprayer with a carousel of stencils and a paint feed that never runs dry. Use it on T-45 or Raider plates, loose or mounted, and pick a finish.
   components:
   - type: Sprite
     sprite: Objects/Fun/spraycans.rsi
@@ -55,7 +91,14 @@
     size: Small
     sprite: Objects/Tools/Hydroponics/sprays.rsi
   - type: ArmorStencilCan
-    stencils: [AtomCatsPaintCherry, AtomCatsPaintCobalt, AtomCatsPaintMedic, AtomCatsPaintLowrider]
+    stencils:
+    - AtomCatsPaintCherry
+    - AtomCatsPaintCobalt
+    - AtomCatsPaintMedic
+    - AtomCatsPaintLowrider
+    - AtomCatsPaintChecker
+    - AtomCatsPaintVoltage
+    - AtomCatsPaintSunliner
   - type: UserInterface
     interfaces:
       enum.RadialSelectorUiKey.Key:

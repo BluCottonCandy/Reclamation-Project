@@ -94,6 +94,74 @@
   sprite: _ReclamationProject/Clothing/AtomCats/blue.rsi
 
 - type: entity
+  parent: AtomCatsT45Blue
+  id: AtomCatsT45Medic
+  name: Blue Cross rescue T-45 power armor
+  description: Ivory salvage plates carry a cobalt rescue cross across the chest and helmet. The Tattoo Artists keep the enamel bright enough to spot from the far side of the garage.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/medic.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/medic.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45MedicHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: AtomCatsT45MedicHelmet
+  name: Blue Cross rescue T-45 helmet
+  description: A cobalt cross marks the brow of this ivory rescue helmet.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/medic-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/medic-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Medic
+  fitsGarageStencils: true
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/medic.rsi
+
+- type: entity
+  parent: AtomCatsT45Blue
+  id: AtomCatsT45Lowrider
+  name: Lowrider T-45 power armor
+  description: Bottle-green armor with fine gold pinstripes curling around the shoulders and down the breastplate. The Hot Rod signed the paintwork inside the collar.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: AtomCatsT45LowriderHelmet
+      gloves: N14ClothingPAGauntletsDark
+      shoes: N14ClothingPABootsDark
+      back: N14ClothingPowerSystemsBack
+
+- type: entity
+  parent: N14ClothingHeadHelmetPowerArmorT45
+  id: AtomCatsT45LowriderHelmet
+  name: Lowrider T-45 helmet
+  description: Hand-laid gold stripes meet above the visor of this bottle-green helmet.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider-helmet.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/AtomCats/lowrider-helmet.rsi
+
+- type: powerArmorModel
+  id: AtomCatsT45Lowrider
+  fitsGarageStencils: true
+  rating: 40
+  sprite: _ReclamationProject/Clothing/AtomCats/lowrider.rsi
+
+- type: entity
   id: ActionAtomCatsRevEngine
   name: Rev the engine
   description: Work the throttle for twenty seconds, then let the engine settle into a low idle. Moving releases the throttle early.

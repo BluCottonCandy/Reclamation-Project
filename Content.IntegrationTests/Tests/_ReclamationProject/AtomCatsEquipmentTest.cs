@@ -129,10 +129,19 @@ public sealed class AtomCatsEquipmentTest
                 }
                 Assert.That(carried, Does.Contain("AtomCatsCut"));
                 var model = Prototype(frame);
-                Assert.That(model, Is.AnyOf("AtomCatsT45Red", "AtomCatsT45Blue"));
+                var finish = rank switch
+                {
+                    "Muscle" or "Boss" => "Red",
+                    "Rocker" or "Underboss" => "Blue",
+                    "HotRod" => "Lowrider",
+                    "TattooArtist" => "Medic",
+                    _ => throw new System.InvalidOperationException(rank),
+                };
+                Assert.That(model, Is.EqualTo("AtomCatsT45" + finish), rank);
                 Assert.That(Prototype(Worn("head")), Is.EqualTo(model + "Helmet"));
                 var armor = em.GetComponent<ModularPowerArmorComponent>(frame);
                 Assert.That(armor.Sealed);
+                Assert.That(armor.Visuals.Values.All(sprite => sprite.EndsWith("/" + finish.ToLowerInvariant() + ".rsi")), Is.True, rank);
                 Assert.That(armor.Rating, Is.EqualTo(40));
                 var parts = PowerArmorPlates.Slots.Select(s =>
                     em.GetComponent<PowerArmorPlateComponent>(slots.GetItemOrNull(frame, PowerArmorPlates.Container(s))!.Value)).ToArray();

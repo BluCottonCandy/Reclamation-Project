@@ -155,7 +155,8 @@ public sealed class AtomCatsGarageSystemsTest
             EntityUid Spawn(string id) => em.SpawnEntity(id, map.GridCoords);
             var armor = em.System<ModularPowerArmorSystem>();
             foreach (var model in new[] { "N14ClothingOuterPowerArmorT45", "MisfitsT45ClothingOuterPowerArmorBoS",
-                         "N14ClothingOuterPowerArmorT45Sierra", "AtomCatsT45Red", "AtomCatsT45Blue", "N14ClothingOuterPowerArmorRaider" })
+                         "N14ClothingOuterPowerArmorT45Sierra", "AtomCatsT45Red", "AtomCatsT45Blue", "AtomCatsT45Medic",
+                         "AtomCatsT45Lowrider", "N14ClothingOuterPowerArmorRaider" })
                 Assert.That(armor.CanApplyStencil(Spawn(model)), Is.True, model);
 
             var user = Spawn("MobHuman");
@@ -204,8 +205,9 @@ public sealed class AtomCatsGarageSystemsTest
         var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
         var tickRate = pair.Server.ResolveDependency<IGameTiming>().TickRate;
         var key = RadialSelectorUiKey.Key;
-        var finishes = new[] { "AtomCatsPaintCherry", "AtomCatsPaintCobalt", "AtomCatsPaintMedic", "AtomCatsPaintLowrider" };
-        var paths = new[] { "/red.rsi", "/blue.rsi", "/medic.rsi", "/lowrider.rsi" };
+        var finishes = new[] { "AtomCatsPaintCherry", "AtomCatsPaintCobalt", "AtomCatsPaintMedic", "AtomCatsPaintLowrider",
+            "AtomCatsPaintChecker", "AtomCatsPaintVoltage", "AtomCatsPaintSunliner" };
+        var paths = new[] { "/red.rsi", "/blue.rsi", "/medic.rsi", "/lowrider.rsi", "/checker.rsi", "/voltage.rsi", "/sunliner.rsi" };
         EntityUid painter = default, can = default, suit = default, helmet = default, wornHelmet = default, bare = default;
         NetEntity netCan = default, netPainter = default;
         EntityUid Spawn(string id) => server.SpawnEntity(id, map.GridCoords);
@@ -304,7 +306,7 @@ public sealed class AtomCatsGarageSystemsTest
         await CheckPaintedHelmet(0, false);
         await ToggleHeadlamp();
         await CheckPaintedHelmet(0, true);
-        foreach (var finish in new[] { 1, 3, 2 })
+        foreach (var finish in new[] { 1, 3, 4, 5, 6, 2 })
         {
             await Paint(wornHelmet, finish);
             await CheckPaintedHelmet(finish, true);

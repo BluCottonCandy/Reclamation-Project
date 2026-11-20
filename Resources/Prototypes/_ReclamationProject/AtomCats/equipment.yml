@@ -40,8 +40,19 @@
 - type: entity
   parent: N14IDCard
   id: AtomCatsGaragePass
-  name: Atom Cats garage pass
-  description: A garage pass with a thumbprint of axle grease beside the signature line.
+  name: Atom Cats identification piston
+  description: A salvaged engine piston with a brass plate riveted to the connecting rod. The Cats stamp the owner's name and garage rank into the plate.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_piston.rsi
+    state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_piston.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Objects/Misc/atom_cats_piston.rsi
+  - type: IdCard
+    nameLocId: atom-cats-piston-name
+    fullNameLocId: atom-cats-piston-full-name
 
 - type: startingGear
   id: AtomCatsGarageGear

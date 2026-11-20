@@ -1,6 +1,8 @@
 department-AtomCats = Atom Cats
 department-AtomCats-description = The Atom Cats scavenge power armor and run a repair garage. Lookouts grow into Greasers, Muscle, Rockers, and finally Hot Rods. The Underboss and Boss handle faction business in character.
 access-atom-cats = Atom Cats garage
+atom-cats-piston-name = Atom Cats identification piston{ $jobSuffix }
+atom-cats-piston-full-name = { $fullName }’s Atom Cats identification piston{ $jobSuffix }
 
 job-name-atom-cats-lookout = Lookout
 job-description-atom-cats-lookout = Watch the road from the garage and flag down scavengers with salvage to trade.

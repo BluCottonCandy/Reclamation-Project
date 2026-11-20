@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Station.Systems;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._ReclamationProject.PowerArmor;
+using Content.Shared.Access.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Inventory;
 using Content.Shared.NPC.Components;
@@ -38,8 +39,9 @@ public sealed class AtomCatsEquipmentTest
             {
                 var job = protos.Index<JobPrototype>("AtomCats" + rank);
                 Assert.That(job.SetPreference, Is.EqualTo(rank is not ("Underboss" or "Boss")));
+                var profile = HumanoidCharacterProfile.DefaultWithSpecies();
                 var wearer = spawn.SpawnPlayerMob(map.GridCoords, new JobComponent { Prototype = job.ID },
-                    HumanoidCharacterProfile.DefaultWithSpecies(), null);
+                    profile, null);
                 EntityUid Worn(string slot)
                 {
                     Assert.That(inventory.TryGetSlotEntity(wearer, slot, out var item), Is.True, $"{rank}: {slot}");
@@ -51,6 +53,13 @@ public sealed class AtomCatsEquipmentTest
                 Assert.That(Prototype(Worn("jumpsuit")), Is.EqualTo("AtomCatsCoveralls"));
                 Assert.That(Prototype(Worn("eyes")), Is.EqualTo("AtomCatsShades"));
                 Assert.That(Prototype(Worn("shoes")), Is.EqualTo("AtomCatsBoots"));
+                var piston = Worn("id");
+                Assert.That(Prototype(piston), Is.EqualTo("AtomCatsGaragePass"));
+                var id = em.GetComponent<IdCardComponent>(piston);
+                Assert.That(id.FullName, Is.EqualTo(profile.Name));
+                Assert.That(id.LocalizedJobTitle, Is.EqualTo(job.LocalizedName));
+                Assert.That(em.GetComponent<MetaDataComponent>(piston).EntityName, Does.Contain("identification piston"));
+                Assert.That(em.GetComponent<AccessComponent>(piston).Tags.Any(tag => tag.Id == "AtomCats"));
                 var carried = em.GetComponent<StorageComponent>(Worn("back")).Container.ContainedEntities.Select(Prototype).ToArray();
                 Assert.That(carried, Does.Contain("AtomCatsCut"));
                 Assert.That(carried, Does.Contain("Welder"));

@@ -12,8 +12,8 @@
 - type: entity
   parent: N14ClothingOuterCoatLeatherJacket
   id: AtomCatsCut
-  name: Whitewall leather cut
-  description: White shearling runs around the collar and both armholes of this sleeveless black leather jacket. The cat on the back was painted by hand.
+  name: Whitewall leather jacket
+  description: This close-fitting black leather jacket has long sleeves and a narrow band of white shearling at the collar and cuffs. A copper-thread cat looks out from between the shoulders.
   components:
   - type: Sprite
     sprite: _ReclamationProject/Clothing/AtomCats/jacket.rsi
@@ -24,12 +24,7 @@
   parent: N14ClothingEyesSunGlasses
   id: AtomCatsShades
   name: Quarter-Mile shades
-  description: Smoked lenses sit under a black upswept brow. Two silver studs on each hinge catch the light when the wearer turns.
-  components:
-  - type: Sprite
-    sprite: _ReclamationProject/Clothing/AtomCats/shades.rsi
-  - type: Clothing
-    sprite: _ReclamationProject/Clothing/AtomCats/shades.rsi
+  description: Smoked lenses keep the glare off the garage floor. Someone scratched a little checkered flag into the inside of one temple.
 
 - type: entity
   parent: N14ClothingBootsCombat

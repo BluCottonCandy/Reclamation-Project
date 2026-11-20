@@ -15,8 +15,8 @@ public sealed class PowerArmorModHudSystem : EntitySystem
     [Dependency] private readonly ShowHealthIconsSystem _icons = default!;
     [Dependency] private readonly Content.Client.Overlays.Switchable.NightVisionSystem _night = default!;
 
-    private readonly ShowHealthBarsComponent _medicalBars = new() { DamageContainers = ["Biological"] };
-    private readonly ShowHealthIconsComponent _medicalIcons = new() { DamageContainers = ["Biological"] };
+    private readonly ShowHealthBarsComponent _medicalBars = new() { DamageContainers = new() { "Biological" } };
+    private readonly ShowHealthIconsComponent _medicalIcons = new() { DamageContainers = new() { "Biological" } };
     private readonly NightVisionComponent _visor = new() { IsActive = true };
 
     public override void Initialize()

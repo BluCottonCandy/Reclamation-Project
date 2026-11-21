@@ -18,6 +18,10 @@ namespace Content.Shared.Storage
     {
         public static string ContainerId = "storagebase";
 
+        /// <summary>Optional combined unit limit for stacks of the same type in this drawer.</summary>
+        [DataField]
+        public int? UnitsPerStackType;
+
         [ViewVariables]
         public Container Container = default!;
 

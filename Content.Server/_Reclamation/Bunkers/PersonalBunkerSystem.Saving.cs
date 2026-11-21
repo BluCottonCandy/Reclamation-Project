@@ -78,12 +78,6 @@ public sealed partial class PersonalBunkerSystem
     {
         var locker = EnsureMaterialLocker(grid);
         var drawer = Comp<StorageComponent>(locker).Container;
-        foreach (var item in drawer.ContainedEntities)
-        {
-            // Workbench storage can merge directly into a stack without inserting a new entity.
-            if (TryComp<StackComponent>(item, out var stack) && _stacks.GetMaxCount(stack) == int.MaxValue && stack.Count > 30)
-                _stacks.SetCount(item, 30, stack);
-        }
         // The traversal skips bodies and everything they carry, including nested bags.
         foreach (var uid in GetRoomBelongings(grid))
         {
@@ -117,7 +111,7 @@ public sealed partial class PersonalBunkerSystem
         TryComp<StackComponent>(uid, out var stack);
         // Construction supplies that cannot be inserted into a material storage machine.
         if (stack?.StackTypeId.Id is "Cable" or "CableMV" or "CableHV" or "MetalRod" or
-            "Cotton" or "Pyrotton" or "Bones" or "MaterialGunpowder" or "GoliathHide" or "MeatSheets")
+            "Cloth" or "Cotton" or "Pyrotton" or "Bones" or "MaterialGunpowder" or "GoliathHide" or "MeatSheets")
             return true;
 
         // Several non-supply items have Material for recycling, including caps, notes and lunchboxes.

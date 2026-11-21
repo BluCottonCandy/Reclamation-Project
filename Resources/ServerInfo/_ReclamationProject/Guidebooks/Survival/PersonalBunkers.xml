@@ -9,7 +9,7 @@ When the last occupant leaves, the room queues one save. Snapshot capture is sta
 
 ## Saving crafting materials
 
-The permanent material locker beside your bunker's exit ladder saves one stack of each material. Use a material on the locker to deposit it. Open the locker to withdraw materials, or open its construction supply drawer for items such as cable coils and metal rods. Each material uses its normal stack size. Supplies without a finite stack size are limited to 30 units.
+The permanent material locker beside your bunker's exit ladder holds up to 60 units of each crafting material, including cloth. Use a stack on the locker to deposit it. Your bunker's lathes and workbenches automatically share the locker's materials. Open the locker to withdraw materials or use its construction supply drawer for items such as cable coils and metal rods.
 
 Take any excess with you. When the room saves, loose crafting materials disappear, including supplies in crates, backpacks, workbenches, and lathe material pools. Items you carry out stay with you.
 

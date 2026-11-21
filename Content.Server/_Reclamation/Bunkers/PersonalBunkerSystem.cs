@@ -97,7 +97,20 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     private TimeSpan _nextScan;
     private bool _stopping;
     private const int MaxRooms = 32;
-    private static readonly Vector2 BunkerEntryOffset = new(.5f, -1.5f);
+    private static readonly Vector2 DefaultLadderPosition = new(.5f, -2.5f);
+
+    internal EntityCoordinates GetBunkerArrival(EntityUid grid)
+    {
+        var children = Transform(grid).ChildEnumerator;
+        while (children.MoveNext(out var child))
+        {
+            if (HasComp<PersonalBunkerExitComponent>(child))
+                return Transform(child).Coordinates;
+        }
+
+        // Older or edited rooms may no longer contain a ladder.
+        return new EntityCoordinates(grid, DefaultLadderPosition + Vector2.UnitY);
+    }
 
     public override void Initialize()
     {
@@ -283,11 +296,11 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
                         if (Math.Abs(x) == 4 || Math.Abs(y) == 4)
                             Spawn("ReclamationPersonalBunkerWall", new EntityCoordinates(grid, new Vector2(x + .5f, y + .5f)));
                     }
-                    Spawn("ReclamationPersonalBunkerExit", new EntityCoordinates(grid, new Vector2(.5f, -2.5f)));
+                    Spawn("ReclamationPersonalBunkerExit", new EntityCoordinates(grid, DefaultLadderPosition));
                 }
                 // Loading can restore prototype components without raising MapInit again.
                 // Include mounted/equipped items and older saves without display markers.
-                EnsureMaterialLocker(grid);
+                InitializeRoomLocker(grid);
                 _blueprints.PurgeTree(grid);
                 var belongings = GetRoomBelongings(grid);
                 foreach (var item in belongings)
@@ -319,7 +332,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
             room.Owner = user;
             room.OwnerName = Name(user);
             room.EmptySince = null;
-            MoveWithDraggedItem(user, new EntityCoordinates(room.Grid, BunkerEntryOffset));
+            MoveWithDraggedItem(user, GetBunkerArrival(room.Grid));
         }
         catch (Exception e)
         {

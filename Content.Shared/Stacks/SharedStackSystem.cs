@@ -6,6 +6,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Storage;
 using JetBrains.Annotations;
 using Robust.Shared.GameStates;
 using Robust.Shared.Physics.Systems;
@@ -123,7 +124,7 @@ namespace Content.Shared.Stacks
 
             // Do not launder faction-issued supplies by merging them into sellable stacks.
             if (HasComp<FactionSupplyPurchaseComponent>(donor) != HasComp<FactionSupplyPurchaseComponent>(recipient)) return false;
-            transferred = Math.Min(donorStack.Count, GetAvailableSpace(recipientStack));
+            transferred = Math.Min(donorStack.Count, GetMergeSpace(recipient, recipientStack));
             SetCount(donor, donorStack.Count - transferred, donorStack);
             SetCount(recipient, recipientStack.Count + transferred, recipientStack);
             return transferred > 0;
@@ -319,6 +320,15 @@ namespace Content.Shared.Stacks
             return GetMaxCount(component) - component.Count;
         }
 
+        private int GetMergeSpace(EntityUid recipient, StackComponent stack)
+        {
+            var space = GetAvailableSpace(stack);
+            if (TryComp<StorageComponent>(Transform(recipient).ParentUid, out var storage) &&
+                storage.UnitsPerStackType.HasValue && storage.Container.Contains(recipient))
+                space = Math.Min(space, _storage.RemainingStackCapacity(storage, stack));
+            return space;
+        }
+
         /// <summary>
         /// Tries to add one stack to another. May have some leftover count in the inserted entity.
         /// </summary>
@@ -343,7 +353,7 @@ namespace Content.Shared.Stacks
                 return false;
             if (HasComp<FactionSupplyPurchaseComponent>(insertEnt) != HasComp<FactionSupplyPurchaseComponent>(targetEnt)) return false;
 
-            var available = GetAvailableSpace(targetStack);
+            var available = GetMergeSpace(targetEnt, targetStack);
 
             if (available <= 0)
                 return false;

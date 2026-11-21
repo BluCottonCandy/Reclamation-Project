@@ -71,7 +71,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         if (!_actionBlocker.CanInteract(player, uid))
             return;
 
-        if (component.SingleStackPerMaterial && !_interaction.InRangeUnobstructed(player, uid))
+        if (GetReceivingPool(uid, component).UnitsPerMaterial.HasValue && !_interaction.InRangeUnobstructed(player, uid))
             return;
         if (!component.CanEjectStoredMaterials || !_prototypeManager.TryIndex<MaterialPrototype>(msg.Material, out var material))
             return;
@@ -146,18 +146,20 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             return false;
         if (TryComp<ApcPowerReceiverComponent>(receiver, out var power) && !power.Powered)
             return false;
-        if (!base.TryInsertMaterialEntity(user, toInsert, receiver, storage, utilizer, material, composition))
+        if (EntityManager.IsQueuedForDeletion(toInsert) ||
+            !TryStoreMaterialUnits(toInsert, receiver, out var inserted, storage, utilizer, material, composition))
             return false;
         _audio.PlayPvs(storage.InsertingSound, receiver);
         _popup.PopupEntity(Loc.GetString("machine-insert-item", ("user", user), ("machine", receiver),
             ("item", toInsert)), receiver);
-        QueueDel(toInsert);
+        if (TryComp<StackComponent>(toInsert, out var stack) && inserted < stack.Count)
+            _stackSystem.SetCount(toInsert, stack.Count - inserted, stack);
+        else
+            QueueDel(toInsert);
 
         // Logging
-        TryComp<StackComponent>(toInsert, out var stack);
-        var count = stack?.Count ?? 1;
         _adminLogger.Add(LogType.Action, LogImpact.Low,
-            $"{ToPrettyString(user):player} inserted {count} {ToPrettyString(toInsert):inserted} into {ToPrettyString(receiver):receiver}");
+            $"{ToPrettyString(user):player} inserted {inserted} {ToPrettyString(toInsert):inserted} into {ToPrettyString(receiver):receiver}");
         return true;
     }
 
@@ -299,8 +301,18 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         if (volume <= 0)
             return true;
 
-        if (GetAvailableMaterialAmount(uid, materialId, component, utilizer, storage) < volume)
+        if (!Resolve(uid, ref component) || GetAvailableMaterialAmount(uid, materialId, component, utilizer, storage) < volume)
             return false;
+
+        if (HasLocalOverflow(uid, component) && component.Storage.TryGetValue(materialId, out var local) && local > 0)
+        {
+            var fromLocal = Math.Min(volume, local);
+            component.Storage[materialId] -= fromLocal;
+            Dirty(uid, component);
+            var changed = new MaterialAmountChangedEvent();
+            RaiseLocalEvent(uid, ref changed);
+            volume -= fromLocal;
+        }
 
         var availableInPool = GetMaterialAmount(uid, materialId, component, utilizer);
         var fromPool = Math.Min(availableInPool, volume);
@@ -329,7 +341,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
 
         foreach (var entity in storage.Container.ContainedEntities.ToArray())
         {
-            if (!HasComp<MaterialComponent>(entity) ||
+            if (EntityManager.IsQueuedForDeletion(entity) || !HasComp<MaterialComponent>(entity) ||
                 !TryComp<PhysicalCompositionComponent>(entity, out var composition) ||
                 !composition.MaterialComposition.TryGetValue(materialId, out var volumePerUnit) ||
                 volumePerUnit <= 0)

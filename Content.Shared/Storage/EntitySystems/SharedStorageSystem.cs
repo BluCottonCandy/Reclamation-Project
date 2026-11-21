@@ -833,6 +833,13 @@ public abstract partial class SharedStorageSystem : EntitySystem
         if (args.Cancelled || args.Container.ID != StorageComponent.ContainerId)
             return;
 
+        if (component.UnitsPerStackType.HasValue && _stackQuery.TryComp(args.EntityUid, out var stack) &&
+            stack.Count > RemainingStackCapacity(component, stack))
+        {
+            args.Cancel();
+            return;
+        }
+
         // don't run cyclical CanInsert() loops
         if (CheckingCanInsert)
             return;
@@ -846,6 +853,19 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
             args.Cancel();
         }
+    }
+
+    public int RemainingStackCapacity(StorageComponent storage, StackComponent incoming)
+    {
+        if (storage.UnitsPerStackType is not {} remaining)
+            return int.MaxValue;
+
+        foreach (var item in storage.Container.ContainedEntities)
+        {
+            if (_stackQuery.TryComp(item, out var stack) && stack.StackTypeId == incoming.StackTypeId)
+                remaining -= stack.Count;
+        }
+        return Math.Max(remaining, 0);
     }
 
     public void UpdateAppearance(Entity<StorageComponent?, AppearanceComponent?> entity)

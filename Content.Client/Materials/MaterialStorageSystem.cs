@@ -1,5 +1,6 @@
 ﻿using Content.Shared.Materials;
 using Robust.Client.GameObjects;
+using Content.Shared.Stacks;
 
 namespace Content.Client.Materials;
 
@@ -7,6 +8,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
 {
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly SharedStackSystem _stacks = default!;
 
     public override void Initialize()
     {
@@ -48,9 +50,12 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         MaterialComponent? material = null,
         PhysicalCompositionComponent? composition = null)
     {
-        if (!base.TryInsertMaterialEntity(user, toInsert, receiver, storage, utilizer, material, composition))
+        if (!TryStoreMaterialUnits(toInsert, receiver, out var inserted, storage, utilizer, material, composition))
             return false;
-        _transform.DetachParentToNull(toInsert, Transform(toInsert));
+        if (TryComp<StackComponent>(toInsert, out var stack) && inserted < stack.Count)
+            _stacks.SetCount(toInsert, stack.Count - inserted, stack);
+        else
+            _transform.DetachParentToNull(toInsert, Transform(toInsert));
         return true;
     }
 }

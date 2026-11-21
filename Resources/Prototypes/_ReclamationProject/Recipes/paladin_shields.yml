@@ -21,9 +21,7 @@
     - to: shield
       steps:
       - material: Steel
-        amount: 30
-      - material: Steel
-        amount: 20
+        amount: 50
       - material: Leather
         amount: 2
       - material: N14Iron
@@ -55,13 +53,7 @@
     - to: shield
       steps:
       - material: Steel
-        amount: 30
-      - material: Steel
-        amount: 30
-      - material: Steel
-        amount: 30
-      - material: Steel
-        amount: 10
+        amount: 100
       - material: Leather
         amount: 5
       - material: N14Iron

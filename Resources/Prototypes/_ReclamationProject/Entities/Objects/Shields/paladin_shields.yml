@@ -4,6 +4,10 @@
   name: paladin shield
   description: A sturdy metal shield built for blocking blows and charging through opposition.
   components:
+  - type: Construction
+    graph: ReclamationPaladinShield
+    node: shield
+    deconstructionTarget: null
   - type: Sprite
     sprite: _ReclamationProject/Shields/paladin_shield.rsi
     state: base
@@ -59,6 +63,8 @@
   name: paladin greatshield
   description: A massive metal shield. Its weight slows the bearer, but its charge sends enemies reeling.
   components:
+  - type: Construction
+    graph: ReclamationPaladinGreatshield
   - type: Sprite
     sprite: _ReclamationProject/Shields/paladin_greatshield.rsi
   - type: Item

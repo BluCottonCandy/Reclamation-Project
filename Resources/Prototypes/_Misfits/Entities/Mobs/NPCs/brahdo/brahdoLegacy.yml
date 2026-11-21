@@ -1,5 +1,5 @@
 - type: entity
-  parent: SimpleMobBase
+  parent: [BaseBunkerAnimal, SimpleMobBase]
   id: N14MobBrahdo
   name: brahdo
   description: "Mutated horses common as mounts and pack animals, they'll bite your fingers if you aren't careful."

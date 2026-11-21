@@ -4,14 +4,22 @@ using Content.Server._Reclamation.Bunkers;
 using Content.Server.Botany.Components;
 using Content.Server.Construction;
 using Content.Server.Construction.Components;
+using Content.Server.NPC.HTN;
+using Content.Server.NPC;
 using Content.Server.Power.EntitySystems;
+using Content.IntegrationTests.Pair;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.Construction.Components;
 using Content.Shared.Damage;
 using Content.Shared.EntityTable;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Interaction;
+using Content.Shared.Body.Systems;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Storage;
@@ -51,14 +59,14 @@ public sealed class BunkerFishingAndBotanyTest
             foreach (var speciesId in species)
             {
                 var catchId = em.SpawnEntity(speciesId, coords);
-                Assert.That(bunker.IsRoomBelonging(catchId, room.Grid), Is.False, speciesId);
+                Assert.That(bunker.IsRoomBelonging(catchId, room.Grid), Is.True, speciesId);
                 if (speciesId == species[^1])
                 {
                     mobs.ChangeMobState(control, MobState.Dead);
                     Assert.That(bunker.IsRoomBelonging(control, room.Grid), Is.False);
                     bunker.ProcessForcedExit(room, control);
                     Assert.That(em.GetComponent<TransformComponent>(control).MapUid, Is.EqualTo(outside.MapUid));
-                    Assert.That(room.SaveQueued, Is.False, "the last catch is still alive");
+                    Assert.That(room.SaveQueued, "animals alone must let the room save as the last occupant leaves");
                 }
                 em.System<DamageableSystem>().TryChangeDamage(catchId,
                     new DamageSpecifier { DamageDict = { ["Asphyxiation"] = 10 } }, ignoreResistances: true);
@@ -68,13 +76,12 @@ public sealed class BunkerFishingAndBotanyTest
                 bunker.ProcessForcedExit(room, catchId);
                 Assert.That(bunker.IsRoomBelonging(catchId, room.Grid), speciesId);
             }
-            Assert.That(room.SaveQueued, "the last catch dying must queue a save for the empty room");
 
             var (loadedMap, loadedGrid) = ReloadRoom(em, room.Grid);
             try
             {
                 var saved = new List<string>();
-                var query = em.AllEntityQueryEnumerator<BunkerFishingCatchComponent, TransformComponent>();
+                var query = em.AllEntityQueryEnumerator<BunkerAnimalComponent, TransformComponent>();
                 while (query.MoveNext(out var uid, out _, out var xform))
                 {
                     if (xform.MapUid != loadedMap) continue;
@@ -87,6 +94,92 @@ public sealed class BunkerFishingAndBotanyTest
                     saved.Add(id);
                 }
                 Assert.That(saved, Is.EquivalentTo(species));
+            }
+            finally
+            {
+                em.DeleteEntity(loadedMap);
+            }
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task BunkerReloadKeepsNpcAnimalsAndExcludesPlayerBodiesAndTheirContents()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var map = await pair.CreateTestMap();
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        await pair.Server.WaitAssertion(() =>
+        {
+            var em = pair.Server.EntMan;
+            var bunker = em.System<PersonalBunkerSystem>();
+            var position = new EntityCoordinates(map.Grid.Owner, .5f, .5f);
+            EntityUid Spawn(string id) => em.SpawnEntity(id, position);
+            var dog = Spawn("N14MobDogFeral");
+            em.System<MetaDataSystem>().SetEntityName(dog, "Biscuit");
+            em.GetComponent<HTNComponent>(dog).RootTask = new HTNCompoundTask { Task = "IdleCompound" };
+            em.System<DamageableSystem>().TryChangeDamage(dog,
+                new DamageSpecifier { DamageDict = { ["Blunt"] = 3 } }, ignoreResistances: true);
+            var bodies = em.System<SharedBodySystem>();
+            var organs = bodies.GetBodyOrgans(dog).Select(part => em.GetComponent<MetaDataComponent>(part.Id).EntityPrototype!.ID).ToArray();
+            Assert.That(organs, Does.Contain("OrganAnimalBrain"));
+            var animals = new[] { "N14MobPetCat", "N14MobBrahmin", "N14MobChicken", "PackTamedNightstalker", "FishCarp" };
+            foreach (var animal in animals)
+                Assert.That(bunker.IsRoomBelonging(Spawn(animal), map.Grid.Owner), Is.True, animal);
+
+            var (ordinaryMap, _) = em.System<MapLoaderSystem>().SerializeEntitiesRecursive([map.Grid.Owner]);
+            using var mapText = new StringWriter();
+            ordinaryMap.Write(mapText);
+            Assert.That(mapText.ToString(), Does.Not.Contain("N14MobDogFeral"), "wildlife is saved only by bunkers");
+
+            var human = Spawn("MobHuman");
+            var emptyHuman = Spawn("MobHuman");
+            var corpse = Spawn("MobHuman");
+            em.System<MobStateSystem>().ChangeMobState(corpse, MobState.Dead);
+            var deadLivestock = Spawn("N14MobBrahmin");
+            em.System<MobStateSystem>().ChangeMobState(deadLivestock, MobState.Dead);
+            var previous = Spawn("N14MobPetDog");
+            var current = Spawn("N14MobPetRoach");
+            var minds = em.System<SharedMindSystem>();
+            var mind = minds.CreateMind(null).Owner;
+            minds.TransferTo(mind, previous);
+            minds.TransferTo(mind, human);
+            minds.TransferTo(minds.CreateMind(null).Owner, current);
+
+            var possessed = Spawn("N14MobIguana");
+            pair.Server.PlayerMan.SetAttachedEntity(session, possessed);
+            Assert.That(bunker.IsRoomBelonging(possessed, map.Grid.Owner), Is.False);
+            pair.Server.PlayerMan.SetAttachedEntity(session, null);
+            var bag = Spawn("N14ClothingBackpackMilitary");
+            Assert.That(em.System<SharedHandsSystem>().TryPickup(emptyHuman, bag));
+            var carried = Spawn("FishGold");
+            Assert.That(em.System<SharedContainerSystem>().Insert(carried, em.GetComponent<StorageComponent>(bag).Container));
+            Assert.That(em.GetComponent<MindContainerComponent>(previous).HasMind, Is.False);
+            foreach (var excluded in new[] { human, emptyHuman, corpse, deadLivestock, previous, current, possessed, bag, carried,
+                         Spawn("N14MobGhoulFeral"), Spawn("N14MobDeathclawSentient"), Spawn("N14MobDeathclawPlayer") })
+                Assert.That(bunker.IsRoomBelonging(excluded, map.Grid.Owner), Is.False, $"{em.ToPrettyString(excluded)}");
+
+            var (loadedMap, _) = ReloadRoom(em, map.Grid.Owner, occupied: true);
+            try
+            {
+                var saved = new List<string>();
+                var query = em.AllEntityQueryEnumerator<MobStateComponent, TransformComponent>();
+                while (query.MoveNext(out var uid, out var mob, out var xform))
+                {
+                    if (xform.MapUid != loadedMap) continue;
+                    var meta = em.GetComponent<MetaDataComponent>(uid);
+                    saved.Add(meta.EntityPrototype!.ID);
+                    Assert.That(mob.CurrentState, Is.EqualTo(MobState.Alive), meta.EntityName);
+                    if (meta.EntityPrototype.ID != "N14MobDogFeral") continue;
+                    Assert.That(meta.EntityName, Is.EqualTo("Biscuit"));
+                    var ai = em.GetComponent<HTNComponent>(uid);
+                    Assert.That(ai.RootTask.Task.Id, Is.EqualTo("IdleCompound"));
+                    Assert.That(ai.Blackboard.GetValue<EntityUid>(NPCBlackboard.Owner), Is.EqualTo(uid));
+                    Assert.That(em.GetComponent<DamageableComponent>(uid).Damage.DamageDict["Blunt"].Int(), Is.EqualTo(3));
+                    Assert.That(bodies.GetBodyOrgans(uid).Select(part => em.GetComponent<MetaDataComponent>(part.Id).EntityPrototype!.ID),
+                        Is.EquivalentTo(organs));
+                }
+                Assert.That(saved, Is.EquivalentTo(animals.Append("N14MobDogFeral")));
             }
             finally
             {
@@ -166,14 +259,14 @@ public sealed class BunkerFishingAndBotanyTest
         await pair.CleanReturnAsync();
     }
 
-    private static (EntityUid Map, EntityUid Grid) ReloadRoom(IEntityManager em, EntityUid grid)
+    private static (EntityUid Map, EntityUid Grid) ReloadRoom(IEntityManager em, EntityUid grid, bool occupied = false)
     {
         var bunker = em.System<PersonalBunkerSystem>();
         var maps = em.System<SharedMapSystem>();
         var floor = em.GetComponent<MapGridComponent>(grid);
         for (var y = 0; y >= -3; y--)
             maps.SetTile(grid, floor, new Vector2i(1, y), new Tile(1));
-        bunker.PrepareRoomContentsForSave(grid, occupied: false);
+        bunker.PrepareRoomContentsForSave(grid, occupied);
         var snapshot = bunker.SerializeRoomGrid(grid);
         BunkerSnapshotReferences.Clean(snapshot);
         using var writer = new StringWriter();

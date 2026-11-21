@@ -1,4 +1,5 @@
 using Content.Shared.FixedPoint;
+using Content.Shared.Mobs;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Reclamation.Bunkers;
@@ -17,12 +18,15 @@ public sealed partial class BunkerDisplayWeaponComponent : Component;
 [RegisterComponent]
 public sealed partial class BunkerPreservedToolComponent : Component;
 
-/// <summary>Fishing catches that can be stored as items in a bunker after death.</summary>
+/// <summary>Wildlife and domestic animals eligible for bunker storage while exclusively NPCs.</summary>
 [RegisterComponent]
-public sealed partial class BunkerFishingCatchComponent : Component
+public sealed partial class BunkerAnimalComponent : Component
 {
+    [DataField] public bool KeepAfterDeath;
+    [DataField] public bool WasPlayerControlled;
     // Damageable does not write its live damage dictionary to map saves.
     [DataField] public Dictionary<string, FixedPoint2>? StoredDamage;
+    [DataField] public MobState StoredState;
 }
 
 /// <summary>Persisted so loading the original clothing prototype cannot restore armor protection.</summary>

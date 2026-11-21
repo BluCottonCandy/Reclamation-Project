@@ -263,7 +263,7 @@
   name: scaley wasteland animal
   abstract: true
   id: N14MobBaseHostileScaley
-  parent: N14MobBaseHostile
+  parent: [BaseBunkerAnimal, N14MobBaseHostile]
   components:
   - type: Damageable
     damageContainer: Biological
@@ -278,7 +278,7 @@
   name: wasteland insect
   abstract: true
   id: N14MobBaseHostileInsect
-  parent: N14MobBaseHostile
+  parent: [BaseBunkerAnimal, N14MobBaseHostile]
   components:
   - type: Damageable
     damageContainer: Biological

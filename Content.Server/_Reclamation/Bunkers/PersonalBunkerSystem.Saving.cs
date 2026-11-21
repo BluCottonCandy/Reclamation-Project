@@ -7,6 +7,7 @@ using Content.Server.Storage.Components;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Damage;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Materials;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Stacks;
@@ -87,14 +88,20 @@ public sealed partial class PersonalBunkerSystem
     {
         var locker = EnsureMaterialLocker(grid);
         var drawer = Comp<StorageComponent>(locker).Container;
-        // The traversal skips bodies and everything they carry, including nested bags.
+        // The traversal skips occupants and everything they carry, including nested bags.
         foreach (var uid in GetRoomBelongings(grid))
         {
             if (TerminatingOrDeleted(uid))
                 continue;
 
-            if (TryComp<BunkerFishingCatchComponent>(uid, out var fish) && TryComp<DamageableComponent>(uid, out var damage))
-                fish.StoredDamage = new(damage.Damage.DamageDict);
+            if (TryComp<BunkerAnimalComponent>(uid, out var animal) && TryComp<DamageableComponent>(uid, out var damage)
+                && TryComp<MobStateComponent>(uid, out var mob))
+            {
+                animal.StoredDamage = new(damage.Damage.DamageDict);
+                animal.StoredState = mob.CurrentState;
+                // Bunker display conversion applies to an animal's equipment, never the animal itself.
+                continue;
+            }
 
             if (uid == locker || drawer.Contains(uid))
                 continue;

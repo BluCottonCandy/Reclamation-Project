@@ -11,10 +11,15 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Preferences.Managers;
+using Content.Server.NPC;
+using Content.Server.NPC.HTN;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.Atmos;
 using Content.Shared.Bed.Cryostorage;
+using Content.Shared.Body.Organ;
 using Content.Shared.Damage;
+using Content.Shared._Misfits.PlayerData.Components;
+using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
@@ -120,6 +125,8 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         InitializeMaterialLocker();
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawn);
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
+        SubscribeLocalEvent<BunkerAnimalComponent, PlayerAttachedEvent>((_, animal, _) => animal.WasPlayerControlled = true);
+        SubscribeLocalEvent<BunkerAnimalComponent, MindAddedMessage>((_, animal, _) => animal.WasPlayerControlled = true);
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
         _players.PlayerStatusChanged += OnPlayerStatusChanged;
         SubscribeLocalEvent<PersonalBunkerEntranceComponent, ActivateInWorldEvent>(OnActivate);
@@ -332,14 +339,15 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         // Include mounted/equipped items and older saves without display markers.
         InitializeRoomLocker(grid);
         _blueprints.PurgeTree(grid);
-        var belongings = GetRoomBelongings(grid, restoreCatches: true);
+        var belongings = GetRoomBelongings(grid, restoreAnimals: true);
         foreach (var item in belongings)
         {
             if (!Exists(item)) continue;
             // Stores loaded from an interior have a new map identity on every visit.
             if (TryComp<StoreComponent>(item, out var store))
                 store.StartingMap = map;
-            _displays.Decommission(item);
+            if (!HasComp<BunkerAnimalComponent>(item))
+                _displays.Decommission(item);
             if (!Exists(item)) continue;
             // Stored furniture can contain cooldown timestamps from a different server uptime.
             // Reset its interaction delays, including legacy saves, so shelves open immediately.
@@ -435,13 +443,8 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     internal void ProcessForcedExit(Room room, EntityUid body)
     {
         if (IsActiveAdminGhost(body)) return;
-        if (IsUncontrolledFishingCatch(body))
-        {
-            // If the owner left while the catch was alive, its death can leave the room vacant.
-            if (_mobState.IsDead(body) && !Occupied(room))
-                QueueSave(room);
+        if (HasComp<BunkerAnimalComponent>(body) && !IsBunkerOccupant(body))
             return;
-        }
         if (_mobState.IsAlive(body) && TryComp<ActorComponent>(body, out var actor)
             && actor.PlayerSession.Status == SessionStatus.InGame) return;
         if (!ReturnToHatch(room, body)) _forcedExits.Add(body);
@@ -458,25 +461,26 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         return false;
     }
 
-    private List<EntityUid> GetRoomBelongings(EntityUid grid, bool restoreCatches = false)
+    private List<EntityUid> GetRoomBelongings(EntityUid grid, bool restoreAnimals = false)
     {
         var belongings = new List<EntityUid>();
         var pending = new Stack<(EntityUid Uid, int Depth)>();
         pending.Push((grid, 0));
         while (pending.TryPop(out var next))
         {
-            if (next.Depth > 128 || !Exists(next.Uid))
+            if (next.Depth > 128 || !Exists(next.Uid) || IsBunkerOccupant(next.Uid))
                 continue;
-            if (restoreCatches && TryComp<BunkerFishingCatchComponent>(next.Uid, out var fish)
-                && fish.StoredDamage is { } storedDamage && IsUncontrolledFishingCatch(next.Uid)
+            if (restoreAnimals && TryComp<BunkerAnimalComponent>(next.Uid, out var animal)
+                && animal.StoredDamage is { } storedDamage
                 && TryComp<DamageableComponent>(next.Uid, out var damage))
             {
-                fish.StoredDamage = null;
+                animal.StoredDamage = null;
+                // Loaded grids skip map initialization. The NPC now has a different entity ID.
+                if (TryComp<HTNComponent>(next.Uid, out var ai))
+                    ai.Blackboard.SetValue(NPCBlackboard.Owner, next.Uid);
                 _damage.SetDamage(next.Uid, damage, new DamageSpecifier { DamageDict = storedDamage });
-                _mobState.ChangeMobState(next.Uid, MobState.Dead);
+                _mobState.ChangeMobState(next.Uid, animal.StoredState);
             }
-            if (IsBunkerOccupant(next.Uid))
-                continue;
             belongings.Add(next.Uid);
             var children = Transform(next.Uid).ChildEnumerator;
             while (children.MoveNext(out var child))
@@ -538,27 +542,37 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     {
         var query = EntityQueryEnumerator<T, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var transform))
-            if (transform.MapUid is { } map && !maps.Contains(map) && !IsStoredCatch(uid)) maps.Add(map);
+            if (transform.MapUid is { } map && !maps.Contains(map) && IsBunkerOccupant(uid)) maps.Add(map);
     }
 
     private bool HasOccupant<T>(EntityUid map) where T : Component
     {
         var query = EntityQueryEnumerator<T, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var transform))
-            if (transform.MapUid == map && !IsStoredCatch(uid)) return true;
+            if (transform.MapUid == map && IsBunkerOccupant(uid)) return true;
         return false;
     }
-    private bool IsUncontrolledFishingCatch(EntityUid uid) =>
-        HasComp<BunkerFishingCatchComponent>(uid) && !HasComp<ActorComponent>(uid) && !HasComp<GhostComponent>(uid)
-        && (!TryComp<MindContainerComponent>(uid, out var mind) || (!mind.HasMind && mind.OriginalMind == null));
 
-    private bool IsStoredCatch(EntityUid uid) => IsUncontrolledFishingCatch(uid) && _mobState.IsDead(uid);
+    private bool IsBunkerOccupant(EntityUid uid)
+    {
+        if (HasComp<ActorComponent>(uid) || HasComp<GhostComponent>(uid) || HasComp<PersistentPlayerDataComponent>(uid))
+            return true;
 
-    private bool IsBunkerOccupant(EntityUid uid) =>
-        (HasComp<GhostComponent>(uid) || HasComp<MobStateComponent>(uid) || HasComp<MindContainerComponent>(uid) || HasComp<ActorComponent>(uid))
-        && !IsStoredCatch(uid);
+        var hasMindContainer = TryComp<MindContainerComponent>(uid, out var mind);
+        if (mind is { HasMind: true } or { OriginalMind: not null })
+            return true;
 
-    /// <summary>Also excludes every child of a mob, including worn equipment and held bags.</summary>
+        if (HasComp<MobStateComponent>(uid))
+            return !TryComp<BunkerAnimalComponent>(uid, out var animal) || animal.WasPlayerControlled
+                || HasComp<HumanoidAppearanceComponent>(uid)
+                || MetaData(uid).EntityPrototype?.MapSavable != true || (!animal.KeepAfterDeath && _mobState.IsDead(uid));
+
+        // An installed animal brain gets its own empty mind container. Keep it with its body.
+        return hasMindContainer && !(TryComp<OrganComponent>(uid, out var organ) && organ.Body is { } body
+            && HasComp<BunkerAnimalComponent>(body));
+    }
+
+    /// <summary>Also excludes everything an occupant wears or carries, including items nested inside bags.</summary>
     public bool IsRoomBelonging(EntityUid uid, EntityUid grid)
     {
         if (uid == grid) return true;
@@ -575,7 +589,10 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     }
     private void FilterSave(Entity<MetaDataComponent> ent, ref bool serializable)
     {
-        if (_savingGrid is {} grid && !IsRoomBelonging(ent, grid)) serializable = false;
+        if (_savingGrid is { } grid)
+            serializable &= IsRoomBelonging(ent, grid);
+        else if (HasComp<BunkerAnimalComponent>(ent))
+            serializable = false; // Animals remain excluded from ordinary map saves.
     }
 
     private string Folder => Path.Combine(_resources.UserData.RootDir ?? throw new IOException("Server storage unavailable."), "reclamation_bunkers");

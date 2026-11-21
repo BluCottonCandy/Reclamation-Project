@@ -1,7 +1,7 @@
 - type: entity
   name: Basic Pet
   id: N14MobPetBasic
-  parent: N14MobBaseHostileNoAccent
+  parent: [BaseBunkerAnimal, N14MobBaseHostileNoAccent]
   categories: [ HideSpawnMenu ]
   description: Why are you even reading this?
   components:

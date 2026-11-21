@@ -7,7 +7,7 @@
 
 - type: entity
   id: BaseFish
-  parent: [N14MobBaseSimple, BaseItem]
+  parent: [BaseBunkerAnimal, N14MobBaseSimple, BaseItem]
   abstract: true
   name: fish
   description: Water-born creature from the infinite sea... Or toilet.
@@ -301,9 +301,9 @@
   id: BaseFishWhite
   parent: BaseFish
   abstract: true
-  save: true
   components:
-  - type: BunkerFishingCatch
+  - type: BunkerAnimal
+    keepAfterDeath: true
   - type: Butcherable
     spawned:
     - id: FoodMeatWhitefishRaw
@@ -320,9 +320,9 @@
   id: BaseFishRed
   parent: BaseFishRare
   abstract: true
-  save: true
   components:
-  - type: BunkerFishingCatch
+  - type: BunkerAnimal
+    keepAfterDeath: true
   - type: Butcherable
     spawned:
     - id: FoodMeatRedfishRaw

@@ -10,7 +10,7 @@
 - type: entity
   name: Centaur
   id: N14MobCentaur
-  parent: N14MobBaseHostile
+  parent: [BaseBunkerAnimal, N14MobBaseHostile]
   description: The result of FEV infection gone horribly wrong. A bloated, multi-headed abomination covered in writhing tentacles. Despite their gruesome appearance they frequently travel with super mutant bands.
   # DesertRose: faction=supermutant, ranged neurotoxin spit, melee tentacle lash, retreat_distance=5
   components:

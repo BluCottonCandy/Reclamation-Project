@@ -1,0 +1,156 @@
+- type: entity
+  id: ActionOperatorThrowCaltrops
+  name: Throw Broken Glass
+  description: Scatter broken glass that last 20 seconds. Recharges in two minutes.
+  categories: [HideSpawnMenu]
+  components:
+  - type: WorldTargetAction
+    range: 4
+    useDelay: 120
+    icon:
+      sprite: Objects/Materials/Shards/shard.rsi
+      state: shard1
+    event: !type:OperatorThrowCaltropsEvent
+
+- type: entity
+  id: ActionOperatorBuildShotgun
+  name: Build Shotgun Trap
+  description: Spend 10 seconds assembling a single-shot 12-gauge trap facing your direction. Recharges in two minutes.
+  categories: [HideSpawnMenu]
+  components:
+  - type: WorldTargetAction
+    range: 1.5
+    useDelay: 120
+    icon:
+      sprite: _ReclamationProject/Objects/Operators/shotguntrap.rsi
+      state: shotgun_trap_handheld
+    event: !type:OperatorBuildShotgunEvent
+
+- type: entity
+  abstract: true
+  id: OperatorTrapBase
+  components:
+  - type: Physics
+    bodyType: Static
+  - type: StepTrigger
+    stepOn: true
+    intersectRatio: 0.2
+    requiredTriggeredSpeed: 0.1
+
+- type: entity
+  parent: OperatorTrapBase
+  id: OperatorCaltrops
+  name: scattered broken glass
+  description: Broken glass scattered across the ground.
+  components:
+  - type: OperatorCaltrops
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: Objects/Materials/Shards/shard.rsi
+    drawdepth: Items
+    layers:
+    - { state: shard1, offset: "-0.24,0.18" }
+    - { state: shard2, offset: "0.05,0.24" }
+    - { state: shard1, offset: "0.25,0.05" }
+    - { state: shard3, offset: "-0.23,-0.09" }
+    - { state: shard2, offset: "0.02,-0.12" }
+    - { state: shard3, offset: "0.23,-0.23" }
+  - type: Fixtures
+    fixtures:
+      step:
+        shape: !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        hard: false
+        layer:
+        - LowImpassable
+
+- type: entity
+  id: OperatorShotgunPreview
+  name: shotgun trap under construction
+  components:
+  - type: TimedDespawn
+    lifetime: 15
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Operators/shotguntrap.rsi
+    state: shotgun_trap
+    color: "#ffffff80"
+    drawdepth: Items
+
+- type: entity
+  id: OperatorShotgunTrap
+  name: Shotgun Trap
+  description: Boo!
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: OperatorShotgunTrap
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 2
+            max: 2
+          SheetSteel1:
+            min: 3
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Operators/shotguntrap.rsi
+    state: shotgun_trap
+    drawdepth: Items
+  - type: Fixtures
+    fixtures:
+      body:
+        shape: !type:PhysShapeAabb
+          bounds: "-0.35,-0.35,0.35,0.35"
+        hard: true
+        layer:
+        - Impassable
+        - BulletImpassable
+        mask:
+        - MobLayer
+
+- type: entity
+  id: ActionOperatorPlaceMine
+  name: Place Anti-Personnel Mine
+  description: Place a low-yield concussion mine. Recharges in two minutes.
+  categories: [HideSpawnMenu]
+  components:
+  - type: WorldTargetAction
+    range: 1.5
+    useDelay: 120
+    icon:
+      sprite: _Nuclear14/Objects/Misc/landmine.rsi
+      state: landmine-inactive
+    event: !type:OperatorPlaceMineEvent
+
+- type: entity
+  parent: LandMineKick
+  id: OperatorConcussionMine
+  name: Operator anti-personnel mine
+  description: A low-yield concussion mine.
+  components:
+  - type: Transform
+    anchored: true
+  - type: LandMine
+    armed: true
+    allowUnanchoredArming: false
+    knockdownDuration: 3
+  - type: Sprite
+    layers:
+    - state: landmine-inactive
+      visible: false
+      map: ["inactive"]
+    - state: landmine
+      map: ["armed"]

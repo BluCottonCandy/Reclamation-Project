@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Content.Server.Chat.Managers;
 using Content.Server.Mind;
 using Content.Shared.Mind;
@@ -38,6 +38,13 @@ public sealed class JobSystem : SharedJobSystem
 
         if (prototype.RequireAdminNotify)
             _chat.DispatchServerMessage(session, Loc.GetString("job-greet-important-disconnect-admin-notify"));
+
+        if ((prototype.ID is "OperatorsGhost" or "OperatorsPhantom" or "OperatorsShade" or
+            "OperatorsSpectre" or "OperatorsSpirit" or "OperatorsWraith") && prototype.LocalizedDescription is {} briefing)
+        {
+            _chat.DispatchServerMessage(session, briefing);
+            return;
+        }
 
         _chat.DispatchServerMessage(session, Loc.GetString("job-greet-supervisors-warning", ("jobName", prototype.LocalizedName), ("supervisors", Loc.GetString(prototype.Supervisors))));
     }

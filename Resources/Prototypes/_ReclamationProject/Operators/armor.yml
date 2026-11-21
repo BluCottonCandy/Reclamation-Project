@@ -1,0 +1,170 @@
+- type: entity
+  parent: N14ClothingLegionReconArmor
+  id: OperatorsLightArmor
+  name: Operator light recon armor
+  description: Blackened scout armor stripped of its old insignia, issued to Operators who scout routes and watch the crew's exits.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Operators/recon.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Operators/recon.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Operators/recon.rsi
+
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
+        Heat: 0.80
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
+  - type: ClothingSpeedModifier
+    walkModifier: 1.10
+    sprintModifier: 1.10
+
+- type: entity
+  parent: N14ClothingOuterBattlecoatCoat
+  id: OperatorsFieldArmor
+  name: Operators field battlecoat
+  description: A syndicate battlecoat with armor sewn into the lining and an inside pocket for a ledger.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.764705882
+        Slash: 0.764705882
+        Piercing: 0.764705882
+        Heat: 0.764705882
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+
+- type: entity
+  parent: OperatorsFieldArmor
+  id: OperatorsShadeArmor
+  name: Shade extraction armor
+  description: An armored clinic coat dyed black and issued to Shades who cover the crew’s exit.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Operators/black_extraction.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Operators/black_extraction.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Operators/black_extraction.rsi
+
+- type: entity
+  parent: OperatorsFieldArmor
+  id: OperatorsRevenantArmor
+  name: Revenant black battlecoat
+  description: A blackened town battlecoat reinforced for the Revenant.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Operators/revenant.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Operators/revenant.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Operators/revenant.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.78
+        Slash: 0.78
+        Piercing: 0.78
+        Heat: 0.78
+  - type: ExplosionResistance
+    damageCoefficient: 0.78
+
+- type: entity
+  parent: ClothingHeadBase
+  id: OperatorsCombatHelmetMK2
+  name: Operator field helmet
+  description: A matte-black helmet issued to Operators working in the field.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Clothing/Operators/helmet_mk2.rsi
+  - type: Clothing
+    sprite: _ReclamationProject/Clothing/Operators/helmet_mk2.rsi
+  - type: Item
+    sprite: _ReclamationProject/Clothing/Operators/helmet_mk2.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+
+- type: entity
+  parent: N14ClothingOuterPoliceVest
+  id: OperatorsPoliceVest
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+  - type: ExplosionResistance
+    damageCoefficient: 0.85
+
+- type: entity
+  parent: N14ClothingOuterNCRVestCoatBlack
+  id: OperatorsInfiltratorCoat
+  name: Spectre infiltrator coat
+  description: A black coat with concealed armor plates, issued to Spectres for covert work.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.764705882
+        Slash: 0.764705882
+        Piercing: 0.764705882
+        Heat: 0.764705882
+  - type: ClothingSpeedModifier
+    walkModifier: 1.15
+    sprintModifier: 1.15
+
+- type: entity
+  parent: N14ClothingHeadHatHelmetChineseStealthSuitHelmet
+  id: OperatorsStealthHelmet
+  name: Operator stealth helmet
+  description: A low-profile helmet wired into the Operator stealth suit’s cloak.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+
+- type: entity
+  parent: N14ClothingOuterChineseStealthSuit
+  id: OperatorsSpiritStealthSuit
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.882352941
+        Slash: 0.882352941
+        Piercing: 0.882352941
+        Heat: 0.882352941
+        Radiation: 0.6
+  - type: ToggleableClothing
+    clothingPrototype: OperatorsStealthHelmet
+
+- type: entity
+  parent: OperatorsSpiritStealthSuit
+  id: OperatorsWraithStealthSuit
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.764705882
+        Slash: 0.764705882
+        Piercing: 0.764705882
+        Heat: 0.764705882
+        Radiation: 0.6

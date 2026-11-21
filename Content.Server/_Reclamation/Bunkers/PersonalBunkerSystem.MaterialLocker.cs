@@ -3,6 +3,8 @@ using System.Numerics;
 using Content.Server.Materials;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.Interaction;
+using Content.Shared.DeviceLinking;
+using Content.Shared.Lathe;
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Content.Shared.Storage;
@@ -17,7 +19,7 @@ public sealed partial class PersonalBunkerSystem
 {
     [Dependency] private readonly MaterialStorageSystem _materialStorage = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly SharedStackSystem _stacks = default!;
+    [Dependency] private readonly SharedDeviceLinkSystem _deviceLinks = default!;
 
     private void InitializeMaterialLocker()
     {
@@ -25,12 +27,59 @@ public sealed partial class PersonalBunkerSystem
         SubscribeLocalEvent<BunkerMaterialLockerComponent, ContainerIsInsertingAttemptEvent>(OnDrawerInsert);
         SubscribeLocalEvent<BunkerMaterialLockerComponent, OpenBunkerSupplyDrawerMessage>(
             (uid, _, args) => _storage.OpenStorageUI(uid, args.Actor));
+        SubscribeLocalEvent<LatheComponent, ComponentStartup>((uid, _, _) => UpdateBunkerLathe(uid));
+        SubscribeLocalEvent<LatheComponent, EntParentChangedMessage>((Entity<LatheComponent> ent, ref EntParentChangedMessage _) =>
+        {
+            if (LifeStage(ent) >= EntityLifeStage.Initialized && !TerminatingOrDeleted(ent))
+                UpdateBunkerLathe(ent);
+        });
+    }
+
+    private void UpdateBunkerLathe(EntityUid lathe)
+    {
+        if (!HasComp<MaterialStorageComponent>(lathe))
+            return;
+
+        var parent = Transform(lathe).ParentUid;
+        var silo = CompOrNull<MaterialSiloUtilizerComponent>(lathe)?.Silo;
+        if (silo is {} old && HasComp<BunkerMaterialLockerComponent>(old) && Transform(old).ParentUid != parent)
+            _deviceLinks.RemoveSinkFromSource(old, lathe);
+
+        if (!HasComp<MapGridComponent>(parent))
+            return;
+        var lockers = AllEntityQuery<BunkerMaterialLockerComponent, TransformComponent>();
+        while (lockers.MoveNext(out var locker, out _, out var transform))
+        {
+            if (transform.ParentUid != parent || TerminatingOrDeleted(locker))
+                continue;
+            LinkBunkerLathe(locker, lathe);
+            break;
+        }
+    }
+
+    private void LinkBunkerLathe(EntityUid locker, EntityUid lathe)
+    {
+        if (EnsureComp<MaterialSiloUtilizerComponent>(lathe).Silo == locker)
+            return;
+        _deviceLinks.EnsureSinkPorts(lathe, "MaterialSiloUtilizer");
+        _deviceLinks.LinkDefaults(null, locker, lathe);
+    }
+
+    internal void InitializeRoomLocker(EntityUid grid)
+    {
+        var locker = EnsureMaterialLocker(grid);
+        var children = Transform(grid).ChildEnumerator;
+        while (children.MoveNext(out var child))
+        {
+            if (HasComp<LatheComponent>(child) && HasComp<MaterialStorageComponent>(child))
+                LinkBunkerLathe(locker, child);
+        }
     }
 
     internal EntityUid EnsureMaterialLocker(EntityUid grid)
     {
         EntityUid? locker = null;
-        var ladder = new Vector2(0.5f, -2.5f);
+        var ladder = DefaultLadderPosition;
         var children = Transform(grid).ChildEnumerator;
         while (children.MoveNext(out var child))
         {
@@ -63,7 +112,7 @@ public sealed partial class PersonalBunkerSystem
         return HasComp<MaterialComponent>(uid) &&
             TryComp<PhysicalCompositionComponent>(uid, out var composition) &&
             composition.MaterialComposition.Count > 0 &&
-            composition.MaterialComposition.All(p => p.Value > 0 && _materialStorage.GetSingleStackVolume(p.Key) > 0);
+            composition.MaterialComposition.All(p => p.Value > 0 && _materialStorage.GetEjectableUnitVolume(p.Key) > 0);
     }
 
     private void OnLockerDeposit(EntityUid uid, BunkerMaterialLockerComponent locker, InteractUsingEvent args)
@@ -71,15 +120,12 @@ public sealed partial class PersonalBunkerSystem
         if (args.Handled)
             return;
 
-        args.Handled = true;
         if (EntityManager.IsQueuedForDeletion(args.Used))
             return;
         if (!IsBunkerCraftingMaterial(args.Used))
-        {
-            Notice(args.User, Loc.GetString("bunker-material-locker-supplies-only"));
             return;
-        }
 
+        args.Handled = true;
         var inserted = CanPoolMaterial(args.Used)
             ? _materialStorage.TryInsertMaterialEntity(args.User, args.Used, uid)
             : _storage.Insert(uid, args.Used, out _, args.User);
@@ -101,25 +147,8 @@ public sealed partial class PersonalBunkerSystem
             args.Cancel();
             return;
         }
-
-        TryComp<StackComponent>(item, out var incoming);
-        var max = _stacks.GetMaxCount(incoming);
-        if (incoming != null && incoming.Count > (max == int.MaxValue ? 30 : max))
-        {
+        if (!HasComp<StackComponent>(item) && Comp<StorageComponent>(uid).UnitsPerStackType is {} limit &&
+            args.Container.ContainedEntities.Count(other => Prototype(other)?.ID == Prototype(item)?.ID) >= limit)
             args.Cancel();
-            return;
-        }
-
-        foreach (var stored in args.Container.ContainedEntities)
-        {
-            if (stored == item)
-                continue;
-            if (incoming != null ? TryComp<StackComponent>(stored, out var stack) && stack.StackTypeId == incoming.StackTypeId
-                : Prototype(stored)?.ID == Prototype(item)?.ID)
-            {
-                args.Cancel();
-                return;
-            }
-        }
     }
 }

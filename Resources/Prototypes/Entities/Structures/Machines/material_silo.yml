@@ -1,6 +1,22 @@
 - type: entity
+  id: BaseMaterialSilo
+  abstract: true
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+  - type: WirelessNetworkConnection
+    range: 1000
+  - type: DeviceLinkSource
+    range: 1000
+    ports:
+    - MaterialSilo
+  - type: MaterialStorage
+    ignoreColor: true
+  - type: MaterialSilo
+
+- type: entity
   id: MaterialSilo
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, BaseMaterialSilo ]
   name: material silo
   description: Bluespace storage connected to most lathes on the station.
   components:
@@ -16,20 +32,9 @@
     - state: inserting
       visible: false
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-  - type: WirelessNetworkConnection
-    range: 1000
-  - type: DeviceLinkSource
-    range: 1000
-    ports:
-      - MaterialSilo
   - type: Machine
     board: MaterialSiloCircuitboard
   - type: Appearance
-  - type: MaterialStorage
-    ignoreColor: true
-  - type: MaterialSilo
 
 - type: entity
   id: BaseMaterialSiloUtilizer

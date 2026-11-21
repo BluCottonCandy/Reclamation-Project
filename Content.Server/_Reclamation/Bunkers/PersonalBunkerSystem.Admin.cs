@@ -1,6 +1,5 @@
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,7 +74,7 @@ public sealed partial class PersonalBunkerSystem
                     throw new IOException("Bunker grid could not be loaded.");
                 loadingMap = map.Value.Owner;
                 grid = loadedGrid.Value.Owner;
-                EnsureMaterialLocker(grid);
+                InitializeRoomLocker(grid);
                 var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
                 air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
                 air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);
@@ -85,7 +84,7 @@ public sealed partial class PersonalBunkerSystem
                 _adminInspections[key] = new Inspection(loadingMap.Value, grid);
             }
             if (!_adminOrigins.ContainsKey(ghost)) _adminOrigins[ghost] = Transform(ghost).Coordinates;
-            MoveWithDraggedItem(ghost, new EntityCoordinates(grid, new Vector2(.5f, -1.5f)));
+            MoveWithDraggedItem(ghost, GetBunkerArrival(grid));
             result = "Bunker loaded. You can use Return to go back. Unloaded saves open as inspection copies.";
             return true;
         }

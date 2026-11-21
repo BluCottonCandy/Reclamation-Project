@@ -12,9 +12,9 @@ public sealed partial class MaterialStorageComponent : Component
     [DataField, AutoNetworkedField]
     public Dictionary<ProtoId<MaterialPrototype>, int> Storage { get; set; } = new();
 
-    /// <summary>Cap each material at one ejectable stack and keep the physical drawer separate from the pool.</summary>
+    /// <summary>Maximum number of ejectable units of each material held by this pool.</summary>
     [DataField]
-    public bool SingleStackPerMaterial;
+    public int? UnitsPerMaterial;
 
     /// <summary>
     /// Whether or not interacting with the materialstorage inserts the material in hand.

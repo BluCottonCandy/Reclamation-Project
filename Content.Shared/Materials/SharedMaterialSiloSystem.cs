@@ -56,12 +56,7 @@ public abstract class SharedMaterialSiloSystem : EntitySystem
             && utilizerStorage.Storage.Count != 0
             && TryComp(ent, out MaterialStorageComponent? siloStorage))
         {
-            foreach (var material in utilizerStorage.Storage.Keys.ToArray())
-            {
-                var materialAmount = utilizerStorage.Storage.GetValueOrDefault(material, 0);
-                if (_materialStorage.TryChangeMaterialAmount(ent, material, materialAmount, siloStorage))
-                    _materialStorage.TryChangeMaterialAmount(args.Sink, material, -materialAmount, utilizerStorage);
-            }
+            TransferLocalStock((ent.Owner, siloStorage), (args.Sink, utilizerStorage));
         }
 
         utilizer.Silo = ent;
@@ -80,19 +75,21 @@ public abstract class SharedMaterialSiloSystem : EntitySystem
             if (utilizer.Silo != ent)
                 continue;
 
-            foreach (var material in utilizerStorage.Storage.Keys.ToArray())
-            {
-                var materialAmount = utilizerStorage.Storage.GetValueOrDefault(material, 0);
-                if (!_materialStorage.TryChangeMaterialAmount(ent, material, materialAmount, siloStorage))
-                    continue;
+            TransferLocalStock((ent.Owner, siloStorage), (utilizerUid, utilizerStorage));
+        }
+    }
 
-                utilizerStorage.Storage[material] -= materialAmount;
-
-                var ev = new MaterialAmountChangedEvent();
-                RaiseLocalEvent(utilizerUid, ref ev);
-
-                Dirty(utilizerUid, utilizerStorage);
-            }
+    private void TransferLocalStock(Entity<MaterialStorageComponent> silo, Entity<MaterialStorageComponent> machine)
+    {
+        foreach (var (material, available) in machine.Comp.Storage.ToArray())
+        {
+            var amount = Math.Min(available, _materialStorage.GetRemainingMaterialCapacity(silo.Comp, material));
+            if (amount <= 0 || !_materialStorage.TryChangeMaterialAmount(silo, material, amount, silo.Comp))
+                continue;
+            machine.Comp.Storage[material] -= amount;
+            Dirty(machine);
+            var changed = new MaterialAmountChangedEvent();
+            RaiseLocalEvent(machine, ref changed);
         }
     }
 

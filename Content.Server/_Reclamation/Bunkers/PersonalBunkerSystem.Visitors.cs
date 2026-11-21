@@ -110,7 +110,7 @@ public sealed partial class PersonalBunkerSystem
         }
 
         // An invitation is for the requester alone, not pulled entities or followers.
-        _visitorTransform.SetCoordinates(visitor, new EntityCoordinates(room.Grid, BunkerEntryOffset));
+        _visitorTransform.SetCoordinates(visitor, GetBunkerArrival(room.Grid));
         if (HasComp<PhysicsComponent>(visitor))
             _visitorPhysics.SetLinearVelocity(visitor, Vector2.Zero);
 

@@ -23,7 +23,6 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedStackSystem _stacks = default!;
     [Dependency] private readonly SharedMaterialSiloSystem _materialSilo = default!;
 
     /// <summary>
@@ -102,7 +101,13 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         MaterialSiloUtilizerComponent? utilizer = null,
         StorageComponent? storage = null)
     {
-        return GetMaterialAmount(uid, material, component, utilizer) + GetStoredMaterialAmount(uid, material, storage);
+        if (!Resolve(uid, ref component))
+            return 0;
+        var available = GetMaterialAmount(uid, material, component, utilizer) + GetStoredMaterialAmount(uid, material, storage);
+        // Stock that did not fit when a lathe joined a capped silo stays usable at that lathe.
+        if (HasLocalOverflow(uid, component))
+            available += component.Storage.GetValueOrDefault(material);
+        return available;
     }
 
     /// <summary>
@@ -113,12 +118,13 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         var materials = new Dictionary<string, int>();
 
         if (!Resolve(uid, ref storage, false) ||
-            TryComp<MaterialStorageComponent>(uid, out var pool) && pool.SingleStackPerMaterial)
+            TryComp<MaterialStorageComponent>(uid, out var pool) && pool.UnitsPerMaterial.HasValue)
             return materials;
 
         foreach (var ent in storage.Container.ContainedEntities)
         {
-            if (!HasComp<MaterialComponent>(ent) || !TryComp<PhysicalCompositionComponent>(ent, out var composition))
+            if (EntityManager.IsQueuedForDeletion(ent) || !HasComp<MaterialComponent>(ent) ||
+                !TryComp<PhysicalCompositionComponent>(ent, out var composition))
                 continue;
 
             var multiplier = TryComp<StackComponent>(ent, out var stack) ? stack.Count : 1;
@@ -195,7 +201,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
 
         var amount = GetMaterialAmount(uid, materialId, component, utilizer);
         var result = (long) amount + volume;
-        if (volume > 0 && component.SingleStackPerMaterial && result > GetSingleStackVolume(materialId))
+        if (volume > 0 && volume > GetRemainingMaterialCapacity(GetReceivingPool(uid, component), materialId))
             return false;
         return result is >= 0 and <= int.MaxValue;
     }
@@ -328,14 +334,38 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     /// <summary>
     /// Tries to insert an entity into the material storage.
     /// </summary>
-    public virtual bool TryInsertMaterialEntity(EntityUid user,
+    public abstract bool TryInsertMaterialEntity(EntityUid user,
         EntityUid toInsert,
         EntityUid receiver,
         MaterialStorageComponent? storage = null,
         MaterialSiloUtilizerComponent? utilizer = null,
         MaterialComponent? material = null,
-        PhysicalCompositionComponent? composition = null)
+        PhysicalCompositionComponent? composition = null);
+
+    protected MaterialStorageComponent GetReceivingPool(EntityUid uid, MaterialStorageComponent local)
     {
+        if (TryComp<MaterialSiloUtilizerComponent>(uid, out var utilizer) && utilizer.Silo.HasValue &&
+            _materialSilo.GetSiloStorage(uid, utilizer) is {} silo)
+            return silo.Comp;
+        return local;
+    }
+
+    protected bool HasLocalOverflow(EntityUid uid, MaterialStorageComponent local) =>
+        local.Storage.Count > 0 && GetReceivingPool(uid, local) is { UnitsPerMaterial: not null } pool && pool != local;
+
+    public int GetRemainingMaterialCapacity(MaterialStorageComponent pool, string material)
+    {
+        if (pool.UnitsPerMaterial is not {} units)
+            return int.MaxValue;
+        var remaining = (long) units * GetEjectableUnitVolume(material) - pool.Storage.GetValueOrDefault(material);
+        return (int) Math.Clamp(remaining, 0, int.MaxValue);
+    }
+
+    protected bool TryStoreMaterialUnits(EntityUid toInsert, EntityUid receiver, out int inserted,
+        MaterialStorageComponent? storage, MaterialSiloUtilizerComponent? utilizer,
+        MaterialComponent? material, PhysicalCompositionComponent? composition)
+    {
+        inserted = 0;
         if (!Resolve(receiver, ref storage))
             return false;
 
@@ -351,6 +381,18 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         // Material Whitelist checked implicitly by CanChangeMaterialAmount();
 
         var multiplier = TryComp<StackComponent>(toInsert, out var stackComponent) ? stackComponent.Count : 1;
+        var pool = GetReceivingPool(receiver, storage);
+        if (pool.UnitsPerMaterial.HasValue)
+        {
+            foreach (var (mat, vol) in composition.MaterialComposition)
+            {
+                if (vol <= 0)
+                    return false;
+                multiplier = Math.Min(multiplier, GetRemainingMaterialCapacity(pool, mat) / vol);
+            }
+        }
+        if (multiplier <= 0 || composition.MaterialComposition.Count == 0)
+            return false;
         var totalVolume = 0;
         foreach (var (mat, vol) in composition.MaterialComposition)
         {
@@ -379,6 +421,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
 
         var ev = new MaterialEntityInsertedEvent(material);
         RaiseLocalEvent(receiver, ref ev);
+        inserted = multiplier;
         return true;
     }
 
@@ -405,7 +448,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         args.Handled = TryInsertMaterialEntity(args.User, args.Used, uid, component);
     }
 
-    public int GetSingleStackVolume(string materialId)
+    public int GetEjectableUnitVolume(string materialId)
     {
         if (!_prototype.TryIndex<MaterialPrototype>(materialId, out var material) ||
             material.StackEntity is not {} output || !_prototype.TryIndex(output, out var item) ||
@@ -413,10 +456,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
             !composition.MaterialComposition.TryGetValue(materialId, out var unit) || unit <= 0)
             return 0;
 
-        item.TryGetComponent<StackComponent>(out var stack, _componentFactory);
-        var limit = _stacks.GetMaxCount(stack);
-        // A stack without a finite maximum would defeat the bunker's storage limit.
-        return (int) Math.Min((long) unit * (limit == int.MaxValue ? 30 : limit), int.MaxValue);
+        return unit;
     }
 
     public int GetSheetVolume(MaterialPrototype material)

@@ -61,6 +61,11 @@ public sealed partial class MaterialStorageControl : ScrollContainer
                 ? silo.Value.Comp.Storage.Select(pair => (pair.Key.Id, pair.Value)).ToDictionary()
                 : materialStorage.Storage.Select(pair => (pair.Key.Id, pair.Value)).ToDictionary();
             ConnectToSiloLabel.Visible = silo != null;
+            if (silo?.Comp.UnitsPerMaterial != null)
+            {
+                foreach (var (material, amount) in materialStorage.Storage)
+                    mats[material] = mats.GetValueOrDefault(material) + amount;
+            }
         }
         else
         {

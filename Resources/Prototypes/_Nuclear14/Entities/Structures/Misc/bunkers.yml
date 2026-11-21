@@ -1,12 +1,30 @@
 - type: entity
   parent: BaseStructure
+  id: ReclamationBaseBunkerAccess
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: FloorObjects
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        hard: false
+        layer: []
+        mask: []
+
+- type: entity
+  parent: ReclamationBaseBunkerAccess
   id: N14CryoBunkerLadder
   name: bunker hatch
   description: A hatch and ladder leading down to safe spot where one could take some rest.
   components:
   - type: Sprite
     offset: 0, 0.25
-    drawdepth: FloorObjects
     noRot: true
     sprite: _Nuclear14/Structures/Misc/laddersms13.rsi
     layers:
@@ -19,8 +37,6 @@
       enum.PersonalBunkerUiKey.Key:
         type: PersonalBunkerBoundUserInterface
   - type: Cryostorage
-  - type: Physics
-    canCollide: false
   - type: DragInsertContainer
     containerId: storage
   - type: ExitContainerOnMove
@@ -56,7 +72,7 @@
           True: { state: enclave }
           False: { state: enclave_open }
 - type: entity
-  parent: BaseStructure
+  parent: ReclamationBaseBunkerAccess
   id: ReclamationPersonalBunkerExit
   name: bunker ladder
   description: Return to the hatch you entered through. Your room is saved when empty.
@@ -84,10 +100,10 @@
     thresholds: []
 
 - type: entity
-  parent: BaseStructure
+  parent: [BaseStructure, BaseMaterialSilo]
   id: ReclamationBunkerMaterialLocker
   name: bunker material locker
-  description: A permanent locker for one stack of each crafting material. Use a material on it to deposit it. Open it to withdraw supplies.
+  description: A permanent material silo shared by the bunker’s lathes. Holds 60 units of each crafting material and has a drawer for construction supplies.
   components:
   - type: BunkerMaterialLocker
   - type: NoPull
@@ -99,13 +115,14 @@
     - state: closet_door
   - type: Appearance
   - type: MaterialStorage
-    singleStackPerMaterial: true
+    unitsPerMaterial: 60
     insertOnInteract: false
     dropOnDeconstruct: false
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
   - type: Storage
+    unitsPerStackType: 60
     clickInsert: false
     maxItemSize: Ginormous
     grid:

@@ -20,7 +20,8 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     private readonly HashSet<EntityUid> _changedFrames = new();
-    private const string ModSprite = "_ReclamationProject/Clothing/AtomCats/armor_mods.rsi";
+    private const string CatsArmorPath = "_ReclamationProject/Clothing/AtomCats/";
+    private const string ModSprite = CatsArmorPath + "armor_mods.rsi";
 
     public override void Initialize()
     {
@@ -36,6 +37,18 @@ public sealed class ModularArmorVisualSystem : EntitySystem
     {
         if (ev.Slot != "outerClothing") return;
         ev.Layers.Clear();
+        // The painted greaves have a wider stance than humanoid feet and worn shoes.
+        // Draw dark boot liners underneath them, including when a painted chest changes frames.
+        if (ent.Comp.FrameSprite.StartsWith(CatsArmorPath, StringComparison.Ordinal) ||
+            ent.Comp.Visuals.TryGetValue(ArmorPlateSlot.Chest, out var chest) && chest.StartsWith(CatsArmorPath, StringComparison.Ordinal))
+        {
+            ev.Layers.Add(("pa-boot-liners", new PrototypeLayerData
+            {
+                RsiPath = "Clothing/Shoes/Boots/magboots.rsi",
+                State = "equipped-FEET",
+                Color = Color.FromHex("#505056"),
+            }));
+        }
         ev.Layers.Add(("pa-frame", new PrototypeLayerData {
             RsiPath = ent.Comp.FrameSprite, State = "equipped-OUTERCLOTHING", Color = ent.Comp.FrameColor
         }));

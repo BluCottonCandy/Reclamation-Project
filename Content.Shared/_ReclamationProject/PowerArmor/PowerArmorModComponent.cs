@@ -49,6 +49,7 @@ public sealed partial class PowerArmorModWearerComponent : Component
     [DataField, AutoNetworkedField] public bool MechanicVisor;
     [DataField, AutoNetworkedField] public bool NightVision;
     [DataField, AutoNetworkedField] public EntityUid? ActiveWristTool;
+    public bool ServoJumpActive;
 }
 
 public sealed partial class ActivateArmorModEvent : InstantActionEvent;

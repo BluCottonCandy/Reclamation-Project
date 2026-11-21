@@ -1,7 +1,9 @@
 using System.Linq;
+using System.Numerics;
 using Content.Client.Overlays;
 using Content.IntegrationTests.Pair;
 using Content.Server._ReclamationProject.PowerArmor;
+using Content.Server.Gravity;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
@@ -24,6 +26,9 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Tools.Systems;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
+using Robust.Shared.Maths;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Robust.Client.Graphics;
@@ -444,6 +449,54 @@ public sealed class AtomCatsArmorModsTest
             Assert.That(hands.GetActiveItem(wearer), Is.Null);
             if (kind == ArmorModKind.Overdrive)
                 Assert.That(speed.WalkSpeedModifier, Is.EqualTo(baseline).Within(0.001f));
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [TestCase(false, false)]
+    [TestCase(false, true)]
+    [TestCase(true, false)]
+    public async Task JumpServosLandAtRangeOrBeforeWall(bool wall, bool diagonal)
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        var em = pair.Server.EntMan;
+        var direction = diagonal ? Vector2.Normalize(Vector2.One) : Vector2.UnitX;
+        var start = new Vector2(0.5f, 0.5f);
+        EntityUid wearer = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            var maps = em.System<SharedMapSystem>();
+            for (var x = 0; x <= 7; x++)
+            for (var y = 0; y <= 5; y++)
+                maps.SetTile(map.Grid, new Vector2i(x, y), map.Tile.Tile);
+            em.System<GravitySystem>().EnableGravity(map.Grid.Owner);
+            if (wall)
+                em.SpawnEntity("WallReinforced", new EntityCoordinates(map.Grid, 3.5f, 0.5f));
+            var position = new EntityCoordinates(map.Grid, start);
+            wearer = em.SpawnEntity("MobHuman", position);
+            var frame = em.SpawnEntity("AtomCatsT45Red", position);
+            var module = em.SpawnEntity("AtomCatsModJump", position);
+            em.System<NpcFactionSystem>().AddFaction(wearer, "AtomCats");
+            Assert.That(em.System<InventorySystem>().TryEquip(wearer, frame, "outerClothing", force: true));
+            Assert.That(em.System<SharedHandsSystem>().TryPickup(wearer, module));
+            em.EventBus.RaiseLocalEvent(frame, new InteractUsingEvent(wearer, module, frame, position));
+            em.System<SharedTransformSystem>().SetWorldRotation(wearer, direction.ToWorldAngle());
+            em.System<SharedPhysicsSystem>().SetLinearVelocity(wearer, new Vector2(1, -2));
+            var actionId = em.GetComponent<PowerArmorModComponent>(module).ActionEntity!.Value;
+            var action = em.GetComponent<InstantActionComponent>(actionId);
+            em.System<SharedActionsSystem>().PerformAction(wearer, null, actionId, action, action.Event, pair.Server.Timing.CurTime);
+            Assert.That(em.HasComponent<ThrownItemComponent>(wearer));
+            Assert.That(action.Cooldown!.Value.End - action.Cooldown.Value.Start, Is.EqualTo(TimeSpan.FromSeconds(30)));
+        });
+        await pair.Server.WaitRunTicks(pair.SecondsToTicks(1));
+        await pair.Server.WaitAssertion(() =>
+        {
+            var travelled = em.System<SharedTransformSystem>().GetWorldPosition(wearer) - start;
+            Assert.That(em.HasComponent<ThrownItemComponent>(wearer), Is.False);
+            var expected = wall ? 2.1f : 5f;
+            Assert.That(Vector2.Distance(travelled, direction * expected), Is.LessThan(0.15f),
+                $"Expected {direction * expected}, travelled {travelled}");
         });
         await pair.CleanReturnAsync();
     }

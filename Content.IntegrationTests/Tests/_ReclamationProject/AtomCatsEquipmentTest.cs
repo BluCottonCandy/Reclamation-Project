@@ -200,6 +200,12 @@ public sealed class AtomCatsEquipmentTest
                 Assert.That(client.System<InventorySystem>().TryGetSlotEntity(wearer, "head", out var head));
                 Assert.That(client.GetComponent<Robust.Client.GameObjects.PointLightComponent>(head!.Value).Enabled, Is.EqualTo(lit));
                 var sprite = client.GetComponent<Robust.Client.GameObjects.SpriteComponent>(wearer);
+                Assert.That(sprite.LayerMapTryGet("pa-boot-liners", out var liners));
+                Assert.That(sprite[liners].RsiState.Name, Is.EqualTo("equipped-FEET"));
+                Assert.That(sprite.LayerMapTryGet("pa-frame", out var frameLayer));
+                Assert.That(sprite.LayerMapTryGet("pa-Chest", out var chestLayer));
+                Assert.That(liners, Is.LessThan(frameLayer));
+                Assert.That(frameLayer, Is.LessThan(chestLayer));
                 Assert.That(sprite.LayerMapTryGet("head-0", out var shell));
                 Assert.That(sprite[shell].ActualRsi?.Path.ToString(), Does.EndWith("/blue-helmet.rsi"));
                 Assert.That(sprite[shell].RsiState.Name, Is.EqualTo("off-equipped-HELMET"));

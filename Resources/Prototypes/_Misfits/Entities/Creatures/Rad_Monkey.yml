@@ -4,7 +4,7 @@
 # Amaster222 was here
 - type: entity
   name: Irradiated Monkey
-  parent: N14MobBaseSimple
+  parent: [BaseBunkerAnimal, N14MobBaseSimple]
   id: MisfitsRadMonkey
   description: Once top banana in the kitchen, now a chimp chump.
   components:

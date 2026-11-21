@@ -240,7 +240,7 @@
 - type: entity
   name: nightstalker cub
   id: N14MobNightstalkerCub
-  parent: N14MobBaseHostile
+  parent: [BaseBunkerAnimal, N14MobBaseHostile]
   description: Is it a coyote? Why does it have a rattler... This one is small.
   components:
   - type: Sprite
@@ -339,7 +339,7 @@
 - type: entity
   name: nightstalker
   id: N14MobNightstalker
-  parent: N14MobBaseHostile
+  parent: [BaseBunkerAnimal, N14MobBaseHostile]
   description: Is it a coyote? Why does it have a rattler...
   components:
   - type: Sprite

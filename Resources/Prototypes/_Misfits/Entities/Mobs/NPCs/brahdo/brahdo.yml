@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: N14MobBaseSimple
+  parent: [BaseBunkerAnimal, N14MobBaseSimple]
   id: MisfitsMobBrahdo_Base
   abstract: true
   components:

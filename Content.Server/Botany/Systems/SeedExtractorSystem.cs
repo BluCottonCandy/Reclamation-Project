@@ -1,5 +1,6 @@
 using Content.Server.Botany.Components;
 using Content.Server.Construction;
+using Content.Server.Construction.Components;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Interaction;
@@ -15,6 +16,7 @@ public sealed class SeedExtractorSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly BotanySystem _botanySystem = default!;
+    [Dependency] private readonly ConstructionSystem _construction = default!;
 
     public override void Initialize()
     {
@@ -49,7 +51,8 @@ public sealed class SeedExtractorSystem : EntitySystem
 
         QueueDel(args.Used);
 
-        var amount = (int) (_random.NextFloat(seedExtractor.BaseMinSeeds, seedExtractor.BaseMaxSeeds + 1) * seedExtractor.SeedAmountMultiplier) * stackMultiplier;
+        var multiplier = GetSeedAmountMultiplier(uid, seedExtractor);
+        var amount = (int) (_random.NextFloat(seedExtractor.BaseMinSeeds, seedExtractor.BaseMaxSeeds + 1) * multiplier) * stackMultiplier;
         var coords = Transform(uid).Coordinates;
 
         var packetSeed = seed;
@@ -68,8 +71,17 @@ public sealed class SeedExtractorSystem : EntitySystem
         seedExtractor.SeedAmountMultiplier = MathF.Pow(seedExtractor.PartRatingSeedAmountMultiplier, manipulatorQuality - 1);
     }
 
+    private float GetSeedAmountMultiplier(EntityUid uid, SeedExtractorComponent extractor)
+    {
+        // Initialized map saves keep the installed parts but skip the initial parts refresh.
+        if (extractor.SeedAmountMultiplier == null && TryComp<MachineComponent>(uid, out var machine))
+            _construction.RefreshParts(uid, machine);
+
+        return extractor.SeedAmountMultiplier ?? 1f;
+    }
+
     private void OnUpgradeExamine(EntityUid uid, SeedExtractorComponent seedExtractor, UpgradeExamineEvent args)
     {
-        args.AddPercentageUpgrade("seed-extractor-component-upgrade-seed-yield", seedExtractor.SeedAmountMultiplier);
+        args.AddPercentageUpgrade("seed-extractor-component-upgrade-seed-yield", GetSeedAmountMultiplier(uid, seedExtractor));
     }
 }

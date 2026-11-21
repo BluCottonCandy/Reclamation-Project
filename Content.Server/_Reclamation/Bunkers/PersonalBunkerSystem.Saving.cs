@@ -4,7 +4,10 @@ using System.Linq;
 using Content.Server.Nutrition.Components;
 using Content.Server.Paper;
 using Content.Server.Storage.Components;
+using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.Cargo.Components;
+using Content.Shared.Damage;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Materials;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Stacks;
@@ -46,16 +49,7 @@ public sealed partial class PersonalBunkerSystem
             _blueprints.PurgeTree(room.Grid);
             PrepareRoomContentsForSave(room.Grid, Occupied(room));
 
-            EntityManager.CullRemovedComponents();
-            _savingGrid = room.Grid;
-            var (data, category) = _loader.SerializeEntitiesRecursive([room.Grid], new SerializationOptions
-            {
-                Category = FileCategory.Grid,
-                MissingEntityBehaviour = MissingEntityBehaviour.Ignore,
-                ExpectPreInit = false,
-            });
-            if (category != FileCategory.Grid)
-                throw new IOException("Bunker serialization did not produce a grid.");
+            var data = SerializeRoomGrid(room.Grid);
 
             // Deep-copy the detached data so the worker cannot observe later mutations by
             // serialization subscribers/caches. All entity access remains on the game thread.
@@ -68,6 +62,22 @@ public sealed partial class PersonalBunkerSystem
             Log.Error($"Bunker snapshot failed; prior save is preserved. No automatic retry; unsaved progress may be lost: {e}");
             return false;
         }
+    }
+
+    internal MappingDataNode SerializeRoomGrid(EntityUid grid)
+    {
+        EntityManager.CullRemovedComponents();
+        _savingGrid = grid;
+        try
+        {
+            var (data, category) = _loader.SerializeEntitiesRecursive([grid], new SerializationOptions
+            {
+                Category = FileCategory.Grid,
+                MissingEntityBehaviour = MissingEntityBehaviour.Ignore,
+                ExpectPreInit = false,
+            });
+            return category == FileCategory.Grid ? data : throw new IOException("Bunker serialization did not produce a grid.");
+        }
         finally
         {
             _savingGrid = null;
@@ -78,10 +88,22 @@ public sealed partial class PersonalBunkerSystem
     {
         var locker = EnsureMaterialLocker(grid);
         var drawer = Comp<StorageComponent>(locker).Container;
-        // The traversal skips bodies and everything they carry, including nested bags.
+        // The traversal skips occupants and everything they carry, including nested bags.
         foreach (var uid in GetRoomBelongings(grid))
         {
-            if (TerminatingOrDeleted(uid) || uid == locker || drawer.Contains(uid))
+            if (TerminatingOrDeleted(uid))
+                continue;
+
+            if (TryComp<BunkerAnimalComponent>(uid, out var animal) && TryComp<DamageableComponent>(uid, out var damage)
+                && TryComp<MobStateComponent>(uid, out var mob))
+            {
+                animal.StoredDamage = new(damage.Damage.DamageDict);
+                animal.StoredState = mob.CurrentState;
+                // Bunker display conversion applies to an animal's equipment, never the animal itself.
+                continue;
+            }
+
+            if (uid == locker || drawer.Contains(uid))
                 continue;
 
             if (TryComp<MaterialStorageComponent>(uid, out var storage))

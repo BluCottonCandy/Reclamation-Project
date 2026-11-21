@@ -1,0 +1,7 @@
+# Put this mixin first so its save flag overrides the unsavable base mob.
+- type: entity
+  id: BaseBunkerAnimal
+  abstract: true
+  save: true
+  components:
+  - type: BunkerAnimal

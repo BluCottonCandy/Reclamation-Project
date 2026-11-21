@@ -25,7 +25,7 @@ public sealed partial class SeedExtractorComponent : Component
     ///     Modifier to the amount of seeds outputted, set on <see cref="RefreshPartsEvent"/>.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    public float SeedAmountMultiplier;
+    public float? SeedAmountMultiplier;
 
     /// <summary>
     ///     Machine part whose rating modifies the amount of seed packets dropped.

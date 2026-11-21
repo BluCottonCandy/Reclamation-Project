@@ -4,6 +4,7 @@
   name: sentient deathclaw
   id: N14MobDeathclawSentient
   parent: N14MobDeathclaw
+  save: false
   description: An unusually intelligent deathclaw, watchful and capable of speech.
   components:
   - type: NpcNutrition
@@ -188,6 +189,7 @@
   name: Bwonsamdi
   id: N14MobDeathclawPlayer
   parent: N14MobDeathclaw
+  save: false
   description: A deathclaw of unnatural size and strength, bound to the loa of death and marked with strange, restless designs.
   components:
   - type: NpcNutrition

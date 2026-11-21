@@ -301,7 +301,9 @@
   id: BaseFishWhite
   parent: BaseFish
   abstract: true
+  save: true
   components:
+  - type: BunkerFishingCatch
   - type: Butcherable
     spawned:
     - id: FoodMeatWhitefishRaw
@@ -318,7 +320,9 @@
   id: BaseFishRed
   parent: BaseFishRare
   abstract: true
+  save: true
   components:
+  - type: BunkerFishingCatch
   - type: Butcherable
     spawned:
     - id: FoodMeatRedfishRaw

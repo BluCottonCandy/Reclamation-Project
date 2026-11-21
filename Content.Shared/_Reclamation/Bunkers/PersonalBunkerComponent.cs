@@ -1,3 +1,4 @@
+using Content.Shared.FixedPoint;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Reclamation.Bunkers;
@@ -15,6 +16,14 @@ public sealed partial class BunkerDisplayWeaponComponent : Component;
 /// <summary>A working tool that keeps its normal functions in a saved bunker.</summary>
 [RegisterComponent]
 public sealed partial class BunkerPreservedToolComponent : Component;
+
+/// <summary>Fishing catches that can be stored as items in a bunker after death.</summary>
+[RegisterComponent]
+public sealed partial class BunkerFishingCatchComponent : Component
+{
+    // Damageable does not write its live damage dictionary to map saves.
+    [DataField] public Dictionary<string, FixedPoint2>? StoredDamage;
+}
 
 /// <summary>Persisted so loading the original clothing prototype cannot restore armor protection.</summary>
 [RegisterComponent]

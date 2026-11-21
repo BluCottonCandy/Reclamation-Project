@@ -14,6 +14,7 @@ using Content.Server.Preferences.Managers;
 using Content.Shared._Reclamation.Bunkers;
 using Content.Shared.Atmos;
 using Content.Shared.Bed.Cryostorage;
+using Content.Shared.Damage;
 using Content.Shared.Interaction;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
@@ -64,6 +65,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly SharedPopupSystem _popups = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly BunkerDisplayWeaponSystem _displays = default!;
     [Dependency] private readonly FactionBlueprintRemovalSystem _blueprints = default!;
 
@@ -72,7 +74,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     [Dependency] private readonly IAdminManager _admins = default!;
 
     private sealed record Identity(string Account, Task<int?> Profile);
-    private sealed class Room(string key, EntityUid map, EntityUid grid, EntityUid hatch)
+    internal sealed class Room(string key, EntityUid map, EntityUid grid, EntityUid hatch)
     {
         public readonly string Key = key;
         public readonly EntityUid Map = map;
@@ -330,7 +332,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         // Include mounted/equipped items and older saves without display markers.
         InitializeRoomLocker(grid);
         _blueprints.PurgeTree(grid);
-        var belongings = GetRoomBelongings(grid);
+        var belongings = GetRoomBelongings(grid, restoreCatches: true);
         foreach (var item in belongings)
         {
             if (!Exists(item)) continue;
@@ -425,12 +427,24 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         {
             _forcedExits.Remove(body);
             if (!Exists(body)) continue;
-            if (IsActiveAdminGhost(body)) continue;
-            if (_mobState.IsAlive(body) && TryComp<ActorComponent>(body, out var actor)
-                && actor.PlayerSession.Status == SessionStatus.InGame) continue;
             var room = _rooms.Values.FirstOrDefault(room => room.Map == Transform(body).MapUid);
-            if (room != null && !ReturnToHatch(room, body)) _forcedExits.Add(body);
+            if (room != null) ProcessForcedExit(room, body);
         }
+    }
+
+    internal void ProcessForcedExit(Room room, EntityUid body)
+    {
+        if (IsActiveAdminGhost(body)) return;
+        if (IsUncontrolledFishingCatch(body))
+        {
+            // If the owner left while the catch was alive, its death can leave the room vacant.
+            if (_mobState.IsDead(body) && !Occupied(room))
+                QueueSave(room);
+            return;
+        }
+        if (_mobState.IsAlive(body) && TryComp<ActorComponent>(body, out var actor)
+            && actor.PlayerSession.Status == SessionStatus.InGame) return;
+        if (!ReturnToHatch(room, body)) _forcedExits.Add(body);
     }
 
     private bool HasActivePlayer(Room room, bool requireAwake)
@@ -444,14 +458,24 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         return false;
     }
 
-    private List<EntityUid> GetRoomBelongings(EntityUid grid)
+    private List<EntityUid> GetRoomBelongings(EntityUid grid, bool restoreCatches = false)
     {
         var belongings = new List<EntityUid>();
         var pending = new Stack<(EntityUid Uid, int Depth)>();
         pending.Push((grid, 0));
         while (pending.TryPop(out var next))
         {
-            if (next.Depth > 128 || !Exists(next.Uid) || IsLivingEntity(next.Uid))
+            if (next.Depth > 128 || !Exists(next.Uid))
+                continue;
+            if (restoreCatches && TryComp<BunkerFishingCatchComponent>(next.Uid, out var fish)
+                && fish.StoredDamage is { } storedDamage && IsUncontrolledFishingCatch(next.Uid)
+                && TryComp<DamageableComponent>(next.Uid, out var damage))
+            {
+                fish.StoredDamage = null;
+                _damage.SetDamage(next.Uid, damage, new DamageSpecifier { DamageDict = storedDamage });
+                _mobState.ChangeMobState(next.Uid, MobState.Dead);
+            }
+            if (IsBunkerOccupant(next.Uid))
                 continue;
             belongings.Add(next.Uid);
             var children = Transform(next.Uid).ChildEnumerator;
@@ -513,18 +537,26 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
     private void AddOccupantMaps<T>(HashSet<EntityUid> maps) where T : Component
     {
         var query = EntityQueryEnumerator<T, TransformComponent>();
-        while (query.MoveNext(out _, out _, out var transform))
-            if (transform.MapUid is { } map) maps.Add(map);
+        while (query.MoveNext(out var uid, out _, out var transform))
+            if (transform.MapUid is { } map && !maps.Contains(map) && !IsStoredCatch(uid)) maps.Add(map);
     }
 
     private bool HasOccupant<T>(EntityUid map) where T : Component
     {
         var query = EntityQueryEnumerator<T, TransformComponent>();
-        while (query.MoveNext(out _, out _, out var transform))
-            if (transform.MapUid == map) return true;
+        while (query.MoveNext(out var uid, out _, out var transform))
+            if (transform.MapUid == map && !IsStoredCatch(uid)) return true;
         return false;
     }
-    private bool IsLivingEntity(EntityUid uid) => HasComp<GhostComponent>(uid) || HasComp<MobStateComponent>(uid) || HasComp<MindContainerComponent>(uid) || HasComp<ActorComponent>(uid);
+    private bool IsUncontrolledFishingCatch(EntityUid uid) =>
+        HasComp<BunkerFishingCatchComponent>(uid) && !HasComp<ActorComponent>(uid) && !HasComp<GhostComponent>(uid)
+        && (!TryComp<MindContainerComponent>(uid, out var mind) || (!mind.HasMind && mind.OriginalMind == null));
+
+    private bool IsStoredCatch(EntityUid uid) => IsUncontrolledFishingCatch(uid) && _mobState.IsDead(uid);
+
+    private bool IsBunkerOccupant(EntityUid uid) =>
+        (HasComp<GhostComponent>(uid) || HasComp<MobStateComponent>(uid) || HasComp<MindContainerComponent>(uid) || HasComp<ActorComponent>(uid))
+        && !IsStoredCatch(uid);
 
     /// <summary>Also excludes every child of a mob, including worn equipment and held bags.</summary>
     public bool IsRoomBelonging(EntityUid uid, EntityUid grid)
@@ -533,7 +565,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
         var current = uid;
         for (var depth = 0; depth < 128; depth++)
         {
-            if (IsLivingEntity(current)) return false;
+            if (IsBunkerOccupant(current)) return false;
             var parent = Transform(current).ParentUid;
             if (parent == grid) return true;
             if (!parent.IsValid() || !Exists(parent)) return false;

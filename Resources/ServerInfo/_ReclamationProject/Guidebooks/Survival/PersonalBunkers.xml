@@ -7,6 +7,8 @@ Your room starts with a small concrete interior, a roof, breathable air, and a l
 
 When the last occupant leaves, the room queues one save. Snapshot capture is staggered, and save-file processing runs in the background. Empty rooms wait for pending saves, then unload after a short grace period without saving a second time. A final safety save still runs at round end or normal server shutdown. There is no repeating autosave while you are inside. Furniture, decorations, and items inside containers are saved. Players, bodies, and everything they are wearing or carrying are excluded. An occupied room stays loaded. If you enter critical condition or go SSD inside, your body and belongings are returned to the entrance hatch. The room saves when empty, just as if you had left through the ladder. Ghosts are returned to the hatch when no living, awake player remains inside, so observers cannot keep an abandoned room loaded.
 
+Fish caught at bubbling fishing spots can die inside your bunker. Their bodies stay where you left them, including inside containers, and are saved with the room.
+
 ## Saving crafting materials
 
 The permanent material locker beside your bunker's exit ladder holds up to 60 units of each crafting material, including cloth. Use a stack on the locker to deposit it. Your bunker's lathes and workbenches automatically share the locker's materials. Open the locker to withdraw materials or use its construction supply drawer for items such as cable coils and metal rods.

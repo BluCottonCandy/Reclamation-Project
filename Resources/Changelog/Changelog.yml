@@ -15177,3 +15177,18 @@ Entries:
   id: 6673
   time: '2026-11-21T10:29:14.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/222
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        NPC animals survive personal bunker reloads. Player bodies and their
+        belongings stay out of bunker saves, even when the body has no soul.
+    - type: Fix
+      message: Fish caught at bubbling spots stay in your bunker after death.
+    - type: Fix
+      message: >-
+        N14 seed extractors dispense seeds after a bunker reload and retain
+        their upgrade bonus.
+  id: 6674
+  time: '2026-11-21T10:33:33.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/221

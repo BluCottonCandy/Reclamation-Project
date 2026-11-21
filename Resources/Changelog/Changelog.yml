@@ -15164,3 +15164,16 @@ Entries:
   id: 6672
   time: '2026-11-21T08:37:34.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/220
+- author: BluCottonCandy
+  changes:
+    - type: Fix
+      message: >-
+        Wearers’ feet and boots no longer peek through the lower middle of Atom
+        Cats power armor.
+    - type: Fix
+      message: >-
+        Power armor jump servos carry the wearer five tiles on open ground and
+        stop short of walls.
+  id: 6673
+  time: '2026-11-21T10:29:14.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/222

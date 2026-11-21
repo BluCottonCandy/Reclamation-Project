@@ -18,7 +18,7 @@ public sealed class FactionTimeAlternativesTests
     public static readonly HashSet<string> WhitelistSkipsTimers = new() { "InstituteCourser", "InstituteDirector", "MinutemenGeneral" };
 
     [Test]
-    public async Task AtomCatsCanEarnOrSkipEachPromotion()
+    public async Task AtomCatsPromotionsCountPreviousRankOrTotalFactionTime()
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
@@ -30,6 +30,7 @@ public sealed class FactionTimeAlternativesTests
             var checks = server.System<CharacterRequirementsSystem>();
             var profile = HumanoidCharacterProfile.DefaultWithSpecies();
             string[][] tiers = [["Lookout"], ["Greaser"], ["Muscle", "TattooArtist"], ["Rocker"], ["HotRod"], ["Underboss"], ["Boss"]];
+            var allRanks = tiers.SelectMany(ranks => ranks).ToArray();
             var original = config.GetCVar(CCVars.GameRoleTimers);
             config.SetCVar(CCVars.GameRoleTimers, true);
             try
@@ -38,20 +39,45 @@ public sealed class FactionTimeAlternativesTests
                 foreach (var rank in tiers[tier])
                 {
                     var job = prototypes.Index<JobPrototype>("AtomCats" + rank);
-                    var times = new Dictionary<string, TimeSpan> { ["Wastelander"] = TimeSpan.FromDays(100) };
+                    var times = new Dictionary<string, TimeSpan>
+                    {
+                        ["Wastelander"] = TimeSpan.FromDays(100),
+                        [PlayTimeTrackingShared.TrackerOverall] = TimeSpan.FromDays(100),
+                    };
                     bool Eligible() => checks.CheckRequirementsValid(job.Requirements ?? [], job, profile, times, true,
                         job, server.EntMan, prototypes, config, sponsor, out _, jobWhitelisted: true);
                     Assert.That(Eligible(), Is.EqualTo(tier == 0), rank);
-                    for (var prior = 0; prior < tier; prior++)
-                    foreach (var source in tiers[prior])
+                    if (tier == 0)
+                        continue;
+
+                    var factionTime = TimeSpan.FromMinutes(300 * tier);
+                    foreach (var source in allRanks)
                     {
                         var tracker = "AtomCats" + source;
-                        var threshold = TimeSpan.FromMinutes(300 * (tier - prior));
+                        var threshold = tiers[tier - 1].Contains(source) ? TimeSpan.FromMinutes(300) : factionTime;
                         times[tracker] = threshold - TimeSpan.FromSeconds(1);
                         Assert.That(Eligible(), Is.False, $"{source} to {rank} before threshold");
                         times[tracker] = threshold;
                         Assert.That(Eligible(), Is.True, $"{source} to {rank} at threshold");
                         times.Remove(tracker);
+                    }
+
+                    // At these thresholds an even split leaves the previous rank below 300 minutes.
+                    foreach (var source in allRanks)
+                        times["AtomCats" + source] = factionTime / allRanks.Length;
+                    times["AtomCatsLookout"] -= TimeSpan.FromSeconds(1);
+                    Assert.That(Eligible(), Is.False, $"{rank} with mixed time just below the faction threshold");
+                    times["AtomCatsLookout"] += TimeSpan.FromSeconds(1);
+                    Assert.That(Eligible(), Is.True, $"{rank} with mixed time at the faction threshold");
+
+                    if (rank == "Rocker")
+                    {
+                        times.Clear();
+                        times["AtomCatsMuscle"] = TimeSpan.FromMinutes(150);
+                        times["AtomCatsTattooArtist"] = TimeSpan.FromMinutes(150) - TimeSpan.FromSeconds(1);
+                        Assert.That(Eligible(), Is.False);
+                        times["AtomCatsTattooArtist"] += TimeSpan.FromSeconds(1);
+                        Assert.That(Eligible(), Is.True, "Muscle and Tattoo Artist share the rank below Rocker");
                     }
                 }
             }

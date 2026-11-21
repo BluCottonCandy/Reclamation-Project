@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Content.Shared._Misfits.PowerArmor;
+using Content.Shared._Misfits.Special.Components;
 using Content.Shared.Alert;
 using Content.Server.Weapons.Melee;
 using Content.Shared.CombatMode;
@@ -25,7 +26,7 @@ using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee;
-using Content.Shared.Clothing;
+using Content.Shared.Item;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -214,7 +215,7 @@ public sealed class PaladinShieldTest
 
             if (prototype == "ReclamationPaladinGreatshield")
             {
-                var speed = entities.GetComponent<ClothingSpeedModifierComponent>(shield);
+                var speed = entities.GetComponent<HeldSpeedModifierComponent>(shield);
                 Assert.That(speed.WalkModifier, Is.EqualTo(0.75f));
                 Assert.That(speed.SprintModifier, Is.EqualTo(0.75f));
             }
@@ -284,6 +285,7 @@ public sealed class PaladinShieldTest
             var em = pair.Server.ResolveDependency<IEntityManager>();
             var user = em.SpawnEntity("MobHuman", map.GridCoords);
             var target = em.SpawnEntity("MobHuman", map.GridCoords.Offset(new Vector2(.8f, 0)));
+            em.EnsureComponent<SpecialComponent>(user).BaseStrength = 8;
             em.EnsureComponent<GodmodeComponent>(target);
             var shield = em.SpawnEntity(prototype, map.GridCoords);
             Assert.That(em.System<SharedHandsSystem>().TryPickup(user, shield), Is.True);

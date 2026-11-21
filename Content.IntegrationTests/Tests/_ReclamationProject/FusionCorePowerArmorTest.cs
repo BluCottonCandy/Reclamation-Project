@@ -3,7 +3,9 @@ using Content.Server._ReclamationProject.PowerArmor;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._Misfits.PowerArmor;
 using Content.Shared._Misfits.Special.Components;
+using Content.Shared._ReclamationProject.Endurance;
 using Content.Shared._ReclamationProject.PowerArmor;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -14,6 +16,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Traits.Assorted.Components;
 using Content.IntegrationTests.Pair;
 using Content.Shared.Verbs;
 using Robust.Shared.GameObjects;
@@ -28,8 +31,7 @@ public sealed class FusionCorePowerArmorTest
     private const float PoweredSpeed = 0.70f;          // powered, Strength 1-7
     private const float StrongPoweredSpeed = 0.75f;    // powered, Strength 8-9
     private const float MightyPoweredSpeed = 0.80f;    // powered, Strength 10
-    private const float DeadSpeed = 0.2f * 0.2f;       // 4%
-    private const float StrongDeadSpeed = 0.2f * 0.25f; // 5% at Strength 8+
+    private const float DeadSpeed = 0.10f;
 
     private static (EntityUid Wearer, EntityUid Systems) SpawnWearer(IEntityManager entities, TestMapData map)
     {
@@ -79,7 +81,7 @@ public sealed class FusionCorePowerArmorTest
                 && entities.GetComponent<MetaDataComponent>(gatCore).EntityPrototype?.ID == "N14FusionCore",
                 "the Laser Gatling doesn't use the fusion core");
 
-            // A Strength 8 wearer for the 5% check.
+            // Compare a stronger wearer in both powered and unpowered armor.
             EntityUid strongSystems;
             (strong, strongSystems) = SpawnWearer(entities, map);
             entities.EnsureComponent<SpecialComponent>(strong).BaseStrength = 8;
@@ -105,9 +107,9 @@ public sealed class FusionCorePowerArmorTest
         {
             Assert.That(entities.GetComponent<FusionCorePoweredComponent>(systems).Powered, Is.False);
             Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(wearer).WalkSpeedModifier,
-                Is.EqualTo(DeadSpeed).Within(0.005f), "dead core isn't 4% speed");
+                Is.EqualTo(DeadSpeed).Within(0.005f), "a dead core must leave 10% movement");
             Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(strong).WalkSpeedModifier,
-                Is.EqualTo(StrongDeadSpeed).Within(0.005f), "Strength 8 dead core isn't 5% speed");
+                Is.EqualTo(DeadSpeed).Within(0.005f), "Strength 8 must still crawl with a dead core");
 
         });
 
@@ -143,7 +145,7 @@ public sealed class FusionCorePowerArmorTest
             Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(wearer).WalkSpeedModifier,
                 Is.EqualTo(MightyPoweredSpeed).Within(0.005f), "Strength 10 powered suit isn't 80% speed");
 
-            // Switched off: still the Strength 8+ crawl, not full speed.
+            // Switching off the servos applies the same crawl at any Strength.
             entities.EventBus.RaiseLocalEvent(systems, new FusionCorePowerToggleEvent { Performer = wearer });
             movement.RefreshMovementSpeedModifiers(wearer);
         });
@@ -154,7 +156,7 @@ public sealed class FusionCorePowerArmorTest
         {
             Assert.That(entities.GetComponent<FusionCorePoweredComponent>(systems).Powered, Is.False);
             Assert.That(entities.GetComponent<MovementSpeedModifierComponent>(wearer).WalkSpeedModifier,
-                Is.EqualTo(StrongDeadSpeed).Within(0.005f), "Strength 10 still cancels the switched-off slowdown");
+                Is.EqualTo(DeadSpeed).Within(0.005f), "Strength 10 still cancels the switched-off slowdown");
         });
 
         // Carrying an unworn suit: 50% normally, 65% at Strength 10.
@@ -311,7 +313,84 @@ public sealed class FusionCorePowerArmorTest
 
     [TestCase(false)]
     [TestCase(true)]
-    public async Task WearerCanRemoveInstallAndSwapOwnCore(bool deployRig)
+    public async Task AtomCatsWearerPredictsTheServersCoreSpeed(bool deployRig)
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
+        var map = await pair.CreateTestMap();
+        var server = pair.Server.EntMan;
+        var client = pair.Client.EntMan;
+        var session = pair.Server.PlayerMan.GetSessionById(pair.Client.Session!.UserId);
+        var tickRate = (int) pair.Server.ResolveDependency<IGameTiming>().TickRate;
+        EntityUid wearer = default;
+        NetEntity netWearer = default;
+        await pair.Server.WaitAssertion(() =>
+        {
+            wearer = server.SpawnEntity("MobHuman", map.GridCoords);
+            netWearer = server.GetNetEntity(wearer);
+            server.EnsureComponent<PowerArmorProficiencyComponent>(wearer);
+            var frame = server.SpawnEntity("AtomCatsT45Blue", map.GridCoords);
+            var inventory = server.System<InventorySystem>();
+            Assert.That(inventory.TryEquip(wearer, frame, "outerClothing", force: true));
+            if (deployRig)
+            {
+                var rig = server.System<FusionCorePoweredSystem>().GetSuitPowerSystems(frame)!.Value;
+                Assert.That(inventory.TryEquip(wearer, rig, "back", force: true));
+            }
+            pair.Server.PlayerMan.SetAttachedEntity(session, wearer);
+        });
+
+        async Task CheckClientSpeed(float expected)
+        {
+            await pair.Client.WaitAssertion(() =>
+            {
+                var uid = client.GetEntity(netWearer);
+                var speed = client.GetComponent<MovementSpeedModifierComponent>(uid);
+                Assert.That(speed.WalkSpeedModifier, Is.EqualTo(expected).Within(0.001f));
+                client.System<MovementSpeedModifierSystem>().RefreshMovementSpeedModifiers(uid);
+                Assert.That(speed.WalkSpeedModifier, Is.EqualTo(expected).Within(0.001f));
+                Assert.That(speed.SprintSpeedModifier, Is.EqualTo(expected).Within(0.001f));
+            });
+        }
+
+        await pair.RunTicksSync(20);
+        await CheckClientSpeed(1f);
+        await pair.Server.WaitAssertion(() =>
+            Assert.That(server.System<FusionCorePoweredSystem>().TryStartRemoveFromWearer(wearer, wearer)));
+        await pair.RunTicksSync(3 * tickRate + 8);
+        await CheckClientSpeed(DeadSpeed);
+        await pair.Server.WaitPost(() => pair.Server.PlayerMan.SetAttachedEntity(session, null));
+        await pair.CleanReturnAsync();
+    }
+
+    [TestCase(3)]
+    [TestCase(10)]
+    public async Task AtomCatsFrameWithoutPowerSystemsIsUnpowered(int strength)
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var map = await pair.CreateTestMap();
+        await pair.Server.WaitAssertion(() =>
+        {
+            var em = pair.Server.EntMan;
+            var wearer = em.SpawnEntity("MobHuman", map.GridCoords);
+            em.EnsureComponent<SpecialComponent>(wearer).BaseStrength = strength;
+            em.EnsureComponent<PowerArmorProficiencyComponent>(wearer);
+            em.EnsureComponent<SpeedModifierImmunityComponent>(wearer);
+            var frame = em.SpawnEntity("AtomCatsPowerArmorFrame", map.GridCoords);
+            var rig = em.System<FusionCorePoweredSystem>().GetSuitPowerSystems(frame)!.Value;
+            em.DeleteEntity(rig);
+            Assert.That(em.System<InventorySystem>().TryEquip(wearer, frame, "outerClothing", force: true));
+            var speed = em.GetComponent<MovementSpeedModifierComponent>(wearer);
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(DeadSpeed).Within(0.001f));
+            Assert.That(speed.SprintSpeedModifier, Is.EqualTo(DeadSpeed).Within(0.001f));
+        });
+        await pair.CleanReturnAsync();
+    }
+
+    [TestCase("ReclamationPowerArmorFrame", false)]
+    [TestCase("ReclamationPowerArmorFrame", true)]
+    [TestCase("AtomCatsT45Red", false)]
+    [TestCase("AtomCatsT45Red", true)]
+    public async Task WearerCanRemoveInstallAndSwapOwnCore(string frameId, bool deployRig)
     {
         await using var pair = await PoolManager.GetServerClient();
         var map = await pair.CreateTestMap();
@@ -327,11 +406,18 @@ public sealed class FusionCorePowerArmorTest
         await server.WaitAssertion(() =>
         {
             wearer = em.SpawnEntity("MobHuman", map.GridCoords);
-            frame = em.SpawnEntity("ReclamationPowerArmorFrame", map.GridCoords);
+            em.EnsureComponent<SpecialComponent>(wearer).BaseStrength = 3;
+            frame = em.SpawnEntity(frameId, map.GridCoords);
             Assert.That(inventory.TryEquip(wearer, frame, "outerClothing", force: true));
             rig = em.GetComponent<ToggleableClothingComponent>(frame).ClothingUids.Single(p => p.Value == "back").Key;
             if (deployRig)
                 Assert.That(inventory.TryEquip(wearer, rig, "back", force: true));
+            var speed = em.GetComponent<MovementSpeedModifierComponent>(wearer);
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(PoweredSpeed).Within(0.001f));
+            Assert.That(speed.SprintSpeedModifier, Is.EqualTo(PoweredSpeed).Within(0.001f));
+            em.EnsureComponent<PowerArmorProficiencyComponent>(wearer);
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(1f).Within(0.001f));
+            Assert.That(speed.SprintSpeedModifier, Is.EqualTo(1f).Within(0.001f));
             original = slots.GetItemOrNull(rig, "fusion_core")!.Value;
             var target = deployRig ? wearer : frame;
             var verbs = em.System<SharedVerbSystem>().GetLocalVerbs(target, wearer, typeof(AlternativeVerb));
@@ -345,6 +431,31 @@ public sealed class FusionCorePowerArmorTest
             Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.Null);
             Assert.That(hands.IsHolding(wearer, original));
             Assert.That(em.GetComponent<FusionCorePoweredComponent>(rig).Powered, Is.False);
+            var speed = em.GetComponent<MovementSpeedModifierComponent>(wearer);
+            var movement = em.System<MovementSpeedModifierSystem>();
+            void CheckCrawl()
+            {
+                Assert.That(speed.WalkSpeedModifier, Is.EqualTo(DeadSpeed).Within(0.001f));
+                Assert.That(speed.SprintSpeedModifier, Is.EqualTo(DeadSpeed).Within(0.001f));
+            }
+            CheckCrawl();
+            em.RemoveComponent<PowerArmorProficiencyComponent>(wearer);
+            CheckCrawl();
+            em.EnsureComponent<PowerArmorProficiencyComponent>(wearer);
+            em.EnsureComponent<SpeedModifierImmunityComponent>(wearer);
+            movement.RefreshMovementSpeedModifiers(wearer);
+            CheckCrawl();
+            em.RemoveComponent<SpeedModifierImmunityComponent>(wearer);
+            var rage = em.EnsureComponent<EnduranceEnragedComponent>(wearer);
+            rage.Active = true;
+            rage.EndsAt = server.ResolveDependency<IGameTiming>().CurTime + TimeSpan.FromMinutes(1);
+            movement.RefreshMovementSpeedModifiers(wearer);
+            CheckCrawl();
+            var boosted = new RefreshMovementSpeedModifiersEvent();
+            em.EventBus.RaiseLocalEvent(wearer, boosted);
+            boosted.ModifySpeed(2f);
+            Assert.That(boosted.WalkSpeedModifier, Is.EqualTo(DeadSpeed).Within(0.001f));
+            em.RemoveComponent<EnduranceEnragedComponent>(wearer);
             var target = deployRig ? frame : wearer;
             var use = new InteractUsingEvent(wearer, original, target, map.GridCoords);
             em.EventBus.RaiseLocalEvent(target, use);
@@ -355,6 +466,9 @@ public sealed class FusionCorePowerArmorTest
         {
             Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.EqualTo(original));
             Assert.That(em.GetComponent<FusionCorePoweredComponent>(rig).Powered);
+            var speed = em.GetComponent<MovementSpeedModifierComponent>(wearer);
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(1f).Within(0.001f));
+            Assert.That(speed.SprintSpeedModifier, Is.EqualTo(1f).Within(0.001f));
             replacement = em.SpawnEntity("N14FusionCore", map.GridCoords);
             Assert.That(hands.TryPickupAnyHand(wearer, replacement));
             var verbs = em.System<SharedVerbSystem>().GetLocalVerbs(frame, wearer, typeof(AlternativeVerb));
@@ -366,6 +480,15 @@ public sealed class FusionCorePowerArmorTest
             Assert.That(slots.GetItemOrNull(rig, "fusion_core"), Is.EqualTo(replacement));
             Assert.That(hands.IsHolding(wearer, original));
             Assert.That(inventory.TryGetSlotEntity(wearer, "outerClothing", out var worn) && worn == frame);
+            em.System<BatterySystem>().SetCharge(replacement, 0.1f);
+        });
+        await server.WaitRunTicks(tickRate + 2);
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(em.GetComponent<BatteryComponent>(replacement).CurrentCharge, Is.Zero);
+            var speed = em.GetComponent<MovementSpeedModifierComponent>(wearer);
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(DeadSpeed).Within(0.001f));
+            Assert.That(speed.SprintSpeedModifier, Is.EqualTo(DeadSpeed).Within(0.001f));
         });
         await pair.CleanReturnAsync();
     }

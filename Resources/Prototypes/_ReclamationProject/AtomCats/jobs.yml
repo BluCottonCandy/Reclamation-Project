@@ -28,9 +28,14 @@
   supervisors: job-supervisors-atom-cats-greaser
   playTimeTracker: AtomCatsGreaser
   requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: AtomCatsLookout
-    min: 18000
+  - !type:CharacterLogicOrRequirement
+    requirements:
+    - !type:CharacterPlaytimeRequirement
+      tracker: AtomCatsLookout
+      min: 18000
+    - !type:CharacterDepartmentTimeRequirement
+      department: AtomCats
+      min: 18000
   startingGear: AtomCatsGreaserGear
   setPreference: true
   alwaysUseSpawner: true
@@ -60,8 +65,8 @@
     - !type:CharacterPlaytimeRequirement
       tracker: AtomCatsGreaser
       min: 18000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsLookout
+    - !type:CharacterDepartmentTimeRequirement
+      department: AtomCats
       min: 36000
   startingGear: AtomCatsMuscleGear
   setPreference: true
@@ -93,11 +98,8 @@
       tracker: AtomCatsMuscle
       additionalTrackers: [AtomCatsTattooArtist]
       min: 18000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsGreaser
-      min: 36000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsLookout
+    - !type:CharacterDepartmentTimeRequirement
+      department: AtomCats
       min: 54000
   startingGear: AtomCatsRockerGear
   setPreference: true
@@ -128,15 +130,8 @@
     - !type:CharacterPlaytimeRequirement
       tracker: AtomCatsRocker
       min: 18000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsMuscle
-      additionalTrackers: [AtomCatsTattooArtist]
-      min: 36000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsGreaser
-      min: 54000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsLookout
+    - !type:CharacterDepartmentTimeRequirement
+      department: AtomCats
       min: 72000
   startingGear: AtomCatsHotRodGear
   setPreference: true
@@ -167,18 +162,8 @@
     - !type:CharacterPlaytimeRequirement
       tracker: AtomCatsHotRod
       min: 18000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsRocker
-      min: 36000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsMuscle
-      additionalTrackers: [AtomCatsTattooArtist]
-      min: 54000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsGreaser
-      min: 72000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsLookout
+    - !type:CharacterDepartmentTimeRequirement
+      department: AtomCats
       min: 90000
   startingGear: AtomCatsUnderbossGear
   whitelisted: true
@@ -211,21 +196,8 @@
     - !type:CharacterPlaytimeRequirement
       tracker: AtomCatsUnderboss
       min: 18000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsHotRod
-      min: 36000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsRocker
-      min: 54000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsMuscle
-      additionalTrackers: [AtomCatsTattooArtist]
-      min: 72000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsGreaser
-      min: 90000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsLookout
+    - !type:CharacterDepartmentTimeRequirement
+      department: AtomCats
       min: 108000
   startingGear: AtomCatsBossGear
   whitelisted: true
@@ -258,8 +230,8 @@
     - !type:CharacterPlaytimeRequirement
       tracker: AtomCatsGreaser
       min: 18000
-    - !type:CharacterPlaytimeRequirement
-      tracker: AtomCatsLookout
+    - !type:CharacterDepartmentTimeRequirement
+      department: AtomCats
       min: 36000
   startingGear: AtomCatsTattooArtistGear
   alwaysUseSpawner: true

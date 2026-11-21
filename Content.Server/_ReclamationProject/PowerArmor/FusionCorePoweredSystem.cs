@@ -376,9 +376,8 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
     /// </summary>
     private Entity<FusionCorePoweredComponent>? GetWornPowerSystems(EntityUid wearer)
     {
-        if (Inventory.TryGetSlotEntity(wearer, "back", out var back)
-            && TryComp<FusionCorePoweredComponent>(back, out var deployed))
-            return (back.Value, deployed);
+        if (GetDeployedRig(wearer) is { } deployed)
+            return deployed;
 
         if (Inventory.TryGetSlotEntity(wearer, "outerClothing", out var suit))
             return GetSuitPowerSystems(suit.Value);

@@ -14,6 +14,10 @@ namespace Content.Shared._ReclamationProject.PowerArmor;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class FusionCorePoweredComponent : Component
 {
+    public const float UnpoweredFrameSpeed = 0.1f;
+    // The original drive multipliers are expressed relative to the standard T-45 shell.
+    public const float StandardShellSpeed = 0.2f;
+
     [DataField]
     public string SlotId = "fusion_core";
 
@@ -39,12 +43,12 @@ public sealed partial class FusionCorePoweredComponent : Component
     public float MightyPoweredSpeedMultiplier = 4f;
 
     /// <summary>
-    /// Unpowered speed: replaces the power systems' boost. 0.2 here = 4% of normal speed.
+    /// Legacy power pack speed when worn separately from a modular frame.
     /// </summary>
     [DataField]
     public float UnpoweredSpeedMultiplier = 0.2f;
 
-    /// <summary>Unpowered speed at <see cref="StrongMinimumStrength"/>+ Strength. 0.25 = 5%.</summary>
+    /// <summary>Legacy standalone power pack speed at high Strength.</summary>
     [DataField]
     public float StrongUnpoweredSpeedMultiplier = 0.25f;
 

@@ -54,6 +54,25 @@ public sealed class DamageOverlay : Overlay
         _injuryShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
     }
 
+    internal void Reset()
+    {
+        State = MobState.Alive;
+        InjuryLevel = _oldInjuryLevel = 0f;
+        OxygenLevel = _oldOxygenLevel = 0f;
+        CritLevel = _oldCritLevel = 0f;
+        DeadLevel = 0f;
+    }
+
+    internal static (float InnerRadius, float OuterRadius, float Opacity) GetInjuryGradient(Vector2 viewportSize, float level)
+    {
+        // Start at the corners, then bring the red inward as the wearer approaches critical.
+        var size = MathF.Min(viewportSize.X, viewportSize.Y);
+        var corner = viewportSize.Length() * 0.5f;
+        return (MathHelper.Lerp(0.8f * corner, 0.2f * size, level),
+                MathHelper.Lerp(corner, 0.65f * size, level),
+                0.8f * level);
+    }
+
     protected override void DisposeBehavior()
     {
         _oxygenShader.Dispose();
@@ -144,15 +163,13 @@ public sealed class DamageOverlay : Overlay
         var level = _oldInjuryLevel;
         if (level > 0f && _oldCritLevel <= 0f)
         {
-            // Fit the clear circle inside even a widescreen viewport. Minor wounds fade in at the edges.
             var size = Math.Min(args.ViewportBounds.Width, args.ViewportBounds.Height);
-            var outerRadius = size * MathHelper.Lerp(1f, 0.65f, level);
-            var innerRadius = size * MathHelper.Lerp(0.46f, 0.2f, level);
+            var (innerRadius, outerRadius, opacity) = GetInjuryGradient(new Vector2(args.ViewportBounds.Width, args.ViewportBounds.Height), level);
             var pulse = MathF.Max(0f, MathF.Sin(time * 3f));
 
             _injuryShader.SetParameter("time", pulse);
             _injuryShader.SetParameter("color", new Vector3(1f, 0f, 0f));
-            _injuryShader.SetParameter("darknessAlphaOuter", MathF.Min(0.8f, 2f * MathF.Sqrt(level)));
+            _injuryShader.SetParameter("darknessAlphaOuter", opacity);
             _injuryShader.SetParameter("outerCircleRadius", outerRadius);
             _injuryShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * size);
             _injuryShader.SetParameter("innerCircleRadius", innerRadius);

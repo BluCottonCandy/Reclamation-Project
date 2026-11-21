@@ -1,3 +1,5 @@
+#nullable enable annotations
+
 using Content.Client.Alerts;
 using Content.Client.UserInterface.Systems.DamageOverlays.Overlays;
 using Content.IntegrationTests.Pair;

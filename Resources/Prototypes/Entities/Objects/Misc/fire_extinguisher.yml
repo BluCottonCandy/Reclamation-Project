@@ -4,6 +4,7 @@
   id: FireExtinguisher
   description: It extinguishes fires.
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Misc/fire_extinguisher.rsi
     layers:

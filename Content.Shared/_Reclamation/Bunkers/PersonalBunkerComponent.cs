@@ -12,6 +12,10 @@ public sealed partial class PersonalBunkerExitComponent : Component;
 [RegisterComponent]
 public sealed partial class BunkerDisplayWeaponComponent : Component;
 
+/// <summary>A working tool that keeps its normal functions in a saved bunker.</summary>
+[RegisterComponent]
+public sealed partial class BunkerPreservedToolComponent : Component;
+
 /// <summary>Persisted so loading the original clothing prototype cannot restore armor protection.</summary>
 [RegisterComponent]
 public sealed partial class BunkerDisplayArmorComponent : Component;

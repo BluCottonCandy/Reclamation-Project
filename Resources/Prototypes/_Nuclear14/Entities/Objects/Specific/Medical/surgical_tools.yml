@@ -3,6 +3,7 @@
   id: N14BaseToolSurgery
   abstract: true
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
   - type: Tag
     tags:

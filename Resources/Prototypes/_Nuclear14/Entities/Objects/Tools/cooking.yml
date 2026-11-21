@@ -4,6 +4,7 @@
   name: rolling pin
   description: A versatile tool that can be used to prepare bread or squish radroaches.
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/rolling_pin.rsi
     state: icon

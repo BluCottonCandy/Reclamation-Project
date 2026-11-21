@@ -75,6 +75,8 @@ public sealed partial class PersonalBunkerSystem
                 loadingMap = map.Value.Owner;
                 grid = loadedGrid.Value.Owner;
                 InitializeRoomLocker(grid);
+                foreach (var item in GetRoomBelongings(grid))
+                    _displays.PreserveTool(item);
                 var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
                 air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
                 air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);

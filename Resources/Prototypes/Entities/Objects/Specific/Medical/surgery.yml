@@ -5,6 +5,7 @@
   id: BaseToolSurgery
   abstract: true
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
   - type: StaticPrice
     price: 20

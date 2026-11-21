@@ -169,6 +169,7 @@
   id: N14Shovel
   description: A hefty tool made to dig up graves or dig out brahmin pens.
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/shovel.rsi
     state: icon
@@ -341,6 +342,7 @@
   name: chainsaw
   description: A very large chainsaw. Usually you use this for cutting down trees... usually.
   components:
+  - type: BunkerPreservedTool
   - type: Wieldable
     wieldSound: !type:SoundPathSpecifier
       path: /Audio/Weapons/chainsawwield.ogg

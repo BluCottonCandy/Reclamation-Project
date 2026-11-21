@@ -4,6 +4,7 @@
   description: is able to reshape the hairstyle of any crew cut to your liking.
   parent: BaseItem
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/scissors.rsi
     state: icon

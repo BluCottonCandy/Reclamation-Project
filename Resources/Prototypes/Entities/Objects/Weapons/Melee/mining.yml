@@ -4,6 +4,7 @@
   id: Pickaxe
   description: Notched to perfection, for jamming it into rocks.
   components:
+  - type: BunkerPreservedTool
   - type: Tag
     tags:
     - Pickaxe
@@ -50,6 +51,7 @@
   id: MiningDrill
   description: Powerful tool used to quickly drill through rocks.
   components:
+  - type: BunkerPreservedTool
   - type: Item
     storedRotation: -90
   - type: Tag

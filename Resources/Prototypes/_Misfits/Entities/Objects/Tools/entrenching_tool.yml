@@ -8,6 +8,7 @@
     Not particularly useful for gardening.
   parent: BaseItem
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/shovel.rsi
     state: icon # #Misfits Fix - shovel.rsi has no 'shovel' state; correct state name is 'icon'

@@ -4,6 +4,7 @@
   id: Haycutters
   description: This kills the wire. Moo!
   components:
+  - type: BunkerPreservedTool
   - type: Tag
     tags:
     - PlantSampleTaker
@@ -31,6 +32,7 @@
   id: Moodriver
   description: Turn to use. Moo!
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/Cowtools/moodriver.rsi
     state: moodriver
@@ -54,6 +56,7 @@
   id: Wronch
   description: Wronch thing. Moo!
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/Cowtools/wronch.rsi
     state: wronch
@@ -77,6 +80,7 @@
   id: Cowbar
   description: Cow your problems away. Moo!
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/Cowtools/cowbar.rsi
     state: cowbar

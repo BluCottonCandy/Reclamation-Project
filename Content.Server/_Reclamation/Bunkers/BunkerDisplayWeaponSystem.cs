@@ -43,6 +43,8 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
         "Sharp", "EmbeddableProjectile", "MeleeChemicalInjector", "MeleeStaminaCost",
         "UseDelay", "Projectile", "Explosive", "OnUseTimerTrigger", "TriggerOnUse"
     };
+    // Removing Sharp also removes native surgical capabilities through its shutdown handler.
+    private static readonly string[] RestoreOnTool = ["Scalpel", "BoneSaw", .. Disabled];
     // Armor on mannequins and inside nested containers uses the same departure/save path as weapons.
     private static readonly string[] ArmorProtection =
     {
@@ -189,12 +191,8 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
         }
         NormalizeStims(uid);
         DecommissionItem(uid);
-        // A toolbox is working storage, even though it can also be swung as a weapon.
-        if (_tags.HasTag(uid, "Toolbox"))
-        {
-            RestoreToolbox(uid);
+        if (PreserveTool(uid))
             return;
-        }
         DecommissionArmor(uid);
         if (HasComp<MobStateComponent>(uid) || (!HasComp<GunComponent>(uid) && !HasComp<MeleeWeaponComponent>(uid)
             && !HasComp<BunkerDisplayWeaponComponent>(uid))) return;
@@ -224,23 +222,33 @@ public sealed class BunkerDisplayWeaponSystem : EntitySystem
         }
     }
 
-    /// <summary>Repair toolboxes already marked as display weapons by an older bunker save.</summary>
-    public void RestoreToolbox(EntityUid uid)
+    /// <summary>Exempt working tools and repair those converted by an older bunker save.</summary>
+    internal bool PreserveTool(EntityUid uid)
     {
-        if (!_tags.HasTag(uid, "Toolbox") || !HasComp<BunkerDisplayWeaponComponent>(uid))
-            return;
+        if (!HasComp<BunkerPreservedToolComponent>(uid) && !_tags.HasTag(uid, "Toolbox"))
+            return false;
 
-        RemComp<BunkerDisplayWeaponComponent>(uid);
-        if (MetaData(uid).EntityPrototype is not { } prototype)
-            return;
+        if (!RemComp<BunkerDisplayWeaponComponent>(uid) || MetaData(uid).EntityPrototype is not { } prototype)
+            return true;
 
-        // Loading recreates most prototype components, but saved melee overrides need resetting.
-        if (prototype.Components.TryGetValue("MeleeWeapon", out var melee))
-            EntityManager.AddComponent(uid, melee, overwrite: true);
-        foreach (var name in Disabled)
+        // Only these overrides were written by display conversion. Keep other per-item state.
+        if (TryComp<MeleeWeaponComponent>(uid, out var melee)
+            && prototype.Components.TryGetValue("MeleeWeapon", out var entry)
+            && _factory.GetComponent(entry) is MeleeWeaponComponent original)
+        {
+            melee.Damage = original.Damage;
+            melee.BluntStaminaDamageFactor = original.BluntStaminaDamageFactor;
+            melee.ClickDamageModifier = original.ClickDamageModifier;
+            melee.HeavyDamageBaseModifier = original.HeavyDamageBaseModifier;
+            melee.DisableHeavy = original.DisableHeavy;
+            melee.ResistanceBypass = original.ResistanceBypass;
+            Dirty(uid, melee);
+        }
+        foreach (var name in RestoreOnTool)
             if (prototype.Components.TryGetValue(name, out var component)
                 && _factory.TryGetRegistration(name, out var registration)
                 && !EntityManager.HasComponent(uid, registration.Type))
                 EntityManager.AddComponent(uid, component);
+        return true;
     }
 }

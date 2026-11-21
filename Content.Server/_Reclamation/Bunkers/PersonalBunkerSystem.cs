@@ -298,25 +298,7 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
                     }
                     Spawn("ReclamationPersonalBunkerExit", new EntityCoordinates(grid, DefaultLadderPosition));
                 }
-                // Loading can restore prototype components without raising MapInit again.
-                // Include mounted/equipped items and older saves without display markers.
-                InitializeRoomLocker(grid);
-                _blueprints.PurgeTree(grid);
-                var belongings = GetRoomBelongings(grid);
-                foreach (var item in belongings)
-                {
-                    if (!Exists(item)) continue;
-                    // Stores loaded from an interior have a new map identity on every visit.
-                    if (TryComp<StoreComponent>(item, out var store))
-                        store.StartingMap = map;
-                    _displays.Decommission(item);
-                    if (!Exists(item)) continue;
-                    // Stored furniture can contain cooldown timestamps from a different server uptime.
-                    // Reset its interaction delays, including legacy saves, so shelves open immediately.
-                    if (HasComp<StorageComponent>(item) && TryComp<UseDelayComponent>(item, out var delay))
-                        foreach (var id in delay.Delays.Keys.ToArray())
-                            _useDelay.CancelDelay((item, delay), id);
-                }
+                RestoreRoomContents(grid, map);
                 var air = new GasMixture(Atmospherics.CellVolume) { Temperature = Atmospherics.T20C };
                 air.AdjustMoles(Gas.Oxygen, Atmospherics.OxygenMolesStandard);
                 air.AdjustMoles(Gas.Nitrogen, Atmospherics.NitrogenMolesStandard);
@@ -339,6 +321,29 @@ public sealed partial class PersonalBunkerSystem : EntitySystem
             if (loadingMap is { } incompleteMap && Exists(incompleteMap)) QueueDel(incompleteMap);
             Log.Error($"Could not open bunker {key}: {e}");
             Notice(user, "Your room could not be loaded. Your previous save has been preserved.");
+        }
+    }
+
+    internal void RestoreRoomContents(EntityUid grid, EntityUid map)
+    {
+        // Loading can restore prototype components without raising MapInit again.
+        // Include mounted/equipped items and older saves without display markers.
+        InitializeRoomLocker(grid);
+        _blueprints.PurgeTree(grid);
+        var belongings = GetRoomBelongings(grid);
+        foreach (var item in belongings)
+        {
+            if (!Exists(item)) continue;
+            // Stores loaded from an interior have a new map identity on every visit.
+            if (TryComp<StoreComponent>(item, out var store))
+                store.StartingMap = map;
+            _displays.Decommission(item);
+            if (!Exists(item)) continue;
+            // Stored furniture can contain cooldown timestamps from a different server uptime.
+            // Reset its interaction delays, including legacy saves, so shelves open immediately.
+            if (HasComp<StorageComponent>(item) && TryComp<UseDelayComponent>(item, out var delay))
+                foreach (var id in delay.Delays.Keys.ToArray())
+                    _useDelay.CancelDelay((item, delay), id);
         }
     }
 

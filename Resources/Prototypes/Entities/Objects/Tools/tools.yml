@@ -4,6 +4,7 @@
   id: Wirecutter
   description: This kills the wire.
   components:
+  - type: BunkerPreservedTool
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/SimpleStation14/Items/Handling/wirecutter_pickup.ogg
@@ -86,6 +87,7 @@
   id: Screwdriver
   description: Industrial grade torque in a small screwdriving package.
   components:
+  - type: BunkerPreservedTool
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/SimpleStation14/Items/Handling/screwdriver_pickup.ogg
@@ -164,6 +166,7 @@
   id: Wrench
   description: 'A common tool for assembly and disassembly. Remember: righty tighty, lefty loosey.'
   components:
+  - type: BunkerPreservedTool
   - type: SurgeryTool
   - type: BoneSetter
   - type: EmitSoundOnPickup
@@ -224,6 +227,7 @@
   id: Crowbar
   description: A multipurpose tool to pry open doors and fight interdimensional invaders.
   components:
+  - type: BunkerPreservedTool
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/SimpleStation14/Items/Handling/crowbar_pickup.ogg
@@ -304,6 +308,7 @@
   id: Multitool
   description: An advanced tool to copy, store, and send electrical pulses and signals through wires and machines
   components:
+  - type: BunkerPreservedTool
   - type: EmitSoundOnPickup
     sound: /Audio/SimpleStation14/Items/Handling/multitool_pickup.ogg
   - type: EmitSoundOnDrop
@@ -417,6 +422,7 @@
   id: PowerDrill
   description: A simple powered hand drill.
   components:
+  - type: BunkerPreservedTool
   - type: Tag
     tags:
     - Powerdrill
@@ -621,6 +627,7 @@
   id: Omnitool
   description: A drone's best friend.
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/omnitool.rsi
     state: omnitool-screwing
@@ -687,6 +694,7 @@
   id: Shovel
   description: A large tool for digging and moving dirt.
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/shovel.rsi
     state: icon
@@ -732,6 +740,7 @@
   name: rolling pin
   description: A tool used to shape and flatten dough.
   components:
+  - type: BunkerPreservedTool
   - type: Sprite
     sprite: Objects/Tools/rolling_pin.rsi
     state: icon

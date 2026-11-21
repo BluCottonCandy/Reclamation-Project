@@ -15140,3 +15140,18 @@ Entries:
   id: 6670
   time: '2026-11-20T12:59:11.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/215
+- author: BluCottonCandy
+  changes:
+    - type: Tweak
+      message: >-
+        Personal bunker lockers now share materials with bunker lathes and
+        workbenches and hold 60 units of each material.
+    - type: Fix
+      message: Bunker lockers accept cloth and top-ups from partial stacks.
+    - type: Fix
+      message: >-
+        Players can walk over bunker hatches and arrive at the interior ladder
+        after it moves.
+  id: 6671
+  time: '2026-11-21T07:35:10.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/219

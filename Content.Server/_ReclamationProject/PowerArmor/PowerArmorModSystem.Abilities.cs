@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Numerics;
 using Content.Server._Misfits.WastelandMap;
 using Content.Shared._Misfits.WastelandMap;
 using Content.Server.Power.Components;
@@ -18,12 +19,15 @@ using Content.Shared.Physics;
 using Content.Shared.Throwing;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Systems;
 
 namespace Content.Server._ReclamationProject.PowerArmor;
 
 public sealed partial class PowerArmorModSystem
 {
     [Dependency] private readonly ThrowingSystem _throw = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
@@ -34,6 +38,8 @@ public sealed partial class PowerArmorModSystem
     [Dependency] private readonly WastelandMapSystem _maps = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     private const string WristMount = "power-armor-wrist";
+    private const float JumpRange = 5f;
+    private const float JumpSpeed = 10f;
 
     private void InitializeAbilities()
     {
@@ -55,6 +61,7 @@ public sealed partial class PowerArmorModSystem
             if (!comp.Moving) ev.Cancel();
         });
         SubscribeLocalEvent<PowerArmorModWearerComponent, BeforeInteractHandEvent>(OnWristClick);
+        SubscribeLocalEvent<PowerArmorModWearerComponent, StopThrowEvent>(OnJumpStopped);
         SubscribeLocalEvent<PowerArmorWornComponent, ExaminedEvent>((_, worn, ev) => {
             if (ev.IsInDetailsRange && HasComp<ModularPowerArmorComponent>(worn.Armor)) Scan(worn.Armor, ev);
         });
@@ -117,11 +124,22 @@ public sealed partial class PowerArmorModSystem
                 { Notice(user, "pa-mod-no-jump"); return; }
                 var start = _xform.GetMapCoordinates(user);
                 var dir = _xform.GetWorldRotation(user).ToWorldVec();
-                var end = new MapCoordinates(start.Position + dir * 5f, start.MapId);
+                if (HasComp<ThrownItemComponent>(user) || !TryComp<PhysicsComponent>(user, out var body)) return;
+                var end = new MapCoordinates(start.Position + dir * JumpRange, start.MapId);
                 var distance = _interaction.UnobstructedDistance(start, end, (int) CollisionGroup.HighImpassable, e => e == user);
-                if (distance < 5f) distance -= 0.4f;
+                if (distance < JumpRange - 0.001f) distance -= 0.4f;
                 if (distance <= 0.1f) return;
-                _throw.TryThrow(user, dir * distance, 10f, user, 0f, compensateFriction: true, recoil: false, doSpin: false);
+                // Fly the whole distance at servo speed. Item throws normally reserve part of it for a floor slide.
+                var tick = _clock.TickPeriod;
+                var steps = Math.Max(1, (int) Math.Round(distance / (JumpSpeed * tick.TotalSeconds)));
+                var speed = (float) (distance / (steps * tick.TotalSeconds));
+                _physics.SetLinearVelocity(user, Vector2.Zero, body: body);
+                _throw.TryThrow(user, dir * distance, speed, user, 0f, recoil: false, doSpin: false);
+                if (!TryComp<ThrownItemComponent>(user, out var jump)) return;
+                // The timer is checked once per tick. A half-tick margin avoids a whole extra step from rounding.
+                jump.LandTime = _clock.CurTime + tick * (steps - 0.5);
+                Dirty(user, jump);
+                Comp<PowerArmorModWearerComponent>(user).ServoJumpActive = true;
                 break;
             case ArmorModKind.NightVision:
                 comp.SwitchedOn = !comp.SwitchedOn;
@@ -131,6 +149,14 @@ public sealed partial class PowerArmorModSystem
             default: return;
         }
         ev.Handled = true;
+    }
+
+    private void OnJumpStopped(EntityUid user, PowerArmorModWearerComponent wearer, StopThrowEvent ev)
+    {
+        if (!wearer.ServoJumpActive) return;
+        wearer.ServoJumpActive = false;
+        if (ev.User == user)
+            _physics.SetLinearVelocity(user, Vector2.Zero);
     }
 
     private void ToggleCasualtyDisplay(EntityUid module, PowerArmorModComponent mod, EntityUid user)

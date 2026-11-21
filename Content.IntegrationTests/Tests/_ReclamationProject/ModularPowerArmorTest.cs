@@ -82,7 +82,9 @@ public sealed class ModularPowerArmorTest
 
     [TestCase("ReclamationPowerArmorFrame", false)]
     [TestCase("N14ClothingOuterPowerArmorT45", true)]
-    public async Task DamageCircleTracksWearer(string suitId, bool reconnect)
+    [TestCase("AtomCatsT45Red", false)]
+    [TestCase(null, false)]
+    public async Task DamageCircleTracksWearer(string? suitId, bool reconnect)
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Connected = true, Dirty = true });
         if (reconnect)
@@ -120,11 +122,14 @@ public sealed class ModularPowerArmorTest
         {
             wearer = server.SpawnEntity("MobHuman", map.GridCoords);
             netWearer = server.GetNetEntity(wearer);
-            var suit = server.SpawnEntity(suitId, map.GridCoords);
-            Assert.That(server.System<InventorySystem>().TryEquip(wearer, suit, "outerClothing"));
             pair.Server.PlayerMan.SetAttachedEntity(session, wearer);
-            if (server.System<ItemSlotsSystem>().GetItemOrNull(suit, PowerArmorPlates.Container(ArmorPlateSlot.Chest)) is {} plate)
-                Hit(plate, "Blunt", 30);
+            if (suitId != null)
+            {
+                var suit = server.SpawnEntity(suitId, map.GridCoords);
+                Assert.That(server.System<InventorySystem>().TryEquip(wearer, suit, "outerClothing"));
+                if (server.System<ItemSlotsSystem>().GetItemOrNull(suit, PowerArmorPlates.Container(ArmorPlateSlot.Chest)) is {} plate)
+                    Hit(plate, "Blunt", 30);
+            }
         });
         await pair.RunTicksSync(20);
         await pair.Client.WaitAssertion(() => Assert.That(overlays.GetOverlay<DamageOverlay>().InjuryLevel, Is.Zero));
@@ -150,7 +155,8 @@ public sealed class ModularPowerArmorTest
 
         await pair.Server.WaitAssertion(() =>
         {
-            Assert.That(server.System<InventorySystem>().TryUnequip(wearer, "outerClothing", force: true));
+            if (suitId != null)
+                Assert.That(server.System<InventorySystem>().TryUnequip(wearer, "outerClothing", force: true));
             Hit(wearer, "Asphyxiation", 8f);
         });
         await pair.RunTicksSync(5);
@@ -285,7 +291,7 @@ public sealed class ModularPowerArmorTest
             Assert.That(inventory.TryEquip(user, rig, "back", force: true));
             Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk).Within(0.005f));
             em.EventBus.RaiseLocalEvent(rig, new FusionCorePowerToggleEvent { Performer = user });
-            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk * 0.05f).Within(0.005f));
+            Assert.That(speed.WalkSpeedModifier, Is.EqualTo(normalWalk * 0.10f).Within(0.005f));
         });
         await pair.CleanReturnAsync();
     }

@@ -66,6 +66,10 @@ public sealed class ClothingSpeedModifierSystem : EntitySystem
 
     private void OnRefreshMoveSpeed(EntityUid uid, ClothingSpeedModifierComponent component, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
+        // The servo system applies the worn frame and power pack as a single piece of equipment.
+        if (HasComp<ModularPowerArmorComponent>(uid) || HasComp<FusionCorePoweredComponent>(uid))
+            return;
+
         if (_toggle.IsActivated(uid))
         {
             var walkModifier = component.WalkModifier;

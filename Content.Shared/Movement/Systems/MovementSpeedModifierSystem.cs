@@ -79,14 +79,17 @@ namespace Content.Shared.Movement.Systems
         private float _sprintSpeedModifier = 1f;
         private float _walkBonuses = 1f;
         private float _sprintBonuses = 1f;
+        private float _maximumSpeed = float.PositiveInfinity;
 
         // Keep bonuses separately so temporary slowdown immunity is independent of
         // subscriber order and preserves buffs, including when a slowdown is zero.
         public bool IgnoreSlowdowns;
+        // Equipment that sets the wearer's base movement participates in the normal speed cap.
+        public float BaseSpeedMultiplier = 1f;
         // Applied after ordinary bonuses, slowdown immunity and the global speed cap.
         public float FinalMultiplier = 1f;
-        public float WalkSpeedModifier => (IgnoreSlowdowns ? _walkBonuses : _walkSpeedModifier) * FinalMultiplier;
-        public float SprintSpeedModifier => (IgnoreSlowdowns ? _sprintBonuses : _sprintSpeedModifier) * FinalMultiplier;
+        public float WalkSpeedModifier => MathF.Min((IgnoreSlowdowns ? _walkBonuses : _walkSpeedModifier) * BaseSpeedMultiplier, _maximumSpeed) * FinalMultiplier;
+        public float SprintSpeedModifier => MathF.Min((IgnoreSlowdowns ? _sprintBonuses : _sprintSpeedModifier) * BaseSpeedMultiplier, _maximumSpeed) * FinalMultiplier;
 
         /// <summary>
         ///    Whether this entity is immune to most movement speed modifiers.
@@ -105,12 +108,10 @@ namespace Content.Shared.Movement.Systems
             _sprintBonuses *= MathF.Max(1f, sprint);
         }
 
+        // Resolve ceilings after all equipment and perks have contributed, regardless of event order.
         public void CapSpeed(float maximum)
         {
-            _walkSpeedModifier = MathF.Min(_walkSpeedModifier, maximum);
-            _sprintSpeedModifier = MathF.Min(_sprintSpeedModifier, maximum);
-            _walkBonuses = MathF.Min(_walkBonuses, maximum);
-            _sprintBonuses = MathF.Min(_sprintBonuses, maximum);
+            _maximumSpeed = MathF.Min(_maximumSpeed, maximum);
         }
 
         public RefreshMovementSpeedModifiersEvent(bool isImmune = false)

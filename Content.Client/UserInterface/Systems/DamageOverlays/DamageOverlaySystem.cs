@@ -36,7 +36,7 @@ public sealed class DamageOverlaySystem : EntitySystem
 
     private void OnPlayerAttach(LocalPlayerAttachedEvent args)
     {
-        ClearOverlay();
+        _overlay.Reset();
         if (!EntityManager.TryGetComponent<MobStateComponent>(args.Entity, out var mobState))
             return;
         if (mobState.CurrentState != MobState.Dead)
@@ -47,7 +47,7 @@ public sealed class DamageOverlaySystem : EntitySystem
     private void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
         _overlayManager.RemoveOverlay(_overlay);
-        ClearOverlay();
+        _overlay.Reset();
     }
 
     private void OnMobStateChanged(MobStateChangedEvent args)
@@ -66,14 +66,6 @@ public sealed class DamageOverlaySystem : EntitySystem
         _overlayManager.AddOverlay(_overlay);
     }
 
-    private void ClearOverlay()
-    {
-        _overlay.DeadLevel = 0f;
-        _overlay.CritLevel = 0f;
-        _overlay.InjuryLevel = 0f;
-        _overlay.OxygenLevel = 0f;
-    }
-
     //TODO: Jezi: adjust oxygen and hp overlays to use appropriate systems once bodysim is implemented
     private void UpdateOverlays(EntityUid entity, MobStateComponent? mobState, DamageableComponent? damageable = null, MobThresholdsComponent? thresholds = null)
     {
@@ -86,7 +78,7 @@ public sealed class DamageOverlaySystem : EntitySystem
             !_mobThresholdSystem.TryGetIncapThreshold(entity, out var foundThreshold, thresholds) ||
             foundThreshold <= 0)
         {
-            ClearOverlay();
+            _overlay.Reset();
             return;
         }
 

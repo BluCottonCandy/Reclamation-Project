@@ -1,7 +1,6 @@
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared.Actions;
-using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Components;
@@ -31,40 +30,46 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
     private void OnRefreshSpeed(Entity<FusionCorePoweredComponent> ent, ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
         var wearer = Transform(ent).ParentUid;
-        Inventory.TryGetSlotEntity(wearer, "outerClothing", out var shell);
-        TryComp<ClothingSpeedModifierComponent>(ent, out var rigBoost);
-        ApplySpeed(wearer, shell, ent.Comp, args.Args, rigBoost);
+        if (!Inventory.TryGetSlotEntity(wearer, "back", out var back) || back != ent.Owner)
+            return;
+        if (Inventory.TryGetSlotEntity(wearer, "outerClothing", out var shell) && HasComp<ModularPowerArmorComponent>(shell))
+            return; // The worn frame accounts for this pack.
+
+        var strength = GetStrength(wearer);
+        var speed = ent.Comp.Powered ? PoweredMultiplier(ent.Comp, strength)
+            : strength >= ent.Comp.StrongMinimumStrength ? ent.Comp.StrongUnpoweredSpeedMultiplier : ent.Comp.UnpoweredSpeedMultiplier;
+        args.Args.ModifySpeed(speed);
     }
 
     private void OnFrameSpeed(Entity<ModularPowerArmorComponent> frame, ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
         var wearer = Transform(frame).ParentUid;
-        if (HasDeployedRig(wearer) || GetSuitPowerSystems(frame) is not {} power)
+        if (!Inventory.TryGetSlotEntity(wearer, "outerClothing", out var shell) || shell != frame.Owner)
             return;
-        ApplySpeed(wearer, frame.Owner, power.Comp, args.Args, null);
+
+        var power = GetDeployedRig(wearer)?.Comp ?? GetSuitPowerSystems(frame)?.Comp;
+        if (power is not { Powered: true })
+        {
+            // Other effects can slow the wearer further, but cannot power the frame.
+            args.Args.BaseSpeedMultiplier *= FusionCorePoweredComponent.UnpoweredFrameSpeed;
+            args.Args.CapSpeed(FusionCorePoweredComponent.UnpoweredFrameSpeed);
+            return;
+        }
+
+        if (!TryComp<PowerArmorProficiencyComponent>(wearer, out var training) || training.LifeStage > ComponentLifeStage.Running)
+            args.Args.BaseSpeedMultiplier *= PoweredMultiplier(power, GetStrength(wearer)) * FusionCorePoweredComponent.StandardShellSpeed;
+        if (frame.Comp.Overdrive)
+            args.Args.ModifySpeed(1.1f);
     }
 
-    private void ApplySpeed(EntityUid wearer, EntityUid? shell, FusionCorePoweredComponent power,
-        RefreshMovementSpeedModifiersEvent args, ClothingSpeedModifierComponent? rigBoost)
+    private int GetStrength(EntityUid wearer) =>
+        _special.UsesSpecialStats(wearer) ? _special.GetEffective(wearer, SpecialStat.Strength) : 0;
+
+    private static float PoweredMultiplier(FusionCorePoweredComponent power, int strength)
     {
-        var strength = _special.UsesSpecialStats(wearer) ? _special.GetEffective(wearer, SpecialStat.Strength) : 0;
-        var walk = power.Powered
-            ? strength >= power.MightyMinimumStrength ? power.MightyPoweredSpeedMultiplier
-                : strength >= power.StrongMinimumStrength ? power.StrongPoweredSpeedMultiplier : power.PoweredSpeedMultiplier
-            : strength >= power.StrongMinimumStrength ? power.StrongUnpoweredSpeedMultiplier : power.UnpoweredSpeedMultiplier;
-        var sprint = walk;
-        if (power.Powered && HasComp<ModularPowerArmorComponent>(shell) &&
-            TryComp<PowerArmorProficiencyComponent>(wearer, out var training) && training.LifeStage <= ComponentLifeStage.Running &&
-            TryComp<ClothingSpeedModifierComponent>(shell, out var shellSpeed))
-        {
-            // Cancel only the armor's own penalty. Injuries and other equipment still affect the wearer.
-            walk = shellSpeed.WalkModifier > 0 ? 1f / shellSpeed.WalkModifier : 1f;
-            sprint = shellSpeed.SprintModifier > 0 ? 1f / shellSpeed.SprintModifier : 1f;
-        }
-        if (rigBoost is { WalkModifier: > 0 }) walk /= rigBoost.WalkModifier;
-        if (rigBoost is { SprintModifier: > 0 }) sprint /= rigBoost.SprintModifier;
-        var overdrive = power.Powered && TryComp<ModularPowerArmorComponent>(shell, out var frame) && frame.Overdrive ? 1.1f : 1f;
-        args.ModifySpeed(walk * overdrive, sprint * overdrive);
+        if (strength >= power.MightyMinimumStrength)
+            return power.MightyPoweredSpeedMultiplier;
+        return strength >= power.StrongMinimumStrength ? power.StrongPoweredSpeedMultiplier : power.PoweredSpeedMultiplier;
     }
 
     private void OnTrainingChanged<T>(Entity<PowerArmorProficiencyComponent> wearer, ref T ev) where T : EntityEventArgs
@@ -73,8 +78,9 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
             Movement.RefreshMovementSpeedModifiers(wearer);
     }
 
-    private bool HasDeployedRig(EntityUid wearer) =>
-        Inventory.TryGetSlotEntity(wearer, "back", out var back) && HasComp<FusionCorePoweredComponent>(back);
+    protected Entity<FusionCorePoweredComponent>? GetDeployedRig(EntityUid wearer) =>
+        Inventory.TryGetSlotEntity(wearer, "back", out var back) && TryComp<FusionCorePoweredComponent>(back, out var power)
+            ? (back.Value, power) : null;
 
     public Entity<FusionCorePoweredComponent>? GetSuitPowerSystems(EntityUid suit)
     {
@@ -93,7 +99,7 @@ public abstract class SharedFusionCorePoweredSystem : EntitySystem
         if (!HasComp<ModularPowerArmorComponent>(parent)) return null;
         var wearer = Transform(parent).ParentUid;
         return HasComp<InventoryComponent>(wearer) && Inventory.TryGetSlotEntity(wearer, "outerClothing", out var suit)
-            && suit == parent && !HasDeployedRig(wearer) ? wearer : null;
+            && suit == parent && GetDeployedRig(wearer) == null ? wearer : null;
     }
 
     private void OnGetActions(Entity<FusionCorePoweredComponent> ent, ref GetItemActionsEvent args)

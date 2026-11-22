@@ -1,0 +1,1413 @@
+# #Reclamation Project - Elemental spells (generated from the spell table; edit the table, not this file).
+
+- type: magicSpell
+  id: ArcLightning
+  name: magic-spell-arc-lightning
+  words: [ Lightning ]
+  class: Elemental
+  manaCost: 10
+  action: ActionMagicArcLightning
+  summary: "Shock that jumps to people next to the target."
+
+- type: entity
+  id: ActionMagicArcLightning
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 5
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: arc_lightning
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        shock: 20
+      burstRadius: 2.5
+      burst:
+        shock: 10
+
+- type: magicSpell
+  id: RockBullet
+  name: magic-spell-rock-bullet
+  words: [ Earth ]
+  class: Elemental
+  manaCost: 10
+  action: ActionMagicRockBullet
+  summary: "Each cast summons a heated rock that circles you (up to 4, they last 60 s). Left click in combat mode fires them all at your mouse: 40 each, fully armour-piercing, slows 5 s."
+
+- type: entity
+  id: ActionMagicRockBullet
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 1
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_bullet
+    event: !type:MagicSummonRockEvent
+      projectile: ProjectileMagicRockBullet
+      max: 4
+      lifetime: 60
+
+- type: magicSpell
+  id: WaterBall
+  name: magic-spell-water-ball
+  words: [ Water ]
+  class: Elemental
+  manaCost: 8
+  action: ActionMagicWaterBall
+  summary: "Knockback, puts out fire, soaks the target."
+
+- type: entity
+  id: ActionMagicWaterBall
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 3
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: water_ball
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicWaterBall
+
+- type: magicSpell
+  id: WindBlade
+  name: magic-spell-wind-blade
+  words: [ Wind ]
+  class: Elemental
+  manaCost: 10
+  action: ActionMagicWindBlade
+  summary: "Cutting wind slash."
+
+- type: entity
+  id: ActionMagicWindBlade
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 3
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: wind_blade
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicWindBlade
+
+- type: magicSpell
+  id: SteamCloud
+  name: magic-spell-steam-cloud
+  words: [ Fire, Frost ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicSteamCloud
+  summary: "Smoke cloud that blocks vision."
+
+- type: entity
+  id: ActionMagicSteamCloud
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: steam_cloud
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 2
+      hit:
+        damage:
+          types:
+            Heat: 10
+      spawn: MagicSmokeCloud
+
+- type: magicSpell
+  id: FreezeShock
+  name: magic-spell-freeze-shock
+  words: [ Frost, Lightning ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicFreezeShock
+  summary: "Stun."
+
+- type: entity
+  id: ActionMagicFreezeShock
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: freeze_shock
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        shock: 13
+        stun: 2.5
+        damage:
+          types:
+            Cold: 12
+
+- type: magicSpell
+  id: FlameWave
+  name: magic-spell-flame-wave
+  words: [ Fire, MindPush ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicFlameWave
+  summary: "Cone of fire plus knockback; the floor it sweeps keeps burning for 8 s."
+
+- type: entity
+  id: ActionMagicFlameWave
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: flame_wave
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Cone
+      length: 5
+      hit:
+        damage:
+          types:
+            Heat: 22
+        fireStacks: 1
+        push: 3
+
+- type: magicSpell
+  id: CryoSleep
+  name: magic-spell-cryo-sleep
+  words: [ Frost, Sleep ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicCryoSleep
+  summary: "Target frozen in place and asleep."
+
+- type: entity
+  id: ActionMagicCryoSleep
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: cryo_sleep
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        damage:
+          types:
+            Cold: 15
+        sleep: 6
+        slow: 10
+        slowAmount: 0.3
+
+- type: magicSpell
+  id: StormStep
+  name: magic-spell-storm-step
+  words: [ Lightning, Blink ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicStormStep
+  summary: "Teleport and shock everyone where you land."
+
+- type: entity
+  id: ActionMagicStormStep
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: storm_step
+    range: 8
+    checkCanAccess: true
+    event: !type:MagicZoneSpellEvent
+      special: TeleportCaster
+      radius: 2
+      hit:
+        shock: 20
+
+- type: magicSpell
+  id: SkyStrike
+  name: magic-spell-sky-strike
+  words: [ Levitate, Lightning ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicSkyStrike
+  summary: "Lift the target, then hit it with lightning."
+
+- type: entity
+  id: ActionMagicSkyStrike
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 14
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: sky_strike
+    range: 9
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        stun: 1
+      delay: 1.5
+      burstRadius: 0.5
+      burst:
+        shock: 34
+
+- type: magicSpell
+  id: EarthWall
+  name: magic-spell-earth-wall
+  words: [ Earth, MindShield ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicEarthWall
+  summary: "Wall of rock (3 blocks) toward the click, crumbles after 30 s."
+
+- type: entity
+  id: ActionMagicEarthWall
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: earth_wall
+    range: 4
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.1
+      shape: Line
+      length: 1.6
+      spawn: MagicEarthWall
+      spawnCount: 3
+
+- type: magicSpell
+  id: Quagmire
+  name: magic-spell-quagmire
+  words: [ Earth, Water ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicQuagmire
+  summary: "Mud pool, everyone in it is heavily slowed."
+
+- type: entity
+  id: ActionMagicQuagmire
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: quagmire
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneQuagmire
+
+- type: magicSpell
+  id: IceField
+  name: magic-spell-ice-field
+  words: [ Water, Frost ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicIceField
+  summary: "Frozen floor, people slip and fall."
+
+- type: entity
+  id: ActionMagicIceField
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: ice_field
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneIceField
+
+- type: magicSpell
+  id: VacuumWave
+  name: magic-spell-vacuum-wave
+  words: [ Wind, MindPush ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicVacuumWave
+  summary: "Air blast in a line that throws people."
+
+- type: entity
+  id: ActionMagicVacuumWave
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: vacuum_wave
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Line
+      length: 7
+      radius: 1
+      hit:
+        push: 5
+        knockdown: 1
+        damage:
+          types:
+            Blunt: 10
+      items: true
+
+- type: magicSpell
+  id: RockShotgun
+  name: magic-spell-rock-shotgun
+  words: [ Earth, MirrorImage ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicRockShotgun
+  summary: "A spread of small rocks in a short cone."
+
+- type: entity
+  id: ActionMagicRockShotgun
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 6
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_shotgun
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Cone
+      length: 5
+      hit:
+        damage:
+          types:
+            Piercing: 18
+            Blunt: 10
+        push: 1
+
+- type: magicSpell
+  id: Scald
+  name: magic-spell-scald
+  words: [ Fire, Water ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicScald
+  summary: "Boiling water splash, burn damage plus knockback."
+
+- type: entity
+  id: ActionMagicScald
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: scald
+    range: 8
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Cone
+      length: 4
+      hit:
+        damage:
+          types:
+            Heat: 22
+        push: 2
+
+- type: magicSpell
+  id: MagmaPool
+  name: magic-spell-magma-pool
+  words: [ Fire, Earth ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicMagmaPool
+  summary: "Lava puddle that burns anyone standing in it for 15 s."
+
+- type: entity
+  id: ActionMagicMagmaPool
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: magma_pool
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneMagma
+
+- type: magicSpell
+  id: FireTornado
+  name: magic-spell-fire-tornado
+  words: [ Fire, Wind ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicFireTornado
+  summary: "Drifting whirl of flame that sets people on fire."
+
+- type: entity
+  id: ActionMagicFireTornado
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: fire_tornado
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneFireTornado
+
+- type: magicSpell
+  id: RainSquall
+  name: magic-spell-rain-squall
+  words: [ Water, Wind ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicRainSquall
+  summary: "Rain over an area; puts out fires, wet people take double Lightning."
+
+- type: entity
+  id: ActionMagicRainSquall
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rain_squall
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 4
+      hit:
+        extinguish: true
+        wet: 20
+      spawn: MagicRainEffect
+
+- type: magicSpell
+  id: LiveWirePuddle
+  name: magic-spell-live-wire-puddle
+  words: [ Water, Lightning ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicLiveWirePuddle
+  summary: "Puddle that shocks anyone who steps in it."
+
+- type: entity
+  id: ActionMagicLiveWirePuddle
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: live_wire_puddle
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneLiveWire
+
+- type: magicSpell
+  id: Sandstorm
+  name: magic-spell-sandstorm
+  words: [ Earth, Wind ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicSandstorm
+  summary: "Everyone inside is half-blind and slowed."
+
+- type: entity
+  id: ActionMagicSandstorm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: sandstorm
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneSandstorm
+
+- type: magicSpell
+  id: Permafrost
+  name: magic-spell-permafrost
+  words: [ Earth, Frost ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicPermafrost
+  summary: "Frozen ground roots people's feet for 4 s."
+
+- type: entity
+  id: ActionMagicPermafrost
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: permafrost
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 2.5
+      hit:
+        slow: 4
+        slowAmount: 0.05
+        damage:
+          types:
+            Cold: 10
+
+- type: magicSpell
+  id: Lodestone
+  name: magic-spell-lodestone
+  words: [ Earth, Lightning ]
+  class: Elemental
+  manaCost: 20
+  action: ActionMagicLodestone
+  summary: "Magnetic pulse knocks guns out of hands nearby."
+
+- type: entity
+  id: ActionMagicLodestone
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: lodestone
+    event: !type:MagicAreaSpellEvent
+      radius: 4
+      hit:
+        disarmGuns: true
+
+- type: magicSpell
+  id: Blizzard
+  name: magic-spell-blizzard
+  words: [ Wind, Frost ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicBlizzard
+  summary: "Freezing wind, slow plus cold damage."
+
+- type: entity
+  id: ActionMagicBlizzard
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blizzard
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneBlizzard
+
+- type: magicSpell
+  id: Thunderclap
+  name: magic-spell-thunderclap
+  words: [ Wind, Lightning ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicThunderclap
+  summary: "Huge boom, stuns and deafens everyone close to you."
+
+- type: entity
+  id: ActionMagicThunderclap
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: thunderclap
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      hit:
+        damage:
+          types:
+            Blunt: 8
+        stun: 1.5
+        jitter: 4
+        confuse: 4
+        stutter: 6
+
+- type: magicSpell
+  id: EmpPulse
+  name: magic-spell-emp-pulse
+  words: [ Lightning, Dispel ]
+  class: Elemental
+  manaCost: 30
+  action: ActionMagicEmpPulse
+  summary: "EMP around you: batteries, energy weapons, lights, radios, synths."
+
+- type: entity
+  id: ActionMagicEmpPulse
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: emp_pulse
+    event: !type:MagicAreaSpellEvent
+      radius: 5
+      special: Emp
+
+- type: magicSpell
+  id: RockBulletHard
+  name: magic-spell-rock-bullet-hard
+  words: [ Earth, Earth ]
+  class: Elemental
+  manaCost: 18
+  action: ActionMagicRockBulletHard
+  summary: "Harder rock, more damage."
+
+- type: entity
+  id: ActionMagicRockBulletHard
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 3
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_bullet_hard
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicRockBulletHard
+
+- type: magicSpell
+  id: RockBulletMolten
+  name: magic-spell-rock-bullet-molten
+  words: [ Earth, Earth, Fire ]
+  class: Elemental
+  manaCost: 30
+  action: ActionMagicRockBulletMolten
+  summary: "Molten rock, sets the target on fire."
+
+- type: entity
+  id: ActionMagicRockBulletMolten
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_bullet_molten
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicRockBulletMolten
+
+- type: magicSpell
+  id: RockBulletIce
+  name: magic-spell-rock-bullet-ice
+  words: [ Earth, Earth, Frost ]
+  class: Elemental
+  manaCost: 30
+  action: ActionMagicRockBulletIce
+  summary: "Ice shell, slows."
+
+- type: entity
+  id: ActionMagicRockBulletIce
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_bullet_ice
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicRockBulletIce
+
+- type: magicSpell
+  id: RockBulletShock
+  name: magic-spell-rock-bullet-shock
+  words: [ Earth, Earth, Lightning ]
+  class: Elemental
+  manaCost: 30
+  action: ActionMagicRockBulletShock
+  summary: "Shocks."
+
+- type: entity
+  id: ActionMagicRockBulletShock
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_bullet_shock
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicRockBulletShock
+
+- type: magicSpell
+  id: RockBulletRad
+  name: magic-spell-rock-bullet-rad
+  words: [ Earth, Earth, Rad ]
+  class: Elemental
+  manaCost: 30
+  action: ActionMagicRockBulletRad
+  summary: "Glowing, irradiates."
+
+- type: entity
+  id: ActionMagicRockBulletRad
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_bullet_rad
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicRockBulletRad
+
+- type: magicSpell
+  id: RockBulletPush
+  name: magic-spell-rock-bullet-push
+  words: [ Earth, Earth, MindPush ]
+  class: Elemental
+  manaCost: 30
+  action: ActionMagicRockBulletPush
+  summary: "Knockback."
+
+- type: entity
+  id: ActionMagicRockBulletPush
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rock_bullet_push
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicRockBulletPush
+
+- type: magicSpell
+  id: StoneCannon
+  name: magic-spell-stone-cannon
+  words: [ Earth, Earth, Wind, GravityWell ]
+  class: Elemental
+  manaCost: 60
+  action: ActionMagicStoneCannon
+  summary: "Bullet-fast, spinning, pierces, breaks armour, short stun."
+
+- type: entity
+  id: ActionMagicStoneCannon
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: stone_cannon
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicStoneCannon
+
+- type: magicSpell
+  id: RailgunRock
+  name: magic-spell-railgun-rock
+  words: [ Earth, Wind, Wind, Lightning ]
+  class: Elemental
+  manaCost: 60
+  action: ActionMagicRailgunRock
+  summary: "The fastest rock, shocks."
+
+- type: entity
+  id: ActionMagicRailgunRock
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: railgun_rock
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicRailgunRock
+
+- type: magicSpell
+  id: ElementalStorm
+  name: magic-spell-elemental-storm
+  words: [ Fire, Frost, Lightning ]
+  class: Elemental
+  manaCost: 45
+  action: ActionMagicElementalStorm
+  summary: "Fire, ice and shock hit one area."
+
+- type: entity
+  id: ActionMagicElementalStorm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: elemental_storm
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 2.5
+      hit:
+        damage:
+          types:
+            Heat: 13
+            Cold: 13
+        shock: 12
+        fireStacks: 1
+        slow: 4
+
+- type: magicSpell
+  id: Cumulonimbus
+  name: magic-spell-cumulonimbus
+  words: [ Water, Lightning, Wind ]
+  class: Elemental
+  manaCost: 50
+  action: ActionMagicCumulonimbus
+  summary: "Storm cloud: rain, then lightning strikes people underneath."
+
+- type: entity
+  id: ActionMagicCumulonimbus
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: cumulonimbus
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneStormCloud
+
+- type: magicSpell
+  id: ExodusFlame
+  name: magic-spell-exodus-flame
+  words: [ Fire, Fire, Wind ]
+  class: Elemental
+  manaCost: 50
+  action: ActionMagicExodusFlame
+  summary: "Huge firestorm in a cone."
+
+- type: entity
+  id: ActionMagicExodusFlame
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: exodus_flame
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Cone
+      length: 7
+      hit:
+        damage:
+          types:
+            Heat: 32
+        fireStacks: 3
+
+- type: magicSpell
+  id: EarthLance
+  name: magic-spell-earth-lance
+  words: [ Earth, Levitate, GravityWell ]
+  class: Elemental
+  manaCost: 45
+  action: ActionMagicEarthLance
+  summary: "Rock spikes burst out of the ground in a line."
+
+- type: entity
+  id: ActionMagicEarthLance
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: earth_lance
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Line
+      length: 8
+      radius: 0.8
+      hit:
+        damage:
+          types:
+            Piercing: 38
+        knockdown: 2
+      spawn: MagicEarthSpikeEffect
+      spawnCount: 6
+
+- type: magicSpell
+  id: IceFortress
+  name: magic-spell-ice-fortress
+  words: [ MindShield, MindPush, Frost ]
+  class: Elemental
+  manaCost: 45
+  action: ActionMagicIceFortress
+  summary: "Walls of ice around you."
+
+- type: entity
+  id: ActionMagicIceFortress
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: ice_fortress
+    event: !type:MagicAreaSpellEvent
+      radius: 2.2
+      hit:
+        push: 3
+        slow: 4
+      spawn: MagicIceWall
+      spawnCount: 8
+      spawnSpread: 2.2
+
+- type: magicSpell
+  id: Volcano
+  name: magic-spell-volcano
+  words: [ Fire, Earth, Wind ]
+  class: Elemental
+  manaCost: 50
+  action: ActionMagicVolcano
+  summary: "Small eruption that rains burning rocks."
+
+- type: entity
+  id: ActionMagicVolcano
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: volcano
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneVolcano
+
+- type: magicSpell
+  id: Mudslide
+  name: magic-spell-mudslide
+  words: [ Water, Earth, Wind ]
+  class: Elemental
+  manaCost: 45
+  action: ActionMagicMudslide
+  summary: "Wave of mud that knocks people down and slows them."
+
+- type: entity
+  id: ActionMagicMudslide
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mudslide
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Cone
+      length: 6
+      hit:
+        knockdown: 2
+        slow: 6
+        push: 2
+        damage:
+          types:
+            Blunt: 14
+
+- type: magicSpell
+  id: ScaldingHurricane
+  name: magic-spell-scalding-hurricane
+  words: [ Fire, Water, Wind ]
+  class: Elemental
+  manaCost: 50
+  action: ActionMagicScaldingHurricane
+  summary: "Steam storm that burns and pushes everyone around."
+
+- type: entity
+  id: ActionMagicScaldingHurricane
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: scalding_hurricane
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneHurricane
+
+- type: magicSpell
+  id: Glacier
+  name: magic-spell-glacier
+  words: [ Earth, Water, Frost ]
+  class: Elemental
+  manaCost: 45
+  action: ActionMagicGlacier
+  summary: "Big ice wall that slides forward, pushing people back."
+
+- type: entity
+  id: ActionMagicGlacier
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 35
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: glacier
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Line
+      length: 6
+      radius: 1.2
+      hit:
+        push: 4
+        damage:
+          types:
+            Cold: 25
+        slow: 4
+      spawn: MagicIceWall
+      spawnCount: 3
+
+- type: magicSpell
+  id: NuclearMagma
+  name: magic-spell-nuclear-magma
+  words: [ Fire, Earth, Rad ]
+  class: Elemental
+  manaCost: 50
+  action: ActionMagicNuclearMagma
+  summary: "Glowing lava field, fire plus radiation."
+
+- type: entity
+  id: ActionMagicNuclearMagma
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: nuclear_magma
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneNuclearMagma
+
+- type: magicSpell
+  id: Hailstorm
+  name: magic-spell-hailstorm
+  words: [ Water, Lightning, Frost ]
+  class: Elemental
+  manaCost: 50
+  action: ActionMagicHailstorm
+  summary: "Hail and lightning, blunt plus shock damage."
+
+- type: entity
+  id: ActionMagicHailstorm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 35
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: hailstorm
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 3
+      hit:
+        damage:
+          types:
+            Blunt: 24
+        shock: 12
+      spawn: MagicHailEffect
+
+- type: magicSpell
+  id: Deluge
+  name: magic-spell-deluge
+  words: [ Water, Lightning, Wind, GravityWell ]
+  class: Elemental
+  manaCost: 90
+  action: ActionMagicDeluge
+  summary: "Floods an area, slows and knocks everyone down."
+
+- type: entity
+  id: ActionMagicDeluge
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 90
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: deluge
+    range: 14
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 5
+      hit:
+        damage:
+          types:
+            Blunt: 20
+        knockdown: 3
+        slow: 10
+        extinguish: true
+        wet: 30
+        push: 2
+      spawn: MagicRainEffect
+
+- type: magicSpell
+  id: ElementalAvatar
+  name: magic-spell-elemental-avatar
+  words: [ Fire, Water, Earth, Wind ]
+  class: Elemental
+  manaCost: 80
+  action: ActionMagicElementalAvatar
+  summary: "30 s: every Elemental spell costs half mana."
+
+- type: entity
+  id: ActionMagicElementalAvatar
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 180
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: elemental_avatar
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Avatar
+        conditionTime: 30
+
+- type: magicSpell
+  id: ElectromagneticStorm
+  name: magic-spell-electromagnetic-storm
+  words: [ Lightning, Rad, Dispel, GravityWell ]
+  class: Elemental
+  manaCost: 100
+  action: ActionMagicElectromagneticStorm
+  summary: "Huge EMP that pulses 3 times over 10 s and cancels spells being read inside."
+
+- type: entity
+  id: ActionMagicElectromagneticStorm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 180
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: electromagnetic_storm
+    event: !type:MagicAreaSpellEvent
+      radius: 0.5
+      spawn: MagicZoneEmStorm

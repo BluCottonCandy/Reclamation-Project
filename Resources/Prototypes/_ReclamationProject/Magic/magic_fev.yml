@@ -1,0 +1,97 @@
+# #Reclamation Project - FEV Psi-Serum (the science way to psychic powers). Chemists brew it in 3 steps:
+#   1. Unstable Mutagen (already in the game): Radium + Phosphorus + Chlorine
+#   2. Viral Base: 2 Unstable Mutagen + 1 Blood + 1 Glowing Fungus extract, heated to 370 K
+#   3. FEV Psi-Serum: 3 Viral Base + 1 Mentats + 1 Nuka-Cola Quantum, heated to 400 K, with Uranium as a catalyst
+# One dose = 15u (one full syringe). Only players on the FEV whitelist (magic_fevwhitelist) can be awakened.
+
+- type: reagent
+  id: MagicViralBase
+  name: reagent-name-magic-viral-base
+  group: Toxins
+  desc: reagent-desc-magic-viral-base
+  physicalDesc: reagent-physical-desc-glowing
+  flavor: bitter
+  color: "#7bd94a"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: 2
+            Cellular: 1
+
+- type: reagent
+  id: MagicFEVPsiSerum
+  name: reagent-name-magic-fev-psi-serum
+  group: Toxins
+  desc: reagent-desc-magic-fev-psi-serum
+  physicalDesc: reagent-physical-desc-glowing
+  flavor: bitter
+  color: "#4fd6c8"
+  metabolisms:
+    Poison:
+      metabolismRate: 1
+      effects:
+      - !type:MagicFEVExposure
+
+- type: reaction
+  id: MagicViralBase
+  minTemp: 370
+  reactants:
+    UnstableMutagen:
+      amount: 2
+    Blood:
+      amount: 1
+    ExtractFungusRad:
+      amount: 1
+  products:
+    MagicViralBase: 2
+
+- type: reaction
+  id: MagicFEVPsiSerum
+  minTemp: 400
+  reactants:
+    MagicViralBase:
+      amount: 3
+    Mentats:
+      amount: 1
+    NukaColaQuantum:
+      amount: 1
+    Uranium:
+      amount: 1
+      catalyst: true
+  products:
+    MagicFEVPsiSerum: 3
+
+- type: entity
+  id: ActionMagicManifestGrimoire
+  name: Manifest Grimoire
+  description: Focus your awakened mind and pull a grimoire out of nothing. Works once.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: manifest
+    event: !type:MagicManifestGrimoireEvent
+
+# A ready-made 15u dose for admins and testing.
+- type: entity
+  id: MagicFEVSyringe
+  parent: PrefilledSyringe # starts in Inject mode (a plain Syringe starts in Draw and pulls blood instead)
+  name: FEV Psi-Serum syringe
+  description: A syringe of glowing teal serum. The label just says "FEV - PSI".
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: MagicFEVPsiSerum
+          Quantity: 15
+  - type: Injector
+    toggleState: Inject
+    transferAmount: 15 # the whole dose in one jab

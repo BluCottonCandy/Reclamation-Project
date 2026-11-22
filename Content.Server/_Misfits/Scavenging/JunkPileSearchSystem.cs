@@ -124,6 +124,10 @@ public sealed class JunkPileSearchSystem : EntitySystem
         if (TryComp<LuckJunkBonusComponent>(ent, out var luck))
             _luck.TryGrantJunkBonus((ent, luck), args.User);
 
+        // #Reclamation Project - rare magic book drop (Arcane magic)
+        var magicEv = new Content.Server._ReclamationProject.Magic.MagicJunkPileSearchedEvent(args.User);
+        RaiseLocalEvent(ent, ref magicEv);
+
         _popup.PopupEntity(Loc.GetString(args.FinderSearch
             ? "junk-pile-search-finder-complete"
             : "junk-pile-search-complete"), ent, args.User);

@@ -52,6 +52,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
     [UISystemDependency] private readonly TargetOutlineSystem? _targetOutline = default;
     [UISystemDependency] private readonly SpriteSystem _spriteSystem = default!;
     [UISystemDependency] private readonly MisfitsLagCompensationSystem? _lagComp = default; // #Misfits Add — lag compensation tick stamp
+    [UISystemDependency] private readonly Content.Client._ReclamationProject.Magic.MagicChargeSystem? _magicCharge = default; // #Reclamation Project
 
     private const int DefaultPageIndex = 0;
     private ActionButtonContainer? _container;
@@ -452,6 +453,51 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
                 if (page[i] == actionId)
                     return;
 
+        // #Reclamation Project - a spell action can be announced a moment before its own settings arrive (so it
+        // still looks like it auto-fills). Decide at the end of the frame, once everything from the server is in.
+        if (IsMagicSpellAction(actionId))
+        {
+            UIManager.DeferAction(() => AutoPlaceAction(actionId));
+            return;
+        }
+
+        AutoPlaceAction(actionId);
+    }
+
+    /// <summary>#Reclamation Project - spell actions all inherit ActionMagicBase.</summary>
+    private bool IsMagicSpellAction(EntityUid actionId)
+    {
+        if (!EntityManager.TryGetComponent<MetaDataComponent>(actionId, out var meta) || meta.EntityPrototype is not { } proto)
+            return false;
+        if (proto.ID == "ActionMagicBase")
+            return true;
+        if (proto.Parents == null)
+            return false;
+        // A plain loop: the client sandbox doesn't allow the generic Array.IndexOf.
+        foreach (var parent in proto.Parents)
+        {
+            if (parent == "ActionMagicBase")
+                return true;
+        }
+        return false;
+    }
+
+    private void AutoPlaceAction(EntityUid actionId)
+    {
+        if (_actionsSystem == null || !_actionsSystem.TryGetActionData(actionId, out var action))
+            return; // gone again
+
+        foreach (var page in _pages)
+            for (var i = 0; i < page.Size; i++)
+                if (page[i] == actionId)
+                    return;
+
+        // #Reclamation Project - actions marked autoPopulate: false (e.g. spells held in the mind) stay in the
+        // Actions menu instead of being pushed onto the hotbar; the player drags them on themselves. Ones the
+        // player already put on the bar come back to it (after a body swap like Possession).
+        if (!action.AutoPopulate && !_playerPlacedActions.Contains(actionId))
+            return;
+
         AppendAction(actionId);
     }
 
@@ -627,10 +673,17 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         PopulateActions(actions);
     }
 
+    /// <summary>#Reclamation Project - autoPopulate:false actions the player placed on the hotbar themselves.</summary>
+    private readonly HashSet<EntityUid> _playerPlacedActions = new();
+
     private void SetAction(ActionButton button, EntityUid? actionId)
     {
         if (_actionsSystem == null)
             return;
+
+        // #Reclamation Project - remember hand-placed actions that never auto-populate.
+        if (actionId is { } placed && _actionsSystem.TryGetActionData(placed, out var placedData) && !placedData.AutoPopulate)
+            _playerPlacedActions.Add(placed);
 
         int position;
 
@@ -649,6 +702,22 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
             {
                 if (_pages.Count <= _currentPageIndex)
                     return;
+                // #Reclamation Project - on the last hotbar page there is no "next page" (this used to crash the
+                // client when an action was granted with the hotbar full): use the first free slot on any page instead.
+                if (_pages.Count <= _currentPageIndex + 1)
+                {
+                    foreach (var page in _pages)
+                    {
+                        for (var slot = 0; slot < page.Size; slot++)
+                        {
+                            if (page[slot] != null)
+                                continue;
+                            page[slot] = actionId;
+                            return;
+                        }
+                    }
+                    return;
+                }
                 // Add the button to the next page if there's no space on the current one
                 var nextPage = _pages[_currentPageIndex + 1];
                 int i;
@@ -985,7 +1054,21 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
             return;
         }
 
+        // #Reclamation Project - a spell that isn't charged starts charging instead; once charged, the server
+        // sends it back and MagicStartTargeting puts you into aiming.
+        if (_magicCharge != null && _magicCharge.TryStartCharge(actionId))
+            return;
+
         StartTargeting(actionId, action);
+    }
+
+    /// <summary>#Reclamation Project - start aiming a spell that just finished charging.</summary>
+    public void MagicStartTargeting(EntityUid actionId)
+    {
+        if (_actionsSystem == null || SelectingTargetFor == actionId
+            || !_actionsSystem.TryGetActionData(actionId, out var data) || data is not BaseTargetActionComponent target)
+            return;
+        StartTargeting(actionId, target);
     }
 
     /// <summary>

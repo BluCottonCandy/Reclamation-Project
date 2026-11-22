@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Grimoire cover drawn for the Reclamation Project from a reference supplied by the server owner; runes are the Daedric alphabet from The Elder Scrolls (Bethesda Softworks).",
+  "size": {
+    "x": 512,
+    "y": 660
+  },
+  "states": [
+    {
+      "name": "cover"
+    }
+  ]
+}

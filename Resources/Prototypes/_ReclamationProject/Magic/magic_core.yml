@@ -1,0 +1,124 @@
+# #Reclamation Project - Arcane magic: language, Wild Wasteland trait, mana alert.
+
+- type: language
+  id: Arcane
+  isVisibleLanguage: true
+  speech:
+    color: "#9b7fd9"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 1
+    maxSyllables: 3
+    replacement:
+    - vor
+    - akh
+    - tel
+    - un
+    - mir
+    - en
+    - ska
+    - rra
+    - orr
+    - hal
+    - kor
+    - ven
+    - umb
+    - rax
+    - tha
+    - zul
+    - neh
+    - isk
+
+- type: trait
+  id: ReclamationWildWasteland
+  category: Mental
+  points: 2 # a downside trait: gives 2 points back
+  requirements:
+  - !type:CharacterSpeciesRequirement # no magic for machines
+    inverted: true
+    species:
+    - Gen3Synth
+    - Courser
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: MagicWildWasteland
+
+# Pick the Arcane language in character creation (5 points). Only for Wild Wasteland characters.
+- type: trait
+  id: ReclamationLanguageArcane
+  category: Speech
+  points: -5
+  requirements:
+  - !type:CharacterTraitRequirement
+    traits:
+    - ReclamationWildWasteland
+  functions:
+  - !type:TraitModifyLanguages
+    languagesSpoken:
+    - Arcane
+    languagesUnderstood:
+    - Arcane
+  - !type:TraitAddComponent
+    components:
+    - type: MagicCaster
+
+- type: alert
+  id: MagicMana
+  icons:
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana0
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana1
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana2
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana3
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana4
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana5
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana6
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana7
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana8
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana9
+  - sprite: /Textures/_ReclamationProject/Magic/mana.rsi
+    state: mana10
+  name: alerts-magic-mana-name
+  description: alerts-magic-mana-desc
+  minSeverity: 0
+  maxSeverity: 10
+
+- type: alert
+  id: MagicCorruption
+  icons:
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption0
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption1
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption2
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption3
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption4
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption5
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption6
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption7
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption8
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption9
+  - sprite: /Textures/_ReclamationProject/Magic/corruption.rsi
+    state: corruption10
+  name: alerts-magic-corruption-name
+  description: alerts-magic-corruption-desc
+  minSeverity: 0
+  maxSeverity: 10

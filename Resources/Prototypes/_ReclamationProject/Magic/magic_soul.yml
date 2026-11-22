@@ -1,0 +1,50 @@
+# #Reclamation Project - Astral Projection: the spirit form your mind rides while your body stays behind.
+# Built on the old psionic telegnostic projection: floats through walls, unseen by the living (only ghosts and
+# admins see it), can look and examine but can't touch anything or speak.
+- type: entity
+  parent: MobObserverTelegnostic
+  id: MagicAstralForm
+  name: astral spirit
+  description: A faint purple shape of someone, drifting outside their body.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    color: "#b77bffaa"
+    layers:
+    - state: animated
+      shader: unshaded
+
+# The spirit's button: go back to your body now.
+- type: entity
+  id: ActionMagicAstralReturn
+  name: Return to body
+  description: Let go and snap back into your body.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    checkCanInteract: false
+    itemIconStyle: NoItem
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: astral_projection
+    event: !type:MagicAstralReturnEvent
+
+# Undying Will's button, put on your hotbar when you die with the spell ready. Pressing it is the choice to come back.
+- type: entity
+  id: ActionMagicUndyingChoice
+  name: Undying Will
+  description: You are dead, but your will isn't. Press to come back (uses the spell's mana and its one-hour cooldown).
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    checkCanInteract: false
+    checkConsciousness: false
+    itemIconStyle: NoItem
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: undying_will
+    event: !type:MagicUndyingChoiceEvent

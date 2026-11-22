@@ -269,8 +269,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      250: Critical
-      400: Dead
+      300: Critical # #Reclamation Project - was 250
+      450: Dead # #Reclamation Project - was 400
     allowRevives: true
   - type: Stamina
     critThreshold: 250

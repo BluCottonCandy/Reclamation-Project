@@ -104,6 +104,9 @@
   id: ReclamationClothingModsuitChestplateInstitute
   name: Institute MOD suit chestplate
   components:
+  - type: ClothingSpeedModifier # #Reclamation Project - Institute MOD suits never slow you down
+    walkModifier: 1.0
+    sprintModifier: 1.0
   - type: Armor
     modifiers:
       coefficients:
@@ -143,6 +146,9 @@
   id: ReclamationClothingModsuitBootsInstitute
   name: Institute MOD suit boots
   components:
+  - type: ClothingSpeedModifier # #Reclamation Project - Institute MOD suits never slow you down
+    walkModifier: 1.0
+    sprintModifier: 1.0
   - type: ChameleonClothing
     slot: [feet]
     default: ReclamationClothingModsuitBootsInstitute
@@ -282,9 +288,9 @@
         Piercing: 0.7
         Heat: 0.7
         Radiation: 0.7
-  - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+  - type: ClothingSpeedModifier # #Reclamation Project - Institute MOD suits never slow you down
+    walkModifier: 1.0
+    sprintModifier: 1.0
   - type: ChameleonClothing
     slot: [outerClothing]
     default: InstituteResearchMODChestplate
@@ -457,9 +463,9 @@
         Piercing: 0.5
         Heat: 0.5
         Radiation: 0.5
-  - type: ClothingSpeedModifier
-    walkModifier: 0.75
-    sprintModifier: 0.75
+  - type: ClothingSpeedModifier # #Reclamation Project - Institute MOD suits never slow you down
+    walkModifier: 1.0
+    sprintModifier: 1.0
   - type: ChameleonClothing
     slot: [outerClothing]
     default: InstituteSecurityMODChestplate

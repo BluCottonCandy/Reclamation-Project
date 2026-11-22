@@ -144,7 +144,10 @@ public sealed partial class CharacterSpeciesRequirement : CharacterRequirement
             ("species", $"[color={color}]{string.Join($"[/color], [color={color}]",
                 Species.Select(s => Loc.GetString(prototypeManager.Index(s).Name)))}[/color]"));
 
-        return Species.Contains(profile.Species);
+        // #Reclamation Project - a species that counts as another (Augmented Human = Human) passes that one's lists.
+        return Species.Contains(profile.Species)
+            || prototypeManager.TryIndex<SpeciesPrototype>(profile.Species, out var speciesProto)
+            && speciesProto.CountsAs is { } countsAs && Species.Contains(countsAs);
     }
 }
 

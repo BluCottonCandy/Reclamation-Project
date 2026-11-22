@@ -141,6 +141,8 @@ public sealed partial class BioMonitorSystem : EntitySystem
         SubscribeLocalEvent<BioMonitorUserComponent, OpenBioMonitorActionEvent>(OnAction);
         SubscribeLocalEvent<BulletEmbedChanceComponent, ProjectileHitEvent>(OnBulletHit);
         SubscribeLocalEvent<BodyComponent, BeforeExplodeEvent>(OnExploded);
+        // #Reclamation Project - admin rejuvenate also takes out every bullet fragment and bit of shrapnel.
+        SubscribeLocalEvent<MobStateComponent, Content.Shared.Rejuvenate.RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<EmbeddableProjectileComponent, BioMonitorRemoveDoAfterEvent>(OnRemoveEmbedDoAfter);
         SubscribeLocalEvent<BulletFragmentComponent, BioMonitorRemoveDoAfterEvent>(OnRemoveFragmentDoAfter);
 
@@ -652,6 +654,43 @@ public sealed partial class BioMonitorSystem : EntitySystem
         // Refresh right away so the list updates without waiting for the next tick.
         if (_viewers.TryGetValue(user, out var view) && TryComp<ActorComponent>(user, out var actor))
             RaiseNetworkEvent(BuildState(user, view.Target, view.Source), actor.PlayerSession);
+    }
+
+    /// <summary>#Reclamation Project - rejuvenate: every fragment inside the body is taken out and deleted.</summary>
+    private void OnRejuvenate(Entity<MobStateComponent> ent, ref Content.Shared.Rejuvenate.RejuvenateEvent args)
+    {
+        RemoveAllFragments(ent);
+    }
+
+    /// <summary>#Reclamation Project - takes every fragment out of a body and deletes it (rejuvenate, magic revival).</summary>
+    public void RemoveAllFragments(EntityUid uid)
+    {
+        if (!_container.TryGetContainer(uid, FragmentContainer, out var inside))
+            return;
+        foreach (var frag in inside.ContainedEntities.ToArray())
+        {
+            if (TryComp<BulletFragmentComponent>(frag, out var fragment))
+                RemoveFragment((frag, fragment), null);
+            QueueDel(frag);
+        }
+    }
+
+    /// <summary>
+    /// #Reclamation Project - pushes one fragment out of the body onto the floor (Augmented Human nanites).
+    /// Returns false if there was none.
+    /// </summary>
+    public bool PushOutOneFragment(EntityUid uid)
+    {
+        if (!_container.TryGetContainer(uid, FragmentContainer, out var inside))
+            return false;
+        foreach (var frag in inside.ContainedEntities.ToArray())
+        {
+            if (!TryComp<BulletFragmentComponent>(frag, out var fragment))
+                continue;
+            RemoveFragment((frag, fragment), null); // drops out at their feet
+            return true;
+        }
+        return false;
     }
 
     /// <summary>Does this body have bullet fragments or shrapnel inside it?</summary>

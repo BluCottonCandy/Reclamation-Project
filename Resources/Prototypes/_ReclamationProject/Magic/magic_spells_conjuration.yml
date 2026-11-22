@@ -1,0 +1,470 @@
+# #Reclamation Project - Conjuration spells (generated from the spell table; edit the table, not this file).
+
+- type: magicSpell
+  id: PsiKnife
+  name: magic-spell-psi-knife
+  words: [ Conjure ]
+  class: Conjuration
+  manaCost: 10
+  action: ActionMagicPsiKnife
+  summary: "Basic glowing knife."
+
+- type: entity
+  id: ActionMagicPsiKnife
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psi_knife
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredPsiKnife
+
+- type: magicSpell
+  id: FlameBlade
+  name: magic-spell-flame-blade
+  words: [ Conjure, Fire ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicFlameBlade
+  summary: "Sword that sets people on fire."
+
+- type: entity
+  id: ActionMagicFlameBlade
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: flame_blade
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredFlameBlade
+
+- type: magicSpell
+  id: FrostSpear
+  name: magic-spell-frost-spear
+  words: [ Conjure, Frost ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicFrostSpear
+  summary: "Throwable spear, slows on hit."
+
+- type: entity
+  id: ActionMagicFrostSpear
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: frost_spear
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredFrostSpear
+
+- type: magicSpell
+  id: StormHammer
+  name: magic-spell-storm-hammer
+  words: [ Conjure, Lightning ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicStormHammer
+  summary: "Heavy hammer, shock plus knockback."
+
+- type: entity
+  id: ActionMagicStormHammer
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: storm_hammer
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredStormHammer
+
+- type: magicSpell
+  id: GlowingCleaver
+  name: magic-spell-glowing-cleaver
+  words: [ Conjure, Rad ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicGlowingCleaver
+  summary: "Axe that irradiates."
+
+- type: entity
+  id: ActionMagicGlowingCleaver
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: glowing_cleaver
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredGlowingCleaver
+
+- type: magicSpell
+  id: ForceGauntlet
+  name: magic-spell-force-gauntlet
+  words: [ Conjure, MindPush ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicForceGauntlet
+  summary: "A glowing fist: punches throw people across the room."
+
+- type: entity
+  id: ActionMagicForceGauntlet
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: force_gauntlet
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredForceGauntlet
+
+- type: magicSpell
+  id: ChainWhip
+  name: magic-spell-chain-whip
+  words: [ Conjure, MindPull ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicChainWhip
+  summary: "Whip that drags the target to you."
+
+- type: entity
+  id: ActionMagicChainWhip
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: chain_whip
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredChainWhip
+
+- type: magicSpell
+  id: PsiShield
+  name: magic-spell-psi-shield
+  words: [ Conjure, MindShield ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicPsiShield
+  summary: "A real shield that blocks attacks."
+
+- type: entity
+  id: ActionMagicPsiShield
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psi_shield
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredPsiShield
+
+- type: magicSpell
+  id: PhaseDagger
+  name: magic-spell-phase-dagger
+  words: [ Conjure, Blink ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicPhaseDagger
+  summary: "Throw it at someone, and you teleport to them when it hits."
+
+- type: entity
+  id: ActionMagicPhaseDagger
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: phase_dagger
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredPhaseDagger
+
+- type: magicSpell
+  id: OrbitingBlades
+  name: magic-spell-orbiting-blades
+  words: [ Conjure, Telekinesis ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicOrbitingBlades
+  summary: "3 knives you throw one by one."
+
+- type: entity
+  id: ActionMagicOrbitingBlades
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: orbiting_blades
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredThrowingKnife
+      count: 3
+      vanishOnDrop: false
+
+- type: magicSpell
+  id: DreamNeedle
+  name: magic-spell-dream-needle
+  words: [ Conjure, Sleep ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicDreamNeedle
+  summary: "Dart that makes the target sleepy."
+
+- type: entity
+  id: ActionMagicDreamNeedle
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: dream_needle
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredDreamNeedle
+
+- type: magicSpell
+  id: TerrorScythe
+  name: magic-spell-terror-scythe
+  words: [ Conjure, Dread ]
+  class: Conjuration
+  manaCost: 25
+  action: ActionMagicTerrorScythe
+  summary: "Scythe whose hits scare and slow."
+
+- type: entity
+  id: ActionMagicTerrorScythe
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: terror_scythe
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredTerrorScythe
+
+- type: magicSpell
+  id: PsychicPlasmaRifle
+  name: magic-spell-psychic-plasma-rifle
+  words: [ Conjure, Fire, Lightning ]
+  class: Conjuration
+  manaCost: 50
+  action: ActionMagicPsychicPlasmaRifle
+  summary: "A staff that fires 10 plasma bolts."
+
+- type: entity
+  id: ActionMagicPsychicPlasmaRifle
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 90
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psychic_plasma_rifle
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredPlasmaStaff
+
+- type: magicSpell
+  id: FrostBow
+  name: magic-spell-frost-bow
+  words: [ Conjure, Frost, GravityWell ]
+  class: Conjuration
+  manaCost: 50
+  action: ActionMagicFrostBow
+  summary: "Fires freezing bolts that slow."
+
+- type: entity
+  id: ActionMagicFrostBow
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 90
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: frost_bow
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredFrostBow
+
+- type: magicSpell
+  id: AtomGreatsword
+  name: magic-spell-atom-greatsword
+  words: [ Conjure, Rad, Fire ]
+  class: Conjuration
+  manaCost: 50
+  action: ActionMagicAtomGreatsword
+  summary: "Huge blade, radiation and fire."
+
+- type: entity
+  id: ActionMagicAtomGreatsword
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 90
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: atom_greatsword
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredAtomGreatsword
+
+- type: magicSpell
+  id: BladeStorm
+  name: magic-spell-blade-storm
+  words: [ Conjure, MirrorImage, Telekinesis ]
+  class: Conjuration
+  manaCost: 50
+  action: ActionMagicBladeStorm
+  summary: "Knives circle you for 15 s and cut anyone nearby."
+
+- type: entity
+  id: ActionMagicBladeStorm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blade_storm
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      spawn: MagicZoneBladeStorm
+
+- type: magicSpell
+  id: MagicArmor
+  name: magic-spell-magic-armor
+  words: [ Conjure, Earth, MindShield, MindPush ]
+  class: Conjuration
+  manaCost: 90
+  action: ActionMagicMagicArmor
+  summary: "Heavy rock-and-mana armour for 3 min."
+
+- type: entity
+  id: ActionMagicMagicArmor
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 300
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: magic_armor
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredRockArmor
+      equipSlot: outerClothing
+      lifetime: 180
+
+- type: magicSpell
+  id: Duplicate
+  name: magic-spell-duplicate
+  words: [ Conjure, MirrorImage, Telekinesis, ReadMind ]
+  class: Conjuration
+  manaCost: 100
+  action: ActionMagicDuplicate
+  readTime: 30
+  requiredMaxMana: 180
+  usesAllMana: true
+  summary: "copies one simple held item (no guns, stacks, ammo, containers or magic)"
+
+- type: entity
+  id: ActionMagicDuplicate
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: duplicate
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: Duplicate
+
+- type: magicSpell
+  id: ArcaneForge
+  name: magic-spell-arcane-forge
+  words: [ Conjure, Fire, Frost, Lightning ]
+  class: Conjuration
+  manaCost: 100
+  action: ActionMagicArcaneForge
+  readTime: 30
+  requiredMaxMana: 180
+  usesAllMana: true
+  summary: "held melee weapon hits 25% harder (once per weapon)"
+
+- type: entity
+  id: ActionMagicArcaneForge
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: arcane_forge
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: ArcaneForge

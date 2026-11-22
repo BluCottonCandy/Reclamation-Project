@@ -1,0 +1,454 @@
+# #Reclamation Project - Dark spells (generated from the spell table; edit the table, not this file).
+
+- type: magicSpell
+  id: VeilOfNight
+  name: magic-spell-veil-of-night
+  words: [ Shadow, MindShield ]
+  class: Dark
+  manaCost: 15
+  action: ActionMagicVeilOfNight
+  corruptionCost: 8
+  summary: "Lights in a 3x3 area go out for 20 s."
+
+- type: entity
+  id: ActionMagicVeilOfNight
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: veil_of_night
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 2
+      special: LightsOut
+
+- type: magicSpell
+  id: LifeDrain
+  name: magic-spell-life-drain
+  words: [ Shadow, MindPull ]
+  class: Dark
+  manaCost: 20
+  action: ActionMagicLifeDrain
+  corruptionCost: 10
+  summary: "Steals health from the target and heals you."
+
+- type: entity
+  id: ActionMagicLifeDrain
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: life_drain
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        damage:
+          types:
+            Cold: 32
+      self:
+        heal:
+          types:
+            Blunt: 8
+            Slash: 6
+            Piercing: 6
+
+- type: magicSpell
+  id: CurseOfWeakness
+  name: magic-spell-curse-of-weakness
+  words: [ Shadow, Dread ]
+  class: Dark
+  manaCost: 20
+  action: ActionMagicCurseOfWeakness
+  corruptionCost: 10
+  summary: "Half their attacks fail and they move slower for 30 s."
+
+- type: entity
+  id: ActionMagicCurseOfWeakness
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: curse_of_weakness
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        condition: Weakness
+        conditionTime: 30
+
+- type: magicSpell
+  id: Nightmare
+  name: magic-spell-nightmare
+  words: [ Shadow, Sleep ]
+  class: Dark
+  manaCost: 20
+  action: ActionMagicNightmare
+  corruptionCost: 10
+  summary: "A sleeping target takes brain damage over time."
+
+- type: entity
+  id: ActionMagicNightmare
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: nightmare
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        drowsy: 10
+        condition: Nightmare
+        conditionTime: 30
+
+- type: magicSpell
+  id: Blind
+  name: magic-spell-blind
+  words: [ Shadow, ReadMind ]
+  class: Dark
+  manaCost: 20
+  action: ActionMagicBlind
+  corruptionCost: 8
+  summary: "Target goes blind for 10 s."
+
+- type: entity
+  id: ActionMagicBlind
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blind
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        blind: 10
+
+- type: magicSpell
+  id: ShadowTendrils
+  name: magic-spell-shadow-tendrils
+  words: [ Shadow, Telekinesis ]
+  class: Dark
+  manaCost: 20
+  action: ActionMagicShadowTendrils
+  corruptionCost: 8
+  summary: "Dark hands hold the target in place for 10 s."
+
+- type: entity
+  id: ActionMagicShadowTendrils
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: shadow_tendrils
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        slow: 10
+        slowAmount: 0.0
+
+- type: magicSpell
+  id: ShadowClone
+  name: magic-spell-shadow-clone
+  words: [ Shadow, MirrorImage ]
+  class: Dark
+  manaCost: 25
+  action: ActionMagicShadowClone
+  corruptionCost: 12
+  summary: "A dark copy of you that fights for 30 s, hitting as hard as the weapon in your hand."
+
+- type: entity
+  id: ActionMagicShadowClone
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: shadow_clone
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      spawn: MagicShadowClone
+
+- type: magicSpell
+  id: SoulSiphon
+  name: magic-spell-soul-siphon
+  words: [ Shadow, Shadow, Dread ]
+  class: Dark
+  manaCost: 40
+  action: ActionMagicSoulSiphon
+  corruptionCost: 18
+  summary: "Everyone around you takes 30 cold and loses mana if they have any; you heal and gain mana."
+
+- type: entity
+  id: ActionMagicSoulSiphon
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: soul_siphon
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      hit:
+        damage:
+          types:
+            Cold: 30
+        mana: -10
+      self:
+        heal:
+          types:
+            Blunt: 12
+            Slash: 10
+            Piercing: 10
+        mana: 15
+
+- type: magicSpell
+  id: Hex
+  name: magic-spell-hex
+  words: [ Shadow, MindLock, Whisper ]
+  class: Dark
+  manaCost: 40
+  action: ActionMagicHex
+  corruptionCost: 15
+  summary: "The target's next 3 spells or attacks fail."
+
+- type: entity
+  id: ActionMagicHex
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: hex
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        condition: Hex
+        conditionTime: 60
+        conditionPower: 3
+
+- type: magicSpell
+  id: RaiseDead
+  name: magic-spell-raise-dead
+  words: [ Shadow, Sleep, MindPull ]
+  class: Dark
+  manaCost: 45
+  action: ActionMagicRaiseDead
+  corruptionCost: 20
+  summary: "A dead body gives up a mindless shadow servant for 2 min."
+
+- type: entity
+  id: ActionMagicRaiseDead
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: raise_dead
+    range: 2
+    checkCanAccess: true
+    canTargetSelf: false
+    event: !type:MagicTouchSpellEvent
+      deadOnly: true
+      spawn: MagicShadowServant
+
+- type: magicSpell
+  id: Eclipse
+  name: magic-spell-eclipse
+  words: [ Shadow, GravityWell, FearAura, Dread ]
+  class: Dark
+  manaCost: 90
+  action: ActionMagicEclipse
+  corruptionCost: 30
+  summary: "Huge darkness; everyone inside is blind and scared, but you can still see."
+
+- type: entity
+  id: ActionMagicEclipse
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 180
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: eclipse
+    event: !type:MagicAreaSpellEvent
+      radius: 6
+      special: LightsOut
+      hit:
+        blind: 10
+        slow: 10
+        stutter: 10
+
+- type: magicSpell
+  id: Possession
+  name: magic-spell-possession
+  words: [ Shadow, Shadow, MindSwap, ReadMind ]
+  class: Dark
+  manaCost: 90
+  action: ActionMagicPossession
+  corruptionCost: 30
+  summary: "You take control of their body for 10 s: only you move it and speak with it. Their mind is trapped in your body, which cannot move or speak."
+
+- type: entity
+  id: ActionMagicPossession
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 180
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: possession
+    range: 6
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: Possession
+
+- type: magicSpell
+  id: Wither
+  name: magic-spell-wither
+  words: [ Shadow, BrainBurn ]
+  class: Dark
+  manaCost: 20
+  action: ActionMagicWither
+  corruptionCost: 8
+  summary: "The target withers: poison damage over 40 s (about 40 in all)."
+
+- type: entity
+  id: ActionMagicWither
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: wither
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        condition: Wither
+        conditionTime: 40
+
+- type: magicSpell
+  id: Blight
+  name: magic-spell-blight
+  words: [ Shadow, Dread, GravityWell ]
+  class: Dark
+  manaCost: 40
+  action: ActionMagicBlight
+  corruptionCost: 15
+  summary: "A blighted patch: everyone in it takes cellular damage and is weakened (weaker attacks, slower) for 20 s."
+
+- type: entity
+  id: ActionMagicBlight
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 45
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blight
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 2
+      hit:
+        condition: Weakness
+        conditionTime: 20
+        damage:
+          types:
+            Cellular: 10

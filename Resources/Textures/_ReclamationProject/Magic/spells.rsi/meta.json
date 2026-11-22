@@ -1,0 +1,650 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Spell icons taken from tgstation at https://github.com/tgstation/tgstation (icons/mob/actions, CC-BY-SA 3.0); water_ball, scald, magma_pool, rain_squall, blizzard, mudslide, rock_shotgun, frost_spear from \"Pixel Art Spells\" by DevWizard (CC0); hailstorm from \"Gothicvania Magic Pack 9\" by ansimuz (CC0); earth_lance from \"Earthspike spell animation\" by bart (CC-BY 3.0); mana/corruption orbs CC0.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "fireball"
+    },
+    {
+      "name": "frost_bolt"
+    },
+    {
+      "name": "blink"
+    },
+    {
+      "name": "healing"
+    },
+    {
+      "name": "plasma_bolt"
+    },
+    {
+      "name": "dispel"
+    },
+    {
+      "name": "shadow_bolt"
+    },
+    {
+      "name": "dark_pact"
+    },
+    {
+      "name": "shadow_step"
+    },
+    {
+      "name": "blood_bolt"
+    },
+    {
+      "name": "clot"
+    },
+    {
+      "name": "blood_boil"
+    },
+    {
+      "name": "manifest"
+    },
+    {
+      "name": "firebolt"
+    },
+    {
+      "name": "ignite"
+    },
+    {
+      "name": "arc_lightning"
+    },
+    {
+      "name": "rock_bullet"
+    },
+    {
+      "name": "water_ball"
+    },
+    {
+      "name": "wind_blade"
+    },
+    {
+      "name": "steam_cloud"
+    },
+    {
+      "name": "freeze_shock"
+    },
+    {
+      "name": "flame_wave"
+    },
+    {
+      "name": "cryo_sleep"
+    },
+    {
+      "name": "storm_step"
+    },
+    {
+      "name": "sky_strike"
+    },
+    {
+      "name": "earth_wall"
+    },
+    {
+      "name": "quagmire"
+    },
+    {
+      "name": "ice_field"
+    },
+    {
+      "name": "vacuum_wave"
+    },
+    {
+      "name": "rock_shotgun"
+    },
+    {
+      "name": "scald"
+    },
+    {
+      "name": "magma_pool"
+    },
+    {
+      "name": "fire_tornado"
+    },
+    {
+      "name": "rain_squall"
+    },
+    {
+      "name": "live_wire_puddle"
+    },
+    {
+      "name": "sandstorm"
+    },
+    {
+      "name": "permafrost"
+    },
+    {
+      "name": "lodestone"
+    },
+    {
+      "name": "blizzard"
+    },
+    {
+      "name": "thunderclap"
+    },
+    {
+      "name": "emp_pulse"
+    },
+    {
+      "name": "rock_bullet_hard"
+    },
+    {
+      "name": "rock_bullet_molten"
+    },
+    {
+      "name": "rock_bullet_ice"
+    },
+    {
+      "name": "rock_bullet_shock"
+    },
+    {
+      "name": "rock_bullet_rad"
+    },
+    {
+      "name": "rock_bullet_push"
+    },
+    {
+      "name": "stone_cannon"
+    },
+    {
+      "name": "railgun_rock"
+    },
+    {
+      "name": "elemental_storm"
+    },
+    {
+      "name": "cumulonimbus"
+    },
+    {
+      "name": "exodus_flame"
+    },
+    {
+      "name": "earth_lance"
+    },
+    {
+      "name": "ice_fortress"
+    },
+    {
+      "name": "volcano"
+    },
+    {
+      "name": "mudslide"
+    },
+    {
+      "name": "scalding_hurricane"
+    },
+    {
+      "name": "glacier"
+    },
+    {
+      "name": "nuclear_magma"
+    },
+    {
+      "name": "hailstorm"
+    },
+    {
+      "name": "deluge"
+    },
+    {
+      "name": "elemental_avatar"
+    },
+    {
+      "name": "electromagnetic_storm"
+    },
+    {
+      "name": "rad_pulse"
+    },
+    {
+      "name": "mini_nuke_orb"
+    },
+    {
+      "name": "ghoulish_terror"
+    },
+    {
+      "name": "ion_storm"
+    },
+    {
+      "name": "fission_mind"
+    },
+    {
+      "name": "glowing_ice"
+    },
+    {
+      "name": "glowing_sea"
+    },
+    {
+      "name": "fallout_cloud"
+    },
+    {
+      "name": "glowing_crystals"
+    },
+    {
+      "name": "mind_push"
+    },
+    {
+      "name": "mind_pull"
+    },
+    {
+      "name": "read_mind"
+    },
+    {
+      "name": "whisper"
+    },
+    {
+      "name": "dread"
+    },
+    {
+      "name": "mind_shield"
+    },
+    {
+      "name": "sleep"
+    },
+    {
+      "name": "levitate"
+    },
+    {
+      "name": "mind_lock"
+    },
+    {
+      "name": "mirror_image"
+    },
+    {
+      "name": "telekinesis"
+    },
+    {
+      "name": "mind_swap"
+    },
+    {
+      "name": "fear_aura"
+    },
+    {
+      "name": "echo"
+    },
+    {
+      "name": "psychic_link"
+    },
+    {
+      "name": "gravity_well"
+    },
+    {
+      "name": "feather_fall"
+    },
+    {
+      "name": "brain_burn"
+    },
+    {
+      "name": "psychic_slam"
+    },
+    {
+      "name": "implant_thought"
+    },
+    {
+      "name": "nightmare_voice"
+    },
+    {
+      "name": "night_terror"
+    },
+    {
+      "name": "shockwave_step"
+    },
+    {
+      "name": "repel_field"
+    },
+    {
+      "name": "swap"
+    },
+    {
+      "name": "lullaby_grip"
+    },
+    {
+      "name": "mind_veil"
+    },
+    {
+      "name": "panic"
+    },
+    {
+      "name": "mind_spark"
+    },
+    {
+      "name": "eye_of_foresight"
+    },
+    {
+      "name": "disturb_magic"
+    },
+    {
+      "name": "unbind"
+    },
+    {
+      "name": "sense_minds"
+    },
+    {
+      "name": "psychometry"
+    },
+    {
+      "name": "false_face"
+    },
+    {
+      "name": "mind_scream"
+    },
+    {
+      "name": "calm_wave"
+    },
+    {
+      "name": "mana_leech"
+    },
+    {
+      "name": "precognition"
+    },
+    {
+      "name": "psychic_bolt"
+    },
+    {
+      "name": "disarm"
+    },
+    {
+      "name": "arcane_shackles"
+    },
+    {
+      "name": "telepathy"
+    },
+    {
+      "name": "puppet"
+    },
+    {
+      "name": "singularity_spark"
+    },
+    {
+      "name": "phantom"
+    },
+    {
+      "name": "mass_hypnosis"
+    },
+    {
+      "name": "mind_rip"
+    },
+    {
+      "name": "shell_game"
+    },
+    {
+      "name": "mind_break"
+    },
+    {
+      "name": "mass_levitate"
+    },
+    {
+      "name": "astral_projection"
+    },
+    {
+      "name": "tongues"
+    },
+    {
+      "name": "memory_wipe"
+    },
+    {
+      "name": "hivemind"
+    },
+    {
+      "name": "mind_control"
+    },
+    {
+      "name": "psychic_storm"
+    },
+    {
+      "name": "mind_inscription"
+    },
+    {
+      "name": "veil_of_night"
+    },
+    {
+      "name": "life_drain"
+    },
+    {
+      "name": "curse_of_weakness"
+    },
+    {
+      "name": "nightmare"
+    },
+    {
+      "name": "blind"
+    },
+    {
+      "name": "shadow_tendrils"
+    },
+    {
+      "name": "shadow_clone"
+    },
+    {
+      "name": "rot"
+    },
+    {
+      "name": "soul_siphon"
+    },
+    {
+      "name": "hex"
+    },
+    {
+      "name": "raise_dead"
+    },
+    {
+      "name": "eclipse"
+    },
+    {
+      "name": "possession"
+    },
+    {
+      "name": "bloodletting"
+    },
+    {
+      "name": "crimson_spear"
+    },
+    {
+      "name": "blood_shield"
+    },
+    {
+      "name": "blood_trace"
+    },
+    {
+      "name": "blood_bond"
+    },
+    {
+      "name": "blood_mist"
+    },
+    {
+      "name": "hemorrhage"
+    },
+    {
+      "name": "blood_puppet"
+    },
+    {
+      "name": "transfusion"
+    },
+    {
+      "name": "blood_golem"
+    },
+    {
+      "name": "exsanguinate"
+    },
+    {
+      "name": "detoxification"
+    },
+    {
+      "name": "mend_burns"
+    },
+    {
+      "name": "stop_bleeding"
+    },
+    {
+      "name": "draw_shrapnel"
+    },
+    {
+      "name": "diagnose"
+    },
+    {
+      "name": "set_bone"
+    },
+    {
+      "name": "mind_mend"
+    },
+    {
+      "name": "purify"
+    },
+    {
+      "name": "barrier"
+    },
+    {
+      "name": "reattach_limb"
+    },
+    {
+      "name": "regrow_limb"
+    },
+    {
+      "name": "restore_organ"
+    },
+    {
+      "name": "healing_ward"
+    },
+    {
+      "name": "saint_healing"
+    },
+    {
+      "name": "resurrection"
+    },
+    {
+      "name": "titans_blessing"
+    },
+    {
+      "name": "psi_knife"
+    },
+    {
+      "name": "flame_blade"
+    },
+    {
+      "name": "frost_spear"
+    },
+    {
+      "name": "storm_hammer"
+    },
+    {
+      "name": "glowing_cleaver"
+    },
+    {
+      "name": "force_gauntlet"
+    },
+    {
+      "name": "chain_whip"
+    },
+    {
+      "name": "psi_shield"
+    },
+    {
+      "name": "phase_dagger"
+    },
+    {
+      "name": "orbiting_blades"
+    },
+    {
+      "name": "dream_needle"
+    },
+    {
+      "name": "terror_scythe"
+    },
+    {
+      "name": "psychic_plasma_rifle"
+    },
+    {
+      "name": "frost_bow"
+    },
+    {
+      "name": "atom_greatsword"
+    },
+    {
+      "name": "blade_storm"
+    },
+    {
+      "name": "magic_armor"
+    },
+    {
+      "name": "transmute_metal"
+    },
+    {
+      "name": "transmute_rare"
+    },
+    {
+      "name": "transmute_life"
+    },
+    {
+      "name": "duplicate"
+    },
+    {
+      "name": "arcane_forge"
+    },
+    {
+      "name": "doom"
+    },
+    {
+      "name": "hurl"
+    },
+    {
+      "name": "meltdown"
+    },
+    {
+      "name": "psy_forge"
+    },
+    {
+      "name": "greater_psy_forge"
+    },
+    {
+      "name": "psy_blade"
+    },
+    {
+      "name": "bullet_catch"
+    },
+    {
+      "name": "undying_will"
+    },
+    {
+      "name": "pyrokinesis"
+    },
+    {
+      "name": "ember_mark"
+    },
+    {
+      "name": "flash_fire"
+    },
+    {
+      "name": "firewall"
+    },
+    {
+      "name": "freeze"
+    },
+    {
+      "name": "frost_field"
+    },
+    {
+      "name": "quench"
+    },
+    {
+      "name": "psychic_shock"
+    },
+    {
+      "name": "stun_touch"
+    },
+    {
+      "name": "short_out"
+    },
+    {
+      "name": "wither"
+    },
+    {
+      "name": "blight"
+    },
+    {
+      "name": "restoration"
+    }
+  ]
+}

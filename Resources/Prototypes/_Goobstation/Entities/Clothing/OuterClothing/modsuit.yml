@@ -18,9 +18,9 @@
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
-  - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+  - type: ClothingSpeedModifier # #Reclamation Project - MOD suits never slow you down (was 0.9)
+    walkModifier: 1.0
+    sprintModifier: 1.0
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
     sealDownPopup: sealable-clothing-seal-down-chestplate

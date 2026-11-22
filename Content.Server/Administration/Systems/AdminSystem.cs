@@ -245,8 +245,18 @@ namespace Content.Server.Administration.Systems
                 overallPlaytime = playTime;
             }
 
+            // #Reclamation Project - admins see who has Wild Wasteland (WW) or is FEV-awakened (FEV).
+            var magicTag = string.Empty;
+            if (session?.AttachedEntity is { } magicBody)
+            {
+                if (HasComp<Content.Shared._ReclamationProject.Magic.MagicWildWastelandComponent>(magicBody))
+                    magicTag = Loc.GetString("magic-admin-tag-ww");
+                if (HasComp<Content.Shared._ReclamationProject.Magic.MagicFEVAwakenedComponent>(magicBody))
+                    magicTag = magicTag.Length == 0 ? Loc.GetString("magic-admin-tag-fev") : $"{magicTag} {Loc.GetString("magic-admin-tag-fev")}";
+            }
+
             return new PlayerInfo(name, entityName, identityName, startingRole, antag, GetNetEntity(session?.AttachedEntity), data.UserId,
-                connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime);
+                connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime, magicTag);
         }
 
         private void OnPanicBunkerChanged(bool enabled)

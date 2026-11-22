@@ -1,0 +1,295 @@
+# #Reclamation Project - Atomic spells (generated from the spell table; edit the table, not this file).
+
+- type: magicSpell
+  id: RadPulse
+  name: magic-spell-rad-pulse
+  words: [ Rad ]
+  class: Atomic
+  manaCost: 10
+  action: ActionMagicRadPulse
+  summary: "Radiation burst around you."
+
+- type: entity
+  id: ActionMagicRadPulse
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 8
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: rad_pulse
+    event: !type:MagicAreaSpellEvent
+      radius: 2.5
+      hit:
+        damage:
+          types:
+            Radiation: 18
+
+- type: magicSpell
+  id: MiniNukeOrb
+  name: magic-spell-mini-nuke-orb
+  words: [ Fire, Rad ]
+  class: Atomic
+  manaCost: 30
+  action: ActionMagicMiniNukeOrb
+  summary: "Small glowing explosion."
+
+- type: entity
+  id: ActionMagicMiniNukeOrb
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mini_nuke_orb
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicMiniNukeOrb
+
+- type: magicSpell
+  id: GhoulishTerror
+  name: magic-spell-ghoulish-terror
+  words: [ Rad, Dread ]
+  class: Atomic
+  manaCost: 25
+  action: ActionMagicGhoulishTerror
+  summary: "Radiation plus fear."
+
+- type: entity
+  id: ActionMagicGhoulishTerror
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: ghoulish_terror
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        damage:
+          types:
+            Radiation: 32
+        slow: 6
+        stutter: 10
+        message: magic-msg-terror
+
+- type: magicSpell
+  id: IonStorm
+  name: magic-spell-ion-storm
+  words: [ Rad, Lightning ]
+  class: Atomic
+  manaCost: 30
+  action: ActionMagicIonStorm
+  summary: "Shuts off nearby lights and fires an EMP: drains batteries and energy weapons, scrambles radios and synths."
+
+- type: entity
+  id: ActionMagicIonStorm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: ion_storm
+    event: !type:MagicAreaSpellEvent
+      radius: 5
+      special: LightsOutEmp
+      hit:
+        damage:
+          types:
+            Radiation: 10
+
+- type: magicSpell
+  id: FissionMind
+  name: magic-spell-fission-mind
+  words: [ Rad, Dread, MindPush ]
+  class: Atomic
+  manaCost: 45
+  action: ActionMagicFissionMind
+  summary: "Ticking psychic seed: after 5 s it explodes in radiation and knockback around the target."
+
+- type: entity
+  id: ActionMagicFissionMind
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: fission_mind
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        message: magic-msg-ticking
+      delay: 5
+      burstRadius: 2.5
+      burst:
+        damage:
+          types:
+            Radiation: 35
+        push: 3
+        stun: 2
+
+- type: magicSpell
+  id: GlowingIce
+  name: magic-spell-glowing-ice
+  words: [ Frost, Rad ]
+  class: Atomic
+  manaCost: 20
+  action: ActionMagicGlowingIce
+  summary: "Ice shards that slow and irradiate."
+
+- type: entity
+  id: ActionMagicGlowingIce
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 6
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: glowing_ice
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicGlowingIce
+
+- type: magicSpell
+  id: Meltdown
+  name: magic-spell-meltdown
+  words: [ Rad, Rad, Fire, Dread ]
+  class: Atomic
+  manaCost: 80
+  action: ActionMagicMeltdown
+  summary: "King spell. You go critical: everyone within 10 tiles takes 50 radiation that goes straight through armour."
+
+- type: entity
+  id: ActionMagicMeltdown
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 120
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: meltdown
+    event: !type:MagicAreaSpellEvent
+      radius: 10
+      hit:
+        damage:
+          types:
+            Radiation: 50
+        ignoreArmor: true
+
+- type: magicSpell
+  id: GlowingSea
+  name: magic-spell-glowing-sea
+  words: [ Water, Rad ]
+  class: Atomic
+  manaCost: 25
+  action: ActionMagicGlowingSea
+  summary: "Irradiated puddle that slowly poisons anyone in it."
+
+- type: entity
+  id: ActionMagicGlowingSea
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: glowing_sea
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneGlowingSea
+
+- type: magicSpell
+  id: FalloutCloud
+  name: magic-spell-fallout-cloud
+  words: [ Wind, Rad ]
+  class: Atomic
+  manaCost: 25
+  action: ActionMagicFalloutCloud
+  summary: "Drifting green radiation cloud."
+
+- type: entity
+  id: ActionMagicFalloutCloud
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: fallout_cloud
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneFallout
+
+- type: magicSpell
+  id: GlowingCrystals
+  name: magic-spell-glowing-crystals
+  words: [ Earth, Rad ]
+  class: Atomic
+  manaCost: 25
+  action: ActionMagicGlowingCrystals
+  summary: "Crystals grow from the floor and give off radiation for 30 s."
+
+- type: entity
+  id: ActionMagicGlowingCrystals
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: glowing_crystals
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneCrystals

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Daedric alphabet from The Elder Scrolls (Bethesda Softworks). Glyphs cut from an alphabet chart supplied by the Reclamation Project owner; original chart source unknown.",
+  "size": {
+    "x": 48,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "a"
+    },
+    {
+      "name": "b"
+    },
+    {
+      "name": "c"
+    },
+    {
+      "name": "d"
+    },
+    {
+      "name": "e"
+    },
+    {
+      "name": "f"
+    },
+    {
+      "name": "g"
+    },
+    {
+      "name": "h"
+    },
+    {
+      "name": "i"
+    },
+    {
+      "name": "j"
+    },
+    {
+      "name": "k"
+    },
+    {
+      "name": "l"
+    },
+    {
+      "name": "m"
+    },
+    {
+      "name": "n"
+    },
+    {
+      "name": "o"
+    },
+    {
+      "name": "p"
+    },
+    {
+      "name": "q"
+    },
+    {
+      "name": "r"
+    },
+    {
+      "name": "s"
+    },
+    {
+      "name": "t"
+    },
+    {
+      "name": "u"
+    },
+    {
+      "name": "v"
+    },
+    {
+      "name": "w"
+    },
+    {
+      "name": "x"
+    },
+    {
+      "name": "y"
+    },
+    {
+      "name": "z"
+    }
+  ]
+}

@@ -347,6 +347,9 @@ public sealed class SharedSpecialSystem : EntitySystem
 
     public bool HasRequirement(EntityUid uid, SpecialStat stat, int minimum, SpecialComponent? component = null)
     {
+        // #Reclamation Project - the Augmented Human passes every Strength requirement.
+        if (stat == SpecialStat.Strength && HasComp<Content.Shared._ReclamationProject.Strength.IgnoreStrengthRequirementsComponent>(uid))
+            return true;
         return UsesSpecialStats(uid) && GetEffective(uid, stat, component) >= minimum;
     }
 

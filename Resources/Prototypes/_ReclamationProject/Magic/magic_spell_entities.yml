@@ -1,0 +1,1118 @@
+# #Reclamation Project - things spells spawn: lingering zones, walls, servants, conjured weapons and cuffs.
+# All of them vanish on their own (TimedDespawn). Sprites are reused from the base game (no new art).
+
+# ---------------------------------------------------------------- zones
+
+- type: entity
+  id: MagicZoneBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+
+# Floor fire left by fire spells: burns for 8 s and sets anyone standing in it alight.
+- type: entity
+  id: MagicFloorFire
+  parent: MagicZoneBase
+  name: magic fire
+  description: The floor itself is burning.
+  components:
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    state: fire
+    shader: unshaded
+  - type: PointLight
+    color: "#ff8a2a"
+    radius: 1.6
+    energy: 1.6
+  - type: TimedDespawn
+    lifetime: 8
+  - type: MagicAura
+    radius: 0.45
+    interval: 1
+    hit:
+      damage:
+        types:
+          Heat: 2
+      fireStacks: 0.3
+
+# Shown where a delayed spell will land (DOOM, delayed zones).
+- type: entity
+  id: MagicZoneWarning
+  parent: MagicZoneBase
+  name: shimmering air
+  components:
+  - type: Sprite
+    sprite: Effects/portal.rsi
+    state: portal-red
+    color: "#ffffff88"
+  - type: TimedDespawn
+    lifetime: 3
+  - type: MagicAura
+    radius: 0
+    interval: 99
+
+- type: entity
+  id: MagicSmokeCloud
+  parent: MagicZoneBase
+  name: steam cloud
+  components:
+  - type: Sprite
+    sprite: Effects/chemsmoke.rsi
+    state: chemsmoke
+    scale: 3, 3
+    color: "#e8eef0cc"
+  - type: Occluder
+    boundingBox: -1.5,-1.5,1.5,1.5
+  - type: TimedDespawn
+    lifetime: 12
+  - type: MagicAura
+    radius: 2
+    interval: 2
+    hit:
+      damage:
+        types:
+          Heat: 2
+
+- type: entity
+  id: MagicZoneQuagmire
+  parent: MagicZoneBase
+  name: mud pool
+  components:
+  - type: Sprite
+    sprite: Fluids/puddle.rsi
+    state: splat3
+    scale: 3, 3
+    color: "#5a3e22dd"
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 2
+    interval: 1
+    hit:
+      slow: 1.5
+      slowAmount: 0.3
+
+- type: entity
+  id: MagicZoneIceField
+  parent: MagicZoneBase
+  name: ice field
+  components:
+  - type: Sprite
+    sprite: Fluids/puddle.rsi
+    state: splat5
+    scale: 3, 3
+    color: "#bfe8ffcc"
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 2
+    interval: 2
+    hit:
+      knockdown: 1
+      slow: 2
+      slowAmount: 0.7
+
+# Frost Field: the ground freezes for a short time, then melts back to normal.
+- type: entity
+  id: MagicZoneFrostField
+  parent: MagicZoneBase
+  name: frozen ground
+  components:
+  - type: Sprite
+    sprite: Fluids/puddle.rsi
+    state: splat5
+    scale: 2.8, 2.8
+    color: "#d8f2ffbb"
+  - type: TimedDespawn
+    lifetime: 10
+  - type: MagicAura
+    radius: 2
+    interval: 2
+    hit:
+      damage:
+        types:
+          Cold: 3
+      slow: 2
+      slowAmount: 0.5
+      extinguish: true
+
+- type: entity
+  id: MagicZoneMagma
+  parent: MagicZoneBase
+  name: lava puddle
+  components:
+  - type: Sprite
+    sprite: Fluids/puddle.rsi
+    state: splat2
+    scale: 2.5, 2.5
+    color: "#ff5a10ee"
+    shader: unshaded
+  - type: PointLight
+    color: "#ff7020"
+    radius: 3
+    energy: 2
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 1.5
+    interval: 1
+    hit:
+      damage:
+        types:
+          Heat: 4
+      fireStacks: 0.5
+
+- type: entity
+  id: MagicZoneFireTornado
+  parent: MagicZoneBase
+  name: fire tornado
+  components:
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    state: 3
+    scale: 2, 2
+    shader: unshaded
+  - type: PointLight
+    color: "#ff7020"
+    radius: 3
+    energy: 3
+  - type: TimedDespawn
+    lifetime: 10
+  - type: MagicAura
+    radius: 1.2
+    interval: 1
+    drift: 0.6
+    hit:
+      damage:
+        types:
+          Heat: 4
+      fireStacks: 1
+
+- type: entity
+  id: MagicRainEffect
+  parent: MagicZoneBase
+  name: rain
+  components:
+  - type: Sprite
+    sprite: Effects/weather.rsi
+    state: rain
+    scale: 3, 3
+  - type: TimedDespawn
+    lifetime: 6
+  - type: MagicAura
+    radius: 0
+    interval: 99
+
+- type: entity
+  id: MagicZoneLiveWire
+  parent: MagicZoneBase
+  name: crackling puddle
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Fluids/puddle.rsi
+      state: splat4
+      color: "#5aa0ffcc"
+      scale: 2.5, 2.5
+    - sprite: Effects/electricity.rsi
+      state: electrified
+      shader: unshaded
+  - type: PointLight
+    color: "#6ab0ff"
+    radius: 2
+    energy: 2
+  - type: TimedDespawn
+    lifetime: 20
+  - type: MagicAura
+    radius: 1.5
+    interval: 2
+    hit:
+      shock: 8
+
+- type: entity
+  id: MagicZoneSandstorm
+  parent: MagicZoneBase
+  name: sandstorm
+  components:
+  - type: Sprite
+    sprite: Effects/weather.rsi
+    state: ashfall_heavy
+    scale: 3, 3
+    color: "#d8b070dd"
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 3
+    interval: 2
+    hit:
+      blind: 2
+      slow: 2.5
+      slowAmount: 0.6
+
+- type: entity
+  id: MagicZoneBlizzard
+  parent: MagicZoneBase
+  name: blizzard
+  components:
+  - type: Sprite
+    sprite: Effects/weather.rsi
+    state: snowfall_heavy
+    scale: 3, 3
+  - type: TimedDespawn
+    lifetime: 12
+  - type: MagicAura
+    radius: 3
+    interval: 1.5
+    hit:
+      damage:
+        types:
+          Cold: 4
+      slow: 2
+      slowAmount: 0.5
+
+- type: entity
+  id: MagicZoneStormCloud
+  parent: MagicZoneBase
+  name: storm cloud
+  components:
+  - type: Sprite
+    sprite: Effects/weather.rsi
+    state: storm
+    scale: 3, 3
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 3
+    interval: 3
+    hit:
+      shock: 10
+      wet: 5
+      extinguish: true
+
+- type: entity
+  id: MagicEarthSpikeEffect
+  parent: MagicZoneBase
+  name: rock spikes
+  components:
+  - type: Sprite
+    sprite: Effects/rockspawn.rsi
+    state: asteroid
+  - type: TimedDespawn
+    lifetime: 2
+  - type: MagicAura
+    radius: 0
+    interval: 99
+
+- type: entity
+  id: MagicZoneVolcano
+  parent: MagicZoneBase
+  name: eruption
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Effects/rockspawn.rsi
+      state: asteroid
+      color: "#5a2a10"
+    - sprite: Effects/fire.rsi
+      state: 3
+      shader: unshaded
+  - type: PointLight
+    color: "#ff6010"
+    radius: 4
+    energy: 3
+  - type: TimedDespawn
+    lifetime: 10
+  - type: MagicAura
+    radius: 3.5
+    interval: 1.5
+    hit:
+      damage:
+        types:
+          Heat: 5
+          Blunt: 3
+      fireStacks: 0.5
+
+- type: entity
+  id: MagicZoneHurricane
+  parent: MagicZoneBase
+  name: scalding hurricane
+  components:
+  - type: Sprite
+    sprite: Effects/chemsmoke.rsi
+    state: chemsmoke
+    scale: 3, 3
+    color: "#f0f0ffbb"
+  - type: TimedDespawn
+    lifetime: 10
+  - type: MagicAura
+    radius: 3
+    interval: 1.5
+    drift: 0.5
+    hit:
+      damage:
+        types:
+          Heat: 6
+      push: 2
+
+- type: entity
+  id: MagicZoneNuclearMagma
+  parent: MagicZoneMagma
+  name: glowing lava
+  components:
+  - type: Sprite
+    color: "#9aff40ee"
+  - type: PointLight
+    color: "#7aff40"
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 2
+    interval: 1
+    hit:
+      damage:
+        types:
+          Heat: 4
+          Radiation: 3
+      fireStacks: 0.5
+
+- type: entity
+  id: MagicHailEffect
+  parent: MagicZoneBase
+  name: hail
+  components:
+  - type: Sprite
+    sprite: Effects/weather.rsi
+    state: hail
+    scale: 3, 3
+  - type: TimedDespawn
+    lifetime: 4
+  - type: MagicAura
+    radius: 0
+    interval: 99
+
+- type: entity
+  id: MagicZoneEmStorm
+  parent: MagicZoneBase
+  name: electromagnetic storm
+  components:
+  - type: Sprite
+    sprite: Effects/emp.rsi
+    state: emp_pulse
+    scale: 4, 4
+    shader: unshaded
+  - type: TimedDespawn
+    lifetime: 10
+  - type: MagicAura
+    radius: 6
+    interval: 3.4
+    special: Emp
+    hit:
+      shock: 10
+
+- type: entity
+  id: MagicZoneGlowingSea
+  parent: MagicZoneBase
+  name: glowing puddle
+  components:
+  - type: Sprite
+    sprite: Fluids/puddle.rsi
+    state: splat6
+    scale: 2.5, 2.5
+    color: "#7aff40bb"
+    shader: unshaded
+  - type: PointLight
+    color: "#7aff40"
+    radius: 2
+    energy: 1.5
+  - type: TimedDespawn
+    lifetime: 25
+  - type: MagicAura
+    radius: 1.5
+    interval: 2
+    hit:
+      damage:
+        types:
+          Radiation: 3
+          Poison: 1
+
+- type: entity
+  id: MagicZoneFallout
+  parent: MagicZoneBase
+  name: fallout cloud
+  components:
+  - type: Sprite
+    sprite: Effects/weather.rsi
+    state: fallout
+    scale: 3, 3
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 2.5
+    interval: 2
+    drift: 0.5
+    hit:
+      damage:
+        types:
+          Radiation: 6
+
+- type: entity
+  id: MagicZoneCrystals
+  parent: MagicZoneBase
+  name: glowing crystals
+  components:
+  - type: Sprite
+    sprite: Effects/mobspawn.rsi
+    state: crab_uranium
+    shader: unshaded
+  - type: PointLight
+    color: "#7aff40"
+    radius: 3
+    energy: 2
+  - type: TimedDespawn
+    lifetime: 30
+  - type: MagicAura
+    radius: 3
+    interval: 3
+    hit:
+      damage:
+        types:
+          Radiation: 4
+
+- type: entity
+  id: MagicZoneGravityWell
+  parent: MagicZoneBase
+  name: gravity well
+  components:
+  - type: Sprite
+    sprite: Effects/portal.rsi
+    state: portal-blue
+    color: "#6040a0cc"
+  - type: TimedDespawn
+    lifetime: 6
+  - type: MagicAura
+    radius: 4
+    interval: 1
+    items: true
+    hit:
+      pull: 2
+
+- type: entity
+  id: MagicZoneSingularity
+  parent: MagicZoneGravityWell
+  name: singularity spark
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Effects/portal.rsi
+      state: portal-blue
+      color: "#2a1050"
+    - sprite: Effects/electricity.rsi
+      state: electrified
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 6
+  - type: MagicAura
+    radius: 4
+    interval: 1
+    items: true
+    hit:
+      pull: 2.5
+      shock: 5
+
+- type: entity
+  id: MagicDoomVortex
+  parent: MagicZoneBase
+  name: black hole
+  components:
+  - type: Sprite
+    sprite: Effects/portal.rsi
+    state: portal-red
+    color: "#100010"
+    scale: 3, 3
+  - type: TimedDespawn
+    lifetime: 3
+  - type: MagicAura
+    radius: 5
+    interval: 0.5
+    hit:
+      pull: 2
+      stun: 0.6
+
+- type: entity
+  id: MagicZoneBloodMist
+  parent: MagicZoneBase
+  name: blood mist
+  components:
+  - type: Sprite
+    sprite: Effects/chemsmoke.rsi
+    state: chemsmoke
+    scale: 3, 3
+    color: "#a01010aa"
+  - type: TimedDespawn
+    lifetime: 12
+  - type: MagicAura
+    radius: 2.5
+    interval: 2
+    hit:
+      damage:
+        types:
+          Slash: 4
+          Bloodloss: 2
+    casterHit:
+      heal:
+        types:
+          Blunt: 3
+          Slash: 3
+          Piercing: 3
+
+- type: entity
+  id: MagicZoneHealingWard
+  parent: MagicZoneBase
+  name: healing ward
+  components:
+  - type: Sprite
+    sprite: Effects/portal.rsi
+    state: portal-blue
+    color: "#80ffb0aa"
+    scale: 2, 2
+    shader: unshaded
+  - type: PointLight
+    color: "#80ffb0"
+    radius: 3
+    energy: 2
+  - type: TimedDespawn
+    lifetime: 30
+  - type: MagicAura
+    radius: 2
+    interval: 2
+    hitCaster: true
+    hit:
+      heal:
+        types:
+          Blunt: 2
+          Slash: 2
+          Piercing: 2
+          Heat: 2
+
+- type: entity
+  id: MagicZoneBladeStorm
+  parent: MagicZoneBase
+  name: blade storm
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/throwing_knife.rsi
+    state: icon
+    color: "#b0d8ff"
+    shader: unshaded
+  - type: Follower
+  - type: TimedDespawn
+    lifetime: 15
+  - type: MagicAura
+    radius: 1.8
+    interval: 1
+    hit:
+      damage:
+        types:
+          Slash: 6
+
+# ---------------------------------------------------------------- walls
+
+- type: entity
+  id: MagicEarthWall
+  name: rock wall
+  description: A wall of rock pulled up out of the ground. It's already starting to crumble.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Sprite
+    sprite: Structures/Walls/mining.rsi
+    state: full
+    drawdepth: Walls
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: Occluder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: TimedDespawn
+    lifetime: 30
+
+- type: entity
+  id: MagicIceWall
+  parent: MagicEarthWall
+  name: ice wall
+  description: A slab of magic ice. It's melting.
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/ice.rsi
+    state: full
+  - type: Occluder
+    enabled: false
+  - type: TimedDespawn
+    lifetime: 20
+
+# ---------------------------------------------------------------- copies and servants
+
+- type: entity
+  id: MagicMirrorImage
+  name: shimmering figure
+  description: It flickers when you look straight at it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: false
+  - type: Clickable
+  - type: Sprite
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    state: animated
+    color: "#d0e0ffaa"
+    noRot: true
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: TimedDespawn
+    lifetime: 20
+  - type: MagicMirrorImage
+    lifetime: 20
+
+- type: entity
+  id: MagicServantBase
+  parent: N14MobBaseHostileFeral
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MagicServant
+  - type: TimedDespawn
+    lifetime: 30
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      60: Dead
+  - type: MeleeWeapon
+    hidden: true
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Cold: 8
+    range: 1
+
+- type: entity
+  id: MagicShadowClone
+  parent: MagicServantBase
+  name: shadow clone
+  description: A dark shape in the outline of a person.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: active
+      sprite: Mobs/Ghosts/revenant.rsi
+      color: "#3a3058"
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: active
+      Critical:
+        Base: stunned
+      Dead:
+        Base: stunned
+
+- type: entity
+  id: MagicShadowServant
+  parent: MagicShadowClone
+  name: shadow servant
+  description: Something dark that crawled out of a corpse.
+  components:
+  - type: TimedDespawn
+    lifetime: 120
+
+- type: entity
+  id: MagicShacklesCuffs
+  parent: Handcuffs
+  name: arcane shackles
+  description: Glowing bands of force. They'll fade in a couple of minutes.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#a080ff"
+  - type: Handcuff
+    breakoutTime: 40
+    breakOnRemove: true
+  - type: MagicShackles
+  - type: TimedDespawn
+    lifetime: 120
+  - type: StaticPrice
+    price: 0
+
+# ---------------------------------------------------------------- conjured weapons
+# Each vanishes after 2 minutes (or when dropped). They are worth nothing to sell.
+
+- type: entity
+  id: MagicConjuredPsiKnife
+  parent: CombatKnife
+  name: psi-knife
+  description: A knife of pale blue light.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#9fd8ff"
+  - type: PointLight
+    color: "#9fd8ff"
+    radius: 1.5
+    energy: 1.5
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredFlameBlade
+  parent: Katana
+  name: flame blade
+  description: A sword wreathed in fire.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#ff9a40"
+  - type: PointLight
+    color: "#ff7020"
+    radius: 2
+    energy: 2
+  - type: MagicOnHit
+    hit:
+      fireStacks: 1
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredFrostSpear
+  parent: Spear
+  name: frost spear
+  description: A spear of magic ice. Throw it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#bfe8ff"
+  - type: MagicOnHit
+    hit:
+      slow: 4
+      damage:
+        types:
+          Cold: 6
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredCrimsonSpear
+  parent: Spear
+  name: crimson spear
+  description: A spear of hardened blood. Throw it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#c01010"
+  - type: MagicOnHit
+    hit:
+      bleed: 2
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredStormHammer
+  parent: Sledgehammer
+  name: storm hammer
+  description: A heavy hammer crackling with lightning.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#d8e8ff"
+  - type: PointLight
+    color: "#9fc0ff"
+    radius: 2
+    energy: 2
+  - type: MagicOnHit
+    hit:
+      shock: 6
+      push: 2
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredGlowingCleaver
+  parent: FireAxe
+  name: glowing cleaver
+  description: An axe that glows a sickly green.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#9aff7a"
+  - type: PointLight
+    color: "#7aff40"
+    radius: 2
+    energy: 1.5
+  - type: MagicOnHit
+    hit:
+      damage:
+        types:
+          Radiation: 8
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredForceGauntlet
+  parent: Truncheon
+  name: force gauntlet
+  description: A fist of solid force.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#c0a0ff"
+  - type: MagicOnHit
+    hit:
+      push: 5
+      knockdown: 1
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredChainWhip
+  parent: Truncheon
+  name: chain whip
+  description: A lash of linked light that drags whoever it strikes.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#ffe080"
+  - type: MagicOnHit
+    hit:
+      pull: 4
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredPsiShield
+  parent: RiotShield
+  name: psi-shield
+  description: A shield of hardened thought.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#a0c0ffcc"
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredThrowingKnife
+  parent: ThrowingKnife
+  name: orbiting blade
+  description: A floating blade that wants to be thrown.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#b0d8ff"
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredPhaseDagger
+  parent: ThrowingKnife
+  name: phase dagger
+  description: Throw it at someone, and you'll be standing where it hits.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#d0a0ff"
+  - type: MagicOnHit
+    special: TeleportCaster
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredDreamNeedle
+  parent: ThrowingKnife
+  name: dream needle
+  description: A thin silver dart. Throw it to make someone sleepy.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#e0e0ff"
+  - type: MagicOnHit
+    hit:
+      drowsy: 15
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredTerrorScythe
+  parent: FireAxe
+  name: terror scythe
+  description: A black blade that whispers when it swings.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#3a2050"
+  - type: MagicOnHit
+    hit:
+      slow: 3
+      stutter: 6
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredAtomGreatsword
+  parent: Claymore
+  name: atom greatsword
+  description: A huge two-handed blade burning green and orange.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#b0ff60"
+  - type: PointLight
+    color: "#9aff40"
+    radius: 2.5
+    energy: 2
+  - type: MagicOnHit
+    hit:
+      fireStacks: 1
+      damage:
+        types:
+          Radiation: 10
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredPlasmaStaff
+  parent: WeaponStaffBase
+  name: psychic plasma staff
+  description: A staff of humming green light. It fires plasma.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: healing
+      color: "#60ff60"
+  - type: Item
+    heldPrefix: healing
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/Magic/staff_healing.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletPlasma
+    capacity: 10
+    count: 10
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: MagicConjuredFrostBow
+  parent: WeaponStaffBase
+  name: frost staff
+  description: A staff of cold blue light. It fires freezing bolts.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: healing
+      color: "#a0e0ff"
+  - type: Item
+    heldPrefix: healing
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/Magic/staff_healing.ogg
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileMagicFrostArrow
+    capacity: 10
+    count: 10
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  id: ProjectileMagicFrostArrow
+  parent: ProjectileMagicFrostBolt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MagicOnHit
+    hit:
+      slow: 3
+
+- type: entity
+  id: MagicConjuredRockArmor
+  parent: ClothingOuterArmorBasic
+  name: magic rock armour
+  description: Plates of rock held together by mana. It will crumble in a few minutes.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    color: "#8a7a6a"
+  - type: Clothing
+    equipDelay: 0
+    unequipDelay: 0
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: StaticPrice
+    price: 0
+
+# A Rock Bullet rock circling its caster (visual only; the real shot is ProjectileMagicRockBullet).
+- type: entity
+  id: MagicOrbitingRock
+  name: heated rock
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/petrock.rsi
+    noRot: true
+    drawdepth: Effects
+    layers:
+    - state: rock
+      color: "#e8a070"
+      scale: 0.8, 0.8
+  - type: PointLight
+    color: "#ff8a3a"
+    radius: 1
+    energy: 0.8

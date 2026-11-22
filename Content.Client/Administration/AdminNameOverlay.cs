@@ -61,10 +61,14 @@ namespace Content.Client.Administration
                 var screenCoordinates = _eyeManager.WorldToScreen(aabb.Center +
                                                                   new Angle(-_eyeManager.CurrentEye.Rotation).RotateVec(
                                                                       aabb.TopRight - aabb.Center)) + new Vector2(1f, 7f);
+                var tagLine = 2; // #Reclamation Project - mage tag goes on the next free line
                 if (playerInfo.Antag)
                 {
                     args.ScreenHandle.DrawString(_font, screenCoordinates + (lineoffset * 2), "ANTAG", Color.OrangeRed);
+                    tagLine = 3;
                 }
+                if (playerInfo.MagicTag.Length > 0)
+                    args.ScreenHandle.DrawString(_font, screenCoordinates + (lineoffset * tagLine), playerInfo.MagicTag, Color.MediumPurple);
                 args.ScreenHandle.DrawString(_font, screenCoordinates+lineoffset, playerInfo.Username, playerInfo.Connected ? Color.Yellow : Color.White);
                 args.ScreenHandle.DrawString(_font, screenCoordinates, playerInfo.CharacterName, playerInfo.Connected ? Color.Aquamarine : Color.White);
             }

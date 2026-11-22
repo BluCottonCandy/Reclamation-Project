@@ -54,7 +54,8 @@ public sealed class RecoilArmBreakSystem : EntitySystem
             !_special.UsesSpecialStats(user))
             return;
 
-        if (_special.GetEffective(user, SpecialStat.Strength, special) >= gun.Comp.MinStrength)
+        if (_special.GetEffective(user, SpecialStat.Strength, special) >= gun.Comp.MinStrength
+            || HasComp<Content.Shared._ReclamationProject.Strength.IgnoreStrengthRequirementsComponent>(user)) // the Augmented Human
             return;
 
         // Find which hand is holding the gun, so the matching arm breaks.

@@ -275,6 +275,14 @@ public sealed partial class GunSystem : SharedGunSystem
                             dmg += crankBonus;
                         }
 
+                        // #Reclamation Project - Psy-Forge: a forged gun or a forged power cell in it makes its beams hit
+                        // harder (the bigger bonus of the two, they don't multiply).
+                        if (dmg != null && EntityManager.System<Content.Server._ReclamationProject.Magic.MagicPsyForgeSystem>().BeamFactor(gunUid) is var psyForge
+                            && psyForge > 1f)
+                        {
+                            dmg = dmg * psyForge;
+                        }
+
                         if (dmg != null && user != null)
                         {
                             var modifyDamage = new SpecialModifyHitscanDamageEvent(gunUid, dmg);

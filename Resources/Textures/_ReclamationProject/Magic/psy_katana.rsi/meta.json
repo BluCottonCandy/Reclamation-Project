@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Psy katana drawn for the Reclamation Project. Held and worn sprites made from the same art at double resolution.",
+  "size": {
+    "x": 64,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "icon-drawn"
+    }
+  ]
+}

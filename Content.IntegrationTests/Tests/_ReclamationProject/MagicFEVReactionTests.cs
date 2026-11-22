@@ -19,9 +19,9 @@ public sealed class MagicFEVReactionTests
         var solutions = em.System<SharedSolutionContainerSystem>();
 
         Entity<SolutionComponent>? viralEnt = null;
-        Solution? viral = null;
+        Solution viral = null;
         Entity<SolutionComponent>? fevEnt = null;
-        Solution? fev = null;
+        Solution fev = null;
 
         await server.WaitAssertion(() =>
         {

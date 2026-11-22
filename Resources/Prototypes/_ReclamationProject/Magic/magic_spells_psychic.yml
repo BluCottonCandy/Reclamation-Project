@@ -1,0 +1,2834 @@
+# #Reclamation Project - Psychic spells (generated from the spell table; edit the table, not this file).
+
+- type: magicSpell
+  id: MindPush
+  name: magic-spell-mind-push
+  words: [ MindPush ]
+  class: Psychic
+  manaCost: 8
+  action: ActionMagicMindPush
+  summary: "Shoves a target away."
+
+- type: entity
+  id: ActionMagicMindPush
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 6
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_push
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        push: 4
+
+- type: magicSpell
+  id: MindPull
+  name: magic-spell-mind-pull
+  words: [ MindPull ]
+  class: Psychic
+  manaCost: 8
+  action: ActionMagicMindPull
+  summary: "Yanks a target or item toward you."
+
+- type: entity
+  id: ActionMagicMindPull
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 6
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_pull
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    event: !type:MagicTouchSpellEvent
+      hit:
+        pull: 6
+      special: FetchItem
+
+- type: magicSpell
+  id: ReadMind
+  name: magic-spell-read-mind
+  words: [ ReadMind ]
+  class: Psychic
+  manaCost: 5
+  action: ActionMagicReadMind
+  summary: "Name, job and how hurt they are."
+
+- type: entity
+  id: ActionMagicReadMind
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: read_mind
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: ReadMind
+
+- type: magicSpell
+  id: Whisper
+  name: magic-spell-whisper
+  words: [ Whisper ]
+  class: Psychic
+  manaCost: 5
+  action: ActionMagicWhisper
+  summary: "Sends an eerie message into their head (use Telepathy for real talk)."
+
+- type: entity
+  id: ActionMagicWhisper
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 5
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: whisper
+    range: 20
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        message: magic-msg-whisper
+
+- type: magicSpell
+  id: Dread
+  name: magic-spell-dread
+  words: [ Dread ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicDread
+  summary: "Scary message plus slowdown."
+
+- type: entity
+  id: ActionMagicDread
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 8
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: dread
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        slow: 6
+        stutter: 8
+        message: magic-msg-dread
+
+- type: magicSpell
+  id: MindShield
+  name: magic-spell-mind-shield
+  words: [ MindShield ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicMindShield
+  summary: "Blocks the next spell aimed at you."
+
+- type: entity
+  id: ActionMagicMindShield
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_shield
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Ward
+        conditionTime: 60
+        conditionPower: 1
+
+- type: magicSpell
+  id: Sleep
+  name: magic-spell-sleep
+  words: [ Sleep ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicSleep
+  summary: "Drowsy; a second hit puts them to sleep."
+
+- type: entity
+  id: ActionMagicSleep
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: sleep
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        drowsy: 15
+        sleep: 0
+
+- type: magicSpell
+  id: Levitate
+  name: magic-spell-levitate
+  words: [ Levitate ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicLevitate
+  summary: "Lifts the target off the ground and throws them 4 tiles away from you (2 s stun)."
+
+- type: entity
+  id: ActionMagicLevitate
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: levitate
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        stun: 2
+        push: 4
+
+- type: magicSpell
+  id: Hurl
+  name: magic-spell-hurl
+  words: [ Levitate, Telekinesis ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicHurl
+  summary: "Lifts the target high and hurls them 8 tiles away from you; they slam down for 28 blunt and stay down 2.5 s."
+
+- type: entity
+  id: ActionMagicHurl
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 14
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: hurl
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        stun: 1.5
+        push: 8
+        knockdown: 2.5
+        damage:
+          types:
+            Blunt: 28
+
+- type: magicSpell
+  id: MindLock
+  name: magic-spell-mind-lock
+  words: [ MindLock ]
+  class: Psychic
+  manaCost: 12
+  action: ActionMagicMindLock
+  summary: "Can't speak or cast for 8 s."
+
+- type: entity
+  id: ActionMagicMindLock
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_lock
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        mute: 8
+
+- type: magicSpell
+  id: MirrorImage
+  name: magic-spell-mirror-image
+  words: [ MirrorImage ]
+  class: Psychic
+  manaCost: 12
+  action: ActionMagicMirrorImage
+  summary: "2 copies of you appear: same face, same clothes. They wander about and pop the moment they are hit (20 s)."
+
+- type: entity
+  id: ActionMagicMirrorImage
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mirror_image
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      spawn: MagicMirrorImage
+      spawnCount: 2
+      spawnSpread: 1
+
+- type: magicSpell
+  id: Telekinesis
+  name: magic-spell-telekinesis
+  words: [ Telekinesis ]
+  class: Psychic
+  manaCost: 8
+  action: ActionMagicTelekinesis
+  summary: "Grab an item from range, rip whatever someone is holding out of their hands, or tear the fusion core out of their power armour, straight into yours."
+
+- type: entity
+  id: ActionMagicTelekinesis
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: telekinesis
+    range: 10
+    checkCanAccess: true
+    canTargetSelf: false
+    event: !type:MagicTouchSpellEvent
+      special: TelekinesisGrab
+
+- type: magicSpell
+  id: MindSwap
+  name: magic-spell-mind-swap
+  words: [ MindSwap ]
+  class: Psychic
+  manaCost: 12
+  action: ActionMagicMindSwap
+  summary: "Swaps two other people's positions."
+
+- type: entity
+  id: ActionMagicMindSwap
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_swap
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: SwapTargetWithNearest
+
+- type: magicSpell
+  id: FearAura
+  name: magic-spell-fear-aura
+  words: [ FearAura ]
+  class: Psychic
+  manaCost: 12
+  action: ActionMagicFearAura
+  summary: "Everyone near you is scared and slowed."
+
+- type: entity
+  id: ActionMagicFearAura
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: fear_aura
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      hit:
+        slow: 5
+        stutter: 8
+        message: magic-msg-dread
+
+- type: magicSpell
+  id: Echo
+  name: magic-spell-echo
+  words: [ Echo ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicEcho
+  summary: "Your next spell within 10 s costs no mana and needs no reading."
+
+- type: entity
+  id: ActionMagicEcho
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: echo
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Echo
+        conditionTime: 10
+
+- type: magicSpell
+  id: PsychicLink
+  name: magic-spell-psychic-link
+  words: [ PsychicLink ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicPsychicLink
+  summary: "You and an ally can use the telepathic chat for 60 s."
+
+- type: entity
+  id: ActionMagicPsychicLink
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psychic_link
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        condition: Telepathy
+        conditionTime: 60
+      self:
+        condition: Telepathy
+        conditionTime: 60
+
+- type: magicSpell
+  id: GravityWell
+  name: magic-spell-gravity-well
+  words: [ GravityWell ]
+  class: Psychic
+  manaCost: 12
+  action: ActionMagicGravityWell
+  summary: "Zone that pulls people and items inward."
+
+- type: entity
+  id: ActionMagicGravityWell
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: gravity_well
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneGravityWell
+
+- type: magicSpell
+  id: FeatherFall
+  name: magic-spell-feather-fall
+  words: [ FeatherFall ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicFeatherFall
+  summary: "You and nearby people can't be knocked down for 30 s."
+
+- type: entity
+  id: ActionMagicFeatherFall
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: feather_fall
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      includeSelf: true
+      hit:
+        condition: Steady
+        conditionTime: 30
+
+- type: magicSpell
+  id: BrainBurn
+  name: magic-spell-brain-burn
+  words: [ BrainBurn ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicBrainBurn
+  summary: "Brain damage plus headache blur."
+
+- type: entity
+  id: ActionMagicBrainBurn
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 6
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: brain_burn
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        damage:
+          types:
+            Cellular: 20
+        confuse: 4
+
+- type: magicSpell
+  id: PsychicSlam
+  name: magic-spell-psychic-slam
+  words: [ MindPush, MindPull ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicPsychicSlam
+  summary: "Lift and slam the target, stun."
+
+- type: entity
+  id: ActionMagicPsychicSlam
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psychic_slam
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        damage:
+          types:
+            Blunt: 30
+        stun: 2.5
+        knockdown: 2.5
+
+- type: magicSpell
+  id: ImplantThought
+  name: magic-spell-implant-thought
+  words: [ ReadMind, Whisper ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicImplantThought
+  summary: "Target blurts out a strange line."
+
+- type: entity
+  id: ActionMagicImplantThought
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: implant_thought
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: ImplantThought
+
+- type: magicSpell
+  id: NightmareVoice
+  name: magic-spell-nightmare-voice
+  words: [ Dread, Whisper ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicNightmareVoice
+  summary: "Scary whispers, target drops what they're holding."
+
+- type: entity
+  id: ActionMagicNightmareVoice
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: nightmare_voice
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        disarm: true
+        stutter: 8
+        message: magic-msg-nightmare
+
+- type: magicSpell
+  id: NightTerror
+  name: magic-spell-night-terror
+  words: [ Sleep, Dread ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicNightTerror
+  summary: "Target falls asleep and wakes up confused."
+
+- type: entity
+  id: ActionMagicNightTerror
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: night_terror
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        sleep: 6
+        confuse: 12
+
+- type: magicSpell
+  id: ShockwaveStep
+  name: magic-spell-shockwave-step
+  words: [ Blink, MindPush ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicShockwaveStep
+  summary: "Teleport, then knock back everyone where you land."
+
+- type: entity
+  id: ActionMagicShockwaveStep
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: shockwave_step
+    range: 8
+    checkCanAccess: true
+    event: !type:MagicZoneSpellEvent
+      special: TeleportCaster
+      radius: 2.5
+      hit:
+        push: 3
+        knockdown: 1
+
+- type: magicSpell
+  id: RepelField
+  name: magic-spell-repel-field
+  words: [ MindShield, MindPush ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicRepelField
+  summary: "Pushes everyone around you away."
+
+- type: entity
+  id: ActionMagicRepelField
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: repel_field
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      hit:
+        push: 4
+      items: true
+
+- type: magicSpell
+  id: Swap
+  name: magic-spell-swap
+  words: [ MindSwap, Blink ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicSwap
+  summary: "You trade places with the target."
+
+- type: entity
+  id: ActionMagicSwap
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: swap
+    range: 10
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: SwapWithTarget
+
+- type: magicSpell
+  id: LullabyGrip
+  name: magic-spell-lullaby-grip
+  words: [ MindPull, Sleep ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicLullabyGrip
+  summary: "Pulls the target in and makes them drowsy."
+
+- type: entity
+  id: ActionMagicLullabyGrip
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: lullaby_grip
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        pull: 6
+        drowsy: 12
+
+- type: magicSpell
+  id: MindVeil
+  name: magic-spell-mind-veil
+  words: [ MindShield, ReadMind ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicMindVeil
+  summary: "You turn invisible for 10 s."
+
+- type: entity
+  id: ActionMagicMindVeil
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_veil
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Invisible
+        conditionTime: 10
+
+- type: magicSpell
+  id: Panic
+  name: magic-spell-panic
+  words: [ Dread, MindPush ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicPanic
+  summary: "Target runs away and can't attack for a few seconds."
+
+- type: entity
+  id: ActionMagicPanic
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: panic
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        push: 4
+        pacify: 5
+        message: magic-msg-panic
+
+- type: magicSpell
+  id: MindSpark
+  name: magic-spell-mind-spark
+  words: [ ReadMind, BrainBurn ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicMindSpark
+  summary: "Target is confused, screen shakes."
+
+- type: entity
+  id: ActionMagicMindSpark
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_spark
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        confuse: 8
+        jitter: 6
+        shock: 12
+
+- type: magicSpell
+  id: EyeOfForesight
+  name: magic-spell-eye-of-foresight
+  words: [ ReadMind, Blink ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicEyeOfForesight
+  summary: "Arrows show where everyone nearby is heading."
+
+- type: entity
+  id: ActionMagicEyeOfForesight
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 8
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: eye_of_foresight
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: Foresight
+
+- type: magicSpell
+  id: DisturbMagic
+  name: magic-spell-disturb-magic
+  words: [ Dispel, MindPush ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicDisturbMagic
+  summary: "Cancels every spell being read near you."
+
+- type: entity
+  id: ActionMagicDisturbMagic
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: disturb_magic
+    event: !type:MagicAreaSpellEvent
+      radius: 5
+      special: DispelArea
+
+- type: magicSpell
+  id: Unbind
+  name: magic-spell-unbind
+  words: [ MindShield, Dispel ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicUnbind
+  summary: "Frees your grimoire so someone else can claim it."
+
+- type: entity
+  id: ActionMagicUnbind
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: unbind
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: Unbind
+
+- type: magicSpell
+  id: SenseMinds
+  name: magic-spell-sense-minds
+  words: [ ReadMind, FearAura ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicSenseMinds
+  summary: "Tells you how many minds are near you and which way."
+
+- type: entity
+  id: ActionMagicSenseMinds
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: sense_minds
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: SenseMinds
+
+- type: magicSpell
+  id: Psychometry
+  name: magic-spell-psychometry
+  words: [ ReadMind, Telekinesis ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicPsychometry
+  summary: "Touch an item to read the last fingerprints on it."
+
+- type: entity
+  id: ActionMagicPsychometry
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psychometry
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: false
+    event: !type:MagicTouchSpellEvent
+      special: Psychometry
+
+- type: magicSpell
+  id: FalseFace
+  name: magic-spell-false-face
+  words: [ MirrorImage, ReadMind ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicFalseFace
+  summary: "Take the name of someone you touch for 60 s."
+
+- type: entity
+  id: ActionMagicFalseFace
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 90
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: false_face
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: FalseFace
+
+- type: magicSpell
+  id: MindScream
+  name: magic-spell-mind-scream
+  words: [ Dread, BrainBurn ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicMindScream
+  summary: "Brief stun and confusion on everyone nearby."
+
+- type: entity
+  id: ActionMagicMindScream
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_scream
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      hit:
+        stun: 1.5
+        confuse: 6
+        damage:
+          types:
+            Cellular: 15
+
+- type: magicSpell
+  id: CalmWave
+  name: magic-spell-calm-wave
+  words: [ Sleep, PsychicLink ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicCalmWave
+  summary: "Nobody nearby can attack for 10 s."
+
+- type: entity
+  id: ActionMagicCalmWave
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: calm_wave
+    event: !type:MagicAreaSpellEvent
+      radius: 4
+      includeSelf: true
+      hit:
+        pacify: 10
+
+- type: magicSpell
+  id: ManaLeech
+  name: magic-spell-mana-leech
+  words: [ MindPull, BrainBurn ]
+  class: Psychic
+  manaCost: 5
+  action: ActionMagicManaLeech
+  summary: "Steal mana from another caster."
+
+- type: entity
+  id: ActionMagicManaLeech
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mana_leech
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        mana: -25
+      self:
+        mana: 20
+
+- type: magicSpell
+  id: Precognition
+  name: magic-spell-precognition
+  words: [ Echo, Blink ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicPrecognition
+  summary: "The next hit within 5 s misses you."
+
+- type: entity
+  id: ActionMagicPrecognition
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: precognition
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Dodge
+        conditionTime: 5
+
+- type: magicSpell
+  id: PsychicBolt
+  name: magic-spell-psychic-bolt
+  words: [ BrainBurn, MindPush ]
+  class: Psychic
+  manaCost: 18
+  action: ActionMagicPsychicBolt
+  summary: "Psychic projectile, brain damage, ignores armour."
+
+- type: entity
+  id: ActionMagicPsychicBolt
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 5
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psychic_bolt
+    range: 60
+    checkCanAccess: false
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicPsychicBolt
+
+- type: magicSpell
+  id: Disarm
+  name: magic-spell-disarm
+  words: [ Telekinesis, MindPush ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicDisarm
+  summary: "Rips everything out of the target's hands and flings it away."
+
+- type: entity
+  id: ActionMagicDisarm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: disarm
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        disarm: true
+
+- type: magicSpell
+  id: ArcaneShackles
+  name: magic-spell-arcane-shackles
+  words: [ Telekinesis, MindLock, MindPull ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicArcaneShackles
+  summary: "Disarms and snaps magic cuffs on the target. Cuffs vanish after 2 minutes; Dispel removes them."
+
+- type: entity
+  id: ActionMagicArcaneShackles
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 45
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: arcane_shackles
+    range: 6
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: Shackles
+
+- type: magicSpell
+  id: Puppet
+  name: magic-spell-puppet
+  words: [ ReadMind, Whisper, Dread ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicPuppet
+  summary: "Can't use their hands for 8 s, follows you and blurts a line."
+
+- type: entity
+  id: ActionMagicPuppet
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: puppet
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        disarm: true
+        pacify: 8
+        condition: Leash
+        conditionTime: 8
+      special: ImplantThought
+
+- type: magicSpell
+  id: SingularitySpark
+  name: magic-spell-singularity-spark
+  words: [ GravityWell, MindPush, MindPull ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicSingularitySpark
+  summary: "Small vortex that drags people in and shocks them."
+
+- type: entity
+  id: ActionMagicSingularitySpark
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: singularity_spark
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneSingularity
+
+- type: magicSpell
+  id: PsyForge
+  name: magic-spell-psy-forge
+  words: [ Telekinesis, MindShield ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicPsyForge
+  summary: "Hold armour, a weapon, a gun, bullets or a power cell: its protection, damage or capacity rises by 25% of normal, for good. Once per item; stacks with Greater Psy-Forge."
+
+- type: entity
+  id: ActionMagicPsyForge
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psy_forge
+    event: !type:MagicPsyForgeEvent
+      bonus: 0.25
+
+- type: magicSpell
+  id: GreaterPsyForge
+  name: magic-spell-greater-psy-forge
+  words: [ Telekinesis, MindShield, Echo, FeatherFall ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicGreaterPsyForge
+  summary: "King spell. Hold armour, a weapon, a gun, bullets or a power cell: its protection, damage or capacity rises by 50% of normal, for good (75% with Psy-Forge). Once per item."
+
+- type: entity
+  id: ActionMagicGreaterPsyForge
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: greater_psy_forge
+    event: !type:MagicPsyForgeEvent
+      bonus: 0.5
+      major: true
+
+- type: magicSpell
+  id: PsyBlade
+  name: magic-spell-psy-blade
+  words: [ Telekinesis, MirrorImage, MindShield ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicPsyBlade
+  summary: "Calls the psy katana into your hand. It lasts until you let it go: dropped, thrown or left stuck in someone, it crumbles to ash 10 s later. Use it to draw or sheathe; drawn and in both hands, its guard sends bullets back at the shooter."
+
+- type: entity
+  id: ActionMagicPsyBlade
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/psy_katana.rsi
+      state: icon-drawn
+    event: !type:MagicConjureSpellEvent
+      item: MagicPsyKatana
+      lifetime: 0
+      vanishOnDrop: false
+
+- type: magicSpell
+  id: BulletCatch
+  name: magic-spell-bullet-catch
+  words: [ Telekinesis, GravityWell, MindShield, Echo ]
+  class: Psychic
+  manaCost: 0
+  action: ActionMagicBulletCatch
+  summary: "King spell. Toggle: every bullet that would hit you stops and hovers around you, no limit. 1 mana a second while up. Left click in combat mode throws them all at your mouse."
+
+- type: entity
+  id: ActionMagicBulletCatch
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: bullet_catch
+    event: !type:MagicBulletCatchEvent
+      drainPerSecond: 1
+
+- type: magicSpell
+  id: Phantom
+  name: magic-spell-phantom
+  words: [ Blink, ReadMind, MindShield ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicPhantom
+  summary: "Toggle: invisible (NPCs ignore you too) until you cast it again. Costs 25 mana, then 1 mana a second; at 0 mana the overcast damage starts. Attacking or shooting breaks it; touching, carrying and opening things does not."
+
+- type: entity
+  id: ActionMagicPhantom
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 3
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: phantom
+    event: !type:MagicPhantomEvent
+      drainPerSecond: 1
+
+- type: magicSpell
+  id: MassHypnosis
+  name: magic-spell-mass-hypnosis
+  words: [ Sleep, Dread, Whisper ]
+  class: Psychic
+  manaCost: 50
+  action: ActionMagicMassHypnosis
+  summary: "Everyone around you gets drowsy, then falls asleep."
+
+- type: entity
+  id: ActionMagicMassHypnosis
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mass_hypnosis
+    event: !type:MagicAreaSpellEvent
+      radius: 4
+      hit:
+        drowsy: 10
+        sleep: 4
+
+- type: magicSpell
+  id: MindRip
+  name: magic-spell-mind-rip
+  words: [ ReadMind, MindPull, Blink ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicMindRip
+  summary: "Pulls the target to you, long stun."
+
+- type: entity
+  id: ActionMagicMindRip
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_rip
+    range: 10
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        pull: 10
+        stun: 5
+        knockdown: 5
+
+- type: magicSpell
+  id: ShellGame
+  name: magic-spell-shell-game
+  words: [ MirrorImage, MindSwap, Blink ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicShellGame
+  summary: "Copies of you appear and you vanish for a moment among them."
+
+- type: entity
+  id: ActionMagicShellGame
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: shell_game
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      spawn: MagicMirrorImage
+      spawnCount: 3
+      spawnSpread: 2
+      self:
+        condition: Invisible
+        conditionTime: 3
+
+- type: magicSpell
+  id: MindBreak
+  name: magic-spell-mind-break
+  words: [ FearAura, MindLock, BrainBurn ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicMindBreak
+  summary: "Can't speak, panics and takes brain damage."
+
+- type: entity
+  id: ActionMagicMindBreak
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_break
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        mute: 10
+        confuse: 10
+        damage:
+          types:
+            Cellular: 35
+        slow: 6
+
+- type: magicSpell
+  id: MassLevitate
+  name: magic-spell-mass-levitate
+  words: [ Levitate, GravityWell, Blink ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicMassLevitate
+  summary: "Lifts everyone in an area and throws them outward."
+
+- type: entity
+  id: ActionMagicMassLevitate
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mass_levitate
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 3
+      hit:
+        stun: 1.5
+        push: 4
+
+- type: magicSpell
+  id: AstralProjection
+  name: magic-spell-astral-projection
+  words: [ ReadMind, PsychicLink, Blink ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicAstralProjection
+  summary: "Your spirit leaves your body for 60 s: it floats through walls unseen and can look around but not touch or speak. It snaps back when time runs out, when you press Return, or the moment your body is hurt. Your body stays where it is, helpless."
+
+- type: entity
+  id: ActionMagicAstralProjection
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 120
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: astral_projection
+    event: !type:MagicAstralProjectionEvent
+      seconds: 60
+
+- type: magicSpell
+  id: Tongues
+  name: magic-spell-tongues
+  words: [ Whisper, ReadMind, PsychicLink ]
+  class: Psychic
+  manaCost: 35
+  action: ActionMagicTongues
+  summary: "Speak and understand every language for 2 min."
+
+- type: entity
+  id: ActionMagicTongues
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 120
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: tongues
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Tongues
+        conditionTime: 120
+
+- type: magicSpell
+  id: MemoryWipe
+  name: magic-spell-memory-wipe
+  words: [ MindLock, ReadMind, Sleep ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicMemoryWipe
+  summary: "Target falls asleep and is told they forget the last 5 minutes."
+
+- type: entity
+  id: ActionMagicMemoryWipe
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 90
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: memory_wipe
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        sleep: 5
+      special: MemoryWipe
+
+- type: magicSpell
+  id: Hivemind
+  name: magic-spell-hivemind
+  words: [ PsychicLink, Whisper, MindShield ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicHivemind
+  summary: "Everyone near you (allies) gets the telepathic chat for 10 min."
+
+- type: entity
+  id: ActionMagicHivemind
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 120
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: hivemind
+    event: !type:MagicAreaSpellEvent
+      radius: 4
+      includeSelf: true
+      hit:
+        condition: Telepathy
+        conditionTime: 600
+
+- type: magicSpell
+  id: Doom
+  name: magic-spell-doom
+  words: [ Levitate, GravityWell, Blink, MindLock ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicDoom
+  readTime: 12
+  usesAllMana: true
+  summary: "Black hole lifts everyone nearby and drops them at random spots on the map, stunned. Uses all your mana."
+
+- type: entity
+  id: ActionMagicDoom
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 300
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: doom
+    range: 12
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 4
+      delay: 3
+      special: Scatter
+      hit:
+        stun: 1
+      spawn: MagicDoomVortex
+
+- type: magicSpell
+  id: PsychicStorm
+  name: magic-spell-psychic-storm
+  words: [ Dread, FearAura, BrainBurn, MindSwap ]
+  class: Psychic
+  manaCost: 90
+  action: ActionMagicPsychicStorm
+  summary: "Everyone nearby gets confusion, hallucinations and scary whispers for 20 s."
+
+- type: entity
+  id: ActionMagicPsychicStorm
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 150
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psychic_storm
+    event: !type:MagicAreaSpellEvent
+      radius: 5
+      hit:
+        confuse: 20
+        stutter: 20
+        jitter: 10
+        damage:
+          types:
+            Cellular: 30
+        message: magic-msg-storm
+
+- type: magicSpell
+  id: MindInscription
+  name: magic-spell-mind-inscription
+  words: [ ReadMind, MindShield, Echo, PsychicLink ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicMindInscription
+  readTime: 20
+  summary: "Uses up your grimoire and writes its spells into your brain."
+
+- type: entity
+  id: ActionMagicMindInscription
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_inscription
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: MindInscription
+
+- type: magicSpell
+  id: Detoxification
+  name: magic-spell-detoxification
+  words: [ Healing, Healing ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicDetoxification
+  summary: "Removes poison and radiation damage, lowers Arcane Strain a little."
+
+- type: entity
+  id: ActionMagicDetoxification
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: detoxification
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Poison: 20
+            Radiation: 20
+            Caustic: 10
+        strain: -10
+
+- type: magicSpell
+  id: MendBurns
+  name: magic-spell-mend-burns
+  words: [ Healing, FeatherFall ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicMendBurns
+  summary: "Heals burn damage."
+
+- type: entity
+  id: ActionMagicMendBurns
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 8
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mend_burns
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Heat: 15
+            Shock: 8
+            Cold: 8
+
+- type: magicSpell
+  id: StopBleeding
+  name: magic-spell-stop-bleeding
+  words: [ Healing, MindLock ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicStopBleeding
+  summary: "Stops all bleeding on the target."
+
+- type: entity
+  id: ActionMagicStopBleeding
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 8
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: stop_bleeding
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        bleed: -100
+
+- type: magicSpell
+  id: DrawShrapnel
+  name: magic-spell-draw-shrapnel
+  words: [ Healing, MindPull ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicDrawShrapnel
+  summary: "Simplified: heals piercing wounds and slows bleeding."
+
+- type: entity
+  id: ActionMagicDrawShrapnel
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: draw_shrapnel
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Piercing: 15
+        bleed: -5
+
+- type: magicSpell
+  id: Diagnose
+  name: magic-spell-diagnose
+  words: [ Healing, ReadMind ]
+  class: Psychic
+  manaCost: 5
+  action: ActionMagicDiagnose
+  summary: "Shows every kind of injury on the target."
+
+- type: entity
+  id: ActionMagicDiagnose
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 5
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: diagnose
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      special: Diagnose
+
+- type: magicSpell
+  id: SetBone
+  name: magic-spell-set-bone
+  words: [ Healing, Telekinesis ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicSetBone
+  summary: "Simplified: heals blunt trauma (bones)."
+
+- type: entity
+  id: ActionMagicSetBone
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: set_bone
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Blunt: 20
+
+- type: magicSpell
+  id: MindMend
+  name: magic-spell-mind-mend
+  words: [ Healing, BrainBurn ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicMindMend
+  summary: "Heals brain (cellular) damage."
+
+- type: entity
+  id: ActionMagicMindMend
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: mind_mend
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Cellular: 15
+        confuse: 0
+
+- type: magicSpell
+  id: Purify
+  name: magic-spell-purify
+  words: [ Healing, PsychicLink ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicPurify
+  summary: "Restores lost blood."
+
+- type: entity
+  id: ActionMagicPurify
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: purify
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        blood: 60
+        heal:
+          types:
+            Bloodloss: 10
+
+- type: magicSpell
+  id: Barrier
+  name: magic-spell-barrier
+  words: [ Healing, MindShield ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicBarrier
+  summary: "Bubble that soaks up to 40 damage for 6 s."
+
+- type: entity
+  id: ActionMagicBarrier
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: barrier
+    range: 6
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        condition: Absorb
+        conditionTime: 6
+        conditionPower: 40
+
+- type: magicSpell
+  id: ReattachLimb
+  name: magic-spell-reattach-limb
+  words: [ Healing, Telekinesis, MindPull ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicReattachLimb
+  summary: "Simplified for now: heavy wound healing and stops bleeding."
+
+- type: entity
+  id: ActionMagicReattachLimb
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: reattach_limb
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Slash: 30
+            Blunt: 20
+        bleed: -100
+
+- type: magicSpell
+  id: RegrowLimb
+  name: magic-spell-regrow-limb
+  words: [ Healing, Healing, MirrorImage ]
+  class: Psychic
+  manaCost: 60
+  action: ActionMagicRegrowLimb
+  readTime: 10
+  summary: "Simplified for now: big heal across all wounds."
+
+- type: entity
+  id: ActionMagicRegrowLimb
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: regrow_limb
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Slash: 40
+            Blunt: 40
+            Piercing: 40
+        bleed: -100
+
+- type: magicSpell
+  id: RestoreOrgan
+  name: magic-spell-restore-organ
+  words: [ Healing, Healing, ReadMind ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicRestoreOrgan
+  summary: "Simplified for now: heals internal damage (cellular, poison, suffocation)."
+
+- type: entity
+  id: ActionMagicRestoreOrgan
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: restore_organ
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Cellular: 25
+            Poison: 25
+            Asphyxiation: 25
+
+- type: magicSpell
+  id: HealingWard
+  name: magic-spell-healing-ward
+  words: [ Healing, MindShield, Blink ]
+  class: Psychic
+  manaCost: 45
+  action: ActionMagicHealingWard
+  summary: "Glowing circle; everyone standing in it heals for 30 s."
+
+- type: entity
+  id: ActionMagicHealingWard
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: healing_ward
+    range: 8
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 0.5
+      spawn: MagicZoneHealingWard
+
+- type: magicSpell
+  id: SaintHealing
+  name: magic-spell-saint-healing
+  words: [ Healing, Healing, Healing ]
+  class: Psychic
+  manaCost: 60
+  action: ActionMagicSaintHealing
+  summary: "Heals everyone around you."
+
+- type: entity
+  id: ActionMagicSaintHealing
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 60
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: saint_healing
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      includeSelf: true
+      hit:
+        heal:
+          types:
+            Blunt: 20
+            Slash: 20
+            Piercing: 20
+            Heat: 15
+
+- type: magicSpell
+  id: Resurrection
+  name: magic-spell-resurrection
+  words: [ Healing, Healing, Healing, Levitate ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicResurrection
+  readTime: 12
+  usesAllMana: true
+  summary: "Brings a dead body back to life; you pass out after."
+
+- type: entity
+  id: ActionMagicResurrection
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: resurrection
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: false
+    event: !type:MagicTouchSpellEvent
+      deadOnly: true
+      hit:
+        heal:
+          types:
+            Blunt: 80
+            Slash: 80
+            Piercing: 80
+            Heat: 60
+            Cold: 40
+            Shock: 40
+            Poison: 40
+            Asphyxiation: 80
+            Bloodloss: 60
+      special: Resurrect
+      self:
+        sleep: 20
+
+- type: magicSpell
+  id: TitansBlessing
+  name: magic-spell-titans-blessing
+  words: [ Healing, Telekinesis, GravityWell, MindShield ]
+  class: Psychic
+  manaCost: 90
+  action: ActionMagicTitansBlessing
+  summary: "5 minutes: +5 Endurance (about +33 max health), +3 Luck (more crits) and faster healing (1.5 brute + 1 burn every 2 s). When it ends you can drop into crit."
+
+- type: entity
+  id: ActionMagicTitansBlessing
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: titans_blessing
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Titan
+        conditionTime: 300
+
+- type: magicSpell
+  id: UndyingWill
+  name: magic-spell-undying-will
+  words: [ Healing, Echo, PsychicLink, FeatherFall ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicUndyingWill
+  readTime: 0
+  summary: "King spell. Cast it while you are dead: you come back to life, still hurt (three quarters of the way to crit), with your blood refilled. Once an hour."
+
+- type: entity
+  id: ActionMagicUndyingWill
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 3600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: undying_will
+    checkCanInteract: false
+    checkConsciousness: false
+    event: !type:MagicSelfReviveEvent
+      woundsLeft: 0.75
+
+- type: magicSpell
+  id: TransmuteMetal
+  name: magic-spell-transmute-metal
+  words: [ Telekinesis, GravityWell, MindPush, Echo ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicTransmuteMetal
+  readTime: 30
+  requiredMaxMana: 180
+  usesAllMana: true
+  summary: "scrap into steel, steel into plasteel (held stack, half amount)"
+
+- type: entity
+  id: ActionMagicTransmuteMetal
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: transmute_metal
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: TransmuteMetal
+
+- type: magicSpell
+  id: TransmuteRare
+  name: magic-spell-transmute-rare
+  words: [ Telekinesis, GravityWell, BrainBurn, Echo ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicTransmuteRare
+  readTime: 30
+  requiredMaxMana: 180
+  usesAllMana: true
+  summary: "steel into silver, gold or uranium (held stack, half amount)"
+
+- type: entity
+  id: ActionMagicTransmuteRare
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: transmute_rare
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: TransmuteRare
+
+- type: magicSpell
+  id: TransmuteLife
+  name: magic-spell-transmute-life
+  words: [ Healing, Telekinesis, GravityWell, Echo ]
+  class: Psychic
+  manaCost: 100
+  action: ActionMagicTransmuteLife
+  readTime: 30
+  requiredMaxMana: 180
+  usesAllMana: true
+  summary: "held food into a medicine item"
+
+- type: entity
+  id: ActionMagicTransmuteLife
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 600
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: transmute_life
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      special: TransmuteLife
+
+- type: magicSpell
+  id: Pyrokinesis
+  name: magic-spell-pyrokinesis
+  words: [ BrainBurn, Telekinesis ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicPyrokinesis
+  burnsFloor: true
+  summary: "Lights a fire wherever you point: the floor there burns and anyone standing in it catches fire."
+
+- type: entity
+  id: ActionMagicPyrokinesis
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: pyrokinesis
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 1
+      hit:
+        fireStacks: 3
+        damage:
+          types:
+            Heat: 8
+
+- type: magicSpell
+  id: EmberMark
+  name: magic-spell-ember-mark
+  words: [ BrainBurn, Echo ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicEmberMark
+  summary: "Sets the target ablaze from a distance with a heavy load of fire."
+
+- type: entity
+  id: ActionMagicEmberMark
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: ember_mark
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        fireStacks: 5
+        damage:
+          types:
+            Heat: 5
+
+- type: magicSpell
+  id: FlashFire
+  name: magic-spell-flash-fire
+  words: [ BrainBurn, MindPush, FearAura ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicFlashFire
+  burnsFloor: true
+  summary: "A burst of flame all around you: everyone near you catches fire and is shoved back, and the floor burns."
+
+- type: entity
+  id: ActionMagicFlashFire
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 45
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: flash_fire
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      hit:
+        fireStacks: 2
+        push: 2
+        damage:
+          types:
+            Heat: 12
+
+- type: magicSpell
+  id: Firewall
+  name: magic-spell-firewall
+  words: [ BrainBurn, Telekinesis, GravityWell ]
+  class: Psychic
+  manaCost: 40
+  action: ActionMagicFirewall
+  burnsFloor: true
+  summary: "A line of fire toward where you point; the floor keeps burning and anyone in it catches fire."
+
+- type: entity
+  id: ActionMagicFirewall
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: firewall
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      shape: Line
+      length: 6
+      radius: 0.8
+      hit:
+        fireStacks: 3
+        damage:
+          types:
+            Heat: 10
+
+- type: magicSpell
+  id: Freeze
+  name: magic-spell-freeze
+  words: [ Sleep, Telekinesis ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicFreeze
+  summary: "Chills the target to the bone: cold damage and slowed to a crawl for 6 s. Puts out fire on them."
+
+- type: entity
+  id: ActionMagicFreeze
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: freeze
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        damage:
+          types:
+            Cold: 12
+        slow: 6
+        slowAmount: 0.3
+        extinguish: true
+
+- type: magicSpell
+  id: FrostField
+  name: magic-spell-frost-field
+  words: [ Sleep, GravityWell, FeatherFall ]
+  class: Psychic
+  manaCost: 35
+  action: ActionMagicFrostField
+  summary: "Freezes the ground where you point: everyone there takes cold damage, is slowed and stops burning. The frozen patch keeps chilling and slowing anyone on it for 10 s, then melts back to normal."
+
+- type: entity
+  id: ActionMagicFrostField
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 35
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: frost_field
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 2
+      hit:
+        damage:
+          types:
+            Cold: 8
+        slow: 5
+        extinguish: true
+      spawn: MagicZoneFrostField
+
+- type: magicSpell
+  id: Quench
+  name: magic-spell-quench
+  words: [ FeatherFall, Dispel ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicQuench
+  summary: "Puts out every person on fire around you, you included."
+
+- type: entity
+  id: ActionMagicQuench
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: quench
+    event: !type:MagicAreaSpellEvent
+      radius: 4
+      includeSelf: true
+      hit:
+        extinguish: true
+
+- type: magicSpell
+  id: PsychicShock
+  name: magic-spell-psychic-shock
+  words: [ Telekinesis, Dispel ]
+  class: Psychic
+  manaCost: 15
+  action: ActionMagicPsychicShock
+  summary: "A jolt of psychic lightning at the target."
+
+- type: entity
+  id: ActionMagicPsychicShock
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: psychic_shock
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        shock: 18
+        jitter: 3
+
+- type: magicSpell
+  id: StunTouch
+  name: magic-spell-stun-touch
+  words: [ MindLock, Telekinesis ]
+  class: Psychic
+  manaCost: 20
+  action: ActionMagicStunTouch
+  summary: "Grab them and short out their nerves: stunned for 3 s."
+
+- type: entity
+  id: ActionMagicStunTouch
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 25
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: stun_touch
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        shock: 5
+        stun: 3
+
+- type: magicSpell
+  id: ShortOut
+  name: magic-spell-short-out
+  words: [ Dispel, GravityWell ]
+  class: Psychic
+  manaCost: 25
+  action: ActionMagicShortOut
+  summary: "A small EMP where you point: drains batteries and energy weapons, kills lights, scrambles radios and synths."
+
+- type: entity
+  id: ActionMagicShortOut
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: short_out
+    range: 10
+    checkCanAccess: false
+    event: !type:MagicZoneSpellEvent
+      radius: 1.5
+      special: Emp
+
+- type: magicSpell
+  id: Restoration
+  name: magic-spell-restoration
+  words: [ Healing, Healing, Echo ]
+  class: Psychic
+  manaCost: 60
+  action: ActionMagicRestoration
+  summary: "Heals a bit of everything: 20 of every damage type (cuts, bruises, holes, burns, cold, shock, poison, radiation, acid, cellular, suffocation, blood loss), stops bleeding and restores blood."
+
+- type: entity
+  id: ActionMagicRestoration
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 45
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: restoration
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        heal:
+          types:
+            Blunt: 20
+            Slash: 20
+            Piercing: 20
+            Heat: 20
+            Cold: 20
+            Shock: 20
+            Poison: 20
+            Radiation: 20
+            Caustic: 20
+            Cellular: 20
+            Asphyxiation: 20
+            Bloodloss: 20
+        bleed: -100
+        blood: 60

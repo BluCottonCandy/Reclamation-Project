@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Orb from 'Pixel Art Spells' by DevWizard (OpenGameArt, CC0), fill levels made for Reclamation Project",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "mana0"
+    },
+    {
+      "name": "mana1"
+    },
+    {
+      "name": "mana2"
+    },
+    {
+      "name": "mana3"
+    },
+    {
+      "name": "mana4"
+    },
+    {
+      "name": "mana5"
+    },
+    {
+      "name": "mana6"
+    },
+    {
+      "name": "mana7"
+    },
+    {
+      "name": "mana8"
+    },
+    {
+      "name": "mana9"
+    },
+    {
+      "name": "mana10"
+    }
+  ]
+}

@@ -14,7 +14,8 @@ namespace Content.Shared.Administration
         NetUserId SessionId,
         bool Connected,
         bool ActiveThisRound,
-        TimeSpan? OverallPlaytime)
+        TimeSpan? OverallPlaytime,
+        string MagicTag = "") // #Reclamation Project - admin-only "WW" / "FEV" tag for mages
     {
         private string? _playtimeString;
 

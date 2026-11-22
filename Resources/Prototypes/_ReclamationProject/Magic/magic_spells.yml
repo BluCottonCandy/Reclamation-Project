@@ -1,0 +1,523 @@
+# #Reclamation Project - Arcane magic: the first spells (hand-written, older custom events).
+# The written form of every word is random each round. Admins: magic_words shows them.
+
+# Words now live in magic_words.yml.
+
+# --- Spells ---
+
+- type: magicSpell
+  id: Firebolt
+  name: magic-spell-firebolt
+  words: [ Fire ]
+  class: Elemental
+  manaCost: 10
+  action: ActionMagicFirebolt
+  summary: "Quick shot of fire: 20 heat and a little burning."
+
+# Kindle (Psychic pyrokinesis): light one exact thing - a campfire or bonfire, paper or anything that burns, or a person.
+- type: magicSpell
+  id: Kindle
+  name: magic-spell-kindle
+  words: [ BrainBurn, Blink ]
+  class: Psychic
+  manaCost: 6
+  action: ActionMagicKindle
+  summary: "Lights one exact thing you point at: a campfire or bonfire, paper or anything else that burns, or a person (sets them on fire)."
+
+- type: magicSpell
+  id: Ignite
+  name: magic-spell-ignite
+  words: [ Ember ]
+  class: Elemental
+  manaCost: 8
+  action: ActionMagicIgnite
+  summary: "Sets the target on fire (8 heat)."
+
+# Fireball is an Intermediate spell now (2 words), with a bigger blast than before.
+- type: magicSpell
+  id: Fireball
+  name: magic-spell-fireball
+  words: [ Fire, Ember ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicFireball
+  summary: "Fireball: 28 heat, sets the target on fire, then a small blast that will not break floors."
+
+- type: magicSpell
+  id: FrostBolt
+  name: magic-spell-frost-bolt
+  words: [ Frost ]
+  class: Elemental
+  manaCost: 10
+  action: ActionMagicFrostBolt
+  summary: "Icicle: 10 piercing and 14 cold."
+
+- type: magicSpell
+  id: Blink
+  name: magic-spell-blink
+  words: [ Blink ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicBlink
+  summary: "Short teleport, up to 10 tiles."
+
+- type: magicSpell
+  id: Healing
+  name: magic-spell-healing
+  words: [ Healing ]
+  class: Psychic
+  manaCost: 10
+  action: ActionMagicHealing
+  summary: "Touch heal: 15 brute (heals body parts, never severs)."
+
+- type: magicSpell
+  id: PlasmaBolt
+  name: magic-spell-plasma-bolt
+  words: [ Fire, Lightning ]
+  class: Elemental
+  manaCost: 25
+  action: ActionMagicPlasmaBolt
+  summary: "Plasma bolt: 28 caustic and 6 radiation."
+
+- type: magicSpell
+  id: Dispel
+  name: magic-spell-dispel
+  words: [ Dispel ]
+  class: Psychic
+  manaCost: 10
+  readTime: 0.5
+  action: ActionMagicDispel
+  summary: "Cancels spells and magic effects on the target."
+
+# --- Dark (adds Corruption) ---
+
+- type: magicSpell
+  id: ShadowBolt
+  name: magic-spell-shadow-bolt
+  words: [ Shadow ]
+  class: Dark
+  manaCost: 10
+  corruptionCost: 10
+  action: ActionMagicShadowBolt
+  summary: "Dark bolt: 18 cold and 6 blunt. Adds Corruption."
+
+- type: magicSpell
+  id: ShadowStep
+  name: magic-spell-shadow-step
+  words: [ Shadow, Blink ]
+  class: Dark
+  manaCost: 15
+  corruptionCost: 8
+  action: ActionMagicShadowStep
+  summary: "Longer teleport, up to 12 tiles. Adds Corruption."
+
+# --- Blood (costs blood, not mana) ---
+
+- type: magicSpell
+  id: BloodBolt
+  name: magic-spell-blood-bolt
+  words: [ Blood ]
+  class: Blood
+  manaCost: 0
+  bloodCost: 15
+  action: ActionMagicBloodBolt
+  summary: "Paid in blood (15u): 13 piercing and 11 slash."
+
+- type: magicSpell
+  id: Clot
+  name: magic-spell-clot
+  words: [ Blood, Healing ]
+  class: Blood
+  manaCost: 0
+  bloodCost: 5
+  action: ActionMagicClot
+  summary: "Paid in blood (5u): stops your bleeding and puts 25u of blood back."
+
+- type: magicSpell
+  id: BloodBoil
+  name: magic-spell-blood-boil
+  words: [ Blood, Fire ]
+  class: Blood
+  manaCost: 0
+  bloodCost: 25
+  action: ActionMagicBloodBoil
+  summary: "Paid in blood (25u): 50 heat inside the target, ignoring armour (only things with blood)."
+
+# --- Action entities (one is spawned per readied page) ---
+
+- type: entity
+  id: ActionMagicBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Magic
+
+- type: entity
+  id: ActionMagicFireball
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 6
+    itemIconStyle: NoItem
+    checkCanAccess: false
+    raiseOnUser: true
+    range: 60
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/fireball.ogg
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: fireball
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicFireball
+
+- type: entity
+  id: ActionMagicFrostBolt
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    checkCanAccess: false
+    raiseOnUser: true
+    range: 60
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: frost_bolt
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicFrostBolt
+
+- type: entity
+  id: ActionMagicBlink
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 10
+    itemIconStyle: NoItem
+    checkCanAccess: true
+    raiseOnUser: true
+    range: 10
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/blink.ogg
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blink
+    event: !type:MagicBlinkSpellEvent
+
+- type: entity
+  id: ActionMagicHealing
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 5
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    range: 1.5
+    canTargetSelf: true
+    whitelist:
+      components:
+      - Damageable
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: healing
+    event: !type:MagicHealSpellEvent
+      brute: 15
+
+- type: entity
+  id: ActionMagicPlasmaBolt
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 8
+    itemIconStyle: NoItem
+    checkCanAccess: false
+    raiseOnUser: true
+    range: 60
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: plasma_bolt
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicPlasmaBolt
+
+# A much weaker fireball than the wizard's (which has total explosion intensity 200).
+# Direct hit: 20 heat and sets the target on fire, then a small pop that won't break tiles.
+- type: entity
+  id: ProjectileMagicFireball
+  parent: ProjectileFireball
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 28
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 5
+    intensitySlope: 3
+    totalIntensity: 15
+    maxTileBreak: 0
+    canCreateVacuum: false
+  - type: IgniteOnCollide
+  - type: MagicFloorFireOnHit
+    radius: 1.5
+    fireStacks: 1
+
+- type: entity
+  id: ActionMagicDispel
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 8
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    range: 7
+    canTargetSelf: false
+    checkCanAccess: false
+    whitelist:
+      components:
+      - MagicCaster
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: dispel
+    event: !type:MagicDispelSpellEvent
+
+# Weaker than the wizard icicle (40 damage + 50 structural): 20 total, no wall damage.
+- type: entity
+  id: ProjectileMagicFrostBolt
+  parent: ProjectileIcicle
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+        Cold: 14
+
+- type: entity
+  id: ProjectileMagicShadowBolt
+  parent: BaseBullet
+  name: shadow bolt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: spell
+      color: "#5a3aa8"
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Cold: 18
+        Blunt: 6
+
+- type: entity
+  id: ProjectileMagicBloodBolt
+  parent: BaseBullet
+  name: blood bolt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_red
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 13
+        Slash: 11
+
+- type: entity
+  id: ActionMagicShadowBolt
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    checkCanAccess: false
+    raiseOnUser: true
+    range: 60
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: shadow_bolt
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicShadowBolt
+
+- type: entity
+  id: ActionMagicBloodBolt
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    checkCanAccess: false
+    raiseOnUser: true
+    range: 60
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blood_bolt
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicBloodBolt
+
+- type: entity
+  id: ActionMagicShadowStep
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    checkCanAccess: true
+    raiseOnUser: true
+    range: 12
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/blink.ogg
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: shadow_step
+    event: !type:MagicBlinkSpellEvent
+
+- type: entity
+  id: ActionMagicClot
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 20
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: clot
+    event: !type:MagicClotEvent
+
+- type: entity
+  id: ActionMagicBloodBoil
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 12
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    range: 6
+    canTargetSelf: false
+    checkCanAccess: true
+    whitelist:
+      components:
+      - Bloodstream
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blood_boil
+    event: !type:MagicBloodBoilEvent
+      heat: 50
+
+# Firebolt: a quick shot of fire. 12 heat and a few fire stacks.
+- type: entity
+  id: ProjectileMagicFirebolt
+  parent: BaseBullet
+  name: firebolt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: fireball
+      shader: unshaded
+      scale: 0.6, 0.6
+  - type: PointLight
+    color: "#E25822"
+    radius: 1.5
+    energy: 3.0
+  - type: Projectile
+    damage:
+      types:
+        Heat: 20
+  - type: IgniteOnCollide
+  - type: MagicFloorFireOnHit
+    fireStacks: 0.5
+
+- type: entity
+  id: ActionMagicFirebolt
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: WorldTargetAction
+    useDelay: 3
+    itemIconStyle: NoItem
+    checkCanAccess: false
+    raiseOnUser: true
+    range: 60
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: firebolt
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileMagicFirebolt
+
+- type: entity
+  id: ActionMagicKindle
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 4
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    range: 8
+    canTargetSelf: false
+    checkCanAccess: true
+    whitelist:
+      components:
+      - Flammable
+      - Campfire
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: ignite
+    event: !type:MagicIgniteSpellEvent
+      fireStacks: 2
+      heat: 3
+
+- type: entity
+  id: ActionMagicIgnite
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 6
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    range: 6
+    canTargetSelf: false
+    checkCanAccess: true
+    whitelist:
+      components:
+      - Flammable
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: ignite
+    event: !type:MagicIgniteSpellEvent
+      heat: 8
+
+# Plasma Bolt spell: the plasma rifle bolt, tuned for the spell (34 total). Guns keep their own BulletPlasma.
+- type: entity
+  id: ProjectileMagicPlasmaBolt
+  parent: BulletPlasma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    impactEffect: BulletPlasmaImpactEffect
+    damage:
+      types:
+        Caustic: 28
+        Radiation: 6
+        Structural: 50
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"

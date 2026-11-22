@@ -14,10 +14,14 @@ namespace Content.Client.Chat
             base.Initialize();
             SubscribeLocalEvent<PsionicComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<PsionicComponent, ComponentRemove>(OnRemove);
+            // #Reclamation Project - magic telepathy (Psychic/Dark spells, Psychic Link, Hivemind) also opens the channel.
+            SubscribeLocalEvent<TelepathyComponent, ComponentInit>((_, _, _) => _chatManager.UpdatePermissions());
+            SubscribeLocalEvent<TelepathyComponent, ComponentRemove>((_, _, _) => _chatManager.UpdatePermissions());
         }
 
         public PsionicComponent? Player => CompOrNull<PsionicComponent>(_playerManager.LocalPlayer?.ControlledEntity);
-        public bool IsPsionic => Player != null;
+        // #Reclamation Project - telepathy alone (no psionic powers) is enough to use the telepathic channel.
+        public bool IsPsionic => Player != null || HasComp<TelepathyComponent>(_playerManager.LocalPlayer?.ControlledEntity);
 
         private void OnInit(EntityUid uid, PsionicComponent component, ComponentInit args)
         {

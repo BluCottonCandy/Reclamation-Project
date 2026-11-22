@@ -1,0 +1,129 @@
+# #Reclamation Project - Augmented Human: the Institute Director's race (whitelist). A real human (human blood,
+# breathing and organs, so they can still learn and use magic) rebuilt with Courser parts: Courser limbs and bones
+# with nanites that mend them, Courser eyes, and Courser synthetic muscle. Shows as a normal human to everyone.
+# Always counts as Institute.
+
+- type: species
+  id: AugmentedHuman
+  name: species-name-augmented-human
+  displaySpecies: Human # others see a human on examine, health analyzers and records
+  countsAs: Human # takes any job, trait or loadout a Human can (job lists never name it)
+  roundStart: true
+  whitelistRequired: true
+  jobWhitelistUnlock: InstituteDirector # whitelisted for the Director job = can pick the race
+  prototype: MobInstituteDirector
+  sprites: MobHumanSprites
+  defaultSkinTone: "#c0967f"
+  markingLimits: MobHumanMarkingLimits
+  dollPrototype: MobInstituteDirectorDummy
+  skinColoration: HumanToned
+  minHeight: 0.937
+  maxHeight: 1.249
+  minWidth: 0.825
+  maxWidth: 1.05
+
+# Human organs (heart, lungs, stomach, blood: still human), Courser eyes, Courser limbs and bones.
+- type: body
+  id: AugmentedHuman
+  name: "augmented human"
+  root: torso
+  slots:
+    head:
+      part: HeadCourser
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganCourserEyes
+    torso:
+      part: TorsoCourser
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+      - head
+      organs:
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganHumanStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
+        appendix: OrganHumanAppendix
+    right arm:
+      part: RightArmCourser
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmCourser
+      connections:
+      - left hand
+    right hand:
+      part: RightHandCourser
+    left hand:
+      part: LeftHandCourser
+    right leg:
+      part: RightLegCourser
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegCourser
+      connections:
+      - left foot
+    right foot:
+      part: RightFootCourser
+    left foot:
+      part: LeftFootCourser
+
+- type: entity
+  save: false
+  parent: MobHuman
+  id: MobInstituteDirector
+  name: Urist McHands
+  components:
+  - type: HumanoidAppearance
+    species: AugmentedHuman
+  - type: Body
+    prototype: AugmentedHuman
+    requiredLegs: 2
+  - type: AugmentedHuman
+  # Relay to pad: teleports onto any Institute relay pad (the same button Coursers have), in every job.
+  - type: InstitutePadTraveler
+  - type: NpcFactionMember
+    factions:
+    - Institute
+  # Tougher than a human (crit 100 / dead 200), not as tough as a Courser (300 / 450).
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      300: Dead
+    allowRevives: true
+  # Half again as much blood as a human (300).
+  - type: Bloodstream
+    bloodMaxVolume: 450
+  # Sprints at 5.5 (a human walks at 3 and sprints at 5).
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 5.5
+  # Gets hungry half as fast as a human.
+  - type: Hunger
+    baseDecayRate: 0.002
+  # Courser eyes: shielded from welding glare and flashes.
+  - type: EyeProtection
+  - type: FlashImmunity
+  # Courser nanites: full repair (wounds, blood, organs, broken bones) after 10 s without taking damage.
+  - type: NaniteRepair
+  # Courser synthetic muscle: +65% damage on every melee hit (fists and held weapons) and on thrown weapons.
+  - type: SyntheticStrength
+    multiplier: 1.65
+  # Passes every Strength requirement on weapons (heavy guns, one-handing two-handed weapons, dual wielding).
+  - type: IgnoreStrengthRequirements
+
+- type: entity
+  save: false
+  parent: MobHumanDummy
+  id: MobInstituteDirectorDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: AugmentedHuman

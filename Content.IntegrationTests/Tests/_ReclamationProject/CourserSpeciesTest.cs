@@ -45,10 +45,10 @@ public sealed class CourserSpeciesTest
             Assert.That(species.SpriteSet, Is.EqualTo("MobHumanSprites"), "Courser doesn't use human sprites");
             Assert.That(species.WhitelistRequired, Is.True, "Courser race isn't whitelisted");
 
-            // Tougher than a C-27: crit 250, dead 400, stamina 250.
+            // Tougher than a C-27: crit 300, dead 450, stamina 250.
             var thresholds = entities.System<MobThresholdSystem>();
-            Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Critical, out var crit) && crit == 250, "crit isn't 250");
-            Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Dead, out var dead) && dead == 400, "dead isn't 400");
+            Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Critical, out var crit) && crit == 300, "crit isn't 300");
+            Assert.That(thresholds.TryGetThresholdForState(courser, MobState.Dead, out var dead) && dead == 450, "dead isn't 450");
             Assert.That(entities.GetComponent<StaminaComponent>(courser).CritThreshold, Is.EqualTo(250f), "stamina isn't 250");
 
             // Synthetic muscle: punches hit 65% harder (Blunt 10 -> 16.5).

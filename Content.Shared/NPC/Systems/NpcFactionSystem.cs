@@ -230,6 +230,10 @@ public sealed partial class NpcFactionSystem : EntitySystem
             if (!factions.Overlaps(ent.Comp.Factions))
                 continue;
 
+            // #Reclamation Project - a mage under the Phantom spell is invisible to NPC senses.
+            if (HasComp<Content.Shared._ReclamationProject.Magic.MagicPhantomComponent>(ent.Owner))
+                continue;
+
             // #Misfits Add - deeply cloaked stealth boy users don't show up on NPC
             // senses, unless a recent attack has given them away.
             if (TryComp<StealthBoyActiveComponent>(ent.Owner, out var active) &&

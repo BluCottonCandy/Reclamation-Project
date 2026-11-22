@@ -335,6 +335,20 @@ public sealed class FusionCorePoweredSystem : SharedFusionCorePoweredSystem
 
     #region Helpers
 
+    /// <summary>
+    /// #Reclamation Project - magic: the Telekinesis spell rips the fusion core straight out of someone's worn
+    /// power armour (no 3-second pull). Returns the core, or null if they have no powered suit or no core.
+    /// </summary>
+    public EntityUid? YankCoreFromWearer(EntityUid target, EntityUid user)
+    {
+        if (GetWornPowerSystems(target) is not { } systems)
+            return null;
+        var core = EjectCore(systems, user);
+        if (core != null)
+            UpdatePowered(systems, target);
+        return core;
+    }
+
     private EntityUid? EjectCore(Entity<FusionCorePoweredComponent> systems, EntityUid user)
     {
         if (_itemSlots.GetItemOrNull(systems, systems.Comp.SlotId) == null)

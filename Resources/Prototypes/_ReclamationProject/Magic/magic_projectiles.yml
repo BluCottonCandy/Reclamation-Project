@@ -1,0 +1,300 @@
+# #Reclamation Project - spell projectiles (generated).
+
+- type: entity
+  id: ProjectileMagicRockBullet
+  parent: BaseBullet
+  name: "rock bullet"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/petrock.rsi
+    layers:
+    - state: rock
+      color: "#e8a070"
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35
+        Heat: 5
+    armorPenetration: 1.0
+  - type: MagicOnHit
+    hit:
+      slow: 5
+
+- type: entity
+  id: ProjectileMagicWaterBall
+  parent: BaseBullet
+  name: "water ball"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_cyan
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 10
+  - type: MagicOnHit
+    hit:
+      push: 2.5
+      extinguish: true
+      wet: 10
+
+- type: entity
+  id: ProjectileMagicWindBlade
+  parent: BaseBullet
+  name: "wind blade"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: blastwave
+      shader: unshaded
+      color: "#d8eef0"
+  - type: Projectile
+    damage:
+      types:
+        Slash: 20
+
+- type: entity
+  id: ProjectileMagicRockBulletHard
+  parent: BaseBullet
+  name: "rock bullet (hard)"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_yellow
+      shader: unshaded
+      color: "#8a5a2a"
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 27
+        Heat: 5
+    armorPenetration: 0.5
+
+- type: entity
+  id: ProjectileMagicRockBulletMolten
+  parent: BaseBullet
+  name: "rock bullet (molten)"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: fireball
+      shader: unshaded
+      color: "#ff7a2a"
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 24
+        Heat: 14
+    armorPenetration: 0.5
+  - type: MagicFloorFireOnHit
+    radius: 0
+  - type: MagicOnHit
+    hit:
+      fireStacks: 1
+
+- type: entity
+  id: ProjectileMagicRockBulletIce
+  parent: BaseBullet
+  name: "rock bullet (ice shell)"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: ice
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 24
+        Cold: 14
+    armorPenetration: 0.5
+  - type: MagicOnHit
+    hit:
+      slow: 4
+
+- type: entity
+  id: ProjectileMagicRockBulletShock
+  parent: BaseBullet
+  name: "rock bullet (charged)"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_yellow
+      shader: unshaded
+      color: "#e8e060"
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 26
+    armorPenetration: 0.5
+  - type: MagicOnHit
+    hit:
+      shock: 14
+
+- type: entity
+  id: ProjectileMagicRockBulletRad
+  parent: BaseBullet
+  name: "rock bullet (glowing)"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_green
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 24
+        Radiation: 16
+    armorPenetration: 0.5
+
+- type: entity
+  id: ProjectileMagicRockBulletPush
+  parent: BaseBullet
+  name: "rock bullet (impact)"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_yellow
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 26
+        Blunt: 12
+    armorPenetration: 0.5
+  - type: MagicOnHit
+    hit:
+      push: 3
+
+- type: entity
+  id: ProjectileMagicStoneCannon
+  parent: BaseBullet
+  name: "stone cannon"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_yellow
+      shader: unshaded
+      color: "#6a4a2a"
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 45
+        Blunt: 15
+    armorPenetration: 0.9
+    penetrate: true
+  - type: MagicOnHit
+    hit:
+      stun: 1.5
+
+- type: entity
+  id: ProjectileMagicRailgunRock
+  parent: BaseBullet
+  name: "railgun rock"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: chronobolt
+      shader: unshaded
+      color: "#e8e060"
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 44
+    armorPenetration: 0.8
+  - type: MagicOnHit
+    hit:
+      shock: 16
+
+- type: entity
+  id: ProjectileMagicMiniNukeOrb
+  parent: BaseBullet
+  name: "mini nuke orb"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_green
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Heat: 16
+        Radiation: 16
+  - type: MagicFloorFireOnHit
+    radius: 1.5
+  - type: MagicOnHit
+    burstRadius: 2
+    burst:
+      damage:
+        types:
+          Heat: 11
+          Radiation: 11
+      push: 1.5
+
+- type: entity
+  id: ProjectileMagicGlowingIce
+  parent: BaseBullet
+  name: "glowing ice"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: ice
+      shader: unshaded
+      color: "#9aff7a"
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+        Cold: 10
+        Radiation: 14
+  - type: MagicOnHit
+    hit:
+      slow: 4
+
+- type: entity
+  id: ProjectileMagicPsychicBolt
+  parent: BaseBullet
+  name: "psychic bolt"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_cyan
+      shader: unshaded
+      color: "#b080ff"
+  - type: Projectile
+    damage:
+      types:
+        Cellular: 16
+  - type: MagicOnHit
+    hit:
+      damage:
+        types:
+          Cellular: 14
+      push: 1

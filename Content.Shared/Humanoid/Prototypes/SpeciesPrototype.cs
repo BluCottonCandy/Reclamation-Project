@@ -28,6 +28,13 @@ public sealed partial class SpeciesPrototype : IPrototype
     public ProtoId<SpeciesPrototype>? DisplaySpecies { get; private set; }
 
     /// <summary>
+    /// #Reclamation Project - job, trait and loadout species lists treat this species as that one too, without
+    /// naming it (the Augmented Human takes any job a Human can, and the job list never mentions it).
+    /// </summary>
+    [DataField]
+    public ProtoId<SpeciesPrototype>? CountsAs { get; private set; }
+
+    /// <summary>
     ///     Descriptor. Unused...? This is intended
     ///     for an eventual integration into IdentitySystem
     ///     (i.e., young human person, young lizard person, etc.)

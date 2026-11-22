@@ -1,0 +1,193 @@
+# #Reclamation Project - every Arcane base word. Their written form is random each round (admins: magic_words).
+
+- type: magicWord
+  id: Fire
+  name: magic-word-fire
+  hint: magic-hint-fire
+  class: Elemental
+
+- type: magicWord
+  id: Ember
+  name: magic-word-ember
+  hint: magic-hint-ember
+  class: Elemental
+
+- type: magicWord
+  id: Frost
+  name: magic-word-frost
+  hint: magic-hint-frost
+  class: Elemental
+
+- type: magicWord
+  id: Lightning
+  name: magic-word-lightning
+  hint: magic-hint-lightning
+  class: Elemental
+
+- type: magicWord
+  id: Earth
+  name: magic-word-earth
+  hint: magic-hint-earth
+  class: Elemental
+
+- type: magicWord
+  id: Water
+  name: magic-word-water
+  hint: magic-hint-water
+  class: Elemental
+
+- type: magicWord
+  id: Wind
+  name: magic-word-wind
+  hint: magic-hint-wind
+  class: Elemental
+
+- type: magicWord
+  id: Rad
+  name: magic-word-rad
+  hint: magic-hint-rad
+  class: Atomic
+
+- type: magicWord
+  id: MindPush
+  name: magic-word-mindpush
+  hint: magic-hint-mindpush
+  class: Psychic
+
+- type: magicWord
+  id: MindPull
+  name: magic-word-mindpull
+  hint: magic-hint-mindpull
+  class: Psychic
+
+- type: magicWord
+  id: ReadMind
+  name: magic-word-readmind
+  hint: magic-hint-readmind
+  class: Psychic
+
+- type: magicWord
+  id: Whisper
+  name: magic-word-whisper
+  hint: magic-hint-whisper
+  class: Psychic
+
+- type: magicWord
+  id: Dread
+  name: magic-word-dread
+  hint: magic-hint-dread
+  class: Psychic
+
+- type: magicWord
+  id: MindShield
+  name: magic-word-mindshield
+  hint: magic-hint-mindshield
+  class: Psychic
+
+- type: magicWord
+  id: Blink
+  name: magic-word-blink
+  hint: magic-hint-blink
+  class: Psychic
+
+- type: magicWord
+  id: Sleep
+  name: magic-word-sleep
+  hint: magic-hint-sleep
+  class: Psychic
+
+- type: magicWord
+  id: Levitate
+  name: magic-word-levitate
+  hint: magic-hint-levitate
+  class: Psychic
+
+- type: magicWord
+  id: MindLock
+  name: magic-word-mindlock
+  hint: magic-hint-mindlock
+  class: Psychic
+
+- type: magicWord
+  id: MirrorImage
+  name: magic-word-mirrorimage
+  hint: magic-hint-mirrorimage
+  class: Psychic
+
+- type: magicWord
+  id: Telekinesis
+  name: magic-word-telekinesis
+  hint: magic-hint-telekinesis
+  class: Psychic
+
+- type: magicWord
+  id: MindSwap
+  name: magic-word-mindswap
+  hint: magic-hint-mindswap
+  class: Psychic
+
+- type: magicWord
+  id: FearAura
+  name: magic-word-fearaura
+  hint: magic-hint-fearaura
+  class: Psychic
+
+- type: magicWord
+  id: Echo
+  name: magic-word-echo
+  hint: magic-hint-echo
+  class: Psychic
+
+- type: magicWord
+  id: PsychicLink
+  name: magic-word-psychiclink
+  hint: magic-hint-psychiclink
+  class: Psychic
+
+- type: magicWord
+  id: GravityWell
+  name: magic-word-gravitywell
+  hint: magic-hint-gravitywell
+  class: Psychic
+
+- type: magicWord
+  id: FeatherFall
+  name: magic-word-featherfall
+  hint: magic-hint-featherfall
+  class: Psychic
+
+- type: magicWord
+  id: BrainBurn
+  name: magic-word-brainburn
+  hint: magic-hint-brainburn
+  class: Psychic
+
+- type: magicWord
+  id: Dispel
+  name: magic-word-dispel
+  hint: magic-hint-dispel
+  class: Psychic
+
+- type: magicWord
+  id: Shadow
+  name: magic-word-shadow
+  hint: magic-hint-shadow
+  class: Dark
+
+- type: magicWord
+  id: Blood
+  name: magic-word-blood
+  hint: magic-hint-blood
+  class: Blood
+
+- type: magicWord
+  id: Healing
+  name: magic-word-healing
+  hint: magic-hint-healing
+  class: Psychic
+
+- type: magicWord
+  id: Conjure
+  name: magic-word-conjure
+  hint: magic-hint-conjure
+  class: Conjuration

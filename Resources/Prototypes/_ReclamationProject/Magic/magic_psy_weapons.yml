@@ -1,0 +1,81 @@
+# #Reclamation Project - psy weapons, summoned by Psychic spells.
+
+# The psy katana (Psy-Blade spell): a black blade in a black wood scabbard carved with runes.
+# Use it in hand to draw or sheathe it. Sheathed it hangs on the belt or goes on the back.
+# Drawn and held in both hands, its guard (hotbar button) sends bullets and lasers from the front back at the shooter.
+- type: entity
+  parent: BaseItem
+  id: MagicPsyKatana
+  name: psy-blade
+  description: A black katana in a black wood scabbard carved with glowing runes. When it is drawn, purple lightning crawls along the spine. Use it in hand to draw or sheathe it.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Magic/psy_katana.rsi
+    scale: 0.5, 0.5
+    layers:
+    - state: icon
+      map: [ "enum.MagicPsyBladeLayers.Base" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MagicPsyBladeVisuals.Drawn:
+        enum.MagicPsyBladeLayers.Base:
+          True: { state: icon-drawn }
+          False: { state: icon }
+  - type: Item
+    size: Normal
+    sprite: _ReclamationProject/Magic/psy_katana_held.rsi
+    heldPrefix: sheathed
+  - type: MagicHiRes
+  - type: Clothing
+    sprite: _ReclamationProject/Magic/psy_katana_held.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - suitStorage
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1.0
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sharp
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 13
+        Piercing: 2
+  - type: Wieldable
+    wieldedSpeedModifier: 0.95
+  - type: MagicPsyBlade
+    drawnDamage: # 40 drawn, 55 in both hands (IncreaseDamageOnWield adds 13 slash + 2 pierce)
+      types:
+        Slash: 32
+        Piercing: 8
+    sheathedDamage:
+      types:
+        Blunt: 10
+  - type: MagicSwordGuard
+  # Lasts until you let it go: left loose (dropped, thrown, stuck in someone) it crumbles to ash after 10 s.
+  - type: MagicAshWhenLoose
+    delay: 10
+  - type: StaticPrice
+    price: 0
+
+# The guard button the katana puts on your hotbar while you hold it.
+- type: entity
+  id: ActionMagicSwordGuard
+  name: Sword guard
+  description: With the blade drawn and held in both hands, send bullets and lasers from the front straight back at the shooter. 1 stamina a second while up, 5 more for each block. You walk slower and can't swing while guarding.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 1
+    itemIconStyle: BigItem
+    icon:
+      sprite: _ReclamationProject/Magic/psy_katana.rsi
+      state: icon-drawn
+    event: !type:MagicSwordGuardEvent

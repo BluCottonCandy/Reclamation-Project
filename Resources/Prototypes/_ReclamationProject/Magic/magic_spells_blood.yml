@@ -1,0 +1,248 @@
+# #Reclamation Project - Blood spells (generated from the spell table; edit the table, not this file).
+
+- type: magicSpell
+  id: Bloodletting
+  name: magic-spell-bloodletting
+  words: [ Blood, MindPull ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicBloodletting
+  bloodCost: 10
+  summary: "Target starts bleeding heavily."
+
+- type: entity
+  id: ActionMagicBloodletting
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 15
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: bloodletting
+    range: 7
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        bleed: 6
+
+- type: magicSpell
+  id: CrimsonSpear
+  name: magic-spell-crimson-spear
+  words: [ Blood, Conjure ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicCrimsonSpear
+  bloodCost: 20
+  summary: "Throwable spear made of blood."
+
+- type: entity
+  id: ActionMagicCrimsonSpear
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: crimson_spear
+    event: !type:MagicConjureSpellEvent
+      item: MagicConjuredCrimsonSpear
+
+- type: magicSpell
+  id: BloodShield
+  name: magic-spell-blood-shield
+  words: [ Blood, MindShield ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicBloodShield
+  bloodCost: 20
+  summary: "Absorbs the next 30 damage."
+
+- type: entity
+  id: ActionMagicBloodShield
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blood_shield
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      self:
+        condition: Absorb
+        conditionTime: 60
+        conditionPower: 30
+
+- type: magicSpell
+  id: BloodTrace
+  name: magic-spell-blood-trace
+  words: [ Blood, ReadMind ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicBloodTrace
+  bloodCost: 5
+  summary: "For 60 s you sense which way the target is."
+
+- type: entity
+  id: ActionMagicBloodTrace
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blood_trace
+    range: 8
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        condition: Tracked
+        conditionTime: 60
+
+- type: magicSpell
+  id: BloodMist
+  name: magic-spell-blood-mist
+  words: [ Blood, Wind ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicBloodMist
+  bloodCost: 20
+  summary: "Red cloud; you heal inside it, everyone else takes damage."
+
+- type: entity
+  id: ActionMagicBloodMist
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 40
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: blood_mist
+    event: !type:MagicAreaSpellEvent
+      radius: 0
+      spawn: MagicZoneBloodMist
+
+- type: magicSpell
+  id: Hemorrhage
+  name: magic-spell-hemorrhage
+  words: [ Blood, Blood, MindPull ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicHemorrhage
+  bloodCost: 30
+  summary: "Everyone near you starts bleeding."
+
+- type: entity
+  id: ActionMagicHemorrhage
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: InstantAction
+    useDelay: 45
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: hemorrhage
+    event: !type:MagicAreaSpellEvent
+      radius: 3
+      hit:
+        bleed: 4
+
+- type: magicSpell
+  id: Transfusion
+  name: magic-spell-transfusion
+  words: [ Blood, Blood, Healing ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicTransfusion
+  bloodCost: 60
+  summary: "Move 60 units of your blood into someone else."
+
+- type: entity
+  id: ActionMagicTransfusion
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 30
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: transfusion
+    range: 1.5
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        blood: 60
+
+- type: magicSpell
+  id: Exsanguinate
+  name: magic-spell-exsanguinate
+  words: [ Blood, Blood, Blood, MindPull ]
+  class: Blood
+  manaCost: 0
+  action: ActionMagicExsanguinate
+  bloodCost: 50
+  summary: "Rips most of the target's blood out and heals you."
+
+- type: entity
+  id: ActionMagicExsanguinate
+  parent: ActionMagicBase
+  name: · · ·
+  components:
+  - type: EntityTargetAction
+    useDelay: 180
+    itemIconStyle: NoItem
+    raiseOnUser: true
+    icon:
+      sprite: _ReclamationProject/Magic/spells.rsi
+      state: exsanguinate
+    range: 6
+    checkCanAccess: true
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:MagicTouchSpellEvent
+      hit:
+        blood: -200
+        damage:
+          types:
+            Bloodloss: 20
+      self:
+        heal:
+          types:
+            Blunt: 60
+            Slash: 60
+            Piercing: 60
+            Heat: 40
+        blood: 100

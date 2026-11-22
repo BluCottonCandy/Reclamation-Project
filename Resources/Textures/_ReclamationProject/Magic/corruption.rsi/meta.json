@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Orb from 'Pixel Art Spells' by DevWizard (OpenGameArt, CC0), recoloured for Reclamation Project",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "corruption0"
+    },
+    {
+      "name": "corruption1"
+    },
+    {
+      "name": "corruption2"
+    },
+    {
+      "name": "corruption3"
+    },
+    {
+      "name": "corruption4"
+    },
+    {
+      "name": "corruption5"
+    },
+    {
+      "name": "corruption6"
+    },
+    {
+      "name": "corruption7"
+    },
+    {
+      "name": "corruption8"
+    },
+    {
+      "name": "corruption9"
+    },
+    {
+      "name": "corruption10"
+    }
+  ]
+}

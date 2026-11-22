@@ -1,0 +1,321 @@
+# #Reclamation Project - Arcane magic books. All three use the existing book sprite parts (no new art).
+# They come from admins (spawn menu) or rarely from junk piles.
+
+- type: entity
+  id: MagicGrimoire
+  parent: BaseItem
+  name: grimoire
+  description: A heavy, rune-carved book with blank parchment pages. It hums faintly.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_old
+      color: "#2a1838"
+    - state: decor_wingette_circle
+      color: "#b08a3e"
+    - state: icon_pentagramm
+      color: "#c9a85a"
+  - type: Item
+    size: Small
+  - type: MagicGrimoire
+  - type: ActionsContainer
+  - type: ActivatableUI
+    key: enum.MagicGrimoireUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.MagicGrimoireUiKey.Key:
+        type: MagicGrimoireBoundUserInterface
+  - type: Tag
+    tags:
+    - Book
+  - type: EmitSoundOnPickup
+    sound: /Audio/SimpleStation14/Items/Handling/book_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound: /Audio/SimpleStation14/Items/Handling/book_drop.ogg
+
+# Codex leaves: use one on your grimoire to bind it into the book's Codex tab.
+- type: entity
+  id: MagicCodexLeafBase
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Paper
+
+- type: entity
+  id: MagicCodexKey
+  parent: MagicCodexLeafBase
+  name: key of runes
+  description: A stiff old leaf ruled into neat boxes, each holding a rune beside a letter. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#7a1f1f"
+  - type: MagicCodexLeaf
+
+- type: entity
+  id: MagicSpellIndex
+  parent: MagicCodexLeafBase
+  name: spell index
+  description: A long leaf ruled into columns, every one empty. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#d9c9a0"
+    - state: paper_words
+      color: "#2a3a6a"
+  - type: MagicSpellIndexLeaf
+
+- type: entity
+  id: MagicCodexLeafElemental
+  parent: MagicCodexLeafBase
+  name: codex leaf (elemental)
+  description: An old leaf of jumbled runes, its margins decorated with embers. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#D85A30"
+  - type: MagicCodexLeaf
+    class: Elemental
+
+- type: entity
+  id: MagicCodexLeafAtomic
+  parent: MagicCodexLeafBase
+  name: codex leaf (atomic)
+  description: An old leaf of jumbled runes, its margins decorated with a faint green glow. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#639922"
+  - type: MagicCodexLeaf
+    class: Atomic
+
+- type: entity
+  id: MagicCodexLeafPsychic
+  parent: MagicCodexLeafBase
+  name: codex leaf (psychic)
+  description: An old leaf of jumbled runes, its margins decorated with swirling eyes. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#378ADD"
+  - type: MagicCodexLeaf
+    class: Psychic
+
+- type: entity
+  id: MagicCodexLeafDark
+  parent: MagicCodexLeafBase
+  name: codex leaf (dark)
+  description: An old leaf of jumbled runes, its margins decorated with ink that drinks the light. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#7F77DD"
+  - type: MagicCodexLeaf
+    class: Dark
+
+- type: entity
+  id: MagicCodexLeafBlood
+  parent: MagicCodexLeafBase
+  name: codex leaf (blood)
+  description: An old leaf of jumbled runes, its margins decorated with dried blood. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#E24B4A"
+  - type: MagicCodexLeaf
+    class: Blood
+
+- type: entity
+  id: MagicCodexLeafHealing
+  parent: MagicCodexLeafBase
+  name: codex leaf (healing)
+  description: An old leaf of jumbled runes, its margins decorated with neat stitches. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#8a8880"
+  - type: MagicCodexLeaf
+    class: Healing
+
+- type: entity
+  id: MagicCodexLeafConjuration
+  parent: MagicCodexLeafBase
+  name: codex leaf (conjuration)
+  description: An old leaf of jumbled runes, its margins decorated with little drawn tools. The binding holes along one edge look made for a book.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#e2cf9e"
+    - state: paper_words
+      color: "#BA7517"
+  - type: MagicCodexLeaf
+    class: Conjuration
+
+# Blank vellum: use it on your grimoire to stitch in one more blank page (up to 40).
+- type: entity
+  id: MagicVellum
+  parent: BaseItem
+  name: blank vellum
+  description: A clean, pale sheet of fine vellum. It feels faintly warm.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#f2e8cc"
+  - type: Item
+    size: Tiny
+  - type: MagicVellum
+  - type: Tag
+    tags:
+    - Paper
+
+# Admin only (not in any loot): reading it unseals every school of magic for the reader.
+- type: entity
+  id: MagicUnsealingCodex
+  parent: BaseItem
+  name: codex of the unsealed schools
+  description: A heavy black book bound in chains that hang loose and broken. Every page is a different colour of ink.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#141018"
+    - state: decor_diagonal
+      color: "#c9a0ff"
+    - state: icon_magic
+      color: "#f2d27a"
+  - type: Item
+    size: Normal
+  - type: MagicUnsealingBook
+  - type: Tag
+    tags:
+    - Book
+
+- type: entity
+  id: MagicSilentCastingTreatise
+  parent: BaseItem
+  name: treatise on silent casting
+  description: A slim book of breathing drills and hand forms. The margins are full of someone's practice notes.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#1f2a44"
+    - state: decor_diagonal
+      color: "#9ab4d8"
+    - state: icon_magic
+      color: "#d8e4f2"
+  - type: Item
+    size: Small
+  - type: MagicChantlessBook
+  - type: Tag
+    tags:
+    - Book
+
+- type: entity
+  id: MagicArcanePrimer
+  parent: BaseItem
+  name: arcane primer
+  description: A thin, battered book. The letters seem to crawl across the page.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#4a2a5a"
+    - state: decor_diagonal
+      color: "#b08a3e"
+    - state: icon_magic
+      color: "#d9c27a"
+  - type: Item
+    size: Small
+  - type: MagicPrimer
+  - type: Tag
+    tags:
+    - Book
+
+- type: Tag
+  id: MagicQuill
+
+# The only thing that can write in a grimoire. Also works like a pen on normal paper.
+- type: entity
+  id: MagicQuill
+  parent: BaseItem
+  name: raven quill
+  description: A black feather quill. The ink it leaves seems to move when you aren't looking.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Magic/quill.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Write
+    - MagicQuill
+
+# A page torn out of a grimoire. Only its owner can use it.
+- type: entity
+  id: MagicTornPage
+  parent: BaseItem
+  name: torn page
+  description: A ragged page torn from an old book, covered in swirling star charts.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: paper
+      color: "#d9bf8c"
+    - state: paper_words
+      color: "#6b3a18"
+  - type: Item
+    size: Tiny
+  - type: MagicTornPage
+  - type: ActionsContainer
+  - type: Tag
+    tags:
+    - Paper

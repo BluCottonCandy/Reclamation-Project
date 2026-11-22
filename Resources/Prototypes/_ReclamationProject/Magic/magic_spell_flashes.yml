@@ -1,0 +1,957 @@
+# #Reclamation Project - spell flashes: what people SEE when a spell goes off.
+# Cast = a pulse around the caster; Hit = a pulse on each target; RingN = an area burst N tiles across.
+# One set per class, coloured like the class glow in the grimoire. Spawned by MagicSystem.Flash/FlashRing.
+
+- type: entity
+  id: MagicFlashBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: EffectVisuals
+  - type: AnimationPlayer
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+# Held = a spell charged and waiting in the hand (stays until it fires or fizzles).
+- type: entity
+  id: MagicFlashHeldBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: MagicFlashHeldElemental
+  parent: MagicFlashHeldBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff9a5c"
+      scale: 0.7, 0.7
+  - type: PointLight
+    color: "#ff9a5c"
+    radius: 1.2
+    energy: 2
+
+- type: entity
+  id: MagicFlashCastElemental
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff9a5c"
+      scale: 1.4, 1.4
+  - type: PointLight
+    color: "#ff9a5c"
+    radius: 2
+    energy: 2
+
+- type: entity
+  id: MagicFlashHitElemental
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff9a5c"
+      scale: 1.0, 1.0
+  - type: PointLight
+    color: "#ff9a5c"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing3Elemental
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff9a5c"
+      scale: 3, 3
+  - type: PointLight
+    color: "#ff9a5c"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing6Elemental
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff9a5c"
+      scale: 6, 6
+  - type: PointLight
+    color: "#ff9a5c"
+    radius: 3.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing10Elemental
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff9a5c"
+      scale: 10, 10
+  - type: PointLight
+    color: "#ff9a5c"
+    radius: 5.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing20Elemental
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff9a5c"
+      scale: 20, 20
+  - type: PointLight
+    color: "#ff9a5c"
+    radius: 8
+    energy: 2
+
+- type: entity
+  id: MagicFlashHeldAtomic
+  parent: MagicFlashHeldBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9cff5a"
+      scale: 0.7, 0.7
+  - type: PointLight
+    color: "#9cff5a"
+    radius: 1.2
+    energy: 2
+
+- type: entity
+  id: MagicFlashCastAtomic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9cff5a"
+      scale: 1.4, 1.4
+  - type: PointLight
+    color: "#9cff5a"
+    radius: 2
+    energy: 2
+
+- type: entity
+  id: MagicFlashHitAtomic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9cff5a"
+      scale: 1.0, 1.0
+  - type: PointLight
+    color: "#9cff5a"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing3Atomic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9cff5a"
+      scale: 3, 3
+  - type: PointLight
+    color: "#9cff5a"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing6Atomic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9cff5a"
+      scale: 6, 6
+  - type: PointLight
+    color: "#9cff5a"
+    radius: 3.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing10Atomic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9cff5a"
+      scale: 10, 10
+  - type: PointLight
+    color: "#9cff5a"
+    radius: 5.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing20Atomic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9cff5a"
+      scale: 20, 20
+  - type: PointLight
+    color: "#9cff5a"
+    radius: 8
+    energy: 2
+
+- type: entity
+  id: MagicFlashHeldPsychic
+  parent: MagicFlashHeldBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#78b4ff"
+      scale: 0.7, 0.7
+  - type: PointLight
+    color: "#78b4ff"
+    radius: 1.2
+    energy: 2
+
+- type: entity
+  id: MagicFlashCastPsychic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#78b4ff"
+      scale: 1.4, 1.4
+  - type: PointLight
+    color: "#78b4ff"
+    radius: 2
+    energy: 2
+
+- type: entity
+  id: MagicFlashHitPsychic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#78b4ff"
+      scale: 1.0, 1.0
+  - type: PointLight
+    color: "#78b4ff"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing3Psychic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#78b4ff"
+      scale: 3, 3
+  - type: PointLight
+    color: "#78b4ff"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing6Psychic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#78b4ff"
+      scale: 6, 6
+  - type: PointLight
+    color: "#78b4ff"
+    radius: 3.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing10Psychic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#78b4ff"
+      scale: 10, 10
+  - type: PointLight
+    color: "#78b4ff"
+    radius: 5.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing20Psychic
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#78b4ff"
+      scale: 20, 20
+  - type: PointLight
+    color: "#78b4ff"
+    radius: 8
+    energy: 2
+
+- type: entity
+  id: MagicFlashHeldDark
+  parent: MagicFlashHeldBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9a7cff"
+      scale: 0.7, 0.7
+  - type: PointLight
+    color: "#9a7cff"
+    radius: 1.2
+    energy: 2
+
+- type: entity
+  id: MagicFlashCastDark
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9a7cff"
+      scale: 1.4, 1.4
+  - type: PointLight
+    color: "#9a7cff"
+    radius: 2
+    energy: 2
+
+- type: entity
+  id: MagicFlashHitDark
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9a7cff"
+      scale: 1.0, 1.0
+  - type: PointLight
+    color: "#9a7cff"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing3Dark
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9a7cff"
+      scale: 3, 3
+  - type: PointLight
+    color: "#9a7cff"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing6Dark
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9a7cff"
+      scale: 6, 6
+  - type: PointLight
+    color: "#9a7cff"
+    radius: 3.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing10Dark
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9a7cff"
+      scale: 10, 10
+  - type: PointLight
+    color: "#9a7cff"
+    radius: 5.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing20Dark
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#9a7cff"
+      scale: 20, 20
+  - type: PointLight
+    color: "#9a7cff"
+    radius: 8
+    energy: 2
+
+- type: entity
+  id: MagicFlashHeldBlood
+  parent: MagicFlashHeldBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff4a4a"
+      scale: 0.7, 0.7
+  - type: PointLight
+    color: "#ff4a4a"
+    radius: 1.2
+    energy: 2
+
+- type: entity
+  id: MagicFlashCastBlood
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff4a4a"
+      scale: 1.4, 1.4
+  - type: PointLight
+    color: "#ff4a4a"
+    radius: 2
+    energy: 2
+
+- type: entity
+  id: MagicFlashHitBlood
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff4a4a"
+      scale: 1.0, 1.0
+  - type: PointLight
+    color: "#ff4a4a"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing3Blood
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff4a4a"
+      scale: 3, 3
+  - type: PointLight
+    color: "#ff4a4a"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing6Blood
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff4a4a"
+      scale: 6, 6
+  - type: PointLight
+    color: "#ff4a4a"
+    radius: 3.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing10Blood
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff4a4a"
+      scale: 10, 10
+  - type: PointLight
+    color: "#ff4a4a"
+    radius: 5.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing20Blood
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ff4a4a"
+      scale: 20, 20
+  - type: PointLight
+    color: "#ff4a4a"
+    radius: 8
+    energy: 2
+
+- type: entity
+  id: MagicFlashHeldHealing
+  parent: MagicFlashHeldBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#8ff0a8"
+      scale: 0.7, 0.7
+  - type: PointLight
+    color: "#8ff0a8"
+    radius: 1.2
+    energy: 2
+
+- type: entity
+  id: MagicFlashCastHealing
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#8ff0a8"
+      scale: 1.4, 1.4
+  - type: PointLight
+    color: "#8ff0a8"
+    radius: 2
+    energy: 2
+
+- type: entity
+  id: MagicFlashHitHealing
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#8ff0a8"
+      scale: 1.0, 1.0
+  - type: PointLight
+    color: "#8ff0a8"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing3Healing
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#8ff0a8"
+      scale: 3, 3
+  - type: PointLight
+    color: "#8ff0a8"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing6Healing
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#8ff0a8"
+      scale: 6, 6
+  - type: PointLight
+    color: "#8ff0a8"
+    radius: 3.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing10Healing
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#8ff0a8"
+      scale: 10, 10
+  - type: PointLight
+    color: "#8ff0a8"
+    radius: 5.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing20Healing
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#8ff0a8"
+      scale: 20, 20
+  - type: PointLight
+    color: "#8ff0a8"
+    radius: 8
+    energy: 2
+
+- type: entity
+  id: MagicFlashHeldConjuration
+  parent: MagicFlashHeldBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ffcf5a"
+      scale: 0.7, 0.7
+  - type: PointLight
+    color: "#ffcf5a"
+    radius: 1.2
+    energy: 2
+
+- type: entity
+  id: MagicFlashCastConjuration
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ffcf5a"
+      scale: 1.4, 1.4
+  - type: PointLight
+    color: "#ffcf5a"
+    radius: 2
+    energy: 2
+
+- type: entity
+  id: MagicFlashHitConjuration
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ffcf5a"
+      scale: 1.0, 1.0
+  - type: PointLight
+    color: "#ffcf5a"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing3Conjuration
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ffcf5a"
+      scale: 3, 3
+  - type: PointLight
+    color: "#ffcf5a"
+    radius: 1.5
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing6Conjuration
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ffcf5a"
+      scale: 6, 6
+  - type: PointLight
+    color: "#ffcf5a"
+    radius: 3.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing10Conjuration
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ffcf5a"
+      scale: 10, 10
+  - type: PointLight
+    color: "#ffcf5a"
+    radius: 5.0
+    energy: 2
+
+- type: entity
+  id: MagicFlashRing20Conjuration
+  parent: MagicFlashBase
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Effects/emp.rsi
+      state: emp_pulse
+      color: "#ffcf5a"
+      scale: 20, 20
+  - type: PointLight
+    color: "#ffcf5a"
+    radius: 8
+    energy: 2

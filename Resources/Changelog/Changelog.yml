@@ -15192,3 +15192,26 @@ Entries:
   id: 6674
   time: '2026-11-21T10:33:33.0000000+00:00'
   url: https://github.com/BluCottonCandy/Reclamation-Project/pull/221
+- author: aftermath434
+  changes:
+    - type: Add
+      message: >-
+        Arcane magic. Take Wild Wasteland and learn Arcane to use Psychic and
+        Dark spells, written into a grimoire with this round's secret words.
+    - type: Add
+      message: >-
+        FEV Psi-Serum, a three-step chemistry brew that can awaken
+        FEV-whitelisted players.
+    - type: Add
+      message: >-
+        The psy katana with a bullet-reflecting sword guard, Psy-Forge, Bullet
+        Catch, Undying Will and Astral Projection.
+    - type: Tweak
+      message: 'Non humans can not use magic '
+    - type: Tweak
+      message: >-
+        MOD suits no longer slow you down more as PA its now a med armor and
+        heavy when unpowered 
+  id: 6675
+  time: '2026-11-22T14:54:07.0000000+00:00'
+  url: https://github.com/BluCottonCandy/Reclamation-Project/pull/223

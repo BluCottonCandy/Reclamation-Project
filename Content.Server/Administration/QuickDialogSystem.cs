@@ -115,12 +115,13 @@ public sealed partial class QuickDialogSystem : EntitySystem
         string cancelText,
         Action approveAction,
         Action denyAction,
-        bool showCancel = true)
+        bool showCancel = true,
+        string? body = null)
     {
         OpenDialogInternal(
             session,
             title,
-            new List<QuickDialogEntry>(),
+            body == null ? [] : [new QuickDialogEntry("body", QuickDialogEntryType.ReadOnlyText, body)],
             QuickDialogButtonFlag.OkButton | (showCancel ? QuickDialogButtonFlag.CancelButton : 0),
             _ => approveAction.Invoke(),
             denyAction,

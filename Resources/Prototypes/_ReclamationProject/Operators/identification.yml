@@ -1,0 +1,126 @@
+- type: accessLevel
+  id: Operators
+  name: access-operators
+
+- type: accessLevel
+  id: OperatorsCommand
+  name: access-operators-command
+
+- type: entity
+  parent: ClothingMaskBase
+  id: OperatorsBlackBalaclava
+  name: black Operators balaclava
+  description: A black face covering cut to allow eating and drinking while worn.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Mask/blackbalaclava.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Mask/blackbalaclava.rsi
+    slots: [mask, neck]
+  - type: HideLayerClothing
+    slots: [Hair, Snout, FacialHair]
+
+- type: entity
+  parent: OperatorsStampIdBase
+  id: OperatorsSpiritLedgerToken
+  name: Operators Spirit dog tags
+  components:
+  - type: PresetIdCard
+    job: OperatorsSpirit
+
+- type: entity
+  parent: OperatorsStampIdBase
+  id: OperatorsGhostLedgerToken
+  name: Operators Ghost dog tags
+  components:
+  - type: PresetIdCard
+    job: OperatorsGhost
+
+- type: entity
+  parent: OperatorsStampIdBase
+  id: OperatorsSpectreLedgerToken
+  name: Operators Spectre dog tags
+  components:
+  - type: PresetIdCard
+    job: OperatorsSpectre
+
+- type: entity
+  parent: OperatorsStampIdBase
+  id: OperatorsShadeLedgerToken
+  name: Operators Shade dog tags
+  components:
+  - type: PresetIdCard
+    job: OperatorsShade
+
+- type: entity
+  parent: OperatorsStampIdBase
+  id: OperatorsPhantomLedgerToken
+  name: Operators Phantom dog tags
+  components:
+  - type: PresetIdCard
+    job: OperatorsPhantom
+
+- type: entity
+  parent: OperatorsStampIdBase
+  id: OperatorsWraithLedgerToken
+  name: Operators Wraith dog tags
+  components:
+  - type: PresetIdCard
+    job: OperatorsWraith
+
+- type: entity
+  parent: OperatorsStampIdBase
+  id: OperatorsRevenantLedgerToken
+  name: Operators Revenant dog tags
+  components:
+  - type: PresetIdCard
+    job: OperatorsRevenant
+
+
+- type: entity
+  parent: N14IDCard
+  id: OperatorsStampIdBase
+  abstract: true
+  description: A pair of dark metal Operator identification tags.
+  components:
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Operators/dogtags.rsi
+    state: icon
+  - type: Item
+    sprite: _ReclamationProject/Objects/Operators/dogtags.rsi
+
+- type: entity
+  parent: BaseItem
+  id: OperatorContractScroll
+  name: Operator contract
+  description: A gold contract. Use it in hand to review and accept the offer.
+  components:
+  - type: OperatorContract
+  - type: Sprite
+    sprite: _ReclamationProject/Objects/Operators/contract.rsi
+    layers:
+    - state: scroll
+      map: ["contract"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OperatorContractVisuals.Stage:
+        contract:
+          Written: { state: scroll }
+          Accepted: { state: accepted }
+          Paid: { state: paid }
+  - type: Item
+    size: Tiny
+    sprite: _ReclamationProject/Objects/Operators/contract.rsi
+
+- type: entity
+  id: ActionOperatorCreateContract
+  name: Create Contract
+  description: Write a job offer and set its price in caps.
+  categories: [HideSpawnMenu]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _ReclamationProject/Objects/Operators/contract.rsi
+      state: scroll
+    event: !type:OperatorCreateContractEvent
